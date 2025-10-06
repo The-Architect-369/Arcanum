@@ -1,0 +1,57 @@
+:root {
+  --bg-ink: #0b0f1a;
+  --bg-panel: #0f1424;
+  --card-from: 18, 20, 40; /* rgb */
+  --card-to: 12, 14, 28;
+  --ring-pop: 167,139,250; /* pop */
+  --ring-star: 147,197,253; /* starlight */
+}
+
+html, body { background: var(--bg-ink); }
+
+.bento-card {
+  position: relative;
+  background: linear-gradient(
+    180deg,
+    rgba(var(--card-from), 0.9) 0%,
+    rgba(var(--card-to), 0.9) 100%
+  );
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 1.25rem;
+  box-shadow: var(--shadow, 0 8px 24px rgba(0,0,0,0.35));
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+  will-change: transform;
+}
+
+.bento-card:hover, .bento-card:focus-within {
+  transform: translateY(-2px);
+  border-color: rgba(255,255,255,0.12);
+  box-shadow:
+    0 10px 28px rgba(0,0,0,0.45),
+    0 0 0 1px rgba(var(--ring-pop), 0.18),
+    0 0 36px rgba(var(--ring-star), 0.12);
+}
+
+.bento-ring {
+  pointer-events: none;
+  position: absolute;
+  inset: -1px;
+  border-radius: 1.25rem;
+  background:
+    radial-gradient(60% 60% at 50% 0%, rgba(var(--ring-pop), .10), transparent 60%),
+    radial-gradient(80% 60% at 100% 100%, rgba(var(--ring-star), .08), transparent 60%);
+  opacity: .9;
+  mask: linear-gradient(#000, transparent 70%);
+}
+
+.bento-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  padding: .25rem .55rem;
+  border-radius: 999px;
+  font-size: .75rem;
+  line-height: 1rem;
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.08);
+}

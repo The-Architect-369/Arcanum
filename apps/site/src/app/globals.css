@@ -1,0 +1,63 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { color-scheme: dark; }
+html, body { height: 100%; }
+body { background: radial-gradient(1200px 600px at 50% -10%, rgba(96,165,250,0.12), transparent 60%), #0a0e17; color: white; }
+.pillar {
+  background: radial-gradient(120px 600px at 50% 0%, rgba(243,201,105,0.25), transparent 55%);
+}
+.section {
+  @apply relative max-w-6xl mx-auto px-6 py-20;
+}
+.card {
+  @apply rounded-2xl border border-white/10 bg-white/5 backdrop-blur shadow-pane;
+}
+.h1 { @apply text-3xl md:text-5xl font-semibold; }
+.h2 { @apply text-xl md:text-2xl font-semibold; }
+.mono { font-feature-settings: "ss01" on; }
+.carousel-btn { @apply rounded-full border border-white/15 bg-white/5 px-3 py-2; }
+.dot { @apply w-2.5 h-2.5 rounded-full bg-white/20 data-[active=true]:bg-arc-gold; 
+}
+
+/* Unify card glow & fix background discrepancies */
+:root {
+--panel-ring: 0 0 0 1px rgba(255,255,255,0.08);
+}
+
+
+* { backface-visibility: hidden; }
+
+
+html, body { height: 100%; }
+
+
+/* Smooth scroll + snap for lively panel transitions */
+html { scroll-behavior: smooth; }
+
+
+main > div { scroll-snap-type: y proximity; }
+
+
+/* Remove any accidental background lines from images */
+img, canvas { image-rendering: auto; }
+
+
+/* Tailwind already present; utility overrides are minimal */
+/* Smooth scroll + vertical snap */
+html { scroll-behavior: smooth; }
+main > div { scroll-snap-type: y proximity; 
+}
+
+/* One-card-per-screen scrolling */
+html { scroll-behavior: smooth; }
+main > div { scroll-snap-type: y mandatory; }
+
+/* iOS momentum without overscroll chaining */
+html, body { overscroll-behavior-y: contain; 
+}
+
+/* Ensure header blur overlays content smoothly */
+header { -webkit-backdrop-filter: saturate(120%) blur(8px); backdrop-filter: saturate(120%) blur(8px); 
+}

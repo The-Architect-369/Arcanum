@@ -1,0 +1,23 @@
+# Node / Next / Monorepo
+node_modules/
+.pnpm-store/
+.pnp.*
+.next/
+dist/
+out/
+.vercel/
+.vscode/
+.DS_Store
+
+# Build artifacts
+coverage/
+*.log
+
+# Env & secrets
+.env*
+!.env.example
+
+# Framework/host specific
+.wrangler/
+.cloudflared/
+.sass-cache/

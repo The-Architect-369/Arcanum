@@ -1,0 +1,3 @@
+name = "arcanum-web"
+pages_build_output_dir = ".vercel/output"
+compatibility_date = "2024-10-01"

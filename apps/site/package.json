@@ -1,0 +1,33 @@
+{
+  "name": "@arcanum/site",
+  "private": true,
+  "version": "0.1.0",
+  "scripts": {
+    "dev": "next dev -p 3010",
+    "build": "next build",
+    "start": "next start -p 3010",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "client-only": "0.0.1",
+    "framer-motion": "^12.23.22",
+    "lucide-react": "0.469.0",
+    "next": "15.5.2",
+    "react": "19.1.0",
+    "react-dom": "19.1.0"
+  },
+  "devDependencies": {
+    "@cloudflare/next-on-pages": "^1.13.16",
+    "@eslint/js": "9.9.1",
+    "@next/eslint-plugin-next": "^15.5.4",
+    "@types/react": "^19.1.13",
+    "@types/react-dom": "^19.2.0",
+    "autoprefixer": "10.4.20",
+    "eslint": "9.9.1",
+    "postcss": "8.4.49",
+    "tailwindcss": "3.4.14",
+    "typescript": "5.6.3",
+    "typescript-eslint": "8.8.1",
+    "wrangler": "^4.42.0"
+  }
+}
