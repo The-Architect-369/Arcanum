@@ -7,15 +7,25 @@
       "DOM.Iterable"
     ],
     "jsx": "preserve",
-    "moduleResolution": "bundler",
-    "resolveJsonModule": true,
     "module": "ESNext",
+    "moduleResolution": "Bundler",
     "strict": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "src/*"
+      ]
+    },
+    "allowJs": true,
+    "resolveJsonModule": true,
     "noEmit": true,
-    "allowJs": false,
-    "incremental": true,
-    "types": ["react","react-dom"],
+    "types": [
+      "node",
+      "react",
+      "react-dom"
+    ],
     "skipLibCheck": true,
+    "incremental": true,
     "esModuleInterop": true,
     "isolatedModules": true,
     "plugins": [
@@ -25,6 +35,7 @@
     ]
   },
   "include": [
+    "next-env.d.ts",
     "src",
     ".next/types/**/*.ts"
   ],

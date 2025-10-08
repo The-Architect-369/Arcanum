@@ -1,17 +1,24 @@
 {
   "name": "arcanum",
+  "private": true,
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "The Arcanum — monorepo (apps: site, web; pkg: ui; contracts: foundry).",
+  "packageManager": "pnpm@9.0.0",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "pnpm -C apps/web dev",
-    "build": "pnpm -C apps/web build",
-    "lint": "pnpm -C apps/web lint"
+    "dev": "pnpm -C apps/site dev",
+    "dev:web": "pnpm -C apps/web dev",
+    "dev:site": "pnpm -C apps/site dev",
+    "build": "pnpm -C apps/site build && pnpm -C apps/web build",
+    "build:web": "pnpm -C apps/web build",
+    "build:site": "pnpm -C apps/site build",
+    "lint": "pnpm -C apps/site lint && pnpm -C apps/web lint",
+    "fmt": "prettier -w .",
+    "reorg": "DRY_RUN=1 bash scripts/reorg_core.sh"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "devDependencies": {
+    "prettier": "^3.3.3",
+    "typescript": "^5.5.4"
+  },
   "pnpm": {
     "packageExtensions": {
       "styled-jsx@*": {
@@ -19,9 +26,7 @@
           "client-only": "^0.0.1"
         }
       }
-    }
-  },
-  "dependencies": {
-    "client-only": "0.0.1"
+    },
+    "patchedDependencies": {}
   }
 }

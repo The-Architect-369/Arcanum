@@ -1,22 +1,21 @@
 import type { Config } from "tailwindcss";
 
 export default {
-  content: ["./src/**/*.{ts,tsx}"],
+  darkMode: ["class"],
+  content: [
+    "./app/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx}"
+  ],
   theme: {
     extend: {
       colors: {
-        arc: {
-          bg: "#0a0e17",
-          light: "#a5b4fc",  // purple glow
-          gold: "#f3c969",
-          blue: "#60a5fa",
-          silver: "#cbd5e1"
-        }
+        ink: "#0b0f1a",
+        panel: "#0f1424"
       },
-      boxShadow: {
-        pane: "0 8px 30px rgba(80,110,255,0.15)"
-      },
-      borderRadius: { "2xl": "1.25rem" }
+      ringColor: {
+        pop: "rgb(167 139 250)",
+        star: "rgb(147 197 253)"
+      }
     }
   },
   plugins: []

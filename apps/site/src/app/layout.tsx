@@ -1,35 +1,51 @@
-import type { Metadata } from "next";
-import Header from "../components/Header";
 import "./globals.css";
+import type { Metadata } from "next";
+import Header from "@/components/Header";
+import ConstellationCanvas from "@/components/ConstellationCanvas";
+
+const title = "ARCnet";
+const description = "Decentralized identity. Cosmic timing. Community-owned network.";
 
 export const metadata: Metadata = {
-  title: "Arcanum — Hope Landing",
-  description: "Claim your Chain Code, meet Hope, and explore the ARCnet.",
+  metadataBase: new URL("https://arcanum.io"),
+  title: { default: title, template: `%s — ${title}` },
+  description,
+  applicationName: "ARCnet",
+  manifest: "/site.webmanifest",
+  icons: {
+    icon: "/favicon.svg",
+    shortcut: "/favicon.svg"
+    // Note: add /apple-touch-icon.png later; omitted to avoid 404
+  },
+  openGraph: {
+    title,
+    description,
+    url: "/",
+    siteName: title,
+    images: [{ url: "/logo-arcnet.svg", width: 512, height: 512, alt: "ARCnet" }],
+    type: "website",
+    locale: "en_US"
+  },
+  twitter: {
+    card: "summary",
+    title,
+    description,
+    images: ["/logo-arcnet.svg"]
+  }
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className="bg-[#03070B] text-white antialiased">
-        <div
-          aria-hidden
-          className="fixed inset-0 -z-20 bg-[radial-gradient(60%_40%_at_50%_0%,rgba(0,120,255,0.12),transparent),radial-gradient(50%_60%_at_120%_20%,rgba(0,255,240,0.08),transparent)]"
-        />
-        <Header />
-        <div className="pt-14">{children}</div>
+      <body>
+        {/* background constellation layer */}
+        <div className="constellation-bg">
+          <ConstellationCanvas />
+        </div>
 
-        <footer className="mx-auto mt-16 w-full max-w-screen-xl px-4 pb-10 text-xs text-white/60">
-          <div className="h-px w-full bg-white/10" />
-          <div className="mt-6 flex flex-wrap items-center justify-between gap-3">
-            <p>© {new Date().getFullYear()} Arcanum</p>
-            <nav className="flex flex-wrap items-center gap-4">
-              <a href="/legal" className="hover:text-white">Legal</a>
-              <a href="/faq" className="hover:text-white">FAQ</a>
-              <a href="/install" className="hover:text-white">Install</a>
-              <a href="/sitemap.xml" className="hover:text-white">Sitemap</a>
-            </nav>
-          </div>
-        </footer>
+        {/* header + content layer */}
+        <Header brand="ARCnet" />
+        <div className="layer-content">{children}</div>
       </body>
     </html>
   );

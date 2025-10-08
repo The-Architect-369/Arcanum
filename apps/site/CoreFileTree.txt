@@ -1,0 +1,49 @@
+.
+├── .env.example
+├── .env.production
+├── .gitignore
+├── CoreFileTree.txt
+├── README.md
+├── eslint.config.mjs
+├── next-env.d.ts
+├── next.config.mjs
+├── package.json
+├── postcss.config.js
+├── postcss.config.mjs
+├── public
+│   ├── favicon.svg
+│   ├── logo-arcnet.svg
+│   └── site.webmanifest
+├── scripts
+├── src
+│   ├── app
+│   │   ├── activate
+│   │   │   ├── page.tsx
+│   │   │   └── start
+│   │   │       └── page.tsx
+│   │   ├── faq
+│   │   │   └── page.tsx
+│   │   ├── globals.css
+│   │   ├── layout.tsx
+│   │   ├── legal
+│   │   │   └── page.tsx
+│   │   ├── page.tsx
+│   │   ├── robots.ts
+│   │   └── sitemap.ts
+│   ├── components
+│   │   ├── ConstellationCanvas.tsx
+│   │   ├── Header.tsx
+│   │   ├── SnapSection.tsx
+│   │   └── ui
+│   │       ├── ActivateBento.tsx
+│   │       ├── BentoCard.tsx
+│   │       ├── BentoShowcase.tsx
+│   │       ├── HeroBento.tsx
+│   │       └── HopeOrb.tsx
+│   ├── lib
+│   │   └── cn.ts
+│   └── middleware.ts
+├── tailwind.config.ts
+└── tsconfig.json
+
+12 directories, 35 files

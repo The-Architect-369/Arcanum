@@ -21,3 +21,9 @@ coverage/
 .wrangler/
 .cloudflared/
 .sass-cache/
+
+.vercel/
+.wrangler/
+
+.vercel/
+.wrangler/

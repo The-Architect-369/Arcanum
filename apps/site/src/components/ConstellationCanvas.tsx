@@ -10,39 +10,29 @@ export default function ConstellationCanvas({ className = "" }: { className?: st
     const ctx = canvas.getContext("2d")!;
     let raf = 0;
 
-    type Point = {
-      x: number; y: number; r: number; dx: number; dy: number;
-    };
+    type Point = { x: number; y: number; r: number; dx: number; dy: number; };
 
-    const POINTS = 88;            // number of stars
-    const MAX_NEIGHBORS = 3;      // limit line fan-out for perf/clarity
-    const MAX_DIST = 180;         // px distance threshold for lines (css px)
-    const STAR_SPREAD = 8;        // glare radius multiplier
+    const POINTS = 88;
+    const MAX_NEIGHBORS = 3;
+    const MAX_DIST = 180;
+    const STAR_SPREAD = 8;
     const TWINKLE = true;
 
     const points: Point[] = Array.from({ length: POINTS }, () => ({
-      x: Math.random(),
-      y: Math.random(),
-      r: 0.7 + Math.random() * 1.2,
-      dx: (Math.random() - 0.5) * 0.0005,
-      dy: (Math.random() - 0.5) * 0.0005,
+      x: Math.random(), y: Math.random(), r: 0.7 + Math.random() * 1.2,
+      dx: (Math.random() - 0.5) * 0.0005, dy: (Math.random() - 0.5) * 0.0005
     }));
 
     function resize() {
-      // Size by CSS pixels, upscale via transform for crispness
       canvas.width  = Math.floor(canvas.clientWidth  * dpr);
       canvas.height = Math.floor(canvas.clientHeight * dpr);
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     }
 
     function drawBackground() {
-      // Seam-unifying vignette to avoid banding behind panels
       const g = ctx.createRadialGradient(
-        canvas.width / 2 / dpr,
-        canvas.height / 3 / dpr,
-        0,
-        canvas.width / 2 / dpr,
-        canvas.height / 2 / dpr,
+        canvas.width / 2 / dpr, canvas.height / 3 / dpr, 0,
+        canvas.width / 2 / dpr, canvas.height / 2 / dpr,
         Math.max(canvas.width, canvas.height) / dpr / 1.2
       );
       g.addColorStop(0, "rgba(0,10,20,0.45)");
@@ -52,84 +42,56 @@ export default function ConstellationCanvas({ className = "" }: { className?: st
     }
 
     function drawStars() {
-      ctx.save();
-      ctx.globalCompositeOperation = "screen";
+      ctx.save(); ctx.globalCompositeOperation = "screen";
       for (const p of points) {
-        // gentle motion
-        p.x = (p.x + p.dx + 1) % 1;
-        p.y = (p.y + p.dy + 1) % 1;
-
+        p.x = (p.x + p.dx + 1) % 1; p.y = (p.y + p.dy + 1) % 1;
         const x = p.x * (canvas.width / dpr);
         const y = p.y * (canvas.height / dpr);
         const base = p.r;
-
-        // subtle twinkle
         const t = TWINKLE ? 0.85 + Math.sin((x + y + performance.now() * 0.001) % (2 * Math.PI)) * 0.15 : 1;
-
         const grad = ctx.createRadialGradient(x, y, 0, x, y, base * STAR_SPREAD);
         grad.addColorStop(0, `rgba(200,255,255,${0.7 * t})`);
         grad.addColorStop(1, "rgba(0,0,0,0)");
         ctx.fillStyle = grad;
-        ctx.beginPath();
-        ctx.arc(x, y, base * 3, 0, Math.PI * 2);
-        ctx.fill();
+        ctx.beginPath(); ctx.arc(x, y, base * 3, 0, Math.PI * 2); ctx.fill();
       }
       ctx.restore();
     }
 
     function drawLines() {
-      // Precompute absolute coordinates once
       const coords = points.map(p => ({
         x: p.x * (canvas.width / dpr),
-        y: p.y * (canvas.height / dpr),
+        y: p.y * (canvas.height / dpr)
       }));
 
-      // For each point, connect to up to K nearest within MAX_DIST
       for (let i = 0; i < coords.length; i++) {
         const a = coords[i];
-
-        // Find nearest neighbors
-        const neighbors = [];
+        const neighbors: { j: number; dist: number }[] = [];
         for (let j = 0; j < coords.length; j++) {
           if (i === j) continue;
-          const b = coords[j];
-          const dx = a.x - b.x;
-          const dy = a.y - b.y;
+          const b = coords[j]; const dx = a.x - b.x; const dy = a.y - b.y;
           const dist = Math.hypot(dx, dy);
-          if (dist <= MAX_DIST) neighbors.push({ j, dist });
+          if (dist <= 180) neighbors.push({ j, dist });
         }
         neighbors.sort((m, n) => m.dist - n.dist);
-        const pick = neighbors.slice(0, MAX_NEIGHBORS);
+        const pick = neighbors.slice(0, 3);
 
         for (const n of pick) {
           const b = coords[n.j];
-          const t = 1 - n.dist / MAX_DIST; // proximity -> opacity
-          const alpha = 0.35 * (t * t);    // ease-in for softer fade
-
+          const t = 1 - n.dist / 180;
+          const alpha = 0.35 * (t * t);
           ctx.strokeStyle = `rgba(140, 220, 255, ${alpha})`;
           ctx.lineWidth = 1;
-          ctx.beginPath();
-          ctx.moveTo(a.x, a.y);
-          ctx.lineTo(b.x, b.y);
-          ctx.stroke();
+          ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
         }
       }
     }
 
-    function tick() {
-      drawBackground();
-      drawLines();   // draw lines first for a “under-glow” look
-      drawStars();   // stars “sit” on top via screen blending
-      raf = requestAnimationFrame(tick);
-    }
-
+    function tick() { drawBackground(); drawLines(); drawStars(); raf = requestAnimationFrame(tick); }
     resize();
     window.addEventListener("resize", resize);
     raf = requestAnimationFrame(tick);
-    return () => {
-      cancelAnimationFrame(raf);
-      window.removeEventListener("resize", resize);
-    };
+    return () => { cancelAnimationFrame(raf); window.removeEventListener("resize", resize); };
   }, []);
 
   return <canvas ref={canvasRef} className={className + " block h-full w-full"} />;
