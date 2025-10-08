@@ -2,7 +2,7 @@
   "scope": "the-architect-369",
   "projects": [
     {
-      "name": "arcanum-site",
+      "name": "ARCnet",
       "rootDirectory": "apps/site",
       "framework": "nextjs"
     }
