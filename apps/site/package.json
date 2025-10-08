@@ -9,7 +9,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "preinstall": "corepack enable && corepack prepare pnpm@9.10.0 --activate"
   },
   "dependencies": {
     "framer-motion": "^11.3.31",
@@ -27,5 +28,7 @@
     "tailwindcss": "^3.4.13",
     "typescript": "^5.6.2"
   },
-  "engines": { "node": ">=18.18 <23" }
+  "engines": {
+    "node": "22.x"
+  }
 }
