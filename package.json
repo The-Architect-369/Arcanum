@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "description": "The Arcanum — monorepo (apps: site, web; pkg: ui; contracts: foundry).",
-  "packageManager": "pnpm@9.0.0",
+  "packageManager": "pnpm@9.10.0",
   "scripts": {
     "dev": "pnpm -C apps/site dev",
     "dev:web": "pnpm -C apps/web dev",
@@ -28,5 +28,8 @@
       }
     },
     "patchedDependencies": {}
+  },
+  "engines": {
+    "node": "22.x"
   }
 }

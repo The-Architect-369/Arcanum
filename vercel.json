@@ -1,0 +1,10 @@
+{
+  "scope": "the-architect-369",
+  "projects": [
+    {
+      "name": "arcanum-site",
+      "rootDirectory": "apps/site",
+      "framework": "nextjs"
+    }
+  ]
+}
