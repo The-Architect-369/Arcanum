@@ -80,8 +80,8 @@ export default function SiteHome() {
         </div>
       </section>
 
-      {/* Bottom CTA — reusing ActivateBento (compact) */}
-      <section className="snap-section">
+       {/* Bottom CTA — reusing ActivateBento (compact) */}
+      <section className="snap-section" id="activate">
         <div className="section-full">
           <div className="w-full max-w-6xl mx-auto">
             <ActivateBento variant="compact" />
