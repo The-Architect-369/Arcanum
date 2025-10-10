@@ -2,12 +2,14 @@
 ├── .env.example
 ├── .env.production
 ├── .gitignore
+├── .npmrc
 ├── CoreFileTree.txt
 ├── README.md
 ├── eslint.config.mjs
 ├── next-env.d.ts
 ├── next.config.mjs
 ├── package.json
+├── package.json.tmp
 ├── postcss.config.js
 ├── postcss.config.mjs
 ├── public
@@ -44,6 +46,8 @@
 │   │   └── cn.ts
 │   └── middleware.ts
 ├── tailwind.config.ts
-└── tsconfig.json
+├── tsconfig.json
+├── tsconfig.tsbuildinfo
+└── vercel.json
 
-12 directories, 35 files
+12 directories, 39 files
