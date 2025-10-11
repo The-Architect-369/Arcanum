@@ -6,7 +6,7 @@ import BentoCard from "@/components/ui/BentoCard";
 export default function HeroBento() {
   return (
     <BentoCard
-      className="vh-card vh-tall vh-pad grid place-items-center text-center"
+      className="activate-inline vh-card vh-tall vh-pad grid place-items-center text-center"
       title="Meet The Hope"
       description={[
         "Your living AI companion that unites you with the mystical network of the Arcanum.",

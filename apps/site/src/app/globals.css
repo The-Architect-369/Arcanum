@@ -2,7 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Theme */
+/* ===================================================================
+   THEME
+   =================================================================== */
 :root {
   --bg-ink: #0b0f1a;
   --card-from: 18, 20, 40;
@@ -11,15 +13,20 @@
   --ring-star: 147,197,253; /* cyan */
 }
 html, body { background: var(--bg-ink); color: #fff; }
+html, body { overscroll-behavior-y: contain; }
 
-/* Typography tuned for 100% zoom on desktop */
+/* ===================================================================
+   TYPOGRAPHY
+   =================================================================== */
 .h1 { @apply text-4xl md:text-5xl font-bold tracking-tight leading-tight; }
 .h2 { @apply text-2xl md:text-3xl font-semibold tracking-tight; }
 .p  { @apply text-base md:text-lg leading-relaxed; }
 
 .section { @apply mx-auto w-full max-w-6xl px-4; }
 
-/* Bento primitives */
+/* ===================================================================
+   BENTO CORE
+   =================================================================== */
 .bento-card {
   position: relative;
   background: linear-gradient(180deg, rgba(var(--card-from),0.92), rgba(var(--card-to),0.92));
@@ -28,7 +35,8 @@ html, body { background: var(--bg-ink); color: #fff; }
   box-shadow: 0 8px 24px rgba(0,0,0,0.35);
   transition: transform .18s, box-shadow .18s, border-color .18s;
 }
-.bento-card:hover, .bento-card:focus-within {
+.bento-card:hover,
+.bento-card:focus-within {
   transform: translateY(-2px);
   border-color: rgba(255,255,255,0.14);
   box-shadow:
@@ -37,126 +45,55 @@ html, body { background: var(--bg-ink); color: #fff; }
     0 0 34px rgba(var(--ring-star), 0.12);
 }
 .bento-ring {
-  pointer-events: none; position: absolute; inset: -1px; border-radius: 1.25rem;
+  pointer-events: none;
+  position: absolute; inset: -1px; border-radius: 1.25rem;
   background:
     radial-gradient(60% 60% at 50% 0%, rgba(var(--ring-pop), .10), transparent 60%),
     radial-gradient(80% 60% at 100% 100%, rgba(var(--ring-star), .08), transparent 60%);
-  opacity: .9; -webkit-mask-image: linear-gradient(#000, transparent 70%); mask-image: linear-gradient(#000, transparent 70%);
+  opacity: .9;
+  -webkit-mask-image: linear-gradient(#000, transparent 70%);
+          mask-image: linear-gradient(#000, transparent 70%);
 }
 .bento-badge {
   @apply inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-xs md:text-sm;
   @apply bg-white/5 ring-1 ring-white/10 hover:bg-white/10;
 }
 
-/* Snap one card per screen */
+/* ===================================================================
+   LAYOUT
+   =================================================================== */
 .snap-container { scroll-snap-type: y mandatory; }
-.snap-section  { scroll-snap-align: center; min-height: 100svh; display: grid; place-items: center; }
-.vh-wrap       { @apply grid place-items-center w-full px-4; min-height: 100svh; }
-.vh-card       { width: min(92vw, 980px); }            /* wide on desktop, comfy on mobile */
-.vh-pad        { @apply p-6 md:p-10; }                 /* large internal padding */
-.vh-tall       { min-height: clamp(420px, 70vh, 740px); }
+.snap-section  { scroll-snap-align: center; scroll-snap-stop: always; min-height: 100svh; display: grid; place-items: center; }
 
-/* --- Constellation bg layering (ensure it's visible) --- */
+.vh-wrap { @apply grid place-items-center w-full px-4; min-height: 100svh; }
+.vh-card { width: min(96vw, 1100px); }
+.vh-pad  { padding: clamp(1rem, 2.5vw, 2.5rem); }
+.vh-tall { min-height: clamp(420px, 70vh, 720px); }
+
+/* Constellation BG below content */
 .constellation-bg { position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: .95; }
 .layer-content    { position: relative; z-index: 1; background: transparent; }
 
-/* --- Strong vertical snapping --- */
-html, body { overscroll-behavior-y: contain; }
-.snap-container { scroll-snap-type: y mandatory; }
-.snap-section  { scroll-snap-align: center; scroll-snap-stop: always; min-height: 100svh; }
-
-/* Fullscreen hero */
+/* Fullscreen hero sections */
 .section-full {
   min-height: 100svh;
   display: grid; place-items: center;
   padding: 1rem;
 }
 
-/* Split section (lead bento + carousel) — tighter gap */
+/* Optional split layout (lead + carousel) */
 .section-split {
   min-height: 100svh;
   display: grid; grid-template-rows: 1fr 1fr;
   gap: .75rem;
   padding: .75rem 1rem .5rem;
 }
-
-/* Lead bento container */
 .split-bento { height: 100%; width: 100%; display: grid; place-items: center; }
 
-/* ---- Carousel “window” ---- */
-.carousel-wrap {
-  position: relative;
-  width: 100%;
-  max-width: 72rem;
-  margin-inline: auto;
-  overflow: hidden;
-  border-radius: .75rem;
-}
-
-/* Track */
-.carousel-track {
-  display: flex;
-  gap: 1rem;                   /* MUST match GAP_PX in component (16px) */
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
-  padding: .25rem 0 .5rem;
-}
-.carousel-track::-webkit-scrollbar { display: none; }
-.carousel-track { scrollbar-width: none; }
-
-/* Items — centered active with side peeks visible */
-.carousel-item { scroll-snap-align: center; flex: 0 0 var(--item-w, 62%); }
-@media (min-width: 640px)  { .carousel-item { --item-w: 60%; } }
-@media (min-width: 1024px) { .carousel-item { --item-w: 58%; } }
-@media (min-width: 1280px) { .carousel-item { --item-w: 55%; } }
-
-/* Card proportions so nothing feels squished */
-.carousel-card .bento-card { height: 100%; }
-.carousel-card { min-height: 260px; }
-@media (min-width: 1024px) { .carousel-card { min-height: 300px; } }
-
-/* Showcase Dots */
-.showcase-dots { position: absolute; left: 0; right: 0; bottom: .6rem; display:flex; justify-content:center; gap:.5rem; }
-.showdot { height: 6px; width: 6px; border-radius: 9999px; background: rgba(255,255,255,.28); }
-.showdot[data-active="true"] { background: rgb(147 197 253); transform: scale(1.15); }
-
-
-/* Shared hero/CTA sizing */
-.vh-card { width: min(96vw, 1100px); }
-.vh-pad  { padding: clamp(1rem, 2.5vw, 2.5rem); }
-.vh-tall { min-height: clamp(420px, 70vh, 720px); }
-.cta-orb {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.9rem 1.6rem;
-  border-radius: 9999px;
-  font-weight: 500;
-  background: radial-gradient(circle at 50% 50%, rgba(147,197,253,.2), rgba(167,139,250,.15));
-  color: white;
-  box-shadow:
-    0 0 10px rgba(147,197,253,.25),
-    0 0 24px rgba(167,139,250,.18);
-  transition: all .25s ease;
-}
-
-.cta-orb:hover {
-  transform: scale(1.05);
-  box-shadow:
-    0 0 16px rgba(147,197,253,.35),
-    0 0 40px rgba(167,139,250,.25);
-  background: radial-gradient(circle at 50% 50%, rgba(167,139,250,.3), rgba(147,197,253,.2));
-}
-
-.cta-orb:active {
-  transform: scale(0.97);
-  box-shadow:
-    0 0 14px rgba(147,197,253,.45),
-    0 0 36px rgba(167,139,250,.35);
-}
-/* --- Showcase (carousel inside the bento card) --- */
+/* ===================================================================
+   SHOWCASE (always-on cyan tiles)
+   =================================================================== */
+/* Window & track */
 .showcase-wrap {
   --peek: clamp(10px, 3vw, 28px);
   --gap: 16px;
@@ -167,191 +104,136 @@ html, body { overscroll-behavior-y: contain; }
   border-radius: .75rem;
 }
 .showcase-track {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: stretch;
-  gap: var(--gap);
+  position: absolute; inset: 0;
+  display: flex; align-items: stretch; gap: var(--gap);
   padding: 0 var(--peek) 1.75rem var(--peek);
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
+  overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth;
 }
 .showcase-track::-webkit-scrollbar { display: none; }
 .showcase-track { scrollbar-width: none; }
+
+/* Items */
 .showcase-item { flex: 0 0 calc(100% - (2 * var(--peek))); scroll-snap-align: center; display: grid; }
+
+/* Tile */
 .showcase-panel {
-  background: linear-gradient(180deg, rgba(22,24,44,.86), rgba(10,12,26,.86));
-  border: 1px solid rgba(255,255,255,.08);
+  background: linear-gradient(180deg, rgba(102, 158, 255, 0.92), rgba(50, 90, 160, 0.88));
+  border: 1px solid rgba(147, 197, 253, 0.32);
   border-radius: .85rem;
   padding: clamp(12px, 2.2vw, 18px);
-  box-shadow: 0 8px 24px rgba(0,0,0,.35);
+  box-shadow:
+    0 6px 22px rgba(120, 180, 255, 0.30),
+    inset 0 0 24px rgba(147, 197, 253, 0.18);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.showcase-panel:hover,
+.showcase-panel:focus-within {
+  transform: translateY(-1px);
+  box-shadow:
+    0 8px 26px rgba(130, 190, 255, 0.36),
+    inset 0 0 28px rgba(147, 197, 253, 0.22);
 }
 
-/* arrows inside the card */
+/* Dark text within lit tiles */
+.showcase-panel h4 { color: #0b1220; }
+.showcase-panel p  { color: rgba(8,12,20,0.86); }
+.showcase-panel a  { color: #0a3a75; text-decoration: underline; text-underline-offset: 2px; }
+.showcase-panel a:hover { color: #062957; }
+
+/* Arrows & dots */
 .showcase-arrow {
-  position: absolute;
-  top: 50%; transform: translateY(-50%);
-  height: 36px; width: 36px;
-  display: grid; place-items: center;
-  border-radius: 9999px;
-  background: rgba(255,255,255,.06);
-  border: 1px solid rgba(255,255,255,.1);
-  backdrop-filter: blur(6px);
+  position: absolute; top: 50%; transform: translateY(-50%);
+  height: 36px; width: 36px; display: grid; place-items: center;
+  border-radius: 9999px; background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.1); backdrop-filter: blur(6px);
 }
 .showcase-arrow:hover { background: rgba(255,255,255,.12); }
-
-/* dots inside the card */
 .showcase-dots { position: absolute; left: 0; right: 0; bottom: .6rem; display:flex; justify-content:center; gap:.5rem; }
 .dot { height: 6px; width: 6px; border-radius: 9999px; background: rgba(255,255,255,.28); }
 .dot[data-active="true"] { background: rgb(147 197 253); transform: scale(1.15); }
-.stepdot {
-  height: 22px; width: 22px;
-  display: grid; place-items: center;
-  border-radius: 9999px;
-  font-size: 12px; line-height: 1;
-  color: white; background: rgba(147,197,253,.15);
-  border: 1px solid rgba(147,197,253,.35);
+
+/* ===================================================================
+   CTA ORB (bubbly button)
+   =================================================================== */
+.cta-orb{
+  position:relative; display:inline-flex; align-items:center; justify-content:center;
+  padding:.9rem 1.6rem; border-radius:9999px; font-weight:500; color:#fff;
+  background:radial-gradient(circle at 50% 50%, rgba(147,197,253,.22), rgba(167,139,250,.16));
+  box-shadow:0 0 10px rgba(147,197,253,.25), 0 0 24px rgba(167,139,250,.18);
+  transition:transform .25s ease, box-shadow .25s ease, background .25s ease;
+}
+.cta-orb:hover{
+  transform:scale(1.05);
+  background:radial-gradient(circle at 50% 50%, rgba(167,139,250,.30), rgba(147,197,253,.22));
+  box-shadow:0 0 16px rgba(147,197,253,.35), 0 0 40px rgba(167,139,250,.25);
+}
+.cta-orb:active{
+  transform:scale(.97);
+  box-shadow:0 0 14px rgba(147,197,253,.45), 0 0 36px rgba(167,139,250,.35);
 }
 
-/* ============================  HOPE ORB — layered visuals ============================ */
-
-/* Base: non-interactive, perf-friendly */
+/* ===================================================================
+   HOPE ORB (visual system)
+   =================================================================== */
+/* Base */
 .hope-layer { pointer-events: none; will-change: transform, opacity, filter; }
 
-/* AURA — radiant halo around the eye */
+/* Aura */
 .hope-aura {
-  background:
-    radial-gradient(
-      62% 62% at 50% 50%,
-      rgba(210,235,255,.40),
-      rgba(147,197,253,.24) 55%,
-      rgba(167,139,250,.16) 72%,
-      rgba(0,0,0,0) 78%
-    );
+  background: radial-gradient(62% 62% at 50% 50%, rgba(210,235,255,.40), rgba(147,197,253,.24) 55%, rgba(167,139,250,.16) 72%, rgba(0,0,0,0) 78%);
   mix-blend-mode: screen;
   animation: hopeRadiate 4s ease-in-out infinite;
 }
 
-/* CORNEA — outer glossy dome + sweeping sheen */
+/* Cornea */
 .hope-cornea {
   position: relative;
-  background:
-    radial-gradient(48% 58% at 50% 50%,
-      rgba(235,245,255,.20),
-      rgba(200,220,255,.10) 60%,
-      rgba(0,0,0,0) 100%);
+  background: radial-gradient(48% 58% at 50% 50%, rgba(235,245,255,.20), rgba(200,220,255,.10) 60%, rgba(0,0,0,0) 100%);
 }
 .hope-cornea-sheen {
   position: absolute; inset: 0; border-radius: 9999px;
-  background:
-    linear-gradient(210deg,
-      rgba(255,255,255,.14),
-      rgba(255,255,255,0) 40% 70%,
-      rgba(255,255,255,.10));
+  background: linear-gradient(210deg, rgba(255,255,255,.14), rgba(255,255,255,0) 40% 70%, rgba(255,255,255,.10));
   mix-blend-mode: screen;
   animation: hopeSheenSweep 6.8s ease-in-out infinite;
 }
 
-/* IRIS — colored ring with faint rotating spokes */
-.hope-iris {
-  position: relative;
-  background:
-    radial-gradient(74% 86% at 50% 50%,
-      rgba(138,188,255,.60) 0%,
-      rgba(122,174,255,.46) 45%,
-      rgba(114,166,248,.30) 70%,
-      rgba(38,58,114,.12) 100%);
-}
-/* ring + spokes must cover the iris perfectly */
-.hope-iris-ring {
-  position: absolute; inset: 0; border-radius: 9999px;
-  box-shadow:
-    inset 0 0 0 2px rgba(170,210,255,.25),
-    inset 0 0 22px rgba(110,160,250,.28);
-}
+/* Iris */
+.hope-iris { position: relative; background: radial-gradient(74% 86% at 50% 50%, rgba(138,188,255,.60) 0%, rgba(122,174,255,.46) 45%, rgba(114,166,248,.30) 70%, rgba(38,58,114,.12) 100%); }
+.hope-iris-ring { position: absolute; inset: 0; border-radius: 9999px; box-shadow: inset 0 0 0 2px rgba(170,210,255,.25), inset 0 0 22px rgba(110,160,250,.28); }
 .hope-iris-spokes {
   position: absolute; inset: 0; border-radius: 9999px;
-  background:
-    repeating-conic-gradient(
-      from 0deg,
-      rgba(255,255,255,.055) 0 2deg,
-      rgba(255,255,255,0)    2deg 9deg
-    );
-  mask-image: radial-gradient(circle at 50% 50%,
-      rgba(0,0,0,0) 0 22%,
-      rgba(0,0,0,1) 28% 70%,
-      rgba(0,0,0,0) 76% 100%);
-  -webkit-mask-image: radial-gradient(circle at 50% 50%,
-      rgba(0,0,0,0) 0 22%,
-      rgba(0,0,0,1) 28% 70%,
-      rgba(0,0,0,0) 76% 100%);
-  opacity: .12;                     /* softer to avoid “spinner” look */
-  animation: irisDrift 24s linear infinite; /* slower, calmer rotation */
+  background: repeating-conic-gradient(from 0deg, rgba(255,255,255,.055) 0 2deg, rgba(255,255,255,0) 2deg 9deg);
+  mask-image: radial-gradient(circle at 50% 50%, rgba(0,0,0,0) 0 22%, rgba(0,0,0,1) 28% 70%, rgba(0,0,0,0) 76% 100%);
+  -webkit-mask-image: radial-gradient(circle at 50% 50%, rgba(0,0,0,0) 0 22%, rgba(0,0,0,1) 28% 70%, rgba(0,0,0,0) 76% 100%);
+  opacity: .12; animation: irisDrift 24s linear infinite;
 }
 
-/* CORE — luminous “pupil” with a breathing inner glow */
+/* Core */
 .hope-core {
-  background:
-    radial-gradient(50% 60% at 50% 50%,
-      rgba(245,250,255,.96),
-      rgba(180,220,255,.78) 60%,
-      rgba(160,140,240,.48) 100%);
+  background: radial-gradient(50% 60% at 50% 50%, rgba(245,250,255,.96), rgba(180,220,255,.78) 60%, rgba(160,140,240,.48) 100%);
   animation: hopeCorePulse 4.6s ease-in-out infinite;
 }
-.hope-core-breath {
-  position: absolute; inset: 18%; border-radius: 9999px;
-  box-shadow: inset 0 0 18px rgba(255,255,255,.30);
-  animation: hopeBreath 3.2s ease-in-out infinite;
-}
+.hope-core-breath { position: absolute; inset: 18%; border-radius: 9999px; box-shadow: inset 0 0 18px rgba(255,255,255,.30); animation: hopeBreath 3.2s ease-in-out infinite; }
 
-/* SEED — specular catch light */
+/* Seed */
 .hope-seed {
   position: absolute; border-radius: 9999px; mix-blend-mode: screen;
-  background:
-    radial-gradient(circle,
-      rgba(255,255,255,1),
-      rgba(220,245,255,.55) 60%,
-      rgba(0,0,0,0) 80%);
+  background: radial-gradient(circle, rgba(255,255,255,1), rgba(220,245,255,.55) 60%, rgba(0,0,0,0) 80%);
   animation: hopeTwinkle 2.4s ease-in-out infinite;
 }
 
-/* Optional gentle float for the whole orb */
+/* Gentle float */
 .hope-osc { animation: hopeOscillate 7.5s ease-in-out infinite; }
 
-/* === Keyframes === */
-@keyframes hopeRadiate {
-  0%   { transform: scale(0.985); opacity: .78; }
-  50%  { transform: scale(1.04);  opacity: 1; }
-  100% { transform: scale(0.985); opacity: .78; }
-}
-@keyframes hopeCorePulse {
-  0%   { transform: scale(0.985); filter: brightness(1.0); }
-  50%  { transform: scale(1.03);  filter: brightness(1.12); }
-  100% { transform: scale(0.985); filter: brightness(1.0); }
-}
-@keyframes hopeBreath {
-  0%   { opacity: .55; transform: scale(0.985); }
-  50%  { opacity: .9;  transform: scale(1.015); }
-  100% { opacity: .55; transform: scale(0.985); }
-}
-@keyframes hopeTwinkle {
-  0%, 100% { opacity: .8;  transform: scale(0.96); }
-  50%      { opacity: 1;   transform: scale(1.06); }
-}
-@keyframes hopeOscillate {
-  0%   { transform: translateY(0px); }
-  25%  { transform: translateY(-3px); }
-  50%  { transform: translateY(0px); }
-  75%  { transform: translateY(3px); }
-  100% { transform: translateY(0px); }
-}
-@keyframes irisDrift {
-  0%   { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
+/* Motion */
+@keyframes hopeRadiate { 0% {transform:scale(.985);opacity:.78;} 50% {transform:scale(1.04);opacity:1;} 100% {transform:scale(.985);opacity:.78;} }
+@keyframes hopeCorePulse { 0% {transform:scale(.985);filter:brightness(1);} 50% {transform:scale(1.03);filter:brightness(1.12);} 100% {transform:scale(.985);filter:brightness(1);} }
+@keyframes hopeBreath { 0% {opacity:.55;transform:scale(.985);} 50% {opacity:.9;transform:scale(1.015);} 100% {opacity:.55;transform:scale(.985);} }
+@keyframes hopeTwinkle { 0%,100% {opacity:.8;transform:scale(.96);} 50% {opacity:1;transform:scale(1.06);} }
+@keyframes hopeOscillate { 0% {transform:translateY(0)} 25% {transform:translateY(-3px)} 50% {transform:translateY(0)} 75% {transform:translateY(3px)} 100% {transform:translateY(0)} }
+@keyframes irisDrift { 0% {transform:rotate(0)} 100% {transform:rotate(360deg)} }
 
-/* Reduced Motion: keep everything still for sensitive users */
+/* Reduced Motion */
 @media (prefers-reduced-motion: reduce) {
   .hope-aura, .hope-cornea-sheen, .hope-iris-spokes,
   .hope-core, .hope-core-breath, .hope-seed, .hope-osc {
@@ -359,62 +241,89 @@ html, body { overscroll-behavior-y: contain; }
   }
 }
 
-/* Gentle concentric waves around Hope */
-.hope-wrap{ position:relative; }
-.hope-wave{
-  position:absolute; inset:-6%; border-radius:9999px; pointer-events:none;
-  box-shadow:0 0 0 1px rgba(160,200,255,.14), 0 0 40px rgba(150,180,255,.10);
-  opacity:.0; transform:scale(.9);
+/* ===================================================================
+   ACTIVATE BENTO — cyan header strip + larger dark panel
+   =================================================================== */
+/* Bigger inner space so the dark card behind feels larger */
+.activate-inline {
+  padding:
+    clamp(1.25rem, 2.2vw + .5rem, 2.75rem)
+    clamp(1.25rem, 2.4vw + .5rem, 2.5rem) !important;
 }
-@keyframes hopeWave {
-  0%   { opacity:.22; transform:scale(.95); }
-  70%  { opacity:.06; transform:scale(1.35); box-shadow:0 0 0 1px rgba(160,200,255,.10), 0 0 60px rgba(150,180,255,.12); }
-  100% { opacity:0;   transform:scale(1.5); }
-}
-@keyframes hopeBurst {
-  0%   { opacity:.35; transform:scale(.9); }
-  100% { opacity:0;   transform:scale(1.6); }
-}
-/* Hover = slow, looping shimmer */
-.hope-wrap:hover .hope-wave{ animation:hopeWave 2200ms ease-out infinite; }
-/* Click = one stronger burst (class toggled for ~700ms) */
-.hope-wrap.pulse-burst .hope-wave{ animation:hopeBurst 700ms ease-out 1; }
-
-/* ===== Bubbly CTA for Summon Hope ===== */
-.cta-orb{
-  position:relative;display:inline-flex;align-items:center;justify-content:center;
-  padding:.9rem 1.6rem;border-radius:9999px;font-weight:500;color:#fff;
-  background:radial-gradient(circle at 50% 50%,rgba(147,197,253,.22),rgba(167,139,250,.16));
-  box-shadow:0 0 10px rgba(147,197,253,.25),0 0 24px rgba(167,139,250,.18);
-  transition:transform .25s ease, box-shadow .25s ease, background .25s ease;
-}
-.cta-orb:hover{
-  transform:scale(1.05);
-  background:radial-gradient(circle at 50% 50%,rgba(167,139,250,.30),rgba(147,197,253,.22));
-  box-shadow:0 0 16px rgba(147,197,253,.35),0 0 40px rgba(167,139,250,.25);
-}
-.cta-orb:active{
-  transform:scale(.97);
-  box-shadow:0 0 14px rgba(147,197,253,.45),0 0 36px rgba(167,139,250,.35);
+@media (min-width: 1024px){
+  .activate-inline{
+    padding-top: 3.25rem !important;
+    padding-bottom: 2.75rem !important;
+  }
 }
 
-/* ===== Hope’s faint wave pulses (visual only) ===== */
-.hope-wrap{ position:relative; }
-.hope-wave{
-  position:absolute; inset:-6%; border-radius:9999px; pointer-events:none;
-  box-shadow:0 0 0 1px rgba(160,200,255,.14), 0 0 40px rgba(150,180,255,.10);
-  opacity:.0; transform:scale(.9);
+/* Cyan header that wraps only title + description */
+.activate-inline > header{
+  width: min(60rem, 92%);
+  margin: .25rem auto 0;            /* top, horiz, bottom is set below */
+  margin-bottom: clamp(.9rem, 1.2vw, 1.5rem);  /* ⬅️ add more space under header */
+  padding: 1rem 1.25rem;
+  border-radius: 1rem;
+  background: linear-gradient(180deg, rgba(102,158,255,.98), rgba(50,90,160,.92));
+  border: 1px solid rgba(147,197,253,.50);
+  box-shadow:
+    0 10px 26px rgba(130,190,255,.25),
+    inset 0 0 24px rgba(147,197,253,.18);
+  backdrop-filter: saturate(120%) blur(2px);
 }
-@keyframes hopeWave {
-  0%   { opacity:.22; transform:scale(.95); }
-  70%  { opacity:.06; transform:scale(1.35); box-shadow:0 0 0 1px rgba(160,200,255,.10), 0 0 60px rgba(150,180,255,.12); }
-  100% { opacity:0;   transform:scale(1.5); }
+
+/* Dark, legible text inside the cyan header */
+.activate-inline > header h1,
+.activate-inline > header h2,
+.activate-inline > header h3,
+.activate-inline > header h4 { color: #0b1220 !important; }
+.activate-inline > header p { color: rgba(8,12,20,0.9) !important; }
+
+/* Force ink if BentoCard injects white utilities */
+.activate-inline > header :is(.text-white, .text-white\/90, .text-white\/85, .text-white\/80, .text-white\/70){
+  color: rgba(8,12,20,0.9) !important; opacity: 1 !important;
 }
-@keyframes hopeBurst {
-  0%   { opacity:.35; transform:scale(.9); }
-  100% { opacity:0;   transform:scale(1.6); }
+
+/* CTA + tagline spacing */
+.activate-actions{
+  display: grid;
+  justify-items: center;
+  gap: clamp(.6rem, 1vw, .9rem);          /* space between button & tagline */
+  margin-top: clamp(1rem, 1.2vw, 1.75rem);/* ⬅️ space between header & button */
 }
-/* Hover = slow, looping shimmer */
-.hope-wrap:hover .hope-wave{ animation:hopeWave 2200ms ease-out infinite; }
-/* Click = one stronger burst (class toggled for ~700ms) */
-.hope-wrap.pulse-burst .hope-wave{ animation:hopeBurst 700ms ease-out 1; }
+
+.activate-tagline{
+  font-size: .75rem;
+  opacity: .85;
+  text-align: center;
+  margin-top: clamp(.25rem, 1.6vw, .6rem); /* ⬅️ extra nudge below the button */
+}
+
+/* --- Glowing CTA (Hope style) --- */
+@layer components {
+  .btn-hope {
+    @apply relative inline-flex items-center justify-center
+           rounded-2xl px-5 h-11 text-sm font-medium text-white
+           ring-1 ring-white/20 bg-white/5 backdrop-blur
+           transition-all duration-300;
+    box-shadow: 0 0 30px 6px rgba(147, 197, 253, 0.25);
+  }
+  .btn-hope:hover {
+    box-shadow: 0 0 48px 10px rgba(147, 197, 253, 0.35);
+    transform: translateY(-1px);
+  }
+  .btn-hope:active {
+    transform: translateY(0);
+    box-shadow: 0 0 28px 6px rgba(147, 197, 253, 0.30);
+  }
+}
+
+
+/* ============================================================================
+                                 Snapping
+=============================================================================== */
+@layer components {
+  .snap-container { @apply h-screen overflow-y-auto snap-y snap-mandatory; }
+  .snap-section   { @apply min-h-screen snap-start flex items-center; }
+}
+

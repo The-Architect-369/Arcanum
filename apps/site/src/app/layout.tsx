@@ -3,14 +3,14 @@ import type { Metadata } from "next";
 import Header from "@/components/Header";
 import ConstellationCanvas from "@/components/ConstellationCanvas";
 
-const title = "ARCnet";
+const title = "Arcanum";
 const description = "Decentralized identity. Cosmic timing. Community-owned network.";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://arcanum.io"),
+  metadataBase: new URL("https://thearcanum.net"),
   title: { default: title, template: `%s — ${title}` },
   description,
-  applicationName: "ARCnet",
+  applicationName: "Arcanum",
   manifest: "/site.webmanifest",
   icons: {
     icon: "/favicon.svg",
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     description,
     url: "/",
     siteName: title,
-    images: [{ url: "/logo-arcnet.svg", width: 512, height: 512, alt: "ARCnet" }],
+    images: [{ url: "/logo-arcnet.svg", width: 512, height: 512, alt: "Arcanum" }],
     type: "website",
     locale: "en_US"
   },
@@ -44,7 +44,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </div>
 
         {/* header + content layer */}
-        <Header brand="ARCnet" />
+        <Header brand="Arcanum" />
         <div className="layer-content">{children}</div>
       </body>
     </html>
