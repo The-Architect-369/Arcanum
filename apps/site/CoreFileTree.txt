@@ -9,39 +9,35 @@
 ├── next-env.d.ts
 ├── next.config.mjs
 ├── package.json
-├── package.json.tmp
 ├── postcss.config.js
-├── postcss.config.mjs
 ├── public
 │   ├── favicon.svg
-│   ├── logo-arcnet.svg
+│   ├── logo-arcanum.svg
 │   └── site.webmanifest
 ├── scripts
 ├── src
 │   ├── app
 │   │   ├── activate
-│   │   │   ├── page.tsx
-│   │   │   └── start
-│   │   │       └── page.tsx
-│   │   ├── faq
 │   │   │   └── page.tsx
 │   │   ├── globals.css
 │   │   ├── layout.tsx
-│   │   ├── legal
-│   │   │   └── page.tsx
+│   │   ├── motion.css
 │   │   ├── page.tsx
 │   │   ├── robots.ts
-│   │   └── sitemap.ts
+│   │   ├── sitemap.ts
+│   │   └── utilities.css
 │   ├── components
+│   │   ├── ActiveSectionObserver.tsx
 │   │   ├── ConstellationCanvas.tsx
 │   │   ├── Header.tsx
-│   │   ├── SnapSection.tsx
 │   │   └── ui
 │   │       ├── ActivateBento.tsx
 │   │       ├── BentoCard.tsx
 │   │       ├── BentoShowcase.tsx
 │   │       ├── HeroBento.tsx
 │   │       └── HopeOrb.tsx
+│   ├── content
+│   │   └── narrative.ts
 │   ├── lib
 │   │   └── cn.ts
 │   └── middleware.ts
@@ -50,4 +46,4 @@
 ├── tsconfig.tsbuildinfo
 └── vercel.json
 
-12 directories, 39 files
+10 directories, 37 files

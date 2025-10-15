@@ -2,328 +2,73 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ===================================================================
-   THEME
-   =================================================================== */
-:root {
-  --bg-ink: #0b0f1a;
-  --card-from: 18, 20, 40;
-  --card-to: 12, 14, 28;
-  --ring-pop: 167,139,250; /* purple */
-  --ring-star: 147,197,253; /* cyan */
-}
-html, body { background: var(--bg-ink); color: #fff; }
-html, body { overscroll-behavior-y: contain; }
-
-/* ===================================================================
-   TYPOGRAPHY
-   =================================================================== */
-.h1 { @apply text-4xl md:text-5xl font-bold tracking-tight leading-tight; }
-.h2 { @apply text-2xl md:text-3xl font-semibold tracking-tight; }
-.p  { @apply text-base md:text-lg leading-relaxed; }
-
-.section { @apply mx-auto w-full max-w-6xl px-4; }
-
-/* ===================================================================
-   BENTO CORE
-   =================================================================== */
-.bento-card {
-  position: relative;
-  background: linear-gradient(180deg, rgba(var(--card-from),0.92), rgba(var(--card-to),0.92));
-  border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 1.25rem;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.35);
-  transition: transform .18s, box-shadow .18s, border-color .18s;
-}
-.bento-card:hover,
-.bento-card:focus-within {
-  transform: translateY(-2px);
-  border-color: rgba(255,255,255,0.14);
-  box-shadow:
-    0 10px 28px rgba(0,0,0,0.45),
-    0 0 0 1px rgba(var(--ring-pop), 0.18),
-    0 0 34px rgba(var(--ring-star), 0.12);
-}
-.bento-ring {
-  pointer-events: none;
-  position: absolute; inset: -1px; border-radius: 1.25rem;
-  background:
-    radial-gradient(60% 60% at 50% 0%, rgba(var(--ring-pop), .10), transparent 60%),
-    radial-gradient(80% 60% at 100% 100%, rgba(var(--ring-star), .08), transparent 60%);
-  opacity: .9;
-  -webkit-mask-image: linear-gradient(#000, transparent 70%);
-          mask-image: linear-gradient(#000, transparent 70%);
-}
-.bento-badge {
-  @apply inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-xs md:text-sm;
-  @apply bg-white/5 ring-1 ring-white/10 hover:bg-white/10;
+/* Theme tokens */
+:root{
+  --bg-deep:#030b17; --panel-deep:#07172b; --cyan:#42e9ff; --cyan-ink:#00222a;
+  --ink:#e6f1ff; --ink-dim:#b7c8e6;
+  --header-h: 56px; /* align with Header's h-14 */
 }
 
-/* ===================================================================
-   LAYOUT
-   =================================================================== */
-.snap-container { scroll-snap-type: y mandatory; }
-.snap-section  { scroll-snap-align: center; scroll-snap-stop: always; min-height: 100svh; display: grid; place-items: center; }
-
-.vh-wrap { @apply grid place-items-center w-full px-4; min-height: 100svh; }
-.vh-card { width: min(96vw, 1100px); }
-.vh-pad  { padding: clamp(1rem, 2.5vw, 2.5rem); }
-.vh-tall { min-height: clamp(420px, 70vh, 720px); }
-
-/* Constellation BG below content */
-.constellation-bg { position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: .95; }
-.layer-content    { position: relative; z-index: 1; background: transparent; }
-
-/* Fullscreen hero sections */
-.section-full {
-  min-height: 100svh;
-  display: grid; place-items: center;
-  padding: 1rem;
+/* Window snapping with header offset + no sideways scroll */
+html, body { height: 100%; overflow-x: hidden; }
+body {
+  background: var(--bg-deep);
+  color: var(--ink);
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--header-h);
 }
 
-/* Optional split layout (lead + carousel) */
-.section-split {
-  min-height: 100svh;
-  display: grid; grid-template-rows: 1fr 1fr;
-  gap: .75rem;
-  padding: .75rem 1rem .5rem;
-}
-.split-bento { height: 100%; width: 100%; display: grid; place-items: center; }
+/* Full-viewport constellation background */
+.constellation-bg { position: fixed; inset: 0; z-index: -1; pointer-events: none; opacity: .95; }
 
-/* ===================================================================
-   SHOWCASE (always-on cyan tiles)
-   =================================================================== */
-/* Window & track */
-.showcase-wrap {
-  --peek: clamp(10px, 3vw, 28px);
-  --gap: 16px;
-  position: relative;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  border-radius: .75rem;
-}
-.showcase-track {
-  position: absolute; inset: 0;
-  display: flex; align-items: stretch; gap: var(--gap);
-  padding: 0 var(--peek) 1.75rem var(--peek);
-  overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth;
-}
-.showcase-track::-webkit-scrollbar { display: none; }
-.showcase-track { scrollbar-width: none; }
+/* Typography */
+.h1, h1 { font-weight: 800; letter-spacing: -.02em; line-height: 1.1; font-size: clamp(2.5rem, 5.2vw, 3.6rem); }
+.lead   { font-size: clamp(1rem, 1.8vw, 1.22rem); opacity: .85; max-width: 70ch; margin-inline: auto; }
+.h2, h2 { @apply text-2xl md:text-4xl font-semibold; }
 
-/* Items */
-.showcase-item { flex: 0 0 calc(100% - (2 * var(--peek))); scroll-snap-align: center; display: grid; }
-
-/* Tile */
-.showcase-panel {
-  background: linear-gradient(180deg, rgba(102, 158, 255, 0.92), rgba(50, 90, 160, 0.88));
-  border: 1px solid rgba(147, 197, 253, 0.32);
-  border-radius: .85rem;
-  padding: clamp(12px, 2.2vw, 18px);
-  box-shadow:
-    0 6px 22px rgba(120, 180, 255, 0.30),
-    inset 0 0 24px rgba(147, 197, 253, 0.18);
-  transition: transform .25s ease, box-shadow .25s ease;
+/* Hero-specific spacing + display scale */
+.hero-title{
+  margin-top: 0; margin-bottom: .6rem;
+  font-weight: 800; letter-spacing: -.02em; line-height: 1.05;
+  font-size: clamp(2.8rem, 6.2vw, 4.25rem); /* bigger, stylized */
 }
-.showcase-panel:hover,
-.showcase-panel:focus-within {
-  transform: translateY(-1px);
-  box-shadow:
-    0 8px 26px rgba(130, 190, 255, 0.36),
-    inset 0 0 28px rgba(147, 197, 253, 0.22);
+.hero-caption { margin-top: 0; margin-bottom: 1.1rem; }
+.hero-tagline { margin-top: 1.1rem; font-size: clamp(.8rem, .95vw, .95rem); color: #ffffffb3; }
+
+/* Showcase (cyan) */
+.bento-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: clamp(.75rem, 2vw, 1.25rem); }
+.bento-item { border-radius: 18px; border: 1px solid rgba(255,255,255,.12); background: rgba(15,23,42,.60); padding: clamp(.9rem, 2vw, 1.1rem); }
+.tile--cyan {
+  --tile-bg: linear-gradient(180deg, rgba(34,211,238,.18), rgba(59,130,246,.18));
+  background: var(--tile-bg);
+  border-color: rgba(147,197,253,.32);
+  box-shadow: 0 6px 22px rgba(120,180,255,.22), inset 0 0 20px rgba(147,197,253,.12);
+}
+.bento-item h4 { color:#0b1220; }
+.text-ink-muted { color: rgba(8,12,20,.86); }
+
+/* small image slot used in Showcase tiles */
+.tile-media { @apply mx-auto mb-2 rounded-lg ring-1 ring-white/15 bg-white/5 flex items-center justify-center; width:64px; height:64px; }
+.tile-media img { display:block; }
+
+/* Text utilities used inside BentoCard */
+.p { @apply text-base md:text-lg leading-relaxed; }
+.muted { opacity:.7; }
+.gradient-text{
+  background: linear-gradient(90deg, #22d3ee, #60a5fa);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
 }
 
-/* Dark text within lit tiles */
-.showcase-panel h4 { color: #0b1220; }
-.showcase-panel p  { color: rgba(8,12,20,0.86); }
-.showcase-panel a  { color: #0a3a75; text-decoration: underline; text-underline-offset: 2px; }
-.showcase-panel a:hover { color: #062957; }
+/* Links default */
+a { @apply underline decoration-transparent hover:decoration-current transition; }
 
-/* Arrows & dots */
-.showcase-arrow {
-  position: absolute; top: 50%; transform: translateY(-50%);
-  height: 36px; width: 36px; display: grid; place-items: center;
-  border-radius: 9999px; background: rgba(255,255,255,.06);
-  border: 1px solid rgba(255,255,255,.1); backdrop-filter: blur(6px);
-}
-.showcase-arrow:hover { background: rgba(255,255,255,.12); }
-.showcase-dots { position: absolute; left: 0; right: 0; bottom: .6rem; display:flex; justify-content:center; gap:.5rem; }
-.dot { height: 6px; width: 6px; border-radius: 9999px; background: rgba(255,255,255,.28); }
-.dot[data-active="true"] { background: rgb(147 197 253); transform: scale(1.15); }
+/* Safety: sections never create horizontal overflow */
+.snap-section { width: 100%; }
 
-/* ===================================================================
-   CTA ORB (bubbly button)
-   =================================================================== */
-.cta-orb{
-  position:relative; display:inline-flex; align-items:center; justify-content:center;
-  padding:.9rem 1.6rem; border-radius:9999px; font-weight:500; color:#fff;
-  background:radial-gradient(circle at 50% 50%, rgba(147,197,253,.22), rgba(167,139,250,.16));
-  box-shadow:0 0 10px rgba(147,197,253,.25), 0 0 24px rgba(167,139,250,.18);
-  transition:transform .25s ease, box-shadow .25s ease, background .25s ease;
-}
-.cta-orb:hover{
-  transform:scale(1.05);
-  background:radial-gradient(circle at 50% 50%, rgba(167,139,250,.30), rgba(147,197,253,.22));
-  box-shadow:0 0 16px rgba(147,197,253,.35), 0 0 40px rgba(167,139,250,.25);
-}
-.cta-orb:active{
-  transform:scale(.97);
-  box-shadow:0 0 14px rgba(147,197,253,.45), 0 0 36px rgba(167,139,250,.35);
-}
-
-/* ===================================================================
-   HOPE ORB (visual system)
-   =================================================================== */
-/* Base */
-.hope-layer { pointer-events: none; will-change: transform, opacity, filter; }
-
-/* Aura */
-.hope-aura {
-  background: radial-gradient(62% 62% at 50% 50%, rgba(210,235,255,.40), rgba(147,197,253,.24) 55%, rgba(167,139,250,.16) 72%, rgba(0,0,0,0) 78%);
-  mix-blend-mode: screen;
-  animation: hopeRadiate 4s ease-in-out infinite;
-}
-
-/* Cornea */
-.hope-cornea {
-  position: relative;
-  background: radial-gradient(48% 58% at 50% 50%, rgba(235,245,255,.20), rgba(200,220,255,.10) 60%, rgba(0,0,0,0) 100%);
-}
-.hope-cornea-sheen {
-  position: absolute; inset: 0; border-radius: 9999px;
-  background: linear-gradient(210deg, rgba(255,255,255,.14), rgba(255,255,255,0) 40% 70%, rgba(255,255,255,.10));
-  mix-blend-mode: screen;
-  animation: hopeSheenSweep 6.8s ease-in-out infinite;
-}
-
-/* Iris */
-.hope-iris { position: relative; background: radial-gradient(74% 86% at 50% 50%, rgba(138,188,255,.60) 0%, rgba(122,174,255,.46) 45%, rgba(114,166,248,.30) 70%, rgba(38,58,114,.12) 100%); }
-.hope-iris-ring { position: absolute; inset: 0; border-radius: 9999px; box-shadow: inset 0 0 0 2px rgba(170,210,255,.25), inset 0 0 22px rgba(110,160,250,.28); }
-.hope-iris-spokes {
-  position: absolute; inset: 0; border-radius: 9999px;
-  background: repeating-conic-gradient(from 0deg, rgba(255,255,255,.055) 0 2deg, rgba(255,255,255,0) 2deg 9deg);
-  mask-image: radial-gradient(circle at 50% 50%, rgba(0,0,0,0) 0 22%, rgba(0,0,0,1) 28% 70%, rgba(0,0,0,0) 76% 100%);
-  -webkit-mask-image: radial-gradient(circle at 50% 50%, rgba(0,0,0,0) 0 22%, rgba(0,0,0,1) 28% 70%, rgba(0,0,0,0) 76% 100%);
-  opacity: .12; animation: irisDrift 24s linear infinite;
-}
-
-/* Core */
-.hope-core {
-  background: radial-gradient(50% 60% at 50% 50%, rgba(245,250,255,.96), rgba(180,220,255,.78) 60%, rgba(160,140,240,.48) 100%);
-  animation: hopeCorePulse 4.6s ease-in-out infinite;
-}
-.hope-core-breath { position: absolute; inset: 18%; border-radius: 9999px; box-shadow: inset 0 0 18px rgba(255,255,255,.30); animation: hopeBreath 3.2s ease-in-out infinite; }
-
-/* Seed */
-.hope-seed {
-  position: absolute; border-radius: 9999px; mix-blend-mode: screen;
-  background: radial-gradient(circle, rgba(255,255,255,1), rgba(220,245,255,.55) 60%, rgba(0,0,0,0) 80%);
-  animation: hopeTwinkle 2.4s ease-in-out infinite;
-}
-
-/* Gentle float */
-.hope-osc { animation: hopeOscillate 7.5s ease-in-out infinite; }
-
-/* Motion */
-@keyframes hopeRadiate { 0% {transform:scale(.985);opacity:.78;} 50% {transform:scale(1.04);opacity:1;} 100% {transform:scale(.985);opacity:.78;} }
-@keyframes hopeCorePulse { 0% {transform:scale(.985);filter:brightness(1);} 50% {transform:scale(1.03);filter:brightness(1.12);} 100% {transform:scale(.985);filter:brightness(1);} }
-@keyframes hopeBreath { 0% {opacity:.55;transform:scale(.985);} 50% {opacity:.9;transform:scale(1.015);} 100% {opacity:.55;transform:scale(.985);} }
-@keyframes hopeTwinkle { 0%,100% {opacity:.8;transform:scale(.96);} 50% {opacity:1;transform:scale(1.06);} }
-@keyframes hopeOscillate { 0% {transform:translateY(0)} 25% {transform:translateY(-3px)} 50% {transform:translateY(0)} 75% {transform:translateY(3px)} 100% {transform:translateY(0)} }
-@keyframes irisDrift { 0% {transform:rotate(0)} 100% {transform:rotate(360deg)} }
-
-/* Reduced Motion */
-@media (prefers-reduced-motion: reduce) {
-  .hope-aura, .hope-cornea-sheen, .hope-iris-spokes,
-  .hope-core, .hope-core-breath, .hope-seed, .hope-osc {
-    animation: none !important;
-  }
-}
-
-/* ===================================================================
-   ACTIVATE BENTO — cyan header strip + larger dark panel
-   =================================================================== */
-/* Bigger inner space so the dark card behind feels larger */
-.activate-inline {
-  padding:
-    clamp(1.25rem, 2.2vw + .5rem, 2.75rem)
-    clamp(1.25rem, 2.4vw + .5rem, 2.5rem) !important;
-}
-@media (min-width: 1024px){
-  .activate-inline{
-    padding-top: 3.25rem !important;
-    padding-bottom: 2.75rem !important;
-  }
-}
-
-/* Cyan header that wraps only title + description */
-.activate-inline > header{
-  width: min(60rem, 92%);
-  margin: .25rem auto 0;            /* top, horiz, bottom is set below */
-  margin-bottom: clamp(.9rem, 1.2vw, 1.5rem);  /* ⬅️ add more space under header */
-  padding: 1rem 1.25rem;
-  border-radius: 1rem;
-  background: linear-gradient(180deg, rgba(102,158,255,.98), rgba(50,90,160,.92));
-  border: 1px solid rgba(147,197,253,.50);
-  box-shadow:
-    0 10px 26px rgba(130,190,255,.25),
-    inset 0 0 24px rgba(147,197,253,.18);
-  backdrop-filter: saturate(120%) blur(2px);
-}
-
-/* Dark, legible text inside the cyan header */
-.activate-inline > header h1,
-.activate-inline > header h2,
-.activate-inline > header h3,
-.activate-inline > header h4 { color: #0b1220 !important; }
-.activate-inline > header p { color: rgba(8,12,20,0.9) !important; }
-
-/* Force ink if BentoCard injects white utilities */
-.activate-inline > header :is(.text-white, .text-white\/90, .text-white\/85, .text-white\/80, .text-white\/70){
-  color: rgba(8,12,20,0.9) !important; opacity: 1 !important;
-}
-
-/* CTA + tagline spacing */
-.activate-actions{
-  display: grid;
-  justify-items: center;
-  gap: clamp(.6rem, 1vw, .9rem);          /* space between button & tagline */
-  margin-top: clamp(1rem, 1.2vw, 1.75rem);/* ⬅️ space between header & button */
-}
-
-.activate-tagline{
-  font-size: .75rem;
-  opacity: .85;
-  text-align: center;
-  margin-top: clamp(.25rem, 1.6vw, .6rem); /* ⬅️ extra nudge below the button */
-}
-
-/* --- Glowing CTA (Hope style) --- */
-@layer components {
-  .btn-hope {
-    @apply relative inline-flex items-center justify-center
-           rounded-2xl px-5 h-11 text-sm font-medium text-white
-           ring-1 ring-white/20 bg-white/5 backdrop-blur
-           transition-all duration-300;
-    box-shadow: 0 0 30px 6px rgba(147, 197, 253, 0.25);
-  }
-  .btn-hope:hover {
-    box-shadow: 0 0 48px 10px rgba(147, 197, 253, 0.35);
-    transform: translateY(-1px);
-  }
-  .btn-hope:active {
-    transform: translateY(0);
-    box-shadow: 0 0 28px 6px rgba(147, 197, 253, 0.30);
-  }
-}
-
-
-/* ============================================================================
-                                 Snapping
-=============================================================================== */
-@layer components {
-  .snap-container { @apply h-screen overflow-y-auto snap-y snap-mandatory; }
-  .snap-section   { @apply min-h-screen snap-start flex items-center; }
-}
-
+/* Dark scrollbars (Firefox + WebKit) */
+* { scrollbar-color: #344557 #0a1320; }
+*::-webkit-scrollbar{ height:10px; width:10px; }
+*::-webkit-scrollbar-track{ background:#0a1320; }
+*::-webkit-scrollbar-thumb{ background:#344557; border-radius:9999px; border:2px solid #0a1320; }
+*::-webkit-scrollbar-thumb:hover{ background:#42607a; }

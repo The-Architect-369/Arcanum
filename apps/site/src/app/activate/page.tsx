@@ -1,20 +1,16 @@
-import ActivateBento from "@/components/ui/ActivateBento";
+export const metadata = { title: "Activate — ARCnet" };
 
-export const metadata = {
-  title: "Activate Account — ARCnet",
-  description: "Create your ARCnet DID and begin your journey on the constellation.",
-};
+import { copy } from "@/content/narrative";
 
-export default function ActivatePage() {
+export default function Activate() {
   return (
-    <main className="snap-container">
-      <section className="snap-section">
-        <div className="section-full">
-          <div className="w-full max-w-6xl mx-auto">
-            <ActivateBento variant="full" />
-          </div>
-        </div>
-      </section>
+    <main className="section">
+      <div className="bento-card bento-mobile p-6 md:p-10 space-y-6">
+        <div className="bento-ring" />
+        <h1 className="h1">Activate</h1>
+        <p className="p opacity-80">{copy.activate.pageLead}</p>
+        <p className="text-sm opacity-60">{copy.activate.comingSoon}</p>
+      </div>
     </main>
   );
 }

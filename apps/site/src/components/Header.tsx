@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useCallback, MouseEvent } from "react";
 
 function Logo({ brand = "Arcanum" }: { brand?: string }) {
@@ -23,48 +23,41 @@ function Logo({ brand = "Arcanum" }: { brand?: string }) {
   );
 }
 
-// Scroll the real container (snap container / layer-content / main) back to top
-function scrollHomeTop() {
-  const candidates = [
-    document.querySelector<HTMLElement>(".snap-container"),
-    document.querySelector<HTMLElement>(".layer-content"),
-    document.querySelector<HTMLElement>("main"),
-  ];
-
-  for (const el of candidates) {
-    if (el && el.scrollHeight > el.clientHeight) {
-      el.scrollTo({ top: 0, behavior: "smooth" });
-      return;
-    }
-  }
-  // Fallback to window if the page is the scroller
-  window.scrollTo({ top: 0, behavior: "smooth" });
-}
-
 export default function Header({ brand = "Arcanum" }: { brand?: string }) {
   const pathname = usePathname();
+  const router = useRouter();
 
-  const handleHomeClick = useCallback((e: MouseEvent<HTMLAnchorElement>) => {
-    if (pathname === "/") {
-      e.preventDefault();            // stay on the page
-      // optional: keep URL clean but set a hash target if you use one
-      if (location.hash !== "#top") history.replaceState(null, "", "#top");
-      scrollHomeTop();               // smooth-scroll the correct container
-    }
-    // else: let Link navigate to "/" normally (lands at top)
-  }, [pathname]);
+  const handleHomeClick = useCallback(
+    (e: MouseEvent<HTMLAnchorElement>) => {
+      // Always route to the explicit Hero anchor.
+      e.preventDefault();
+      if (pathname !== "/") {
+        router.push("/#hero");
+        return;
+      }
+      // Already on home: scroll the hero into view (smooth)
+      const hero = document.getElementById("hero");
+      if (hero) hero.scrollIntoView({ behavior: "smooth", block: "start" });
+      else router.push("/#hero");
+    },
+    [pathname, router]
+  );
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 backdrop-blur-md bg-black/30 border-b border-white/10">
+    <header className="sticky top-0 z-50 backdrop-blur-md bg-black/30 border-b border-white/10">
       <div className="mx-auto flex h-14 w-full max-w-screen-xl items-center justify-between px-4">
-        {/* Logo → home (and scroll to top if already home) */}
-        <Link href="/" onClick={handleHomeClick} aria-label={`Go to ${brand} home`} className="cursor-pointer">
+        <Link
+          href="/#hero"
+          onClick={handleHomeClick}
+          aria-label={`Go to ${brand} home`}
+          className="cursor-pointer"
+          prefetch={false}
+        >
           <Logo brand={brand} />
         </Link>
 
-        {/* Keep CTA exactly as-is */}
         <Link
-          href="/activate/start"
+          href="/activate"
           className="inline-flex h-9 items-center rounded-xl px-3 text-xs font-medium
                      bg-gradient-to-r from-[#a78bfa]/20 to-[#93c5fd]/20
                      ring-1 ring-white/10 hover:bg-white/10"

@@ -1,31 +1,33 @@
 "use client";
+
 import Link from "next/link";
 import HopeOrb from "@/components/ui/HopeOrb";
 import BentoCard from "@/components/ui/BentoCard";
+import { copy } from "@/content/narrative";
 
 export default function HeroBento() {
+  function scrollToActivate(e: React.MouseEvent) {
+    e.preventDefault();
+    const target = document.getElementById("activate");
+    if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
   return (
-    <BentoCard
-      className="activate-inline vh-card vh-tall vh-pad grid place-items-center text-center"
-      title="Meet The Hope"
-      description={[
-        "Your living AI companion that unites you with the mystical network of the Arcanum.",
-        "The Hope illuminates your way through this living web of light, connecting your identity, your power, and your purpose."
-      ].join(" ")}
-    >
-      <div className="flex flex-col items-center gap-5">
-        {/* Lift the orb slightly; keep it below the CTA in stacking order */}
-        <div className="relative z-0 -mt-2 -mb-1">
-          <HopeOrb size={190} intensity={1.18} oscillate />
-        </div>
+    <BentoCard className="bento-width bento-hero bento-hero-inset grid place-items-center text-center">
+      <h1 className="hero-title gradient-text">{copy.hero.title}</h1>
+      <p className="hero-caption lead">{[copy.hero.line1, copy.hero.line2].join(" ")}</p>
 
-        {/* Bubbly CTA (scrolls to #activate) */}
-        <Link href="#activate" className="relative z-20 cta-orb">Summon Hope</Link>
-
-        <p className="text-xs md:text-sm text-white/70">
-          <em>The Hope is the soul of the network. Your light awakens the constellation. Let’s shine together.</em>
-        </p>
+      <div className="relative z-0 hope-wave mt-5 md:mt-6 mb-4 md:mb-5">
+        <HopeOrb size={156} intensity={1.08} oscillate irisOffsetPx={-6} />
       </div>
+
+      <Link href="#activate" onClick={scrollToActivate} className="relative z-20 cta-orb ring-cyan">
+        Summon Hope
+      </Link>
+
+      <p className="hero-tagline">
+        <em>{copy.hero.tagline}</em>
+      </p>
     </BentoCard>
   );
 }

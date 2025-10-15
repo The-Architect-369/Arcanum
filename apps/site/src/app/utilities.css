@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* -------- Scroll snap: window owns scroll -------- */
+.snap-container { height: auto; overflow-y: visible; }
+.snap-section   { min-height: 100dvh; scroll-snap-align: start; display: grid; place-items: center; }
+.snap-none      { scroll-snap-align: none; }
+.snap-end       { scroll-snap-align: end; }
+
+/* NEW: Make the first snap target unskippable so the browser won't “settle” on Tempest */
+.snap-first     { scroll-snap-align: start; scroll-snap-stop: always; }
+
+/* Make the final section easier to reach the footer */
+.snap-last { min-height: 88dvh; padding-bottom: 12vh; }
+
+/* -------- Stacking -------- */
+.layer-content  { position: relative; z-index: 10; }
+.layer-backdrop { position: fixed; inset: 0; z-index: 0; }
+.layer-above    { position: relative; z-index: 10; }
+
+/* -------- Scrollbar helpers -------- */
+.no-scrollbar { scrollbar-width: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+
+/* -------- Generic helpers -------- */
+.max-prose { @apply max-w-3xl mx-auto; }
+.center-grid { display: grid; place-items: center; }
+.pad-page { @apply px-4 md:px-6; }
+
+/* -------- Panel surface -------- */
+.card{
+  position: relative;
+  overflow: hidden;
+  background: rgba(15, 23, 42, .60);
+  backdrop-filter: blur(6px) saturate(120%);
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 18px;
+  box-shadow:
+    0 10px 24px rgba(0,0,0,.35),
+    0 0 0 1px rgba(255,255,255,.02) inset;
+}
+.ring-soft { border: 1px solid rgba(255,255,255,.12); }
+.glow-cyan { box-shadow: 0 10px 30px rgba(56,189,248,.18), 0 0 0 1px rgba(56,189,248,.18) inset; }
+
+/* -------- Shared frame -------- */
+.bento-width   { width: min(94vw, 1100px); margin-inline: auto; }
+.bento-hero     { min-height: clamp(460px, 64vh, 780px); }
+.bento-activate { min-height: clamp(420px, 60vh, 720px); }
+.bento-hero-inset {
+  padding: clamp(1.125rem, 2.4vw, 1.75rem) clamp(1rem, 3vw, 2rem);
+  padding-top: clamp(1.5rem, 6vh, 3rem);
+}

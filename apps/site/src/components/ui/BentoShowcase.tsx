@@ -1,136 +1,200 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import BentoCard from "@/components/ui/BentoCard"; // keep your existing path
-// If your BentoCard lives at "@/components/BentoCard", change the import accordingly.
+import { useRef, useState, useEffect } from "react";
+import Image from "next/image";
+import { cn } from "@/lib/cn";
+import { copy } from "@/content/narrative";
 
-// Tiny classnames helper
-const cx = (...parts: Array<string | false | null | undefined>) =>
-  parts.filter(Boolean).join(" ");
+type Variant = "arcnet" | "mana" | "tempus";
 
-export type ShowcaseItem = { title: string; desc: string };
-
-export default function BentoShowcase({
-  title,
-  description,
-  items,
-  className,
-  showCta = false,
-  ctaHref = "/",
-  ctaLabel = "Learn More",
-}: {
+type ShowcaseItem = {
   title: string;
-  description: string;
+  body: string;
+};
+
+type ShowcaseCopy = {
+  heading: string;
+  sub?: string;
   items: ShowcaseItem[];
-  className?: string;
-  showCta?: boolean;
-  ctaHref?: string;
-  ctaLabel?: string;
-}) {
-  const wrapRef = useRef<HTMLDivElement | null>(null);
-  const trackRef = useRef<HTMLDivElement | null>(null);
-  const [active, setActive] = useState(0);
+};
 
-  const centerTo = (i: number, behavior: ScrollBehavior = "smooth") => {
-    const wrap = wrapRef.current, track = trackRef.current;
-    if (!wrap || !track) return;
-    const node = track.children[i] as HTMLElement | undefined;
-    if (!node) return;
-    const target = node.offsetLeft + node.offsetWidth / 2 - wrap.clientWidth / 2;
-    track.scrollTo({ left: target, behavior });
-    setActive(i);
+function normalizeShowcase(variant: Variant): ShowcaseCopy {
+  const anyCopy: any = copy as any;
+
+  const candidates: any[] = [
+    anyCopy?.showcase?.[variant],
+    anyCopy?.[variant]?.showcase,
+    anyCopy?.[variant],
+  ].filter(Boolean);
+
+  const src = candidates[0] ?? {
+    heading: variant === "arcnet" ? "Welcome to ARCnet" :
+             variant === "mana"   ? "Welcome to MANA"   :
+                                     "Welcome to Tempus",
+    sub: "",
+    items: [],
   };
 
-  const count = items.length;
-  const next = () => { if (count) centerTo((active + 1) % count); };
-  const prev = () => { if (count) centerTo((active - 1 + count) % count); };
+  const heading: string =
+    src.heading ?? src.title ?? src.name ?? String(variant).toUpperCase();
 
-  const syncFromScroll = () => {
-    const wrap = wrapRef.current, track = trackRef.current;
-    if (!wrap || !track || !count) return;
-    const viewCenter = track.scrollLeft + wrap.clientWidth / 2;
-    let best = 0, bestDist = Infinity;
-    for (let i = 0; i < track.children.length; i++) {
-      const el = track.children[i] as HTMLElement;
-      const center = el.offsetLeft + el.offsetWidth / 2;
-      const dist = Math.abs(center - viewCenter);
-      if (dist < bestDist) { bestDist = dist; best = i; }
-    }
-    setActive(best);
-  };
+  const sub: string | undefined =
+    src.sub ?? src.subtitle ?? src.description ?? src.copy ?? undefined;
 
-  useEffect(() => {
-    const track = trackRef.current;
-    const onScroll = () => syncFromScroll();
-    const onResize = () => centerTo(active, "auto");
-    centerTo(0, "auto"); // initial snap
-    track?.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onResize);
-    return () => {
-      track?.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onResize);
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [count]);
+  let rawItems: any[] =
+    src.items ?? src.tiles ?? src.cards ?? src.points ?? [];
 
-  if (!count) {
-    return (
-      <BentoCard title={title} description={description} className={className}>
-        <div className="text-center text-white/70">No items to display.</div>
-      </BentoCard>
-    );
+  if (rawItems.length && typeof rawItems[0] === "string") {
+    rawItems = (rawItems as string[]).map((s) => ({ title: s, body: "" }));
   }
 
-  return (
-    <BentoCard
-      stacked
-      title={title}
-      description={description}
-      className={cx("vh-card vh-tall vh-pad", className)}
-      bodyClassName="grid grid-rows-[auto,1fr] gap-4 min-h-0"
-    >
-      <div className="mt-1 flex justify-center">
-        {showCta ? <a className="bento-badge" href={ctaHref}>{ctaLabel}</a> : null}
-      </div>
+  const items: ShowcaseItem[] = rawItems.map((it: any) => ({
+    title: it.title ?? it.name ?? "",
+    body: it.body ?? it.description ?? it.copy ?? "",
+  }));
 
-      {/* Showcase window */}
-      <div ref={wrapRef} className="showcase-wrap">
-        <div ref={trackRef} className="showcase-track">
-          {items.map((t, i) => (
-            <div key={i} className="showcase-item">
-              <div className="showcase-panel">
-                <h4 className="text-xl md:text-2xl font-semibold tracking-tight">{t.title}</h4>
-                <p className="mt-2 text-sm md:text-base text-white/85">{t.desc}</p>
+  const fallbackItems: ShowcaseItem[] =
+    items.length
+      ? items
+      : [
+          { title: "Coming soon", body: "This showcase is being prepared." },
+          { title: "Editing narrative.ts", body: "Add items to copy.showcase." },
+          { title: "Placeholders", body: "Tiles accept title, body, and image." },
+          { title: "Carousel", body: "Swipe on mobile, arrows on desktop." },
+          { title: "Reusable", body: "Same shell for each variant." },
+        ];
+
+  return { heading, sub, items: fallbackItems };
+}
+
+type Props = {
+  variant: Variant;
+  className?: string;
+};
+
+export default function BentoShowcase({ variant, className }: Props) {
+  const data = normalizeShowcase(variant);
+
+  // native scroll-snap track
+  const trackRef = useRef<HTMLDivElement | null>(null);
+  const [index, setIndex] = useState(0);
+
+  // snap to active index
+  useEffect(() => {
+    const el = trackRef.current;
+    if (!el) return;
+    const child = el.children[index] as HTMLElement | undefined;
+    child?.scrollIntoView({ inline: "center", behavior: "smooth", block: "nearest" });
+  }, [index]);
+
+  // update dot on scroll
+  useEffect(() => {
+    const el = trackRef.current;
+    if (!el) return;
+
+    let ticking = false;
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        ticking = false;
+        const children = Array.from(el.children) as HTMLElement[];
+        let bestIdx = 0;
+        let bestDist = Infinity;
+        const mid = el.scrollLeft + el.clientWidth / 2;
+
+        children.forEach((c, i) => {
+          const rect = c.getBoundingClientRect();
+          const cMid = rect.left + rect.width / 2 + el.scrollLeft - el.getBoundingClientRect().left;
+          const dist = Math.abs(cMid - mid);
+          if (dist < bestDist) { bestDist = dist; bestIdx = i; }
+        });
+        setIndex(bestIdx);
+      });
+    };
+
+    el.addEventListener("scroll", onScroll, { passive: true });
+    return () => el.removeEventListener("scroll", onScroll);
+  }, []);
+
+  const prev = () => setIndex((i) => Math.max(0, i - 1));
+  const next = () => setIndex((i) => Math.min(data.items.length - 1, i + 1));
+
+  // Width targets so 3 tiles fit with side peeks at typical laptop widths.
+  const tileWidth = "clamp(280px, 28vw, 340px)";
+
+  return (
+    <div className={cn("bento-width bento-pad card glow-cyan popcard text-center", className)}>
+      {data.heading && <h2 className="h2 gradient-text">{data.heading}</h2>}
+      {!!data.sub && <p className="lead mt-1 mb-4">{data.sub}</p>}
+
+      <div className="relative">
+        <div
+          className="flex items-stretch gap-4 overflow-x-auto no-scrollbar px-2"
+          ref={trackRef}
+          style={{ scrollSnapType: "x mandatory" }}
+        >
+          {data.items.map((it, i) => (
+            <article
+              key={i}
+              className="tile-shimmer tile--cyan bento-item text-left shrink-0"
+              style={{ width: tileWidth, scrollSnapAlign: "center" }}
+            >
+              {/* Square content area */}
+              <div className="aspect-square flex flex-col items-center justify-start">
+                {/* small image slot (logo placeholder) */}
+                <div className="tile-media">
+                  <Image
+                    src="/logo-arcanum.svg"
+                    alt="Arcanum"
+                    width={44}
+                    height={44}
+                    className="object-contain"
+                    priority
+                  />
+                </div>
+
+                {!!it.title && <h4 className="font-semibold mb-1 text-center">{it.title}</h4>}
+                {!!it.body && <p className="text-ink-muted text-center">{it.body}</p>}
               </div>
-            </div>
+            </article>
           ))}
         </div>
 
-        {/* Arrows */}
-        <button aria-label="Previous" onClick={prev} className="showcase-arrow left-3">
-          <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M15 6l-6 6 6 6" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
-        </button>
-        <button aria-label="Next" onClick={next} className="showcase-arrow right-3">
-          <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M9 6l6 6-6 6" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
-        </button>
+        {/* ARROWS */}
+        <div className="pointer-events-none absolute inset-0 flex items-center justify-between px-1">
+          <button
+            aria-label="Previous"
+            onClick={prev}
+            className="pointer-events-auto hidden sm:inline-flex cta-orb px-3 py-2"
+            disabled={index === 0}
+          >
+            ‹
+          </button>
+          <button
+            aria-label="Next"
+            onClick={next}
+            className="pointer-events-auto hidden sm:inline-flex cta-orb px-3 py-2"
+            disabled={index === data.items.length - 1}
+          >
+            ›
+          </button>
+        </div>
 
-        {/* Dots (use your existing .dot class) */}
-        <div className="showcase-dots">
-          {items.map((_, i) => (
-            <button
+        {/* DOTS */}
+        <div className="mt-3 flex justify-center gap-2" aria-live="polite">
+          {data.items.map((_, i) => (
+            <span
               key={i}
-              aria-label={`Go to ${i + 1}`}
-              className="dot"
-              data-active={i === active}
-              onClick={() => centerTo(i)}
+              aria-label={`Slide ${i+1} of ${data.items.length}${i===index ? ', current' : ''}`}
+              className={cn(
+                "inline-block h-1.5 w-1.5 rounded-full",
+                i === index ? "bg-cyan-300" : "bg-white/30"
+              )}
             />
           ))}
         </div>
       </div>
-    </BentoCard>
+    </div>
   );
 }
