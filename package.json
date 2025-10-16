@@ -4,6 +4,10 @@
   "version": "1.0.0",
   "description": "The Arcanum — monorepo (apps: site, web; pkg: ui; contracts: foundry).",
   "packageManager": "pnpm@9.10.0",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
   "scripts": {
     "dev": "pnpm -C apps/site dev",
     "dev:web": "pnpm -C apps/web dev",

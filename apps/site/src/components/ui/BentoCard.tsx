@@ -1,5 +1,5 @@
 "use client";
-import { cn } from "@/lib/cn";
+import { cn } from "@shared/lib/cn";
 
 export default function BentoCard({
   title,

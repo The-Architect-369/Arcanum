@@ -2,7 +2,7 @@
 
 import { useRef, useState, useEffect } from "react";
 import Image from "next/image";
-import { cn } from "@/lib/cn";
+import { cn } from "@shared/lib/cn";
 import { copy } from "@/content/narrative";
 
 type Variant = "arcnet" | "mana" | "tempus";
