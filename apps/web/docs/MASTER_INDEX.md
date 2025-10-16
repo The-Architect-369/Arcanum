@@ -3,6 +3,14 @@ Master Arcanum Index (v1 RC)
 Date: 2025-10-02
 Status: Master Reference (UI + Modules + Rewards)
 
+### Shared Library
+The shared library (`/shared`) contains global utilities, identity logic, and design tokens.
+These are imported using the `@shared/*` alias to prevent local duplication.
+
+Core contents:
+- `/shared/lib/cn.ts` – Conditional class utility
+- `/shared/lib/sbt-check.ts` – SBT identity validator
+- `/shared/styles/tokens.css` – Design token layer
 
 ─────────── TOP HALF: CORE UI & MODULE CARDS ───────────
 0) Core UI Overview

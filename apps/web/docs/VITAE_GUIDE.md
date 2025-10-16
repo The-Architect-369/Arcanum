@@ -3,6 +3,14 @@
 _Date:_ 2025-10-02  
 _Status:_ Merged RC (3 tabs)
 
+### Shared Linkage
+All trust verification and soulbound identity logic originate from the shared library:
+```ts
+import { isSBT } from "@shared/lib/sbt-check";
+import "@shared/styles/tokens.css";
+```
+This ensures the Vitae modules maintain fidelity with the system’s unified identity chain.
+
 ## 0) Purpose
 Define the **Vitae** module’s sub-pages, access rules, and behaviors. Vitae is the personal journey and mastery map of the Arcanum, guiding the initiate through Grades, Paths, and Mastery.
 

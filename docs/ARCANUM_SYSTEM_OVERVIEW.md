@@ -100,6 +100,19 @@ Implements on-chain logic for:
 |:--|:--|
 | `tokens.css` | Defines base color, motion, typography, and shadow constants shared between realms |
 
+The Shared Library forms the energetic bridge between realms — uniting logic and style.
+
+### Implementation Mandate
+Each app (`apps/web`, `apps/site`) must explicitly import shared modules using workspace alias `@shared/*`:
+
+```ts
+import { cn } from "@shared/lib/cn";
+import { isSBT } from "@shared/lib/sbt-check";
+import "@shared/styles/tokens.css";
+```
+
+This ensures universal coherence of design and identity logic across the ecosystem.
+
 ---
 
 ## 🔮 4. Flow of the Initiate

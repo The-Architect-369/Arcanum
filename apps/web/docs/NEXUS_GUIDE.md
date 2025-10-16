@@ -3,6 +3,13 @@
 _Date:_ 2025-10-02  
 _Status:_ Merged RC (3 tabs)
 
+### Shared Imports
+Nexus modules rely on shared helpers and token layers:
+```ts
+import { cn } from "@shared/lib/cn";
+import "@shared/styles/tokens.css";
+```
+
 ## 0) Purpose
 Define the **Nexus** module’s sub-pages, access rules, and behaviors. Nexus is the mystic social network of the Arcanum.
 

@@ -13,6 +13,14 @@ This guide locks the **navigation, layout, gestures, icons, gates, and visual to
 - **Root redirect:** `/` → `/nexus`
 - **Remove**: Core Orbit / OrbitCarousel UI, any legacy routes (e.g., `/acc`, `/mana`, `/prefs`, `/notifs`).
 
+### Shared Imports
+All UI components depend on shared utilities and global tokens:
+```ts
+import { cn } from "@shared/lib/cn";
+import "@shared/styles/tokens.css";
+```
+Use these imports consistently to ensure visual harmony and functional consistency across realms.
+
 ### Footer Tabs (icons only, no labels)
 1) **Vitae** (`/vitae`) → `BookMarked`
 2) **Text** (`/text`) → `MessageSquareMore`
