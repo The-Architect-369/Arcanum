@@ -13,21 +13,29 @@ export default function HeroBento() {
   }
 
   return (
-    <BentoCard className="bento-width bento-hero bento-hero-inset grid place-items-center text-center">
-      <h1 className="hero-title gradient-text">{copy.hero.title}</h1>
-      <p className="hero-caption lead">{[copy.hero.line1, copy.hero.line2].join(" ")}</p>
+    <BentoCard>
+      <div className="flex flex-col items-center justify-center w-full h-full">
+        <h1 className="hero-title gradient-text">{copy.hero.title}</h1>
+        <p className="hero-caption lead">
+          {[copy.hero.line1, copy.hero.line2].join(" ")}
+        </p>
 
-      <div className="relative z-0 hope-wave mt-5 md:mt-6 mb-4 md:mb-5">
-        <HopeOrb size={156} intensity={1.08} oscillate irisOffsetPx={-6} />
+        <div className="relative z-0 hope-wave my-6">
+          <HopeOrb size={136} intensity={1.08} oscillate irisOffsetPx={-6} />
+        </div>
+
+        <Link
+          href="#activate"
+          onClick={scrollToActivate}
+          className="cta-orb ring-cyan mt-4"
+        >
+          Summon Hope
+        </Link>
+
+        <p className="hero-tagline mt-6">
+          <em>{copy.hero.tagline}</em>
+        </p>
       </div>
-
-      <Link href="#activate" onClick={scrollToActivate} className="relative z-20 cta-orb ring-cyan">
-        Summon Hope
-      </Link>
-
-      <p className="hero-tagline">
-        <em>{copy.hero.tagline}</em>
-      </p>
     </BentoCard>
   );
 }

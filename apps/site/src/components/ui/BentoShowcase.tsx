@@ -7,79 +7,11 @@ import { copy } from "@/content/narrative";
 
 type Variant = "arcnet" | "mana" | "tempus";
 
-type ShowcaseItem = {
-  title: string;
-  body: string;
-};
-
-type ShowcaseCopy = {
-  heading: string;
-  sub?: string;
-  items: ShowcaseItem[];
-};
-
-function normalizeShowcase(variant: Variant): ShowcaseCopy {
-  const anyCopy: any = copy as any;
-
-  const candidates: any[] = [
-    anyCopy?.showcase?.[variant],
-    anyCopy?.[variant]?.showcase,
-    anyCopy?.[variant],
-  ].filter(Boolean);
-
-  const src = candidates[0] ?? {
-    heading: variant === "arcnet" ? "Welcome to ARCnet" :
-             variant === "mana"   ? "Welcome to MANA"   :
-                                     "Welcome to Tempus",
-    sub: "",
-    items: [],
-  };
-
-  const heading: string =
-    src.heading ?? src.title ?? src.name ?? String(variant).toUpperCase();
-
-  const sub: string | undefined =
-    src.sub ?? src.subtitle ?? src.description ?? src.copy ?? undefined;
-
-  let rawItems: any[] =
-    src.items ?? src.tiles ?? src.cards ?? src.points ?? [];
-
-  if (rawItems.length && typeof rawItems[0] === "string") {
-    rawItems = (rawItems as string[]).map((s) => ({ title: s, body: "" }));
-  }
-
-  const items: ShowcaseItem[] = rawItems.map((it: any) => ({
-    title: it.title ?? it.name ?? "",
-    body: it.body ?? it.description ?? it.copy ?? "",
-  }));
-
-  const fallbackItems: ShowcaseItem[] =
-    items.length
-      ? items
-      : [
-          { title: "Coming soon", body: "This showcase is being prepared." },
-          { title: "Editing narrative.ts", body: "Add items to copy.showcase." },
-          { title: "Placeholders", body: "Tiles accept title, body, and image." },
-          { title: "Carousel", body: "Swipe on mobile, arrows on desktop." },
-          { title: "Reusable", body: "Same shell for each variant." },
-        ];
-
-  return { heading, sub, items: fallbackItems };
-}
-
-type Props = {
-  variant: Variant;
-  className?: string;
-};
-
-export default function BentoShowcase({ variant, className }: Props) {
-  const data = normalizeShowcase(variant);
-
-  // native scroll-snap track
+export default function BentoShowcase({ variant, className }: { variant: Variant; className?: string; }) {
+  const data = copy.showcase[variant];
   const trackRef = useRef<HTMLDivElement | null>(null);
   const [index, setIndex] = useState(0);
 
-  // snap to active index
   useEffect(() => {
     const el = trackRef.current;
     if (!el) return;
@@ -87,11 +19,9 @@ export default function BentoShowcase({ variant, className }: Props) {
     child?.scrollIntoView({ inline: "center", behavior: "smooth", block: "nearest" });
   }, [index]);
 
-  // update dot on scroll
   useEffect(() => {
     const el = trackRef.current;
     if (!el) return;
-
     let ticking = false;
     const onScroll = () => {
       if (ticking) return;
@@ -102,17 +32,18 @@ export default function BentoShowcase({ variant, className }: Props) {
         let bestIdx = 0;
         let bestDist = Infinity;
         const mid = el.scrollLeft + el.clientWidth / 2;
-
         children.forEach((c, i) => {
           const rect = c.getBoundingClientRect();
           const cMid = rect.left + rect.width / 2 + el.scrollLeft - el.getBoundingClientRect().left;
           const dist = Math.abs(cMid - mid);
-          if (dist < bestDist) { bestDist = dist; bestIdx = i; }
+          if (dist < bestDist) {
+            bestDist = dist;
+            bestIdx = i;
+          }
         });
         setIndex(bestIdx);
       });
     };
-
     el.addEventListener("scroll", onScroll, { passive: true });
     return () => el.removeEventListener("scroll", onScroll);
   }, []);
@@ -120,75 +51,54 @@ export default function BentoShowcase({ variant, className }: Props) {
   const prev = () => setIndex((i) => Math.max(0, i - 1));
   const next = () => setIndex((i) => Math.min(data.items.length - 1, i + 1));
 
-  // Width targets so 3 tiles fit with side peeks at typical laptop widths.
-  const tileWidth = "clamp(280px, 28vw, 340px)";
-
   return (
-    <div className={cn("bento-width bento-pad card glow-cyan popcard text-center", className)}>
-      {data.heading && <h2 className="h2 gradient-text">{data.heading}</h2>}
-      {!!data.sub && <p className="lead mt-1 mb-4">{data.sub}</p>}
+    <div
+      className={cn(
+        "relative w-full max-w-[94vw] sm:max-w-[720px] md:max-w-[960px] lg:max-w-[1100px] mx-auto",
+        "min-h-[480px] sm:min-h-[560px] md:min-h-[640px] lg:min-h-[720px]",
+        "rounded-2xl bg-neutral-900/60 backdrop-blur-md border border-white/10 shadow-lg",
+        "flex flex-col items-center justify-center text-center p-6 sm:p-8",
+        className
+      )}
+    >
+      <h2 className="h2 gradient-text">{data.heading}</h2>
+      {data.sub && <p className="lead mt-1 mb-4">{data.sub}</p>}
 
-      <div className="relative">
+      <div className="relative w-full overflow-hidden">
         <div
-          className="flex items-stretch gap-4 overflow-x-auto no-scrollbar px-2"
           ref={trackRef}
+          className="flex items-stretch gap-4 overflow-x-auto no-scrollbar scroll-smooth justify-center"
           style={{ scrollSnapType: "x mandatory" }}
         >
           {data.items.map((it, i) => (
             <article
               key={i}
-              className="tile-shimmer tile--cyan bento-item text-left shrink-0"
-              style={{ width: tileWidth, scrollSnapAlign: "center" }}
+              className="shrink-0 bg-[#0b1627]/60 border border-white/10 rounded-xl p-4 text-center"
+              style={{
+                width: "clamp(260px, 80vw, 320px)",
+                scrollSnapAlign: "center",
+              }}
             >
-              {/* Square content area */}
-              <div className="aspect-square flex flex-col items-center justify-start">
-                {/* small image slot (logo placeholder) */}
-                <div className="tile-media">
-                  <Image
-                    src="/logo-arcanum.svg"
-                    alt="Arcanum"
-                    width={44}
-                    height={44}
-                    className="object-contain"
-                    priority
-                  />
-                </div>
-
-                {!!it.title && <h4 className="font-semibold mb-1 text-center">{it.title}</h4>}
-                {!!it.body && <p className="text-ink-muted text-center">{it.body}</p>}
-              </div>
+              <Image
+                src={it.image || "/logo-arcanum.svg"}
+                alt={it.title}
+                width={44}
+                height={44}
+                className="object-contain mx-auto mb-3"
+              />
+              <h4 className="font-semibold mb-1">{it.title}</h4>
+              <p className="text-sm opacity-80">{it.body}</p>
             </article>
           ))}
         </div>
 
-        {/* ARROWS */}
-        <div className="pointer-events-none absolute inset-0 flex items-center justify-between px-1">
-          <button
-            aria-label="Previous"
-            onClick={prev}
-            className="pointer-events-auto hidden sm:inline-flex cta-orb px-3 py-2"
-            disabled={index === 0}
-          >
-            ‹
-          </button>
-          <button
-            aria-label="Next"
-            onClick={next}
-            className="pointer-events-auto hidden sm:inline-flex cta-orb px-3 py-2"
-            disabled={index === data.items.length - 1}
-          >
-            ›
-          </button>
-        </div>
-
-        {/* DOTS */}
+        {/* Dots */}
         <div className="mt-3 flex justify-center gap-2" aria-live="polite">
           {data.items.map((_, i) => (
             <span
               key={i}
-              aria-label={`Slide ${i+1} of ${data.items.length}${i===index ? ', current' : ''}`}
               className={cn(
-                "inline-block h-1.5 w-1.5 rounded-full",
+                "inline-block h-1.5 w-1.5 rounded-full transition-colors duration-300",
                 i === index ? "bg-cyan-300" : "bg-white/30"
               )}
             />

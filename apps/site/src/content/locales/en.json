@@ -1,0 +1,109 @@
+{
+  "hero": {
+    "title": "Awaken the Arcanum",
+    "line1": "A decentralized gateway to consciousness and creation.",
+    "line2": "Where human potential meets cosmic design.",
+    "tagline": "Summon your path through light and code."
+  },
+  "activate": {
+    "title": "Activate Your Identity",
+    "descCompact": "Connect your account to begin your Arcanum journey.",
+    "descFull": "Through activation, you establish your identity in the Arcanum — uniting self-sovereignty, creativity, and cosmic timing.",
+    "tagline": "Begin your initiation into the network."
+  },
+  "showcase": {
+    "arcnet": {
+      "heading": "The ARCnet",
+      "sub": "A decentralized communication lattice connecting mind, data, and world.",
+      "items": [
+        {
+          "title": "Distributed Presence",
+          "body": "Your identity and data synchronize seamlessly across realms.",
+          "image": "/logo-arcanum.svg"
+        },
+        {
+          "title": "Trustless Harmony",
+          "body": "Consensus through light — no intermediaries, no barriers.",
+          "image": "/logo-arcanum.svg"
+        },
+        {
+          "title": "Quantum Signaling",
+          "body": "Instant, secure communication between autonomous nodes.",
+          "image": "/logo-arcanum.svg"
+        },
+        {
+          "title": "Neural Exchange",
+          "body": "A living data stream evolving with your intent.",
+          "image": "/logo-arcanum.svg"
+        },
+        {
+          "title": "Celestial Interface",
+          "body": "Interact with knowledge as a seamless extension of thought.",
+          "image": "/logo-arcanum.svg"
+        }
+      ]
+    },
+    "mana": {
+      "heading": "MANA",
+      "sub": "Energy, attention, and value in balance.",
+      "items": [
+        {
+          "title": "Flow State",
+          "body": "Every action generates resonance — no wasted energy.",
+          "image": "/logo-arcanum.svg"
+        },
+        {
+          "title": "Reciprocal Exchange",
+          "body": "Give and receive through open energy channels.",
+          "image": "/logo-arcanum.svg"
+        },
+        {
+          "title": "True Abundance",
+          "body": "Value flows naturally when harmony is achieved.",
+          "image": "/logo-arcanum.svg"
+        },
+        {
+          "title": "Frequency Sync",
+          "body": "Align output and input in energetic coherence.",
+          "image": "/logo-arcanum.svg"
+        },
+        {
+          "title": "Unity Pulse",
+          "body": "The system thrives when every node contributes energy.",
+          "image": "/logo-arcanum.svg"
+        }
+      ]
+    },
+    "tempus": {
+      "heading": "TEMPUS",
+      "sub": "Cosmic timing orchestrated through self-aware networks.",
+      "items": [
+        {
+          "title": "Celestial Rhythms",
+          "body": "Events unfold according to temporal alignment.",
+          "image": "/logo-arcanum.svg"
+        },
+        {
+          "title": "Synchrony Protocol",
+          "body": "Time itself becomes programmable.",
+          "image": "/logo-arcanum.svg"
+        },
+        {
+          "title": "Eternal Records",
+          "body": "Every moment encoded, every creation preserved.",
+          "image": "/logo-arcanum.svg"
+        },
+        {
+          "title": "Temporal Flow",
+          "body": "Past, present, and future unify as one continuous signal.",
+          "image": "/logo-arcanum.svg"
+        },
+        {
+          "title": "Chronos Gate",
+          "body": "Access your timeline with precision and purpose.",
+          "image": "/logo-arcanum.svg"
+        }
+      ]
+    }
+  }
+}

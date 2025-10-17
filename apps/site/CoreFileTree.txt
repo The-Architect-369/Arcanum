@@ -38,6 +38,7 @@
 │   │       ├── HeroBento.tsx
 │   │       └── HopeOrb.tsx
 │   ├── content
+│   │   ├── narrative.json
 │   │   └── narrative.ts
 │   └── middleware.ts
 ├── tailwind.config.ts
@@ -45,4 +46,4 @@
 ├── tsconfig.tsbuildinfo
 └── vercel.json
 
-9 directories, 37 files
+9 directories, 38 files
