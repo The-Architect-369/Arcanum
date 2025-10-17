@@ -1,10 +1,6 @@
+      
 {
+  "version": 2,
   "scope": "the-architect-369",
-  "projects": [
-    {
-      "name": "ARCnet",
-      "rootDirectory": "apps/site",
-      "framework": "nextjs"
-    }
-  ]
+  "framework": "nextjs"
 }

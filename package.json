@@ -34,6 +34,6 @@
     "patchedDependencies": {}
   },
   "engines": {
-    "node": "22.x"
+    "node": "20.x"
   }
 }
