@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import { useEffect } from 'react';
-import { usePathname } from 'next/navigation';
-import Header from '@/components/Header';
-import ConstellationCanvas from '@/components/ConstellationCanvas';
+import { useEffect } from "react";
+import { usePathname } from "next/navigation";
+import Header from "@/components/Header";
+import ConstellationCanvas from "@/components/ConstellationCanvas";
 
 /**
  * ClientLayout
@@ -16,27 +16,30 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
   const pathname = usePathname();
 
   // Disable browser scroll restoration pre-paint
-  if (typeof window !== 'undefined' && 'scrollRestoration' in window.history) {
-    window.history.scrollRestoration = 'manual';
-    window.scrollTo(0, 0);
+  if (typeof window !== "undefined" && "scrollRestoration" in window.history) {
+    window.history.scrollRestoration = "manual";
+    requestAnimationFrame(() =>
+      window.scrollTo({ top: 0, behavior: "instant" })
+    );
   }
 
   useEffect(() => {
-    // Scroll reset safeguard
+    // Scroll reset safeguard on route change
     const timeout = setTimeout(() => {
-      const scroller = document.querySelector('.arcanum-scroll-root');
-      if (scroller) scroller.scrollTo({ top: 0, behavior: 'instant' });
-      else window.scrollTo({ top: 0, behavior: 'instant' });
+      const scroller = document.querySelector(".arcanum-scroll-root");
+      if (scroller) scroller.scrollTo({ top: 0, behavior: "instant" });
+      else window.scrollTo({ top: 0, behavior: "instant" });
     }, 80);
+
     return () => clearTimeout(timeout);
   }, [pathname]);
 
   return (
     <>
-      {/* 🌌 Fixed global constellation (outside scroll container) */}
+      {/* 🌌 Fixed global constellation background */}
       <ConstellationCanvas className="constellation-bg pointer-events-none" />
 
-      {/* 🜂 Scroll container for main content */}
+      {/* 🜂 Scrollable content container */}
       <div
         className="arcanum-scroll-root relative h-screen w-screen overflow-y-scroll snap-y snap-mandatory text-white"
         id="scroll-root"

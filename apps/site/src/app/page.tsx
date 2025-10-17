@@ -11,47 +11,37 @@ export default function HomePage() {
       <ActiveSectionObserver />
 
       {/* HERO — explicit anchor + MUST-STOP snap */}
-      <section id="hero" className="snap-section snap-first" aria-label="Hero">
+      <section id="hero" className="snap-section snap-first" aria-labelledby="hero-heading">
         <HeroBento />
       </section>
 
       {/* SHOWCASES */}
-      <section className="snap-section" aria-label="ARCnet">
+      <section className="snap-section" aria-labelledby="arcnet-heading">
         <BentoShowcase variant="arcnet" />
       </section>
 
-      <section className="snap-section" aria-label="MANA">
+      <section className="snap-section" aria-labelledby="mana-heading">
         <BentoShowcase variant="mana" />
       </section>
 
-      <section className="snap-section" aria-label="Tempest">
+      <section className="snap-section" aria-labelledby="tempus-heading">
         <BentoShowcase variant="tempus" />
       </section>
 
-      {/* ACTIVATE — keep a little give before the footer */}
-      <section
-        className="snap-section snap-last"
-        id="activate"
-        aria-label="Activate"
-      >
+      {/* ACTIVATE */}
+      <section id="activate" className="snap-section snap-last" aria-labelledby="activate-heading">
         <ActivateBento />
       </section>
 
-      {/* LEGAL FOOTER */}
-      <footer className="snap-end max-prose text-center mx-auto py-10 opacity-80">
+      {/* FOOTER */}
+      <footer className="snap-end max-w-prose text-center mx-auto py-10 opacity-80">
         <p>© {new Date().getFullYear()} Arcanum. All rights reserved.</p>
         <p className="mt-2">
-          <a
-            href="/privacy"
-            className="underline decoration-transparent hover:decoration-current"
-          >
+          <a href="/privacy" className="underline decoration-transparent hover:decoration-current">
             Privacy
           </a>
           {' · '}
-          <a
-            href="/terms"
-            className="underline decoration-transparent hover:decoration-current"
-          >
+          <a href="/terms" className="underline decoration-transparent hover:decoration-current">
             Terms
           </a>
         </p>

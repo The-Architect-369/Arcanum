@@ -2,11 +2,16 @@
 const nextConfig = {
   reactStrictMode: true,
   eslint: { ignoreDuringBuilds: true },
+  compress: true,
   experimental: {
     typedRoutes: true,
-    externalDir: true
+    externalDir: true,
   },
-  transpilePackages: ['@shared']
-}
+  transpilePackages: ["@shared"],
+  i18n: {
+    locales: ["en", "es", "fr", "de"],
+    defaultLocale: "en",
+  },
+};
 
-export default nextConfig
+export default nextConfig;

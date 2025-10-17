@@ -1,5 +1,7 @@
-// src/content/narrative.ts
 import en from "./locales/en.json";
+import es from "./locales/es.json";
+import fr from "./locales/fr.json";
+import de from "./locales/de.json";
 
 export type ShowcaseVariant = "arcnet" | "mana" | "tempus";
 
@@ -31,24 +33,16 @@ export interface NarrativeContent {
   showcase: Record<ShowcaseVariant, ShowcaseContent>;
 }
 
-/**
- * Loads a narrative file dynamically based on locale.
- * Defaults to English ("en").
- * 
- * Example:
- * const content = await loadNarrative("es");
- */
-export async function loadNarrative(locale: string = "en"): Promise<NarrativeContent> {
-  try {
-    const mod = await import(`./locales/${locale}.json`);
-    return mod.default as NarrativeContent;
-  } catch (err) {
-    console.warn(`[narrative] Falling back to English for locale: ${locale}`);
-    return en as NarrativeContent;
-  }
-}
+const locales: Record<string, NarrativeContent> = { en, es, fr, de };
 
 /**
- * Static default export for build-time environments that can’t handle dynamic import.
+ * Static default (safe for SSR / SSG)
  */
-export const copy: NarrativeContent = en as NarrativeContent;
+export const copy: NarrativeContent = en;
+
+/**
+ * Retrieves locale content (client-only)
+ */
+export function getNarrative(locale: string): NarrativeContent {
+  return locales[locale] || en;
+}
