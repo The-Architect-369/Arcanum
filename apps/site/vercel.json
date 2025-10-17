@@ -1,6 +1,5 @@
 {
   "framework": "nextjs",
-  "rootDirectory": ".",
   "installCommand": "corepack enable && corepack prepare pnpm@9.10.0 --activate && pnpm install",
   "buildCommand": "corepack enable && corepack prepare pnpm@9.10.0 --activate && pnpm run build"
 }
