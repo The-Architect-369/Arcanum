@@ -1,13 +1,13 @@
-import './globals.css'
-import './motion.css'
-import './utilities.css'
-import type { Metadata } from 'next'
-import ClientLayout from './client-layout'
+import './globals.css';
+import './motion.css';
+import './utilities.css';
+import type { Metadata } from 'next';
+import ClientLayout from './client-layout';
 
-const title = 'Arcanum'
+const title = 'Arcanum';
 const description =
-  'Decentralized identity. Cosmic timing. Community-owned network.'
-const ogImage = '/logo-arcanum.svg'
+  'Decentralized identity. Cosmic timing. Community-owned network.';
+const ogImage = '/logo-arcanum.svg';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://thearcanum.net'),
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     description,
     images: [ogImage],
   },
-}
+};
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -40,5 +40,5 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <ClientLayout>{children}</ClientLayout>
       </body>
     </html>
-  )
+  );
 }

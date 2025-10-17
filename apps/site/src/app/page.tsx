@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import ActiveSectionObserver from "@/components/ActiveSectionObserver";
-import HeroBento from "@/components/ui/HeroBento";
-import BentoShowcase from "@/components/ui/BentoShowcase";
-import ActivateBento from "@/components/ui/ActivateBento";
+import ActiveSectionObserver from '@/components/ActiveSectionObserver';
+import HeroBento from '@/components/ui/HeroBento';
+import BentoShowcase from '@/components/ui/BentoShowcase';
+import ActivateBento from '@/components/ui/ActivateBento';
 
 export default function HomePage() {
   return (
@@ -29,7 +29,11 @@ export default function HomePage() {
       </section>
 
       {/* ACTIVATE — keep a little give before the footer */}
-      <section className="snap-section snap-last" id="activate" aria-label="Activate">
+      <section
+        className="snap-section snap-last"
+        id="activate"
+        aria-label="Activate"
+      >
         <ActivateBento />
       </section>
 
@@ -37,9 +41,19 @@ export default function HomePage() {
       <footer className="snap-end max-prose text-center mx-auto py-10 opacity-80">
         <p>© {new Date().getFullYear()} Arcanum. All rights reserved.</p>
         <p className="mt-2">
-          <a href="/privacy" className="underline decoration-transparent hover:decoration-current">Privacy</a>
-          {" · "}
-          <a href="/terms" className="underline decoration-transparent hover:decoration-current">Terms</a>
+          <a
+            href="/privacy"
+            className="underline decoration-transparent hover:decoration-current"
+          >
+            Privacy
+          </a>
+          {' · '}
+          <a
+            href="/terms"
+            className="underline decoration-transparent hover:decoration-current"
+          >
+            Terms
+          </a>
         </p>
       </footer>
     </main>

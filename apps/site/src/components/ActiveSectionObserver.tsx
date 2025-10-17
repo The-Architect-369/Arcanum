@@ -1,41 +1,58 @@
-"use client";
-import { useEffect } from "react";
+'use client';
+import { useEffect } from 'react';
 
+/**
+ * ActiveSectionObserver
+ * Delayed activation to align with stabilized scroll position.
+ * Ensures first section (#hero) is marked active after hydration.
+ */
 export default function ActiveSectionObserver() {
   useEffect(() => {
-    const sections = Array.from(document.querySelectorAll<HTMLElement>(".snap-section"));
-    if (!sections.length) return;
+    const timeout = setTimeout(() => {
+      const sections = Array.from(
+        document.querySelectorAll<HTMLElement>('.snap-section')
+      );
+      if (!sections.length) return;
 
-    let current: HTMLElement | null = null;
+      let current: HTMLElement | null = null;
 
-    const io = new IntersectionObserver(
-      (entries) => {
-        let best: IntersectionObserverEntry | null = null;
-        for (const e of entries) {
-          if (e.isIntersecting && (!best || e.intersectionRatio > best.intersectionRatio)) {
-            best = e;
+      const io = new IntersectionObserver(
+        (entries) => {
+          let best: IntersectionObserverEntry | null = null;
+          for (const e of entries) {
+            if (
+              e.isIntersecting &&
+              (!best || e.intersectionRatio > best.intersectionRatio)
+            ) {
+              best = e;
+            }
           }
-        }
-        if (best && best.intersectionRatio >= 0.4) {
-          if (current !== best.target) {
-            current?.removeAttribute("data-active");
-            current = best.target as HTMLElement;
-            current.setAttribute("data-active", "true");
+
+          if (best && best.intersectionRatio >= 0.4) {
+            if (current !== best.target) {
+              current?.removeAttribute('data-active');
+              current = best.target as HTMLElement;
+              current.setAttribute('data-active', 'true');
+            }
           }
-        } else if (!current) {
-          const first = sections[0];
-          first?.setAttribute("data-active", "true");
-          current = first;
-        }
-      },
-      { root: null, threshold: [0.2, 0.4, 0.6, 0.8, 0.95] }
-    );
+        },
+        { root: null, threshold: [0.2, 0.4, 0.6, 0.8, 0.95] }
+      );
 
-    sections.forEach((s) => io.observe(s));
-    sections[0]?.setAttribute("data-active", "true");
-    current = sections[0] ?? null;
+      // Ensure Hero is active by default
+      const first = sections[0];
+      if (first) {
+        first.setAttribute('data-active', 'true');
+        current = first;
+      }
 
-    return () => io.disconnect();
+      // Begin observing sections
+      sections.forEach((s) => io.observe(s));
+
+      return () => io.disconnect();
+    }, 160); // Slightly delayed to ensure scroll reset already occurred
+
+    return () => clearTimeout(timeout);
   }, []);
 
   return null;

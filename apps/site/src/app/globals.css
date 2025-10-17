@@ -2,73 +2,80 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Theme tokens */
-:root{
-  --bg-deep:#030b17; --panel-deep:#07172b; --cyan:#42e9ff; --cyan-ink:#00222a;
-  --ink:#e6f1ff; --ink-dim:#b7c8e6;
-  --header-h: 56px; /* align with Header's h-14 */
+/* --- THEME TOKENS --- */
+:root {
+  --bg-deep: #030b17;
+  --panel-deep: #07172b;
+  --cyan: #42e9ff;
+  --cyan-ink: #00222a;
+  --ink: #e6f1ff;
+  --ink-dim: #b7c8e6;
+  --header-h: 56px;
 }
 
-/* Window snapping with header offset + no sideways scroll */
-html, body { height: 100%; overflow-x: hidden; }
+/* --- LAYOUT BASICS --- */
+html, body {
+  height: 100%;
+  overflow-x: hidden;
+}
 body {
   background: var(--bg-deep);
   color: var(--ink);
-  scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
   scroll-padding-top: var(--header-h);
+  overflow: hidden; /* prevent dual scroll anchors */
 }
 
-/* Full-viewport constellation background */
-.constellation-bg { position: fixed; inset: 0; z-index: -1; pointer-events: none; opacity: .95; }
+/* --- CONSTELLATION BACKGROUND --- */
+.constellation-bg,
+canvas.fixed {
+  position: fixed;
+  inset: 0;
+  z-index: -10;
+  pointer-events: none;
+  opacity: 0.95;
+  transition: opacity 1.4s ease-out, filter 1.4s ease-out;
+}
 
-/* Typography */
+/* --- FADE-IN FOR PAGE ENTRY --- */
+#scroll-root {
+  opacity: 0;
+  animation: arcanumEntry 1.4s ease-out forwards;
+}
+
+@keyframes arcanumEntry {
+  0% {
+    opacity: 0;
+    filter: brightness(0.4) blur(2px);
+  }
+  40% {
+    opacity: 0.5;
+    filter: brightness(0.8) blur(1px);
+  }
+  100% {
+    opacity: 1;
+    filter: brightness(1) blur(0);
+  }
+}
+
+/* --- TYPOGRAPHY --- */
 .h1, h1 { font-weight: 800; letter-spacing: -.02em; line-height: 1.1; font-size: clamp(2.5rem, 5.2vw, 3.6rem); }
-.lead   { font-size: clamp(1rem, 1.8vw, 1.22rem); opacity: .85; max-width: 70ch; margin-inline: auto; }
+.lead { font-size: clamp(1rem, 1.8vw, 1.22rem); opacity: .85; max-width: 70ch; margin-inline: auto; }
 .h2, h2 { @apply text-2xl md:text-4xl font-semibold; }
 
-/* Hero-specific spacing + display scale */
-.hero-title{
+/* --- HERO SPACING --- */
+.hero-title {
   margin-top: 0; margin-bottom: .6rem;
   font-weight: 800; letter-spacing: -.02em; line-height: 1.05;
-  font-size: clamp(2.8rem, 6.2vw, 4.25rem); /* bigger, stylized */
+  font-size: clamp(2.8rem, 6.2vw, 4.25rem);
 }
 .hero-caption { margin-top: 0; margin-bottom: 1.1rem; }
 .hero-tagline { margin-top: 1.1rem; font-size: clamp(.8rem, .95vw, .95rem); color: #ffffffb3; }
 
-/* Showcase (cyan) */
-.bento-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: clamp(.75rem, 2vw, 1.25rem); }
-.bento-item { border-radius: 18px; border: 1px solid rgba(255,255,255,.12); background: rgba(15,23,42,.60); padding: clamp(.9rem, 2vw, 1.1rem); }
-.tile--cyan {
-  --tile-bg: linear-gradient(180deg, rgba(34,211,238,.18), rgba(59,130,246,.18));
-  background: var(--tile-bg);
-  border-color: rgba(147,197,253,.32);
-  box-shadow: 0 6px 22px rgba(120,180,255,.22), inset 0 0 20px rgba(147,197,253,.12);
-}
-.bento-item h4 { color:#0b1220; }
-.text-ink-muted { color: rgba(8,12,20,.86); }
-
-/* small image slot used in Showcase tiles */
-.tile-media { @apply mx-auto mb-2 rounded-lg ring-1 ring-white/15 bg-white/5 flex items-center justify-center; width:64px; height:64px; }
-.tile-media img { display:block; }
-
-/* Text utilities used inside BentoCard */
-.p { @apply text-base md:text-lg leading-relaxed; }
-.muted { opacity:.7; }
-.gradient-text{
-  background: linear-gradient(90deg, #22d3ee, #60a5fa);
-  -webkit-background-clip: text; background-clip: text; color: transparent;
-}
-
-/* Links default */
-a { @apply underline decoration-transparent hover:decoration-current transition; }
-
-/* Safety: sections never create horizontal overflow */
+/* --- SNAP & SCROLL --- */
 .snap-section { width: 100%; }
-
-/* Dark scrollbars (Firefox + WebKit) */
 * { scrollbar-color: #344557 #0a1320; }
-*::-webkit-scrollbar{ height:10px; width:10px; }
-*::-webkit-scrollbar-track{ background:#0a1320; }
-*::-webkit-scrollbar-thumb{ background:#344557; border-radius:9999px; border:2px solid #0a1320; }
-*::-webkit-scrollbar-thumb:hover{ background:#42607a; }
+*::-webkit-scrollbar { width: 10px; height: 10px; }
+*::-webkit-scrollbar-track { background: #0a1320; }
+*::-webkit-scrollbar-thumb { background: #344557; border-radius: 9999px; border: 2px solid #0a1320; }
+*::-webkit-scrollbar-thumb:hover { background: #42607a; }

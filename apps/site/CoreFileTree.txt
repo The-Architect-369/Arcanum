@@ -19,6 +19,7 @@
 │   ├── app
 │   │   ├── activate
 │   │   │   └── page.tsx
+│   │   ├── client-layout.tsx
 │   │   ├── globals.css
 │   │   ├── layout.tsx
 │   │   ├── motion.css
@@ -38,12 +39,10 @@
 │   │       └── HopeOrb.tsx
 │   ├── content
 │   │   └── narrative.ts
-│   ├── lib
-│   │   └── cn.ts
 │   └── middleware.ts
 ├── tailwind.config.ts
 ├── tsconfig.json
 ├── tsconfig.tsbuildinfo
 └── vercel.json
 
-10 directories, 37 files
+9 directories, 37 files
