@@ -1,0 +1,7 @@
+{
+  "mint_chaincode": 0,
+  "view_dashboard": 0,
+  "create_space": 1000,
+  "publish_content": 200,
+  "advanced_compute": 5000
+}

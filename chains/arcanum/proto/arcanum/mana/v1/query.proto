@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+package arcanum.mana.v1;
+
+import "amino/amino.proto";
+import "arcanum/mana/v1/params.proto";
+import "cosmos/base/query/v1beta1/pagination.proto";
+import "gogoproto/gogo.proto";
+import "google/api/annotations.proto";
+
+option go_package = "arcanum/x/mana/types";
+
+// Query defines the gRPC querier service.
+service Query {
+  // Parameters queries the parameters of the module.
+  rpc Params(QueryParamsRequest) returns (QueryParamsResponse) {
+    option (google.api.http).get = "/arcanum/mana/v1/params";
+  }
+
+  // Sinks Queries a list of Sinks items.
+  rpc Sinks(QuerySinksRequest) returns (QuerySinksResponse) {
+    option (google.api.http).get = "/arcanum/mana/v1/sinks";
+  }
+}
+
+// QueryParamsRequest is request type for the Query/Params RPC method.
+message QueryParamsRequest {}
+
+// QueryParamsResponse is response type for the Query/Params RPC method.
+message QueryParamsResponse {
+  // params holds all the parameters of this module.
+  Params params = 1 [
+    (gogoproto.nullable) = false,
+    (amino.dont_omitempty) = true
+  ];
+}
+
+// QuerySinksRequest defines the QuerySinksRequest message.
+message QuerySinksRequest {}
+
+// QuerySinksResponse defines the QuerySinksResponse message.
+message QuerySinksResponse {}

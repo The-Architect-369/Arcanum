@@ -1,0 +1,18 @@
+syntax = "proto3";
+package arcanum.treasury.v1;
+
+option go_package = "arcanum/x/treasury/types";
+
+service Query {
+  rpc Balances(QueryBalancesRequest) returns (QueryBalancesResponse) {}
+}
+
+message QueryBalancesRequest {
+  string denom = 1;
+}
+
+message QueryBalancesResponse {
+  string ops = 1;
+  string rewards = 2;
+  string cold = 3;
+}

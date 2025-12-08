@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package arcanum.treasury.module.v1;
+
+// Import the app module options extension.
+import "cosmos/app/v1alpha1/module.proto";
+
+option go_package = "arcanum/x/treasury/module";
+
+// Module is the depinject / appconfig config message for x/treasury.
+//
+// You can add configuration knobs later (authority, params keys, etc.).
+message Module {
+  // This marks the message as an app module config and sets the go import path.
+  option (cosmos.app.v1alpha1.module) = {go_import: "arcanum/x/treasury/module"};
+}

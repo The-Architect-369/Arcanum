@@ -1,0 +1,68 @@
+syntax = "proto3";
+
+package arcanum.chaincode.v1;
+
+import "amino/amino.proto";
+import "arcanum/chaincode/v1/params.proto";
+import "cosmos/msg/v1/msg.proto";
+import "cosmos_proto/cosmos.proto";
+import "gogoproto/gogo.proto";
+
+option go_package = "arcanum/x/chaincode/types";
+
+// Msg defines the Msg service.
+service Msg {
+  option (cosmos.msg.v1.service) = true;
+
+  // UpdateParams defines a (governance) operation for updating the module
+  // parameters. The authority defaults to the x/gov module account.
+  rpc UpdateParams(MsgUpdateParams) returns (MsgUpdateParamsResponse);
+
+  // MintSbi defines the MintSbi RPC.
+  rpc MintSbi(MsgMintSbi) returns (MsgMintSbiResponse);
+
+  // RecoverSbi defines the RecoverSbi RPC.
+  rpc RecoverSbi(MsgRecoverSbi) returns (MsgRecoverSbiResponse);
+}
+
+// MsgUpdateParams is the Msg/UpdateParams request type.
+message MsgUpdateParams {
+  option (cosmos.msg.v1.signer) = "authority";
+  option (amino.name) = "arcanum/x/chaincode/MsgUpdateParams";
+
+  // authority is the address that controls the module (defaults to x/gov unless overwritten).
+  string authority = 1 [(cosmos_proto.scalar) = "cosmos.AddressString"];
+
+  // params defines the module parameters to update.
+
+  // NOTE: All parameters must be supplied.
+  Params params = 2 [
+    (gogoproto.nullable) = false,
+    (amino.dont_omitempty) = true
+  ];
+}
+
+// MsgUpdateParamsResponse defines the response structure for executing a
+// MsgUpdateParams message.
+message MsgUpdateParamsResponse {}
+
+// MsgMintSbi defines the MsgMintSbi message.
+message MsgMintSbi {
+  option (cosmos.msg.v1.signer) = "creator";
+  string creator = 1 [(cosmos_proto.scalar) = "cosmos.AddressString"];
+  string to = 2;
+}
+
+// MsgMintSbiResponse defines the MsgMintSbiResponse message.
+message MsgMintSbiResponse {}
+
+// MsgRecoverSbi defines the MsgRecoverSbi message.
+message MsgRecoverSbi {
+  option (cosmos.msg.v1.signer) = "creator";
+  string creator = 1 [(cosmos_proto.scalar) = "cosmos.AddressString"];
+  string to = 2;
+  string proof = 3;
+}
+
+// MsgRecoverSbiResponse defines the MsgRecoverSbiResponse message.
+message MsgRecoverSbiResponse {}

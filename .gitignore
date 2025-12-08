@@ -5,7 +5,6 @@ node_modules/
 .next/
 dist/
 out/
-.vercel/
 .vscode/
 .DS_Store
 
@@ -17,13 +16,16 @@ coverage/
 .env*
 !.env.example
 
-# Framework/host specific
-.wrangler/
-.cloudflared/
+# Host-specific
+.vercel/
+
+# Misc caches
 .sass-cache/
+.cloudflared/
 
-.vercel/
-.wrangler/
+# Cosmos / Go
+chains/arcanum/build/
+chains/arcanum/data/
+chains/arcanum/.cache/
+*.pb.go
 
-.vercel/
-.wrangler/

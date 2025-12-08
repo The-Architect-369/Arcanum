@@ -1,0 +1,82 @@
+syntax = "proto3";
+
+package arcanum.mana.v1;
+
+import "amino/amino.proto";
+import "arcanum/mana/v1/params.proto";
+import "cosmos/msg/v1/msg.proto";
+import "cosmos_proto/cosmos.proto";
+import "gogoproto/gogo.proto";
+
+option go_package = "arcanum/x/mana/types";
+
+// Msg defines the Msg service.
+service Msg {
+  option (cosmos.msg.v1.service) = true;
+
+  // UpdateParams defines a (governance) operation for updating the module
+  // parameters. The authority defaults to the x/gov module account.
+  rpc UpdateParams(MsgUpdateParams) returns (MsgUpdateParamsResponse);
+
+  // Spend defines the Spend RPC.
+  rpc Spend(MsgSpend) returns (MsgSpendResponse);
+
+  // DepositEnable defines the DepositEnable RPC.
+  rpc DepositEnable(MsgDepositEnable) returns (MsgDepositEnableResponse);
+
+  // DepositDisable defines the DepositDisable RPC.
+  rpc DepositDisable(MsgDepositDisable) returns (MsgDepositDisableResponse);
+}
+
+// MsgUpdateParams is the Msg/UpdateParams request type.
+message MsgUpdateParams {
+  option (cosmos.msg.v1.signer) = "authority";
+  option (amino.name) = "arcanum/x/mana/MsgUpdateParams";
+
+  // authority is the address that controls the module (defaults to x/gov unless overwritten).
+  string authority = 1 [(cosmos_proto.scalar) = "cosmos.AddressString"];
+
+  // params defines the module parameters to update.
+
+  // NOTE: All parameters must be supplied.
+  Params params = 2 [
+    (gogoproto.nullable) = false,
+    (amino.dont_omitempty) = true
+  ];
+}
+
+// MsgUpdateParamsResponse defines the response structure for executing a
+// MsgUpdateParams message.
+message MsgUpdateParamsResponse {}
+
+// MsgSpend defines the MsgSpend message.
+message MsgSpend {
+  option (cosmos.msg.v1.signer) = "creator";
+  string creator = 1 [(cosmos_proto.scalar) = "cosmos.AddressString"];
+  string address = 2;
+  string purpose = 3;
+  uint64 amount = 4;
+}
+
+// MsgSpendResponse defines the MsgSpendResponse message.
+message MsgSpendResponse {}
+
+// MsgDepositEnable defines the MsgDepositEnable message.
+message MsgDepositEnable {
+  option (cosmos.msg.v1.signer) = "creator";
+  string creator = 1 [(cosmos_proto.scalar) = "cosmos.AddressString"];
+  string feature_id = 2;
+}
+
+// MsgDepositEnableResponse defines the MsgDepositEnableResponse message.
+message MsgDepositEnableResponse {}
+
+// MsgDepositDisable defines the MsgDepositDisable message.
+message MsgDepositDisable {
+  option (cosmos.msg.v1.signer) = "creator";
+  string creator = 1 [(cosmos_proto.scalar) = "cosmos.AddressString"];
+  string feature_id = 2;
+}
+
+// MsgDepositDisableResponse defines the MsgDepositDisableResponse message.
+message MsgDepositDisableResponse {}

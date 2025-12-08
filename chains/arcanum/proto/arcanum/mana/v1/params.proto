@@ -1,0 +1,13 @@
+syntax = "proto3";
+package arcanum.mana.v1;
+
+import "amino/amino.proto";
+import "gogoproto/gogo.proto";
+
+option go_package = "arcanum/x/mana/types";
+
+// Params defines the parameters for the module.
+message Params {
+  option (amino.name) = "arcanum/x/mana/Params";
+  option (gogoproto.equal) = true;
+}

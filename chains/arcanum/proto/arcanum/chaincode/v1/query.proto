@@ -1,0 +1,44 @@
+syntax = "proto3";
+
+package arcanum.chaincode.v1;
+
+import "amino/amino.proto";
+import "arcanum/chaincode/v1/params.proto";
+import "cosmos/base/query/v1beta1/pagination.proto";
+import "gogoproto/gogo.proto";
+import "google/api/annotations.proto";
+
+option go_package = "arcanum/x/chaincode/types";
+
+// Query defines the gRPC querier service.
+service Query {
+  // Parameters queries the parameters of the module.
+  rpc Params(QueryParamsRequest) returns (QueryParamsResponse) {
+    option (google.api.http).get = "/arcanum/chaincode/v1/params";
+  }
+
+  // Sbi Queries a list of Sbi items.
+  rpc Sbi(QuerySbiRequest) returns (QuerySbiResponse) {
+    option (google.api.http).get = "/arcanum/chaincode/v1/sbi/{address}";
+  }
+}
+
+// QueryParamsRequest is request type for the Query/Params RPC method.
+message QueryParamsRequest {}
+
+// QueryParamsResponse is response type for the Query/Params RPC method.
+message QueryParamsResponse {
+  // params holds all the parameters of this module.
+  Params params = 1 [
+    (gogoproto.nullable) = false,
+    (amino.dont_omitempty) = true
+  ];
+}
+
+// QuerySbiRequest defines the QuerySbiRequest message.
+message QuerySbiRequest {
+  string address = 1;
+}
+
+// QuerySbiResponse defines the QuerySbiResponse message.
+message QuerySbiResponse {}
