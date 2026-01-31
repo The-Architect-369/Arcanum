@@ -4,8 +4,8 @@ import (
 	"context"
 	"encoding/json"
 
-	abci "github.com/cometbft/cometbft/abci/types"
 	"cosmossdk.io/core/appmodule"
+	abci "github.com/cometbft/cometbft/abci/types"
 
 	"github.com/cosmos/cosmos-sdk/client"
 	"github.com/cosmos/cosmos-sdk/codec"
@@ -21,7 +21,7 @@ type basicModule struct{}
 
 var _ sdkmodule.AppModuleBasic = (*basicModule)(nil)
 
-func (basicModule) Name() string                                 { return types.ModuleName }
+func (basicModule) Name() string                                  { return types.ModuleName }
 func (basicModule) RegisterLegacyAminoCodec(_ *codec.LegacyAmino) {}
 func (basicModule) RegisterInterfaces(ir cdctypes.InterfaceRegistry) {
 	types.RegisterInterfaces(ir)
@@ -55,7 +55,7 @@ func (m Module) DefaultGenesis(cdc codec.JSONCodec) json.RawMessage {
 	state := types.GenesisState{
 		Params: types.DefaultParams(),
 	}
-	bz, _ := cdc.MarshalJSON(&state)
+	bz, _ := json.Marshal(state)
 	return bz
 }
 

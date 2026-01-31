@@ -4,7 +4,9 @@
   "version": "0.1.0",
   "description": "Arcanum DApp (marketing + onboarding + app in one).",
   "packageManager": "pnpm@9.10.0",
-  "engines": { "node": "20.x" },
+  "engines": {
+    "node": "20.x"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -14,18 +16,19 @@
     "preinstall": "corepack enable && corepack prepare pnpm@9.10.0 --activate"
   },
   "dependencies": {
+    "@cosmjs/proto-signing": "^0.37.0",
+    "@cosmjs/stargate": "^0.37.0",
+    "@cosmjs/tendermint-rpc": "^0.37.0",
+    "@tanstack/react-query": "^5.51.0",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "framer-motion": "^11.3.31",
+    "lucide-react": "^0.460.0",
     "next": "15.0.3",
     "react": "18.3.1",
     "react-dom": "18.3.1",
-    "framer-motion": "^11.3.31",
-    "clsx": "^2.1.1",
-    "class-variance-authority": "^0.7.1",
-    "lucide-react": "^0.460.0",
     "tailwind-merge": "^3.3.1",
-    "tailwindcss-animate": "^1.0.7",
-    "wagmi": "^2.13.0",
-    "viem": "^2.19.0",
-    "@tanstack/react-query": "^5.51.0"
+    "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
     "@types/node": "^20.12.12",

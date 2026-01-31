@@ -3,8 +3,8 @@ package mana
 import (
 	"context"
 
-	sdk "github.com/cosmos/cosmos-sdk/types"
 	"cosmossdk.io/errors"
+	sdk "github.com/cosmos/cosmos-sdk/types"
 
 	"arcanum/x/mana/keeper"
 	"arcanum/x/mana/types"

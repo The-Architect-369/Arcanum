@@ -1,58 +1,62 @@
-"use client";
-import React, { useState } from "react";
-import { suggestChainToKeplr, getKeplrSigner } from "@/lib/cosmos/wallets";
-import { broadcastTx } from "@/lib/cosmos/tx";
-// import { MsgMint } from "@/lib/cosmos/arcanum-types/chaincode/v1/tx";
+'use client'
 
-const CHAIN = {
-  chainId: process.env.NEXT_PUBLIC_ARC_CHAIN_ID!,
-  chainName: "Arcanum-D (local)",
-  rpc: process.env.NEXT_PUBLIC_ARC_RPC!,
-  rest: process.env.NEXT_PUBLIC_ARC_REST!,
-  bech32: process.env.NEXT_PUBLIC_ARC_BECH32_PREFIX!,
-  denom: process.env.NEXT_PUBLIC_ARC_DENOM!, decimals: 6
-};
+import { useState } from 'react'
+import { getQueryClient, getSigningClient } from '@/src/lib/cosmos/client'
 
-export default function Onboard() {
-  const [addr, setAddr] = useState<string>(""); const [status, setStatus] = useState<string>("");
+const baseDenom = process.env.NEXT_PUBLIC_ARCANUM_BASE_DENOM || 'umana'
 
-  const connect = async () => {
-    await suggestChainToKeplr(CHAIN as any);
-    const signer = await getKeplrSigner(CHAIN.chainId);
-    const accounts = await signer.getAccounts();
-    setAddr(accounts[0].address);
-  };
+export default function OnboardPage() {
+  const [mnemonic, setMnemonic] = useState('')
+  const [address, setAddress] = useState<string | null>(null)
+  const [mana, setMana] = useState<string | null>(null)
+  const [status, setStatus] = useState<string>('')
 
-  const mintChainCode = async () => {
-    setStatus("Minting…");
-    const signer = await getKeplrSigner(CHAIN.chainId);
-    const accounts = await signer.getAccounts();
-    const sender = accounts[0].address;
+  async function handleConnect() {
+    setStatus('Connecting to Arcanum-D...')
+    try {
+      const { account } = await getSigningClient(mnemonic)
+      setAddress(account.address)
 
-    // const msg: MsgMint = { owner: sender, tokenId: "<tokenId>", metadataCid: "<cid>" };
-    // const typeUrl = "/arcanum.chaincode.v1.MsgMint";
-    // const encoded = { typeUrl, value: msg };
+      const qc = await getQueryClient()
+      const balances = await qc.getAllBalances(account.address)
+      const bal = balances.find(b => b.denom === baseDenom)
+      setMana(bal ? bal.amount : '0')
 
-    // TEMP placeholder until proto types are generated:
-    const encoded = { typeUrl: "/arcanum.chaincode.v1.MsgMint", value: { owner: sender, tokenId: "sbt:"+Date.now(), metadataCid: "bafy..." } };
-
-    await broadcastTx({
-      rpc: CHAIN.rpc, signer, sender,
-      msgs: [encoded],
-      fee: { amount: "2000", denom: CHAIN.denom, gas: "200000" }
-    });
-    setStatus("ChainCode minted ✔");
-  };
+      setStatus('Connected')
+    } catch (err: any) {
+      console.error(err)
+      setStatus(`Error: ${err?.message ?? String(err)}`)
+    }
+  }
 
   return (
-    <main className="max-w-xl mx-auto p-6 space-y-4">
-      <h1 className="text-2xl font-semibold">Activate your Arcanum Identity</h1>
-      <button onClick={connect} className="px-4 py-2 rounded bg-black text-white">Connect Keplr</button>
-      {addr && <p className="text-sm break-all">Address: {addr}</p>}
-      <button onClick={mintChainCode} disabled={!addr} className="px-4 py-2 rounded bg-zinc-800 text-white disabled:opacity-40">
-        Mint ChainCode (SBT)
+    <main className="p-6 space-y-4">
+      <h1 className="text-2xl font-bold">Begin your Rite</h1>
+      <p className="text-sm opacity-80">Dev-only burner flow (will be replaced with Keplr/Leap).</p>
+      <textarea
+        className="border rounded p-2 w-full h-24"
+        placeholder="Paste a mnemonic with some umana"
+        value={mnemonic}
+        onChange={e => setMnemonic(e.target.value)}
+      />
+      <button
+        className="border px-4 py-2 rounded"
+        onClick={handleConnect}
+      >
+        Connect to Arcanum-D
       </button>
-      {status && <p>{status}</p>}
+
+      {status && <p className="text-sm mt-2">{status}</p>}
+      {address && (
+        <p className="text-sm">
+          Address: <code>{address}</code>
+        </p>
+      )}
+      {mana !== null && (
+        <p className="text-sm">
+          MANA balance (base units {baseDenom}): <strong>{mana}</strong>
+        </p>
+      )}
     </main>
-  );
+  )
 }

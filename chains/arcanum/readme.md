@@ -1,4 +1,4 @@
-# Arcanum-D Chain
+]pppppppppp55# Arcanum-D Chain
 
 - **Chain ID**: `arcanum-local-1`
 - **Bech32 prefix**: `arca`

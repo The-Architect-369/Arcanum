@@ -3,19 +3,23 @@ package keeper
 import (
 	"context"
 
+	"encoding/json"
+
 	"cosmossdk.io/store/prefix"
-	"github.com/cosmos/cosmos-sdk/runtime"
+	storetypes "cosmossdk.io/store/types"
+
+	"github.com/cosmos/cosmos-sdk/codec"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
 	"arcanum/x/chaincode/types"
 )
 
 type Keeper struct {
-	cdc      runtime.Codec
-	storeKey runtime.StoreKey
+	cdc      codec.Codec
+	storeKey storetypes.StoreKey
 }
 
-func NewKeeper(cdc runtime.Codec, key runtime.StoreKey) Keeper {
+func NewKeeper(cdc codec.Codec, key storetypes.StoreKey) Keeper {
 	return Keeper{cdc: cdc, storeKey: key}
 }
 
@@ -70,26 +74,26 @@ func (k Keeper) GetMetadata(ctx sdk.Context, tokenId []byte) (string, bool) {
 	return string(bz), true
 }
 
-// --- params (simple in-store json) ---
+// --- params (simple JSON blob under KeyParams) ---
 
-func (k Keeper) GetParams(ctx context.Context) (types.Params, error) {
-	sdkCtx := sdk.UnwrapSDKContext(ctx)
-	store := sdkCtx.KVStore(k.storeKey)
+func (k Keeper) GetParams(goCtx context.Context) (types.Params, error) {
+	ctx := sdk.UnwrapSDKContext(goCtx)
+	store := ctx.KVStore(k.storeKey)
 	bz := store.Get(types.KeyParams)
 	if bz == nil {
 		return types.DefaultParams(), nil
 	}
 	var p types.Params
-	if err := k.cdc.Unmarshal(bz, &p); err != nil {
+	if err := json.Unmarshal(bz, &p); err != nil {
 		return types.Params{}, err
 	}
 	return p, nil
 }
 
-func (k Keeper) SetParams(ctx context.Context, p types.Params) error {
-	sdkCtx := sdk.UnwrapSDKContext(ctx)
-	store := sdkCtx.KVStore(k.storeKey)
-	bz, err := k.cdc.Marshal(&p)
+func (k Keeper) SetParams(goCtx context.Context, p types.Params) error {
+	ctx := sdk.UnwrapSDKContext(goCtx)
+	store := ctx.KVStore(k.storeKey)
+	bz, err := json.Marshal(&p)
 	if err != nil {
 		return err
 	}

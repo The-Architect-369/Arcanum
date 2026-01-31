@@ -1,10 +1,10 @@
 package types
 
 const (
-	ModuleName   = "chaincode"
-	StoreKey     = ModuleName
-	RouterKey    = ModuleName
-	MemStoreKey  = "mem_chaincode"
+	ModuleName  = "chaincode"
+	StoreKey    = ModuleName
+	RouterKey   = ModuleName
+	MemStoreKey = "mem_chaincode"
 )
 
 var (
@@ -14,4 +14,3 @@ var (
 
 	KeyParams = []byte{0x10}
 )
-

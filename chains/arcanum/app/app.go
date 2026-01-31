@@ -3,6 +3,19 @@ package app
 import (
 	"time"
 
+	chaincodemodulev1 "arcanum/api/arcanum/chaincode/module/v1"
+	manamodulev1 "arcanum/api/arcanum/mana/module/v1"
+	treasurymodulev1 "arcanum/api/arcanum/treasury/module/v1"
+	manatypes "arcanum/x/mana/types"
+	treasurytypes "arcanum/x/treasury/types"
+
+	chaincodemodulev1 "arcanum/api/arcanum/chaincode/module/v1"
+	manamodulev1 "arcanum/api/arcanum/mana/module/v1"
+	treasurymodulev1 "arcanum/api/arcanum/treasury/module/v1"
+	chaincodetypes "arcanum/x/chaincode/types"
+	appconfig "cosmossdk.io/core/appconfig"
+
+	chaincodetypes "arcanum/x/chaincode/types"
 	runtimev1alpha1 "cosmossdk.io/api/cosmos/app/runtime/v1alpha1"
 	appv1alpha1 "cosmossdk.io/api/cosmos/app/v1alpha1"
 	authmodulev1 "cosmossdk.io/api/cosmos/auth/module/v1"
@@ -24,8 +37,7 @@ import (
 	stakingmodulev1 "cosmossdk.io/api/cosmos/staking/module/v1"
 	txconfigv1 "cosmossdk.io/api/cosmos/tx/config/v1"
 	upgrademodulev1 "cosmossdk.io/api/cosmos/upgrade/module/v1"
-        vestingmodulev1 "cosmossdk.io/api/cosmos/auth/vesting/module/v1"
-	"cosmossdk.io/depinject/appconfig"
+	"cosmossdk.io/depinject"
 
 	_ "cosmossdk.io/x/circuit"
 	circuittypes "cosmossdk.io/x/circuit/types"
@@ -73,14 +85,16 @@ import (
 
 	"google.golang.org/protobuf/types/known/durationpb"
 
-	// 👉 Your chain module
-	treasurymodule "arcanum/x/treasury/module"
-	treasurytypes "arcanum/x/treasury/types"
+	// 👉 Your chain modules (blank import registers depinject providers)
+	_ "arcanum/x/chaincode/module"
+	_ "arcanum/x/mana/module"
+	_ "arcanum/x/treasury/module"
 )
 
 const (
 	// Public chain identifiers
-	Name            = "arcanum"
+	Name                 = "arcanum"
+	ChainCoinType        = 118
 	AccountAddressPrefix = "arca"
 
 	// DefaultNodeHome is where ~/.arcanum lives
@@ -92,7 +106,7 @@ var (
 	moduleAccPerms = []*authmodulev1.ModuleAccountPermission{
 		{Account: authtypes.FeeCollectorName},
 		{Account: distrtypes.ModuleName},
-                {Account: "mana", Permissions: []string{authtypes.Minter, authtypes.Burner}},
+		{Account: manatypes.ModuleName, Permissions: []string{authtypes.Minter, authtypes.Burner}},
 		{Account: minttypes.ModuleName, Permissions: []string{authtypes.Minter}},
 		{Account: stakingtypes.BondedPoolName, Permissions: []string{authtypes.Burner, stakingtypes.ModuleName}},
 		{Account: stakingtypes.NotBondedPoolName, Permissions: []string{authtypes.Burner, stakingtypes.ModuleName}},
@@ -136,6 +150,8 @@ var (
 						ibcexported.ModuleName,
 						// chain modules
 						treasurytypes.ModuleName,
+						manatypes.ModuleName,
+						chaincodetypes.ModuleName,
 					},
 					EndBlockers: []string{
 						govtypes.ModuleName,
@@ -144,6 +160,8 @@ var (
 						group.ModuleName,
 						// chain modules
 						treasurytypes.ModuleName,
+						manatypes.ModuleName,
+						chaincodetypes.ModuleName,
 					},
 					OverrideStoreKeys: []*runtimev1alpha1.StoreKeyConfig{
 						{ModuleName: authtypes.ModuleName, KvStoreKey: "acc"},
@@ -172,6 +190,8 @@ var (
 						icatypes.ModuleName,
 						// chain modules
 						treasurytypes.ModuleName,
+						manatypes.ModuleName,
+						chaincodetypes.ModuleName,
 					},
 				}),
 			},
@@ -183,32 +203,32 @@ var (
 					EnableUnorderedTransactions: true,
 				}),
 			},
-			{Name: vestingtypes.ModuleName,   Config: appconfig.WrapAny(&vestingmodulev1.Module{})},
-			{Name: banktypes.ModuleName,      Config: appconfig.WrapAny(&bankmodulev1.Module{BlockedModuleAccountsOverride: blockAccAddrs})},
-			{Name: stakingtypes.ModuleName,   Config: appconfig.WrapAny(&stakingmodulev1.Module{})},
-			{Name: slashingtypes.ModuleName,  Config: appconfig.WrapAny(&slashingmodulev1.Module{})},
-			{Name: "tx",                      Config: appconfig.WrapAny(&txconfigv1.Config{})},
-			{Name: genutiltypes.ModuleName,   Config: appconfig.WrapAny(&genutilmodulev1.Module{})},
-			{Name: authz.ModuleName,          Config: appconfig.WrapAny(&authzmodulev1.Module{})},
-			{Name: upgradetypes.ModuleName,   Config: appconfig.WrapAny(&upgrademodulev1.Module{})},
-			{Name: distrtypes.ModuleName,     Config: appconfig.WrapAny(&distrmodulev1.Module{})},
-			{Name: evidencetypes.ModuleName,  Config: appconfig.WrapAny(&evidencemodulev1.Module{})},
-			{Name: minttypes.ModuleName,      Config: appconfig.WrapAny(&mintmodulev1.Module{})},
-			{Name: group.ModuleName,          Config: appconfig.WrapAny(&groupmodulev1.Module{MaxExecutionPeriod: durationpb.New(14 * 24 * time.Hour), MaxMetadataLen: 255})},
-			{Name: nft.ModuleName,            Config: appconfig.WrapAny(&nftmodulev1.Module{})},
-			{Name: feegrant.ModuleName,       Config: appconfig.WrapAny(&feegrantmodulev1.Module{})},
-			{Name: govtypes.ModuleName,       Config: appconfig.WrapAny(&govmodulev1.Module{})},
+			{Name: banktypes.ModuleName, Config: appconfig.WrapAny(&bankmodulev1.Module{BlockedModuleAccountsOverride: blockAccAddrs})},
+			{Name: stakingtypes.ModuleName, Config: appconfig.WrapAny(&stakingmodulev1.Module{})},
+			{Name: slashingtypes.ModuleName, Config: appconfig.WrapAny(&slashingmodulev1.Module{})},
+			{Name: "tx", Config: appconfig.WrapAny(&txconfigv1.Config{})},
+			{Name: genutiltypes.ModuleName, Config: appconfig.WrapAny(&genutilmodulev1.Module{})},
+			{Name: authz.ModuleName, Config: appconfig.WrapAny(&authzmodulev1.Module{})},
+			{Name: upgradetypes.ModuleName, Config: appconfig.WrapAny(&upgrademodulev1.Module{})},
+			{Name: distrtypes.ModuleName, Config: appconfig.WrapAny(&distrmodulev1.Module{})},
+			{Name: evidencetypes.ModuleName, Config: appconfig.WrapAny(&evidencemodulev1.Module{})},
+			{Name: minttypes.ModuleName, Config: appconfig.WrapAny(&mintmodulev1.Module{})},
+			{Name: group.ModuleName, Config: appconfig.WrapAny(&groupmodulev1.Module{MaxExecutionPeriod: durationpb.New(14 * 24 * time.Hour), MaxMetadataLen: 255})},
+			{Name: nft.ModuleName, Config: appconfig.WrapAny(&nftmodulev1.Module{})},
+			{Name: feegrant.ModuleName, Config: appconfig.WrapAny(&feegrantmodulev1.Module{})},
+			{Name: govtypes.ModuleName, Config: appconfig.WrapAny(&govmodulev1.Module{})},
 			{Name: consensustypes.ModuleName, Config: appconfig.WrapAny(&consensusmodulev1.Module{})},
-			{Name: circuittypes.ModuleName,   Config: appconfig.WrapAny(&circuitmodulev1.Module{})},
-			{Name: paramstypes.ModuleName,    Config: appconfig.WrapAny(&paramsmodulev1.Module{})},
-			{Name: epochstypes.ModuleName,    Config: appconfig.WrapAny(&epochsmodulev1.Module{})},
+			{Name: circuittypes.ModuleName, Config: appconfig.WrapAny(&circuitmodulev1.Module{})},
+			{Name: paramstypes.ModuleName, Config: appconfig.WrapAny(&paramsmodulev1.Module{})},
+			{Name: epochstypes.ModuleName, Config: appconfig.WrapAny(&epochsmodulev1.Module{})},
 
-			// 👉 register your chain module
-                        {Name: treasurytypes.ModuleName,  Config: appconfig.WrapAny(&treasurymodulev1.Module{})},
-                        {Name: manatypes.ModuleName,      Config: appconfig.WrapAny(&manamodulev1.Module{})},
+			// 👉 register your chain modules
+			{Name: treasurytypes.ModuleName, Config: appconfig.WrapAny(&treasurymodulev1.Module{})},
+			{Name: manatypes.ModuleName, Config: appconfig.WrapAny(&manamodulev1.Module{})},
+			{Name: chaincodetypes.ModuleName, Config: appconfig.WrapAny(&chaincodemodulev1.Module{})},
+			{Name: chaincodetypes.ModuleName, Config: appconfig.WrapAny(&chaincodemodulev1.Module{})},
+			{Name: treasurytypes.ModuleName, Config: appconfig.WrapAny(&treasurymodulev1.Module{})},
+			{Name: manatypes.ModuleName, Config: appconfig.WrapAny(&manamodulev1.Module{})},
 		},
 	})
 )
-
-// AppConfig exposes the depinject/appconfig config.
-func AppConfig() appconfig.Config { return appConfig }

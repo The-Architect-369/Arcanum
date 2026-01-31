@@ -1,0 +1,21 @@
+version: v2
+plugins:
+  - local: protoc-gen-go
+    out: .
+    opt:
+      - paths=import
+      - module=arcanum
+
+  - local: protoc-gen-go-grpc
+    out: .
+    opt:
+      - paths=import
+      - module=arcanum
+
+  - local: protoc-gen-grpc-gateway
+    out: .
+    opt:
+      - paths=import
+      - module=arcanum
+      - logtostderr=true
+      - generate_unbound_methods=true

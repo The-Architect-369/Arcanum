@@ -5,7 +5,7 @@ package arcanum.treasury.module.v1;
 // Import the app module options extension.
 import "cosmos/app/v1alpha1/module.proto";
 
-option go_package = "arcanum/x/treasury/module";
+option go_package = "arcanum/api/arcanum/treasury/module/v1";
 
 // Module is the depinject / appconfig config message for x/treasury.
 //

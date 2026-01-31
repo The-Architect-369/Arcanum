@@ -3,7 +3,7 @@ package arcanum.chaincode.module.v1;
 
 import "cosmos/app/v1alpha1/module.proto";
 
-option go_package = "arcanum/x/chaincode/types";
+option go_package = "arcanum/api/arcanum/chaincode/module/v1";
 
 // Module is the config object for the module.
 message Module {

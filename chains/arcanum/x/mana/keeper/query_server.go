@@ -1,16 +1,34 @@
 package keeper
-func (q QueryServer) Balance(ctx context.Context, req *types.QueryBalanceRequest) (*types.QueryBalanceResponse, error) {
-	sdkCtx := sdk.UnwrapSDKContext(ctx)
-	addr, err := sdk.AccAddressFromBech32(req.Address)
-	if err != nil {
-		return nil, err
-	}
-	bal := q.GetBalance(sdkCtx, addr)
-	return &types.QueryBalanceResponse{Balance: bal.String()}, nil
+
+import (
+	"context"
+
+	sdk "github.com/cosmos/cosmos-sdk/types"
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
+
+	"arcanum/x/mana/types"
+)
+
+type QueryServer struct {
+	Keeper
 }
 
-func (q QueryServer) Supply(ctx context.Context, _ *types.QuerySupplyRequest) (*types.QuerySupplyResponse, error) {
+var _ types.QueryServer = QueryServer{}
+
+func (q QueryServer) Params(ctx context.Context, _ *types.QueryParamsRequest) (*types.QueryParamsResponse, error) {
 	sdkCtx := sdk.UnwrapSDKContext(ctx)
-	s := q.getSupply(sdkCtx)
-	return &types.QuerySupplyResponse{Supply: s.String()}, nil
+	p := q.Keeper.GetParams(sdkCtx)
+	return &types.QueryParamsResponse{Params: &p}, nil
+}
+
+func (q QueryServer) Sinks(ctx context.Context, req *types.QuerySinksRequest) (*types.QuerySinksResponse, error) {
+	if req == nil {
+		return nil, status.Error(codes.InvalidArgument, "empty request")
+	}
+
+	_ = sdk.UnwrapSDKContext(ctx)
+
+	// TODO: Wire to keeper state once sink model is finalized.
+	return &types.QuerySinksResponse{}, nil
 }

@@ -3,7 +3,7 @@ package arcanum.mana.module.v1;
 
 import "cosmos/app/v1alpha1/module.proto";
 
-option go_package = "arcanum/x/mana/types";
+option go_package = "arcanum/api/arcanum/mana/module/v1";
 
 // Module is the config object for the module.
 message Module {

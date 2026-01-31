@@ -1,24 +1,13 @@
-# This file is auto-generated from Ignite. You can edit
-# the file content but do not change the file name or path.
-#
-# buf.gen.gogo.yaml
-#
 version: v2
 plugins:
-  - local: ["go", "tool", "github.com/cosmos/gogoproto/protoc-gen-gocosmos"]
+  - local: protoc-gen-gocosmos
     out: .
     opt:
+      # Generate into directories implied by go_package.
+      - paths=import
+      # Strip module prefix (module is "arcanum") so arcanum/x/... -> ./x/...
+      - module=arcanum
+      # Generate grpc stubs
       - plugins=grpc
+      # Cosmos gogoproto Any mapping
       - Mgoogle/protobuf/any.proto=github.com/cosmos/gogoproto/types/any
-      - Mcosmos/orm/v1/orm.proto=cosmossdk.io/orm
-      - Mcosmos/app/v1alpha1/module.proto=cosmossdk.io/api/cosmos/app/v1alpha1
-  - local:
-      [
-        "go",
-        "tool",
-        "github.com/grpc-ecosystem/grpc-gateway/protoc-gen-grpc-gateway",
-      ]
-    out: .
-    opt:
-      - logtostderr=true
-      - allow_colon_final_segments=true

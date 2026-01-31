@@ -6,17 +6,32 @@
     │       └── release.yml
     ├── .gitignore
     ├── Makefile
+    ├── amino
+    │   └── amino.ts
+    ├── api
+    │   └── arcanum
+    │       ├── chaincode
+    │       │   └── module
+    │       │       └── v1
+    │       │           └── module.pb.go
+    │       ├── mana
+    │       │   └── module
+    │       │       └── v1
+    │       │           └── module.pb.go
+    │       └── treasury
+    │           └── module
+    │               └── v1
+    │                   └── module.pb.go
     ├── app
     │   ├── app.go
     │   ├── app_config.go
     │   ├── config.go
-    │   ├── export.go
+    │   ├── export.go.disabled
     │   ├── genesis.go
     │   ├── genesis_account.go
-    │   ├── ibc.go
-    │   ├── module_basics.go
-    │   ├── sim_bench_test.go
-    │   └── sim_test.go
+    │   ├── ibc.go.disabled
+    │   └── module_basics.go.disabled
+    ├── buf.gen.yaml
     ├── buf.lock
     ├── buf.yaml
     ├── cmd
@@ -24,20 +39,38 @@
     │       ├── cmd
     │       │   ├── commands.go
     │       │   ├── config.go
-    │       │   ├── root.go
-    │       │   ├── testnet.go
-    │       │   └── testnet_multi_node.go
+    │       │   └── root.go
     │       ├── main.go
     │       └── root.go
     ├── config.yml
+    ├── cosmos
+    │   ├── app
+    │   │   └── v1alpha1
+    │   │       └── module.ts
+    │   ├── base
+    │   │   └── query
+    │   │       └── v1beta1
+    │   │           └── pagination.ts
+    │   └── msg
+    │       └── v1
+    │           └── msg.ts
+    ├── cosmos_proto
+    │   └── cosmos.ts
     ├── docs
     │   ├── docs.go
-    │   ├── static
-    │   │   └── openapi.json
-    │   └── template
-    │       └── index.tpl
+    │   └── static
+    │       ├── openapi
+    │       └── openapi.json
     ├── go.mod
     ├── go.sum
+    ├── gogoproto
+    │   └── gogo.ts
+    ├── google
+    │   ├── api
+    │   │   ├── annotations.ts
+    │   │   └── http.ts
+    │   └── protobuf
+    │       └── descriptor.ts
     ├── proto
     │   ├── arcanum
     │   │   ├── chaincode
@@ -64,6 +97,7 @@
     │   │       │       └── module.proto
     │   │       └── v1
     │   │           └── query.proto
+    │   ├── buf.gen.go.yaml
     │   ├── buf.gen.gogo.yaml
     │   ├── buf.gen.sta.yaml
     │   ├── buf.gen.swagger.yaml
@@ -71,9 +105,6 @@
     ├── readme.md
     ├── scripts
     │   └── faucet.sh
-    ├── testutil
-    │   └── sample
-    │       └── sample.go
     ├── tools
     │   └── tools.go
     └── x
@@ -81,37 +112,59 @@
         │   ├── client
         │   │   └── cli
         │   │       └── tx.go
-        │   ├── genisis.go
+        │   ├── genesis.go
         │   ├── keeper
+        │   │   ├── genesis.go
         │   │   ├── keeper.go
         │   │   └── query_server.go
         │   ├── module
         │   │   └── module.go
-        │   ├── module.go
         │   ├── msg_server.go
         │   └── types
+        │       ├── codec.go
+        │       ├── defaults.go
+        │       ├── genesis.pb.go
         │       ├── keys.go
-        │       └── params.go
+        │       ├── params.pb.go
+        │       ├── query.pb.go
+        │       ├── query.pb.gw.go
+        │       ├── query_grpc.pb.go
+        │       ├── tx.pb.go
+        │       ├── tx.pb.gw.go
+        │       └── tx_grpc.pb.go
         ├── mana
         │   ├── client
         │   │   └── cli
         │   │       └── tx.go
         │   ├── keeper
+        │   │   ├── genesis.go
         │   │   ├── keeper.go
         │   │   └── query_server.go
         │   ├── module
         │   │   └── module.go
         │   ├── msg_server.go
         │   └── types
-        │       └── params.go
+        │       ├── codec.go
+        │       ├── defaults.go
+        │       ├── genesis.pb.go
+        │       ├── keys.go
+        │       ├── params.pb.go
+        │       ├── query.pb.go
+        │       ├── query.pb.gw.go
+        │       ├── query_grpc.pb.go
+        │       ├── tx.pb.go
+        │       ├── tx.pb.gw.go
+        │       └── tx_grpc.pb.go
         └── treasury
             ├── keeper
-            │   ├── keeper.go
-            │   └── query.go.disabled
+            │   └── keeper.go
             ├── module
             │   ├── depinject.go
             │   └── module.go
             └── types
-                └── keys.go
+                ├── keys.go
+                ├── query.pb.go
+                ├── query.pb.gw.go
+                └── query_grpc.pb.go
 
-46 directories, 69 files
+69 directories, 99 files

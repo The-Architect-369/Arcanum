@@ -1,13 +1,11 @@
 syntax = "proto3";
-package arcanum.chaincode.v1;
 
-import "amino/amino.proto";
-import "gogoproto/gogo.proto";
+package arcanum.chaincode.v1;
 
 option go_package = "arcanum/x/chaincode/types";
 
-// Params defines the parameters for the module.
+// Params defines the configurable parameters for the chaincode module.
 message Params {
-  option (amino.name) = "arcanum/x/chaincode/Params";
-  option (gogoproto.equal) = true;
+  string admin = 1;
+  bool non_transferable = 2;
 }
