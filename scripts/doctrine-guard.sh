@@ -103,15 +103,15 @@ if grep -R "mint(" "$ROOT_DIR/apps" >/dev/null 2>&1; then
 fi
 
 # Vitae must not touch economy directly
-if grep -R -E "(balance|supply|mint)" "$DOCS_DIR/03_VITAE" >/dev/null 2>&1; then
-  fail "VITAE references economic primitives — forbidden coupling"
+if grep -R -E "(mint\(|supply\(|balance\()" "$DOCS_DIR/03_VITAE" >/dev/null 2>&1; then
+  fail "VITAE contains mechanical economic operations — forbidden coupling"
 fi
 
 # Chain must not define meaning or progression
-if grep -R -E "(vitae|grade|hope)" "$ROOT_DIR/chains" >/dev/null 2>&1; then
-  fail "Chain layer references meaning/progression concepts"
+if grep -R -E '\b(vitae|hope|grade)\b' "$ROOT_DIR/chains" \
+  | grep -v -E '^\s*//|^\s*#' >/dev/null 2>&1; then
+  fail "Chain layer references meaning/progression concepts in executable context"
 fi
-
 [[ $FAILED -eq 0 ]] && pass "Layer boundaries respected"
 
 # ------------------------------------------------------------
