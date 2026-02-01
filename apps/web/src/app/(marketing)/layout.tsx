@@ -1,8 +1,8 @@
-import './globals.css';
-import './motion.css';
-import './utilities.css';
+import "../globals.css";
+import "./styles/motion.css";
+import "./styles/utilities.css";
+import ClientLayout from "./client-layout";
 import type { Metadata } from 'next';
-import ClientLayout from './client-layout';
 
 const title = 'Arcanum';
 const description =

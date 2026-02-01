@@ -1,6 +1,6 @@
 'use client';
 
-import { getMatrixClient } from './matrix';
+import { getMatrixClient } from "@/lib/infra/matrix";
 
 export const ROOM_ALIAS = {
   ARCANUM_SPACE: process.env.NEXT_PUBLIC_ARCANUM_SPACE_ALIAS || '#arcanum:matrix.org',

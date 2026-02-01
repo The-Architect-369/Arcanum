@@ -1,8 +1,8 @@
-'use client';
+import "server-only";
 
-import { createHelia, Helia } from 'helia';
-import { strings } from '@helia/strings';
-import { unixfs } from '@helia/unixfs';
+import { createHeliaNode } from "./helia";
+import { strings } from "@helia/strings";
+import { unixfs } from "@helia/unixfs";
 import { createLibp2p } from 'libp2p';
 import { webSockets } from '@libp2p/websockets';
 import { webRTC } from '@libp2p/webrtc';

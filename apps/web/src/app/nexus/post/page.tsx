@@ -7,8 +7,6 @@ import { useAccount } from '@/state/useAccount';
 import CTAActivate from '@/components/shared/CTAActivate';
 import { COST, canPost } from '@/lib/gates';
 import { trySpendMana } from '@/lib/economy';
-import { putJSONHelia, putFileHelia } from '@/lib/ipfs';
-import { getPeerId } from '@/lib/helia';
 import type { ArcanumPostV1 } from '@/lib/post';
 import { sendArcanumPost } from '@/lib/matrix';
 import { resolveRoomId, ROOM_ALIAS } from '@/lib/rooms';

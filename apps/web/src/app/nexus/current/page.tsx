@@ -4,10 +4,11 @@ import TabDots from '@/components/ui/TabDots';
 import SwipeRoutes from '@/components/ui/SwipeRoutes';
 import { useEffect, useMemo, useState } from 'react';
 import { fetchPublicTimeline } from '@/lib/matrix';
-import { getJSONHelia, getBlobHelia } from '@/lib/ipfs';
 import FreeBadge from '@/components/shared/FreeBadge';
 import type { ArcanumPostV1 } from '@/lib/post';
 import { resolveRoomId, ROOM_ALIAS } from '@/lib/rooms';
+import { canSpend } from "@/lib/economy";
+import { publishPost, uploadToIPFS } from "@/lib/infra";
 
 const ORDER = ['/nexus/post', '/nexus/current', '/nexus/channel'];
 const CURRENT_ALIAS = ROOM_ALIAS.THE_CURRENT;

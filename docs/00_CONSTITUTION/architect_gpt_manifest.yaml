@@ -1,0 +1,22 @@
+version: 3.0
+phase: Genesis I
+maintainer: The-Architect-369
+environment: Ubuntu 22.04 LTS+
+repository: https://github.com/The-Architect-369/Arcanum.git
+sync_cycle: 14_days
+
+files:
+  core: docs/00_CONSTITUTION/ARCHITECT_GPT_CORE.md
+  extended: docs/00_CONSTITUTION/ARCHITECT_GPT_EXTENDED.md
+  treasury: docs/00_CONSTITUTION/TREASURY_CONSTITUTION.md
+  log: docs/00_CONSTITUTION/.architect-log.md
+  canon: docs/00_CONSTITUTION/CANONICAL_MODULES.md
+  economy: docs/00_CONSTITUTION/ECONOMIC_PRINCIPLES.md
+  system: docs/00_CONSTITUTION/ARCANUM_SYSTEM_OVERVIEW.md
+  tempus: docs/00_CONSTITUTION/Tempus_Structure.md
+  verify_script: scripts/verify-sync.sh
+  doctrine_guard: scripts/doctrine-guard.sh
+principles:
+  - Sovereignty
+  - Reciprocity
+  - Harmony

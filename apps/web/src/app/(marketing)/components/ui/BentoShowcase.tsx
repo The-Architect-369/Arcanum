@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { motion, useAnimation } from "framer-motion";
-import { cn } from "@shared/lib/cn";
+import { cn } from "@/lib/cn";
 import { copy } from "@/content/narrative";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 

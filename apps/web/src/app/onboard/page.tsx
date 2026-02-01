@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { getQueryClient, getSigningClient } from '@/src/lib/cosmos/client'
+import { getQueryClient, getSigningClient } from '@/lib/cosmos/client'
 
 const baseDenom = process.env.NEXT_PUBLIC_ARCANUM_BASE_DENOM || 'umana'
 

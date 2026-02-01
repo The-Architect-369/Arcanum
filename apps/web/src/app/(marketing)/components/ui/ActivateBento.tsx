@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { cn } from "@shared/lib/cn";
+import { cn } from "@/lib/cn";
 import BentoCard from "@/components/ui/BentoCard";
 import { copy } from "@/content/narrative";
 

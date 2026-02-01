@@ -1,0 +1,8 @@
+{
+  "projects": [
+    {
+      "name": "arcanum-web",
+      "rootDirectory": "apps/web"
+    }
+  ]
+}
