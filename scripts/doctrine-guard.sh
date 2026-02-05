@@ -135,6 +135,33 @@ fi
 [[ $FAILED -eq 0 ]] && pass "Authority claims valid"
 
 # ------------------------------------------------------------
+# GUARD 4 — Canonical Checksums (Immutable Proof)
+# ------------------------------------------------------------
+CHECKSUM_FILE="$ROOT_DIR/docs/00_CONSTITUTION/doctrine-guard.yml"
+
+echo ""
+echo "🔍 Guard α — Canonical Checksums"
+
+if [[ -f "$CHECKSUM_FILE" ]]; then
+  while IFS=":" read -r path hash; do
+    [[ -z "$path" ]] && continue
+    local_path="$ROOT_DIR/$path"
+    if [[ -f "$local_path" ]]; then
+      current_hash=$(sha256sum "$local_path" | awk '{print $1}')
+      if [[ "$current_hash" != "$hash" ]]; then
+        fail "Checksum mismatch: $path"
+      fi
+    else
+      fail "Missing file for checksum: $path"
+    fi
+  done < <(grep -v '^#' "$CHECKSUM_FILE")
+else
+  fail "Checksum manifest missing: doctrine-guard.yml"
+fi
+
+[[ $FAILED -eq 0 ]] && pass "All canonical checksums valid"
+
+# ------------------------------------------------------------
 # FINAL RESULT
 # ------------------------------------------------------------
 echo ""

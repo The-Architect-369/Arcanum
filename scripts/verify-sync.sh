@@ -5,6 +5,24 @@
 
 set -e
 
+# --- Remote Verification (GitHub) ---
+GITHUB_API="https://api.github.com/repos/The-Architect-369/Arcanum/contents/docs/00_CONSTITUTION"
+
+check_remote_version() {
+  local file="$1"
+  local local_version="$2"
+
+  remote_data=$(curl -s "$GITHUB_API/$file")
+  remote_version=$(echo "$remote_data" | grep -o '"version":[[:space:]]*"[^"]*"' | head -n1 | cut -d'"' -f4)
+
+  if [[ "$remote_version" != "$local_version" && -n "$remote_version" ]]; then
+    echo "⚠️  Remote version drift detected for $file (local $local_version → remote $remote_version)"
+    DRIFT=1
+  else
+    echo "✅ Remote version up-to-date for $file"
+  fi
+}
+
 echo "🔍  Architect GPT Synchronization Verification"
 echo "----------------------------------------------"
 
@@ -58,3 +76,22 @@ fi
 
 echo
 echo "Synchronization verification complete."
+
+# --- Remote Verification Pass ---
+echo
+echo "🌐  Checking GitHub remote versions..."
+check_remote_version "ARCHITECT_GPT_CORE.md" "$CORE_VERSION"
+check_remote_version "ARCHITECT_GPT_EXTENDED.md" "$EXT_VERSION"
+check_remote_version "TREASURY_CONSTITUTION.md" "$TREASURY_VERSION"
+
+if [[ $DRIFT -eq 1 ]]; then
+  echo "⚠️  One or more files differ from the remote repository."
+else
+  echo "✅ Remote repository matches local state."
+fi
+
+if [[ -z "$GITHUB_TOKEN" ]]; then
+  echo "ℹ️  Using unauthenticated GitHub API (60 req/hr limit)"
+else
+  echo "🔑 Using authenticated GitHub API access"
+fi

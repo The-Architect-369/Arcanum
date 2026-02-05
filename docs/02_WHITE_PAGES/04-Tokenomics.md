@@ -1,56 +1,175 @@
-# 4. Tokenomics — Mana
+# Mana — Canonical Definition
 
-> **Status:** Framework defined; numeric parameters **TBD** (pending cost modeling and Polygon fee assumptions).
+**Genesis Ontology: Capacity and Value**
 
-## 4.1 Overview
-**Mana** is the native utility unit of the Arcanum. It:
-- **Rewards** verified participation (practice‑to‑earn via **Tempest** rites).  
-- **Prices access** to features (**Hope** updates, **Vitae** knowledge unlocks).  
-- **Enables creation & trade** on **Arknet** (posting, room/channel creation, purchases, and likes/tips).  
-- **Facilitates P2P exchange** and (future) **NFT marketplace** activity.
+---
 
-## 4.2 Issuance & Supply
-- **Earned issuance:** Completing **Tempest** rites mints Mana to the participant. Anti‑bot mechanisms and rate limits apply.  
-- **Purchased issuance:** Users may **purchase Mana with fiat** via an on‑ramp; minted 1:1 to buyer.  
-- **No free faucets** beyond verified rites.  
-- **Supply policy:** Elastic; net supply governed by the balance between **earn** (rites/purchase) and **sinks** (see below). Parameterization subject to governance.
+## 1. Purpose of Mana
 
-> **TBD Parameters (to fill when costs known):**  
-> - Rite reward schedule (base, streaks, caps)  
-> - Fiat price banding / oracle source  
-> - Anti‑inflation mechanisms (e.g., dynamic sink pricing)  
+**Mana** is the native unit of participation within the Arcanum.
 
-## 4.3 Sinks & Utility
-Users **spend Mana** to:
-- Update **Hope** state/memory.  
-- **Create/post** rites, images, texts on **Arknet**.  
-- **Open** rooms/channels; advanced moderation tools.  
-- **Access** **Vitae** texts/collections.  
-- **Protocol fees:** Marketplace listing, transfer, and optional creation fees.
+It exists to:
 
-## 4.4 Creator Flows (Arknet)
-- **Posting cost:** Creator pays a posting cost (sink).  
-- **Sales:** Peers purchase a rite/work for a price set by the creator; protocol splits funds per policy.  
-- **Likes/Tips:** Micro‑payments route directly to creators (less protocol fee, if any).  
-- **Example:** If a rite costs creator **100 Mana** to publish and sells at **10 Mana**,  N purchases = 10N Mana gross to creator (minus fee).
+* Grant **permission to act**
+* Enable access to **technology, features, and rituals**
+* Mediate the relationship between **presence, effort, and capability**
+* Provide a transferable unit of **utility and value** within and beyond the system
 
-## 4.5 Treasury & Revenue
-- **Multi‑tier treasuries:** Protocol, Community, Grants (Gnosis Safe).  
-- **Revenue sources:** Portion of posting fees, marketplace fees, and fiat purchase margin (if any).  
-- **Allocation policy:** Periodic disbursements to development, audits, grants, and reserves—governed by community voting.  
-- **Architect compensation:** Transparent streams from designated treasury per governance policy.
+Mana is not introduced as an abstraction for speculation. It is introduced as a *living resource* — meaningful only through use.
 
-## 4.6 Governance Link
-- **Parameters on‑chain:** Reward curves, fees, caps, and treasury splits adjustable via proposals.  
-- **Emergency levers:** Temporary throttles on issuance or sinks during incidents; require on‑chain justification and sunset.
+---
 
-## 4.7 Risk Considerations
-- **Speculation risk:** Emphasize utility over price.  
-- **Security:** Custody remains with users; smart contract risk mitigated via audits/bounties.  
-- **Regulatory:** See §5 for treatment of **Mana** as a utility token; consult counsel.
+## 2. Ontology of Mana
 
-## 4.8 Open Questions / Placeholders
-- Target daily issuance per active user: **TBD**  
-- Posting/creation base cost: **TBD**  
-- Fee split \(creator : protocol : community\): **TBD**  
-- Fiat price bands & regional adjustments: **TBD**  
+Mana is a **single primitive** with **two inseparable dimensions**:
+
+1. **Capacity** — permission to perform actions
+2. **Value** — transferable utility recognized by others
+
+These dimensions coexist, but they are governed by **different rules**.
+
+---
+
+## 3. Mana as Capacity (Primary at Genesis)
+
+At Genesis, Mana is first and foremost **capacity**.
+
+Capacity means:
+
+* The *right* to invoke a feature
+* The *ability* to perform an action
+* The *permission* to access technology
+
+When a participant receives Mana on day one:
+
+> **They are being given permission — not an understanding of value.**
+
+The value of that permission is revealed only through:
+
+* Engagement
+* Progression
+* Time
+* Context within the Arcanum
+
+### Key Properties
+
+* Mana enables actions but does not define outcomes
+* Mana may unlock *breadth*, not *speed*
+* Mana never accelerates time-based progression
+* Mana never bypasses identity, ritual, or Vitae thresholds
+
+Capacity is always subordinate to:
+
+* **Tempus** (time and rhythm)
+* **Identity** (continuity of the being)
+* **Vitae** (becoming and progression)
+
+No amount of Mana can replace presence.
+
+---
+
+## 4. Mana as Value (Always Real, Never Dominant)
+
+Mana is also **value**.
+
+This means:
+
+* Mana is transferable between participants
+* Mana may be exchanged freely
+* Mana may be purchased directly from the Arcanum
+* Mana may interact with external markets or networks
+
+However:
+
+> **Value does not override capacity.**
+
+Owning Mana does not grant authority, trust, or maturity. Value represents **potential utility**, not entitlement.
+
+---
+
+## 5. Acquisition of Mana
+
+Mana may be acquired through multiple legitimate paths:
+
+### 5.1 Genesis Grant
+
+* New participants may receive Mana freely
+* This Mana is fully real and fully usable
+* Free Mana is not restricted or second-class
+
+### 5.2 Earned Mana
+
+* Mana may be earned through participation
+* Rituals, presence, contribution, and engagement may yield Mana
+* Earned Mana reinforces the relationship between effort and permission
+
+### 5.3 Purchased Mana
+
+* Mana may be purchased directly from the Arcanum
+* This is the primary revenue mechanism of the system
+* No microtransactions, ads, or extractive mechanics exist
+
+Purchased Mana increases *available capacity*, not progression speed.
+
+---
+
+## 6. Spending Mana (Sinks)
+
+Mana is spent to:
+
+* Activate or access technology
+* Enable features or permissions
+* Interact with advanced systems
+* Participate in higher-order rituals or tools
+
+Mana is never spent to:
+
+* Skip time
+* Skip rites
+* Skip progression
+* Override governance
+* Purchase authority over others
+
+---
+
+## 7. Mana and Vitae
+
+**Vitae** represents becoming — not consumption.
+
+Mana may be required to unlock access to Vitae grades or learning layers. However:
+
+* Vitae advancement is time-bound
+* Vitae advancement is ritual-bound
+* Vitae advancement is identity-bound
+
+Mana enables entry into a gate. **Vitae determines when the gate opens.**
+
+---
+
+## 8. Core Invariant (Non-Negotiable)
+
+> **Mana may unlock permission, but may never accelerate time-based progression or bypass Vitae thresholds.**
+
+This invariant preserves fairness, integrity, and alignment with Arcanum principles.
+
+---
+
+## 9. Genesis Declaration
+
+At Genesis, Mana is declared as follows:
+
+> **Mana is granted as permission, tradable as value, spent as utility, earned through presence, purchased by choice — but always subordinate to time, identity, and becoming.**
+
+---
+
+## 10. Evolution Over Time
+
+The behavior of Mana may evolve through governance:
+
+* New sinks may be introduced
+* New permissions may emerge
+* External interoperability may be enabled
+
+Its core ontology — **capacity before value** — remains foundational.
+
+Mana is not a promise of profit. Mana is a medium of participation in a living system.
