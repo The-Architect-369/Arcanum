@@ -137,13 +137,15 @@ fi
 # ------------------------------------------------------------
 # GUARD 4 — Canonical Checksums (Immutable Proof)
 # ------------------------------------------------------------
-CHECKSUM_FILE="$ROOT_DIR/docs/00_CONSTITUTION/doctrine-guard.yml"
+CHECKSUM_FILE="$ROOT_DIR/docs/00_CONSTITUTION/doctrine-checksums.yaml"
 
 echo ""
 echo "🔍 Guard α — Canonical Checksums"
 
 if [[ -f "$CHECKSUM_FILE" ]]; then
   while IFS=":" read -r path hash; do
+    path="$(echo "$path" | xargs)"
+    hash="$(echo "$hash" | xargs)"
     [[ -z "$path" ]] && continue
     local_path="$ROOT_DIR/$path"
     if [[ -f "$local_path" ]]; then

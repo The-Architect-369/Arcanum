@@ -1,0 +1,32 @@
+name: Doctrine Guard
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  doctrine-guard:
+    name: Enforce Arcanum Constitution
+    runs-on: ubuntu-22.04
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Ensure bash is available
+        run: |
+          which bash
+          bash --version
+
+      - name: Make doctrine guard executable
+        run: chmod +x scripts/doctrine-guard.sh
+
+      - name: Run doctrine guard
+        run: bash scripts/doctrine-guard.sh
+
+      - name: Verify Sync & Generate Repo Index
+        run: bash scripts/verify-sync.sh
