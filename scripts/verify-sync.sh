@@ -5,6 +5,23 @@
 
 set -e
 
+echo ""
+echo "📦 Generating Repository Index..."
+
+INDEX_PATH="docs/architect/REPO_INDEX.json"
+
+bash "$(dirname "$0")/repo-index.sh" || {
+  echo "❌ REPO_INDEX generation failed"
+  exit 1
+}
+
+if [[ ! -f "$INDEX_PATH" ]]; then
+  echo "❌ REPO_INDEX.json not found after generation"
+  exit 1
+fi
+
+echo "✅ REPO_INDEX generated"
+
 # --- Remote Verification (GitHub) ---
 GITHUB_API="https://api.github.com/repos/The-Architect-369/Arcanum/contents/docs/00_CONSTITUTION"
 
