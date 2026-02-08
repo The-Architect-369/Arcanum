@@ -4,6 +4,7 @@ import ActiveSectionObserver from '@/components/ActiveSectionObserver';
 import HeroBento from '@/components/ui/HeroBento';
 import BentoShowcase from '@/components/ui/BentoShowcase';
 import ActivateBento from '@/components/ui/ActivateBento';
+import Link from "next/link";
 
 export default function HomePage() {
   return (
@@ -40,6 +41,12 @@ export default function HomePage() {
           <a href="/privacy" className="underline decoration-transparent hover:decoration-current">
             Privacy
           </a>
+          <Link
+            href="/hope/presence?entry=marketing"
+            className="text-sm opacity-60 hover:opacity-100 transition"
+          >
+            Enter presence
+          </Link>
           {' · '}
           <a href="/terms" className="underline decoration-transparent hover:decoration-current">
             Terms
