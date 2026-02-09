@@ -1,0 +1,238 @@
+.
+├── CoreFileTree.txt
+└── web
+    ├── .env.local
+    ├── .env.production
+    ├── .env.seed
+    ├── .gitignore
+    ├── .vercel
+    │   ├── output
+    │   │   ├── builds.json
+    │   │   ├── config.json
+    │   │   └── diagnostics
+    │   │       ├── build-diagnostics.json
+    │   │       ├── cli_traces.json
+    │   │       ├── framework.json
+    │   │       └── trace
+    │   └── project.json
+    ├── README.md
+    ├── docs
+    │   ├── CORE_UI_GUIDE.md
+    │   ├── HOPE_GUIDE.md
+    │   ├── MASTER_INDEX.md
+    │   ├── MODULE_CARD_GUIDE.md
+    │   ├── NEXUS_GUIDE.md
+    │   ├── TEMPUS_GUIDE.md
+    │   ├── TEMPUS_REWARD_SYSTEM_CALENDAR.md
+    │   ├── TEXT_GUIDE.md
+    │   └── VITAE_GUIDE.md
+    ├── eslint.config.mjs
+    ├── middleware.ts
+    ├── next-env.d.ts
+    ├── next.config.mjs
+    ├── node
+    │   ├── docker
+    │   │   └── Dockerfile
+    │   ├── ipfs
+    │   │   ├── ipns-update.mjs
+    │   │   └── publish.mjs
+    │   └── scripts
+    │       └── bootstrap.sh
+    ├── package.json
+    ├── postcss.config.mjs
+    ├── public
+    │   ├── file.svg
+    │   ├── globe.svg
+    │   ├── icons
+    │   │   ├── account.png
+    │   │   ├── exchange.png
+    │   │   ├── hope.png
+    │   │   ├── icon-192.png
+    │   │   ├── icon-512.png
+    │   │   ├── maskable-192.png
+    │   │   ├── maskable-512.png
+    │   │   ├── preference.png
+    │   │   └── wallet.png
+    │   ├── manifest.json
+    │   ├── next.svg
+    │   ├── vercel.svg
+    │   └── window.svg
+    ├── src
+    │   ├── app
+    │   │   ├── (marketing)
+    │   │   │   ├── activate
+    │   │   │   │   └── page.tsx
+    │   │   │   ├── client-layout.tsx
+    │   │   │   ├── components
+    │   │   │   │   ├── ActiveSectionObserver.tsx
+    │   │   │   │   ├── ConstellationCanvas.tsx
+    │   │   │   │   ├── Header.tsx
+    │   │   │   │   └── ui
+    │   │   │   │       ├── ActivateBento.tsx
+    │   │   │   │       ├── BentoCard.tsx
+    │   │   │   │       ├── BentoShowcase.tsx
+    │   │   │   │       ├── HeroBento.tsx
+    │   │   │   │       ├── HopeOrb.tsx
+    │   │   │   │       ├── ShowcaseGrid.tsx
+    │   │   │   │       ├── bento-grid.tsx
+    │   │   │   │       └── button.tsx
+    │   │   │   ├── landing
+    │   │   │   ├── layout.tsx
+    │   │   │   ├── page.tsx
+    │   │   │   └── styles
+    │   │   │       ├── globals.css
+    │   │   │       ├── motion.css
+    │   │   │       └── utilities.css
+    │   │   ├── account
+    │   │   │   └── page.tsx
+    │   │   ├── api
+    │   │   │   └── ipfs
+    │   │   │       └── route.ts
+    │   │   ├── exchange
+    │   │   │   └── page.tsx
+    │   │   ├── favicon.ico
+    │   │   ├── globals.css
+    │   │   ├── hope
+    │   │   │   ├── character
+    │   │   │   │   └── page.tsx
+    │   │   │   ├── inventory
+    │   │   │   │   └── page.tsx
+    │   │   │   ├── page.tsx
+    │   │   │   ├── presence
+    │   │   │   │   ├── ReflectionEditor.tsx
+    │   │   │   │   ├── ipfs.ts
+    │   │   │   │   └── page.tsx
+    │   │   │   └── stylize
+    │   │   │       └── page.tsx
+    │   │   ├── layout.tsx
+    │   │   ├── mobile-only
+    │   │   │   └── page.tsx
+    │   │   ├── nexus
+    │   │   │   ├── channel
+    │   │   │   │   └── page.tsx
+    │   │   │   ├── current
+    │   │   │   │   └── page.tsx
+    │   │   │   ├── page.tsx
+    │   │   │   └── post
+    │   │   │       └── page.tsx
+    │   │   ├── notifications
+    │   │   │   └── page.tsx
+    │   │   ├── onboard
+    │   │   │   └── page.tsx
+    │   │   ├── page.tsx
+    │   │   ├── preferences
+    │   │   │   └── page.tsx
+    │   │   ├── providers.tsx
+    │   │   ├── tempus
+    │   │   │   ├── calendar
+    │   │   │   │   └── page.tsx
+    │   │   │   ├── clock
+    │   │   │   │   └── page.tsx
+    │   │   │   ├── codex
+    │   │   │   │   └── page.tsx
+    │   │   │   └── page.tsx
+    │   │   ├── text
+    │   │   │   ├── contacts
+    │   │   │   │   └── page.tsx
+    │   │   │   ├── groups
+    │   │   │   │   └── page.tsx
+    │   │   │   ├── messages
+    │   │   │   │   └── page.tsx
+    │   │   │   └── page.tsx
+    │   │   ├── vitae
+    │   │   │   ├── grade
+    │   │   │   │   └── page.tsx
+    │   │   │   ├── mastery
+    │   │   │   │   └── page.tsx
+    │   │   │   ├── page.tsx
+    │   │   │   └── path
+    │   │   │       └── page.tsx
+    │   │   └── wallet
+    │   │       └── page.tsx
+    │   ├── components
+    │   │   ├── ConnectWallet.tsx
+    │   │   ├── SimpleAccountPreview.tsx
+    │   │   ├── shared
+    │   │   │   ├── CTAActivate.tsx
+    │   │   │   ├── FreeBadge.tsx
+    │   │   │   └── LockHint.tsx
+    │   │   └── ui
+    │   │       ├── ACCOnboardingModal.tsx
+    │   │       ├── AppFooter.tsx
+    │   │       ├── AppHeader.tsx
+    │   │       ├── BadgeCounter.tsx
+    │   │       ├── PanelShell.tsx
+    │   │       ├── SwipeRoutes.tsx
+    │   │       ├── TabDots.tsx
+    │   │       ├── TabMenuIndicators.tsx
+    │   │       └── TabMenuPager.tsx
+    │   ├── content
+    │   │   ├── locales
+    │   │   │   ├── de.json
+    │   │   │   ├── en.json
+    │   │   │   ├── es.json
+    │   │   │   └── fr.json
+    │   │   ├── narrative.json
+    │   │   └── narrative.ts
+    │   ├── hooks
+    │   │   └── useNarrative.ts
+    │   ├── lib
+    │   │   ├── cn.ts
+    │   │   ├── cosmos
+    │   │   │   ├── client.ts
+    │   │   │   ├── queries.ts
+    │   │   │   ├── tx.ts
+    │   │   │   ├── types
+    │   │   │   └── wallet.ts
+    │   │   ├── economy
+    │   │   │   ├── config
+    │   │   │   │   └── costs.json
+    │   │   │   ├── contracts.ts
+    │   │   │   ├── display
+    │   │   │   ├── economy.ts
+    │   │   │   ├── guards.ts
+    │   │   │   ├── index.ts
+    │   │   │   ├── queries
+    │   │   │   └── tokens.ts
+    │   │   ├── gates
+    │   │   │   └── index.ts
+    │   │   ├── helia
+    │   │   │   └── index.ts
+    │   │   ├── i18n
+    │   │   │   └── messages
+    │   │   ├── identity
+    │   │   │   ├── aa.ts
+    │   │   │   ├── burner.ts
+    │   │   │   ├── gates.ts
+    │   │   │   ├── passkey.ts
+    │   │   │   └── trust.ts
+    │   │   ├── infra
+    │   │   │   ├── arcanum.ts
+    │   │   │   ├── chains.ts
+    │   │   │   ├── helia.ts
+    │   │   │   ├── index.ts
+    │   │   │   ├── ipfs.ts
+    │   │   │   ├── matrix.ts
+    │   │   │   └── wagmi.ts
+    │   │   ├── ipfs
+    │   │   │   └── index.ts
+    │   │   ├── matrix
+    │   │   │   └── index.ts
+    │   │   ├── rooms
+    │   │   │   └── index.ts
+    │   │   ├── social
+    │   │   │   ├── post.ts
+    │   │   │   └── rooms.ts
+    │   │   └── utils.ts
+    │   ├── state
+    │   │   ├── useAccount.ts
+    │   │   ├── useActiveTab.ts
+    │   │   └── usePreference.ts
+    │   └── styles
+    │       └── globals.css
+    ├── tailwind.config.ts
+    ├── tools
+    │   └── seedRooms.ts
+    └── tsconfig.json
+
+76 directories, 160 files
