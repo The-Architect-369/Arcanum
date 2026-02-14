@@ -59,6 +59,66 @@
     │   └── window.svg
     ├── src
     │   ├── app
+    │   │   ├── (app)
+    │   │   │   ├── account
+    │   │   │   │   └── page.tsx
+    │   │   │   ├── exchange
+    │   │   │   │   └── page.tsx
+    │   │   │   ├── hope
+    │   │   │   │   ├── character
+    │   │   │   │   │   └── page.tsx
+    │   │   │   │   ├── inventory
+    │   │   │   │   │   └── page.tsx
+    │   │   │   │   ├── page.tsx
+    │   │   │   │   ├── presence
+    │   │   │   │   │   ├── ReflectionEditor.tsx
+    │   │   │   │   │   ├── ipfs.ts
+    │   │   │   │   │   └── page.tsx
+    │   │   │   │   └── stylize
+    │   │   │   │       └── page.tsx
+    │   │   │   ├── layout.tsx
+    │   │   │   ├── mobile-only
+    │   │   │   │   └── page.tsx
+    │   │   │   ├── nexus
+    │   │   │   │   ├── channel
+    │   │   │   │   │   └── page.tsx
+    │   │   │   │   ├── current
+    │   │   │   │   │   └── page.tsx
+    │   │   │   │   ├── page.tsx
+    │   │   │   │   └── post
+    │   │   │   │       └── page.tsx
+    │   │   │   ├── notifications
+    │   │   │   │   └── page.tsx
+    │   │   │   ├── page.tsx
+    │   │   │   ├── preferences
+    │   │   │   │   └── page.tsx
+    │   │   │   ├── providers.tsx
+    │   │   │   ├── tempus
+    │   │   │   │   ├── calendar
+    │   │   │   │   │   └── page.tsx
+    │   │   │   │   ├── clock
+    │   │   │   │   │   └── page.tsx
+    │   │   │   │   ├── codex
+    │   │   │   │   │   └── page.tsx
+    │   │   │   │   └── page.tsx
+    │   │   │   ├── text
+    │   │   │   │   ├── contacts
+    │   │   │   │   │   └── page.tsx
+    │   │   │   │   ├── groups
+    │   │   │   │   │   └── page.tsx
+    │   │   │   │   ├── messages
+    │   │   │   │   │   └── page.tsx
+    │   │   │   │   └── page.tsx
+    │   │   │   ├── vitae
+    │   │   │   │   ├── grade
+    │   │   │   │   │   └── page.tsx
+    │   │   │   │   ├── mastery
+    │   │   │   │   │   └── page.tsx
+    │   │   │   │   ├── page.tsx
+    │   │   │   │   └── path
+    │   │   │   │       └── page.tsx
+    │   │   │   └── wallet
+    │   │   │       └── page.tsx
     │   │   ├── (marketing)
     │   │   │   ├── activate
     │   │   │   │   └── page.tsx
@@ -83,72 +143,16 @@
     │   │   │       ├── globals.css
     │   │   │       ├── motion.css
     │   │   │       └── utilities.css
-    │   │   ├── account
-    │   │   │   └── page.tsx
     │   │   ├── api
     │   │   │   └── ipfs
     │   │   │       └── route.ts
-    │   │   ├── exchange
-    │   │   │   └── page.tsx
     │   │   ├── favicon.ico
     │   │   ├── globals.css
-    │   │   ├── hope
-    │   │   │   ├── character
-    │   │   │   │   └── page.tsx
-    │   │   │   ├── inventory
-    │   │   │   │   └── page.tsx
-    │   │   │   ├── page.tsx
-    │   │   │   ├── presence
-    │   │   │   │   ├── ReflectionEditor.tsx
-    │   │   │   │   ├── ipfs.ts
-    │   │   │   │   └── page.tsx
-    │   │   │   └── stylize
-    │   │   │       └── page.tsx
     │   │   ├── layout.tsx
-    │   │   ├── mobile-only
-    │   │   │   └── page.tsx
-    │   │   ├── nexus
-    │   │   │   ├── channel
-    │   │   │   │   └── page.tsx
-    │   │   │   ├── current
-    │   │   │   │   └── page.tsx
-    │   │   │   ├── page.tsx
-    │   │   │   └── post
-    │   │   │       └── page.tsx
-    │   │   ├── notifications
-    │   │   │   └── page.tsx
+    │   │   ├── middleware.ts
     │   │   ├── onboard
     │   │   │   └── page.tsx
-    │   │   ├── page.tsx
-    │   │   ├── preferences
-    │   │   │   └── page.tsx
-    │   │   ├── providers.tsx
-    │   │   ├── tempus
-    │   │   │   ├── calendar
-    │   │   │   │   └── page.tsx
-    │   │   │   ├── clock
-    │   │   │   │   └── page.tsx
-    │   │   │   ├── codex
-    │   │   │   │   └── page.tsx
-    │   │   │   └── page.tsx
-    │   │   ├── text
-    │   │   │   ├── contacts
-    │   │   │   │   └── page.tsx
-    │   │   │   ├── groups
-    │   │   │   │   └── page.tsx
-    │   │   │   ├── messages
-    │   │   │   │   └── page.tsx
-    │   │   │   └── page.tsx
-    │   │   ├── vitae
-    │   │   │   ├── grade
-    │   │   │   │   └── page.tsx
-    │   │   │   ├── mastery
-    │   │   │   │   └── page.tsx
-    │   │   │   ├── page.tsx
-    │   │   │   └── path
-    │   │   │       └── page.tsx
-    │   │   └── wallet
-    │   │       └── page.tsx
+    │   │   └── page.tsx
     │   ├── components
     │   │   ├── ConnectWallet.tsx
     │   │   ├── SimpleAccountPreview.tsx
@@ -235,4 +239,4 @@
     │   └── seedRooms.ts
     └── tsconfig.json
 
-76 directories, 160 files
+77 directories, 163 files
