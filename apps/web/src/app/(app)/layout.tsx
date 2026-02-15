@@ -1,5 +1,11 @@
-import "./globals.css";
-export const metadata = { title: "Arcanum — App", description: "Downloadable App build" };
-export default function RootLayout({ children }: { children: React.ReactNode }) {
-  return <html lang="en"><body className="min-h-screen bg-black text-white">{children}</body></html>;
+import type { ReactNode } from "react";
+import Providers from "./providers";
+
+export default function AppLayout({ children }: { children: ReactNode }) {
+  return (
+    <Providers>
+      {/* Keep this minimal so it doesn't force any particular UI shell */}
+      {children}
+    </Providers>
+  );
 }

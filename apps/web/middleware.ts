@@ -1,35 +1,44 @@
-import { NextResponse } from 'next/server';
-import type { NextRequest } from 'next/server';
-
-const MOBILE_REGEX = /(iPhone|iPad|iPod|Android|webOS|BlackBerry|IEMobile|Opera Mini)/i;
+import { NextResponse, type NextRequest } from "next/server";
 
 export function middleware(req: NextRequest) {
-  const ua = req.headers.get('user-agent') || '';
-  const url = new URL(req.url);
-
-  // Allow if PWA installed (display-mode header set by browsers when launched from home screen)
-  const displayMode = req.headers.get('sec-ch-ua-mobile') || '';
-  const isMobileUA = MOBILE_REGEX.test(ua);
-
-  // Whitelist internal/system routes
-  const allowList = ['/mobile-only', '/_next', '/manifest.json', '/icons', '/favicon.ico'];
-
-  if (allowList.some(p => url.pathname.startsWith(p))) {
+  // ✅ Dev bypass: allow everything on localhost/dev so you can build on desktop
+  if (process.env.NODE_ENV === "development") {
     return NextResponse.next();
   }
 
-  // If on mobile user agent OR running installed (heuristic via UA + path), allow
-  if (isMobileUA) return NextResponse.next();
+  const { pathname, searchParams } = req.nextUrl;
 
-  // Permit direct install intents from landing (query ?install=1) to show minimal app page
-  if (url.searchParams.get('install') === '1') return NextResponse.next();
+  // Allow Next internals + assets
+  const allowList = [
+    "/mobile-only",
+    "/_next",
+    "/manifest.json",
+    "/icons",
+    "/favicon.ico",
+  ];
 
-  // Otherwise, block and send to info page
-  url.pathname = '/mobile-only';
-  url.search = '';
+  if (allowList.some((p) => pathname.startsWith(p))) {
+    return NextResponse.next();
+  }
+
+  // Optional: allow install-mode bypass in prod too
+  if (searchParams.get("install") === "1") {
+    return NextResponse.next();
+  }
+
+  const ua = req.headers.get("user-agent") || "";
+  const isMobile = /Android|iPhone|iPad|iPod|Mobile/i.test(ua);
+
+  if (isMobile) {
+    return NextResponse.next();
+  }
+
+  const url = req.nextUrl.clone();
+  url.pathname = "/mobile-only";
+  url.search = "";
   return NextResponse.redirect(url);
 }
 
 export const config = {
-  matcher: ['/((?!api).*)'],
+  matcher: ["/((?!api).*)"],
 };
