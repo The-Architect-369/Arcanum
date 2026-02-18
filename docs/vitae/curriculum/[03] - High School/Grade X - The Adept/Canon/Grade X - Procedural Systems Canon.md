@@ -6,6 +6,7 @@ last_updated: 2026-02-18
 description: ""
 ---
 
+
 # Grade X Procedural Systems Canon
 ## **Grade X — The Adept**
 

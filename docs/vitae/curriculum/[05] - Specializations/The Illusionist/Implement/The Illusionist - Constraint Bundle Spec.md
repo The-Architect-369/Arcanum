@@ -6,6 +6,7 @@ last_updated: 2026-02-18
 description: ""
 ---
 
+
 # The Illusionist Constraint Bundle Spec
 ## **Constraint Bundle Specification**
 

@@ -6,6 +6,7 @@ last_updated: 2026-02-18
 description: ""
 ---
 
+
 # Roadmap V2
 **Sovereign Genesis → Living World**
 

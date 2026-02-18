@@ -6,6 +6,7 @@ last_updated: 2026-02-18
 description: ""
 ---
 
+
 # Executive Summary
 **Arcanum** is a self‑governing, decentralized ecosystem designed to restore **authentic human presence** in the digital realm. It weaves spiritual practice, creative expression, and community coordination into a trust‑minimized platform powered by **soul‑bound identity** and a native unit of account, **Mana**.
 

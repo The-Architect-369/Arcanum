@@ -6,6 +6,7 @@ last_updated: 2026-02-18
 description: ""
 ---
 
+
 # Glossary
 - **Arcanum:** The ecosystem/protocol providing a sacred, user‑owned digital commons.  
 - **Mana:** Native utility unit used to reward participation and access features.  

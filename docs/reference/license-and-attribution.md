@@ -6,6 +6,7 @@ last_updated: 2026-02-18
 description: ""
 ---
 
+
 # License And Attribution
 > **Proposal — subject to community approval.**
 

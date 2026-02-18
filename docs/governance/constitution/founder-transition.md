@@ -6,6 +6,7 @@ last_updated: 2026-02-18
 description: ""
 ---
 
+
 # Founder Transition
 
 \# \*\*FOUNDER\_TRANSITION\_AND\_ARCHETYPE\*\*

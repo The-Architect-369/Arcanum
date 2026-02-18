@@ -6,6 +6,7 @@ last_updated: 2026-02-18
 description: ""
 ---
 
+
 # Appendix Governance
 **Status:** v0.1 (subject to community ratification). This appendix is modular and may be updated independently of the main White Pages.
 

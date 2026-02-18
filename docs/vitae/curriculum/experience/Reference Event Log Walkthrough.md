@@ -6,6 +6,7 @@ last_updated: 2026-02-18
 description: ""
 ---
 
+
 # Reference Event Log Walkthrough
 ## **Reference Event Log Walkthrough (Happy Path \+ Stall \+ Exit)**
 

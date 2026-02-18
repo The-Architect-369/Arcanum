@@ -6,6 +6,7 @@ last_updated: 2026-02-18
 description: ""
 ---
 
+
 # The Enchanter State Machine Spec
 ## **State Machine Specification**
 

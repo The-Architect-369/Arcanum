@@ -10,6 +10,7 @@ purpose: "Synchronization history for Architect GPT Core ↔ Extended"
 version: 2.1
 ---
 
+
 # Architect Log
 ## [SYNC EVENT — YYYY-MM-DD]
 

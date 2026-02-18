@@ -6,6 +6,7 @@ last_updated: 2026-02-18
 description: ""
 ---
 
+
 # G1 Hope Seal
 
 \# G1 HOPE — SEAL

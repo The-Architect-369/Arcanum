@@ -6,6 +6,7 @@ last_updated: 2026-02-18
 description: ""
 ---
 
+
 # Technical Architecture
 > **Design goals:** user sovereignty, minimal custodianship, composability, security, and graceful recovery.
 

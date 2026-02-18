@@ -20,6 +20,7 @@ vercel_dry_run_emulation: enabled
 version: 2.1
 ---
 
+
 # Architectgpt Extended
 
 ArchitectGPT_Extended.md

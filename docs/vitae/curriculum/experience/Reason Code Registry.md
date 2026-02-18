@@ -6,6 +6,7 @@ last_updated: 2026-02-18
 description: ""
 ---
 
+
 # Reason Code Registry
 ## **Reason Code Registry & Risk-Flag Mapping Table (Vitae-Wide)**
 

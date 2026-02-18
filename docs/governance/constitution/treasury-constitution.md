@@ -25,6 +25,7 @@ verified_by: "Architect GPT"
 version: 1.0
 ---
 
+
 # Treasury Constitution
 ## 1. Genesis Context
 

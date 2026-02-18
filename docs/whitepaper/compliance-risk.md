@@ -6,6 +6,7 @@ last_updated: 2026-02-18
 description: ""
 ---
 
+
 # Compliance Risk
 > **Not legal advice.** This section outlines a design posture for a **user‑owned**, non‑custodial network. Engage qualified counsel before launch and prior to any jurisdictional expansion.
 

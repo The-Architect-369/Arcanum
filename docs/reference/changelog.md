@@ -6,6 +6,7 @@ last_updated: 2026-02-18
 description: ""
 ---
 
+
 # Changelog
 - **v0.1-draft — 2025-10-26**
   - Initial modular White Pages published from founder/architect conversations.
