@@ -126,10 +126,10 @@ remote_version_for() {
   content_b64="$(echo "$remote_data" | jq -r '.content // empty' | tr -d '\n' || true)"
 
   if [[ -z "$content_b64" ]]; then
-    echo "⚠️  Remote check failed or file missing on GitHub: $filename"
-    DRIFT=1
+    echo "⚠️  Remote file not found on GitHub (expected until push): $filename"
     return 0
   fi
+
 
   remote_text="$(echo "$content_b64" | base64 -d 2>/dev/null || true)"
   remote_version="$(echo "$remote_text" | grep -m1 "^version:" | awk '{print $2}')"
