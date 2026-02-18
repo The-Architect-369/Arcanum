@@ -1,5 +1,12 @@
-# **Arcanum Vitae**
+---
+title: "Grade Ix Responsibility & Invariants Canon"
+status: draft
+visibility: internal
+last_updated: 2026-02-18
+description: ""
+---
 
+# Grade Ix Responsibility & Invariants Canon
 ## **Grade IX — The Oracle**
 
 ### **System Responsibility & Invariants Canon**

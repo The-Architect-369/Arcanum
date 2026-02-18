@@ -1,5 +1,12 @@
-# **Arcanum Vitae**
+---
+title: "Grade V Generator & Module Mapping"
+status: draft
+visibility: internal
+last_updated: 2026-02-18
+description: ""
+---
 
+# Grade V Generator & Module Mapping
 ## **Grade V — The Scholar**
 
 ### **Generator & Module Mapping**

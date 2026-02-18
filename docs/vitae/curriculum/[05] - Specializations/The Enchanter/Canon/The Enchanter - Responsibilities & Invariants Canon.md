@@ -1,5 +1,12 @@
-# **The Enchanter**
+---
+title: "The Enchanter Responsibilities & Invariants Canon"
+status: draft
+visibility: internal
+last_updated: 2026-02-18
+description: ""
+---
 
+# The Enchanter Responsibilities & Invariants Canon
 ## **System Responsibilities & Invariants Canon**
 
 **Status:** Canonical · Internal · Specialization Layer

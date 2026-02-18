@@ -1,5 +1,12 @@
-# **Grade II — The Seeker**
+---
+title: "Grade Ii — Responsibility & Invariants Map"
+status: draft
+visibility: internal
+last_updated: 2026-02-18
+description: ""
+---
 
+# Grade Ii — Responsibility & Invariants Map
 ## **System Responsibility & Invariants Map**
 
 **Status:** Canonical · Internal · Implementation Reference

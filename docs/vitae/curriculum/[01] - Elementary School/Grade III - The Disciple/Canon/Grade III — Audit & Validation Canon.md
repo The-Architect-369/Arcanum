@@ -1,5 +1,12 @@
-# **Grade III — The Disciple**
+---
+title: "Grade Iii — Audit & Validation Canon"
+status: draft
+visibility: internal
+last_updated: 2026-02-18
+description: ""
+---
 
+# Grade Iii — Audit & Validation Canon
 ## **Audit & Validation Canon**
 
 **Status:** Canonical · Internal · Enforceable

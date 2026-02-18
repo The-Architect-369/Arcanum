@@ -1,3 +1,13 @@
+---
+title: "Temporal Model"
+status: canonical
+visibility: public
+last_updated: 2026-02-18
+description: ""
+---
+
+# Temporal Model
+
 \# \*\*Temporal Model of the Arcanum\*\*
 
 

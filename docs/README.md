@@ -1,4 +1,12 @@
-# Arcanum — White Pages (v0.1-draft)
+---
+title: "Readme"
+status: draft
+visibility: public
+last_updated: 2026-02-18
+description: ""
+---
+
+# Readme
 **Date:** 2025-10-26
 
 This repository contains the modular “White Pages” for the **Arcanum**, a self-governing ecosystem tool and sacred digital commons. It is structured for clarity, versioning, and community collaboration.

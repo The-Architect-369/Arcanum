@@ -1,5 +1,12 @@
-# **Arcanum Vitae**
+---
+title: "Grade V Master Canon"
+status: draft
+visibility: internal
+last_updated: 2026-02-18
+description: ""
+---
 
+# Grade V Master Canon
 ## **Grade V — The Scholar**
 
 ### **Master Canon**

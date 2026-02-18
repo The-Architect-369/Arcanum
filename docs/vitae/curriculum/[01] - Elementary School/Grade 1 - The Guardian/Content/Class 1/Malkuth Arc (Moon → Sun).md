@@ -1,3 +1,13 @@
+---
+title: "Malkuth Arc (moon → Sun)"
+status: draft
+visibility: internal
+last_updated: 2026-02-18
+description: ""
+---
+
+# Malkuth Arc (moon → Sun)
+
 ## **Ⅰ. Class 1 Arc (Moon → Sun)**
 
 Class 1 is doing something very precise, and it *is* coherent.

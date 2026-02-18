@@ -1,5 +1,12 @@
-# **The Philosopher**
+---
+title: "The Philosopher Responsibilities & Invariants Canon"
+status: draft
+visibility: internal
+last_updated: 2026-02-18
+description: ""
+---
 
+# The Philosopher Responsibilities & Invariants Canon
 ## **System Responsibilities & Invariants Canon**
 
 **Status:** Canonical · Internal · Specialization Layer

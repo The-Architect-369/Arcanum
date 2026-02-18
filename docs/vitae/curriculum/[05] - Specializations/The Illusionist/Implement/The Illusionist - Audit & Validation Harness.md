@@ -1,5 +1,12 @@
-# **The Illusionist**
+---
+title: "The Illusionist Audit & Validation Harness"
+status: draft
+visibility: internal
+last_updated: 2026-02-18
+description: ""
+---
 
+# The Illusionist Audit & Validation Harness
 ## **Audit & Validation Harness**
 
 **Status:** Canonical · Internal · Implementation Reference

@@ -1,5 +1,12 @@
-# **Arcanum Vitae**
+---
+title: "Grade Ix Master Canon"
+status: draft
+visibility: internal
+last_updated: 2026-02-18
+description: ""
+---
 
+# Grade Ix Master Canon
 ## **Grade IX — The Oracle**
 
 ### **Master Canon**

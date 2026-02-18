@@ -1,5 +1,12 @@
-# 10. License & Attribution
+---
+title: "License And Attribution"
+status: draft
+visibility: public
+last_updated: 2026-02-18
+description: ""
+---
 
+# License And Attribution
 > **Proposal — subject to community approval.**
 
 - **Documentation (this White Pages):** Creative Commons **CC BY 4.0** (attribution required).  

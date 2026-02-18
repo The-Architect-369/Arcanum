@@ -1,5 +1,12 @@
-# **Arcanum Vitae**
+---
+title: "Grade Vi Master Canon"
+status: draft
+visibility: internal
+last_updated: 2026-02-18
+description: ""
+---
 
+# Grade Vi Master Canon
 ## **Grade VI — The Healer**
 
 ### **Master Canon**

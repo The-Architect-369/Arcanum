@@ -1,3 +1,13 @@
+---
+title: "Metaphysical Neutrality"
+status: canonical
+visibility: public
+last_updated: 2026-02-18
+description: ""
+---
+
+# Metaphysical Neutrality
+
 \# \*\*METAPHYSICAL\_NEUTRALITY\_PRINCIPLE\*\*
 
 

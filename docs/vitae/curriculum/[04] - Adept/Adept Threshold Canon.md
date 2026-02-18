@@ -1,5 +1,12 @@
-# **Arcanum Vitae**
+---
+title: "Adept Threshold Canon"
+status: draft
+visibility: internal
+last_updated: 2026-02-18
+description: ""
+---
 
+# Adept Threshold Canon
 ## **Adept Threshold Canon**
 
 **Status:** Canonical · Public-Facing Summary with Internal Authority

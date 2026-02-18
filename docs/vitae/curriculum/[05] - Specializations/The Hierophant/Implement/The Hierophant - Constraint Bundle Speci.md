@@ -1,5 +1,12 @@
-# **The Hierophant**
+---
+title: "The Hierophant Constraint Bundle Speci"
+status: draft
+visibility: internal
+last_updated: 2026-02-18
+description: ""
+---
 
+# The Hierophant Constraint Bundle Speci
 ## **Constraint Bundle Specification**
 
 **Status:** Canonical · Internal · Implementation Reference

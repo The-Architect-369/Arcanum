@@ -1,3 +1,13 @@
+---
+title: "Architect Role"
+status: canonical
+visibility: public
+last_updated: 2026-02-18
+description: ""
+---
+
+# Architect Role
+
 \# \*\*The Architect — Role \& Meta-Authority\*\*
 
 

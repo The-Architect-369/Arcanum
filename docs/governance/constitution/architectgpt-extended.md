@@ -1,27 +1,26 @@
 ---
-file: ArchitectGPT_Extended.md
-version: 2.1
+title: "Architectgpt Extended"
+status: canonical
+visibility: public
 last_updated: 2025-10-17
-linked_core: ArchitectGPT_Core.md
-description: >
-  Canonical technical and doctrinal specification for Architect GPT — 
-  including all module definitions, operational schemas, behavioral protocols, and doctrinal alignment layers.
-  Referenced by ArchitectGPT_Core.md as the authoritative extended knowledge base.
-maintainer: The-Architect-369
+description: ">"
+api_access: action_and_tree_api
 arcanum_phase: Pre-Genesis
-arcanum_principles:
-  - Sovereignty
-  - Reciprocity
-  - Harmony
-integrity:
-  mode: read-only
-  repository: https://github.com/The-Architect-369/Arcanum.git
-  api_access: action_and_tree_api
-  safe_container_simulation: enabled
-  vercel_dry_run_emulation: enabled
-sync_status: synchronized_with_Core_v2.0
+arcanum_principles: 
 canonical_reference: true
+file: ArchitectGPT_Extended.md
+integrity: 
+linked_core: ArchitectGPT_Core.md
+maintainer: The-Architect-369
+mode: read-only
+repository: https://github.com/The-Architect-369/Arcanum.git
+safe_container_simulation: enabled
+sync_status: synchronized_with_Core_v2.0
+vercel_dry_run_emulation: enabled
+version: 2.1
 ---
+
+# Architectgpt Extended
 
 ArchitectGPT_Extended.md
 Overview

@@ -1,5 +1,12 @@
-# **Arcanum Vitae**
+---
+title: "Grade X State Machine Spec"
+status: draft
+visibility: internal
+last_updated: 2026-02-18
+description: ""
+---
 
+# Grade X State Machine Spec
 ## **Grade X — The Adept**
 
 ### **State Machine Specification**

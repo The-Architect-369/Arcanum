@@ -1,5 +1,12 @@
-# **The Artificer**
+---
+title: "The Artificer Procedural Systems Canon"
+status: draft
+visibility: internal
+last_updated: 2026-02-18
+description: ""
+---
 
+# The Artificer Procedural Systems Canon
 ## **Procedural Systems Canon**
 
 **Status:** Canonical · Internal · Specialization Layer

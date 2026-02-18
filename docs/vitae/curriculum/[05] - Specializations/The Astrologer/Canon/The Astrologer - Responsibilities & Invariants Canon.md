@@ -1,5 +1,12 @@
-# **The Astrologer**
+---
+title: "The Astrologer Responsibilities & Invariants Canon"
+status: draft
+visibility: internal
+last_updated: 2026-02-18
+description: ""
+---
 
+# The Astrologer Responsibilities & Invariants Canon
 ## **System Responsibilities & Invariants Canon**
 
 **Status:** Canonical · Internal · Specialization Layer

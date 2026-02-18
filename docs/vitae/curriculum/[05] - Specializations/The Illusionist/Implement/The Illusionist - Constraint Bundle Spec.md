@@ -1,5 +1,12 @@
-# **The Illusionist**
+---
+title: "The Illusionist Constraint Bundle Spec"
+status: draft
+visibility: internal
+last_updated: 2026-02-18
+description: ""
+---
 
+# The Illusionist Constraint Bundle Spec
 ## **Constraint Bundle Specification**
 
 **Status:** Canonical · Internal · Implementation Reference

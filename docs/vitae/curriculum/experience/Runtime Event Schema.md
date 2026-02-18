@@ -1,5 +1,12 @@
-# **Arcanum Vitae**
+---
+title: "Runtime Event Schema"
+status: draft
+visibility: internal
+last_updated: 2026-02-18
+description: ""
+---
 
+# Runtime Event Schema
 ## **Runtime Event Schema & DS Attachment Contract**
 
 **Status:** Canonical · Internal · Implementation Reference

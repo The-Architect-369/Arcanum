@@ -1,5 +1,12 @@
-# **Grade I — The Guardian**
+---
+title: "Grade I — Constraint Bundle Spec"
+status: draft
+visibility: internal
+last_updated: 2026-02-18
+description: ""
+---
 
+# Grade I — Constraint Bundle Spec
 ## **Constraint Bundle Specification**
 
 **Status:** Canonical · Internal · Implementation Reference

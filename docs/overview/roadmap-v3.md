@@ -1,3 +1,13 @@
+---
+title: "Roadmap V3"
+status: draft
+visibility: public
+last_updated: 2026-02-18
+description: ""
+---
+
+# Roadmap V3
+
 \## \*\*Genesis Execution Roadmap\*\*
 
 

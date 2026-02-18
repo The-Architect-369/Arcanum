@@ -1,5 +1,12 @@
-# **Arcanum Vitae**
+---
+title: "Specialization Overview Codex"
+status: draft
+visibility: internal
+last_updated: 2026-02-18
+description: ""
+---
 
+# Specialization Overview Codex
 ## **Specialization Overview Codex**
 
 **Status:** Canonical · Public-Facing Orientation · Governance Reference

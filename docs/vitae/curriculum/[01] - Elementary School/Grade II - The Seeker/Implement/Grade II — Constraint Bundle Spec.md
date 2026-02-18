@@ -1,5 +1,12 @@
-# **Grade II — The Seeker**
+---
+title: "Grade Ii — Constraint Bundle Spec"
+status: draft
+visibility: internal
+last_updated: 2026-02-18
+description: ""
+---
 
+# Grade Ii — Constraint Bundle Spec
 ## **Constraint Bundle Specification**
 
 **Status:** Canonical · Internal · Implementation Reference

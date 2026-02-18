@@ -1,5 +1,12 @@
-# Mana — Canonical Definition
+---
+title: "Tokenomics"
+status: draft
+visibility: public
+last_updated: 2026-02-18
+description: ""
+---
 
+# Tokenomics
 **Genesis Ontology: Capacity and Value**
 
 ---

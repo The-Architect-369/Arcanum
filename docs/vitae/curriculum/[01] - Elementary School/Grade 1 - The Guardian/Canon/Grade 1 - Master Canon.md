@@ -1,5 +1,12 @@
-# **Grade I — The Guardian**
+---
+title: "Grade 1 Master Canon"
+status: draft
+visibility: internal
+last_updated: 2026-02-18
+description: ""
+---
 
+# Grade 1 Master Canon
 ## **Master Canon**
 
 **Status:** Canonical · Closed · Reference Implementation

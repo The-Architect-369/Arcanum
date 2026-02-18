@@ -1,5 +1,12 @@
-# **The Artificer**
+---
+title: "The Artificer Master Canon"
+status: draft
+visibility: internal
+last_updated: 2026-02-18
+description: ""
+---
 
+# The Artificer Master Canon
 ## **Master Canon**
 
 **Status:** Canonical · Internal · Specialization Layer

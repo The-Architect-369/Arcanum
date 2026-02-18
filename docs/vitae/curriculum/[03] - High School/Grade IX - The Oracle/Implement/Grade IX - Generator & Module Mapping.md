@@ -1,5 +1,12 @@
-# **Arcanum Vitae**
+---
+title: "Grade Ix Generator & Module Mapping"
+status: draft
+visibility: internal
+last_updated: 2026-02-18
+description: ""
+---
 
+# Grade Ix Generator & Module Mapping
 ## **Grade IX — The Oracle**
 
 ### **Generator & Module Mapping**

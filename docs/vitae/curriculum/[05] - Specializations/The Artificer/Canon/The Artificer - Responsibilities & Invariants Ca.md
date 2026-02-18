@@ -1,5 +1,12 @@
-# **The Artificer**
+---
+title: "The Artificer Responsibilities & Invariants Ca"
+status: draft
+visibility: internal
+last_updated: 2026-02-18
+description: ""
+---
 
+# The Artificer Responsibilities & Invariants Ca
 ## **System Responsibilities & Invariants Canon**
 
 **Status:** Canonical · Internal · Specialization Layer

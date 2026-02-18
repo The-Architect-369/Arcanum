@@ -1,5 +1,12 @@
-# **Arcanum Vitae**
+---
+title: "Mastery Path Governance Canon"
+status: draft
+visibility: internal
+last_updated: 2026-02-18
+description: ""
+---
 
+# Mastery Path Governance Canon
 ## **Cross-Specialization & Mastery Path Governance Canon**
 
 **Status:** Canonical · Internal · Governance Layer

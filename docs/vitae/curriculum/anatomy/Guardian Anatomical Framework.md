@@ -1,5 +1,12 @@
-# **Guardian Anatomical Framework**
+---
+title: "Guardian Anatomical Framework"
+status: draft
+visibility: internal
+last_updated: 2026-02-18
+description: ""
+---
 
+# Guardian Anatomical Framework
 ## **I. Purpose**
 
 The Guardian Anatomical Framework establishes the **physical substrate** of the Arcanum Vitae. It ensures that the Guardian teaches the human body as a **named, integrated, experiential system**, providing anatomical literacy that supports later symbolic, energetic, and metaphysical overlays without contradiction.

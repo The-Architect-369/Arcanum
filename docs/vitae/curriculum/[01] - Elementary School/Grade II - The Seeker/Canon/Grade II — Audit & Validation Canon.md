@@ -1,5 +1,12 @@
-# **Grade II — The Seeker**
+---
+title: "Grade Ii — Audit & Validation Canon"
+status: draft
+visibility: internal
+last_updated: 2026-02-18
+description: ""
+---
 
+# Grade Ii — Audit & Validation Canon
 ## **Audit & Validation Canon**
 
 **Status:** Canonical · Internal · Enforceable

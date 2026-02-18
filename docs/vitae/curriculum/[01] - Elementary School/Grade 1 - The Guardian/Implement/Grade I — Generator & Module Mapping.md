@@ -1,5 +1,12 @@
-# **Grade I — The Guardian**
+---
+title: "Grade I — Generator & Module Mapping"
+status: draft
+visibility: internal
+last_updated: 2026-02-18
+description: ""
+---
 
+# Grade I — Generator & Module Mapping
 ## **Generator & Module Mapping**
 
 **Status:** Canonical · Internal · Implementation Reference (Edited)

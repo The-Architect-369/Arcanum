@@ -1,35 +1,31 @@
 ---
-file: docs/architect/ArchitectGPT_Treasury_Spec.md
-version: 1.0
+title: "Treasury Constitution"
+status: canonical
+visibility: public
 last_updated: 2025-10-20
+description: ">"
+api_access: action_and_tree_api
+arcanum_phase: Pre-Genesis
+arcanum_principles: 
+canonical_reference: true
+file: docs/architect/ArchitectGPT_Treasury_Spec.md
+integrity: 
+linked_ci: .github/workflows/verify-sync.yml
 linked_core: ArchitectGPT_Core.md
 linked_extended: ArchitectGPT_Extended.md
 linked_log: .architect-log.md
 linked_verifier: verify-sync.sh
-linked_ci: .github/workflows/verify-sync.yml
-description: >
-  Comprehensive specification for the Arcanum Treasury, Payment, and MANA Ecosystem.
-  Defines how onboarding payments, crypto conversions, staking, and community fund management
-  operate under the Arcanum ethos — Sovereignty, Reciprocity, Harmony.
 maintainer: The-Architect-369
+mode: read-only
 repository: https://github.com/The-Architect-369/Arcanum.git
-arcanum_phase: Pre-Genesis
-arcanum_principles:
-  - Sovereignty
-  - Reciprocity
-  - Harmony
-integrity:
-  mode: read-only
-  verified_by: Architect GPT
-  safe_container_simulation: enabled
-  vercel_dry_run_emulation: enabled
-  api_access: action_and_tree_api
+safe_container_simulation: enabled
 sync_status: synchronized_with_Core_v2.1_and_Extended_v2.1
-canonical_reference: true
+vercel_dry_run_emulation: enabled
+verified_by: "Architect GPT"
+version: 1.0
 ---
 
-# ArchitectGPT Treasury & MANA Ecosystem Specification
-
+# Treasury Constitution
 ## 1. Genesis Context
 
 The **Arcanum Treasury** embodies the living financial architecture of the Arcanum — a decentralized, privacy-first economy that unites human intent and machine intelligence under shared stewardship.

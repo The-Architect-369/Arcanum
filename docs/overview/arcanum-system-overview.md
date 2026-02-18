@@ -1,6 +1,13 @@
-![Arcanum System Map](./media/SYSTEM_MAP.png)
-# 🜂 The Arcanum — System Overview (v1.0.0)
+---
+title: "Arcanum System Overview"
+status: draft
+visibility: public
+last_updated: 2026-02-18
+description: ""
+---
 
+![Arcanum System Map](./media/SYSTEM_MAP.png)
+# Arcanum System Overview
 _Date:_ 2025-10-15  
 _Status:_ Canonical Architecture Summary  
 _Author:_ The Architect

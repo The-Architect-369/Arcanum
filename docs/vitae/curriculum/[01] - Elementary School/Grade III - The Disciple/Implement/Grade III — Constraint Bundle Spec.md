@@ -1,5 +1,12 @@
-# **Grade III — The Disciple**
+---
+title: "Grade Iii — Constraint Bundle Spec"
+status: draft
+visibility: internal
+last_updated: 2026-02-18
+description: ""
+---
 
+# Grade Iii — Constraint Bundle Spec
 ## **Constraint Bundle Specification**
 
 **Status:** Canonical · Internal · Implementation Reference

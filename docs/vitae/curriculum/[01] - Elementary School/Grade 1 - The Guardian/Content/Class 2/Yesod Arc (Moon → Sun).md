@@ -1,3 +1,13 @@
+---
+title: "Yesod Arc (moon → Sun)"
+status: draft
+visibility: internal
+last_updated: 2026-02-18
+description: ""
+---
+
+# Yesod Arc (moon → Sun)
+
 ## **Class 2 — Yesod**
 
 ### **Moon → Sun Continuity Review**

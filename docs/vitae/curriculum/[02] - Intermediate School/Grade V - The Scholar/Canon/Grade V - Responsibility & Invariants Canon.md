@@ -1,5 +1,12 @@
-# **Arcanum Vitae**
+---
+title: "Grade V Responsibility & Invariants Canon"
+status: draft
+visibility: internal
+last_updated: 2026-02-18
+description: ""
+---
 
+# Grade V Responsibility & Invariants Canon
 ## **Grade V — The Scholar**
 
 ### **System Responsibility & Invariants Canon**

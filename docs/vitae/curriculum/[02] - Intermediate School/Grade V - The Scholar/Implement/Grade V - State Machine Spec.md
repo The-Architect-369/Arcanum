@@ -1,5 +1,12 @@
-# **Arcanum Vitae**
+---
+title: "Grade V State Machine Spec"
+status: draft
+visibility: internal
+last_updated: 2026-02-18
+description: ""
+---
 
+# Grade V State Machine Spec
 ## **Grade V — The Scholar**
 
 ### **State Machine Specification**

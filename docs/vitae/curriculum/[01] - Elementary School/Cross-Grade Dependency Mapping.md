@@ -1,5 +1,12 @@
-# **Grades I–IV**
+---
+title: "Cross Grade Dependency Mapping"
+status: draft
+visibility: internal
+last_updated: 2026-02-18
+description: ""
+---
 
+# Cross Grade Dependency Mapping
 ## **Cross-Grade Dependency Mapping (Guardian → Seeker → Disciple → Mystic)**
 
 **Status:** Canonical · Internal · Implementation Reference

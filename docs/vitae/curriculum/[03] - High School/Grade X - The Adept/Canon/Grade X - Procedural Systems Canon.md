@@ -1,5 +1,12 @@
-# **Arcanum Vitae**
+---
+title: "Grade X Procedural Systems Canon"
+status: draft
+visibility: internal
+last_updated: 2026-02-18
+description: ""
+---
 
+# Grade X Procedural Systems Canon
 ## **Grade X — The Adept**
 
 ### **Procedural Systems Canon**

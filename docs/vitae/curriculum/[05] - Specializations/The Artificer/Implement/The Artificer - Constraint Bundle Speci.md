@@ -1,5 +1,12 @@
-# **The Artificer**
+---
+title: "The Artificer Constraint Bundle Speci"
+status: draft
+visibility: internal
+last_updated: 2026-02-18
+description: ""
+---
 
+# The Artificer Constraint Bundle Speci
 ## **Constraint Bundle Specification**
 
 **Status:** Canonical · Internal · Implementation Reference

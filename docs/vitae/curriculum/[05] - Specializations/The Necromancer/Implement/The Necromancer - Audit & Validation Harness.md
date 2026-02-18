@@ -1,5 +1,12 @@
-# **The Necromancer**
+---
+title: "The Necromancer Audit & Validation Harness"
+status: draft
+visibility: internal
+last_updated: 2026-02-18
+description: ""
+---
 
+# The Necromancer Audit & Validation Harness
 ## **Audit & Validation Harness**
 
 **Status:** Canonical · Internal · Implementation Reference

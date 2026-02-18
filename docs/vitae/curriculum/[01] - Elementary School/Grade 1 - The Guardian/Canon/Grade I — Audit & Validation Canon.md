@@ -1,5 +1,12 @@
-# **Grade I — The Guardian**
+---
+title: "Grade I — Audit & Validation Canon"
+status: draft
+visibility: internal
+last_updated: 2026-02-18
+description: ""
+---
 
+# Grade I — Audit & Validation Canon
 ## **Audit & Validation Canon**
 
 **Status:** Canonical · Internal · Enforceable

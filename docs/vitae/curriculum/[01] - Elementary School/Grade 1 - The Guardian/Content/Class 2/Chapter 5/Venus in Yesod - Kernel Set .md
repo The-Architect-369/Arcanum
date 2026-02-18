@@ -1,3 +1,13 @@
+---
+title: "Venus In Yesod Kernel Set"
+status: draft
+visibility: internal
+last_updated: 2026-02-18
+description: ""
+---
+
+# Venus In Yesod Kernel Set
+
 ## **Grade I — The Guardian**
 
 ### **Class 2: Yesod**

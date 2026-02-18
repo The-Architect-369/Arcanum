@@ -1,5 +1,12 @@
-# **The Artificer**
+---
+title: "The Artificer Generator & Module Mapping"
+status: draft
+visibility: internal
+last_updated: 2026-02-18
+description: ""
+---
 
+# The Artificer Generator & Module Mapping
 ## **Generator & Module Mapping**
 
 **Status:** Canonical · Internal · Implementation Reference

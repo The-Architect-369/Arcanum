@@ -1,5 +1,12 @@
-# ARCANUM ALPHA — MASTER ROADMAP (v1)
+---
+title: "Roadmap V1"
+status: draft
+visibility: public
+last_updated: 2026-02-18
+description: ""
+---
 
+# Roadmap V1
 **Author:** The Architect  
 **Last updated:** YYYY‑MM‑DD  
 **Timeline:** 24 weeks (≈ 6 months)  

@@ -1,3 +1,13 @@
+---
+title: "Sun In Hod Kernel Set"
+status: draft
+visibility: internal
+last_updated: 2026-02-18
+description: ""
+---
+
+# Sun In Hod Kernel Set
+
 ## **Grade I — The Guardian**
 
 ### **Class 3: Hod**

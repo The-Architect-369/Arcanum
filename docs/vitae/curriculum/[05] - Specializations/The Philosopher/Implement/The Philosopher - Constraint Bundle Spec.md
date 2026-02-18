@@ -1,5 +1,12 @@
-# **The Philosopher**
+---
+title: "The Philosopher Constraint Bundle Spec"
+status: draft
+visibility: internal
+last_updated: 2026-02-18
+description: ""
+---
 
+# The Philosopher Constraint Bundle Spec
 ## **Constraint Bundle Specification**
 
 **Status:** Canonical · Internal · Implementation Reference

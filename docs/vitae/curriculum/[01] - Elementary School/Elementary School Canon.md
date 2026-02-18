@@ -1,5 +1,12 @@
-# **Arcanum Vitae**
+---
+title: "Elementary School Canon"
+status: draft
+visibility: internal
+last_updated: 2026-02-18
+description: ""
+---
 
+# Elementary School Canon
 ## **Elementary School Canon (Grades I–IV)**
 
 **Status:** Canonical · Public-Facing Summary with Internal Authority

@@ -1,5 +1,12 @@
-# **Arcanum Vitae**
+---
+title: "Reference Event Log Walkthrough"
+status: draft
+visibility: internal
+last_updated: 2026-02-18
+description: ""
+---
 
+# Reference Event Log Walkthrough
 ## **Reference Event Log Walkthrough (Happy Path \+ Stall \+ Exit)**
 
 **Status:** Canonical · Internal · Implementation Reference (Illustrative)

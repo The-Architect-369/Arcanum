@@ -1,5 +1,12 @@
-# **Arcanum Vitae**
+---
+title: "Grade Vii Master Canon"
+status: draft
+visibility: internal
+last_updated: 2026-02-18
+description: ""
+---
 
+# Grade Vii Master Canon
 ## **Grade VII — The Alchemist**
 
 ### **Master Canon**

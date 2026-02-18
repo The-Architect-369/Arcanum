@@ -1,5 +1,12 @@
-# **Arcanum Vitae**
+---
+title: "Grade X Generator & Module Mapping"
+status: draft
+visibility: internal
+last_updated: 2026-02-18
+description: ""
+---
 
+# Grade X Generator & Module Mapping
 ## **Grade X — The Adept**
 
 ### **Generator & Module Mapping**

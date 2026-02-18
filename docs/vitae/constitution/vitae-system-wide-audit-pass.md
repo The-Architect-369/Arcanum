@@ -1,5 +1,12 @@
-# **Arcanum Vitae**
+---
+title: "Vitae System Wide Audit Pass"
+status: draft
+visibility: public
+last_updated: 2026-02-18
+description: ""
+---
 
+# Vitae System Wide Audit Pass
 ## **System‑Wide Audit Pass**
 
 **Status:** Canonical · Internal · Pre‑Implementation Validation

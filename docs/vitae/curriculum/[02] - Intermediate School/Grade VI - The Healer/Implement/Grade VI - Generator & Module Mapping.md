@@ -1,5 +1,12 @@
-# **Arcanum Vitae**
+---
+title: "Grade Vi Generator & Module Mapping"
+status: draft
+visibility: internal
+last_updated: 2026-02-18
+description: ""
+---
 
+# Grade Vi Generator & Module Mapping
 ## **Grade VI — The Healer**
 
 ### **Generator & Module Mapping**

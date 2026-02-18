@@ -1,5 +1,12 @@
-# **The Philosopher**
+---
+title: "The Philosopher State Machine Spec"
+status: draft
+visibility: internal
+last_updated: 2026-02-18
+description: ""
+---
 
+# The Philosopher State Machine Spec
 ## **State Machine Specification**
 
 **Status:** Canonical · Internal · Implementation Reference

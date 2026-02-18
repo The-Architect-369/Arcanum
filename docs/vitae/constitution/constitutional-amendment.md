@@ -1,5 +1,12 @@
-# **Constitutional Amendment**
+---
+title: "Constitutional Amendment"
+status: draft
+visibility: public
+last_updated: 2026-02-18
+description: ""
+---
 
+# Constitutional Amendment
 ## **Planetary Order & Lived Time Alignment**
 
 **Status:** Canonical · Binding

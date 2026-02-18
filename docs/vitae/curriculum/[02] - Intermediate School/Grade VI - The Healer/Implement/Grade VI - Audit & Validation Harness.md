@@ -1,5 +1,12 @@
-# **Arcanum Vitae**
+---
+title: "Grade Vi Audit & Validation Harness"
+status: draft
+visibility: internal
+last_updated: 2026-02-18
+description: ""
+---
 
+# Grade Vi Audit & Validation Harness
 ## **Grade VI — The Healer**
 
 ### **Audit & Validation Harness**

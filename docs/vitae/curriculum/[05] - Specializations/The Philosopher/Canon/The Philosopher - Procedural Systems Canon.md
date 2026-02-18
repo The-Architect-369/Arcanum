@@ -1,5 +1,12 @@
-# **The Philosopher**
+---
+title: "The Philosopher Procedural Systems Canon"
+status: draft
+visibility: internal
+last_updated: 2026-02-18
+description: ""
+---
 
+# The Philosopher Procedural Systems Canon
 ## **Procedural Systems Canon**
 
 **Status:** Canonical · Internal · Specialization Layer

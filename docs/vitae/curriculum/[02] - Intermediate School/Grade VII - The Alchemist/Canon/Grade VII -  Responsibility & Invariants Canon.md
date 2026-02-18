@@ -1,5 +1,12 @@
-# **Arcanum Vitae**
+---
+title: "Grade Vii Responsibility & Invariants Canon"
+status: draft
+visibility: internal
+last_updated: 2026-02-18
+description: ""
+---
 
+# Grade Vii Responsibility & Invariants Canon
 ## **Grade VII — The Alchemist**
 
 ### **System Responsibility & Invariants Canon**

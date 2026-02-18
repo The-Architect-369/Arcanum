@@ -1,5 +1,12 @@
-# **Arcanum Vitae**
+---
+title: "High School Canon"
+status: draft
+visibility: internal
+last_updated: 2026-02-18
+description: ""
+---
 
+# High School Canon
 ## **High School Canon (Grades IX–X)**
 
 **Status:** Canonical · Public-Facing Summary with Internal Authority

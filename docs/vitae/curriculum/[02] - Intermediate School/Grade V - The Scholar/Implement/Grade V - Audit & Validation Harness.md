@@ -1,5 +1,12 @@
-# **Arcanum Vitae**
+---
+title: "Grade V Audit & Validation Harness"
+status: draft
+visibility: internal
+last_updated: 2026-02-18
+description: ""
+---
 
+# Grade V Audit & Validation Harness
 ## **Grade V — The Scholar**
 
 ### **Audit & Validation Harness**

@@ -1,3 +1,13 @@
+---
+title: "Yesod Spirit Kernel"
+status: draft
+visibility: internal
+last_updated: 2026-02-18
+description: ""
+---
+
+# Yesod Spirit Kernel
+
 ## **Grade I — The Guardian**
 
 ### **Class 2: Yesod**

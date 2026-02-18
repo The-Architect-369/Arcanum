@@ -1,3 +1,13 @@
+---
+title: "Tempus Structure"
+status: canonical
+visibility: public
+last_updated: 2026-02-18
+description: ""
+---
+
+# Tempus Structure
+
 **Version Summary**
 - Core File: `ArchitectGPT_Core.md` — v2.1  
 - Extended File: `ArchitectGPT_Extended.md` — v2.1  

@@ -1,5 +1,12 @@
-# **The Druid**
+---
+title: "The Druid Procedural Systems Canon"
+status: draft
+visibility: internal
+last_updated: 2026-02-18
+description: ""
+---
 
+# The Druid Procedural Systems Canon
 ## **Procedural Systems Canon**
 
 **Status:** Canonical · Internal · Specialization Layer

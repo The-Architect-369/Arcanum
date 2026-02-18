@@ -1,5 +1,12 @@
-# **Arcanum Vitae**
+---
+title: "Cross Specialization Mastery Paths Canon"
+status: draft
+visibility: internal
+last_updated: 2026-02-18
+description: ""
+---
 
+# Cross Specialization Mastery Paths Canon
 ## **Cross-Specialization Mastery Paths Canon**
 
 **Status:** Canonical · Internal Governance Layer · Non-Curricular

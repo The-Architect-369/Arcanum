@@ -1,5 +1,12 @@
-# **Arcanum Vitae**
+---
+title: "Replay Harness Checklist"
+status: draft
+visibility: internal
+last_updated: 2026-02-18
+description: ""
+---
 
+# Replay Harness Checklist
 ## **Replay Harness Checklist & Compliance Report Template**
 
 **Status:** Canonical · Internal · Implementation Reference

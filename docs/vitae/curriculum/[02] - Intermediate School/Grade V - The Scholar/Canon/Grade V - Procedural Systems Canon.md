@@ -1,5 +1,12 @@
-# **Arcanum Vitae**
+---
+title: "Grade V Procedural Systems Canon"
+status: draft
+visibility: internal
+last_updated: 2026-02-18
+description: ""
+---
 
+# Grade V Procedural Systems Canon
 ## **Grade V — The Scholar**
 
 ### **Procedural Systems Canon**

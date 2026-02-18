@@ -1,5 +1,12 @@
-# **Arcanum Vitae**
+---
+title: "Master Constitution And Architecture"
+status: draft
+visibility: public
+last_updated: 2026-02-18
+description: ""
+---
 
+# Master Constitution And Architecture
 ## **Master Constitution & Architecture**
 
 **Status:** Canonical · Governing Document

@@ -1,5 +1,12 @@
-# **Arcanum Vitae**
+---
+title: "Grade Viii Procedural Systems Canon"
+status: draft
+visibility: internal
+last_updated: 2026-02-18
+description: ""
+---
 
+# Grade Viii Procedural Systems Canon
 ## **Grade VIII — The Sage**
 
 ### **Procedural Systems Canon**

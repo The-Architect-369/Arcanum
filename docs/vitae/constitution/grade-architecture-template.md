@@ -1,5 +1,12 @@
-# **Vitae Grade Architecture Template**
+---
+title: "Grade Architecture Template"
+status: draft
+visibility: public
+last_updated: 2026-02-18
+description: ""
+---
 
+# Grade Architecture Template
 ## **Canonical Meta-Pattern for All Grades & Specializations**
 
 **Status:** Canonical · Locked

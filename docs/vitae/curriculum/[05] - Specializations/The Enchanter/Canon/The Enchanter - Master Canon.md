@@ -1,5 +1,12 @@
-# **The Enchanter**
+---
+title: "The Enchanter Master Canon"
+status: draft
+visibility: internal
+last_updated: 2026-02-18
+description: ""
+---
 
+# The Enchanter Master Canon
 ## **Master Canon**
 
 **Status:** Canonical · Internal · Specialization Layer

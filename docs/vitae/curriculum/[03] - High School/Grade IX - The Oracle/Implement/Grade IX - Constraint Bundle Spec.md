@@ -1,5 +1,12 @@
-# **Arcanum Vitae**
+---
+title: "Grade Ix Constraint Bundle Spec"
+status: draft
+visibility: internal
+last_updated: 2026-02-18
+description: ""
+---
 
+# Grade Ix Constraint Bundle Spec
 ## **Grade IX — The Oracle**
 
 ### **Constraint Bundle Specification**

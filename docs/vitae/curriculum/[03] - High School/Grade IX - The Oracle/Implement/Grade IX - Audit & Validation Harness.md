@@ -1,5 +1,12 @@
-# **Arcanum Vitae**
+---
+title: "Grade Ix Audit & Validation Harness"
+status: draft
+visibility: internal
+last_updated: 2026-02-18
+description: ""
+---
 
+# Grade Ix Audit & Validation Harness
 ## **Grade IX — The Oracle**
 
 ### **Audit & Validation Harness**

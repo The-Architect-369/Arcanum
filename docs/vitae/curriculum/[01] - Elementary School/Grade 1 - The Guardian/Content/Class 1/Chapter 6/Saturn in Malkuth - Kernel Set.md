@@ -1,3 +1,13 @@
+---
+title: "Saturn In Malkuth Kernel Set"
+status: draft
+visibility: internal
+last_updated: 2026-02-18
+description: ""
+---
+
+# Saturn In Malkuth Kernel Set
+
 ## **Grade I — The Guardian**
 
 ### **Class 1: Malkuth**

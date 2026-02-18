@@ -1,5 +1,12 @@
-# 2. Problem & Solution Overview
+---
+title: "Problem Solution"
+status: draft
+visibility: public
+last_updated: 2026-02-18
+description: ""
+---
 
+# Problem Solution
 ## 2.1 Problem Statement
 1. **Identity dilution & bots.** Anonymous, disposable identities enable spam and erode trust.  
 2. **Centralized gatekeeping.** Platforms monetize attention and data; users surrender control and upside.  

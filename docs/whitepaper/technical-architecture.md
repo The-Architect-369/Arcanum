@@ -1,5 +1,12 @@
-# 3. Technical Architecture
+---
+title: "Technical Architecture"
+status: draft
+visibility: public
+last_updated: 2026-02-18
+description: ""
+---
 
+# Technical Architecture
 > **Design goals:** user sovereignty, minimal custodianship, composability, security, and graceful recovery.
 
 ## 3.1 Layered Overview

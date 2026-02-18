@@ -1,5 +1,12 @@
-# **The Druid**
+---
+title: "The Druid Audit & Validation Harness"
+status: draft
+visibility: internal
+last_updated: 2026-02-18
+description: ""
+---
 
+# The Druid Audit & Validation Harness
 ## **Audit & Validation Harness**
 
 **Status:** Canonical · Internal · Implementation Reference

@@ -1,5 +1,12 @@
-# **Guardian Anatomical Lexicon — Canon**
+---
+title: "Guardian Anatomical Lexicon"
+status: draft
+visibility: internal
+last_updated: 2026-02-18
+description: ""
+---
 
+# Guardian Anatomical Lexicon
 ## **I. Purpose**
 
 This lexicon establishes a shared, speakable anatomical vocabulary for the Guardian.  

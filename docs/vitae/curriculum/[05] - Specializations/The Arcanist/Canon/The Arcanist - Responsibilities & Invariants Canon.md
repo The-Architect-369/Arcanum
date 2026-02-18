@@ -1,5 +1,12 @@
-# **The Arcanist**
+---
+title: "The Arcanist Responsibilities & Invariants Canon"
+status: draft
+visibility: internal
+last_updated: 2026-02-18
+description: ""
+---
 
+# The Arcanist Responsibilities & Invariants Canon
 ## **System Responsibilities & Invariants Canon**
 
 **Status:** Canonical · Internal · Specialization Layer

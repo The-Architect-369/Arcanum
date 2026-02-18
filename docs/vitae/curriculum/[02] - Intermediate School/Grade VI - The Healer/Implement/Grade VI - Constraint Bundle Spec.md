@@ -1,5 +1,12 @@
-# **Arcanum Vitae**
+---
+title: "Grade Vi Constraint Bundle Spec"
+status: draft
+visibility: internal
+last_updated: 2026-02-18
+description: ""
+---
 
+# Grade Vi Constraint Bundle Spec
 ## **Grade VI — The Healer**
 
 ### **Constraint Bundle Specification**

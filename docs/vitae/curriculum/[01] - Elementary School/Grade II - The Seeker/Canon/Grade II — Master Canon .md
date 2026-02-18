@@ -1,5 +1,12 @@
-# **Grade II — The Seeker**
+---
+title: "Grade Ii — Master Canon"
+status: draft
+visibility: internal
+last_updated: 2026-02-18
+description: ""
+---
 
+# Grade Ii — Master Canon
 ## **Master Canon**
 
 **Status:** Canonical · Closed · Reference Implementation

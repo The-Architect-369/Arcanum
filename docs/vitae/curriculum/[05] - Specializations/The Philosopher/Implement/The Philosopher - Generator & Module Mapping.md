@@ -1,5 +1,12 @@
-# **The Philosopher**
+---
+title: "The Philosopher Generator & Module Mapping"
+status: draft
+visibility: internal
+last_updated: 2026-02-18
+description: ""
+---
 
+# The Philosopher Generator & Module Mapping
 ## **Generator & Module Mapping**
 
 **Status:** Canonical · Internal · Implementation Reference

@@ -1,5 +1,12 @@
-# **Arcanum Vitae**
+---
+title: "Grade Viii Audit & Validation Harness"
+status: draft
+visibility: internal
+last_updated: 2026-02-18
+description: ""
+---
 
+# Grade Viii Audit & Validation Harness
 ## **Grade VIII — The Sage**
 
 ### **Audit & Validation Harness**

@@ -1,5 +1,12 @@
-# **Arcanum Vitae**
+---
+title: "Grade X Master Canon"
+status: draft
+visibility: internal
+last_updated: 2026-02-18
+description: ""
+---
 
+# Grade X Master Canon
 ## **Grade X — The Adept**
 
 ### **Master Canon**

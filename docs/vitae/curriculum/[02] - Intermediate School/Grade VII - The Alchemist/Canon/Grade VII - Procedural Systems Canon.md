@@ -1,5 +1,12 @@
-# **Arcanum Vitae**
+---
+title: "Grade Vii Procedural Systems Canon"
+status: draft
+visibility: internal
+last_updated: 2026-02-18
+description: ""
+---
 
+# Grade Vii Procedural Systems Canon
 ## **Grade VII — The Alchemist**
 
 ### **Procedural Systems Canon**

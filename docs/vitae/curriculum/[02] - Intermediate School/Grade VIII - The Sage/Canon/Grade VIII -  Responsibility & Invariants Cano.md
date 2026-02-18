@@ -1,5 +1,12 @@
-# **Arcanum Vitae**
+---
+title: "Grade Viii Responsibility & Invariants Cano"
+status: draft
+visibility: internal
+last_updated: 2026-02-18
+description: ""
+---
 
+# Grade Viii Responsibility & Invariants Cano
 ## **Grade VIII — The Sage**
 
 ### **System Responsibility & Invariants Canon**

@@ -1,5 +1,12 @@
-# **Arcanum Vitae**
+---
+title: "Grade Vii Audit & Validation Harness"
+status: draft
+visibility: internal
+last_updated: 2026-02-18
+description: ""
+---
 
+# Grade Vii Audit & Validation Harness
 ## **Grade VII — The Alchemist**
 
 ### **Audit & Validation Harness**

@@ -1,5 +1,12 @@
-# **Grade IV — The Mystic**
+---
+title: "Grade Iv — State Machine Spec"
+status: draft
+visibility: internal
+last_updated: 2026-02-18
+description: ""
+---
 
+# Grade Iv — State Machine Spec
 ## **State Machine Specification**
 
 **Status:** Canonical · Internal · Implementation Reference

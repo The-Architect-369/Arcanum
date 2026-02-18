@@ -1,3 +1,13 @@
+---
+title: "Economic Principles"
+status: canonical
+visibility: public
+last_updated: 2026-02-18
+description: ""
+---
+
+# Economic Principles
+
 docs/tokenomics/00-Tokenomics-Overview.md
 Arcanum Tokenomics (v1)
 

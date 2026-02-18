@@ -1,5 +1,12 @@
-# **Grade IV — The Mystic**
+---
+title: "Grade Iv — Master Canon"
+status: draft
+visibility: internal
+last_updated: 2026-02-18
+description: ""
+---
 
+# Grade Iv — Master Canon
 ## **Master Canon**
 
 **Status:** Canonical · Closed · Reference Implementation

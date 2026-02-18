@@ -1,3 +1,13 @@
+---
+title: "Vitae Kernel Master"
+status: draft
+visibility: public
+last_updated: 2026-02-18
+description: ""
+---
+
+# Vitae Kernel Master
+
 Arcanum Vitae — Master VK (Vitae Kernel)
 
 Document Type: Internal / Architect-Level

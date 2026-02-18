@@ -1,5 +1,12 @@
-# **Grade IV — The Mystic**
+---
+title: "Grade Iv — Constraint Bundle Spec"
+status: draft
+visibility: internal
+last_updated: 2026-02-18
+description: ""
+---
 
+# Grade Iv — Constraint Bundle Spec
 ## **Constraint Bundle Specification**
 
 **Status:** Canonical · Internal · Implementation Reference

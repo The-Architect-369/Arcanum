@@ -1,5 +1,12 @@
-# **Arcanum Vitae — Experience Layer Architecture Canon**
+---
+title: "Experience Layer Architecture Canon"
+status: draft
+visibility: internal
+last_updated: 2026-02-18
+description: ""
+---
 
+# Experience Layer Architecture Canon
 **Status:** Canonical  
  **Scope:** System-wide (All Grades & Specializations)  
  **Audience:** Architects, Builders, Content Authors, Auditors

@@ -1,3 +1,13 @@
+---
+title: "Canonical Modules"
+status: canonical
+visibility: public
+last_updated: 2026-02-18
+description: ""
+---
+
+# Canonical Modules
+
 CANONICAL MODULES OF ARCANUM
 ---
 role: constitution

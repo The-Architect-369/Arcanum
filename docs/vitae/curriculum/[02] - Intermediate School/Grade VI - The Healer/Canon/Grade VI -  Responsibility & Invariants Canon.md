@@ -1,5 +1,12 @@
-# **Arcanum Vitae**
+---
+title: "Grade Vi Responsibility & Invariants Canon"
+status: draft
+visibility: internal
+last_updated: 2026-02-18
+description: ""
+---
 
+# Grade Vi Responsibility & Invariants Canon
 ## **Grade VI — The Healer**
 
 ### **System Responsibility & Invariants Canon**

@@ -1,5 +1,12 @@
-# **Grade III — The Disciple**
+---
+title: "Grade Iii — Master Canon"
+status: draft
+visibility: internal
+last_updated: 2026-02-18
+description: ""
+---
 
+# Grade Iii — Master Canon
 ## **Master Canon**
 
 **Status:** Canonical · Closed · Reference Implementation

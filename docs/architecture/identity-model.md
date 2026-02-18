@@ -1,3 +1,13 @@
+---
+title: "Identity Model"
+status: canonical
+visibility: public
+last_updated: 2026-02-18
+description: ""
+---
+
+# Identity Model
+
 \# \*\*Identity Model — Continuity \& Sovereignty\*\*
 
 

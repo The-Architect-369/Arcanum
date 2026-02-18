@@ -1,5 +1,12 @@
-# **The Philosopher**
+---
+title: "The Philosopher Master Canon"
+status: draft
+visibility: internal
+last_updated: 2026-02-18
+description: ""
+---
 
+# The Philosopher Master Canon
 ## **Master Canon**
 
 **Status:** Canonical · Internal · Specialization Layer

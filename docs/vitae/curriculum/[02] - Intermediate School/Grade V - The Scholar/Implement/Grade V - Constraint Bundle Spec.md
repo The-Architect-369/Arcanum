@@ -1,5 +1,12 @@
-# **Arcanum Vitae**
+---
+title: "Grade V Constraint Bundle Spec"
+status: draft
+visibility: internal
+last_updated: 2026-02-18
+description: ""
+---
 
+# Grade V Constraint Bundle Spec
 ## **Grade V — The Scholar**
 
 ### **Constraint Bundle Specification**

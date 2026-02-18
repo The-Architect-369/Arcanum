@@ -1,5 +1,12 @@
-# **The Enchanter**
+---
+title: "The Enchanter State Machine Spec"
+status: draft
+visibility: internal
+last_updated: 2026-02-18
+description: ""
+---
 
+# The Enchanter State Machine Spec
 ## **State Machine Specification**
 
 **Status:** Canonical · Internal · Implementation Reference

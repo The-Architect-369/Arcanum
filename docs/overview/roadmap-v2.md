@@ -1,5 +1,12 @@
-# Arcanum Roadmap
+---
+title: "Roadmap V2"
+status: draft
+visibility: public
+last_updated: 2026-02-18
+description: ""
+---
 
+# Roadmap V2
 **Sovereign Genesis → Living World**
 
 ---

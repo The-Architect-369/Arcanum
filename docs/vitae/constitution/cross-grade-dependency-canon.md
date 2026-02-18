@@ -1,5 +1,12 @@
-# **Arcanum Vitae**
+---
+title: "Cross Grade Dependency Canon"
+status: draft
+visibility: public
+last_updated: 2026-02-18
+description: ""
+---
 
+# Cross Grade Dependency Canon
 ## **Cross-Grade Dependency Canon**
 
 ### **Core Vitae (Grades I–X)**

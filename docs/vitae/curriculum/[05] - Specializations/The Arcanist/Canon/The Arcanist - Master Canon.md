@@ -1,5 +1,12 @@
-# **The Arcanist**
+---
+title: "The Arcanist Master Canon"
+status: draft
+visibility: internal
+last_updated: 2026-02-18
+description: ""
+---
 
+# The Arcanist Master Canon
 ## **Master Canon**
 
 **Status:** Canonical · Internal · Specialization Layer

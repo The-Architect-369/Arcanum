@@ -1,5 +1,12 @@
-# **The Astrologer**
+---
+title: "The Astrologer Procedural Systems Canon"
+status: draft
+visibility: internal
+last_updated: 2026-02-18
+description: ""
+---
 
+# The Astrologer Procedural Systems Canon
 ## **Procedural Systems Canon**
 
 **Status:** Canonical · Internal · Specialization Layer

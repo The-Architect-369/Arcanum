@@ -1,13 +1,16 @@
 ---
-file: .architect-log.md
-purpose: Synchronization history for Architect GPT Core ↔ Extended
-maintainer: The-Architect-369
+title: "Architect Log"
+status: canonical
+visibility: public
 last_updated: 2025-10-17
+description: ""
+file: .architect-log.md
+maintainer: The-Architect-369
+purpose: "Synchronization history for Architect GPT Core ↔ Extended"
 version: 2.1
 ---
 
-# Architect GPT Synchronization Log
-
+# Architect Log
 ## [SYNC EVENT — YYYY-MM-DD]
 
 **Version Summary**

@@ -1,5 +1,12 @@
-# **Arcanum Vitae**
+---
+title: "Grade Vii Constraint Bundle Spec"
+status: draft
+visibility: internal
+last_updated: 2026-02-18
+description: ""
+---
 
+# Grade Vii Constraint Bundle Spec
 ## **Grade VII — The Alchemist**
 
 ### **Constraint Bundle Specification**

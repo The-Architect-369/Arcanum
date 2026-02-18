@@ -1,5 +1,12 @@
-# **Guardian Lexicon Seed — v1**
+---
+title: "Guardian Lexicon Seed — V1"
+status: draft
+visibility: internal
+last_updated: 2026-02-18
+description: ""
+---
 
+# Guardian Lexicon Seed — V1
 ## **I. Purpose**
 
 The Guardian Lexicon Seed defines a **small, repeatable set of phrases** that shape meaning through recurrence rather than explanation. These phrases are **compressed expressions** of long-standing contemplative, somatic, and Hermetic principles—presented without doctrinal attribution.

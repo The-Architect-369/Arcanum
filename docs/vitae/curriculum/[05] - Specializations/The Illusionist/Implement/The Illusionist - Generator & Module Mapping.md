@@ -1,5 +1,12 @@
-# **The Illusionist**
+---
+title: "The Illusionist Generator & Module Mapping"
+status: draft
+visibility: internal
+last_updated: 2026-02-18
+description: ""
+---
 
+# The Illusionist Generator & Module Mapping
 ## **Generator & Module Mapping**
 
 **Status:** Canonical · Internal · Implementation Reference

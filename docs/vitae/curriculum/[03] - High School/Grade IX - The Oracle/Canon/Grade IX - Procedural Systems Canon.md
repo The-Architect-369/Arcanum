@@ -1,5 +1,12 @@
-# **Arcanum Vitae**
+---
+title: "Grade Ix Procedural Systems Canon"
+status: draft
+visibility: internal
+last_updated: 2026-02-18
+description: ""
+---
 
+# Grade Ix Procedural Systems Canon
 ## **Grade IX — The Oracle**
 
 ### **Procedural Systems Canon**

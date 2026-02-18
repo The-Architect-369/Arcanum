@@ -1,5 +1,12 @@
-# **The Necromancer**
+---
+title: "The Necromancer Generator & Module Mapping"
+status: draft
+visibility: internal
+last_updated: 2026-02-18
+description: ""
+---
 
+# The Necromancer Generator & Module Mapping
 ## **Generator & Module Mapping**
 
 **Status:** Canonical · Internal · Implementation Reference

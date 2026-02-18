@@ -1,5 +1,12 @@
-# **Arcanum Vitae**
+---
+title: "Dependency Evaluator Blueprint"
+status: draft
+visibility: internal
+last_updated: 2026-02-18
+description: ""
+---
 
+# Dependency Evaluator Blueprint
 ## **Dependency Evaluator Blueprint (DE \+ DS \+ RR)**
 
 **Status:** Canonical · Internal · Implementation Blueprint

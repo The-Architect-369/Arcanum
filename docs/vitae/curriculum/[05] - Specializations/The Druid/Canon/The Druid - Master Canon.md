@@ -1,5 +1,12 @@
-# **The Druid**
+---
+title: "The Druid Master Canon"
+status: draft
+visibility: internal
+last_updated: 2026-02-18
+description: ""
+---
 
+# The Druid Master Canon
 ## **Master Canon**
 
 **Status:** Canonical · Internal · Specialization Layer

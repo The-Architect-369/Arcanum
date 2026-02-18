@@ -1,3 +1,13 @@
+---
+title: "Repo Interface"
+status: canonical
+visibility: public
+last_updated: 2026-02-18
+description: ""
+---
+
+# Repo Interface
+
 \# \*\*Architect Repository Interface\*\*
 
 

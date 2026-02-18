@@ -1,5 +1,12 @@
-# **Arcanum Vitae**
+---
+title: "Intermediate School Canon"
+status: draft
+visibility: internal
+last_updated: 2026-02-18
+description: ""
+---
 
+# Intermediate School Canon
 ## **Intermediate School Canon (Grades V–VIII)**
 
 **Status:** Canonical · Public-Facing Summary with Internal Authority

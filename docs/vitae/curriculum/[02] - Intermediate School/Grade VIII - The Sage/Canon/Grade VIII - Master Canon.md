@@ -1,5 +1,12 @@
-# **Arcanum Vitae**
+---
+title: "Grade Viii Master Canon"
+status: draft
+visibility: internal
+last_updated: 2026-02-18
+description: ""
+---
 
+# Grade Viii Master Canon
 ## **Grade VIII — The Sage**
 
 ### **Master Canon**
