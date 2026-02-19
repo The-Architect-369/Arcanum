@@ -8,7 +8,10 @@ set -euo pipefail
 
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 DOCS_DIR="$ROOT_DIR/docs"
-CONSTITUTION="$DOCS_DIR/00_CONSTITUTION/CANONICAL_MODULES.md"
+
+# New constitution location
+CONSTITUTION_DIR="$DOCS_DIR/governance/constitution"
+CONSTITUTION="$CONSTITUTION_DIR/canonical-modules.md"
 
 FAILED=0
 
@@ -33,10 +36,12 @@ echo ""
 echo "🔍 Guard 0 — Structural Existence"
 
 REQUIRED_PATHS=(
-  "docs/00_CONSTITUTION/CANONICAL_MODULES.md"
-  "docs/03_VITAE"
-  "docs/02_WHITE_PAGES/03_VITAE_AND_BECOMING.md"
-  "docs/02_WHITE_PAGES/05_ARCANUM_CHAIN.md"
+  "docs/governance/constitution/canonical-modules.md"
+  "docs/vitae"
+  "docs/whitepaper/vitae-and-becoming.md"
+  "docs/whitepaper/arcanum-chain.md"
+  "docs/specs/modules"
+  "docs/specs/chain"
   "apps"
   "chains"
 )
@@ -56,34 +61,34 @@ echo ""
 echo "🔍 Guard 1 — Canonical Module Integrity"
 
 if [[ ! -f "$CONSTITUTION" ]]; then
-  fail "Canonical modules file missing: CANONICAL_MODULES.md"
+  fail "Canonical modules file missing: canonical-modules.md"
 else
-  # Extract module names (MODULE I — NAME)
+  # Extract module names (## MODULE I — NAME)
   mapfile -t MODULES < <(grep -E "^## MODULE" "$CONSTITUTION" | sed 's/.*— //')
 
   for module in "${MODULES[@]}"; do
     case "$module" in
       ARCHITECT)
-        [[ -d "$DOCS_DIR/00_CONSTITUTION" ]] || fail "ARCHITECT module missing constitution folder"
+        [[ -d "$CONSTITUTION_DIR" ]] || fail "ARCHITECT module missing constitution folder"
         ;;
       VITAE)
-        [[ -d "$DOCS_DIR/03_VITAE" ]] || fail "VITAE module missing docs/03_VITAE"
-        [[ -f "$DOCS_DIR/04_MODULE_SPECS/vitae.md" ]] || fail "VITAE module spec missing"
+        [[ -d "$DOCS_DIR/vitae" ]] || fail "VITAE module missing docs/vitae"
+        [[ -f "$DOCS_DIR/specs/modules/vitae.md" ]] || fail "VITAE module spec missing"
         ;;
       TEMPUS)
-        [[ -f "$DOCS_DIR/04_MODULE_SPECS/tempus.md" ]] || fail "TEMPUS module spec missing"
+        [[ -f "$DOCS_DIR/specs/modules/tempus.md" ]] || fail "TEMPUS module spec missing"
         ;;
       HOPE)
-        [[ -f "$DOCS_DIR/04_MODULE_SPECS/hope.md" ]] || fail "HOPE module spec missing"
+        [[ -f "$DOCS_DIR/specs/modules/hope.md" ]] || fail "HOPE module spec missing"
         ;;
       ECONOMY)
-        [[ -f "$DOCS_DIR/04_MODULE_SPECS/economy.md" ]] || fail "ECONOMY module spec missing"
+        [[ -f "$DOCS_DIR/specs/modules/economy.md" ]] || fail "ECONOMY module spec missing"
         ;;
       TREASURY)
-        [[ -f "$DOCS_DIR/04_MODULE_SPECS/treasury.md" ]] || fail "TREASURY module spec missing"
+        [[ -f "$DOCS_DIR/specs/modules/treasury.md" ]] || fail "TREASURY module spec missing"
         ;;
       ARCANUM\ CHAIN)
-        [[ -d "$DOCS_DIR/05_CHAIN_SPECS" ]] || fail "ARCANUM CHAIN specs missing"
+        [[ -d "$DOCS_DIR/specs/chain" ]] || fail "ARCANUM CHAIN specs missing"
         ;;
     esac
   done
@@ -103,7 +108,7 @@ if grep -R "mint(" "$ROOT_DIR/apps" >/dev/null 2>&1; then
 fi
 
 # Vitae must not touch economy directly
-if grep -R -E "(mint\(|supply\(|balance\()" "$DOCS_DIR/03_VITAE" >/dev/null 2>&1; then
+if grep -R -E "(mint\(|supply\(|balance\()" "$DOCS_DIR/vitae" >/dev/null 2>&1; then
   fail "VITAE contains mechanical economic operations — forbidden coupling"
 fi
 
@@ -122,13 +127,13 @@ echo "🔍 Guard 3 — Forbidden Authority Claims"
 
 # Only constitution may claim absolute authority
 if grep -R "absolute authority" "$DOCS_DIR" \
-  | grep -v "00_CONSTITUTION" >/dev/null 2>&1; then
+  | grep -v "governance/constitution" >/dev/null 2>&1; then
   fail "Non-constitutional document claims absolute authority"
 fi
 
 # White pages must not claim enforcement
 if grep -R -E "(enforces|guarantees|final authority)" \
-  "$DOCS_DIR/02_WHITE_PAGES" >/dev/null 2>&1; then
+  "$DOCS_DIR/whitepaper" >/dev/null 2>&1; then
   fail "White pages claim enforcement authority — forbidden"
 fi
 
@@ -137,7 +142,7 @@ fi
 # ------------------------------------------------------------
 # GUARD 4 — Canonical Checksums (Immutable Proof)
 # ------------------------------------------------------------
-CHECKSUM_FILE="$ROOT_DIR/docs/00_CONSTITUTION/doctrine-checksums.yaml"
+CHECKSUM_FILE="$CONSTITUTION_DIR/doctrine-checksums.yaml"
 
 echo ""
 echo "🔍 Guard α — Canonical Checksums"
@@ -158,7 +163,7 @@ if [[ -f "$CHECKSUM_FILE" ]]; then
     fi
   done < <(grep -v '^#' "$CHECKSUM_FILE")
 else
-  fail "Checksum manifest missing: doctrine-guard.yml"
+  fail "Checksum manifest missing: doctrine-checksums.yaml"
 fi
 
 [[ $FAILED -eq 0 ]] && pass "All canonical checksums valid"

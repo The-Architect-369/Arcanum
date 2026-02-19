@@ -1,0 +1,2861 @@
+{
+  "generated_at": "2026-02-19T21:10:52Z",
+  "repo": "Arcanum",
+  "commit": "20451055d",
+  "generator_version": "1.1",
+  "files": [
+    {
+      "path": ".github/workflows/doctrine-guard.yml",
+      "type": "file",
+      "size_bytes": 794,
+      "last_modified_commit": "811a91227",
+      "is_empty": false,
+      "extension": ".yml",
+      "lines": 36
+    },
+    {
+      "path": ".github/workflows/verify-sync.yml",
+      "type": "file",
+      "size_bytes": 535,
+      "last_modified_commit": "811a91227",
+      "is_empty": false,
+      "extension": ".yml",
+      "lines": 25
+    },
+    {
+      "path": ".gitignore",
+      "type": "file",
+      "size_bytes": 326,
+      "last_modified_commit": "5da311ef6",
+      "is_empty": false,
+      "extension": ".gitignore",
+      "lines": 31
+    },
+    {
+      "path": ".npmrc",
+      "type": "file",
+      "size_bytes": 28,
+      "last_modified_commit": "ad55d8f73",
+      "is_empty": false,
+      "extension": ".npmrc",
+      "lines": 1
+    },
+    {
+      "path": "README.md",
+      "type": "file",
+      "size_bytes": 485,
+      "last_modified_commit": "0f075f352",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 21
+    },
+    {
+      "path": "apps/CoreFileTree.txt",
+      "type": "file",
+      "size_bytes": 10883,
+      "last_modified_commit": "bbd56cd97",
+      "is_empty": false,
+      "extension": ".txt",
+      "lines": 242
+    },
+    {
+      "path": "apps/web/.gitignore",
+      "type": "file",
+      "size_bytes": 480,
+      "last_modified_commit": "d32d6affc",
+      "is_empty": false,
+      "extension": ".gitignore",
+      "lines": 41
+    },
+    {
+      "path": "apps/web/README.md",
+      "type": "file",
+      "size_bytes": 1450,
+      "last_modified_commit": "d32d6affc",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 36
+    },
+    {
+      "path": "apps/web/docs/CORE_UI_GUIDE.md",
+      "type": "file",
+      "size_bytes": 9822,
+      "last_modified_commit": "7edb20d44",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 232
+    },
+    {
+      "path": "apps/web/docs/HOPE_GUIDE.md",
+      "type": "file",
+      "size_bytes": 2163,
+      "last_modified_commit": "d32d6affc",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 80
+    },
+    {
+      "path": "apps/web/docs/MASTER_INDEX.md",
+      "type": "file",
+      "size_bytes": 5226,
+      "last_modified_commit": "7edb20d44",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 179
+    },
+    {
+      "path": "apps/web/docs/MODULE_CARD_GUIDE.md",
+      "type": "file",
+      "size_bytes": 1825,
+      "last_modified_commit": "d32d6affc",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 61
+    },
+    {
+      "path": "apps/web/docs/NEXUS_GUIDE.md",
+      "type": "file",
+      "size_bytes": 1466,
+      "last_modified_commit": "7edb20d44",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 53
+    },
+    {
+      "path": "apps/web/docs/TEMPUS_GUIDE.md",
+      "type": "file",
+      "size_bytes": 1929,
+      "last_modified_commit": "d32d6affc",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 63
+    },
+    {
+      "path": "apps/web/docs/TEMPUS_REWARD_SYSTEM_CALENDAR.md",
+      "type": "file",
+      "size_bytes": 4546,
+      "last_modified_commit": "d32d6affc",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 103
+    },
+    {
+      "path": "apps/web/docs/TEXT_GUIDE.md",
+      "type": "file",
+      "size_bytes": 1387,
+      "last_modified_commit": "d32d6affc",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 46
+    },
+    {
+      "path": "apps/web/docs/VITAE_GUIDE.md",
+      "type": "file",
+      "size_bytes": 1890,
+      "last_modified_commit": "7edb20d44",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 55
+    },
+    {
+      "path": "apps/web/eslint.config.mjs",
+      "type": "file",
+      "size_bytes": 719,
+      "last_modified_commit": "d32d6affc",
+      "is_empty": false,
+      "extension": ".mjs",
+      "lines": 32
+    },
+    {
+      "path": "apps/web/middleware.ts",
+      "type": "file",
+      "size_bytes": 1106,
+      "last_modified_commit": "616d0b0d5",
+      "is_empty": false,
+      "extension": ".ts",
+      "lines": 44
+    },
+    {
+      "path": "apps/web/next.config.mjs",
+      "type": "file",
+      "size_bytes": 113,
+      "last_modified_commit": "0f075f352",
+      "is_empty": false,
+      "extension": ".mjs",
+      "lines": 3
+    },
+    {
+      "path": "apps/web/node/docker/Dockerfile",
+      "type": "file",
+      "size_bytes": 288,
+      "last_modified_commit": "5da311ef6",
+      "is_empty": false,
+      "extension": "",
+      "lines": 8
+    },
+    {
+      "path": "apps/web/node/ipfs/ipns-update.mjs",
+      "type": "file",
+      "size_bytes": 596,
+      "last_modified_commit": "5da311ef6",
+      "is_empty": false,
+      "extension": ".mjs",
+      "lines": 11
+    },
+    {
+      "path": "apps/web/node/ipfs/publish.mjs",
+      "type": "file",
+      "size_bytes": 945,
+      "last_modified_commit": "5da311ef6",
+      "is_empty": false,
+      "extension": ".mjs",
+      "lines": 27
+    },
+    {
+      "path": "apps/web/node/scripts/bootstrap.sh",
+      "type": "file",
+      "size_bytes": 378,
+      "last_modified_commit": "5da311ef6",
+      "is_empty": false,
+      "extension": ".sh",
+      "lines": 8
+    },
+    {
+      "path": "apps/web/package.json",
+      "type": "file",
+      "size_bytes": 1542,
+      "last_modified_commit": "616d0b0d5",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 54
+    },
+    {
+      "path": "apps/web/postcss.config.mjs",
+      "type": "file",
+      "size_bytes": 140,
+      "last_modified_commit": "5da311ef6",
+      "is_empty": false,
+      "extension": ".mjs",
+      "lines": 7
+    },
+    {
+      "path": "apps/web/public/file.svg",
+      "type": "file",
+      "size_bytes": 391,
+      "last_modified_commit": "d32d6affc",
+      "is_empty": false,
+      "extension": ".svg",
+      "lines": 0
+    },
+    {
+      "path": "apps/web/public/globe.svg",
+      "type": "file",
+      "size_bytes": 1035,
+      "last_modified_commit": "d32d6affc",
+      "is_empty": false,
+      "extension": ".svg",
+      "lines": 0
+    },
+    {
+      "path": "apps/web/public/icons/account.png",
+      "type": "file",
+      "size_bytes": 810,
+      "last_modified_commit": "d32d6affc",
+      "is_empty": false,
+      "extension": ".png",
+      "lines": 3
+    },
+    {
+      "path": "apps/web/public/icons/exchange.png",
+      "type": "file",
+      "size_bytes": 1879,
+      "last_modified_commit": "d32d6affc",
+      "is_empty": false,
+      "extension": ".png",
+      "lines": 16
+    },
+    {
+      "path": "apps/web/public/icons/hope.png",
+      "type": "file",
+      "size_bytes": 1782,
+      "last_modified_commit": "d32d6affc",
+      "is_empty": false,
+      "extension": ".png",
+      "lines": 13
+    },
+    {
+      "path": "apps/web/public/icons/icon-192.png",
+      "type": "file",
+      "size_bytes": 0,
+      "last_modified_commit": "d32d6affc",
+      "is_empty": true,
+      "extension": ".png",
+      "lines": 0
+    },
+    {
+      "path": "apps/web/public/icons/icon-512.png",
+      "type": "file",
+      "size_bytes": 0,
+      "last_modified_commit": "d32d6affc",
+      "is_empty": true,
+      "extension": ".png",
+      "lines": 0
+    },
+    {
+      "path": "apps/web/public/icons/maskable-192.png",
+      "type": "file",
+      "size_bytes": 0,
+      "last_modified_commit": "d32d6affc",
+      "is_empty": true,
+      "extension": ".png",
+      "lines": 0
+    },
+    {
+      "path": "apps/web/public/icons/maskable-512.png",
+      "type": "file",
+      "size_bytes": 0,
+      "last_modified_commit": "d32d6affc",
+      "is_empty": true,
+      "extension": ".png",
+      "lines": 0
+    },
+    {
+      "path": "apps/web/public/icons/preference.png",
+      "type": "file",
+      "size_bytes": 1335,
+      "last_modified_commit": "d32d6affc",
+      "is_empty": false,
+      "extension": ".png",
+      "lines": 8
+    },
+    {
+      "path": "apps/web/public/icons/wallet.png",
+      "type": "file",
+      "size_bytes": 990,
+      "last_modified_commit": "d32d6affc",
+      "is_empty": false,
+      "extension": ".png",
+      "lines": 5
+    },
+    {
+      "path": "apps/web/public/manifest.json",
+      "type": "file",
+      "size_bytes": 659,
+      "last_modified_commit": "d32d6affc",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 16
+    },
+    {
+      "path": "apps/web/public/next.svg",
+      "type": "file",
+      "size_bytes": 1375,
+      "last_modified_commit": "d32d6affc",
+      "is_empty": false,
+      "extension": ".svg",
+      "lines": 0
+    },
+    {
+      "path": "apps/web/public/vercel.svg",
+      "type": "file",
+      "size_bytes": 128,
+      "last_modified_commit": "d32d6affc",
+      "is_empty": false,
+      "extension": ".svg",
+      "lines": 0
+    },
+    {
+      "path": "apps/web/public/window.svg",
+      "type": "file",
+      "size_bytes": 385,
+      "last_modified_commit": "d32d6affc",
+      "is_empty": false,
+      "extension": ".svg",
+      "lines": 0
+    },
+    {
+      "path": "apps/web/src/app/(app)/account/page.tsx",
+      "type": "file",
+      "size_bytes": 213,
+      "last_modified_commit": "8fb50b9f7",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 3
+    },
+    {
+      "path": "apps/web/src/app/(app)/exchange/page.tsx",
+      "type": "file",
+      "size_bytes": 232,
+      "last_modified_commit": "8fb50b9f7",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 3
+    },
+    {
+      "path": "apps/web/src/app/(app)/hope/character/page.tsx",
+      "type": "file",
+      "size_bytes": 4991,
+      "last_modified_commit": "8fb50b9f7",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 110
+    },
+    {
+      "path": "apps/web/src/app/(app)/hope/inventory/page.tsx",
+      "type": "file",
+      "size_bytes": 2565,
+      "last_modified_commit": "8fb50b9f7",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 71
+    },
+    {
+      "path": "apps/web/src/app/(app)/hope/page.tsx",
+      "type": "file",
+      "size_bytes": 119,
+      "last_modified_commit": "8fb50b9f7",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 4
+    },
+    {
+      "path": "apps/web/src/app/(app)/hope/presence/ReflectionEditor.tsx",
+      "type": "file",
+      "size_bytes": 3326,
+      "last_modified_commit": "8fb50b9f7",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 103
+    },
+    {
+      "path": "apps/web/src/app/(app)/hope/presence/ipfs.ts",
+      "type": "file",
+      "size_bytes": 468,
+      "last_modified_commit": "8fb50b9f7",
+      "is_empty": false,
+      "extension": ".ts",
+      "lines": 20
+    },
+    {
+      "path": "apps/web/src/app/(app)/hope/presence/page.tsx",
+      "type": "file",
+      "size_bytes": 1706,
+      "last_modified_commit": "8fb50b9f7",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 32
+    },
+    {
+      "path": "apps/web/src/app/(app)/hope/stylize/page.tsx",
+      "type": "file",
+      "size_bytes": 4658,
+      "last_modified_commit": "8fb50b9f7",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 116
+    },
+    {
+      "path": "apps/web/src/app/(app)/layout.tsx",
+      "type": "file",
+      "size_bytes": 297,
+      "last_modified_commit": "616d0b0d5",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 11
+    },
+    {
+      "path": "apps/web/src/app/(app)/mobile-only/page.tsx",
+      "type": "file",
+      "size_bytes": 535,
+      "last_modified_commit": "8fb50b9f7",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 12
+    },
+    {
+      "path": "apps/web/src/app/(app)/nexus/channel/page.tsx",
+      "type": "file",
+      "size_bytes": 4092,
+      "last_modified_commit": "8fb50b9f7",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 90
+    },
+    {
+      "path": "apps/web/src/app/(app)/nexus/current/page.tsx",
+      "type": "file",
+      "size_bytes": 6259,
+      "last_modified_commit": "8fb50b9f7",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 163
+    },
+    {
+      "path": "apps/web/src/app/(app)/nexus/page.tsx",
+      "type": "file",
+      "size_bytes": 121,
+      "last_modified_commit": "8fb50b9f7",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 5
+    },
+    {
+      "path": "apps/web/src/app/(app)/nexus/post/page.tsx",
+      "type": "file",
+      "size_bytes": 7503,
+      "last_modified_commit": "8fb50b9f7",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 188
+    },
+    {
+      "path": "apps/web/src/app/(app)/notifications/page.tsx",
+      "type": "file",
+      "size_bytes": 239,
+      "last_modified_commit": "8fb50b9f7",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 3
+    },
+    {
+      "path": "apps/web/src/app/(app)/page.tsx",
+      "type": "file",
+      "size_bytes": 282,
+      "last_modified_commit": "8fb50b9f7",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 8
+    },
+    {
+      "path": "apps/web/src/app/(app)/preferences/page.tsx",
+      "type": "file",
+      "size_bytes": 229,
+      "last_modified_commit": "8fb50b9f7",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 3
+    },
+    {
+      "path": "apps/web/src/app/(app)/providers.tsx",
+      "type": "file",
+      "size_bytes": 565,
+      "last_modified_commit": "616d0b0d5",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 17
+    },
+    {
+      "path": "apps/web/src/app/(app)/tempus/calendar/page.tsx",
+      "type": "file",
+      "size_bytes": 962,
+      "last_modified_commit": "8fb50b9f7",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 28
+    },
+    {
+      "path": "apps/web/src/app/(app)/tempus/clock/page.tsx",
+      "type": "file",
+      "size_bytes": 790,
+      "last_modified_commit": "8fb50b9f7",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 24
+    },
+    {
+      "path": "apps/web/src/app/(app)/tempus/codex/page.tsx",
+      "type": "file",
+      "size_bytes": 766,
+      "last_modified_commit": "8fb50b9f7",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 24
+    },
+    {
+      "path": "apps/web/src/app/(app)/tempus/page.tsx",
+      "type": "file",
+      "size_bytes": 121,
+      "last_modified_commit": "8fb50b9f7",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 5
+    },
+    {
+      "path": "apps/web/src/app/(app)/text/contacts/page.tsx",
+      "type": "file",
+      "size_bytes": 761,
+      "last_modified_commit": "8fb50b9f7",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 24
+    },
+    {
+      "path": "apps/web/src/app/(app)/text/groups/page.tsx",
+      "type": "file",
+      "size_bytes": 3422,
+      "last_modified_commit": "8fb50b9f7",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 81
+    },
+    {
+      "path": "apps/web/src/app/(app)/text/messages/page.tsx",
+      "type": "file",
+      "size_bytes": 3091,
+      "last_modified_commit": "8fb50b9f7",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 86
+    },
+    {
+      "path": "apps/web/src/app/(app)/text/page.tsx",
+      "type": "file",
+      "size_bytes": 120,
+      "last_modified_commit": "8fb50b9f7",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 5
+    },
+    {
+      "path": "apps/web/src/app/(app)/vitae/grade/page.tsx",
+      "type": "file",
+      "size_bytes": 780,
+      "last_modified_commit": "8fb50b9f7",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 25
+    },
+    {
+      "path": "apps/web/src/app/(app)/vitae/mastery/page.tsx",
+      "type": "file",
+      "size_bytes": 954,
+      "last_modified_commit": "8fb50b9f7",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 29
+    },
+    {
+      "path": "apps/web/src/app/(app)/vitae/page.tsx",
+      "type": "file",
+      "size_bytes": 156,
+      "last_modified_commit": "8fb50b9f7",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 6
+    },
+    {
+      "path": "apps/web/src/app/(app)/vitae/path/page.tsx",
+      "type": "file",
+      "size_bytes": 779,
+      "last_modified_commit": "8fb50b9f7",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 25
+    },
+    {
+      "path": "apps/web/src/app/(app)/wallet/page.tsx",
+      "type": "file",
+      "size_bytes": 244,
+      "last_modified_commit": "8fb50b9f7",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 3
+    },
+    {
+      "path": "apps/web/src/app/(marketing)/activate/page.tsx",
+      "type": "file",
+      "size_bytes": 445,
+      "last_modified_commit": "5da311ef6",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 15
+    },
+    {
+      "path": "apps/web/src/app/(marketing)/client-layout.tsx",
+      "type": "file",
+      "size_bytes": 157,
+      "last_modified_commit": "42268897e",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 7
+    },
+    {
+      "path": "apps/web/src/app/(marketing)/components/ActiveSectionObserver.tsx",
+      "type": "file",
+      "size_bytes": 1737,
+      "last_modified_commit": "5da311ef6",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 59
+    },
+    {
+      "path": "apps/web/src/app/(marketing)/components/ConstellationCanvas.tsx",
+      "type": "file",
+      "size_bytes": 4391,
+      "last_modified_commit": "5da311ef6",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 146
+    },
+    {
+      "path": "apps/web/src/app/(marketing)/components/Header.tsx",
+      "type": "file",
+      "size_bytes": 4344,
+      "last_modified_commit": "5da311ef6",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 110
+    },
+    {
+      "path": "apps/web/src/app/(marketing)/components/ui/ActivateBento.tsx",
+      "type": "file",
+      "size_bytes": 923,
+      "last_modified_commit": "42268897e",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 36
+    },
+    {
+      "path": "apps/web/src/app/(marketing)/components/ui/BentoCard.tsx",
+      "type": "file",
+      "size_bytes": 1255,
+      "last_modified_commit": "42268897e",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 43
+    },
+    {
+      "path": "apps/web/src/app/(marketing)/components/ui/BentoShowcase.tsx",
+      "type": "file",
+      "size_bytes": 4967,
+      "last_modified_commit": "42268897e",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 132
+    },
+    {
+      "path": "apps/web/src/app/(marketing)/components/ui/HeroBento.tsx",
+      "type": "file",
+      "size_bytes": 1225,
+      "last_modified_commit": "5da311ef6",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 41
+    },
+    {
+      "path": "apps/web/src/app/(marketing)/components/ui/HopeOrb.tsx",
+      "type": "file",
+      "size_bytes": 4290,
+      "last_modified_commit": "5da311ef6",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 124
+    },
+    {
+      "path": "apps/web/src/app/(marketing)/components/ui/ShowcaseGrid.tsx",
+      "type": "file",
+      "size_bytes": 2936,
+      "last_modified_commit": "5da311ef6",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 99
+    },
+    {
+      "path": "apps/web/src/app/(marketing)/components/ui/bento-grid.tsx",
+      "type": "file",
+      "size_bytes": 3200,
+      "last_modified_commit": "5da311ef6",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 109
+    },
+    {
+      "path": "apps/web/src/app/(marketing)/components/ui/button.tsx",
+      "type": "file",
+      "size_bytes": 1902,
+      "last_modified_commit": "5da311ef6",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 57
+    },
+    {
+      "path": "apps/web/src/app/(marketing)/layout.tsx",
+      "type": "file",
+      "size_bytes": 1175,
+      "last_modified_commit": "42268897e",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 43
+    },
+    {
+      "path": "apps/web/src/app/(marketing)/page.tsx",
+      "type": "file",
+      "size_bytes": 1948,
+      "last_modified_commit": "376be12f8",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 58
+    },
+    {
+      "path": "apps/web/src/app/(marketing)/styles/globals.css",
+      "type": "file",
+      "size_bytes": 3856,
+      "last_modified_commit": "5da311ef6",
+      "is_empty": false,
+      "extension": ".css",
+      "lines": 146
+    },
+    {
+      "path": "apps/web/src/app/(marketing)/styles/motion.css",
+      "type": "file",
+      "size_bytes": 6999,
+      "last_modified_commit": "5da311ef6",
+      "is_empty": false,
+      "extension": ".css",
+      "lines": 90
+    },
+    {
+      "path": "apps/web/src/app/(marketing)/styles/utilities.css",
+      "type": "file",
+      "size_bytes": 2036,
+      "last_modified_commit": "5da311ef6",
+      "is_empty": false,
+      "extension": ".css",
+      "lines": 53
+    },
+    {
+      "path": "apps/web/src/app/api/ipfs/route.ts",
+      "type": "file",
+      "size_bytes": 279,
+      "last_modified_commit": "376be12f8",
+      "is_empty": false,
+      "extension": ".ts",
+      "lines": 12
+    },
+    {
+      "path": "apps/web/src/app/favicon.ico",
+      "type": "file",
+      "size_bytes": 25931,
+      "last_modified_commit": "d32d6affc",
+      "is_empty": false,
+      "extension": ".ico",
+      "lines": 30
+    },
+    {
+      "path": "apps/web/src/app/globals.css",
+      "type": "file",
+      "size_bytes": 102,
+      "last_modified_commit": "0f075f352",
+      "is_empty": false,
+      "extension": ".css",
+      "lines": 2
+    },
+    {
+      "path": "apps/web/src/app/layout.tsx",
+      "type": "file",
+      "size_bytes": 725,
+      "last_modified_commit": "616d0b0d5",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 32
+    },
+    {
+      "path": "apps/web/src/app/middleware.ts",
+      "type": "file",
+      "size_bytes": 390,
+      "last_modified_commit": "616d0b0d5",
+      "is_empty": false,
+      "extension": ".ts",
+      "lines": 12
+    },
+    {
+      "path": "apps/web/src/app/onboard/page.tsx",
+      "type": "file",
+      "size_bytes": 1892,
+      "last_modified_commit": "42268897e",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 62
+    },
+    {
+      "path": "apps/web/src/app/page.tsx",
+      "type": "file",
+      "size_bytes": 421,
+      "last_modified_commit": "bbd56cd97",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 20
+    },
+    {
+      "path": "apps/web/src/components/ConnectWallet.tsx",
+      "type": "file",
+      "size_bytes": 3379,
+      "last_modified_commit": "d32d6affc",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 113
+    },
+    {
+      "path": "apps/web/src/components/SimpleAccountPreview.tsx",
+      "type": "file",
+      "size_bytes": 4241,
+      "last_modified_commit": "d32d6affc",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 115
+    },
+    {
+      "path": "apps/web/src/components/shared/CTAActivate.tsx",
+      "type": "file",
+      "size_bytes": 1026,
+      "last_modified_commit": "d32d6affc",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 29
+    },
+    {
+      "path": "apps/web/src/components/shared/FreeBadge.tsx",
+      "type": "file",
+      "size_bytes": 304,
+      "last_modified_commit": "d32d6affc",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 10
+    },
+    {
+      "path": "apps/web/src/components/shared/LockHint.tsx",
+      "type": "file",
+      "size_bytes": 279,
+      "last_modified_commit": "d32d6affc",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 9
+    },
+    {
+      "path": "apps/web/src/components/ui/ACCOnboardingModal.tsx",
+      "type": "file",
+      "size_bytes": 5682,
+      "last_modified_commit": "d32d6affc",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 133
+    },
+    {
+      "path": "apps/web/src/components/ui/AppFooter.tsx",
+      "type": "file",
+      "size_bytes": 2650,
+      "last_modified_commit": "d32d6affc",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 75
+    },
+    {
+      "path": "apps/web/src/components/ui/AppHeader.tsx",
+      "type": "file",
+      "size_bytes": 3937,
+      "last_modified_commit": "d32d6affc",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 104
+    },
+    {
+      "path": "apps/web/src/components/ui/BadgeCounter.tsx",
+      "type": "file",
+      "size_bytes": 1168,
+      "last_modified_commit": "d32d6affc",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 44
+    },
+    {
+      "path": "apps/web/src/components/ui/PanelShell.tsx",
+      "type": "file",
+      "size_bytes": 3613,
+      "last_modified_commit": "42268897e",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 109
+    },
+    {
+      "path": "apps/web/src/components/ui/SwipeRoutes.tsx",
+      "type": "file",
+      "size_bytes": 2303,
+      "last_modified_commit": "d32d6affc",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 74
+    },
+    {
+      "path": "apps/web/src/components/ui/TabDots.tsx",
+      "type": "file",
+      "size_bytes": 745,
+      "last_modified_commit": "d32d6affc",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 29
+    },
+    {
+      "path": "apps/web/src/components/ui/TabMenuIndicators.tsx",
+      "type": "file",
+      "size_bytes": 1374,
+      "last_modified_commit": "d32d6affc",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 44
+    },
+    {
+      "path": "apps/web/src/components/ui/TabMenuPager.tsx",
+      "type": "file",
+      "size_bytes": 3098,
+      "last_modified_commit": "d32d6affc",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 96
+    },
+    {
+      "path": "apps/web/src/content/locales/de.json",
+      "type": "file",
+      "size_bytes": 3709,
+      "last_modified_commit": "5da311ef6",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 109
+    },
+    {
+      "path": "apps/web/src/content/locales/en.json",
+      "type": "file",
+      "size_bytes": 3709,
+      "last_modified_commit": "5da311ef6",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 109
+    },
+    {
+      "path": "apps/web/src/content/locales/es.json",
+      "type": "file",
+      "size_bytes": 3709,
+      "last_modified_commit": "5da311ef6",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 109
+    },
+    {
+      "path": "apps/web/src/content/locales/fr.json",
+      "type": "file",
+      "size_bytes": 3709,
+      "last_modified_commit": "5da311ef6",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 109
+    },
+    {
+      "path": "apps/web/src/content/narrative.json",
+      "type": "file",
+      "size_bytes": 3709,
+      "last_modified_commit": "5da311ef6",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 109
+    },
+    {
+      "path": "apps/web/src/content/narrative.ts",
+      "type": "file",
+      "size_bytes": 1039,
+      "last_modified_commit": "5da311ef6",
+      "is_empty": false,
+      "extension": ".ts",
+      "lines": 48
+    },
+    {
+      "path": "apps/web/src/hooks/useNarrative.ts",
+      "type": "file",
+      "size_bytes": 1184,
+      "last_modified_commit": "5da311ef6",
+      "is_empty": false,
+      "extension": ".ts",
+      "lines": 38
+    },
+    {
+      "path": "apps/web/src/lib/cn.ts",
+      "type": "file",
+      "size_bytes": 151,
+      "last_modified_commit": "5da311ef6",
+      "is_empty": false,
+      "extension": ".ts",
+      "lines": 6
+    },
+    {
+      "path": "apps/web/src/lib/cosmos/client.ts",
+      "type": "file",
+      "size_bytes": 858,
+      "last_modified_commit": "975ab5f93",
+      "is_empty": false,
+      "extension": ".ts",
+      "lines": 18
+    },
+    {
+      "path": "apps/web/src/lib/cosmos/queries.ts",
+      "type": "file",
+      "size_bytes": 239,
+      "last_modified_commit": "5da311ef6",
+      "is_empty": false,
+      "extension": ".ts",
+      "lines": 6
+    },
+    {
+      "path": "apps/web/src/lib/cosmos/tx.ts",
+      "type": "file",
+      "size_bytes": 609,
+      "last_modified_commit": "5da311ef6",
+      "is_empty": false,
+      "extension": ".ts",
+      "lines": 11
+    },
+    {
+      "path": "apps/web/src/lib/cosmos/wallet.ts",
+      "type": "file",
+      "size_bytes": 1279,
+      "last_modified_commit": "5da311ef6",
+      "is_empty": false,
+      "extension": ".ts",
+      "lines": 25
+    },
+    {
+      "path": "apps/web/src/lib/economy/config/costs.json",
+      "type": "file",
+      "size_bytes": 134,
+      "last_modified_commit": "5da311ef6",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 7
+    },
+    {
+      "path": "apps/web/src/lib/economy/contracts.ts",
+      "type": "file",
+      "size_bytes": 1461,
+      "last_modified_commit": "42268897e",
+      "is_empty": false,
+      "extension": ".ts",
+      "lines": 50
+    },
+    {
+      "path": "apps/web/src/lib/economy/economy.ts",
+      "type": "file",
+      "size_bytes": 518,
+      "last_modified_commit": "642fbf2b7",
+      "is_empty": false,
+      "extension": ".ts",
+      "lines": 14
+    },
+    {
+      "path": "apps/web/src/lib/economy/guards.ts",
+      "type": "file",
+      "size_bytes": 282,
+      "last_modified_commit": "42268897e",
+      "is_empty": false,
+      "extension": ".ts",
+      "lines": 7
+    },
+    {
+      "path": "apps/web/src/lib/economy/index.ts",
+      "type": "file",
+      "size_bytes": 108,
+      "last_modified_commit": "42268897e",
+      "is_empty": false,
+      "extension": ".ts",
+      "lines": 4
+    },
+    {
+      "path": "apps/web/src/lib/economy/tokens.ts",
+      "type": "file",
+      "size_bytes": 0,
+      "last_modified_commit": "642fbf2b7",
+      "is_empty": true,
+      "extension": ".ts",
+      "lines": 0
+    },
+    {
+      "path": "apps/web/src/lib/gates/index.ts",
+      "type": "file",
+      "size_bytes": 35,
+      "last_modified_commit": "42268897e",
+      "is_empty": false,
+      "extension": ".ts",
+      "lines": 1
+    },
+    {
+      "path": "apps/web/src/lib/helia/index.ts",
+      "type": "file",
+      "size_bytes": 32,
+      "last_modified_commit": "42268897e",
+      "is_empty": false,
+      "extension": ".ts",
+      "lines": 1
+    },
+    {
+      "path": "apps/web/src/lib/identity/aa.ts",
+      "type": "file",
+      "size_bytes": 543,
+      "last_modified_commit": "642fbf2b7",
+      "is_empty": false,
+      "extension": ".ts",
+      "lines": 16
+    },
+    {
+      "path": "apps/web/src/lib/identity/burner.ts",
+      "type": "file",
+      "size_bytes": 825,
+      "last_modified_commit": "642fbf2b7",
+      "is_empty": false,
+      "extension": ".ts",
+      "lines": 16
+    },
+    {
+      "path": "apps/web/src/lib/identity/gates.ts",
+      "type": "file",
+      "size_bytes": 690,
+      "last_modified_commit": "642fbf2b7",
+      "is_empty": false,
+      "extension": ".ts",
+      "lines": 16
+    },
+    {
+      "path": "apps/web/src/lib/identity/passkey.ts",
+      "type": "file",
+      "size_bytes": 1336,
+      "last_modified_commit": "642fbf2b7",
+      "is_empty": false,
+      "extension": ".ts",
+      "lines": 32
+    },
+    {
+      "path": "apps/web/src/lib/identity/trust.ts",
+      "type": "file",
+      "size_bytes": 1247,
+      "last_modified_commit": "642fbf2b7",
+      "is_empty": false,
+      "extension": ".ts",
+      "lines": 38
+    },
+    {
+      "path": "apps/web/src/lib/infra/arcanum.ts",
+      "type": "file",
+      "size_bytes": 246,
+      "last_modified_commit": "5da311ef6",
+      "is_empty": false,
+      "extension": ".ts",
+      "lines": 5
+    },
+    {
+      "path": "apps/web/src/lib/infra/chains.ts",
+      "type": "file",
+      "size_bytes": 652,
+      "last_modified_commit": "642fbf2b7",
+      "is_empty": false,
+      "extension": ".ts",
+      "lines": 16
+    },
+    {
+      "path": "apps/web/src/lib/infra/helia.ts",
+      "type": "file",
+      "size_bytes": 1447,
+      "last_modified_commit": "42268897e",
+      "is_empty": false,
+      "extension": ".ts",
+      "lines": 50
+    },
+    {
+      "path": "apps/web/src/lib/infra/index.ts",
+      "type": "file",
+      "size_bytes": 75,
+      "last_modified_commit": "42268897e",
+      "is_empty": false,
+      "extension": ".ts",
+      "lines": 3
+    },
+    {
+      "path": "apps/web/src/lib/infra/ipfs.ts",
+      "type": "file",
+      "size_bytes": 1663,
+      "last_modified_commit": "642fbf2b7",
+      "is_empty": false,
+      "extension": ".ts",
+      "lines": 46
+    },
+    {
+      "path": "apps/web/src/lib/infra/matrix.ts",
+      "type": "file",
+      "size_bytes": 2852,
+      "last_modified_commit": "642fbf2b7",
+      "is_empty": false,
+      "extension": ".ts",
+      "lines": 76
+    },
+    {
+      "path": "apps/web/src/lib/infra/wagmi.ts",
+      "type": "file",
+      "size_bytes": 464,
+      "last_modified_commit": "616d0b0d5",
+      "is_empty": false,
+      "extension": ".ts",
+      "lines": 15
+    },
+    {
+      "path": "apps/web/src/lib/ipfs/index.ts",
+      "type": "file",
+      "size_bytes": 31,
+      "last_modified_commit": "42268897e",
+      "is_empty": false,
+      "extension": ".ts",
+      "lines": 1
+    },
+    {
+      "path": "apps/web/src/lib/matrix/index.ts",
+      "type": "file",
+      "size_bytes": 33,
+      "last_modified_commit": "42268897e",
+      "is_empty": false,
+      "extension": ".ts",
+      "lines": 1
+    },
+    {
+      "path": "apps/web/src/lib/rooms/index.ts",
+      "type": "file",
+      "size_bytes": 33,
+      "last_modified_commit": "42268897e",
+      "is_empty": false,
+      "extension": ".ts",
+      "lines": 1
+    },
+    {
+      "path": "apps/web/src/lib/social/post.ts",
+      "type": "file",
+      "size_bytes": 582,
+      "last_modified_commit": "642fbf2b7",
+      "is_empty": false,
+      "extension": ".ts",
+      "lines": 17
+    },
+    {
+      "path": "apps/web/src/lib/social/rooms.ts",
+      "type": "file",
+      "size_bytes": 974,
+      "last_modified_commit": "42268897e",
+      "is_empty": false,
+      "extension": ".ts",
+      "lines": 25
+    },
+    {
+      "path": "apps/web/src/lib/utils.ts",
+      "type": "file",
+      "size_bytes": 166,
+      "last_modified_commit": "5da311ef6",
+      "is_empty": false,
+      "extension": ".ts",
+      "lines": 6
+    },
+    {
+      "path": "apps/web/src/state/useAccount.ts",
+      "type": "file",
+      "size_bytes": 3499,
+      "last_modified_commit": "d32d6affc",
+      "is_empty": false,
+      "extension": ".ts",
+      "lines": 127
+    },
+    {
+      "path": "apps/web/src/state/useActiveTab.ts",
+      "type": "file",
+      "size_bytes": 2002,
+      "last_modified_commit": "d32d6affc",
+      "is_empty": false,
+      "extension": ".ts",
+      "lines": 71
+    },
+    {
+      "path": "apps/web/src/state/usePreference.ts",
+      "type": "file",
+      "size_bytes": 709,
+      "last_modified_commit": "d32d6affc",
+      "is_empty": false,
+      "extension": ".ts",
+      "lines": 30
+    },
+    {
+      "path": "apps/web/src/styles/globals.css",
+      "type": "file",
+      "size_bytes": 1548,
+      "last_modified_commit": "642fbf2b7",
+      "is_empty": false,
+      "extension": ".css",
+      "lines": 56
+    },
+    {
+      "path": "apps/web/tailwind.config.ts",
+      "type": "file",
+      "size_bytes": 149,
+      "last_modified_commit": "0f075f352",
+      "is_empty": false,
+      "extension": ".ts",
+      "lines": 2
+    },
+    {
+      "path": "apps/web/tools/seedRooms.ts",
+      "type": "file",
+      "size_bytes": 2981,
+      "last_modified_commit": "d32d6affc",
+      "is_empty": false,
+      "extension": ".ts",
+      "lines": 79
+    },
+    {
+      "path": "apps/web/tsconfig.json",
+      "type": "file",
+      "size_bytes": 733,
+      "last_modified_commit": "5da311ef6",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 44
+    },
+    {
+      "path": "chains/CoreFileTree.txt",
+      "type": "file",
+      "size_bytes": 6241,
+      "last_modified_commit": "975ab5f93",
+      "is_empty": false,
+      "extension": ".txt",
+      "lines": 170
+    },
+    {
+      "path": "chains/arcanum/.github/workflows/release.yml",
+      "type": "file",
+      "size_bytes": 2037,
+      "last_modified_commit": "5da311ef6",
+      "is_empty": false,
+      "extension": ".yml",
+      "lines": 56
+    },
+    {
+      "path": "chains/arcanum/.gitignore",
+      "type": "file",
+      "size_bytes": 79,
+      "last_modified_commit": "5da311ef6",
+      "is_empty": false,
+      "extension": ".gitignore",
+      "lines": 9
+    },
+    {
+      "path": "chains/arcanum/Makefile",
+      "type": "file",
+      "size_bytes": 3112,
+      "last_modified_commit": "5da311ef6",
+      "is_empty": false,
+      "extension": "",
+      "lines": 121
+    },
+    {
+      "path": "chains/arcanum/amino/amino.ts",
+      "type": "file",
+      "size_bytes": 227,
+      "last_modified_commit": "975ab5f93",
+      "is_empty": false,
+      "extension": ".ts",
+      "lines": 9
+    },
+    {
+      "path": "chains/arcanum/app/app.go",
+      "type": "file",
+      "size_bytes": 9871,
+      "last_modified_commit": "975ab5f93",
+      "is_empty": false,
+      "extension": ".go",
+      "lines": 234
+    },
+    {
+      "path": "chains/arcanum/app/app_config.go",
+      "type": "file",
+      "size_bytes": 596,
+      "last_modified_commit": "975ab5f93",
+      "is_empty": false,
+      "extension": ".go",
+      "lines": 20
+    },
+    {
+      "path": "chains/arcanum/app/config.go",
+      "type": "file",
+      "size_bytes": 737,
+      "last_modified_commit": "5da311ef6",
+      "is_empty": false,
+      "extension": ".go",
+      "lines": 20
+    },
+    {
+      "path": "chains/arcanum/app/export.go.disabled",
+      "type": "file",
+      "size_bytes": 7502,
+      "last_modified_commit": "975ab5f93",
+      "is_empty": false,
+      "extension": ".disabled",
+      "lines": 256
+    },
+    {
+      "path": "chains/arcanum/app/genesis.go",
+      "type": "file",
+      "size_bytes": 523,
+      "last_modified_commit": "5da311ef6",
+      "is_empty": false,
+      "extension": ".go",
+      "lines": 14
+    },
+    {
+      "path": "chains/arcanum/app/genesis_account.go",
+      "type": "file",
+      "size_bytes": 1807,
+      "last_modified_commit": "5da311ef6",
+      "is_empty": false,
+      "extension": ".go",
+      "lines": 47
+    },
+    {
+      "path": "chains/arcanum/app/ibc.go.disabled",
+      "type": "file",
+      "size_bytes": 7252,
+      "last_modified_commit": "975ab5f93",
+      "is_empty": false,
+      "extension": ".disabled",
+      "lines": 167
+    },
+    {
+      "path": "chains/arcanum/app/module_basics.go.disabled",
+      "type": "file",
+      "size_bytes": 651,
+      "last_modified_commit": "975ab5f93",
+      "is_empty": false,
+      "extension": ".disabled",
+      "lines": 21
+    },
+    {
+      "path": "chains/arcanum/buf.gen.yaml",
+      "type": "file",
+      "size_bytes": 156,
+      "last_modified_commit": "5da311ef6",
+      "is_empty": false,
+      "extension": ".yaml",
+      "lines": 10
+    },
+    {
+      "path": "chains/arcanum/buf.lock",
+      "type": "file",
+      "size_bytes": 1647,
+      "last_modified_commit": "5da311ef6",
+      "is_empty": false,
+      "extension": ".lock",
+      "lines": 24
+    },
+    {
+      "path": "chains/arcanum/buf.yaml",
+      "type": "file",
+      "size_bytes": 688,
+      "last_modified_commit": "5da311ef6",
+      "is_empty": false,
+      "extension": ".yaml",
+      "lines": 30
+    },
+    {
+      "path": "chains/arcanum/cmd/arcanumd/cmd/commands.go",
+      "type": "file",
+      "size_bytes": 4334,
+      "last_modified_commit": "5da311ef6",
+      "is_empty": false,
+      "extension": ".go",
+      "lines": 163
+    },
+    {
+      "path": "chains/arcanum/cmd/arcanumd/cmd/config.go",
+      "type": "file",
+      "size_bytes": 2179,
+      "last_modified_commit": "5da311ef6",
+      "is_empty": false,
+      "extension": ".go",
+      "lines": 61
+    },
+    {
+      "path": "chains/arcanum/cmd/arcanumd/cmd/root.go",
+      "type": "file",
+      "size_bytes": 1956,
+      "last_modified_commit": "975ab5f93",
+      "is_empty": false,
+      "extension": ".go",
+      "lines": 64
+    },
+    {
+      "path": "chains/arcanum/cmd/arcanumd/main.go",
+      "type": "file",
+      "size_bytes": 41,
+      "last_modified_commit": "5da311ef6",
+      "is_empty": false,
+      "extension": ".go",
+      "lines": 5
+    },
+    {
+      "path": "chains/arcanum/cmd/arcanumd/root.go",
+      "type": "file",
+      "size_bytes": 2864,
+      "last_modified_commit": "975ab5f93",
+      "is_empty": false,
+      "extension": ".go",
+      "lines": 84
+    },
+    {
+      "path": "chains/arcanum/config.yml",
+      "type": "file",
+      "size_bytes": 425,
+      "last_modified_commit": "5da311ef6",
+      "is_empty": false,
+      "extension": ".yml",
+      "lines": 26
+    },
+    {
+      "path": "chains/arcanum/cosmos/app/v1alpha1/module.ts",
+      "type": "file",
+      "size_bytes": 12140,
+      "last_modified_commit": "975ab5f93",
+      "is_empty": false,
+      "extension": ".ts",
+      "lines": 348
+    },
+    {
+      "path": "chains/arcanum/cosmos/base/query/v1beta1/pagination.ts",
+      "type": "file",
+      "size_bytes": 9961,
+      "last_modified_commit": "975ab5f93",
+      "is_empty": false,
+      "extension": ".ts",
+      "lines": 332
+    },
+    {
+      "path": "chains/arcanum/cosmos/msg/v1/msg.ts",
+      "type": "file",
+      "size_bytes": 241,
+      "last_modified_commit": "975ab5f93",
+      "is_empty": false,
+      "extension": ".ts",
+      "lines": 9
+    },
+    {
+      "path": "chains/arcanum/cosmos_proto/cosmos.ts",
+      "type": "file",
+      "size_bytes": 9466,
+      "last_modified_commit": "975ab5f93",
+      "is_empty": false,
+      "extension": ".ts",
+      "lines": 307
+    },
+    {
+      "path": "chains/arcanum/docs/docs.go",
+      "type": "file",
+      "size_bytes": 775,
+      "last_modified_commit": "5da311ef6",
+      "is_empty": false,
+      "extension": ".go",
+      "lines": 40
+    },
+    {
+      "path": "chains/arcanum/docs/static/openapi.json",
+      "type": "file",
+      "size_bytes": 10470,
+      "last_modified_commit": "5da311ef6",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 0
+    },
+    {
+      "path": "chains/arcanum/go.mod",
+      "type": "file",
+      "size_bytes": 22187,
+      "last_modified_commit": "975ab5f93",
+      "is_empty": false,
+      "extension": ".mod",
+      "lines": 437
+    },
+    {
+      "path": "chains/arcanum/go.sum",
+      "type": "file",
+      "size_bytes": 283815,
+      "last_modified_commit": "5da311ef6",
+      "is_empty": false,
+      "extension": ".sum",
+      "lines": 2966
+    },
+    {
+      "path": "chains/arcanum/gogoproto/gogo.ts",
+      "type": "file",
+      "size_bytes": 234,
+      "last_modified_commit": "975ab5f93",
+      "is_empty": false,
+      "extension": ".ts",
+      "lines": 9
+    },
+    {
+      "path": "chains/arcanum/google/api/annotations.ts",
+      "type": "file",
+      "size_bytes": 243,
+      "last_modified_commit": "975ab5f93",
+      "is_empty": false,
+      "extension": ".ts",
+      "lines": 9
+    },
+    {
+      "path": "chains/arcanum/google/api/http.ts",
+      "type": "file",
+      "size_bytes": 26289,
+      "last_modified_commit": "975ab5f93",
+      "is_empty": false,
+      "extension": ".ts",
+      "lines": 770
+    },
+    {
+      "path": "chains/arcanum/google/protobuf/descriptor.ts",
+      "type": "file",
+      "size_bytes": 235863,
+      "last_modified_commit": "975ab5f93",
+      "is_empty": false,
+      "extension": ".ts",
+      "lines": 6992
+    },
+    {
+      "path": "chains/arcanum/proto/arcanum/chaincode/module/v1/module.proto",
+      "type": "file",
+      "size_bytes": 436,
+      "last_modified_commit": "975ab5f93",
+      "is_empty": false,
+      "extension": ".proto",
+      "lines": 15
+    },
+    {
+      "path": "chains/arcanum/proto/arcanum/chaincode/v1/genesis.proto",
+      "type": "file",
+      "size_bytes": 296,
+      "last_modified_commit": "975ab5f93",
+      "is_empty": false,
+      "extension": ".proto",
+      "lines": 12
+    },
+    {
+      "path": "chains/arcanum/proto/arcanum/chaincode/v1/params.proto",
+      "type": "file",
+      "size_bytes": 241,
+      "last_modified_commit": "975ab5f93",
+      "is_empty": false,
+      "extension": ".proto",
+      "lines": 11
+    },
+    {
+      "path": "chains/arcanum/proto/arcanum/chaincode/v1/query.proto",
+      "type": "file",
+      "size_bytes": 1271,
+      "last_modified_commit": "5da311ef6",
+      "is_empty": false,
+      "extension": ".proto",
+      "lines": 44
+    },
+    {
+      "path": "chains/arcanum/proto/arcanum/chaincode/v1/tx.proto",
+      "type": "file",
+      "size_bytes": 2112,
+      "last_modified_commit": "5da311ef6",
+      "is_empty": false,
+      "extension": ".proto",
+      "lines": 68
+    },
+    {
+      "path": "chains/arcanum/proto/arcanum/mana/module/v1/module.proto",
+      "type": "file",
+      "size_bytes": 421,
+      "last_modified_commit": "975ab5f93",
+      "is_empty": false,
+      "extension": ".proto",
+      "lines": 15
+    },
+    {
+      "path": "chains/arcanum/proto/arcanum/mana/v1/genesis.proto",
+      "type": "file",
+      "size_bytes": 281,
+      "last_modified_commit": "975ab5f93",
+      "is_empty": false,
+      "extension": ".proto",
+      "lines": 12
+    },
+    {
+      "path": "chains/arcanum/proto/arcanum/mana/v1/params.proto",
+      "type": "file",
+      "size_bytes": 226,
+      "last_modified_commit": "975ab5f93",
+      "is_empty": false,
+      "extension": ".proto",
+      "lines": 11
+    },
+    {
+      "path": "chains/arcanum/proto/arcanum/mana/v1/query.proto",
+      "type": "file",
+      "size_bytes": 1237,
+      "last_modified_commit": "5da311ef6",
+      "is_empty": false,
+      "extension": ".proto",
+      "lines": 42
+    },
+    {
+      "path": "chains/arcanum/proto/arcanum/mana/v1/tx.proto",
+      "type": "file",
+      "size_bytes": 2615,
+      "last_modified_commit": "5da311ef6",
+      "is_empty": false,
+      "extension": ".proto",
+      "lines": 82
+    },
+    {
+      "path": "chains/arcanum/proto/arcanum/treasury/module/v1/module.proto",
+      "type": "file",
+      "size_bytes": 536,
+      "last_modified_commit": "975ab5f93",
+      "is_empty": false,
+      "extension": ".proto",
+      "lines": 16
+    },
+    {
+      "path": "chains/arcanum/proto/arcanum/treasury/v1/query.proto",
+      "type": "file",
+      "size_bytes": 336,
+      "last_modified_commit": "5da311ef6",
+      "is_empty": false,
+      "extension": ".proto",
+      "lines": 18
+    },
+    {
+      "path": "chains/arcanum/proto/buf.gen.go.yaml",
+      "type": "file",
+      "size_bytes": 368,
+      "last_modified_commit": "975ab5f93",
+      "is_empty": false,
+      "extension": ".yaml",
+      "lines": 21
+    },
+    {
+      "path": "chains/arcanum/proto/buf.gen.gogo.yaml",
+      "type": "file",
+      "size_bytes": 410,
+      "last_modified_commit": "975ab5f93",
+      "is_empty": false,
+      "extension": ".yaml",
+      "lines": 13
+    },
+    {
+      "path": "chains/arcanum/proto/buf.gen.sta.yaml",
+      "type": "file",
+      "size_bytes": 475,
+      "last_modified_commit": "5da311ef6",
+      "is_empty": false,
+      "extension": ".yaml",
+      "lines": 20
+    },
+    {
+      "path": "chains/arcanum/proto/buf.gen.swagger.yaml",
+      "type": "file",
+      "size_bytes": 450,
+      "last_modified_commit": "5da311ef6",
+      "is_empty": false,
+      "extension": ".yaml",
+      "lines": 19
+    },
+    {
+      "path": "chains/arcanum/proto/buf.gen.ts.yaml",
+      "type": "file",
+      "size_bytes": 444,
+      "last_modified_commit": "5da311ef6",
+      "is_empty": false,
+      "extension": ".yaml",
+      "lines": 18
+    },
+    {
+      "path": "chains/arcanum/readme.md",
+      "type": "file",
+      "size_bytes": 891,
+      "last_modified_commit": "975ab5f93",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 40
+    },
+    {
+      "path": "chains/arcanum/scripts/faucet.sh",
+      "type": "file",
+      "size_bytes": 503,
+      "last_modified_commit": "5da311ef6",
+      "is_empty": false,
+      "extension": ".sh",
+      "lines": 19
+    },
+    {
+      "path": "chains/arcanum/tools/tools.go",
+      "type": "file",
+      "size_bytes": 592,
+      "last_modified_commit": "5da311ef6",
+      "is_empty": false,
+      "extension": ".go",
+      "lines": 17
+    },
+    {
+      "path": "chains/arcanum/x/chaincode/client/cli/tx.go",
+      "type": "file",
+      "size_bytes": 653,
+      "last_modified_commit": "5da311ef6",
+      "is_empty": false,
+      "extension": ".go",
+      "lines": 26
+    },
+    {
+      "path": "chains/arcanum/x/chaincode/genesis.go",
+      "type": "file",
+      "size_bytes": 881,
+      "last_modified_commit": "975ab5f93",
+      "is_empty": false,
+      "extension": ".go",
+      "lines": 41
+    },
+    {
+      "path": "chains/arcanum/x/chaincode/keeper/genesis.go",
+      "type": "file",
+      "size_bytes": 548,
+      "last_modified_commit": "975ab5f93",
+      "is_empty": false,
+      "extension": ".go",
+      "lines": 27
+    },
+    {
+      "path": "chains/arcanum/x/chaincode/keeper/keeper.go",
+      "type": "file",
+      "size_bytes": 2472,
+      "last_modified_commit": "975ab5f93",
+      "is_empty": false,
+      "extension": ".go",
+      "lines": 102
+    },
+    {
+      "path": "chains/arcanum/x/chaincode/keeper/query_server.go",
+      "type": "file",
+      "size_bytes": 923,
+      "last_modified_commit": "975ab5f93",
+      "is_empty": false,
+      "extension": ".go",
+      "lines": 37
+    },
+    {
+      "path": "chains/arcanum/x/chaincode/module/module.go",
+      "type": "file",
+      "size_bytes": 1902,
+      "last_modified_commit": "975ab5f93",
+      "is_empty": false,
+      "extension": ".go",
+      "lines": 73
+    },
+    {
+      "path": "chains/arcanum/x/chaincode/msg_server.go",
+      "type": "file",
+      "size_bytes": 1152,
+      "last_modified_commit": "975ab5f93",
+      "is_empty": false,
+      "extension": ".go",
+      "lines": 46
+    },
+    {
+      "path": "chains/arcanum/x/chaincode/types/codec.go",
+      "type": "file",
+      "size_bytes": 379,
+      "last_modified_commit": "975ab5f93",
+      "is_empty": false,
+      "extension": ".go",
+      "lines": 11
+    },
+    {
+      "path": "chains/arcanum/x/chaincode/types/defaults.go",
+      "type": "file",
+      "size_bytes": 218,
+      "last_modified_commit": "975ab5f93",
+      "is_empty": false,
+      "extension": ".go",
+      "lines": 15
+    },
+    {
+      "path": "chains/arcanum/x/chaincode/types/keys.go",
+      "type": "file",
+      "size_bytes": 285,
+      "last_modified_commit": "975ab5f93",
+      "is_empty": false,
+      "extension": ".go",
+      "lines": 16
+    },
+    {
+      "path": "chains/arcanum/x/chaincode/types/query.pb.gw.go",
+      "type": "file",
+      "size_bytes": 10127,
+      "last_modified_commit": "975ab5f93",
+      "is_empty": false,
+      "extension": ".go",
+      "lines": 229
+    },
+    {
+      "path": "chains/arcanum/x/chaincode/types/tx.pb.gw.go",
+      "type": "file",
+      "size_bytes": 13689,
+      "last_modified_commit": "975ab5f93",
+      "is_empty": false,
+      "extension": ".go",
+      "lines": 289
+    },
+    {
+      "path": "chains/arcanum/x/mana/client/cli/tx.go",
+      "type": "file",
+      "size_bytes": 653,
+      "last_modified_commit": "5da311ef6",
+      "is_empty": false,
+      "extension": ".go",
+      "lines": 26
+    },
+    {
+      "path": "chains/arcanum/x/mana/keeper/genesis.go",
+      "type": "file",
+      "size_bytes": 538,
+      "last_modified_commit": "975ab5f93",
+      "is_empty": false,
+      "extension": ".go",
+      "lines": 27
+    },
+    {
+      "path": "chains/arcanum/x/mana/keeper/keeper.go",
+      "type": "file",
+      "size_bytes": 3380,
+      "last_modified_commit": "975ab5f93",
+      "is_empty": false,
+      "extension": ".go",
+      "lines": 145
+    },
+    {
+      "path": "chains/arcanum/x/mana/keeper/query_server.go",
+      "type": "file",
+      "size_bytes": 830,
+      "last_modified_commit": "975ab5f93",
+      "is_empty": false,
+      "extension": ".go",
+      "lines": 34
+    },
+    {
+      "path": "chains/arcanum/x/mana/module/module.go",
+      "type": "file",
+      "size_bytes": 1892,
+      "last_modified_commit": "975ab5f93",
+      "is_empty": false,
+      "extension": ".go",
+      "lines": 73
+    },
+    {
+      "path": "chains/arcanum/x/mana/msg_server.go",
+      "type": "file",
+      "size_bytes": 872,
+      "last_modified_commit": "975ab5f93",
+      "is_empty": false,
+      "extension": ".go",
+      "lines": 40
+    },
+    {
+      "path": "chains/arcanum/x/mana/types/codec.go",
+      "type": "file",
+      "size_bytes": 365,
+      "last_modified_commit": "975ab5f93",
+      "is_empty": false,
+      "extension": ".go",
+      "lines": 11
+    },
+    {
+      "path": "chains/arcanum/x/mana/types/defaults.go",
+      "type": "file",
+      "size_bytes": 217,
+      "last_modified_commit": "975ab5f93",
+      "is_empty": false,
+      "extension": ".go",
+      "lines": 15
+    },
+    {
+      "path": "chains/arcanum/x/mana/types/keys.go",
+      "type": "file",
+      "size_bytes": 611,
+      "last_modified_commit": "975ab5f93",
+      "is_empty": false,
+      "extension": ".go",
+      "lines": 26
+    },
+    {
+      "path": "chains/arcanum/x/mana/types/query.pb.gw.go",
+      "type": "file",
+      "size_bytes": 9367,
+      "last_modified_commit": "975ab5f93",
+      "is_empty": false,
+      "extension": ".go",
+      "lines": 211
+    },
+    {
+      "path": "chains/arcanum/x/mana/types/tx.pb.gw.go",
+      "type": "file",
+      "size_bytes": 17235,
+      "last_modified_commit": "975ab5f93",
+      "is_empty": false,
+      "extension": ".go",
+      "lines": 355
+    },
+    {
+      "path": "chains/arcanum/x/treasury/keeper/keeper.go",
+      "type": "file",
+      "size_bytes": 470,
+      "last_modified_commit": "5da311ef6",
+      "is_empty": false,
+      "extension": ".go",
+      "lines": 20
+    },
+    {
+      "path": "chains/arcanum/x/treasury/module/depinject.go",
+      "type": "file",
+      "size_bytes": 216,
+      "last_modified_commit": "5da311ef6",
+      "is_empty": false,
+      "extension": ".go",
+      "lines": 8
+    },
+    {
+      "path": "chains/arcanum/x/treasury/module/module.go",
+      "type": "file",
+      "size_bytes": 1904,
+      "last_modified_commit": "5da311ef6",
+      "is_empty": false,
+      "extension": ".go",
+      "lines": 71
+    },
+    {
+      "path": "chains/arcanum/x/treasury/types/keys.go",
+      "type": "file",
+      "size_bytes": 100,
+      "last_modified_commit": "5da311ef6",
+      "is_empty": false,
+      "extension": ".go",
+      "lines": 7
+    },
+    {
+      "path": "chains/arcanum/x/treasury/types/query.pb.gw.go",
+      "type": "file",
+      "size_bytes": 6657,
+      "last_modified_commit": "975ab5f93",
+      "is_empty": false,
+      "extension": ".go",
+      "lines": 157
+    },
+    {
+      "path": "docs/README.md",
+      "type": "file",
+      "size_bytes": 1558,
+      "last_modified_commit": "20451055d",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 38
+    },
+    {
+      "path": "docs/architecture/app-chain-doctrine.md",
+      "type": "file",
+      "size_bytes": 138,
+      "last_modified_commit": "20451055d",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 11
+    },
+    {
+      "path": "docs/architecture/identity-model.md",
+      "type": "file",
+      "size_bytes": 4477,
+      "last_modified_commit": "20451055d",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 483
+    },
+    {
+      "path": "docs/architecture/layer-boundaries.md",
+      "type": "file",
+      "size_bytes": 5054,
+      "last_modified_commit": "20451055d",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 481
+    },
+    {
+      "path": "docs/architecture/temporal-model.md",
+      "type": "file",
+      "size_bytes": 5012,
+      "last_modified_commit": "20451055d",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 495
+    },
+    {
+      "path": "docs/architecture/tempus-structure.md",
+      "type": "file",
+      "size_bytes": 4213,
+      "last_modified_commit": "20451055d",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 106
+    },
+    {
+      "path": "docs/governance/constitution/architect-gpt-manifest.yaml",
+      "type": "file",
+      "size_bytes": 748,
+      "last_modified_commit": "811a91227",
+      "is_empty": false,
+      "extension": ".yaml",
+      "lines": 21
+    },
+    {
+      "path": "docs/governance/constitution/architect-log.md",
+      "type": "file",
+      "size_bytes": 9737,
+      "last_modified_commit": "20451055d",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 253
+    },
+    {
+      "path": "docs/governance/constitution/architect-role.md",
+      "type": "file",
+      "size_bytes": 4137,
+      "last_modified_commit": "20451055d",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 439
+    },
+    {
+      "path": "docs/governance/constitution/architectgpt-core.md",
+      "type": "file",
+      "size_bytes": 14639,
+      "last_modified_commit": "20451055d",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 196
+    },
+    {
+      "path": "docs/governance/constitution/architectgpt-extended.md",
+      "type": "file",
+      "size_bytes": 8396,
+      "last_modified_commit": "20451055d",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 263
+    },
+    {
+      "path": "docs/governance/constitution/canonical-modules.md",
+      "type": "file",
+      "size_bytes": 7059,
+      "last_modified_commit": "20451055d",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 409
+    },
+    {
+      "path": "docs/governance/constitution/doctrine-checksums.yaml",
+      "type": "file",
+      "size_bytes": 465,
+      "last_modified_commit": "d8daeb5cd",
+      "is_empty": false,
+      "extension": ".yaml",
+      "lines": 4
+    },
+    {
+      "path": "docs/governance/constitution/economic-principles.md",
+      "type": "file",
+      "size_bytes": 9326,
+      "last_modified_commit": "20451055d",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 203
+    },
+    {
+      "path": "docs/governance/constitution/founder-transition.md",
+      "type": "file",
+      "size_bytes": 4291,
+      "last_modified_commit": "20451055d",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 379
+    },
+    {
+      "path": "docs/governance/constitution/metaphysical-neutrality.md",
+      "type": "file",
+      "size_bytes": 3654,
+      "last_modified_commit": "20451055d",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 321
+    },
+    {
+      "path": "docs/governance/constitution/repo-index-generator-spec.md",
+      "type": "file",
+      "size_bytes": 5041,
+      "last_modified_commit": "20451055d",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 531
+    },
+    {
+      "path": "docs/governance/constitution/repo-interface.md",
+      "type": "file",
+      "size_bytes": 5659,
+      "last_modified_commit": "20451055d",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 529
+    },
+    {
+      "path": "docs/governance/constitution/treasury-constitution.md",
+      "type": "file",
+      "size_bytes": 7616,
+      "last_modified_commit": "20451055d",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 247
+    },
+    {
+      "path": "docs/index.md",
+      "type": "file",
+      "size_bytes": 108,
+      "last_modified_commit": "20451055d",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 11
+    },
+    {
+      "path": "docs/overview/arcanum-system-overview.md",
+      "type": "file",
+      "size_bytes": 6230,
+      "last_modified_commit": "20451055d",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 212
+    },
+    {
+      "path": "docs/overview/roadmap-v1.md",
+      "type": "file",
+      "size_bytes": 18862,
+      "last_modified_commit": "20451055d",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 330
+    },
+    {
+      "path": "docs/overview/roadmap-v2.md",
+      "type": "file",
+      "size_bytes": 5566,
+      "last_modified_commit": "20451055d",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 223
+    },
+    {
+      "path": "docs/overview/roadmap-v3.md",
+      "type": "file",
+      "size_bytes": 7109,
+      "last_modified_commit": "20451055d",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 879
+    },
+    {
+      "path": "docs/reference/changelog.md",
+      "type": "file",
+      "size_bytes": 373,
+      "last_modified_commit": "20451055d",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 14
+    },
+    {
+      "path": "docs/reference/glossary.md",
+      "type": "file",
+      "size_bytes": 1261,
+      "last_modified_commit": "20451055d",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 22
+    },
+    {
+      "path": "docs/reference/license-and-attribution.md",
+      "type": "file",
+      "size_bytes": 618,
+      "last_modified_commit": "20451055d",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 17
+    },
+    {
+      "path": "docs/specs/chain/arcanum-chain-overview.md",
+      "type": "file",
+      "size_bytes": 142,
+      "last_modified_commit": "20451055d",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 11
+    },
+    {
+      "path": "docs/specs/chain/invariants.md",
+      "type": "file",
+      "size_bytes": 118,
+      "last_modified_commit": "20451055d",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 11
+    },
+    {
+      "path": "docs/specs/chain/mana.md",
+      "type": "file",
+      "size_bytes": 106,
+      "last_modified_commit": "20451055d",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 11
+    },
+    {
+      "path": "docs/specs/chain/tempus-hooks.md",
+      "type": "file",
+      "size_bytes": 122,
+      "last_modified_commit": "20451055d",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 11
+    },
+    {
+      "path": "docs/specs/chain/treasury.md",
+      "type": "file",
+      "size_bytes": 114,
+      "last_modified_commit": "20451055d",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 11
+    },
+    {
+      "path": "docs/specs/modules/economy.md",
+      "type": "file",
+      "size_bytes": 112,
+      "last_modified_commit": "20451055d",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 11
+    },
+    {
+      "path": "docs/specs/modules/hope.md",
+      "type": "file",
+      "size_bytes": 4359,
+      "last_modified_commit": "20451055d",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 519
+    },
+    {
+      "path": "docs/specs/modules/identity.md",
+      "type": "file",
+      "size_bytes": 114,
+      "last_modified_commit": "20451055d",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 11
+    },
+    {
+      "path": "docs/specs/modules/nexus.md",
+      "type": "file",
+      "size_bytes": 108,
+      "last_modified_commit": "20451055d",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 11
+    },
+    {
+      "path": "docs/specs/modules/tempus.md",
+      "type": "file",
+      "size_bytes": 3802,
+      "last_modified_commit": "20451055d",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 405
+    },
+    {
+      "path": "docs/specs/modules/treasury.md",
+      "type": "file",
+      "size_bytes": 114,
+      "last_modified_commit": "20451055d",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 11
+    },
+    {
+      "path": "docs/specs/modules/vitae.md",
+      "type": "file",
+      "size_bytes": 108,
+      "last_modified_commit": "20451055d",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 11
+    },
+    {
+      "path": "docs/specs/modules/wallet.md",
+      "type": "file",
+      "size_bytes": 110,
+      "last_modified_commit": "20451055d",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 11
+    },
+    {
+      "path": "docs/vitae/authority.md",
+      "type": "file",
+      "size_bytes": 5470,
+      "last_modified_commit": "20451055d",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 603
+    },
+    {
+      "path": "docs/vitae/constitution/constitutional-amendment.md",
+      "type": "file",
+      "size_bytes": 3878,
+      "last_modified_commit": "20451055d",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 133
+    },
+    {
+      "path": "docs/vitae/constitution/cross-grade-dependency-canon.md",
+      "type": "file",
+      "size_bytes": 2601,
+      "last_modified_commit": "20451055d",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 115
+    },
+    {
+      "path": "docs/vitae/constitution/grade-architecture-template.md",
+      "type": "file",
+      "size_bytes": 4768,
+      "last_modified_commit": "20451055d",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 199
+    },
+    {
+      "path": "docs/vitae/constitution/master-constitution-and-architecture.md",
+      "type": "file",
+      "size_bytes": 4183,
+      "last_modified_commit": "20451055d",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 142
+    },
+    {
+      "path": "docs/vitae/constitution/vitae-kernel-master.md",
+      "type": "file",
+      "size_bytes": 5157,
+      "last_modified_commit": "20451055d",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 225
+    },
+    {
+      "path": "docs/vitae/constitution/vitae-system-wide-audit-pass.md",
+      "type": "file",
+      "size_bytes": 6001,
+      "last_modified_commit": "20451055d",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 266
+    },
+    {
+      "path": "docs/vitae/curriculum/anatomy/Guardian Anatomical Framework.md",
+      "type": "file",
+      "size_bytes": 5804,
+      "last_modified_commit": "20451055d",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 256
+    },
+    {
+      "path": "docs/vitae/curriculum/anatomy/Guardian Anatomical Lexicon.md",
+      "type": "file",
+      "size_bytes": 4280,
+      "last_modified_commit": "20451055d",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 169
+    },
+    {
+      "path": "docs/vitae/curriculum/experience/Cross-Grade Dependency Enforcement Spec.md",
+      "type": "file",
+      "size_bytes": 9000,
+      "last_modified_commit": "20451055d",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 358
+    },
+    {
+      "path": "docs/vitae/curriculum/experience/Dependency Evaluator Blueprint.md",
+      "type": "file",
+      "size_bytes": 9918,
+      "last_modified_commit": "20451055d",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 380
+    },
+    {
+      "path": "docs/vitae/curriculum/experience/Experience Layer - Architecture Canon.md",
+      "type": "file",
+      "size_bytes": 5334,
+      "last_modified_commit": "20451055d",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 254
+    },
+    {
+      "path": "docs/vitae/curriculum/experience/Reason Code Registry.md",
+      "type": "file",
+      "size_bytes": 11995,
+      "last_modified_commit": "20451055d",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 404
+    },
+    {
+      "path": "docs/vitae/curriculum/experience/Reference Event Log Walkthrough.md",
+      "type": "file",
+      "size_bytes": 17351,
+      "last_modified_commit": "20451055d",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 444
+    },
+    {
+      "path": "docs/vitae/curriculum/experience/Replay Harness Checklist.md",
+      "type": "file",
+      "size_bytes": 6626,
+      "last_modified_commit": "20451055d",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 286
+    },
+    {
+      "path": "docs/vitae/curriculum/experience/Runtime Event Schema.md",
+      "type": "file",
+      "size_bytes": 10585,
+      "last_modified_commit": "20451055d",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 437
+    },
+    {
+      "path": "docs/vitae/curriculum/lexicon/Guardian Lexicon Seed — v1.md",
+      "type": "file",
+      "size_bytes": 3556,
+      "last_modified_commit": "20451055d",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 131
+    },
+    {
+      "path": "docs/vitae/index.md",
+      "type": "file",
+      "size_bytes": 108,
+      "last_modified_commit": "20451055d",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 11
+    },
+    {
+      "path": "docs/vitae/overview.md",
+      "type": "file",
+      "size_bytes": 114,
+      "last_modified_commit": "20451055d",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 11
+    },
+    {
+      "path": "docs/whitepaper/appendix-governance.md",
+      "type": "file",
+      "size_bytes": 3538,
+      "last_modified_commit": "20451055d",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 66
+    },
+    {
+      "path": "docs/whitepaper/arcanum-chain.md",
+      "type": "file",
+      "size_bytes": 124,
+      "last_modified_commit": "20451055d",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 11
+    },
+    {
+      "path": "docs/whitepaper/compliance-risk.md",
+      "type": "file",
+      "size_bytes": 2990,
+      "last_modified_commit": "20451055d",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 49
+    },
+    {
+      "path": "docs/whitepaper/dignity-content-boundaries.md",
+      "type": "file",
+      "size_bytes": 4643,
+      "last_modified_commit": "20451055d",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 543
+    },
+    {
+      "path": "docs/whitepaper/executive-summary.md",
+      "type": "file",
+      "size_bytes": 1946,
+      "last_modified_commit": "20451055d",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 23
+    },
+    {
+      "path": "docs/whitepaper/governance-neutrality.md",
+      "type": "file",
+      "size_bytes": 4177,
+      "last_modified_commit": "20451055d",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 441
+    },
+    {
+      "path": "docs/whitepaper/index.md",
+      "type": "file",
+      "size_bytes": 108,
+      "last_modified_commit": "20451055d",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 11
+    },
+    {
+      "path": "docs/whitepaper/problem-solution.md",
+      "type": "file",
+      "size_bytes": 1664,
+      "last_modified_commit": "20451055d",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 27
+    },
+    {
+      "path": "docs/whitepaper/technical-architecture.md",
+      "type": "file",
+      "size_bytes": 3231,
+      "last_modified_commit": "20451055d",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 54
+    },
+    {
+      "path": "docs/whitepaper/tokenomics.md",
+      "type": "file",
+      "size_bytes": 4473,
+      "last_modified_commit": "20451055d",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 183
+    },
+    {
+      "path": "docs/whitepaper/vitae-and-becoming.md",
+      "type": "file",
+      "size_bytes": 134,
+      "last_modified_commit": "20451055d",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 11
+    },
+    {
+      "path": "package.json",
+      "type": "file",
+      "size_bytes": 1092,
+      "last_modified_commit": "5da311ef6",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 36
+    },
+    {
+      "path": "pnpm-lock.yaml",
+      "type": "file",
+      "size_bytes": 249059,
+      "last_modified_commit": "42268897e",
+      "is_empty": false,
+      "extension": ".yaml",
+      "lines": 7628
+    },
+    {
+      "path": "pnpm-workspace.yaml",
+      "type": "file",
+      "size_bytes": 41,
+      "last_modified_commit": "5da311ef6",
+      "is_empty": false,
+      "extension": ".yaml",
+      "lines": 3
+    },
+    {
+      "path": "scripts/doctrine-guard.sh",
+      "type": "file",
+      "size_bytes": 5746,
+      "last_modified_commit": "811a91227",
+      "is_empty": false,
+      "extension": ".sh",
+      "lines": 183
+    },
+    {
+      "path": "scripts/repo-index.sh",
+      "type": "file",
+      "size_bytes": 1655,
+      "last_modified_commit": "d8daeb5cd",
+      "is_empty": false,
+      "extension": ".sh",
+      "lines": 60
+    },
+    {
+      "path": "scripts/verify-sync.sh",
+      "type": "file",
+      "size_bytes": 4742,
+      "last_modified_commit": "d8daeb5cd",
+      "is_empty": false,
+      "extension": ".sh",
+      "lines": 166
+    },
+    {
+      "path": "tsconfig.json",
+      "type": "file",
+      "size_bytes": 104,
+      "last_modified_commit": "5da311ef6",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 7
+    },
+    {
+      "path": "vercel.json",
+      "type": "file",
+      "size_bytes": 107,
+      "last_modified_commit": "42268897e",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 8
+    }
+  ]
+}
