@@ -4,7 +4,7 @@ set -euo pipefail
 ROOT_DIR=$(git rev-parse --show-toplevel)
 cd "$ROOT_DIR"
 
-OUTPUT="docs/architect/REPO_INDEX.json"
+OUTPUT="docs/architect/repo-index.json"
 THRESHOLD_EMPTY=5
 
 command -v jq >/dev/null || { echo "jq is required"; exit 1; }

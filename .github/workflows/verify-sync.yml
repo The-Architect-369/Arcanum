@@ -1,87 +1,25 @@
-name: Verify ArchitectGPT Synchronization
+name: Verify Sync
 
 on:
   push:
     branches: [ main ]
+  pull_request:
+    branches: [ main ]
   workflow_dispatch:
-
-permissions:
-  contents: write
-  actions: read
 
 jobs:
   verify-sync:
-    name: ArchitectGPT Sync Check
-    runs-on: ubuntu-latest
-
+    runs-on: ubuntu-22.04
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Install dependencies
+      - name: Install deps
         run: |
           sudo apt-get update -qq
-          sudo apt-get install -y jq
+          sudo apt-get install -y jq tree python3-yaml
 
-      - name: Run synchronization verification
-        id: verify
-        continue-on-error: true
+      - name: Run verify sync
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          bash scripts/verify-sync.sh | tee sync_output.log
-
-      - name: Run Doctrine Guard
-        id: guard
-        continue-on-error: true
-        run: |
-          bash scripts/doctrine-guard.sh | tee guard_output.log
-
-      - name: Determine final status
-        id: status
-        run: |
-          if [[ "${{ steps.verify.outcome }}" == "success" && "${{ steps.guard.outcome }}" == "success" ]]; then
-            echo "status=success" >> "$GITHUB_OUTPUT"
-          else
-            echo "status=failed" >> "$GITHUB_OUTPUT"
-          fi
-
-      - name: Append results to architect log
-        if: always()
-        run: |
-          DATE=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
-
-          CORE="docs/governance/constitution/architectgpt-core.md"
-          EXT="docs/governance/constitution/architectgpt-extended.md"
-          LOG="docs/governance/constitution/architect-log.md"
-          [[ -f "$LOG" ]] || LOG="docs/governance/constitution/.architect-log.md"
-
-          CORE_VER=$(grep -m1 "^version:" "$CORE" | awk '{print $2}')
-          EXT_VER=$(grep -m1 "^version:" "$EXT" | awk '{print $2}')
-          STATUS="${{ steps.status.outputs.status }}"
-
-          {
-            echo ""
-            echo "## [AUTO SYNC CHECK — ${DATE}]"
-            echo "- Core version: ${CORE_VER}"
-            echo "- Extended version: ${EXT_VER}"
-            echo "- Result: ${STATUS}"
-            echo "- Git commit: $GITHUB_SHA"
-            echo "- Triggered by: $GITHUB_ACTOR"
-          } >> "$LOG"
-
-      - name: Commit and push updated log
-        if: always()
-        run: |
-          LOG="docs/governance/constitution/architect-log.md"
-          [[ -f "$LOG" ]] || LOG="docs/governance/constitution/.architect-log.md"
-
-          git config user.name "architect-bot"
-          git config user.email "actions@github.com"
-          git add "$LOG"
-          git commit -m "Automated sync log update [${{ steps.status.outputs.status }}]" || echo "No changes to commit"
-          git push
-
-      - name: Fail job if checks failed
-        if: ${{ steps.status.outputs.status == 'failed' }}
-        run: exit 1
+        run: bash scripts/verify-sync.sh

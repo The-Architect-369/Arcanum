@@ -11,7 +11,7 @@ cd "$ROOT_DIR"
 echo ""
 echo "📦 Generating Repository Index..."
 
-INDEX_PATH="docs/architect/REPO_INDEX.json"
+INDEX_PATH="docs/architect/repo-index.json"
 
 bash "scripts/repo-index.sh" || {
   echo "❌ REPO_INDEX generation failed"
@@ -111,6 +111,7 @@ fi
 
 # --- Remote Verification (GitHub) ---
 GITHUB_API="https://api.github.com/repos/The-Architect-369/Arcanum/contents/${CONSTITUTION_DIR}"
+BRANCH="$(git rev-parse --abbrev-ref HEAD)"
 
 curl_args=(-sSL)
 if [[ -n "${GITHUB_TOKEN:-}" ]]; then

@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-02-18T13:07:16Z",
+  "generated_at": "2026-02-19T21:10:52Z",
   "repo": "Arcanum",
-  "commit": "811a91227",
+  "commit": "20451055d",
   "generator_version": "1.1",
   "files": [
     {
@@ -16,11 +16,11 @@
     {
       "path": ".github/workflows/verify-sync.yml",
       "type": "file",
-      "size_bytes": 2792,
+      "size_bytes": 535,
       "last_modified_commit": "811a91227",
       "is_empty": false,
       "extension": ".yml",
-      "lines": 87
+      "lines": 25
     },
     {
       "path": ".gitignore",
@@ -2158,74 +2158,56 @@
     {
       "path": "docs/README.md",
       "type": "file",
-      "size_bytes": 1488,
-      "last_modified_commit": "811a91227",
+      "size_bytes": 1558,
+      "last_modified_commit": "20451055d",
       "is_empty": false,
       "extension": ".md",
-      "lines": 29
-    },
-    {
-      "path": "docs/architect/REPO_INDEX.json",
-      "type": "file",
-      "size_bytes": 125704,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".json",
-      "lines": 4436
+      "lines": 38
     },
     {
       "path": "docs/architecture/app-chain-doctrine.md",
       "type": "file",
-      "size_bytes": 0,
-      "last_modified_commit": "811a91227",
-      "is_empty": true,
+      "size_bytes": 138,
+      "last_modified_commit": "20451055d",
+      "is_empty": false,
       "extension": ".md",
-      "lines": 0
+      "lines": 11
     },
     {
       "path": "docs/architecture/identity-model.md",
       "type": "file",
-      "size_bytes": 4819,
-      "last_modified_commit": "811a91227",
+      "size_bytes": 4477,
+      "last_modified_commit": "20451055d",
       "is_empty": false,
       "extension": ".md",
-      "lines": 472
+      "lines": 483
     },
     {
       "path": "docs/architecture/layer-boundaries.md",
       "type": "file",
-      "size_bytes": 5390,
-      "last_modified_commit": "811a91227",
+      "size_bytes": 5054,
+      "last_modified_commit": "20451055d",
       "is_empty": false,
       "extension": ".md",
-      "lines": 470
+      "lines": 481
     },
     {
       "path": "docs/architecture/temporal-model.md",
       "type": "file",
-      "size_bytes": 5366,
-      "last_modified_commit": "811a91227",
+      "size_bytes": 5012,
+      "last_modified_commit": "20451055d",
       "is_empty": false,
       "extension": ".md",
-      "lines": 484
+      "lines": 495
     },
     {
       "path": "docs/architecture/tempus-structure.md",
       "type": "file",
-      "size_bytes": 4174,
-      "last_modified_commit": "811a91227",
+      "size_bytes": 4213,
+      "last_modified_commit": "20451055d",
       "is_empty": false,
       "extension": ".md",
-      "lines": 95
-    },
-    {
-      "path": "docs/genesis/G1_HOPE_SEAL.md",
-      "type": "file",
-      "size_bytes": 1026,
-      "last_modified_commit": "a5c24736c",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 66
+      "lines": 106
     },
     {
       "path": "docs/governance/constitution/architect-gpt-manifest.yaml",
@@ -2239,26 +2221,26 @@
     {
       "path": "docs/governance/constitution/architect-log.md",
       "type": "file",
-      "size_bytes": 9928,
-      "last_modified_commit": "811a91227",
+      "size_bytes": 9737,
+      "last_modified_commit": "20451055d",
       "is_empty": false,
       "extension": ".md",
-      "lines": 249
+      "lines": 253
     },
     {
       "path": "docs/governance/constitution/architect-role.md",
       "type": "file",
-      "size_bytes": 4435,
-      "last_modified_commit": "811a91227",
+      "size_bytes": 4137,
+      "last_modified_commit": "20451055d",
       "is_empty": false,
       "extension": ".md",
-      "lines": 428
+      "lines": 439
     },
     {
       "path": "docs/governance/constitution/architectgpt-core.md",
       "type": "file",
-      "size_bytes": 15086,
-      "last_modified_commit": "811a91227",
+      "size_bytes": 14639,
+      "last_modified_commit": "20451055d",
       "is_empty": false,
       "extension": ".md",
       "lines": 196
@@ -2266,8 +2248,8 @@
     {
       "path": "docs/governance/constitution/architectgpt-extended.md",
       "type": "file",
-      "size_bytes": 8882,
-      "last_modified_commit": "811a91227",
+      "size_bytes": 8396,
+      "last_modified_commit": "20451055d",
       "is_empty": false,
       "extension": ".md",
       "lines": 263
@@ -2275,17 +2257,17 @@
     {
       "path": "docs/governance/constitution/canonical-modules.md",
       "type": "file",
-      "size_bytes": 7321,
-      "last_modified_commit": "811a91227",
+      "size_bytes": 7059,
+      "last_modified_commit": "20451055d",
       "is_empty": false,
       "extension": ".md",
-      "lines": 398
+      "lines": 409
     },
     {
       "path": "docs/governance/constitution/doctrine-checksums.yaml",
       "type": "file",
       "size_bytes": 465,
-      "last_modified_commit": "811a91227",
+      "last_modified_commit": "d8daeb5cd",
       "is_empty": false,
       "extension": ".yaml",
       "lines": 4
@@ -2293,2072 +2275,515 @@
     {
       "path": "docs/governance/constitution/economic-principles.md",
       "type": "file",
-      "size_bytes": 9378,
-      "last_modified_commit": "811a91227",
+      "size_bytes": 9326,
+      "last_modified_commit": "20451055d",
       "is_empty": false,
       "extension": ".md",
-      "lines": 192
+      "lines": 203
     },
     {
       "path": "docs/governance/constitution/founder-transition.md",
       "type": "file",
-      "size_bytes": 4521,
-      "last_modified_commit": "811a91227",
+      "size_bytes": 4291,
+      "last_modified_commit": "20451055d",
       "is_empty": false,
       "extension": ".md",
-      "lines": 368
+      "lines": 379
     },
     {
       "path": "docs/governance/constitution/metaphysical-neutrality.md",
       "type": "file",
-      "size_bytes": 3816,
-      "last_modified_commit": "811a91227",
+      "size_bytes": 3654,
+      "last_modified_commit": "20451055d",
       "is_empty": false,
       "extension": ".md",
-      "lines": 310
+      "lines": 321
     },
     {
       "path": "docs/governance/constitution/repo-index-generator-spec.md",
       "type": "file",
-      "size_bytes": 5409,
-      "last_modified_commit": "811a91227",
+      "size_bytes": 5041,
+      "last_modified_commit": "20451055d",
       "is_empty": false,
       "extension": ".md",
-      "lines": 520
+      "lines": 531
     },
     {
       "path": "docs/governance/constitution/repo-interface.md",
       "type": "file",
-      "size_bytes": 6047,
-      "last_modified_commit": "811a91227",
+      "size_bytes": 5659,
+      "last_modified_commit": "20451055d",
       "is_empty": false,
       "extension": ".md",
-      "lines": 518
+      "lines": 529
     },
     {
       "path": "docs/governance/constitution/treasury-constitution.md",
       "type": "file",
-      "size_bytes": 8129,
-      "last_modified_commit": "811a91227",
+      "size_bytes": 7616,
+      "last_modified_commit": "20451055d",
       "is_empty": false,
       "extension": ".md",
-      "lines": 250
+      "lines": 247
     },
     {
       "path": "docs/index.md",
       "type": "file",
-      "size_bytes": 0,
-      "last_modified_commit": "811a91227",
-      "is_empty": true,
+      "size_bytes": 108,
+      "last_modified_commit": "20451055d",
+      "is_empty": false,
       "extension": ".md",
-      "lines": 0
+      "lines": 11
     },
     {
       "path": "docs/overview/arcanum-system-overview.md",
       "type": "file",
-      "size_bytes": 6340,
-      "last_modified_commit": "811a91227",
+      "size_bytes": 6230,
+      "last_modified_commit": "20451055d",
       "is_empty": false,
       "extension": ".md",
-      "lines": 204
+      "lines": 212
     },
     {
       "path": "docs/overview/roadmap-v1.md",
       "type": "file",
-      "size_bytes": 19108,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 322
-    },
-    {
-      "path": "docs/overview/roadmap-v2.md",
-      "type": "file",
-      "size_bytes": 5468,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 215
-    },
-    {
-      "path": "docs/overview/roadmap-v3.md",
-      "type": "file",
-      "size_bytes": 7859,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 868
-    },
-    {
-      "path": "docs/reference/changelog.md",
-      "type": "file",
-      "size_bytes": 274,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 6
-    },
-    {
-      "path": "docs/reference/glossary.md",
-      "type": "file",
-      "size_bytes": 1163,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 14
-    },
-    {
-      "path": "docs/reference/license-and-attribution.md",
-      "type": "file",
-      "size_bytes": 504,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 9
-    },
-    {
-      "path": "docs/specs/chain/arcanum-chain-overview.md",
-      "type": "file",
-      "size_bytes": 0,
-      "last_modified_commit": "811a91227",
-      "is_empty": true,
-      "extension": ".md",
-      "lines": 0
-    },
-    {
-      "path": "docs/specs/chain/invariants.md",
-      "type": "file",
-      "size_bytes": 0,
-      "last_modified_commit": "811a91227",
-      "is_empty": true,
-      "extension": ".md",
-      "lines": 0
-    },
-    {
-      "path": "docs/specs/chain/mana.md",
-      "type": "file",
-      "size_bytes": 0,
-      "last_modified_commit": "811a91227",
-      "is_empty": true,
-      "extension": ".md",
-      "lines": 0
-    },
-    {
-      "path": "docs/specs/chain/tempus-hooks.md",
-      "type": "file",
-      "size_bytes": 0,
-      "last_modified_commit": "811a91227",
-      "is_empty": true,
-      "extension": ".md",
-      "lines": 0
-    },
-    {
-      "path": "docs/specs/chain/treasury.md",
-      "type": "file",
-      "size_bytes": 0,
-      "last_modified_commit": "811a91227",
-      "is_empty": true,
-      "extension": ".md",
-      "lines": 0
-    },
-    {
-      "path": "docs/specs/modules/economy.md",
-      "type": "file",
-      "size_bytes": 0,
-      "last_modified_commit": "811a91227",
-      "is_empty": true,
-      "extension": ".md",
-      "lines": 0
-    },
-    {
-      "path": "docs/specs/modules/hope.md",
-      "type": "file",
-      "size_bytes": 4761,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 508
-    },
-    {
-      "path": "docs/specs/modules/identity.md",
-      "type": "file",
-      "size_bytes": 0,
-      "last_modified_commit": "811a91227",
-      "is_empty": true,
-      "extension": ".md",
-      "lines": 0
-    },
-    {
-      "path": "docs/specs/modules/nexus.md",
-      "type": "file",
-      "size_bytes": 0,
-      "last_modified_commit": "811a91227",
-      "is_empty": true,
-      "extension": ".md",
-      "lines": 0
-    },
-    {
-      "path": "docs/specs/modules/tempus.md",
-      "type": "file",
-      "size_bytes": 4086,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 394
-    },
-    {
-      "path": "docs/specs/modules/treasury.md",
-      "type": "file",
-      "size_bytes": 0,
-      "last_modified_commit": "811a91227",
-      "is_empty": true,
-      "extension": ".md",
-      "lines": 0
-    },
-    {
-      "path": "docs/specs/modules/vitae.md",
-      "type": "file",
-      "size_bytes": 0,
-      "last_modified_commit": "811a91227",
-      "is_empty": true,
-      "extension": ".md",
-      "lines": 0
-    },
-    {
-      "path": "docs/specs/modules/wallet.md",
-      "type": "file",
-      "size_bytes": 0,
-      "last_modified_commit": "811a91227",
-      "is_empty": true,
-      "extension": ".md",
-      "lines": 0
-    },
-    {
-      "path": "docs/vitae/authority.md",
-      "type": "file",
-      "size_bytes": 5946,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 592
-    },
-    {
-      "path": "docs/vitae/constitution/constitutional-amendment.md",
-      "type": "file",
-      "size_bytes": 3765,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 125
-    },
-    {
-      "path": "docs/vitae/constitution/cross-grade-dependency-canon.md",
-      "type": "file",
-      "size_bytes": 2469,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 107
-    },
-    {
-      "path": "docs/vitae/constitution/grade-architecture-template.md",
-      "type": "file",
-      "size_bytes": 4658,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 191
-    },
-    {
-      "path": "docs/vitae/constitution/master-constitution-and-architecture.md",
-      "type": "file",
-      "size_bytes": 4035,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 134
-    },
-    {
-      "path": "docs/vitae/constitution/vitae-kernel-master.md",
-      "type": "file",
-      "size_bytes": 5021,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 214
-    },
-    {
-      "path": "docs/vitae/constitution/vitae-system-wide-audit-pass.md",
-      "type": "file",
-      "size_bytes": 5869,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 258
-    },
-    {
-      "path": "docs/vitae/curriculum/[01] - Elementary School/Cross-Grade Dependency Mapping.md",
-      "type": "file",
-      "size_bytes": 7288,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 295
-    },
-    {
-      "path": "docs/vitae/curriculum/[01] - Elementary School/Elementary School Canon.md",
-      "type": "file",
-      "size_bytes": 4202,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 188
-    },
-    {
-      "path": "docs/vitae/curriculum/[01] - Elementary School/Grade 1 - The Guardian/Canon/Grade 1 - Master Canon.md",
-      "type": "file",
-      "size_bytes": 4818,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 193
-    },
-    {
-      "path": "docs/vitae/curriculum/[01] - Elementary School/Grade 1 - The Guardian/Canon/Grade I — Audit & Validation Canon.md",
-      "type": "file",
-      "size_bytes": 4208,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 213
-    },
-    {
-      "path": "docs/vitae/curriculum/[01] - Elementary School/Grade 1 - The Guardian/Canon/Grade I — Procedural Systems Canon.md",
-      "type": "file",
-      "size_bytes": 4759,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 196
-    },
-    {
-      "path": "docs/vitae/curriculum/[01] - Elementary School/Grade 1 - The Guardian/Content/Class 1/Chapter 1/Moon in Malkuth - Kernel Set.md",
-      "type": "file",
-      "size_bytes": 5450,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 321
-    },
-    {
-      "path": "docs/vitae/curriculum/[01] - Elementary School/Grade 1 - The Guardian/Content/Class 1/Chapter 2/Mars in Malkuth - Kernel Set.md",
-      "type": "file",
-      "size_bytes": 5806,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 323
-    },
-    {
-      "path": "docs/vitae/curriculum/[01] - Elementary School/Grade 1 - The Guardian/Content/Class 1/Chapter 3/Mercury in Malkuth - Kernel Set.md",
-      "type": "file",
-      "size_bytes": 5807,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 321
-    },
-    {
-      "path": "docs/vitae/curriculum/[01] - Elementary School/Grade 1 - The Guardian/Content/Class 1/Chapter 4/Jupiter in Malkuth - Kernel Set.md",
-      "type": "file",
-      "size_bytes": 5886,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 324
-    },
-    {
-      "path": "docs/vitae/curriculum/[01] - Elementary School/Grade 1 - The Guardian/Content/Class 1/Chapter 5/Venus in Malkuth - Kernel Set.md",
-      "type": "file",
-      "size_bytes": 5716,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 324
-    },
-    {
-      "path": "docs/vitae/curriculum/[01] - Elementary School/Grade 1 - The Guardian/Content/Class 1/Chapter 6/Saturn in Malkuth - Kernel Set.md",
-      "type": "file",
-      "size_bytes": 5496,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 320
-    },
-    {
-      "path": "docs/vitae/curriculum/[01] - Elementary School/Grade 1 - The Guardian/Content/Class 1/Chapter 7/Sun in Malkuth - Kernel Set.md",
-      "type": "file",
-      "size_bytes": 5675,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 319
-    },
-    {
-      "path": "docs/vitae/curriculum/[01] - Elementary School/Grade 1 - The Guardian/Content/Class 1/Malkuth - Spirit Kernel.md",
-      "type": "file",
-      "size_bytes": 1996,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 125
-    },
-    {
-      "path": "docs/vitae/curriculum/[01] - Elementary School/Grade 1 - The Guardian/Content/Class 1/Malkuth Arc (Moon → Sun).md",
-      "type": "file",
-      "size_bytes": 2341,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 96
-    },
-    {
-      "path": "docs/vitae/curriculum/[01] - Elementary School/Grade 1 - The Guardian/Content/Class 2/Chapter 1/Moon in Yesod - Kernel Set.md",
-      "type": "file",
-      "size_bytes": 5779,
-      "last_modified_commit": "811a91227",
+      "size_bytes": 18862,
+      "last_modified_commit": "20451055d",
       "is_empty": false,
       "extension": ".md",
       "lines": 330
     },
     {
-      "path": "docs/vitae/curriculum/[01] - Elementary School/Grade 1 - The Guardian/Content/Class 2/Chapter 2/Mars in Yesod - Kernel Set .md",
-      "type": "file",
-      "size_bytes": 5787,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 331
-    },
-    {
-      "path": "docs/vitae/curriculum/[01] - Elementary School/Grade 1 - The Guardian/Content/Class 2/Chapter 3/Mercury in Yesod - Kernel Set .md",
-      "type": "file",
-      "size_bytes": 5749,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 321
-    },
-    {
-      "path": "docs/vitae/curriculum/[01] - Elementary School/Grade 1 - The Guardian/Content/Class 2/Chapter 4/Jupiter in Yesod - Kernel Set .md",
-      "type": "file",
-      "size_bytes": 5867,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 326
-    },
-    {
-      "path": "docs/vitae/curriculum/[01] - Elementary School/Grade 1 - The Guardian/Content/Class 2/Chapter 5/Venus in Yesod - Kernel Set .md",
-      "type": "file",
-      "size_bytes": 5690,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 326
-    },
-    {
-      "path": "docs/vitae/curriculum/[01] - Elementary School/Grade 1 - The Guardian/Content/Class 2/Chapter 6/Saturn in Yesod - Kernel Set .md",
-      "type": "file",
-      "size_bytes": 5713,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 316
-    },
-    {
-      "path": "docs/vitae/curriculum/[01] - Elementary School/Grade 1 - The Guardian/Content/Class 2/Yesod - Spirit Kernel.md",
-      "type": "file",
-      "size_bytes": 2495,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 135
-    },
-    {
-      "path": "docs/vitae/curriculum/[01] - Elementary School/Grade 1 - The Guardian/Content/Class 2/Yesod Arc (Moon → Sun).md",
-      "type": "file",
-      "size_bytes": 4419,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 190
-    },
-    {
-      "path": "docs/vitae/curriculum/[01] - Elementary School/Grade 1 - The Guardian/Content/Class 3/Chapter 1/Moon in Hod - Kernel Set .md",
-      "type": "file",
-      "size_bytes": 5752,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 324
-    },
-    {
-      "path": "docs/vitae/curriculum/[01] - Elementary School/Grade 1 - The Guardian/Content/Class 3/Chapter 2/Mars in Hod - Kernel Set .md",
-      "type": "file",
-      "size_bytes": 5872,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 317
-    },
-    {
-      "path": "docs/vitae/curriculum/[01] - Elementary School/Grade 1 - The Guardian/Content/Class 3/Chapter 3/Mercury in Hod - Kernel Set .md",
-      "type": "file",
-      "size_bytes": 5793,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 325
-    },
-    {
-      "path": "docs/vitae/curriculum/[01] - Elementary School/Grade 1 - The Guardian/Content/Class 3/Chapter 4/Jupiter in Hod - Kernel Set .md",
-      "type": "file",
-      "size_bytes": 5930,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 327
-    },
-    {
-      "path": "docs/vitae/curriculum/[01] - Elementary School/Grade 1 - The Guardian/Content/Class 3/Chapter 5/Venus in Hod - Kernel Set .md",
-      "type": "file",
-      "size_bytes": 5740,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 317
-    },
-    {
-      "path": "docs/vitae/curriculum/[01] - Elementary School/Grade 1 - The Guardian/Content/Class 3/Chapter 6/Saturn in Hod - Kernel Set .md",
-      "type": "file",
-      "size_bytes": 5774,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 317
-    },
-    {
-      "path": "docs/vitae/curriculum/[01] - Elementary School/Grade 1 - The Guardian/Content/Class 3/Chapter 7/Sun in Hod - Kernel Set .md",
-      "type": "file",
-      "size_bytes": 5846,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 317
-    },
-    {
-      "path": "docs/vitae/curriculum/[01] - Elementary School/Grade 1 - The Guardian/Implement/Grade I — Constraint Bundle Spec.md",
-      "type": "file",
-      "size_bytes": 5824,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 233
-    },
-    {
-      "path": "docs/vitae/curriculum/[01] - Elementary School/Grade 1 - The Guardian/Implement/Grade I — Generator & Module Mapping.md",
-      "type": "file",
-      "size_bytes": 10238,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 462
-    },
-    {
-      "path": "docs/vitae/curriculum/[01] - Elementary School/Grade 1 - The Guardian/Implement/Grade I — Responsibility & Invariants Map.md",
-      "type": "file",
-      "size_bytes": 5170,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 241
-    },
-    {
-      "path": "docs/vitae/curriculum/[01] - Elementary School/Grade 1 - The Guardian/Implement/Grade I — State Machine Spec.md",
+      "path": "docs/overview/roadmap-v2.md",
       "type": "file",
       "size_bytes": 5566,
-      "last_modified_commit": "811a91227",
+      "last_modified_commit": "20451055d",
       "is_empty": false,
       "extension": ".md",
-      "lines": 295
+      "lines": 223
     },
     {
-      "path": "docs/vitae/curriculum/[01] - Elementary School/Grade II - The Seeker/Canon/Grade II — Audit & Validation Canon.md",
+      "path": "docs/overview/roadmap-v3.md",
       "type": "file",
-      "size_bytes": 4319,
-      "last_modified_commit": "811a91227",
+      "size_bytes": 7109,
+      "last_modified_commit": "20451055d",
       "is_empty": false,
       "extension": ".md",
-      "lines": 192
+      "lines": 879
     },
     {
-      "path": "docs/vitae/curriculum/[01] - Elementary School/Grade II - The Seeker/Canon/Grade II — Master Canon .md",
+      "path": "docs/reference/changelog.md",
       "type": "file",
-      "size_bytes": 5408,
-      "last_modified_commit": "811a91227",
+      "size_bytes": 373,
+      "last_modified_commit": "20451055d",
       "is_empty": false,
       "extension": ".md",
-      "lines": 202
+      "lines": 14
     },
     {
-      "path": "docs/vitae/curriculum/[01] - Elementary School/Grade II - The Seeker/Canon/Grade II — Procedural Systems Canon.md",
+      "path": "docs/reference/glossary.md",
       "type": "file",
-      "size_bytes": 4968,
-      "last_modified_commit": "811a91227",
+      "size_bytes": 1261,
+      "last_modified_commit": "20451055d",
       "is_empty": false,
       "extension": ".md",
-      "lines": 197
+      "lines": 22
     },
     {
-      "path": "docs/vitae/curriculum/[01] - Elementary School/Grade II - The Seeker/Implement/Grade II — Constraint Bundle Spec.md",
+      "path": "docs/reference/license-and-attribution.md",
       "type": "file",
-      "size_bytes": 7026,
-      "last_modified_commit": "811a91227",
+      "size_bytes": 618,
+      "last_modified_commit": "20451055d",
       "is_empty": false,
       "extension": ".md",
-      "lines": 257
+      "lines": 17
     },
     {
-      "path": "docs/vitae/curriculum/[01] - Elementary School/Grade II - The Seeker/Implement/Grade II — Generator & Module Mapping.md",
+      "path": "docs/specs/chain/arcanum-chain-overview.md",
       "type": "file",
-      "size_bytes": 11187,
-      "last_modified_commit": "811a91227",
+      "size_bytes": 142,
+      "last_modified_commit": "20451055d",
       "is_empty": false,
       "extension": ".md",
-      "lines": 487
+      "lines": 11
     },
     {
-      "path": "docs/vitae/curriculum/[01] - Elementary School/Grade II - The Seeker/Implement/Grade II — Responsibility & Invariants Map.md",
+      "path": "docs/specs/chain/invariants.md",
       "type": "file",
-      "size_bytes": 6303,
-      "last_modified_commit": "811a91227",
+      "size_bytes": 118,
+      "last_modified_commit": "20451055d",
       "is_empty": false,
       "extension": ".md",
-      "lines": 263
+      "lines": 11
     },
     {
-      "path": "docs/vitae/curriculum/[01] - Elementary School/Grade II - The Seeker/Implement/Grade II — State Machine Spec.md",
+      "path": "docs/specs/chain/mana.md",
       "type": "file",
-      "size_bytes": 6670,
-      "last_modified_commit": "811a91227",
+      "size_bytes": 106,
+      "last_modified_commit": "20451055d",
       "is_empty": false,
       "extension": ".md",
-      "lines": 317
+      "lines": 11
     },
     {
-      "path": "docs/vitae/curriculum/[01] - Elementary School/Grade III - The Disciple/Canon/Grade III — Audit & Validation Canon.md",
+      "path": "docs/specs/chain/tempus-hooks.md",
       "type": "file",
-      "size_bytes": 4575,
-      "last_modified_commit": "811a91227",
+      "size_bytes": 122,
+      "last_modified_commit": "20451055d",
       "is_empty": false,
       "extension": ".md",
-      "lines": 193
+      "lines": 11
     },
     {
-      "path": "docs/vitae/curriculum/[01] - Elementary School/Grade III - The Disciple/Canon/Grade III — Master Canon.md",
+      "path": "docs/specs/chain/treasury.md",
       "type": "file",
-      "size_bytes": 5126,
-      "last_modified_commit": "811a91227",
+      "size_bytes": 114,
+      "last_modified_commit": "20451055d",
       "is_empty": false,
       "extension": ".md",
-      "lines": 184
+      "lines": 11
     },
     {
-      "path": "docs/vitae/curriculum/[01] - Elementary School/Grade III - The Disciple/Canon/Grade III — Procedural Systems Canon.md",
+      "path": "docs/specs/modules/economy.md",
       "type": "file",
-      "size_bytes": 5139,
-      "last_modified_commit": "811a91227",
+      "size_bytes": 112,
+      "last_modified_commit": "20451055d",
       "is_empty": false,
       "extension": ".md",
-      "lines": 194
+      "lines": 11
     },
     {
-      "path": "docs/vitae/curriculum/[01] - Elementary School/Grade III - The Disciple/Implement/Grade III — Constraint Bundle Spec.md",
+      "path": "docs/specs/modules/hope.md",
       "type": "file",
-      "size_bytes": 7006,
-      "last_modified_commit": "811a91227",
+      "size_bytes": 4359,
+      "last_modified_commit": "20451055d",
       "is_empty": false,
       "extension": ".md",
-      "lines": 259
+      "lines": 519
     },
     {
-      "path": "docs/vitae/curriculum/[01] - Elementary School/Grade III - The Disciple/Implement/Grade III — Generator & Module Mapping.md",
+      "path": "docs/specs/modules/identity.md",
       "type": "file",
-      "size_bytes": 11199,
-      "last_modified_commit": "811a91227",
+      "size_bytes": 114,
+      "last_modified_commit": "20451055d",
       "is_empty": false,
       "extension": ".md",
-      "lines": 499
+      "lines": 11
     },
     {
-      "path": "docs/vitae/curriculum/[01] - Elementary School/Grade III - The Disciple/Implement/Grade III — Responsibility & Invariants Map.md",
+      "path": "docs/specs/modules/nexus.md",
       "type": "file",
-      "size_bytes": 7147,
-      "last_modified_commit": "811a91227",
+      "size_bytes": 108,
+      "last_modified_commit": "20451055d",
       "is_empty": false,
       "extension": ".md",
-      "lines": 284
+      "lines": 11
     },
     {
-      "path": "docs/vitae/curriculum/[01] - Elementary School/Grade III - The Disciple/Implement/Grade III — State Machine Spec.md",
+      "path": "docs/specs/modules/tempus.md",
       "type": "file",
-      "size_bytes": 7321,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 320
-    },
-    {
-      "path": "docs/vitae/curriculum/[01] - Elementary School/Grade IV - The Mystic/Canon/Grade IV — Audit & Validation Canon.md",
-      "type": "file",
-      "size_bytes": 4599,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 192
-    },
-    {
-      "path": "docs/vitae/curriculum/[01] - Elementary School/Grade IV - The Mystic/Canon/Grade IV — Master Canon.md",
-      "type": "file",
-      "size_bytes": 5145,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 171
-    },
-    {
-      "path": "docs/vitae/curriculum/[01] - Elementary School/Grade IV - The Mystic/Canon/Grade IV — Procedural Systems Canon.md",
-      "type": "file",
-      "size_bytes": 5335,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 198
-    },
-    {
-      "path": "docs/vitae/curriculum/[01] - Elementary School/Grade IV - The Mystic/Implement/Grade IV — Constraint Bundle Spec.md",
-      "type": "file",
-      "size_bytes": 7229,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 258
-    },
-    {
-      "path": "docs/vitae/curriculum/[01] - Elementary School/Grade IV - The Mystic/Implement/Grade IV — Generator & Module Mapping.md",
-      "type": "file",
-      "size_bytes": 11648,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 502
-    },
-    {
-      "path": "docs/vitae/curriculum/[01] - Elementary School/Grade IV - The Mystic/Implement/Grade IV — Responsibility & Invariants Map.md",
-      "type": "file",
-      "size_bytes": 7574,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 289
-    },
-    {
-      "path": "docs/vitae/curriculum/[01] - Elementary School/Grade IV - The Mystic/Implement/Grade IV — State Machine Spec.md",
-      "type": "file",
-      "size_bytes": 8986,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 385
-    },
-    {
-      "path": "docs/vitae/curriculum/[02] - Intermediate School/Grade V - The Scholar/Canon/Grade V - Master Canon.md",
-      "type": "file",
-      "size_bytes": 3341,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 131
-    },
-    {
-      "path": "docs/vitae/curriculum/[02] - Intermediate School/Grade V - The Scholar/Canon/Grade V - Procedural Systems Canon.md",
-      "type": "file",
-      "size_bytes": 3513,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 167
-    },
-    {
-      "path": "docs/vitae/curriculum/[02] - Intermediate School/Grade V - The Scholar/Canon/Grade V - Responsibility & Invariants Canon.md",
-      "type": "file",
-      "size_bytes": 3772,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 154
-    },
-    {
-      "path": "docs/vitae/curriculum/[02] - Intermediate School/Grade V - The Scholar/Implement/Grade V - Audit & Validation Harness.md",
-      "type": "file",
-      "size_bytes": 5768,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 255
-    },
-    {
-      "path": "docs/vitae/curriculum/[02] - Intermediate School/Grade V - The Scholar/Implement/Grade V - Constraint Bundle Spec.md",
-      "type": "file",
-      "size_bytes": 5013,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 188
-    },
-    {
-      "path": "docs/vitae/curriculum/[02] - Intermediate School/Grade V - The Scholar/Implement/Grade V - Generator & Module Mapping.md",
-      "type": "file",
-      "size_bytes": 5014,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 252
-    },
-    {
-      "path": "docs/vitae/curriculum/[02] - Intermediate School/Grade V - The Scholar/Implement/Grade V - State Machine Spec.md",
-      "type": "file",
-      "size_bytes": 7066,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 426
-    },
-    {
-      "path": "docs/vitae/curriculum/[02] - Intermediate School/Grade VI - The Healer/Canon/Grade VI -  Responsibility & Invariants Canon.md",
-      "type": "file",
-      "size_bytes": 3632,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 147
-    },
-    {
-      "path": "docs/vitae/curriculum/[02] - Intermediate School/Grade VI - The Healer/Canon/Grade VI - Master Canon.md",
-      "type": "file",
-      "size_bytes": 3230,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 131
-    },
-    {
-      "path": "docs/vitae/curriculum/[02] - Intermediate School/Grade VI - The Healer/Canon/Grade VI - Procedural Systems Canon.md",
-      "type": "file",
-      "size_bytes": 3573,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 156
-    },
-    {
-      "path": "docs/vitae/curriculum/[02] - Intermediate School/Grade VI - The Healer/Implement/Grade VI - Audit & Validation Harness.md",
-      "type": "file",
-      "size_bytes": 6466,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 281
-    },
-    {
-      "path": "docs/vitae/curriculum/[02] - Intermediate School/Grade VI - The Healer/Implement/Grade VI - Constraint Bundle Spec.md",
-      "type": "file",
-      "size_bytes": 5291,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 200
-    },
-    {
-      "path": "docs/vitae/curriculum/[02] - Intermediate School/Grade VI - The Healer/Implement/Grade VI - Generator & Module Mapping.md",
-      "type": "file",
-      "size_bytes": 8912,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 399
-    },
-    {
-      "path": "docs/vitae/curriculum/[02] - Intermediate School/Grade VI - The Healer/Implement/Grade VI - State Machine Spec.md",
-      "type": "file",
-      "size_bytes": 9083,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 479
-    },
-    {
-      "path": "docs/vitae/curriculum/[02] - Intermediate School/Grade VII - The Alchemist/Canon/Grade VII -  Responsibility & Invariants Canon.md",
-      "type": "file",
-      "size_bytes": 4205,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 154
-    },
-    {
-      "path": "docs/vitae/curriculum/[02] - Intermediate School/Grade VII - The Alchemist/Canon/Grade VII - Master Canon.md",
-      "type": "file",
-      "size_bytes": 3257,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 126
-    },
-    {
-      "path": "docs/vitae/curriculum/[02] - Intermediate School/Grade VII - The Alchemist/Canon/Grade VII - Procedural Systems Canon.md",
-      "type": "file",
-      "size_bytes": 3773,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 169
-    },
-    {
-      "path": "docs/vitae/curriculum/[02] - Intermediate School/Grade VII - The Alchemist/Implement/Grade VII - Audit & Validation Harness.md",
-      "type": "file",
-      "size_bytes": 7398,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 286
-    },
-    {
-      "path": "docs/vitae/curriculum/[02] - Intermediate School/Grade VII - The Alchemist/Implement/Grade VII - Constraint Bundle Spec.md",
-      "type": "file",
-      "size_bytes": 6897,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 214
-    },
-    {
-      "path": "docs/vitae/curriculum/[02] - Intermediate School/Grade VII - The Alchemist/Implement/Grade VII - Generator & Module Mapping.md",
-      "type": "file",
-      "size_bytes": 9644,
-      "last_modified_commit": "811a91227",
+      "size_bytes": 3802,
+      "last_modified_commit": "20451055d",
       "is_empty": false,
       "extension": ".md",
       "lines": 405
     },
     {
-      "path": "docs/vitae/curriculum/[02] - Intermediate School/Grade VII - The Alchemist/Implement/Grade VII - State Machine Spec.md",
+      "path": "docs/specs/modules/treasury.md",
       "type": "file",
-      "size_bytes": 9968,
-      "last_modified_commit": "811a91227",
+      "size_bytes": 114,
+      "last_modified_commit": "20451055d",
       "is_empty": false,
       "extension": ".md",
-      "lines": 522
+      "lines": 11
     },
     {
-      "path": "docs/vitae/curriculum/[02] - Intermediate School/Grade VIII - The Sage/Canon/Grade VIII -  Responsibility & Invariants Cano.md",
+      "path": "docs/specs/modules/vitae.md",
       "type": "file",
-      "size_bytes": 3873,
-      "last_modified_commit": "811a91227",
+      "size_bytes": 108,
+      "last_modified_commit": "20451055d",
       "is_empty": false,
       "extension": ".md",
-      "lines": 153
+      "lines": 11
     },
     {
-      "path": "docs/vitae/curriculum/[02] - Intermediate School/Grade VIII - The Sage/Canon/Grade VIII - Master Canon.md",
+      "path": "docs/specs/modules/wallet.md",
       "type": "file",
-      "size_bytes": 3336,
-      "last_modified_commit": "811a91227",
+      "size_bytes": 110,
+      "last_modified_commit": "20451055d",
       "is_empty": false,
       "extension": ".md",
-      "lines": 140
+      "lines": 11
     },
     {
-      "path": "docs/vitae/curriculum/[02] - Intermediate School/Grade VIII - The Sage/Canon/Grade VIII - Procedural Systems Canon.md",
+      "path": "docs/vitae/authority.md",
       "type": "file",
-      "size_bytes": 3882,
-      "last_modified_commit": "811a91227",
+      "size_bytes": 5470,
+      "last_modified_commit": "20451055d",
       "is_empty": false,
       "extension": ".md",
-      "lines": 166
+      "lines": 603
     },
     {
-      "path": "docs/vitae/curriculum/[02] - Intermediate School/Grade VIII - The Sage/Implement/Grade VIII - Audit & Validation Harness.md",
+      "path": "docs/vitae/constitution/constitutional-amendment.md",
       "type": "file",
-      "size_bytes": 6791,
-      "last_modified_commit": "811a91227",
+      "size_bytes": 3878,
+      "last_modified_commit": "20451055d",
       "is_empty": false,
       "extension": ".md",
-      "lines": 257
+      "lines": 133
     },
     {
-      "path": "docs/vitae/curriculum/[02] - Intermediate School/Grade VIII - The Sage/Implement/Grade VIII - Constraint Bundle Spec.md",
+      "path": "docs/vitae/constitution/cross-grade-dependency-canon.md",
       "type": "file",
-      "size_bytes": 5752,
-      "last_modified_commit": "811a91227",
+      "size_bytes": 2601,
+      "last_modified_commit": "20451055d",
       "is_empty": false,
       "extension": ".md",
-      "lines": 189
+      "lines": 115
     },
     {
-      "path": "docs/vitae/curriculum/[02] - Intermediate School/Grade VIII - The Sage/Implement/Grade VIII - Generator & Module Mapping.md",
+      "path": "docs/vitae/constitution/grade-architecture-template.md",
       "type": "file",
-      "size_bytes": 9230,
-      "last_modified_commit": "811a91227",
+      "size_bytes": 4768,
+      "last_modified_commit": "20451055d",
       "is_empty": false,
       "extension": ".md",
-      "lines": 409
+      "lines": 199
     },
     {
-      "path": "docs/vitae/curriculum/[02] - Intermediate School/Grade VIII - The Sage/Implement/Grade VIII - State Machine Spec.md",
+      "path": "docs/vitae/constitution/master-constitution-and-architecture.md",
       "type": "file",
-      "size_bytes": 8612,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 441
-    },
-    {
-      "path": "docs/vitae/curriculum/[02] - Intermediate School/Intermediate School Canon.md",
-      "type": "file",
-      "size_bytes": 3891,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 188
-    },
-    {
-      "path": "docs/vitae/curriculum/[03] - High School/Grade IX - The Oracle/Canon/Grade IX - Master Canon.md",
-      "type": "file",
-      "size_bytes": 3637,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 141
-    },
-    {
-      "path": "docs/vitae/curriculum/[03] - High School/Grade IX - The Oracle/Canon/Grade IX - Procedural Systems Canon.md",
-      "type": "file",
-      "size_bytes": 3757,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 164
-    },
-    {
-      "path": "docs/vitae/curriculum/[03] - High School/Grade IX - The Oracle/Canon/Grade IX - Responsibility & Invariants Canon.md",
-      "type": "file",
-      "size_bytes": 4024,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 156
-    },
-    {
-      "path": "docs/vitae/curriculum/[03] - High School/Grade IX - The Oracle/Implement/Grade IX - Audit & Validation Harness.md",
-      "type": "file",
-      "size_bytes": 6624,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 256
-    },
-    {
-      "path": "docs/vitae/curriculum/[03] - High School/Grade IX - The Oracle/Implement/Grade IX - Constraint Bundle Spec.md",
-      "type": "file",
-      "size_bytes": 5699,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 188
-    },
-    {
-      "path": "docs/vitae/curriculum/[03] - High School/Grade IX - The Oracle/Implement/Grade IX - Generator & Module Mapping.md",
-      "type": "file",
-      "size_bytes": 6555,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 267
-    },
-    {
-      "path": "docs/vitae/curriculum/[03] - High School/Grade IX - The Oracle/Implement/Grade IX - State Machine Spec.md",
-      "type": "file",
-      "size_bytes": 9008,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 443
-    },
-    {
-      "path": "docs/vitae/curriculum/[03] - High School/Grade X - The Adept/Canon/Grade X - Master Canon.md",
-      "type": "file",
-      "size_bytes": 3489,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 132
-    },
-    {
-      "path": "docs/vitae/curriculum/[03] - High School/Grade X - The Adept/Canon/Grade X - Procedural Systems Canon.md",
-      "type": "file",
-      "size_bytes": 3809,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 154
-    },
-    {
-      "path": "docs/vitae/curriculum/[03] - High School/Grade X - The Adept/Canon/Grade X - Responsibility & Invariants Canon.md",
-      "type": "file",
-      "size_bytes": 3739,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 154
-    },
-    {
-      "path": "docs/vitae/curriculum/[03] - High School/Grade X - The Adept/Implement/Grade X - Audit & Validation Harness.md",
-      "type": "file",
-      "size_bytes": 6936,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 255
-    },
-    {
-      "path": "docs/vitae/curriculum/[03] - High School/Grade X - The Adept/Implement/Grade X - Constraint Bundle Spec.md",
-      "type": "file",
-      "size_bytes": 6049,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 200
-    },
-    {
-      "path": "docs/vitae/curriculum/[03] - High School/Grade X - The Adept/Implement/Grade X - Generator & Module Mapping.md",
-      "type": "file",
-      "size_bytes": 6496,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 268
-    },
-    {
-      "path": "docs/vitae/curriculum/[03] - High School/Grade X - The Adept/Implement/Grade X - State Machine Spec.md",
-      "type": "file",
-      "size_bytes": 10027,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 476
-    },
-    {
-      "path": "docs/vitae/curriculum/[03] - High School/High School Canon.md",
-      "type": "file",
-      "size_bytes": 3258,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 143
-    },
-    {
-      "path": "docs/vitae/curriculum/[04] - Adept/Adept Threshold Canon.md",
-      "type": "file",
-      "size_bytes": 3574,
-      "last_modified_commit": "811a91227",
+      "size_bytes": 4183,
+      "last_modified_commit": "20451055d",
       "is_empty": false,
       "extension": ".md",
       "lines": 142
     },
     {
-      "path": "docs/vitae/curriculum/[05] - Specializations/Cross-Specialization Mastery Paths Canon.md",
+      "path": "docs/vitae/constitution/vitae-kernel-master.md",
       "type": "file",
-      "size_bytes": 4426,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 186
-    },
-    {
-      "path": "docs/vitae/curriculum/[05] - Specializations/Mastery Path Governance Canon.md",
-      "type": "file",
-      "size_bytes": 5528,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 236
-    },
-    {
-      "path": "docs/vitae/curriculum/[05] - Specializations/Specialization Overview Codex.md",
-      "type": "file",
-      "size_bytes": 5548,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 179
-    },
-    {
-      "path": "docs/vitae/curriculum/[05] - Specializations/Specialization-Wide Invariants Canon.md",
-      "type": "file",
-      "size_bytes": 4767,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 227
-    },
-    {
-      "path": "docs/vitae/curriculum/[05] - Specializations/The Alchemist/Canon/The Alchemist - Master Canon.md",
-      "type": "file",
-      "size_bytes": 5705,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 189
-    },
-    {
-      "path": "docs/vitae/curriculum/[05] - Specializations/The Alchemist/Canon/The Alchemist - Procedural Systems Canon.md",
-      "type": "file",
-      "size_bytes": 5552,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 251
-    },
-    {
-      "path": "docs/vitae/curriculum/[05] - Specializations/The Alchemist/Canon/The Alchemist - Responsibilities & Invariants Canon.md",
-      "type": "file",
-      "size_bytes": 4600,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 189
-    },
-    {
-      "path": "docs/vitae/curriculum/[05] - Specializations/The Alchemist/Implement/The Alchemist - Audit & Validation Harness.md",
-      "type": "file",
-      "size_bytes": 6444,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 241
-    },
-    {
-      "path": "docs/vitae/curriculum/[05] - Specializations/The Alchemist/Implement/The Alchemist - Constraint Bundle Spec.md",
-      "type": "file",
-      "size_bytes": 4981,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 175
-    },
-    {
-      "path": "docs/vitae/curriculum/[05] - Specializations/The Alchemist/Implement/The Alchemist - Generator & Module Mapping.md",
-      "type": "file",
-      "size_bytes": 6127,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 268
-    },
-    {
-      "path": "docs/vitae/curriculum/[05] - Specializations/The Alchemist/Implement/The Alchemist - State Machine Spec.md",
-      "type": "file",
-      "size_bytes": 6718,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 360
-    },
-    {
-      "path": "docs/vitae/curriculum/[05] - Specializations/The Arcanist/Canon/The Arcanist - Master Canon.md",
-      "type": "file",
-      "size_bytes": 5834,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 187
-    },
-    {
-      "path": "docs/vitae/curriculum/[05] - Specializations/The Arcanist/Canon/The Arcanist - Procedural Systems Canon.md",
-      "type": "file",
-      "size_bytes": 3842,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 186
-    },
-    {
-      "path": "docs/vitae/curriculum/[05] - Specializations/The Arcanist/Canon/The Arcanist - Responsibilities & Invariants Canon.md",
-      "type": "file",
-      "size_bytes": 4663,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 180
-    },
-    {
-      "path": "docs/vitae/curriculum/[05] - Specializations/The Arcanist/Implement/The Arcanist - Audit & Validation Harness.md",
-      "type": "file",
-      "size_bytes": 5341,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 207
-    },
-    {
-      "path": "docs/vitae/curriculum/[05] - Specializations/The Arcanist/Implement/The Arcanist - Constraint Bundle Spec.md",
-      "type": "file",
-      "size_bytes": 4198,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 152
-    },
-    {
-      "path": "docs/vitae/curriculum/[05] - Specializations/The Arcanist/Implement/The Arcanist - Generator & Module Mapping.md",
-      "type": "file",
-      "size_bytes": 5016,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 246
-    },
-    {
-      "path": "docs/vitae/curriculum/[05] - Specializations/The Arcanist/Implement/The Arcanist - State Machine Spec.md",
-      "type": "file",
-      "size_bytes": 6238,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 345
-    },
-    {
-      "path": "docs/vitae/curriculum/[05] - Specializations/The Artificer/Canon/The Artificer - Master Canon.md",
-      "type": "file",
-      "size_bytes": 5654,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 191
-    },
-    {
-      "path": "docs/vitae/curriculum/[05] - Specializations/The Artificer/Canon/The Artificer - Procedural Systems Canon.md",
-      "type": "file",
-      "size_bytes": 5535,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 241
-    },
-    {
-      "path": "docs/vitae/curriculum/[05] - Specializations/The Artificer/Canon/The Artificer - Responsibilities & Invariants Ca.md",
-      "type": "file",
-      "size_bytes": 4789,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 193
-    },
-    {
-      "path": "docs/vitae/curriculum/[05] - Specializations/The Artificer/Implement/The Artificer - Audit & Validation Harness.md",
-      "type": "file",
-      "size_bytes": 5915,
-      "last_modified_commit": "811a91227",
+      "size_bytes": 5157,
+      "last_modified_commit": "20451055d",
       "is_empty": false,
       "extension": ".md",
       "lines": 225
     },
     {
-      "path": "docs/vitae/curriculum/[05] - Specializations/The Artificer/Implement/The Artificer - Constraint Bundle Speci.md",
+      "path": "docs/vitae/constitution/vitae-system-wide-audit-pass.md",
       "type": "file",
-      "size_bytes": 4586,
-      "last_modified_commit": "811a91227",
+      "size_bytes": 6001,
+      "last_modified_commit": "20451055d",
       "is_empty": false,
       "extension": ".md",
-      "lines": 157
+      "lines": 266
     },
     {
-      "path": "docs/vitae/curriculum/[05] - Specializations/The Artificer/Implement/The Artificer - Generator & Module Mapping.md",
+      "path": "docs/vitae/curriculum/anatomy/Guardian Anatomical Framework.md",
       "type": "file",
-      "size_bytes": 5855,
-      "last_modified_commit": "811a91227",
+      "size_bytes": 5804,
+      "last_modified_commit": "20451055d",
       "is_empty": false,
       "extension": ".md",
-      "lines": 252
+      "lines": 256
     },
     {
-      "path": "docs/vitae/curriculum/[05] - Specializations/The Artificer/Implement/The Artificer - State Machine Spec.md",
+      "path": "docs/vitae/curriculum/anatomy/Guardian Anatomical Lexicon.md",
       "type": "file",
-      "size_bytes": 6921,
-      "last_modified_commit": "811a91227",
+      "size_bytes": 4280,
+      "last_modified_commit": "20451055d",
       "is_empty": false,
       "extension": ".md",
-      "lines": 364
+      "lines": 169
     },
     {
-      "path": "docs/vitae/curriculum/[05] - Specializations/The Astrologer/Canon/The Astrologer - Master Canon.md",
+      "path": "docs/vitae/curriculum/experience/Cross-Grade Dependency Enforcement Spec.md",
       "type": "file",
-      "size_bytes": 5831,
-      "last_modified_commit": "811a91227",
+      "size_bytes": 9000,
+      "last_modified_commit": "20451055d",
       "is_empty": false,
       "extension": ".md",
-      "lines": 189
+      "lines": 358
     },
     {
-      "path": "docs/vitae/curriculum/[05] - Specializations/The Astrologer/Canon/The Astrologer - Procedural Systems Canon.md",
+      "path": "docs/vitae/curriculum/experience/Dependency Evaluator Blueprint.md",
       "type": "file",
-      "size_bytes": 5100,
-      "last_modified_commit": "811a91227",
+      "size_bytes": 9918,
+      "last_modified_commit": "20451055d",
       "is_empty": false,
       "extension": ".md",
-      "lines": 224
+      "lines": 380
     },
     {
-      "path": "docs/vitae/curriculum/[05] - Specializations/The Astrologer/Canon/The Astrologer - Responsibilities & Invariants Canon.md",
+      "path": "docs/vitae/curriculum/experience/Experience Layer - Architecture Canon.md",
       "type": "file",
-      "size_bytes": 4927,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 189
-    },
-    {
-      "path": "docs/vitae/curriculum/[05] - Specializations/The Astrologer/Implement/The Astrologer - Audit & Validation Harness.md",
-      "type": "file",
-      "size_bytes": 5612,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 224
-    },
-    {
-      "path": "docs/vitae/curriculum/[05] - Specializations/The Astrologer/Implement/The Astrologer - Constraint Bundle Spec.md",
-      "type": "file",
-      "size_bytes": 4530,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 153
-    },
-    {
-      "path": "docs/vitae/curriculum/[05] - Specializations/The Astrologer/Implement/The Astrologer - Generator & Module Mapping.md",
-      "type": "file",
-      "size_bytes": 5722,
-      "last_modified_commit": "811a91227",
+      "size_bytes": 5334,
+      "last_modified_commit": "20451055d",
       "is_empty": false,
       "extension": ".md",
       "lines": 254
     },
     {
-      "path": "docs/vitae/curriculum/[05] - Specializations/The Astrologer/Implement/The Astrologer - State Machine Spec.md",
-      "type": "file",
-      "size_bytes": 6570,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 348
-    },
-    {
-      "path": "docs/vitae/curriculum/[05] - Specializations/The Druid/Canon/The Druid - Master Canon.md",
-      "type": "file",
-      "size_bytes": 5529,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 191
-    },
-    {
-      "path": "docs/vitae/curriculum/[05] - Specializations/The Druid/Canon/The Druid - Procedural Systems Canon.md",
-      "type": "file",
-      "size_bytes": 5076,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 238
-    },
-    {
-      "path": "docs/vitae/curriculum/[05] - Specializations/The Druid/Canon/The Druid - Responsibilities & Invariants Canon.md",
-      "type": "file",
-      "size_bytes": 4765,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 186
-    },
-    {
-      "path": "docs/vitae/curriculum/[05] - Specializations/The Druid/Implement/The Druid - Audit & Validation Harness.md",
-      "type": "file",
-      "size_bytes": 5696,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 222
-    },
-    {
-      "path": "docs/vitae/curriculum/[05] - Specializations/The Druid/Implement/The Druid - Constraint Bundle Spec.md",
-      "type": "file",
-      "size_bytes": 4397,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 159
-    },
-    {
-      "path": "docs/vitae/curriculum/[05] - Specializations/The Druid/Implement/The Druid - Generator & Module Mapping.md",
-      "type": "file",
-      "size_bytes": 5549,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 245
-    },
-    {
-      "path": "docs/vitae/curriculum/[05] - Specializations/The Druid/Implement/The Druid - State Machine Spec.md",
-      "type": "file",
-      "size_bytes": 6435,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 339
-    },
-    {
-      "path": "docs/vitae/curriculum/[05] - Specializations/The Enchanter/Canon/The Enchanter - Master Canon.md",
-      "type": "file",
-      "size_bytes": 5548,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 191
-    },
-    {
-      "path": "docs/vitae/curriculum/[05] - Specializations/The Enchanter/Canon/The Enchanter - Procedural Systems Canon.md",
-      "type": "file",
-      "size_bytes": 5330,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 239
-    },
-    {
-      "path": "docs/vitae/curriculum/[05] - Specializations/The Enchanter/Canon/The Enchanter - Responsibilities & Invariants Canon.md",
-      "type": "file",
-      "size_bytes": 4698,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 180
-    },
-    {
-      "path": "docs/vitae/curriculum/[05] - Specializations/The Enchanter/Implement/The Enchanter - Audit & Validation Harness.md",
-      "type": "file",
-      "size_bytes": 6420,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 240
-    },
-    {
-      "path": "docs/vitae/curriculum/[05] - Specializations/The Enchanter/Implement/The Enchanter - Constraint Bundle Spec.md",
-      "type": "file",
-      "size_bytes": 4686,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 159
-    },
-    {
-      "path": "docs/vitae/curriculum/[05] - Specializations/The Enchanter/Implement/The Enchanter - Generator & Module Mapping.md",
-      "type": "file",
-      "size_bytes": 5861,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 251
-    },
-    {
-      "path": "docs/vitae/curriculum/[05] - Specializations/The Enchanter/Implement/The Enchanter - State Machine Spec.md",
-      "type": "file",
-      "size_bytes": 6798,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 353
-    },
-    {
-      "path": "docs/vitae/curriculum/[05] - Specializations/The Hierophant/Canon/The Hierophant - Master Canon.md",
-      "type": "file",
-      "size_bytes": 5509,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 189
-    },
-    {
-      "path": "docs/vitae/curriculum/[05] - Specializations/The Hierophant/Canon/The Hierophant - Procedural Systems Canon.md",
-      "type": "file",
-      "size_bytes": 4896,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 222
-    },
-    {
-      "path": "docs/vitae/curriculum/[05] - Specializations/The Hierophant/Canon/The Hierophant - Responsibilities & Invariants Canon.md",
-      "type": "file",
-      "size_bytes": 4597,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 179
-    },
-    {
-      "path": "docs/vitae/curriculum/[05] - Specializations/The Hierophant/Implement/The Hierophant - Audit & Validation Harness.md",
-      "type": "file",
-      "size_bytes": 5744,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 222
-    },
-    {
-      "path": "docs/vitae/curriculum/[05] - Specializations/The Hierophant/Implement/The Hierophant - Constraint Bundle Speci.md",
-      "type": "file",
-      "size_bytes": 4483,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 153
-    },
-    {
-      "path": "docs/vitae/curriculum/[05] - Specializations/The Hierophant/Implement/The Hierophant - Generator & Module Mapping.md",
-      "type": "file",
-      "size_bytes": 5549,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 245
-    },
-    {
-      "path": "docs/vitae/curriculum/[05] - Specializations/The Hierophant/Implement/The Hierophant - State Machine Spec.md",
-      "type": "file",
-      "size_bytes": 6636,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 340
-    },
-    {
-      "path": "docs/vitae/curriculum/[05] - Specializations/The Illusionist/Canon/The Illusionist - Master Canon.md",
-      "type": "file",
-      "size_bytes": 5796,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 187
-    },
-    {
-      "path": "docs/vitae/curriculum/[05] - Specializations/The Illusionist/Canon/The Illusionist - Procedural Systems Canon.md",
-      "type": "file",
-      "size_bytes": 5434,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 239
-    },
-    {
-      "path": "docs/vitae/curriculum/[05] - Specializations/The Illusionist/Canon/The Illusionist - Responsibilities & Invariants Canon.md",
-      "type": "file",
-      "size_bytes": 4550,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 165
-    },
-    {
-      "path": "docs/vitae/curriculum/[05] - Specializations/The Illusionist/Implement/The Illusionist - Audit & Validation Harness.md",
-      "type": "file",
-      "size_bytes": 5428,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 206
-    },
-    {
-      "path": "docs/vitae/curriculum/[05] - Specializations/The Illusionist/Implement/The Illusionist - Constraint Bundle Spec.md",
-      "type": "file",
-      "size_bytes": 4436,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 153
-    },
-    {
-      "path": "docs/vitae/curriculum/[05] - Specializations/The Illusionist/Implement/The Illusionist - Generator & Module Mapping.md",
-      "type": "file",
-      "size_bytes": 5559,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 245
-    },
-    {
-      "path": "docs/vitae/curriculum/[05] - Specializations/The Illusionist/Implement/The Illusionist - State Machine Spec.md",
-      "type": "file",
-      "size_bytes": 6449,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 341
-    },
-    {
-      "path": "docs/vitae/curriculum/[05] - Specializations/The Necromancer/Canon/The Necromancer - Master Canon.md",
-      "type": "file",
-      "size_bytes": 5540,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 189
-    },
-    {
-      "path": "docs/vitae/curriculum/[05] - Specializations/The Necromancer/Canon/The Necromancer - Procedural Systems Canon.md",
-      "type": "file",
-      "size_bytes": 5242,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 228
-    },
-    {
-      "path": "docs/vitae/curriculum/[05] - Specializations/The Necromancer/Canon/The Necromancer - Responsibilities & Invariants Canon.md",
-      "type": "file",
-      "size_bytes": 4951,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 184
-    },
-    {
-      "path": "docs/vitae/curriculum/[05] - Specializations/The Necromancer/Implement/The Necromancer - Audit & Validation Harness.md",
-      "type": "file",
-      "size_bytes": 6419,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 250
-    },
-    {
-      "path": "docs/vitae/curriculum/[05] - Specializations/The Necromancer/Implement/The Necromancer - Constraint Bundle Spec.md",
-      "type": "file",
-      "size_bytes": 4599,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 157
-    },
-    {
-      "path": "docs/vitae/curriculum/[05] - Specializations/The Necromancer/Implement/The Necromancer - Generator & Module Mapping.md",
-      "type": "file",
-      "size_bytes": 5679,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 246
-    },
-    {
-      "path": "docs/vitae/curriculum/[05] - Specializations/The Necromancer/Implement/The Necromancer - State Machine Spec.md",
-      "type": "file",
-      "size_bytes": 7204,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 381
-    },
-    {
-      "path": "docs/vitae/curriculum/[05] - Specializations/The Philosopher/Canon/The Philosopher - Master Canon.md",
-      "type": "file",
-      "size_bytes": 5623,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 191
-    },
-    {
-      "path": "docs/vitae/curriculum/[05] - Specializations/The Philosopher/Canon/The Philosopher - Procedural Systems Canon.md",
-      "type": "file",
-      "size_bytes": 4230,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 196
-    },
-    {
-      "path": "docs/vitae/curriculum/[05] - Specializations/The Philosopher/Canon/The Philosopher - Responsibilities & Invariants Canon.md",
-      "type": "file",
-      "size_bytes": 4482,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 179
-    },
-    {
-      "path": "docs/vitae/curriculum/[05] - Specializations/The Philosopher/Implement/The Philosopher - Audit & Validation Harness.md",
-      "type": "file",
-      "size_bytes": 5552,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 222
-    },
-    {
-      "path": "docs/vitae/curriculum/[05] - Specializations/The Philosopher/Implement/The Philosopher - Constraint Bundle Spec.md",
-      "type": "file",
-      "size_bytes": 4473,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 153
-    },
-    {
-      "path": "docs/vitae/curriculum/[05] - Specializations/The Philosopher/Implement/The Philosopher - Generator & Module Mapping.md",
-      "type": "file",
-      "size_bytes": 5552,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 250
-    },
-    {
-      "path": "docs/vitae/curriculum/[05] - Specializations/The Philosopher/Implement/The Philosopher - State Machine Spec.md",
-      "type": "file",
-      "size_bytes": 6353,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 338
-    },
-    {
-      "path": "docs/vitae/curriculum/anatomy/Guardian Anatomical Framework.md",
-      "type": "file",
-      "size_bytes": 5684,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 248
-    },
-    {
-      "path": "docs/vitae/curriculum/anatomy/Guardian Anatomical Lexicon.md",
-      "type": "file",
-      "size_bytes": 4172,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 161
-    },
-    {
-      "path": "docs/vitae/curriculum/experience/Cross-Grade Dependency Enforcement Spec.md",
-      "type": "file",
-      "size_bytes": 8844,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 350
-    },
-    {
-      "path": "docs/vitae/curriculum/experience/Dependency Evaluator Blueprint.md",
-      "type": "file",
-      "size_bytes": 9780,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 372
-    },
-    {
-      "path": "docs/vitae/curriculum/experience/Experience Layer - Architecture Canon.md",
-      "type": "file",
-      "size_bytes": 5226,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 246
-    },
-    {
       "path": "docs/vitae/curriculum/experience/Reason Code Registry.md",
       "type": "file",
-      "size_bytes": 11877,
-      "last_modified_commit": "811a91227",
+      "size_bytes": 11995,
+      "last_modified_commit": "20451055d",
       "is_empty": false,
       "extension": ".md",
-      "lines": 396
+      "lines": 404
     },
     {
       "path": "docs/vitae/curriculum/experience/Reference Event Log Walkthrough.md",
       "type": "file",
-      "size_bytes": 17211,
-      "last_modified_commit": "811a91227",
+      "size_bytes": 17351,
+      "last_modified_commit": "20451055d",
       "is_empty": false,
       "extension": ".md",
-      "lines": 436
+      "lines": 444
     },
     {
       "path": "docs/vitae/curriculum/experience/Replay Harness Checklist.md",
       "type": "file",
-      "size_bytes": 6500,
-      "last_modified_commit": "811a91227",
+      "size_bytes": 6626,
+      "last_modified_commit": "20451055d",
       "is_empty": false,
       "extension": ".md",
-      "lines": 278
+      "lines": 286
     },
     {
       "path": "docs/vitae/curriculum/experience/Runtime Event Schema.md",
       "type": "file",
-      "size_bytes": 10467,
-      "last_modified_commit": "811a91227",
+      "size_bytes": 10585,
+      "last_modified_commit": "20451055d",
       "is_empty": false,
       "extension": ".md",
-      "lines": 429
+      "lines": 437
     },
     {
       "path": "docs/vitae/curriculum/lexicon/Guardian Lexicon Seed — v1.md",
       "type": "file",
-      "size_bytes": 3437,
-      "last_modified_commit": "811a91227",
+      "size_bytes": 3556,
+      "last_modified_commit": "20451055d",
       "is_empty": false,
       "extension": ".md",
-      "lines": 123
+      "lines": 131
     },
     {
       "path": "docs/vitae/index.md",
       "type": "file",
-      "size_bytes": 0,
-      "last_modified_commit": "811a91227",
-      "is_empty": true,
+      "size_bytes": 108,
+      "last_modified_commit": "20451055d",
+      "is_empty": false,
       "extension": ".md",
-      "lines": 0
+      "lines": 11
     },
     {
       "path": "docs/vitae/overview.md",
       "type": "file",
-      "size_bytes": 0,
-      "last_modified_commit": "811a91227",
-      "is_empty": true,
+      "size_bytes": 114,
+      "last_modified_commit": "20451055d",
+      "is_empty": false,
       "extension": ".md",
-      "lines": 0
+      "lines": 11
     },
     {
       "path": "docs/whitepaper/appendix-governance.md",
       "type": "file",
-      "size_bytes": 3447,
-      "last_modified_commit": "811a91227",
+      "size_bytes": 3538,
+      "last_modified_commit": "20451055d",
       "is_empty": false,
       "extension": ".md",
-      "lines": 58
+      "lines": 66
     },
     {
       "path": "docs/whitepaper/arcanum-chain.md",
       "type": "file",
-      "size_bytes": 0,
-      "last_modified_commit": "811a91227",
-      "is_empty": true,
+      "size_bytes": 124,
+      "last_modified_commit": "20451055d",
+      "is_empty": false,
       "extension": ".md",
-      "lines": 0
+      "lines": 11
     },
     {
       "path": "docs/whitepaper/compliance-risk.md",
       "type": "file",
-      "size_bytes": 2895,
-      "last_modified_commit": "811a91227",
+      "size_bytes": 2990,
+      "last_modified_commit": "20451055d",
       "is_empty": false,
       "extension": ".md",
-      "lines": 41
+      "lines": 49
     },
     {
       "path": "docs/whitepaper/dignity-content-boundaries.md",
       "type": "file",
-      "size_bytes": 5025,
-      "last_modified_commit": "811a91227",
+      "size_bytes": 4643,
+      "last_modified_commit": "20451055d",
       "is_empty": false,
       "extension": ".md",
-      "lines": 532
+      "lines": 543
     },
     {
       "path": "docs/whitepaper/executive-summary.md",
       "type": "file",
-      "size_bytes": 1839,
-      "last_modified_commit": "811a91227",
+      "size_bytes": 1946,
+      "last_modified_commit": "20451055d",
       "is_empty": false,
       "extension": ".md",
-      "lines": 15
+      "lines": 23
     },
     {
       "path": "docs/whitepaper/governance-neutrality.md",
       "type": "file",
-      "size_bytes": 4467,
-      "last_modified_commit": "811a91227",
+      "size_bytes": 4177,
+      "last_modified_commit": "20451055d",
       "is_empty": false,
       "extension": ".md",
-      "lines": 430
+      "lines": 441
     },
     {
       "path": "docs/whitepaper/index.md",
       "type": "file",
-      "size_bytes": 0,
-      "last_modified_commit": "811a91227",
-      "is_empty": true,
+      "size_bytes": 108,
+      "last_modified_commit": "20451055d",
+      "is_empty": false,
       "extension": ".md",
-      "lines": 0
+      "lines": 11
     },
     {
       "path": "docs/whitepaper/problem-solution.md",
       "type": "file",
-      "size_bytes": 1569,
-      "last_modified_commit": "811a91227",
+      "size_bytes": 1664,
+      "last_modified_commit": "20451055d",
       "is_empty": false,
       "extension": ".md",
-      "lines": 19
+      "lines": 27
     },
     {
       "path": "docs/whitepaper/technical-architecture.md",
       "type": "file",
-      "size_bytes": 3119,
-      "last_modified_commit": "811a91227",
+      "size_bytes": 3231,
+      "last_modified_commit": "20451055d",
       "is_empty": false,
       "extension": ".md",
-      "lines": 46
+      "lines": 54
     },
     {
       "path": "docs/whitepaper/tokenomics.md",
       "type": "file",
-      "size_bytes": 4389,
-      "last_modified_commit": "811a91227",
+      "size_bytes": 4473,
+      "last_modified_commit": "20451055d",
       "is_empty": false,
       "extension": ".md",
-      "lines": 175
+      "lines": 183
     },
     {
       "path": "docs/whitepaper/vitae-and-becoming.md",
       "type": "file",
-      "size_bytes": 0,
-      "last_modified_commit": "811a91227",
-      "is_empty": true,
+      "size_bytes": 134,
+      "last_modified_commit": "20451055d",
+      "is_empty": false,
       "extension": ".md",
-      "lines": 0
+      "lines": 11
     },
     {
       "path": "package.json",
@@ -4400,7 +2825,7 @@
       "path": "scripts/repo-index.sh",
       "type": "file",
       "size_bytes": 1655,
-      "last_modified_commit": "bab9feeb2",
+      "last_modified_commit": "d8daeb5cd",
       "is_empty": false,
       "extension": ".sh",
       "lines": 60
@@ -4408,11 +2833,11 @@
     {
       "path": "scripts/verify-sync.sh",
       "type": "file",
-      "size_bytes": 4698,
-      "last_modified_commit": "811a91227",
+      "size_bytes": 4742,
+      "last_modified_commit": "d8daeb5cd",
       "is_empty": false,
       "extension": ".sh",
-      "lines": 165
+      "lines": 166
     },
     {
       "path": "tsconfig.json",
