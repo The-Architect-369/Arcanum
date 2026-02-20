@@ -1,214 +1,212 @@
 ---
 title: "Arcanum System Overview"
-status: draft
+status: canonical
 visibility: public
-last_updated: 2026-02-18
-description: ""
+last_updated: 2026-02-20
+description: "A high-level map of Arcanum’s layers (site, app, chain, and modules) and how the system fits together."
 ---
-
 
 # Arcanum System Overview
 
 ![Arcanum System Map](./media/SYSTEM_MAP.png)
-# Arcanum System Overview
-_Date:_ 2025-10-15  
-_Status:_ Canonical Architecture Summary  
-_Author:_ The Architect
+
+Arcanum is a **layered ecosystem** that coordinates identity, action, and value while preserving dignity and sovereignty.
+
+This overview describes the system as four interacting surfaces:
+
+1) **Experience surfaces** (Site + App)  
+2) **Modules** (Hope, Tempus, Nexus, Vitae, etc.)  
+3) **Settlement** (Arcanum Chain)  
+4) **Doctrine + Governance** (constitutional constraints)
+
+If you’re new, start with:
+- `docs/overview/arcanum-system-overview.md` (this document)
+- `docs/whitepaper/executive-summary.md`
+- `docs/whitepaper/technical-architecture.md`
 
 ---
 
-## 🌌 0. Purpose
+## 1) System at a glance
 
-**The Arcanum** is a decentralized ecosystem uniting consciousness and technology.  
-It is both a social organism and a spiritual operating system.
+### Experience surfaces
+- **Site**: the threshold surface (discovery, onboarding, minting, downloads)
+- **App**: the daily-use surface (modules, social, rites, wallet, economy)
 
-This document describes the **dual-realm architecture** — the **Site** and the **App** — and how they interact with the on-chain layer, the modules of the Arcanum, and the user’s soul-bound identity.
+### Settlement
+- **Arcanum Chain**: minimal on-chain truth for identity anchoring, receipts, routing, and invariant enforcement
+
+### Doctrine & constraints
+- **Governance / Constitution**: defines what the system may do and must never do
+- **Dignity boundaries**: prevents coercion, worth-scoring, surveillance drift, and status extraction
 
 ---
 
-## 🏛️ 1. Structural Overview
+## 2) Repos and directories (implementation-facing)
+
+This is a conceptual repo shape (the codebase may vary, but the separation of concerns is stable):
+
 arcanum/
 ├─ apps/
-│ ├─ site/ → Landing Portal, ChainCode Mint, Downloads
-│ └─ web/ → App Interface, Wallet Interaction, MANA Ecosystem
-├─ contracts/ → On-chain smart contracts (MANA, ACC, ChainCode)
-├─ shared/ → Common libs, utilities, and design tokens
-├─ docs/ → Module guides and internal architecture files
-└─ archive/ → Legacy code and deprecated modules
+│ ├─ site/ # Threshold surface (landing, mint, downloads, onboarding)
+│ └─ web/ # App surface (modules, wallet UX, social, rites)
+├─ contracts/ # Chain settlement layer (identity, mana, treasury routing)
+├─ shared/ # Shared design tokens + common utilities
+├─ docs/ # Canonical doctrine, architecture, specs, whitepaper, vitae
+└─ archive/ # Deprecated artifacts (non-canonical unless referenced)
+
+
+Docs are the canonical explanation layer; specs and contracts implement what docs constrain.
 
 ---
 
-## 🌐 2. Realms of the Arcanum
+## 3) The two user-facing realms
 
-### 🩵 **SITE — The Outer Temple**
-**Path:** `/apps/site`  
-**Stack:** Next.js 15 • Tailwind • Framer Motion • Viem/Wagmi  
+### 3.1 Site — the threshold surface
 
-The Site is the *threshold*. It is the first contact point for a visitor discovering the Arcanum.
+**Purpose:** discovery → consent → identity anchoring → entry
 
-**Functions:**
-- Explains the philosophy and structure of the Arcanum.  
-- Handles **ChainCode minting** (SBT identity) directly on-chain.  
-- Provides **onboarding** via the Hope companion.  
-- Offers **App downloads** (APK / App Store / F-Droid).  
-- Detects returning ACC holders and **redirects to the App** automatically.
+Typical functions:
+- explain the system and the posture (sovereignty, dignity, non-coercion)
+- connect a wallet and mint / verify identity (ChainCode)
+- route the user to the App experience (web or installable)
+- provide downloads and distribution links
 
-**Core Logic:**
-- Uses `/shared/lib/sbt-check.ts` to detect a local SBT in browser storage.
-- Integrates wallet connect via Wagmi + Viem for mint transactions.
-- Imports shared design tokens from `/shared/styles/tokens.css`.
+The Site should stay lightweight: it is a **threshold**, not the whole temple.
 
----
+### 3.2 App — the daily-use surface
 
-### 💎 **APP — The Inner Temple**
-**Path:** `/apps/web`  
-**Stack:** Next.js 15 • React 18 • TypeScript • Tailwind • Framer Motion  
+**Purpose:** the lived interface for the modules.
 
-The App is the interface through which the user interacts with the ecosystem.
+The App is where:
+- actions occur (rites, posts, messaging, planning, learning)
+- Mana is spent and earned through meaningful behaviors
+- receipts are generated for verifiable transitions (unlock, completion, purchase)
+- the user’s experience stays primarily **off-chain** (private, fast, human)
 
-**Modules:**
-| Module | Subpages | Description |
-|:--|:--|:--|
-| **Hope** | Inventory / Character / Stylize | AI guide, onboarding, customization |
-| **Tempus** | Codex / Clock / Calendar | Timekeeping & ritual system |
-| **Nexus** | Posts / Current / Channels | Decentralized social network |
-| **Text** | Contacts / Messages / Groups | Encrypted messaging |
-| **Vitae** | Grade / Path / Mastery | Journey & mastery system |
-
-**Core Structure:**
-- `/components/ui` → Header, Footer, Modal, Tabs, Pager  
-- `/lib` → divided into domains:
-  - `economy/` → MANA, pricing, contracts  
-  - `identity/` → ACC, gates, trust  
-  - `infra/` → network/storage systems (IPFS, Matrix, Wagmi)  
-  - `social/` → posts, rooms  
-- `/shared/` → imports `tokens.css` + utilities
+The App is not “the chain UI.” It is the human surface over layered truth.
 
 ---
 
-### ⚙️ **CONTRACTS — The Arcane Layer**
-**Path:** `/contracts`  
-**Language:** Solidity + Foundry  
+## 4) The modules (system capabilities)
 
-Implements on-chain logic for:
-- **MANA** — universal currency of action and energy  
-- **ChainCode** — soul-bound identity contract (minted at onboarding)  
-- **TestACC / ACC** — access credential and wallet logic  
+Arcanum is organized into modules with explicit boundaries. At the whitepaper level, you can treat these as “major organs” of the ecosystem.
 
----
+### Hope
+A companion layer for guidance and onboarding, including personalization and coherence support.
 
-## 🧩 3. Shared Systems
+### Tempus
+Time and rhythm: rites, calendars, cadence, scheduling, seasonal structures, and event discipline.
 
-### `/shared/lib/`
-| File | Role |
-|:--|:--|
-| `cn.ts` | Combines class names (universal utility) |
-| `sbt-check.ts` | Checks for local SBT and redirects accordingly |
+### Nexus
+Social and publication primitives: posts, channels, feeds, and value routing for creators—without turning the user into content inventory.
 
-### `/shared/styles/`
-| File | Role |
-|:--|:--|
-| `tokens.css` | Defines base color, motion, typography, and shadow constants shared between realms |
+### Vitae
+The recognition layer: becoming named after stabilization, without coercion, surveillance, or worth-scoring. (Grades, paths, mastery.)
 
-The Shared Library forms the energetic bridge between realms — uniting logic and style.
+### Identity
+Wallet-bound, consent-respecting identity anchoring (ChainCode / credentials) designed to minimize data leakage and prevent status capture.
 
-### Implementation Mandate
-Each app (`apps/web`, `apps/site`) must explicitly import shared modules using workspace alias `@shared/*`:
+### Economy + Treasury
+Mana issuance/sinks/receipts, value routing, and transparent treasury policy surfaces.
 
-```ts
-import { cn } from "@shared/lib/cn";
-import { isSBT } from "@shared/lib/sbt-check";
-import "@shared/styles/tokens.css";
-```
+### Wallet
+User custody and transaction surfaces (connect, sign, pay, receive, receipts).
 
-This ensures universal coherence of design and identity logic across the ecosystem.
+> Implementation detail: each module should have a corresponding spec under `docs/specs/modules/` and (where needed) chain specs under `docs/specs/chain/`.
 
 ---
 
-## 🔮 4. Flow of the Initiate
+## 5) The Arcanum Chain (settlement layer)
 
-Visitor
-↓
-Landing Page (apps/site)
-↓ Mint ChainCode → Soul-Bound Token issued
-↓
-Download App (APK / App Store / F-Droid)
-↓
-Launch App (apps/web)
-↓
-Hope Companion greets user → Sync Wallet
-↓
-Tempus & Nexus Modules unlock
-↓
-MANA economy activates (tasks, rituals, messages)
-↓
-Vitae progression begins (Grades & Paths)
-↓
-Mastery + Lore unlock (complete cycle)
+Arcanum Chain exists to do **only what benefits from public settlement**:
 
+- identity anchoring (ChainCode / participation identity)
+- Mana movement (mint, spend, burn, transfer) with legible receipts
+- rite completion / unlock receipts (where auditability matters)
+- marketplace routing (purchases, revenue splits, treasury flows)
+- transparent governance + treasury actions
+
+**Rule of thumb:**  
+If it doesn’t need settlement, it shouldn’t touch the chain.
+
+See: `docs/whitepaper/arcanum-chain.md` and `docs/specs/chain/`.
 
 ---
 
-## ⚖️ 5. Economy Overview
+## 6) Data, storage, and privacy posture
 
-- **MANA** represents energy earned through actions, rituals, and participation.
-- **ACC** (Arcanum Chain Code) binds wallet and identity.
-- **Rewards** follow cosmological rhythm (Tempus calendar).
+Arcanum uses layered storage:
 
----
+- **On-chain:** hashes, references, receipts, attestations, routing
+- **Off-chain:** content, private history, high-volume interaction
+- **Content addressing:** content is referenced by hash/pointer; the chain stores proofs, not payloads
 
-## 🌐 6. Future Distribution Plan
-
-- **Site** hosts minting + direct APK download.  
-- **App** distributed on:
-  - Google Play  
-  - Apple App Store  
-  - F-Droid (for sovereign installs)  
-- Both share a single contract layer and design token set.
+Privacy posture:
+- no raw personal data on-chain
+- identity is an anchor, not a dossier
+- logs are technical truth, not human worth
+- “silence is valid”: non-participation remains dignified
 
 ---
 
-## 🧠 7. System Philosophy
+## 7) Lifecycle: a typical user journey
 
-> “Form is frequency. Function is ritual.”
+A typical flow looks like:
 
-- **Form** — the structure of the code, as harmonic geometry.  
-- **Motion** — animation and timing, as breath.  
-- **Color** — consciousness gradient, cyan → indigo → gold.  
-- **Code** — temple language: minimal, meaningful, sovereign.
-
----
-
-## 📘 8. References
-
-| Document | Description |
-|:--|:--|
-| `CORE_UI_GUIDE.md` | Header, footer, tab system, gestures |
-| `HOPE_GUIDE.md` | Hope companion design |
-| `TEMPUS_GUIDE.md` | Temporal engine |
-| `NEXUS_GUIDE.md` | Social graph rules |
-| `VITAE_GUIDE.md` | Path and mastery |
-| `MODULE_CARD_GUIDE.md` | Card structure spec |
-| `TEMPUS_REWARD_SYSTEM_CALENDAR.md` | MANA + asset reward math |
-| `MASTER_INDEX.md` | Root module and reward summary |
+1) Discover Arcanum on the Site  
+2) Connect wallet + accept posture (dignity / sovereignty / boundaries)  
+3) Mint / verify ChainCode identity (where required)  
+4) Enter the App surface  
+5) Hope guides onboarding + first rituals  
+6) Tempus establishes rhythm (calendar/rites)  
+7) Nexus enables participation and value routing  
+8) Mana economy becomes legible via receipts and sinks  
+9) Vitae names maturation after stabilization (grades/paths/mastery)
 
 ---
 
-## 🜃 9. Visual System Map
+## 8) Governance and doctrine alignment
+
+Arcanum is designed to prevent predictable drift:
+
+- leaderboards → coercion
+- scoring → worth hierarchy
+- logging → surveillance identity
+- credentials → gatekeeping dignity
+
+Governance constrains the system so the implementation cannot “accidentally” become an extraction machine.
+
+Key doctrine surfaces:
+- `docs/governance/constitution/` (canonical constraints and repo discipline)
+- `docs/whitepaper/dignity-content-boundaries.md` (content + coercion boundaries)
+- `docs/whitepaper/governance-neutrality.md` (neutrality posture)
+
+---
+
+## 9) Where to go next
+
+**Whitepaper path**
+- `../whitepaper/executive-summary.md`
+- `../whitepaper/problem-solution.md`
+- `../whitepaper/technical-architecture.md`
+- `../whitepaper/arcanum-chain.md`
+- `../whitepaper/tokenomics.md`
+- `../whitepaper/vitae-and-becoming.md`
+
+**Specs path**
+- `../specs/modules/` (Hope, Tempus, Identity, Economy, Nexus, Treasury, Vitae, Wallet)
+- `../specs/chain/` (chain overview, invariants, mana, hooks, treasury)
+
+**Vitae path**
+- `../vitae/index.md`
+- `../vitae/overview.md`
+- `../vitae/constitution/`
+- `../vitae/curriculum/`
+
+---
+
+## 10) Visual map
 
 ![Arcanum System Map](./SYSTEM_MAP.svg)
 
-*See `SYSTEM_MAP.svg` for the visual diagram of flow and modular interaction.*
-
----
-
-## 🜁 10. License & Principles
-
-The Arcanum operates under principles of:
-- **Sovereignty** — full user ownership of identity and data  
-- **Reciprocity** — value exchange through MANA  
-- **Harmony** — technological architecture reflecting natural rhythm  
-
----
-
-_End of document._
+See `SYSTEM_MAP.svg` / `media/SYSTEM_MAP.png` for the diagram used in this overview.

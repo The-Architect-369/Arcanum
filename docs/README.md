@@ -1,38 +1,53 @@
 ---
-title: "Readme"
-status: draft
+title: "Docs"
+status: canonical
 visibility: public
-last_updated: 2026-02-18
-description: ""
+last_updated: 2026-02-20
+description: "Documentation root for Arcanum: doctrine, architecture, specs, vitae, and whitepaper."
 ---
 
+# Arcanum Docs
 
-# Readme
-**Date:** 2025-10-26
+This folder is the **canonical documentation surface** for Arcanum.
 
-This repository contains the modular “White Pages” for the **Arcanum**, a self-governing ecosystem tool and sacred digital commons. It is structured for clarity, versioning, and community collaboration.
+If you’re new, start with:
 
-> **How to use**  
-> - Read `01-Executive-Summary.md` first for the big picture.  
-> - Each major section lives in its own Markdown file for easy editing.  
-> - Governance is designed as a **living appendix** that can be updated independently.  
-> - Convert to PDF/Word using tools like Pandoc when ready for distribution.
+- **System overview:** `overview/arcanum-system-overview.md`
+- **Whitepaper flow:** `whitepaper/executive-summary.md` → `whitepaper/problem-solution.md` → `whitepaper/technical-architecture.md`
+- **Doctrine & governance (constitution):** `governance/constitution/`
 
-## Table of Contents
-1. [Executive Summary](01-Executive-Summary.md)
-2. [Problem & Solution Overview](02-Problem-Solution.md)
-3. [Technical Architecture](03-Technical-Architecture.md)
-4. [Tokenomics — Mana](04-Tokenomics.md)
-5. [Compliance & Risk Posture](05-Compliance-and-Risk.md)
-6. [Governance Appendix (Living Doc)](06-Governance-Appendix.md)
-7. [Roadmap](07-Roadmap.md)
-8. [Glossary](08-Glossary.md)
-9. [Changelog](09-Changelog.md)
-10. [License & Attribution](10-License-and-Attribution.md)
+## Folder Map (live structure)
 
-## Editing & Versioning
-- Treat each commit as a **release candidate**. Maintain release notes in `09-Changelog.md`.
-- When governance rules change, update **only** `06-Governance-Appendix.md` and bump the appendix sub-version (e.g., `Appendix v0.3`).
+- `index.md` — human-friendly navigation index (this is the “table of contents” for the whole docs tree)
+- `overview/` — system overview + roadmaps  
+  - `overview/arcanum-system-overview.md`  
+  - `overview/roadmap-v1.md`, `overview/roadmap-v2.md`, `overview/roadmap-v3.md`
+- `whitepaper/` — modular whitepaper sections (current drafting surface)
+  - `executive-summary.md`, `problem-solution.md`, `technical-architecture.md`, `tokenomics.md`, `compliance-risk.md`, etc.
+- `governance/constitution/` — constitutional canon + doctrine tooling  
+  - `canonical-modules.md`, `layer-boundaries.md`, `metaphysical-neutrality.md`, `repo-interface.md`, `repo-index-generator-spec.md`, etc.
+- `architecture/` — architecture law + cross-layer boundaries (app ↔ chain ↔ doctrine)  
+  - `app-chain-doctrine.md`, `identity-model.md`, `temporal-model.md`, `tempus-structure.md`, `layer-boundaries.md`
+- `specs/` — implementation-facing specifications
+  - `specs/modules/` (Hope, Tempus, Identity, Economy, Wallet, etc.)
+  - `specs/chain/` (chain overview, invariants, mana, hooks, treasury)
+- `vitae/` — Vitae constitution + curriculum + content tree (deep structure)
+- `genesis/` — sealed phase artifacts
+  - `genesis/g1-hope-seal.md`
+- `reference/` — glossary, changelog, license/attribution
+- `architect/` — automation + canonical repo indexing artifacts
+  - `architect/repo-index.json`
+- `archive/` — deprecated or historical materials (non-canonical unless explicitly referenced)
 
-## Single-File Build
-If you prefer a single-file version, see `arcanum-white-pages-SINGLE.md` (auto-generated concatenation of all sections).
+## Naming + linking conventions
+
+- **kebab-case** filenames and folders so links are stable and predictable.
+- Link using **relative paths** from `docs/` (example: `overview/roadmap-v3.md`).
+- Prefer **folder landing pages** (this `README.md` + `index.md`) over giant single-file docs.
+
+## Change discipline (recommended)
+
+- When structure changes, update:
+  1) `docs/index.md` (human navigation)
+  2) `architect/repo-index.json` (machine navigation, if generated)
+- Keep `archive/` non-authoritative unless a document explicitly declares it canonical.
