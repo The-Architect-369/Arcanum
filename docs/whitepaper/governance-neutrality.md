@@ -436,6 +436,3 @@ No governance action may override constitutional invariants without formal amend
 
 
 ---
-
-
-

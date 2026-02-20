@@ -139,4 +139,3 @@ It progresses humans through **ethical thresholds of capability**.
 This constitution exists to ensure that growth remains coherent, humane, and irreversible in integrity.
 
 ---
-

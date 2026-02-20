@@ -327,4 +327,3 @@ Kick off Summon Hope social campaign.
 Implement ACC mint (W5) and route first revenue to Treasury Safe.
 
 Use Architect GPT to generate weekly QA lists, release notes, and content drafts.
-

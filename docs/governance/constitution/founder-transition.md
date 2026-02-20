@@ -374,6 +374,3 @@ Any structural move toward centralization of authority in a single individual sh
 
 
 ---
-
-
-

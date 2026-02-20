@@ -263,4 +263,3 @@ Any implementation that violates the invariants or audit requirements herein is 
 ---
 
 **End of Arcanum Vitae — System‑Wide Audit Pass**
-

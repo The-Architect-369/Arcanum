@@ -222,4 +222,4 @@ The architect cannot escape their own design
 
 \---
 
-End of Master VK (Living Document)  
+End of Master VK (Living Document)

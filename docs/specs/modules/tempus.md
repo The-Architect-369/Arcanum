@@ -400,6 +400,3 @@ Any evolution introducing deterministic metaphysical authority shall be constitu
 
 
 ---
-
-
-

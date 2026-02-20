@@ -130,4 +130,3 @@ This amendment ensures that the Vitae remains grounded in time, rhythm, and huma
 ---
 
 **End of Constitutional Amendment — Planetary Order & Lived Time Alignment**
-

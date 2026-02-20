@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-02-19T21:10:52Z",
+  "generated_at": "2026-02-20T16:52:31Z",
   "repo": "Arcanum",
-  "commit": "20451055d",
+  "commit": "a1a5d8bc2",
   "generator_version": "1.1",
   "files": [
     {
@@ -17,7 +17,7 @@
       "path": ".github/workflows/verify-sync.yml",
       "type": "file",
       "size_bytes": 535,
-      "last_modified_commit": "811a91227",
+      "last_modified_commit": "86a45a562",
       "is_empty": false,
       "extension": ".yml",
       "lines": 25
@@ -2165,40 +2165,49 @@
       "lines": 38
     },
     {
+      "path": "docs/architect/repo-index.json",
+      "type": "file",
+      "size_bytes": 77254,
+      "last_modified_commit": "86a45a562",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 3023
+    },
+    {
       "path": "docs/architecture/app-chain-doctrine.md",
       "type": "file",
-      "size_bytes": 138,
+      "size_bytes": 137,
       "last_modified_commit": "20451055d",
       "is_empty": false,
       "extension": ".md",
-      "lines": 11
+      "lines": 10
     },
     {
       "path": "docs/architecture/identity-model.md",
       "type": "file",
-      "size_bytes": 4477,
+      "size_bytes": 4476,
       "last_modified_commit": "20451055d",
       "is_empty": false,
       "extension": ".md",
-      "lines": 483
+      "lines": 482
     },
     {
       "path": "docs/architecture/layer-boundaries.md",
       "type": "file",
-      "size_bytes": 5054,
+      "size_bytes": 5051,
       "last_modified_commit": "20451055d",
       "is_empty": false,
       "extension": ".md",
-      "lines": 481
+      "lines": 478
     },
     {
       "path": "docs/architecture/temporal-model.md",
       "type": "file",
-      "size_bytes": 5012,
+      "size_bytes": 5011,
       "last_modified_commit": "20451055d",
       "is_empty": false,
       "extension": ".md",
-      "lines": 495
+      "lines": 494
     },
     {
       "path": "docs/architecture/tempus-structure.md",
@@ -2208,6 +2217,15 @@
       "is_empty": false,
       "extension": ".md",
       "lines": 106
+    },
+    {
+      "path": "docs/genesis/g1-hope-seal.md",
+      "type": "file",
+      "size_bytes": 1079,
+      "last_modified_commit": "86a45a562",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 74
     },
     {
       "path": "docs/governance/constitution/architect-gpt-manifest.yaml",
@@ -2221,20 +2239,20 @@
     {
       "path": "docs/governance/constitution/architect-log.md",
       "type": "file",
-      "size_bytes": 9737,
+      "size_bytes": 9736,
       "last_modified_commit": "20451055d",
       "is_empty": false,
       "extension": ".md",
-      "lines": 253
+      "lines": 252
     },
     {
       "path": "docs/governance/constitution/architect-role.md",
       "type": "file",
-      "size_bytes": 4137,
+      "size_bytes": 4136,
       "last_modified_commit": "20451055d",
       "is_empty": false,
       "extension": ".md",
-      "lines": 439
+      "lines": 438
     },
     {
       "path": "docs/governance/constitution/architectgpt-core.md",
@@ -2266,7 +2284,7 @@
     {
       "path": "docs/governance/constitution/doctrine-checksums.yaml",
       "type": "file",
-      "size_bytes": 465,
+      "size_bytes": 469,
       "last_modified_commit": "d8daeb5cd",
       "is_empty": false,
       "extension": ".yaml",
@@ -2284,38 +2302,38 @@
     {
       "path": "docs/governance/constitution/founder-transition.md",
       "type": "file",
-      "size_bytes": 4291,
+      "size_bytes": 4288,
       "last_modified_commit": "20451055d",
       "is_empty": false,
       "extension": ".md",
-      "lines": 379
+      "lines": 376
     },
     {
       "path": "docs/governance/constitution/metaphysical-neutrality.md",
       "type": "file",
-      "size_bytes": 3654,
+      "size_bytes": 3651,
       "last_modified_commit": "20451055d",
       "is_empty": false,
       "extension": ".md",
-      "lines": 321
+      "lines": 318
     },
     {
       "path": "docs/governance/constitution/repo-index-generator-spec.md",
       "type": "file",
-      "size_bytes": 5041,
+      "size_bytes": 5040,
       "last_modified_commit": "20451055d",
       "is_empty": false,
       "extension": ".md",
-      "lines": 531
+      "lines": 530
     },
     {
       "path": "docs/governance/constitution/repo-interface.md",
       "type": "file",
-      "size_bytes": 5659,
+      "size_bytes": 5658,
       "last_modified_commit": "20451055d",
       "is_empty": false,
       "extension": ".md",
-      "lines": 529
+      "lines": 528
     },
     {
       "path": "docs/governance/constitution/treasury-constitution.md",
@@ -2329,29 +2347,29 @@
     {
       "path": "docs/index.md",
       "type": "file",
-      "size_bytes": 108,
+      "size_bytes": 107,
       "last_modified_commit": "20451055d",
       "is_empty": false,
       "extension": ".md",
-      "lines": 11
+      "lines": 10
     },
     {
       "path": "docs/overview/arcanum-system-overview.md",
       "type": "file",
-      "size_bytes": 6230,
+      "size_bytes": 6257,
       "last_modified_commit": "20451055d",
       "is_empty": false,
       "extension": ".md",
-      "lines": 212
+      "lines": 214
     },
     {
       "path": "docs/overview/roadmap-v1.md",
       "type": "file",
-      "size_bytes": 18862,
+      "size_bytes": 18861,
       "last_modified_commit": "20451055d",
       "is_empty": false,
       "extension": ".md",
-      "lines": 330
+      "lines": 329
     },
     {
       "path": "docs/overview/roadmap-v2.md",
@@ -2365,11 +2383,11 @@
     {
       "path": "docs/overview/roadmap-v3.md",
       "type": "file",
-      "size_bytes": 7109,
+      "size_bytes": 7108,
       "last_modified_commit": "20451055d",
       "is_empty": false,
       "extension": ".md",
-      "lines": 879
+      "lines": 878
     },
     {
       "path": "docs/reference/changelog.md",
@@ -2383,7 +2401,7 @@
     {
       "path": "docs/reference/glossary.md",
       "type": "file",
-      "size_bytes": 1261,
+      "size_bytes": 1259,
       "last_modified_commit": "20451055d",
       "is_empty": false,
       "extension": ".md",
@@ -2401,169 +2419,169 @@
     {
       "path": "docs/specs/chain/arcanum-chain-overview.md",
       "type": "file",
-      "size_bytes": 142,
+      "size_bytes": 141,
       "last_modified_commit": "20451055d",
       "is_empty": false,
       "extension": ".md",
-      "lines": 11
+      "lines": 10
     },
     {
       "path": "docs/specs/chain/invariants.md",
       "type": "file",
-      "size_bytes": 118,
+      "size_bytes": 117,
       "last_modified_commit": "20451055d",
       "is_empty": false,
       "extension": ".md",
-      "lines": 11
+      "lines": 10
     },
     {
       "path": "docs/specs/chain/mana.md",
       "type": "file",
-      "size_bytes": 106,
+      "size_bytes": 105,
       "last_modified_commit": "20451055d",
       "is_empty": false,
       "extension": ".md",
-      "lines": 11
+      "lines": 10
     },
     {
       "path": "docs/specs/chain/tempus-hooks.md",
       "type": "file",
-      "size_bytes": 122,
+      "size_bytes": 121,
       "last_modified_commit": "20451055d",
       "is_empty": false,
       "extension": ".md",
-      "lines": 11
+      "lines": 10
     },
     {
       "path": "docs/specs/chain/treasury.md",
       "type": "file",
-      "size_bytes": 114,
+      "size_bytes": 113,
       "last_modified_commit": "20451055d",
       "is_empty": false,
       "extension": ".md",
-      "lines": 11
+      "lines": 10
     },
     {
       "path": "docs/specs/modules/economy.md",
       "type": "file",
-      "size_bytes": 112,
+      "size_bytes": 111,
       "last_modified_commit": "20451055d",
       "is_empty": false,
       "extension": ".md",
-      "lines": 11
+      "lines": 10
     },
     {
       "path": "docs/specs/modules/hope.md",
       "type": "file",
-      "size_bytes": 4359,
+      "size_bytes": 4356,
       "last_modified_commit": "20451055d",
       "is_empty": false,
       "extension": ".md",
-      "lines": 519
+      "lines": 516
     },
     {
       "path": "docs/specs/modules/identity.md",
       "type": "file",
-      "size_bytes": 114,
+      "size_bytes": 113,
       "last_modified_commit": "20451055d",
       "is_empty": false,
       "extension": ".md",
-      "lines": 11
+      "lines": 10
     },
     {
       "path": "docs/specs/modules/nexus.md",
       "type": "file",
-      "size_bytes": 108,
+      "size_bytes": 107,
       "last_modified_commit": "20451055d",
       "is_empty": false,
       "extension": ".md",
-      "lines": 11
+      "lines": 10
     },
     {
       "path": "docs/specs/modules/tempus.md",
       "type": "file",
-      "size_bytes": 3802,
+      "size_bytes": 3799,
       "last_modified_commit": "20451055d",
       "is_empty": false,
       "extension": ".md",
-      "lines": 405
+      "lines": 402
     },
     {
       "path": "docs/specs/modules/treasury.md",
       "type": "file",
-      "size_bytes": 114,
+      "size_bytes": 113,
       "last_modified_commit": "20451055d",
       "is_empty": false,
       "extension": ".md",
-      "lines": 11
+      "lines": 10
     },
     {
       "path": "docs/specs/modules/vitae.md",
       "type": "file",
-      "size_bytes": 108,
+      "size_bytes": 107,
       "last_modified_commit": "20451055d",
       "is_empty": false,
       "extension": ".md",
-      "lines": 11
+      "lines": 10
     },
     {
       "path": "docs/specs/modules/wallet.md",
       "type": "file",
-      "size_bytes": 110,
+      "size_bytes": 109,
       "last_modified_commit": "20451055d",
       "is_empty": false,
       "extension": ".md",
-      "lines": 11
+      "lines": 10
     },
     {
       "path": "docs/vitae/authority.md",
       "type": "file",
-      "size_bytes": 5470,
+      "size_bytes": 5469,
       "last_modified_commit": "20451055d",
       "is_empty": false,
       "extension": ".md",
-      "lines": 603
+      "lines": 602
     },
     {
       "path": "docs/vitae/constitution/constitutional-amendment.md",
       "type": "file",
-      "size_bytes": 3878,
+      "size_bytes": 3877,
       "last_modified_commit": "20451055d",
       "is_empty": false,
       "extension": ".md",
-      "lines": 133
+      "lines": 132
     },
     {
       "path": "docs/vitae/constitution/cross-grade-dependency-canon.md",
       "type": "file",
-      "size_bytes": 2601,
+      "size_bytes": 2600,
       "last_modified_commit": "20451055d",
       "is_empty": false,
       "extension": ".md",
-      "lines": 115
+      "lines": 114
     },
     {
       "path": "docs/vitae/constitution/grade-architecture-template.md",
       "type": "file",
-      "size_bytes": 4768,
+      "size_bytes": 4767,
       "last_modified_commit": "20451055d",
       "is_empty": false,
       "extension": ".md",
-      "lines": 199
+      "lines": 198
     },
     {
       "path": "docs/vitae/constitution/master-constitution-and-architecture.md",
       "type": "file",
-      "size_bytes": 4183,
+      "size_bytes": 4182,
       "last_modified_commit": "20451055d",
       "is_empty": false,
       "extension": ".md",
-      "lines": 142
+      "lines": 141
     },
     {
       "path": "docs/vitae/constitution/vitae-kernel-master.md",
       "type": "file",
-      "size_bytes": 5157,
+      "size_bytes": 5155,
       "last_modified_commit": "20451055d",
       "is_empty": false,
       "extension": ".md",
@@ -2572,119 +2590,263 @@
     {
       "path": "docs/vitae/constitution/vitae-system-wide-audit-pass.md",
       "type": "file",
-      "size_bytes": 6001,
+      "size_bytes": 6000,
       "last_modified_commit": "20451055d",
       "is_empty": false,
       "extension": ".md",
-      "lines": 266
+      "lines": 265
     },
     {
-      "path": "docs/vitae/curriculum/anatomy/Guardian Anatomical Framework.md",
+      "path": "docs/vitae/curriculum/adept/adept-threshold-canon.md",
+      "type": "file",
+      "size_bytes": 3693,
+      "last_modified_commit": "",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 149
+    },
+    {
+      "path": "docs/vitae/curriculum/anatomy/guardian-anatomical-framework.md",
       "type": "file",
       "size_bytes": 5804,
-      "last_modified_commit": "20451055d",
+      "last_modified_commit": "",
       "is_empty": false,
       "extension": ".md",
       "lines": 256
     },
     {
-      "path": "docs/vitae/curriculum/anatomy/Guardian Anatomical Lexicon.md",
+      "path": "docs/vitae/curriculum/anatomy/guardian-anatomical-lexicon.md",
       "type": "file",
-      "size_bytes": 4280,
-      "last_modified_commit": "20451055d",
+      "size_bytes": 4279,
+      "last_modified_commit": "",
       "is_empty": false,
       "extension": ".md",
-      "lines": 169
+      "lines": 168
     },
     {
-      "path": "docs/vitae/curriculum/experience/Cross-Grade Dependency Enforcement Spec.md",
+      "path": "docs/vitae/curriculum/elementary-school/cross-grade-dependency-mapping.md",
       "type": "file",
-      "size_bytes": 9000,
-      "last_modified_commit": "20451055d",
+      "size_bytes": 7425,
+      "last_modified_commit": "86a45a562",
       "is_empty": false,
       "extension": ".md",
-      "lines": 358
+      "lines": 302
     },
     {
-      "path": "docs/vitae/curriculum/experience/Dependency Evaluator Blueprint.md",
+      "path": "docs/vitae/curriculum/elementary-school/elementary-school-canon.md",
       "type": "file",
-      "size_bytes": 9918,
-      "last_modified_commit": "20451055d",
+      "size_bytes": 4325,
+      "last_modified_commit": "86a45a562",
       "is_empty": false,
       "extension": ".md",
-      "lines": 380
+      "lines": 195
     },
     {
-      "path": "docs/vitae/curriculum/experience/Experience Layer - Architecture Canon.md",
+      "path": "docs/vitae/curriculum/elementary-school/grade-1-the-guardian/canon/audit-and-validation-canon.md",
+      "type": "file",
+      "size_bytes": 4346,
+      "last_modified_commit": "",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 220
+    },
+    {
+      "path": "docs/vitae/curriculum/elementary-school/grade-1-the-guardian/canon/master-canon.md",
+      "type": "file",
+      "size_bytes": 4924,
+      "last_modified_commit": "",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 200
+    },
+    {
+      "path": "docs/vitae/curriculum/elementary-school/grade-1-the-guardian/canon/procedural-systems-canon.md",
+      "type": "file",
+      "size_bytes": 4897,
+      "last_modified_commit": "",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 203
+    },
+    {
+      "path": "docs/vitae/curriculum/elementary-school/grade-1-the-guardian/implement/constraint-bundle-spec.md",
+      "type": "file",
+      "size_bytes": 5958,
+      "last_modified_commit": "",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 240
+    },
+    {
+      "path": "docs/vitae/curriculum/elementary-school/grade-1-the-guardian/implement/generator-and-module-mapping.md",
+      "type": "file",
+      "size_bytes": 10380,
+      "last_modified_commit": "",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 469
+    },
+    {
+      "path": "docs/vitae/curriculum/elementary-school/grade-1-the-guardian/implement/responsibility-and-invariants-map.md",
+      "type": "file",
+      "size_bytes": 5322,
+      "last_modified_commit": "",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 248
+    },
+    {
+      "path": "docs/vitae/curriculum/elementary-school/grade-1-the-guardian/implement/state-machine-spec.md",
+      "type": "file",
+      "size_bytes": 5692,
+      "last_modified_commit": "",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 302
+    },
+    {
+      "path": "docs/vitae/curriculum/experience/cross-grade-dependency-enforcement-spec.md",
+      "type": "file",
+      "size_bytes": 8999,
+      "last_modified_commit": "",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 357
+    },
+    {
+      "path": "docs/vitae/curriculum/experience/dependency-evaluator-blueprint.md",
+      "type": "file",
+      "size_bytes": 9917,
+      "last_modified_commit": "",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 379
+    },
+    {
+      "path": "docs/vitae/curriculum/experience/experience-layer-architecture-canon.md",
       "type": "file",
       "size_bytes": 5334,
-      "last_modified_commit": "20451055d",
+      "last_modified_commit": "",
       "is_empty": false,
       "extension": ".md",
       "lines": 254
     },
     {
-      "path": "docs/vitae/curriculum/experience/Reason Code Registry.md",
+      "path": "docs/vitae/curriculum/experience/reason-code-registry.md",
       "type": "file",
-      "size_bytes": 11995,
-      "last_modified_commit": "20451055d",
+      "size_bytes": 11994,
+      "last_modified_commit": "",
       "is_empty": false,
       "extension": ".md",
-      "lines": 404
+      "lines": 403
     },
     {
-      "path": "docs/vitae/curriculum/experience/Reference Event Log Walkthrough.md",
+      "path": "docs/vitae/curriculum/experience/reference-event-log-walkthrough.md",
       "type": "file",
-      "size_bytes": 17351,
-      "last_modified_commit": "20451055d",
+      "size_bytes": 17350,
+      "last_modified_commit": "",
       "is_empty": false,
       "extension": ".md",
-      "lines": 444
+      "lines": 443
     },
     {
-      "path": "docs/vitae/curriculum/experience/Replay Harness Checklist.md",
+      "path": "docs/vitae/curriculum/experience/replay-harness-checklist.md",
       "type": "file",
-      "size_bytes": 6626,
-      "last_modified_commit": "20451055d",
+      "size_bytes": 6625,
+      "last_modified_commit": "",
       "is_empty": false,
       "extension": ".md",
-      "lines": 286
+      "lines": 285
     },
     {
-      "path": "docs/vitae/curriculum/experience/Runtime Event Schema.md",
+      "path": "docs/vitae/curriculum/experience/runtime-event-schema.md",
       "type": "file",
-      "size_bytes": 10585,
-      "last_modified_commit": "20451055d",
+      "size_bytes": 10584,
+      "last_modified_commit": "",
       "is_empty": false,
       "extension": ".md",
-      "lines": 437
+      "lines": 436
     },
     {
-      "path": "docs/vitae/curriculum/lexicon/Guardian Lexicon Seed — v1.md",
+      "path": "docs/vitae/curriculum/high-school/high-school-canon.md",
       "type": "file",
-      "size_bytes": 3556,
-      "last_modified_commit": "20451055d",
+      "size_bytes": 3369,
+      "last_modified_commit": "",
       "is_empty": false,
       "extension": ".md",
-      "lines": 131
+      "lines": 150
+    },
+    {
+      "path": "docs/vitae/curriculum/intermediate-school/intermediate-school-canon.md",
+      "type": "file",
+      "size_bytes": 4018,
+      "last_modified_commit": "",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 195
+    },
+    {
+      "path": "docs/vitae/curriculum/lexicon/guardian-lexicon-seed-v1.md",
+      "type": "file",
+      "size_bytes": 3555,
+      "last_modified_commit": "",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 130
+    },
+    {
+      "path": "docs/vitae/curriculum/specializations/cross-specialization-mastery-paths-canon.md",
+      "type": "file",
+      "size_bytes": 4583,
+      "last_modified_commit": "",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 193
+    },
+    {
+      "path": "docs/vitae/curriculum/specializations/mastery-path-governance-canon.md",
+      "type": "file",
+      "size_bytes": 5663,
+      "last_modified_commit": "",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 243
+    },
+    {
+      "path": "docs/vitae/curriculum/specializations/specialization-overview-codex.md",
+      "type": "file",
+      "size_bytes": 5683,
+      "last_modified_commit": "",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 186
+    },
+    {
+      "path": "docs/vitae/curriculum/specializations/specialization-wide-invariants-canon.md",
+      "type": "file",
+      "size_bytes": 4916,
+      "last_modified_commit": "",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 234
     },
     {
       "path": "docs/vitae/index.md",
       "type": "file",
-      "size_bytes": 108,
+      "size_bytes": 107,
       "last_modified_commit": "20451055d",
       "is_empty": false,
       "extension": ".md",
-      "lines": 11
+      "lines": 10
     },
     {
       "path": "docs/vitae/overview.md",
       "type": "file",
-      "size_bytes": 114,
+      "size_bytes": 113,
       "last_modified_commit": "20451055d",
       "is_empty": false,
       "extension": ".md",
-      "lines": 11
+      "lines": 10
     },
     {
       "path": "docs/whitepaper/appendix-governance.md",
@@ -2698,11 +2860,11 @@
     {
       "path": "docs/whitepaper/arcanum-chain.md",
       "type": "file",
-      "size_bytes": 124,
+      "size_bytes": 123,
       "last_modified_commit": "20451055d",
       "is_empty": false,
       "extension": ".md",
-      "lines": 11
+      "lines": 10
     },
     {
       "path": "docs/whitepaper/compliance-risk.md",
@@ -2716,11 +2878,11 @@
     {
       "path": "docs/whitepaper/dignity-content-boundaries.md",
       "type": "file",
-      "size_bytes": 4643,
+      "size_bytes": 4638,
       "last_modified_commit": "20451055d",
       "is_empty": false,
       "extension": ".md",
-      "lines": 543
+      "lines": 538
     },
     {
       "path": "docs/whitepaper/executive-summary.md",
@@ -2734,20 +2896,20 @@
     {
       "path": "docs/whitepaper/governance-neutrality.md",
       "type": "file",
-      "size_bytes": 4177,
+      "size_bytes": 4174,
       "last_modified_commit": "20451055d",
       "is_empty": false,
       "extension": ".md",
-      "lines": 441
+      "lines": 438
     },
     {
       "path": "docs/whitepaper/index.md",
       "type": "file",
-      "size_bytes": 108,
+      "size_bytes": 107,
       "last_modified_commit": "20451055d",
       "is_empty": false,
       "extension": ".md",
-      "lines": 11
+      "lines": 10
     },
     {
       "path": "docs/whitepaper/problem-solution.md",
@@ -2779,11 +2941,11 @@
     {
       "path": "docs/whitepaper/vitae-and-becoming.md",
       "type": "file",
-      "size_bytes": 134,
+      "size_bytes": 133,
       "last_modified_commit": "20451055d",
       "is_empty": false,
       "extension": ".md",
-      "lines": 11
+      "lines": 10
     },
     {
       "path": "package.json",
@@ -2825,7 +2987,7 @@
       "path": "scripts/repo-index.sh",
       "type": "file",
       "size_bytes": 1655,
-      "last_modified_commit": "d8daeb5cd",
+      "last_modified_commit": "86a45a562",
       "is_empty": false,
       "extension": ".sh",
       "lines": 60
@@ -2834,7 +2996,7 @@
       "path": "scripts/verify-sync.sh",
       "type": "file",
       "size_bytes": 4742,
-      "last_modified_commit": "d8daeb5cd",
+      "last_modified_commit": "86a45a562",
       "is_empty": false,
       "extension": ".sh",
       "lines": 166

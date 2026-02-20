@@ -112,4 +112,3 @@ If not, it is invalid regardless of outcomes.
 ---
 
 **End of Core Vitae Cross-Grade Dependency Canon**
-

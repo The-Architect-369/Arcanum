@@ -19,4 +19,4 @@ description: ""
 - **DID:** Decentralized Identifier standard used to anchor identity attestations.  
 - **Chain code:** The minted identity credential granting access; non‑transferable.  
 - **De‑listing:** Removing content from discovery layers while preserving its content addressability.  
-- **Stability Guard:** Time‑limited rollback authority held by the architect during early releases.  
+- **Stability Guard:** Time‑limited rollback authority held by the architect during early releases.

@@ -72,6 +72,3 @@ Any change crossing these boundaries \*\*advances the phase\*\* and must be trea
 Signed,
 
 The Architect
-
-
-

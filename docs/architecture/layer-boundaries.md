@@ -476,6 +476,3 @@ There is \*\*no exception mechanism\*\*.
 
 
 This document is ratified as \*\*Layer Boundaries v1.0\*\* and is binding across all present and future Arcanum modules.
-
-
-

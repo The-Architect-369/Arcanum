@@ -193,4 +193,3 @@ If not, it is invalid regardless of outcomes or user experience.
 ---
 
 **End of Arcanum Vitae — Elementary School Canon**
-

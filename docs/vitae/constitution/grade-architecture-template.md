@@ -196,4 +196,3 @@ It progresses humans through **ethical thresholds of capability**.
 This template ensures that progression remains coherent, humane, and irreversible in integrity.
 
 ---
-

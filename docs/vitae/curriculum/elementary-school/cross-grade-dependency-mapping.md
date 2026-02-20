@@ -300,4 +300,3 @@ Then Grades I–IV satisfy the **Cross-Grade Dependency Canon**.
 ---
 
 **End of Grades I–IV: Cross-Grade Dependency Mapping**
-

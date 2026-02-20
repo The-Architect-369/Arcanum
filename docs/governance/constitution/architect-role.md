@@ -436,4 +436,3 @@ This document is ratified as \*\*Architect Role \& Meta-Authority v1.0\*\*.
 
 
 It is binding across all Arcanum layers, all AI instruments, and all future governance structures.
-

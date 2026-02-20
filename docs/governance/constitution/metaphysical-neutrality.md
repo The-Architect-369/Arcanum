@@ -316,6 +316,3 @@ This principle applies to:
 
 
 Any structural amendment that violates metaphysical neutrality shall be considered constitutionally invalid unless ratified through formal amendment procedures defined elsewhere in the Constitution.
-
-
-

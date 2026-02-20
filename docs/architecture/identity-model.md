@@ -480,4 +480,3 @@ This document is ratified as \*\*Identity Model — Continuity \& Sovereignty v1
 
 
 It is binding across all Arcanum layers and all future modules.
-

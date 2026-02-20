@@ -600,4 +600,3 @@ It is binding across all Arcanum layers and all future modules.
 
 
 No mechanism may be introduced that contradicts this authority model.
-

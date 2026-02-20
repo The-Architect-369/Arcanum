@@ -514,6 +514,3 @@ Hope protects interior sovereignty by modeling reflection, not authority.
 
 
 ---
-
-
-

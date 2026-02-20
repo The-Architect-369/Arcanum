@@ -250,4 +250,3 @@ System status: Constitutionally complete (Pre-Genesis).
 Mana may unlock permission, but may never accelerate time-based progression or bypass Vitae thresholds.
 
 Status: Canon synchronized, repo updated, ready for Architect GPT update.
-

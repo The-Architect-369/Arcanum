@@ -528,4 +528,3 @@ This document defines the canonical \*\*REPO\_INDEX generator v1.0\*\*.
 
 
 It is binding for CI, Architect GPT operation, and all future repo health analysis.
-

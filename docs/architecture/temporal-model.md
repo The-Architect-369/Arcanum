@@ -492,4 +492,3 @@ There is \*\*no exception mechanism\*\*.
 
 
 This document is ratified as \*\*Temporal Model v1.0\*\* and is binding across all Arcanum modules, including Tempus, Vitae, Economy, and Application layers.
-

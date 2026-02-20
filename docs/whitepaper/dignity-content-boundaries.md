@@ -536,8 +536,3 @@ Boundaries protect clarity.
 
 
 ---
-
-
-
-
-

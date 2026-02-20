@@ -876,4 +876,3 @@ You now have a roadmap that:
 \* Preserves human sovereignty
 
 \* Allows emergence instead of control
-
