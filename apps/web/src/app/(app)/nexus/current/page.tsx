@@ -9,6 +9,7 @@ import type { ArcanumPostV1 } from '@/lib/post';
 import { resolveRoomId, ROOM_ALIAS } from '@/lib/rooms';
 import { canSpend } from "@/lib/economy";
 import { publishPost, uploadToIPFS } from "@/lib/infra";
+import { getJSONHelia, getBlobHelia } from '@/lib/infra/ipfs'
 
 const ORDER = ['/nexus/post', '/nexus/current', '/nexus/channel'];
 const CURRENT_ALIAS = ROOM_ALIAS.THE_CURRENT;

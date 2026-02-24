@@ -123,20 +123,6 @@
     │   │   │   ├── activate
     │   │   │   │   └── page.tsx
     │   │   │   ├── client-layout.tsx
-    │   │   │   ├── components
-    │   │   │   │   ├── ActiveSectionObserver.tsx
-    │   │   │   │   ├── ConstellationCanvas.tsx
-    │   │   │   │   ├── Header.tsx
-    │   │   │   │   └── ui
-    │   │   │   │       ├── ActivateBento.tsx
-    │   │   │   │       ├── BentoCard.tsx
-    │   │   │   │       ├── BentoShowcase.tsx
-    │   │   │   │       ├── HeroBento.tsx
-    │   │   │   │       ├── HopeOrb.tsx
-    │   │   │   │       ├── ShowcaseGrid.tsx
-    │   │   │   │       ├── bento-grid.tsx
-    │   │   │   │       └── button.tsx
-    │   │   │   ├── landing
     │   │   │   ├── layout.tsx
     │   │   │   ├── page.tsx
     │   │   │   └── styles
@@ -162,14 +148,25 @@
     │   │   │   └── LockHint.tsx
     │   │   └── ui
     │   │       ├── ACCOnboardingModal.tsx
+    │   │       ├── ActivateBento.tsx
+    │   │       ├── ActiveSectionObserver.tsx
     │   │       ├── AppFooter.tsx
     │   │       ├── AppHeader.tsx
     │   │       ├── BadgeCounter.tsx
+    │   │       ├── BentoCard.tsx
+    │   │       ├── BentoShowcase.tsx
+    │   │       ├── ConstellationCanvas.tsx
+    │   │       ├── Header.tsx
+    │   │       ├── HeroBento.tsx
+    │   │       ├── HopeOrb.tsx
     │   │       ├── PanelShell.tsx
+    │   │       ├── ShowcaseGrid.tsx
     │   │       ├── SwipeRoutes.tsx
     │   │       ├── TabDots.tsx
     │   │       ├── TabMenuIndicators.tsx
-    │   │       └── TabMenuPager.tsx
+    │   │       ├── TabMenuPager.tsx
+    │   │       ├── bento-grid.tsx
+    │   │       └── button.tsx
     │   ├── content
     │   │   ├── locales
     │   │   │   ├── de.json
@@ -179,14 +176,15 @@
     │   │   ├── narrative.json
     │   │   └── narrative.ts
     │   ├── hooks
-    │   │   └── useNarrative.ts
+    │   │   ├── useNarrative.ts
+    │   │   └── useTempusWindow.ts
     │   ├── lib
     │   │   ├── cn.ts
     │   │   ├── cosmos
     │   │   │   ├── client.ts
+    │   │   │   ├── index.ts
     │   │   │   ├── queries.ts
     │   │   │   ├── tx.ts
-    │   │   │   ├── types
     │   │   │   └── wallet.ts
     │   │   ├── economy
     │   │   │   ├── config
@@ -207,12 +205,14 @@
     │   │   ├── identity
     │   │   │   ├── aa.ts
     │   │   │   ├── burner.ts
+    │   │   │   ├── chains.ts
     │   │   │   ├── gates.ts
+    │   │   │   ├── index.ts
     │   │   │   ├── passkey.ts
     │   │   │   └── trust.ts
+    │   │   ├── index.ts
     │   │   ├── infra
     │   │   │   ├── arcanum.ts
-    │   │   │   ├── chains.ts
     │   │   │   ├── helia.ts
     │   │   │   ├── index.ts
     │   │   │   ├── ipfs.ts
@@ -222,11 +222,18 @@
     │   │   │   └── index.ts
     │   │   ├── matrix
     │   │   │   └── index.ts
+    │   │   ├── nexus
+    │   │   │   └── rooms.ts
+    │   │   ├── post.ts
     │   │   ├── rooms
     │   │   │   └── index.ts
-    │   │   ├── social
-    │   │   │   ├── post.ts
-    │   │   │   └── rooms.ts
+    │   │   ├── tempus
+    │   │   │   ├── constants.ts
+    │   │   │   ├── index.ts
+    │   │   │   ├── lunar.ts
+    │   │   │   ├── planetary.ts
+    │   │   │   ├── window.ts
+    │   │   │   └── zodiac.ts
     │   │   └── utils.ts
     │   ├── state
     │   │   ├── useAccount.ts
@@ -237,6 +244,7 @@
     ├── tailwind.config.ts
     ├── tools
     │   └── seedRooms.ts
-    └── tsconfig.json
+    ├── tsconfig.json
+    └── tsconfig.tsbuildinfo
 
-77 directories, 163 files
+74 directories, 174 files

@@ -1,11 +1,12 @@
-import { getSigningClient } from "./client";
-import { DeliverTxResponse } from "@cosmjs/stargate";
+// src/lib/cosmos/tx.ts
 
-export async function broadcastTx({
-  rpc, signer, sender, msgs, fee
-}: { rpc:string, signer:any, sender:string, msgs:any[], fee:{amount:string; denom:string; gas:string} }): Promise<DeliverTxResponse> {
-  const client = await getSigningClient(rpc, signer, `${fee.amount}${fee.denom}`);
-  const res = await client.signAndBroadcast(sender, msgs, { amount:[{ amount: fee.amount, denom: fee.denom }], gas: fee.gas });
-  if (res.code !== 0) throw new Error(`Tx failed: ${res.rawLog}`);
-  return res;
+import { SigningStargateClient } from '@cosmjs/stargate'
+import type { OfflineSigner } from '@cosmjs/proto-signing'
+
+export async function getSigningClient(
+  rpc: string,
+  signer: OfflineSigner
+) {
+  const client = await SigningStargateClient.connectWithSigner(rpc, signer)
+  return { client }
 }

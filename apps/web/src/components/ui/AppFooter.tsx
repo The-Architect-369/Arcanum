@@ -2,7 +2,7 @@
 
 import { usePathname, useRouter } from 'next/navigation';
 import { BookMarked, MessageSquareMore, Globe, Clock, UserRound } from 'lucide-react';
-import { cn } from './cn';
+import { cn } from '@/lib/cn'
 
 type Tab = {
   label: string;

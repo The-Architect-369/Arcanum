@@ -10,7 +10,8 @@ import { trySpendMana } from '@/lib/economy';
 import type { ArcanumPostV1 } from '@/lib/post';
 import { sendArcanumPost } from '@/lib/matrix';
 import { resolveRoomId, ROOM_ALIAS } from '@/lib/rooms';
-
+import { getJSONHelia, getBlobHelia } from '@/lib/infra/ipfs'
+import { putFileHelia, putJSONHelia } from '@/lib/infra/ipfs'
 const ORDER = ['/nexus/post', '/nexus/current', '/nexus/channel'];
 
 type MediaItem = { file: File; cid?: string; mime: string; name: string; size: number; status: 'pending'|'done'|'error' };
@@ -78,7 +79,6 @@ export default function NexusPostPage() {
 
     setBusy(true);
     try {
-      const peerId = await getPeerId();
       const attachments = await uploadPendingMedia();
 
       const post: ArcanumPostV1 = {

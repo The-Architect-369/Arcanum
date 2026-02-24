@@ -1,6 +1,6 @@
 'use client';
 
-import ActiveSectionObserver from '@/components/ActiveSectionObserver';
+import ActiveSectionObserver from '@/components/ui/ActiveSectionObserver';
 import HeroBento from '@/components/ui/HeroBento';
 import BentoShowcase from '@/components/ui/BentoShowcase';
 import ActivateBento from '@/components/ui/ActivateBento';

@@ -16,8 +16,8 @@ const fadeInUp = {
 }
 
 export default function ShowcaseGrid() {
-  const { copy } = useNarrative()
-
+  const { content } = useNarrative()
+  const copy = content?.copy ?? {}
   const showcases = [
     {
       key: "arcnet",

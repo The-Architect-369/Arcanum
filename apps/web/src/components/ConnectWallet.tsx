@@ -2,15 +2,16 @@
 
 import { useEffect, useMemo, useState } from 'react';
 import { useAccount, useConnect, useDisconnect } from 'wagmi';
-import { hasBurner, loadBurner, createBurner, forgetBurner } from '@/lib/burner';
-import { getPasskey, registerPasskey, signInPasskey, clearPasskey } from '@/lib/passkey';
+import { hasBurner, loadBurner, createBurner, forgetBurner } from '@/lib/identity/burner';
+import { getPasskey, registerPasskey, signInPasskey, clearPasskey } from '@/lib/identity/passkey';
 
 function short(a?: string) {
   return a ? `${a.slice(0, 6)}…${a.slice(-4)}` : '';
 }
 
 export default function ConnectWallet() {
-  const { address } = useAccount();
+  const { address: wagmiAddress } = useAccount()
+  const [localAddress, setLocalAddress] = useState<string | undefined>()
   const { connectors, connect, isPending: isConnecting } = useConnect();
   const { disconnect } = useDisconnect();
 

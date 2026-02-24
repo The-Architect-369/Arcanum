@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-02-21T08:17:54Z",
+  "generated_at": "2026-02-21T08:39:22Z",
   "repo": "Arcanum",
-  "commit": "83a94a753",
+  "commit": "a04c0a7a2",
   "generator_version": "1.1",
   "files": [
     {
@@ -223,11 +223,11 @@
     {
       "path": "apps/web/package.json",
       "type": "file",
-      "size_bytes": 1542,
-      "last_modified_commit": "616d0b0d5",
+      "size_bytes": 1585,
+      "last_modified_commit": "a04c0a7a2",
       "is_empty": false,
       "extension": ".json",
-      "lines": 54
+      "lines": 55
     },
     {
       "path": "apps/web/postcss.config.mjs",
@@ -548,7 +548,7 @@
       "path": "apps/web/src/app/(app)/tempus/calendar/page.tsx",
       "type": "file",
       "size_bytes": 2645,
-      "last_modified_commit": "8fb50b9f7",
+      "last_modified_commit": "a04c0a7a2",
       "is_empty": false,
       "extension": ".tsx",
       "lines": 71
@@ -557,7 +557,7 @@
       "path": "apps/web/src/app/(app)/tempus/clock/page.tsx",
       "type": "file",
       "size_bytes": 2804,
-      "last_modified_commit": "8fb50b9f7",
+      "last_modified_commit": "a04c0a7a2",
       "is_empty": false,
       "extension": ".tsx",
       "lines": 77
@@ -566,7 +566,7 @@
       "path": "apps/web/src/app/(app)/tempus/codex/page.tsx",
       "type": "file",
       "size_bytes": 2189,
-      "last_modified_commit": "8fb50b9f7",
+      "last_modified_commit": "a04c0a7a2",
       "is_empty": false,
       "extension": ".tsx",
       "lines": 57
@@ -575,7 +575,7 @@
       "path": "apps/web/src/app/(app)/tempus/page.tsx",
       "type": "file",
       "size_bytes": 119,
-      "last_modified_commit": "8fb50b9f7",
+      "last_modified_commit": "a04c0a7a2",
       "is_empty": false,
       "extension": ".tsx",
       "lines": 4
@@ -862,11 +862,11 @@
     {
       "path": "apps/web/src/app/middleware.ts",
       "type": "file",
-      "size_bytes": 390,
-      "last_modified_commit": "616d0b0d5",
+      "size_bytes": 164,
+      "last_modified_commit": "a04c0a7a2",
       "is_empty": false,
       "extension": ".ts",
-      "lines": 12
+      "lines": 4
     },
     {
       "path": "apps/web/src/app/onboard/page.tsx",
@@ -1076,6 +1076,15 @@
       "lines": 38
     },
     {
+      "path": "apps/web/src/hooks/useTempusWindow.ts",
+      "type": "file",
+      "size_bytes": 588,
+      "last_modified_commit": "a04c0a7a2",
+      "is_empty": false,
+      "extension": ".ts",
+      "lines": 15
+    },
+    {
       "path": "apps/web/src/lib/cn.ts",
       "type": "file",
       "size_bytes": 151,
@@ -1159,20 +1168,20 @@
     {
       "path": "apps/web/src/lib/economy/index.ts",
       "type": "file",
-      "size_bytes": 108,
-      "last_modified_commit": "42268897e",
+      "size_bytes": 281,
+      "last_modified_commit": "a04c0a7a2",
       "is_empty": false,
       "extension": ".ts",
-      "lines": 4
+      "lines": 9
     },
     {
       "path": "apps/web/src/lib/economy/tokens.ts",
       "type": "file",
-      "size_bytes": 0,
-      "last_modified_commit": "642fbf2b7",
-      "is_empty": true,
+      "size_bytes": 138,
+      "last_modified_commit": "a04c0a7a2",
+      "is_empty": false,
       "extension": ".ts",
-      "lines": 0
+      "lines": 2
     },
     {
       "path": "apps/web/src/lib/gates/index.ts",
@@ -1238,6 +1247,15 @@
       "lines": 38
     },
     {
+      "path": "apps/web/src/lib/index.ts",
+      "type": "file",
+      "size_bytes": 25,
+      "last_modified_commit": "a04c0a7a2",
+      "is_empty": false,
+      "extension": ".ts",
+      "lines": 0
+    },
+    {
       "path": "apps/web/src/lib/infra/arcanum.ts",
       "type": "file",
       "size_bytes": 246,
@@ -1267,11 +1285,11 @@
     {
       "path": "apps/web/src/lib/infra/index.ts",
       "type": "file",
-      "size_bytes": 75,
-      "last_modified_commit": "42268897e",
+      "size_bytes": 471,
+      "last_modified_commit": "a04c0a7a2",
       "is_empty": false,
       "extension": ".ts",
-      "lines": 3
+      "lines": 14
     },
     {
       "path": "apps/web/src/lib/infra/ipfs.ts",
@@ -1344,6 +1362,60 @@
       "is_empty": false,
       "extension": ".ts",
       "lines": 25
+    },
+    {
+      "path": "apps/web/src/lib/tempus/constants.ts",
+      "type": "file",
+      "size_bytes": 289,
+      "last_modified_commit": "a04c0a7a2",
+      "is_empty": false,
+      "extension": ".ts",
+      "lines": 5
+    },
+    {
+      "path": "apps/web/src/lib/tempus/index.ts",
+      "type": "file",
+      "size_bytes": 138,
+      "last_modified_commit": "a04c0a7a2",
+      "is_empty": false,
+      "extension": ".ts",
+      "lines": 4
+    },
+    {
+      "path": "apps/web/src/lib/tempus/lunar.ts",
+      "type": "file",
+      "size_bytes": 3574,
+      "last_modified_commit": "a04c0a7a2",
+      "is_empty": false,
+      "extension": ".ts",
+      "lines": 111
+    },
+    {
+      "path": "apps/web/src/lib/tempus/planetary.ts",
+      "type": "file",
+      "size_bytes": 429,
+      "last_modified_commit": "a04c0a7a2",
+      "is_empty": false,
+      "extension": ".ts",
+      "lines": 17
+    },
+    {
+      "path": "apps/web/src/lib/tempus/window.ts",
+      "type": "file",
+      "size_bytes": 1552,
+      "last_modified_commit": "a04c0a7a2",
+      "is_empty": false,
+      "extension": ".ts",
+      "lines": 47
+    },
+    {
+      "path": "apps/web/src/lib/tempus/zodiac.ts",
+      "type": "file",
+      "size_bytes": 2456,
+      "last_modified_commit": "a04c0a7a2",
+      "is_empty": false,
+      "extension": ".ts",
+      "lines": 70
     },
     {
       "path": "apps/web/src/lib/utils.ts",
@@ -2168,7 +2240,7 @@
       "path": "docs/architect/repo-index.json",
       "type": "file",
       "size_bytes": 122769,
-      "last_modified_commit": "2bc7b14de",
+      "last_modified_commit": "a04c0a7a2",
       "is_empty": false,
       "extension": ".json",
       "lines": 4463
@@ -4372,11 +4444,11 @@
     {
       "path": "pnpm-lock.yaml",
       "type": "file",
-      "size_bytes": 249059,
-      "last_modified_commit": "42268897e",
+      "size_bytes": 402674,
+      "last_modified_commit": "a04c0a7a2",
       "is_empty": false,
       "extension": ".yaml",
-      "lines": 7628
+      "lines": 11981
     },
     {
       "path": "pnpm-workspace.yaml",

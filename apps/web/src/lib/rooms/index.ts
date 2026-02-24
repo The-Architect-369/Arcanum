@@ -1,1 +1,1 @@
-export * from "../social/rooms";
+export * from "../nexus/rooms";

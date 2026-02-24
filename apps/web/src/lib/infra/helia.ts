@@ -1,8 +1,8 @@
 import "server-only";
 
-import { createHeliaNode } from "./helia";
 import { strings } from "@helia/strings";
 import { unixfs } from "@helia/unixfs";
+import { createHelia, Helia } from 'helia'
 import { createLibp2p } from 'libp2p';
 import { webSockets } from '@libp2p/websockets';
 import { webRTC } from '@libp2p/webrtc';
@@ -25,7 +25,7 @@ export async function getHelia(): Promise<Helia> {
     const libp2p = await createLibp2p({
       transports: [webSockets(), webRTC(), webTransport()],
       streamMuxers: [mplex()],
-      connectionEncryption: [noise()],
+      connectionEncrypters: [noise()],
       peerDiscovery: list.length ? [bootstrap({ list })] : [],
     });
 

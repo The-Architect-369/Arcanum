@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { createPublicClient, http, type Address, isAddress } from 'viem';
 import { sepolia } from 'viem/chains';
 import { useAccount } from 'wagmi';
-import { loadBurner } from '@/lib/burner';
+import { loadBurner } from '@/lib/identity/burner';
 
 const RPC = process.env.NEXT_PUBLIC_SEPOLIA_RPC_URL || '';
 
