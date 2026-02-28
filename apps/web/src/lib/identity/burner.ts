@@ -1,9 +1,24 @@
 // src/lib/identity/burner.ts
 
-export function bytesToHex(bytes: Uint8Array): `0x${string}` {
-  const hex = Array.from(bytes)
-    .map((b) => b.toString(16).padStart(2, '0'))
-    .join('')
+const STORAGE_KEY = 'arcanum.burner'
 
-  return (`0x${hex}`) as `0x${string}`
+export function hasBurner(): boolean {
+  return typeof localStorage !== 'undefined' &&
+    localStorage.getItem(STORAGE_KEY) !== null
+}
+
+export function loadBurner(): string | null {
+  if (typeof localStorage === 'undefined') return null
+  return localStorage.getItem(STORAGE_KEY)
+}
+
+export function createBurner(): string {
+  const key = crypto.randomUUID()
+  localStorage.setItem(STORAGE_KEY, key)
+  return key
+}
+
+export function forgetBurner(): void {
+  if (typeof localStorage === 'undefined') return
+  localStorage.removeItem(STORAGE_KEY)
 }

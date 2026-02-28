@@ -2,182 +2,339 @@
 title: "Tokenomics"
 status: draft
 visibility: public
-last_updated: 2026-02-18
-description: ""
+last_updated: 2026-02-25
+description: "MANA utility design, issuance, sinks, governance weighting, and long-term economic model"
 ---
-
 
 # Tokenomics
-**Genesis Ontology: Capacity and Value**
+
+## I. Overview
+
+MANA is the native utility token of ARCnet.
+
+It is designed to function as:
+
+- A permission key
+- An infrastructure access unit
+- A governance weighting signal
+- A treasury funding mechanism
+- A coordination medium for developers
+
+MANA is not designed as a speculative instrument.
+It is designed as a utility-backed participation token.
+
+Its economic structure prioritizes:
+
+- Long-term sustainability
+- Permissioned access
+- Participation-weighted governance
+- Controlled issuance
+- Transparent sinks
 
 ---
 
-## 1. Purpose of Mana
+# II. Economic Philosophy
 
-**Mana** is the native unit of participation within the Arcanum.
-
-It exists to:
-
-* Grant **permission to act**
-* Enable access to **technology, features, and rituals**
-* Mediate the relationship between **presence, effort, and capability**
-* Provide a transferable unit of **utility and value** within and beyond the system
-
-Mana is not introduced as an abstraction for speculation. It is introduced as a *living resource* — meaningful only through use.
+The MANA economy is built on five principles:
 
 ---
 
-## 2. Ontology of Mana
+## 1. Utility Before Exchange
 
-Mana is a **single primitive** with **two inseparable dimensions**:
+MANA derives value from:
 
-1. **Capacity** — permission to perform actions
-2. **Value** — transferable utility recognized by others
+- Access rights
+- Infrastructure usage
+- Governance participation
+- Developer integration
+- Treasury operations
 
-These dimensions coexist, but they are governed by **different rules**.
-
----
-
-## 3. Mana as Capacity (Primary at Genesis)
-
-At Genesis, Mana is first and foremost **capacity**.
-
-Capacity means:
-
-* The *right* to invoke a feature
-* The *ability* to perform an action
-* The *permission* to access technology
-
-When a participant receives Mana on day one:
-
-> **They are being given permission — not an understanding of value.**
-
-The value of that permission is revealed only through:
-
-* Engagement
-* Progression
-* Time
-* Context within the Arcanum
-
-### Key Properties
-
-* Mana enables actions but does not define outcomes
-* Mana may unlock *breadth*, not *speed*
-* Mana never accelerates time-based progression
-* Mana never bypasses identity, ritual, or Vitae thresholds
-
-Capacity is always subordinate to:
-
-* **Tempus** (time and rhythm)
-* **Identity** (continuity of the being)
-* **Vitae** (becoming and progression)
-
-No amount of Mana can replace presence.
+Exchange is secondary to use.
 
 ---
 
-## 4. Mana as Value (Always Real, Never Dominant)
+## 2. Time Over Capital
 
-Mana is also **value**.
+Authority cannot be purchased directly.
 
-This means:
+While MANA may be acquired:
 
-* Mana is transferable between participants
-* Mana may be exchanged freely
-* Mana may be purchased directly from the Arcanum
-* Mana may interact with external markets or networks
+- Governance weight depends on participation signals
+- Progression gates cannot be bypassed through payment
+- Time-based mechanics remain intact
 
-However:
-
-> **Value does not override capacity.**
-
-Owning Mana does not grant authority, trust, or maturity. Value represents **potential utility**, not entitlement.
+Payment expands capacity.
+It does not compress progression.
 
 ---
 
-## 5. Acquisition of Mana
+## 3. Earned and Purchased MANA
 
-Mana may be acquired through multiple legitimate paths:
+There are two acquisition paths:
 
-### 5.1 Genesis Grant
+### Earned MANA
+- Distributed via protocol-defined reward mechanisms
+- Granted for participation, cadence adherence, and module engagement
+- Subject to emission schedules
 
-* New participants may receive Mana freely
-* This Mana is fully real and fully usable
-* Free Mana is not restricted or second-class
+### Purchased MANA
+- Acquired through market exchange
+- Economically equivalent at protocol level
+- Does not grant accelerated governance privileges
 
-### 5.2 Earned Mana
-
-* Mana may be earned through participation
-* Rituals, presence, contribution, and engagement may yield Mana
-* Earned Mana reinforces the relationship between effort and permission
-
-### 5.3 Purchased Mana
-
-* Mana may be purchased directly from the Arcanum
-* This is the primary revenue mechanism of the system
-* No microtransactions, ads, or extractive mechanics exist
-
-Purchased Mana increases *available capacity*, not progression speed.
+Both forms are equal in transfer and utility.
+Authority derives from identity and participation, not acquisition method.
 
 ---
 
-## 6. Spending Mana (Sinks)
+## 4. Controlled Issuance
 
-Mana is spent to:
+MANA supply is governed by:
 
-* Activate or access technology
-* Enable features or permissions
-* Interact with advanced systems
-* Participate in higher-order rituals or tools
+- On-chain mint parameters
+- Governance-controlled emission rates
+- Treasury-defined allocation logic
+- Constitutional constraints
 
-Mana is never spent to:
+Issuance is transparent and adjustable via governance within defined bounds.
 
-* Skip time
-* Skip rites
-* Skip progression
-* Override governance
-* Purchase authority over others
+No arbitrary minting authority exists outside protocol governance.
 
 ---
 
-## 7. Mana and Vitae
+## 5. Structural Scarcity
 
-**Vitae** represents becoming — not consumption.
+Scarcity emerges from:
 
-Mana may be required to unlock access to Vitae grades or learning layers. However:
+- Utility demand
+- Governance participation
+- Infrastructure usage
+- Module activation
+- Developer integration
 
-* Vitae advancement is time-bound
-* Vitae advancement is ritual-bound
-* Vitae advancement is identity-bound
-
-Mana enables entry into a gate. **Vitae determines when the gate opens.**
-
----
-
-## 8. Core Invariant (Non-Negotiable)
-
-> **Mana may unlock permission, but may never accelerate time-based progression or bypass Vitae thresholds.**
-
-This invariant preserves fairness, integrity, and alignment with Arcanum principles.
+Scarcity is not artificial.
+It is driven by system participation.
 
 ---
 
-## 9. Genesis Declaration
+# III. Genesis Economic Phase
 
-At Genesis, Mana is declared as follows:
+The Genesis phase operates under a **permission-first posture**.
 
-> **Mana is granted as permission, tradable as value, spent as utility, earned through presence, purchased by choice — but always subordinate to time, identity, and becoming.**
+### Characteristics:
+
+- Accessible participation
+- Generous exploration rewards
+- Minimal friction
+- Limited sinks
+- No pay-to-accelerate mechanics
+
+The objective of Genesis is ecosystem stabilization, not revenue maximization.
+
+During Genesis:
+
+- MANA is abundant enough to enable exploration
+- Governance authority remains partially restricted
+- Treasury reserves are structured conservatively
+- Validator incentives are stabilized
+
+Genesis is an economic calibration phase.
 
 ---
 
-## 10. Evolution Over Time
+# IV. Core Utility Functions
 
-The behavior of Mana may evolve through governance:
+MANA is used for:
 
-* New sinks may be introduced
-* New permissions may emerge
-* External interoperability may be enabled
+---
 
-Its core ontology — **capacity before value** — remains foundational.
+## 1. Access & Permissions
 
-Mana is not a promise of profit. Mana is a medium of participation in a living system.
+- Module unlocking
+- Feature expansion
+- Developer tools access
+- Governance proposal submission
+- Advanced system participation
+
+---
+
+## 2. Governance Participation
+
+- Proposal deposits
+- Voting weight (combined with identity metrics)
+- Parameter modification authority
+
+Governance power is influenced by MANA but not determined solely by holdings.
+
+---
+
+## 3. Infrastructure Usage
+
+- Storage anchoring
+- Module execution
+- Network resource allocation
+- Future compute allocation
+
+As ARCnet expands, infrastructure use becomes a primary sink.
+
+---
+
+## 4. Developer Integration
+
+External developers may:
+
+- Integrate MANA as payment rails
+- Deploy modules using MANA-based execution
+- Pay for infrastructure bandwidth
+- Access governance-linked APIs
+
+This creates systemic demand beyond consumer usage.
+
+---
+
+## 5. Treasury Interaction
+
+MANA may be:
+
+- Allocated via governance
+- Directed to ecosystem development
+- Used for validator incentives
+- Used to fund protocol upgrades
+
+Treasury transparency is enforced on-chain.
+
+---
+
+# V. Token Sinks
+
+Long-term sustainability requires consistent sinks.
+
+Primary sinks include:
+
+- Module activation costs
+- Governance proposal deposits
+- Infrastructure usage fees
+- Developer deployment fees
+- Optional premium utilities
+- Treasury funding allocations
+
+Sinks are designed to:
+
+- Encourage responsible usage
+- Prevent runaway inflation
+- Support ecosystem development
+
+Sinks are utility-bound, not cosmetic extraction mechanisms.
+
+---
+
+# VI. Governance Weighting Model
+
+Governance influence is multi-factorial:
+
+- MANA stake
+- Identity longevity (ACC age)
+- Participation consistency
+- Vitae progression signals
+- Reputation metrics (future modules)
+
+This prevents simple capital dominance.
+
+MANA alone does not determine authority.
+
+---
+
+# VII. Validator Incentives
+
+Validators are incentivized via:
+
+- Block rewards
+- Governance-approved treasury allocations
+- Transaction fees
+- Staking participation
+
+Slashing mechanisms penalize:
+
+- Double signing
+- Downtime
+- Malicious behavior
+
+Validator economics are transparent and parameterized.
+
+---
+
+# VIII. Long-Term Sustainability
+
+Sustainability is driven by:
+
+- Utility demand growth
+- Developer ecosystem integration
+- Infrastructure consumption
+- Governance participation
+- Treasury management discipline
+
+The economic model assumes:
+
+- Gradual decentralization
+- Expanding module ecosystem
+- Interoperability via IBC
+- Cross-chain liquidity optionality
+
+Revenue is derived from infrastructure usage, not psychological extraction.
+
+---
+
+# IX. Regulatory Positioning
+
+MANA is designed as:
+
+- A utility token
+- A participation medium
+- A governance signal
+- An infrastructure access unit
+
+It is not:
+
+- An equity instrument
+- A dividend-bearing asset
+- A revenue share mechanism
+- A profit guarantee structure
+
+Protocol governance controls issuance and utility within defined constitutional bounds.
+
+---
+
+# X. Economic Trajectory
+
+The MANA economy evolves in phases:
+
+1. Genesis — Permission-first access
+2. Awakening — Controlled circulation
+3. Differentiation — Meaningful sinks emerge
+4. Circulation — External developer demand increases
+5. Interoperability — Cross-chain integration
+
+Each phase increases utility depth before expanding monetary complexity.
+
+---
+
+# Conclusion
+
+MANA is not designed to be traded.
+It is designed to be used.
+
+Its value emerges from:
+
+- Access
+- Infrastructure
+- Governance
+- Participation
+- Development
+
+The economic model prioritizes sustainability over velocity.
+
+Authority is earned.
+Utility drives demand.
+Governance maintains balance.
+
+This is a participation economy, not a speculation engine.

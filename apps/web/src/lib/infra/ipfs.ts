@@ -13,7 +13,9 @@ async function getHeliaInstance() {
   return heliaPromise
 }
 
-export async function getJSONHelia<T = any>(cid: string): Promise<T | null> {
+export async function getJSONHelia<T = unknown>(
+  cid: string
+): Promise<T | null> {
   const helia = await getHeliaInstance()
   const fs = unixfs(helia)
 
@@ -28,7 +30,23 @@ export async function getJSONHelia<T = any>(cid: string): Promise<T | null> {
   return JSON.parse(bytes.toString()) as T
 }
 
-export async function putJSONHelia(data: unknown): Promise<{ cid: string }> {
+export async function getBlobHelia(cid: string): Promise<Blob> {
+  const helia = await getHeliaInstance()
+  const fs = unixfs(helia)
+
+  const parsed = CID.parse(cid)
+  const chunks: Uint8Array[] = []
+
+  for await (const chunk of fs.cat(parsed)) {
+    chunks.push(chunk)
+  }
+
+  return new Blob(chunks)
+}
+
+export async function putJSONHelia(
+  data: unknown
+): Promise<{ cid: string }> {
   const helia = await getHeliaInstance()
   const fs = unixfs(helia)
 
@@ -38,7 +56,9 @@ export async function putJSONHelia(data: unknown): Promise<{ cid: string }> {
   return { cid: cid.toString() }
 }
 
-export async function putFileHelia(file: File): Promise<{ cid: string }> {
+export async function putFileHelia(
+  file: File
+): Promise<{ cid: string }> {
   const helia = await getHeliaInstance()
   const fs = unixfs(helia)
 

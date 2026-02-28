@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-02-21T08:39:22Z",
+  "generated_at": "2026-02-24T07:52:07Z",
   "repo": "Arcanum",
-  "commit": "a04c0a7a2",
+  "commit": "7dfdd2782",
   "generator_version": "1.1",
   "files": [
     {
@@ -41,6 +41,15 @@
       "lines": 1
     },
     {
+      "path": "CoreFileTree.txt",
+      "type": "file",
+      "size_bytes": 0,
+      "last_modified_commit": "7dfdd2782",
+      "is_empty": true,
+      "extension": ".txt",
+      "lines": 0
+    },
+    {
       "path": "README.md",
       "type": "file",
       "size_bytes": 485,
@@ -52,11 +61,11 @@
     {
       "path": "apps/CoreFileTree.txt",
       "type": "file",
-      "size_bytes": 10883,
-      "last_modified_commit": "bbd56cd97",
+      "size_bytes": 11068,
+      "last_modified_commit": "7dfdd2782",
       "is_empty": false,
       "extension": ".txt",
-      "lines": 242
+      "lines": 250
     },
     {
       "path": "apps/web/.gitignore",
@@ -223,11 +232,11 @@
     {
       "path": "apps/web/package.json",
       "type": "file",
-      "size_bytes": 1585,
-      "last_modified_commit": "a04c0a7a2",
+      "size_bytes": 1861,
+      "last_modified_commit": "7dfdd2782",
       "is_empty": false,
       "extension": ".json",
-      "lines": 55
+      "lines": 63
     },
     {
       "path": "apps/web/postcss.config.mjs",
@@ -484,11 +493,11 @@
     {
       "path": "apps/web/src/app/(app)/nexus/current/page.tsx",
       "type": "file",
-      "size_bytes": 6259,
-      "last_modified_commit": "8fb50b9f7",
+      "size_bytes": 6322,
+      "last_modified_commit": "7dfdd2782",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 163
+      "lines": 164
     },
     {
       "path": "apps/web/src/app/(app)/nexus/page.tsx",
@@ -502,8 +511,8 @@
     {
       "path": "apps/web/src/app/(app)/nexus/post/page.tsx",
       "type": "file",
-      "size_bytes": 7503,
-      "last_modified_commit": "8fb50b9f7",
+      "size_bytes": 7586,
+      "last_modified_commit": "7dfdd2782",
       "is_empty": false,
       "extension": ".tsx",
       "lines": 188
@@ -680,105 +689,6 @@
       "lines": 7
     },
     {
-      "path": "apps/web/src/app/(marketing)/components/ActiveSectionObserver.tsx",
-      "type": "file",
-      "size_bytes": 1737,
-      "last_modified_commit": "5da311ef6",
-      "is_empty": false,
-      "extension": ".tsx",
-      "lines": 59
-    },
-    {
-      "path": "apps/web/src/app/(marketing)/components/ConstellationCanvas.tsx",
-      "type": "file",
-      "size_bytes": 4391,
-      "last_modified_commit": "5da311ef6",
-      "is_empty": false,
-      "extension": ".tsx",
-      "lines": 146
-    },
-    {
-      "path": "apps/web/src/app/(marketing)/components/Header.tsx",
-      "type": "file",
-      "size_bytes": 4344,
-      "last_modified_commit": "5da311ef6",
-      "is_empty": false,
-      "extension": ".tsx",
-      "lines": 110
-    },
-    {
-      "path": "apps/web/src/app/(marketing)/components/ui/ActivateBento.tsx",
-      "type": "file",
-      "size_bytes": 923,
-      "last_modified_commit": "42268897e",
-      "is_empty": false,
-      "extension": ".tsx",
-      "lines": 36
-    },
-    {
-      "path": "apps/web/src/app/(marketing)/components/ui/BentoCard.tsx",
-      "type": "file",
-      "size_bytes": 1255,
-      "last_modified_commit": "42268897e",
-      "is_empty": false,
-      "extension": ".tsx",
-      "lines": 43
-    },
-    {
-      "path": "apps/web/src/app/(marketing)/components/ui/BentoShowcase.tsx",
-      "type": "file",
-      "size_bytes": 4967,
-      "last_modified_commit": "42268897e",
-      "is_empty": false,
-      "extension": ".tsx",
-      "lines": 132
-    },
-    {
-      "path": "apps/web/src/app/(marketing)/components/ui/HeroBento.tsx",
-      "type": "file",
-      "size_bytes": 1225,
-      "last_modified_commit": "5da311ef6",
-      "is_empty": false,
-      "extension": ".tsx",
-      "lines": 41
-    },
-    {
-      "path": "apps/web/src/app/(marketing)/components/ui/HopeOrb.tsx",
-      "type": "file",
-      "size_bytes": 4290,
-      "last_modified_commit": "5da311ef6",
-      "is_empty": false,
-      "extension": ".tsx",
-      "lines": 124
-    },
-    {
-      "path": "apps/web/src/app/(marketing)/components/ui/ShowcaseGrid.tsx",
-      "type": "file",
-      "size_bytes": 2936,
-      "last_modified_commit": "5da311ef6",
-      "is_empty": false,
-      "extension": ".tsx",
-      "lines": 99
-    },
-    {
-      "path": "apps/web/src/app/(marketing)/components/ui/bento-grid.tsx",
-      "type": "file",
-      "size_bytes": 3200,
-      "last_modified_commit": "5da311ef6",
-      "is_empty": false,
-      "extension": ".tsx",
-      "lines": 109
-    },
-    {
-      "path": "apps/web/src/app/(marketing)/components/ui/button.tsx",
-      "type": "file",
-      "size_bytes": 1902,
-      "last_modified_commit": "5da311ef6",
-      "is_empty": false,
-      "extension": ".tsx",
-      "lines": 57
-    },
-    {
       "path": "apps/web/src/app/(marketing)/layout.tsx",
       "type": "file",
       "size_bytes": 1175,
@@ -790,8 +700,8 @@
     {
       "path": "apps/web/src/app/(marketing)/page.tsx",
       "type": "file",
-      "size_bytes": 1948,
-      "last_modified_commit": "376be12f8",
+      "size_bytes": 1951,
+      "last_modified_commit": "7dfdd2782",
       "is_empty": false,
       "extension": ".tsx",
       "lines": 58
@@ -889,17 +799,17 @@
     {
       "path": "apps/web/src/components/ConnectWallet.tsx",
       "type": "file",
-      "size_bytes": 3379,
-      "last_modified_commit": "d32d6affc",
+      "size_bytes": 3483,
+      "last_modified_commit": "7dfdd2782",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 113
+      "lines": 114
     },
     {
       "path": "apps/web/src/components/SimpleAccountPreview.tsx",
       "type": "file",
-      "size_bytes": 4241,
-      "last_modified_commit": "d32d6affc",
+      "size_bytes": 4250,
+      "last_modified_commit": "7dfdd2782",
       "is_empty": false,
       "extension": ".tsx",
       "lines": 115
@@ -941,10 +851,28 @@
       "lines": 133
     },
     {
+      "path": "apps/web/src/components/ui/ActivateBento.tsx",
+      "type": "file",
+      "size_bytes": 923,
+      "last_modified_commit": "7dfdd2782",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 36
+    },
+    {
+      "path": "apps/web/src/components/ui/ActiveSectionObserver.tsx",
+      "type": "file",
+      "size_bytes": 1737,
+      "last_modified_commit": "7dfdd2782",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 59
+    },
+    {
       "path": "apps/web/src/components/ui/AppFooter.tsx",
       "type": "file",
-      "size_bytes": 2650,
-      "last_modified_commit": "d32d6affc",
+      "size_bytes": 2653,
+      "last_modified_commit": "7dfdd2782",
       "is_empty": false,
       "extension": ".tsx",
       "lines": 75
@@ -968,6 +896,60 @@
       "lines": 44
     },
     {
+      "path": "apps/web/src/components/ui/BentoCard.tsx",
+      "type": "file",
+      "size_bytes": 1255,
+      "last_modified_commit": "7dfdd2782",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 43
+    },
+    {
+      "path": "apps/web/src/components/ui/BentoShowcase.tsx",
+      "type": "file",
+      "size_bytes": 4967,
+      "last_modified_commit": "7dfdd2782",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 132
+    },
+    {
+      "path": "apps/web/src/components/ui/ConstellationCanvas.tsx",
+      "type": "file",
+      "size_bytes": 4391,
+      "last_modified_commit": "7dfdd2782",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 146
+    },
+    {
+      "path": "apps/web/src/components/ui/Header.tsx",
+      "type": "file",
+      "size_bytes": 4344,
+      "last_modified_commit": "7dfdd2782",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 110
+    },
+    {
+      "path": "apps/web/src/components/ui/HeroBento.tsx",
+      "type": "file",
+      "size_bytes": 1225,
+      "last_modified_commit": "7dfdd2782",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 41
+    },
+    {
+      "path": "apps/web/src/components/ui/HopeOrb.tsx",
+      "type": "file",
+      "size_bytes": 4290,
+      "last_modified_commit": "7dfdd2782",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 124
+    },
+    {
       "path": "apps/web/src/components/ui/PanelShell.tsx",
       "type": "file",
       "size_bytes": 3613,
@@ -975,6 +957,15 @@
       "is_empty": false,
       "extension": ".tsx",
       "lines": 109
+    },
+    {
+      "path": "apps/web/src/components/ui/ShowcaseGrid.tsx",
+      "type": "file",
+      "size_bytes": 2973,
+      "last_modified_commit": "7dfdd2782",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 99
     },
     {
       "path": "apps/web/src/components/ui/SwipeRoutes.tsx",
@@ -997,8 +988,8 @@
     {
       "path": "apps/web/src/components/ui/TabMenuIndicators.tsx",
       "type": "file",
-      "size_bytes": 1374,
-      "last_modified_commit": "d32d6affc",
+      "size_bytes": 1377,
+      "last_modified_commit": "7dfdd2782",
       "is_empty": false,
       "extension": ".tsx",
       "lines": 44
@@ -1011,6 +1002,24 @@
       "is_empty": false,
       "extension": ".tsx",
       "lines": 96
+    },
+    {
+      "path": "apps/web/src/components/ui/bento-grid.tsx",
+      "type": "file",
+      "size_bytes": 3200,
+      "last_modified_commit": "7dfdd2782",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 109
+    },
+    {
+      "path": "apps/web/src/components/ui/button.tsx",
+      "type": "file",
+      "size_bytes": 1902,
+      "last_modified_commit": "7dfdd2782",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 57
     },
     {
       "path": "apps/web/src/content/locales/de.json",
@@ -1103,10 +1112,19 @@
       "lines": 18
     },
     {
+      "path": "apps/web/src/lib/cosmos/index.ts",
+      "type": "file",
+      "size_bytes": 67,
+      "last_modified_commit": "7dfdd2782",
+      "is_empty": false,
+      "extension": ".ts",
+      "lines": 2
+    },
+    {
       "path": "apps/web/src/lib/cosmos/queries.ts",
       "type": "file",
-      "size_bytes": 239,
-      "last_modified_commit": "5da311ef6",
+      "size_bytes": 235,
+      "last_modified_commit": "7dfdd2782",
       "is_empty": false,
       "extension": ".ts",
       "lines": 6
@@ -1114,8 +1132,8 @@
     {
       "path": "apps/web/src/lib/cosmos/tx.ts",
       "type": "file",
-      "size_bytes": 609,
-      "last_modified_commit": "5da311ef6",
+      "size_bytes": 333,
+      "last_modified_commit": "7dfdd2782",
       "is_empty": false,
       "extension": ".ts",
       "lines": 11
@@ -1213,11 +1231,11 @@
     {
       "path": "apps/web/src/lib/identity/burner.ts",
       "type": "file",
-      "size_bytes": 825,
-      "last_modified_commit": "642fbf2b7",
+      "size_bytes": 230,
+      "last_modified_commit": "7dfdd2782",
       "is_empty": false,
       "extension": ".ts",
-      "lines": 16
+      "lines": 8
     },
     {
       "path": "apps/web/src/lib/identity/gates.ts",
@@ -1227,6 +1245,15 @@
       "is_empty": false,
       "extension": ".ts",
       "lines": 16
+    },
+    {
+      "path": "apps/web/src/lib/identity/index.ts",
+      "type": "file",
+      "size_bytes": 68,
+      "last_modified_commit": "7dfdd2782",
+      "is_empty": false,
+      "extension": ".ts",
+      "lines": 2
     },
     {
       "path": "apps/web/src/lib/identity/passkey.ts",
@@ -1249,11 +1276,11 @@
     {
       "path": "apps/web/src/lib/index.ts",
       "type": "file",
-      "size_bytes": 25,
-      "last_modified_commit": "a04c0a7a2",
+      "size_bytes": 130,
+      "last_modified_commit": "7dfdd2782",
       "is_empty": false,
       "extension": ".ts",
-      "lines": 0
+      "lines": 4
     },
     {
       "path": "apps/web/src/lib/infra/arcanum.ts",
@@ -1277,7 +1304,7 @@
       "path": "apps/web/src/lib/infra/helia.ts",
       "type": "file",
       "size_bytes": 1447,
-      "last_modified_commit": "42268897e",
+      "last_modified_commit": "7dfdd2782",
       "is_empty": false,
       "extension": ".ts",
       "lines": 50
@@ -1285,20 +1312,20 @@
     {
       "path": "apps/web/src/lib/infra/index.ts",
       "type": "file",
-      "size_bytes": 471,
-      "last_modified_commit": "a04c0a7a2",
+      "size_bytes": 49,
+      "last_modified_commit": "7dfdd2782",
       "is_empty": false,
       "extension": ".ts",
-      "lines": 14
+      "lines": 2
     },
     {
       "path": "apps/web/src/lib/infra/ipfs.ts",
       "type": "file",
-      "size_bytes": 1663,
-      "last_modified_commit": "642fbf2b7",
+      "size_bytes": 1294,
+      "last_modified_commit": "7dfdd2782",
       "is_empty": false,
       "extension": ".ts",
-      "lines": 46
+      "lines": 48
     },
     {
       "path": "apps/web/src/lib/infra/matrix.ts",
@@ -1337,31 +1364,31 @@
       "lines": 1
     },
     {
-      "path": "apps/web/src/lib/rooms/index.ts",
+      "path": "apps/web/src/lib/nexus/rooms.ts",
       "type": "file",
-      "size_bytes": 33,
-      "last_modified_commit": "42268897e",
+      "size_bytes": 974,
+      "last_modified_commit": "7dfdd2782",
       "is_empty": false,
       "extension": ".ts",
-      "lines": 1
+      "lines": 25
     },
     {
-      "path": "apps/web/src/lib/social/post.ts",
+      "path": "apps/web/src/lib/post.ts",
       "type": "file",
       "size_bytes": 582,
-      "last_modified_commit": "642fbf2b7",
+      "last_modified_commit": "7dfdd2782",
       "is_empty": false,
       "extension": ".ts",
       "lines": 17
     },
     {
-      "path": "apps/web/src/lib/social/rooms.ts",
+      "path": "apps/web/src/lib/rooms/index.ts",
       "type": "file",
-      "size_bytes": 974,
-      "last_modified_commit": "42268897e",
+      "size_bytes": 32,
+      "last_modified_commit": "7dfdd2782",
       "is_empty": false,
       "extension": ".ts",
-      "lines": 25
+      "lines": 1
     },
     {
       "path": "apps/web/src/lib/tempus/constants.ts",
@@ -1483,11 +1510,11 @@
     {
       "path": "apps/web/tsconfig.json",
       "type": "file",
-      "size_bytes": 733,
-      "last_modified_commit": "5da311ef6",
+      "size_bytes": 701,
+      "last_modified_commit": "7dfdd2782",
       "is_empty": false,
       "extension": ".json",
-      "lines": 44
+      "lines": 38
     },
     {
       "path": "chains/CoreFileTree.txt",
@@ -2239,11 +2266,11 @@
     {
       "path": "docs/architect/repo-index.json",
       "type": "file",
-      "size_bytes": 122769,
-      "last_modified_commit": "a04c0a7a2",
+      "size_bytes": 125026,
+      "last_modified_commit": "7dfdd2782",
       "is_empty": false,
       "extension": ".json",
-      "lines": 4463
+      "lines": 4562
     },
     {
       "path": "docs/architecture/app-chain-doctrine.md",
@@ -4444,11 +4471,11 @@
     {
       "path": "pnpm-lock.yaml",
       "type": "file",
-      "size_bytes": 402674,
-      "last_modified_commit": "a04c0a7a2",
+      "size_bytes": 404700,
+      "last_modified_commit": "7dfdd2782",
       "is_empty": false,
       "extension": ".yaml",
-      "lines": 11981
+      "lines": 12048
     },
     {
       "path": "pnpm-workspace.yaml",

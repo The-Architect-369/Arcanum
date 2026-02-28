@@ -1,17 +1,8 @@
-'use client';
-import { getPasskey } from './passkey';
-import { hasBurner, createBurner, loadBurner } from './burner';
-import { CHAIN_ID, RPC_URL, BUNDLER_URL } from './chains';
+// src/lib/identity/aa.ts
 
-export async function getSAClient(sponsor = true) {
-  if (!hasBurner()) { try { createBurner(); } catch {} }
-  const burner = hasBurner() ? loadBurner() : undefined;
-  return {
-    account: burner ? { address: burner.address } : undefined,
-    chainId: CHAIN_ID,
-    rpcUrl: RPC_URL,
-    bundlerUrl: BUNDLER_URL,
-    sponsor,
-    needsPasskey: !getPasskey(),
-  };
-}
+export const CHAIN_ID = 'arcanum'
+export const RPC_URL = process.env.NEXT_PUBLIC_RPC_URL ?? ''
+export const BUNDLER_URL = process.env.NEXT_PUBLIC_BUNDLER_URL ?? ''
+
+// Identity layer exposes configuration only.
+// No minting. No enforcement. No economic logic.
