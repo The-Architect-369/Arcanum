@@ -1,528 +1,87 @@
+
+---
+
+## `docs/repo/repo-interface.md`
+
+```md
 ---
 title: "Repo Interface"
 status: canonical
 visibility: public
-last_updated: 2026-02-18
-description: ""
+last_updated: 2026-02-28
+description: "Grounding rules for reasoning about the Arcanum repository (ARCnet)."
 ---
 
+# Architect Repository Interface
 
-# Repo Interface
+This document defines how architectural and doctrinal reasoning must interface with the repository.
 
-\# \*\*Architect Repository Interface\*\*
+## Principle
 
+**No authoritative analysis may be issued without a declared repository grounding state.**
 
-
-\*\*Version:\*\* 1.0 (Canonical) \\
-
-\*\*Status:\*\* Ratified \\
-
-\*\*Phase:\*\* Pre-Genesis
-
-
-
-
+If grounding is insufficient, the correct behavior is refusal or request for regeneration—not inference.
 
 ---
 
+## Grounding states
 
+Any analysis must explicitly declare ONE of:
 
+### 1) `live-file`
+- Specific file(s) were opened directly (content known).
+- Use for drafting, editing, or validating known documents.
 
+### 2) `index-snapshot`
+- The repo index artifact was used (paths/metadata known).
+- Use for structural integrity checks and tree audits.
 
-\## \*\*Purpose\*\*
+### 3) `partial-scan`
+- Only a subset of the repo was observed.
+- Allowed for asking questions, not for conclusions.
 
-
-
-This document defines how the \*\*Architect\*\* and \*\*Architect GPT\*\* interface with the Arcanum GitHub repository.
-
-
-
-Its purpose is to ensure that:
-
-
-
-
-
-
-
-\* No architectural or doctrinal reasoning occurs ungrounded
-
-\* Repository state is treated as a \*\*source of truth\*\*, not an assumption
-
-\* Limitations of external tooling (GitHub APIs, indexing, pagination) are explicitly handled rather than silently worked around
-
-
-
-This interface is \*\*doctrinal\*\*, not merely technical.
-
-
-
-
+**Forbidden**
+- assumed structure
+- cached memory without declaration
+- inference-based certainty
 
 ---
 
+## Canonical structural artifact
 
+The repo maintains a deterministic structural snapshot:
 
+- `docs/repo/repo-index.json`
 
+This file is treated as authoritative for:
+- what exists
+- where it lives
+- basic metadata needed for integrity checks
 
-\## \*\*Foundational Principle\*\*
-
-
-
-\*\*No authoritative analysis may be issued without a declared repository grounding state.\*\*
-
-
-
-Architect GPT may not reason, recommend, or ratify without first declaring how repository state was observed.
-
-
-
-Silence or partial knowledge is preferable to false certainty.
-
-
-
-
+It is not a content mirror.
 
 ---
 
+## Operating rule
 
+When repo structure matters:
 
-
-
-\## \*\*Repository as Canonical Surface\*\*
-
-
-
-The GitHub repository is the \*\*canonical implementation surface\*\* of the Arcanum.
-
-
-
-Doctrine, architecture, and system behavior are only considered real insofar as they are:
-
-
-
-
-
-
-
-\* Declared in canonical documents, or
-
-\* Reflected in the repository structure
-
-
-
-No implicit files, hidden intent, or assumed structure may be relied upon.
-
-
-
-
+1) Prefer `live-file` if you already have the file open.
+2) Otherwise require `index-snapshot` via `docs/repo/repo-index.json`.
+3) If either is unavailable or stale, require regeneration.
 
 ---
 
+## Human maintainer responsibilities
 
-
-
-
-\## \*\*Grounding States\*\*
-
-
-
-All Architect GPT analysis must explicitly declare one of the following grounding states:
-
-
-
-
-
-\### \*\*1. <code>live-file</code></strong>
-
-
-
-
-
-
-
-\* One or more specific files were fetched directly from GitHub
-
-\* Contents are known and authoritative
-
-
-
-\*\*Use when:\*\* drafting, revising, or validating a known file
-
-
-
-
+- Keep `docs/repo/repo-index.json` current.
+- Run `scripts/verify-sync.sh` before claiming structural integrity.
+- Treat failing checks as a stop-ship signal for documentation releases.
 
 ---
 
-
-
-
-
-\### \*\*2. <code>index-snapshot</code></strong>
-
-
-
-
-
-
-
-\* A generated repository index was used
-
-\* File paths, sizes, and metadata are known
-
-\* File contents may or may not be known
-
-
-
-\*\*Use when:\*\* performing structural analysis, placeholder detection, or repo health checks
-
-
-
-
-
----
-
-
-
-
-
-\### \*\*3. <code>partial-scan</code></strong>
-
-
-
-
-
-
-
-\* Only a subset of the repository was observed
-
-\* Limitations or failures are explicitly declared
-
-
-
-\*\*Use when:\*\* API limits prevent full visibility
-
-
-
-Partial scans may inform questions, but may \*\*not\*\* justify conclusions.
-
-
-
----
-
-
-
-
-
-
-
-\## \*\*Prohibited Grounding States\*\*
-
-
-
-The following are forbidden:
-
-
-
-
-
-
-
-\* Assumed repository structure
-
-\* Cached memory without declaration
-
-\* Inference based on naming conventions alone
-
-\* Reasoning without any grounding declaration
-
-
-
-Any conclusion reached under these conditions is invalid.
-
-
-
-
-
----
-
-
-
-
-
-\## \*\*GitHub API Constraints (Declared)\*\*
-
-
-
-The Architect Repository Interface formally acknowledges the following constraints:
-
-
-
-
-
-
-
-\* GitHub Tree API responses are size-limited and may truncate large repositories
-
-\* Recursive tree queries may fail silently or return partial results
-
-\* Search APIs are indexed and non-authoritative
-
-\* Empty or near-empty files may not appear in search results
-
-
-
-These constraints must be treated as \*\*known environmental limits\*\*, not errors.
-
-
-
-
-
----
-
-
-
-
-
-\## \*\*Compensating Mechanism: Repository Index\*\*
-
-
-
-To ensure full visibility, the Arcanum maintains a \*\*Repository Index\*\*.
-
-
-
-
-
-\### \*\*Canonical Index File\*\*
-
-
-
-docs/architect/REPO\_INDEX.json
-
-
-
-The index contains:
-
-
-
-
-
-
-
-\* Full file tree (paths)
-
-\* File sizes
-
-\* Last modified commit hash
-
-\* Optional content hash
-
-
-
-This file is:
-
-
-
-
-
-
-
-\* Generated automatically (CI or local script)
-
-\* Treated as authoritative for structure
-
-\* Lightweight enough to be fully loaded by Architect GPT
-
-
-
-
-
----
-
-
-
-
-
-\## \*\*Index Generation\*\*
-
-
-
-The Repository Index is generated by:
-
-
-
-
-
-
-
-\* `verify-sync.sh` (extended)
-
-\* CI workflow (`verify-sync.yml`)
-
-
-
-Failure to generate or update the index blocks:
-
-
-
-
-
-
-
-\* Canonical drafting
-
-\* Repo health certification
-
-\* Architectural ratification
-
-
-
-
-
----
-
-
-
-
-
-\## \*\*Operating Rule for Architect GPT\*\*
-
-
-
-Architect GPT must:
-
-
-
-
-
-
-
-1\. Declare grounding state at the start of analysis
-
-2\. Prefer `live-file` over `index-snapshot` when possible
-
-3\. Refuse to answer when grounding is insufficient
-
-4\. Request index regeneration if structural certainty is required
-
-
-
-This refusal is a \*\*feature\*\*, not a limitation.
-
-
-
-
-
----
-
-
-
-
-
-\## \*\*Human Architect Responsibilities\*\*
-
-
-
-The Architect is responsible for:
-
-
-
-
-
-
-
-\* Ensuring the Repository Index exists and is current
-
-\* Interpreting results surfaced by Architect GPT
-
-\* Deciding when partial knowledge is acceptable
-
-
-
-The Architect may override \*\*process\*\*, but never override \*\*grounding requirements\*\*.
-
-
-
-
-
----
-
-
-
-
-
-\## \*\*Failure Modes (Explicit)\*\*
-
-
-
-This interface is violated if:
-
-
-
-
-
-
-
-\* Architect GPT issues conclusions without grounding declaration
-
-\* Repo health is assessed without full structural visibility
-
-\* Placeholder files are inferred rather than observed
-
-\* API failures are hidden instead of reported
-
-
-
-These constitute architectural failures.
-
-
-
-
-
----
-
-
-
-
-
-\## \*\*Enforcement\*\*
-
-
-
-This interface is enforced through:
-
-
-
-
-
-
-
-\* Doctrine
-
-\* CI checks
-
-\* Architect review
-
-\* Architectural refusal
-
-
-
-
-
----
-
-
-
-
-
-\## \*\*Canonical Status\*\*
-
-
-
-This document is ratified as \*\*Architect Repository Interface v1.0\*\*.
-
-
-
-It is binding on Architect GPT, all architectural analysis, and all future automation interacting with the Arcanum repository.
+## Tooling references
+
+- Generator spec: `docs/repo/repo-index-generator-spec.md`
+- Generator script: `scripts/repo-index.sh`
+- Verification script: `scripts/verify-sync.sh`

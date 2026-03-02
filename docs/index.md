@@ -2,161 +2,107 @@
 title: "Docs Index"
 status: canonical
 visibility: public
-last_updated: 2026-02-20
-description: "Navigation index for the Arcanum documentation tree."
+last_updated: 2026-02-28
+description: "Navigation index for the Arcanum documentation tree (ARCnet canonical naming)."
 ---
 
 # Docs Index
 
-This is the **navigation hub** for the Arcanum `docs/` tree.
+This is the **navigation hub** for the `docs/` tree.
+
+**Canonical naming**
+- **ARCnet**: the sovereign network / infrastructure layer.
+- **Arcanum**: the application + doctrine + module ecosystem built on ARCnet.
+
+---
 
 ## Start here
 
-- Overview: `overview/arcanum-system-overview.md`
-- Whitepaper:
-  - `whitepaper/executive-summary.md`
-  - `whitepaper/problem-solution.md`
-  - `whitepaper/technical-architecture.md`
-  - `whitepaper/tokenomics.md`
-  - `whitepaper/compliance-risk.md`
-- Governance / Constitution: `governance/constitution/`
+1) **System overview (recommended first):** `architecture/arcanum-system-overview.md`  
+2) **White Pages (investor / institutional flow):**  
+   - `whitepaper/executive-summary.md`  
+   - `whitepaper/problem-solution.md`  
+   - `whitepaper/technical-architecture.md`  
+   - `whitepaper/tokenomics.md`  
+   - `whitepaper/governance-constitutional-model.md`  
+   - `compliance/compliance-risk.md`  
+3) **Governance & constitution (canon):** `governance/governance-specification.md`  
+4) **Modules (product surfaces):** `modules/`  
+5) **Vitae (recognition layer):** `vitae/`  
+6) **Repo discipline (indexing + grounding):** `repo/`
 
 ---
 
-## Overview
+## Folder map (live structure)
 
-- System overview: `overview/arcanum-system-overview.md`
-- Roadmaps:
-  - `overview/roadmap-v1.md`
-  - `overview/roadmap-v2.md`
-  - `overview/roadmap-v3.md`
+> The folders listed below reflect the current docs structure and are intended to remain stable as the repo grows.
 
----
+### `architecture/` — system architecture + boundaries
+- `architecture/arcanum-system-overview.md`
+- `architecture/app-chain-doctrine.md`
+- `architecture/canonical-modules.md`
+- `architecture/arcanum-chain.md`
 
-## Whitepaper (modular)
+### `doctrine/` — constitutional principles + layer constraints
+- `doctrine/layer-boundaries.md`
+- `doctrine/identity-model.md`
+- `doctrine/temporal-model.md`
+- `doctrine/metaphysical-neutrality.md`
+- `doctrine/authority.md`
+- `doctrine/architect-role.md`
+- `doctrine/founder-transition.md`
 
+### `governance/` — operational governance + public interfaces
+- `governance/governance-specification.md`
+- `governance/treasury-constitution.md`
+- `governance/economic-principles.md`
+- `governance/governance-changelog.md`
+
+**Governance interfaces**
+- HOPE Guardian (public interpretive charter): `governance/hopegpt/hope-guardian.md`
+- ArchitectGPT (internal build interface): `governance/architectgpt/`
+
+### `whitepaper/` — the “White Pages” (modular)
 - `whitepaper/executive-summary.md`
 - `whitepaper/problem-solution.md`
 - `whitepaper/technical-architecture.md`
 - `whitepaper/tokenomics.md`
-- `whitepaper/compliance-risk.md`
-- `whitepaper/appendix-governance.md`
-- `whitepaper/governance-neutrality.md`
-- `whitepaper/dignity-content-boundaries.md`
-- `whitepaper/arcanum-chain.md`
-- `whitepaper/vitae-and-becoming.md`
+- `whitepaper/governance-constitutional-model.md`
 
----
+### `compliance/` — compliance posture + risk boundaries
+- `compliance/compliance-risk.md`
+- `compliance/dignity-content-boundaries.md`
+- `compliance/license-and-attribution.md`
 
-## Governance (Constitution)
+### `modules/` — module overview docs (human-facing)
+- `modules/hope/hope.md`
+- `modules/tempus/tempus.md`
+- `modules/vitae/vitae-and-becoming.md`
 
-Folder: `governance/constitution/`
-
-Core canon + tooling:
-
-- `governance/constitution/canonical-modules.md`
-- `governance/constitution/layer-boundaries.md`
-- `governance/constitution/metaphysical-neutrality.md`
-- `governance/constitution/architect-role.md`
-- `governance/constitution/founder-transition.md`
-- `governance/constitution/treasury-constitution.md`
-- `governance/constitution/economic-principles.md`
-
-Repo discipline:
-
-- `governance/constitution/repo-interface.md`
-- `governance/constitution/repo-index-generator-spec.md`
-- `governance/constitution/architect-log.md`
-- `governance/constitution/doctrine-checksums.yaml`
-
----
-
-## Architecture (cross-layer)
-
-Folder: `architecture/`
-
-- `architecture/app-chain-doctrine.md`
-- `architecture/identity-model.md`
-- `architecture/temporal-model.md`
-- `architecture/tempus-structure.md`
-- `architecture/layer-boundaries.md`
-
----
-
-## Specs
-
-### Modules
-Folder: `specs/modules/`
-
-- `specs/modules/hope.md`
-- `specs/modules/tempus.md`
-- `specs/modules/identity.md`
-- `specs/modules/economy.md`
-- `specs/modules/nexus.md`
-- `specs/modules/treasury.md`
-- `specs/modules/vitae.md`
-- `specs/modules/wallet.md`
-
-### Chain
-Folder: `specs/chain/`
-
-- `specs/chain/arcanum-chain-overview.md`
-- `specs/chain/invariants.md`
-- `specs/chain/mana.md`
-- `specs/chain/tempus-hooks.md`
-- `specs/chain/treasury.md`
-
----
-
-## Vitae
-
-Folder: `vitae/`
-
-Top-level:
-
+### `vitae/` — recognition layer + constitution + curriculum tree
 - `vitae/authority.md`
+- `vitae/constitution/`
+- `vitae/curriculum/`
 
-Constitution:
+### `repo/` — repository grounding + indexing (non-optional)
+- `repo/repo-interface.md`
+- `repo/repo-index-generator-spec.md`
+- `repo/repo-index.json`
 
-- `vitae/constitution/master-constitution-and-architecture.md`
-- `vitae/constitution/vitae-kernel-master.md`
-- `vitae/constitution/vitae-system-wide-audit-pass.md`
-- `vitae/constitution/cross-grade-dependency-canon.md`
-- `vitae/constitution/grade-architecture-template.md`
-- `vitae/constitution/constitutional-amendment.md`
+### `tooling/` — checksums + integrity tooling inputs
+- `tooling/doctrine-checksums/`
 
-Curriculum + content live under `vitae/curriculum/` (see file tree for full depth).
+### `manifesto/` — mythic tone (explicitly non-whitepaper)
+- `manifesto/arcanum-manifesto.md`
 
----
-
-## Genesis (sealed artifacts)
-
-Folder: `genesis/`
-
-- `genesis/g1-hope-seal.md`
+### `reference/` — glossary + changelog (if present)
+- `reference/` (if/when used)
 
 ---
 
-## Reference
+## Rules of the road (short)
 
-Folder: `reference/`
-
-- `reference/glossary.md`
-- `reference/changelog.md`
-- `reference/license-and-attribution.md`
-
----
-
-## Architect (repo automation)
-
-Folder: `architect/`
-
-- `architect/repo-index.json` (machine-readable repo structure snapshot)
-
----
-
-## Archive
-
-Folder: `archive/`
-
-Deprecated / historical. Non-authoritative unless explicitly referenced by a canonical doc.
+- Use **kebab-case** for files/folders.
+- Prefer **relative links from `docs/`** (stable in GitHub + local preview).
+- Treat `repo/repo-index.json` as the authoritative structural snapshot when doing structural analysis.
+- When in doubt: update the docs tree **first**, then update prose.

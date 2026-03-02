@@ -2,8 +2,8 @@
 title: "Technical Architecture"
 status: draft
 visibility: public
-last_updated: 2026-02-25
-description: "ARCnet blockchain architecture and Arcanum application stack"
+last_updated: 2026-03-02
+description: "ARCnet blockchain architecture and Arcanum application stack."
 ---
 
 # Technical Architecture
@@ -12,347 +12,186 @@ description: "ARCnet blockchain architecture and Arcanum application stack"
 
 The Arcanum ecosystem consists of two primary layers:
 
-1. **ARCnet** — Sovereign blockchain infrastructure (Cosmos SDK–based)
-2. **The Arcanum Application** — Modular client and coordination layer built atop ARCnet
+1. **ARCnet** — sovereign blockchain infrastructure (Cosmos SDK–based)  
+2. **Arcanum Application** — modular client and coordination layer built atop ARCnet  
 
-ARCnet provides settlement, identity anchoring, token economics, treasury management, and governance enforcement.
+ARCnet provides settlement, identity anchoring, token economics, treasury governance, and protocol-level invariants.
 
-The Arcanum application provides user interaction, experience orchestration, and module composition.
-
-The architecture is vertically integrated but logically separated.
+Arcanum provides user interaction and module composition.
 
 ---
 
-# II. ARCnet — Sovereign Blockchain Layer
+## II. ARCnet — Sovereign Blockchain Layer
 
-## 1. Base Stack
+### 1) Base stack
 
 ARCnet is built using:
 
-- **Cosmos SDK**
-- **Tendermint / CometBFT consensus**
-- **IBC (Inter-Blockchain Communication) compatibility**
+- Cosmos SDK
+- CometBFT consensus
+- IBC compatibility (optional / deliberate)
 - Modular on-chain architecture
 
-It is an independent Layer-1 chain, not a token deployed on another network.
+ARCnet is an independent Layer-1 chain, not a token deployed on another network. This enables sovereign parameter control and invariant enforcement.
 
-This ensures:
+### 2) Core modules (whitepaper level)
 
-- Sovereign parameter control
-- Validator-defined consensus
-- Custom module enforcement
-- Constitutional invariants at protocol level
+#### A) Identity module (ACC)
+ACC anchors participation identity to on-chain history:
 
----
+- identity anchoring events
+- continuity signals
+- governance weighting inputs
+- cross-module binding
 
-## 2. Core Modules
-
-ARCnet contains the following native modules:
-
----
-
-### A. Identity Module (ACC)
-
-The ACC (Arcanum Chain Code) module provides:
-
-- Native identity anchoring
-- Persistent participation history
-- Governance weighting inputs
-- Cross-module identity binding
-
-Unlike simple wallet-based systems, ACC binds:
-
-- Time-in-system
-- Participation metrics
-- Governance eligibility
-- Economic history
-
-Identity is not merely cryptographic custody.
+Identity is not merely custody.
 It is longitudinal participation state.
 
----
+#### B) MANA module
+Defines:
 
-### B. MANA Module
+- issuance parameters (governance-bounded)
+- burn/sink logic
+- distribution controls
+- transfers
+- permission hooks
 
-The MANA module defines:
+MANA is used for access, infrastructure usage, and governance participation.
 
-- Token mint parameters
-- Burn logic
-- Distribution controls
-- Transfer mechanics
-- Permission hooks
+#### C) Treasury module
+Defines:
 
-MANA is a utility token used for:
+- on-chain reserve management
+- governance-approved allocations
+- auditability of flows
+- execution constraints (time-locks where applicable)
 
-- Access gating
-- Infrastructure usage
-- Governance weighting
-- Developer module integration
+Treasury exists for stewardship, not discretion.
 
-Minting parameters are controlled at protocol level and governed constitutionally.
+#### D) Governance module
+Defines:
 
----
+- proposals
+- voting
+- parameter changes within bounds
+- treasury approvals
+- upgrade coordination
 
-### C. Treasury Module
+Governance is constitutional before it is democratic.
 
-The Treasury module provides:
-
-- On-chain reserve management
-- Governance-approved allocation
-- Protocol funding
-- Validator incentive management
-
-Treasury actions require:
-
-- Governance authorization
-- Constitutional compliance
-- Defined execution rules
-
-Treasury funds cannot be arbitrarily extracted.
+#### E) Module extensibility framework
+ARCnet supports new modules via upgrade governance and audited deployment processes. Extensibility is explicit and bounded.
 
 ---
 
-### D. Governance Module
+## III. Consensus & Validators
 
-Governance supports:
+ARCnet uses BFT consensus (CometBFT) with a validator set.
 
-- Proposal submission
-- Parameter modification
-- Treasury allocation
-- Module updates
+Validators are accountable through:
 
-Governance weight is influenced by:
+- staking and delegation
+- slashing for misbehavior
+- governance visibility
+- upgrade coordination
 
-- Identity longevity
-- Participation metrics
-- Token stake
-- Vitae progression (application-level signal)
-
-Certain invariants are non-overridable.
+Early phases may begin with curated constraints; the roadmap expects decentralization as stability and participation mature.
 
 ---
 
-### E. Chaincode / Module Framework
+## IV. Interoperability
 
-ARCnet supports extensibility via:
+ARCnet may support:
 
-- Custom module injection
-- Parameterized execution logic
-- Developer integration hooks
-
-This allows:
-
-- Native dApps
-- Infrastructure-level extensions
-- Permission-based deployment
-- Future module evolution
-
-ARCnet is designed as a programmable sovereign substrate.
-
----
-
-# III. Consensus & Validators
-
-ARCnet operates via:
-
-- Validator set governance
-- Delegated staking
-- Byzantine Fault Tolerant consensus (CometBFT)
-
-Validator characteristics:
-
-- Staked MANA participation
-- Governance accountability
-- Slashing for misbehavior
-- Transparent operation
-
-Genesis phase may begin with limited validator distribution.
-Long-term design targets decentralization with constitutional safeguards.
-
----
-
-# IV. Interoperability
-
-ARCnet supports:
-
-- IBC connections to Cosmos ecosystem
-- External asset bridging (governance-approved)
-- Identity authentication APIs
+- IBC channels
+- external asset bridges (governance-approved)
+- identity authentication APIs
 - SDK-level developer integration
 
-Interoperability is optional, not mandatory.
-
-ARCnet is sovereign first, interoperable second.
+Interoperability is optional; sovereignty and invariants remain primary.
 
 ---
 
-# V. The Arcanum Application Layer
+## V. Arcanum Application Layer
 
-The Arcanum application is a modular client system that interfaces with ARCnet.
+Arcanum interfaces with ARCnet through wallet clients and transaction/query surfaces.
 
-It includes:
+Typical components:
 
-- Mobile-first UI
-- Web interface
-- Wallet integration
-- On-chain query & transaction execution
-- IPFS-compatible storage for selective modules
-- Matrix or decentralized communication integrations (Nexus layer)
+- mobile-first UI
+- web UI
+- wallet integration
+- on-chain query & transaction execution
+- optional content addressing (IPFS-like) where appropriate
+- optional decentralized comms integrations for Nexus
 
-The application is replaceable.
-The chain is not.
-
----
-
-## Core Application Modules
-
-### 1. Hope
-
-Reflection interface:
-
-- Structured input schema
-- Optional persistence
-- On-chain or IPFS anchoring
-- Identity-bound interaction
-
-Hope does not enforce engagement metrics.
-It enforces structured reflection.
+**Rule:** If it does not require public settlement, it does not belong on-chain.
 
 ---
 
-### 2. Tempus
+## VI. Invariants (Protocol-Bound)
 
-Time coordination module:
+At minimum, ARCnet enforces:
 
-- Planetary, lunar, and cadence logic (off-chain computation)
-- Time-window gating
-- Reward cadence enforcement
-- Participation pacing
+- governance cannot override constitutional invariants
+- time-based progression cannot be accelerated through payment
+- identity cannot be duplicated
+- treasury cannot execute outside governance process
 
-Tempus influences reward distribution and permission windows.
-
-Time becomes a protocol variable.
+These invariants protect long-term coherence.
 
 ---
 
-### 3. Vitae
+## VII. Developer Integration (Whitepaper Level)
 
-Structured progression system:
-
-- Grade architecture
-- Dependency enforcement
-- Event schema logging
-- Advancement gating
-
-Vitae progression influences governance weight and permissions but does not override protocol invariants.
-
----
-
-### 4. Nexus
-
-Sovereign communication layer:
-
-- Identity-bound interaction
-- Optional persistence
-- Moderation governed by constitutional boundaries
-- No algorithmic engagement amplification
-
-Nexus is not an engagement engine.
-It is a coordination layer.
-
----
-
-### 5. Wallet
-
-Wallet module supports:
-
-- MANA balance management
-- Governance participation
-- Staking
-- Treasury interaction
-- Developer integration permissions
-
-Wallet integrates with ARCnet via Cosmos-compatible clients.
-
----
-
-# VI. Invariants
-
-Certain rules are enforced at protocol level:
-
-- Governance cannot override constitutional invariants.
-- Time-based progression cannot be accelerated through payment.
-- Identity cannot be duplicated.
-- Mint parameters require governance thresholds.
-- Treasury cannot bypass governance process.
-
-These invariants protect long-term system integrity.
-
----
-
-# VII. Developer Architecture
-
-Developers may interact with ARCnet through:
+Developers may build on ARCnet via:
 
 - SDK integration
-- REST / gRPC endpoints
-- IBC channels
-- Identity authentication hooks
+- REST/gRPC endpoints
+- IBC (where enabled)
+- identity authentication rails
 - MANA payment rails
-- Governance proposal systems
+- governance hooks (proposal + parameter surfaces)
 
 Development tiers:
 
-1. Application-level extension (within Arcanum)
-2. Native module deployment (protocol-level)
-3. External dApp integration (IBC or SDK)
-
-ARCnet is designed to support both consumer and infrastructure development.
+1) Arcanum-level extension (within the app experience)
+2) ARCnet module development (protocol-level; governed)
+3) External dApps integrating ARCnet identity/economy
 
 ---
 
-# VIII. Security Model
+## VIII. Security Model (Layered)
 
-Security is layered:
+Security is composed of:
 
-1. Consensus security (CometBFT)
-2. Module-level invariant enforcement
-3. Governance threshold constraints
-4. Treasury execution validation
-5. Client-side permission verification
+1) consensus security
+2) module-level invariants
+3) governance thresholds and time-locks
+4) treasury execution constraints
+5) client-side permission enforcement
 
 No single layer governs alone.
 
 ---
 
-# IX. Architectural Philosophy
+## Conclusion
 
-ARCnet is designed to:
+ARCnet is the sovereign substrate.
+Arcanum is a civilization built on it.
 
-- Minimize dependency
-- Maximize clarity
-- Enforce invariants
-- Bind authority to participation
-- Scale modularly
+The architecture is designed for:
 
-The Arcanum application demonstrates one civilization built on this substrate.
-
-The architecture supports more.
+- durable invariants
+- phased decentralization
+- utility-first economics
+- composable development
+- non-coercive participation
 
 ---
 
-## Conclusion
+## Further Reading
 
-The Arcanum ecosystem is not a single dApp.
-
-It is:
-
-- A sovereign Cosmos-based chain (ARCnet)
-- A modular application civilization (The Arcanum)
-- A utility token economy (MANA)
-- A constitutional governance framework
-- A developer-ready infrastructure layer
-
-Infrastructure defines possibility.
-Modules define expression.
-Participation defines authority.
+- `tokenomics.md`
+- `governance-constitutional-model.md`
+- `roadmap.md`

@@ -2,52 +2,67 @@
 title: "Docs"
 status: canonical
 visibility: public
-last_updated: 2026-02-20
-description: "Documentation root for Arcanum: doctrine, architecture, specs, vitae, and whitepaper."
+last_updated: 2026-02-28
+description: "Documentation root for Arcanum: doctrine, architecture, governance, modules, repo discipline, and Vitae."
 ---
 
 # Arcanum Docs
 
-This folder is the **canonical documentation surface** for Arcanum.
+This folder is the **canonical documentation surface** for Arcanum and ARCnet.
 
-If you’re new, start with:
+**Naming**
+- **ARCnet** = the sovereign network / infrastructure substrate.
+- **Arcanum** = the application ecosystem built on ARCnet (modules + lived experience).
 
-- **System overview:** `overview/arcanum-system-overview.md`
-- **Whitepaper flow:** `whitepaper/executive-summary.md` → `whitepaper/problem-solution.md` → `whitepaper/technical-architecture.md`
-- **Doctrine & governance (constitution):** `governance/constitution/`
+If you’re new, start here:
 
-## Folder Map (live structure)
+- `docs/index.md` (navigation hub)
+- `docs/architecture/arcanum-system-overview.md` (system map)
+- `docs/whitepaper/executive-summary.md` (institutional overview)
 
-- `index.md` — human-friendly navigation index (this is the “table of contents” for the whole docs tree)
-- `overview/` — system overview + roadmaps  
-  - `overview/arcanum-system-overview.md`  
-  - `overview/roadmap-v1.md`, `overview/roadmap-v2.md`, `overview/roadmap-v3.md`
-- `whitepaper/` — modular whitepaper sections (current drafting surface)
-  - `executive-summary.md`, `problem-solution.md`, `technical-architecture.md`, `tokenomics.md`, `compliance-risk.md`, etc.
-- `governance/constitution/` — constitutional canon + doctrine tooling  
-  - `canonical-modules.md`, `layer-boundaries.md`, `metaphysical-neutrality.md`, `repo-interface.md`, `repo-index-generator-spec.md`, etc.
-- `architecture/` — architecture law + cross-layer boundaries (app ↔ chain ↔ doctrine)  
-  - `app-chain-doctrine.md`, `identity-model.md`, `temporal-model.md`, `tempus-structure.md`, `layer-boundaries.md`
-- `specs/` — implementation-facing specifications
-  - `specs/modules/` (Hope, Tempus, Identity, Economy, Wallet, etc.)
-  - `specs/chain/` (chain overview, invariants, mana, hooks, treasury)
-- `vitae/` — Vitae constitution + curriculum + content tree (deep structure)
-- `genesis/` — sealed phase artifacts
-  - `genesis/g1-hope-seal.md`
-- `reference/` — glossary, changelog, license/attribution
-- `architect/` — automation + canonical repo indexing artifacts
-  - `architect/repo-index.json`
-- `archive/` — deprecated or historical materials (non-canonical unless explicitly referenced)
+---
 
-## Naming + linking conventions
+## What lives where
 
-- **kebab-case** filenames and folders so links are stable and predictable.
-- Link using **relative paths** from `docs/` (example: `overview/roadmap-v3.md`).
-- Prefer **folder landing pages** (this `README.md` + `index.md`) over giant single-file docs.
+This repo intentionally separates **meaning**, **mechanics**, and **execution**.
 
-## Change discipline (recommended)
+### Architecture
+`docs/architecture/` holds cross-layer architecture, including the App ↔ Chain ↔ Doctrine boundary contract.
 
-- When structure changes, update:
-  1) `docs/index.md` (human navigation)
-  2) `architect/repo-index.json` (machine navigation, if generated)
-- Keep `archive/` non-authoritative unless a document explicitly declares it canonical.
+### Doctrine
+`docs/doctrine/` holds constitutional principles: layer boundaries, identity, time, neutrality, and authority constraints.
+
+### Governance
+`docs/governance/` holds operational governance mechanics **and** the public/internal interface charters (HOPE Guardian + ArchitectGPT).
+
+### Whitepaper (“White Pages”)
+`docs/whitepaper/` is the investor/institutional-friendly modular narrative: problem, solution, architecture, tokenomics, governance model.
+
+### Compliance
+`docs/compliance/` captures risk posture, dignity boundaries, and licensing posture.
+
+### Modules
+`docs/modules/` is the human-facing entrypoint for HOPE, Tempus, and Vitae module docs.
+
+### Vitae
+`docs/vitae/` is the deep tree: authority + constitution + curriculum + implementation discipline.
+
+### Repo discipline (non-optional)
+`docs/repo/` defines the grounding rules for reasoning about the repository and provides the deterministic repo index artifacts.
+
+---
+
+## Canon / draft / evolution
+
+- Files marked `status: canonical` are treated as stable references.
+- Drafts can exist, but must be labeled clearly.
+- The system can evolve, but the **layer boundaries** must not drift.
+
+---
+
+## Quick commands (repo discipline)
+
+Generate/update the structural repo index:
+
+```bash
+bash scripts/repo-index.sh
