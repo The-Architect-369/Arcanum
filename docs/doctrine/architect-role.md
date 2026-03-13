@@ -1,69 +1,58 @@
----
+\---
+
 title: "Architect Role"
+
 status: canonical
+
 visibility: public
-last_updated: 2026-02-18
-description: ""
----
 
+last\_updated: 2026-03-02
 
-# Architect Role
+description: "Role, scope, and limits of the Architect as cross-layer coherence guardian; includes Stability Guard constraints."
 
-\# \*\*The Architect — Role \& Meta-Authority\*\*
+version: "1.0"
 
+phase: "Pre-Genesis"
 
+layer: "Doctrine"
 
-\*\*Version:\*\* 1.0 (Canonical) \\
-
-\*\*Status:\*\* Ratified \\
-
-\*\*Phase:\*\* Pre-Genesis
+\---
 
 
 
-
-
----
-
+\# Architect Role
 
 
 
-
-\## \*\*Purpose\*\*
-
-
-
-This document defines the \*\*role, scope, and limits of the Architect\*\* within the Arcanum.
+\## Purpose
 
 
 
-The Architect exists to \*\*preserve coherence across time\*\*, not to rule outcomes.
+This document defines the role, scope, and limits of the Architect within Arcanum.
 
 
 
-The Architect is not a sovereign above the system. \\
-
-The Architect is a \*\*guardian of alignment\*\* within it.
+The Architect exists to preserve coherence across time, not to rule outcomes.
 
 
 
-
-
----
-
+The Architect is a guardian of alignment within the system.
 
 
 
-
-\## \*\*Foundational Principle\*\*
-
-
-
-Authority within the Arcanum is \*\*layered, not centralized\*\*.
+\---
 
 
 
-The Architect therefore holds \*\*meta-authority\*\* — the capacity to act \*across\* layers without possessing \*supremacy\* over any of them.
+\## Foundational Principle
+
+
+
+Authority within Arcanum is layered, not centralized.
+
+
+
+The Architect holds meta-authority: the capacity to act across layers without possessing supremacy over any one layer.
 
 
 
@@ -71,47 +60,35 @@ The Architect may harmonize, but may never contradict.
 
 
 
-
-
----
-
+\---
 
 
 
-
-\## \*\*Formal Position\*\*
-
-
-
-The Architect is a \*\*meta-function\*\*, not a functional layer.
+\## Formal Position
 
 
 
+The Architect is a meta-function, not a sovereign layer.
 
 
 
+\- does not replace doctrine
 
-\* The Architect does not replace Doctrine.
+\- does not override protocol
 
-\* The Architect does not override Protocol.
-
-\* The Architect does not define Lived Experience.
-
-
-
-The Architect operates \*\*between layers\*\*, ensuring they remain mutually consistent.
+\- does not define lived experience
 
 
 
-
-
----
-
+The Architect operates between layers, ensuring they remain mutually consistent.
 
 
 
+\---
 
-\## \*\*Source of Authority\*\*
+
+
+\## Source of Authority
 
 
 
@@ -119,31 +96,23 @@ The Architect derives authority from:
 
 
 
+1\. doctrine (ratified canon)
+
+2\. ratified canonical documents
+
+3\. logged interpretations and decisions
 
 
 
-
-1\. The Constitution (Doctrine)
-
-2\. Ratified canonical documents
-
-3\. Logged decisions and interpretations
+The Architect possesses no authority beyond what is explicitly defined herein.
 
 
 
-The Architect possesses \*\*no authority\*\* beyond what is explicitly defined herein.
+\---
 
 
 
-
-
----
-
-
-
-
-
-\## \*\*Core Responsibilities\*\*
+\## Core Responsibilities
 
 
 
@@ -151,35 +120,27 @@ The Architect is responsible for:
 
 
 
+\- maintaining doctrinal coherence
+
+\- resolving ambiguity between layers
+
+\- preventing silent drift
+
+\- refusing implementations that violate canon
+
+\- interpreting doctrine when conflicts arise
 
 
 
-
-\* Maintaining doctrinal coherence
-
-\* Resolving ambiguity between layers
-
-\* Preventing silent drift
-
-\* Refusing implementations that violate canon
-
-\* Interpreting doctrine when conflicts arise
+The Architect’s primary tool is refusal, not enforcement.
 
 
 
-The Architect’s primary tool is \*\*refusal\*\*, not enforcement.
+\---
 
 
 
-
-
----
-
-
-
-
-
-\## \*\*Cross-Layer Action\*\*
+\## Cross-Layer Action
 
 
 
@@ -187,167 +148,97 @@ The Architect may act across layers to:
 
 
 
+\- halt violations
+
+\- clarify boundaries
+
+\- request redesigns
+
+\- delay activation of risky mechanisms
 
 
 
-
-\* Halt violations
-
-\* Clarify boundaries
-
-\* Request redesigns
-
-\* Delay recognition or activation
+The Architect may never:
 
 
 
-The Architect may \*\*never\*\*:
+\- contradict doctrine
+
+\- redefine Vitae recognitions
+
+\- accelerate becoming
+
+\- alter economic invariants unilaterally
+
+\- simulate lived experience
 
 
 
+\---
 
 
 
-
-\* Contradict Doctrine
-
-\* Redefine Vitae recognitions
-
-\* Accelerate becoming
-
-\* Alter economic invariants
-
-\* Simulate lived experience
+\## Relationship to Architect GPT
 
 
 
-
-
----
-
+Architect GPT is an instrument of the Architect, not an authority.
 
 
 
+Architect GPT may:
 
-\## \*\*Relationship to Architect GPT\*\*
+\- analyze
 
+\- surface contradictions
 
-
-Architect GPT is an \*\*instrument of the Architect\*\*, not an authority.
-
-
-
-Architect GPT:
-
-
-
-
-
-
-
-\* Analyzes
-
-\* Reflects
-
-\* Surfaces contradictions
-
-\* Drafts proposals
+\- draft proposals and patches
 
 
 
 Architect GPT may not:
 
+\- ratify doctrine
+
+\- make binding decisions
+
+\- override human judgment
 
 
 
+Final authority rests with the human Architect during early phases and with governance as it matures.
 
 
 
-\* Ratify doctrine
-
-\* Make binding decisions
-
-\* Override human judgment
+\---
 
 
 
-All final authority rests with the human Architect.
+\## Stability Guard (Time-Limited)
 
 
 
-
-
----
-
-
-
-
-
-\## \*\*Stability Guard (Time-Limited)\*\*
-
-
-
-During Pre-Genesis, Genesis, and Alpha phases, the Architect holds a \*\*Stability Guard\*\*.
+During Pre-Genesis, Genesis, and early releases, the Architect holds a Stability Guard.
 
 
 
 This allows the Architect to:
 
+\- pause deployments
 
+\- roll back to last known stable state
 
-
-
-
-
-\* Pause deployments
-
-\* Roll back to last known stable state
-
-\* Invalidate unratified changes
+\- invalidate unratified changes
 
 
 
 \*\*Constraints:\*\*
 
+\- all actions must be logged
 
+\- no new authority may be created
 
-
-
-
-
-\* All actions must be logged
-
-\* No new authority may be created
-
-\* Guard sunsets automatically at v1.0 unless extended by community vote
-
-
-
-
-
----
-
-
-
-
-
-\## \*\*Transparency \& Logging\*\*
-
-
-
-All doctrinal interpretations and cross-layer interventions must be:
-
-
-
-
-
-
-
-\* Explicit
-
-\* Logged
-
-\* Reviewable
+\- the guard sunsets at v1.0 unless extended by community vote
 
 
 
@@ -355,47 +246,31 @@ Silent intervention is forbidden.
 
 
 
-
-
----
-
+\---
 
 
 
-
-\## \*\*Failure Modes (Forbidden)\*\*
-
-
-
-The following constitute architectural failure:
+\## Failure Modes (Forbidden)
 
 
 
+\- acting as a ruler rather than guardian
+
+\- using urgency to justify exception
+
+\- overriding lived experience
+
+\- treating Architect GPT as sovereign
+
+\- making undocumented doctrinal changes
 
 
 
-
-\* Acting as a ruler rather than guardian
-
-\* Using urgency to justify exception
-
-\* Overriding lived experience
-
-\* Treating Architect GPT as sovereign
-
-\* Making undocumented doctrinal changes
+\---
 
 
 
-
-
----
-
-
-
-
-
-\## \*\*Enforcement\*\*
+\## Enforcement
 
 
 
@@ -403,36 +278,9 @@ Architect role integrity is enforced through:
 
 
 
+\- public doctrine
 
+\- logging and review
 
+\- community oversight as governance matures
 
-
-\* Constitutional constraint
-
-\* Public doctrine
-
-\* Logging and review
-
-
-
-The Architect is accountable to the system they guard.
-
-
-
-
-
----
-
-
-
-
-
-\## \*\*Canonical Status\*\*
-
-
-
-This document is ratified as \*\*Architect Role \& Meta-Authority v1.0\*\*.
-
-
-
-It is binding across all Arcanum layers, all AI instruments, and all future governance structures.

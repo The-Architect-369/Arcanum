@@ -1,111 +1,86 @@
----
+\---
+
 title: "Temporal Model"
+
 status: canonical
+
 visibility: public
-last_updated: 2026-02-18
-description: ""
----
 
+last\_updated: 2026-03-02
 
-# Temporal Model
+description: "Time as rhythm: windows of participation without coercion; constraints across doctrine, protocol, app, and lived experience."
 
-\# \*\*Temporal Model of the Arcanum\*\*
+version: "1.0"
 
+phase: "Pre-Genesis"
 
+layer: "Doctrine"
 
-\*\*Version:\*\* 1.0 (Canonical) \\
+\---
 
-\*\*Status:\*\* Ratified \\
 
-\*\*Phase:\*\* Pre-Genesis
 
+\# Temporal Model
 
 
 
+\## Purpose
 
----
 
 
+This document defines the temporal model of Arcanum — how time is understood, witnessed, and respected across the system.
 
 
 
-\## \*\*Purpose\*\*
+Time within Arcanum is not a tool of pressure, optimization, or control. It is a field of rhythm through which becoming unfolds.
 
 
 
-This document defines the \*\*Temporal Model\*\* of the Arcanum — how time is understood, witnessed, and respected across the system.
+The system does not compel action through time. It offers windows of participation. Choice remains sovereign.
 
 
 
-Time within Arcanum is not a tool of pressure, optimization, or control. It is a \*\*field of rhythm\*\* through which becoming unfolds.
+\---
 
 
 
-The system does not compel action through time. It offers \*\*windows of participation\*\*. Choice remains sovereign.
+\## Foundational Principle
 
 
 
+Time in Arcanum is \*\*rhythmic, cyclical, and spiral-bound\*\*.
 
 
----
 
+\- at close range, a being experiences time as linear progression  
 
+\- at greater scope, the path reveals cyclical return  
 
+\- across a lifetime, growth unfolds as a spiral — never repeating, never escaping rhythm  
 
 
-\## \*\*Foundational Principle\*\*
 
+\---
 
 
-Time in the Arcanum is \*\*rhythmic, cyclical, and spiral-bound\*\*.
 
+\## Temporal Layers (By System Layer)
 
 
 
+Time is expressed differently across layers:
 
 
 
-\* At close range, a being experiences time as \*\*linear progression\*\*.
+1\. doctrine (temporal law)
 
-\* At greater scope, the path reveals itself as \*\*cyclical return\*\*.
+2\. architect (temporal stewardship)
 
-\* Across a lifetime, growth unfolds as a \*\*spiral\*\* — never repeating, never escaping rhythm.
+3\. protocol (chain time)
 
+4\. application (calendars and windows)
 
-
-This model aligns with lived human experience and the temporal reality of Earth.
-
-
-
-
-
----
-
-
-
-
-
-\## \*\*Formal Temporal Layers\*\*
-
-
-
-Time is expressed differently across layers, with strict boundaries:
-
-
-
-
-
-
-
-1\. \*\*Doctrine (Temporal Law)\*\*
-
-2\. \*\*Architect (Temporal Stewardship)\*\*
-
-3\. \*\*Protocol (Chain Time)\*\*
-
-4\. \*\*Application (Calendars \& Windows)\*\*
-
-5\. \*\*Lived Experience (Rhythm \& Readiness)\*\*
+5\. lived experience (rhythm and readiness)
 
 
 
@@ -113,71 +88,33 @@ Higher layers define constraints; lower layers may never reinterpret meaning.
 
 
 
-
-
----
-
+\---
 
 
 
-
-\## \*\*Temporal Layer I — Doctrine\*\*
-
-
-
-\*\*Source of Truth:\*\* Constitution
+\## Doctrine (Temporal Law)
 
 
 
-Doctrine defines \*\*what time is allowed to be\*\* within the Arcanum.
-
-
-
-Time is:
-
-
-
-
-
-
-
-\* Cyclical at the macro level
-
-\* Linear in lived perception
-
-\* Spiral in growth
+Doctrine defines what time is allowed to be within Arcanum.
 
 
 
 \*\*Prohibitions:\*\*
 
+\- time may not be used as coercion
+
+\- time may not be weaponized through urgency
+
+\- time may not be framed as scarcity of worth
 
 
 
+\---
 
 
 
-\* Time may not be used as coercion.
-
-\* Time may not be weaponized through urgency.
-
-\* Time may not be framed as scarcity of worth.
-
-
-
-
-
----
-
-
-
-
-
-\## \*\*Temporal Layer II — Architect\*\*
-
-
-
-\*\*Source of Truth:\*\* Doctrine + Logged Decisions
+\## Architect (Temporal Stewardship)
 
 
 
@@ -187,181 +124,105 @@ The Architect stewards temporal coherence.
 
 Responsibilities:
 
+\- ensure no system component pressures action through time
 
+\- preserve alignment with natural (earth-bound) rhythms
 
-
-
-
-
-\* Ensure no system component pressures action through time
-
-\* Preserve alignment with natural (Earth-bound) rhythms
-
-\* Resolve ambiguities where implementation risks urgency or gamification
+\- refuse urgency mechanisms disguised as “motivation”
 
 
 
 \*\*Prohibitions:\*\*
 
+\- the Architect may not accelerate time artificially
+
+\- the Architect may not introduce incentives that bypass lived readiness
 
 
 
+\---
 
 
 
-\* The Architect may not accelerate time artificially.
-
-\* The Architect may not introduce temporal incentives that bypass lived readiness.
+\## Protocol (Chain Time)
 
 
 
-
-
----
-
+The protocol anchors irreversible witnesses and records that something occurred.
 
 
 
-
-\## \*\*Temporal Layer III — Protocol (Chain Time)\*\*
-
-
-
-\*\*Source of Truth:\*\* Chain state (block time)
-
-
-
-The Protocol:
-
-
-
-
-
-
-
-\* Anchors irreversible temporal witnesses
-
-\* Records \*that\* something occurred within a window
-
-
-
-The chain does \*\*not\*\* interpret timing.
+The chain does not interpret timing.
 
 
 
 \*\*Prohibitions:\*\*
 
+\- no penalties for missed windows
+
+\- no meaning assigned to punctuality
+
+\- no inference of intent from timing
 
 
 
+\---
 
 
 
-\* The Protocol may not assign meaning to punctuality.
-
-\* The Protocol may not penalize missed windows.
-
-\* The Protocol may not infer intent from timing.
+\## Application (Calendars and Windows)
 
 
 
+The application renders:
 
+\- cycles
 
----
+\- windows
 
-
-
-
-
-\## \*\*Temporal Layer IV — Application\*\*
-
-
-
-\*\*Source of Truth:\*\* Application state
+\- seasonal and ritual opportunities
 
 
 
-The Application renders:
-
-
-
-
-
-
-
-\* Calendars
-
-\* Cycles
-
-\* Seasonal and ritual windows
-
-
-
-The Application offers \*\*opportunity\*\*, not pressure.
+The application offers opportunity, not pressure.
 
 
 
 \*\*Rules:\*\*
 
+\- windows open and close visibly
 
+\- no stress-inducing countdown design
 
-
-
-
-
-\* Windows open and close visibly.
-
-\* No countdowns designed to induce stress.
-
-\* No negative feedback for non-participation.
+\- no negative feedback for non-participation
 
 
 
 \*\*Prohibitions:\*\*
 
+\- no simulated outcomes of participation
+
+\- no predictions of benefits
+
+\- no urgency metrics
 
 
 
+\---
 
 
 
-\* The Application may not simulate outcomes of participation.
-
-\* The Application may not predict benefits.
-
-\* The Application may not display urgency metrics.
-
-
-
-
-
----
-
-
-
-
-
-\## \*\*Temporal Layer V — Lived Experience\*\*
-
-
-
-\*\*Source of Truth:\*\* The Being
+\## Lived Experience (Rhythm and Readiness)
 
 
 
 Only lived experience perceives:
 
+\- tempo (felt speed)
 
+\- readiness
 
-
-
-
-
-\* Tempo (felt speed)
-
-\* Readiness
-
-\* Resonance with a moment
+\- resonance with a moment
 
 
 
@@ -369,35 +230,27 @@ The system does not measure tempo.
 
 
 
-Tempo exists \*\*only\*\* within lived experience and may not be externalized.
+Tempo exists only within lived experience and may not be externalized.
 
 
 
-
-
----
-
+\---
 
 
 
-
-\## \*\*Participation \& Windows\*\*
-
-
-
-Temporal windows represent \*\*opportunities for alignment\*\*.
+\## Participation and Windows
 
 
 
+Temporal windows represent opportunities for alignment:
 
 
 
+\- participation may confer benefit
 
-\* Participation within a window may confer benefit.
+\- non-participation carries no penalty
 
-\* Non-participation carries \*\*no penalty\*\*.
-
-\* Observation alone is neutral.
+\- observation alone is neutral
 
 
 
@@ -405,55 +258,11 @@ Time never judges.
 
 
 
-
-
----
-
+\---
 
 
 
-
-\## \*\*Rhythm Over Speed\*\*
-
-
-
-The Arcanum recognizes \*\*timing\*\*, not speed.
-
-
-
-
-
-
-
-\* Speed is subjective and lived.
-
-\* Timing is shared and witnessed.
-
-
-
-Therefore:
-
-
-
-
-
-
-
-\* Tempo is never represented systemically.
-
-\* Only the opening and closing of windows are expressed.
-
-
-
-
-
----
-
-
-
-
-
-\## \*\*Enforcement\*\*
+\## Enforcement
 
 
 
@@ -461,34 +270,15 @@ Temporal integrity is enforced through:
 
 
 
+\- doctrine
+
+\- architectural review
+
+\- design constraints
+
+\- CI guards (where applicable)
 
 
 
+There is no exception mechanism.
 
-\* Doctrine
-
-\* Architectural review
-
-\* Design constraints
-
-\* CI guards (where applicable)
-
-
-
-There is \*\*no exception mechanism\*\*.
-
-
-
-
-
----
-
-
-
-
-
-\## \*\*Canonical Status\*\*
-
-
-
-This document is ratified as \*\*Temporal Model v1.0\*\* and is binding across all Arcanum modules, including Tempus, Vitae, Economy, and Application layers.

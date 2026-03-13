@@ -1,224 +1,418 @@
----
-title: "Arcanum Chain"
+\---
+
+title: "ARCnet (Arcanum Chain)"
+
 status: draft
+
 visibility: public
-last_updated: 2026-02-20
-description: "The on-chain settlement layer of Arcanum: identity, mana, rites, marketplace primitives, treasuries, and upgrade discipline."
----
 
-# Arcanum Chain
+last\_updated: 2026-03-13
 
-The **Arcanum Chain** is the **settlement layer** of the Arcanum ecosystem: it anchors identity, enforces economic/ritual invariants, routes value, and emits auditable events that other layers can verify.
+description: "ARCnet is the settlement layer of Arcanum: identity anchoring, MANA economy, receipts, treasury, governance, and upgrade discipline."
+
+\---
+
+
+
+\# ARCnet (Arcanum Chain)
+
+
+
+\*\*ARCnet\*\* is the \*\*settlement layer\*\* of the Arcanum ecosystem: it anchors identity, enforces bounded economic invariants, routes value, and emits auditable receipts that other layers can verify.
+
+
 
 It is designed to be:
 
-- **Minimal** (only what must be on-chain goes on-chain)
-- **Composable** (modules can evolve without rewriting the base)
-- **Sovereignty-aligned** (user custody first; no hidden custodianship)
-- **Recoverable** (upgrade/rollback discipline during early phases)
-- **Auditable** (events are the canonical truth for state transitions)
 
-This document is the whitepaper-facing chain overview. Implementation specifics live in `docs/specs/chain/`.
 
----
+\- \*\*Minimal\*\* (only what must be settled goes on-chain)
 
-## 1) Why a chain exists in Arcanum
+\- \*\*Composable\*\* (modules evolve without rewriting the base)
 
-Arcanum is not “a blockchain app” — it is an ecosystem with doctrine, curriculum, and lived practice. The chain exists because a few things benefit from **public settlement**:
+\- \*\*Sovereignty-aligned\*\* (user custody first; no hidden custodianship)
 
-- **Identity anchoring** (non-transferable participation identity)
-- **Economic enforcement** (Mana issuance, sinks, pricing, receipts)
-- **Rite attestations** (proof-of-completion and anti-spam gating)
-- **Marketplace routing** (creator revenue splits, tips, purchases)
-- **Treasury governance** (multi-sig policy, disbursements, audit trails)
+\- \*\*Recoverable\*\* (upgrade/rollback discipline during early phases)
 
-Everything else belongs off-chain: content, private memory, high-volume interaction, and personal development traces.
+\- \*\*Auditable\*\* (events/receipts are canonical truth for state transitions)
 
----
 
-## 2) Network model
 
-Arcanum’s settlement layer targets an **EVM-compatible chain** for developer leverage and wallet interoperability, with deployment on **Polygon (EVM)** as the cost-efficient default for early phases.
+This document is the architecture-facing chain overview. Implementation specifics should live in `docs/specs/chain/` when present.
 
-Design constraints:
 
-- Low fees for frequent micro-actions (Mana sinks, receipts)
-- Broad tooling support (indexers, audits, wallets)
-- Upgrade/roll-forward capability during alpha/beta
-- Clear migration paths if the system later deploys cross-chain
 
----
+\---
 
-## 3) Core primitives
 
-### 3.1 ChainCode (soul-bound identity)
 
-Each participant mints a **ChainCode** identity:
+\## 1) Why a chain exists in Arcanum
 
-- **Non-transferable** (soul-bound / non-tradable)
-- Used as the anchor for attestations (rites completed, unlocks, permissions)
-- Designed to minimize personal data: identity is a *handle*, not a dossier
 
-This identity is the canonical on-chain “who,” without becoming a surveillance identity.
 
-### 3.2 ACC (access credential)
+Arcanum is not “a blockchain app.” It is a layered ecosystem with doctrine, lived practice, and bounded modules. The chain exists because a few things benefit from \*\*public settlement\*\*:
 
-Arcanum also uses an access credential concept (often referenced as **ACC**) to support:
 
-- gating / access control (e.g., early access, eligibility, realms)
-- wallet and session linking logic
-- staged onboarding experiences
 
-ACC should remain **lightweight** and never become a status hierarchy.
+\- \*\*Identity anchoring\*\* (non-transferable participation identity)
 
-### 3.3 Mana (capacity + value)
+\- \*\*Economic enforcement\*\* (MANA issuance, sinks, pricing, receipts)
 
-**Mana** is the native unit of participation.
+\- \*\*Rite attestations\*\* (proof-of-completion and anti-spam gating; factual only)
 
-Arcanum treats Mana as a single primitive with two inseparable aspects:
+\- \*\*Value routing\*\* (purchases, revenue splits, treasury flows)
 
-- **Capacity:** permission to invoke features and actions
-- **Value:** transferable utility recognized by others
+\- \*\*Governance + treasury actions\*\* (transparent decisions and execution)
 
-Mana is engineered to be *useful first*, with sinks and receipts built into the product’s real behavior (not as an ornamental token).
 
----
 
-## 4) Contract suite (high-level)
+Everything else belongs off-chain: content, private memory, high-volume interaction, personal development traces.
 
-Arcanum’s on-chain system is a small set of contracts that emit canonical events and enforce invariants.
 
-### 4.1 Mana Core
+
+\---
+
+
+
+\## 2) Network model (canonical posture)
+
+
+
+ARCnet is designed as a sovereign chain built on a modular stack:
+
+
+
+\- \*\*Cosmos SDK\*\* (module architecture)
+
+\- \*\*CometBFT\*\* (consensus)
+
+\- Optional \*\*IBC\*\* interoperability (deliberate, governance-approved)
+
+
+
+ARCnet is intended to be an independent settlement layer so that invariants and governance constraints are enforceable at protocol level.
+
+
+
+> Interoperability with EVM ecosystems, if pursued, should be implemented as a governed bridge boundary — not as an architectural dependency.
+
+
+
+\---
+
+
+
+\## 3) Core primitives
+
+
+
+\### 3.1 Identity anchor (ACC / ChainCode)
+
+Each participant may mint or bind a minimal identity anchor:
+
+
+
+\- \*\*Non-transferable\*\*
+
+\- Minimal data footprint (anchor, not dossier)
+
+\- Used for receipts and eligibility checks (bounded)
+
+
+
+The identity anchor is the canonical on-chain “who,” without becoming a surveillance identity.
+
+
+
+\### 3.2 MANA (capacity + value)
+
+\*\*MANA\*\* is ARCnet’s utility token.
+
+
+
+It is treated as a single primitive with two inseparable aspects:
+
+
+
+\- \*\*Capacity:\*\* permission to invoke actions and access utilities
+
+\- \*\*Value:\*\* transferable utility recognized by others
+
+
+
+MANA is engineered to be \*useful first\*, with sinks and receipts tied to real behavior.
+
+
+
+\### 3.3 Receipts (events as canonical truth)
+
+ARCnet treats \*\*receipts\*\* as canonical truth for:
+
+
+
+\- identity state transitions (mint/bind/credential checks)
+
+\- MANA movement (mint, spend, burn, transfer)
+
+\- rite completion attestations (factual)
+
+\- purchase/unlock receipts
+
+\- treasury routing actions
+
+\- governance actions
+
+
+
+Off-chain systems reconstruct truth from receipts rather than from hidden databases.
+
+
+
+\---
+
+
+
+\## 4) Module suite (high level)
+
+
+
+ARCnet’s settlement layer is best described as protocol modules (not “app contracts”):
+
+
+
+\### 4.1 Identity module
 
 Responsibilities:
 
-- issuance (rites, allocations, purchases via on-ramp flows)
-- sinks/burn (feature invocation, unlocks, costs)
-- receipts (so clients and indexers can reconstruct “what happened”)
+\- define identity anchor lifecycle (mint/bind/revoke where allowed)
 
-Key principle: **Mana spending should always be legible** (who spent, why, what they received).
+\- enforce non-transferability constraints
 
-### 4.2 Tempest / Rite Registry
+\- provide eligibility proofs without exposing private data
 
-Responsibilities:
 
-- registry of rites and their requirements
-- proof-of-completion attestations bound to ChainCode
-- anti-spam / anti-bot gating hooks (rate limits, cost floors, eligibility rules)
 
-This is where “ritual action” becomes auditable state.
-
-### 4.3 Arcnet Marketplace (posts, listings, tips)
+\### 4.2 Economy (MANA) module
 
 Responsibilities:
 
-- publishing references (content hashes / pointers, not raw content)
-- pricing, purchases, unlock receipts
-- creator routing (revenue splits to creators and treasuries)
-- lightweight social signals where required (e.g., tips)
+\- issuance parameters (bounded by governance)
 
-The chain never stores the content itself — only the **reference** and **economic proof**.
+\- sinks/burn mechanisms (utility-bound)
 
-### 4.4 Treasury routing + policy safes
+\- transfer rules
+
+\- legible receipts
+
+
+
+Key principle: \*\*MANA spending must always be legible\*\* (who spent, why, what they received).
+
+
+
+\### 4.3 Tempus anchors / rite attestations module (bounded)
 
 Responsibilities:
 
-- multi-tier treasury routing (protocol/community/grants tiers)
-- programmatic distribution to safes
-- upgrade and emergency controls during early phases
+\- registry of rite types (if used)
 
-Treasuries are implemented as multi-sig vaults (e.g., Gnosis Safe-class tooling) with transparent routing and audit trails.
+\- factual completion attestations bound to identity anchors
 
----
+\- anti-spam / anti-bot gating hooks (rate limits, cost floors, eligibility rules)
 
-## 5) Events as the canonical truth
 
-Arcanum treats **on-chain events** as the primary source of truth for:
 
-- identity state transitions (mint, bind, credential checks)
-- Mana movement (mint, spend, burn, transfer)
-- rite completion and attestations
-- purchase/unlock receipts
-- treasury routing actions
+Important: attestations are facts (“completed”), not judgements (“improved,” “advanced,” “worthy”).
 
-Off-chain systems (apps, indexers, caches, analytics) **reconstruct** state from events rather than depending on hidden databases.
 
-This keeps the protocol legible and reduces trust surface area.
 
----
+\### 4.4 Routing module (market + treasury flows)
 
-## 6) Storage and off-chain alignment
+Responsibilities:
 
-Arcanum uses a layered model:
+\- purchases/unlocks and revenue split receipts
 
-- **On-chain:** hashes, references, receipts, attestations, routing
-- **Off-chain:** content, private memory, high-volume interaction
-- **Content addressing:** stored in IPFS-style content networks, referenced by hash
-- **Peer networking:** libp2p-style channels where appropriate for rooms and presence
+\- treasury routing lanes (burn/treasury/grants if adopted)
 
-A consistent rule:
+\- verifiable distribution without off-chain discretion
+
+
+
+\### 4.5 Treasury module
+
+Responsibilities:
+
+\- custody and execution constraints
+
+\- governance-approved disbursements
+
+\- auditable flows
+
+\- time-lock execution where applicable
+
+
+
+Early phases may use multi-sig custody; mature phases should converge toward protocol-native execution.
+
+
+
+\### 4.6 Governance module
+
+Responsibilities:
+
+\- proposals and voting
+
+\- parameter changes within bounds
+
+\- upgrade coordination
+
+\- treasury approvals
+
+
+
+Governance is constitutional before it is democratic.
+
+
+
+\---
+
+
+
+\## 5) Storage and off-chain alignment
+
+
+
+ARCnet uses layered storage:
+
+
+
+\- \*\*On-chain:\*\* hashes, references, receipts, attestations, routing
+
+\- \*\*Off-chain:\*\* content, private memory, high-volume interaction
+
+\- \*\*Content addressing:\*\* content is referenced by hash/pointer; chain stores proofs, not payloads
+
+
+
+Rule:
 
 > If it doesn’t need settlement, it shouldn’t touch the chain.
 
----
 
-## 7) Privacy posture
 
-Arcanum’s privacy design is “minimum necessary”:
+\---
 
-- no raw personal data on-chain
-- attestations are anchored to ChainCode, not to real-world identity
-- selective disclosure is preferred where proofs are needed
-- off-chain traces should remain user-controlled and revocable
 
-Identity is an anchor for coordination — not a mechanism for extraction.
 
----
+\## 6) Privacy posture
 
-## 8) Upgrade, rollback, and stability guardrails
 
-During alpha/beta, Arcanum may use controlled upgrade mechanisms (e.g., proxies where appropriate) with clear rules:
 
-- upgrades are **transparent** and logged
-- critical contracts can be protected by **time-locks** and **multi-sig**
-- “stability guard” rollback procedures exist for catastrophic faults during early phases
+ARCnet’s privacy design is “minimum necessary”:
 
-This power is intended to **sunset** at v1.0 (unless extended by explicit governance), so the protocol can converge toward stronger immutability guarantees.
 
----
 
-## 9) Security model (whitepaper level)
+\- no raw personal data on-chain
 
-Security is treated as a first-class system property:
+\- identity anchor is minimal and consent-respecting
 
-- third-party audits before mainnet-scale deployment
-- bug bounty program for continuous hardening
-- multi-sig controls for treasuries and upgrades
-- minimal contract surface area (keep core small, push complexity off-chain)
-- clear invariants (what must never happen) expressed as specs and tests
+\- off-chain traces should remain user-controlled and revocable
 
----
+\- logs are technical truth, not human worth
 
-## 10) How Arcanum Chain connects to the modules
 
-Arcanum’s modules remain composable and bounded:
 
-- **Hope:** may consume Mana for stateful guidance (costs enforce resource discipline)
-- **Vitae:** unlocks, access, and recognition receipts can be settled on-chain while content remains off-chain
-- **Tempest:** rite completion and calendar-linked rhythm can emit attestations/events
-- **Arcnet:** marketplace and social primitives route value and emit receipts
+\---
 
-The chain is not “the app.” It is the **truth layer** the app can rely on.
 
----
 
-## 11) Where to go next
+\## 7) Upgrade, rollback, and stability guardrails
 
-- Technical architecture overview: `technical-architecture.md`
-- Token economics: `tokenomics.md`
-- Chain implementation specs (authoritative details):
-  - `../specs/chain/arcanum-chain-overview.md`
-  - `../specs/chain/invariants.md`
-  - `../specs/chain/mana.md`
-  - `../specs/chain/tempus-hooks.md`
-  - `../specs/chain/treasury.md`
+
+
+During early phases, ARCnet must remain recoverable:
+
+
+
+\- upgrades are transparent and logged
+
+\- critical operations are bounded (time-locks, thresholds)
+
+\- emergency rollback procedures exist for catastrophic faults
+
+
+
+This posture is intended to \*\*sunset\*\* as the system stabilizes, converging toward stronger immutability guarantees.
+
+
+
+\---
+
+
+
+\## 8) Security model (architecture level)
+
+
+
+Security is first-class:
+
+
+
+\- audits before mainnet-scale deployment
+
+\- bug bounty program where appropriate
+
+\- minimal settlement surface (keep core small)
+
+\- invariants expressed as specs and tests
+
+\- clear governance constraints on upgrades and treasury actions
+
+
+
+\---
+
+
+
+\## 9) How ARCnet connects to modules
+
+
+
+\- \*\*Hope:\*\* may invoke optional paid utilities; must not write semantic judgements to chain
+
+\- \*\*Tempus:\*\* may emit factual receipts for bounded actions
+
+\- \*\*Nexus:\*\* may route value and reference content; content remains off-chain
+
+\- \*\*Vitae:\*\* may anchor limited proof receipts; never encode judgements or worth
+
+\- \*\*Wallet:\*\* renders chain truth; never defines it
+
+
+
+The chain is not “the app.” It is the truth layer the app can rely on.
+
+
+
+\---
+
+
+
+\## 10) Where to go next
+
+
+
+\- Boundary contract: `./app-chain-doctrine.md`
+
+\- Canonical modules: `./canonical-modules.md`
+
+\- Whitepaper technical architecture: `../whitepaper/technical-architecture.md`
+
+\- Tokenomics: `../whitepaper/tokenomics.md`
+
+\- Governance model: `../whitepaper/governance-constitutional-model.md`
+
+\- Governance mechanics: `../governance/governance-specification.md`
+
+\- Treasury constitution: `../governance/treasury-constitution.md`
+

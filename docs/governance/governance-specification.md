@@ -1,678 +1,286 @@
 ---
-
 title: "Governance Specification"
-
 status: canonical
-
 visibility: public
-
-last\_updated: 2026-02-26
-
-description: "Operational governance mechanics for ARCnet, including proposal flow, voting structure, neutrality safeguards, and constitutional enforcement."
-
+last_updated: 2026-03-02
+description: "Operational governance mechanics for ARCnet: proposals, voting, thresholds, neutrality safeguards, and treasury execution rules."
 ---
 
+# Governance Specification
 
+## 1. Purpose
 
-\# Governance Specification
-
-
-
-\## I. Purpose
-
-
-
-This document defines the operational governance mechanics of \*\*ARCnet\*\*.
-
-
+This document defines the operational governance mechanics of **ARCnet**.
 
 It specifies:
 
+- proposal structure and lifecycle
+- voting mechanics, quorum, thresholds
+- delegation and representation
+- neutrality safeguards
+- treasury execution rules
+- amendment controls and logging
 
-
-\- Proposal structure
-
-\- Voting mechanics
-
-\- Quorum requirements
-
-\- Authority weighting
-
-\- Treasury execution flow
-
-\- Neutrality safeguards
-
-\- Constitutional enforcement
-
-
-
-This document does not redefine the constitutional model described in the whitepaper. It operationalizes it.
-
-
+This document does **not** redefine the whitepaper governance model; it operationalizes it.
 
 ---
 
+## 2. Governance Hierarchy
 
+ARCnet governance operates within this hierarchy:
 
-\# II. Governance Hierarchy
+1. **Constitutional invariants** (non-overridable)
+2. **Protocol parameters** (adjustable within bounds)
+3. **Treasury allocations** (proposal + time-lock)
+4. **Module-level governance**
+5. **Application-level governance**
 
-
-
-ARCnet governance operates within the following hierarchy:
-
-
-
-1\. \*\*Constitutional Invariants\*\* (non-overridable)
-
-2\. \*\*Protocol Parameters\*\* (governance-adjustable within bounds)
-
-3\. \*\*Treasury Allocations\*\*
-
-4\. \*\*Module-Level Governance\*\*
-
-5\. \*\*Application-Level Governance\*\*
-
-
-
-Chain-level rules supersede module-level rules.
-
-
-
+Chain-level rules supersede module-level rules.  
 Application-level governance cannot override protocol invariants.
 
+---
 
+## 3. Constitutional Invariants (Operational Summary)
+
+The following are non-overridable under standard governance actions:
+
+- identity cannot be duplicated or reassigned
+- time-based progression cannot be accelerated through payment
+- mint parameters cannot bypass protocol emission bounds
+- treasury actions require formal proposal and (where applicable) time-lock
+- governance authority cannot derive solely from capital
+- constitutional amendments require elevated thresholds and extended time-lock
 
 ---
 
+## 4. Governance Authority Model (Multi-Factor)
 
+Governance weight is multi-factorial and may derive from:
 
-\# III. Constitutional Invariants
-
-
-
-The following rules cannot be overridden by standard governance vote:
-
-
-
-\- Identity cannot be duplicated or reassigned.
-
-\- Time-based progression cannot be accelerated through payment.
-
-\- Mint parameters cannot bypass defined emission bounds.
-
-\- Treasury funds require formal proposal and time-lock.
-
-\- Governance authority cannot derive solely from capital.
-
-\- Constitutional structure requires supermajority and extended time-lock to amend.
-
-
-
-These invariants are enforced at protocol level where possible.
-
-
-
----
-
-
-
-\# IV. Governance Authority Model
-
-
-
-Governance weight is multi-factorial.
-
-
-
-Voting power may derive from:
-
-
-
-\- Staked MANA
-
-\- Identity longevity (ACC age)
-
-\- Participation consistency metrics
-
-\- Vitae progression signals
-
-\- Delegation relationships
-
-
+- staked MANA
+- identity longevity (ACC age)
+- participation consistency metrics
+- Vitae thresholds (recognition signals, not rank)
+- delegation relationships
 
 No single vector determines authority.
 
+---
 
+## 5. Proposal Types
 
-Capital concentration alone cannot fully control governance outcomes.
+### 5.1 Parameter adjustment proposals
+Modify bounded protocol parameters such as:
 
+- emission rates
+- validator thresholds
+- deposit requirements
+- fee multipliers
 
+All changes must remain within predefined ceilings and floors.
+
+### 5.2 Treasury allocation proposals
+Allocate treasury funds for:
+
+- security audits
+- development grants
+- validator incentives
+- operations
+- ecosystem expansion
+
+Require deposit, quorum, and time-lock prior to execution (unless emergency path applies).
+
+### 5.3 Module approval proposals
+Approve or modify:
+
+- new protocol modules
+- optional module activation/deactivation
+- governance-approved upgrades
+
+Module code must pass required audits and review gates.
+
+### 5.4 Governance upgrade proposals
+Modify governance mechanics:
+
+- thresholds
+- delegation structures
+- voting periods
+- time-lock rules
+
+May require elevated thresholds depending on impact.
+
+### 5.5 Interoperability proposals
+Enable or modify:
+
+- IBC channels
+- bridges and external integrations
+- cross-chain asset policy
+
+Must include security analysis and readiness criteria.
 
 ---
 
-
-
-\# V. Proposal Types
-
-
-
-Governance proposals fall into the following categories:
-
-
-
-\## 1. Parameter Adjustment Proposals
-
-
-
-Used to modify bounded protocol parameters such as:
-
-
-
-\- Emission rates
-
-\- Validator thresholds
-
-\- Deposit requirements
-
-\- Fee multipliers
-
-
-
-Bounded by predefined parameter ceilings and floors.
-
-
-
----
-
-
-
-\## 2. Treasury Allocation Proposals
-
-
-
-Used to allocate treasury funds for:
-
-
-
-\- Development grants
-
-\- Security audits
-
-\- Validator incentives
-
-\- Ecosystem expansion
-
-\- Infrastructure upgrades
-
-
-
-Require deposit, quorum, and time-lock before execution.
-
-
-
----
-
-
-
-\## 3. Module Approval Proposals
-
-
-
-Used to:
-
-
-
-\- Approve new protocol modules
-
-\- Enable or disable optional modules
-
-\- Integrate governance-approved upgrades
-
-
-
-Module code must pass audit requirements prior to activation.
-
-
-
----
-
-
-
-\## 4. Governance Upgrade Proposals
-
-
-
-Used to modify:
-
-
-
-\- Governance thresholds
-
-\- Voting mechanics
-
-\- Delegation structures
-
-
-
-May require elevated supermajority thresholds.
-
-
-
----
-
-
-
-\## 5. Interoperability Proposals
-
-
-
-Used to:
-
-
-
-\- Enable IBC channels
-
-\- Approve external chain bridges
-
-\- Define cross-chain asset policy
-
-
-
-Must consider security implications and validator readiness.
-
-
-
----
-
-
-
-\# VI. Proposal Lifecycle
-
-
+## 6. Proposal Lifecycle
 
 All proposals follow this lifecycle:
 
+1) submission (with required deposit)  
+2) validation (format + bounds check)  
+3) voting period (fixed duration)  
+4) quorum verification  
+5) threshold verification  
+6) time-lock period (where applicable)  
+7) execution  
 
-
-1\. Submission (with required deposit)
-
-2\. Validation (format + parameter bounds check)
-
-3\. Voting Period (fixed duration)
-
-4\. Quorum Verification
-
-5\. Threshold Verification
-
-6\. Time-Lock Period
-
-7\. Execution
-
-
-
-If quorum or threshold fails, proposal is rejected.
-
-
+If quorum or threshold fails, the proposal is rejected.
 
 Deposits may be partially or fully forfeited for spam or malicious proposals.
 
-
-
 ---
 
+## 7. Quorum & Thresholds (Initial Posture)
 
+Quorum = minimum participation required.  
+Threshold = required approval ratio.
 
-\# VII. Quorum \& Threshold
+Initial recommended posture:
 
-
-
-Quorum represents minimum participation required.
-
-
-
-Threshold represents required majority.
-
-
-
-Initial recommended structure:
-
-
-
-\- Standard Proposals: 50% quorum, >50% approval
-
-\- Treasury Proposals: 50% quorum, >60% approval
-
-\- Structural Changes: 60% quorum, >67% approval
-
-\- Constitutional Amendments: 67% quorum, >75% approval + extended time-lock
-
-
+- **Standard proposals:** 50% quorum, >50% approval
+- **Treasury proposals:** 50% quorum, >60% approval
+- **Structural changes:** 60% quorum, >67% approval
+- **Constitutional amendments:** 67% quorum, >75% approval + extended time-lock
 
 These values may evolve through governance within constitutional bounds.
 
-
-
 ---
 
+## 8. Delegation
 
+Delegation may allow:
 
-\# VIII. Delegation
-
-
-
-Delegation allows:
-
-
-
-\- Stake delegation to validators
-
-\- Governance delegation to representatives
-
-
+- stake delegation to validators
+- governance delegation to representatives
 
 Delegation does not:
 
-
-
-\- Transfer identity longevity
-
-\- Override participation metrics
-
-\- Bypass constitutional invariants
-
-
+- transfer identity longevity
+- override participation metrics
+- bypass constitutional invariants
 
 Delegation is optional, not mandatory.
 
-
-
 ---
 
-
-
-\# IX. Neutrality Safeguards
-
-
+## 9. Neutrality Safeguards
 
 ARCnet governance must preserve structural neutrality.
 
-
-
 Governance may not:
 
-
-
-\- Mandate ideological alignment
-
-\- Impose belief-based requirements
-
-\- Prioritize political positioning
-
-\- Convert identity into ideological compliance
-
-
+- mandate ideological alignment
+- impose belief-based requirements
+- prioritize political positioning
+- convert identity into ideological compliance
 
 Governance may enforce:
 
-
-
-\- Dignity boundaries
-
-\- Anti-harassment policies
-
-\- Security requirements
-
-\- Infrastructure stability rules
-
-
+- dignity boundaries
+- anti-harassment policies
+- security requirements
+- infrastructure stability rules
 
 Neutrality refers to ideological restraint, not absence of safety enforcement.
 
-
-
 ---
 
-
-
-\# X. Economic Neutrality
-
-
+## 10. Economic Neutrality
 
 Governance may adjust economic parameters but may not:
 
+- introduce hidden inflation mechanisms
+- allocate treasury to insiders without explicit disclosure
+- override emission transparency
+- introduce “pay-to-govern” mechanics
 
-
-\- Create hidden inflation mechanisms
-
-\- Allocate treasury to insiders without disclosure
-
-\- Override emission transparency
-
-\- Introduce pay-to-govern mechanics
-
-
-
-Economic changes require transparency and on-chain traceability.
-
-
+All economic changes require traceability and explicit parameterization.
 
 ---
 
-
-
-\# XI. Treasury Execution Rules
-
-
+## 11. Treasury Execution Rules (Operational)
 
 Treasury funds are governed by:
 
-
-
-\- On-chain proposal approval
-
-\- Time-lock enforcement
-
-\- Multi-sig (in early phases if required)
-
-\- Public transparency
-
-
+- on-chain proposal approval
+- time-lock enforcement (where applicable)
+- multi-sig safeguards in early phases (if used)
+- public transparency requirements
 
 Treasury disbursement requires:
 
+- defined recipient
+- defined allocation amount
+- defined purpose
+- execution timestamp/window
 
-
-\- Defined recipient
-
-\- Defined allocation amount
-
-\- Defined purpose
-
-\- Execution timestamp
-
-
-
-No off-chain treasury allocation is permitted.
-
-
+No off-chain discretionary treasury allocation is permitted.
 
 ---
 
-
-
-\# XII. Governance Phases
-
-
+## 12. Governance Phases
 
 Governance evolves through phases:
 
-
-
-\## Phase I — Genesis Stability
-
-
-
-\- Architect Stability Guard active
-
-\- Restricted proposal scope
-
-\- Validator set curated
-
-
-
-\## Phase II — Observational Activation
-
-
-
-\- Expanded proposal submission
-
-\- Limited treasury routing
-
-\- Governance metrics monitored
-
-
-
-\## Phase III — Differentiation
-
-
-
-\- Module expansion
-
-\- Broader validator distribution
-
-\- Increased governance participation
-
-
-
-\## Phase IV — Circulation
-
-
-
-\- Fully active governance surface
-
-\- Infrastructure-level maturity
-
-\- Expanded interoperability
-
-
+- **Phase I — Genesis stability:** restricted surface, stability guard posture
+- **Phase II — observational activation:** expanded proposal surface, metrics monitored
+- **Phase III — differentiation:** broader validator distribution, module expansion
+- **Phase IV — circulation:** mature governance surface, interoperability options expand
 
 Decentralization is phased, not immediate.
 
+---
 
+## 13. Governance Security
+
+Security mechanisms include:
+
+- proposal deposits
+- time-lock execution
+- parameter bounds
+- supermajority safeguards
+- slashing for validator misconduct
 
 ---
 
+## 14. Interfaces (Public + Internal)
 
+Governance is implemented by humans and protocol rules.  
+Some interfaces exist to interpret, educate, or assist drafting.
 
-\# XIII. Governance Security
+- **HOPE Guardian**: public interpretive intelligence surface (advisory; non-sovereign)
+- **ArchitectGPT**: internal build interface (read-only repo analysis + drafting support)
 
-
-
-Governance security mechanisms include:
-
-
-
-\- Proposal deposits
-
-\- Time-lock execution
-
-\- Parameter bounds
-
-\- Supermajority safeguards
-
-\- Slashing for validator misconduct
-
-
-
-These mechanisms prevent rapid destabilization.
-
-
+These interfaces are constitutionally constrained and carry no ratifying authority.
 
 ---
 
+## 15. Amendments & Change Logging
 
+This specification may be amended through governance under these conditions:
 
-\# XIV. Relationship to Application Governance
+- structural amendments require supermajority
+- constitutional amendments require extended time-lock
+- amendments must preserve core invariants
 
+All amendments must be logged in:
 
-
-The Arcanum application may implement:
-
-
-
-\- Community moderation systems
-
-\- Module-level governance
-
-\- Content curation policies
-
-
-
-Application-level rules cannot override ARCnet constitutional invariants.
-
-
-
-Infrastructure governance remains sovereign.
-
-
+- `docs/governance/governance-changelog.md`
 
 ---
 
-
-
-\# XV. Amendments
-
-
-
-This specification may be amended through governance under the following conditions:
-
-
-
-\- Structural amendments require supermajority.
-
-\- Constitutional amendments require extended time-lock.
-
-\- All amendments must preserve core invariants.
-
-
-
-Amendments are logged in the governance changelog.
-
-
-
----
-
-
-
-\# Conclusion
-
-
+## Conclusion
 
 ARCnet governance is constitutional before it is democratic.
 
-
-
-Authority is:
-
-
-
-\- Time-weighted
-
-\- Participation-weighted
-
-\- Economically grounded
-
-\- Bound by invariant enforcement
-
-
-
-The objective is not speed.
-
-
+Authority is time-weighted, participation-weighted, and bounded by invariants.
 
 The objective is durability.
-
-
-
-Governance exists to preserve coherence while enabling evolution.
-

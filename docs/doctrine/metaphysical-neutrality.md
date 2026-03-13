@@ -1,45 +1,38 @@
----
+\---
+
 title: "Metaphysical Neutrality"
+
 status: canonical
+
 visibility: public
-last_updated: 2026-02-18
-description: ""
----
 
+last\_updated: 2026-03-02
 
-# Metaphysical Neutrality
+description: "Constitutional neutrality regarding ultimate metaphysical claims; protects pluralism and prevents ideological capture."
 
-\# \*\*METAPHYSICAL\_NEUTRALITY\_PRINCIPLE\*\*
+version: "1.0"
 
+phase: "Pre-Genesis"
 
+layer: "Doctrine"
 
-\*\*Status:\*\* Canonical \\
-
-\*\*Layer:\*\* Constitution \\
-
-\*\*Version:\*\* 1.0 \\
-
-\*\*Last Updated:\*\* 2026-02-13
+\---
 
 
 
-
-
----
-
+\# Metaphysical Neutrality
 
 
 
-
-\## \*\*Purpose\*\*
-
-
-
-The Arcanum is designed as a civilizational digital commons grounded in dignity, privacy, and non-coercion.
+\## Purpose
 
 
 
-To ensure global scalability, cultural inclusivity, and structural resilience, the Arcanum maintains formal metaphysical neutrality at the constitutional layer.
+Arcanum is designed as a civilizational digital commons grounded in dignity, privacy, and non-coercion.
+
+
+
+To ensure global scalability, cultural inclusivity, and structural resilience, Arcanum maintains formal metaphysical neutrality at the doctrinal layer.
 
 
 
@@ -47,33 +40,25 @@ This principle protects:
 
 
 
+\- practitioner sovereignty
+
+\- cultural plurality
+
+\- governance stability
+
+\- long-term system coherence
 
 
 
-
-\* Practitioner sovereignty
-
-\* Cultural plurality
-
-\* Governance stability
-
-\* Long-term system coherence
+\---
 
 
 
-
-
----
-
+\## Structural Position
 
 
 
-
-\## \*\*Structural Position\*\*
-
-
-
-The Arcanum does not declare ultimate metaphysical, theological, cosmological, or esoteric truth.
+Arcanum does not declare ultimate metaphysical, theological, cosmological, or esoteric truth.
 
 
 
@@ -81,55 +66,43 @@ The system is structured to reveal observable patterns of human experience, not 
 
 
 
-The Arcanum may facilitate encounters with clarity, reflection, and coherence. \\
+Arcanum may facilitate encounters with clarity, reflection, and coherence.  
 
 It may not claim authority over ultimate truth.
 
 
 
-
-
----
-
+\---
 
 
 
-
-\## \*\*Pattern vs Doctrine Distinction\*\*
-
-
-
-The Arcanum may reference:
+\## Pattern vs. Doctrine (Distinction)
 
 
 
+Arcanum may reference:
 
 
 
+\- observable temporal cycles (day/night, seasons, lunar phases)
 
-\* Observable temporal cycles (e.g., day/night, seasons, lunar phases)
+\- psychological and behavioral patterns (attention, reflection, identity formation)
 
-\* Psychological and behavioral patterns (e.g., attention, reflection, identity formation)
-
-\* Cross-cultural archetypal symbolism
-
-
-
-The Arcanum may not:
+\- cross-cultural archetypal symbolism (as optional language)
 
 
 
+Arcanum may not:
 
 
 
+\- declare universal metaphysical axioms
 
-\* Declare universal metaphysical axioms
+\- require adherence to any cosmology
 
-\* Require adherence to any cosmology
+\- encode revealed doctrine into governance authority
 
-\* Encode revealed doctrine into governance authority
-
-\* Enforce symbolic interpretation
+\- enforce symbolic interpretation
 
 
 
@@ -137,19 +110,15 @@ All symbolic frameworks must remain interpretive, optional, and practitioner-own
 
 
 
-
-
----
-
+\---
 
 
 
-
-\## \*\*Experiential Layer Boundaries\*\*
-
+\## Experiential Layer Boundaries
 
 
-Modules within the Arcanum (e.g., Hope, Tempus, Vitae) may use archetypal or symbolic language for experiential depth.
+
+Modules (Hope, Tempus, Vitae) may use archetypal or symbolic language for experiential depth.
 
 
 
@@ -157,17 +126,13 @@ Such language must:
 
 
 
+\- remain descriptive rather than prescriptive
 
+\- avoid asserting metaphysical causation as fact
 
+\- preserve interpretive sovereignty
 
-
-\* Remain descriptive rather than prescriptive
-
-\* Avoid asserting metaphysical causation as fact
-
-\* Preserve interpretive sovereignty
-
-\* Never function as doctrinal enforcement
+\- never function as doctrinal enforcement
 
 
 
@@ -175,15 +140,11 @@ Interpretation belongs to the practitioner.
 
 
 
-
-
----
-
+\---
 
 
 
-
-\## \*\*Governance Constraints\*\*
+\## Governance Constraints
 
 
 
@@ -191,17 +152,13 @@ No governance decision may be justified by appeal to:
 
 
 
+\- divine revelation
 
+\- founder metaphysical authority
 
+\- esoteric doctrine
 
-
-\* Divine revelation
-
-\* Founder metaphysical authority
-
-\* Esoteric doctrine
-
-\* Spiritual hierarchy
+\- spiritual hierarchy
 
 
 
@@ -209,110 +166,53 @@ All structural decisions must be grounded in:
 
 
 
+\- dignity
 
+\- privacy
 
+\- non-coercion
 
+\- harm prevention
 
-\* Dignity
+\- human well-being
 
-\* Privacy
 
-\* Non-coercion
 
-\* Harm prevention
+\---
 
-\* Human well-being
 
 
+\## Non-Negotiable Invariants
 
 
 
----
+1\. practitioner sovereignty over belief  
 
+2\. structural neutrality regarding ultimate metaphysical claims  
 
+3\. protection of pluralism across cultures and traditions  
 
+4\. separation between symbolic experience and governance authority  
 
 
-\## \*\*Non-Negotiable Invariants\*\*
 
+\---
 
 
-The following are constitutionally protected:
 
+\## Prohibitions
 
 
 
+Arcanum shall not:
 
 
 
-1\. Practitioner sovereignty over belief.
+\- encode theology or esotericism into protocol invariants
 
-2\. Structural neutrality regarding ultimate metaphysical claims.
+\- classify participants by metaphysical alignment
 
-3\. Protection of pluralism across cultures and traditions.
+\- restrict participation based on cosmological belief
 
-4\. Separation between symbolic experience and governance authority.
+\- elevate any worldview as constitutionally authoritative
 
-
-
-
-
----
-
-
-
-
-
-\## \*\*Prohibitions\*\*
-
-
-
-The Arcanum shall not:
-
-
-
-
-
-
-
-\* Encode theological or esoteric doctrine into protocol invariants.
-
-\* Classify practitioners based on metaphysical alignment.
-
-\* Restrict participation based on cosmological belief.
-
-\* Elevate any worldview as constitutionally authoritative.
-
-
-
-
-
----
-
-
-
-
-
-\## \*\*Enforcement Scope\*\*
-
-
-
-This principle applies to:
-
-
-
-
-
-
-
-\* All modules
-
-\* All governance processes
-
-\* All future protocol upgrades
-
-\* All public representations of constitutional authority
-
-
-
-Any structural amendment that violates metaphysical neutrality shall be considered constitutionally invalid unless ratified through formal amendment procedures defined elsewhere in the Constitution.

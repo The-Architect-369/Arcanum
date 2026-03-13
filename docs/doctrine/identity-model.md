@@ -1,55 +1,46 @@
----
+\---
+
 title: "Identity Model"
+
 status: canonical
+
 visibility: public
-last_updated: 2026-02-18
-description: ""
----
 
+last\_updated: 2026-03-02
 
-# Identity Model
+description: "Identity as continuity, not description: sovereignty, privacy, and non-comparability across system layers."
 
-\# \*\*Identity Model — Continuity \& Sovereignty\*\*
+version: "1.0"
 
+phase: "Pre-Genesis"
 
+layer: "Doctrine"
 
-\*\*Version:\*\* 1.0 (Canonical) \\
-
-\*\*Status:\*\* Ratified \\
-
-\*\*Phase:\*\* Pre-Genesis
+\---
 
 
 
-
-
----
-
+\# Identity Model
 
 
 
-
-\## \*\*Purpose\*\*
-
-
-
-This document defines \*\*Identity\*\* within the Arcanum: what it is, what it is not, and how it is protected across time, system layers, and lived experience.
+\## Purpose
 
 
 
-Identity is foundational. All other systems — Vitae, Economy, Time, Governance — must defer to it.
+This document defines identity within Arcanum: what it is, what it is not, and how it is protected across time, layers, and lived experience.
 
 
 
-
-
----
-
+Identity is foundational. All other systems (Vitae, Economy, Time, Governance) must defer to it.
 
 
 
+\---
 
-\## \*\*Foundational Axiom\*\*
+
+
+\## Foundational Axiom
 
 
 
@@ -57,7 +48,7 @@ Identity is foundational. All other systems — Vitae, Economy, Time, Governance
 
 
 
-Identity does not measure worth, progress, belief, or status. It establishes \*\*persistence of being across time\*\*.
+Identity does not measure worth, progress, belief, or status. It establishes persistence of being across time.
 
 
 
@@ -65,71 +56,55 @@ Identity exists prior to the system and persists beyond it.
 
 
 
-
-
----
-
+\---
 
 
 
-
-\## \*\*What Identity Is\*\*
-
-
-
-Identity in the Arcanum is:
+\## What Identity Is
 
 
 
+Identity in Arcanum is:
 
 
 
+\- \*\*singular\*\* — one per being
 
-\* \*\*Singular\*\* — one per being
+\- \*\*non-transferable\*\* — cannot be sold, delegated, or inherited
 
-\* \*\*Non-transferable\*\* — cannot be sold, delegated, or inherited
+\- \*\*persistent\*\* — endures across cycles, states, and phases
 
-\* \*\*Persistent\*\* — endures across cycles, states, and phases
+\- \*\*non-comparative\*\* — cannot be ranked or optimized
 
-\* \*\*Non-comparative\*\* — cannot be ranked or optimized
-
-\* \*\*Witnessed, not defined\*\* — the system observes continuity; it does not invent essence
-
-
-
-Identity anchors a being’s relationship with the Arcanum without reducing them to data.
+\- \*\*witnessed, not defined\*\* — the system observes continuity; it does not invent essence
 
 
 
----
+Identity anchors a being’s relationship with Arcanum without reducing them to data.
 
 
 
+\---
 
 
 
-
-\## \*\*What Identity Is Not\*\*
-
-
-
-Identity is explicitly \*\*not\*\*:
+\## What Identity Is Not
 
 
 
+Identity is explicitly not:
 
 
 
+\- a reputation score
 
-\* A reputation score
+\- a profile
 
-\* A profile
+\- a wallet balance
 
-\* A wallet balance
+\- a role or title
 
-\* A role or title
-
-\* A measure of value or virtue
+\- a measure of value or virtue
 
 
 
@@ -137,15 +112,11 @@ No state change elsewhere in the system may redefine identity.
 
 
 
-
-
----
-
+\---
 
 
 
-
-\## \*\*Chain Code (Identity Witness)\*\*
+\## Chain Code (Identity Witness)
 
 
 
@@ -157,19 +128,15 @@ It:
 
 
 
+\- anchors continuity on the protocol layer
+
+\- is non-transferable
+
+\- serves as a persistent reference across time
 
 
 
-
-\* Anchors continuity on the Protocol layer
-
-\* Is non-transferable and non-upgradable
-
-\* Serves as a persistent reference across time
-
-
-
-The Chain Code \*\*does not contain essence\*\*.
+The Chain Code does not contain essence.
 
 
 
@@ -177,15 +144,11 @@ It is a witness of continuity, not a container of being.
 
 
 
-
-
----
-
+\---
 
 
 
-
-\## \*\*Layer Placement\*\*
+\## Layer Placement
 
 
 
@@ -193,15 +156,11 @@ Identity spans layers with strict authority boundaries:
 
 
 
+\- \*\*primary authority:\*\* lived experience
 
+\- \*\*witness layer:\*\* protocol (Chain Code)
 
-
-
-\* \*\*Primary Authority:\*\* Lived Experience
-
-\* \*\*Witness Layer:\*\* Protocol (Chain Code)
-
-\* \*\*Interface Layer:\*\* Application
+\- \*\*interface layer:\*\* application
 
 
 
@@ -209,15 +168,11 @@ No other layer may assert identity authority.
 
 
 
-
-
----
-
+\---
 
 
 
-
-\## \*\*Identity \& Lived Experience\*\*
+\## Identity \& Lived Experience
 
 
 
@@ -229,29 +184,21 @@ The system may:
 
 
 
+\- witness continuity
+
+\- preserve association across time
 
 
 
-
-\* Witness continuity
-
-\* Preserve association across time
+The system may never:
 
 
 
-The system may \*\*never\*\*:
+\- infer belief
 
+\- assign meaning
 
-
-
-
-
-
-\* Infer belief
-
-\* Assign meaning
-
-\* Predict becoming
+\- predict becoming
 
 
 
@@ -259,15 +206,11 @@ Identity remains sovereign regardless of system participation.
 
 
 
-
-
----
-
+\---
 
 
 
-
-\## \*\*Identity \& Vitae\*\*
+\## Identity \& Vitae
 
 
 
@@ -275,13 +218,9 @@ Vitae recognitions:
 
 
 
+\- attach to identity
 
-
-
-
-\* Attach \*\*to\*\* identity
-
-\* Do not modify identity
+\- do not modify identity
 
 
 
@@ -293,35 +232,27 @@ Loss, change, or silence in Vitae does not diminish identity.
 
 
 
-
-
----
-
+\---
 
 
 
-
-\## \*\*Identity \& Economy\*\*
-
-
-
-Identity is \*\*economically sterile\*\*.
+\## Identity \& Economy
 
 
 
-Mana may not:
+Identity is economically sterile.
 
 
 
+MANA may not:
 
 
 
+\- purchase identity
 
-\* Purchase identity
+\- modify identity
 
-\* Modify identity
-
-\* Unlock identity states
+\- unlock identity states
 
 
 
@@ -329,15 +260,11 @@ Economic activity has no bearing on who a being is.
 
 
 
-
-
----
-
+\---
 
 
 
-
-\## \*\*Identity \& Time\*\*
+\## Identity \& Time
 
 
 
@@ -345,43 +272,25 @@ Identity persists across cycles, windows, and phases.
 
 
 
+\- missing time-based participation does not weaken identity
+
+\- time passage does not enhance identity
 
 
 
-
-\* Missing time-based participation does not weaken identity
-
-\* Time passage does not enhance identity
+Identity is atemporal relative to system mechanics.
 
 
 
-Identity is \*\*atemporal\*\* relative to system mechanics.
+\---
 
 
 
-
-
----
-
+\## Privacy \& Disclosure
 
 
 
-
-\## \*\*Privacy \& Disclosure\*\*
-
-
-
-Identity is:
-
-
-
-
-
-
-
-\* \*\*Implicitly private\*\*
-
-\* Never exhaustively visible
+Identity is implicitly private and never exhaustively visible.
 
 
 
@@ -393,15 +302,11 @@ No complete representation of identity may exist.
 
 
 
-
-
----
-
+\---
 
 
 
-
-\## \*\*Failure Modes (Forbidden)\*\*
+\## Failure Modes (Forbidden)
 
 
 
@@ -409,19 +314,15 @@ Identity is violated if any of the following occur:
 
 
 
+\- identity becomes comparable
 
+\- identity becomes upgradeable
 
+\- identity becomes tradable
 
+\- identity becomes score-like
 
-\* Identity becomes comparable
-
-\* Identity becomes upgradeable
-
-\* Identity becomes tradable
-
-\* Identity becomes score-like
-
-\* Identity becomes predictive
+\- identity becomes predictive
 
 
 
@@ -429,15 +330,11 @@ These are constitutional violations.
 
 
 
-
-
----
-
+\---
 
 
 
-
-\## \*\*Enforcement\*\*
+\## Enforcement
 
 
 
@@ -445,38 +342,15 @@ Identity integrity is enforced through:
 
 
 
+\- doctrine
+
+\- architectural constraints
+
+\- protocol immutability
+
+\- review by the Architect
 
 
 
+When identity is at risk, all other concerns are secondary.
 
-\* Doctrine
-
-\* Architectural constraints
-
-\* Protocol immutability
-
-\* Review by the Architect
-
-
-
-When identity is at risk, \*\*all other concerns are secondary\*\*.
-
-
-
-
-
----
-
-
-
-
-
-\## \*\*Canonical Status\*\*
-
-
-
-This document is ratified as \*\*Identity Model — Continuity \& Sovereignty v1.0\*\*.
-
-
-
-It is binding across all Arcanum layers and all future modules.

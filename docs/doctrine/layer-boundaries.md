@@ -1,57 +1,48 @@
----
+\---
+
 title: "Layer Boundaries"
+
 status: canonical
+
 visibility: public
-last_updated: 2026-02-18
-description: ""
----
 
+last\_updated: 2026-03-02
 
-# Layer Boundaries
+description: "Formal layer boundaries of Arcanum and ARCnet; constitutional constraints preventing semantic leakage and coercive design."
 
-\# \*\*Layer Boundaries of the Arcanum\*\*
+version: "1.0"
 
+phase: "Pre-Genesis"
 
+layer: "Doctrine"
 
-\*\*Version:\*\* 1.0 (Canonical) \\
-
-\*\*Status:\*\* Ratified \\
-
-\*\*Phase:\*\* Pre-Genesis
+\---
 
 
 
-
-
----
-
+\# Layer Boundaries
 
 
 
-
-\## \*\*Purpose\*\*
-
-
-
-This document defines the \*\*formal layer boundaries\*\* of the Arcanum.
+\## Purpose
 
 
 
-These boundaries are \*\*doctrinal law\*\*, not architectural preference. They exist to preserve:
+This document defines the formal layer boundaries of Arcanum.
 
 
 
+These boundaries are doctrinal law, not architectural preference. They exist to preserve:
 
 
 
+\- sovereignty of being
 
-\* Sovereignty of being
+\- integrity of meaning
 
-\* Integrity of meaning
+\- non-coercive becoming
 
-\* Non-coercive becoming
-
-\* Long-term system coherence
+\- long-term system coherence
 
 
 
@@ -59,21 +50,15 @@ No implementation convenience, efficiency gain, or feature demand may violate th
 
 
 
+\---
 
 
 
-
----
-
-\*\*The Six Formal Layers\*\*
+\## The Six Formal Layers
 
 
 
-The Arcanum is composed of \*\*six\*\* formally recognized layers:
-
-
-
-
+Arcanum is composed of six formally recognized layers:
 
 
 
@@ -81,9 +66,9 @@ The Arcanum is composed of \*\*six\*\* formally recognized layers:
 
 2\. \*\*Architect\*\*
 
-3\. \*\*Protocol (Arcanum Chain)\*\*
+3\. \*\*Protocol (ARCnet / Arcanum Chain)\*\*
 
-&nbsp;   \* 3a. \*\*Economy (Mana)\*\*
+&#x20;  - 3a. \*\*Economy (MANA)\*\*
 
 4\. \*\*Application\*\*
 
@@ -95,37 +80,31 @@ Each layer has:
 
 
 
+\- a source of truth
+
+\- a domain of authority
+
+\- explicit prohibitions
 
 
 
+Higher layers may constrain lower layers.  
 
-\* A \*\*source of truth\*\*
-
-\* A \*\*domain of authority\*\*
-
-\* Explicit \*\*prohibitions\*\*
+Lower layers may never reinterpret higher layers.
 
 
 
-Higher layers may \*constrain\* lower layers. Lower layers may \*never reinterpret\* higher layers.
+\---
 
 
 
----
+\## Layer I — Doctrine
 
 
 
+\*\*Source of truth:\*\* doctrinal canon  
 
-
-
-
-\## \*\*Layer I — Doctrine\*\*
-
-
-
-\*\*Source of Truth:\*\* Constitution \\
-
-\*\*Location:\*\* `docs/00\_CONSTITUTION/`
+\*\*Location:\*\* `docs/doctrine/`
 
 
 
@@ -133,157 +112,119 @@ Doctrine defines:
 
 
 
+\- what exists
+
+\- what is forbidden
+
+\- how authority is structured
 
 
 
-
-\* What exists
-
-\* What is forbidden
-
-\* How authority is structured
-
-
-
-Doctrine is \*\*non-executable\*\*. It declares reality; it does not act within it.
+Doctrine is non-executable. It declares constraints; it does not act.
 
 
 
 \*\*Prohibitions:\*\*
 
+\- doctrine may not depend on chain state, app logic, or user behavior
+
+\- doctrine may not encode implementation details as binding law
 
 
 
+\---
 
 
 
-\* Doctrine may not reference implementation details.
-
-\* Doctrine may not depend on chain state, app logic, or user behavior.
+\## Layer II — Architect
 
 
 
+\*\*Source of truth:\*\* doctrine + logged decisions  
 
-
----
-
-
-
-
-
-\## \*\*Layer II — Architect\*\*
+\*\*Role:\*\* cross-layer harmonization
 
 
 
-\*\*Source of Truth:\*\* Constitution + Logged Decisions \\
-
-\*\*Role:\*\* Cross-layer harmonization
+The Architect interprets doctrine, resolves ambiguity, and preserves coherence across layers.
 
 
 
-The Architect interprets doctrine, resolves ambiguity, and maintains coherence across all layers.
-
-
-
-The Architect \*\*may act across layers\*\*, but never with sovereign authority over them.
+The Architect may act across layers, but never with sovereign authority over them.
 
 
 
 \*\*Prohibitions:\*\*
 
+\- the Architect may not contradict doctrine
+
+\- the Architect may not override protocol invariants
+
+\- the Architect may not redefine lived experience
+
+\- the Architect may not invent authority outside canon
 
 
 
+The Architect is a guardian of coherence, not a ruler of outcomes.
 
 
 
-\* The Architect may not contradict Doctrine.
-
-\* The Architect may not override Protocol invariants.
-
-\* The Architect may not redefine Lived Experience.
-
-\* The Architect may not invent authority outside the Constitution.
+\---
 
 
 
-The Architect is a \*\*guardian of coherence\*\*, not a ruler of outcomes.
+\## Layer III — Protocol (ARCnet / Arcanum Chain)
 
 
 
-
-
----
-
+\*\*Source of truth:\*\* chain state
 
 
 
-
-\## \*\*Layer III — Protocol (Arcanum Chain)\*\*
-
-
-
-\*\*Source of Truth:\*\* Chain state
+The protocol enforces:
 
 
 
-The Protocol enforces:
+\- invariants
+
+\- custody rules
+
+\- witnessed events
+
+\- irreversible constraints
 
 
 
-
-
-
-
-\* Invariants
-
-\* Custody
-
-\* Witnessed events
-
-\* Irreversible constraints
-
-
-
-The chain is \*\*blind to meaning\*\*. It witnesses \*that\* something occurred, never \*what it means\*.
+The chain is blind to meaning. It witnesses that something occurred, not what it means.
 
 
 
 \*\*Prohibitions:\*\*
 
+\- the protocol may not judge readiness
+
+\- the protocol may not define growth
+
+\- the protocol may not interpret experience
+
+\- the protocol may not assign worth
 
 
 
+\---
 
 
 
-\* The Protocol may not judge readiness.
-
-\* The Protocol may not define growth.
-
-\* The Protocol may not interpret experience.
-
-\* The Protocol may not assign worth.
+\## Layer IIIa — Economy (MANA)
 
 
 
-
-
----
-
+\*\*Source of truth:\*\* protocol rules
 
 
 
-
-\## \*\*Layer IIIa — Economy (Mana)\*\*
-
-
-
-\*\*Source of Truth:\*\* Protocol rules
-
-
-
-The Economy is a \*\*sub-layer of the Protocol\*\*, not a peer.
+The economy is a sub-layer of the protocol, not a peer.
 
 
 
@@ -291,99 +232,75 @@ It governs:
 
 
 
+\- circulation
+
+\- conservation
+
+\- sinks and flows
 
 
 
-
-\* Circulation
-
-\* Conservation
-
-\* Sinks and flows
-
-
-
-Mana represents \*\*capacity for action\*\*, not value, merit, belief, or identity.
+MANA represents capacity for action and infrastructure usage, not merit, belief, or identity.
 
 
 
 \*\*Prohibitions:\*\*
 
+\- economy may not accelerate becoming
+
+\- economy may not reward belief or identity
+
+\- economy may not bypass lived readiness
+
+\- economy may not directly influence Vitae progression
 
 
 
+\---
 
 
 
-\* The Economy may not accelerate becoming.
-
-\* The Economy may not reward belief or identity.
-
-\* The Economy may not bypass lived readiness.
-
-\* The Economy may not directly influence Vitae progression.
+\## Layer IV — Application
 
 
 
-
-
----
-
+\*\*Source of truth:\*\* application state
 
 
 
-
-\## \*\*Layer IV — Application\*\*
-
-
-
-\*\*Source of Truth:\*\* Application state
-
-
-
-The Application renders interfaces, requests actions, and displays witnessed state. It has \*\*zero authority\*\*.
+The application renders interfaces, requests actions, and displays witnessed state. It has zero authority.
 
 
 
 \*\*Prohibitions:\*\*
 
+\- the application may not mint or allocate value
+
+\- the application may not simulate outcomes
+
+\- the application may not predict growth or readiness
+
+\- the application may not approximate meaning
 
 
 
+Each being is irreducibly unique. No previews of becoming exist.
 
 
 
-\* The Application may not mint or allocate value.
-
-\* The Application may not simulate outcomes.
-
-\* The Application may not predict growth or readiness.
-
-\* The Application may not approximate meaning.
+\---
 
 
 
-Each being is treated as \*\*irreducibly unique\*\*. No previews of becoming exist.
+\## Layer V — Lived Experience
 
 
 
-
-
----
-
+\*\*Source of truth:\*\* the being
 
 
 
-
-\## \*\*Layer V — Lived Experience\*\*
-
-
-
-\*\*Source of Truth:\*\* The Being
-
-
-
-Lived Experience is a \*\*formal, explicit layer\*\*. Becoming occurs only here.
+Lived experience is a formal, explicit layer. Becoming occurs only here.
 
 
 
@@ -391,17 +308,13 @@ It is:
 
 
 
+\- sovereign
 
+\- non-computable
 
+\- non-simulable
 
-
-\* Sovereign
-
-\* Non-computable
-
-\* Non-simulable
-
-\* Non-transferable
+\- non-transferable
 
 
 
@@ -411,33 +324,19 @@ The system may witness, record thresholds, and anchor attestations — but never
 
 \*\*Prohibitions:\*\*
 
+\- the system may not predict readiness
+
+\- the system may not replace inner authority
+
+\- the system may not collapse uniqueness into metrics
 
 
 
+\---
 
 
 
-\* The system may not predict readiness.
-
-\* The system may not replace inner authority.
-
-\* The system may not collapse uniqueness into metrics.
-
-
-
-Each being carries a \*\*Divine spark\*\*. The Chain Code witnesses continuity, not essence.
-
-
-
-
-
----
-
-
-
-
-
-\## \*\*Enforcement\*\*
+\## Enforcement
 
 
 
@@ -445,34 +344,27 @@ Layer boundaries are enforced through:
 
 
 
+\- doctrinal canon
+
+\- architecture design
+
+\- CI doctrine guards (where applicable)
+
+\- human review by the Architect
 
 
 
-
-\* Constitutional doctrine
-
-\* Architectural design
-
-\* CI doctrine guards
-
-\* Human review by the Architect
+There is no exception mechanism.
 
 
 
-There is \*\*no exception mechanism\*\*.
+\---
 
 
 
-
-
----
-
+\## Canonical Status
 
 
 
+This document is ratified as Layer Boundaries v1.0 and is binding across all present and future Arcanum modules.
 
-\## \*\*Canonical Status\*\*
-
-
-
-This document is ratified as \*\*Layer Boundaries v1.0\*\* and is binding across all present and future Arcanum modules.

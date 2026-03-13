@@ -1,410 +1,524 @@
----
+\---
+
 title: "Canonical Modules"
+
 status: canonical
+
 visibility: public
-last_updated: 2026-02-18
-description: ""
----
+
+last\_updated: 2026-03-13
+
+description: "First-class modules of Arcanum and ARCnet, including boundaries, sources of truth, and dependency invariants."
+
+role: "constitution"
+
+authority: "system-wide"
+
+version: "1.0"
+
+\---
 
 
-# Canonical Modules
 
-CANONICAL MODULES OF ARCANUM
----
-role: constitution
-authority: absolute
-scope: system-wide
-version: 1.0
-status: ratified
----
+\# Canonical Modules
 
-Preamble
+
+
+\## Preamble
+
+
 
 This document defines the canonical modules of the Arcanum system.
 
-A canonical module is a first-class subsystem whose existence, authority, and boundaries are explicitly recognized by the Arcanum Constitution. No module may be created, removed, or substantially altered without alignment to this canon.
+
+
+A canonical module is a first-class subsystem whose existence, authority, and boundaries are explicitly recognized by constitutional doctrine. No module may be created, removed, or substantially altered without alignment to this canon.
+
+
 
 If a capability, feature, or behavior is not attributable to a canonical module, it is not permitted to exist within Arcanum.
 
-Canonical Authority Model
+
+
+\---
+
+
+
+\## Canonical Authority Model
+
+
 
 Every module is governed by three questions:
 
-Where does it live?
-(Doctrine · Chain · App · Experience)
 
-What is its source of truth?
-(Constitution · Chain State · App State · Lived State)
 
-What may it depend on — and what may not depend on it?
+1\) \*\*Where does it live?\*\* (Doctrine · ARCnet · App · Experience)  
 
-Violations of these rules constitute doctrinal drift.
+2\) \*\*What is its source of truth?\*\* (Doctrine · Chain state · App state · Lived state)  
 
-MODULE I — ARCHITECT (Doctrine & Governance)
+3\) \*\*What may it depend on — and what may not depend on it?\*\*
 
-Status: Canonical
-Layer: Doctrine
-Source of Truth: Constitution (docs/00_CONSTITUTION)
 
-Purpose
 
-The Architect module governs system self-awareness, doctrine integrity, and change discipline.
+Violations constitute doctrinal drift.
 
-It exists to ensure that Arcanum remains coherent across time, code, and narrative.
 
-Responsibilities
 
-Define constitutional law
+Reference doctrine:
 
-Declare canonical modules
+\- `docs/doctrine/layer-boundaries.md`
 
-Enforce source-of-truth boundaries
+\- `docs/architecture/app-chain-doctrine.md`
 
-Maintain doctrinal logs and synchronization
 
-Dependencies
 
-None
+\---
 
-Forbidden
 
-The Architect may not depend on app logic, chain state, or user data.
 
-No other module may override or bypass Architect doctrine.
+\## Module registry
 
-MODULE II — HOPE (Reflection & Inner Dialogue)
 
-Status: Canonical
-Layer: App / Experience
-Source of Truth: Lived State + App Logic
 
-Purpose
+> Naming note: \*\*ARCnet\*\* is the canonical network name. “Arcanum Chain” refers to ARCnet’s settlement layer implementation.
 
-Hope governs inner dialogue, reflection, and meaning-making.
 
-It represents the personal, introspective interface between a being and the system.
 
-Responsibilities
+\### MODULE I — ARCHITECT (Doctrine \& Governance)
 
-Conversational reflection
 
-Contextual guidance
 
-Meaning synthesis
+\- \*\*Status:\*\* Canonical
 
-Dependencies
+\- \*\*Primary layer:\*\* Doctrine
 
-Identity (for context)
+\- \*\*Source of truth:\*\* Doctrine + Governance canon (`docs/doctrine/`, `docs/governance/`)
 
-Vitae (for progression awareness)
+\- \*\*Purpose:\*\* cross-layer coherence, boundary enforcement, change discipline
 
-Tempus (for timing context)
 
-Forbidden
 
-Hope may not enforce progression
+\*\*Responsibilities\*\*
 
-Hope may not write to chain state
+\- maintain doctrinal law and its enforceability posture
 
-Hope may not alter economic balances
+\- preserve layer boundaries and module separation
 
-MODULE III — TEMPUS (Time & Rhythm)
+\- require explicit logging for constitutional-impacting changes
 
-Status: Canonical
-Layer: App + Chain (Anchors)
-Source of Truth: Chain Anchors + App Schedulers
 
-Purpose
 
-Tempus governs time, rhythm, cycles, and temporal structure.
+\*\*Dependencies\*\*
 
-It ensures that Arcanum unfolds according to rhythm rather than urgency.
+\- none (foundational)
 
-Responsibilities
 
-Epochs and cycles
 
-Ritual timing
+\*\*Forbidden\*\*
 
-Temporal constraints on actions
+\- may not depend on app logic, chain state, or user data
 
-Dependencies
+\- may not bypass doctrine or simulate lived experience
 
-Chain (for anchoring)
 
-Architect (for temporal doctrine)
 
-Forbidden
+\---
 
-Tempus may not define meaning
 
-Tempus may not allocate value
 
-Tempus may not advance Vitae directly
+\### MODULE II — HOPE (Reflection Interface)
 
-MODULE IV — VITAE (Becoming & Progression)
 
-Status: Canonical
-Layer: Experience / App / (Optional Chain Anchors)
-Source of Truth: Lived State + Constitutional Invariants
 
-Purpose
+\- \*\*Primary layer:\*\* App / Experience
 
-Vitae governs growth, maturation, and becoming.
+\- \*\*Source of truth:\*\* Lived state + App state
 
-It is a sovereign progression system that recognizes readiness, mastery, and responsibility as states that emerge over time.
+\- \*\*Purpose:\*\* reflective dialogue and coherence support
 
-Responsibilities
 
-Define progression states
 
-Enforce grade invariants
+\*\*Dependencies\*\*
 
-Govern specialization and mastery
+\- Identity (context continuity)
 
-Maintain experiential integrity
+\- Tempus (timing context)
 
-Dependencies
+\- Vitae (responsibility envelope context)
 
-Tempus (for temporal gating)
 
-Identity (for subject continuity)
 
-Forbidden
+\*\*Forbidden\*\*
 
-Vitae may not mint or transfer value
+\- may not enforce progression
 
-Vitae may not be reduced to scoring
+\- may not write semantic judgements to chain
 
-Vitae progression may not be bypassed by payment or authority
+\- may not alter economic balances directly
 
-Chain Interaction
 
-Vitae progression is lived off-chain
 
-Proofs of state, thresholds, or mastery may be anchored on-chain
+\---
 
-The chain may witness Vitae, but never define it
 
-MODULE V — IDENTITY (Continuity & Sovereignty)
 
-Status: Canonical
-Layer: App / Protocol
-Source of Truth: Identity Records + User Control
+\### MODULE III — TEMPUS (Time \& Rhythm)
 
-Purpose
 
-Identity governs who a being is across time, context, and interaction.
 
-Responsibilities
+\- \*\*Primary layer:\*\* App (with optional chain anchors)
 
-Persistent identity
+\- \*\*Source of truth:\*\* App schedulers + bounded chain receipts
 
-Relationship binding
+\- \*\*Purpose:\*\* rhythm, rites, cycles, windows, cadence discipline
 
-Context continuity
 
-Dependencies
 
-None (foundational)
+\*\*Dependencies\*\*
 
-Forbidden
+\- ARCnet (optional attestations/receipts)
 
-Identity may not be owned by the app
+\- Architect doctrine (temporal constraints)
 
-Identity may not be traded
 
-Identity may not be fragmented without consent
 
-MODULE VI — ECONOMY (Circulation & Value)
+\*\*Forbidden\*\*
 
-Status: Canonical
-Layer: Chain
-Source of Truth: Arcanum Chain
+\- may not define meaning
 
-Purpose
+\- may not allocate value
 
-The Economy module governs value circulation without speculation.
+\- may not directly advance Vitae
 
-Responsibilities
 
-Define economic invariants
 
-Govern MANA utility
+\---
 
-Enforce sinks and flows
 
-Dependencies
 
-Treasury
+\### MODULE IV — VITAE (Recognition After Stabilization)
 
-Chain State
 
-Forbidden
 
-Economy may not create speculative instruments
+\- \*\*Primary layer:\*\* Experience / App (optional chain anchors)
 
-Economy may not override chain invariants
+\- \*\*Source of truth:\*\* Lived state (recognized retrospectively) + doctrine invariants
 
-Economy may not be governed by app logic
+\- \*\*Purpose:\*\* recognize stabilized capacity; gate responsibility without worth-scoring
 
-MODULE VII — TREASURY (Custody & Stewardship)
 
-Status: Canonical
-Layer: Chain
-Source of Truth: Arcanum Chain
 
-Purpose
+\*\*Dependencies\*\*
 
-The Treasury governs collective custody and long-term stewardship.
+\- Tempus (temporal context, not speed)
 
-Responsibilities
+\- Identity (continuity)
 
-Hold protocol assets
 
-Enforce distribution rules
 
-Protect against capture
+\*\*Forbidden\*\*
 
-Dependencies
+\- may not mint or transfer value
 
-Chain governance
+\- may not be reduced to scoring/ranking
 
-Forbidden
+\- may not be bypassed by payment or authority
 
-Treasury may not be controlled by a single actor
 
-Treasury may not be accessed directly by the app
 
-Treasury rules may not be silently changed
+\*\*Chain interaction\*\*
 
-MODULE VIII — ARCANUM CHAIN (Protocol Integrity)
+\- Vitae remains lived off-chain
 
-Status: Canonical
-Layer: Protocol
-Source of Truth: Chain State
+\- Proof of certain transitions may be anchored as factual receipts
 
-Purpose
+\- The chain may witness Vitae; it may not define it
 
-The Arcanum Chain enforces non-negotiable truth.
 
-Responsibilities
 
-Enforce economic rules
+\---
 
-Anchor time
 
-Protect treasury
 
-Maintain protocol invariants
+\### MODULE V — IDENTITY (Continuity \& Sovereignty)
 
-Dependencies
 
-Architect doctrine
 
-Forbidden
+\- \*\*Primary layer:\*\* App / Protocol
 
-The chain may not govern meaning
+\- \*\*Source of truth:\*\* identity records under user control + minimal chain anchor
 
-The chain may not define personal growth
+\- \*\*Purpose:\*\* persistent continuity without dossier creation
 
-The chain may not be bypassed for protocol truth
 
-MODULE IX — NEXUS (Social Fabric)
 
-Status: Canonical
-Layer: App / Experience
-Source of Truth: Lived Interaction
+\*\*Responsibilities\*\*
 
-Purpose
+\- persistent identity anchor (ACC / ChainCode)
 
-Nexus governs connection, discourse, and shared presence.
+\- relationship binding and consent surfaces
 
-Responsibilities
+\- anti-fragmentation safeguards
 
-Social interaction
 
-Shared spaces
 
-Collective experience
+\*\*Dependencies\*\*
 
-Dependencies
+\- none (foundational)
 
-Identity
 
-Hope (contextual)
 
-Forbidden
+\*\*Forbidden\*\*
 
-Nexus may not enforce doctrine
+\- may not be owned by the app
 
-Nexus may not allocate economic value
+\- may not be traded
 
-Nexus may not alter progression
+\- may not be reduced to reputation scores
 
-MODULE X — WALLET (Interface, Not Authority)
 
-Status: Canonical
-Layer: App
-Source of Truth: Chain
 
-Purpose
+\---
 
-The Wallet provides visibility and interaction with on-chain state.
 
-Responsibilities
 
-Display balances
+\### MODULE VI — ECONOMY (MANA)
 
-Initiate permitted transactions
 
-Dependencies
 
-Arcanum Chain
+\- \*\*Primary layer:\*\* ARCnet
 
-Forbidden
+\- \*\*Source of truth:\*\* chain state + protocol parameters
 
-Wallet may not define balances
+\- \*\*Purpose:\*\* utility-first circulation (capacity, permissions, infrastructure usage)
 
-Wallet may not hold custody
 
-Wallet may not bypass treasury rules
 
-Dependency Invariants (Global)
+\*\*Dependencies\*\*
 
-The following are system-wide invariants:
+\- Treasury
 
-App modules may read chain state but may not define it
+\- Governance parameters (bounded)
 
-Chain modules may enforce rules but may not define meaning
 
-Experience modules may shape becoming but may not mint value
 
-Doctrine supersedes all other layers
+\*\*Forbidden\*\*
 
-Any violation constitutes a constitutional breach.
+\- may not create speculative instruments as protocol defaults
 
-Amendment Protocol
+\- may not override constitutional invariants
+
+\- may not be governed by app logic
+
+
+
+\---
+
+
+
+\### MODULE VII — TREASURY (Stewardship)
+
+
+
+\- \*\*Primary layer:\*\* ARCnet (or multi-sig custody in early phases)
+
+\- \*\*Source of truth:\*\* chain state + governance-approved execution rules
+
+\- \*\*Purpose:\*\* collective custody and long-term stewardship
+
+
+
+\*\*Dependencies\*\*
+
+\- governance
+
+\- execution constraints (time-locks where applicable)
+
+
+
+\*\*Forbidden\*\*
+
+\- may not be controlled by a single actor
+
+\- may not be accessed directly by the app
+
+\- may not be silently changed
+
+
+
+\---
+
+
+
+\### MODULE VIII — ARCNET (Settlement \& Invariants)
+
+
+
+\- \*\*Primary layer:\*\* Protocol
+
+\- \*\*Source of truth:\*\* chain state
+
+\- \*\*Purpose:\*\* minimal settlement, receipts, invariant enforcement
+
+
+
+\*\*Responsibilities\*\*
+
+\- enforce economic rules
+
+\- anchor identity and factual receipts
+
+\- protect treasury and governance execution
+
+
+
+\*\*Dependencies\*\*
+
+\- architect doctrine (constraints)
+
+
+
+\*\*Forbidden\*\*
+
+\- may not govern meaning
+
+\- may not define personal growth
+
+\- may not be bypassed for protocol truth
+
+
+
+\---
+
+
+
+\### MODULE IX — NEXUS (Social Fabric)
+
+
+
+\- \*\*Primary layer:\*\* App / Experience
+
+\- \*\*Source of truth:\*\* lived interaction + app state
+
+\- \*\*Purpose:\*\* connection and discourse without domination mechanics
+
+
+
+\*\*Dependencies\*\*
+
+\- Identity
+
+\- (Optional) economy receipts for value routing
+
+
+
+\*\*Forbidden\*\*
+
+\- may not enforce doctrine
+
+\- may not allocate economic value by ranking humans
+
+\- may not alter Vitae progression
+
+
+
+\---
+
+
+
+\### MODULE X — WALLET (Interface, Not Authority)
+
+
+
+\- \*\*Primary layer:\*\* App
+
+\- \*\*Source of truth:\*\* chain state
+
+\- \*\*Purpose:\*\* user custody surface for viewing and initiating permitted transactions
+
+
+
+\*\*Dependencies\*\*
+
+\- ARCnet
+
+
+
+\*\*Forbidden\*\*
+
+\- may not define balances
+
+\- may not hold custody by default
+
+\- may not bypass treasury rules
+
+
+
+\---
+
+
+
+\## Global dependency invariants
+
+
+
+\- App modules may \*\*read\*\* chain state but may not \*\*define\*\* it.
+
+\- Chain modules may enforce rules but may not \*\*define meaning\*\*.
+
+\- Experience modules may shape becoming but may not \*\*mint value\*\*.
+
+\- Doctrine supersedes all other layers.
+
+\- Any violation constitutes constitutional breach.
+
+
+
+\---
+
+
+
+\## Amendment protocol
+
+
 
 This document may only be amended by:
 
-Explicit constitutional change
 
-Full doctrine review
 
-Synchronized update across:
+\- explicit doctrine change
 
-Architect canon
+\- full boundary review
 
-Chain specs
+\- synchronized updates across:
 
-App alignment docs
+&#x20; - doctrine
+
+&#x20; - architecture boundary contract
+
+&#x20; - governance specs
+
+&#x20; - (if applicable) chain specs
+
+
 
 Silent drift is forbidden.
 
-Closing Declaration
 
-Arcanum is not a product.
+
+\---
+
+
+
+\## Closing
+
+
+
+Arcanum is not a product.  
+
 It is a coherent system of becoming.
 
-This canon exists so that coherence may endure.
+
+
+This canon exists so coherence may endure.
+

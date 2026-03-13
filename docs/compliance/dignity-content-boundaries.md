@@ -1,469 +1,278 @@
----
-title: "Dignity Content Boundaries"
-status: draft
+\---
+
+title: "Dignity \& Content Boundaries"
+
+status: canonical
+
 visibility: public
-last_updated: 2026-02-18
-description: ""
----
 
+last\_updated: 2026-03-02
 
-# Dignity Content Boundaries
+description: "Harm-based content boundaries for Arcanum and ARCnet discovery layers. Not moral doctrine."
 
-\# \*\*DIGNITY\_AND\_CONTENT\_BOUNDARIES\*\*
+\---
 
 
 
-\*\*Status:\*\* White Paper \\
+\# Dignity \& Content Boundaries
 
-\*\*Layer:\*\* Governance Interpretation \\
 
-\*\*Version:\*\* 1.0 \\
 
-\*\*Last Updated:\*\* 2026-02-13
+\## 1. Purpose
 
 
 
+Arcanum is structured to preserve \*\*human dignity\*\*, \*\*interior sovereignty\*\*, and \*\*psychological safety\*\*.
 
 
----
 
+This document defines baseline boundaries necessary to protect:
 
 
 
+\- participants
 
-\## \*\*Purpose\*\*
+\- minors
 
+\- communities
 
+\- the integrity of the commons
 
-The Arcanum is structured to preserve human dignity, interior sovereignty, and psychological well-being.
 
 
+These boundaries are grounded in harm prevention and dignity—not ideological enforcement.
 
-This document defines content boundaries necessary to protect:
 
 
+\---
 
 
 
+\## 2. Foundational Principle
 
 
-\* Practitioners
 
-\* Minors
+Within Arcanum:
 
-\* Communities
 
-\* The integrity of the digital commons
 
+\- human beings are not consumable objects
 
+\- exploitation is structurally incompatible with the system
 
-These boundaries are grounded in dignity and harm prevention, not moral ideology.
+\- harassment and coordinated harm are governable
 
 
 
+The system is designed to remove amplification incentives that reward exploitation.
 
 
----
 
+\---
 
 
 
+\## 3. Non-Negotiable Prohibitions
 
-\## \*\*Foundational Principle: Human Dignity\*\*
 
 
+\### 3.1 Exploitation of minors (absolute prohibition)
 
-Within the Arcanum:
+Prohibited without exception:
 
 
 
+\- any sexual content involving minors
 
+\- grooming behavior
 
+\- sexualization or suggestive depiction of minors
 
+\- distribution or facilitation of exploitative material
 
-\* Human beings are not consumable objects.
 
-\* Interior life is sacred and protected.
 
-\* Exploitation is structurally incompatible with the system.
+\### 3.2 Sexual exploitation and commodification
 
+Prohibited:
 
 
-Content policies exist to preserve this foundation.
 
+\- pornographic distribution intended primarily for commercial gain
 
+\- sexual content used for engagement harvesting or attention monetization
 
+\- paid amplification of sexualized display
 
+\- coercive or non-consensual sexual content
 
----
 
 
+Allowed (contextual):
 
 
 
-\## \*\*Non-Negotiable Prohibitions\*\*
+\- lawful adult embodiment and self-expression
 
+\- artistic exploration that is not exploitative or coerced
 
 
-The following are strictly prohibited:
 
+Arcanum distinguishes \*\*expression\*\* from \*\*exploitation\*\* by intent, structure, and incentives.
 
 
 
+\### 3.3 Promotion of violence
 
-\### \*\*1️⃣ Exploitation of Minors\*\*
+Prohibited:
 
 
 
+\- content that directly promotes or glorifies physical violence
 
+\- incitement to violence
 
+\- organized harm facilitation
 
+\- terroristic recruitment or coordination
 
-\* Sexual content involving minors
 
-\* Suggestive representation of minors
 
-\* Grooming behavior
+Allowed (contextual):
 
-\* Distribution of exploitative material
 
 
+\- educational, journalistic, documentary, or analytical discussion of violence
 
-This prohibition is absolute.
 
 
+\### 3.4 Dehumanization
 
+Prohibited:
 
 
----
 
+\- content advocating removal of rights based on protected identity
 
+\- content reducing individuals or groups to subhuman status
 
+\- targeted hate that encourages harm or exclusion
 
 
-\### \*\*2️⃣ Sexual Commodification\*\*
 
+The system protects pluralism and dissent. It does not protect dehumanization.
 
 
-The Arcanum prohibits explicit sexual content intended for:
 
+\### 3.5 Coordinated psychological harm
 
+Prohibited:
 
 
 
+\- targeted harassment campaigns
 
+\- coordinated bullying
 
-\* Commercial gain
+\- systematic humiliation
 
-\* Engagement harvesting
+\- coercive manipulation intended to harm
 
-\* Attention monetization
 
-\* Objectification-based influence
 
+\---
 
 
-The system does not support:
 
+\## 4. No Moral Policing Clause
 
 
 
+Arcanum does not exist to:
 
 
 
-\* Pornographic distribution
+\- enforce religious purity codes
 
-\* Algorithmic sexual amplification
+\- police consensual adult relationships
 
-\* Economic incentives tied to sexualized display
+\- regulate private lawful behavior
 
+\- enforce ideological doctrine
 
 
-Expression of embodiment is not prohibited.
 
+Intervention is based on harm, exploitation, and safety risk—not belief.
 
 
-Commodification of embodiment is.
 
+\---
 
 
 
+\## 5. Enforcement Surfaces
 
----
 
 
+Where content addressing is used, the system distinguishes:
 
 
 
-\### \*\*3️⃣ Promotion of Violence\*\*
+\- \*\*content existence\*\* (may persist beyond the system)
 
+\- \*\*discovery and distribution\*\* (what the system surfaces)
 
 
-Content that directly promotes:
 
+Enforcement may include:
 
 
 
+\- de-listing from discovery
 
+\- limiting reach in shared surfaces
 
+\- account-level restrictions for repeat abuse
 
-\* Physical violence
+\- escalation paths for immediate risk (especially minors)
 
-\* Organized harm
 
-\* Terroristic activity
 
-\* Coercive abuse
+Actions must be:
 
 
 
-Is prohibited.
+\- documented
 
+\- consistent
 
+\- reviewable
 
-Discussion of violence in educational, journalistic, or analytical context is permitted.
+\- proportionate
 
 
 
+\---
 
 
----
 
+\## 6. Moderation Criteria (What triggers intervention)
 
 
 
+Intervention may occur when:
 
-\### \*\*4️⃣ Dehumanization\*\*
 
 
+\- direct harm is promoted
 
-Content that:
+\- exploitation is evident
 
+\- coercion is encouraged
 
+\- minors are endangered
 
-
-
-
-
-\* Reduces individuals or groups to subhuman status
-
-\* Advocates removal of rights based on identity
-
-\* Encourages hatred toward protected groups
-
-
-
-Is subject to intervention.
-
-
-
-The Arcanum protects pluralism and dissent. \\
-
-It does not protect dehumanization.
-
-
-
-
-
----
-
-
-
-
-
-\### \*\*5️⃣ Coordinated Psychological Harm\*\*
-
-
-
-The Arcanum prohibits:
-
-
-
-
-
-
-
-\* Targeted harassment campaigns
-
-\* Coordinated bullying
-
-\* Manipulative emotional exploitation
-
-\* Systematic humiliation
-
-
-
-Behavioral harm is governable.
-
-
-
-
-
----
-
-
-
-
-
-\## \*\*Expression vs Exploitation\*\*
-
-
-
-The Arcanum distinguishes between:
-
-
-
-Expression:
-
-
-
-
-
-
-
-\* Personal embodiment
-
-\* Artistic exploration
-
-\* Cultural identity
-
-\* Self-representation
-
-
-
-Exploitation:
-
-
-
-
-
-
-
-\* Objectification for attention
-
-\* Economic gain through sexualization
-
-\* Psychological manipulation
-
-\* Identity commodification
-
-
-
-Structural incentives for exploitation are removed by design.
-
-
-
-
-
----
-
-
-
-
-
-\## \*\*No Moral Policing Clause\*\*
-
-
-
-The Arcanum does not:
-
-
-
-
-
-
-
-\* Enforce religious purity codes
-
-\* Police consensual adult relationships
-
-\* Regulate private lawful behavior
-
-\* Enforce ideological sexual doctrine
-
-
-
-Boundaries are based on harm and dignity — not morality frameworks.
-
-
-
-
-
-
-
----
-
-\*\*Structural Safeguards\*\*
-
-
-
-The system architecture supports dignity through:
-
-
-
-
-
-
-
-\* Absence of engagement ranking
-
-\* Absence of paid amplification
-
-\* Absence of virality loops
-
-\* Non-monetization of attention
-
-
-
-Without amplification, exploitation loses incentive.
-
-
-
----
-
-
-
-
-
-
-
-\## \*\*Intervention Criteria\*\*
-
-
-
-Moderation intervention may occur when:
-
-
-
-
-
-
-
-\* Direct harm is promoted
-
-\* Exploitation is evident
-
-\* Coercion is encouraged
-
-\* Minors are endangered
-
-
-
-Intervention must be:
-
-
-
-
-
-
-
-\* Documented
-
-\* Transparent
-
-\* Consistent
-
-\* Reviewable
+\- coordinated harassment is occurring
 
 
 
@@ -471,68 +280,25 @@ Belief alone is not grounds for intervention.
 
 
 
-Behavior is.
+\---
 
 
 
-
-
----
-
+\## 7. Alignment
 
 
 
-
-\## \*\*Alignment With Constitutional Principles\*\*
-
-
-
-All content boundaries must remain aligned with:
+These boundaries must remain aligned with:
 
 
 
+\- structural neutrality (no ideological enforcement)
+
+\- non-coercive participation
+
+\- safety and dignity invariants
 
 
 
+This document is a minimum baseline and may be extended by governance, but extensions must remain harm-based and reviewable.
 
-\* METAPHYSICAL\_NEUTRALITY\_PRINCIPLE
-
-\* GOVERNANCE\_AND\_NEUTRALITY
-
-\* FOUNDER\_TRANSITION\_AND\_ARCHETYPE
-
-
-
-No content policy may introduce metaphysical doctrine or ideological enforcement.
-
-
-
-
-
----
-
-
-
-
-
-\## \*\*Long-Term Civilizational Position\*\*
-
-
-
-The Arcanum is not a free-for-all.
-
-
-
-It is a sanctuary for interior sovereignty.
-
-
-
-Sanctuaries require boundaries.
-
-
-
-Boundaries protect clarity.
-
-
-
----

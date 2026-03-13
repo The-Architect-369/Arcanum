@@ -1,0 +1,247 @@
+diff --git a/apps/web/src/app/page.tsx b/apps/web/src/app/page.tsx
+deleted file mode 100644
+index a3e25d6..0000000
+--- a/apps/web/src/app/page.tsx
++++ /dev/null
+@@ -1,19 +0,0 @@
+-"use client";
+-
+-import { useEffect } from "react";
+-import { useRouter } from "next/navigation";
+-
+-export default function RootPage() {
+-  const router = useRouter();
+-
+-  useEffect(() => {
+-    const initialized = localStorage.getItem("ARCANUM_NODE_INITIALIZED");
+-
+-    if (!initialized) {
+-      router.replace("/onboard");
+-    } else {
+-      router.replace("/hope");
+-    }
+-  }, [router]);
+-
+-  return null;
+-}
+diff --git a/apps/web/src/app/(marketing)/page.tsx b/apps/web/src/app/(marketing)/page.tsx
+index fb7c8d4..4d2d7dd 100644
+--- a/apps/web/src/app/(marketing)/page.tsx
++++ b/apps/web/src/app/(marketing)/page.tsx
+@@ -44,7 +44,7 @@ export default function HomePage() {
+           <p className="mt-2">
+             <a
+               href="/privacy"
+               className="underline decoration-transparent hover:decoration-current"
+             >
+               Privacy
+             </a>
+             <Link
+-              href="/hope/presence?entry=marketing"
++              href="/activate"
+               className="text-sm opacity-60 hover:opacity-100 transition"
+             >
+-              Enter presence
++              Activate
+             </Link>
+             {" · "}
+             <a href="/terms" className="underline decoration-transparent hover:decoration-current">
+               Terms
+             </a>
+           </p>
+         </footer>
+       </main>
+     );
+ }
+diff --git a/apps/web/src/app/(marketing)/activate/page.tsx b/apps/web/src/app/(marketing)/activate/page.tsx
+index d9007a0..9e82a3f 100644
+--- a/apps/web/src/app/(marketing)/activate/page.tsx
++++ b/apps/web/src/app/(marketing)/activate/page.tsx
+@@ -1,14 +1,30 @@
+ export const metadata = { title: "Activate — ARCnet" };
+ 
+ import { copy } from "@/content/narrative";
++import Link from "next/link";
+ 
+ export default function Activate() {
+   return (
+     <main className="section">
+       <div className="bento-card bento-mobile p-6 md:p-10 space-y-6">
+         <div className="bento-ring" />
+         <h1 className="h1">Activate</h1>
+         <p className="p opacity-80">{copy.activate.descFull}</p>
++        <div className="flex flex-wrap gap-3 pt-2">
++          <Link
++            href="/onboard"
++            className="rounded-xl border border-white/20 bg-white/10 px-4 py-2 text-sm font-medium hover:bg-white/15"
++          >
++            Begin onboarding
++          </Link>
++          <Link
++            href="/"
++            className="rounded-xl border border-white/10 bg-white/5 px-4 py-2 text-sm hover:bg-white/10"
++          >
++            Back to site
++          </Link>
++        </div>
+       </div>
+     </main>
+   );
+ }
+diff --git a/apps/web/src/app/onboard/page.tsx b/apps/web/src/app/onboard/page.tsx
+index 5eb78f5..9f6b0b2 100644
+--- a/apps/web/src/app/onboard/page.tsx
++++ b/apps/web/src/app/onboard/page.tsx
+@@ -1,79 +1,77 @@
+-'use client'
+-
+-import { useState } from 'react'
+-import { getQueryClient, getSigningClient } from '@/lib/cosmos/client'
+-
+-const baseDenom = process.env.NEXT_PUBLIC_ARCANUM_BASE_DENOM || 'umana'
+-
+-export default function OnboardPage() {
+-  const [mnemonic, setMnemonic] = useState('')
+-  const [address, setAddress] = useState<string | null>(null)
+-  const [mana, setMana] = useState<string | null>(null)
+-  const [status, setStatus] = useState<string>('')
+-
+-  async function handleConnect() {
+-    setStatus('Connecting to Arcanum-D...')
+-    try {
+-      const { account } = await getSigningClient(mnemonic)
+-      setAddress(account.address)
+-
+-      const qc = await getQueryClient()
+-      const balances = await qc.getAllBalances(account.address)
+-      const bal = balances.find(b => b.denom === baseDenom)
+-      setMana(bal ? bal.amount : '0')
+-
+-      setStatus('Connected')
+-    } catch (err: any) {
+-      console.error(err)
+-      setStatus(`Error: ${err?.message ?? String(err)}`)
+-    }
+-  }
+-
+-  return (
+-    <main className="p-6 space-y-4">
+-      <h1 className="text-2xl font-bold">Begin your Rite</h1>
+-      <p className="text-sm opacity-80">Dev-only burner flow (will be replaced with Keplr/Leap).</p>
+-      <textarea
+-        className="border rounded p-2 w-full h-24"
+-        placeholder="Paste a mnemonic with some umana"
+-        value={mnemonic}
+-        onChange={e => setMnemonic(e.target.value)}
+-      />
+-      <button className="border px-4 py-2 rounded" onClick={handleConnect}>
+-        Connect to Arcanum-D
+-      </button>
+-
+-      {status && <p className="text-sm mt-2">{status}</p>}
+-      {address && (
+-        <p className="text-sm">
+-          Address: <code>{address}</code>
+-        </p>
+-      )}
+-      {mana !== null && (
+-        <p className="text-sm">
+-          MANA balance (base units {baseDenom}): <strong>{mana}</strong>
+-        </p>
+-      )}
+-    </main>
+-  )
+-}
++"use client";
++
++import { useEffect, useState } from "react";
++import { useRouter } from "next/navigation";
++import ACCOnboardingModal from "@/components/ui/ACCOnboardingModal";
++import { completeOnboarding, getState, subscribe } from "@/state/useAccount";
++
++/**
++ * Onboarding (Vercel-first)
++ * - No Arcnet requirement yet.
++ * - Performs a "soft activation" so the experience path is usable.
++ * - Later: replace completeOnboarding() with real Arcnet ChainCode mint + receipt.
++ */
++export default function OnboardPage() {
++  const router = useRouter();
++  const [ready, setReady] = useState(false);
++  const [open, setOpen] = useState(false);
++
++  useEffect(() => {
++    const unsub = subscribe(() => {
++      const s = getState();
++      // once trusted, go straight into the app boundary
++      if (s.trusted) router.replace("/hope");
++    });
++    setReady(true);
++    // open the onboarding modal immediately
++    setOpen(true);
++    return () => unsub();
++  }, [router]);
++
++  async function softActivate() {
++    await completeOnboarding(); // sets trusted=true + starter mana stub
++    router.replace("/hope");
++  }
++
++  if (!ready) return null;
++
++  return (
++    <main className="mx-auto max-w-xl px-4 py-12 space-y-6">
++      <h1 className="text-2xl font-bold">Onboarding</h1>
++      <p className="text-sm opacity-80">
++        This is the Vercel-first experience path. Arcnet validation will be wired after the UI is stable.
++      </p>
++
++      <div className="flex flex-wrap gap-3">
++        <button
++          className="rounded-xl border border-white/20 bg-white/10 px-4 py-2 text-sm font-medium hover:bg-white/15"
++          onClick={() => setOpen(true)}
++        >
++          Open activation
++        </button>
++        <button
++          className="rounded-xl border border-white/20 bg-white/10 px-4 py-2 text-sm font-medium hover:bg-white/15"
++          onClick={softActivate}
++        >
++          Continue (soft activation)
++        </button>
++        <button
++          className="rounded-xl border border-white/10 bg-white/5 px-4 py-2 text-sm hover:bg-white/10"
++          onClick={() => router.replace("/")}
++        >
++          Back to site
++        </button>
++      </div>
++
++      <ACCOnboardingModal open={open} onOpenChange={setOpen} />
++    </main>
++  );
++}
+diff --git a/apps/web/src/app/(app)/layout.tsx b/apps/web/src/app/(app)/layout.tsx
+index ae4a648..8e4b9e4 100644
+--- a/apps/web/src/app/(app)/layout.tsx
++++ b/apps/web/src/app/(app)/layout.tsx
+@@ -1,12 +1,28 @@
+ import type { ReactNode } from "react";
+ import Providers from "./providers";
++import AppHeader from "@/components/ui/AppHeader";
++import AppFooter from "@/components/ui/AppFooter";
+ 
+ export default function AppLayout({ children }: { children: ReactNode }) {
+   return (
+     <Providers>
+-      {/* Keep this minimal so it doesn't force any particular UI shell */}
+-      {children}
++      {/* App shell boundary: mounted only for (app) routes */}
++      <AppHeader />
++      <main className="pt-14 pb-14">
++        {children}
++      </main>
++      <AppFooter />
+     </Providers>
+   );
+ }

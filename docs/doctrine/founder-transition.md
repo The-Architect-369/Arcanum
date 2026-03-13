@@ -1,41 +1,34 @@
----
+\---
+
 title: "Founder Transition"
+
 status: canonical
+
 visibility: public
-last_updated: 2026-02-18
-description: ""
----
 
+last\_updated: 2026-03-02
 
-# Founder Transition
+description: "Formal separation between founder stewardship and long-term commons governance; protections against personality cult formation."
 
-\# \*\*FOUNDER\_TRANSITION\_AND\_ARCHETYPE\*\*
+version: "1.0"
 
+phase: "Pre-Genesis"
 
+layer: "Doctrine"
 
-\*\*Status:\*\* Canonical \\
-
-\*\*Layer:\*\* Constitution \\
-
-\*\*Version:\*\* 1.0 \\
-
-\*\*Last Updated:\*\* 2026-02-13
+\---
 
 
 
-
-
----
-
+\# Founder Transition
 
 
 
-
-\## \*\*Purpose\*\*
-
+\## Purpose
 
 
-The Arcanum is designed to survive beyond any individual human identity.
+
+Arcanum is designed to survive beyond any individual human identity.
 
 
 
@@ -43,33 +36,25 @@ This document formalizes:
 
 
 
+\- separation between the \*\*Founder\*\* and the \*\*Architect\*\* archetype
+
+\- transition from founder stewardship to commons governance
+
+\- structural protection against personality cult formation
+
+\- a transparent economic allocation associated with protocol creation (if adopted)
 
 
 
-
-\* The separation between the Founder and the Architect archetype
-
-\* The transition from founder stewardship to digital commons governance
-
-\* The structural protection against personality cult formation
-
-\* The transparent economic allocation associated with protocol creation
+\---
 
 
 
-
-
----
-
+\## Founder Definition
 
 
 
-
-\## \*\*Founder Definition\*\*
-
-
-
-The Founder is the human individual responsible for initiating the Arcanum protocol and its early architectural formation.
+The \*\*Founder\*\* is the human individual responsible for initiating the Arcanum protocol and its early architectural formation.
 
 
 
@@ -85,31 +70,25 @@ The Founder’s role is transitional and stewardship-based.
 
 
 
-
-
----
-
-
-
-\*\*The Architect Archetype\*\*
+\---
 
 
 
-The Architect is a structural archetype representing:
+\## The Architect Archetype
 
 
 
+The \*\*Architect\*\* is a structural archetype representing:
 
 
 
+\- coherence
 
-\* Coherence
+\- cross-layer harmonization
 
-\* Cross-layer harmonization
+\- constitutional guardianship
 
-\* Constitutional guardianship
-
-\* Long-term system integrity
+\- long-term system integrity
 
 
 
@@ -125,31 +104,23 @@ No human shall be constitutionally elevated as permanent embodiment of the Archi
 
 
 
-
-
----
-
+\---
 
 
 
-
-\## \*\*Separation of Identity\*\*
-
-
-
-The Arcanum must not:
+\## Separation of Identity (Non-Negotiable)
 
 
 
+Arcanum must not:
 
 
 
+\- encode the Founder’s personal metaphysical beliefs into governance authority
 
-\* Encode the Founder’s personal metaphysical beliefs into governance authority
+\- require recognition of the Founder’s identity for participation
 
-\* Require recognition of the Founder’s identity for participation
-
-\* Establish ritual, symbolic, or governance elevation of the Founder
+\- establish ritual, symbolic, or governance elevation of the Founder
 
 
 
@@ -157,53 +128,49 @@ The protocol must function independently of the Founder’s continued involvemen
 
 
 
-
-
----
-
-
-
-\*\*Founder Allocation (Mana)\*\*
+\---
 
 
 
-The protocol allocates \*\*10% of Mana purchased\*\* to the Architect allocation address as compensation for initial design, authorship, and stewardship.
+\## Founder Allocation (MANA) — If Adopted
 
 
 
-This allocation must:
+If a Founder allocation exists, it must be:
 
 
 
+\- mechanically enforced at protocol level
+
+\- transparent and publicly auditable
+
+\- non-sovereign (no governance override)
+
+\- non-veto (no constitutional veto power)
 
 
 
-
-\* Be mechanically enforced at protocol level
-
-\* Be transparent and publicly auditable
-
-\* Not grant governance override authority
-
-\* Not confer constitutional veto power
+Example posture (legacy draft): “10% of purchased MANA routed to an Architect allocation address.”
 
 
 
-The allocation represents contribution recognition, not sovereignty.
+\*\*Constraint:\*\* Any allocation is contribution recognition, not sovereignty.
 
 
 
-
-
----
-
-
-
-\*\*Transition to Commons Governance\*\*
+If governance removes or revises this allocation in the future, it must do so transparently and without violating constitutional invariants.
 
 
 
-The Arcanum is designed to evolve into distributed governance.
+\---
+
+
+
+\## Transition to Commons Governance
+
+
+
+Arcanum is designed to evolve into distributed governance.
 
 
 
@@ -211,15 +178,11 @@ Over time:
 
 
 
+\- governance authority must decentralize
 
+\- protocol upgrades must require collective ratification
 
-
-
-\* Governance authority must decentralize
-
-\* Protocol upgrades must require collective ratification
-
-\* No single individual shall retain unilateral control
+\- no single individual shall retain unilateral control
 
 
 
@@ -227,33 +190,25 @@ The Founder may participate in governance as a peer node, not as supreme authori
 
 
 
-
-
----
-
+\---
 
 
 
-
-\## \*\*Founder Exit Principle\*\*
-
-
-
-The Arcanum must remain operational in the event of:
+\## Founder Exit Principle
 
 
 
+Arcanum must remain operational in the event of:
 
 
 
+\- Founder absence
 
-\* Founder absence
+\- Founder death
 
-\* Founder death
+\- Founder withdrawal
 
-\* Founder withdrawal
-
-\* Founder disagreement with future evolution
+\- Founder disagreement with future evolution
 
 
 
@@ -261,89 +216,69 @@ No core system function may depend on continued Founder action.
 
 
 
-
-
----
-
+\---
 
 
 
-
-\## \*\*Evolution Beyond Founder Preference\*\*
-
-
-
-The Arcanum may evolve in ways that diverge from the Founder’s personal aesthetic, symbolic, or philosophical preferences.
+\## Evolution Beyond Founder Preference
 
 
 
-Such evolution is permissible provided that constitutional invariants remain intact:
+Arcanum may evolve in ways that diverge from the Founder’s personal aesthetic, symbolic, or philosophical preferences.
 
 
 
+Such evolution is permissible provided constitutional invariants remain intact:
 
 
 
+\- privacy
 
-\* Privacy
+\- dignity
 
-\* Dignity
+\- non-coercion
 
-\* Non-coercion
+\- metaphysical neutrality
 
-\* Metaphysical neutrality
-
-\* Harm prevention
-
-
-
-The Founder’s preference does not supersede collective governance when invariants are preserved.
+\- harm prevention
 
 
 
----
+Founder preference does not supersede collective governance when invariants are preserved.
 
 
 
+\---
 
 
 
-
-\## \*\*Prohibition of Founder Cult Formation\*\*
-
-
-
-The Arcanum shall not:
+\## Prohibition of Founder Cult Formation
 
 
 
+Arcanum shall not:
 
 
 
+\- elevate the Founder as divine, prophetic, or metaphysically authoritative
 
-\* Elevate the Founder as divine, prophetic, or metaphysically authoritative
+\- create structural incentives for personality worship
 
-\* Create structural incentives for personality worship
-
-\* Encode narrative mythology as governance legitimacy
-
+\- encode narrative mythology as governance legitimacy
 
 
-Cultural storytelling may acknowledge historical origins. \\
+
+Cultural storytelling may acknowledge historical origins.  
 
 It may not confer authority.
 
 
 
-
-
----
-
+\---
 
 
 
-
-\## \*\*Enforcement Scope\*\*
+\## Enforcement Scope
 
 
 
@@ -351,26 +286,17 @@ This principle applies to:
 
 
 
+\- governance frameworks
+
+\- treasury mechanisms
+
+\- protocol upgrade procedures
+
+\- public representation of leadership
+
+\- community cultural development
 
 
 
+Any structural move toward centralization of authority in a single individual is invalid unless amended through ratified process.
 
-\* Governance frameworks
-
-\* Treasury mechanisms
-
-\* Protocol upgrade procedures
-
-\* Public representation of leadership
-
-\* Community cultural development
-
-
-
-Any structural move toward centralization of authority in a single individual shall be constitutionally invalid unless formally amended through ratified process.
-
-
-
-
-
----
