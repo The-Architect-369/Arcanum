@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-02-24T07:52:07Z",
-  "repo": "Arcanum",
-  "commit": "7dfdd2782",
-  "generator_version": "1.1",
+  "generated_at": "2026-03-22T04:37:55Z",
+  "repo": "The-Architect-369/Arcanum",
+  "commit": "22c13512a",
+  "generator_version": "1.0",
   "files": [
     {
       "path": ".github/workflows/doctrine-guard.yml",
@@ -29,7 +29,7 @@
       "last_modified_commit": "5da311ef6",
       "is_empty": false,
       "extension": ".gitignore",
-      "lines": 31
+      "lines": 0
     },
     {
       "path": ".npmrc",
@@ -38,7 +38,7 @@
       "last_modified_commit": "ad55d8f73",
       "is_empty": false,
       "extension": ".npmrc",
-      "lines": 1
+      "lines": 0
     },
     {
       "path": "CoreFileTree.txt",
@@ -65,7 +65,7 @@
       "last_modified_commit": "7dfdd2782",
       "is_empty": false,
       "extension": ".txt",
-      "lines": 250
+      "lines": 0
     },
     {
       "path": "apps/web/.gitignore",
@@ -74,7 +74,7 @@
       "last_modified_commit": "d32d6affc",
       "is_empty": false,
       "extension": ".gitignore",
-      "lines": 41
+      "lines": 0
     },
     {
       "path": "apps/web/README.md",
@@ -173,7 +173,7 @@
       "last_modified_commit": "d32d6affc",
       "is_empty": false,
       "extension": ".mjs",
-      "lines": 32
+      "lines": 0
     },
     {
       "path": "apps/web/middleware.ts",
@@ -191,7 +191,7 @@
       "last_modified_commit": "0f075f352",
       "is_empty": false,
       "extension": ".mjs",
-      "lines": 3
+      "lines": 0
     },
     {
       "path": "apps/web/node/docker/Dockerfile",
@@ -200,7 +200,7 @@
       "last_modified_commit": "5da311ef6",
       "is_empty": false,
       "extension": "",
-      "lines": 8
+      "lines": 0
     },
     {
       "path": "apps/web/node/ipfs/ipns-update.mjs",
@@ -209,7 +209,7 @@
       "last_modified_commit": "5da311ef6",
       "is_empty": false,
       "extension": ".mjs",
-      "lines": 11
+      "lines": 0
     },
     {
       "path": "apps/web/node/ipfs/publish.mjs",
@@ -218,7 +218,7 @@
       "last_modified_commit": "5da311ef6",
       "is_empty": false,
       "extension": ".mjs",
-      "lines": 27
+      "lines": 0
     },
     {
       "path": "apps/web/node/scripts/bootstrap.sh",
@@ -245,7 +245,7 @@
       "last_modified_commit": "5da311ef6",
       "is_empty": false,
       "extension": ".mjs",
-      "lines": 7
+      "lines": 0
     },
     {
       "path": "apps/web/public/file.svg",
@@ -272,7 +272,7 @@
       "last_modified_commit": "d32d6affc",
       "is_empty": false,
       "extension": ".png",
-      "lines": 3
+      "lines": 0
     },
     {
       "path": "apps/web/public/icons/exchange.png",
@@ -281,7 +281,7 @@
       "last_modified_commit": "d32d6affc",
       "is_empty": false,
       "extension": ".png",
-      "lines": 16
+      "lines": 0
     },
     {
       "path": "apps/web/public/icons/hope.png",
@@ -290,7 +290,7 @@
       "last_modified_commit": "d32d6affc",
       "is_empty": false,
       "extension": ".png",
-      "lines": 13
+      "lines": 0
     },
     {
       "path": "apps/web/public/icons/icon-192.png",
@@ -335,7 +335,7 @@
       "last_modified_commit": "d32d6affc",
       "is_empty": false,
       "extension": ".png",
-      "lines": 8
+      "lines": 0
     },
     {
       "path": "apps/web/public/icons/wallet.png",
@@ -344,7 +344,7 @@
       "last_modified_commit": "d32d6affc",
       "is_empty": false,
       "extension": ".png",
-      "lines": 5
+      "lines": 0
     },
     {
       "path": "apps/web/public/manifest.json",
@@ -713,7 +713,7 @@
       "last_modified_commit": "5da311ef6",
       "is_empty": false,
       "extension": ".css",
-      "lines": 146
+      "lines": 0
     },
     {
       "path": "apps/web/src/app/(marketing)/styles/motion.css",
@@ -722,7 +722,7 @@
       "last_modified_commit": "5da311ef6",
       "is_empty": false,
       "extension": ".css",
-      "lines": 90
+      "lines": 0
     },
     {
       "path": "apps/web/src/app/(marketing)/styles/utilities.css",
@@ -731,7 +731,7 @@
       "last_modified_commit": "5da311ef6",
       "is_empty": false,
       "extension": ".css",
-      "lines": 53
+      "lines": 0
     },
     {
       "path": "apps/web/src/app/api/ipfs/route.ts",
@@ -749,7 +749,7 @@
       "last_modified_commit": "d32d6affc",
       "is_empty": false,
       "extension": ".ico",
-      "lines": 30
+      "lines": 0
     },
     {
       "path": "apps/web/src/app/globals.css",
@@ -758,7 +758,7 @@
       "last_modified_commit": "0f075f352",
       "is_empty": false,
       "extension": ".css",
-      "lines": 2
+      "lines": 0
     },
     {
       "path": "apps/web/src/app/layout.tsx",
@@ -1222,20 +1222,20 @@
     {
       "path": "apps/web/src/lib/identity/aa.ts",
       "type": "file",
-      "size_bytes": 543,
-      "last_modified_commit": "642fbf2b7",
+      "size_bytes": 287,
+      "last_modified_commit": "3e4eb25ae",
       "is_empty": false,
       "extension": ".ts",
-      "lines": 16
+      "lines": 7
     },
     {
       "path": "apps/web/src/lib/identity/burner.ts",
       "type": "file",
-      "size_bytes": 230,
-      "last_modified_commit": "7dfdd2782",
+      "size_bytes": 614,
+      "last_modified_commit": "3e4eb25ae",
       "is_empty": false,
       "extension": ".ts",
-      "lines": 8
+      "lines": 23
     },
     {
       "path": "apps/web/src/lib/identity/gates.ts",
@@ -1312,20 +1312,20 @@
     {
       "path": "apps/web/src/lib/infra/index.ts",
       "type": "file",
-      "size_bytes": 49,
-      "last_modified_commit": "7dfdd2782",
+      "size_bytes": 147,
+      "last_modified_commit": "3e4eb25ae",
       "is_empty": false,
       "extension": ".ts",
-      "lines": 2
+      "lines": 4
     },
     {
       "path": "apps/web/src/lib/infra/ipfs.ts",
       "type": "file",
-      "size_bytes": 1294,
-      "last_modified_commit": "7dfdd2782",
+      "size_bytes": 1634,
+      "last_modified_commit": "3e4eb25ae",
       "is_empty": false,
       "extension": ".ts",
-      "lines": 48
+      "lines": 68
     },
     {
       "path": "apps/web/src/lib/infra/matrix.ts",
@@ -1487,7 +1487,7 @@
       "last_modified_commit": "642fbf2b7",
       "is_empty": false,
       "extension": ".css",
-      "lines": 56
+      "lines": 0
     },
     {
       "path": "apps/web/tailwind.config.ts",
@@ -1523,7 +1523,7 @@
       "last_modified_commit": "975ab5f93",
       "is_empty": false,
       "extension": ".txt",
-      "lines": 170
+      "lines": 0
     },
     {
       "path": "chains/arcanum/.github/workflows/release.yml",
@@ -1541,7 +1541,7 @@
       "last_modified_commit": "5da311ef6",
       "is_empty": false,
       "extension": ".gitignore",
-      "lines": 9
+      "lines": 0
     },
     {
       "path": "chains/arcanum/Makefile",
@@ -1550,7 +1550,7 @@
       "last_modified_commit": "5da311ef6",
       "is_empty": false,
       "extension": "",
-      "lines": 121
+      "lines": 0
     },
     {
       "path": "chains/arcanum/amino/amino.ts",
@@ -1595,7 +1595,7 @@
       "last_modified_commit": "975ab5f93",
       "is_empty": false,
       "extension": ".disabled",
-      "lines": 256
+      "lines": 0
     },
     {
       "path": "chains/arcanum/app/genesis.go",
@@ -1622,7 +1622,7 @@
       "last_modified_commit": "975ab5f93",
       "is_empty": false,
       "extension": ".disabled",
-      "lines": 167
+      "lines": 0
     },
     {
       "path": "chains/arcanum/app/module_basics.go.disabled",
@@ -1631,7 +1631,7 @@
       "last_modified_commit": "975ab5f93",
       "is_empty": false,
       "extension": ".disabled",
-      "lines": 21
+      "lines": 0
     },
     {
       "path": "chains/arcanum/buf.gen.yaml",
@@ -1649,7 +1649,7 @@
       "last_modified_commit": "5da311ef6",
       "is_empty": false,
       "extension": ".lock",
-      "lines": 24
+      "lines": 0
     },
     {
       "path": "chains/arcanum/buf.yaml",
@@ -1775,7 +1775,7 @@
       "last_modified_commit": "975ab5f93",
       "is_empty": false,
       "extension": ".mod",
-      "lines": 437
+      "lines": 0
     },
     {
       "path": "chains/arcanum/go.sum",
@@ -1784,7 +1784,7 @@
       "last_modified_commit": "5da311ef6",
       "is_empty": false,
       "extension": ".sum",
-      "lines": 2966
+      "lines": 0
     },
     {
       "path": "chains/arcanum/gogoproto/gogo.ts",
@@ -2257,398 +2257,344 @@
     {
       "path": "docs/README.md",
       "type": "file",
-      "size_bytes": 2660,
-      "last_modified_commit": "83a94a753",
+      "size_bytes": 2186,
+      "last_modified_commit": "9aae3bedc",
       "is_empty": false,
       "extension": ".md",
-      "lines": 53
-    },
-    {
-      "path": "docs/architect/repo-index.json",
-      "type": "file",
-      "size_bytes": 125026,
-      "last_modified_commit": "7dfdd2782",
-      "is_empty": false,
-      "extension": ".json",
-      "lines": 4562
+      "lines": 67
     },
     {
       "path": "docs/architecture/app-chain-doctrine.md",
       "type": "file",
-      "size_bytes": 9114,
-      "last_modified_commit": "83a94a753",
+      "size_bytes": 9024,
+      "last_modified_commit": "60bd5ee4f",
       "is_empty": false,
       "extension": ".md",
-      "lines": 307
+      "lines": 568
     },
     {
-      "path": "docs/architecture/identity-model.md",
+      "path": "docs/architecture/arcanum-chain.md",
       "type": "file",
-      "size_bytes": 4476,
-      "last_modified_commit": "2bc7b14de",
+      "size_bytes": 7726,
+      "last_modified_commit": "60bd5ee4f",
       "is_empty": false,
       "extension": ".md",
-      "lines": 482
+      "lines": 418
     },
     {
-      "path": "docs/architecture/layer-boundaries.md",
+      "path": "docs/architecture/arcanum-system-overview.md",
       "type": "file",
-      "size_bytes": 5051,
-      "last_modified_commit": "2bc7b14de",
+      "size_bytes": 7431,
+      "last_modified_commit": "60bd5ee4f",
       "is_empty": false,
       "extension": ".md",
-      "lines": 478
+      "lines": 564
     },
     {
-      "path": "docs/architecture/temporal-model.md",
+      "path": "docs/architecture/canonical-modules.md",
       "type": "file",
-      "size_bytes": 5011,
-      "last_modified_commit": "2bc7b14de",
+      "size_bytes": 7639,
+      "last_modified_commit": "60bd5ee4f",
       "is_empty": false,
       "extension": ".md",
-      "lines": 494
+      "lines": 524
     },
     {
-      "path": "docs/architecture/tempus-structure.md",
-      "type": "file",
-      "size_bytes": 4213,
-      "last_modified_commit": "20451055d",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 106
-    },
-    {
-      "path": "docs/archive/roadmap-v2.md",
-      "type": "file",
-      "size_bytes": 5566,
-      "last_modified_commit": "83a94a753",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 223
-    },
-    {
-      "path": "docs/archive/roadmap-v3.md",
-      "type": "file",
-      "size_bytes": 7108,
-      "last_modified_commit": "83a94a753",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 878
-    },
-    {
-      "path": "docs/genesis/g1-hope-seal.md",
-      "type": "file",
-      "size_bytes": 1079,
-      "last_modified_commit": "2bc7b14de",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 74
-    },
-    {
-      "path": "docs/governance/constitution/architect-gpt-manifest.yaml",
-      "type": "file",
-      "size_bytes": 748,
-      "last_modified_commit": "811a91227",
-      "is_empty": false,
-      "extension": ".yaml",
-      "lines": 21
-    },
-    {
-      "path": "docs/governance/constitution/architect-log.md",
+      "path": "docs/archive/architect-log.md",
       "type": "file",
       "size_bytes": 9736,
-      "last_modified_commit": "2bc7b14de",
+      "last_modified_commit": "60bd5ee4f",
       "is_empty": false,
       "extension": ".md",
       "lines": 252
     },
     {
-      "path": "docs/governance/constitution/architect-role.md",
-      "type": "file",
-      "size_bytes": 4136,
-      "last_modified_commit": "2bc7b14de",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 438
-    },
-    {
-      "path": "docs/governance/constitution/architectgpt-core.md",
+      "path": "docs/archive/architectgpt-core.md",
       "type": "file",
       "size_bytes": 14639,
-      "last_modified_commit": "20451055d",
+      "last_modified_commit": "60bd5ee4f",
       "is_empty": false,
       "extension": ".md",
       "lines": 196
     },
     {
-      "path": "docs/governance/constitution/architectgpt-extended.md",
+      "path": "docs/archive/architectgpt-extended.md",
       "type": "file",
       "size_bytes": 8396,
-      "last_modified_commit": "20451055d",
+      "last_modified_commit": "60bd5ee4f",
       "is_empty": false,
       "extension": ".md",
       "lines": 263
     },
     {
-      "path": "docs/governance/constitution/canonical-modules.md",
-      "type": "file",
-      "size_bytes": 7059,
-      "last_modified_commit": "20451055d",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 409
-    },
-    {
-      "path": "docs/governance/constitution/doctrine-checksums.yaml",
-      "type": "file",
-      "size_bytes": 469,
-      "last_modified_commit": "2bc7b14de",
-      "is_empty": false,
-      "extension": ".yaml",
-      "lines": 4
-    },
-    {
-      "path": "docs/governance/constitution/doctrine-checksums.yaml.bak",
-      "type": "file",
-      "size_bytes": 465,
-      "last_modified_commit": "2bc7b14de",
-      "is_empty": false,
-      "extension": ".bak",
-      "lines": 4
-    },
-    {
-      "path": "docs/governance/constitution/economic-principles.md",
-      "type": "file",
-      "size_bytes": 9326,
-      "last_modified_commit": "20451055d",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 203
-    },
-    {
-      "path": "docs/governance/constitution/founder-transition.md",
-      "type": "file",
-      "size_bytes": 4288,
-      "last_modified_commit": "2bc7b14de",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 376
-    },
-    {
-      "path": "docs/governance/constitution/metaphysical-neutrality.md",
-      "type": "file",
-      "size_bytes": 3651,
-      "last_modified_commit": "2bc7b14de",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 318
-    },
-    {
-      "path": "docs/governance/constitution/repo-index-generator-spec.md",
-      "type": "file",
-      "size_bytes": 5040,
-      "last_modified_commit": "2bc7b14de",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 530
-    },
-    {
-      "path": "docs/governance/constitution/repo-interface.md",
-      "type": "file",
-      "size_bytes": 5658,
-      "last_modified_commit": "2bc7b14de",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 528
-    },
-    {
-      "path": "docs/governance/constitution/treasury-constitution.md",
-      "type": "file",
-      "size_bytes": 7616,
-      "last_modified_commit": "20451055d",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 247
-    },
-    {
-      "path": "docs/index.md",
-      "type": "file",
-      "size_bytes": 3487,
-      "last_modified_commit": "83a94a753",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 162
-    },
-    {
-      "path": "docs/overview/arcanum-system-overview.md",
-      "type": "file",
-      "size_bytes": 7211,
-      "last_modified_commit": "83a94a753",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 211
-    },
-    {
-      "path": "docs/overview/roadmap.md",
-      "type": "file",
-      "size_bytes": 9208,
-      "last_modified_commit": "83a94a753",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 324
-    },
-    {
-      "path": "docs/reference/changelog.md",
+      "path": "docs/changelog.md",
       "type": "file",
       "size_bytes": 373,
-      "last_modified_commit": "20451055d",
+      "last_modified_commit": "3e4eb25ae",
       "is_empty": false,
       "extension": ".md",
       "lines": 14
     },
     {
-      "path": "docs/reference/glossary.md",
+      "path": "docs/compliance/compliance-risk.md",
       "type": "file",
-      "size_bytes": 1259,
-      "last_modified_commit": "2bc7b14de",
+      "size_bytes": 5318,
+      "last_modified_commit": "60bd5ee4f",
       "is_empty": false,
       "extension": ".md",
-      "lines": 22
+      "lines": 348
     },
     {
-      "path": "docs/reference/license-and-attribution.md",
+      "path": "docs/compliance/dignity-content-boundaries.md",
       "type": "file",
-      "size_bytes": 618,
-      "last_modified_commit": "20451055d",
+      "size_bytes": 4072,
+      "last_modified_commit": "60bd5ee4f",
       "is_empty": false,
       "extension": ".md",
+      "lines": 304
+    },
+    {
+      "path": "docs/compliance/license-and-attribution.md",
+      "type": "file",
+      "size_bytes": 1038,
+      "last_modified_commit": "60bd5ee4f",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 70
+    },
+    {
+      "path": "docs/doctrine/architect-role.md",
+      "type": "file",
+      "size_bytes": 3357,
+      "last_modified_commit": "60bd5ee4f",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 286
+    },
+    {
+      "path": "docs/doctrine/authority.md",
+      "type": "file",
+      "size_bytes": 3996,
+      "last_modified_commit": "60bd5ee4f",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 378
+    },
+    {
+      "path": "docs/doctrine/founder-transition.md",
+      "type": "file",
+      "size_bytes": 4276,
+      "last_modified_commit": "60bd5ee4f",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 302
+    },
+    {
+      "path": "docs/doctrine/identity-model.md",
+      "type": "file",
+      "size_bytes": 3968,
+      "last_modified_commit": "60bd5ee4f",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 356
+    },
+    {
+      "path": "docs/doctrine/layer-boundaries.md",
+      "type": "file",
+      "size_bytes": 4649,
+      "last_modified_commit": "60bd5ee4f",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 370
+    },
+    {
+      "path": "docs/doctrine/metaphysical-neutrality.md",
+      "type": "file",
+      "size_bytes": 3021,
+      "last_modified_commit": "60bd5ee4f",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 218
+    },
+    {
+      "path": "docs/doctrine/temporal-model.md",
+      "type": "file",
+      "size_bytes": 3566,
+      "last_modified_commit": "60bd5ee4f",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 284
+    },
+    {
+      "path": "docs/governance/architectgpt/architect-gpt-manifest.yaml",
+      "type": "file",
+      "size_bytes": 485,
+      "last_modified_commit": "60bd5ee4f",
+      "is_empty": false,
+      "extension": ".yaml",
       "lines": 17
     },
     {
-      "path": "docs/specs/chain/arcanum-chain-overview.md",
+      "path": "docs/governance/architectgpt/architect-gpt.md",
       "type": "file",
-      "size_bytes": 141,
-      "last_modified_commit": "2bc7b14de",
+      "size_bytes": 9100,
+      "last_modified_commit": "60bd5ee4f",
       "is_empty": false,
       "extension": ".md",
-      "lines": 10
+      "lines": 257
     },
     {
-      "path": "docs/specs/chain/invariants.md",
+      "path": "docs/governance/economic-principles.md",
       "type": "file",
-      "size_bytes": 117,
-      "last_modified_commit": "2bc7b14de",
+      "size_bytes": 9234,
+      "last_modified_commit": "60bd5ee4f",
       "is_empty": false,
       "extension": ".md",
-      "lines": 10
+      "lines": 290
     },
     {
-      "path": "docs/specs/chain/mana.md",
+      "path": "docs/governance/governance-changelog.md",
       "type": "file",
-      "size_bytes": 105,
-      "last_modified_commit": "2bc7b14de",
+      "size_bytes": 1133,
+      "last_modified_commit": "60bd5ee4f",
       "is_empty": false,
       "extension": ".md",
-      "lines": 10
+      "lines": 33
     },
     {
-      "path": "docs/specs/chain/tempus-hooks.md",
+      "path": "docs/governance/governance-specification.md",
       "type": "file",
-      "size_bytes": 121,
-      "last_modified_commit": "2bc7b14de",
+      "size_bytes": 7349,
+      "last_modified_commit": "60bd5ee4f",
       "is_empty": false,
       "extension": ".md",
-      "lines": 10
+      "lines": 285
     },
     {
-      "path": "docs/specs/chain/treasury.md",
+      "path": "docs/governance/hopegpt/hope-guardian.md",
       "type": "file",
-      "size_bytes": 113,
-      "last_modified_commit": "2bc7b14de",
+      "size_bytes": 4906,
+      "last_modified_commit": "60bd5ee4f",
       "is_empty": false,
       "extension": ".md",
-      "lines": 10
+      "lines": 218
     },
     {
-      "path": "docs/specs/modules/economy.md",
+      "path": "docs/governance/treasury-constitution.md",
       "type": "file",
-      "size_bytes": 111,
-      "last_modified_commit": "2bc7b14de",
+      "size_bytes": 5684,
+      "last_modified_commit": "60bd5ee4f",
       "is_empty": false,
       "extension": ".md",
-      "lines": 10
+      "lines": 212
     },
     {
-      "path": "docs/specs/modules/hope.md",
+      "path": "docs/index.md",
+      "type": "file",
+      "size_bytes": 3597,
+      "last_modified_commit": "9aae3bedc",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 108
+    },
+    {
+      "path": "docs/manifesto/arcanum-manifesto.md",
+      "type": "file",
+      "size_bytes": 6578,
+      "last_modified_commit": "3e4eb25ae",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 846
+    },
+    {
+      "path": "docs/modules/hope/g1-hope-seal.md",
+      "type": "file",
+      "size_bytes": 1079,
+      "last_modified_commit": "3e4eb25ae",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 74
+    },
+    {
+      "path": "docs/modules/hope/hope.md",
       "type": "file",
       "size_bytes": 4356,
-      "last_modified_commit": "2bc7b14de",
+      "last_modified_commit": "3e4eb25ae",
       "is_empty": false,
       "extension": ".md",
       "lines": 516
     },
     {
-      "path": "docs/specs/modules/identity.md",
+      "path": "docs/modules/tempus/tempus-structure.md",
       "type": "file",
-      "size_bytes": 113,
-      "last_modified_commit": "2bc7b14de",
+      "size_bytes": 4213,
+      "last_modified_commit": "3e4eb25ae",
       "is_empty": false,
       "extension": ".md",
-      "lines": 10
+      "lines": 106
     },
     {
-      "path": "docs/specs/modules/nexus.md",
-      "type": "file",
-      "size_bytes": 107,
-      "last_modified_commit": "2bc7b14de",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 10
-    },
-    {
-      "path": "docs/specs/modules/tempus.md",
+      "path": "docs/modules/tempus/tempus.md",
       "type": "file",
       "size_bytes": 3799,
-      "last_modified_commit": "2bc7b14de",
+      "last_modified_commit": "3e4eb25ae",
       "is_empty": false,
       "extension": ".md",
       "lines": 402
     },
     {
-      "path": "docs/specs/modules/treasury.md",
+      "path": "docs/modules/vitae/vitae-and-becoming.md",
       "type": "file",
-      "size_bytes": 113,
-      "last_modified_commit": "2bc7b14de",
+      "size_bytes": 7147,
+      "last_modified_commit": "3e4eb25ae",
       "is_empty": false,
       "extension": ".md",
-      "lines": 10
+      "lines": 224
     },
     {
-      "path": "docs/specs/modules/vitae.md",
+      "path": "docs/repo/repo-index-generator-spec.md",
       "type": "file",
-      "size_bytes": 107,
-      "last_modified_commit": "2bc7b14de",
+      "size_bytes": 1349,
+      "last_modified_commit": "9aae3bedc",
       "is_empty": false,
       "extension": ".md",
-      "lines": 10
+      "lines": 59
     },
     {
-      "path": "docs/specs/modules/wallet.md",
+      "path": "docs/repo/repo-index.json",
       "type": "file",
-      "size_bytes": 109,
-      "last_modified_commit": "2bc7b14de",
+      "size_bytes": 125026,
+      "last_modified_commit": "3e4eb25ae",
       "is_empty": false,
-      "extension": ".md",
-      "lines": 10
+      "extension": ".json",
+      "lines": 4562
     },
     {
-      "path": "docs/vitae/authority.md",
+      "path": "docs/repo/repo-interface.md",
       "type": "file",
-      "size_bytes": 5469,
-      "last_modified_commit": "2bc7b14de",
+      "size_bytes": 2067,
+      "last_modified_commit": "9aae3bedc",
       "is_empty": false,
       "extension": ".md",
-      "lines": 602
+      "lines": 87
+    },
+    {
+      "path": "docs/tooling/doctrine-checksums/doctrine-checksums.yaml",
+      "type": "file",
+      "size_bytes": 2165,
+      "last_modified_commit": "22c13512a",
+      "is_empty": false,
+      "extension": ".yaml",
+      "lines": 25
+    },
+    {
+      "path": "docs/tooling/doctrine-checksums/doctrine-checksums.yaml.bak",
+      "type": "file",
+      "size_bytes": 465,
+      "last_modified_commit": "3e4eb25ae",
+      "is_empty": false,
+      "extension": ".bak",
+      "lines": 0
     },
     {
       "path": "docs/vitae/constitution/constitutional-amendment.md",
@@ -4370,94 +4316,67 @@
       "lines": 154
     },
     {
-      "path": "docs/whitepaper/appendix-governance.md",
-      "type": "file",
-      "size_bytes": 3538,
-      "last_modified_commit": "20451055d",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 66
-    },
-    {
-      "path": "docs/whitepaper/arcanum-chain.md",
-      "type": "file",
-      "size_bytes": 7954,
-      "last_modified_commit": "83a94a753",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 224
-    },
-    {
-      "path": "docs/whitepaper/compliance-risk.md",
-      "type": "file",
-      "size_bytes": 2990,
-      "last_modified_commit": "20451055d",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 49
-    },
-    {
-      "path": "docs/whitepaper/dignity-content-boundaries.md",
-      "type": "file",
-      "size_bytes": 4638,
-      "last_modified_commit": "2bc7b14de",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 538
-    },
-    {
       "path": "docs/whitepaper/executive-summary.md",
       "type": "file",
-      "size_bytes": 1946,
-      "last_modified_commit": "20451055d",
+      "size_bytes": 5041,
+      "last_modified_commit": "9aae3bedc",
       "is_empty": false,
       "extension": ".md",
-      "lines": 23
+      "lines": 151
     },
     {
-      "path": "docs/whitepaper/governance-neutrality.md",
+      "path": "docs/whitepaper/glossary.md",
       "type": "file",
-      "size_bytes": 4174,
-      "last_modified_commit": "2bc7b14de",
+      "size_bytes": 1740,
+      "last_modified_commit": "9aae3bedc",
       "is_empty": false,
       "extension": ".md",
-      "lines": 438
+      "lines": 24
+    },
+    {
+      "path": "docs/whitepaper/governance-constitutional-model.md",
+      "type": "file",
+      "size_bytes": 4366,
+      "last_modified_commit": "9aae3bedc",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 179
     },
     {
       "path": "docs/whitepaper/problem-solution.md",
       "type": "file",
-      "size_bytes": 1664,
-      "last_modified_commit": "20451055d",
+      "size_bytes": 3580,
+      "last_modified_commit": "9aae3bedc",
       "is_empty": false,
       "extension": ".md",
-      "lines": 27
+      "lines": 125
+    },
+    {
+      "path": "docs/whitepaper/roadmap.md",
+      "type": "file",
+      "size_bytes": 5050,
+      "last_modified_commit": "9aae3bedc",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 176
     },
     {
       "path": "docs/whitepaper/technical-architecture.md",
       "type": "file",
-      "size_bytes": 3231,
-      "last_modified_commit": "20451055d",
+      "size_bytes": 4508,
+      "last_modified_commit": "9aae3bedc",
       "is_empty": false,
       "extension": ".md",
-      "lines": 54
+      "lines": 196
     },
     {
       "path": "docs/whitepaper/tokenomics.md",
       "type": "file",
-      "size_bytes": 4473,
-      "last_modified_commit": "20451055d",
+      "size_bytes": 4374,
+      "last_modified_commit": "9aae3bedc",
       "is_empty": false,
       "extension": ".md",
-      "lines": 183
-    },
-    {
-      "path": "docs/whitepaper/vitae-and-becoming.md",
-      "type": "file",
-      "size_bytes": 7147,
-      "last_modified_commit": "83a94a753",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 224
+      "lines": 192
     },
     {
       "path": "package.json",
@@ -4489,56 +4408,65 @@
     {
       "path": "scripts/doctrine-guard.sh",
       "type": "file",
-      "size_bytes": 5746,
-      "last_modified_commit": "811a91227",
+      "size_bytes": 6818,
+      "last_modified_commit": "22c13512a",
       "is_empty": false,
       "extension": ".sh",
-      "lines": 183
+      "lines": 206
     },
     {
-      "path": "scripts/normalize-doc-headers.py",
+      "path": "scripts/patches/2026-03-04-hope-entrypoints.patch",
+      "type": "file",
+      "size_bytes": 8295,
+      "last_modified_commit": "60bd5ee4f",
+      "is_empty": false,
+      "extension": ".patch",
+      "lines": 0
+    },
+    {
+      "path": "scripts/patches/normalize-doc-headers.py",
       "type": "file",
       "size_bytes": 5300,
-      "last_modified_commit": "2bc7b14de",
+      "last_modified_commit": "60bd5ee4f",
       "is_empty": false,
       "extension": ".py",
-      "lines": 173
+      "lines": 0
     },
     {
-      "path": "scripts/rename-vitae-curriculum.py",
+      "path": "scripts/patches/rename-vitae-curriculum.py",
       "type": "file",
       "size_bytes": 8415,
-      "last_modified_commit": "2bc7b14de",
+      "last_modified_commit": "60bd5ee4f",
       "is_empty": false,
       "extension": ".py",
-      "lines": 284
+      "lines": 0
+    },
+    {
+      "path": "scripts/patches/update-checksums-paths.py",
+      "type": "file",
+      "size_bytes": 4518,
+      "last_modified_commit": "60bd5ee4f",
+      "is_empty": false,
+      "extension": ".py",
+      "lines": 0
     },
     {
       "path": "scripts/repo-index.sh",
       "type": "file",
-      "size_bytes": 1655,
-      "last_modified_commit": "86a45a562",
+      "size_bytes": 4015,
+      "last_modified_commit": "9aae3bedc",
       "is_empty": false,
       "extension": ".sh",
-      "lines": 60
-    },
-    {
-      "path": "scripts/update-checksums-paths.py",
-      "type": "file",
-      "size_bytes": 4518,
-      "last_modified_commit": "2bc7b14de",
-      "is_empty": false,
-      "extension": ".py",
-      "lines": 146
+      "lines": 143
     },
     {
       "path": "scripts/verify-sync.sh",
       "type": "file",
-      "size_bytes": 4742,
-      "last_modified_commit": "86a45a562",
+      "size_bytes": 5295,
+      "last_modified_commit": "60bd5ee4f",
       "is_empty": false,
       "extension": ".sh",
-      "lines": 166
+      "lines": 161
     },
     {
       "path": "tsconfig.json",

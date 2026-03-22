@@ -1,9 +1,3 @@
-
----
-
-## `scripts/repo-index.sh`
-
-```bash
 #!/usr/bin/env bash
 set -euo pipefail
 
