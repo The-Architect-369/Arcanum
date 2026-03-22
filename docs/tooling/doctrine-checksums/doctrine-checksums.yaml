@@ -1,4 +1,26 @@
-docs/governance/constitution/architectgpt-core.md: ba6c61c84ef4c0188b9dd23e521dded3a36e4b775253bb9b3c311ce55f162081
-docs/governance/constitution/architectgpt-extended.md: 140a0d2a21f7742b770f61bf35cb7e971cc23ea2424721f7e41f4705c9e467b8
-docs/governance/constitution/treasury-constitution.md: cd7af6a2c70e1d43f9d77df453de35b20e39bdd939e5d7307773cc7992d0616b
-docs/governance/constitution/repo-interface.md: 8bd05d5dccba48b9b202aa5317d4c0cd798665fd8d709ed5f5b936fefd25293b
+# doctrine-checksums.yaml
+# Canonical checksum map for core doctrine/architecture/governance surfaces.
+#
+# NOTE:
+# - Update this file whenever you make changes to the listed canonical artifacts.
+# - Checksums are SHA-256 of file bytes.
+# - Verified by: scripts/doctrine-guard.sh (Guard 4)
+
+docs/architecture/app-chain-doctrine.md: 4de20f9b229be60b461008d2d86c12e52e2cdd71108ff478efb7328e36caca7d
+docs/architecture/canonical-modules.md: dc1ffc1dd195d8a583060a05ee332aab43715fc09bbbbc57848530e8c2534c21
+docs/doctrine/architect-role.md: 5b050e91db6b735fe4cc0edd54100f1fcba556e12ce0c4cd02a4baebd145cb5b
+docs/doctrine/authority.md: 30f42a1c419041671e31cfebae76d2a59efb72c1e5785ccf1af9f44fc8933b31
+docs/doctrine/founder-transition.md: 18dae84ed779f842d1914eb6c75763f1eedab3262bed8151634204e21e4d172f
+docs/doctrine/identity-model.md: 9b6c036e6dd61dac4b1d4c1d267ed6870d5ff63886a5633f1dc0231a072f3f3a
+docs/doctrine/layer-boundaries.md: 0ac04f7f019c803845dfe323055c548c07e124dd926f65827788e3f1a00843b0
+docs/doctrine/metaphysical-neutrality.md: 2d0befd324c5eed8f4cda3704d5b8d04c09b42cac516fec2843a439b2a1a96c4
+docs/doctrine/temporal-model.md: 0c804991d3b976a9d2c8074a9409ff7dc458bdc9fc5217259ccf37565a48fc2e
+docs/governance/architectgpt/architect-gpt-manifest.yaml: 09b72a33f4f74ea85eca977a3e5284a47bf05bd9fcc4b89a6e95822b97604d76
+docs/governance/architectgpt/architect-gpt.md: 6b5746cacff51fceb9c134fc7a7ee2d7d163d7ea8d17ae34b9578469e6f12440
+docs/governance/economic-principles.md: d7ae7b0f9ff48fbc462915997a9c22bf2c72e1b44d82d232caecbc739b7e8374
+docs/governance/governance-changelog.md: b48c5e0e57cf5aae55d440f4682fd7fa410e1f7d225514ce4fc8a01fb7d9b201
+docs/governance/governance-specification.md: 0433b493dc28508c1ab1e8f76c4d0b944aecb40a71d2563434e85fda719973f9
+docs/governance/hopegpt/hope-guardian.md: 28155fb2ccea95e93becb24ddbd11147149fe8d7715771090ecd47686423f97e
+docs/governance/treasury-constitution.md: 1a86ba776e35764dde6475d8dfb82a4a5f716146bad3f55e636896fa71a0db2a
+docs/repo/repo-index-generator-spec.md: d895accf403e8fd78e683eb79ed92f651c8de35faa4178d66f54caedc6f51745
+docs/repo/repo-interface.md: 178df501cc426d4bcaa78b6bb0436b6538c2da78d9ad6fbcf2282cf93cecc0a3

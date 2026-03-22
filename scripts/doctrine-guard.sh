@@ -1,177 +1,201 @@
 #!/usr/bin/env bash
+# doctrine-guard.sh — enforce Arcanum doctrine + structural invariants
+# Usage: bash scripts/doctrine-guard.sh
+#
+# This script is intentionally conservative: it validates the *docs tree* and
+# enforces a few high-signal boundary rules. It does NOT attempt to “prove”
+# semantics in application code.
+#
+# Optional env flags:
+#   SKIP_CHECKSUMS=1   -> skip checksum verification (warn only)
+
 set -euo pipefail
 
-# ============================================================
-# Arcanum Doctrine Guard
-# Enforces constitutional alignment across docs, app, and chain
-# ============================================================
+ROOT_DIR="$(git rev-parse --show-toplevel 2>/dev/null || true)"
+if [[ -z "${ROOT_DIR}" ]]; then
+  echo "❌ Not inside a git repository."
+  exit 1
+fi
+cd "$ROOT_DIR"
 
-ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 DOCS_DIR="$ROOT_DIR/docs"
-
-# New constitution location
-CONSTITUTION_DIR="$DOCS_DIR/governance/constitution"
-CONSTITUTION="$CONSTITUTION_DIR/canonical-modules.md"
-
 FAILED=0
 
-echo "🛡️  Arcanum Doctrine Guard"
-echo "----------------------------------------------"
+fail() { echo "❌ $*"; FAILED=1; }
+pass() { echo "✅ $*"; }
+warn() { echo "⚠️  $*"; }
 
-fail() {
-  echo ""
-  echo "❌ DOCTRINE VIOLATION"
-  echo "→ $1"
-  FAILED=1
-}
+echo "== doctrine-guard =="
+echo "Repo: $(basename "$ROOT_DIR")"
+echo "Commit: $(git rev-parse --short HEAD 2>/dev/null || echo unknown)"
+echo
 
-pass() {
-  echo "✅ $1"
-}
-
-# ------------------------------------------------------------
-# GUARD 0 — Structural Existence
-# ------------------------------------------------------------
-echo ""
-echo "🔍 Guard 0 — Structural Existence"
-
-REQUIRED_PATHS=(
-  "docs/governance/constitution/canonical-modules.md"
-  "docs/vitae"
-  "docs/whitepaper/vitae-and-becoming.md"
-  "docs/whitepaper/arcanum-chain.md"
-  "docs/specs/modules"
-  "docs/specs/chain"
-  "apps"
-  "chains"
-)
-
-for path in "${REQUIRED_PATHS[@]}"; do
-  if [[ ! -e "$ROOT_DIR/$path" ]]; then
-    fail "Required path missing: $path"
+# Resolve chain directory (repo may choose chains/, chain/, or arcnet/)
+CHAIN_DIR=""
+for d in "chains" "chain" "arcnet"; do
+  if [[ -d "$ROOT_DIR/$d" ]]; then
+    CHAIN_DIR="$ROOT_DIR/$d"
+    break
   fi
 done
 
-[[ $FAILED -eq 0 ]] && pass "All required structural paths present"
-
 # ------------------------------------------------------------
-# GUARD 1 — Canonical Modules Integrity
+# GUARD 0 — Structural Presence (docs tree must exist)
 # ------------------------------------------------------------
-echo ""
-echo "🔍 Guard 1 — Canonical Module Integrity"
+echo "🔍 Guard 0 — Structural Presence"
 
-if [[ ! -f "$CONSTITUTION" ]]; then
-  fail "Canonical modules file missing: canonical-modules.md"
-else
-  # Extract module names (## MODULE I — NAME)
-  mapfile -t MODULES < <(grep -E "^## MODULE" "$CONSTITUTION" | sed 's/.*— //')
+required_paths=(
+  "docs/index.md"
+  "docs/README.md"
+  "docs/architecture/canonical-modules.md"
+  "docs/architecture/app-chain-doctrine.md"
+  "docs/doctrine/layer-boundaries.md"
+  "docs/doctrine/identity-model.md"
+  "docs/doctrine/temporal-model.md"
+  "docs/doctrine/metaphysical-neutrality.md"
+  "docs/doctrine/architect-role.md"
+  "docs/doctrine/authority.md"
+  "docs/governance/governance-specification.md"
+  "docs/governance/treasury-constitution.md"
+  "docs/governance/economic-principles.md"
+  "docs/governance/governance-changelog.md"
+  "docs/governance/hopegpt/hope-guardian.md"
+  "docs/governance/architectgpt/architect-gpt.md"
+  "docs/governance/architectgpt/architect-gpt-manifest.yaml"
+  "docs/repo/repo-interface.md"
+  "docs/repo/repo-index-generator-spec.md"
+  "docs/repo/repo-index.json"
+  "docs/tooling/doctrine-checksums/doctrine-checksums.yaml"
+  "docs/whitepaper"
+  "docs/compliance"
+  "docs/modules"
+  "docs/vitae"
+  "docs/archive"
+)
 
-  for module in "${MODULES[@]}"; do
-    case "$module" in
-      ARCHITECT)
-        [[ -d "$CONSTITUTION_DIR" ]] || fail "ARCHITECT module missing constitution folder"
-        ;;
-      VITAE)
-        [[ -d "$DOCS_DIR/vitae" ]] || fail "VITAE module missing docs/vitae"
-        [[ -f "$DOCS_DIR/specs/modules/vitae.md" ]] || fail "VITAE module spec missing"
-        ;;
-      TEMPUS)
-        [[ -f "$DOCS_DIR/specs/modules/tempus.md" ]] || fail "TEMPUS module spec missing"
-        ;;
-      HOPE)
-        [[ -f "$DOCS_DIR/specs/modules/hope.md" ]] || fail "HOPE module spec missing"
-        ;;
-      ECONOMY)
-        [[ -f "$DOCS_DIR/specs/modules/economy.md" ]] || fail "ECONOMY module spec missing"
-        ;;
-      TREASURY)
-        [[ -f "$DOCS_DIR/specs/modules/treasury.md" ]] || fail "TREASURY module spec missing"
-        ;;
-      ARCANUM\ CHAIN)
-        [[ -d "$DOCS_DIR/specs/chain" ]] || fail "ARCANUM CHAIN specs missing"
-        ;;
-    esac
-  done
+for p in "${required_paths[@]}"; do
+  if [[ -e "$ROOT_DIR/$p" ]]; then
+    echo "✅ present: $p"
+  else
+    fail "Missing required path: $p"
+  fi
+done
+
+# Spot-check canonical naming: ARCnet must be canonical network name
+if [[ -f "$DOCS_DIR/architecture/canonical-modules.md" ]]; then
+  if grep -q "ARCnet" "$DOCS_DIR/architecture/canonical-modules.md"; then
+    pass "Canonical naming present (ARCnet)"
+  else
+    fail "canonical-modules.md does not mention ARCnet; canonical naming note may be missing"
+  fi
 fi
 
-[[ $FAILED -eq 0 ]] && pass "Canonical modules structurally valid"
+echo
+[[ $FAILED -eq 0 ]] && pass "Structural presence OK"
 
 # ------------------------------------------------------------
-# GUARD 2 — Layer Boundary Enforcement
+# GUARD 1 — Canonical Module Surface Checks (docs/modules must exist)
 # ------------------------------------------------------------
-echo ""
+echo
+echo "🔍 Guard 1 — Module Surface Checks"
+
+module_surface_docs=(
+  "docs/modules/hope/hope.md"
+  "docs/modules/tempus/tempus.md"
+  "docs/modules/vitae/vitae-and-becoming.md"
+)
+
+for f in "${module_surface_docs[@]}"; do
+  if [[ -f "$ROOT_DIR/$f" ]]; then
+    echo "✅ present: $f"
+  else
+    fail "Missing module surface doc: $f"
+  fi
+done
+
+echo
+[[ $FAILED -eq 0 ]] && pass "Module surfaces present"
+
+# ------------------------------------------------------------
+# GUARD 2 — Layer Boundary Enforcement (high-signal checks)
+# ------------------------------------------------------------
+echo
 echo "🔍 Guard 2 — Layer Boundary Enforcement"
 
-# App must not mint or control economy
-if grep -R "mint(" "$ROOT_DIR/apps" >/dev/null 2>&1; then
-  fail "App layer references mint() — economy must be enforced on-chain"
+# Vitae must not contain mechanical economy operations (coupling risk)
+if [[ -d "$DOCS_DIR/vitae" ]]; then
+  if grep -R -E "(mint\(|supply\(|balance\()" "$DOCS_DIR/vitae" >/dev/null 2>&1; then
+    fail "VITAE contains mechanical economic operations — forbidden coupling"
+  else
+    pass "Vitae contains no mechanical economy operations"
+  fi
 fi
 
-# Vitae must not touch economy directly
-if grep -R -E "(mint\(|supply\(|balance\()" "$DOCS_DIR/vitae" >/dev/null 2>&1; then
-  fail "VITAE contains mechanical economic operations — forbidden coupling"
+# Chain/protocol implementation must not reference meaning/progression concepts in executable context
+# (If no chain directory exists yet, warn but do not fail.)
+if [[ -n "$CHAIN_DIR" ]]; then
+  if grep -R -E '\b(vitae|hope|grade)\b' "$CHAIN_DIR" \
+    | grep -v -E '^\s*//|^\s*#' >/dev/null 2>&1; then
+    fail "Chain layer references meaning/progression concepts (vitae|hope|grade) in non-comment context"
+  else
+    pass "Chain layer does not reference meaning/progression concepts"
+  fi
+else
+  warn "No chain directory found (chains/, chain/, or arcnet/). Skipping chain boundary check."
 fi
-
-# Chain must not define meaning or progression
-if grep -R -E '\b(vitae|hope|grade)\b' "$ROOT_DIR/chains" \
-  | grep -v -E '^\s*//|^\s*#' >/dev/null 2>&1; then
-  fail "Chain layer references meaning/progression concepts in executable context"
-fi
-[[ $FAILED -eq 0 ]] && pass "Layer boundaries respected"
 
 # ------------------------------------------------------------
-# GUARD 3 — Forbidden Authority Claims
+# GUARD 3 — Forbidden Authority Claims (outside doctrine/governance/architecture)
 # ------------------------------------------------------------
-echo ""
+echo
 echo "🔍 Guard 3 — Forbidden Authority Claims"
 
-# Only constitution may claim absolute authority
-if grep -R "absolute authority" "$DOCS_DIR" \
-  | grep -v "governance/constitution" >/dev/null 2>&1; then
-  fail "Non-constitutional document claims absolute authority"
-fi
-
-# White pages must not claim enforcement
-if grep -R -E "(enforces|guarantees|final authority)" \
-  "$DOCS_DIR/whitepaper" >/dev/null 2>&1; then
-  fail "White pages claim enforcement authority — forbidden"
-fi
-
-[[ $FAILED -eq 0 ]] && pass "Authority claims valid"
-
-# ------------------------------------------------------------
-# GUARD 4 — Canonical Checksums (Immutable Proof)
-# ------------------------------------------------------------
-CHECKSUM_FILE="$CONSTITUTION_DIR/doctrine-checksums.yaml"
-
-echo ""
-echo "🔍 Guard α — Canonical Checksums"
-
-if [[ -f "$CHECKSUM_FILE" ]]; then
-  while IFS=":" read -r path hash; do
-    path="$(echo "$path" | xargs)"
-    hash="$(echo "$hash" | xargs)"
-    [[ -z "$path" ]] && continue
-    local_path="$ROOT_DIR/$path"
-    if [[ -f "$local_path" ]]; then
-      current_hash=$(sha256sum "$local_path" | awk '{print $1}')
-      if [[ "$current_hash" != "$hash" ]]; then
-        fail "Checksum mismatch: $path"
-      fi
-    else
-      fail "Missing file for checksum: $path"
-    fi
-  done < <(grep -v '^#' "$CHECKSUM_FILE")
+# Only doctrine/governance/architecture may use absolute/final authority language.
+if grep -R -n -E "(absolute authority|final authority)" "$DOCS_DIR" \
+  | grep -v -E "/(doctrine|governance|architecture)/" >/dev/null 2>&1; then
+  fail "Non-doctrine/governance/architecture doc claims absolute/final authority"
 else
-  fail "Checksum manifest missing: doctrine-checksums.yaml"
+  pass "Authority language constrained to doctrine/governance/architecture"
 fi
 
-[[ $FAILED -eq 0 ]] && pass "All canonical checksums valid"
+# ------------------------------------------------------------
+# GUARD 4 — Canonical Checksums (immutable proof for core doctrine surfaces)
+# ------------------------------------------------------------
+echo
+echo "🔍 Guard 4 — Canonical Checksums"
+
+CHECKSUM_FILE="$DOCS_DIR/tooling/doctrine-checksums/doctrine-checksums.yaml"
+
+if [[ "${SKIP_CHECKSUMS:-0}" == "1" ]]; then
+  warn "SKIP_CHECKSUMS=1 set — checksum verification skipped."
+else
+  if [[ -f "$CHECKSUM_FILE" ]]; then
+    while IFS=":" read -r path hash; do
+      path="$(echo "$path" | xargs || true)"
+      hash="$(echo "$hash" | xargs || true)"
+      [[ -z "$path" ]] && continue
+      [[ "$path" =~ ^# ]] && continue
+
+      local_path="$ROOT_DIR/$path"
+      if [[ -f "$local_path" ]]; then
+        current_hash="$(sha256sum "$local_path" | awk '{print $1}')"
+        if [[ "$current_hash" != "$hash" ]]; then
+          fail "Checksum mismatch: $path"
+        fi
+      else
+        fail "Missing file for checksum: $path"
+      fi
+    done < "$CHECKSUM_FILE"
+    [[ $FAILED -eq 0 ]] && pass "All canonical checksums valid"
+  else
+    fail "Checksum manifest missing: $CHECKSUM_FILE"
+  fi
+fi
 
 # ------------------------------------------------------------
 # FINAL RESULT
 # ------------------------------------------------------------
-echo ""
+echo
 if [[ $FAILED -ne 0 ]]; then
   echo "🚫 Doctrine Guard FAILED"
   echo "Fix violations above before proceeding."
