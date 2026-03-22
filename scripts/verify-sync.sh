@@ -1,16 +1,6 @@
 #!/usr/bin/env bash
 # verify-sync.sh — repo + governance integrity checks
 # Usage: bash scripts/verify-sync.sh
-#
-# What this enforces:
-# 1) Repo index is up-to-date (docs/repo/repo-index.json) via scripts/repo-index.sh
-# 2) Architect GPT manifest exists, versions match, and all referenced files exist
-# 3) Governance canonical files exist (treasury/governance spec/economic principles/changelog/interfaces)
-# 4) Deprecated ArchitectGPT files are present in docs/archive (optional strictness)
-#
-# Notes:
-# - This script assumes you're running inside a git worktree.
-# - If docs/archive is intentionally absent, set ALLOW_MISSING_ARCHIVE=1
 
 set -euo pipefail
 
@@ -26,6 +16,35 @@ STATUS=0
 fail() { echo "❌ $*"; STATUS=1; }
 warn() { echo "⚠️  $*"; }
 
+parse_version() {
+  local file="$1"
+  awk -F': *' '/^version:/{print $2; exit}' "$file" \
+    | tr -d '\r"' \
+    | xargs
+}
+
+normalize_repo_index() {
+  local src="$1"
+  python3 - "$src" <<'PY'
+import json, sys
+
+path = sys.argv[1]
+with open(path, "r", encoding="utf-8") as f:
+    data = json.load(f)
+
+data.pop("generated_at", None)
+data.pop("commit", None)
+
+files = data.get("files", [])
+files = [f for f in files if f.get("path") != "docs/repo/repo-index.json"]
+files.sort(key=lambda x: x.get("path", ""))
+data["files"] = files
+
+json.dump(data, sys.stdout, indent=2, sort_keys=False)
+sys.stdout.write("\n")
+PY
+}
+
 echo "== verify-sync =="
 echo "Repo: $(basename "$ROOT_DIR")"
 echo "Commit: $(git rev-parse --short HEAD 2>/dev/null || echo unknown)"
@@ -40,19 +59,34 @@ GEN_SCRIPT="scripts/repo-index.sh"
 echo "[1/4] Repo index integrity"
 if [[ ! -f "$GEN_SCRIPT" ]]; then
   fail "Missing generator script: $GEN_SCRIPT"
+elif [[ ! -f "$INDEX_FILE" ]]; then
+  fail "Missing repo index output: $INDEX_FILE"
 else
-  # Generate index (writes to docs/repo/repo-index.json)
-  bash "$GEN_SCRIPT" >/dev/null || fail "Repo index generation failed"
+  tmpdir="$(mktemp -d)"
+  trap 'rm -rf "$tmpdir"' EXIT
 
-  if [[ ! -f "$INDEX_FILE" ]]; then
-    fail "Missing repo index output: $INDEX_FILE"
-  else
-    # Fail if index differs from generated output (content drift)
-    if ! git diff --quiet -- "$INDEX_FILE"; then
-      fail "$INDEX_FILE differs from generator output. Run: bash $GEN_SCRIPT && commit the updated index."
+  orig="$tmpdir/original.json"
+  gen="$tmpdir/generated.json"
+  norm_orig="$tmpdir/original.norm.json"
+  norm_gen="$tmpdir/generated.norm.json"
+
+  cp "$INDEX_FILE" "$orig"
+
+  if bash "$GEN_SCRIPT" >/dev/null; then
+    cp "$INDEX_FILE" "$gen"
+    cp "$orig" "$INDEX_FILE"
+
+    normalize_repo_index "$orig" > "$norm_orig"
+    normalize_repo_index "$gen" > "$norm_gen"
+
+    if ! diff -u "$norm_orig" "$norm_gen" >/dev/null; then
+      fail "$INDEX_FILE differs from generator output after normalization. Run: bash $GEN_SCRIPT && commit any real structural drift."
     else
-      echo "✅ repo index matches generator output: $INDEX_FILE"
+      echo "✅ repo index matches generator output (normalized): $INDEX_FILE"
     fi
+  else
+    cp "$orig" "$INDEX_FILE" 2>/dev/null || true
+    fail "Repo index generation failed"
   fi
 fi
 echo
@@ -72,8 +106,8 @@ if [[ ! -f "$ARCH_DOC" ]]; then
 fi
 
 if [[ -f "$MANIFEST" && -f "$ARCH_DOC" ]]; then
-  manifest_ver="$(grep -m1 '^version:' "$MANIFEST" | awk '{print $2}' | tr -d '"' || true)"
-  doc_ver="$(grep -m1 '^version:' "$ARCH_DOC" | awk '{print $2}' | tr -d '"' || true)"
+  manifest_ver="$(parse_version "$MANIFEST" || true)"
+  doc_ver="$(parse_version "$ARCH_DOC" || true)"
 
   echo "Manifest version: $manifest_ver"
   echo "Doc version:      $doc_ver"
@@ -88,9 +122,7 @@ if [[ -f "$MANIFEST" && -f "$ARCH_DOC" ]]; then
 
   echo
   echo "Checking manifest file paths..."
-  # Parse files: block in YAML (simple indentation-based parse)
   while IFS= read -r line; do
-    # Only lines like "  key: path"
     [[ "$line" =~ ^[[:space:]]{2}[a-zA-Z0-9_]+: ]] || continue
     key="$(echo "$line" | sed -E 's/^\s*([a-zA-Z0-9_]+):.*/\1/')"
     path="$(echo "$line" | sed -E 's/^\s*[a-zA-Z0-9_]+:\s*//')"
