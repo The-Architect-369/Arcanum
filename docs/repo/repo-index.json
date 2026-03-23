@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-03-23T12:05:32Z",
+  "generated_at": "2026-03-23T13:45:37Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "cad86f04c",
+  "commit": "c9bdefa19",
   "generator_version": "1.0",
   "files": [
     {
@@ -2428,20 +2428,20 @@
     {
       "path": "docs/governance/architectgpt/architect-gpt-manifest.yaml",
       "type": "file",
-      "size_bytes": 485,
+      "size_bytes": 795,
       "last_modified_commit": "60bd5ee4f",
       "is_empty": false,
       "extension": ".yaml",
-      "lines": 17
+      "lines": 29
     },
     {
       "path": "docs/governance/architectgpt/architect-gpt.md",
       "type": "file",
-      "size_bytes": 9100,
+      "size_bytes": 10219,
       "last_modified_commit": "60bd5ee4f",
       "is_empty": false,
       "extension": ".md",
-      "lines": 257
+      "lines": 284
     },
     {
       "path": "docs/governance/economic-principles.md",
@@ -2564,7 +2564,7 @@
       "path": "docs/repo/repo-index.json",
       "type": "file",
       "size_bytes": 123204,
-      "last_modified_commit": "3edaeaf1d",
+      "last_modified_commit": "c9bdefa19",
       "is_empty": false,
       "extension": ".json",
       "lines": 4490
@@ -2572,11 +2572,11 @@
     {
       "path": "docs/repo/repo-interface.md",
       "type": "file",
-      "size_bytes": 2067,
+      "size_bytes": 3958,
       "last_modified_commit": "9aae3bedc",
       "is_empty": false,
       "extension": ".md",
-      "lines": 87
+      "lines": 128
     },
     {
       "path": "docs/tooling/doctrine-checksums/doctrine-checksums.yaml",
