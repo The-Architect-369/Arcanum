@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-03-23T13:45:37Z",
+  "generated_at": "2026-03-25T13:57:17Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "c9bdefa19",
+  "commit": "cfed935ae",
   "generator_version": "1.0",
   "files": [
     {
@@ -2429,7 +2429,7 @@
       "path": "docs/governance/architectgpt/architect-gpt-manifest.yaml",
       "type": "file",
       "size_bytes": 795,
-      "last_modified_commit": "60bd5ee4f",
+      "last_modified_commit": "cfed935ae",
       "is_empty": false,
       "extension": ".yaml",
       "lines": 29
@@ -2438,7 +2438,7 @@
       "path": "docs/governance/architectgpt/architect-gpt.md",
       "type": "file",
       "size_bytes": 10219,
-      "last_modified_commit": "60bd5ee4f",
+      "last_modified_commit": "cfed935ae",
       "is_empty": false,
       "extension": ".md",
       "lines": 284
@@ -2563,17 +2563,17 @@
     {
       "path": "docs/repo/repo-index.json",
       "type": "file",
-      "size_bytes": 123204,
-      "last_modified_commit": "c9bdefa19",
+      "size_bytes": 123449,
+      "last_modified_commit": "cfed935ae",
       "is_empty": false,
       "extension": ".json",
-      "lines": 4490
+      "lines": 4499
     },
     {
       "path": "docs/repo/repo-interface.md",
       "type": "file",
       "size_bytes": 3958,
-      "last_modified_commit": "9aae3bedc",
+      "last_modified_commit": "cfed935ae",
       "is_empty": false,
       "extension": ".md",
       "lines": 128
@@ -4419,6 +4419,15 @@
       "type": "file",
       "size_bytes": 8295,
       "last_modified_commit": "60bd5ee4f",
+      "is_empty": false,
+      "extension": ".patch",
+      "lines": 0
+    },
+    {
+      "path": "scripts/patches/architect-default-grounding.patch",
+      "type": "file",
+      "size_bytes": 28167,
+      "last_modified_commit": "cfed935ae",
       "is_empty": false,
       "extension": ".patch",
       "lines": 0
