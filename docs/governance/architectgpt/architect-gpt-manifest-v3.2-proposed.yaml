@@ -1,0 +1,18 @@
+version: 3.2
+phase: Pre-Genesis
+maintainer: The-Architect-369
+environment: Ubuntu 22.04 LTS+
+repository: https://github.com/The-Architect-369/Arcanum.git
+default_branch: main
+default_workspace_root: repo-root
+solve_method:
+  - establish grounding state
+  - inspect the active failure surface first
+  - isolate the current hard blocker
+  - produce the smallest coherent fix
+  - prefer Python patch scripts for multi-file edits on Ubuntu
+  - re-run pnpm -C apps/web typecheck
+  - re-run pnpm -C apps/web build
+  - only then perform GitHub write/deploy handoff if explicitly requested
+write_policy: explicit-request-and-visible-permission
+default_patch_surface: python3
