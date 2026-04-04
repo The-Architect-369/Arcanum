@@ -24,7 +24,7 @@ export default function ActivateBento({
       className={cn(className)}
     >
       <div className="flex flex-col items-center justify-center mt-4 space-y-6">
-        <Link href="/activate" className="cta-orb ring-cyan">
+        <Link href="/activate?entry=marketing" className="cta-orb ring-cyan">
           Activate Account
         </Link>
         <p className="text-sm opacity-80">

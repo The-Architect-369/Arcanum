@@ -10,23 +10,23 @@ import { trySpendMana } from '@/lib/economy';
 import type { ArcanumPostV1 } from '@/lib/post';
 import { sendArcanumPost } from '@/lib/matrix';
 import { resolveRoomId, ROOM_ALIAS } from '@/lib/rooms';
-import { getJSONHelia, getBlobHelia } from '@/lib/infra/ipfs'
-import { putFileHelia, putJSONHelia } from '@/lib/infra/ipfs'
+import { putFileHelia, putJSONHelia } from '@/lib/infra/ipfs';
+
 const ORDER = ['/nexus/post', '/nexus/current', '/nexus/channel'];
 
 type MediaItem = { file: File; cid?: string; mime: string; name: string; size: number; status: 'pending'|'done'|'error' };
 
 export default function NexusPostPage() {
-  const acc = useAccount() as any; // { trusted, mana, accId?, handle? }
+  const acc = useAccount() as any;
+  const peerId = typeof acc?.peerId === 'string' ? acc.peerId : undefined;
   const defaultAlias = ROOM_ALIAS.ARCHITECT_FEED;
-  const [target, setTarget] = useState<string>(defaultAlias); // alias or roomId
+  const [target, setTarget] = useState<string>(defaultAlias);
   const [roomId, setRoomId] = useState<string>('');
   const [body, setBody] = useState('');
   const [media, setMedia] = useState<MediaItem[]>([]);
   const [msg, setMsg] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
 
-  // Resolve to roomId on target change
   useEffect(() => {
     let alive = true;
     (async () => {
@@ -57,7 +57,10 @@ export default function NexusPostPage() {
     const copy = [...media];
     for (let i = 0; i < copy.length; i++) {
       const item = copy[i];
-      if (item.cid) { results.push({ cid: item.cid, name: item.name, mime: item.mime, size: item.size }); continue; }
+      if (item.cid) {
+        results.push({ cid: item.cid, name: item.name, mime: item.mime, size: item.size });
+        continue;
+      }
       try {
         const { cid } = await putFileHelia(item.file);
         copy[i] = { ...item, cid, status: 'done' };
@@ -90,7 +93,7 @@ export default function NexusPostPage() {
         media: attachments && attachments.length ? attachments : undefined,
       };
 
-      const cid = await putJSONHelia(post);
+      const { cid } = await putJSONHelia(post);
 
       if (!trySpendMana(COST.POST)) throw new Error('Could not deduct MANA.');
       await sendArcanumPost(roomId, cid, post.body.slice(0, 120));

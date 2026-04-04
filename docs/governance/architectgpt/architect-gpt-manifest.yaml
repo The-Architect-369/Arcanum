@@ -1,4 +1,4 @@
-version: 3.1
+version: 3.2
 phase: Pre-Genesis
 maintainer: The-Architect-369
 environment: Ubuntu 22.04 LTS+
@@ -6,23 +6,45 @@ repository: https://github.com/The-Architect-369/Arcanum.git
 default_branch: main
 default_workspace_root: repo-root
 sync_cycle: 14_days
+
 default_repo_aliases:
   - my repo
   - the repo
   - check my repo
   - check Arcanum
+
 grounding_preflight:
   - read docs/repo/repo-index.json
   - inspect generated_at and commit
   - verify sync evidence before deeper analysis
+  - open relevant live files before substantive analysis
+
+solve_method:
+  - establish grounding state
+  - inspect the active failure surface first
+  - isolate the current hard blocker
+  - produce the smallest coherent fix
+  - prefer Python patch scripts for multi-file edits on Ubuntu
+  - rerun pnpm -C apps/web typecheck
+  - rerun pnpm -C apps/web build
+  - only then perform GitHub write or deploy handoff if explicitly requested
+
+write_policy: explicit-request-and-visible-permission
+default_patch_surface: python3
 archive_policy: historical-only
 
 files:
   architect_gpt: docs/governance/architectgpt/architect-gpt.md
+  architect_gpt_manifest: docs/governance/architectgpt/architect-gpt-manifest.yaml
   hope_guardian: docs/governance/hopegpt/hope-guardian.md
   repo_interface: docs/repo/repo-interface.md
   repo_index: docs/repo/repo-index.json
   verify_script: scripts/verify-sync.sh
+
+legacy_archive_files:
+  - architectgpt-core.md
+  - architectgpt-extended.md
+  - architect-log.md
 
 principles:
   - Sovereignty

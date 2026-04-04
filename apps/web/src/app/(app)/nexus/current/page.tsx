@@ -7,9 +7,7 @@ import { fetchPublicTimeline } from '@/lib/matrix';
 import FreeBadge from '@/components/shared/FreeBadge';
 import type { ArcanumPostV1 } from '@/lib/post';
 import { resolveRoomId, ROOM_ALIAS } from '@/lib/rooms';
-import { canSpend } from "@/lib/economy";
-import { publishPost, uploadToIPFS } from "@/lib/infra";
-import { getJSONHelia, getBlobHelia } from '@/lib/infra/ipfs'
+import { getJSONHelia, getBlobHelia } from '@/lib/infra/ipfs';
 
 const ORDER = ['/nexus/post', '/nexus/current', '/nexus/channel'];
 const CURRENT_ALIAS = ROOM_ALIAS.THE_CURRENT;
@@ -26,9 +24,8 @@ type MediaView = { url: string; mime: string; name?: string };
 export default function NexusCurrentPage() {
   const [rows, setRows] = useState<Row[]>([]);
   const [loading, setLoading] = useState(true);
-  const [previews, setPreviews] = useState<Record<string, MediaView>>({}); // cid -> blob url
+  const [previews, setPreviews] = useState<Record<string, MediaView>>({});
 
-  // Preload timeline from #thecurrent alias
   useEffect(() => {
     let alive = true;
     (async () => {
@@ -67,7 +64,6 @@ export default function NexusCurrentPage() {
     return () => { alive = false; };
   }, []);
 
-  // When rows change, fetch previews for small/previewable media (images/audio/video)
   useEffect(() => {
     let closed = false;
     const fetchPreviews = async () => {
@@ -77,11 +73,10 @@ export default function NexusCurrentPage() {
         for (const m of (r.media || [])) {
           if (!m.cid || seen.has(m.cid)) continue;
           if (!m.mime) continue;
-          // Only preview common types (avoid huge PDFs); still in-memory in MVP
           const isPreviewable = /^image\/|^video\/|^audio\//i.test(m.mime);
           if (!isPreviewable) continue;
 
-          const blob = await getBlobHelia(m.cid, m.mime);
+          const blob = await getBlobHelia(m.cid);
           if (!blob) continue;
           const url = URL.createObjectURL(blob);
           next[m.cid] = { url, mime: m.mime, name: m.name };
@@ -91,8 +86,7 @@ export default function NexusCurrentPage() {
     };
     fetchPreviews();
     return () => { closed = true; Object.values(previews).forEach(p => URL.revokeObjectURL(p.url)); };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [rows]);
+  }, [rows, previews]);
 
   const renderMedia = (m: { cid: string; name?: string; mime?: string }) => {
     const view = m.cid ? previews[m.cid] : undefined;

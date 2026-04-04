@@ -1,11 +1,13 @@
 'use client'
 
 import { useState } from 'react'
+import { useRouter } from 'next/navigation'
 import { getQueryClient, getSigningClient } from '@/lib/cosmos/client'
 
 const baseDenom = process.env.NEXT_PUBLIC_ARCANUM_BASE_DENOM || 'umana'
 
 export default function OnboardPage() {
+  const router = useRouter()
   const [mnemonic, setMnemonic] = useState('')
   const [address, setAddress] = useState<string | null>(null)
   const [mana, setMana] = useState<string | null>(null)
@@ -22,7 +24,9 @@ export default function OnboardPage() {
       const bal = balances.find(b => b.denom === baseDenom)
       setMana(bal ? bal.amount : '0')
 
-      setStatus('Connected')
+      localStorage.setItem('ARCANUM_NODE_INITIALIZED', '1')
+      setStatus('Connected. Entering Hope...')
+      router.replace('/hope')
     } catch (err: any) {
       console.error(err)
       setStatus(`Error: ${err?.message ?? String(err)}`)

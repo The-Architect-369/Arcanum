@@ -26,13 +26,14 @@ export default function SimpleAccountPreview() {
   const [burner, setBurner] = useState<Address | undefined>();
   const [owner, setOwner] = useState<Address | ''>('');
   const [factory, setFactory] = useState<Address | ''>('');
-  const [salt, setSalt] = useState<string>('0'); // uint256 as string
+  const [salt, setSalt] = useState<string>('0');
   const [computed, setComputed] = useState<Address | null>(null);
   const [err, setErr] = useState<string | null>(null);
 
   useEffect(() => {
     try {
-      setBurner(loadBurner().address as Address);
+      const local = loadBurner();
+      if (local) setBurner(local as Address);
     } catch {}
   }, []);
 

@@ -5,7 +5,6 @@ import { BentoGrid, BentoCard } from "@/components/ui/bento-grid"
 import { useNarrative } from "@/hooks/useNarrative"
 import { Network, Sparkles, Timer } from "lucide-react"
 
-// Shared motion variants bridging your .popcard logic
 const fadeInUp = {
   hidden: { opacity: 0, y: 24 },
   show: {
@@ -17,13 +16,14 @@ const fadeInUp = {
 
 export default function ShowcaseGrid() {
   const { content } = useNarrative()
-  const copy = content?.copy ?? {}
+  const showcase = content.showcase
+
   const showcases = [
     {
       key: "arcnet",
       Icon: Network,
-      title: copy.showcase.arcnet.heading,
-      description: copy.showcase.arcnet.sub,
+      title: showcase.arcnet.heading,
+      description: showcase.arcnet.sub ?? "",
       href: "#activate",
       cta: "Explore",
       background: (
@@ -33,8 +33,8 @@ export default function ShowcaseGrid() {
     {
       key: "mana",
       Icon: Sparkles,
-      title: copy.showcase.mana.heading,
-      description: copy.showcase.mana.sub,
+      title: showcase.mana.heading,
+      description: showcase.mana.sub ?? "",
       href: "#activate",
       cta: "Learn More",
       background: (
@@ -44,8 +44,8 @@ export default function ShowcaseGrid() {
     {
       key: "tempus",
       Icon: Timer,
-      title: copy.showcase.tempus.heading,
-      description: copy.showcase.tempus.sub,
+      title: showcase.tempus.heading,
+      description: showcase.tempus.sub ?? "",
       href: "#activate",
       cta: "See More",
       background: (
@@ -67,7 +67,7 @@ export default function ShowcaseGrid() {
         className="text-center mb-10 sm:mb-16 space-y-2"
       >
         <h2 className="text-3xl md:text-5xl font-bold gradient-text">
-          {copy.showcase.arcnet.heading.split(" ")[0]} • MANA • TEMPUS
+          {showcase.arcnet.heading.split(" ")[0]} • MANA • TEMPUS
         </h2>
         <p className="lead opacity-80 max-w-2xl mx-auto">
           Discover the pillars of the Arcanum Network.

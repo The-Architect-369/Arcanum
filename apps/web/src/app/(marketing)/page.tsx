@@ -11,12 +11,10 @@ export default function HomePage() {
     <main className="snap-container layer-content" id="top">
       <ActiveSectionObserver />
 
-      {/* HERO — explicit anchor + MUST-STOP snap */}
       <section id="hero" className="snap-section snap-first" aria-labelledby="hero-heading">
         <HeroBento />
       </section>
 
-      {/* SHOWCASES */}
       <section className="snap-section" aria-labelledby="arcnet-heading">
         <BentoShowcase variant="arcnet" />
       </section>
@@ -29,12 +27,10 @@ export default function HomePage() {
         <BentoShowcase variant="tempus" />
       </section>
 
-      {/* ACTIVATE */}
       <section id="activate" className="snap-section snap-last" aria-labelledby="activate-heading">
         <ActivateBento />
       </section>
 
-      {/* FOOTER */}
       <footer className="snap-end max-w-prose text-center mx-auto py-10 opacity-80">
         <p>© {new Date().getFullYear()} Arcanum. All rights reserved.</p>
         <p className="mt-2">
@@ -42,7 +38,7 @@ export default function HomePage() {
             Privacy
           </a>
           <Link
-            href="/hope/presence?entry=marketing"
+            href="/activate?entry=marketing"
             className="text-sm opacity-60 hover:opacity-100 transition"
           >
             Enter presence

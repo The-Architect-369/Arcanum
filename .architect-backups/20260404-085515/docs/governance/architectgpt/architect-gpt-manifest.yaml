@@ -1,0 +1,30 @@
+version: 3.1
+phase: Pre-Genesis
+maintainer: The-Architect-369
+environment: Ubuntu 22.04 LTS+
+repository: https://github.com/The-Architect-369/Arcanum.git
+default_branch: main
+default_workspace_root: repo-root
+sync_cycle: 14_days
+default_repo_aliases:
+  - my repo
+  - the repo
+  - check my repo
+  - check Arcanum
+grounding_preflight:
+  - read docs/repo/repo-index.json
+  - inspect generated_at and commit
+  - verify sync evidence before deeper analysis
+archive_policy: historical-only
+
+files:
+  architect_gpt: docs/governance/architectgpt/architect-gpt.md
+  hope_guardian: docs/governance/hopegpt/hope-guardian.md
+  repo_interface: docs/repo/repo-interface.md
+  repo_index: docs/repo/repo-index.json
+  verify_script: scripts/verify-sync.sh
+
+principles:
+  - Sovereignty
+  - Reciprocity
+  - Harmony

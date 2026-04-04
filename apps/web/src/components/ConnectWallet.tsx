@@ -10,8 +10,7 @@ function short(a?: string) {
 }
 
 export default function ConnectWallet() {
-  const { address: wagmiAddress } = useAccount()
-  const [localAddress, setLocalAddress] = useState<string | undefined>()
+  const { address: wagmiAddress } = useAccount();
   const { connectors, connect, isPending: isConnecting } = useConnect();
   const { disconnect } = useDisconnect();
 
@@ -20,15 +19,25 @@ export default function ConnectWallet() {
     connectors.find((c) => c.id === 'injected') ??
     connectors[0];
 
-  // reflect burner/passkey in UI
   const [burnerAddr, setBurnerAddr] = useState<string | undefined>();
-  const [pk, setPk] = useState<unknown | null>(getPasskey() as unknown);
+  const [pk, setPk] = useState<unknown | null>(null);
 
   useEffect(() => {
     const sync = () => {
-      try { setPk(getPasskey() as unknown); } catch {}
-      try { setBurnerAddr(hasBurner() ? loadBurner().address : undefined); } catch {}
+      try {
+        setPk(getPasskey() as unknown);
+      } catch {
+        setPk(null);
+      }
+
+      try {
+        const burner = hasBurner() ? loadBurner() : null;
+        setBurnerAddr(burner ?? undefined);
+      } catch {
+        setBurnerAddr(undefined);
+      }
     };
+
     sync();
     const iv = setInterval(sync, 1500);
     window.addEventListener('focus', sync);
@@ -38,7 +47,7 @@ export default function ConnectWallet() {
     };
   }, []);
 
-  const active = address ?? burnerAddr;
+  const active = wagmiAddress ?? burnerAddr;
   const label = useMemo(() => (active ? short(active) : 'Connect Wallet'), [active]);
 
   async function usePasskey() {
@@ -47,9 +56,10 @@ export default function ConnectWallet() {
       const rec = existing ? await signInPasskey() : await registerPasskey();
       setPk(rec as any);
       if (!hasBurner()) {
-        createBurner(); // bind a local burner for dev
+        createBurner();
       }
-      setBurnerAddr(loadBurner().address);
+      const burner = loadBurner();
+      setBurnerAddr(burner ?? undefined);
     } catch (e) {
       console.error(e);
       alert('Passkey failed (is WebAuthn available?).');
@@ -59,7 +69,8 @@ export default function ConnectWallet() {
   function useBurner() {
     try {
       if (!hasBurner()) createBurner();
-      setBurnerAddr(loadBurner().address);
+      const burner = loadBurner();
+      setBurnerAddr(burner ?? undefined);
     } catch (e) {
       console.error(e);
       alert('Burner failed to load/create.');
@@ -100,7 +111,7 @@ export default function ConnectWallet() {
         Use Burner
       </button>
 
-      {(address || burnerAddr || pk) && (
+      {(wagmiAddress || burnerAddr || Boolean(pk)) && (
         <button
           onClick={forgetAll}
           className="rounded-2xl px-3 py-1.5 text-sm bg-white/10 hover:opacity-90"
