@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-04-04T18:57:26Z",
+  "generated_at": "2026-04-04T21:04:32Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "f2063ca4c",
+  "commit": "dce9099de",
   "generator_version": "1.0",
   "files": [
     {
@@ -2744,7 +2744,7 @@
       "path": "docs/repo/repo-index.json",
       "type": "file",
       "size_bytes": 128540,
-      "last_modified_commit": "6d05eb17e",
+      "last_modified_commit": "dce9099de",
       "is_empty": false,
       "extension": ".json",
       "lines": 4670
@@ -4631,6 +4631,15 @@
       "lines": 0
     },
     {
+      "path": "scripts/patches/vercel-setup-web.sh",
+      "type": "file",
+      "size_bytes": 1232,
+      "last_modified_commit": "dce9099de",
+      "is_empty": false,
+      "extension": ".sh",
+      "lines": 51
+    },
+    {
       "path": "scripts/repo-index.sh",
       "type": "file",
       "size_bytes": 4015,
@@ -4638,6 +4647,15 @@
       "is_empty": false,
       "extension": ".sh",
       "lines": 143
+    },
+    {
+      "path": "scripts/vercel-setup-web.sh",
+      "type": "file",
+      "size_bytes": 728,
+      "last_modified_commit": "dce9099de",
+      "is_empty": false,
+      "extension": ".sh",
+      "lines": 32
     },
     {
       "path": "scripts/verify-sync.sh",
@@ -4656,15 +4674,6 @@
       "is_empty": false,
       "extension": ".json",
       "lines": 7
-    },
-    {
-      "path": "vercel.json",
-      "type": "file",
-      "size_bytes": 107,
-      "last_modified_commit": "42268897e",
-      "is_empty": false,
-      "extension": ".json",
-      "lines": 8
     }
   ]
 }
