@@ -1,9 +1,198 @@
 {
-  "generated_at": "2026-03-25T13:57:17Z",
+  "generated_at": "2026-04-04T18:57:26Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "cfed935ae",
+  "commit": "f2063ca4c",
   "generator_version": "1.0",
   "files": [
+    {
+      "path": ".architect-backups/20260401-071509/apps/web/src/app/(app)/nexus/current/page.tsx",
+      "type": "file",
+      "size_bytes": 6322,
+      "last_modified_commit": "f2063ca4c",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 164
+    },
+    {
+      "path": ".architect-backups/20260401-071509/apps/web/src/app/(app)/nexus/post/page.tsx",
+      "type": "file",
+      "size_bytes": 7586,
+      "last_modified_commit": "f2063ca4c",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 188
+    },
+    {
+      "path": ".architect-backups/20260401-071509/apps/web/src/app/(app)/page.tsx",
+      "type": "file",
+      "size_bytes": 282,
+      "last_modified_commit": "f2063ca4c",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 8
+    },
+    {
+      "path": ".architect-backups/20260401-071509/apps/web/src/app/(marketing)/page.tsx",
+      "type": "file",
+      "size_bytes": 1951,
+      "last_modified_commit": "f2063ca4c",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 58
+    },
+    {
+      "path": ".architect-backups/20260401-071509/apps/web/src/app/onboard/page.tsx",
+      "type": "file",
+      "size_bytes": 1892,
+      "last_modified_commit": "f2063ca4c",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 62
+    },
+    {
+      "path": ".architect-backups/20260401-071509/apps/web/src/app/page.tsx",
+      "type": "file",
+      "size_bytes": 421,
+      "last_modified_commit": "f2063ca4c",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 20
+    },
+    {
+      "path": ".architect-backups/20260401-071509/apps/web/src/components/ConnectWallet.tsx",
+      "type": "file",
+      "size_bytes": 3483,
+      "last_modified_commit": "f2063ca4c",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 114
+    },
+    {
+      "path": ".architect-backups/20260401-071509/apps/web/src/components/SimpleAccountPreview.tsx",
+      "type": "file",
+      "size_bytes": 4250,
+      "last_modified_commit": "f2063ca4c",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 115
+    },
+    {
+      "path": ".architect-backups/20260401-071509/apps/web/src/components/ui/ActivateBento.tsx",
+      "type": "file",
+      "size_bytes": 923,
+      "last_modified_commit": "f2063ca4c",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 36
+    },
+    {
+      "path": ".architect-backups/20260401-071509/apps/web/src/components/ui/ShowcaseGrid.tsx",
+      "type": "file",
+      "size_bytes": 2973,
+      "last_modified_commit": "f2063ca4c",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 99
+    },
+    {
+      "path": ".architect-backups/20260401-071509/apps/web/src/lib/infra/ipfs.ts",
+      "type": "file",
+      "size_bytes": 1634,
+      "last_modified_commit": "f2063ca4c",
+      "is_empty": false,
+      "extension": ".ts",
+      "lines": 68
+    },
+    {
+      "path": ".architect-backups/20260401-071843/apps/web/src/app/(marketing)/activate/page.tsx",
+      "type": "file",
+      "size_bytes": 445,
+      "last_modified_commit": "f2063ca4c",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 15
+    },
+    {
+      "path": ".architect-backups/20260401-071843/apps/web/src/components/ConnectWallet.tsx",
+      "type": "file",
+      "size_bytes": 3535,
+      "last_modified_commit": "f2063ca4c",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 125
+    },
+    {
+      "path": ".architect-backups/20260401-071843/apps/web/src/components/ui/ShowcaseGrid.tsx",
+      "type": "file",
+      "size_bytes": 2786,
+      "last_modified_commit": "f2063ca4c",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 99
+    },
+    {
+      "path": ".architect-backups/20260401-072418/apps/web/src/app/layout.tsx",
+      "type": "file",
+      "size_bytes": 725,
+      "last_modified_commit": "f2063ca4c",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 32
+    },
+    {
+      "path": ".architect-backups/20260401-072418/apps/web/src/lib/infra/ipfs.ts",
+      "type": "file",
+      "size_bytes": 1605,
+      "last_modified_commit": "f2063ca4c",
+      "is_empty": false,
+      "extension": ".ts",
+      "lines": 69
+    },
+    {
+      "path": ".architect-backups/20260401-072418/apps/web/src/lib/infra/wagmi.ts",
+      "type": "file",
+      "size_bytes": 464,
+      "last_modified_commit": "f2063ca4c",
+      "is_empty": false,
+      "extension": ".ts",
+      "lines": 15
+    },
+    {
+      "path": ".architect-backups/20260401-072819/apps/web/next.config.mjs",
+      "type": "file",
+      "size_bytes": 113,
+      "last_modified_commit": "f2063ca4c",
+      "is_empty": false,
+      "extension": ".mjs",
+      "lines": 0
+    },
+    {
+      "path": ".architect-backups/20260401-073029/apps/web/src/app/activate/page.tsx",
+      "type": "file",
+      "size_bytes": 523,
+      "last_modified_commit": "f2063ca4c",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 18
+    },
+    {
+      "path": ".architect-backups/20260404-085515/docs/governance/architectgpt/architect-gpt-manifest.yaml",
+      "type": "file",
+      "size_bytes": 795,
+      "last_modified_commit": "f2063ca4c",
+      "is_empty": false,
+      "extension": ".yaml",
+      "lines": 29
+    },
+    {
+      "path": ".architect-backups/20260404-085515/docs/governance/architectgpt/architect-gpt.md",
+      "type": "file",
+      "size_bytes": 10219,
+      "last_modified_commit": "f2063ca4c",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 284
+    },
     {
       "path": ".github/workflows/doctrine-guard.yml",
       "type": "file",
@@ -187,8 +376,8 @@
     {
       "path": "apps/web/next.config.mjs",
       "type": "file",
-      "size_bytes": 113,
-      "last_modified_commit": "0f075f352",
+      "size_bytes": 153,
+      "last_modified_commit": "f2063ca4c",
       "is_empty": false,
       "extension": ".mjs",
       "lines": 0
@@ -232,11 +421,11 @@
     {
       "path": "apps/web/package.json",
       "type": "file",
-      "size_bytes": 1861,
-      "last_modified_commit": "7dfdd2782",
+      "size_bytes": 1905,
+      "last_modified_commit": "f2063ca4c",
       "is_empty": false,
       "extension": ".json",
-      "lines": 63
+      "lines": 64
     },
     {
       "path": "apps/web/postcss.config.mjs",
@@ -392,6 +581,15 @@
       "lines": 3
     },
     {
+      "path": "apps/web/src/app/(app)/app/page.tsx",
+      "type": "file",
+      "size_bytes": 282,
+      "last_modified_commit": "f2063ca4c",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 8
+    },
+    {
       "path": "apps/web/src/app/(app)/exchange/page.tsx",
       "type": "file",
       "size_bytes": 232,
@@ -493,11 +691,11 @@
     {
       "path": "apps/web/src/app/(app)/nexus/current/page.tsx",
       "type": "file",
-      "size_bytes": 6322,
-      "last_modified_commit": "7dfdd2782",
+      "size_bytes": 5770,
+      "last_modified_commit": "f2063ca4c",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 164
+      "lines": 158
     },
     {
       "path": "apps/web/src/app/(app)/nexus/page.tsx",
@@ -511,11 +709,11 @@
     {
       "path": "apps/web/src/app/(app)/nexus/post/page.tsx",
       "type": "file",
-      "size_bytes": 7586,
-      "last_modified_commit": "7dfdd2782",
+      "size_bytes": 7342,
+      "last_modified_commit": "f2063ca4c",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 188
+      "lines": 191
     },
     {
       "path": "apps/web/src/app/(app)/notifications/page.tsx",
@@ -525,15 +723,6 @@
       "is_empty": false,
       "extension": ".tsx",
       "lines": 3
-    },
-    {
-      "path": "apps/web/src/app/(app)/page.tsx",
-      "type": "file",
-      "size_bytes": 282,
-      "last_modified_commit": "8fb50b9f7",
-      "is_empty": false,
-      "extension": ".tsx",
-      "lines": 8
     },
     {
       "path": "apps/web/src/app/(app)/preferences/page.tsx",
@@ -671,15 +860,6 @@
       "lines": 3
     },
     {
-      "path": "apps/web/src/app/(marketing)/activate/page.tsx",
-      "type": "file",
-      "size_bytes": 445,
-      "last_modified_commit": "5da311ef6",
-      "is_empty": false,
-      "extension": ".tsx",
-      "lines": 15
-    },
-    {
       "path": "apps/web/src/app/(marketing)/client-layout.tsx",
       "type": "file",
       "size_bytes": 157,
@@ -700,11 +880,11 @@
     {
       "path": "apps/web/src/app/(marketing)/page.tsx",
       "type": "file",
-      "size_bytes": 1951,
-      "last_modified_commit": "7dfdd2782",
+      "size_bytes": 1822,
+      "last_modified_commit": "f2063ca4c",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 58
+      "lines": 54
     },
     {
       "path": "apps/web/src/app/(marketing)/styles/globals.css",
@@ -732,6 +912,15 @@
       "is_empty": false,
       "extension": ".css",
       "lines": 0
+    },
+    {
+      "path": "apps/web/src/app/activate/page.tsx",
+      "type": "file",
+      "size_bytes": 445,
+      "last_modified_commit": "f2063ca4c",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 17
     },
     {
       "path": "apps/web/src/app/api/ipfs/route.ts",
@@ -763,11 +952,11 @@
     {
       "path": "apps/web/src/app/layout.tsx",
       "type": "file",
-      "size_bytes": 725,
-      "last_modified_commit": "616d0b0d5",
+      "size_bytes": 400,
+      "last_modified_commit": "f2063ca4c",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 32
+      "lines": 19
     },
     {
       "path": "apps/web/src/app/middleware.ts",
@@ -781,38 +970,29 @@
     {
       "path": "apps/web/src/app/onboard/page.tsx",
       "type": "file",
-      "size_bytes": 1892,
-      "last_modified_commit": "42268897e",
+      "size_bytes": 2073,
+      "last_modified_commit": "f2063ca4c",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 62
-    },
-    {
-      "path": "apps/web/src/app/page.tsx",
-      "type": "file",
-      "size_bytes": 421,
-      "last_modified_commit": "bbd56cd97",
-      "is_empty": false,
-      "extension": ".tsx",
-      "lines": 20
+      "lines": 66
     },
     {
       "path": "apps/web/src/components/ConnectWallet.tsx",
       "type": "file",
-      "size_bytes": 3483,
-      "last_modified_commit": "7dfdd2782",
+      "size_bytes": 3544,
+      "last_modified_commit": "f2063ca4c",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 114
+      "lines": 125
     },
     {
       "path": "apps/web/src/components/SimpleAccountPreview.tsx",
       "type": "file",
-      "size_bytes": 4250,
-      "last_modified_commit": "7dfdd2782",
+      "size_bytes": 4259,
+      "last_modified_commit": "f2063ca4c",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 115
+      "lines": 116
     },
     {
       "path": "apps/web/src/components/shared/CTAActivate.tsx",
@@ -853,8 +1033,8 @@
     {
       "path": "apps/web/src/components/ui/ActivateBento.tsx",
       "type": "file",
-      "size_bytes": 923,
-      "last_modified_commit": "7dfdd2782",
+      "size_bytes": 903,
+      "last_modified_commit": "f2063ca4c",
       "is_empty": false,
       "extension": ".tsx",
       "lines": 36
@@ -961,8 +1141,8 @@
     {
       "path": "apps/web/src/components/ui/ShowcaseGrid.tsx",
       "type": "file",
-      "size_bytes": 2973,
-      "last_modified_commit": "7dfdd2782",
+      "size_bytes": 2804,
+      "last_modified_commit": "f2063ca4c",
       "is_empty": false,
       "extension": ".tsx",
       "lines": 99
@@ -1321,11 +1501,11 @@
     {
       "path": "apps/web/src/lib/infra/ipfs.ts",
       "type": "file",
-      "size_bytes": 1634,
-      "last_modified_commit": "3e4eb25ae",
+      "size_bytes": 3316,
+      "last_modified_commit": "f2063ca4c",
       "is_empty": false,
       "extension": ".ts",
-      "lines": 68
+      "lines": 121
     },
     {
       "path": "apps/web/src/lib/infra/matrix.ts",
@@ -1339,11 +1519,11 @@
     {
       "path": "apps/web/src/lib/infra/wagmi.ts",
       "type": "file",
-      "size_bytes": 464,
-      "last_modified_commit": "616d0b0d5",
+      "size_bytes": 533,
+      "last_modified_commit": "f2063ca4c",
       "is_empty": false,
       "extension": ".ts",
-      "lines": 15
+      "lines": 17
     },
     {
       "path": "apps/web/src/lib/ipfs/index.ts",
@@ -2428,20 +2608,20 @@
     {
       "path": "docs/governance/architectgpt/architect-gpt-manifest.yaml",
       "type": "file",
-      "size_bytes": 795,
-      "last_modified_commit": "cfed935ae",
+      "size_bytes": 1497,
+      "last_modified_commit": "f2063ca4c",
       "is_empty": false,
       "extension": ".yaml",
-      "lines": 29
+      "lines": 52
     },
     {
       "path": "docs/governance/architectgpt/architect-gpt.md",
       "type": "file",
-      "size_bytes": 10219,
-      "last_modified_commit": "cfed935ae",
+      "size_bytes": 13222,
+      "last_modified_commit": "f2063ca4c",
       "is_empty": false,
       "extension": ".md",
-      "lines": 284
+      "lines": 345
     },
     {
       "path": "docs/governance/economic-principles.md",
@@ -2563,11 +2743,11 @@
     {
       "path": "docs/repo/repo-index.json",
       "type": "file",
-      "size_bytes": 123449,
-      "last_modified_commit": "cfed935ae",
+      "size_bytes": 128540,
+      "last_modified_commit": "6d05eb17e",
       "is_empty": false,
       "extension": ".json",
-      "lines": 4499
+      "lines": 4670
     },
     {
       "path": "docs/repo/repo-interface.md",
@@ -4390,11 +4570,11 @@
     {
       "path": "pnpm-lock.yaml",
       "type": "file",
-      "size_bytes": 404700,
-      "last_modified_commit": "7dfdd2782",
+      "size_bytes": 407824,
+      "last_modified_commit": "f2063ca4c",
       "is_empty": false,
       "extension": ".yaml",
-      "lines": 12048
+      "lines": 12130
     },
     {
       "path": "pnpm-workspace.yaml",
@@ -4419,15 +4599,6 @@
       "type": "file",
       "size_bytes": 8295,
       "last_modified_commit": "60bd5ee4f",
-      "is_empty": false,
-      "extension": ".patch",
-      "lines": 0
-    },
-    {
-      "path": "scripts/patches/architect-default-grounding.patch",
-      "type": "file",
-      "size_bytes": 28167,
-      "last_modified_commit": "cfed935ae",
       "is_empty": false,
       "extension": ".patch",
       "lines": 0
