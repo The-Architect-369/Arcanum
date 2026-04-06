@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-04-06T01:04:06Z",
+  "generated_at": "2026-04-06T01:11:10Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "b93668862",
+  "commit": "5fe8f8f82",
   "generator_version": "1.0",
   "files": [
     {
@@ -2744,7 +2744,7 @@
       "path": "docs/repo/repo-index.json",
       "type": "file",
       "size_bytes": 128781,
-      "last_modified_commit": "e81caeaac",
+      "last_modified_commit": "5fe8f8f82",
       "is_empty": false,
       "extension": ".json",
       "lines": 4679
@@ -4660,11 +4660,11 @@
     {
       "path": "scripts/verify-sync.sh",
       "type": "file",
-      "size_bytes": 5571,
+      "size_bytes": 5627,
       "last_modified_commit": "cad86f04c",
       "is_empty": false,
       "extension": ".sh",
-      "lines": 194
+      "lines": 196
     },
     {
       "path": "tsconfig.json",

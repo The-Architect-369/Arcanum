@@ -37,6 +37,8 @@ data.pop("commit", None)
 
 files = data.get("files", [])
 files = [f for f in files if f.get("path") != "docs/repo/repo-index.json"]
+for f in files:
+    f.pop("last_modified_commit", None)
 files.sort(key=lambda x: x.get("path", ""))
 data["files"] = files
 
