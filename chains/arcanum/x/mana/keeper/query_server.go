@@ -12,13 +12,17 @@ import (
 
 type QueryServer struct {
 	Keeper
+	types.UnimplementedQueryServer
 }
 
 var _ types.QueryServer = QueryServer{}
 
 func (q QueryServer) Params(ctx context.Context, _ *types.QueryParamsRequest) (*types.QueryParamsResponse, error) {
 	sdkCtx := sdk.UnwrapSDKContext(ctx)
-	p := q.Keeper.GetParams(sdkCtx)
+	p, err := q.Keeper.GetParams(sdkCtx)
+	if err != nil {
+		return nil, status.Error(codes.Internal, err.Error())
+	}
 	return &types.QueryParamsResponse{Params: &p}, nil
 }
 

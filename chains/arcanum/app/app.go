@@ -9,13 +9,8 @@ import (
 	manatypes "arcanum/x/mana/types"
 	treasurytypes "arcanum/x/treasury/types"
 
-	chaincodemodulev1 "arcanum/api/arcanum/chaincode/module/v1"
-	manamodulev1 "arcanum/api/arcanum/mana/module/v1"
-	treasurymodulev1 "arcanum/api/arcanum/treasury/module/v1"
 	chaincodetypes "arcanum/x/chaincode/types"
 	appconfig "cosmossdk.io/core/appconfig"
-
-	chaincodetypes "arcanum/x/chaincode/types"
 	runtimev1alpha1 "cosmossdk.io/api/cosmos/app/runtime/v1alpha1"
 	appv1alpha1 "cosmossdk.io/api/cosmos/app/v1alpha1"
 	authmodulev1 "cosmossdk.io/api/cosmos/auth/module/v1"
@@ -37,7 +32,6 @@ import (
 	stakingmodulev1 "cosmossdk.io/api/cosmos/staking/module/v1"
 	txconfigv1 "cosmossdk.io/api/cosmos/tx/config/v1"
 	upgrademodulev1 "cosmossdk.io/api/cosmos/upgrade/module/v1"
-	"cosmossdk.io/depinject"
 
 	_ "cosmossdk.io/x/circuit"
 	circuittypes "cosmossdk.io/x/circuit/types"
@@ -226,9 +220,6 @@ var (
 			{Name: treasurytypes.ModuleName, Config: appconfig.WrapAny(&treasurymodulev1.Module{})},
 			{Name: manatypes.ModuleName, Config: appconfig.WrapAny(&manamodulev1.Module{})},
 			{Name: chaincodetypes.ModuleName, Config: appconfig.WrapAny(&chaincodemodulev1.Module{})},
-			{Name: chaincodetypes.ModuleName, Config: appconfig.WrapAny(&chaincodemodulev1.Module{})},
-			{Name: treasurytypes.ModuleName, Config: appconfig.WrapAny(&treasurymodulev1.Module{})},
-			{Name: manatypes.ModuleName, Config: appconfig.WrapAny(&manamodulev1.Module{})},
 		},
 	})
 )
