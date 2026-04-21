@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-04-06T01:11:10Z",
+  "generated_at": "2026-04-21T18:16:54Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "5fe8f8f82",
+  "commit": "10a4987c9",
   "generator_version": "1.0",
   "files": [
     {
@@ -227,6 +227,15 @@
       "last_modified_commit": "ad55d8f73",
       "is_empty": false,
       "extension": ".npmrc",
+      "lines": 0
+    },
+    {
+      "path": ".nvmrc",
+      "type": "file",
+      "size_bytes": 3,
+      "last_modified_commit": "695b32b8d",
+      "is_empty": true,
+      "extension": ".nvmrc",
       "lines": 0
     },
     {
@@ -862,11 +871,11 @@
     {
       "path": "apps/web/src/app/(marketing)/client-layout.tsx",
       "type": "file",
-      "size_bytes": 157,
+      "size_bytes": 984,
       "last_modified_commit": "42268897e",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 7
+      "lines": 31
     },
     {
       "path": "apps/web/src/app/(marketing)/layout.tsx",
@@ -880,11 +889,11 @@
     {
       "path": "apps/web/src/app/(marketing)/page.tsx",
       "type": "file",
-      "size_bytes": 1822,
+      "size_bytes": 1258,
       "last_modified_commit": "f2063ca4c",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 54
+      "lines": 43
     },
     {
       "path": "apps/web/src/app/(marketing)/styles/globals.css",
@@ -970,11 +979,29 @@
     {
       "path": "apps/web/src/app/onboard/page.tsx",
       "type": "file",
-      "size_bytes": 2073,
-      "last_modified_commit": "f2063ca4c",
+      "size_bytes": 5446,
+      "last_modified_commit": "10a4987c9",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 66
+      "lines": 165
+    },
+    {
+      "path": "apps/web/src/app/onboard/page.tsx.bak",
+      "type": "file",
+      "size_bytes": 2073,
+      "last_modified_commit": "10a4987c9",
+      "is_empty": false,
+      "extension": ".bak",
+      "lines": 0
+    },
+    {
+      "path": "apps/web/src/app/onboard/page.tsx.pre-mobile-onboarding-fix.bak",
+      "type": "file",
+      "size_bytes": 2073,
+      "last_modified_commit": "10a4987c9",
+      "is_empty": false,
+      "extension": ".bak",
+      "lines": 0
     },
     {
       "path": "apps/web/src/components/ConnectWallet.tsx",
@@ -1744,20 +1771,20 @@
     {
       "path": "chains/arcanum/app/app.go",
       "type": "file",
-      "size_bytes": 9871,
-      "last_modified_commit": "975ab5f93",
+      "size_bytes": 9359,
+      "last_modified_commit": "695b32b8d",
       "is_empty": false,
       "extension": ".go",
-      "lines": 234
+      "lines": 225
     },
     {
       "path": "chains/arcanum/app/app_config.go",
       "type": "file",
-      "size_bytes": 596,
-      "last_modified_commit": "975ab5f93",
+      "size_bytes": 367,
+      "last_modified_commit": "695b32b8d",
       "is_empty": false,
       "extension": ".go",
-      "lines": 20
+      "lines": 10
     },
     {
       "path": "chains/arcanum/app/config.go",
@@ -1811,6 +1838,15 @@
       "last_modified_commit": "975ab5f93",
       "is_empty": false,
       "extension": ".disabled",
+      "lines": 0
+    },
+    {
+      "path": "chains/arcanum/bin/arcanumd",
+      "type": "file",
+      "size_bytes": 3396208,
+      "last_modified_commit": "695b32b8d",
+      "is_empty": false,
+      "extension": "",
       "lines": 0
     },
     {
@@ -1879,11 +1915,11 @@
     {
       "path": "chains/arcanum/cmd/arcanumd/root.go",
       "type": "file",
-      "size_bytes": 2864,
-      "last_modified_commit": "975ab5f93",
+      "size_bytes": 361,
+      "last_modified_commit": "695b32b8d",
       "is_empty": false,
       "extension": ".go",
-      "lines": 84
+      "lines": 23
     },
     {
       "path": "chains/arcanum/config.yml",
@@ -2203,11 +2239,11 @@
     {
       "path": "chains/arcanum/x/chaincode/keeper/genesis.go",
       "type": "file",
-      "size_bytes": 548,
-      "last_modified_commit": "975ab5f93",
+      "size_bytes": 612,
+      "last_modified_commit": "695b32b8d",
       "is_empty": false,
       "extension": ".go",
-      "lines": 27
+      "lines": 31
     },
     {
       "path": "chains/arcanum/x/chaincode/keeper/keeper.go",
@@ -2221,20 +2257,20 @@
     {
       "path": "chains/arcanum/x/chaincode/keeper/query_server.go",
       "type": "file",
-      "size_bytes": 923,
-      "last_modified_commit": "975ab5f93",
+      "size_bytes": 1036,
+      "last_modified_commit": "695b32b8d",
       "is_empty": false,
       "extension": ".go",
-      "lines": 37
+      "lines": 41
     },
     {
       "path": "chains/arcanum/x/chaincode/module/module.go",
       "type": "file",
-      "size_bytes": 1902,
-      "last_modified_commit": "975ab5f93",
+      "size_bytes": 2292,
+      "last_modified_commit": "695b32b8d",
       "is_empty": false,
       "extension": ".go",
-      "lines": 73
+      "lines": 89
     },
     {
       "path": "chains/arcanum/x/chaincode/msg_server.go",
@@ -2302,11 +2338,11 @@
     {
       "path": "chains/arcanum/x/mana/keeper/genesis.go",
       "type": "file",
-      "size_bytes": 538,
-      "last_modified_commit": "975ab5f93",
+      "size_bytes": 602,
+      "last_modified_commit": "695b32b8d",
       "is_empty": false,
       "extension": ".go",
-      "lines": 27
+      "lines": 31
     },
     {
       "path": "chains/arcanum/x/mana/keeper/keeper.go",
@@ -2320,20 +2356,20 @@
     {
       "path": "chains/arcanum/x/mana/keeper/query_server.go",
       "type": "file",
-      "size_bytes": 830,
-      "last_modified_commit": "975ab5f93",
+      "size_bytes": 943,
+      "last_modified_commit": "695b32b8d",
       "is_empty": false,
       "extension": ".go",
-      "lines": 34
+      "lines": 38
     },
     {
       "path": "chains/arcanum/x/mana/module/module.go",
       "type": "file",
-      "size_bytes": 1892,
-      "last_modified_commit": "975ab5f93",
+      "size_bytes": 2282,
+      "last_modified_commit": "695b32b8d",
       "is_empty": false,
       "extension": ".go",
-      "lines": 73
+      "lines": 89
     },
     {
       "path": "chains/arcanum/x/mana/msg_server.go",
@@ -2744,7 +2780,7 @@
       "path": "docs/repo/repo-index.json",
       "type": "file",
       "size_bytes": 128781,
-      "last_modified_commit": "5fe8f8f82",
+      "last_modified_commit": "6f574f479",
       "is_empty": false,
       "extension": ".json",
       "lines": 4679
@@ -4613,6 +4649,15 @@
       "lines": 0
     },
     {
+      "path": "scripts/patches/patch_mobile_onboarding.py",
+      "type": "file",
+      "size_bytes": 6108,
+      "last_modified_commit": "10a4987c9",
+      "is_empty": false,
+      "extension": ".py",
+      "lines": 0
+    },
+    {
       "path": "scripts/patches/rename-vitae-curriculum.py",
       "type": "file",
       "size_bytes": 8415,
@@ -4661,7 +4706,7 @@
       "path": "scripts/verify-sync.sh",
       "type": "file",
       "size_bytes": 5627,
-      "last_modified_commit": "cad86f04c",
+      "last_modified_commit": "6f574f479",
       "is_empty": false,
       "extension": ".sh",
       "lines": 196

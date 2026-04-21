@@ -4,51 +4,40 @@ import ActiveSectionObserver from '@/components/ui/ActiveSectionObserver';
 import HeroBento from '@/components/ui/HeroBento';
 import BentoShowcase from '@/components/ui/BentoShowcase';
 import ActivateBento from '@/components/ui/ActivateBento';
-import Link from "next/link";
 
 export default function HomePage() {
   return (
-    <main className="snap-container layer-content" id="top">
+    <main className="mx-auto flex w-full max-w-5xl flex-col gap-4 p-3 sm:p-4" id="top">
       <ActiveSectionObserver />
 
-      <section id="hero" className="snap-section snap-first" aria-labelledby="hero-heading">
+      <section id="hero" aria-labelledby="hero-heading">
         <HeroBento />
       </section>
 
-      <section className="snap-section" aria-labelledby="arcnet-heading">
-        <BentoShowcase variant="arcnet" />
+      <section aria-labelledby="arcnet-heading">
+        <BentoShowcase
+          variant="arcnet"
+          className="min-h-[420px] sm:min-h-[520px] md:min-h-[620px]"
+        />
       </section>
 
-      <section className="snap-section" aria-labelledby="mana-heading">
-        <BentoShowcase variant="mana" />
+      <section aria-labelledby="mana-heading">
+        <BentoShowcase
+          variant="mana"
+          className="min-h-[420px] sm:min-h-[520px] md:min-h-[620px]"
+        />
       </section>
 
-      <section className="snap-section" aria-labelledby="tempus-heading">
-        <BentoShowcase variant="tempus" />
+      <section aria-labelledby="tempus-heading">
+        <BentoShowcase
+          variant="tempus"
+          className="min-h-[420px] sm:min-h-[520px] md:min-h-[620px]"
+        />
       </section>
 
-      <section id="activate" className="snap-section snap-last" aria-labelledby="activate-heading">
-        <ActivateBento />
+      <section id="activate" aria-labelledby="activate-heading">
+        <ActivateBento variant="full" />
       </section>
-
-      <footer className="snap-end max-w-prose text-center mx-auto py-10 opacity-80">
-        <p>© {new Date().getFullYear()} Arcanum. All rights reserved.</p>
-        <p className="mt-2">
-          <a href="/privacy" className="underline decoration-transparent hover:decoration-current">
-            Privacy
-          </a>
-          <Link
-            href="/activate?entry=marketing"
-            className="text-sm opacity-60 hover:opacity-100 transition"
-          >
-            Enter presence
-          </Link>
-          {' · '}
-          <a href="/terms" className="underline decoration-transparent hover:decoration-current">
-            Terms
-          </a>
-        </p>
-      </footer>
     </main>
   );
 }
