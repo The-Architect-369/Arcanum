@@ -1,3 +1,14 @@
+#!/usr/bin/env python3
+from __future__ import annotations
+
+from pathlib import Path
+import shutil
+import sys
+import textwrap
+
+TARGET = Path("apps/web/src/app/onboard/page.tsx")
+
+NEW_CONTENT = textwrap.dedent("""\
 'use client'
 
 import { useState } from 'react'
@@ -163,3 +174,21 @@ export default function OnboardPage() {
     </main>
   )
 }
+""")
+
+def main() -> int:
+    if not TARGET.exists():
+        print(f"error: target file not found: {TARGET}", file=sys.stderr)
+        return 1
+
+    backup = TARGET.with_suffix(TARGET.suffix + ".pre-mobile-onboarding-fix.bak")
+    shutil.copy2(TARGET, backup)
+    TARGET.write_text(NEW_CONTENT, encoding="utf-8")
+
+    print(f"patched: {TARGET}")
+    print(f"backup:  {backup}")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
