@@ -29,3 +29,7 @@ chains/arcanum/data/
 chains/arcanum/.cache/
 *.pb.go
 
+
+# local patch backups
+*.bak
+*.pre-*.bak
