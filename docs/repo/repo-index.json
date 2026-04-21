@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-04-21T18:16:54Z",
+  "generated_at": "2026-04-21T19:02:51Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "10a4987c9",
+  "commit": "af981eff6",
   "generator_version": "1.0",
   "files": [
     {
@@ -214,7 +214,7 @@
     {
       "path": ".gitignore",
       "type": "file",
-      "size_bytes": 326,
+      "size_bytes": 367,
       "last_modified_commit": "5da311ef6",
       "is_empty": false,
       "extension": ".gitignore",
@@ -872,7 +872,7 @@
       "path": "apps/web/src/app/(marketing)/client-layout.tsx",
       "type": "file",
       "size_bytes": 984,
-      "last_modified_commit": "42268897e",
+      "last_modified_commit": "af981eff6",
       "is_empty": false,
       "extension": ".tsx",
       "lines": 31
@@ -890,7 +890,7 @@
       "path": "apps/web/src/app/(marketing)/page.tsx",
       "type": "file",
       "size_bytes": 1258,
-      "last_modified_commit": "f2063ca4c",
+      "last_modified_commit": "af981eff6",
       "is_empty": false,
       "extension": ".tsx",
       "lines": 43
@@ -984,24 +984,6 @@
       "is_empty": false,
       "extension": ".tsx",
       "lines": 165
-    },
-    {
-      "path": "apps/web/src/app/onboard/page.tsx.bak",
-      "type": "file",
-      "size_bytes": 2073,
-      "last_modified_commit": "10a4987c9",
-      "is_empty": false,
-      "extension": ".bak",
-      "lines": 0
-    },
-    {
-      "path": "apps/web/src/app/onboard/page.tsx.pre-mobile-onboarding-fix.bak",
-      "type": "file",
-      "size_bytes": 2073,
-      "last_modified_commit": "10a4987c9",
-      "is_empty": false,
-      "extension": ".bak",
-      "lines": 0
     },
     {
       "path": "apps/web/src/components/ConnectWallet.tsx",
@@ -2779,11 +2761,11 @@
     {
       "path": "docs/repo/repo-index.json",
       "type": "file",
-      "size_bytes": 128781,
-      "last_modified_commit": "6f574f479",
+      "size_bytes": 129909,
+      "last_modified_commit": "af981eff6",
       "is_empty": false,
       "extension": ".json",
-      "lines": 4679
+      "lines": 4724
     },
     {
       "path": "docs/repo/repo-interface.md",
@@ -4644,6 +4626,15 @@
       "type": "file",
       "size_bytes": 5300,
       "last_modified_commit": "60bd5ee4f",
+      "is_empty": false,
+      "extension": ".py",
+      "lines": 0
+    },
+    {
+      "path": "scripts/patches/patch_marketing_panelshell_frame.py",
+      "type": "file",
+      "size_bytes": 3876,
+      "last_modified_commit": "af981eff6",
       "is_empty": false,
       "extension": ".py",
       "lines": 0
