@@ -2,31 +2,35 @@ import "../globals.css";
 import "./styles/motion.css";
 import "./styles/utilities.css";
 import ClientLayout from "./client-layout";
-import type { Metadata } from 'next';
+import type { Metadata } from "next";
 
-const title = 'Arcanum';
+const title = "Arcanum";
 const description =
-  'Decentralized identity. Cosmic timing. Community-owned network.';
-const ogImage = '/logo-arcanum.svg';
+  "Decentralized identity. Cosmic timing. Community-owned network.";
+const ogImage = "/favicon.ico";
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://thearcanum.net'),
+  metadataBase: new URL("https://thearcanum.net"),
   title: { default: title, template: `%s • ${title}` },
   description,
-  applicationName: 'Arcanum',
-  manifest: '/site.webmanifest',
-  icons: { icon: '/favicon.svg', shortcut: '/favicon.svg' },
+  applicationName: "Arcanum",
+  manifest: "/manifest.json",
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/favicon.ico",
+  },
   openGraph: {
     title,
     description,
-    url: '/',
+    url: "/",
     siteName: title,
-    images: [{ url: ogImage, width: 512, height: 512, alt: 'Arcanum' }],
-    type: 'website',
-    locale: 'en_US',
+    images: [{ url: ogImage, alt: "Arcanum" }],
+    type: "website",
+    locale: "en_US",
   },
   twitter: {
-    card: 'summary',
+    card: "summary",
     title,
     description,
     images: [ogImage],

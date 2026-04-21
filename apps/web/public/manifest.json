@@ -1,16 +1,35 @@
 {
-  "name": "Arcanum — ARCnet",
-  "short_name": "ARCnet",
-  "description": "ARCnet client — Hope, Chain Code, Nexus, Tempus.",
+  "name": "Arcanum",
+  "short_name": "Arcanum",
+  "description": "Arcanum — mobile-first portal for Hope, Tempus, Nexus, and ARCnet.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
   "background_color": "#0B0E1A",
   "theme_color": "#6B4CFF",
   "icons": [
-    { "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
-    { "src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png" },
-    { "src": "/icons/maskable-192.png", "sizes": "192x192", "type": "image/png", "purpose": "maskable" },
-    { "src": "/icons/maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
-  ]
-}
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/maskable-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/icons/maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "id": "/"
+}\n
