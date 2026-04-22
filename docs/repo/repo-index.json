@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-04-21T20:33:05Z",
+  "generated_at": "2026-04-22T15:48:53Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "0d6f0e25e",
+  "commit": "8302f379b",
   "generator_version": "1.0",
   "files": [
     {
@@ -493,36 +493,36 @@
     {
       "path": "apps/web/public/icons/icon-192.png",
       "type": "file",
-      "size_bytes": 0,
-      "last_modified_commit": "d32d6affc",
-      "is_empty": true,
+      "size_bytes": 10429,
+      "last_modified_commit": "8302f379b",
+      "is_empty": false,
       "extension": ".png",
       "lines": 0
     },
     {
       "path": "apps/web/public/icons/icon-512.png",
       "type": "file",
-      "size_bytes": 0,
-      "last_modified_commit": "d32d6affc",
-      "is_empty": true,
+      "size_bytes": 33058,
+      "last_modified_commit": "8302f379b",
+      "is_empty": false,
       "extension": ".png",
       "lines": 0
     },
     {
       "path": "apps/web/public/icons/maskable-192.png",
       "type": "file",
-      "size_bytes": 0,
-      "last_modified_commit": "d32d6affc",
-      "is_empty": true,
+      "size_bytes": 8856,
+      "last_modified_commit": "8302f379b",
+      "is_empty": false,
       "extension": ".png",
       "lines": 0
     },
     {
       "path": "apps/web/public/icons/maskable-512.png",
       "type": "file",
-      "size_bytes": 0,
-      "last_modified_commit": "d32d6affc",
-      "is_empty": true,
+      "size_bytes": 29104,
+      "last_modified_commit": "8302f379b",
+      "is_empty": false,
       "extension": ".png",
       "lines": 0
     },
@@ -545,10 +545,19 @@
       "lines": 0
     },
     {
+      "path": "apps/web/public/logo-arcanum.svg",
+      "type": "file",
+      "size_bytes": 1655,
+      "last_modified_commit": "55b94d7a8",
+      "is_empty": false,
+      "extension": ".svg",
+      "lines": 0
+    },
+    {
       "path": "apps/web/public/manifest.json",
       "type": "file",
       "size_bytes": 765,
-      "last_modified_commit": "d32d6affc",
+      "last_modified_commit": "55b94d7a8",
       "is_empty": false,
       "extension": ".json",
       "lines": 34
@@ -881,7 +890,7 @@
       "path": "apps/web/src/app/(marketing)/layout.tsx",
       "type": "file",
       "size_bytes": 1181,
-      "last_modified_commit": "42268897e",
+      "last_modified_commit": "55b94d7a8",
       "is_empty": false,
       "extension": ".tsx",
       "lines": 48
@@ -2762,7 +2771,7 @@
       "path": "docs/repo/repo-index.json",
       "type": "file",
       "size_bytes": 130140,
-      "last_modified_commit": "0d6f0e25e",
+      "last_modified_commit": "55b94d7a8",
       "is_empty": false,
       "extension": ".json",
       "lines": 4733
@@ -4662,6 +4671,24 @@
       "type": "file",
       "size_bytes": 6108,
       "last_modified_commit": "10a4987c9",
+      "is_empty": false,
+      "extension": ".py",
+      "lines": 0
+    },
+    {
+      "path": "scripts/patches/patch_pwa_icon_and_logo_assets.py",
+      "type": "file",
+      "size_bytes": 6483,
+      "last_modified_commit": "55b94d7a8",
+      "is_empty": false,
+      "extension": ".py",
+      "lines": 0
+    },
+    {
+      "path": "scripts/patches/patch_pwa_metadata_and_manifest.py",
+      "type": "file",
+      "size_bytes": 3978,
+      "last_modified_commit": "55b94d7a8",
       "is_empty": false,
       "extension": ".py",
       "lines": 0
