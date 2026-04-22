@@ -1,9 +1,22 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import PWARegister from "@/components/PWARegister";
 
 export const metadata: Metadata = {
-  title: "Arcanum DApp",
-  description: "Arcanum DApp (marketing + onboarding + app in one)",
+  title: "Arcanum",
+  description: "Decentralized identity. Cosmic timing. Community-owned network.",
+  applicationName: "Arcanum",
+  manifest: "/manifest.json",
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/favicon.ico",
+  },
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "black-translucent",
+    title: "Arcanum",
+  },
 };
 
 export default function RootLayout({
@@ -13,7 +26,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="antialiased">{children}</body>
+      <body className="antialiased">
+        <PWARegister />
+        {children}
+      </body>
     </html>
   );
 }
