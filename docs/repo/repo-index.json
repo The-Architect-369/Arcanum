@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-04-22T17:44:29Z",
+  "generated_at": "2026-04-23T07:57:35Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "a43ced0e8",
+  "commit": "6a64182e1",
   "generator_version": "1.0",
   "files": [
     {
@@ -572,6 +572,15 @@
       "lines": 0
     },
     {
+      "path": "apps/web/public/sw.js",
+      "type": "file",
+      "size_bytes": 1802,
+      "last_modified_commit": "6a64182e1",
+      "is_empty": false,
+      "extension": ".js",
+      "lines": 73
+    },
+    {
       "path": "apps/web/public/vercel.svg",
       "type": "file",
       "size_bytes": 128,
@@ -889,11 +898,11 @@
     {
       "path": "apps/web/src/app/(marketing)/layout.tsx",
       "type": "file",
-      "size_bytes": 1181,
+      "size_bytes": 1049,
       "last_modified_commit": "55b94d7a8",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 48
+      "lines": 46
     },
     {
       "path": "apps/web/src/app/(marketing)/page.tsx",
@@ -971,7 +980,7 @@
       "path": "apps/web/src/app/layout.tsx",
       "type": "file",
       "size_bytes": 763,
-      "last_modified_commit": "f2063ca4c",
+      "last_modified_commit": "6a64182e1",
       "is_empty": false,
       "extension": ".tsx",
       "lines": 35
@@ -1002,6 +1011,15 @@
       "is_empty": false,
       "extension": ".tsx",
       "lines": 125
+    },
+    {
+      "path": "apps/web/src/components/PWARegister.tsx",
+      "type": "file",
+      "size_bytes": 790,
+      "last_modified_commit": "6a64182e1",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 28
     },
     {
       "path": "apps/web/src/components/SimpleAccountPreview.tsx",
@@ -2771,7 +2789,7 @@
       "path": "docs/repo/repo-index.json",
       "type": "file",
       "size_bytes": 130861,
-      "last_modified_commit": "a43ced0e8",
+      "last_modified_commit": "6a64182e1",
       "is_empty": false,
       "extension": ".json",
       "lines": 4760
@@ -4662,6 +4680,15 @@
       "type": "file",
       "size_bytes": 3876,
       "last_modified_commit": "af981eff6",
+      "is_empty": false,
+      "extension": ".py",
+      "lines": 0
+    },
+    {
+      "path": "scripts/patches/patch_minimal_service_worker.py",
+      "type": "file",
+      "size_bytes": 5072,
+      "last_modified_commit": "6a64182e1",
       "is_empty": false,
       "extension": ".py",
       "lines": 0
