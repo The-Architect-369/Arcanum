@@ -118,7 +118,7 @@ def patch_manifest() -> Path:
 
     with MANIFEST.open("w", encoding="utf-8") as f:
         json.dump(data, f, indent=2, ensure_ascii=False)
-        f.write("\\n")
+        f.write("\n")
 
     return backup_path
 

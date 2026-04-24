@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-04-23T07:57:35Z",
+  "generated_at": "2026-04-24T19:45:31Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "6a64182e1",
+  "commit": "781e2a017",
   "generator_version": "1.0",
   "files": [
     {
@@ -556,11 +556,11 @@
     {
       "path": "apps/web/public/manifest.json",
       "type": "file",
-      "size_bytes": 765,
+      "size_bytes": 764,
       "last_modified_commit": "55b94d7a8",
       "is_empty": false,
       "extension": ".json",
-      "lines": 34
+      "lines": 35
     },
     {
       "path": "apps/web/public/next.svg",
@@ -899,7 +899,7 @@
       "path": "apps/web/src/app/(marketing)/layout.tsx",
       "type": "file",
       "size_bytes": 1049,
-      "last_modified_commit": "55b94d7a8",
+      "last_modified_commit": "781e2a017",
       "is_empty": false,
       "extension": ".tsx",
       "lines": 46
@@ -2788,11 +2788,11 @@
     {
       "path": "docs/repo/repo-index.json",
       "type": "file",
-      "size_bytes": 130861,
-      "last_modified_commit": "6a64182e1",
+      "size_bytes": 131540,
+      "last_modified_commit": "781e2a017",
       "is_empty": false,
       "extension": ".json",
-      "lines": 4760
+      "lines": 4787
     },
     {
       "path": "docs/repo/repo-interface.md",
@@ -4676,6 +4676,15 @@
       "lines": 0
     },
     {
+      "path": "scripts/patches/patch_marketing_layout_remove_nested_html.py",
+      "type": "file",
+      "size_bytes": 1937,
+      "last_modified_commit": "781e2a017",
+      "is_empty": false,
+      "extension": ".py",
+      "lines": 0
+    },
+    {
       "path": "scripts/patches/patch_marketing_panelshell_frame.py",
       "type": "file",
       "size_bytes": 3876,
@@ -4714,7 +4723,7 @@
     {
       "path": "scripts/patches/patch_pwa_metadata_and_manifest.py",
       "type": "file",
-      "size_bytes": 3978,
+      "size_bytes": 3977,
       "last_modified_commit": "55b94d7a8",
       "is_empty": false,
       "extension": ".py",
