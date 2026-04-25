@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-04-24T19:45:31Z",
+  "generated_at": "2026-04-25T01:07:45Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "781e2a017",
+  "commit": "b1eac4ecf",
   "generator_version": "1.0",
   "files": [
     {
@@ -557,7 +557,7 @@
       "path": "apps/web/public/manifest.json",
       "type": "file",
       "size_bytes": 764,
-      "last_modified_commit": "55b94d7a8",
+      "last_modified_commit": "b1eac4ecf",
       "is_empty": false,
       "extension": ".json",
       "lines": 35
@@ -2788,11 +2788,11 @@
     {
       "path": "docs/repo/repo-index.json",
       "type": "file",
-      "size_bytes": 131540,
-      "last_modified_commit": "781e2a017",
+      "size_bytes": 131790,
+      "last_modified_commit": "b1eac4ecf",
       "is_empty": false,
       "extension": ".json",
-      "lines": 4787
+      "lines": 4796
     },
     {
       "path": "docs/repo/repo-interface.md",
@@ -4724,7 +4724,7 @@
       "path": "scripts/patches/patch_pwa_metadata_and_manifest.py",
       "type": "file",
       "size_bytes": 3977,
-      "last_modified_commit": "55b94d7a8",
+      "last_modified_commit": "b1eac4ecf",
       "is_empty": false,
       "extension": ".py",
       "lines": 0
