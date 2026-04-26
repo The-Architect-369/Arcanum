@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-04-25T01:07:45Z",
+  "generated_at": "2026-04-26T00:16:22Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "b1eac4ecf",
+  "commit": "11e76e39f",
   "generator_version": "1.0",
   "files": [
     {
@@ -239,15 +239,6 @@
       "lines": 0
     },
     {
-      "path": "CoreFileTree.txt",
-      "type": "file",
-      "size_bytes": 0,
-      "last_modified_commit": "7dfdd2782",
-      "is_empty": true,
-      "extension": ".txt",
-      "lines": 0
-    },
-    {
       "path": "README.md",
       "type": "file",
       "size_bytes": 485,
@@ -255,15 +246,6 @@
       "is_empty": false,
       "extension": ".md",
       "lines": 21
-    },
-    {
-      "path": "apps/CoreFileTree.txt",
-      "type": "file",
-      "size_bytes": 11068,
-      "last_modified_commit": "7dfdd2782",
-      "is_empty": false,
-      "extension": ".txt",
-      "lines": 0
     },
     {
       "path": "apps/web/.gitignore",
@@ -610,11 +592,11 @@
     {
       "path": "apps/web/src/app/(app)/app/page.tsx",
       "type": "file",
-      "size_bytes": 282,
+      "size_bytes": 391,
       "last_modified_commit": "f2063ca4c",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 8
+      "lines": 16
     },
     {
       "path": "apps/web/src/app/(app)/exchange/page.tsx",
@@ -691,11 +673,11 @@
     {
       "path": "apps/web/src/app/(app)/layout.tsx",
       "type": "file",
-      "size_bytes": 297,
+      "size_bytes": 789,
       "last_modified_commit": "616d0b0d5",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 11
+      "lines": 29
     },
     {
       "path": "apps/web/src/app/(app)/mobile-only/page.tsx",
@@ -705,6 +687,15 @@
       "is_empty": false,
       "extension": ".tsx",
       "lines": 12
+    },
+    {
+      "path": "apps/web/src/app/(app)/mobile-only/pwa/page.tsx",
+      "type": "file",
+      "size_bytes": 5422,
+      "last_modified_commit": "11e76e39f",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 155
     },
     {
       "path": "apps/web/src/app/(app)/nexus/channel/page.tsx",
@@ -1087,20 +1078,20 @@
     {
       "path": "apps/web/src/components/ui/AppFooter.tsx",
       "type": "file",
-      "size_bytes": 2653,
+      "size_bytes": 2629,
       "last_modified_commit": "7dfdd2782",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 75
+      "lines": 83
     },
     {
       "path": "apps/web/src/components/ui/AppHeader.tsx",
       "type": "file",
-      "size_bytes": 3937,
+      "size_bytes": 3869,
       "last_modified_commit": "d32d6affc",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 104
+      "lines": 111
     },
     {
       "path": "apps/web/src/components/ui/BadgeCounter.tsx",
@@ -1299,6 +1290,15 @@
       "is_empty": false,
       "extension": ".ts",
       "lines": 38
+    },
+    {
+      "path": "apps/web/src/hooks/usePWADiagnostics.ts",
+      "type": "file",
+      "size_bytes": 5967,
+      "last_modified_commit": "11e76e39f",
+      "is_empty": false,
+      "extension": ".ts",
+      "lines": 193
     },
     {
       "path": "apps/web/src/hooks/useTempusWindow.ts",
@@ -1731,15 +1731,6 @@
       "is_empty": false,
       "extension": ".json",
       "lines": 38
-    },
-    {
-      "path": "chains/CoreFileTree.txt",
-      "type": "file",
-      "size_bytes": 6241,
-      "last_modified_commit": "975ab5f93",
-      "is_empty": false,
-      "extension": ".txt",
-      "lines": 0
     },
     {
       "path": "chains/arcanum/.github/workflows/release.yml",
@@ -2789,7 +2780,7 @@
       "path": "docs/repo/repo-index.json",
       "type": "file",
       "size_bytes": 131790,
-      "last_modified_commit": "b1eac4ecf",
+      "last_modified_commit": "11e76e39f",
       "is_empty": false,
       "extension": ".json",
       "lines": 4796
@@ -4707,6 +4698,15 @@
       "type": "file",
       "size_bytes": 6108,
       "last_modified_commit": "10a4987c9",
+      "is_empty": false,
+      "extension": ".py",
+      "lines": 0
+    },
+    {
+      "path": "scripts/patches/patch_pwa_diagnostics_page.py",
+      "type": "file",
+      "size_bytes": 15050,
+      "last_modified_commit": "11e76e39f",
       "is_empty": false,
       "extension": ".py",
       "lines": 0

@@ -11,7 +11,7 @@ export default function AppHeader() {
   const router = useRouter();
   const [open, setOpen] = useState(false);
 
-  const acc = useAccount(); // trusted, mana, notifCount, showOnboarding (via modal)
+  const acc = useAccount();
   const mana = acc.mana;
   const notifCount = acc.notifCount;
 
@@ -22,9 +22,12 @@ export default function AppHeader() {
 
   return (
     <>
-      <header className="fixed top-0 inset-x-0 z-50 bg-black/60 backdrop-blur-md border-b border-zinc-800" role="banner">
-        <div className="mx-auto max-w-5xl px-3 h-14 flex items-center gap-3">
-          <div className="flex items-center gap-2 select-none">
+      <header
+        className="fixed inset-x-0 top-0 z-50 border-b border-zinc-800 bg-black/60 pt-[env(safe-area-inset-top)] backdrop-blur-md"
+        role="banner"
+      >
+        <div className="mx-auto flex h-14 max-w-5xl items-center gap-3 px-3">
+          <div className="flex select-none items-center gap-2">
             <div className="h-7 w-7 rounded-full bg-gradient-to-b from-zinc-300 to-zinc-100/70" />
             <span className="sr-only">The Arcanum</span>
           </div>
@@ -33,7 +36,7 @@ export default function AppHeader() {
 
           <button
             onClick={() => go('/wallet')}
-            className="flex items-center gap-1.5 text-amber-300 hover:text-amber-200 transition-colors"
+            className="flex items-center gap-1.5 text-amber-300 transition-colors hover:text-amber-200"
             aria-label="Open Wallet"
           >
             <span className="text-sm font-semibold tabular-nums">{mana.toLocaleString()}</span>
@@ -43,7 +46,7 @@ export default function AppHeader() {
           <BadgeCounter count={notifCount} max={9}>
             <button
               onClick={() => go('/notifications')}
-              className="p-2 rounded-md hover:bg-white/5 active:bg-white/10"
+              className="rounded-md p-2 hover:bg-white/5 active:bg-white/10"
               aria-label="Notifications"
               title="Notifications"
             >
@@ -52,8 +55,8 @@ export default function AppHeader() {
           </BadgeCounter>
 
           <button
-            onClick={() => setOpen(v => !v)}
-            className="p-2 rounded-md hover:bg-white/5 active:bg-white/10"
+            onClick={() => setOpen((v) => !v)}
+            className="rounded-md p-2 hover:bg-white/5 active:bg-white/10"
             aria-expanded={open}
             aria-label="Open Menu"
           >
@@ -64,14 +67,18 @@ export default function AppHeader() {
 
       {open && (
         <div className="fixed inset-0 z-50" role="dialog" aria-modal="true">
-          <button className="absolute inset-0 bg-black/60" aria-label="Close Menu" onClick={() => setOpen(false)} />
-          <aside className="absolute top-14 right-0 bottom-0 w-80 max-w-[88vw] bg-black/90 backdrop-blur-md border-l border-zinc-800 shadow-2xl">
-            <nav className="p-3 space-y-1">
+          <button
+            className="absolute inset-0 bg-black/60"
+            aria-label="Close Menu"
+            onClick={() => setOpen(false)}
+          />
+          <aside className="absolute right-0 top-14 bottom-0 w-80 max-w-[88vw] border-l border-zinc-800 bg-black/90 shadow-2xl backdrop-blur-md">
+            <nav className="space-y-1 p-3">
               <DrawerItem icon={<UserCog size={18} />} label="Account" onClick={() => go('/account')} />
-              <DrawerItem icon={<Wallet size={18} />}   label="Wallet"  onClick={() => go('/wallet')} />
+              <DrawerItem icon={<Wallet size={18} />} label="Wallet" onClick={() => go('/wallet')} />
               <DrawerItem icon={<ArrowLeftRight size={18} />} label="Exchange" onClick={() => go('/exchange')} />
-              <DrawerItem icon={<Bell size={18} />}    label="Notifications" onClick={() => go('/notifications')} />
-              <DrawerItem icon={<Settings size={18} />} label="Preferences"   onClick={() => go('/preferences')} />
+              <DrawerItem icon={<Bell size={18} />} label="Notifications" onClick={() => go('/notifications')} />
+              <DrawerItem icon={<Settings size={18} />} label="Preferences" onClick={() => go('/preferences')} />
             </nav>
           </aside>
         </div>
@@ -94,7 +101,7 @@ function DrawerItem({
   return (
     <button
       onClick={onClick}
-      className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-white/5 active:bg:white/10"
+      className="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 hover:bg-white/5 active:bg-white/10"
     >
       <span className="shrink-0 text-zinc-200">{icon}</span>
       <span className="text-sm text-zinc-100">{label}</span>
