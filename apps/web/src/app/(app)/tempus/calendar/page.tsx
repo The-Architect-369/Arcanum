@@ -3,9 +3,10 @@
 import TabDots from '@/components/ui/TabDots';
 import SwipeRoutes from '@/components/ui/SwipeRoutes';
 import PanelShell from '@/components/ui/PanelShell';
+import AppStage from '@/components/ui/AppStage';
 import { computeWindowState } from '@/lib/tempus/window';
 
-const ORDER = ['/tempus/codex', '/tempus/clock', '/tempus/calender']; // keep folder spelling
+const ORDER = ['/tempus/codex', '/tempus/clock', '/tempus/calendar'] as const;
 
 function labelPhase(phase: 'open' | 'rest' | 'silent') {
   return phase === 'open' ? 'Open' : phase === 'rest' ? 'Resting' : 'Silent';
@@ -14,7 +15,6 @@ function labelPhase(phase: 'open' | 'rest' | 'silent') {
 export default function TempusCalendarPage() {
   const now = new Date();
 
-  // Gentle “next 24h” sketch without countdown framing: sample every 6 hours
   const blocks = [0, 6, 12, 18].map((h) => {
     const d = new Date(now.getTime() + h * 3600_000);
     const w = computeWindowState(d);
@@ -29,18 +29,20 @@ export default function TempusCalendarPage() {
 
   return (
     <SwipeRoutes order={ORDER}>
-      <TabDots
-        tabs={[
-          { href: ORDER[0], aria: 'Codex' },
-          { href: ORDER[1], aria: 'Clock' },
-          { href: ORDER[2], aria: 'Calendar' },
-        ]}
-      />
+      <AppStage>
+        <TabDots
+          tabs={[
+            { href: ORDER[0], aria: 'Codex' },
+            { href: ORDER[1], aria: 'Clock' },
+            { href: ORDER[2], aria: 'Calendar' },
+          ]}
+        />
 
-      <div className="mx-auto max-w-5xl px-3 py-4">
         <PanelShell
           title={<h1 className="text-lg font-semibold">Tempus — Calendar</h1>}
           actions={<div className="text-xs text-zinc-400">Next 24h (sampled, non-coercive)</div>}
+          flush
+          className="flex-1"
         >
           <div className="space-y-3">
             <p className="text-sm text-zinc-300">
@@ -66,7 +68,7 @@ export default function TempusCalendarPage() {
             </p>
           </div>
         </PanelShell>
-      </div>
+      </AppStage>
     </SwipeRoutes>
   );
 }

@@ -6,6 +6,7 @@ import SwipeRoutes from '@/components/ui/SwipeRoutes';
 import { LockHint } from '@/components/shared/LockHint';
 import CTAActivate from '@/components/shared/CTAActivate';
 import PanelShell, { PanelSection } from '@/components/ui/PanelShell';
+import AppStage from '@/components/ui/AppStage';
 
 const ORDER = ['/hope/inventory', '/hope/character', '/hope/stylize'];
 const INV_TABS = ['items', 'auras', 'emotes', 'banners', 'backgrounds'] as const;
@@ -16,8 +17,7 @@ export default function HopeInventoryPage() {
 
   return (
     <SwipeRoutes order={ORDER}>
-      {/* page column: dots + tile */}
-      <div className="min-h-[calc(100dvh-7rem)] flex flex-col">
+      <AppStage>
         <TabDots
           tabs={[
             { href: ORDER[0], aria: 'Inventory' },
@@ -27,7 +27,6 @@ export default function HopeInventoryPage() {
         />
 
         <PanelShell title="Hope — Inventory" flush className="flex-1">
-          {/* Inventory sub-tabs */}
           <div className="mb-4 flex flex-wrap gap-2">
             {INV_TABS.map((k) => (
               <button
@@ -35,8 +34,8 @@ export default function HopeInventoryPage() {
                 onClick={() => setTab(k)}
                 className={`rounded-lg border px-3 py-1.5 text-xs uppercase tracking-wide ${
                   tab === k
-                    ? 'bg-blue-700 text-amber-300 border-amber-400 shadow-[0_0_12px_rgba(246,196,83,0.8)]'
-                    : 'bg-neutral-900/60 text-zinc-300 border-zinc-600 hover:bg-white/5'
+                    ? 'border-amber-400 bg-blue-700 text-amber-300 shadow-[0_0_12px_rgba(246,196,83,0.8)]'
+                    : 'border-zinc-600 bg-neutral-900/60 text-zinc-300 hover:bg-white/5'
                 }`}
               >
                 {k}
@@ -47,13 +46,12 @@ export default function HopeInventoryPage() {
             </div>
           </div>
 
-          {/* Tray placeholder grid */}
           <PanelSection title="Collected">
-            <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-3">
+            <div className="grid grid-cols-3 gap-3 sm:grid-cols-4 md:grid-cols-6">
               {Array.from({ length: 18 }).map((_, i) => (
                 <div
                   key={i}
-                  className="aspect-square rounded-xl border border-white/10 bg-white/[0.03] grid place-items-center text-xs text-white/60"
+                  className="grid aspect-square place-items-center rounded-xl border border-white/10 bg-white/[0.03] text-xs text-white/60"
                 >
                   Empty
                 </div>
@@ -65,7 +63,7 @@ export default function HopeInventoryPage() {
             <CTAActivate />
           </div>
         </PanelShell>
-      </div>
+      </AppStage>
     </SwipeRoutes>
   );
 }

@@ -6,6 +6,7 @@ import SwipeRoutes from '@/components/ui/SwipeRoutes';
 import { LockHint } from '@/components/shared/LockHint';
 import CTAActivate from '@/components/shared/CTAActivate';
 import PanelShell, { PanelSection } from '@/components/ui/PanelShell';
+import AppStage from '@/components/ui/AppStage';
 
 const ORDER = ['/hope/inventory', '/hope/character', '/hope/stylize'] as const;
 const MATERIALS = ['wood', 'garnet', 'knitted', 'cotton'] as const;
@@ -18,7 +19,7 @@ export default function HopeStylizePage() {
 
   return (
     <SwipeRoutes order={ORDER}>
-      <div className="min-h-[calc(100dvh-7rem)] flex flex-col">
+      <AppStage>
         <TabDots
           tabs={[
             { href: ORDER[0], aria: 'Inventory' },
@@ -27,16 +28,14 @@ export default function HopeStylizePage() {
           ]}
         />
 
-        {/* Single full-height tile that contains stripped avatar editor + materials tray */}
         <PanelShell title="Hope — Stylize" flush className="flex-1">
-          <div className="h-full grid grid-rows-[auto_1fr] gap-4">
-            {/* TOP: Stripped avatar editor */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="grid h-full grid-rows-[auto_1fr] gap-4">
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               <div
-                className="aspect-square rounded-xl border border-white/10 grid place-items-center"
+                className="grid aspect-square place-items-center rounded-xl border border-white/10"
                 style={{ background: color }}
               >
-                <div className="text-xs text-black/70 uppercase tracking-wide">
+                <div className="text-xs uppercase tracking-wide text-black/70">
                   {mat} • h:{height} • w:{weight}
                 </div>
               </div>
@@ -77,7 +76,6 @@ export default function HopeStylizePage() {
               </div>
             </div>
 
-            {/* BOTTOM: Materials tray (fills remaining height, scrolls inside tile) */}
             <div className="min-h-0 flex flex-col">
               <div className="mb-3 flex flex-wrap gap-2">
                 {MATERIALS.map((m) => (
@@ -86,8 +84,8 @@ export default function HopeStylizePage() {
                     onClick={() => setMat(m)}
                     className={`rounded-md border px-3 py-1.5 text-xs uppercase ${
                       mat === m
-                        ? 'bg-blue-700 text-amber-300 border-amber-400'
-                        : 'bg-neutral-900/60 text-zinc-300 border-zinc-600 hover:bg-white/5'
+                        ? 'border-amber-400 bg-blue-700 text-amber-300'
+                        : 'border-zinc-600 bg-neutral-900/60 text-zinc-300 hover:bg-white/5'
                     }`}
                   >
                     {m}
@@ -96,11 +94,11 @@ export default function HopeStylizePage() {
               </div>
 
               <PanelSection title="Preview Slots" className="min-h-0 flex-1">
-                <div className="h-full overflow-y-auto grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-3">
+                <div className="grid h-full grid-cols-3 gap-3 overflow-y-auto sm:grid-cols-4 md:grid-cols-6">
                   {Array.from({ length: 12 }).map((_, i) => (
                     <div
                       key={i}
-                      className="aspect-square rounded-xl border border-white/10 bg-white/[0.03] grid place-items-center text-xs text-white/60"
+                      className="grid aspect-square place-items-center rounded-xl border border-white/10 bg-white/[0.03] text-xs text-white/60"
                     >
                       Empty
                     </div>
@@ -110,7 +108,7 @@ export default function HopeStylizePage() {
             </div>
           </div>
         </PanelShell>
-      </div>
+      </AppStage>
     </SwipeRoutes>
   );
 }

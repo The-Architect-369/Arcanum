@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-04-26T00:16:22Z",
+  "generated_at": "2026-04-26T01:13:00Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "11e76e39f",
+  "commit": "fdb4ed510",
   "generator_version": "1.0",
   "files": [
     {
@@ -593,7 +593,7 @@
       "path": "apps/web/src/app/(app)/app/page.tsx",
       "type": "file",
       "size_bytes": 391,
-      "last_modified_commit": "f2063ca4c",
+      "last_modified_commit": "fdb4ed510",
       "is_empty": false,
       "extension": ".tsx",
       "lines": 16
@@ -610,20 +610,20 @@
     {
       "path": "apps/web/src/app/(app)/hope/character/page.tsx",
       "type": "file",
-      "size_bytes": 4991,
+      "size_bytes": 4368,
       "last_modified_commit": "8fb50b9f7",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 110
+      "lines": 103
     },
     {
       "path": "apps/web/src/app/(app)/hope/inventory/page.tsx",
       "type": "file",
-      "size_bytes": 2565,
+      "size_bytes": 2385,
       "last_modified_commit": "8fb50b9f7",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 71
+      "lines": 69
     },
     {
       "path": "apps/web/src/app/(app)/hope/page.tsx",
@@ -664,17 +664,17 @@
     {
       "path": "apps/web/src/app/(app)/hope/stylize/page.tsx",
       "type": "file",
-      "size_bytes": 4658,
+      "size_bytes": 4318,
       "last_modified_commit": "8fb50b9f7",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 116
+      "lines": 114
     },
     {
       "path": "apps/web/src/app/(app)/layout.tsx",
       "type": "file",
       "size_bytes": 789,
-      "last_modified_commit": "616d0b0d5",
+      "last_modified_commit": "fdb4ed510",
       "is_empty": false,
       "extension": ".tsx",
       "lines": 29
@@ -763,11 +763,11 @@
     {
       "path": "apps/web/src/app/(app)/tempus/calendar/page.tsx",
       "type": "file",
-      "size_bytes": 2645,
+      "size_bytes": 2556,
       "last_modified_commit": "a04c0a7a2",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 71
+      "lines": 74
     },
     {
       "path": "apps/web/src/app/(app)/tempus/clock/page.tsx",
@@ -1079,7 +1079,7 @@
       "path": "apps/web/src/components/ui/AppFooter.tsx",
       "type": "file",
       "size_bytes": 2629,
-      "last_modified_commit": "7dfdd2782",
+      "last_modified_commit": "fdb4ed510",
       "is_empty": false,
       "extension": ".tsx",
       "lines": 83
@@ -1088,7 +1088,7 @@
       "path": "apps/web/src/components/ui/AppHeader.tsx",
       "type": "file",
       "size_bytes": 3869,
-      "last_modified_commit": "d32d6affc",
+      "last_modified_commit": "fdb4ed510",
       "is_empty": false,
       "extension": ".tsx",
       "lines": 111
@@ -2779,8 +2779,8 @@
     {
       "path": "docs/repo/repo-index.json",
       "type": "file",
-      "size_bytes": 131790,
-      "last_modified_commit": "11e76e39f",
+      "size_bytes": 131868,
+      "last_modified_commit": "fdb4ed510",
       "is_empty": false,
       "extension": ".json",
       "lines": 4796
@@ -4653,6 +4653,15 @@
       "type": "file",
       "size_bytes": 5300,
       "last_modified_commit": "60bd5ee4f",
+      "is_empty": false,
+      "extension": ".py",
+      "lines": 0
+    },
+    {
+      "path": "scripts/patches/patch_app_shell_pass.py",
+      "type": "file",
+      "size_bytes": 10897,
+      "last_modified_commit": "fdb4ed510",
       "is_empty": false,
       "extension": ".py",
       "lines": 0
