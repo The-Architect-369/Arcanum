@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-04-27T15:49:34Z",
+  "generated_at": "2026-04-27T16:24:07Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "6c3b0d9e1",
+  "commit": "c59285406",
   "generator_version": "1.0",
   "files": [
     {
@@ -764,7 +764,7 @@
       "path": "apps/web/src/app/(app)/tempus/calendar/page.tsx",
       "type": "file",
       "size_bytes": 2564,
-      "last_modified_commit": "67dae7c5f",
+      "last_modified_commit": "c59285406",
       "is_empty": false,
       "extension": ".tsx",
       "lines": 74
@@ -773,7 +773,7 @@
       "path": "apps/web/src/app/(app)/tempus/clock/page.tsx",
       "type": "file",
       "size_bytes": 2799,
-      "last_modified_commit": "a04c0a7a2",
+      "last_modified_commit": "c59285406",
       "is_empty": false,
       "extension": ".tsx",
       "lines": 81
@@ -782,7 +782,7 @@
       "path": "apps/web/src/app/(app)/tempus/codex/page.tsx",
       "type": "file",
       "size_bytes": 2228,
-      "last_modified_commit": "a04c0a7a2",
+      "last_modified_commit": "c59285406",
       "is_empty": false,
       "extension": ".tsx",
       "lines": 61
@@ -826,7 +826,7 @@
     {
       "path": "apps/web/src/app/(app)/text/page.tsx",
       "type": "file",
-      "size_bytes": 120,
+      "size_bytes": 115,
       "last_modified_commit": "8fb50b9f7",
       "is_empty": false,
       "extension": ".tsx",
@@ -871,11 +871,11 @@
     {
       "path": "apps/web/src/app/(app)/wallet/page.tsx",
       "type": "file",
-      "size_bytes": 244,
+      "size_bytes": 1647,
       "last_modified_commit": "8fb50b9f7",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 3
+      "lines": 43
     },
     {
       "path": "apps/web/src/app/(marketing)/client-layout.tsx",
@@ -1078,7 +1078,7 @@
     {
       "path": "apps/web/src/components/ui/AppFooter.tsx",
       "type": "file",
-      "size_bytes": 2629,
+      "size_bytes": 2599,
       "last_modified_commit": "fdb4ed510",
       "is_empty": false,
       "extension": ".tsx",
@@ -1097,7 +1097,7 @@
       "path": "apps/web/src/components/ui/AppStage.tsx",
       "type": "file",
       "size_bytes": 575,
-      "last_modified_commit": "67dae7c5f",
+      "last_modified_commit": "c59285406",
       "is_empty": false,
       "extension": ".tsx",
       "lines": 24
@@ -1169,7 +1169,7 @@
       "path": "apps/web/src/components/ui/PanelShell.tsx",
       "type": "file",
       "size_bytes": 2592,
-      "last_modified_commit": "42268897e",
+      "last_modified_commit": "c59285406",
       "is_empty": false,
       "extension": ".tsx",
       "lines": 95
@@ -2788,11 +2788,11 @@
     {
       "path": "docs/repo/repo-index.json",
       "type": "file",
-      "size_bytes": 132570,
-      "last_modified_commit": "6c3b0d9e1",
+      "size_bytes": 132809,
+      "last_modified_commit": "c59285406",
       "is_empty": false,
       "extension": ".json",
-      "lines": 4823
+      "lines": 4832
     },
     {
       "path": "docs/repo/repo-interface.md",
@@ -4752,6 +4752,15 @@
       "type": "file",
       "size_bytes": 3977,
       "last_modified_commit": "b1eac4ecf",
+      "is_empty": false,
+      "extension": ".py",
+      "lines": 0
+    },
+    {
+      "path": "scripts/patches/patch_route_and_viewport_fit_pass.py",
+      "type": "file",
+      "size_bytes": 14820,
+      "last_modified_commit": "c59285406",
       "is_empty": false,
       "extension": ".py",
       "lines": 0

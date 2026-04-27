@@ -1,7 +1,7 @@
 'use client';
 
 import { usePathname, useRouter } from 'next/navigation';
-import { BookMarked, MessageSquareMore, Globe, Clock, UserRound } from 'lucide-react';
+import { BookMarked, Wallet, Globe, Clock, UserRound } from 'lucide-react';
 import { cn } from '@/lib/cn';
 
 type Tab = {
@@ -16,7 +16,7 @@ const TABS: Tab[] = [
   { label: 'Hope', href: '/hope', icon: <UserRound size={22} />, badge: 'dot' },
   { label: 'Tempus', href: '/tempus', icon: <Clock size={22} />, badge: 'dot' },
   { label: 'Nexus', href: '/nexus', icon: <Globe size={22} />, badge: 'dot' },
-  { label: 'Text', href: '/text', icon: <MessageSquareMore size={22} />, badge: 'count', count: 0 },
+  { label: 'Wallet', href: '/wallet', icon: <Wallet size={22} />, badge: 'dot' },
   { label: 'Vitae', href: '/vitae', icon: <BookMarked size={22} />, badge: 'dot' },
 ];
 
