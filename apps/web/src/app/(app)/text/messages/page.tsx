@@ -2,12 +2,14 @@
 
 import TabDots from '@/components/ui/TabDots';
 import SwipeRoutes from '@/components/ui/SwipeRoutes';
+import AppStage from '@/components/ui/AppStage';
+import PanelShell from '@/components/ui/PanelShell';
 import { useEffect, useMemo, useState } from 'react';
 import { fetchPublicTimeline } from '@/lib/matrix';
 import { resolveRoomId, ROOM_ALIAS } from '@/lib/rooms';
 import FreeBadge from '@/components/shared/FreeBadge';
 
-const ORDER = ['/text/contacts', '/text/messages', '/text/groups'];
+const ORDER = ['/text/contacts', '/text/messages', '/text/groups'] as const;
 
 type Row = { sender: string; body: string; at: number };
 
@@ -39,48 +41,61 @@ export default function TextMessagesPage() {
         if (alive) setLoading(false);
       }
     })();
-    return () => { alive = false; };
+    return () => {
+      alive = false;
+    };
   }, [currentAlias]);
 
-  const header = useMemo(() => (
-    <div className="mb-1 flex items-center gap-2">
-      <h1 className="text-lg font-semibold">Text — Messages</h1>
-      <FreeBadge />
-    </div>
-  ), []);
+  const title = useMemo(
+    () => (
+      <div className="flex items-center gap-2">
+        <h1 className="text-lg font-semibold">Text — Messages</h1>
+        <FreeBadge />
+      </div>
+    ),
+    []
+  );
 
   return (
     <SwipeRoutes order={ORDER}>
-      <TabDots tabs={[
-        { href: ORDER[0], aria: 'Contacts' },
-        { href: ORDER[1], aria: 'Messages' },
-        { href: ORDER[2], aria: 'Groups' },
-      ]}/>
-      <div className="mx-auto max-w-5xl px-3 py-4 space-y-3">
-        {header}
-        <p className="text-sm text-zinc-300">
-          Reading from <code>{currentAlias}</code>. Public, read-only preview.
-        </p>
+      <AppStage>
+        <TabDots
+          tabs={[
+            { href: ORDER[0], aria: 'Contacts' },
+            { href: ORDER[1], aria: 'Messages' },
+            { href: ORDER[2], aria: 'Groups' },
+          ]}
+        />
+        <PanelShell title={title} flush className="flex-1">
+          <div className="space-y-3">
+            <p className="text-sm text-zinc-300">
+              Reading from <code>{currentAlias}</code>. Public, read-only preview.
+            </p>
 
-        {loading && <div className="text-sm text-zinc-400">Loading…</div>}
-        {err && <div className="text-xs text-red-400">{err}</div>}
-        {!loading && !err && rows.length === 0 && (
-          <div className="text-sm text-zinc-400">
-            No messages found. After seeding, a welcome message will appear here.
-          </div>
-        )}
-
-        <div className="space-y-2">
-          {rows.map((m, i) => (
-            <div key={i} className={`max-w-[80%] rounded-lg border border-white/10 bg-black/40 p-2 ${i % 2 ? 'ml-auto' : ''}`}>
-              <div className="text-[11px] text-zinc-400">
-                {m.sender} · {new Date(m.at).toLocaleString()}
+            {loading && <div className="text-sm text-zinc-400">Loading…</div>}
+            {err && <div className="text-xs text-red-400">{err}</div>}
+            {!loading && !err && rows.length === 0 && (
+              <div className="text-sm text-zinc-400">
+                No messages found. After seeding, a welcome message will appear here.
               </div>
-              <div className="text-sm whitespace-pre-wrap break-words">{m.body}</div>
+            )}
+
+            <div className="space-y-2">
+              {rows.map((m, i) => (
+                <div
+                  key={i}
+                  className={`max-w-[80%] rounded-lg border border-white/10 bg-black/40 p-2 ${i % 2 ? 'ml-auto' : ''}`}
+                >
+                  <div className="text-[11px] text-zinc-400">
+                    {m.sender} · {new Date(m.at).toLocaleString()}
+                  </div>
+                  <div className="break-words whitespace-pre-wrap text-sm">{m.body}</div>
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
-      </div>
+          </div>
+        </PanelShell>
+      </AppStage>
     </SwipeRoutes>
   );
 }
