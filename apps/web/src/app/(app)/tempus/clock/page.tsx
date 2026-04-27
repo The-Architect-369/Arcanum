@@ -3,9 +3,10 @@
 import TabDots from '@/components/ui/TabDots';
 import SwipeRoutes from '@/components/ui/SwipeRoutes';
 import PanelShell from '@/components/ui/PanelShell';
+import AppStage from '@/components/ui/AppStage';
 import { useTempusWindow } from '@/hooks/useTempusWindow';
 
-const ORDER = ['/tempus/codex', '/tempus/clock', '/tempus/calender']; // keep folder spelling
+const ORDER = ['/tempus/codex', '/tempus/clock', '/tempus/calendar'] as const;
 
 function PhasePill({ phase }: { phase: 'open' | 'rest' | 'silent' }) {
   const text = phase === 'open' ? 'Open' : phase === 'rest' ? 'Resting' : 'Silent';
@@ -28,15 +29,15 @@ export default function TempusClockPage() {
 
   return (
     <SwipeRoutes order={ORDER}>
-      <TabDots
-        tabs={[
-          { href: ORDER[0], aria: 'Codex' },
-          { href: ORDER[1], aria: 'Clock' },
-          { href: ORDER[2], aria: 'Calendar' },
-        ]}
-      />
+      <AppStage>
+        <TabDots
+          tabs={[
+            { href: ORDER[0], aria: 'Codex' },
+            { href: ORDER[1], aria: 'Clock' },
+            { href: ORDER[2], aria: 'Calendar' },
+          ]}
+        />
 
-      <div className="mx-auto max-w-5xl px-3 py-4">
         <PanelShell
           title={
             <div className="flex items-center gap-3">
@@ -45,6 +46,8 @@ export default function TempusClockPage() {
             </div>
           }
           actions={<div className="text-xs text-zinc-400">{w.planetaryDay} {w.isDay ? 'Day' : 'Night'}</div>}
+          flush
+          className="min-h-0 flex-1"
         >
           <div className="space-y-4">
             <p className="text-sm text-zinc-200">{headline}</p>
@@ -63,7 +66,7 @@ export default function TempusClockPage() {
             </p>
           </div>
         </PanelShell>
-      </div>
+      </AppStage>
     </SwipeRoutes>
   );
 }

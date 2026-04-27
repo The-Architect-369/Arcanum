@@ -3,27 +3,30 @@
 import TabDots from '@/components/ui/TabDots';
 import SwipeRoutes from '@/components/ui/SwipeRoutes';
 import PanelShell from '@/components/ui/PanelShell';
+import AppStage from '@/components/ui/AppStage';
 import { useTempusWindow } from '@/hooks/useTempusWindow';
 
-const ORDER = ['/tempus/codex', '/tempus/clock', '/tempus/calender'];
+const ORDER = ['/tempus/codex', '/tempus/clock', '/tempus/calendar'] as const;
 
 export default function TempusCodexPage() {
   const w = useTempusWindow();
 
   return (
     <SwipeRoutes order={ORDER}>
-      <TabDots
-        tabs={[
-          { href: ORDER[0], aria: 'Codex' },
-          { href: ORDER[1], aria: 'Clock' },
-          { href: ORDER[2], aria: 'Calendar' },
-        ]}
-      />
+      <AppStage>
+        <TabDots
+          tabs={[
+            { href: ORDER[0], aria: 'Codex' },
+            { href: ORDER[1], aria: 'Clock' },
+            { href: ORDER[2], aria: 'Calendar' },
+          ]}
+        />
 
-      <div className="mx-auto max-w-5xl px-3 py-4">
         <PanelShell
           title={<h1 className="text-lg font-semibold">Tempus — Codex</h1>}
           actions={<div className="text-xs text-zinc-400">Hybrid MVP (tables now, engine later)</div>}
+          flush
+          className="min-h-0 flex-1"
         >
           <div className="space-y-4">
             <p className="text-sm text-zinc-300">
@@ -43,7 +46,7 @@ export default function TempusCodexPage() {
             </p>
           </div>
         </PanelShell>
-      </div>
+      </AppStage>
     </SwipeRoutes>
   );
 }

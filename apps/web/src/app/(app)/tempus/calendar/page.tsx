@@ -42,7 +42,7 @@ export default function TempusCalendarPage() {
           title={<h1 className="text-lg font-semibold">Tempus — Calendar</h1>}
           actions={<div className="text-xs text-zinc-400">Next 24h (sampled, non-coercive)</div>}
           flush
-          className="flex-1"
+          className="min-h-0 flex-1"
         >
           <div className="space-y-3">
             <p className="text-sm text-zinc-300">
