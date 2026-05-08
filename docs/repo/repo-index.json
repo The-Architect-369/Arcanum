@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-04-27T16:24:07Z",
+  "generated_at": "2026-05-08T09:32:44Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "c59285406",
+  "commit": "9486f93d6",
   "generator_version": "1.0",
   "files": [
     {
@@ -610,29 +610,29 @@
     {
       "path": "apps/web/src/app/(app)/hope/character/page.tsx",
       "type": "file",
-      "size_bytes": 4368,
+      "size_bytes": 129,
       "last_modified_commit": "67dae7c5f",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 103
+      "lines": 5
     },
     {
       "path": "apps/web/src/app/(app)/hope/inventory/page.tsx",
       "type": "file",
-      "size_bytes": 2385,
+      "size_bytes": 129,
       "last_modified_commit": "67dae7c5f",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 69
+      "lines": 5
     },
     {
       "path": "apps/web/src/app/(app)/hope/page.tsx",
       "type": "file",
-      "size_bytes": 119,
+      "size_bytes": 115,
       "last_modified_commit": "8fb50b9f7",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 4
+      "lines": 5
     },
     {
       "path": "apps/web/src/app/(app)/hope/presence/ReflectionEditor.tsx",
@@ -655,20 +655,20 @@
     {
       "path": "apps/web/src/app/(app)/hope/presence/page.tsx",
       "type": "file",
-      "size_bytes": 1706,
+      "size_bytes": 1632,
       "last_modified_commit": "8fb50b9f7",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 32
+      "lines": 49
     },
     {
       "path": "apps/web/src/app/(app)/hope/stylize/page.tsx",
       "type": "file",
-      "size_bytes": 4318,
+      "size_bytes": 127,
       "last_modified_commit": "67dae7c5f",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 114
+      "lines": 5
     },
     {
       "path": "apps/web/src/app/(app)/layout.tsx",
@@ -827,7 +827,7 @@
       "path": "apps/web/src/app/(app)/text/page.tsx",
       "type": "file",
       "size_bytes": 115,
-      "last_modified_commit": "8fb50b9f7",
+      "last_modified_commit": "9486f93d6",
       "is_empty": false,
       "extension": ".tsx",
       "lines": 5
@@ -872,7 +872,7 @@
       "path": "apps/web/src/app/(app)/wallet/page.tsx",
       "type": "file",
       "size_bytes": 1647,
-      "last_modified_commit": "8fb50b9f7",
+      "last_modified_commit": "9486f93d6",
       "is_empty": false,
       "extension": ".tsx",
       "lines": 43
@@ -1079,7 +1079,7 @@
       "path": "apps/web/src/components/ui/AppFooter.tsx",
       "type": "file",
       "size_bytes": 2599,
-      "last_modified_commit": "fdb4ed510",
+      "last_modified_commit": "9486f93d6",
       "is_empty": false,
       "extension": ".tsx",
       "lines": 83
@@ -2788,11 +2788,11 @@
     {
       "path": "docs/repo/repo-index.json",
       "type": "file",
-      "size_bytes": 132809,
-      "last_modified_commit": "c59285406",
+      "size_bytes": 133054,
+      "last_modified_commit": "9486f93d6",
       "is_empty": false,
       "extension": ".json",
-      "lines": 4832
+      "lines": 4841
     },
     {
       "path": "docs/repo/repo-interface.md",
@@ -4752,6 +4752,15 @@
       "type": "file",
       "size_bytes": 3977,
       "last_modified_commit": "b1eac4ecf",
+      "is_empty": false,
+      "extension": ".py",
+      "lines": 0
+    },
+    {
+      "path": "scripts/patches/patch_rebase_global_nav_to_canon.py",
+      "type": "file",
+      "size_bytes": 6766,
+      "last_modified_commit": "9486f93d6",
       "is_empty": false,
       "extension": ".py",
       "lines": 0

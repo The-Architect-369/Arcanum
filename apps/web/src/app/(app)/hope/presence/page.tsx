@@ -1,32 +1,49 @@
-import { ReflectionEditor } from "./ReflectionEditor";
+'use client';
+
+import AppStage from '@/components/ui/AppStage';
+import PanelShell, { PanelSection } from '@/components/ui/PanelShell';
+import SwipeRoutes from '@/components/ui/SwipeRoutes';
+import TabDots from '@/components/ui/TabDots';
+import { ReflectionEditor } from './ReflectionEditor';
+
+const ORDER = ['/hope/presence', '/hope/reflection', '/hope/attunement'] as const;
 
 export default function HopePresencePage() {
   return (
-    <main className="mx-auto max-w-2xl px-4 py-12 space-y-10">
-      {/* ─────────────────────────────────────────────
-          Region A — Orientation (minimal, optional)
-         ───────────────────────────────────────────── */}
-      <section className="text-sm text-neutral-500">
-        <p>You may leave a reflection, or simply be here.</p>
-      </section>
+    <SwipeRoutes order={ORDER}>
+      <AppStage>
+        <TabDots
+          tabs={[
+            { href: ORDER[0], aria: 'Presence' },
+            { href: ORDER[1], aria: 'Reflection' },
+            { href: ORDER[2], aria: 'Attunement' },
+          ]}
+        />
 
-      {/* ─────────────────────────────────────────────
-          Region B — Reflection Editor (client-side)
-         ───────────────────────────────────────────── */}
-      <ReflectionEditor />
+        <PanelShell title="Hope — Presence" flush className="min-h-0 flex-1">
+          <div className="space-y-4">
+            <p className="text-sm text-zinc-300">
+              Hope is here as a subtle presence. You may reflect, remain silent, or continue onward.
+            </p>
 
-      {/* ─────────────────────────────────────────────
-          Region C — Witness Window (stub)
-         ───────────────────────────────────────────── */}
-      <section className="space-y-4">
-        <div className="text-xs uppercase tracking-wide text-neutral-600">
-          Witness
-        </div>
+            <PanelSection title="Orientation">
+              <p className="text-sm text-zinc-300">
+                Presence is the quiet threshold of Hope. No urgency. No demand. No pressure to perform.
+              </p>
+            </PanelSection>
 
-        <div className="text-sm text-neutral-500 italic">
-          Nothing has been left here yet.
-        </div>
-      </section>
-    </main>
+            <PanelSection title="Leave a Reflection">
+              <ReflectionEditor />
+            </PanelSection>
+
+            <PanelSection title="Witness">
+              <p className="text-sm italic text-zinc-400">
+                Nothing has been left here yet.
+              </p>
+            </PanelSection>
+          </div>
+        </PanelShell>
+      </AppStage>
+    </SwipeRoutes>
   );
 }
