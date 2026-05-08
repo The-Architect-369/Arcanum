@@ -7,6 +7,7 @@ import { LockHint } from '@/components/shared/LockHint';
 import CTAActivate from '@/components/shared/CTAActivate';
 import PanelShell, { PanelSection } from '@/components/ui/PanelShell';
 import AppStage from '@/components/ui/AppStage';
+import { ReflectionEditor } from '../_components/ReflectionEditor';
 
 const ORDER = ['/hope/presence', '/hope/reflection', '/hope/attunement'] as const;
 
@@ -25,23 +26,18 @@ export default function HopeReflectionPage() {
         />
 
         <PanelShell title="Hope — Reflection" flush className="flex-1">
-          <div className="grid h-full grid-rows-[auto_1fr] gap-4">
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-              <div className="w-full">
-                <div className="aspect-square rounded-xl border border-white/10 bg-white/[0.03]" />
-              </div>
+          <div className="grid h-full gap-4 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)]">
+            <div className="min-h-0 space-y-4">
+              <PanelSection title="Leave a Reflection">
+                <ReflectionEditor />
+              </PanelSection>
 
-              <div className="flex flex-col gap-3">
+              <PanelSection title="Guidance Posture">
                 <p className="text-sm text-zinc-300">
-                  Reflection is user-initiated. Hope may respond, clarify, and mirror what you have chosen to bring forward.
+                  Reflection is user-initiated. Hope may clarify, mirror, and respond, but it
+                  does not command.
                 </p>
-                <div className="flex flex-wrap items-center gap-3">
-                  <CTAActivate />
-                  <button className="rounded-xl border border-white/20 bg-white/5 px-4 py-2 text-sm hover:bg-white/10">
-                    What can I do as a guest?
-                  </button>
-                </div>
-              </div>
+              </PanelSection>
             </div>
 
             <div className="min-h-0 flex flex-col">
@@ -71,7 +67,7 @@ export default function HopeReflectionPage() {
 
               {chatTab === 'new' ? (
                 <div className="min-h-0 flex flex-1 flex-col">
-                  <PanelSection title="Start a conversation" className="flex min-h-0 flex-1 flex-col">
+                  <PanelSection title="Speak with Hope" className="flex min-h-0 flex-1 flex-col">
                     <div className="min-h-0 flex-1 overflow-y-auto rounded-lg border border-white/10 bg-white/[0.03] p-3 text-sm text-zinc-400">
                       <div className="opacity-70">Your conversation with Hope will appear here.</div>
                     </div>

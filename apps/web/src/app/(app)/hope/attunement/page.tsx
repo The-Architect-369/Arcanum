@@ -9,13 +9,14 @@ import PanelShell, { PanelSection } from '@/components/ui/PanelShell';
 import AppStage from '@/components/ui/AppStage';
 
 const ORDER = ['/hope/presence', '/hope/reflection', '/hope/attunement'] as const;
-const MATERIALS = ['wood', 'garnet', 'knitted', 'cotton'] as const;
+const PRESETS = ['quiet', 'steady', 'warm', 'deep'] as const;
 
 export default function HopeAttunementPage() {
-  const [color, setColor] = useState('#9bb8ff');
-  const [height, setHeight] = useState(50);
-  const [weight, setWeight] = useState(50);
-  const [mat, setMat] = useState<(typeof MATERIALS)[number]>('wood');
+  const [tone, setTone] = useState('#9bb8ff');
+  const [presence, setPresence] = useState(35);
+  const [frequency, setFrequency] = useState(30);
+  const [depth, setDepth] = useState(45);
+  const [preset, setPreset] = useState<(typeof PRESETS)[number]>('quiet');
 
   return (
     <SwipeRoutes order={ORDER}>
@@ -29,82 +30,81 @@ export default function HopeAttunementPage() {
         />
 
         <PanelShell title="Hope — Attunement" flush className="flex-1">
-          <div className="grid h-full grid-rows-[auto_1fr] gap-4">
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+          <div className="grid h-full gap-4 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)]">
+            <div className="space-y-4">
               <div
                 className="grid aspect-square place-items-center rounded-xl border border-white/10"
-                style={{ background: color }}
+                style={{ background: tone }}
               >
-                <div className="text-xs uppercase tracking-wide text-black/70">
-                  {mat} • h:{height} • w:{weight}
+                <div className="px-4 text-center text-xs uppercase tracking-wide text-black/70">
+                  {preset} · p:{presence} · f:{frequency} · d:{depth}
                 </div>
               </div>
 
-              <div className="flex flex-col gap-4">
-                <PanelSection title="Presence Tone">
-                  <input
-                    type="color"
-                    value={color}
-                    onChange={(e) => setColor(e.target.value)}
-                    className="h-9 w-16 rounded-md border border-white/15 bg-white/10"
-                  />
-                </PanelSection>
-                <PanelSection title="Presence Intensity">
-                  <input
-                    type="range"
-                    min={0}
-                    max={100}
-                    value={height}
-                    onChange={(e) => setHeight(Number(e.target.value))}
-                    className="w-full"
-                  />
-                </PanelSection>
-                <PanelSection title="Reflection Weight">
-                  <input
-                    type="range"
-                    min={0}
-                    max={100}
-                    value={weight}
-                    onChange={(e) => setWeight(Number(e.target.value))}
-                    className="w-full"
-                  />
-                </PanelSection>
-                <div className="flex items-center gap-3">
-                  <LockHint label="ACC to save" />
-                  <CTAActivate />
-                </div>
-              </div>
-            </div>
-
-            <div className="min-h-0 flex flex-col">
-              <div className="mb-3 flex flex-wrap gap-2">
-                {MATERIALS.map((m) => (
+              <div className="flex flex-wrap gap-2">
+                {PRESETS.map((name) => (
                   <button
-                    key={m}
-                    onClick={() => setMat(m)}
+                    key={name}
+                    onClick={() => setPreset(name)}
                     className={`rounded-md border px-3 py-1.5 text-xs uppercase ${
-                      mat === m
+                      preset === name
                         ? 'border-amber-400 bg-blue-700 text-amber-300'
                         : 'border-zinc-600 bg-neutral-900/60 text-zinc-300 hover:bg-white/5'
                     }`}
                   >
-                    {m}
+                    {name}
                   </button>
                 ))}
               </div>
+            </div>
 
-              <PanelSection title="Attunement Presets" className="min-h-0 flex-1">
-                <div className="grid h-full grid-cols-3 gap-3 overflow-y-auto sm:grid-cols-4 md:grid-cols-6">
-                  {Array.from({ length: 12 }).map((_, i) => (
-                    <div
-                      key={i}
-                      className="grid aspect-square place-items-center rounded-xl border border-white/10 bg-white/[0.03] text-xs text-white/60"
-                    >
-                      Empty
-                    </div>
-                  ))}
-                </div>
+            <div className="space-y-4">
+              <PanelSection title="Presence Tone">
+                <input
+                  type="color"
+                  value={tone}
+                  onChange={(e) => setTone(e.target.value)}
+                  className="h-9 w-16 rounded-md border border-white/15 bg-white/10"
+                />
               </PanelSection>
+
+              <PanelSection title="Presence Level">
+                <input
+                  type="range"
+                  min={0}
+                  max={100}
+                  value={presence}
+                  onChange={(e) => setPresence(Number(e.target.value))}
+                  className="w-full"
+                />
+              </PanelSection>
+
+              <PanelSection title="Reflection Frequency">
+                <input
+                  type="range"
+                  min={0}
+                  max={100}
+                  value={frequency}
+                  onChange={(e) => setFrequency(Number(e.target.value))}
+                  className="w-full"
+                />
+              </PanelSection>
+
+              <PanelSection title="Reflection Depth">
+                <input
+                  type="range"
+                  min={0}
+                  max={100}
+                  value={depth}
+                  onChange={(e) => setDepth(Number(e.target.value))}
+                  className="w-full"
+                />
+              </PanelSection>
+
+              <div className="flex items-center gap-3">
+                <LockHint label="ACC to save" />
+                <CTAActivate />
+              </div>
             </div>
           </div>
         </PanelShell>
