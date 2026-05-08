@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-05-08T09:38:32Z",
+  "generated_at": "2026-05-08T09:50:59Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "66565f668",
+  "commit": "4a2cd29bc",
   "generator_version": "1.0",
   "files": [
     {
@@ -608,13 +608,31 @@
       "lines": 3
     },
     {
-      "path": "apps/web/src/app/(app)/hope/attunement/page.tsx",
+      "path": "apps/web/src/app/(app)/hope/_components/ReflectionEditor.tsx",
       "type": "file",
-      "size_bytes": 4068,
-      "last_modified_commit": "66565f668",
+      "size_bytes": 2484,
+      "last_modified_commit": "4a2cd29bc",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 114
+      "lines": 95
+    },
+    {
+      "path": "apps/web/src/app/(app)/hope/_lib/ipfs.ts",
+      "type": "file",
+      "size_bytes": 411,
+      "last_modified_commit": "4a2cd29bc",
+      "is_empty": false,
+      "extension": ".ts",
+      "lines": 18
+    },
+    {
+      "path": "apps/web/src/app/(app)/hope/attunement/page.tsx",
+      "type": "file",
+      "size_bytes": 4423,
+      "last_modified_commit": "4a2cd29bc",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 120
     },
     {
       "path": "apps/web/src/app/(app)/hope/character/page.tsx",
@@ -664,20 +682,20 @@
     {
       "path": "apps/web/src/app/(app)/hope/presence/page.tsx",
       "type": "file",
-      "size_bytes": 3677,
-      "last_modified_commit": "66565f668",
+      "size_bytes": 3996,
+      "last_modified_commit": "4a2cd29bc",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 90
+      "lines": 96
     },
     {
       "path": "apps/web/src/app/(app)/hope/reflection/page.tsx",
       "type": "file",
-      "size_bytes": 4109,
-      "last_modified_commit": "66565f668",
+      "size_bytes": 4448,
+      "last_modified_commit": "4a2cd29bc",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 99
+      "lines": 105
     },
     {
       "path": "apps/web/src/app/(app)/hope/stylize/page.tsx",
@@ -2806,11 +2824,11 @@
     {
       "path": "docs/repo/repo-index.json",
       "type": "file",
-      "size_bytes": 133287,
-      "last_modified_commit": "66565f668",
+      "size_bytes": 134002,
+      "last_modified_commit": "4a2cd29bc",
       "is_empty": false,
       "extension": ".json",
-      "lines": 4850
+      "lines": 4877
     },
     {
       "path": "docs/repo/repo-interface.md",
@@ -4779,6 +4797,15 @@
       "type": "file",
       "size_bytes": 6766,
       "last_modified_commit": "9486f93d6",
+      "is_empty": false,
+      "extension": ".py",
+      "lines": 0
+    },
+    {
+      "path": "scripts/patches/patch_refactor_hope_content.py",
+      "type": "file",
+      "size_bytes": 19398,
+      "last_modified_commit": "4a2cd29bc",
       "is_empty": false,
       "extension": ".py",
       "lines": 0
