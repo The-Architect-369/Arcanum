@@ -1,6 +1,6 @@
 'use client';
 
-import TabDots from '@/components/ui/TabDots';
+import ModuleTabRail from '@/components/ui/ModuleTabRail';
 import SwipeRoutes from '@/components/ui/SwipeRoutes';
 import AppStage from '@/components/ui/AppStage';
 import PanelShell from '@/components/ui/PanelShell';
@@ -130,11 +130,11 @@ export default function NexusPostPage() {
   return (
     <SwipeRoutes order={ORDER}>
       <AppStage>
-        <TabDots
+        <ModuleTabRail
           tabs={[
-            { href: ORDER[0], aria: 'Posts' },
-            { href: ORDER[1], aria: 'Current' },
-            { href: ORDER[2], aria: 'Channels' },
+            { href: ORDER[0], label: 'Post' },
+            { href: ORDER[1], label: 'Current' },
+            { href: ORDER[2], label: 'Channels' },
           ]}
         />
         <PanelShell title="Nexus — Posts" flush className="flex-1">
