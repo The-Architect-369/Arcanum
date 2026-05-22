@@ -1,6 +1,6 @@
 'use client';
 
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import { BookMarked, Wallet, Globe, Clock, UserRound } from 'lucide-react';
 import { cn } from '@/lib/cn';
 
@@ -22,7 +22,6 @@ const TABS: Tab[] = [
 
 export default function AppFooter() {
   const pathname = usePathname();
-  const router = useRouter();
 
   const isActive = (href: string) =>
     pathname === href || pathname.startsWith(href + '/');
@@ -37,9 +36,9 @@ export default function AppFooter() {
         {TABS.map((t) => {
           const active = isActive(t.href);
           return (
-            <button
+            <a
               key={t.href}
-              onClick={() => router.push(t.href)}
+              href={t.href}
               className={cn(
                 'relative grid h-14 w-full place-items-center rounded-xl transition-colors',
                 active
@@ -52,7 +51,7 @@ export default function AppFooter() {
             >
               <span className="grid place-items-center">{t.icon}</span>
               {renderBadge(t)}
-            </button>
+            </a>
           );
         })}
       </div>
