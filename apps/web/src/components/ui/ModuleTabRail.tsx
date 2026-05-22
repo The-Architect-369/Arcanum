@@ -1,6 +1,6 @@
 'use client';
 
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/cn';
 
 type ModuleTab = {
@@ -14,7 +14,6 @@ type ModuleTabRailProps = {
 
 export default function ModuleTabRail({ tabs }: ModuleTabRailProps) {
   const pathname = usePathname();
-  const router = useRouter();
 
   return (
     <nav aria-label="Module navigation" className="px-3 pb-3 pt-2">
@@ -23,10 +22,9 @@ export default function ModuleTabRail({ tabs }: ModuleTabRailProps) {
           {tabs.map((tab) => {
             const active = pathname === tab.href;
             return (
-              <button
+              <a
                 key={tab.href}
-                type="button"
-                onClick={() => router.replace(tab.href)}
+                href={tab.href}
                 aria-current={active ? 'page' : undefined}
                 className={cn(
                   'rounded-xl border px-3 py-2 text-xs uppercase tracking-wide transition-all',
@@ -36,7 +34,7 @@ export default function ModuleTabRail({ tabs }: ModuleTabRailProps) {
                 )}
               >
                 {tab.label}
-              </button>
+              </a>
             );
           })}
         </div>
