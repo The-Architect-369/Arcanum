@@ -1,6 +1,6 @@
 'use client';
 
-import TabDots from '@/components/ui/TabDots';
+import ModuleTabRail from '@/components/ui/ModuleTabRail';
 import SwipeRoutes from '@/components/ui/SwipeRoutes';
 import AppStage from '@/components/ui/AppStage';
 import PanelShell from '@/components/ui/PanelShell';
@@ -11,11 +11,11 @@ export default function VitaePathPage() {
   return (
     <SwipeRoutes order={ORDER}>
       <AppStage>
-        <TabDots
+        <ModuleTabRail
           tabs={[
-            { href: ORDER[0], aria: 'Grade' },
-            { href: ORDER[1], aria: 'Path' },
-            { href: ORDER[2], aria: 'Mastery' },
+            { href: ORDER[0], label: 'Grade' },
+            { href: ORDER[1], label: 'Path' },
+            { href: ORDER[2], label: 'Mastery' },
           ]}
         />
         <PanelShell title="Vitae — Path" flush className="flex-1">
