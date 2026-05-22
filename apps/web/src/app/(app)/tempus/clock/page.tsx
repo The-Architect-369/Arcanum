@@ -1,6 +1,6 @@
 'use client';
 
-import TabDots from '@/components/ui/TabDots';
+import ModuleTabRail from '@/components/ui/ModuleTabRail';
 import SwipeRoutes from '@/components/ui/SwipeRoutes';
 import PanelShell from '@/components/ui/PanelShell';
 import AppStage from '@/components/ui/AppStage';
@@ -30,11 +30,11 @@ export default function TempusClockPage() {
   return (
     <SwipeRoutes order={ORDER}>
       <AppStage>
-        <TabDots
+        <ModuleTabRail
           tabs={[
-            { href: ORDER[0], aria: 'Codex' },
-            { href: ORDER[1], aria: 'Clock' },
-            { href: ORDER[2], aria: 'Calendar' },
+            { href: ORDER[0], label: 'Codex' },
+            { href: ORDER[1], label: 'Clock' },
+            { href: ORDER[2], label: 'Calendar' },
           ]}
         />
 
