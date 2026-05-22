@@ -6,6 +6,7 @@ import { cn } from "@/lib/cn";
 type PanelShellProps = {
   title?: React.ReactNode;
   actions?: React.ReactNode;
+  tabs?: React.ReactNode;
   contentClassName?: string;
   className?: string;
   flush?: boolean;
@@ -16,6 +17,7 @@ type PanelShellProps = {
 export default function PanelShell({
   title,
   actions,
+  tabs,
   contentClassName,
   className,
   flush = false,
@@ -57,6 +59,12 @@ export default function PanelShell({
                 )}
               </div>
               {actions && <div className="shrink-0 flex items-center gap-2">{actions}</div>}
+            </div>
+          )}
+
+          {tabs && (
+            <div className="shrink-0 border-b border-white/10 px-4 py-3 sm:px-6">
+              <div className="flex justify-center">{tabs}</div>
             </div>
           )}
 
