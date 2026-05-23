@@ -17,28 +17,24 @@ export default function ModuleTabRail({ tabs }: ModuleTabRailProps) {
 
   return (
     <nav aria-label="Module navigation" className="flex w-full justify-center">
-      <div className="inline-flex max-w-full flex-wrap justify-center gap-2 rounded-2xl border border-white/10 bg-black/30 p-2 backdrop-blur-sm">
-        {tabs.map((tab) => {
+      <div className="inline-flex items-center justify-center gap-2 rounded-full border border-white/10 bg-black/30 px-3 py-2 backdrop-blur-sm">
+        {tabs.map((tab, index) => {
           const active = pathname === tab.href;
           return (
             <a
               key={tab.href}
               href={tab.href}
+              aria-label={tab.label}
               aria-current={active ? 'page' : undefined}
+              title={tab.label}
               className={cn(
-                'relative rounded-xl border px-3 pb-3 pt-2 text-xs uppercase tracking-wide transition-all',
+                'relative h-3 rounded-full transition-all duration-300 ease-out',
                 active
-                  ? 'border-amber-400 bg-blue-700 text-amber-300 shadow-[0_0_12px_rgba(246,196,83,0.35)]'
-                  : 'border-white/10 bg-white/[0.03] text-zinc-300 hover:bg-white/10'
+                  ? 'w-8 bg-amber-300 shadow-[0_0_10px_rgba(246,196,83,0.85)]'
+                  : 'w-3 bg-white/25 hover:bg-white/45'
               )}
             >
-              <span>{tab.label}</span>
-              {active && (
-                <span
-                  aria-hidden="true"
-                  className="absolute bottom-1 left-1/2 h-1 w-6 -translate-x-1/2 rounded-full bg-amber-300 shadow-[0_0_8px_rgba(246,196,83,0.75)]"
-                />
-              )}
+              <span className="sr-only">{index + 1}. {tab.label}</span>
             </a>
           );
         })}
