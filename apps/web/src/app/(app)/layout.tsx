@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 import Providers from "./providers";
 import AppHeader from "@/components/ui/AppHeader";
 import AppFooter from "@/components/ui/AppFooter";
+import ModuleDeckReveal from "@/components/ui/ModuleDeckReveal";
 
 export default function AppLayout({ children }: { children: ReactNode }) {
   return (
@@ -23,6 +24,7 @@ export default function AppLayout({ children }: { children: ReactNode }) {
         </div>
 
         <AppFooter />
+        <ModuleDeckReveal />
       </div>
     </Providers>
   );
