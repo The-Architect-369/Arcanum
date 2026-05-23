@@ -1,2 +1,72 @@
 @tailwind base; @tailwind components; @tailwind utilities;
-html,body { background:#000; color:#fff; }
+
+html,
+body {
+  background: #000;
+  color: #fff;
+}
+
+@keyframes arcanum-card-in-next {
+  from {
+    opacity: 0;
+    transform: translate3d(10%, 0, 0) scale(0.985) rotateY(-4deg);
+    filter: saturate(0.88) brightness(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1) rotateY(0deg);
+    filter: saturate(1) brightness(1);
+  }
+}
+
+@keyframes arcanum-card-in-prev {
+  from {
+    opacity: 0;
+    transform: translate3d(-10%, 0, 0) scale(0.985) rotateY(4deg);
+    filter: saturate(0.88) brightness(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1) rotateY(0deg);
+    filter: saturate(1) brightness(1);
+  }
+}
+
+@keyframes arcanum-card-sheen {
+  from {
+    opacity: 0;
+    transform: translateX(-34%) skewX(-14deg);
+  }
+  45% {
+    opacity: 0.85;
+  }
+  to {
+    opacity: 0.18;
+    transform: translateX(34%) skewX(-14deg);
+  }
+}
+
+.card-transition-shell {
+  perspective: 1200px;
+  transform-style: preserve-3d;
+}
+
+html[data-card-direction='next'] .card-transition-shell {
+  animation: arcanum-card-in-next 260ms cubic-bezier(.2,.8,.2,1) both;
+}
+
+html[data-card-direction='prev'] .card-transition-shell {
+  animation: arcanum-card-in-prev 260ms cubic-bezier(.2,.8,.2,1) both;
+}
+
+html[data-card-direction='next'] .card-transition-sheen,
+html[data-card-direction='prev'] .card-transition-sheen {
+  animation: arcanum-card-sheen 420ms ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html[data-card-direction] .card-transition-shell,
+  html[data-card-direction] .card-transition-sheen {
+    animation: none;
+  }
+}
