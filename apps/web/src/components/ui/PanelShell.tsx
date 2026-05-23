@@ -27,6 +27,7 @@ export default function PanelShell({
   return (
     <div
       className={cn(
+        'card-transition-shell',
         flush ? 'px-2 py-2 sm:px-3 sm:py-3' : 'px-3 py-4',
         'mx-auto h-full min-h-0 w-full max-w-5xl flex-1',
         className
@@ -43,7 +44,7 @@ export default function PanelShell({
             'shadow-[0_16px_48px_rgba(0,0,0,0.62),inset_0_0_55px_rgba(80,130,255,0.10),inset_0_0_20px_rgba(246,196,83,0.06)]'
           )}
         >
-          <div className="pointer-events-none absolute inset-0 rounded-[calc(2rem-3px)] bg-[linear-gradient(120deg,rgba(255,255,255,.16),transparent_24%,rgba(120,180,255,.08)_45%,transparent_62%,rgba(246,196,83,.12))] opacity-70" aria-hidden="true" />
+          <div className="card-transition-sheen pointer-events-none absolute inset-0 rounded-[calc(2rem-3px)] bg-[linear-gradient(120deg,rgba(255,255,255,.16),transparent_24%,rgba(120,180,255,.08)_45%,transparent_62%,rgba(246,196,83,.12))] opacity-70" aria-hidden="true" />
           <div className="pointer-events-none absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-amber-200/70 to-transparent" aria-hidden="true" />
 
           {(title || actions) && (
