@@ -28,7 +28,7 @@ export default function PanelShell({
     <div
       className={cn(
         flush ? 'px-0 my-0' : 'px-3 my-4',
-        'mx-auto max-w-5xl min-h-0',
+        'mx-auto h-full min-h-0 w-full max-w-5xl flex-1',
         className
       )}
     >
@@ -64,7 +64,7 @@ export default function PanelShell({
 
           {tabs && (
             <div className="shrink-0 border-b border-white/10 px-4 py-3 sm:px-6">
-              <div className="flex justify-center">{tabs}</div>
+              <div className="flex w-full justify-center">{tabs}</div>
             </div>
           )}
 
