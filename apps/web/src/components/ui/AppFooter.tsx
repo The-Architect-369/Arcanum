@@ -7,24 +7,25 @@ import { cn } from '@/lib/cn';
 type Tab = {
   label: string;
   href: string;
+  root: string;
   icon: React.ReactNode;
   badge?: 'dot' | 'count';
   count?: number;
 };
 
 const TABS: Tab[] = [
-  { label: 'Hope', href: '/hope', icon: <UserRound size={22} />, badge: 'dot' },
-  { label: 'Tempus', href: '/tempus', icon: <Clock size={22} />, badge: 'dot' },
-  { label: 'Nexus', href: '/nexus', icon: <Globe size={22} />, badge: 'dot' },
-  { label: 'Wallet', href: '/wallet', icon: <Wallet size={22} />, badge: 'dot' },
-  { label: 'Vitae', href: '/vitae', icon: <BookMarked size={22} />, badge: 'dot' },
+  { label: 'Hope', href: '/hope/reflection', root: '/hope', icon: <UserRound size={22} />, badge: 'dot' },
+  { label: 'Tempus', href: '/tempus/clock', root: '/tempus', icon: <Clock size={22} />, badge: 'dot' },
+  { label: 'Nexus', href: '/nexus/current', root: '/nexus', icon: <Globe size={22} />, badge: 'dot' },
+  { label: 'Wallet', href: '/wallet/receipts', root: '/wallet', icon: <Wallet size={22} />, badge: 'dot' },
+  { label: 'Vitae', href: '/vitae/path', root: '/vitae', icon: <BookMarked size={22} />, badge: 'dot' },
 ];
 
 export default function AppFooter() {
   const pathname = usePathname();
 
-  const isActive = (href: string) =>
-    pathname === href || pathname.startsWith(href + '/');
+  const isActive = (root: string) =>
+    pathname === root || pathname.startsWith(root + '/');
 
   return (
     <nav
@@ -34,7 +35,7 @@ export default function AppFooter() {
     >
       <div className="mx-auto grid max-w-5xl grid-cols-5">
         {TABS.map((t) => {
-          const active = isActive(t.href);
+          const active = isActive(t.root);
           return (
             <a
               key={t.href}
