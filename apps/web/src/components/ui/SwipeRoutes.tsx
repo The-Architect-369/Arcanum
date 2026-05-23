@@ -5,15 +5,13 @@ import { useRef } from 'react';
 
 /**
  * Wrap page content to enable horizontal swipe navigation across an ordered set of hrefs.
- * - Desktop: no effect (use TabDots clicks).
- * - Mobile: swipe left/right to go next/prev.
+ * Mobile: swipe left/right to go next/prev while allowing normal vertical scroll.
  */
 export default function SwipeRoutes({
   order,
   children,
 }: {
-  // Accept readonly tuples or arrays
-  order: readonly string[];        // e.g., ['/hope/inventory','/hope/character','/hope/stylize'] as const
+  order: readonly string[];
   children: React.ReactNode;
 }) {
   const router = useRouter();
@@ -21,9 +19,8 @@ export default function SwipeRoutes({
   const start = useRef<{ x: number; y: number } | null>(null);
   const locked = useRef<'h' | 'v' | null>(null);
 
-  const H = 24;   // horizontal threshold px
-  const V = 8;    // vertical threshold px
-  const ANG = 30; // degrees from horizontal
+  const H = 28;
+  const SLOPE = 1.2;
 
   const onTouchStart = (e: React.TouchEvent) => {
     const t = e.touches[0];
@@ -36,12 +33,15 @@ export default function SwipeRoutes({
     const t = e.touches[0];
     const dx = t.clientX - start.current.x;
     const dy = t.clientY - start.current.y;
+    const ax = Math.abs(dx);
+    const ay = Math.abs(dy);
+
     if (!locked.current) {
-      const ax = Math.abs(dx), ay = Math.abs(dy);
-      if (ax >= H && ay <= V) locked.current = 'h';
-      else if (ay > V) locked.current = 'v';
+      if (ax >= H && ax > ay * SLOPE) locked.current = 'h';
+      else if (ay >= H && ay > ax) locked.current = 'v';
       else return;
     }
+
     if (locked.current === 'h') e.preventDefault();
   };
 
@@ -52,22 +52,27 @@ export default function SwipeRoutes({
     const dy = t.clientY - start.current.y;
     start.current = null;
 
-    const angle = Math.atan2(Math.abs(dy), Math.abs(dx)) * (180 / Math.PI);
-    const mostlyH = angle <= ANG;
-    if (!mostlyH || Math.abs(dx) <= H) return;
+    const ax = Math.abs(dx);
+    const ay = Math.abs(dy);
+    if (ax < H || ax <= ay * SLOPE) return;
 
     const idx = order.indexOf(pathname);
     if (idx === -1) return;
 
     if (dx < 0 && idx < order.length - 1) {
-      router.replace(order[idx + 1]);
+      router.push(order[idx + 1]);
     } else if (dx > 0 && idx > 0) {
-      router.replace(order[idx - 1]);
+      router.push(order[idx - 1]);
     }
   };
 
   return (
-    <div onTouchStart={onTouchStart} onTouchMove={onTouchMove} onTouchEnd={onTouchEnd}>
+    <div
+      className="h-full min-h-0 touch-pan-y"
+      onTouchStart={onTouchStart}
+      onTouchMove={onTouchMove}
+      onTouchEnd={onTouchEnd}
+    >
       {children}
     </div>
   );
