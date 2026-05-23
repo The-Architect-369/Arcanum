@@ -12,6 +12,11 @@ import { resolveRoomId, ROOM_ALIAS } from '@/lib/rooms';
 import { getJSONHelia, getBlobHelia } from '@/lib/infra/ipfs';
 
 const ORDER = ['/nexus/post', '/nexus/current', '/nexus/channel'] as const;
+const TABS = [
+  { href: ORDER[0], label: 'Post' },
+  { href: ORDER[1], label: 'Current' },
+  { href: ORDER[2], label: 'Channels' },
+] as const;
 const CURRENT_ALIAS = ROOM_ALIAS.THE_CURRENT;
 
 type Row = {
@@ -141,14 +146,7 @@ export default function NexusCurrentPage() {
   return (
     <SwipeRoutes order={ORDER}>
       <AppStage>
-        <ModuleTabRail
-          tabs={[
-            { href: ORDER[0], label: 'Post' },
-            { href: ORDER[1], label: 'Current' },
-            { href: ORDER[2], label: 'Channels' },
-          ]}
-        />
-        <PanelShell title={title} flush className="flex-1">
+        <PanelShell tabs={<ModuleTabRail tabs={TABS} />} title={title} flush className="flex-1">
           <div className="space-y-3">
             <p className="text-sm text-zinc-300">
               Reading from <code>{CURRENT_ALIAS}</code>. Arcanum posts load directly from Helia by CID.

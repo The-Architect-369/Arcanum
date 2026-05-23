@@ -12,6 +12,11 @@ import { COST, canCreateChan } from '@/lib/gates';
 import { trySpendMana } from '@/lib/economy';
 
 const ORDER = ['/nexus/post', '/nexus/current', '/nexus/channel'] as const;
+const TABS = [
+  { href: ORDER[0], label: 'Post' },
+  { href: ORDER[1], label: 'Current' },
+  { href: ORDER[2], label: 'Channels' },
+] as const;
 
 export default function NexusChannelPage() {
   const acc = useAccount();
@@ -55,14 +60,7 @@ export default function NexusChannelPage() {
   return (
     <SwipeRoutes order={ORDER}>
       <AppStage>
-        <ModuleTabRail
-          tabs={[
-            { href: ORDER[0], label: 'Post' },
-            { href: ORDER[1], label: 'Current' },
-            { href: ORDER[2], label: 'Channels' },
-          ]}
-        />
-        <PanelShell title="Nexus — Channels" flush className="flex-1">
+        <PanelShell tabs={<ModuleTabRail tabs={TABS} />} title="Nexus — Channels" flush className="flex-1">
           <div className="space-y-3">
             <p className="text-sm text-zinc-300">
               Creator picks the subscription price (MANA). Creating costs <b>{COST.CREATE_CHANNEL}</b> MANA and upkeep is <b>{COST.MAINTAIN_CHANNEL}</b> MANA/month.

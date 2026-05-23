@@ -7,6 +7,11 @@ import AppStage from '@/components/ui/AppStage';
 import { computeWindowState } from '@/lib/tempus/window';
 
 const ORDER = ['/tempus/codex', '/tempus/clock', '/tempus/calendar'] as const;
+const TABS = [
+  { href: ORDER[0], label: 'Codex' },
+  { href: ORDER[1], label: 'Clock' },
+  { href: ORDER[2], label: 'Calendar' },
+] as const;
 
 function labelPhase(phase: 'open' | 'rest' | 'silent') {
   return phase === 'open' ? 'Open' : phase === 'rest' ? 'Resting' : 'Silent';
@@ -30,15 +35,8 @@ export default function TempusCalendarPage() {
   return (
     <SwipeRoutes order={ORDER}>
       <AppStage>
-        <ModuleTabRail
-          tabs={[
-            { href: ORDER[0], label: 'Codex' },
-            { href: ORDER[1], label: 'Clock' },
-            { href: ORDER[2], label: 'Calendar' },
-          ]}
-        />
-
         <PanelShell
+          tabs={<ModuleTabRail tabs={TABS} />}
           title={<h1 className="text-lg font-semibold">Tempus — Calendar</h1>}
           actions={<div className="text-xs text-zinc-400">Next 24h (sampled, non-coercive)</div>}
           flush

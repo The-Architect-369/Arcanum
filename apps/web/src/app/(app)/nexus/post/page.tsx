@@ -15,6 +15,11 @@ import { resolveRoomId, ROOM_ALIAS } from '@/lib/rooms';
 import { putFileHelia, putJSONHelia } from '@/lib/infra/ipfs';
 
 const ORDER = ['/nexus/post', '/nexus/current', '/nexus/channel'] as const;
+const TABS = [
+  { href: ORDER[0], label: 'Post' },
+  { href: ORDER[1], label: 'Current' },
+  { href: ORDER[2], label: 'Channels' },
+] as const;
 
 type MediaItem = {
   file: File;
@@ -130,14 +135,7 @@ export default function NexusPostPage() {
   return (
     <SwipeRoutes order={ORDER}>
       <AppStage>
-        <ModuleTabRail
-          tabs={[
-            { href: ORDER[0], label: 'Post' },
-            { href: ORDER[1], label: 'Current' },
-            { href: ORDER[2], label: 'Channels' },
-          ]}
-        />
-        <PanelShell title="Nexus — Posts" flush className="flex-1">
+        <PanelShell tabs={<ModuleTabRail tabs={TABS} />} title="Nexus — Posts" flush className="flex-1">
           <div className="space-y-3">
             <p className="text-sm text-zinc-300">
               Your device publishes to Helia; Matrix shares the CID. No outside hosting.

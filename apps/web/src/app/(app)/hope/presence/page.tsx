@@ -19,9 +19,8 @@ export default function HopePresencePage() {
     <SwipeRoutes order={ORDER}>
       <AppStage className="items-center">
         <div className="mx-auto flex h-full min-h-0 w-full max-w-4xl flex-col">
-          <HopeTabRail tabs={TABS} />
-
           <PanelShell
+             tabs={<HopeTabRail tabs={TABS} />}
             title="Hope — Presence"
             flush
             className="min-h-0 flex-1 max-w-4xl"

@@ -7,6 +7,11 @@ import AppStage from '@/components/ui/AppStage';
 import { useTempusWindow } from '@/hooks/useTempusWindow';
 
 const ORDER = ['/tempus/codex', '/tempus/clock', '/tempus/calendar'] as const;
+const TABS = [
+  { href: ORDER[0], label: 'Codex' },
+  { href: ORDER[1], label: 'Clock' },
+  { href: ORDER[2], label: 'Calendar' },
+] as const;
 
 export default function TempusCodexPage() {
   const w = useTempusWindow();
@@ -14,15 +19,8 @@ export default function TempusCodexPage() {
   return (
     <SwipeRoutes order={ORDER}>
       <AppStage>
-        <ModuleTabRail
-          tabs={[
-            { href: ORDER[0], label: 'Codex' },
-            { href: ORDER[1], label: 'Clock' },
-            { href: ORDER[2], label: 'Calendar' },
-          ]}
-        />
-
         <PanelShell
+          tabs={<ModuleTabRail tabs={TABS} />}
           title={<h1 className="text-lg font-semibold">Tempus — Codex</h1>}
           actions={<div className="text-xs text-zinc-400">Hybrid MVP (tables now, engine later)</div>}
           flush
