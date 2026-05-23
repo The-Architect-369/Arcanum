@@ -17,7 +17,7 @@ export default function ModuleTabRail({ tabs }: ModuleTabRailProps) {
 
   return (
     <nav aria-label="Module navigation" className="flex w-full justify-center">
-      <div className="inline-flex items-center justify-center gap-2 rounded-full border border-white/10 bg-black/30 px-3 py-2 backdrop-blur-sm">
+      <div className="inline-flex items-center justify-center gap-2 px-1 py-0.5">
         {tabs.map((tab, index) => {
           const active = pathname === tab.href;
           return (
@@ -28,10 +28,10 @@ export default function ModuleTabRail({ tabs }: ModuleTabRailProps) {
               aria-current={active ? 'page' : undefined}
               title={tab.label}
               className={cn(
-                'relative h-3 rounded-full transition-all duration-300 ease-out',
+                'relative h-2.5 rounded-full transition-all duration-300 ease-out',
                 active
-                  ? 'w-8 bg-amber-300 shadow-[0_0_10px_rgba(246,196,83,0.85)]'
-                  : 'w-3 bg-white/25 hover:bg-white/45'
+                  ? 'w-8 bg-amber-200/90 shadow-[0_0_10px_rgba(246,196,83,0.8)]'
+                  : 'w-2.5 bg-white/30 hover:bg-white/55'
               )}
             >
               <span className="sr-only">{index + 1}. {tab.label}</span>
