@@ -1,5 +1,5 @@
 import { redirect } from 'next/navigation';
 
 export default function HopeIndex() {
-  redirect('/hope/presence');
+  redirect('/hope/reflection');
 }

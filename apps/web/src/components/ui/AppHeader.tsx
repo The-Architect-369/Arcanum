@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Gem, Menu, UserCog, Wallet, ArrowLeftRight, Settings, Bell } from 'lucide-react';
+import { Gem, Menu, UserCog, Wallet, ArrowLeftRight, Settings, Bell, CircleUserRound } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import BadgeCounter from '@/components/ui/BadgeCounter';
 import ACCOnboardingModal from '@/components/ui/ACCOnboardingModal';
@@ -27,10 +27,18 @@ export default function AppHeader() {
         role="banner"
       >
         <div className="mx-auto flex h-14 max-w-5xl items-center gap-3 px-3">
-          <div className="flex select-none items-center gap-2">
-            <div className="h-7 w-7 rounded-full bg-gradient-to-b from-zinc-300 to-zinc-100/70" />
-            <span className="sr-only">The Arcanum</span>
-          </div>
+          <button
+            type="button"
+            onClick={() => go('/account')}
+            className="flex select-none items-center gap-2 rounded-full p-1 pr-2 transition-colors hover:bg-white/5 active:bg-white/10"
+            aria-label="Open Account"
+            title="Account"
+          >
+            <span className="grid h-8 w-8 place-items-center rounded-full border border-amber-300/40 bg-gradient-to-br from-blue-700/80 via-black/60 to-amber-300/20 text-amber-300 shadow-[0_0_14px_rgba(246,196,83,0.25)]">
+              <CircleUserRound size={19} aria-hidden="true" />
+            </span>
+            <span className="sr-only">The Arcanum Account</span>
+          </button>
 
           <div className="flex-1" />
 

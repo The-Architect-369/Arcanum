@@ -1,6 +1,6 @@
 'use client';
 
-import TabDots from '@/components/ui/TabDots';
+import ModuleTabRail from '@/components/ui/ModuleTabRail';
 import SwipeRoutes from '@/components/ui/SwipeRoutes';
 import AppStage from '@/components/ui/AppStage';
 import PanelShell from '@/components/ui/PanelShell';
@@ -12,6 +12,11 @@ import { resolveRoomId, ROOM_ALIAS } from '@/lib/rooms';
 import { getJSONHelia, getBlobHelia } from '@/lib/infra/ipfs';
 
 const ORDER = ['/nexus/post', '/nexus/current', '/nexus/channel'] as const;
+const TABS = [
+  { href: ORDER[0], label: 'Post' },
+  { href: ORDER[1], label: 'Current' },
+  { href: ORDER[2], label: 'Channels' },
+] as const;
 const CURRENT_ALIAS = ROOM_ALIAS.THE_CURRENT;
 
 type Row = {
@@ -59,6 +64,8 @@ export default function NexusCurrentPage() {
 
         if (!alive) return;
         setRows(out);
+      } catch {
+        if (alive) setRows([]);
       } finally {
         if (alive) setLoading(false);
       }
@@ -70,12 +77,14 @@ export default function NexusCurrentPage() {
 
   useEffect(() => {
     let closed = false;
+    const objectUrls: string[] = [];
+
     const fetchPreviews = async () => {
-      const seen = new Set(Object.keys(previews));
       const next: Record<string, MediaView> = {};
+
       for (const r of rows) {
         for (const m of r.media || []) {
-          if (!m.cid || seen.has(m.cid)) continue;
+          if (!m.cid) continue;
           if (!m.mime) continue;
           const isPreviewable = /^image\/|^video\/|^audio\//i.test(m.mime);
           if (!isPreviewable) continue;
@@ -83,17 +92,21 @@ export default function NexusCurrentPage() {
           const blob = await getBlobHelia(m.cid);
           if (!blob) continue;
           const url = URL.createObjectURL(blob);
+          objectUrls.push(url);
           next[m.cid] = { url, mime: m.mime, name: m.name };
         }
       }
-      if (!closed) setPreviews((p) => ({ ...p, ...next }));
+
+      if (!closed) setPreviews(next);
     };
+
     fetchPreviews();
+
     return () => {
       closed = true;
-      Object.values(previews).forEach((p) => URL.revokeObjectURL(p.url));
+      objectUrls.forEach((url) => URL.revokeObjectURL(url));
     };
-  }, [rows, previews]);
+  }, [rows]);
 
   const renderMedia = (m: { cid: string; name?: string; mime?: string }) => {
     const view = m.cid ? previews[m.cid] : undefined;
@@ -141,14 +154,7 @@ export default function NexusCurrentPage() {
   return (
     <SwipeRoutes order={ORDER}>
       <AppStage>
-        <TabDots
-          tabs={[
-            { href: ORDER[0], aria: 'Posts' },
-            { href: ORDER[1], aria: 'Current' },
-            { href: ORDER[2], aria: 'Channels' },
-          ]}
-        />
-        <PanelShell title={title} flush className="flex-1">
+        <PanelShell tabs={<ModuleTabRail tabs={TABS} />} title={title} flush className="flex-1">
           <div className="space-y-3">
             <p className="text-sm text-zinc-300">
               Reading from <code>{CURRENT_ALIAS}</code>. Arcanum posts load directly from Helia by CID.

@@ -3,16 +3,20 @@
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/cn';
 
-type HopeTab = {
+type ModuleTab = {
   href: string;
   label: string;
 };
 
-export default function HopeTabRail({ tabs }: { tabs: readonly HopeTab[] }) {
+type ModuleTabRailProps = {
+  tabs: readonly ModuleTab[];
+};
+
+export default function ModuleTabRail({ tabs }: ModuleTabRailProps) {
   const pathname = usePathname();
 
   return (
-    <nav aria-label="Hope navigation" className="flex w-full justify-center">
+    <nav aria-label="Module navigation" className="flex w-full justify-center">
       <div className="inline-flex items-center justify-center gap-2 px-1 py-0.5">
         {tabs.map((tab, index) => {
           const active = pathname === tab.href;

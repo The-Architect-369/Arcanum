@@ -1,2 +1,228 @@
 @tailwind base; @tailwind components; @tailwind utilities;
-html,body { background:#000; color:#fff; }
+
+html,
+body {
+  background: #000;
+  color: #fff;
+}
+
+@keyframes arcanum-card-in-next {
+  from {
+    opacity: 0;
+    transform: translate3d(10%, 0, 0) scale(0.985) rotateY(-4deg);
+    filter: saturate(0.88) brightness(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1) rotateY(0deg);
+    filter: saturate(1) brightness(1);
+  }
+}
+
+@keyframes arcanum-card-in-prev {
+  from {
+    opacity: 0;
+    transform: translate3d(-10%, 0, 0) scale(0.985) rotateY(4deg);
+    filter: saturate(0.88) brightness(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1) rotateY(0deg);
+    filter: saturate(1) brightness(1);
+  }
+}
+
+@keyframes arcanum-card-sheen {
+  from {
+    opacity: 0;
+    transform: translateX(-34%) skewX(-14deg);
+  }
+  45% {
+    opacity: 0.85;
+  }
+  to {
+    opacity: 0.18;
+    transform: translateX(34%) skewX(-14deg);
+  }
+}
+
+@keyframes arcanum-module-fade {
+  0% {
+    opacity: 0;
+  }
+  18% {
+    opacity: 1;
+  }
+  72% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes arcanum-deck-center {
+  0% {
+    opacity: 0;
+    transform: translateY(18px) scale(.82) rotateY(58deg);
+  }
+  28% {
+    opacity: 1;
+    transform: translateY(0) scale(1.02) rotateY(0deg);
+  }
+  72% {
+    opacity: 1;
+    transform: translateY(0) scale(1) rotateY(0deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-10px) scale(.96) rotateY(-18deg);
+  }
+}
+
+@keyframes arcanum-deck-left {
+  0% {
+    opacity: 0;
+    transform: translateX(0) translateY(18px) scale(.76) rotate(-2deg);
+  }
+  30% {
+    opacity: .72;
+    transform: translateX(-76px) translateY(18px) scale(.88) rotate(-12deg);
+  }
+  74% {
+    opacity: .62;
+    transform: translateX(-76px) translateY(18px) scale(.88) rotate(-12deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-92px) translateY(10px) scale(.82) rotate(-18deg);
+  }
+}
+
+@keyframes arcanum-deck-right {
+  0% {
+    opacity: 0;
+    transform: translateX(0) translateY(18px) scale(.76) rotate(2deg);
+  }
+  30% {
+    opacity: .72;
+    transform: translateX(76px) translateY(18px) scale(.88) rotate(12deg);
+  }
+  74% {
+    opacity: .62;
+    transform: translateX(76px) translateY(18px) scale(.88) rotate(12deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(92px) translateY(10px) scale(.82) rotate(18deg);
+  }
+}
+
+.card-transition-shell {
+  perspective: 1200px;
+  transform-style: preserve-3d;
+}
+
+html[data-card-direction='next'] .card-transition-shell {
+  animation: arcanum-card-in-next 260ms cubic-bezier(.2,.8,.2,1) both;
+}
+
+html[data-card-direction='prev'] .card-transition-shell {
+  animation: arcanum-card-in-prev 260ms cubic-bezier(.2,.8,.2,1) both;
+}
+
+html[data-card-direction='next'] .card-transition-sheen,
+html[data-card-direction='prev'] .card-transition-sheen {
+  animation: arcanum-card-sheen 420ms ease-out both;
+}
+
+.module-deck-reveal {
+  animation: arcanum-module-fade 760ms ease both;
+}
+
+.module-deck-reveal__stage {
+  position: relative;
+  width: min(76vw, 20rem);
+  height: 13rem;
+  perspective: 1200px;
+}
+
+.module-deck-reveal__card {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 8.2rem;
+  height: 11.6rem;
+  border-radius: 1.1rem;
+  border: 1px solid rgba(255,255,255,.22);
+  background:
+    radial-gradient(circle at 20% 18%, rgba(246,196,83,.45), transparent 24%),
+    radial-gradient(circle at 80% 22%, rgba(120,180,255,.38), transparent 28%),
+    linear-gradient(145deg, rgba(8,10,24,.9), rgba(20,28,58,.82));
+  box-shadow:
+    0 0 24px rgba(120,180,255,.22),
+    inset 0 0 28px rgba(246,196,83,.08),
+    inset 0 0 1px rgba(255,255,255,.65);
+  overflow: hidden;
+}
+
+.module-deck-reveal__card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 24% 24%, rgba(255,255,255,.28) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 70% 34%, rgba(246,196,83,.24) 0 1px, transparent 1.5px),
+    linear-gradient(112deg, rgba(255,255,255,.18), transparent 34%, rgba(120,180,255,.16) 54%, transparent 72%);
+  opacity: .78;
+}
+
+.module-deck-reveal__card--center {
+  display: grid;
+  place-items: center;
+  text-align: center;
+  animation: arcanum-deck-center 760ms cubic-bezier(.2,.8,.2,1) both;
+}
+
+.module-deck-reveal__card--left {
+  animation: arcanum-deck-left 760ms cubic-bezier(.2,.8,.2,1) both;
+}
+
+.module-deck-reveal__card--right {
+  animation: arcanum-deck-right 760ms cubic-bezier(.2,.8,.2,1) both;
+}
+
+.module-deck-reveal__sigil,
+.module-deck-reveal__label {
+  position: relative;
+  z-index: 1;
+}
+
+.module-deck-reveal__sigil {
+  color: rgba(246,196,83,.95);
+  font-size: 2.2rem;
+  line-height: 1;
+  text-shadow: 0 0 18px rgba(246,196,83,.6);
+}
+
+.module-deck-reveal__label {
+  margin-top: .55rem;
+  background: linear-gradient(90deg, #fde68a, #f8fafc, #bae6fd);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-size: .9rem;
+  font-weight: 700;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  text-shadow: 0 0 18px rgba(246,196,83,.32);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html[data-card-direction] .card-transition-shell,
+  html[data-card-direction] .card-transition-sheen,
+  .module-deck-reveal,
+  .module-deck-reveal__card {
+    animation: none;
+  }
+}

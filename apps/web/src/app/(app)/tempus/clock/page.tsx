@@ -1,12 +1,17 @@
 'use client';
 
-import TabDots from '@/components/ui/TabDots';
+import ModuleTabRail from '@/components/ui/ModuleTabRail';
 import SwipeRoutes from '@/components/ui/SwipeRoutes';
 import PanelShell from '@/components/ui/PanelShell';
 import AppStage from '@/components/ui/AppStage';
 import { useTempusWindow } from '@/hooks/useTempusWindow';
 
 const ORDER = ['/tempus/codex', '/tempus/clock', '/tempus/calendar'] as const;
+const TABS = [
+  { href: ORDER[0], label: 'Codex' },
+  { href: ORDER[1], label: 'Clock' },
+  { href: ORDER[2], label: 'Calendar' },
+] as const;
 
 function PhasePill({ phase }: { phase: 'open' | 'rest' | 'silent' }) {
   const text = phase === 'open' ? 'Open' : phase === 'rest' ? 'Resting' : 'Silent';
@@ -30,15 +35,8 @@ export default function TempusClockPage() {
   return (
     <SwipeRoutes order={ORDER}>
       <AppStage>
-        <TabDots
-          tabs={[
-            { href: ORDER[0], aria: 'Codex' },
-            { href: ORDER[1], aria: 'Clock' },
-            { href: ORDER[2], aria: 'Calendar' },
-          ]}
-        />
-
         <PanelShell
+          tabs={<ModuleTabRail tabs={TABS} />}
           title={
             <div className="flex items-center gap-3">
               <h1 className="text-lg font-semibold">Tempus — Clock</h1>
