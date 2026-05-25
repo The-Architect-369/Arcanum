@@ -26,7 +26,7 @@ export default function AppHeader() {
         className="arcanum-app-header fixed inset-x-0 top-0 z-50 border-b border-zinc-800 bg-black/60 backdrop-blur-md"
         role="banner"
       >
-        <div className="mx-auto flex h-14 max-w-5xl items-center gap-3 px-3">
+        <div className="arcanum-app-header-row mx-auto flex max-w-5xl items-center gap-3 px-3">
           <button
             type="button"
             onClick={() => go('/account')}
