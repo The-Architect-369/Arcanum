@@ -5,7 +5,7 @@
   --arcanum-status-h: env(safe-area-inset-top, 0px);
   --arcanum-header-h: 3.5rem;
   --arcanum-footer-h: 4.25rem;
-  --arcanum-footer-lift: 0.85rem;
+  --arcanum-footer-lift: 1.35rem;
   --arcanum-main-top: calc(var(--arcanum-status-h) + var(--arcanum-header-h));
   --arcanum-main-bottom: calc(var(--arcanum-footer-h) + var(--arcanum-footer-lift));
 }
