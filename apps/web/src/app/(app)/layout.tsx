@@ -7,10 +7,10 @@ import ModuleDeckReveal from "@/components/ui/ModuleDeckReveal";
 export default function AppLayout({ children }: { children: ReactNode }) {
   return (
     <Providers>
-      <div className="min-h-dvh overflow-x-clip bg-black text-white">
+      <div className="arcanum-app-shell relative min-h-dvh overflow-x-clip text-white">
         <AppHeader />
 
-        <div className="mx-auto flex min-h-dvh w-full max-w-5xl flex-col">
+        <div className="relative z-10 mx-auto flex min-h-dvh w-full max-w-5xl flex-col">
           <main
             className="
               flex-1
