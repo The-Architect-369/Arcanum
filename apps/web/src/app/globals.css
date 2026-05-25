@@ -2,8 +2,8 @@
 
 :root {
   --arcanum-locked-vh: 100lvh;
-  --arcanum-header-h: 2.5rem;
-  --arcanum-footer-h: 5.25rem;
+  --arcanum-header-h: 3.25rem;
+  --arcanum-footer-h: 4.5rem;
   --arcanum-safe-top: env(safe-area-inset-top, 0px);
   --arcanum-main-top: calc(var(--arcanum-header-h) + var(--arcanum-safe-top));
   --arcanum-main-bottom: var(--arcanum-footer-h);
@@ -58,6 +58,7 @@ body {
 }
 
 .arcanum-app-footer {
+  bottom: 0;
   height: var(--arcanum-footer-h);
   padding-bottom: 0;
 }
