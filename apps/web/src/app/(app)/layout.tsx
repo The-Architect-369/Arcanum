@@ -3,11 +3,13 @@ import Providers from "./providers";
 import AppHeader from "@/components/ui/AppHeader";
 import AppFooter from "@/components/ui/AppFooter";
 import ModuleDeckReveal from "@/components/ui/ModuleDeckReveal";
+import ConstellationField from "@/components/ui/ConstellationField";
 
 export default function AppLayout({ children }: { children: ReactNode }) {
   return (
     <Providers>
       <div className="arcanum-app-shell relative min-h-dvh overflow-x-clip text-white">
+        <ConstellationField />
         <AppHeader />
 
         <div className="relative z-10 mx-auto flex min-h-dvh w-full max-w-5xl flex-col">
