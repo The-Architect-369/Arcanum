@@ -16,12 +16,16 @@ export default function SwipeRoutes({
 }) {
   const router = useRouter();
   const pathname = usePathname();
+  const shellRef = useRef<HTMLDivElement | null>(null);
   const start = useRef<{ x: number; y: number } | null>(null);
   const locked = useRef<'h' | 'v' | null>(null);
   const previousIndex = useRef<number>(order.indexOf(pathname));
+  const releaseTimer = useRef<number | null>(null);
 
   const H = 28;
   const SLOPE = 1.2;
+  const MAX_PULL = 14;
+  const RELEASE_MS = 70;
 
   useEffect(() => {
     const idx = order.indexOf(pathname);
@@ -34,10 +38,37 @@ export default function SwipeRoutes({
     previousIndex.current = idx;
   }, [order, pathname]);
 
+  useEffect(() => {
+    return () => {
+      if (releaseTimer.current) window.clearTimeout(releaseTimer.current);
+    };
+  }, []);
+
+  const setPull = (px: number, transition = false) => {
+    const el = shellRef.current;
+    if (!el) return;
+    el.style.transition = transition ? `transform ${RELEASE_MS}ms ease-out, opacity ${RELEASE_MS}ms ease-out` : 'none';
+    el.style.transform = `translate3d(${px}px, 0, 0)`;
+    el.style.opacity = px === 0 ? '1' : '0.992';
+  };
+
+  const resetPull = () => {
+    setPull(0, true);
+    window.setTimeout(() => {
+      const el = shellRef.current;
+      if (!el) return;
+      el.style.transition = '';
+      el.style.transform = '';
+      el.style.opacity = '';
+    }, RELEASE_MS + 20);
+  };
+
   const onTouchStart = (e: React.TouchEvent) => {
+    if (releaseTimer.current) window.clearTimeout(releaseTimer.current);
     const t = e.touches[0];
     start.current = { x: t.clientX, y: t.clientY };
     locked.current = null;
+    setPull(0);
   };
 
   const onTouchMove = (e: React.TouchEvent) => {
@@ -54,7 +85,11 @@ export default function SwipeRoutes({
       else return;
     }
 
-    if (locked.current === 'h') e.preventDefault();
+    if (locked.current === 'h') {
+      e.preventDefault();
+      const eased = Math.max(-MAX_PULL, Math.min(MAX_PULL, dx * 0.1));
+      setPull(eased);
+    }
   };
 
   const onTouchEnd = (e: React.TouchEvent) => {
@@ -66,23 +101,40 @@ export default function SwipeRoutes({
 
     const ax = Math.abs(dx);
     const ay = Math.abs(dy);
-    if (ax < H || ax <= ay * SLOPE) return;
+    if (ax < H || ax <= ay * SLOPE) {
+      resetPull();
+      return;
+    }
 
     const idx = order.indexOf(pathname);
-    if (idx === -1) return;
-
-    if (dx < 0 && idx < order.length - 1) {
-      document.documentElement.dataset.cardDirection = 'next';
-      router.push(order[idx + 1]);
-    } else if (dx > 0 && idx > 0) {
-      document.documentElement.dataset.cardDirection = 'prev';
-      router.push(order[idx - 1]);
+    if (idx === -1) {
+      resetPull();
+      return;
     }
+
+    const next = dx < 0 && idx < order.length - 1;
+    const prev = dx > 0 && idx > 0;
+
+    if (!next && !prev) {
+      resetPull();
+      return;
+    }
+
+    const direction = next ? 'next' : 'prev';
+    const target = next ? order[idx + 1] : order[idx - 1];
+    document.documentElement.dataset.cardDirection = direction;
+    setPull(next ? -MAX_PULL : MAX_PULL, true);
+
+    releaseTimer.current = window.setTimeout(() => {
+      router.push(target);
+      resetPull();
+    }, RELEASE_MS);
   };
 
   return (
     <div
-      className="h-full min-h-0 touch-pan-y"
+      ref={shellRef}
+      className="h-full min-h-0 touch-pan-y will-change-transform"
       onTouchStart={onTouchStart}
       onTouchMove={onTouchMove}
       onTouchEnd={onTouchEnd}

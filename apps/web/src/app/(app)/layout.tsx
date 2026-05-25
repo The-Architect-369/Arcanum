@@ -3,22 +3,19 @@ import Providers from "./providers";
 import AppHeader from "@/components/ui/AppHeader";
 import AppFooter from "@/components/ui/AppFooter";
 import ModuleDeckReveal from "@/components/ui/ModuleDeckReveal";
+import ConstellationField from "@/components/ui/ConstellationField";
+import ViewportLock from "@/components/ui/ViewportLock";
 
 export default function AppLayout({ children }: { children: ReactNode }) {
   return (
     <Providers>
-      <div className="min-h-dvh overflow-x-clip bg-black text-white">
+      <ViewportLock />
+      <div className="arcanum-app-shell relative overflow-hidden text-white">
+        <ConstellationField />
         <AppHeader />
 
-        <div className="mx-auto flex min-h-dvh w-full max-w-5xl flex-col">
-          <main
-            className="
-              flex-1
-              px-0
-              pt-[calc(3.5rem+env(safe-area-inset-top))]
-              pb-[calc(3.5rem+env(safe-area-inset-bottom))]
-            "
-          >
+        <div className="relative z-10 mx-auto flex h-full w-full max-w-5xl flex-col">
+          <main className="arcanum-app-main flex-1 px-0">
             {children}
           </main>
         </div>

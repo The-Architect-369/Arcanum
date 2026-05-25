@@ -69,24 +69,25 @@ export default function PanelShell({
             </div>
           )}
 
+          {tabs && (
+            <div className="relative z-10 shrink-0 border-b border-white/10 bg-black/10 px-4 py-3 sm:px-6">
+              <div className="flex justify-center">
+                <div className="rounded-full border border-white/10 bg-black/35 px-2 py-1.5 shadow-[0_0_18px_rgba(0,0,0,0.45)] backdrop-blur-md">
+                  {tabs}
+                </div>
+              </div>
+            </div>
+          )}
+
           <div
             className={cn(
               'relative z-10 min-h-0 flex-1 overflow-y-auto scrollbar-none',
-              tabs ? 'pb-16' : '',
               noPadding ? '' : 'p-4 sm:p-6',
               contentClassName
             )}
           >
             {children}
           </div>
-
-          {tabs && (
-            <div className="pointer-events-none absolute inset-x-0 bottom-0 z-20 flex justify-center px-4 pb-4">
-              <div className="pointer-events-auto rounded-full border border-white/10 bg-black/35 px-2 py-1.5 shadow-[0_0_18px_rgba(0,0,0,0.45)] backdrop-blur-md">
-                {tabs}
-              </div>
-            </div>
-          )}
         </div>
       </div>
     </div>

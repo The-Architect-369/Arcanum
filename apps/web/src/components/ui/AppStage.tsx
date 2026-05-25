@@ -2,8 +2,8 @@ import * as React from "react";
 import { cn } from "@/lib/cn";
 
 const STAGE_STYLE: React.CSSProperties = {
-  height: "calc(100dvh - 7rem - env(safe-area-inset-top) - env(safe-area-inset-bottom))",
-  minHeight: "calc(100dvh - 7rem - env(safe-area-inset-top) - env(safe-area-inset-bottom))",
+  height: "calc(var(--arcanum-locked-vh) - var(--arcanum-main-top) - var(--arcanum-main-bottom))",
+  minHeight: "calc(var(--arcanum-locked-vh) - var(--arcanum-main-top) - var(--arcanum-main-bottom))",
 };
 
 export default function AppStage({

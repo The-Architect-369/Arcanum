@@ -30,7 +30,7 @@ export default function ModuleTabRail({ tabs }: ModuleTabRailProps) {
               className={cn(
                 'relative h-2.5 rounded-full transition-all duration-300 ease-out',
                 active
-                  ? 'w-8 bg-amber-200/90 shadow-[0_0_10px_rgba(246,196,83,0.8)]'
+                  ? 'module-tab-active w-8 bg-amber-200/90 shadow-[0_0_10px_rgba(246,196,83,0.8)]'
                   : 'w-2.5 bg-white/30 hover:bg-white/55'
               )}
             >

@@ -5,6 +5,7 @@ import SwipeRoutes from '@/components/ui/SwipeRoutes';
 import PanelShell from '@/components/ui/PanelShell';
 import AppStage from '@/components/ui/AppStage';
 import { useTempusWindow } from '@/hooks/useTempusWindow';
+import { TempusCodexLibrary } from '../_components/TempusContent';
 
 const ORDER = ['/tempus/codex', '/tempus/clock', '/tempus/calendar'] as const;
 const TABS = [
@@ -22,38 +23,18 @@ export default function TempusCodexPage() {
         <PanelShell
           tabs={<ModuleTabRail tabs={TABS} />}
           title={<h1 className="text-lg font-semibold">Tempus — Codex</h1>}
-          actions={<div className="text-xs text-zinc-400">Hybrid MVP (tables now, engine later)</div>}
+          actions={<div className="text-xs text-zinc-400">Correspondence library</div>}
           flush
           className="min-h-0 flex-1"
         >
           <div className="space-y-4">
             <p className="text-sm text-zinc-300">
-              Correspondences for planetary, lunar, and zodiac cycles. This phase is informational and non-coercive.
+              Reference tables for the rhythms used by the Clock and Calendar. Active correspondences are highlighted.
             </p>
-
-            <div className="grid gap-3 sm:grid-cols-2">
-              <Card label="Zodiac Month (Cusps)" value={`${w.zodiacSign} · Day ${w.zodiacDay}`} />
-              <Card label="Lunar Phase (8-step)" value={w.lunarPhase} />
-              <Card label="Moon Sign (2.5-day steps)" value={w.moonZodiac} />
-              <Card label="Planetary Day" value={`${w.planetaryDay} (${w.isDay ? 'Day' : 'Night'})`} />
-            </div>
-
-            <p className="text-xs text-zinc-400">
-              Seam for later: replace cusp + new-moon tables with an ephemeris/astronomy engine (server route or library),
-              while keeping this API stable.
-            </p>
+            <TempusCodexLibrary current={w} />
           </div>
         </PanelShell>
       </AppStage>
     </SwipeRoutes>
-  );
-}
-
-function Card({ label, value }: { label: string; value: string }) {
-  return (
-    <div className="rounded-2xl border border-white/10 bg-white/5 p-3">
-      <div className="text-xs text-zinc-400">{label}</div>
-      <div className="mt-1 text-sm text-zinc-100">{value}</div>
-    </div>
   );
 }
