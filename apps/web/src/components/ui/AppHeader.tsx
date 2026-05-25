@@ -23,7 +23,7 @@ export default function AppHeader() {
   return (
     <>
       <header
-        className="fixed inset-x-0 top-0 z-50 border-b border-zinc-800 bg-black/60 pt-[env(safe-area-inset-top)] backdrop-blur-md"
+        className="arcanum-app-header fixed inset-x-0 top-0 z-50 border-b border-zinc-800 bg-black/60 backdrop-blur-md"
         role="banner"
       >
         <div className="mx-auto flex h-14 max-w-5xl items-center gap-3 px-3">
@@ -80,7 +80,7 @@ export default function AppHeader() {
             aria-label="Close Menu"
             onClick={() => setOpen(false)}
           />
-          <aside className="absolute right-0 top-14 bottom-0 w-80 max-w-[88vw] border-l border-zinc-800 bg-black/90 shadow-2xl backdrop-blur-md">
+          <aside className="absolute bottom-0 right-0 top-[var(--arcanum-main-top)] w-80 max-w-[88vw] border-l border-zinc-800 bg-black/90 shadow-2xl backdrop-blur-md">
             <nav className="space-y-1 p-3">
               <DrawerItem icon={<UserCog size={18} />} label="Account" onClick={() => go('/account')} />
               <DrawerItem icon={<Wallet size={18} />} label="Wallet" onClick={() => go('/wallet')} />
