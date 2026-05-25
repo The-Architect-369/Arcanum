@@ -23,7 +23,7 @@ export default function AppHeader() {
   return (
     <>
       <header
-        className="arcanum-app-header fixed inset-x-0 top-0 z-50 border-b border-zinc-800 bg-black/60 backdrop-blur-md"
+        className="arcanum-app-header absolute inset-x-0 top-0 z-50 border-b border-zinc-800 bg-black/60 backdrop-blur-md"
         role="banner"
       >
         <div className="arcanum-app-header-row mx-auto flex max-w-5xl items-center gap-3 px-3">
@@ -34,8 +34,8 @@ export default function AppHeader() {
             aria-label="Open Account"
             title="Account"
           >
-            <span className="grid h-8 w-8 place-items-center rounded-full border border-amber-300/40 bg-gradient-to-br from-blue-700/80 via-black/60 to-amber-300/20 text-amber-300 shadow-[0_0_14px_rgba(246,196,83,0.25)]">
-              <CircleUserRound size={19} aria-hidden="true" />
+            <span className="grid h-7 w-7 place-items-center rounded-full border border-amber-300/40 bg-gradient-to-br from-blue-700/80 via-black/60 to-amber-300/20 text-amber-300 shadow-[0_0_14px_rgba(246,196,83,0.25)]">
+              <CircleUserRound size={17} aria-hidden="true" />
             </span>
             <span className="sr-only">The Arcanum Account</span>
           </button>
@@ -47,34 +47,34 @@ export default function AppHeader() {
             className="flex items-center gap-1.5 text-amber-300 transition-colors hover:text-amber-200"
             aria-label="Open Wallet"
           >
-            <span className="text-sm font-semibold tabular-nums">{mana.toLocaleString()}</span>
-            <Gem size={18} aria-hidden="true" />
+            <span className="text-xs font-semibold tabular-nums">{mana.toLocaleString()}</span>
+            <Gem size={16} aria-hidden="true" />
           </button>
 
           <BadgeCounter count={notifCount} max={9}>
             <button
               onClick={() => go('/notifications')}
-              className="rounded-md p-2 hover:bg-white/5 active:bg-white/10"
+              className="rounded-md p-1.5 hover:bg-white/5 active:bg-white/10"
               aria-label="Notifications"
               title="Notifications"
             >
-              <Bell size={20} />
+              <Bell size={18} />
             </button>
           </BadgeCounter>
 
           <button
             onClick={() => setOpen((v) => !v)}
-            className="rounded-md p-2 hover:bg-white/5 active:bg-white/10"
+            className="rounded-md p-1.5 hover:bg-white/5 active:bg-white/10"
             aria-expanded={open}
             aria-label="Open Menu"
           >
-            <Menu size={20} />
+            <Menu size={18} />
           </button>
         </div>
       </header>
 
       {open && (
-        <div className="fixed inset-0 z-50" role="dialog" aria-modal="true">
+        <div className="absolute inset-0 z-50" role="dialog" aria-modal="true">
           <button
             className="absolute inset-0 bg-black/60"
             aria-label="Close Menu"
