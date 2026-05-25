@@ -6,45 +6,52 @@ body {
   color: #fff;
 }
 
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  z-index: -2;
-  pointer-events: none;
+.arcanum-app-shell {
   background:
-    radial-gradient(circle at 14% 18%, rgba(246,196,83,.16) 0 1px, transparent 1.8px),
-    radial-gradient(circle at 82% 12%, rgba(125,190,255,.16) 0 1px, transparent 1.8px),
-    radial-gradient(circle at 72% 78%, rgba(246,196,83,.12) 0 1px, transparent 1.8px),
-    radial-gradient(circle at 28% 72%, rgba(165,120,255,.14) 0 1px, transparent 1.8px),
-    linear-gradient(115deg, transparent 0 28%, rgba(125,190,255,.06) 28.2% 28.5%, transparent 28.8% 100%),
-    linear-gradient(42deg, transparent 0 58%, rgba(246,196,83,.045) 58.1% 58.35%, transparent 58.6% 100%),
-    radial-gradient(circle at 50% -10%, rgba(50,90,180,.26), transparent 44%),
+    radial-gradient(circle at 14% 18%, rgba(246,196,83,.36) 0 1.4px, transparent 2.4px),
+    radial-gradient(circle at 82% 12%, rgba(125,190,255,.34) 0 1.4px, transparent 2.4px),
+    radial-gradient(circle at 72% 78%, rgba(246,196,83,.30) 0 1.3px, transparent 2.3px),
+    radial-gradient(circle at 28% 72%, rgba(165,120,255,.28) 0 1.3px, transparent 2.3px),
+    linear-gradient(115deg, transparent 0 28%, rgba(125,190,255,.11) 28.2% 28.45%, transparent 28.75% 100%),
+    linear-gradient(42deg, transparent 0 58%, rgba(246,196,83,.09) 58.1% 58.35%, transparent 58.7% 100%),
+    radial-gradient(circle at 50% -10%, rgba(50,90,180,.34), transparent 44%),
+    radial-gradient(circle at 50% 115%, rgba(246,196,83,.12), transparent 48%),
     #000;
-  background-size: 11rem 11rem, 14rem 14rem, 17rem 17rem, 19rem 19rem, auto, auto, auto, auto;
+  background-size: 9rem 9rem, 12rem 12rem, 15rem 15rem, 17rem 17rem, auto, auto, auto, auto, auto;
 }
 
-body::after {
+.arcanum-app-shell::before {
   content: '';
   position: fixed;
   inset: 0;
-  z-index: -1;
+  z-index: 0;
   pointer-events: none;
   background:
-    radial-gradient(circle at 50% 18%, rgba(246,196,83,.08), transparent 34%),
-    radial-gradient(circle at 50% 82%, rgba(80,130,255,.10), transparent 42%);
+    linear-gradient(115deg, transparent 0 18%, rgba(125,190,255,.09) 18.1% 18.35%, transparent 18.7% 100%),
+    linear-gradient(64deg, transparent 0 72%, rgba(246,196,83,.08) 72.1% 72.35%, transparent 72.7% 100%),
+    radial-gradient(circle at 20% 22%, rgba(246,196,83,.12), transparent 22%),
+    radial-gradient(circle at 78% 30%, rgba(125,190,255,.12), transparent 24%);
   opacity: .9;
+}
+
+.arcanum-app-shell::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at center, transparent 0 40%, rgba(0,0,0,.42) 78%, rgba(0,0,0,.74) 100%);
 }
 
 @keyframes arcanum-card-in-next {
   from {
     opacity: 0;
-    transform: translate3d(12%, 0, 0) scale(0.982) rotateY(-5deg);
-    filter: saturate(0.86) brightness(0.88);
+    transform: translate3d(7%, 0, 0) scale(0.99);
+    filter: saturate(0.92) brightness(0.93);
   }
   to {
     opacity: 1;
-    transform: translate3d(0, 0, 0) scale(1) rotateY(0deg);
+    transform: translate3d(0, 0, 0) scale(1);
     filter: saturate(1) brightness(1);
   }
 }
@@ -52,12 +59,12 @@ body::after {
 @keyframes arcanum-card-in-prev {
   from {
     opacity: 0;
-    transform: translate3d(-12%, 0, 0) scale(0.982) rotateY(5deg);
-    filter: saturate(0.86) brightness(0.88);
+    transform: translate3d(-7%, 0, 0) scale(0.99);
+    filter: saturate(0.92) brightness(0.93);
   }
   to {
     opacity: 1;
-    transform: translate3d(0, 0, 0) scale(1) rotateY(0deg);
+    transform: translate3d(0, 0, 0) scale(1);
     filter: saturate(1) brightness(1);
   }
 }
@@ -81,16 +88,18 @@ body::after {
     transform: translate3d(0, 0, 0);
   }
   50% {
-    transform: translate3d(0, -3px, 0);
+    transform: translate3d(0, -2px, 0);
   }
 }
 
 @keyframes arcanum-tab-pulse {
   0%, 100% {
-    box-shadow: 0 0 10px rgba(246,196,83,.72), 0 0 18px rgba(125,190,255,.22);
+    opacity: 1;
+    box-shadow: 0 0 12px rgba(246,196,83,.95), 0 0 26px rgba(125,190,255,.42), inset 0 0 6px rgba(255,255,255,.52);
   }
   50% {
-    box-shadow: 0 0 15px rgba(246,196,83,.92), 0 0 28px rgba(125,190,255,.36);
+    opacity: .88;
+    box-shadow: 0 0 22px rgba(246,196,83,1), 0 0 42px rgba(125,190,255,.62), inset 0 0 10px rgba(255,255,255,.78);
   }
 }
 
@@ -172,25 +181,26 @@ body::after {
 }
 
 .card-transition-shell > div {
-  animation: arcanum-card-float 7s ease-in-out infinite;
+  animation: arcanum-card-float 8s ease-in-out infinite;
   will-change: transform;
 }
 
 html[data-card-direction='next'] .card-transition-shell {
-  animation: arcanum-card-in-next 320ms cubic-bezier(.2,.8,.2,1) both;
+  animation: arcanum-card-in-next 240ms cubic-bezier(.16,.84,.28,1) both;
 }
 
 html[data-card-direction='prev'] .card-transition-shell {
-  animation: arcanum-card-in-prev 320ms cubic-bezier(.2,.8,.2,1) both;
+  animation: arcanum-card-in-prev 240ms cubic-bezier(.16,.84,.28,1) both;
 }
 
 html[data-card-direction='next'] .card-transition-sheen,
 html[data-card-direction='prev'] .card-transition-sheen {
-  animation: arcanum-card-sheen 460ms ease-out both;
+  animation: arcanum-card-sheen 360ms ease-out both;
 }
 
 .module-tab-active {
-  animation: arcanum-tab-pulse 2.4s ease-in-out infinite;
+  animation: arcanum-tab-pulse 1.7s ease-in-out infinite;
+  background: linear-gradient(90deg, rgba(246,196,83,1), rgba(255,255,255,.98), rgba(125,190,255,.96));
 }
 
 .module-deck-reveal {
