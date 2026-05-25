@@ -29,7 +29,7 @@ export default function AppFooter() {
 
   return (
     <nav
-      className="arcanum-app-footer fixed inset-x-0 bottom-0 z-50 border-t border-zinc-800 bg-black/75 shadow-[0_-10px_28px_rgba(0,0,0,0.62)] backdrop-blur-md"
+      className="arcanum-app-footer absolute inset-x-0 bottom-0 z-50 border-t border-zinc-800 bg-black/75 shadow-[0_-10px_28px_rgba(0,0,0,0.62)] backdrop-blur-md"
       role="navigation"
       aria-label="Main"
     >
