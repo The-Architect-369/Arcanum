@@ -29,11 +29,11 @@ export default function AppFooter() {
 
   return (
     <nav
-      className="fixed inset-x-0 bottom-0 z-50 border-t border-zinc-800 bg-black/70 pb-[env(safe-area-inset-bottom)] shadow-[0_-8px_20px_rgba(0,0,0,0.5)] backdrop-blur-md"
+      className="arcanum-app-footer fixed inset-x-0 bottom-0 z-50 border-t border-zinc-800 bg-black/70 shadow-[0_-8px_20px_rgba(0,0,0,0.5)] backdrop-blur-md"
       role="navigation"
       aria-label="Main"
     >
-      <div className="mx-auto grid max-w-5xl grid-cols-5">
+      <div className="mx-auto grid h-14 max-w-5xl grid-cols-5">
         {TABS.map((t) => {
           const active = isActive(t.root);
           return (
