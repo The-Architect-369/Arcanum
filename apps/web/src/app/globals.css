@@ -1,12 +1,11 @@
 @tailwind base; @tailwind components; @tailwind utilities;
 
 :root {
-  --arcanum-header-h: 3.5rem;
-  --arcanum-footer-h: 3.5rem;
+  --arcanum-header-h: 3rem;
+  --arcanum-footer-h: 4.75rem;
   --arcanum-safe-top: env(safe-area-inset-top, 0px);
-  --arcanum-safe-bottom: env(safe-area-inset-bottom, 0px);
   --arcanum-main-top: calc(var(--arcanum-header-h) + var(--arcanum-safe-top));
-  --arcanum-main-bottom: calc(var(--arcanum-footer-h) + var(--arcanum-safe-bottom));
+  --arcanum-main-bottom: var(--arcanum-footer-h);
 }
 
 html,
@@ -19,12 +18,13 @@ body {
 }
 
 body {
-  min-height: 100svh;
+  min-height: 100lvh;
 }
 
 .arcanum-app-shell {
-  min-height: 100svh;
-  max-height: 100svh;
+  height: 100lvh;
+  min-height: 100lvh;
+  max-height: 100lvh;
   background:
     radial-gradient(circle at 14% 18%, rgba(246,196,83,.42) 0 1.5px, transparent 2.7px),
     radial-gradient(circle at 82% 12%, rgba(125,190,255,.42) 0 1.5px, transparent 2.7px),
@@ -40,7 +40,7 @@ body {
 }
 
 .arcanum-app-main {
-  height: 100svh;
+  height: 100lvh;
   min-height: 0;
   padding-top: var(--arcanum-main-top);
   padding-bottom: var(--arcanum-main-bottom);
@@ -52,9 +52,18 @@ body {
   padding-top: var(--arcanum-safe-top);
 }
 
+.arcanum-app-header-row {
+  height: var(--arcanum-header-h);
+}
+
 .arcanum-app-footer {
-  height: calc(var(--arcanum-footer-h) + var(--arcanum-safe-bottom));
-  padding-bottom: var(--arcanum-safe-bottom);
+  height: var(--arcanum-footer-h);
+  padding-bottom: 0;
+}
+
+.arcanum-app-footer-row,
+.arcanum-app-footer-tab {
+  height: var(--arcanum-footer-h);
 }
 
 @keyframes arcanum-stars-drift {
