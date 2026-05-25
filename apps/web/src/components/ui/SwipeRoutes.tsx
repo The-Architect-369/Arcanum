@@ -24,8 +24,8 @@ export default function SwipeRoutes({
 
   const H = 28;
   const SLOPE = 1.2;
-  const MAX_PULL = 22;
-  const RELEASE_MS = 90;
+  const MAX_PULL = 14;
+  const RELEASE_MS = 70;
 
   useEffect(() => {
     const idx = order.indexOf(pathname);
@@ -49,7 +49,7 @@ export default function SwipeRoutes({
     if (!el) return;
     el.style.transition = transition ? `transform ${RELEASE_MS}ms ease-out, opacity ${RELEASE_MS}ms ease-out` : 'none';
     el.style.transform = `translate3d(${px}px, 0, 0)`;
-    el.style.opacity = px === 0 ? '1' : '0.985';
+    el.style.opacity = px === 0 ? '1' : '0.992';
   };
 
   const resetPull = () => {
@@ -87,7 +87,7 @@ export default function SwipeRoutes({
 
     if (locked.current === 'h') {
       e.preventDefault();
-      const eased = Math.max(-MAX_PULL, Math.min(MAX_PULL, dx * 0.16));
+      const eased = Math.max(-MAX_PULL, Math.min(MAX_PULL, dx * 0.1));
       setPull(eased);
     }
   };
