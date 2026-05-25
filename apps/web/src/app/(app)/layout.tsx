@@ -8,11 +8,11 @@ import ConstellationField from "@/components/ui/ConstellationField";
 export default function AppLayout({ children }: { children: ReactNode }) {
   return (
     <Providers>
-      <div className="arcanum-app-shell relative min-h-[100svh] overflow-hidden text-white">
+      <div className="arcanum-app-shell relative h-[100lvh] overflow-hidden text-white">
         <ConstellationField />
         <AppHeader />
 
-        <div className="relative z-10 mx-auto flex min-h-[100svh] w-full max-w-5xl flex-col">
+        <div className="relative z-10 mx-auto flex h-[100lvh] w-full max-w-5xl flex-col">
           <main className="arcanum-app-main flex-1 px-0">
             {children}
           </main>
