@@ -1,32 +1,152 @@
 @keyframes arcanum-global-tab-shimmer {
   0% {
-    transform: translateX(-140%) skewX(-18deg);
+    transform: translateX(-130%) skewX(-16deg);
     opacity: 0;
   }
-  30% {
-    opacity: .75;
+  42% {
+    opacity: .34;
   }
   100% {
-    transform: translateX(140%) skewX(-18deg);
+    transform: translateX(130%) skewX(-16deg);
     opacity: 0;
   }
 }
 
-@keyframes arcanum-global-tab-breathe {
+@keyframes arcanum-global-tab-aura {
   0%, 100% {
-    box-shadow: 0 0 12px rgba(246, 196, 83, .42), inset 0 0 18px rgba(246, 196, 83, .08);
+    filter: saturate(1) brightness(1);
+    box-shadow: 0 0 14px rgba(246, 196, 83, .34), 0 0 22px rgba(125, 190, 255, .10), inset 0 0 18px rgba(246, 196, 83, .07);
   }
   50% {
-    box-shadow: 0 0 22px rgba(246, 196, 83, .66), 0 0 34px rgba(125, 190, 255, .2), inset 0 0 24px rgba(125, 190, 255, .1);
+    filter: saturate(1.08) brightness(1.04);
+    box-shadow: 0 0 20px rgba(246, 196, 83, .46), 0 0 30px rgba(125, 190, 255, .18), inset 0 0 22px rgba(125, 190, 255, .09);
   }
 }
 
-@keyframes arcanum-global-icon-rise {
+@keyframes arcanum-global-icon-float {
   0%, 100% {
     transform: translate3d(0, 0, 0) scale(1);
   }
   50% {
-    transform: translate3d(0, -1px, 0) scale(1.035);
+    transform: translate3d(0, -.5px, 0) scale(1.018);
+  }
+}
+
+@keyframes arcanum-card-polish-next {
+  from {
+    opacity: 0;
+    transform: translate3d(4.5%, 0, 0) scale(.992);
+    filter: saturate(.96) brightness(.96) blur(.15px);
+  }
+  55% {
+    opacity: 1;
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+    filter: saturate(1) brightness(1) blur(0);
+  }
+}
+
+@keyframes arcanum-card-polish-prev {
+  from {
+    opacity: 0;
+    transform: translate3d(-4.5%, 0, 0) scale(.992);
+    filter: saturate(.96) brightness(.96) blur(.15px);
+  }
+  55% {
+    opacity: 1;
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+    filter: saturate(1) brightness(1) blur(0);
+  }
+}
+
+@keyframes arcanum-card-polish-sheen {
+  from {
+    opacity: 0;
+    transform: translateX(-32%) skewX(-12deg);
+  }
+  45% {
+    opacity: .62;
+  }
+  to {
+    opacity: .12;
+    transform: translateX(32%) skewX(-12deg);
+  }
+}
+
+@keyframes arcanum-deck-polish-fade {
+  0% {
+    opacity: 0;
+  }
+  12% {
+    opacity: 1;
+  }
+  76% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes arcanum-deck-polish-center {
+  0% {
+    opacity: 0;
+    transform: translateY(14px) scale(.86) rotateY(42deg);
+  }
+  24% {
+    opacity: 1;
+    transform: translateY(0) scale(1.015) rotateY(0deg);
+  }
+  70% {
+    opacity: 1;
+    transform: translateY(0) scale(1) rotateY(0deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-6px) scale(.97) rotateY(-10deg);
+  }
+}
+
+@keyframes arcanum-deck-polish-left {
+  0% {
+    opacity: 0;
+    transform: translateX(-8px) translateY(18px) scale(.78) rotate(-4deg);
+  }
+  24% {
+    opacity: .68;
+    transform: translateX(-68px) translateY(16px) scale(.88) rotate(-10deg);
+  }
+  72% {
+    opacity: .58;
+    transform: translateX(-68px) translateY(16px) scale(.88) rotate(-10deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-82px) translateY(10px) scale(.84) rotate(-14deg);
+  }
+}
+
+@keyframes arcanum-deck-polish-right {
+  0% {
+    opacity: 0;
+    transform: translateX(8px) translateY(18px) scale(.78) rotate(4deg);
+  }
+  24% {
+    opacity: .68;
+    transform: translateX(68px) translateY(16px) scale(.88) rotate(10deg);
+  }
+  72% {
+    opacity: .58;
+    transform: translateX(68px) translateY(16px) scale(.88) rotate(10deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(82px) translateY(10px) scale(.84) rotate(14deg);
   }
 }
 
@@ -48,51 +168,83 @@
 
 .global-tab-link:active::before,
 .global-tab-link:hover::before {
-  opacity: .9;
+  opacity: .8;
 }
 
 .global-tab-active {
-  animation: arcanum-global-tab-breathe 2.6s ease-in-out infinite;
-  background: linear-gradient(135deg, rgba(246, 196, 83, .12), rgba(125, 190, 255, .08), rgba(255,255,255,.035));
+  animation: arcanum-global-tab-aura 4.8s ease-in-out infinite;
+  background:
+    radial-gradient(circle at 50% 28%, rgba(246, 196, 83, .16), transparent 58%),
+    linear-gradient(135deg, rgba(246, 196, 83, .10), rgba(125, 190, 255, .08), rgba(255,255,255,.03));
 }
 
 .global-tab-active::before {
   opacity: 1;
   background:
-    radial-gradient(circle at 50% 35%, rgba(246, 196, 83, .24), transparent 60%),
-    linear-gradient(135deg, rgba(246, 196, 83, .14), rgba(125, 190, 255, .08));
+    radial-gradient(circle at 50% 34%, rgba(246, 196, 83, .24), transparent 62%),
+    radial-gradient(circle at 58% 72%, rgba(125, 190, 255, .12), transparent 54%),
+    linear-gradient(135deg, rgba(246, 196, 83, .12), rgba(125, 190, 255, .07));
 }
 
 .global-tab-active::after {
   content: '';
   position: absolute;
-  inset: .35rem auto .35rem 0;
+  inset: .4rem auto .4rem 0;
   z-index: 1;
-  width: 45%;
+  width: 38%;
   border-radius: 999px;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,.34), rgba(246,196,83,.28), transparent);
-  animation: arcanum-global-tab-shimmer 2.4s ease-in-out infinite;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.22), rgba(246,196,83,.18), rgba(125,190,255,.16), transparent);
+  animation: arcanum-global-tab-shimmer 4.9s ease-in-out infinite;
   pointer-events: none;
 }
 
 .global-tab-active .global-tab-icon {
-  animation: arcanum-global-icon-rise 2.6s ease-in-out infinite;
+  animation: arcanum-global-icon-float 4.8s ease-in-out infinite;
   color: rgb(252 211 77);
-  filter: drop-shadow(0 0 9px rgba(246, 196, 83, .46));
+  filter: drop-shadow(0 0 7px rgba(246, 196, 83, .38));
+}
+
+html[data-card-direction='next'] .card-transition-shell {
+  animation: arcanum-card-polish-next 300ms cubic-bezier(.18,.82,.24,1) both;
+}
+
+html[data-card-direction='prev'] .card-transition-shell {
+  animation: arcanum-card-polish-prev 300ms cubic-bezier(.18,.82,.24,1) both;
+}
+
+html[data-card-direction='next'] .card-transition-sheen,
+html[data-card-direction='prev'] .card-transition-sheen {
+  animation: arcanum-card-polish-sheen 420ms ease-out both;
 }
 
 .module-deck-reveal {
-  animation-duration: 680ms;
+  animation: arcanum-deck-polish-fade 740ms ease both;
 }
 
 .module-deck-reveal__stage {
   transform: translateY(-.35rem);
 }
 
+.module-deck-reveal__card--center {
+  animation: arcanum-deck-polish-center 740ms cubic-bezier(.18,.82,.24,1) both;
+}
+
+.module-deck-reveal__card--left {
+  animation: arcanum-deck-polish-left 740ms cubic-bezier(.18,.82,.24,1) both;
+}
+
+.module-deck-reveal__card--right {
+  animation: arcanum-deck-polish-right 740ms cubic-bezier(.18,.82,.24,1) both;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .global-tab-active,
   .global-tab-active::after,
-  .global-tab-active .global-tab-icon {
+  .global-tab-active .global-tab-icon,
+  html[data-card-direction] .card-transition-shell,
+  html[data-card-direction] .card-transition-sheen,
+  .module-deck-reveal,
+  .module-deck-reveal__card {
     animation: none;
   }
 }
