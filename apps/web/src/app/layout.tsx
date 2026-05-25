@@ -17,10 +17,21 @@ export const metadata: Metadata = {
     statusBarStyle: "black-translucent",
     title: "Arcanum",
   },
+  other: {
+    "mobile-web-app-capable": "yes",
+    "apple-mobile-web-app-capable": "yes",
+    "apple-mobile-web-app-status-bar-style": "black-translucent",
+    "msapplication-navbutton-color": "#000000",
+    "msapplication-TileColor": "#000000",
+  },
 };
 
 export const viewport: Viewport = {
-  themeColor: "#000000",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#000000" },
+    { media: "(prefers-color-scheme: dark)", color: "#000000" },
+  ],
+  colorScheme: "dark",
   viewportFit: "cover",
   width: "device-width",
   initialScale: 1,
