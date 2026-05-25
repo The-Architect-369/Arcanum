@@ -8,17 +8,18 @@ type Tab = {
   label: string;
   href: string;
   root: string;
+  module: string;
   icon: React.ReactNode;
   badge?: 'dot' | 'count';
   count?: number;
 };
 
 const TABS: Tab[] = [
-  { label: 'Hope', href: '/hope/reflection', root: '/hope', icon: <UserRound size={22} />, badge: 'dot' },
-  { label: 'Tempus', href: '/tempus/clock', root: '/tempus', icon: <Clock size={22} />, badge: 'dot' },
-  { label: 'Nexus', href: '/nexus/current', root: '/nexus', icon: <Globe size={22} />, badge: 'dot' },
-  { label: 'Wallet', href: '/wallet/receipts', root: '/wallet', icon: <Wallet size={22} />, badge: 'dot' },
-  { label: 'Vitae', href: '/vitae/path', root: '/vitae', icon: <BookMarked size={22} />, badge: 'dot' },
+  { label: 'Hope', href: '/hope/reflection', root: '/hope', module: 'hope', icon: <UserRound size={22} />, badge: 'dot' },
+  { label: 'Tempus', href: '/tempus/clock', root: '/tempus', module: 'tempus', icon: <Clock size={22} />, badge: 'dot' },
+  { label: 'Nexus', href: '/nexus/current', root: '/nexus', module: 'nexus', icon: <Globe size={22} />, badge: 'dot' },
+  { label: 'Wallet', href: '/wallet/receipts', root: '/wallet', module: 'wallet', icon: <Wallet size={22} />, badge: 'dot' },
+  { label: 'Vitae', href: '/vitae/path', root: '/vitae', module: 'vitae', icon: <BookMarked size={22} />, badge: 'dot' },
 ];
 
 export default function AppFooter() {
@@ -27,9 +28,14 @@ export default function AppFooter() {
   const isActive = (root: string) =>
     pathname === root || pathname.startsWith(root + '/');
 
+  const triggerDeck = (module: string, active: boolean) => {
+    if (active) return;
+    window.dispatchEvent(new CustomEvent('arcanum:module-reveal', { detail: { module } }));
+  };
+
   return (
     <nav
-      className="arcanum-app-footer absolute inset-x-0 bottom-0 z-50 border-t border-zinc-800 bg-black/75 shadow-[0_-10px_28px_rgba(0,0,0,0.62)] backdrop-blur-md"
+      className="arcanum-app-footer absolute inset-x-0 z-50 border-t border-zinc-800 bg-black/75 shadow-[0_-10px_28px_rgba(0,0,0,0.62)] backdrop-blur-md"
       role="navigation"
       aria-label="Main"
     >
@@ -40,6 +46,7 @@ export default function AppFooter() {
             <a
               key={t.href}
               href={t.href}
+              onClick={() => triggerDeck(t.module, active)}
               className={cn(
                 'arcanum-app-footer-tab relative grid w-full place-items-center rounded-xl transition-colors',
                 active
