@@ -1,8 +1,9 @@
 @tailwind base; @tailwind components; @tailwind utilities;
 
 :root {
-  --arcanum-header-h: 3rem;
-  --arcanum-footer-h: 4.75rem;
+  --arcanum-locked-vh: 100lvh;
+  --arcanum-header-h: 2.5rem;
+  --arcanum-footer-h: 5.25rem;
   --arcanum-safe-top: env(safe-area-inset-top, 0px);
   --arcanum-main-top: calc(var(--arcanum-header-h) + var(--arcanum-safe-top));
   --arcanum-main-bottom: var(--arcanum-footer-h);
@@ -18,13 +19,13 @@ body {
 }
 
 body {
-  min-height: 100lvh;
+  min-height: var(--arcanum-locked-vh);
 }
 
 .arcanum-app-shell {
-  height: 100lvh;
-  min-height: 100lvh;
-  max-height: 100lvh;
+  height: var(--arcanum-locked-vh);
+  min-height: var(--arcanum-locked-vh);
+  max-height: var(--arcanum-locked-vh);
   background:
     radial-gradient(circle at 14% 18%, rgba(246,196,83,.42) 0 1.5px, transparent 2.7px),
     radial-gradient(circle at 82% 12%, rgba(125,190,255,.42) 0 1.5px, transparent 2.7px),
@@ -40,7 +41,7 @@ body {
 }
 
 .arcanum-app-main {
-  height: 100lvh;
+  height: var(--arcanum-locked-vh);
   min-height: 0;
   padding-top: var(--arcanum-main-top);
   padding-bottom: var(--arcanum-main-bottom);
