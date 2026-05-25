@@ -1,0 +1,98 @@
+@keyframes arcanum-global-tab-shimmer {
+  0% {
+    transform: translateX(-140%) skewX(-18deg);
+    opacity: 0;
+  }
+  30% {
+    opacity: .75;
+  }
+  100% {
+    transform: translateX(140%) skewX(-18deg);
+    opacity: 0;
+  }
+}
+
+@keyframes arcanum-global-tab-breathe {
+  0%, 100% {
+    box-shadow: 0 0 12px rgba(246, 196, 83, .42), inset 0 0 18px rgba(246, 196, 83, .08);
+  }
+  50% {
+    box-shadow: 0 0 22px rgba(246, 196, 83, .66), 0 0 34px rgba(125, 190, 255, .2), inset 0 0 24px rgba(125, 190, 255, .1);
+  }
+}
+
+@keyframes arcanum-global-icon-rise {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(0, -1px, 0) scale(1.035);
+  }
+}
+
+.global-tab-link {
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.global-tab-link::before {
+  content: '';
+  position: absolute;
+  inset: .42rem .5rem;
+  z-index: -1;
+  border-radius: 1rem;
+  background: radial-gradient(circle at 50% 35%, rgba(246, 196, 83, .16), transparent 62%);
+  opacity: 0;
+  transition: opacity 180ms ease-out;
+}
+
+.global-tab-link:active::before,
+.global-tab-link:hover::before {
+  opacity: .9;
+}
+
+.global-tab-active {
+  animation: arcanum-global-tab-breathe 2.6s ease-in-out infinite;
+  background: linear-gradient(135deg, rgba(246, 196, 83, .12), rgba(125, 190, 255, .08), rgba(255,255,255,.035));
+}
+
+.global-tab-active::before {
+  opacity: 1;
+  background:
+    radial-gradient(circle at 50% 35%, rgba(246, 196, 83, .24), transparent 60%),
+    linear-gradient(135deg, rgba(246, 196, 83, .14), rgba(125, 190, 255, .08));
+}
+
+.global-tab-active::after {
+  content: '';
+  position: absolute;
+  inset: .35rem auto .35rem 0;
+  z-index: 1;
+  width: 45%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.34), rgba(246,196,83,.28), transparent);
+  animation: arcanum-global-tab-shimmer 2.4s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.global-tab-active .global-tab-icon {
+  animation: arcanum-global-icon-rise 2.6s ease-in-out infinite;
+  color: rgb(252 211 77);
+  filter: drop-shadow(0 0 9px rgba(246, 196, 83, .46));
+}
+
+.module-deck-reveal {
+  animation-duration: 680ms;
+}
+
+.module-deck-reveal__stage {
+  transform: translateY(-.35rem);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .global-tab-active,
+  .global-tab-active::after,
+  .global-tab-active .global-tab-icon {
+    animation: none;
+  }
+}
