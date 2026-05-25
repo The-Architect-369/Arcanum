@@ -1,9 +1,60 @@
 @tailwind base; @tailwind components; @tailwind utilities;
 
+:root {
+  --arcanum-header-h: 3.5rem;
+  --arcanum-footer-h: 3.5rem;
+  --arcanum-safe-top: env(safe-area-inset-top, 0px);
+  --arcanum-safe-bottom: env(safe-area-inset-bottom, 0px);
+  --arcanum-main-top: calc(var(--arcanum-header-h) + var(--arcanum-safe-top));
+  --arcanum-main-bottom: calc(var(--arcanum-footer-h) + var(--arcanum-safe-bottom));
+}
+
 html,
 body {
   background: #000;
   color: #fff;
+  height: 100%;
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+
+body {
+  min-height: 100svh;
+}
+
+.arcanum-app-shell {
+  min-height: 100svh;
+  max-height: 100svh;
+  background:
+    radial-gradient(circle at 14% 18%, rgba(246,196,83,.42) 0 1.5px, transparent 2.7px),
+    radial-gradient(circle at 82% 12%, rgba(125,190,255,.42) 0 1.5px, transparent 2.7px),
+    radial-gradient(circle at 72% 78%, rgba(246,196,83,.36) 0 1.4px, transparent 2.5px),
+    radial-gradient(circle at 28% 72%, rgba(165,120,255,.34) 0 1.4px, transparent 2.5px),
+    linear-gradient(115deg, transparent 0 28%, rgba(125,190,255,.14) 28.2% 28.45%, transparent 28.75% 100%),
+    linear-gradient(42deg, transparent 0 58%, rgba(246,196,83,.12) 58.1% 58.35%, transparent 58.7% 100%),
+    radial-gradient(circle at 50% -10%, rgba(50,90,180,.34), transparent 44%),
+    radial-gradient(circle at 50% 115%, rgba(246,196,83,.12), transparent 48%),
+    #000;
+  background-size: 8rem 8rem, 10rem 10rem, 13rem 13rem, 16rem 16rem, auto, auto, auto, auto, auto;
+  animation: arcanum-stars-drift 46s linear infinite;
+}
+
+.arcanum-app-main {
+  height: 100svh;
+  min-height: 0;
+  padding-top: var(--arcanum-main-top);
+  padding-bottom: var(--arcanum-main-bottom);
+  overflow: hidden;
+}
+
+.arcanum-app-header {
+  height: calc(var(--arcanum-header-h) + var(--arcanum-safe-top));
+  padding-top: var(--arcanum-safe-top);
+}
+
+.arcanum-app-footer {
+  height: calc(var(--arcanum-footer-h) + var(--arcanum-safe-bottom));
+  padding-bottom: var(--arcanum-safe-bottom);
 }
 
 @keyframes arcanum-stars-drift {
@@ -22,21 +73,6 @@ body {
   50% {
     opacity: .95;
   }
-}
-
-.arcanum-app-shell {
-  background:
-    radial-gradient(circle at 14% 18%, rgba(246,196,83,.42) 0 1.5px, transparent 2.7px),
-    radial-gradient(circle at 82% 12%, rgba(125,190,255,.42) 0 1.5px, transparent 2.7px),
-    radial-gradient(circle at 72% 78%, rgba(246,196,83,.36) 0 1.4px, transparent 2.5px),
-    radial-gradient(circle at 28% 72%, rgba(165,120,255,.34) 0 1.4px, transparent 2.5px),
-    linear-gradient(115deg, transparent 0 28%, rgba(125,190,255,.14) 28.2% 28.45%, transparent 28.75% 100%),
-    linear-gradient(42deg, transparent 0 58%, rgba(246,196,83,.12) 58.1% 58.35%, transparent 58.7% 100%),
-    radial-gradient(circle at 50% -10%, rgba(50,90,180,.34), transparent 44%),
-    radial-gradient(circle at 50% 115%, rgba(246,196,83,.12), transparent 48%),
-    #000;
-  background-size: 8rem 8rem, 10rem 10rem, 13rem 13rem, 16rem 16rem, auto, auto, auto, auto, auto;
-  animation: arcanum-stars-drift 46s linear infinite;
 }
 
 .arcanum-app-shell::before {
