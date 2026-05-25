@@ -2,11 +2,12 @@
 
 :root {
   --arcanum-locked-vh: 100lvh;
-  --arcanum-header-h: 3.25rem;
-  --arcanum-footer-h: 4.5rem;
-  --arcanum-safe-top: env(safe-area-inset-top, 0px);
-  --arcanum-main-top: calc(var(--arcanum-header-h) + var(--arcanum-safe-top));
-  --arcanum-main-bottom: var(--arcanum-footer-h);
+  --arcanum-status-h: env(safe-area-inset-top, 0px);
+  --arcanum-header-h: 3.5rem;
+  --arcanum-footer-h: 4.25rem;
+  --arcanum-footer-lift: 0.85rem;
+  --arcanum-main-top: calc(var(--arcanum-status-h) + var(--arcanum-header-h));
+  --arcanum-main-bottom: calc(var(--arcanum-footer-h) + var(--arcanum-footer-lift));
 }
 
 html,
@@ -49,8 +50,9 @@ body {
 }
 
 .arcanum-app-header {
-  height: calc(var(--arcanum-header-h) + var(--arcanum-safe-top));
-  padding-top: var(--arcanum-safe-top);
+  top: var(--arcanum-status-h);
+  height: var(--arcanum-header-h);
+  padding-top: 0;
 }
 
 .arcanum-app-header-row {
@@ -58,7 +60,7 @@ body {
 }
 
 .arcanum-app-footer {
-  bottom: 0;
+  bottom: var(--arcanum-footer-lift);
   height: var(--arcanum-footer-h);
   padding-bottom: 0;
 }
