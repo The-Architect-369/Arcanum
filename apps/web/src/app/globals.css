@@ -30,18 +30,6 @@ body {
   background-color: #000;
 }
 
-body::before {
-  content: '';
-  position: fixed;
-  left: 0;
-  right: 0;
-  top: 0;
-  z-index: 0;
-  height: max(var(--arcanum-status-h), 1.5rem);
-  pointer-events: none;
-  background: #000;
-}
-
 .arcanum-app-shell {
   height: var(--arcanum-locked-vh);
   min-height: var(--arcanum-locked-vh);
