@@ -46,6 +46,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <meta name="theme-color" content="rgba(0,0,0,0)" />
+        <meta name="theme-color" media="(prefers-color-scheme: dark)" content="rgba(0,0,0,0)" />
+        <meta name="theme-color" media="(prefers-color-scheme: light)" content="rgba(0,0,0,0)" />
+      </head>
       <body className="antialiased">
         <PWARegister />
         {children}
