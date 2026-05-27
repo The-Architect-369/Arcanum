@@ -33,3 +33,4 @@ chains/arcanum/.cache/
 # local patch backups
 *.bak
 *.pre-*.bak
+.audit/
