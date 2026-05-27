@@ -33,10 +33,6 @@ func CmdSpend() *cobra.Command {
 				Purpose: args[2],
 				Amount:  amount,
 			}
-			if err := msg.ValidateBasic(); err != nil {
-				return err
-			}
-
 			return tx.GenerateOrBroadcastTxCLI(clientCtx, cmd.Flags(), msg)
 		},
 	}

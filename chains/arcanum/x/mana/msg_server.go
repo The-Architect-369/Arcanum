@@ -2,6 +2,7 @@ package mana
 
 import (
 	"context"
+	"strconv"
 
 	"arcanum/x/mana/keeper"
 	"arcanum/x/mana/types"
@@ -26,7 +27,7 @@ func (s *MsgServer) Spend(goCtx context.Context, msg *types.MsgSpend) (*types.Ms
 			sdk.NewAttribute("creator", msg.Creator),
 			sdk.NewAttribute("address", msg.Address),
 			sdk.NewAttribute("purpose", msg.Purpose),
-			sdk.NewAttribute("amount", sdk.NewUint64Coin("umana", msg.Amount).Amount.String()),
+			sdk.NewAttribute("amount", strconv.FormatUint(msg.Amount, 10)),
 		),
 	)
 

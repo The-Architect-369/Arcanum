@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-05-27T01:23:05Z",
+  "generated_at": "2026-05-27T01:25:03Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "d194890cd",
+  "commit": "ebaef9715",
   "generator_version": "1.1",
   "files": [
     {
@@ -2311,11 +2311,11 @@
     {
       "path": "chains/arcanum/x/chaincode/client/cli/tx.go",
       "type": "file",
-      "size_bytes": 802,
-      "last_modified_commit": "d194890cd",
+      "size_bytes": 734,
+      "last_modified_commit": "ebaef9715",
       "is_empty": false,
       "extension": ".go",
-      "lines": 36
+      "lines": 32
     },
     {
       "path": "chains/arcanum/x/chaincode/genesis.go",
@@ -2366,7 +2366,7 @@
       "path": "chains/arcanum/x/chaincode/msg_server.go",
       "type": "file",
       "size_bytes": 1011,
-      "last_modified_commit": "975ab5f93",
+      "last_modified_commit": "ebaef9715",
       "is_empty": false,
       "extension": ".go",
       "lines": 45
@@ -2419,11 +2419,11 @@
     {
       "path": "chains/arcanum/x/mana/client/cli/tx.go",
       "type": "file",
-      "size_bytes": 948,
-      "last_modified_commit": "d194890cd",
+      "size_bytes": 880,
+      "last_modified_commit": "ebaef9715",
       "is_empty": false,
       "extension": ".go",
-      "lines": 45
+      "lines": 41
     },
     {
       "path": "chains/arcanum/x/mana/keeper/genesis.go",
@@ -2464,11 +2464,11 @@
     {
       "path": "chains/arcanum/x/mana/msg_server.go",
       "type": "file",
-      "size_bytes": 1541,
-      "last_modified_commit": "975ab5f93",
+      "size_bytes": 1532,
+      "last_modified_commit": "ebaef9715",
       "is_empty": false,
       "extension": ".go",
-      "lines": 60
+      "lines": 61
     },
     {
       "path": "chains/arcanum/x/mana/types/codec.go",
@@ -3031,11 +3031,11 @@
     {
       "path": "docs/repo/repo-index.json",
       "type": "file",
-      "size_bytes": 142480,
-      "last_modified_commit": "d194890cd",
+      "size_bytes": 142710,
+      "last_modified_commit": "ebaef9715",
       "is_empty": false,
       "extension": ".json",
-      "lines": 5201
+      "lines": 5210
     },
     {
       "path": "docs/repo/repo-interface.md",
