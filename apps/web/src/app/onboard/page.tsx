@@ -1,10 +1,15 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import { getSigningClient, getQueryClient } from "@/lib/cosmos/client";
 import { createBurner, hasBurner, loadBurner } from "@/lib/identity/burner";
-import { getPasskey, registerPasskey, signInPasskey } from "@/lib/identity/passkey";
+import {
+  getPasskey,
+  getPasskeySupport,
+  registerPasskey,
+  signInPasskey,
+} from "@/lib/identity/passkey";
 import { addReceipt } from "@/lib/mobile/persistence";
 import { setAccountSession } from "@/state/useAccount";
 
@@ -17,6 +22,7 @@ export default function OnboardPage() {
   const [mana, setMana] = useState<string | null>(null);
   const [status, setStatus] = useState<string>("");
   const [busy, setBusy] = useState(false);
+  const passkeySupport = useMemo(() => getPasskeySupport(), []);
 
   function finish(nextPath = "/hope") {
     localStorage.setItem("ARCANUM_NODE_INITIALIZED", "1");
@@ -24,6 +30,11 @@ export default function OnboardPage() {
   }
 
   async function handlePasskey() {
+    if (!passkeySupport.supported) {
+      setStatus(`Passkey unavailable: ${passkeySupport.reason}`);
+      return;
+    }
+
     setBusy(true);
     setStatus("Creating or resuming passkey...");
     try {
@@ -173,11 +184,13 @@ export default function OnboardPage() {
         <button
           className="rounded-xl border px-4 py-3 text-left transition hover:bg-white/5 disabled:opacity-60"
           onClick={handlePasskey}
-          disabled={busy}
+          disabled={busy || !passkeySupport.supported}
         >
           <div className="font-medium">Use Passkey</div>
           <div className="mt-1 text-sm opacity-75">
-            Register or resume a mobile passkey, then bind a burner session for device continuity.
+            {passkeySupport.supported
+              ? "Register or resume a mobile passkey, then bind a burner session for device continuity."
+              : `Unavailable here: ${passkeySupport.reason}`}
           </div>
         </button>
 
