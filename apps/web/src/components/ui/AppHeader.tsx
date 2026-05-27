@@ -45,13 +45,13 @@ export default function AppHeader() {
     };
 
     window.addEventListener('focus', onFocus);
-    window.addEventListener('visibilitychange', onVisibility);
+    document.addEventListener('visibilitychange', onVisibility);
 
     return () => {
       active = false;
       window.clearInterval(interval);
       window.removeEventListener('focus', onFocus);
-      window.removeEventListener('visibilitychange', onVisibility);
+      document.removeEventListener('visibilitychange', onVisibility);
     };
   }, []);
 
