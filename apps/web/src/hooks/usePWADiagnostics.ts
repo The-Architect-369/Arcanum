@@ -1,6 +1,8 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
+import { getPasskeySupport } from "@/lib/identity/passkey";
+import { hasDeferredInstallPrompt } from "@/lib/mobile/installPrompt";
 
 export type PWADisplayMode =
   | "browser"
@@ -28,8 +30,18 @@ export type PWADiagnostics = {
   serviceWorkerControllerScriptURL: string | null;
   serviceWorkerRegistrationCount: number;
   serviceWorkerRegistrationScopes: string[];
+  serviceWorkerWaiting: boolean;
   beforeInstallPromptSeenThisView: boolean;
   appInstalledSeenThisView: boolean;
+  installPromptAvailable: boolean;
+  storageManagerSupported: boolean;
+  storagePersisted: boolean;
+  storageQuotaBytes: number | null;
+  storageUsageBytes: number | null;
+  notificationsSupported: boolean;
+  notificationPermission: NotificationPermission | "unsupported";
+  passkeySupported: boolean;
+  passkeySupportReason: string;
 };
 
 function getDisplayMode(): PWADisplayMode {
@@ -76,8 +88,18 @@ function makeEmptyDiagnostics(): PWADiagnostics {
     serviceWorkerControllerScriptURL: null,
     serviceWorkerRegistrationCount: 0,
     serviceWorkerRegistrationScopes: [],
+    serviceWorkerWaiting: false,
     beforeInstallPromptSeenThisView: false,
     appInstalledSeenThisView: false,
+    installPromptAvailable: false,
+    storageManagerSupported: false,
+    storagePersisted: false,
+    storageQuotaBytes: null,
+    storageUsageBytes: null,
+    notificationsSupported: false,
+    notificationPermission: "unsupported",
+    passkeySupported: false,
+    passkeySupportReason: "Browser context unavailable.",
   };
 }
 
@@ -99,12 +121,14 @@ export function usePWADiagnostics() {
     const onVisibilityChange = () => setRefreshTick((value) => value + 1);
     const onOnline = () => setRefreshTick((value) => value + 1);
     const onOffline = () => setRefreshTick((value) => value + 1);
+    const onUpdateReady = () => setRefreshTick((value) => value + 1);
 
     window.addEventListener("beforeinstallprompt", onBeforeInstallPrompt as EventListener);
     window.addEventListener("appinstalled", onAppInstalled);
-    window.addEventListener("visibilitychange", onVisibilityChange);
+    document.addEventListener("visibilitychange", onVisibilityChange);
     window.addEventListener("online", onOnline);
     window.addEventListener("offline", onOffline);
+    window.addEventListener("arcanum:pwa-update-ready", onUpdateReady as EventListener);
 
     return () => {
       window.removeEventListener(
@@ -112,9 +136,10 @@ export function usePWADiagnostics() {
         onBeforeInstallPrompt as EventListener
       );
       window.removeEventListener("appinstalled", onAppInstalled);
-      window.removeEventListener("visibilitychange", onVisibilityChange);
+      document.removeEventListener("visibilitychange", onVisibilityChange);
       window.removeEventListener("online", onOnline);
       window.removeEventListener("offline", onOffline);
+      window.removeEventListener("arcanum:pwa-update-ready", onUpdateReady as EventListener);
     };
   }, []);
 
@@ -126,11 +151,13 @@ export function usePWADiagnostics() {
 
       const serviceWorkerSupported = "serviceWorker" in navigator;
       let registrationScopes: string[] = [];
+      let serviceWorkerWaiting = false;
 
       if (serviceWorkerSupported) {
         try {
           const registrations = await navigator.serviceWorker.getRegistrations();
           registrationScopes = registrations.map((registration) => registration.scope);
+          serviceWorkerWaiting = registrations.some((registration) => Boolean(registration.waiting));
         } catch {
           registrationScopes = [];
         }
@@ -145,6 +172,7 @@ export function usePWADiagnostics() {
 
       const navigatorWithStandalone = navigator as Navigator & {
         standalone?: boolean;
+        storage?: StorageManager;
       };
 
       const displayMode = getDisplayMode();
@@ -155,6 +183,37 @@ export function usePWADiagnostics() {
         displayMode === "fullscreen" ||
         displayMode === "minimal-ui" ||
         displayMode === "window-controls-overlay";
+
+      const storageManagerSupported = Boolean(navigatorWithStandalone.storage);
+      let storagePersisted = false;
+      let storageQuotaBytes: number | null = null;
+      let storageUsageBytes: number | null = null;
+
+      if (navigatorWithStandalone.storage?.persisted) {
+        try {
+          storagePersisted = await navigatorWithStandalone.storage.persisted();
+        } catch {
+          storagePersisted = false;
+        }
+      }
+
+      if (navigatorWithStandalone.storage?.estimate) {
+        try {
+          const estimate = await navigatorWithStandalone.storage.estimate();
+          storageQuotaBytes = typeof estimate.quota === "number" ? estimate.quota : null;
+          storageUsageBytes = typeof estimate.usage === "number" ? estimate.usage : null;
+        } catch {
+          storageQuotaBytes = null;
+          storageUsageBytes = null;
+        }
+      }
+
+      const notificationsSupported = typeof Notification !== "undefined";
+      const notificationPermission = notificationsSupported
+        ? Notification.permission
+        : "unsupported";
+
+      const passkeySupport = getPasskeySupport();
 
       if (cancelled) return;
 
@@ -175,8 +234,18 @@ export function usePWADiagnostics() {
         serviceWorkerControllerScriptURL: controller?.scriptURL ?? null,
         serviceWorkerRegistrationCount: registrationScopes.length,
         serviceWorkerRegistrationScopes: registrationScopes,
+        serviceWorkerWaiting,
         beforeInstallPromptSeenThisView,
         appInstalledSeenThisView,
+        installPromptAvailable: hasDeferredInstallPrompt(),
+        storageManagerSupported,
+        storagePersisted,
+        storageQuotaBytes,
+        storageUsageBytes,
+        notificationsSupported,
+        notificationPermission,
+        passkeySupported: passkeySupport.supported,
+        passkeySupportReason: passkeySupport.reason,
       });
 
       setLoading(false);
