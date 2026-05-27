@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-05-27T01:54:11Z",
+  "generated_at": "2026-05-27T01:58:52Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "47d0a307d",
+  "commit": "f17204d93",
   "generator_version": "1.1",
   "files": [
     {
@@ -278,7 +278,7 @@
       "path": "apps/web/docs/README.md",
       "type": "file",
       "size_bytes": 698,
-      "last_modified_commit": "b4c8d3fe7",
+      "last_modified_commit": "f17204d93",
       "is_empty": false,
       "extension": ".md",
       "lines": 26
@@ -1673,7 +1673,7 @@
       "path": "apps/web/src/lib/post.ts",
       "type": "file",
       "size_bytes": 577,
-      "last_modified_commit": "7dfdd2782",
+      "last_modified_commit": "f17204d93",
       "is_empty": false,
       "extension": ".ts",
       "lines": 17
@@ -2591,7 +2591,7 @@
       "path": "docs/archive/app/modules/2025-hope-guide-v1-rc.md",
       "type": "file",
       "size_bytes": 2163,
-      "last_modified_commit": "unknown",
+      "last_modified_commit": "f17204d93",
       "is_empty": false,
       "extension": ".md",
       "lines": 80
@@ -2600,7 +2600,7 @@
       "path": "docs/archive/app/modules/2025-nexus-guide-v1-rc.md",
       "type": "file",
       "size_bytes": 1466,
-      "last_modified_commit": "unknown",
+      "last_modified_commit": "f17204d93",
       "is_empty": false,
       "extension": ".md",
       "lines": 53
@@ -2609,7 +2609,7 @@
       "path": "docs/archive/app/modules/2025-tempus-guide-v1-rc.md",
       "type": "file",
       "size_bytes": 1929,
-      "last_modified_commit": "unknown",
+      "last_modified_commit": "f17204d93",
       "is_empty": false,
       "extension": ".md",
       "lines": 63
@@ -2618,10 +2618,19 @@
       "path": "docs/archive/app/modules/2025-vitae-guide-v1-rc.md",
       "type": "file",
       "size_bytes": 1890,
-      "last_modified_commit": "unknown",
+      "last_modified_commit": "f17204d93",
       "is_empty": false,
       "extension": ".md",
       "lines": 55
+    },
+    {
+      "path": "docs/archive/app/modules/README.md",
+      "type": "file",
+      "size_bytes": 542,
+      "last_modified_commit": "f17204d93",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 19
     },
     {
       "path": "docs/archive/app/tempus/2025-10-tempus-reward-system-calendar-draft-v1.md",
@@ -3040,8 +3049,8 @@
     {
       "path": "docs/repo/repo-index.json",
       "type": "file",
-      "size_bytes": 142971,
-      "last_modified_commit": "47d0a307d",
+      "size_bytes": 143051,
+      "last_modified_commit": "f17204d93",
       "is_empty": false,
       "extension": ".json",
       "lines": 5219
@@ -3074,6 +3083,15 @@
       "lines": 21
     },
     {
+      "path": "docs/specs/app/modules/README.md",
+      "type": "file",
+      "size_bytes": 760,
+      "last_modified_commit": "f17204d93",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 27
+    },
+    {
       "path": "docs/specs/app/navigation-and-gates.md",
       "type": "file",
       "size_bytes": 1678,
@@ -3104,7 +3122,7 @@
       "path": "docs/tooling/archive-manifest.yaml",
       "type": "file",
       "size_bytes": 4303,
-      "last_modified_commit": "564b53752",
+      "last_modified_commit": "f17204d93",
       "is_empty": false,
       "extension": ".yaml",
       "lines": 93
