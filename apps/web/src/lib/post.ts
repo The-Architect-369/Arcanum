@@ -1,7 +1,7 @@
 export type ArcanumPostV1 = {
   v: 1;
   author: {
-    acc: string;        // ACC / SBT / DID
+    acc: string;        // ACC / identity anchor / DID
     handle?: string;
     peerId?: string;    // Helia/libp2p PeerId of publisher
   };

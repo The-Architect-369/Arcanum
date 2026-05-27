@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-05-27T01:52:02Z",
+  "generated_at": "2026-05-27T01:54:11Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "564b53752",
+  "commit": "47d0a307d",
   "generator_version": "1.1",
   "files": [
     {
@@ -266,15 +266,6 @@
       "lines": 36
     },
     {
-      "path": "apps/web/docs/HOPE_GUIDE.md",
-      "type": "file",
-      "size_bytes": 2163,
-      "last_modified_commit": "d32d6affc",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 80
-    },
-    {
       "path": "apps/web/docs/MODULE_CARD_GUIDE.md",
       "type": "file",
       "size_bytes": 1825,
@@ -284,31 +275,13 @@
       "lines": 61
     },
     {
-      "path": "apps/web/docs/NEXUS_GUIDE.md",
-      "type": "file",
-      "size_bytes": 1466,
-      "last_modified_commit": "7edb20d44",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 53
-    },
-    {
       "path": "apps/web/docs/README.md",
       "type": "file",
-      "size_bytes": 597,
+      "size_bytes": 698,
       "last_modified_commit": "b4c8d3fe7",
       "is_empty": false,
       "extension": ".md",
-      "lines": 23
-    },
-    {
-      "path": "apps/web/docs/TEMPUS_GUIDE.md",
-      "type": "file",
-      "size_bytes": 1929,
-      "last_modified_commit": "d32d6affc",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 63
+      "lines": 26
     },
     {
       "path": "apps/web/docs/TEXT_GUIDE.md",
@@ -318,15 +291,6 @@
       "is_empty": false,
       "extension": ".md",
       "lines": 46
-    },
-    {
-      "path": "apps/web/docs/VITAE_GUIDE.md",
-      "type": "file",
-      "size_bytes": 1890,
-      "last_modified_commit": "7edb20d44",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 55
     },
     {
       "path": "apps/web/eslint.config.mjs",
@@ -1708,7 +1672,7 @@
     {
       "path": "apps/web/src/lib/post.ts",
       "type": "file",
-      "size_bytes": 582,
+      "size_bytes": 577,
       "last_modified_commit": "7dfdd2782",
       "is_empty": false,
       "extension": ".ts",
@@ -2624,6 +2588,42 @@
       "lines": 20
     },
     {
+      "path": "docs/archive/app/modules/2025-hope-guide-v1-rc.md",
+      "type": "file",
+      "size_bytes": 2163,
+      "last_modified_commit": "unknown",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 80
+    },
+    {
+      "path": "docs/archive/app/modules/2025-nexus-guide-v1-rc.md",
+      "type": "file",
+      "size_bytes": 1466,
+      "last_modified_commit": "unknown",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 53
+    },
+    {
+      "path": "docs/archive/app/modules/2025-tempus-guide-v1-rc.md",
+      "type": "file",
+      "size_bytes": 1929,
+      "last_modified_commit": "unknown",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 63
+    },
+    {
+      "path": "docs/archive/app/modules/2025-vitae-guide-v1-rc.md",
+      "type": "file",
+      "size_bytes": 1890,
+      "last_modified_commit": "unknown",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 55
+    },
+    {
       "path": "docs/archive/app/tempus/2025-10-tempus-reward-system-calendar-draft-v1.md",
       "type": "file",
       "size_bytes": 4546,
@@ -3040,11 +3040,11 @@
     {
       "path": "docs/repo/repo-index.json",
       "type": "file",
-      "size_bytes": 142730,
-      "last_modified_commit": "564b53752",
+      "size_bytes": 142971,
+      "last_modified_commit": "47d0a307d",
       "is_empty": false,
       "extension": ".json",
-      "lines": 5210
+      "lines": 5219
     },
     {
       "path": "docs/repo/repo-interface.md",
@@ -3103,11 +3103,11 @@
     {
       "path": "docs/tooling/archive-manifest.yaml",
       "type": "file",
-      "size_bytes": 3055,
+      "size_bytes": 4303,
       "last_modified_commit": "564b53752",
       "is_empty": false,
       "extension": ".yaml",
-      "lines": 65
+      "lines": 93
     },
     {
       "path": "docs/tooling/doctrine-checksums/doctrine-checksums.yaml",

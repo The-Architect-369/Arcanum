@@ -63,3 +63,31 @@ archives:
     superseded_by:
       - chains/arcanum/cmd/arcanumd/cmd/root.go
       - docs/specs/chain/README.md
+  - archived: docs/archive/app/modules/2025-tempus-guide-v1-rc.md
+    previous_path: apps/web/docs/TEMPUS_GUIDE.md
+    reason: Historical Tempus app guide contained outdated perfect-play and streak language.
+    superseded_by:
+      - docs/specs/app/modules/README.md
+      - docs/architecture/canonical-modules.md
+
+  - archived: docs/archive/app/modules/2025-hope-guide-v1-rc.md
+    previous_path: apps/web/docs/HOPE_GUIDE.md
+    reason: Historical Hope app guide contained outdated SBT/NFT/pricing assumptions.
+    superseded_by:
+      - docs/specs/app/modules/README.md
+      - docs/architecture/canonical-modules.md
+
+  - archived: docs/archive/app/modules/2025-vitae-guide-v1-rc.md
+    previous_path: apps/web/docs/VITAE_GUIDE.md
+    reason: Historical Vitae app guide contained outdated shared alias and gamification assumptions.
+    superseded_by:
+      - docs/specs/app/modules/README.md
+      - docs/architecture/canonical-modules.md
+
+  - archived: docs/archive/app/modules/2025-nexus-guide-v1-rc.md
+    previous_path: apps/web/docs/NEXUS_GUIDE.md
+    reason: Historical Nexus app guide contained outdated ranking/feed assumptions.
+    superseded_by:
+      - docs/specs/app/modules/README.md
+      - docs/architecture/canonical-modules.md
+
