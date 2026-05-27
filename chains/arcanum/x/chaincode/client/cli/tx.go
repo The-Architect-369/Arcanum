@@ -1,7 +1,18 @@
+package cli
+
+import (
+	"github.com/cosmos/cosmos-sdk/client"
+	"github.com/cosmos/cosmos-sdk/client/flags"
+	"github.com/cosmos/cosmos-sdk/client/tx"
+	"github.com/spf13/cobra"
+
+	"arcanum/x/chaincode/types"
+)
+
 func CmdMint() *cobra.Command {
 	cmd := &cobra.Command{
 		Use:   "mint [owner] [token-id] [metadata-cid]",
-		Short: "Mint an SBT chaincode for an address",
+		Short: "Mint a chaincode identity anchor for an address",
 		Args:  cobra.ExactArgs(3),
 		RunE: func(cmd *cobra.Command, args []string) error {
 			clientCtx, err := client.GetClientTxContext(cmd)

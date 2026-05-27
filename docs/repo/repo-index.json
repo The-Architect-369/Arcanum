@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-05-27T01:18:20Z",
+  "generated_at": "2026-05-27T01:18:40Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "ede21098d",
+  "commit": "cddec3c84",
   "generator_version": "1.1",
   "files": [
     {
@@ -2302,11 +2302,11 @@
     {
       "path": "chains/arcanum/x/chaincode/client/cli/tx.go",
       "type": "file",
-      "size_bytes": 653,
+      "size_bytes": 845,
       "last_modified_commit": "5da311ef6",
       "is_empty": false,
       "extension": ".go",
-      "lines": 26
+      "lines": 37
     },
     {
       "path": "chains/arcanum/x/chaincode/genesis.go",
@@ -2410,11 +2410,11 @@
     {
       "path": "chains/arcanum/x/mana/client/cli/tx.go",
       "type": "file",
-      "size_bytes": 653,
+      "size_bytes": 775,
       "last_modified_commit": "5da311ef6",
       "is_empty": false,
       "extension": ".go",
-      "lines": 26
+      "lines": 36
     },
     {
       "path": "chains/arcanum/x/mana/keeper/genesis.go",
@@ -3022,11 +3022,11 @@
     {
       "path": "docs/repo/repo-index.json",
       "type": "file",
-      "size_bytes": 141533,
-      "last_modified_commit": "21d6e54ca",
+      "size_bytes": 142480,
+      "last_modified_commit": "cddec3c84",
       "is_empty": false,
       "extension": ".json",
-      "lines": 5165
+      "lines": 5201
     },
     {
       "path": "docs/repo/repo-interface.md",
@@ -5165,7 +5165,7 @@
       "path": "scripts/repo-index.sh",
       "type": "file",
       "size_bytes": 2629,
-      "last_modified_commit": "4c57e415e",
+      "last_modified_commit": "cddec3c84",
       "is_empty": false,
       "extension": ".sh",
       "lines": 111

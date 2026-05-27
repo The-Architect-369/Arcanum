@@ -1,8 +1,19 @@
+package cli
+
+import (
+	"github.com/cosmos/cosmos-sdk/client"
+	"github.com/cosmos/cosmos-sdk/client/flags"
+	"github.com/cosmos/cosmos-sdk/client/tx"
+	"github.com/spf13/cobra"
+
+	"arcanum/x/mana/types"
+)
+
 func CmdMint() *cobra.Command {
 	cmd := &cobra.Command{
-		Use:   "mint [owner] [token-id] [metadata-cid]",
-		Short: "Mint an SBT chaincode for an address",
-		Args:  cobra.ExactArgs(3),
+		Use:   "mint [to-address] [amount]",
+		Short: "Mint MANA for an address",
+		Args:  cobra.ExactArgs(2),
 		RunE: func(cmd *cobra.Command, args []string) error {
 			clientCtx, err := client.GetClientTxContext(cmd)
 			if err != nil {
@@ -10,9 +21,8 @@ func CmdMint() *cobra.Command {
 			}
 
 			msg := &types.MsgMint{
-				Owner:       args[0],
-				TokenId:     args[1],
-				MetadataCid: args[2],
+				ToAddress: args[0],
+				Amount:    args[1],
 			}
 			if err := msg.ValidateBasic(); err != nil {
 				return err
