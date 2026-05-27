@@ -81,9 +81,25 @@ else
     normalize_repo_index "$orig" > "$norm_orig"
     normalize_repo_index "$gen" > "$norm_gen"
 
-    if ! diff -u "$norm_orig" "$norm_gen" >/dev/null; then
-      fail "$INDEX_FILE differs from generator output after normalization. Run: bash $GEN_SCRIPT && commit any real structural drift."
+    diff_file=".audit/verify-sync/repo-index.diff"
+    mkdir -p "$(dirname "$diff_file")"
+
+    if ! diff -u "$norm_orig" "$norm_gen" > "$diff_file"; then
+      fail "$INDEX_FILE differs from generator output after normalization."
+      echo
+      echo "Repo index drift detected."
+      echo "Normalized diff written to: $diff_file"
+      echo
+      echo "To repair:"
+      echo "  bash $GEN_SCRIPT"
+      echo "  bash scripts/verify-sync.sh"
+      echo "  git add $INDEX_FILE"
+      echo "  git commit -m \"chore(repo): refresh repo index\""
+      echo
+      echo "First 80 lines of normalized diff:"
+      sed -n '1,80p' "$diff_file" || true
     else
+      rm -f "$diff_file"
       echo "✅ repo index matches generator output (normalized): $INDEX_FILE"
     fi
   else

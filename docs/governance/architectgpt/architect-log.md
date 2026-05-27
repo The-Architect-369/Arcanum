@@ -50,3 +50,49 @@ Actions initiated:
 - established `docs/specs/app/` as current implementation-facing app spec surface
 - established active ArchitectGPT log outside the canonical interface spec
 - prepared archive structure for app and ArchitectGPT historical materials
+
+---
+
+## 2026-05-26 — Structural Archive, Tooling, Chain, and App-Copy Alignment
+
+Grounding:
+
+- Repository: `The-Architect-369/Arcanum`
+- Branch: `mobile`
+- Mode: local execution with ArchitectGPT-guided patch waves
+- Purpose: remove outdated active information, preserve historical material in typed archives, harden repo tooling, restore chain compile health, and clean app-copy drift.
+
+Summary:
+
+- Archived dated app-local docs into `docs/archive/app/`.
+- Split active ArchitectGPT logging from the canonical ArchitectGPT specification.
+- Created active app spec surfaces under `docs/specs/app/`.
+- Moved legacy ArchitectGPT files into typed archive under `docs/archive/architectgpt/`.
+- Removed local chain binary tracking and documented chain artifact policy.
+- Moved disabled chain source files into `docs/archive/chain/arcanum/app-disabled/`.
+- Hardened `scripts/repo-index.sh` to avoid `jq` argument-length failures.
+- Repaired chain compile blockers across CLI files, docs embedding, proto message alignment, message servers, genesis functions, and stale daemon scaffold.
+- Archived stale daemon scaffold under `docs/archive/chain/arcanum/cmd-scaffold/`.
+- Archived outdated app module guides and replaced them with current app module spec posture.
+- Updated app copy away from SBT terminology in source comments.
+- Improved `verify-sync.sh` diagnostics for future repo-index drift.
+
+Verification status:
+
+- `bash scripts/verify-sync.sh` — expected green after final repo-index refresh
+- `pnpm -C apps/web typecheck` — green
+- `pnpm -C apps/web build` — green
+- `cd chains/arcanum && go test ./...` — green
+
+Known non-blocking warnings:
+
+- Local Node version is `v22.21.0`; app package requests Node `20.x`.
+- Browserslist/caniuse-lite may be stale and can be updated in a separate dependency maintenance pass.
+
+Doctrinal impact:
+
+- Active app docs no longer carry outdated perfect-play, streak, SBT/NFT, or reward-loop assumptions.
+- Tempus posture remains non-coercive.
+- Chain surface is now compile-green but daemon command scaffold is intentionally minimal until the full app constructor surface is rebuilt.
+- Historical material remains retrievable under typed archive paths.
+
