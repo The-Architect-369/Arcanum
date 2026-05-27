@@ -2,9 +2,9 @@
 title: "Architect GPT"
 status: canonical
 visibility: public
-last_updated: 2026-04-02
+last_updated: 2026-05-26
 description: "Canonical specification for Architect GPT (internal builder interface). Consolidates prior Core/Extended/Log documents and formalizes grounded scripted remediation."
-version: "3.2"
+version: "3.3"
 arcanum_phase: "Pre-Genesis"
 maintainer: "The-Architect-369"
 mode: "analysis-first"
@@ -335,6 +335,108 @@ Status: Canon synchronized, repo updated, ready for Architect GPT update.
 - Marked legacy references to `architectgpt-extended.md` as non-canonical
 
 Status: Canon updated to reflect live remediation practice.
+
+### [SYNC EVENT — 2026-05-26 | Mobile Shell, PWA Workflow, and Tempus Expansion]
+
+**Session Summary**
+- Established the mobile-first implementation workflow for Arcanum app-shell work.
+- Confirmed `mobile` as the implementation/testing branch and `main` as the live stable branch.
+- Confirmed the local development environment as the merge/deploy station and future first true Arcanum node surface.
+- Confirmed Android/Termux as the mobile development terminal and installed PWA test surface.
+- Repeatedly validated that local green checks remain the required handoff gate before merging implementation work live.
+
+**Branch Doctrine Locked**
+- `mobile` is the on-the-go implementation branch.
+- `main` is the live deployment branch.
+- Experimental mobile shell, PWA, navigation, and transition work must happen on `mobile` first.
+- Merge to `main` only after the Human Architect verifies mobile behavior and local checks pass.
+
+**Canonical Validation Commands**
+```bash
+pnpm -C apps/web typecheck
+pnpm -C apps/web build
+```
+
+**Mobile Navigation State**
+- Canonical top-level app navigation remains:
+  - Hope
+  - Tempus
+  - Nexus
+  - Wallet
+  - Vitae
+- `/text` remains transitional and is not canonical top-level app navigation.
+- The app shell is structured around five global tabs and three canonical module pages per tab.
+- Module tab rails live inside the panel card.
+- Swipe navigation works across module sibling pages.
+- Global footer navigation routes across the five canonical modules.
+
+**Hope / Tempus / Nexus / Wallet / Vitae Work Recorded**
+- Hope remains functional after prior refactor into Presence, Reflection, and Attunement.
+- Nexus routing was repaired around Current, Post, and Channels.
+- Tempus now carries the strongest content model and acts as a reference page family for future module content.
+- Wallet placeholder pages were created so the global Wallet tab and its module rail have valid routes.
+- Vitae remains part of the canonical shell pattern and participates in global tab routing.
+
+**Tempus Expansion**
+- `/tempus/clock` was upgraded into a symbolic orrery-style clock:
+  - Sun-centered dial
+  - zodiac ring
+  - planetary ring/hour approximation
+  - Earth/day position
+  - Moon phase marker
+  - correspondence readouts
+- `/tempus/calendar` was changed from a Gregorian month grid into a zodiac-season calendar:
+  - season day indexing
+  - Gregorian weekday/date orientation
+  - planetary glyphs
+  - lunar posture summaries
+- `/tempus/codex` now functions as the correspondence reference layer for planetary, zodiac, and lunar data.
+- Planetary hour behavior remains approximate and is marked for later refinement using true sunrise/sunset planetary-hour calculation.
+
+**Android PWA Findings**
+- `display: fullscreen` hides both the Android status bar and bottom control bar.
+- A web PWA cannot reliably request “hide bottom controls only while keeping the top status bar visible.”
+- `display: standalone` is currently the correct baseline for preserving the Android status bar.
+- Android status/control bar paint and overlay behavior may vary by Chrome version, Android version, gesture mode, and OEM shell.
+- The target behavior remains:
+  - Android status bar visible.
+  - Status bar visually integrated with the app surface where possible.
+  - Android bottom control bar may auto-hide/reappear.
+  - Android bottom control behavior should not push or resize the Arcanum panel shell.
+  - Arcanum footer should remain visually docked and usable.
+
+**App Shell / Visual Motion Work Recorded**
+- Added animated constellation field and panel-edge star effects.
+- Added active module-dot pulse.
+- Added global route prefetching on footer mount and pointer/focus interaction.
+- Added immediate triple-card reveal on global tab press.
+- Added active global tab holographic styling.
+- Tuned card transition timing, route transition feel, deck reveal timing, and footer active-tab shimmer.
+- Active tab animation should remain holographic and should not read as a notification blink.
+- Further transition work should prioritize preloading/hold-state architecture over purely decorative animation changes.
+
+**Current Open Issues**
+1. Android status-bar/control-bar behavior is still not fully perfected on device.
+2. The transparent status-bar target may require native wrapper behavior if Chrome PWA limits prevent the desired effect.
+3. Footer height/lift needs continued on-device testing.
+4. Route-load timing can still interrupt perceived transition smoothness.
+5. Triple-card reveal and card transitions need continued refinement around slow page loads.
+6. Active global tab holographic theme should be preserved without excessive blinking.
+7. The editing workflow should continue to be tested through Android Termux plus local merge/deploy.
+
+**Future Chain Direction**
+- The local development environment is intended to become the first true Arcanum node.
+- The Android device is intended to connect as a mobile development terminal, installed PWA client, and future connected node/client surface.
+- The Arcanum Chain implementation should eventually bind identity, sync, governance, and decentralized state to this node relationship.
+
+**Continuity Instruction for Future Architect GPT Sessions**
+- Begin by reading this canonical document before continuing mobile shell or node-work discussions.
+- Treat `mobile` as the implementation branch and `main` as the live branch unless the Human Architect explicitly changes the doctrine.
+- Do not apply experimental mobile/PWA shell changes directly to `main`.
+- Preserve the mobile-first Termux workflow and local-dev merge/deploy station model.
+- Record major future workflow or architectural changes in this canonical logging section or any newer canonical archive path ratified by the Human Architect.
+
+Status: Mobile app-shell session archived; branch doctrine and workflow continuity recorded.
 
 ---
 
