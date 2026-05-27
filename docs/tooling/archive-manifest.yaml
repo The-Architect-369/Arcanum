@@ -40,7 +40,7 @@ archives:
     reason: Legacy ArchitectGPT extended spec retained for historical comparison only.
     superseded_by:
       - docs/governance/architectgpt/architect-gpt.md
-- archived: docs/archive/chain/arcanum/app-disabled/export.go.disabled
+  - archived: docs/archive/chain/arcanum/app-disabled/export.go.disabled
     previous_path: chains/arcanum/app/export.go.disabled
     reason: Disabled chain app source moved out of active implementation tree.
     superseded_by:
