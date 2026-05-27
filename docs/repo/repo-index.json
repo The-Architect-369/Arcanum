@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-05-27T01:18:40Z",
+  "generated_at": "2026-05-27T01:23:05Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "cddec3c84",
+  "commit": "d194890cd",
   "generator_version": "1.1",
   "files": [
     {
@@ -2066,6 +2066,15 @@
       "lines": 1
     },
     {
+      "path": "chains/arcanum/docs/template/index.tpl",
+      "type": "file",
+      "size_bytes": 225,
+      "last_modified_commit": "d194890cd",
+      "is_empty": false,
+      "extension": ".tpl",
+      "lines": 11
+    },
+    {
       "path": "chains/arcanum/go.mod",
       "type": "file",
       "size_bytes": 22187,
@@ -2302,11 +2311,11 @@
     {
       "path": "chains/arcanum/x/chaincode/client/cli/tx.go",
       "type": "file",
-      "size_bytes": 845,
-      "last_modified_commit": "5da311ef6",
+      "size_bytes": 802,
+      "last_modified_commit": "d194890cd",
       "is_empty": false,
       "extension": ".go",
-      "lines": 37
+      "lines": 36
     },
     {
       "path": "chains/arcanum/x/chaincode/genesis.go",
@@ -2356,11 +2365,11 @@
     {
       "path": "chains/arcanum/x/chaincode/msg_server.go",
       "type": "file",
-      "size_bytes": 1152,
+      "size_bytes": 1011,
       "last_modified_commit": "975ab5f93",
       "is_empty": false,
       "extension": ".go",
-      "lines": 46
+      "lines": 45
     },
     {
       "path": "chains/arcanum/x/chaincode/types/codec.go",
@@ -2410,11 +2419,11 @@
     {
       "path": "chains/arcanum/x/mana/client/cli/tx.go",
       "type": "file",
-      "size_bytes": 775,
-      "last_modified_commit": "5da311ef6",
+      "size_bytes": 948,
+      "last_modified_commit": "d194890cd",
       "is_empty": false,
       "extension": ".go",
-      "lines": 36
+      "lines": 45
     },
     {
       "path": "chains/arcanum/x/mana/keeper/genesis.go",
@@ -2455,11 +2464,11 @@
     {
       "path": "chains/arcanum/x/mana/msg_server.go",
       "type": "file",
-      "size_bytes": 872,
+      "size_bytes": 1541,
       "last_modified_commit": "975ab5f93",
       "is_empty": false,
       "extension": ".go",
-      "lines": 40
+      "lines": 60
     },
     {
       "path": "chains/arcanum/x/mana/types/codec.go",
@@ -3023,7 +3032,7 @@
       "path": "docs/repo/repo-index.json",
       "type": "file",
       "size_bytes": 142480,
-      "last_modified_commit": "cddec3c84",
+      "last_modified_commit": "d194890cd",
       "is_empty": false,
       "extension": ".json",
       "lines": 5201

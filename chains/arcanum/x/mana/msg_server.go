@@ -3,38 +3,58 @@ package mana
 import (
 	"context"
 
-	"cosmossdk.io/errors"
-	sdk "github.com/cosmos/cosmos-sdk/types"
-
 	"arcanum/x/mana/keeper"
 	"arcanum/x/mana/types"
+
+	sdk "github.com/cosmos/cosmos-sdk/types"
 )
 
-type MsgServer struct{ k keeper.Keeper }
+type MsgServer struct {
+	k keeper.Keeper
+	types.UnimplementedMsgServer
+}
 
-func NewMsgServerImpl(k keeper.Keeper) *MsgServer { return &MsgServer{k: k} }
+func NewMsgServerImpl(k keeper.Keeper) *MsgServer {
+	return &MsgServer{k: k}
+}
 
-func (s *MsgServer) Mint(goCtx context.Context, msg *types.MsgMint) (*types.MsgMintResponse, error) {
+func (s *MsgServer) Spend(goCtx context.Context, msg *types.MsgSpend) (*types.MsgSpendResponse, error) {
 	ctx := sdk.UnwrapSDKContext(goCtx)
 
-	to, err := sdk.AccAddressFromBech32(msg.ToAddress)
-	if err != nil {
-		return nil, err
-	}
-
-	amt, ok := sdk.NewIntFromString(msg.Amount)
-	if !ok || !amt.IsPositive() {
-		return nil, errors.Wrap(errors.ErrInvalidRequest, "invalid amount")
-	}
-
-	s.k.Mint(ctx, to, amt)
-
 	ctx.EventManager().EmitEvent(
-		sdk.NewEvent("mana_mint",
-			sdk.NewAttribute("to", msg.ToAddress),
-			sdk.NewAttribute("amount", msg.Amount),
+		sdk.NewEvent("mana_spend",
+			sdk.NewAttribute("creator", msg.Creator),
+			sdk.NewAttribute("address", msg.Address),
+			sdk.NewAttribute("purpose", msg.Purpose),
+			sdk.NewAttribute("amount", sdk.NewUint64Coin("umana", msg.Amount).Amount.String()),
 		),
 	)
 
-	return &types.MsgMintResponse{}, nil
+	return &types.MsgSpendResponse{}, nil
+}
+
+func (s *MsgServer) DepositEnable(goCtx context.Context, msg *types.MsgDepositEnable) (*types.MsgDepositEnableResponse, error) {
+	ctx := sdk.UnwrapSDKContext(goCtx)
+
+	ctx.EventManager().EmitEvent(
+		sdk.NewEvent("mana_deposit_enable",
+			sdk.NewAttribute("creator", msg.Creator),
+			sdk.NewAttribute("feature_id", msg.FeatureId),
+		),
+	)
+
+	return &types.MsgDepositEnableResponse{}, nil
+}
+
+func (s *MsgServer) DepositDisable(goCtx context.Context, msg *types.MsgDepositDisable) (*types.MsgDepositDisableResponse, error) {
+	ctx := sdk.UnwrapSDKContext(goCtx)
+
+	ctx.EventManager().EmitEvent(
+		sdk.NewEvent("mana_deposit_disable",
+			sdk.NewAttribute("creator", msg.Creator),
+			sdk.NewAttribute("feature_id", msg.FeatureId),
+		),
+	)
+
+	return &types.MsgDepositDisableResponse{}, nil
 }

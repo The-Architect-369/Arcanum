@@ -9,21 +9,20 @@ import (
 	"arcanum/x/chaincode/types"
 )
 
-func CmdMint() *cobra.Command {
+func CmdMintSbi() *cobra.Command {
 	cmd := &cobra.Command{
-		Use:   "mint [owner] [token-id] [metadata-cid]",
+		Use:   "mint-sbi [creator] [to]",
 		Short: "Mint a chaincode identity anchor for an address",
-		Args:  cobra.ExactArgs(3),
+		Args:  cobra.ExactArgs(2),
 		RunE: func(cmd *cobra.Command, args []string) error {
 			clientCtx, err := client.GetClientTxContext(cmd)
 			if err != nil {
 				return err
 			}
 
-			msg := &types.MsgMint{
-				Owner:       args[0],
-				TokenId:     args[1],
-				MetadataCid: args[2],
+			msg := &types.MsgMintSbi{
+				Creator: args[0],
+				To:      args[1],
 			}
 			if err := msg.ValidateBasic(); err != nil {
 				return err

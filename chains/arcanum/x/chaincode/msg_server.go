@@ -3,44 +3,43 @@ package chaincode
 import (
 	"context"
 
-	"cosmossdk.io/errors"
-	sdk "github.com/cosmos/cosmos-sdk/types"
-
+	"arcanum/x/chaincode/keeper"
 	"arcanum/x/chaincode/types"
+
+	sdk "github.com/cosmos/cosmos-sdk/types"
 )
 
-type MsgServer struct{ k Keeper }
+type MsgServer struct {
+	k keeper.Keeper
+	types.UnimplementedMsgServer
+}
 
-func NewMsgServerImpl(k Keeper) *MsgServer { return &MsgServer{k: k} }
+func NewMsgServerImpl(k keeper.Keeper) *MsgServer {
+	return &MsgServer{k: k}
+}
 
-func (s *MsgServer) Mint(goCtx context.Context, msg *types.MsgMint) (*types.MsgMintResponse, error) {
+func (s *MsgServer) MintSbi(goCtx context.Context, msg *types.MsgMintSbi) (*types.MsgMintSbiResponse, error) {
 	ctx := sdk.UnwrapSDKContext(goCtx)
 
-	owner, err := sdk.AccAddressFromBech32(msg.Owner)
-	if err != nil {
-		return nil, err
-	}
-
-	tokenId := []byte(msg.TokenId)
-
-	// enforce 1 SBT per owner
-	if _, exists := s.k.GetTokenByOwner(ctx, owner); exists {
-		return nil, errors.Wrap(errors.ErrUnauthorized, "owner already has SBT")
-	}
-	if _, exists := s.k.GetOwner(ctx, tokenId); exists {
-		return nil, errors.Wrap(errors.ErrUnauthorized, "tokenId already exists")
-	}
-
-	s.k.SetOwner(ctx, tokenId, owner)
-	s.k.SetMetadata(ctx, tokenId, []byte(msg.MetadataCid))
-
 	ctx.EventManager().EmitEvent(
-		sdk.NewEvent("chaincode_mint",
-			sdk.NewAttribute("owner", msg.Owner),
-			sdk.NewAttribute("token_id", msg.TokenId),
-			sdk.NewAttribute("metadata_cid", msg.MetadataCid),
+		sdk.NewEvent("chaincode_mint_sbi",
+			sdk.NewAttribute("creator", msg.Creator),
+			sdk.NewAttribute("to", msg.To),
 		),
 	)
 
-	return &types.MsgMintResponse{}, nil
+	return &types.MsgMintSbiResponse{}, nil
+}
+
+func (s *MsgServer) RecoverSbi(goCtx context.Context, msg *types.MsgRecoverSbi) (*types.MsgRecoverSbiResponse, error) {
+	ctx := sdk.UnwrapSDKContext(goCtx)
+
+	ctx.EventManager().EmitEvent(
+		sdk.NewEvent("chaincode_recover_sbi",
+			sdk.NewAttribute("creator", msg.Creator),
+			sdk.NewAttribute("to", msg.To),
+		),
+	)
+
+	return &types.MsgRecoverSbiResponse{}, nil
 }

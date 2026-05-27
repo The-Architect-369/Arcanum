@@ -1,6 +1,8 @@
 package cli
 
 import (
+	"strconv"
+
 	"github.com/cosmos/cosmos-sdk/client"
 	"github.com/cosmos/cosmos-sdk/client/flags"
 	"github.com/cosmos/cosmos-sdk/client/tx"
@@ -9,20 +11,27 @@ import (
 	"arcanum/x/mana/types"
 )
 
-func CmdMint() *cobra.Command {
+func CmdSpend() *cobra.Command {
 	cmd := &cobra.Command{
-		Use:   "mint [to-address] [amount]",
-		Short: "Mint MANA for an address",
-		Args:  cobra.ExactArgs(2),
+		Use:   "spend [creator] [address] [purpose] [amount]",
+		Short: "Spend MANA for a declared purpose",
+		Args:  cobra.ExactArgs(4),
 		RunE: func(cmd *cobra.Command, args []string) error {
 			clientCtx, err := client.GetClientTxContext(cmd)
 			if err != nil {
 				return err
 			}
 
-			msg := &types.MsgMint{
-				ToAddress: args[0],
-				Amount:    args[1],
+			amount, err := strconv.ParseUint(args[3], 10, 64)
+			if err != nil {
+				return err
+			}
+
+			msg := &types.MsgSpend{
+				Creator: args[0],
+				Address: args[1],
+				Purpose: args[2],
+				Amount:  amount,
 			}
 			if err := msg.ValidateBasic(); err != nil {
 				return err
