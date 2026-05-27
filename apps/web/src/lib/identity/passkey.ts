@@ -17,6 +17,11 @@ export type StoredPasskey = {
   kind: "passkey";
 };
 
+export type PasskeySupport = {
+  supported: boolean;
+  reason: string;
+};
+
 function toBase64Url(buffer: ArrayBuffer) {
   const bytes = new Uint8Array(buffer);
   let text = "";
@@ -41,6 +46,26 @@ function randomChallenge() {
   const bytes = new Uint8Array(32);
   crypto.getRandomValues(bytes);
   return bytes;
+}
+
+export function getPasskeySupport(): PasskeySupport {
+  if (typeof window === "undefined") {
+    return { supported: false, reason: "Browser context unavailable." };
+  }
+  if (!window.isSecureContext) {
+    return { supported: false, reason: "Passkeys require a secure context." };
+  }
+  if (!("PublicKeyCredential" in window)) {
+    return { supported: false, reason: "This browser does not expose PublicKeyCredential." };
+  }
+  if (!navigator.credentials?.create || !navigator.credentials?.get) {
+    return { supported: false, reason: "Credential APIs are unavailable in this browser." };
+  }
+  return { supported: true, reason: "Passkey APIs are available." };
+}
+
+export function isPasskeySupported() {
+  return getPasskeySupport().supported;
 }
 
 export async function getPasskey(): Promise<StoredPasskey | null> {
@@ -80,12 +105,9 @@ export async function clearPasskey() {
 }
 
 export async function registerPasskey() {
-  if (typeof window === "undefined") {
-    throw new Error("Passkey registration is only available in the browser.");
-  }
-
-  if (!(window.PublicKeyCredential && navigator.credentials?.create)) {
-    throw new Error("Passkeys are not supported in this browser.");
+  const support = getPasskeySupport();
+  if (!support.supported) {
+    throw new Error(support.reason);
   }
 
   const userId = crypto.getRandomValues(new Uint8Array(16));
@@ -128,17 +150,14 @@ export async function registerPasskey() {
 }
 
 export async function signInPasskey() {
-  if (typeof window === "undefined") {
-    throw new Error("Passkey sign-in is only available in the browser.");
+  const support = getPasskeySupport();
+  if (!support.supported) {
+    throw new Error(support.reason);
   }
 
   const existing = await getPasskey();
   if (!existing) {
     throw new Error("No passkey is registered on this device.");
-  }
-
-  if (!(window.PublicKeyCredential && navigator.credentials?.get)) {
-    throw new Error("Passkeys are not supported in this browser.");
   }
 
   await navigator.credentials.get({
