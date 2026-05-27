@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-05-27T01:25:03Z",
+  "generated_at": "2026-05-27T01:27:10Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "ebaef9715",
+  "commit": "a9fedcfe1",
   "generator_version": "1.1",
   "files": [
     {
@@ -2312,7 +2312,7 @@
       "path": "chains/arcanum/x/chaincode/client/cli/tx.go",
       "type": "file",
       "size_bytes": 734,
-      "last_modified_commit": "ebaef9715",
+      "last_modified_commit": "a9fedcfe1",
       "is_empty": false,
       "extension": ".go",
       "lines": 32
@@ -2320,11 +2320,11 @@
     {
       "path": "chains/arcanum/x/chaincode/genesis.go",
       "type": "file",
-      "size_bytes": 881,
+      "size_bytes": 925,
       "last_modified_commit": "975ab5f93",
       "is_empty": false,
       "extension": ".go",
-      "lines": 41
+      "lines": 42
     },
     {
       "path": "chains/arcanum/x/chaincode/keeper/genesis.go",
@@ -2420,7 +2420,7 @@
       "path": "chains/arcanum/x/mana/client/cli/tx.go",
       "type": "file",
       "size_bytes": 880,
-      "last_modified_commit": "ebaef9715",
+      "last_modified_commit": "a9fedcfe1",
       "is_empty": false,
       "extension": ".go",
       "lines": 41
@@ -2465,7 +2465,7 @@
       "path": "chains/arcanum/x/mana/msg_server.go",
       "type": "file",
       "size_bytes": 1532,
-      "last_modified_commit": "ebaef9715",
+      "last_modified_commit": "a9fedcfe1",
       "is_empty": false,
       "extension": ".go",
       "lines": 61
@@ -3032,7 +3032,7 @@
       "path": "docs/repo/repo-index.json",
       "type": "file",
       "size_bytes": 142710,
-      "last_modified_commit": "ebaef9715",
+      "last_modified_commit": "a9fedcfe1",
       "is_empty": false,
       "extension": ".json",
       "lines": 5210

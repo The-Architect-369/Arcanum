@@ -1,6 +1,7 @@
 package chaincode
 
 import (
+	"arcanum/x/chaincode/keeper"
 	"context"
 	"encoding/json"
 
@@ -10,7 +11,7 @@ import (
 	"arcanum/x/chaincode/types"
 )
 
-func (k Keeper) InitGenesis(ctx context.Context, cdc codec.JSONCodec, bz json.RawMessage) []abci.ValidatorUpdate {
+func (k keeper.Keeper) InitGenesis(ctx context.Context, cdc codec.JSONCodec, bz json.RawMessage) []abci.ValidatorUpdate {
 	if len(bz) == 0 {
 		// set default params
 		_ = k.SetParams(ctx, types.DefaultParams())
@@ -28,7 +29,7 @@ func (k Keeper) InitGenesis(ctx context.Context, cdc codec.JSONCodec, bz json.Ra
 	return nil
 }
 
-func (k Keeper) ExportGenesis(ctx context.Context, cdc codec.JSONCodec) json.RawMessage {
+func (k keeper.Keeper) ExportGenesis(ctx context.Context, cdc codec.JSONCodec) json.RawMessage {
 	params, _ := k.GetParams(ctx)
 	genState := types.GenesisState{
 		Params: params,
