@@ -1,11 +1,12 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Gem, Menu, UserCog, Wallet, ArrowLeftRight, Settings, Bell, CircleUserRound } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import BadgeCounter from '@/components/ui/BadgeCounter';
 import ACCOnboardingModal from '@/components/ui/ACCOnboardingModal';
-import { useAccount } from '@/state/useAccount';
+import { getNotificationCount, setNotificationCount, useAccount } from '@/state/useAccount';
+import { getUnreadNotificationCount } from '@/lib/mobile/notifications';
 
 export default function AppHeader() {
   const router = useRouter();
@@ -14,6 +15,45 @@ export default function AppHeader() {
   const acc = useAccount();
   const mana = acc.mana;
   const notifCount = acc.notifCount;
+
+  useEffect(() => {
+    let active = true;
+
+    const syncNotifications = async () => {
+      try {
+        const next = await getUnreadNotificationCount();
+        if (!active) return;
+        if (next !== getNotificationCount()) {
+          setNotificationCount(next);
+        }
+      } catch {
+        // ignore local notification sync failures
+      }
+    };
+
+    void syncNotifications();
+    const interval = window.setInterval(() => {
+      void syncNotifications();
+    }, 10000);
+    const onFocus = () => {
+      void syncNotifications();
+    };
+    const onVisibility = () => {
+      if (document.visibilityState === 'visible') {
+        void syncNotifications();
+      }
+    };
+
+    window.addEventListener('focus', onFocus);
+    window.addEventListener('visibilitychange', onVisibility);
+
+    return () => {
+      active = false;
+      window.clearInterval(interval);
+      window.removeEventListener('focus', onFocus);
+      window.removeEventListener('visibilitychange', onVisibility);
+    };
+  }, []);
 
   const go = (path: string) => {
     setOpen(false);
