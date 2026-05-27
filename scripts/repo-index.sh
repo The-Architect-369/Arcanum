@@ -1,143 +1,111 @@
 #!/usr/bin/env bash
-set -euo pipefail
-
-# Deterministic structural snapshot generator.
+# repo-index.sh — deterministic repository structure snapshot
 # Output: docs/repo/repo-index.json
+
+set -euo pipefail
 
 ROOT_DIR="$(git rev-parse --show-toplevel)"
 cd "$ROOT_DIR"
 
-OUT_DIR="docs/repo"
-OUT_FILE="${OUT_DIR}/repo-index.json"
-TMP_FILE="${OUT_FILE}.tmp"
+OUT="docs/repo/repo-index.json"
+TMP="${OUT}.tmp"
 
-GENERATOR_VERSION="1.0"
-EMPTY_THRESHOLD_BYTES=5
+mkdir -p "$(dirname "$OUT")"
 
-mkdir -p "$OUT_DIR"
+python3 - "$OUT" <<'PY'
+import json
+import os
+import subprocess
+import sys
+from pathlib import Path
 
-commit="$(git rev-parse --short HEAD 2>/dev/null || echo "unknown")"
-now="$(date -u +"%Y-%m-%dT%H:%M:%SZ")"
-repo_slug="The-Architect-369/Arcanum"
+out = Path(sys.argv[1])
+root = Path.cwd()
 
-# Prefer jq if present; fall back to python3.
-has_jq=false
-if command -v jq >/dev/null 2>&1; then
-  has_jq=true
-fi
+def run(args):
+    return subprocess.check_output(args, cwd=root, text=True).strip()
 
-# Build file list JSON lines (stable ordering via git ls-files).
-# We do not index ignored/untracked files.
-if $has_jq; then
-  files_json="$(
-    git ls-files -z | while IFS= read -r -d '' path; do
-      # Basic stats
-      size_bytes="$(stat -c%s "$path" 2>/dev/null || echo 0)"
-      # Best-effort last modified commit for this path
-      last_commit="$(git log -1 --pretty=format:%h -- "$path" 2>/dev/null || echo "unknown")"
-      # Extension
-      ext=""
-      base="${path##*/}"
-      if [[ "$base" == *.* ]]; then
-        ext=".${base##*.}"
-      fi
-      # Line count (best effort; binary files may fail)
-      lines=0
-      if [[ "$ext" == ".md" || "$ext" == ".ts" || "$ext" == ".tsx" || "$ext" == ".js" || "$ext" == ".json" || "$ext" == ".yml" || "$ext" == ".yaml" || "$ext" == ".go" || "$ext" == ".proto" || "$ext" == ".sh" ]]; then
-        lines="$(wc -l < "$path" 2>/dev/null | tr -d ' ' || echo 0)"
-      fi
-
-      is_empty=false
-      if [[ "$size_bytes" -le "$EMPTY_THRESHOLD_BYTES" ]]; then
-        is_empty=true
-      fi
-
-      printf '{"path":"%s","type":"file","size_bytes":%s,"last_modified_commit":"%s","is_empty":%s,"extension":"%s","lines":%s}\n' \
-        "$path" "$size_bytes" "$last_commit" "$is_empty" "$ext" "$lines"
-    done | jq -s 'sort_by(.path)'
-  )"
-
-  jq -n \
-    --arg generated_at "$now" \
-    --arg repo "$repo_slug" \
-    --arg commit "$commit" \
-    --arg generator_version "$GENERATOR_VERSION" \
-    --argjson files "$files_json" \
-    '{generated_at:$generated_at,repo:$repo,commit:$commit,generator_version:$generator_version,files:$files}' \
-    > "$TMP_FILE"
-else
-  python3 - <<'PY' > "$TMP_FILE"
-import json, os, subprocess, sys, datetime
-
-GENERATOR_VERSION="1.0"
-EMPTY_THRESHOLD_BYTES=5
-repo_slug="The-Architect-369/Arcanum"
-
-def run(cmd):
-  return subprocess.check_output(cmd, stderr=subprocess.DEVNULL).decode("utf-8", "replace")
-
-try:
-  commit = run(["git","rev-parse","--short","HEAD"]).strip()
-except Exception:
-  commit = "unknown"
-
-now = datetime.datetime.utcnow().replace(microsecond=0).isoformat() + "Z"
-
-# Stable ordering from git ls-files
-raw = subprocess.check_output(["git","ls-files","-z"])
-paths = [p.decode("utf-8", "replace") for p in raw.split(b"\x00") if p]
-
-files = []
-for path in paths:
-  try:
-    size_bytes = os.stat(path).st_size
-  except Exception:
-    size_bytes = 0
-  try:
-    last_commit = run(["git","log","-1","--pretty=format:%h","--",path]).strip() or "unknown"
-  except Exception:
-    last_commit = "unknown"
-
-  base = os.path.basename(path)
-  ext = ""
-  if "." in base:
-    ext = "." + base.rsplit(".",1)[-1]
-
-  lines = 0
-  if ext in {".md",".ts",".tsx",".js",".json",".yml",".yaml",".go",".proto",".sh"}:
+def safe_run(args, default="unknown"):
     try:
-      with open(path, "rb") as f:
-        lines = sum(1 for _ in f)
+        value = run(args)
+        return value if value else default
     except Exception:
-      lines = 0
+        return default
 
-  is_empty = size_bytes <= EMPTY_THRESHOLD_BYTES
+generated_at = safe_run(["date", "-u", "+%Y-%m-%dT%H:%M:%SZ"])
+repo = safe_run(["git", "config", "--get", "remote.origin.url"], "unknown")
+commit = safe_run(["git", "rev-parse", "--short=9", "HEAD"], "unknown")
 
-  files.append({
-    "path": path,
-    "type": "file",
-    "size_bytes": int(size_bytes),
-    "last_modified_commit": last_commit,
-    "is_empty": bool(is_empty),
-    "extension": ext,
-    "lines": int(lines),
-  })
+# Normalize common GitHub URLs to owner/repo when possible.
+repo_name = repo
+if repo.endswith(".git"):
+    repo_name = repo[:-4]
+if "github.com" in repo_name:
+    repo_name = repo_name.rstrip("/").split("github.com")[-1].strip(":/")
+elif repo_name == "unknown":
+    repo_name = "unknown"
 
-files.sort(key=lambda x: x["path"])
+tracked = subprocess.check_output(
+    ["git", "ls-files"],
+    cwd=root,
+    text=True,
+).splitlines()
 
-doc = {
-  "generated_at": now,
-  "repo": repo_slug,
-  "commit": commit,
-  "generator_version": GENERATOR_VERSION,
-  "files": files,
+entries = []
+
+for rel in sorted(tracked):
+    path = root / rel
+
+    # Skip vanished files in odd index states.
+    if not path.exists():
+        continue
+
+    try:
+        st = path.stat()
+    except OSError:
+        continue
+
+    ext = path.suffix
+    size = st.st_size
+    is_empty = size == 0
+
+    lines = 0
+    if path.is_file():
+        try:
+            with path.open("rb") as f:
+                # Count lines only for reasonably text-like files.
+                sample = f.read(4096)
+                if b"\0" not in sample:
+                    f.seek(0)
+                    lines = sum(1 for _ in f)
+        except Exception:
+            lines = 0
+
+    last_modified_commit = safe_run(
+        ["git", "log", "-1", "--format=%h", "--", rel],
+        "unknown",
+    )
+
+    entries.append({
+        "path": rel,
+        "type": "file",
+        "size_bytes": size,
+        "last_modified_commit": last_modified_commit,
+        "is_empty": is_empty,
+        "extension": ext,
+        "lines": lines,
+    })
+
+data = {
+    "generated_at": generated_at,
+    "repo": repo_name,
+    "commit": commit,
+    "generator_version": "1.1",
+    "files": entries,
 }
 
-json.dump(doc, sys.stdout, indent=2, sort_keys=False)
-sys.stdout.write("\n")
+tmp = out.with_suffix(out.suffix + ".tmp")
+tmp.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+tmp.replace(out)
+print(f"✅ repo index generated: {out}")
 PY
-fi
-
-# Atomic replace
-mv "$TMP_FILE" "$OUT_FILE"
-echo "✅ repo index generated: $OUT_FILE"

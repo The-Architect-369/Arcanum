@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-05-27T01:13:58Z",
+  "generated_at": "2026-05-27T01:18:20Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "2af2ae693",
-  "generator_version": "1.0",
+  "commit": "ede21098d",
+  "generator_version": "1.1",
   "files": [
     {
       "path": ".architect-backups/20260401-071509/apps/web/src/app/(app)/nexus/current/page.tsx",
@@ -101,7 +101,7 @@
       "last_modified_commit": "f2063ca4c",
       "is_empty": false,
       "extension": ".ts",
-      "lines": 68
+      "lines": 69
     },
     {
       "path": ".architect-backups/20260401-071843/apps/web/src/app/(marketing)/activate/page.tsx",
@@ -164,7 +164,7 @@
       "last_modified_commit": "f2063ca4c",
       "is_empty": false,
       "extension": ".mjs",
-      "lines": 0
+      "lines": 3
     },
     {
       "path": ".architect-backups/20260401-073029/apps/web/src/app/activate/page.tsx",
@@ -182,7 +182,7 @@
       "last_modified_commit": "f2063ca4c",
       "is_empty": false,
       "extension": ".yaml",
-      "lines": 29
+      "lines": 30
     },
     {
       "path": ".architect-backups/20260404-085515/docs/governance/architectgpt/architect-gpt.md",
@@ -191,7 +191,7 @@
       "last_modified_commit": "f2063ca4c",
       "is_empty": false,
       "extension": ".md",
-      "lines": 284
+      "lines": 285
     },
     {
       "path": ".github/workflows/doctrine-guard.yml",
@@ -200,7 +200,7 @@
       "last_modified_commit": "811a91227",
       "is_empty": false,
       "extension": ".yml",
-      "lines": 36
+      "lines": 37
     },
     {
       "path": ".github/workflows/verify-sync.yml",
@@ -215,10 +215,10 @@
       "path": ".gitignore",
       "type": "file",
       "size_bytes": 419,
-      "last_modified_commit": "2af2ae693",
+      "last_modified_commit": "21d6e54ca",
       "is_empty": false,
-      "extension": ".gitignore",
-      "lines": 0
+      "extension": "",
+      "lines": 38
     },
     {
       "path": ".npmrc",
@@ -226,17 +226,17 @@
       "size_bytes": 28,
       "last_modified_commit": "ad55d8f73",
       "is_empty": false,
-      "extension": ".npmrc",
-      "lines": 0
+      "extension": "",
+      "lines": 1
     },
     {
       "path": ".nvmrc",
       "type": "file",
       "size_bytes": 3,
       "last_modified_commit": "695b32b8d",
-      "is_empty": true,
-      "extension": ".nvmrc",
-      "lines": 0
+      "is_empty": false,
+      "extension": "",
+      "lines": 1
     },
     {
       "path": "README.md",
@@ -253,8 +253,8 @@
       "size_bytes": 480,
       "last_modified_commit": "d32d6affc",
       "is_empty": false,
-      "extension": ".gitignore",
-      "lines": 0
+      "extension": "",
+      "lines": 41
     },
     {
       "path": "apps/web/README.md",
@@ -335,7 +335,7 @@
       "last_modified_commit": "d32d6affc",
       "is_empty": false,
       "extension": ".mjs",
-      "lines": 0
+      "lines": 32
     },
     {
       "path": "apps/web/middleware.ts",
@@ -353,7 +353,7 @@
       "last_modified_commit": "f2063ca4c",
       "is_empty": false,
       "extension": ".mjs",
-      "lines": 0
+      "lines": 4
     },
     {
       "path": "apps/web/node/docker/Dockerfile",
@@ -362,7 +362,7 @@
       "last_modified_commit": "5da311ef6",
       "is_empty": false,
       "extension": "",
-      "lines": 0
+      "lines": 8
     },
     {
       "path": "apps/web/node/ipfs/ipns-update.mjs",
@@ -371,7 +371,7 @@
       "last_modified_commit": "5da311ef6",
       "is_empty": false,
       "extension": ".mjs",
-      "lines": 0
+      "lines": 11
     },
     {
       "path": "apps/web/node/ipfs/publish.mjs",
@@ -380,7 +380,7 @@
       "last_modified_commit": "5da311ef6",
       "is_empty": false,
       "extension": ".mjs",
-      "lines": 0
+      "lines": 27
     },
     {
       "path": "apps/web/node/scripts/bootstrap.sh",
@@ -407,7 +407,7 @@
       "last_modified_commit": "5da311ef6",
       "is_empty": false,
       "extension": ".mjs",
-      "lines": 0
+      "lines": 7
     },
     {
       "path": "apps/web/public/file.svg",
@@ -416,7 +416,7 @@
       "last_modified_commit": "d32d6affc",
       "is_empty": false,
       "extension": ".svg",
-      "lines": 0
+      "lines": 1
     },
     {
       "path": "apps/web/public/globe.svg",
@@ -425,7 +425,7 @@
       "last_modified_commit": "d32d6affc",
       "is_empty": false,
       "extension": ".svg",
-      "lines": 0
+      "lines": 1
     },
     {
       "path": "apps/web/public/icons/account.png",
@@ -515,7 +515,7 @@
       "last_modified_commit": "55b94d7a8",
       "is_empty": false,
       "extension": ".svg",
-      "lines": 0
+      "lines": 41
     },
     {
       "path": "apps/web/public/manifest.json",
@@ -533,7 +533,7 @@
       "last_modified_commit": "d32d6affc",
       "is_empty": false,
       "extension": ".svg",
-      "lines": 0
+      "lines": 1
     },
     {
       "path": "apps/web/public/sw.js",
@@ -551,7 +551,7 @@
       "last_modified_commit": "d32d6affc",
       "is_empty": false,
       "extension": ".svg",
-      "lines": 0
+      "lines": 1
     },
     {
       "path": "apps/web/public/window.svg",
@@ -560,7 +560,7 @@
       "last_modified_commit": "d32d6affc",
       "is_empty": false,
       "extension": ".svg",
-      "lines": 0
+      "lines": 1
     },
     {
       "path": "apps/web/src/app/(app)/account/page.tsx",
@@ -830,7 +830,7 @@
       "last_modified_commit": "a04c0a7a2",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 4
+      "lines": 5
     },
     {
       "path": "apps/web/src/app/(app)/text/contacts/page.tsx",
@@ -974,7 +974,7 @@
       "last_modified_commit": "5da311ef6",
       "is_empty": false,
       "extension": ".css",
-      "lines": 0
+      "lines": 146
     },
     {
       "path": "apps/web/src/app/(marketing)/styles/motion.css",
@@ -983,7 +983,7 @@
       "last_modified_commit": "5da311ef6",
       "is_empty": false,
       "extension": ".css",
-      "lines": 0
+      "lines": 90
     },
     {
       "path": "apps/web/src/app/(marketing)/styles/utilities.css",
@@ -992,7 +992,7 @@
       "last_modified_commit": "5da311ef6",
       "is_empty": false,
       "extension": ".css",
-      "lines": 0
+      "lines": 53
     },
     {
       "path": "apps/web/src/app/activate/page.tsx",
@@ -1019,7 +1019,7 @@
       "last_modified_commit": "0488db779",
       "is_empty": false,
       "extension": ".css",
-      "lines": 0
+      "lines": 250
     },
     {
       "path": "apps/web/src/app/favicon.ico",
@@ -1037,7 +1037,7 @@
       "last_modified_commit": "94ac6e771",
       "is_empty": false,
       "extension": ".css",
-      "lines": 0
+      "lines": 403
     },
     {
       "path": "apps/web/src/app/layout.tsx",
@@ -1055,7 +1055,7 @@
       "last_modified_commit": "a04c0a7a2",
       "is_empty": false,
       "extension": ".ts",
-      "lines": 4
+      "lines": 5
     },
     {
       "path": "apps/web/src/app/onboard/page.tsx",
@@ -1424,7 +1424,7 @@
       "last_modified_commit": "a04c0a7a2",
       "is_empty": false,
       "extension": ".ts",
-      "lines": 15
+      "lines": 16
     },
     {
       "path": "apps/web/src/lib/cn.ts",
@@ -1451,7 +1451,7 @@
       "last_modified_commit": "7dfdd2782",
       "is_empty": false,
       "extension": ".ts",
-      "lines": 2
+      "lines": 3
     },
     {
       "path": "apps/web/src/lib/cosmos/queries.ts",
@@ -1469,7 +1469,7 @@
       "last_modified_commit": "7dfdd2782",
       "is_empty": false,
       "extension": ".ts",
-      "lines": 11
+      "lines": 12
     },
     {
       "path": "apps/web/src/lib/cosmos/wallet.ts",
@@ -1523,7 +1523,7 @@
       "last_modified_commit": "a04c0a7a2",
       "is_empty": false,
       "extension": ".ts",
-      "lines": 9
+      "lines": 10
     },
     {
       "path": "apps/web/src/lib/economy/tokens.ts",
@@ -1532,7 +1532,7 @@
       "last_modified_commit": "a04c0a7a2",
       "is_empty": false,
       "extension": ".ts",
-      "lines": 2
+      "lines": 3
     },
     {
       "path": "apps/web/src/lib/gates/index.ts",
@@ -1559,7 +1559,7 @@
       "last_modified_commit": "3e4eb25ae",
       "is_empty": false,
       "extension": ".ts",
-      "lines": 7
+      "lines": 8
     },
     {
       "path": "apps/web/src/lib/identity/burner.ts",
@@ -1568,7 +1568,7 @@
       "last_modified_commit": "3e4eb25ae",
       "is_empty": false,
       "extension": ".ts",
-      "lines": 23
+      "lines": 24
     },
     {
       "path": "apps/web/src/lib/identity/gates.ts",
@@ -1586,7 +1586,7 @@
       "last_modified_commit": "7dfdd2782",
       "is_empty": false,
       "extension": ".ts",
-      "lines": 2
+      "lines": 3
     },
     {
       "path": "apps/web/src/lib/identity/passkey.ts",
@@ -1595,7 +1595,7 @@
       "last_modified_commit": "642fbf2b7",
       "is_empty": false,
       "extension": ".ts",
-      "lines": 32
+      "lines": 33
     },
     {
       "path": "apps/web/src/lib/identity/trust.ts",
@@ -1613,7 +1613,7 @@
       "last_modified_commit": "7dfdd2782",
       "is_empty": false,
       "extension": ".ts",
-      "lines": 4
+      "lines": 5
     },
     {
       "path": "apps/web/src/lib/infra/arcanum.ts",
@@ -1631,7 +1631,7 @@
       "last_modified_commit": "642fbf2b7",
       "is_empty": false,
       "extension": ".ts",
-      "lines": 16
+      "lines": 17
     },
     {
       "path": "apps/web/src/lib/infra/helia.ts",
@@ -1649,7 +1649,7 @@
       "last_modified_commit": "3e4eb25ae",
       "is_empty": false,
       "extension": ".ts",
-      "lines": 4
+      "lines": 5
     },
     {
       "path": "apps/web/src/lib/infra/ipfs.ts",
@@ -1730,7 +1730,7 @@
       "last_modified_commit": "a04c0a7a2",
       "is_empty": false,
       "extension": ".ts",
-      "lines": 5
+      "lines": 6
     },
     {
       "path": "apps/web/src/lib/tempus/index.ts",
@@ -1739,7 +1739,7 @@
       "last_modified_commit": "a04c0a7a2",
       "is_empty": false,
       "extension": ".ts",
-      "lines": 4
+      "lines": 5
     },
     {
       "path": "apps/web/src/lib/tempus/lunar.ts",
@@ -1748,7 +1748,7 @@
       "last_modified_commit": "a04c0a7a2",
       "is_empty": false,
       "extension": ".ts",
-      "lines": 111
+      "lines": 112
     },
     {
       "path": "apps/web/src/lib/tempus/planetary.ts",
@@ -1757,7 +1757,7 @@
       "last_modified_commit": "a04c0a7a2",
       "is_empty": false,
       "extension": ".ts",
-      "lines": 17
+      "lines": 18
     },
     {
       "path": "apps/web/src/lib/tempus/window.ts",
@@ -1766,7 +1766,7 @@
       "last_modified_commit": "a04c0a7a2",
       "is_empty": false,
       "extension": ".ts",
-      "lines": 47
+      "lines": 48
     },
     {
       "path": "apps/web/src/lib/tempus/zodiac.ts",
@@ -1775,7 +1775,7 @@
       "last_modified_commit": "a04c0a7a2",
       "is_empty": false,
       "extension": ".ts",
-      "lines": 70
+      "lines": 71
     },
     {
       "path": "apps/web/src/lib/utils.ts",
@@ -1820,7 +1820,7 @@
       "last_modified_commit": "642fbf2b7",
       "is_empty": false,
       "extension": ".css",
-      "lines": 0
+      "lines": 57
     },
     {
       "path": "apps/web/tailwind.config.ts",
@@ -1864,8 +1864,8 @@
       "size_bytes": 79,
       "last_modified_commit": "5da311ef6",
       "is_empty": false,
-      "extension": ".gitignore",
-      "lines": 0
+      "extension": "",
+      "lines": 9
     },
     {
       "path": "chains/arcanum/Makefile",
@@ -1874,7 +1874,7 @@
       "last_modified_commit": "5da311ef6",
       "is_empty": false,
       "extension": "",
-      "lines": 0
+      "lines": 121
     },
     {
       "path": "chains/arcanum/amino/amino.ts",
@@ -1946,7 +1946,7 @@
       "last_modified_commit": "5da311ef6",
       "is_empty": false,
       "extension": ".lock",
-      "lines": 0
+      "lines": 24
     },
     {
       "path": "chains/arcanum/buf.yaml",
@@ -2009,7 +2009,7 @@
       "last_modified_commit": "5da311ef6",
       "is_empty": false,
       "extension": ".yml",
-      "lines": 26
+      "lines": 27
     },
     {
       "path": "chains/arcanum/cosmos/app/v1alpha1/module.ts",
@@ -2063,7 +2063,7 @@
       "last_modified_commit": "5da311ef6",
       "is_empty": false,
       "extension": ".json",
-      "lines": 0
+      "lines": 1
     },
     {
       "path": "chains/arcanum/go.mod",
@@ -2072,7 +2072,7 @@
       "last_modified_commit": "975ab5f93",
       "is_empty": false,
       "extension": ".mod",
-      "lines": 0
+      "lines": 437
     },
     {
       "path": "chains/arcanum/go.sum",
@@ -2081,7 +2081,7 @@
       "last_modified_commit": "5da311ef6",
       "is_empty": false,
       "extension": ".sum",
-      "lines": 0
+      "lines": 2966
     },
     {
       "path": "chains/arcanum/gogoproto/gogo.ts",
@@ -2558,7 +2558,7 @@
       "last_modified_commit": "9aae3bedc",
       "is_empty": false,
       "extension": ".md",
-      "lines": 67
+      "lines": 68
     },
     {
       "path": "docs/architecture/app-chain-doctrine.md",
@@ -2612,7 +2612,7 @@
       "last_modified_commit": "b4c8d3fe7",
       "is_empty": false,
       "extension": ".md",
-      "lines": 179
+      "lines": 180
     },
     {
       "path": "docs/archive/app/README.md",
@@ -2630,7 +2630,7 @@
       "last_modified_commit": "b4c8d3fe7",
       "is_empty": false,
       "extension": ".md",
-      "lines": 103
+      "lines": 104
     },
     {
       "path": "docs/archive/app/tempus/README.md",
@@ -2684,7 +2684,7 @@
       "last_modified_commit": "b4c8d3fe7",
       "is_empty": false,
       "extension": ".md",
-      "lines": 196
+      "lines": 197
     },
     {
       "path": "docs/archive/architectgpt/architectgpt-extended.md",
@@ -2693,34 +2693,61 @@
       "last_modified_commit": "b4c8d3fe7",
       "is_empty": false,
       "extension": ".md",
-      "lines": 263
+      "lines": 264
+    },
+    {
+      "path": "docs/archive/chain/README.md",
+      "type": "file",
+      "size_bytes": 446,
+      "last_modified_commit": "21d6e54ca",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 13
+    },
+    {
+      "path": "docs/archive/chain/arcanum/README.md",
+      "type": "file",
+      "size_bytes": 399,
+      "last_modified_commit": "21d6e54ca",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 19
+    },
+    {
+      "path": "docs/archive/chain/arcanum/app-disabled/README.md",
+      "type": "file",
+      "size_bytes": 479,
+      "last_modified_commit": "21d6e54ca",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 15
     },
     {
       "path": "docs/archive/chain/arcanum/app-disabled/export.go.disabled",
       "type": "file",
       "size_bytes": 7502,
-      "last_modified_commit": "",
+      "last_modified_commit": "21d6e54ca",
       "is_empty": false,
       "extension": ".disabled",
-      "lines": 0
+      "lines": 256
     },
     {
       "path": "docs/archive/chain/arcanum/app-disabled/ibc.go.disabled",
       "type": "file",
       "size_bytes": 7252,
-      "last_modified_commit": "",
+      "last_modified_commit": "21d6e54ca",
       "is_empty": false,
       "extension": ".disabled",
-      "lines": 0
+      "lines": 167
     },
     {
       "path": "docs/archive/chain/arcanum/app-disabled/module_basics.go.disabled",
       "type": "file",
       "size_bytes": 651,
-      "last_modified_commit": "",
+      "last_modified_commit": "21d6e54ca",
       "is_empty": false,
       "extension": ".disabled",
-      "lines": 0
+      "lines": 21
     },
     {
       "path": "docs/archive/migration-notes/2026-05-26-structural-alignment/suggested-first-wave.md",
@@ -2863,7 +2890,7 @@
       "size_bytes": 0,
       "last_modified_commit": "b4c8d3fe7",
       "is_empty": true,
-      "extension": ".gitkeep",
+      "extension": "",
       "lines": 0
     },
     {
@@ -2873,7 +2900,7 @@
       "last_modified_commit": "60bd5ee4f",
       "is_empty": false,
       "extension": ".md",
-      "lines": 290
+      "lines": 291
     },
     {
       "path": "docs/governance/governance-changelog.md",
@@ -2882,7 +2909,7 @@
       "last_modified_commit": "60bd5ee4f",
       "is_empty": false,
       "extension": ".md",
-      "lines": 33
+      "lines": 34
     },
     {
       "path": "docs/governance/governance-specification.md",
@@ -2891,7 +2918,7 @@
       "last_modified_commit": "60bd5ee4f",
       "is_empty": false,
       "extension": ".md",
-      "lines": 285
+      "lines": 286
     },
     {
       "path": "docs/governance/hopegpt/hope-guardian.md",
@@ -2900,7 +2927,7 @@
       "last_modified_commit": "60bd5ee4f",
       "is_empty": false,
       "extension": ".md",
-      "lines": 218
+      "lines": 219
     },
     {
       "path": "docs/governance/treasury-constitution.md",
@@ -2909,7 +2936,7 @@
       "last_modified_commit": "60bd5ee4f",
       "is_empty": false,
       "extension": ".md",
-      "lines": 212
+      "lines": 213
     },
     {
       "path": "docs/index.md",
@@ -2963,7 +2990,7 @@
       "last_modified_commit": "3e4eb25ae",
       "is_empty": false,
       "extension": ".md",
-      "lines": 106
+      "lines": 107
     },
     {
       "path": "docs/modules/tempus/tempus.md",
@@ -2990,13 +3017,13 @@
       "last_modified_commit": "9aae3bedc",
       "is_empty": false,
       "extension": ".md",
-      "lines": 59
+      "lines": 60
     },
     {
       "path": "docs/repo/repo-index.json",
       "type": "file",
-      "size_bytes": 141440,
-      "last_modified_commit": "2af2ae693",
+      "size_bytes": 141533,
+      "last_modified_commit": "21d6e54ca",
       "is_empty": false,
       "extension": ".json",
       "lines": 5165
@@ -3047,10 +3074,19 @@
       "lines": 47
     },
     {
+      "path": "docs/specs/chain/README.md",
+      "type": "file",
+      "size_bytes": 1242,
+      "last_modified_commit": "21d6e54ca",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 48
+    },
+    {
       "path": "docs/tooling/archive-manifest.yaml",
       "type": "file",
-      "size_bytes": 2709,
-      "last_modified_commit": "b4c8d3fe7",
+      "size_bytes": 2711,
+      "last_modified_commit": "ede21098d",
       "is_empty": false,
       "extension": ".yaml",
       "lines": 59
@@ -3071,7 +3107,7 @@
       "last_modified_commit": "3e4eb25ae",
       "is_empty": false,
       "extension": ".bak",
-      "lines": 0
+      "lines": 4
     },
     {
       "path": "docs/vitae/constitution/constitutional-amendment.md",
@@ -3143,7 +3179,7 @@
       "last_modified_commit": "2bc7b14de",
       "is_empty": false,
       "extension": ".md",
-      "lines": 256
+      "lines": 257
     },
     {
       "path": "docs/vitae/curriculum/anatomy/guardian-anatomical-lexicon.md",
@@ -3494,7 +3530,7 @@
       "last_modified_commit": "2bc7b14de",
       "is_empty": false,
       "extension": ".md",
-      "lines": 495
+      "lines": 496
     },
     {
       "path": "docs/vitae/curriculum/elementary-school/grade-ii-the-seeker/implement/responsibility-and-invariants-map.md",
@@ -3503,7 +3539,7 @@
       "last_modified_commit": "2bc7b14de",
       "is_empty": false,
       "extension": ".md",
-      "lines": 271
+      "lines": 272
     },
     {
       "path": "docs/vitae/curriculum/elementary-school/grade-ii-the-seeker/implement/state-machine-spec.md",
@@ -3665,7 +3701,7 @@
       "last_modified_commit": "2bc7b14de",
       "is_empty": false,
       "extension": ".md",
-      "lines": 254
+      "lines": 255
     },
     {
       "path": "docs/vitae/curriculum/experience/reason-code-registry.md",
@@ -3908,7 +3944,7 @@
       "last_modified_commit": "ca4c40f2f",
       "is_empty": false,
       "extension": ".md",
-      "lines": 139
+      "lines": 140
     },
     {
       "path": "docs/vitae/curriculum/intermediate-school/grade-vi-healer/canon/procedural-systems-canon.md",
@@ -4061,7 +4097,7 @@
       "last_modified_commit": "ca4c40f2f",
       "is_empty": false,
       "extension": ".md",
-      "lines": 265
+      "lines": 266
     },
     {
       "path": "docs/vitae/curriculum/intermediate-school/grade-viii-sage/implement/constraint-bundle-spec.md",
@@ -4205,7 +4241,7 @@
       "last_modified_commit": "2bc7b14de",
       "is_empty": false,
       "extension": ".md",
-      "lines": 215
+      "lines": 216
     },
     {
       "path": "docs/vitae/curriculum/specializations/arcanist/implement/constraint-bundle-spec.md",
@@ -4484,7 +4520,7 @@
       "last_modified_commit": "2bc7b14de",
       "is_empty": false,
       "extension": ".md",
-      "lines": 259
+      "lines": 260
     },
     {
       "path": "docs/vitae/curriculum/specializations/enchanter/implement/state-machine-spec.md",
@@ -4592,7 +4628,7 @@
       "last_modified_commit": "2bc7b14de",
       "is_empty": false,
       "extension": ".md",
-      "lines": 214
+      "lines": 215
     },
     {
       "path": "docs/vitae/curriculum/specializations/illusionist/implement/constraint-bundle-spec.md",
@@ -4664,7 +4700,7 @@
       "last_modified_commit": "2bc7b14de",
       "is_empty": false,
       "extension": ".md",
-      "lines": 258
+      "lines": 259
     },
     {
       "path": "docs/vitae/curriculum/specializations/necromancer/implement/constraint-bundle-spec.md",
@@ -4799,7 +4835,7 @@
       "last_modified_commit": "9aae3bedc",
       "is_empty": false,
       "extension": ".md",
-      "lines": 151
+      "lines": 152
     },
     {
       "path": "docs/whitepaper/glossary.md",
@@ -4808,7 +4844,7 @@
       "last_modified_commit": "9aae3bedc",
       "is_empty": false,
       "extension": ".md",
-      "lines": 24
+      "lines": 25
     },
     {
       "path": "docs/whitepaper/governance-constitutional-model.md",
@@ -4817,7 +4853,7 @@
       "last_modified_commit": "9aae3bedc",
       "is_empty": false,
       "extension": ".md",
-      "lines": 179
+      "lines": 180
     },
     {
       "path": "docs/whitepaper/problem-solution.md",
@@ -4826,7 +4862,7 @@
       "last_modified_commit": "9aae3bedc",
       "is_empty": false,
       "extension": ".md",
-      "lines": 125
+      "lines": 126
     },
     {
       "path": "docs/whitepaper/roadmap.md",
@@ -4835,7 +4871,7 @@
       "last_modified_commit": "9aae3bedc",
       "is_empty": false,
       "extension": ".md",
-      "lines": 176
+      "lines": 177
     },
     {
       "path": "docs/whitepaper/technical-architecture.md",
@@ -4844,7 +4880,7 @@
       "last_modified_commit": "9aae3bedc",
       "is_empty": false,
       "extension": ".md",
-      "lines": 196
+      "lines": 197
     },
     {
       "path": "docs/whitepaper/tokenomics.md",
@@ -4853,7 +4889,7 @@
       "last_modified_commit": "9aae3bedc",
       "is_empty": false,
       "extension": ".md",
-      "lines": 192
+      "lines": 193
     },
     {
       "path": "package.json",
@@ -4925,7 +4961,7 @@
       "last_modified_commit": "22c13512a",
       "is_empty": false,
       "extension": ".sh",
-      "lines": 206
+      "lines": 207
     },
     {
       "path": "scripts/patches/2026-03-04-hope-entrypoints.patch",
@@ -4934,7 +4970,7 @@
       "last_modified_commit": "60bd5ee4f",
       "is_empty": false,
       "extension": ".patch",
-      "lines": 0
+      "lines": 247
     },
     {
       "path": "scripts/patches/check_repo_index_drift.py",
@@ -4943,7 +4979,7 @@
       "last_modified_commit": "0d6f0e25e",
       "is_empty": false,
       "extension": ".py",
-      "lines": 0
+      "lines": 63
     },
     {
       "path": "scripts/patches/normalize-doc-headers.py",
@@ -4952,7 +4988,7 @@
       "last_modified_commit": "60bd5ee4f",
       "is_empty": false,
       "extension": ".py",
-      "lines": 0
+      "lines": 173
     },
     {
       "path": "scripts/patches/patch_app_shell_pass.py",
@@ -4961,7 +4997,7 @@
       "last_modified_commit": "fdb4ed510",
       "is_empty": false,
       "extension": ".py",
-      "lines": 0
+      "lines": 297
     },
     {
       "path": "scripts/patches/patch_bentoshowcase_mobile_cards.py",
@@ -4970,7 +5006,7 @@
       "last_modified_commit": "0d6f0e25e",
       "is_empty": false,
       "extension": ".py",
-      "lines": 0
+      "lines": 235
     },
     {
       "path": "scripts/patches/patch_global_shell_parity_pass.py",
@@ -4979,7 +5015,7 @@
       "last_modified_commit": "6c3b0d9e1",
       "is_empty": false,
       "extension": ".py",
-      "lines": 0
+      "lines": 941
     },
     {
       "path": "scripts/patches/patch_marketing_layout_remove_nested_html.py",
@@ -4988,7 +5024,7 @@
       "last_modified_commit": "781e2a017",
       "is_empty": false,
       "extension": ".py",
-      "lines": 0
+      "lines": 83
     },
     {
       "path": "scripts/patches/patch_marketing_panelshell_frame.py",
@@ -4997,7 +5033,7 @@
       "last_modified_commit": "af981eff6",
       "is_empty": false,
       "extension": ".py",
-      "lines": 0
+      "lines": 116
     },
     {
       "path": "scripts/patches/patch_minimal_service_worker.py",
@@ -5006,7 +5042,7 @@
       "last_modified_commit": "6a64182e1",
       "is_empty": false,
       "extension": ".py",
-      "lines": 0
+      "lines": 202
     },
     {
       "path": "scripts/patches/patch_mobile_onboarding.py",
@@ -5015,7 +5051,7 @@
       "last_modified_commit": "10a4987c9",
       "is_empty": false,
       "extension": ".py",
-      "lines": 0
+      "lines": 194
     },
     {
       "path": "scripts/patches/patch_pwa_diagnostics_page.py",
@@ -5024,7 +5060,7 @@
       "last_modified_commit": "11e76e39f",
       "is_empty": false,
       "extension": ".py",
-      "lines": 0
+      "lines": 399
     },
     {
       "path": "scripts/patches/patch_pwa_icon_and_logo_assets.py",
@@ -5033,7 +5069,7 @@
       "last_modified_commit": "55b94d7a8",
       "is_empty": false,
       "extension": ".py",
-      "lines": 0
+      "lines": 208
     },
     {
       "path": "scripts/patches/patch_pwa_metadata_and_manifest.py",
@@ -5042,7 +5078,7 @@
       "last_modified_commit": "b1eac4ecf",
       "is_empty": false,
       "extension": ".py",
-      "lines": 0
+      "lines": 143
     },
     {
       "path": "scripts/patches/patch_rebase_global_nav_to_canon.py",
@@ -5051,7 +5087,7 @@
       "last_modified_commit": "9486f93d6",
       "is_empty": false,
       "extension": ".py",
-      "lines": 0
+      "lines": 184
     },
     {
       "path": "scripts/patches/patch_refactor_hope_content.py",
@@ -5060,7 +5096,7 @@
       "last_modified_commit": "4a2cd29bc",
       "is_empty": false,
       "extension": ".py",
-      "lines": 0
+      "lines": 475
     },
     {
       "path": "scripts/patches/patch_refactor_hope_routes.py",
@@ -5069,7 +5105,7 @@
       "last_modified_commit": "66565f668",
       "is_empty": false,
       "extension": ".py",
-      "lines": 0
+      "lines": 351
     },
     {
       "path": "scripts/patches/patch_route_and_viewport_fit_pass.py",
@@ -5078,7 +5114,7 @@
       "last_modified_commit": "c59285406",
       "is_empty": false,
       "extension": ".py",
-      "lines": 0
+      "lines": 394
     },
     {
       "path": "scripts/patches/patch_style_hope_stage_and_tabs.py",
@@ -5087,7 +5123,7 @@
       "last_modified_commit": "0f27093bd",
       "is_empty": false,
       "extension": ".py",
-      "lines": 0
+      "lines": 418
     },
     {
       "path": "scripts/patches/patch_viewport_contract_pass.py",
@@ -5096,7 +5132,7 @@
       "last_modified_commit": "67dae7c5f",
       "is_empty": false,
       "extension": ".py",
-      "lines": 0
+      "lines": 432
     },
     {
       "path": "scripts/patches/rename-vitae-curriculum.py",
@@ -5105,7 +5141,7 @@
       "last_modified_commit": "60bd5ee4f",
       "is_empty": false,
       "extension": ".py",
-      "lines": 0
+      "lines": 284
     },
     {
       "path": "scripts/patches/update-checksums-paths.py",
@@ -5114,7 +5150,7 @@
       "last_modified_commit": "60bd5ee4f",
       "is_empty": false,
       "extension": ".py",
-      "lines": 0
+      "lines": 146
     },
     {
       "path": "scripts/patches/vercel-setup-web.sh",
@@ -5123,16 +5159,16 @@
       "last_modified_commit": "dce9099de",
       "is_empty": false,
       "extension": ".sh",
-      "lines": 51
+      "lines": 52
     },
     {
       "path": "scripts/repo-index.sh",
       "type": "file",
-      "size_bytes": 4015,
+      "size_bytes": 2629,
       "last_modified_commit": "4c57e415e",
       "is_empty": false,
       "extension": ".sh",
-      "lines": 143
+      "lines": 111
     },
     {
       "path": "scripts/vercel-setup-web.sh",
