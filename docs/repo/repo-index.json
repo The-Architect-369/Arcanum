@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-05-27T01:31:03Z",
+  "generated_at": "2026-05-27T01:52:02Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "26912d29a",
+  "commit": "564b53752",
   "generator_version": "1.1",
   "files": [
     {
@@ -1970,7 +1970,7 @@
       "path": "chains/arcanum/cmd/arcanumd/cmd/root.go",
       "type": "file",
       "size_bytes": 906,
-      "last_modified_commit": "975ab5f93",
+      "last_modified_commit": "564b53752",
       "is_empty": false,
       "extension": ".go",
       "lines": 41
@@ -2750,10 +2750,19 @@
       "lines": 21
     },
     {
+      "path": "docs/archive/chain/arcanum/cmd-scaffold/README.md",
+      "type": "file",
+      "size_bytes": 777,
+      "last_modified_commit": "564b53752",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 21
+    },
+    {
       "path": "docs/archive/chain/arcanum/cmd-scaffold/commands.go.disabled",
       "type": "file",
       "size_bytes": 4334,
-      "last_modified_commit": "unknown",
+      "last_modified_commit": "564b53752",
       "is_empty": false,
       "extension": ".disabled",
       "lines": 163
@@ -3031,8 +3040,8 @@
     {
       "path": "docs/repo/repo-index.json",
       "type": "file",
-      "size_bytes": 142710,
-      "last_modified_commit": "26912d29a",
+      "size_bytes": 142730,
+      "last_modified_commit": "564b53752",
       "is_empty": false,
       "extension": ".json",
       "lines": 5210
@@ -3095,7 +3104,7 @@
       "path": "docs/tooling/archive-manifest.yaml",
       "type": "file",
       "size_bytes": 3055,
-      "last_modified_commit": "ede21098d",
+      "last_modified_commit": "564b53752",
       "is_empty": false,
       "extension": ".yaml",
       "lines": 65
