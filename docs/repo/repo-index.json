@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-05-27T01:27:10Z",
+  "generated_at": "2026-05-27T01:29:11Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "a9fedcfe1",
+  "commit": "864610290",
   "generator_version": "1.1",
   "files": [
     {
@@ -2320,11 +2320,11 @@
     {
       "path": "chains/arcanum/x/chaincode/genesis.go",
       "type": "file",
-      "size_bytes": 925,
-      "last_modified_commit": "975ab5f93",
+      "size_bytes": 993,
+      "last_modified_commit": "864610290",
       "is_empty": false,
       "extension": ".go",
-      "lines": 42
+      "lines": 51
     },
     {
       "path": "chains/arcanum/x/chaincode/keeper/genesis.go",
@@ -3032,7 +3032,7 @@
       "path": "docs/repo/repo-index.json",
       "type": "file",
       "size_bytes": 142710,
-      "last_modified_commit": "a9fedcfe1",
+      "last_modified_commit": "864610290",
       "is_empty": false,
       "extension": ".json",
       "lines": 5210

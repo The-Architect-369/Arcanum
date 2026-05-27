@@ -1,19 +1,18 @@
 package chaincode
 
 import (
-	"arcanum/x/chaincode/keeper"
 	"context"
 	"encoding/json"
 
 	abci "github.com/cometbft/cometbft/abci/types"
 	"github.com/cosmos/cosmos-sdk/codec"
 
+	"arcanum/x/chaincode/keeper"
 	"arcanum/x/chaincode/types"
 )
 
-func (k keeper.Keeper) InitGenesis(ctx context.Context, cdc codec.JSONCodec, bz json.RawMessage) []abci.ValidatorUpdate {
+func InitGenesis(ctx context.Context, k keeper.Keeper, cdc codec.JSONCodec, bz json.RawMessage) []abci.ValidatorUpdate {
 	if len(bz) == 0 {
-		// set default params
 		_ = k.SetParams(ctx, types.DefaultParams())
 		return nil
 	}
@@ -23,20 +22,30 @@ func (k keeper.Keeper) InitGenesis(ctx context.Context, cdc codec.JSONCodec, bz 
 		panic(err)
 	}
 
-	_ = k.SetParams(ctx, genState.Params)
-	// SBTs can be optionally restored from genesis if you want
+	if genState.Params == nil {
+		params := types.DefaultParams()
+		genState.Params = &params
+	}
+
+	_ = k.SetParams(ctx, *genState.Params)
 
 	return nil
 }
 
-func (k keeper.Keeper) ExportGenesis(ctx context.Context, cdc codec.JSONCodec) json.RawMessage {
-	params, _ := k.GetParams(ctx)
-	genState := types.GenesisState{
-		Params: params,
+func ExportGenesis(ctx context.Context, k keeper.Keeper, cdc codec.JSONCodec) json.RawMessage {
+	params, err := k.GetParams(ctx)
+	if err != nil {
+		params = types.DefaultParams()
 	}
+
+	genState := types.GenesisState{
+		Params: &params,
+	}
+
 	bz, err := cdc.MarshalJSON(&genState)
 	if err != nil {
 		panic(err)
 	}
+
 	return bz
 }
