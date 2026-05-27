@@ -11,12 +11,26 @@ import {
 
 const AUTO_SYNC_MIN_INTERVAL_MS = 60_000;
 
+function isStandaloneSurface() {
+  if (typeof window === "undefined") return false;
+  const navigatorWithStandalone = navigator as Navigator & { standalone?: boolean };
+  return (
+    window.matchMedia?.("(display-mode: standalone)").matches ||
+    window.matchMedia?.("(display-mode: fullscreen)").matches ||
+    window.matchMedia?.("(display-mode: minimal-ui)").matches ||
+    navigatorWithStandalone.standalone === true
+  );
+}
+
 export default function DeviceRuntime() {
   const account = useAccount();
   const [prefs] = usePreference();
   const [installAvailable, setInstallAvailable] = useState(false);
   const [updateReady, setUpdateReady] = useState(false);
   const [online, setOnline] = useState(true);
+  const [storageManagerSupported, setStorageManagerSupported] = useState(false);
+  const [storagePersisted, setStoragePersisted] = useState(true);
+  const [standaloneSurface, setStandaloneSurface] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
   const syncingRef = useRef(false);
   const lastSyncRef = useRef(0);
@@ -24,6 +38,16 @@ export default function DeviceRuntime() {
   useEffect(() => {
     setInstallAvailable(hasDeferredInstallPrompt());
     setOnline(typeof navigator === "undefined" ? true : navigator.onLine);
+    setStandaloneSurface(isStandaloneSurface());
+
+    const storageManager = navigator.storage;
+    setStorageManagerSupported(Boolean(storageManager));
+
+    if (storageManager?.persisted) {
+      void storageManager.persisted().then((value) => setStoragePersisted(value)).catch(() => {
+        setStoragePersisted(false);
+      });
+    }
 
     const unsubscribeInstall = subscribeInstallPrompt(setInstallAvailable);
     const onOnline = () => setOnline(true);
@@ -31,13 +55,18 @@ export default function DeviceRuntime() {
     const onUpdateReady = () => setUpdateReady(true);
     const onAppInstalled = () => {
       setInstallAvailable(false);
+      setStandaloneSurface(true);
       setMessage("App installed on this device.");
+    };
+    const onVisibility = () => {
+      setStandaloneSurface(isStandaloneSurface());
     };
 
     window.addEventListener("online", onOnline);
     window.addEventListener("offline", onOffline);
     window.addEventListener("arcanum:pwa-update-ready", onUpdateReady as EventListener);
     window.addEventListener("appinstalled", onAppInstalled);
+    document.addEventListener("visibilitychange", onVisibility);
 
     return () => {
       unsubscribeInstall();
@@ -45,6 +74,7 @@ export default function DeviceRuntime() {
       window.removeEventListener("offline", onOffline);
       window.removeEventListener("arcanum:pwa-update-ready", onUpdateReady as EventListener);
       window.removeEventListener("appinstalled", onAppInstalled);
+      document.removeEventListener("visibilitychange", onVisibility);
     };
   }, []);
 
@@ -121,7 +151,27 @@ export default function DeviceRuntime() {
     setUpdateReady(false);
   }
 
-  if (online && !installAvailable && !updateReady && !message) {
+  async function handleProtectStorage() {
+    const storageManager = navigator.storage;
+    if (!storageManager?.persist) {
+      setMessage("Persistent storage is not supported in this browser view.");
+      return;
+    }
+
+    try {
+      const granted = await storageManager.persist();
+      setStoragePersisted(granted);
+      setMessage(
+        granted
+          ? "Persistent storage granted for this app on this device."
+          : "Persistent storage was not granted by the browser."
+      );
+    } catch {
+      setMessage("Could not request persistent storage.");
+    }
+  }
+
+  if (online && !installAvailable && !updateReady && !message && (!standaloneSurface || storagePersisted || !storageManagerSupported)) {
     return null;
   }
 
@@ -148,6 +198,23 @@ export default function DeviceRuntime() {
                 className="rounded-xl border border-amber-300/40 px-3 py-1.5 text-xs text-amber-300 hover:bg-amber-300/10"
               >
                 Install app
+              </button>
+            </div>
+          )}
+
+          {standaloneSurface && storageManagerSupported && !storagePersisted && (
+            <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-sky-300/20 bg-sky-300/10 px-3 py-2">
+              <div>
+                <div className="font-medium text-zinc-100">Protect offline storage</div>
+                <div className="text-xs text-zinc-400">This installed app has not been granted persistent storage yet.</div>
+              </div>
+              <button
+                onClick={() => {
+                  void handleProtectStorage();
+                }}
+                className="rounded-xl border border-sky-300/40 px-3 py-1.5 text-xs text-sky-200 hover:bg-sky-300/10"
+              >
+                Request protection
               </button>
             </div>
           )}
