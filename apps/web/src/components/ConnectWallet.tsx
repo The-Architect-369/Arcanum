@@ -3,7 +3,13 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useAccount, useConnect, useDisconnect } from 'wagmi';
 import { hasBurner, loadBurner, createBurner, forgetBurner } from '@/lib/identity/burner';
-import { getPasskey, registerPasskey, signInPasskey, clearPasskey } from '@/lib/identity/passkey';
+import {
+  getPasskey,
+  getPasskeySupport,
+  registerPasskey,
+  signInPasskey,
+  clearPasskey,
+} from '@/lib/identity/passkey';
 
 function short(a?: string) {
   return a ? `${a.slice(0, 6)}…${a.slice(-4)}` : '';
@@ -21,6 +27,7 @@ export default function ConnectWallet() {
 
   const [burnerAddr, setBurnerAddr] = useState<string | undefined>();
   const [pk, setPk] = useState<unknown | null>(null);
+  const [passkeySupport] = useState(() => getPasskeySupport());
 
   useEffect(() => {
     let active = true;
@@ -61,6 +68,11 @@ export default function ConnectWallet() {
   const label = useMemo(() => (active ? short(active) : 'Connect Wallet'), [active]);
 
   async function usePasskey() {
+    if (!passkeySupport.supported) {
+      alert(`Passkey unavailable: ${passkeySupport.reason}`);
+      return;
+    }
+
     try {
       const existing = await getPasskey();
       const rec = existing ? await signInPasskey() : await registerPasskey();
@@ -72,7 +84,7 @@ export default function ConnectWallet() {
       setBurnerAddr(burner ?? undefined);
     } catch (e) {
       console.error(e);
-      alert('Passkey failed (is WebAuthn available?).');
+      alert(e instanceof Error ? e.message : 'Passkey failed.');
     }
   }
 
@@ -115,8 +127,13 @@ export default function ConnectWallet() {
         onClick={() => {
           void usePasskey();
         }}
-        className="rounded-2xl px-3 py-1.5 text-sm bg-white/10 hover:opacity-90"
-        title="Create / Sign in with a passkey, bind a burner for dev"
+        className="rounded-2xl px-3 py-1.5 text-sm bg-white/10 hover:opacity-90 disabled:opacity-50"
+        title={
+          passkeySupport.supported
+            ? 'Create / Sign in with a passkey, bind a burner for dev'
+            : `Passkey unavailable: ${passkeySupport.reason}`
+        }
+        disabled={!passkeySupport.supported}
       >
         Use Passkey
       </button>
