@@ -23,27 +23,37 @@ export default function ConnectWallet() {
   const [pk, setPk] = useState<unknown | null>(null);
 
   useEffect(() => {
-    const sync = () => {
+    let active = true;
+
+    const sync = async () => {
       try {
-        setPk(getPasskey() as unknown);
+        const passkey = await getPasskey();
+        if (active) setPk(passkey as unknown);
       } catch {
-        setPk(null);
+        if (active) setPk(null);
       }
 
       try {
-        const burner = hasBurner() ? loadBurner() : null;
-        setBurnerAddr(burner ?? undefined);
+        const burner = (await hasBurner()) ? await loadBurner() : null;
+        if (active) setBurnerAddr(burner ?? undefined);
       } catch {
-        setBurnerAddr(undefined);
+        if (active) setBurnerAddr(undefined);
       }
     };
 
-    sync();
-    const iv = setInterval(sync, 1500);
-    window.addEventListener('focus', sync);
+    void sync();
+    const iv = setInterval(() => {
+      void sync();
+    }, 1500);
+    const onFocus = () => {
+      void sync();
+    };
+    window.addEventListener('focus', onFocus);
+
     return () => {
+      active = false;
       clearInterval(iv);
-      window.removeEventListener('focus', sync);
+      window.removeEventListener('focus', onFocus);
     };
   }, []);
 
@@ -52,13 +62,13 @@ export default function ConnectWallet() {
 
   async function usePasskey() {
     try {
-      const existing = getPasskey();
+      const existing = await getPasskey();
       const rec = existing ? await signInPasskey() : await registerPasskey();
-      setPk(rec as any);
-      if (!hasBurner()) {
-        createBurner();
+      setPk(rec as unknown);
+      if (!(await hasBurner())) {
+        await createBurner();
       }
-      const burner = loadBurner();
+      const burner = await loadBurner();
       setBurnerAddr(burner ?? undefined);
     } catch (e) {
       console.error(e);
@@ -66,10 +76,10 @@ export default function ConnectWallet() {
     }
   }
 
-  function useBurner() {
+  async function useBurner() {
     try {
-      if (!hasBurner()) createBurner();
-      const burner = loadBurner();
+      if (!(await hasBurner())) await createBurner();
+      const burner = await loadBurner();
       setBurnerAddr(burner ?? undefined);
     } catch (e) {
       console.error(e);
@@ -77,10 +87,16 @@ export default function ConnectWallet() {
     }
   }
 
-  function forgetAll() {
-    try { clearPasskey(); } catch {}
-    try { forgetBurner(); } catch {}
-    try { disconnect(); } catch {}
+  async function forgetAll() {
+    try {
+      await clearPasskey();
+    } catch {}
+    try {
+      await forgetBurner();
+    } catch {}
+    try {
+      disconnect();
+    } catch {}
     setPk(null);
     setBurnerAddr(undefined);
   }
@@ -96,7 +112,9 @@ export default function ConnectWallet() {
       </button>
 
       <button
-        onClick={usePasskey}
+        onClick={() => {
+          void usePasskey();
+        }}
         className="rounded-2xl px-3 py-1.5 text-sm bg-white/10 hover:opacity-90"
         title="Create / Sign in with a passkey, bind a burner for dev"
       >
@@ -104,7 +122,9 @@ export default function ConnectWallet() {
       </button>
 
       <button
-        onClick={useBurner}
+        onClick={() => {
+          void useBurner();
+        }}
         className="rounded-2xl px-3 py-1.5 text-sm bg-white/10 hover:opacity-90"
         title="Create/Load a local dev wallet"
       >
@@ -113,7 +133,9 @@ export default function ConnectWallet() {
 
       {(wagmiAddress || burnerAddr || Boolean(pk)) && (
         <button
-          onClick={forgetAll}
+          onClick={() => {
+            void forgetAll();
+          }}
           className="rounded-2xl px-3 py-1.5 text-sm bg-white/10 hover:opacity-90"
           title="Clear passkey session, burner, and disconnect"
         >
