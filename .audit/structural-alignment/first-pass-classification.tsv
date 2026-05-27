@@ -1,0 +1,9 @@
+path	recommendation
+apps/web/docs/MASTER_INDEX.md	ARCHIVE_OR_SPLIT
+apps/web/docs/TEMPUS_REWARD_SYSTEM_CALENDAR.md	ARCHIVE
+apps/web/docs/CORE_UI_GUIDE.md	SPLIT_AND_REWRITE
+docs/governance/architectgpt/architect-gpt.md	SPLIT_LOG_FROM_SPEC
+docs/archive/architect-log.md	MIGRATE_TO_ARCHITECTGPT_ARCHIVE
+docs/archive/architectgpt-core.md	MIGRATE_TO_ARCHITECTGPT_ARCHIVE
+docs/archive/architectgpt-extended.md	MIGRATE_TO_ARCHITECTGPT_ARCHIVE
+chains/arcanum/bin/arcanumd	REMOVE_OR_DOCUMENT_TRACKED_BINARY

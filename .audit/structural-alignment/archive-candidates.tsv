@@ -1,0 +1,16 @@
+path	flags
+apps/web/docs/MASTER_INDEX.md	legacy_chain_or_wallet,coercive_or_gamified,stub_or_outdated
+apps/web/docs/NEXUS_GUIDE.md	stub_or_outdated
+apps/web/docs/TEMPUS_REWARD_SYSTEM_CALENDAR.md	coercive_or_gamified,stub_or_outdated
+apps/web/docs/VITAE_GUIDE.md	legacy_chain_or_wallet,coercive_or_gamified
+apps/web/docs/CORE_UI_GUIDE.md	legacy_chain_or_wallet,coercive_or_gamified,stub_or_outdated
+apps/web/docs/HOPE_GUIDE.md	legacy_chain_or_wallet,stub_or_outdated
+apps/web/docs/TEMPUS_GUIDE.md	coercive_or_gamified
+docs/archive/architect-log.md	legacy_chain_or_wallet,coercive_or_gamified,legacy_architect
+docs/governance/architectgpt/architect-gpt.md	legacy_chain_or_wallet,coercive_or_gamified,legacy_architect
+docs/governance/architectgpt/architect-gpt-manifest.yaml	legacy_architect
+chains/arcanum/readme.md	legacy_chain_or_wallet
+chains/arcanum/app/app.go	legacy_chain_or_wallet
+chains/arcanum/x/chaincode/msg_server.go	legacy_chain_or_wallet
+chains/arcanum/x/mana/client/cli/tx.go	legacy_chain_or_wallet
+chains/arcanum/x/chaincode/client/cli/tx.go	legacy_chain_or_wallet

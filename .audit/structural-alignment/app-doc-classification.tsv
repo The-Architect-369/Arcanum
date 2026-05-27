@@ -1,0 +1,10 @@
+path	recommendation	reason
+apps/web/docs/CORE_UI_GUIDE.md	ARCHIVE+REVIEW+SPLIT_OR_ARCHIVE	coercive/progression/reward language; dated draft/stub language; legacy chain/wallet assumption
+apps/web/docs/HOPE_GUIDE.md	REVIEW+SPLIT_OR_ARCHIVE	dated draft/stub language; legacy chain/wallet assumption
+apps/web/docs/MASTER_INDEX.md	ARCHIVE+REVIEW+SPLIT_OR_ARCHIVE	coercive/progression/reward language; dated draft/stub language; legacy chain/wallet assumption
+apps/web/docs/MODULE_CARD_GUIDE.md	KEEP_REVIEW	no high-risk terms matched
+apps/web/docs/NEXUS_GUIDE.md	REVIEW	dated draft/stub language
+apps/web/docs/TEMPUS_GUIDE.md	ARCHIVE	coercive/progression/reward language
+apps/web/docs/TEMPUS_REWARD_SYSTEM_CALENDAR.md	ARCHIVE+REVIEW	coercive/progression/reward language; dated draft/stub language
+apps/web/docs/TEXT_GUIDE.md	KEEP_REVIEW	no high-risk terms matched
+apps/web/docs/VITAE_GUIDE.md	SPLIT_OR_ARCHIVE	legacy chain/wallet assumption

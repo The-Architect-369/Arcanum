@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-05-08T09:50:59Z",
+  "generated_at": "2026-05-27T01:06:55Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "4a2cd29bc",
+  "commit": "94ac6e771",
   "generator_version": "1.0",
   "files": [
     {
@@ -266,15 +266,6 @@
       "lines": 36
     },
     {
-      "path": "apps/web/docs/CORE_UI_GUIDE.md",
-      "type": "file",
-      "size_bytes": 9822,
-      "last_modified_commit": "7edb20d44",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 232
-    },
-    {
       "path": "apps/web/docs/HOPE_GUIDE.md",
       "type": "file",
       "size_bytes": 2163,
@@ -282,15 +273,6 @@
       "is_empty": false,
       "extension": ".md",
       "lines": 80
-    },
-    {
-      "path": "apps/web/docs/MASTER_INDEX.md",
-      "type": "file",
-      "size_bytes": 5226,
-      "last_modified_commit": "7edb20d44",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 179
     },
     {
       "path": "apps/web/docs/MODULE_CARD_GUIDE.md",
@@ -318,15 +300,6 @@
       "is_empty": false,
       "extension": ".md",
       "lines": 63
-    },
-    {
-      "path": "apps/web/docs/TEMPUS_REWARD_SYSTEM_CALENDAR.md",
-      "type": "file",
-      "size_bytes": 4546,
-      "last_modified_commit": "d32d6affc",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 103
     },
     {
       "path": "apps/web/docs/TEXT_GUIDE.md",
@@ -538,11 +511,11 @@
     {
       "path": "apps/web/public/manifest.json",
       "type": "file",
-      "size_bytes": 764,
-      "last_modified_commit": "b1eac4ecf",
+      "size_bytes": 855,
+      "last_modified_commit": "3546d652b",
       "is_empty": false,
       "extension": ".json",
-      "lines": 35
+      "lines": 37
     },
     {
       "path": "apps/web/public/next.svg",
@@ -608,6 +581,15 @@
       "lines": 3
     },
     {
+      "path": "apps/web/src/app/(app)/hope/_components/HopeTabRail.tsx",
+      "type": "file",
+      "size_bytes": 1204,
+      "last_modified_commit": "36b855d9c",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 40
+    },
+    {
       "path": "apps/web/src/app/(app)/hope/_components/ReflectionEditor.tsx",
       "type": "file",
       "size_bytes": 2484,
@@ -628,11 +610,11 @@
     {
       "path": "apps/web/src/app/(app)/hope/attunement/page.tsx",
       "type": "file",
-      "size_bytes": 4423,
-      "last_modified_commit": "4a2cd29bc",
+      "size_bytes": 4432,
+      "last_modified_commit": "6f61137ed",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 120
+      "lines": 119
     },
     {
       "path": "apps/web/src/app/(app)/hope/character/page.tsx",
@@ -655,8 +637,8 @@
     {
       "path": "apps/web/src/app/(app)/hope/page.tsx",
       "type": "file",
-      "size_bytes": 115,
-      "last_modified_commit": "66565f668",
+      "size_bytes": 117,
+      "last_modified_commit": "5bad2c09a",
       "is_empty": false,
       "extension": ".tsx",
       "lines": 5
@@ -682,20 +664,20 @@
     {
       "path": "apps/web/src/app/(app)/hope/presence/page.tsx",
       "type": "file",
-      "size_bytes": 3996,
-      "last_modified_commit": "4a2cd29bc",
+      "size_bytes": 4005,
+      "last_modified_commit": "6f61137ed",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 96
+      "lines": 95
     },
     {
       "path": "apps/web/src/app/(app)/hope/reflection/page.tsx",
       "type": "file",
-      "size_bytes": 4448,
-      "last_modified_commit": "4a2cd29bc",
+      "size_bytes": 4457,
+      "last_modified_commit": "6f61137ed",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 105
+      "lines": 104
     },
     {
       "path": "apps/web/src/app/(app)/hope/stylize/page.tsx",
@@ -709,11 +691,11 @@
     {
       "path": "apps/web/src/app/(app)/layout.tsx",
       "type": "file",
-      "size_bytes": 789,
-      "last_modified_commit": "fdb4ed510",
+      "size_bytes": 917,
+      "last_modified_commit": "9e5fdaf15",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 29
+      "lines": 28
     },
     {
       "path": "apps/web/src/app/(app)/mobile-only/page.tsx",
@@ -736,20 +718,20 @@
     {
       "path": "apps/web/src/app/(app)/nexus/channel/page.tsx",
       "type": "file",
-      "size_bytes": 4450,
-      "last_modified_commit": "6c3b0d9e1",
+      "size_bytes": 4439,
+      "last_modified_commit": "6f61137ed",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 114
+      "lines": 112
     },
     {
       "path": "apps/web/src/app/(app)/nexus/current/page.tsx",
       "type": "file",
-      "size_bytes": 6382,
-      "last_modified_commit": "6c3b0d9e1",
+      "size_bytes": 6378,
+      "last_modified_commit": "e7ba2fce1",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 191
+      "lines": 197
     },
     {
       "path": "apps/web/src/app/(app)/nexus/page.tsx",
@@ -763,11 +745,11 @@
     {
       "path": "apps/web/src/app/(app)/nexus/post/page.tsx",
       "type": "file",
-      "size_bytes": 7940,
-      "last_modified_commit": "6c3b0d9e1",
+      "size_bytes": 7929,
+      "last_modified_commit": "6f61137ed",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 220
+      "lines": 218
     },
     {
       "path": "apps/web/src/app/(app)/notifications/page.tsx",
@@ -797,31 +779,40 @@
       "lines": 17
     },
     {
-      "path": "apps/web/src/app/(app)/tempus/calendar/page.tsx",
+      "path": "apps/web/src/app/(app)/tempus/_components/TempusContent.tsx",
       "type": "file",
-      "size_bytes": 2564,
-      "last_modified_commit": "c59285406",
+      "size_bytes": 19996,
+      "last_modified_commit": "93d2d624b",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 74
+      "lines": 399
+    },
+    {
+      "path": "apps/web/src/app/(app)/tempus/calendar/page.tsx",
+      "type": "file",
+      "size_bytes": 1255,
+      "last_modified_commit": "647f46f83",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 37
     },
     {
       "path": "apps/web/src/app/(app)/tempus/clock/page.tsx",
       "type": "file",
-      "size_bytes": 2799,
-      "last_modified_commit": "c59285406",
+      "size_bytes": 1815,
+      "last_modified_commit": "1e9d11252",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 81
+      "lines": 54
     },
     {
       "path": "apps/web/src/app/(app)/tempus/codex/page.tsx",
       "type": "file",
-      "size_bytes": 2228,
-      "last_modified_commit": "c59285406",
+      "size_bytes": 1368,
+      "last_modified_commit": "85cccc544",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 61
+      "lines": 40
     },
     {
       "path": "apps/web/src/app/(app)/tempus/page.tsx",
@@ -871,20 +862,20 @@
     {
       "path": "apps/web/src/app/(app)/vitae/grade/page.tsx",
       "type": "file",
-      "size_bytes": 860,
-      "last_modified_commit": "6c3b0d9e1",
+      "size_bytes": 850,
+      "last_modified_commit": "6f61137ed",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 29
+      "lines": 27
     },
     {
       "path": "apps/web/src/app/(app)/vitae/mastery/page.tsx",
       "type": "file",
       "size_bytes": 1124,
-      "last_modified_commit": "6c3b0d9e1",
+      "last_modified_commit": "6f61137ed",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 37
+      "lines": 36
     },
     {
       "path": "apps/web/src/app/(app)/vitae/page.tsx",
@@ -898,20 +889,47 @@
     {
       "path": "apps/web/src/app/(app)/vitae/path/page.tsx",
       "type": "file",
-      "size_bytes": 859,
-      "last_modified_commit": "6c3b0d9e1",
+      "size_bytes": 849,
+      "last_modified_commit": "6f61137ed",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 29
+      "lines": 27
+    },
+    {
+      "path": "apps/web/src/app/(app)/wallet/balances/page.tsx",
+      "type": "file",
+      "size_bytes": 1399,
+      "last_modified_commit": "6f61137ed",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 41
     },
     {
       "path": "apps/web/src/app/(app)/wallet/page.tsx",
       "type": "file",
-      "size_bytes": 1647,
-      "last_modified_commit": "9486f93d6",
+      "size_bytes": 119,
+      "last_modified_commit": "abce05428",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 43
+      "lines": 5
+    },
+    {
+      "path": "apps/web/src/app/(app)/wallet/receipts/page.tsx",
+      "type": "file",
+      "size_bytes": 1354,
+      "last_modified_commit": "6f61137ed",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 41
+    },
+    {
+      "path": "apps/web/src/app/(app)/wallet/vault/page.tsx",
+      "type": "file",
+      "size_bytes": 1361,
+      "last_modified_commit": "6f61137ed",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 41
     },
     {
       "path": "apps/web/src/app/(marketing)/client-layout.tsx",
@@ -986,6 +1004,15 @@
       "lines": 12
     },
     {
+      "path": "apps/web/src/app/app-polish.css",
+      "type": "file",
+      "size_bytes": 5971,
+      "last_modified_commit": "0488db779",
+      "is_empty": false,
+      "extension": ".css",
+      "lines": 0
+    },
+    {
       "path": "apps/web/src/app/favicon.ico",
       "type": "file",
       "size_bytes": 25931,
@@ -997,8 +1024,8 @@
     {
       "path": "apps/web/src/app/globals.css",
       "type": "file",
-      "size_bytes": 102,
-      "last_modified_commit": "0f075f352",
+      "size_bytes": 10412,
+      "last_modified_commit": "94ac6e771",
       "is_empty": false,
       "extension": ".css",
       "lines": 0
@@ -1006,11 +1033,11 @@
     {
       "path": "apps/web/src/app/layout.tsx",
       "type": "file",
-      "size_bytes": 763,
-      "last_modified_commit": "6a64182e1",
+      "size_bytes": 1636,
+      "last_modified_commit": "21e47c7ca",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 35
+      "lines": 60
     },
     {
       "path": "apps/web/src/app/middleware.ts",
@@ -1114,26 +1141,26 @@
     {
       "path": "apps/web/src/components/ui/AppFooter.tsx",
       "type": "file",
-      "size_bytes": 2599,
-      "last_modified_commit": "9486f93d6",
+      "size_bytes": 3443,
+      "last_modified_commit": "c064908ad",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 83
+      "lines": 98
     },
     {
       "path": "apps/web/src/components/ui/AppHeader.tsx",
       "type": "file",
-      "size_bytes": 3869,
-      "last_modified_commit": "fdb4ed510",
+      "size_bytes": 4380,
+      "last_modified_commit": "dbb4c25c0",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 111
+      "lines": 119
     },
     {
       "path": "apps/web/src/components/ui/AppStage.tsx",
       "type": "file",
-      "size_bytes": 575,
-      "last_modified_commit": "c59285406",
+      "size_bytes": 593,
+      "last_modified_commit": "9426269e9",
       "is_empty": false,
       "extension": ".tsx",
       "lines": 24
@@ -1175,6 +1202,15 @@
       "lines": 146
     },
     {
+      "path": "apps/web/src/components/ui/ConstellationField.tsx",
+      "type": "file",
+      "size_bytes": 3901,
+      "last_modified_commit": "cd12cd692",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 127
+    },
+    {
       "path": "apps/web/src/components/ui/Header.tsx",
       "type": "file",
       "size_bytes": 4344,
@@ -1202,13 +1238,31 @@
       "lines": 124
     },
     {
-      "path": "apps/web/src/components/ui/PanelShell.tsx",
+      "path": "apps/web/src/components/ui/ModuleDeckReveal.tsx",
       "type": "file",
-      "size_bytes": 2592,
-      "last_modified_commit": "c59285406",
+      "size_bytes": 2788,
+      "last_modified_commit": "d0aa2ddfc",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 95
+      "lines": 81
+    },
+    {
+      "path": "apps/web/src/components/ui/ModuleTabRail.tsx",
+      "type": "file",
+      "size_bytes": 1262,
+      "last_modified_commit": "36b855d9c",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 44
+    },
+    {
+      "path": "apps/web/src/components/ui/PanelShell.tsx",
+      "type": "file",
+      "size_bytes": 4598,
+      "last_modified_commit": "20d72d5cd",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 114
     },
     {
       "path": "apps/web/src/components/ui/ShowcaseGrid.tsx",
@@ -1222,11 +1276,11 @@
     {
       "path": "apps/web/src/components/ui/SwipeRoutes.tsx",
       "type": "file",
-      "size_bytes": 2303,
-      "last_modified_commit": "d32d6affc",
+      "size_bytes": 3954,
+      "last_modified_commit": "9450a6848",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 74
+      "lines": 145
     },
     {
       "path": "apps/web/src/components/ui/TabDots.tsx",
@@ -1254,6 +1308,15 @@
       "is_empty": false,
       "extension": ".tsx",
       "lines": 96
+    },
+    {
+      "path": "apps/web/src/components/ui/ViewportLock.tsx",
+      "type": "file",
+      "size_bytes": 699,
+      "last_modified_commit": "d80cfc43b",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 29
     },
     {
       "path": "apps/web/src/components/ui/bento-grid.tsx",
@@ -2561,28 +2624,55 @@
       "lines": 524
     },
     {
-      "path": "docs/archive/architect-log.md",
+      "path": "docs/archive/app/2025-10-master-arcanum-index-v1-rc.md",
+      "type": "file",
+      "size_bytes": 5226,
+      "last_modified_commit": "",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 179
+    },
+    {
+      "path": "docs/archive/app/tempus/2025-10-tempus-reward-system-calendar-draft-v1.md",
+      "type": "file",
+      "size_bytes": 4546,
+      "last_modified_commit": "",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 103
+    },
+    {
+      "path": "docs/archive/app/ui/2025-09-core-ui-guide-v1-rc.md",
+      "type": "file",
+      "size_bytes": 9822,
+      "last_modified_commit": "",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 232
+    },
+    {
+      "path": "docs/archive/architectgpt/architect-log-legacy.md",
       "type": "file",
       "size_bytes": 9736,
-      "last_modified_commit": "60bd5ee4f",
+      "last_modified_commit": "",
       "is_empty": false,
       "extension": ".md",
       "lines": 252
     },
     {
-      "path": "docs/archive/architectgpt-core.md",
+      "path": "docs/archive/architectgpt/architectgpt-core.md",
       "type": "file",
       "size_bytes": 14639,
-      "last_modified_commit": "60bd5ee4f",
+      "last_modified_commit": "",
       "is_empty": false,
       "extension": ".md",
       "lines": 196
     },
     {
-      "path": "docs/archive/architectgpt-extended.md",
+      "path": "docs/archive/architectgpt/architectgpt-extended.md",
       "type": "file",
       "size_bytes": 8396,
-      "last_modified_commit": "60bd5ee4f",
+      "last_modified_commit": "",
       "is_empty": false,
       "extension": ".md",
       "lines": 263
@@ -2689,11 +2779,11 @@
     {
       "path": "docs/governance/architectgpt/architect-gpt-manifest.yaml",
       "type": "file",
-      "size_bytes": 1497,
+      "size_bytes": 1641,
       "last_modified_commit": "f2063ca4c",
       "is_empty": false,
       "extension": ".yaml",
-      "lines": 52
+      "lines": 54
     },
     {
       "path": "docs/governance/architectgpt/architect-gpt.md",
@@ -2768,6 +2858,15 @@
       "lines": 846
     },
     {
+      "path": "docs/mobile/termux-verification.md",
+      "type": "file",
+      "size_bytes": 261,
+      "last_modified_commit": "12236f9a7",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 12
+    },
+    {
       "path": "docs/modules/hope/g1-hope-seal.md",
       "type": "file",
       "size_bytes": 1079,
@@ -2824,11 +2923,11 @@
     {
       "path": "docs/repo/repo-index.json",
       "type": "file",
-      "size_bytes": 134002,
-      "last_modified_commit": "4a2cd29bc",
+      "size_bytes": 134722,
+      "last_modified_commit": "0f27093bd",
       "is_empty": false,
       "extension": ".json",
-      "lines": 4877
+      "lines": 4904
     },
     {
       "path": "docs/repo/repo-interface.md",
@@ -4829,6 +4928,15 @@
       "lines": 0
     },
     {
+      "path": "scripts/patches/patch_style_hope_stage_and_tabs.py",
+      "type": "file",
+      "size_bytes": 18377,
+      "last_modified_commit": "0f27093bd",
+      "is_empty": false,
+      "extension": ".py",
+      "lines": 0
+    },
+    {
       "path": "scripts/patches/patch_viewport_contract_pass.py",
       "type": "file",
       "size_bytes": 18301,
@@ -4885,7 +4993,7 @@
     {
       "path": "scripts/verify-sync.sh",
       "type": "file",
-      "size_bytes": 5627,
+      "size_bytes": 5673,
       "last_modified_commit": "6f574f479",
       "is_empty": false,
       "extension": ".sh",

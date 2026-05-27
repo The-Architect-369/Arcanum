@@ -1,0 +1,42 @@
+version: 1
+last_updated: 2026-05-26
+purpose: Track archived documents and their active replacements.
+
+archives:
+  - archived: docs/archive/app/2025-10-master-arcanum-index-v1-rc.md
+    previous_path: apps/web/docs/MASTER_INDEX.md
+    reason: Dated app-local master reference with outdated reward/progression assumptions.
+    superseded_by:
+      - docs/specs/app/navigation-and-gates.md
+      - docs/specs/app/tempus-windows.md
+
+  - archived: docs/archive/app/tempus/2025-10-tempus-reward-system-calendar-draft-v1.md
+    previous_path: apps/web/docs/TEMPUS_REWARD_SYSTEM_CALENDAR.md
+    reason: Draft reward-system calendar conflicts with current non-coercive temporal posture.
+    superseded_by:
+      - docs/specs/app/tempus-windows.md
+      - docs/doctrine/temporal-model.md
+
+  - archived: docs/archive/app/ui/2025-09-core-ui-guide-v1-rc.md
+    previous_path: apps/web/docs/CORE_UI_GUIDE.md
+    reason: Release-candidate UI guide contains outdated routes, shared aliases, chain assumptions, and gating language.
+    superseded_by:
+      - docs/specs/app/navigation-and-gates.md
+
+  - archived: docs/archive/architectgpt/architect-log-legacy.md
+    previous_path: docs/archive/architect-log.md
+    reason: Legacy log moved under typed ArchitectGPT archive.
+    superseded_by:
+      - docs/governance/architectgpt/architect-log.md
+
+  - archived: docs/archive/architectgpt/architectgpt-core.md
+    previous_path: docs/archive/architectgpt-core.md
+    reason: Legacy ArchitectGPT core spec retained for historical comparison only.
+    superseded_by:
+      - docs/governance/architectgpt/architect-gpt.md
+
+  - archived: docs/archive/architectgpt/architectgpt-extended.md
+    previous_path: docs/archive/architectgpt-extended.md
+    reason: Legacy ArchitectGPT extended spec retained for historical comparison only.
+    superseded_by:
+      - docs/governance/architectgpt/architect-gpt.md

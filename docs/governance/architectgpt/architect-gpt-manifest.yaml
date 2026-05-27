@@ -42,9 +42,11 @@ files:
   verify_script: scripts/verify-sync.sh
 
 legacy_archive_files:
-  - architectgpt-core.md
-  - architectgpt-extended.md
-  - architect-log.md
+  - docs/archive/architectgpt/architectgpt-core.md
+  - docs/archive/architectgpt/architectgpt-extended.md
+  - docs/archive/architectgpt/architect-log-legacy.md
+
+active_log: docs/governance/architectgpt/architect-log.md
 
 principles:
   - Sovereignty

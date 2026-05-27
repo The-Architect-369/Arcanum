@@ -1,0 +1,5 @@
+?? .audit/
+?? scripts/archive-manifest-check.sh
+?? scripts/audit-app-copy.sh
+?? scripts/audit-chain-semantics.sh
+?? scripts/audit-doc-canon.sh

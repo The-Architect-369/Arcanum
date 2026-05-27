@@ -1,0 +1,35 @@
+== verify-sync ==
+Repo: arcanum
+Commit: 94ac6e771
+
+[1/4] Repo index integrity
+❌ docs/repo/repo-index.json differs from generator output after normalization. Run: bash scripts/repo-index.sh && commit any real structural drift.
+
+[2/4] Architect GPT manifest integrity
+Manifest version: 3.2
+Doc version:      3.2
+✅ versions match
+
+Checking manifest file paths...
+✅ architect_gpt -> docs/governance/architectgpt/architect-gpt.md
+✅ architect_gpt_manifest -> docs/governance/architectgpt/architect-gpt-manifest.yaml
+✅ hope_guardian -> docs/governance/hopegpt/hope-guardian.md
+✅ repo_interface -> docs/repo/repo-interface.md
+✅ repo_index -> docs/repo/repo-index.json
+✅ verify_script -> scripts/verify-sync.sh
+
+[3/4] Governance canonical surface checks
+✅ present: docs/governance/governance-specification.md
+✅ present: docs/governance/treasury-constitution.md
+✅ present: docs/governance/economic-principles.md
+✅ present: docs/governance/governance-changelog.md
+✅ present: docs/governance/hopegpt/hope-guardian.md
+✅ present: docs/governance/architectgpt/architect-gpt.md
+✅ present: docs/governance/architectgpt/architect-gpt-manifest.yaml
+
+[4/4] Archive checks (deprecated files)
+✅ archive present: docs/archive/architectgpt-core.md
+✅ archive present: docs/archive/architectgpt-extended.md
+✅ archive present: docs/archive/architect-log.md
+
+❌ verify-sync failed. Fix issues above.

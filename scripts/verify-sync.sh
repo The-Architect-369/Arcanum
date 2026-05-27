@@ -171,9 +171,9 @@ echo
 # -------------------------------------------------------------------
 echo "[4/4] Archive checks (deprecated files)"
 archive_files=(
-  "docs/archive/architectgpt-core.md"
-  "docs/archive/architectgpt-extended.md"
-  "docs/archive/architect-log.md"
+  "docs/archive/architectgpt/architectgpt-core.md"
+  "docs/archive/architectgpt/architectgpt-extended.md"
+  "docs/archive/architectgpt/architect-log-legacy.md"
 )
 
 if [[ "${ALLOW_MISSING_ARCHIVE:-0}" == "1" ]]; then
