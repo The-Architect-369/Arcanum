@@ -34,3 +34,5 @@ chains/arcanum/.cache/
 *.bak
 *.pre-*.bak
 .audit/
+# Chain build artifacts
+chains/arcanum/bin/

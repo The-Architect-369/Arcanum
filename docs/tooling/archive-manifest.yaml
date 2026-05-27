@@ -40,3 +40,20 @@ archives:
     reason: Legacy ArchitectGPT extended spec retained for historical comparison only.
     superseded_by:
       - docs/governance/architectgpt/architect-gpt.md
+- archived: docs/archive/chain/arcanum/app-disabled/export.go.disabled
+    previous_path: chains/arcanum/app/export.go.disabled
+    reason: Disabled chain app source moved out of active implementation tree.
+    superseded_by:
+      - docs/specs/chain/README.md
+
+  - archived: docs/archive/chain/arcanum/app-disabled/ibc.go.disabled
+    previous_path: chains/arcanum/app/ibc.go.disabled
+    reason: Disabled IBC source moved out of active implementation tree until explicitly reactivated.
+    superseded_by:
+      - docs/specs/chain/README.md
+
+  - archived: docs/archive/chain/arcanum/app-disabled/module_basics.go.disabled
+    previous_path: chains/arcanum/app/module_basics.go.disabled
+    reason: Disabled module basics source moved out of active implementation tree.
+    superseded_by:
+      - docs/specs/chain/README.md

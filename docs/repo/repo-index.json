@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-05-27T01:10:14Z",
+  "generated_at": "2026-05-27T01:13:58Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "b4c8d3fe7",
+  "commit": "2af2ae693",
   "generator_version": "1.0",
   "files": [
     {
@@ -214,8 +214,8 @@
     {
       "path": ".gitignore",
       "type": "file",
-      "size_bytes": 375,
-      "last_modified_commit": "238931694",
+      "size_bytes": 419,
+      "last_modified_commit": "2af2ae693",
       "is_empty": false,
       "extension": ".gitignore",
       "lines": 0
@@ -1913,15 +1913,6 @@
       "lines": 20
     },
     {
-      "path": "chains/arcanum/app/export.go.disabled",
-      "type": "file",
-      "size_bytes": 7502,
-      "last_modified_commit": "975ab5f93",
-      "is_empty": false,
-      "extension": ".disabled",
-      "lines": 0
-    },
-    {
       "path": "chains/arcanum/app/genesis.go",
       "type": "file",
       "size_bytes": 523,
@@ -1938,33 +1929,6 @@
       "is_empty": false,
       "extension": ".go",
       "lines": 47
-    },
-    {
-      "path": "chains/arcanum/app/ibc.go.disabled",
-      "type": "file",
-      "size_bytes": 7252,
-      "last_modified_commit": "975ab5f93",
-      "is_empty": false,
-      "extension": ".disabled",
-      "lines": 0
-    },
-    {
-      "path": "chains/arcanum/app/module_basics.go.disabled",
-      "type": "file",
-      "size_bytes": 651,
-      "last_modified_commit": "975ab5f93",
-      "is_empty": false,
-      "extension": ".disabled",
-      "lines": 0
-    },
-    {
-      "path": "chains/arcanum/bin/arcanumd",
-      "type": "file",
-      "size_bytes": 3396208,
-      "last_modified_commit": "695b32b8d",
-      "is_empty": false,
-      "extension": "",
-      "lines": 0
     },
     {
       "path": "chains/arcanum/buf.gen.yaml",
@@ -2732,6 +2696,42 @@
       "lines": 263
     },
     {
+      "path": "docs/archive/chain/arcanum/app-disabled/export.go.disabled",
+      "type": "file",
+      "size_bytes": 7502,
+      "last_modified_commit": "",
+      "is_empty": false,
+      "extension": ".disabled",
+      "lines": 0
+    },
+    {
+      "path": "docs/archive/chain/arcanum/app-disabled/ibc.go.disabled",
+      "type": "file",
+      "size_bytes": 7252,
+      "last_modified_commit": "",
+      "is_empty": false,
+      "extension": ".disabled",
+      "lines": 0
+    },
+    {
+      "path": "docs/archive/chain/arcanum/app-disabled/module_basics.go.disabled",
+      "type": "file",
+      "size_bytes": 651,
+      "last_modified_commit": "",
+      "is_empty": false,
+      "extension": ".disabled",
+      "lines": 0
+    },
+    {
+      "path": "docs/archive/migration-notes/2026-05-26-structural-alignment/suggested-first-wave.md",
+      "type": "file",
+      "size_bytes": 582,
+      "last_modified_commit": "2af2ae693",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 19
+    },
+    {
       "path": "docs/changelog.md",
       "type": "file",
       "size_bytes": 373,
@@ -2995,11 +2995,11 @@
     {
       "path": "docs/repo/repo-index.json",
       "type": "file",
-      "size_bytes": 137641,
-      "last_modified_commit": "b4c8d3fe7",
+      "size_bytes": 141440,
+      "last_modified_commit": "2af2ae693",
       "is_empty": false,
       "extension": ".json",
-      "lines": 5012
+      "lines": 5165
     },
     {
       "path": "docs/repo/repo-interface.md",
@@ -3049,11 +3049,11 @@
     {
       "path": "docs/tooling/archive-manifest.yaml",
       "type": "file",
-      "size_bytes": 1885,
+      "size_bytes": 2709,
       "last_modified_commit": "b4c8d3fe7",
       "is_empty": false,
       "extension": ".yaml",
-      "lines": 42
+      "lines": 59
     },
     {
       "path": "docs/tooling/doctrine-checksums/doctrine-checksums.yaml",
