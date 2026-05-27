@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-05-27T01:29:11Z",
+  "generated_at": "2026-05-27T01:31:03Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "864610290",
+  "commit": "26912d29a",
   "generator_version": "1.1",
   "files": [
     {
@@ -1958,15 +1958,6 @@
       "lines": 30
     },
     {
-      "path": "chains/arcanum/cmd/arcanumd/cmd/commands.go",
-      "type": "file",
-      "size_bytes": 4334,
-      "last_modified_commit": "5da311ef6",
-      "is_empty": false,
-      "extension": ".go",
-      "lines": 163
-    },
-    {
       "path": "chains/arcanum/cmd/arcanumd/cmd/config.go",
       "type": "file",
       "size_bytes": 2179,
@@ -1978,11 +1969,11 @@
     {
       "path": "chains/arcanum/cmd/arcanumd/cmd/root.go",
       "type": "file",
-      "size_bytes": 1956,
+      "size_bytes": 906,
       "last_modified_commit": "975ab5f93",
       "is_empty": false,
       "extension": ".go",
-      "lines": 64
+      "lines": 41
     },
     {
       "path": "chains/arcanum/cmd/arcanumd/main.go",
@@ -2321,7 +2312,7 @@
       "path": "chains/arcanum/x/chaincode/genesis.go",
       "type": "file",
       "size_bytes": 993,
-      "last_modified_commit": "864610290",
+      "last_modified_commit": "26912d29a",
       "is_empty": false,
       "extension": ".go",
       "lines": 51
@@ -2759,6 +2750,15 @@
       "lines": 21
     },
     {
+      "path": "docs/archive/chain/arcanum/cmd-scaffold/commands.go.disabled",
+      "type": "file",
+      "size_bytes": 4334,
+      "last_modified_commit": "unknown",
+      "is_empty": false,
+      "extension": ".disabled",
+      "lines": 163
+    },
+    {
       "path": "docs/archive/migration-notes/2026-05-26-structural-alignment/suggested-first-wave.md",
       "type": "file",
       "size_bytes": 582,
@@ -3032,7 +3032,7 @@
       "path": "docs/repo/repo-index.json",
       "type": "file",
       "size_bytes": 142710,
-      "last_modified_commit": "864610290",
+      "last_modified_commit": "26912d29a",
       "is_empty": false,
       "extension": ".json",
       "lines": 5210
@@ -3094,11 +3094,11 @@
     {
       "path": "docs/tooling/archive-manifest.yaml",
       "type": "file",
-      "size_bytes": 2711,
+      "size_bytes": 3055,
       "last_modified_commit": "ede21098d",
       "is_empty": false,
       "extension": ".yaml",
-      "lines": 59
+      "lines": 65
     },
     {
       "path": "docs/tooling/doctrine-checksums/doctrine-checksums.yaml",

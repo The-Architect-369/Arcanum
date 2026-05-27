@@ -57,3 +57,9 @@ archives:
     reason: Disabled module basics source moved out of active implementation tree.
     superseded_by:
       - docs/specs/chain/README.md
+  - archived: docs/archive/chain/arcanum/cmd-scaffold/commands.go.disabled
+    previous_path: chains/arcanum/cmd/arcanumd/cmd/commands.go
+    reason: Stale Cosmos SDK / Ignite daemon command scaffold referenced inactive app constructor APIs.
+    superseded_by:
+      - chains/arcanum/cmd/arcanumd/cmd/root.go
+      - docs/specs/chain/README.md
