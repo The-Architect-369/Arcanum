@@ -63,15 +63,12 @@ install:
 ###  Protobuf  ###
 ##################
 
-# Use this target if you do not want to use Ignite for generating proto files
-
 proto-deps:
 	@echo "Installing proto deps"
 	@echo "Proto deps present, run 'go tool' to see them"
 
 proto-gen:
-	@echo "Generating protobuf files..."
-	@ignite generate proto-go --yes
+	cd proto && buf generate
 
 .PHONY: proto-gen
 
@@ -116,6 +113,3 @@ start-local: build
 	./bin/$(BINARY) gentx val 700000000umana --chain-id arcanum-local-1 --keyring-backend test
 	./bin/$(BINARY) collect-gentxs
 	./bin/$(BINARY) start --minimum-gas-prices=0.025umana
-
-proto-gen:
-	cd proto && buf generate
