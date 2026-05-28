@@ -68,7 +68,7 @@ proto-deps:
 	@echo "Proto deps present, run 'go tool' to see them"
 
 proto-gen:
-	cd proto && buf generate
+	buf generate
 
 .PHONY: proto-gen
 
