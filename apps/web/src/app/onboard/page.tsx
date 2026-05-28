@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
-import { getSigningClient, getQueryClient } from "@/lib/cosmos/client";
+import { getSigningClient } from "@/lib/cosmos/client";
 import { createBurner, hasBurner, loadBurner } from "@/lib/identity/burner";
 import {
   getPasskey,
@@ -11,7 +11,7 @@ import {
   signInPasskey,
 } from "@/lib/identity/passkey";
 import { addReceipt } from "@/lib/mobile/persistence";
-import { setAccountSession } from "@/state/useAccount";
+import { setAccountSession, syncChainBalance } from "@/state/useAccount";
 
 const baseDenom = process.env.NEXT_PUBLIC_ARCANUM_BASE_DENOM || "umana";
 
@@ -129,37 +129,28 @@ export default function OnboardPage() {
     setStatus("Connecting to Arcanum-D...");
     try {
       const { account } = await getSigningClient(mnemonic.trim());
-      const queryClient = await getQueryClient();
-      const balances = await queryClient.getAllBalances(account.address);
-      const balance = balances.find((entry) => entry.denom === baseDenom);
-      const nextMana = balance ? balance.amount : "0";
 
       setAccountSession({
         trusted: true,
         identitySource: "mnemonic",
         identityId: account.address,
         chainAddress: account.address,
-        mana: Number(nextMana),
+        mana: 0,
         settlementStatus: "bound",
-        lastSyncedAt: new Date().toISOString(),
-        statusMessage: `Developer wallet connected to ARCnet using ${baseDenom}.`,
+        lastSyncedAt: null,
+        statusMessage: `Developer wallet connected to ARCnet. Syncing ${baseDenom}...`,
       });
 
-      await addReceipt({
-        kind: "wallet_sync",
-        title: "Developer wallet connected",
-        summary: `Connected ${account.address} with ${nextMana} ${baseDenom}.`,
-        amount: Number(nextMana),
-        status: "confirmed",
-        metadata: {
-          address: account.address,
-          denom: baseDenom,
-        },
-      });
+      const syncResult = await syncChainBalance();
+      const nextMana = syncResult.ok ? String(syncResult.amount) : "0";
 
       setIdentity(account.address);
       setMana(nextMana);
-      setStatus("Developer wallet connected. Entering Hope...");
+      setStatus(
+        syncResult.ok
+          ? "Developer wallet connected. Entering Hope..."
+          : `Developer wallet connected, but ARCnet sync failed: ${syncResult.message}`
+      );
       finish();
     } catch (error) {
       console.error(error);
