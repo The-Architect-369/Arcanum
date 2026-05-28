@@ -17,6 +17,16 @@ service Query {
     option (google.api.http).get = "/arcanum/mana/v1/params";
   }
 
+  // Balance queries the current MANA balance for an address.
+  rpc Balance(QueryBalanceRequest) returns (QueryBalanceResponse) {
+    option (google.api.http).get = "/arcanum/mana/v1/balance/{address}";
+  }
+
+  // Supply queries the current total tracked MANA supply.
+  rpc Supply(QuerySupplyRequest) returns (QuerySupplyResponse) {
+    option (google.api.http).get = "/arcanum/mana/v1/supply";
+  }
+
   // Sinks Queries a list of Sinks items.
   rpc Sinks(QuerySinksRequest) returns (QuerySinksResponse) {
     option (google.api.http).get = "/arcanum/mana/v1/sinks";
@@ -33,6 +43,25 @@ message QueryParamsResponse {
     (gogoproto.nullable) = false,
     (amino.dont_omitempty) = true
   ];
+}
+
+message ManaBalance {
+  string address = 1;
+  string amount = 2;
+}
+
+message QueryBalanceRequest {
+  string address = 1;
+}
+
+message QueryBalanceResponse {
+  ManaBalance balance = 1;
+}
+
+message QuerySupplyRequest {}
+
+message QuerySupplyResponse {
+  string amount = 1;
 }
 
 // QuerySinksRequest defines the QuerySinksRequest message.
