@@ -59,6 +59,47 @@ func (s *MsgServer) Spend(goCtx context.Context, msg *types.MsgSpend) (*types.Ms
 	return &types.MsgSpendResponse{}, nil
 }
 
+func (s *MsgServer) Transfer(goCtx context.Context, msg *types.MsgTransfer) (*types.MsgTransferResponse, error) {
+	ctx := sdk.UnwrapSDKContext(goCtx)
+
+	params, err := s.k.GetParams(ctx)
+	if err != nil {
+		return nil, fmt.Errorf("load mana params: %w", err)
+	}
+	if !params.TransferEnabled {
+		return nil, fmt.Errorf("mana transfer is disabled")
+	}
+
+	fromAddr, err := sdk.AccAddressFromBech32(msg.Creator)
+	if err != nil {
+		return nil, fmt.Errorf("invalid creator address: %w", err)
+	}
+	toAddr, err := sdk.AccAddressFromBech32(msg.To)
+	if err != nil {
+		return nil, fmt.Errorf("invalid recipient address: %w", err)
+	}
+	if msg.Amount == 0 {
+		return nil, fmt.Errorf("mana transfer amount must be greater than zero")
+	}
+	if fromAddr.Equals(toAddr) {
+		return nil, fmt.Errorf("mana transfer requires distinct addresses")
+	}
+
+	if err := s.k.Transfer(ctx, fromAddr, toAddr, sdkmath.NewIntFromUint64(msg.Amount)); err != nil {
+		return nil, err
+	}
+
+	ctx.EventManager().EmitEvent(
+		sdk.NewEvent("mana_transfer",
+			sdk.NewAttribute("creator", msg.Creator),
+			sdk.NewAttribute("to", msg.To),
+			sdk.NewAttribute("amount", strconv.FormatUint(msg.Amount, 10)),
+		),
+	)
+
+	return &types.MsgTransferResponse{}, nil
+}
+
 func (s *MsgServer) DepositEnable(goCtx context.Context, msg *types.MsgDepositEnable) (*types.MsgDepositEnableResponse, error) {
 	ctx := sdk.UnwrapSDKContext(goCtx)
 
