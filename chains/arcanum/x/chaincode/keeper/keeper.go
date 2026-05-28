@@ -131,17 +131,17 @@ func (k Keeper) GetAnchorByOwner(ctx sdk.Context, owner sdk.AccAddress) (tokenID
 	return tokenID, metadata, true
 }
 
-func (k Keeper) GetAllAnchors(ctx sdk.Context) []types.ChaincodeAnchor {
+func (k Keeper) GetAllAnchors(ctx sdk.Context) []*types.ChaincodeAnchor {
 	store := k.ownerByTokenStore(ctx)
 	iterator := store.Iterator(nil, nil)
 	defer iterator.Close()
 
-	anchors := make([]types.ChaincodeAnchor, 0)
+	anchors := make([]*types.ChaincodeAnchor, 0)
 	for ; iterator.Valid(); iterator.Next() {
 		tokenID := string(iterator.Key())
 		owner := sdk.AccAddress(iterator.Value())
 		metadata, _ := k.GetMetadata(ctx, iterator.Key())
-		anchors = append(anchors, types.ChaincodeAnchor{
+		anchors = append(anchors, &types.ChaincodeAnchor{
 			TokenId:  tokenID,
 			Owner:    owner.String(),
 			Metadata: metadata,
@@ -150,7 +150,10 @@ func (k Keeper) GetAllAnchors(ctx sdk.Context) []types.ChaincodeAnchor {
 	return anchors
 }
 
-func (k Keeper) ImportAnchor(ctx sdk.Context, anchor types.ChaincodeAnchor) error {
+func (k Keeper) ImportAnchor(ctx sdk.Context, anchor *types.ChaincodeAnchor) error {
+	if anchor == nil {
+		return fmt.Errorf("anchor is required")
+	}
 	if anchor.Owner == "" {
 		return fmt.Errorf("anchor owner is required")
 	}
