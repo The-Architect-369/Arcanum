@@ -2,6 +2,7 @@ package keeper
 
 import (
 	"context"
+	"fmt"
 
 	"encoding/json"
 
@@ -57,6 +58,48 @@ func (k Keeper) setBalance(ctx sdk.Context, addr sdk.AccAddress, v sdkmath.Int) 
 	k.balanceStore(ctx).Set(addr, bz)
 }
 
+func (k Keeper) GetAllBalances(ctx sdk.Context) []*types.ManaBalance {
+	store := k.balanceStore(ctx)
+	iterator := store.Iterator(nil, nil)
+	defer iterator.Close()
+
+	balances := make([]*types.ManaBalance, 0)
+	for ; iterator.Valid(); iterator.Next() {
+		addr := sdk.AccAddress(iterator.Key())
+		var amount sdkmath.Int
+		if err := amount.Unmarshal(iterator.Value()); err != nil {
+			panic(err)
+		}
+		balances = append(balances, &types.ManaBalance{
+			Address: addr.String(),
+			Amount:  amount.String(),
+		})
+	}
+	return balances
+}
+
+func (k Keeper) ImportBalance(ctx sdk.Context, balance *types.ManaBalance) error {
+	if balance == nil {
+		return fmt.Errorf("balance is required")
+	}
+	if balance.Address == "" {
+		return fmt.Errorf("balance address is required")
+	}
+	addr, err := sdk.AccAddressFromBech32(balance.Address)
+	if err != nil {
+		return fmt.Errorf("invalid balance address: %w", err)
+	}
+	amount, ok := sdkmath.NewIntFromString(balance.Amount)
+	if !ok {
+		return fmt.Errorf("invalid balance amount")
+	}
+	if amount.IsNegative() {
+		return fmt.Errorf("balance amount cannot be negative")
+	}
+	k.setBalance(ctx, addr, amount)
+	return nil
+}
+
 // --- supply ---
 
 func (k Keeper) getSupply(ctx sdk.Context) sdkmath.Int {
@@ -72,6 +115,10 @@ func (k Keeper) getSupply(ctx sdk.Context) sdkmath.Int {
 	return i
 }
 
+func (k Keeper) GetSupply(ctx sdk.Context) sdkmath.Int {
+	return k.getSupply(ctx)
+}
+
 func (k Keeper) setSupply(ctx sdk.Context, v sdkmath.Int) {
 	store := ctx.KVStore(k.storeKey)
 	bz, err := v.Marshal()
@@ -79,6 +126,10 @@ func (k Keeper) setSupply(ctx sdk.Context, v sdkmath.Int) {
 		panic(err)
 	}
 	store.Set(supplyKey, bz)
+}
+
+func (k Keeper) SetSupply(ctx sdk.Context, v sdkmath.Int) {
+	k.setSupply(ctx, v)
 }
 
 // --- public ops ---
