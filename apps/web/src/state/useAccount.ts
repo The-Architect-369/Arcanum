@@ -1,7 +1,12 @@
 "use client";
 
 import { useSyncExternalStore } from "react";
-import { getBalance } from "@/lib/cosmos/queries";
+import {
+  getBalance,
+  getChaincodeAnchor,
+  getManaBalance,
+  getManaSupply,
+} from "@/lib/cosmos/queries";
 import {
   addReceipt,
   getPersistentValue,
@@ -18,11 +23,14 @@ export type AccountSnapshot = Readonly<{
   showOnboarding: boolean;
   notifCount: number;
   mana: number;
+  manaSupply: string | null;
   identitySource: AccountIdentitySource;
   identityId: string | null;
   accId: string | null;
   handle: string | null;
   chainAddress: string | null;
+  chainAnchorTokenId: string | null;
+  chainAnchorMetadata: string | null;
   peerId: string | null;
   lastSyncedAt: string | null;
   settlementStatus: SettlementStatus;
@@ -39,11 +47,14 @@ const SERVER_SNAPSHOT: AccountSnapshot = Object.freeze({
   showOnboarding: false,
   notifCount: 0,
   mana: 0,
+  manaSupply: null,
   identitySource: "none",
   identityId: null,
   accId: null,
   handle: null,
   chainAddress: null,
+  chainAnchorTokenId: null,
+  chainAnchorMetadata: null,
   peerId: null,
   lastSyncedAt: null,
   settlementStatus: "unbound",
@@ -102,6 +113,18 @@ function normalizePatch(patch: AccountPatch): AccountPatch {
     next.notifCount = Number.isFinite(notifCount)
       ? Math.max(0, Math.floor(notifCount))
       : 0;
+  }
+
+  if ("manaSupply" in next) {
+    next.manaSupply = next.manaSupply ? String(next.manaSupply) : null;
+  }
+
+  if ("chainAnchorTokenId" in next) {
+    next.chainAnchorTokenId = next.chainAnchorTokenId ? String(next.chainAnchorTokenId) : null;
+  }
+
+  if ("chainAnchorMetadata" in next) {
+    next.chainAnchorMetadata = next.chainAnchorMetadata ? String(next.chainAnchorMetadata) : null;
   }
 
   return next;
@@ -234,8 +257,11 @@ export function setAccountSession(
       | "accId"
       | "handle"
       | "chainAddress"
+      | "chainAnchorTokenId"
+      | "chainAnchorMetadata"
       | "peerId"
       | "mana"
+      | "manaSupply"
       | "settlementStatus"
       | "statusMessage"
       | "lastSyncedAt"
@@ -293,6 +319,9 @@ export async function syncChainBalance() {
     setState({
       settlementStatus: "unbound",
       statusMessage: "No chain address is bound to this mobile session.",
+      chainAnchorTokenId: null,
+      chainAnchorMetadata: null,
+      manaSupply: null,
     });
     return {
       ok: false as const,
@@ -309,34 +338,63 @@ export async function syncChainBalance() {
     process.env.NEXT_PUBLIC_ARCANUM_BASE_DENOM ||
     process.env.NEXT_PUBLIC_ARC_DENOM ||
     "umana";
+  const rpc = process.env.NEXT_PUBLIC_ARCANUM_RPC || "";
+  const api = process.env.NEXT_PUBLIC_ARCANUM_API || process.env.NEXT_PUBLIC_ARCANUM_REST || "";
 
   try {
-    const balance = await getBalance({
-      rpc: process.env.NEXT_PUBLIC_ARCANUM_RPC || "",
-      address: state.chainAddress,
-      denom,
-    });
+    let amountText = "0";
+    let source = "mana";
 
-    const amount = Number(balance.amount ?? 0);
+    try {
+      const balance = await getManaBalance({
+        api,
+        address: state.chainAddress,
+      });
+      amountText = balance.amount ?? "0";
+    } catch {
+      const balance = await getBalance({
+        rpc,
+        address: state.chainAddress,
+        denom,
+      });
+      amountText = balance.amount ?? "0";
+      source = "bank";
+    }
+
+    const [supply, anchor] = await Promise.all([
+      getManaSupply({ api }).catch(() => null),
+      getChaincodeAnchor({ api, address: state.chainAddress }).catch(() => null),
+    ]);
+
+    const amount = Number(amountText ?? 0);
     const safeAmount = Number.isFinite(amount) ? Math.max(0, Math.floor(amount)) : 0;
     const syncedAt = new Date().toISOString();
+    const statusParts = [`Synced ${safeAmount} ${denom} from ${source === "mana" ? "ARCnet MANA" : "bank fallback"}.`];
+    if (anchor?.tokenId) statusParts.push(`Anchor ${anchor.tokenId}.`);
+    if (supply) statusParts.push(`Supply ${supply}.`);
 
     setState({
       mana: safeAmount,
+      manaSupply: supply,
+      chainAnchorTokenId: anchor?.tokenId ?? null,
+      chainAnchorMetadata: anchor?.metadata ?? null,
       settlementStatus: "bound",
-      statusMessage: `Synced ${safeAmount} ${denom}.`,
+      statusMessage: statusParts.join(" "),
       lastSyncedAt: syncedAt,
     });
 
     await addReceipt({
       kind: "wallet_sync",
       title: "Wallet synced",
-      summary: `Fetched ${safeAmount} ${denom} from ARCnet.`,
+      summary: `Fetched ${safeAmount} ${denom} from ARCnet (${source}).`,
       amount: safeAmount,
       status: "confirmed",
       metadata: {
         address: state.chainAddress,
         denom,
+        source,
+        supply,
+        chainAnchorTokenId: anchor?.tokenId ?? null,
       },
     });
 
@@ -345,6 +403,9 @@ export async function syncChainBalance() {
       amount: safeAmount,
       denom,
       syncedAt,
+      source,
+      supply,
+      chainAnchorTokenId: anchor?.tokenId ?? null,
     };
   } catch (error) {
     const message =
