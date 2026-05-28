@@ -1,11 +1,12 @@
 package keeper_test
 
 import (
+	"bytes"
 	"testing"
 
 	"cosmossdk.io/log"
-	storemetrics "cosmossdk.io/store/metrics"
 	"cosmossdk.io/store"
+	storemetrics "cosmossdk.io/store/metrics"
 	storetypes "cosmossdk.io/store/types"
 	dbm "github.com/cosmos/cosmos-db"
 	"github.com/cosmos/cosmos-sdk/codec"
@@ -34,18 +35,13 @@ func setupKeeper(t *testing.T) (keeper.Keeper, sdk.Context) {
 	return k, ctx
 }
 
-func mustAddr(t *testing.T, value string) sdk.AccAddress {
-	t.Helper()
-	addr, err := sdk.AccAddressFromBech32(value)
-	if err != nil {
-		t.Fatalf("decode address: %v", err)
-	}
-	return addr
+func testAddr(fill byte) sdk.AccAddress {
+	return sdk.AccAddress(bytes.Repeat([]byte{fill}, 20))
 }
 
 func TestMintAnchorSetsOwnerAndToken(t *testing.T) {
 	k, ctx := setupKeeper(t)
-	owner := mustAddr(t, "arca1qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq0j6r7n")
+	owner := testAddr(0x01)
 	tokenID := keeper.DefaultTokenID(owner)
 
 	if err := k.MintAnchor(ctx, owner, tokenID, "cid:alpha"); err != nil {
@@ -76,7 +72,7 @@ func TestMintAnchorSetsOwnerAndToken(t *testing.T) {
 
 func TestMintAnchorRejectsDuplicateOwner(t *testing.T) {
 	k, ctx := setupKeeper(t)
-	owner := mustAddr(t, "arca1qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq0j6r7n")
+	owner := testAddr(0x01)
 
 	if err := k.MintAnchor(ctx, owner, keeper.DefaultTokenID(owner), ""); err != nil {
 		t.Fatalf("initial mint anchor: %v", err)
@@ -89,8 +85,8 @@ func TestMintAnchorRejectsDuplicateOwner(t *testing.T) {
 
 func TestRecoverAnchorRebindsContinuity(t *testing.T) {
 	k, ctx := setupKeeper(t)
-	currentOwner := mustAddr(t, "arca1qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq0j6r7n")
-	nextOwner := mustAddr(t, "arca1qyqszqgpqyqszqgpqyqszqgpqyqszqgp5z4w9m")
+	currentOwner := testAddr(0x01)
+	nextOwner := testAddr(0x02)
 	tokenID := keeper.DefaultTokenID(currentOwner)
 
 	if err := k.MintAnchor(ctx, currentOwner, tokenID, "cid:alpha"); err != nil {
