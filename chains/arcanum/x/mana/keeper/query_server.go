@@ -26,6 +26,34 @@ func (q QueryServer) Params(ctx context.Context, _ *types.QueryParamsRequest) (*
 	return &types.QueryParamsResponse{Params: &p}, nil
 }
 
+func (q QueryServer) Balance(ctx context.Context, req *types.QueryBalanceRequest) (*types.QueryBalanceResponse, error) {
+	if req == nil {
+		return nil, status.Error(codes.InvalidArgument, "empty request")
+	}
+	if req.Address == "" {
+		return nil, status.Error(codes.InvalidArgument, "address is required")
+	}
+
+	sdkCtx := sdk.UnwrapSDKContext(ctx)
+	addr, err := sdk.AccAddressFromBech32(req.Address)
+	if err != nil {
+		return nil, status.Error(codes.InvalidArgument, "invalid address")
+	}
+	balance := q.Keeper.GetBalance(sdkCtx, addr)
+
+	return &types.QueryBalanceResponse{
+		Balance: &types.ManaBalance{
+			Address: addr.String(),
+			Amount:  balance.String(),
+		},
+	}, nil
+}
+
+func (q QueryServer) Supply(ctx context.Context, _ *types.QuerySupplyRequest) (*types.QuerySupplyResponse, error) {
+	sdkCtx := sdk.UnwrapSDKContext(ctx)
+	return &types.QuerySupplyResponse{Amount: q.Keeper.GetSupply(sdkCtx).String()}, nil
+}
+
 func (q QueryServer) Sinks(ctx context.Context, req *types.QuerySinksRequest) (*types.QuerySinksResponse, error) {
 	if req == nil {
 		return nil, status.Error(codes.InvalidArgument, "empty request")
