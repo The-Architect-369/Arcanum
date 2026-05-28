@@ -2,7 +2,10 @@ package mana
 
 import (
 	"context"
+	"fmt"
 	"strconv"
+
+	sdkmath "cosmossdk.io/math"
 
 	"arcanum/x/mana/keeper"
 	"arcanum/x/mana/types"
@@ -21,6 +24,28 @@ func NewMsgServerImpl(k keeper.Keeper) *MsgServer {
 
 func (s *MsgServer) Spend(goCtx context.Context, msg *types.MsgSpend) (*types.MsgSpendResponse, error) {
 	ctx := sdk.UnwrapSDKContext(goCtx)
+
+	creatorAddr, err := sdk.AccAddressFromBech32(msg.Creator)
+	if err != nil {
+		return nil, fmt.Errorf("invalid creator address: %w", err)
+	}
+	spendAddr, err := sdk.AccAddressFromBech32(msg.Address)
+	if err != nil {
+		return nil, fmt.Errorf("invalid spend address: %w", err)
+	}
+	if !creatorAddr.Equals(spendAddr) {
+		return nil, fmt.Errorf("mana spend requires creator to match spend address")
+	}
+	if msg.Amount == 0 {
+		return nil, fmt.Errorf("mana spend amount must be greater than zero")
+	}
+	if msg.Purpose == "" {
+		return nil, fmt.Errorf("mana spend purpose is required")
+	}
+
+	if err := s.k.Spend(ctx, spendAddr, sdkmath.NewIntFromUint64(msg.Amount)); err != nil {
+		return nil, err
+	}
 
 	ctx.EventManager().EmitEvent(
 		sdk.NewEvent("mana_spend",
