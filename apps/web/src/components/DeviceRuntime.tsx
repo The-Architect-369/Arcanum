@@ -31,6 +31,7 @@ export default function DeviceRuntime() {
   const [storageManagerSupported, setStorageManagerSupported] = useState(false);
   const [storagePersisted, setStoragePersisted] = useState(true);
   const [standaloneSurface, setStandaloneSurface] = useState(false);
+  const [serviceWorkerController, setServiceWorkerController] = useState(true);
   const [message, setMessage] = useState<string | null>(null);
   const syncingRef = useRef(false);
   const lastSyncRef = useRef(0);
@@ -39,14 +40,22 @@ export default function DeviceRuntime() {
     setInstallAvailable(hasDeferredInstallPrompt());
     setOnline(typeof navigator === "undefined" ? true : navigator.onLine);
     setStandaloneSurface(isStandaloneSurface());
+    setServiceWorkerController(
+      typeof navigator === "undefined" || !("serviceWorker" in navigator)
+        ? true
+        : Boolean(navigator.serviceWorker.controller)
+    );
 
     const storageManager = navigator.storage;
     setStorageManagerSupported(Boolean(storageManager));
 
     if (storageManager?.persisted) {
-      void storageManager.persisted().then((value) => setStoragePersisted(value)).catch(() => {
-        setStoragePersisted(false);
-      });
+      void storageManager
+        .persisted()
+        .then((value) => setStoragePersisted(value))
+        .catch(() => {
+          setStoragePersisted(false);
+        });
     }
 
     const unsubscribeInstall = subscribeInstallPrompt(setInstallAvailable);
@@ -60,6 +69,11 @@ export default function DeviceRuntime() {
     };
     const onVisibility = () => {
       setStandaloneSurface(isStandaloneSurface());
+      setServiceWorkerController(Boolean(navigator.serviceWorker?.controller));
+    };
+    const onControllerChange = () => {
+      setServiceWorkerController(Boolean(navigator.serviceWorker?.controller));
+      setMessage("Offline controller is now active for this app surface.");
     };
 
     window.addEventListener("online", onOnline);
@@ -67,6 +81,7 @@ export default function DeviceRuntime() {
     window.addEventListener("arcanum:pwa-update-ready", onUpdateReady as EventListener);
     window.addEventListener("appinstalled", onAppInstalled);
     document.addEventListener("visibilitychange", onVisibility);
+    navigator.serviceWorker?.addEventListener("controllerchange", onControllerChange);
 
     return () => {
       unsubscribeInstall();
@@ -75,6 +90,7 @@ export default function DeviceRuntime() {
       window.removeEventListener("arcanum:pwa-update-ready", onUpdateReady as EventListener);
       window.removeEventListener("appinstalled", onAppInstalled);
       document.removeEventListener("visibilitychange", onVisibility);
+      navigator.serviceWorker?.removeEventListener("controllerchange", onControllerChange);
     };
   }, []);
 
@@ -171,7 +187,14 @@ export default function DeviceRuntime() {
     }
   }
 
-  if (online && !installAvailable && !updateReady && !message && (!standaloneSurface || storagePersisted || !storageManagerSupported)) {
+  if (
+    online &&
+    !installAvailable &&
+    !updateReady &&
+    !message &&
+    (!standaloneSurface || storagePersisted || !storageManagerSupported) &&
+    (!standaloneSurface || serviceWorkerController)
+  ) {
     return null;
   }
 
@@ -198,6 +221,23 @@ export default function DeviceRuntime() {
                 className="rounded-xl border border-amber-300/40 px-3 py-1.5 text-xs text-amber-300 hover:bg-amber-300/10"
               >
                 Install app
+              </button>
+            </div>
+          )}
+
+          {standaloneSurface && !serviceWorkerController && (
+            <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-amber-300/20 bg-amber-300/10 px-3 py-2">
+              <div>
+                <div className="font-medium text-zinc-100">Finalizing offline control</div>
+                <div className="text-xs text-zinc-400">This installed surface is registered but not yet under service-worker control.</div>
+              </div>
+              <button
+                onClick={() => {
+                  window.location.reload();
+                }}
+                className="rounded-xl border border-amber-300/40 px-3 py-1.5 text-xs text-amber-200 hover:bg-amber-300/10"
+              >
+                Reload app
               </button>
             </div>
           )}
