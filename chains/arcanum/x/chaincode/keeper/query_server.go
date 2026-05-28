@@ -45,7 +45,7 @@ func (q QueryServer) Sbi(ctx context.Context, req *types.QuerySbiRequest) (*type
 	}
 
 	return &types.QuerySbiResponse{
-		Anchor: types.ChaincodeAnchor{
+		Anchor: &types.ChaincodeAnchor{
 			TokenId:  tokenID,
 			Owner:    owner.String(),
 			Metadata: metadata,
