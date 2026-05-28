@@ -34,8 +34,14 @@ func (q QueryServer) Sbi(ctx context.Context, req *types.QuerySbiRequest) (*type
 		return nil, status.Error(codes.InvalidArgument, "address is required")
 	}
 
-	_ = sdk.UnwrapSDKContext(ctx)
+	sdkCtx := sdk.UnwrapSDKContext(ctx)
+	owner, err := sdk.AccAddressFromBech32(req.Address)
+	if err != nil {
+		return nil, status.Error(codes.InvalidArgument, "invalid address")
+	}
+	if _, _, found := q.Keeper.GetAnchorByOwner(sdkCtx, owner); !found {
+		return nil, status.Error(codes.NotFound, "chaincode anchor not found")
+	}
 
-	// TODO: Wire to real SBI storage model once finalized.
 	return &types.QuerySbiResponse{}, nil
 }
