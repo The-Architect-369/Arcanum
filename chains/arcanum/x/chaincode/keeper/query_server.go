@@ -39,9 +39,16 @@ func (q QueryServer) Sbi(ctx context.Context, req *types.QuerySbiRequest) (*type
 	if err != nil {
 		return nil, status.Error(codes.InvalidArgument, "invalid address")
 	}
-	if _, _, found := q.Keeper.GetAnchorByOwner(sdkCtx, owner); !found {
+	tokenID, metadata, found := q.Keeper.GetAnchorByOwner(sdkCtx, owner)
+	if !found {
 		return nil, status.Error(codes.NotFound, "chaincode anchor not found")
 	}
 
-	return &types.QuerySbiResponse{}, nil
+	return &types.QuerySbiResponse{
+		Anchor: types.ChaincodeAnchor{
+			TokenId:  tokenID,
+			Owner:    owner.String(),
+			Metadata: metadata,
+		},
+	}, nil
 }
