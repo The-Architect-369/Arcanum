@@ -16,7 +16,11 @@ func (k Keeper) InitGenesis(ctx sdk.Context, genState *types.GenesisState) {
 	}
 	k.SetParams(ctx, *genState.Params)
 
-	// TODO: init any additional chaincode state
+	for _, anchor := range genState.Anchors {
+		if err := k.ImportAnchor(ctx, anchor); err != nil {
+			panic(err)
+		}
+	}
 }
 
 func (k Keeper) ExportGenesis(ctx sdk.Context) *types.GenesisState {
@@ -26,6 +30,7 @@ func (k Keeper) ExportGenesis(ctx sdk.Context) *types.GenesisState {
 		p = dp
 	}
 	return &types.GenesisState{
-		Params: &p,
+		Params:  &p,
+		Anchors: k.GetAllAnchors(ctx),
 	}
 }
