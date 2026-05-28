@@ -36,7 +36,11 @@ export default function AccountPage() {
     setBusy("sync");
     setMessage(null);
     const result = await syncChainBalance();
-    setMessage(result.ok ? `Wallet synced at ${result.syncedAt}.` : result.message);
+    setMessage(
+      result.ok
+        ? `Wallet synced at ${result.syncedAt}.${result.chainAnchorTokenId ? ` Anchor ${result.chainAnchorTokenId}.` : ""}`
+        : result.message
+    );
     setBusy(null);
   }
 
@@ -53,8 +57,8 @@ export default function AccountPage() {
       <PanelShell title="Account" flush className="flex-1">
         <div className="space-y-4">
           <p className="text-sm text-zinc-300">
-            Mobile account state is now persisted outside transient view state. Chain settlement is
-            optional until you bind an ARCnet address.
+            Mobile account state is persisted outside transient view state. When a chain address is
+            bound, this surface can now read live ARCnet MANA and chaincode anchor state.
           </p>
 
           <div className="grid gap-3 md:grid-cols-2">
@@ -62,17 +66,32 @@ export default function AccountPage() {
             <StatusCard label="Identity source" value={account.identitySource} />
             <StatusCard label="Identity ID" value={truncate(account.identityId)} mono />
             <StatusCard label="Chain address" value={truncate(account.chainAddress)} mono />
+            <StatusCard label="Chain anchor" value={truncate(account.chainAnchorTokenId)} mono />
             <StatusCard label="MANA" value={String(account.mana)} />
+            <StatusCard label="Tracked supply" value={account.manaSupply ?? "Unknown"} mono />
             <StatusCard label="Last sync" value={account.lastSyncedAt ?? "Never"} mono />
           </div>
 
           <PanelSection title="Session posture">
             <div className="space-y-2 text-sm text-zinc-300">
               <p>
-                Activation is device-local until a chain address is bound. This keeps basic
-                participation available without pretending that settlement already exists.
+                Activation is device-local until a chain address is bound. Once bound, ARCnet becomes
+                the balance and anchor witness layer instead of a cosmetic side sync.
               </p>
               <p>{account.statusMessage ?? "No status message yet."}</p>
+            </div>
+          </PanelSection>
+
+          <PanelSection title="Chaincode witness">
+            <div className="space-y-2 text-sm text-zinc-300">
+              <p>
+                {account.chainAnchorTokenId
+                  ? `This account is currently witnessed on ARCnet as ${account.chainAnchorTokenId}.`
+                  : "No ARCnet chaincode anchor has been found for the bound address yet."}
+              </p>
+              {account.chainAnchorMetadata && (
+                <p className="break-all font-mono text-xs text-zinc-400">{account.chainAnchorMetadata}</p>
+              )}
             </div>
           </PanelSection>
 
@@ -89,7 +108,7 @@ export default function AccountPage() {
               disabled={busy === "sync" || !account.chainAddress}
               className="rounded-xl border border-amber-300/40 px-4 py-2 text-sm text-amber-300 hover:bg-amber-300/10 disabled:opacity-50"
             >
-              {busy === "sync" ? "Syncing…" : "Sync wallet"}
+              {busy === "sync" ? "Syncing…" : "Sync ARCnet state"}
             </button>
 
             <Link
