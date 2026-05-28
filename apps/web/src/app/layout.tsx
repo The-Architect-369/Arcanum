@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import "./app-polish.css";
 import PWARegister from "@/components/PWARegister";
+import DeviceRuntime from "@/components/DeviceRuntime";
 
 export const metadata: Metadata = {
   title: "Arcanum",
@@ -53,6 +54,7 @@ export default function RootLayout({
       </head>
       <body className="antialiased">
         <PWARegister />
+        <DeviceRuntime />
         {children}
       </body>
     </html>

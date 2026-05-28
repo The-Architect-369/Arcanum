@@ -1,12 +1,15 @@
 import { NextResponse } from "next/server";
+import { CID } from "multiformats/cid";
+import * as raw from "multiformats/codecs/raw";
+import { sha256 } from "multiformats/hashes/sha2";
 
 export async function POST(request: Request) {
-  const body = await request.json();
-
-  // G1 stub: log and return fake CID
-  console.log("G1 IPFS stub received:", body);
+  const bytes = new Uint8Array(await request.arrayBuffer());
+  const digest = await sha256.digest(bytes);
+  const cid = CID.createV1(raw.code, digest).toString();
 
   return NextResponse.json({
-    cid: "bafyG1stubcid",
+    cid,
+    size: bytes.byteLength,
   });
 }

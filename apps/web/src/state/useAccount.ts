@@ -1,127 +1,378 @@
-'use client';
+"use client";
 
-/**
- * Tiny, dependency-free account store with localStorage persistence.
- * React 18-safe useSyncExternalStore implementation (server snapshot cached).
- */
+import { useSyncExternalStore } from "react";
+import { getBalance } from "@/lib/cosmos/queries";
+import {
+  addReceipt,
+  getPersistentValue,
+  removePersistentValue,
+  setPersistentValue,
+} from "@/lib/mobile/persistence";
 
-import { useSyncExternalStore } from 'react';
+export type AccountIdentitySource = "none" | "passkey" | "burner" | "mnemonic";
+
+export type SettlementStatus = "unbound" | "bound" | "syncing" | "error";
 
 export type AccountSnapshot = Readonly<{
   trusted: boolean;
   showOnboarding: boolean;
   notifCount: number;
   mana: number;
+  identitySource: AccountIdentitySource;
+  identityId: string | null;
+  accId: string | null;
+  handle: string | null;
+  chainAddress: string | null;
+  peerId: string | null;
+  lastSyncedAt: string | null;
+  settlementStatus: SettlementStatus;
+  statusMessage: string | null;
 }>;
 
-const STORAGE_KEY = 'acc_state_v1';
+type AccountPatch = Partial<AccountSnapshot>;
 
-// ---- server snapshot MUST be a stable reference ----
+const STORAGE_KEY = "acc_state_v2";
+const PERSIST_KEY = "account:session";
+
 const SERVER_SNAPSHOT: AccountSnapshot = Object.freeze({
   trusted: false,
   showOnboarding: false,
   notifCount: 0,
   mana: 0,
+  identitySource: "none",
+  identityId: null,
+  accId: null,
+  handle: null,
+  chainAddress: null,
+  peerId: null,
+  lastSyncedAt: null,
+  settlementStatus: "unbound",
+  statusMessage: null,
 });
 
 const listeners = new Set<() => void>();
-
-function freeze<T extends object>(o: T): Readonly<T> {
-  return Object.freeze({ ...(o as any) }) as Readonly<T>;
-}
-
 let state: AccountSnapshot = SERVER_SNAPSHOT;
+let hydrated = false;
 
-// ---- load persisted state on the client ----
-function load() {
+function freeze<T extends object>(value: T): Readonly<T> {
+  return Object.freeze({ ...(value as Record<string, unknown>) }) as Readonly<T>;
+}
+
+function saveLocalSnapshot(snapshot: AccountSnapshot) {
   try {
-    if (typeof window === 'undefined') return;
-    const raw = window.localStorage.getItem(STORAGE_KEY);
-    if (raw) {
-      const parsed = JSON.parse(raw);
-      state = freeze({
-        ...SERVER_SNAPSHOT,
-        ...parsed,
-      });
-    }
+    if (typeof window === "undefined") return;
+    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(snapshot));
   } catch {
-    /* noop */
+    // ignore sync persistence errors
   }
 }
-function save() {
+
+async function persistSnapshot(snapshot: AccountSnapshot) {
   try {
-    if (typeof window === 'undefined') return;
-    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    await setPersistentValue(PERSIST_KEY, snapshot);
   } catch {
-    /* noop */
+    // ignore async persistence errors
   }
 }
-if (typeof window !== 'undefined') load();
 
 function notify() {
-  for (const cb of Array.from(listeners)) {
-    try { cb(); } catch {}
+  listeners.forEach((callback) => {
+    try {
+      callback();
+    } catch {
+      // ignore listener failures
+    }
+  });
+}
+
+function normalizePatch(patch: AccountPatch): AccountPatch {
+  const next = { ...patch };
+
+  if ("identityId" in next) {
+    next.accId = next.identityId ?? null;
+  }
+
+  if ("mana" in next) {
+    const mana = Number(next.mana ?? 0);
+    next.mana = Number.isFinite(mana) ? Math.max(0, Math.floor(mana)) : 0;
+  }
+
+  if ("notifCount" in next) {
+    const notifCount = Number(next.notifCount ?? 0);
+    next.notifCount = Number.isFinite(notifCount)
+      ? Math.max(0, Math.floor(notifCount))
+      : 0;
+  }
+
+  return next;
+}
+
+function setState(patch: AccountPatch, options?: { persist?: boolean }) {
+  state = freeze({
+    ...state,
+    ...normalizePatch(patch),
+  });
+
+  const persist = options?.persist !== false;
+  if (persist) {
+    saveLocalSnapshot(state);
+    void persistSnapshot(state);
+  }
+
+  notify();
+  return state;
+}
+
+function loadFromLocalStorage() {
+  try {
+    if (typeof window === "undefined") return;
+    const raw = window.localStorage.getItem(STORAGE_KEY);
+    if (!raw) return;
+    const parsed = JSON.parse(raw) as Partial<AccountSnapshot>;
+    state = freeze({
+      ...SERVER_SNAPSHOT,
+      ...normalizePatch(parsed),
+    });
+  } catch {
+    state = SERVER_SNAPSHOT;
   }
 }
 
-// ---- external store API ----
-export function subscribe(cb: () => void) {
-  listeners.add(cb);
-  return () => listeners.delete(cb);
-}
-export function getState(): AccountSnapshot {
-  // Return the SAME reference for client reads
+export async function hydrateAccountState() {
+  if (hydrated) return state;
+  hydrated = true;
+
+  const persisted = await getPersistentValue<Partial<AccountSnapshot>>(PERSIST_KEY);
+  if (!persisted) return state;
+
+  state = freeze({
+    ...SERVER_SNAPSHOT,
+    ...state,
+    ...normalizePatch(persisted),
+  });
+  saveLocalSnapshot(state);
+  notify();
   return state;
 }
+
+if (typeof window !== "undefined") {
+  loadFromLocalStorage();
+  void hydrateAccountState();
+}
+
+export function subscribe(callback: () => void) {
+  listeners.add(callback);
+  return () => listeners.delete(callback);
+}
+
+export function getState(): AccountSnapshot {
+  return state;
+}
+
 function getServerSnapshot(): AccountSnapshot {
-  // Must be referentially stable on server
   return SERVER_SNAPSHOT;
 }
+
 function getSnapshot(): AccountSnapshot {
-  // Client-side snapshot; also stable between renders until we mutate state
   return state;
 }
 
-// ---- selectors ----
-export function getShowOnboarding(): boolean { return state.showOnboarding; }
-export function isTrusted(): boolean { return state.trusted; }
-export function getNotificationCount(): number { return state.notifCount; }
-export function getManaBalance(): number { return state.mana; }
-
-// ---- mutators ----
-export function setShowOnboarding(v: boolean) {
-  state = freeze({ ...state, showOnboarding: !!v });
-  save(); notify();
-}
-export function setTrusted(v: boolean) {
-  state = freeze({ ...state, trusted: !!v });
-  save(); notify();
-}
-export function setNotificationCount(n: number) {
-  const safe = Math.max(0, Math.floor(Number.isFinite(n) ? n : 0));
-  state = freeze({ ...state, notifCount: safe });
-  save(); notify();
-}
-export function setManaBalance(n: number) {
-  const safe = Math.max(0, Math.floor(Number.isFinite(n) ? n : 0));
-  state = freeze({ ...state, mana: safe });
-  save(); notify();
+export function getShowOnboarding() {
+  return state.showOnboarding;
 }
 
-// ---- onboarding lifecycle (stub) ----
+export function isTrusted() {
+  return state.trusted;
+}
+
+export function getNotificationCount() {
+  return state.notifCount;
+}
+
+export function getManaBalance() {
+  return state.mana;
+}
+
+export function setShowOnboarding(value: boolean) {
+  setState({ showOnboarding: !!value });
+}
+
+export function setTrusted(value: boolean) {
+  setState({ trusted: !!value });
+}
+
+export function setNotificationCount(value: number) {
+  setState({ notifCount: value });
+}
+
+export function setManaBalance(value: number) {
+  setState({ mana: value });
+}
+
+export function spendMana(amount: number) {
+  const safeAmount = Math.max(0, Math.floor(Number.isFinite(amount) ? amount : 0));
+  if (safeAmount <= 0) return true;
+  if (state.mana < safeAmount) return false;
+  setState({ mana: state.mana - safeAmount });
+  return true;
+}
+
+export function creditMana(amount: number) {
+  const safeAmount = Math.max(0, Math.floor(Number.isFinite(amount) ? amount : 0));
+  if (safeAmount <= 0) return state.mana;
+  setState({ mana: state.mana + safeAmount });
+  return state.mana;
+}
+
+export function setAccountSession(
+  session: Partial<
+    Pick<
+      AccountSnapshot,
+      | "trusted"
+      | "identitySource"
+      | "identityId"
+      | "accId"
+      | "handle"
+      | "chainAddress"
+      | "peerId"
+      | "mana"
+      | "settlementStatus"
+      | "statusMessage"
+      | "lastSyncedAt"
+    >
+  >
+) {
+  return setState(session);
+}
+
+export async function clearAccountSession() {
+  state = SERVER_SNAPSHOT;
+  saveLocalSnapshot(state);
+  try {
+    if (typeof window !== "undefined") {
+      window.localStorage.removeItem("ARCANUM_NODE_INITIALIZED");
+    }
+  } catch {
+    // ignore
+  }
+  await removePersistentValue(PERSIST_KEY);
+  notify();
+}
+
 export async function beginOnboarding() {
   setShowOnboarding(true);
+  await addReceipt({
+    kind: "identity",
+    title: "Identity activation started",
+    summary: "Opened activation flow.",
+    status: "info",
+  });
 }
+
 export async function completeOnboarding() {
-  setTrusted(true);
-  setShowOnboarding(false);
-  if (state.mana < 10) setManaBalance(10);
+  setState({
+    trusted: true,
+    showOnboarding: false,
+    statusMessage: "Identity activated on this device.",
+  });
+
+  await addReceipt({
+    kind: "identity",
+    title: "Identity activated",
+    summary: "ACC surface activated on this device.",
+    status: "confirmed",
+  });
 }
+
 export function cancelOnboarding() {
   setShowOnboarding(false);
 }
 
-// ---- React hook for live subscription ----
+export async function syncChainBalance() {
+  if (!state.chainAddress) {
+    setState({
+      settlementStatus: "unbound",
+      statusMessage: "No chain address is bound to this mobile session.",
+    });
+    return {
+      ok: false as const,
+      message: "No chain address bound.",
+    };
+  }
+
+  setState({
+    settlementStatus: "syncing",
+    statusMessage: "Syncing balance from ARCnet...",
+  });
+
+  const denom =
+    process.env.NEXT_PUBLIC_ARCANUM_BASE_DENOM ||
+    process.env.NEXT_PUBLIC_ARC_DENOM ||
+    "umana";
+
+  try {
+    const balance = await getBalance({
+      rpc: process.env.NEXT_PUBLIC_ARCANUM_RPC || "",
+      address: state.chainAddress,
+      denom,
+    });
+
+    const amount = Number(balance.amount ?? 0);
+    const safeAmount = Number.isFinite(amount) ? Math.max(0, Math.floor(amount)) : 0;
+    const syncedAt = new Date().toISOString();
+
+    setState({
+      mana: safeAmount,
+      settlementStatus: "bound",
+      statusMessage: `Synced ${safeAmount} ${denom}.`,
+      lastSyncedAt: syncedAt,
+    });
+
+    await addReceipt({
+      kind: "wallet_sync",
+      title: "Wallet synced",
+      summary: `Fetched ${safeAmount} ${denom} from ARCnet.`,
+      amount: safeAmount,
+      status: "confirmed",
+      metadata: {
+        address: state.chainAddress,
+        denom,
+      },
+    });
+
+    return {
+      ok: true as const,
+      amount: safeAmount,
+      denom,
+      syncedAt,
+    };
+  } catch (error) {
+    const message =
+      error instanceof Error ? error.message : "Failed to sync balance from ARCnet.";
+
+    setState({
+      settlementStatus: "error",
+      statusMessage: message,
+    });
+
+    await addReceipt({
+      kind: "wallet_sync",
+      title: "Wallet sync failed",
+      summary: message,
+      status: "error",
+      metadata: {
+        address: state.chainAddress,
+        denom,
+      },
+    });
+
+    return {
+      ok: false as const,
+      message,
+    };
+  }
+}
+
 export function useAccount(): AccountSnapshot {
   return useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 }

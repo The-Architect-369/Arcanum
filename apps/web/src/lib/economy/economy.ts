@@ -1,14 +1,23 @@
-'use client';
-import { useAccount } from '@/state/useAccount';
+"use client";
 
-export function trySpendMana(amount: number): boolean {
-  try {
-    const acc: any = useAccount();
-    if (typeof acc?.spendMana === 'function') { acc.spendMana(amount); return true; }
-    if (typeof acc?.getMana === 'function' && typeof acc?.setMana === 'function') {
-      const cur = Number(acc.getMana());
-      if (Number.isFinite(cur) && cur >= amount) { acc.setMana(cur - amount); return true; }
-    }
-  } catch {}
-  return false;
+import { addReceipt } from "@/lib/mobile/persistence";
+import { spendMana } from "@/state/useAccount";
+
+export function trySpendMana(amount: number, reason = "utility spend"): boolean {
+  const safeAmount = Math.max(0, Math.floor(Number.isFinite(amount) ? amount : 0));
+  if (safeAmount <= 0) return true;
+
+  const ok = spendMana(safeAmount);
+  if (!ok) return false;
+
+  void addReceipt({
+    kind: "mana_spend",
+    title: "MANA spent",
+    summary: `${safeAmount} MANA spent for ${reason}.`,
+    amount: safeAmount,
+    status: "confirmed",
+    metadata: { reason },
+  });
+
+  return true;
 }

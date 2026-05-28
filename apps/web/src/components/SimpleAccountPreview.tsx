@@ -31,10 +31,25 @@ export default function SimpleAccountPreview() {
   const [err, setErr] = useState<string | null>(null);
 
   useEffect(() => {
-    try {
-      const local = loadBurner();
-      if (local) setBurner(local as Address);
-    } catch {}
+    let active = true;
+
+    const syncBurner = async () => {
+      try {
+        const local = await loadBurner();
+        if (active && local && isAddress(local)) {
+          setBurner(local as Address);
+          return;
+        }
+        if (active) setBurner(undefined);
+      } catch {
+        if (active) setBurner(undefined);
+      }
+    };
+
+    void syncBurner();
+    return () => {
+      active = false;
+    };
   }, []);
 
   useEffect(() => {
@@ -77,7 +92,7 @@ export default function SimpleAccountPreview() {
             placeholder="0x..."
             className="w-full rounded-xl bg-zinc-900 px-3 py-2 outline-none border border-zinc-800"
           />
-          <div className="text-xs mt-1 opacity-60">Uses connected wallet or burner by default. You can override.</div>
+          <div className="text-xs mt-1 opacity-60">Uses connected wallet by default. Burner fallback only applies if it is a valid EVM address.</div>
         </label>
         <label className="text-sm">
           <div className="opacity-70 mb-1">SimpleAccountFactory Address</div>

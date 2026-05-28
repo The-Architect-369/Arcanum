@@ -1,121 +1,61 @@
-// src/lib/infra/ipfs.ts
-//
-// Temporary browser-safe IPFS facade:
-// - avoids bundling helia/libp2p into the Next client build
-// - stores JSON + file payloads in localStorage keyed by a local CID-like id
-// - best-effort POSTs to /api/ipfs for future server integration
+"use client";
 
-type CachedJsonRecord = {
-  kind: 'json';
-  value: unknown;
-};
+import { CID } from "multiformats/cid";
+import * as raw from "multiformats/codecs/raw";
+import { sha256 } from "multiformats/hashes/sha2";
+import {
+  getIPFSFileRecord,
+  getIPFSJsonRecord,
+  putIPFSFileRecord,
+  putIPFSJsonRecord,
+} from "@/lib/mobile/persistence";
 
-type CachedFileRecord = {
-  kind: 'file';
-  name: string;
-  mime: string;
-  dataUrl: string;
-};
-
-type CachedRecord = CachedJsonRecord | CachedFileRecord;
-
-function isBrowser() {
-  return typeof window !== 'undefined';
-}
-
-function makeCid(prefix: string) {
-  const rand =
-    typeof crypto !== 'undefined' && 'randomUUID' in crypto
-      ? crypto.randomUUID().replace(/-/g, '')
-      : Math.random().toString(36).slice(2) + Date.now().toString(36);
-  return `local-${prefix}-${rand}`;
-}
-
-function cacheKey(cid: string) {
-  return `ARCANUM_IPFS_CACHE:${cid}`;
-}
-
-function setCache(cid: string, record: CachedRecord) {
-  if (!isBrowser()) return;
-  window.localStorage.setItem(cacheKey(cid), JSON.stringify(record));
-}
-
-function getCache(cid: string): CachedRecord | null {
-  if (!isBrowser()) return null;
-  const raw = window.localStorage.getItem(cacheKey(cid));
-  if (!raw) return null;
-  try {
-    return JSON.parse(raw) as CachedRecord;
-  } catch {
-    return null;
+function ensureBrowser() {
+  if (typeof window === "undefined") {
+    throw new Error("IPFS persistence is only available in the browser.");
   }
 }
 
-async function postStub(body: unknown) {
-  try {
-    await fetch('/api/ipfs', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(body),
-    });
-  } catch {
-    // ignore for local-first dev flow
-  }
-}
-
-function dataUrlToBlob(dataUrl: string): Blob {
-  const [meta, data] = dataUrl.split(',', 2);
-  const mimeMatch = /data:(.*?);base64/.exec(meta || '');
-  const mime = mimeMatch?.[1] || 'application/octet-stream';
-  const bin = atob(data || '');
-  const bytes = new Uint8Array(bin.length);
-  for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
-  return new Blob([bytes], { type: mime });
+async function bytesToCid(bytes: Uint8Array) {
+  const digest = await sha256.digest(bytes);
+  return CID.createV1(raw.code, digest).toString();
 }
 
 export async function getJSONHelia<T = unknown>(cid: string): Promise<T | null> {
-  const record = getCache(cid);
-  if (!record || record.kind !== 'json') return null;
-  return record.value as T;
+  return getIPFSJsonRecord<T>(cid);
 }
 
 export async function getBlobHelia(cid: string): Promise<Blob> {
-  const record = getCache(cid);
-  if (!record || record.kind !== 'file') {
+  const record = await getIPFSFileRecord(cid);
+  if (!record) {
     throw new Error(`Blob not found for CID: ${cid}`);
   }
-  return dataUrlToBlob(record.dataUrl);
+  return record.blob;
 }
 
 export async function putJSONHelia(data: unknown): Promise<{ cid: string }> {
-  const cid = makeCid('json');
-  setCache(cid, { kind: 'json', value: data });
-  await postStub({ cid, kind: 'json', value: data });
+  ensureBrowser();
+
+  const text = JSON.stringify(data);
+  const cid = await bytesToCid(new TextEncoder().encode(text));
+  await putIPFSJsonRecord(cid, data, text);
+
   return { cid };
 }
 
 export async function putFileHelia(file: File): Promise<{ cid: string }> {
-  const cid = makeCid('file');
-  const dataUrl = await new Promise<string>((resolve, reject) => {
-    const reader = new FileReader();
-    reader.onload = () => resolve(String(reader.result || ''));
-    reader.onerror = () => reject(reader.error || new Error('FileReader failed'));
-    reader.readAsDataURL(file);
-  });
+  ensureBrowser();
 
-  setCache(cid, {
-    kind: 'file',
-    name: file.name,
-    mime: file.type || 'application/octet-stream',
-    dataUrl,
-  });
-
-  await postStub({
+  const bytes = new Uint8Array(await file.arrayBuffer());
+  const cid = await bytesToCid(bytes);
+  await putIPFSFileRecord(
     cid,
-    kind: 'file',
-    name: file.name,
-    mime: file.type || 'application/octet-stream',
-  });
+    new Blob([bytes], { type: file.type || "application/octet-stream" }),
+    {
+      name: file.name,
+      mime: file.type || "application/octet-stream",
+    }
+  );
 
   return { cid };
 }

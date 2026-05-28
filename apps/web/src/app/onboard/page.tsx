@@ -1,86 +1,172 @@
-'use client'
+"use client";
 
-import { useState } from 'react'
-import { useRouter } from 'next/navigation'
-import { getQueryClient, getSigningClient } from '@/lib/cosmos/client'
-import { createBurner, hasBurner, loadBurner } from '@/lib/identity/burner'
-import { getPasskey, registerPasskey, signInPasskey } from '@/lib/identity/passkey'
+import { useMemo, useState } from "react";
+import { useRouter } from "next/navigation";
+import { getSigningClient, getQueryClient } from "@/lib/cosmos/client";
+import { createBurner, hasBurner, loadBurner } from "@/lib/identity/burner";
+import {
+  getPasskey,
+  getPasskeySupport,
+  registerPasskey,
+  signInPasskey,
+} from "@/lib/identity/passkey";
+import { addReceipt } from "@/lib/mobile/persistence";
+import { setAccountSession } from "@/state/useAccount";
 
-const baseDenom = process.env.NEXT_PUBLIC_ARCANUM_BASE_DENOM || 'umana'
+const baseDenom = process.env.NEXT_PUBLIC_ARCANUM_BASE_DENOM || "umana";
 
 export default function OnboardPage() {
-  const router = useRouter()
-  const [mnemonic, setMnemonic] = useState('')
-  const [identity, setIdentity] = useState<string | null>(null)
-  const [mana, setMana] = useState<string | null>(null)
-  const [status, setStatus] = useState<string>('')
-  const [busy, setBusy] = useState(false)
+  const router = useRouter();
+  const [mnemonic, setMnemonic] = useState("");
+  const [identity, setIdentity] = useState<string | null>(null);
+  const [mana, setMana] = useState<string | null>(null);
+  const [status, setStatus] = useState<string>("");
+  const [busy, setBusy] = useState(false);
+  const passkeySupport = useMemo(() => getPasskeySupport(), []);
 
-  function complete(nextIdentity?: string | null, nextMana?: string | null) {
-    if (nextIdentity !== undefined) setIdentity(nextIdentity)
-    if (nextMana !== undefined) setMana(nextMana)
-    localStorage.setItem('ARCANUM_NODE_INITIALIZED', '1')
-    setStatus('Ready. Entering Hope...')
-    router.replace('/hope')
+  function finish(nextPath = "/hope") {
+    localStorage.setItem("ARCANUM_NODE_INITIALIZED", "1");
+    router.replace(nextPath);
   }
 
   async function handlePasskey() {
-    setBusy(true)
-    setStatus('Creating or resuming passkey...')
+    if (!passkeySupport.supported) {
+      setStatus(`Passkey unavailable: ${passkeySupport.reason}`);
+      return;
+    }
+
+    setBusy(true);
+    setStatus("Creating or resuming passkey...");
     try {
-      const existing = getPasskey()
-      if (existing) {
-        await signInPasskey()
-      } else {
-        await registerPasskey()
+      const existing = await getPasskey();
+      const passkey = existing ? await signInPasskey() : await registerPasskey();
+      const burner = (await hasBurner()) ? await loadBurner() : await createBurner();
+
+      if (!burner) {
+        throw new Error("Passkey succeeded, but the device burner session could not be created.");
       }
 
-      const burner = hasBurner() ? loadBurner() : createBurner()
-      if (!burner) throw new Error('Passkey succeeded, but burner binding failed.')
+      setAccountSession({
+        trusted: true,
+        identitySource: "passkey",
+        identityId: passkey.id,
+        chainAddress: null,
+        mana: 0,
+        settlementStatus: "unbound",
+        statusMessage: "Passkey session is active. Bind a chain address to settle MANA.",
+      });
 
-      complete(burner, null)
-    } catch (err: any) {
-      console.error(err)
-      setStatus(`Passkey failed: ${err?.message ?? String(err)}`)
+      await addReceipt({
+        kind: "identity",
+        title: "Passkey activated",
+        summary: "Mobile passkey session is active on this device.",
+        status: "confirmed",
+        metadata: {
+          passkeyId: passkey.id,
+          burner,
+        },
+      });
+
+      setIdentity(passkey.id);
+      setMana("0");
+      setStatus(
+        "Passkey session is ready. You can bind a chain address later from Account / Wallet."
+      );
+      finish();
+    } catch (error) {
+      console.error(error);
+      const message = error instanceof Error ? error.message : String(error);
+      setStatus(`Passkey failed: ${message}`);
     } finally {
-      setBusy(false)
+      setBusy(false);
     }
   }
 
-  function handleBurner() {
-    setBusy(true)
-    setStatus('Creating local burner...')
+  async function handleBurner() {
+    setBusy(true);
+    setStatus("Creating local burner...");
     try {
-      const burner = hasBurner() ? loadBurner() : createBurner()
-      if (!burner) throw new Error('Burner failed to initialize.')
+      const burner = (await hasBurner()) ? await loadBurner() : await createBurner();
+      if (!burner) {
+        throw new Error("Burner failed to initialize.");
+      }
 
-      complete(burner, null)
-    } catch (err: any) {
-      console.error(err)
-      setStatus(`Burner failed: ${err?.message ?? String(err)}`)
+      setAccountSession({
+        trusted: true,
+        identitySource: "burner",
+        identityId: burner,
+        chainAddress: null,
+        mana: 0,
+        settlementStatus: "unbound",
+        statusMessage: "Burner session is active. Bind a chain address to settle MANA.",
+      });
+
+      await addReceipt({
+        kind: "identity",
+        title: "Burner activated",
+        summary: "Device-only burner session created.",
+        status: "confirmed",
+        metadata: {
+          burner,
+        },
+      });
+
+      setIdentity(burner);
+      setMana("0");
+      setStatus("Burner session is ready. Chain settlement is still unbound.");
+      finish();
+    } catch (error) {
+      console.error(error);
+      const message = error instanceof Error ? error.message : String(error);
+      setStatus(`Burner failed: ${message}`);
     } finally {
-      setBusy(false)
+      setBusy(false);
     }
   }
 
   async function handleDevConnect() {
-    setBusy(true)
-    setStatus('Connecting to Arcanum-D...')
+    setBusy(true);
+    setStatus("Connecting to Arcanum-D...");
     try {
-      const { account } = await getSigningClient(mnemonic.trim())
-      const nextIdentity = account.address
+      const { account } = await getSigningClient(mnemonic.trim());
+      const queryClient = await getQueryClient();
+      const balances = await queryClient.getAllBalances(account.address);
+      const balance = balances.find((entry) => entry.denom === baseDenom);
+      const nextMana = balance ? balance.amount : "0";
 
-      const qc = await getQueryClient()
-      const balances = await qc.getAllBalances(account.address)
-      const bal = balances.find((b) => b.denom === baseDenom)
-      const nextMana = bal ? bal.amount : '0'
+      setAccountSession({
+        trusted: true,
+        identitySource: "mnemonic",
+        identityId: account.address,
+        chainAddress: account.address,
+        mana: Number(nextMana),
+        settlementStatus: "bound",
+        lastSyncedAt: new Date().toISOString(),
+        statusMessage: `Developer wallet connected to ARCnet using ${baseDenom}.`,
+      });
 
-      complete(nextIdentity, nextMana)
-    } catch (err: any) {
-      console.error(err)
-      setStatus(`Error: ${err?.message ?? String(err)}`)
+      await addReceipt({
+        kind: "wallet_sync",
+        title: "Developer wallet connected",
+        summary: `Connected ${account.address} with ${nextMana} ${baseDenom}.`,
+        amount: Number(nextMana),
+        status: "confirmed",
+        metadata: {
+          address: account.address,
+          denom: baseDenom,
+        },
+      });
+
+      setIdentity(account.address);
+      setMana(nextMana);
+      setStatus("Developer wallet connected. Entering Hope...");
+      finish();
+    } catch (error) {
+      console.error(error);
+      const message = error instanceof Error ? error.message : String(error);
+      setStatus(`Error: ${message}`);
     } finally {
-      setBusy(false)
+      setBusy(false);
     }
   }
 
@@ -89,8 +175,8 @@ export default function OnboardPage() {
       <section className="space-y-3">
         <h1 className="text-2xl font-bold">Begin your Rite</h1>
         <p className="text-sm opacity-80">
-          Mobile-first onboarding for Pre-Genesis testing. Use a passkey or local burner by
-          default. Developer chain connect remains available below.
+          Mobile-first onboarding for Pre-Genesis testing. Passkey and burner create a mobile-safe
+          identity session. ARCnet settlement stays optional until you bind a real chain address.
         </p>
       </section>
 
@@ -98,11 +184,13 @@ export default function OnboardPage() {
         <button
           className="rounded-xl border px-4 py-3 text-left transition hover:bg-white/5 disabled:opacity-60"
           onClick={handlePasskey}
-          disabled={busy}
+          disabled={busy || !passkeySupport.supported}
         >
           <div className="font-medium">Use Passkey</div>
           <div className="mt-1 text-sm opacity-75">
-            Create or resume a local passkey session, then bind a burner for dev.
+            {passkeySupport.supported
+              ? "Register or resume a mobile passkey, then bind a burner session for device continuity."
+              : `Unavailable here: ${passkeySupport.reason}`}
           </div>
         </button>
 
@@ -113,7 +201,7 @@ export default function OnboardPage() {
         >
           <div className="font-medium">Use Burner</div>
           <div className="mt-1 text-sm opacity-75">
-            Create a local-only burner identity without requiring a mnemonic.
+            Create a device-only burner identity without needing a mnemonic.
           </div>
         </button>
       </section>
@@ -125,14 +213,15 @@ export default function OnboardPage() {
 
         <div className="mt-4 space-y-3">
           <p className="text-sm opacity-75">
-            This preserves the current chain test flow for funded developer mnemonics.
+            This connects a funded developer mnemonic and immediately binds mobile state to a real
+            ARCnet address and live MANA balance.
           </p>
 
           <textarea
             className="min-h-28 w-full rounded border bg-transparent p-3"
             placeholder="Paste a funded mnemonic for Arcanum-D"
             value={mnemonic}
-            onChange={(e) => setMnemonic(e.target.value)}
+            onChange={(event) => setMnemonic(event.target.value)}
           />
 
           <button
@@ -155,11 +244,11 @@ export default function OnboardPage() {
           )}
           {mana !== null && (
             <p className="mt-2">
-              MANA balance (base units {baseDenom}): <strong>{mana}</strong>
+              MANA balance ({baseDenom}): <strong>{mana}</strong>
             </p>
           )}
         </section>
       )}
     </main>
-  )
+  );
 }
