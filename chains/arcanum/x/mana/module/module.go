@@ -22,6 +22,8 @@ type basicModule struct{}
 
 var _ sdkmodule.AppModuleBasic = (*basicModule)(nil)
 
+func NewBasicModule() sdkmodule.AppModuleBasic { return basicModule{} }
+
 func (basicModule) Name() string                                  { return types.ModuleName }
 func (basicModule) RegisterLegacyAminoCodec(_ *codec.LegacyAmino) {}
 func (basicModule) RegisterInterfaces(ir cdctypes.InterfaceRegistry) {
