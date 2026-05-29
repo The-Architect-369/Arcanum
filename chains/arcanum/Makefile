@@ -107,9 +107,8 @@ build:
 	go build -o bin/$(BINARY) ./cmd/arcanumd
 
 start-local: build
-	./bin/$(BINARY) init local --chain-id arcanum-local-1
-	./bin/$(BINARY) keys add val --keyring-backend test
-	./bin/$(BINARY) add-genesis-account val 1000000000umana --keyring-backend test
-	./bin/$(BINARY) gentx val 700000000umana --chain-id arcanum-local-1 --keyring-backend test
-	./bin/$(BINARY) collect-gentxs
-	./bin/$(BINARY) start --minimum-gas-prices=0.025umana
+	@echo "error: start-local is not available yet."
+	@echo "The current arcanumd binary only exposes a minimal root command with version output."
+	@echo "Runtime commands like init, start, keys, add-genesis-account, and gentx have not been wired back in yet."
+	@echo "Next step: restore the daemon runtime command surface before attempting localnet startup."
+	@exit 1
