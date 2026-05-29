@@ -11,7 +11,6 @@ import (
 	"github.com/cosmos/cosmos-sdk/codec"
 	cdctypes "github.com/cosmos/cosmos-sdk/codec/types"
 	sdkmodule "github.com/cosmos/cosmos-sdk/types/module"
-	// IMPORTANT: v1 gateway import (no /v2)
 	"github.com/grpc-ecosystem/grpc-gateway/runtime"
 
 	treasurykeeper "arcanum/x/treasury/keeper"
@@ -23,6 +22,8 @@ import (
 type basicModule struct{}
 
 var _ sdkmodule.AppModuleBasic = (*basicModule)(nil)
+
+func NewBasicModule() sdkmodule.AppModuleBasic { return basicModule{} }
 
 func (basicModule) Name() string { return treasurytypes.ModuleName }
 func (basicModule) RegisterLegacyAminoCodec(_ *codec.LegacyAmino) {}
