@@ -99,7 +99,7 @@ govulncheck:
 	@go tool golang.org/x/vuln/cmd/govulncheck@latest
 	@govulncheck ./...
 
-.PHONY: govet govulncheck
+.PHONY: govet govulncheck build start-local
 
 BINARY = arcanumd
 
