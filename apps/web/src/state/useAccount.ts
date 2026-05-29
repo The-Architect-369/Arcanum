@@ -4,7 +4,7 @@ import { useSyncExternalStore } from "react";
 import {
   getBalance,
   getChaincodeAnchor,
-  getManaBalance,
+  getManaBalance as getArcnetManaBalance,
   getManaSupply,
 } from "@/lib/cosmos/queries";
 import {
@@ -346,7 +346,7 @@ export async function syncChainBalance() {
     let source = "mana";
 
     try {
-      const balance = await getManaBalance({
+      const balance = await getArcnetManaBalance({
         api,
         address: state.chainAddress,
       });
