@@ -5,11 +5,13 @@
   background: #000;
   --arcanum-locked-vh: 100lvh;
   --arcanum-status-h: env(safe-area-inset-top, 0px);
+  --arcanum-safe-bottom: env(safe-area-inset-bottom, 0px);
   --arcanum-header-h: 3.5rem;
   --arcanum-footer-h: 4.25rem;
   --arcanum-footer-lift: 1.35rem;
+  --arcanum-footer-clearance: calc(max(var(--arcanum-footer-lift), var(--arcanum-safe-bottom)) + 0.75rem);
   --arcanum-main-top: calc(var(--arcanum-status-h) + var(--arcanum-header-h));
-  --arcanum-main-bottom: calc(var(--arcanum-footer-h) + var(--arcanum-footer-lift));
+  --arcanum-main-bottom: calc(var(--arcanum-footer-h) + var(--arcanum-footer-clearance));
 }
 
 html,
@@ -67,9 +69,9 @@ body {
 }
 
 .arcanum-app-footer {
-  bottom: var(--arcanum-footer-lift);
-  height: var(--arcanum-footer-h);
-  padding-bottom: 0;
+  bottom: max(0.5rem, var(--arcanum-safe-bottom));
+  min-height: calc(var(--arcanum-footer-h) + var(--arcanum-safe-bottom));
+  padding-bottom: var(--arcanum-safe-bottom);
 }
 
 .arcanum-app-footer-row,
@@ -258,146 +260,5 @@ body {
   100% {
     opacity: 0;
     transform: translateX(92px) translateY(10px) scale(.82) rotate(18deg);
-  }
-}
-
-.card-transition-shell {
-  perspective: 1200px;
-  transform-style: preserve-3d;
-}
-
-.card-transition-shell > div {
-  animation: arcanum-card-float 8s ease-in-out infinite;
-  will-change: transform;
-}
-
-.card-transition-shell > div::before {
-  content: '';
-  position: absolute;
-  inset: -11px;
-  z-index: 0;
-  pointer-events: none;
-  border-radius: 2.35rem;
-  background:
-    radial-gradient(circle at 6% 18%, rgba(246,196,83,.9) 0 1.2px, transparent 2.3px),
-    radial-gradient(circle at 93% 16%, rgba(125,190,255,.85) 0 1.2px, transparent 2.3px),
-    radial-gradient(circle at 8% 84%, rgba(180,130,255,.72) 0 1.1px, transparent 2.2px),
-    radial-gradient(circle at 91% 78%, rgba(246,196,83,.78) 0 1.2px, transparent 2.3px),
-    linear-gradient(90deg, transparent 0 10%, rgba(246,196,83,.18) 10.1% 10.35%, transparent 10.6% 88%, rgba(125,190,255,.16) 88.1% 88.35%, transparent 88.7% 100%);
-  opacity: .72;
-  animation: arcanum-edge-stars 5.6s ease-in-out infinite;
-}
-
-html[data-card-direction='next'] .card-transition-shell {
-  animation: arcanum-card-in-next 240ms cubic-bezier(.16,.84,.28,1) both;
-}
-
-html[data-card-direction='prev'] .card-transition-shell {
-  animation: arcanum-card-in-prev 240ms cubic-bezier(.16,.84,.28,1) both;
-}
-
-html[data-card-direction='next'] .card-transition-sheen,
-html[data-card-direction='prev'] .card-transition-sheen {
-  animation: arcanum-card-sheen 360ms ease-out both;
-}
-
-.module-tab-active {
-  animation: arcanum-tab-pulse 1.7s ease-in-out infinite;
-  background: linear-gradient(90deg, rgba(246,196,83,1), rgba(255,255,255,.98), rgba(125,190,255,.96));
-}
-
-.module-deck-reveal {
-  animation: arcanum-module-fade 760ms ease both;
-}
-
-.module-deck-reveal__stage {
-  position: relative;
-  width: min(76vw, 20rem);
-  height: 13rem;
-  perspective: 1200px;
-}
-
-.module-deck-reveal__card {
-  position: absolute;
-  inset: 0;
-  margin: auto;
-  width: 8.2rem;
-  height: 11.6rem;
-  border-radius: 1.1rem;
-  border: 1px solid rgba(255,255,255,.22);
-  background:
-    radial-gradient(circle at 20% 18%, rgba(246,196,83,.45), transparent 24%),
-    radial-gradient(circle at 80% 22%, rgba(120,180,255,.38), transparent 28%),
-    linear-gradient(145deg, rgba(8,10,24,.9), rgba(20,28,58,.82));
-  box-shadow:
-    0 0 24px rgba(120,180,255,.22),
-    inset 0 0 28px rgba(246,196,83,.08),
-    inset 0 0 1px rgba(255,255,255,.65);
-  overflow: hidden;
-}
-
-.module-deck-reveal__card::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(circle at 24% 24%, rgba(255,255,255,.28) 0 1px, transparent 1.5px),
-    radial-gradient(circle at 70% 34%, rgba(246,196,83,.24) 0 1px, transparent 1.5px),
-    linear-gradient(112deg, rgba(255,255,255,.18), transparent 34%, rgba(120,180,255,.16) 54%, transparent 72%);
-  opacity: .78;
-}
-
-.module-deck-reveal__card--center {
-  display: grid;
-  place-items: center;
-  text-align: center;
-  animation: arcanum-deck-center 760ms cubic-bezier(.2,.8,.2,1) both;
-}
-
-.module-deck-reveal__card--left {
-  animation: arcanum-deck-left 760ms cubic-bezier(.2,.8,.2,1) both;
-}
-
-.module-deck-reveal__card--right {
-  animation: arcanum-deck-right 760ms cubic-bezier(.2,.8,.2,1) both;
-}
-
-.module-deck-reveal__sigil,
-.module-deck-reveal__label {
-  position: relative;
-  z-index: 1;
-}
-
-.module-deck-reveal__sigil {
-  color: rgba(246,196,83,.95);
-  font-size: 2.2rem;
-  line-height: 1;
-  text-shadow: 0 0 18px rgba(246,196,83,.6);
-}
-
-.module-deck-reveal__label {
-  margin-top: .55rem;
-  background: linear-gradient(90deg, #fde68a, #f8fafc, #bae6fd);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  font-size: .9rem;
-  font-weight: 700;
-  letter-spacing: .18em;
-  text-transform: uppercase;
-  text-shadow: 0 0 18px rgba(246,196,83,.32);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .arcanum-app-shell,
-  .arcanum-app-shell::before,
-  html[data-card-direction] .card-transition-shell,
-  html[data-card-direction] .card-transition-sheen,
-  .card-transition-shell > div,
-  .card-transition-shell > div::before,
-  .module-tab-active,
-  .module-deck-reveal,
-  .module-deck-reveal__card {
-    animation: none;
   }
 }
