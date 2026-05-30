@@ -1,11 +1,11 @@
 package app
 
 import (
-	circuitmodule "cosmossdk.io/x/circuit/module"
-	evidencemodule "cosmossdk.io/x/evidence/module"
+	"cosmossdk.io/x/circuit"
+	"cosmossdk.io/x/evidence"
 	feegrantmodule "cosmossdk.io/x/feegrant/module"
 	nftmodule "cosmossdk.io/x/nft/module"
-	upgrademodule "cosmossdk.io/x/upgrade/module"
+	"cosmossdk.io/x/upgrade"
 
 	"github.com/cosmos/cosmos-sdk/client"
 	"github.com/cosmos/cosmos-sdk/codec"
@@ -18,7 +18,6 @@ import (
 	bank "github.com/cosmos/cosmos-sdk/x/bank"
 	consensus "github.com/cosmos/cosmos-sdk/x/consensus"
 	distribution "github.com/cosmos/cosmos-sdk/x/distribution"
-	epochsmodule "github.com/cosmos/cosmos-sdk/x/epochs/module"
 	genutil "github.com/cosmos/cosmos-sdk/x/genutil"
 	gov "github.com/cosmos/cosmos-sdk/x/gov"
 	govclient "github.com/cosmos/cosmos-sdk/x/gov/client"
@@ -48,7 +47,6 @@ var ModuleBasics = module.NewBasicManager(
 	bank.AppModuleBasic{},
 	consensus.AppModuleBasic{},
 	distribution.AppModuleBasic{},
-	epochsmodule.AppModuleBasic{},
 	genutil.AppModuleBasic{},
 	gov.NewAppModuleBasic([]govclient.ProposalHandler{}),
 	groupmodule.AppModuleBasic{},
@@ -58,9 +56,9 @@ var ModuleBasics = module.NewBasicManager(
 	staking.AppModuleBasic{},
 	feegrantmodule.AppModuleBasic{},
 	nftmodule.AppModuleBasic{},
-	circuitmodule.AppModuleBasic{},
-	evidencemodule.AppModuleBasic{},
-	upgrademodule.AppModuleBasic{},
+	circuit.AppModuleBasic{},
+	evidence.AppModuleBasic{},
+	upgrade.AppModuleBasic{},
 	chaincodemodule.NewBasicModule(),
 	manamodule.NewBasicModule(),
 	treasurymodule.NewBasicModule(),
@@ -74,7 +72,6 @@ func MakeEncodingConfig() EncodingConfig {
 		bank.AppModuleBasic{},
 		consensus.AppModuleBasic{},
 		distribution.AppModuleBasic{},
-		epochsmodule.AppModuleBasic{},
 		genutil.AppModuleBasic{},
 		gov.NewAppModuleBasic([]govclient.ProposalHandler{}),
 		groupmodule.AppModuleBasic{},
@@ -84,9 +81,9 @@ func MakeEncodingConfig() EncodingConfig {
 		staking.AppModuleBasic{},
 		feegrantmodule.AppModuleBasic{},
 		nftmodule.AppModuleBasic{},
-		circuitmodule.AppModuleBasic{},
-		evidencemodule.AppModuleBasic{},
-		upgrademodule.AppModuleBasic{},
+		circuit.AppModuleBasic{},
+		evidence.AppModuleBasic{},
+		upgrade.AppModuleBasic{},
 		chaincodemodule.NewBasicModule(),
 		manamodule.NewBasicModule(),
 		treasurymodule.NewBasicModule(),
