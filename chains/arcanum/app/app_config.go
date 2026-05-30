@@ -1,6 +1,8 @@
 package app
 
 import (
+	"cosmossdk.io/depinject"
+	"cosmossdk.io/log"
 	"cosmossdk.io/x/circuit"
 	"cosmossdk.io/x/evidence"
 	feegrantmodule "cosmossdk.io/x/feegrant/module"
@@ -10,8 +12,8 @@ import (
 	"github.com/cosmos/cosmos-sdk/client"
 	"github.com/cosmos/cosmos-sdk/codec"
 	cdctypes "github.com/cosmos/cosmos-sdk/codec/types"
+	servertypes "github.com/cosmos/cosmos-sdk/server/types"
 	"github.com/cosmos/cosmos-sdk/types/module"
-	moduletestutil "github.com/cosmos/cosmos-sdk/types/module/testutil"
 	auth "github.com/cosmos/cosmos-sdk/x/auth"
 	vesting "github.com/cosmos/cosmos-sdk/x/auth/vesting"
 	authzmodule "github.com/cosmos/cosmos-sdk/x/authz/module"
@@ -39,6 +41,10 @@ type EncodingConfig struct {
 	Amino             *codec.LegacyAmino
 }
 
+type emptyAppOptions struct{}
+
+func (emptyAppOptions) Get(string) interface{} { return nil }
+
 // ModuleBasics defines the module BasicManager for the app.
 var ModuleBasics = module.NewBasicManager(
 	auth.AppModuleBasic{},
@@ -65,35 +71,34 @@ var ModuleBasics = module.NewBasicManager(
 )
 
 func MakeEncodingConfig() EncodingConfig {
-	cfg := moduletestutil.MakeTestEncodingConfig(
-		auth.AppModuleBasic{},
-		vesting.AppModuleBasic{},
-		authzmodule.AppModuleBasic{},
-		bank.AppModuleBasic{},
-		consensus.AppModuleBasic{},
-		distribution.AppModuleBasic{},
-		genutil.AppModuleBasic{},
-		gov.NewAppModuleBasic([]govclient.ProposalHandler{}),
-		groupmodule.AppModuleBasic{},
-		mint.AppModuleBasic{},
-		params.AppModuleBasic{},
-		slashing.AppModuleBasic{},
-		staking.AppModuleBasic{},
-		feegrantmodule.AppModuleBasic{},
-		nftmodule.AppModuleBasic{},
-		circuit.AppModuleBasic{},
-		evidence.AppModuleBasic{},
-		upgrade.AppModuleBasic{},
-		chaincodemodule.NewBasicModule(),
-		manamodule.NewBasicModule(),
-		treasurymodule.NewBasicModule(),
+	var (
+		appCodec          codec.Codec
+		txConfig          client.TxConfig
+		interfaceRegistry cdctypes.InterfaceRegistry
+		legacyAmino       *codec.LegacyAmino
 	)
 
+	if err := depinject.Inject(
+		depinject.Configs(
+			appConfig,
+			depinject.Supply(
+				log.NewNopLogger(),
+				servertypes.AppOptions(emptyAppOptions{}),
+			),
+		),
+		&appCodec,
+		&txConfig,
+		&interfaceRegistry,
+		&legacyAmino,
+	); err != nil {
+		panic(err)
+	}
+
 	return EncodingConfig{
-		InterfaceRegistry: cfg.InterfaceRegistry,
-		Codec:             cfg.Codec,
-		TxConfig:          cfg.TxConfig,
-		Amino:             cfg.Amino,
+		InterfaceRegistry: interfaceRegistry,
+		Codec:             appCodec,
+		TxConfig:          txConfig,
+		Amino:             legacyAmino,
 	}
 }
 
