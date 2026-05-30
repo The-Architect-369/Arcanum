@@ -40,12 +40,12 @@ func NewRootCmd() *cobra.Command {
 		WithInterfaceRegistry(encodingConfig.InterfaceRegistry).
 		WithTxConfig(encodingConfig.TxConfig).
 		WithLegacyAmino(encodingConfig.Amino).
-		WithAddressCodec(accountAddressCodec).
-		WithValidatorAddressCodec(validatorAddressCodec).
-		WithConsensusAddressCodec(consensusAddressCodec).
 		WithInput(os.Stdin).
 		WithHomeDir(app.DefaultHome()).
 		WithViper("")
+	initClientCtx.AddressCodec = accountAddressCodec
+	initClientCtx.ValidatorAddressCodec = validatorAddressCodec
+	initClientCtx.ConsensusAddressCodec = consensusAddressCodec
 
 	rootCmd := &cobra.Command{
 		Use:           "arcanumd",
