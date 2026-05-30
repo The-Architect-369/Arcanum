@@ -1,11 +1,11 @@
 package app
 
 import (
-	"cosmossdk.io/x/circuit"
-	"cosmossdk.io/x/evidence"
-	"cosmossdk.io/x/feegrant"
-	"cosmossdk.io/x/nft"
-	"cosmossdk.io/x/upgrade"
+	circuitmodule "cosmossdk.io/x/circuit/module"
+	evidencemodule "cosmossdk.io/x/evidence/module"
+	feegrantmodule "cosmossdk.io/x/feegrant/module"
+	nftmodule "cosmossdk.io/x/nft/module"
+	upgrademodule "cosmossdk.io/x/upgrade/module"
 
 	"github.com/cosmos/cosmos-sdk/client"
 	"github.com/cosmos/cosmos-sdk/codec"
@@ -14,15 +14,15 @@ import (
 	moduletestutil "github.com/cosmos/cosmos-sdk/types/module/testutil"
 	auth "github.com/cosmos/cosmos-sdk/x/auth"
 	vesting "github.com/cosmos/cosmos-sdk/x/auth/vesting"
-	authz "github.com/cosmos/cosmos-sdk/x/authz"
+	authzmodule "github.com/cosmos/cosmos-sdk/x/authz/module"
 	bank "github.com/cosmos/cosmos-sdk/x/bank"
 	consensus "github.com/cosmos/cosmos-sdk/x/consensus"
 	distribution "github.com/cosmos/cosmos-sdk/x/distribution"
-	epochs "github.com/cosmos/cosmos-sdk/x/epochs"
+	epochsmodule "github.com/cosmos/cosmos-sdk/x/epochs/module"
 	genutil "github.com/cosmos/cosmos-sdk/x/genutil"
 	gov "github.com/cosmos/cosmos-sdk/x/gov"
 	govclient "github.com/cosmos/cosmos-sdk/x/gov/client"
-	group "github.com/cosmos/cosmos-sdk/x/group"
+	groupmodule "github.com/cosmos/cosmos-sdk/x/group/module"
 	mint "github.com/cosmos/cosmos-sdk/x/mint"
 	params "github.com/cosmos/cosmos-sdk/x/params"
 	slashing "github.com/cosmos/cosmos-sdk/x/slashing"
@@ -44,23 +44,23 @@ type EncodingConfig struct {
 var ModuleBasics = module.NewBasicManager(
 	auth.AppModuleBasic{},
 	vesting.AppModuleBasic{},
-	authz.AppModuleBasic{},
+	authzmodule.AppModuleBasic{},
 	bank.AppModuleBasic{},
 	consensus.AppModuleBasic{},
 	distribution.AppModuleBasic{},
-	epochs.AppModuleBasic{},
+	epochsmodule.AppModuleBasic{},
 	genutil.AppModuleBasic{},
 	gov.NewAppModuleBasic([]govclient.ProposalHandler{}),
-	group.AppModuleBasic{},
+	groupmodule.AppModuleBasic{},
 	mint.AppModuleBasic{},
 	params.AppModuleBasic{},
 	slashing.AppModuleBasic{},
 	staking.AppModuleBasic{},
-	feegrant.AppModuleBasic{},
-	nft.AppModuleBasic{},
-	circuit.AppModuleBasic{},
-	evidence.AppModuleBasic{},
-	upgrade.AppModuleBasic{},
+	feegrantmodule.AppModuleBasic{},
+	nftmodule.AppModuleBasic{},
+	circuitmodule.AppModuleBasic{},
+	evidencemodule.AppModuleBasic{},
+	upgrademodule.AppModuleBasic{},
 	chaincodemodule.NewBasicModule(),
 	manamodule.NewBasicModule(),
 	treasurymodule.NewBasicModule(),
@@ -70,23 +70,23 @@ func MakeEncodingConfig() EncodingConfig {
 	cfg := moduletestutil.MakeTestEncodingConfig(
 		auth.AppModuleBasic{},
 		vesting.AppModuleBasic{},
-		authz.AppModuleBasic{},
+		authzmodule.AppModuleBasic{},
 		bank.AppModuleBasic{},
 		consensus.AppModuleBasic{},
 		distribution.AppModuleBasic{},
-		epochs.AppModuleBasic{},
+		epochsmodule.AppModuleBasic{},
 		genutil.AppModuleBasic{},
 		gov.NewAppModuleBasic([]govclient.ProposalHandler{}),
-		group.AppModuleBasic{},
+		groupmodule.AppModuleBasic{},
 		mint.AppModuleBasic{},
 		params.AppModuleBasic{},
 		slashing.AppModuleBasic{},
 		staking.AppModuleBasic{},
-		feegrant.AppModuleBasic{},
-		nft.AppModuleBasic{},
-		circuit.AppModuleBasic{},
-		evidence.AppModuleBasic{},
-		upgrade.AppModuleBasic{},
+		feegrantmodule.AppModuleBasic{},
+		nftmodule.AppModuleBasic{},
+		circuitmodule.AppModuleBasic{},
+		evidencemodule.AppModuleBasic{},
+		upgrademodule.AppModuleBasic{},
 		chaincodemodule.NewBasicModule(),
 		manamodule.NewBasicModule(),
 		treasurymodule.NewBasicModule(),
