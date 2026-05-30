@@ -5,6 +5,7 @@ import (
 	"io"
 	"os"
 
+	cmtcfg "github.com/cometbft/cometbft/config"
 	"cosmossdk.io/log"
 	confixcmd "cosmossdk.io/tools/confix/cmd"
 	dbm "github.com/cosmos/cosmos-db"
@@ -56,7 +57,7 @@ func NewRootCmd() *cobra.Command {
 			if err := client.SetCmdClientContextHandler(clientCtx, cmd); err != nil {
 				return err
 			}
-			return server.InterceptConfigsPreRunHandler(cmd, "", nil, nil)
+			return server.InterceptConfigsPreRunHandler(cmd, "", nil, cmtcfg.DefaultConfig())
 		},
 	}
 
