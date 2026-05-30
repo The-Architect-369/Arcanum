@@ -19,6 +19,7 @@ import (
 	"github.com/cosmos/cosmos-sdk/client/snapshot"
 	"github.com/cosmos/cosmos-sdk/server"
 	servertypes "github.com/cosmos/cosmos-sdk/server/types"
+	sdk "github.com/cosmos/cosmos-sdk/types"
 	sdkmodule "github.com/cosmos/cosmos-sdk/types/module"
 	authcmd "github.com/cosmos/cosmos-sdk/x/auth/client/cli"
 	genutilcli "github.com/cosmos/cosmos-sdk/x/genutil/client/cli"
@@ -28,7 +29,24 @@ import (
 	"arcanum/app"
 )
 
+func configureSDK() {
+	prefix := app.AccountAddressPrefix
+	cfg := sdk.GetConfig()
+	cfg.SetBech32PrefixForAccount(prefix, prefix+sdk.PrefixPublic)
+	cfg.SetBech32PrefixForValidator(
+		prefix+sdk.PrefixValidator+sdk.PrefixOperator,
+		prefix+sdk.PrefixValidator+sdk.PrefixOperator+sdk.PrefixPublic,
+	)
+	cfg.SetBech32PrefixForConsensusNode(
+		prefix+sdk.PrefixValidator+sdk.PrefixConsensus,
+		prefix+sdk.PrefixValidator+sdk.PrefixConsensus+sdk.PrefixPublic,
+	)
+	cfg.Seal()
+}
+
 func NewRootCmd() *cobra.Command {
+	configureSDK()
+
 	encodingConfig := app.MakeEncodingConfig()
 	initClientCtx := client.Context{}.
 		WithCodec(encodingConfig.Codec).
