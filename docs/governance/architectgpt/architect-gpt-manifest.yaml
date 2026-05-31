@@ -1,11 +1,17 @@
-version: 3.2
+version: 3.4
 phase: Pre-Genesis
 maintainer: The-Architect-369
 environment: Ubuntu 22.04 LTS+
 repository: https://github.com/The-Architect-369/Arcanum.git
 default_branch: main
+stable_branch: main
+integration_branch: mobile
+default_inspection_branch: main
+default_write_branch: mobile
 default_workspace_root: repo-root
 sync_cycle: 14_days
+workflow_mode: github_first
+merge_policy: human-approved-after-green-verification
 
 default_repo_aliases:
   - my repo
@@ -14,20 +20,23 @@ default_repo_aliases:
   - check Arcanum
 
 grounding_preflight:
+  - resolve repository automatically
+  - resolve branch from task intent
   - read docs/repo/repo-index.json
   - inspect generated_at and commit
   - verify sync evidence before deeper analysis
   - open relevant live files before substantive analysis
 
 solve_method:
-  - establish grounding state
-  - inspect the active failure surface first
+  - establish grounding state and branch role
+  - inspect the active failure or change surface first
   - isolate the current hard blocker
   - produce the smallest coherent fix
-  - prefer Python patch scripts for multi-file edits on Ubuntu
-  - rerun pnpm -C apps/web typecheck
-  - rerun pnpm -C apps/web build
-  - only then perform GitHub write or deploy handoff if explicitly requested
+  - prefer direct GitHub branch updates when write mode is active
+  - otherwise prefer Python patch scripts for multi-file edits on Ubuntu
+  - rerun pnpm -C apps/web typecheck when local verification is available
+  - rerun pnpm -C apps/web build when local verification is available
+  - only then merge or hand off toward main if explicitly requested
 
 write_policy: explicit-request-and-visible-permission
 default_patch_surface: python3
