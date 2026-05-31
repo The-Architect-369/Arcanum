@@ -23,6 +23,12 @@ It replaces older release-candidate app-local documents that mixed implementatio
 - MANA may expand optional capacity; it must not purchase identity, recognition, time acceleration, or dignity.
 - ACC/identity anchoring must remain minimal and consent-based.
 
+## Current activation posture
+
+- Live onboarding exposes one canonical activation rail.
+- Burner, mnemonic, and maintainer-only shortcuts are not part of the public onboarding surface.
+- The UI must not imply ARCnet validation where only device continuity has been established.
+
 ## Navigation posture
 
 The app may expose modules such as:
