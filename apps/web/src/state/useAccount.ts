@@ -285,6 +285,99 @@ export async function clearAccountSession() {
   notify();
 }
 
+function normalizeChainAddress(input: string) {
+  const value = input.trim();
+  const prefix = process.env.NEXT_PUBLIC_ARCANUM_BECH32_PREFIX || "arca";
+
+  if (!value) {
+    throw new Error("Enter an ARCnet address.");
+  }
+
+  if (!value.startsWith(`${prefix}1`) || value.length < prefix.length + 8) {
+    throw new Error(`Address must start with ${prefix}1 and look like a valid ARCnet address.`);
+  }
+
+  return value;
+}
+
+export type BindChainAddressResult = {
+  ok: boolean;
+  address?: string;
+  message?: string;
+  syncResult?: Awaited<ReturnType<typeof syncChainBalance>>;
+};
+
+export async function bindChainAddress(
+  input: string,
+  options?: { sync?: boolean }
+): Promise<BindChainAddressResult> {
+  let address: string;
+
+  try {
+    address = normalizeChainAddress(input);
+  } catch (error) {
+    return {
+      ok: false,
+      message: error instanceof Error ? error.message : "Invalid ARCnet address.",
+    };
+  }
+
+  setState({
+    chainAddress: address,
+    settlementStatus: "bound",
+    statusMessage: "ARCnet address bound to this mobile session.",
+  });
+
+  await addReceipt({
+    kind: "identity",
+    title: "ARCnet address bound",
+    summary: `Bound ${address} to this device identity.`,
+    status: "confirmed",
+    metadata: {
+      address,
+    },
+  });
+
+  const syncResult = options?.sync ? await syncChainBalance() : undefined;
+
+  return {
+    ok: true,
+    address,
+    message: syncResult
+      ? syncResult.ok
+        ? `Bound ${address} and synced wallet.`
+        : `Bound ${address}, but wallet sync failed: ${syncResult.message}`
+      : `Bound ${address} to this device session.`,
+    syncResult,
+  };
+}
+
+export async function unbindChainAddress() {
+  const previous = state.chainAddress;
+
+  setState({
+    chainAddress: null,
+    mana: 0,
+    lastSyncedAt: null,
+    settlementStatus: "unbound",
+    statusMessage: "Chain address removed from this mobile session.",
+  });
+
+  await addReceipt({
+    kind: "identity",
+    title: "ARCnet address unbound",
+    summary: previous
+      ? `Removed ${previous} from this device identity.`
+      : "Removed chain binding from this device identity.",
+    status: "info",
+    metadata: previous
+      ? {
+          address: previous,
+        }
+      : undefined,
+  });
+}
+
 export async function beginOnboarding() {
   setShowOnboarding(true);
   await addReceipt({
