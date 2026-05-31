@@ -3,7 +3,7 @@ package module
 import (
 	"context"
 	"encoding/json"
-
+    treasurymodulev1 "arcanum/api/arcanum/treasury/module/v1"
 	abci "github.com/cometbft/cometbft/abci/types"
 	"cosmossdk.io/core/appmodule"
 
@@ -22,6 +22,13 @@ import (
 type basicModule struct{}
 
 var _ sdkmodule.AppModuleBasic = (*basicModule)(nil)
+
+func init() {
+    appmodule.Register(
+        &treasurymodulev1.Module{},
+        appmodule.Provide(ProvideModule),
+    )
+}
 
 func NewBasicModule() sdkmodule.AppModuleBasic { return basicModule{} }
 

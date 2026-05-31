@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-05-31T13:14:19Z",
+  "generated_at": "2026-05-31T13:17:04Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "b04f9db0b",
+  "commit": "b134dd70c",
   "generator_version": "1.1",
   "files": [
     {
@@ -836,7 +836,7 @@
       "path": "apps/web/src/app/(app)/vitae/grade/page.tsx",
       "type": "file",
       "size_bytes": 3202,
-      "last_modified_commit": "1ed02d633",
+      "last_modified_commit": "b134dd70c",
       "is_empty": false,
       "extension": ".tsx",
       "lines": 68
@@ -1695,6 +1695,15 @@
       "is_empty": false,
       "extension": ".ts",
       "lines": 465
+    },
+    {
+      "path": "apps/web/src/lib/mobile/vitae-map.ts",
+      "type": "file",
+      "size_bytes": 4707,
+      "last_modified_commit": "b134dd70c",
+      "is_empty": false,
+      "extension": ".ts",
+      "lines": 71
     },
     {
       "path": "apps/web/src/lib/mobile/vitae.ts",
@@ -3158,7 +3167,7 @@
       "path": "docs/repo/repo-index.json",
       "type": "file",
       "size_bytes": 150565,
-      "last_modified_commit": "3216eebe6",
+      "last_modified_commit": "b134dd70c",
       "is_empty": false,
       "extension": ".json",
       "lines": 5507

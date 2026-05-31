@@ -6,7 +6,6 @@ import (
 	"os"
 
 	cmtcfg "github.com/cometbft/cometbft/config"
-	addresscodec "github.com/cosmos/cosmos-sdk/codec/address"
 	"cosmossdk.io/log"
 	confixcmd "cosmossdk.io/tools/confix/cmd"
 	dbm "github.com/cosmos/cosmos-db"
@@ -19,6 +18,7 @@ import (
 	"github.com/cosmos/cosmos-sdk/client/rpc"
 	"github.com/cosmos/cosmos-sdk/client/snapshot"
 	"github.com/cosmos/cosmos-sdk/server"
+	serverconfig "github.com/cosmos/cosmos-sdk/server/config"
 	servertypes "github.com/cosmos/cosmos-sdk/server/types"
 	sdkmodule "github.com/cosmos/cosmos-sdk/types/module"
 	authcmd "github.com/cosmos/cosmos-sdk/x/auth/client/cli"
@@ -29,11 +29,16 @@ import (
 	"arcanum/app"
 )
 
+
+func initAppConfig() (string, interface{}) {
+	cfg := serverconfig.DefaultConfig()
+	cfg.MinGasPrices = "0.025umana"
+	return serverconfig.DefaultConfigTemplate, cfg
+}
+
 func NewRootCmd() *cobra.Command {
 	encodingConfig := app.MakeEncodingConfig()
-	accountAddressCodec := addresscodec.NewBech32Codec(app.AccountAddressPrefix)
-	validatorAddressCodec := addresscodec.NewBech32Codec(app.AccountAddressPrefix + "valoper")
-	consensusAddressCodec := addresscodec.NewBech32Codec(app.AccountAddressPrefix + "valcons")
+	customAppTemplate, customAppConfig := initAppConfig()
 
 	initClientCtx := client.Context{}.
 		WithCodec(encodingConfig.Codec).
@@ -43,9 +48,6 @@ func NewRootCmd() *cobra.Command {
 		WithInput(os.Stdin).
 		WithHomeDir(app.DefaultHome()).
 		WithViper("")
-	initClientCtx.AddressCodec = accountAddressCodec
-	initClientCtx.ValidatorAddressCodec = validatorAddressCodec
-	initClientCtx.ConsensusAddressCodec = consensusAddressCodec
 
 	rootCmd := &cobra.Command{
 		Use:           "arcanumd",
@@ -65,7 +67,7 @@ func NewRootCmd() *cobra.Command {
 			if err := client.SetCmdClientContextHandler(clientCtx, cmd); err != nil {
 				return err
 			}
-			return server.InterceptConfigsPreRunHandler(cmd, "", nil, cmtcfg.DefaultConfig())
+			return server.InterceptConfigsPreRunHandler(cmd, customAppTemplate, customAppConfig, cmtcfg.DefaultConfig())
 		},
 	}
 
@@ -169,8 +171,7 @@ func newApp(
 	traceStore io.Writer,
 	appOpts servertypes.AppOptions,
 ) servertypes.Application {
-	baseappOptions := server.DefaultBaseappOptions(appOpts)
-	return app.New(logger, db, traceStore, true, appOpts, baseappOptions...)
+	return app.New(logger, db, traceStore, true, appOpts)
 }
 
 func appExport(
