@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-06-02T09:20:46Z",
+  "generated_at": "2026-06-02T10:04:18Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "47d2b9029",
+  "commit": "f7c5f6f9d",
   "generator_version": "1.1",
   "files": [
     {
@@ -237,6 +237,15 @@
       "is_empty": false,
       "extension": "",
       "lines": 1
+    },
+    {
+      "path": "AGENTS.md",
+      "type": "file",
+      "size_bytes": 3118,
+      "last_modified_commit": "eb0b4c335",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 153
     },
     {
       "path": "README.md",
@@ -3130,11 +3139,11 @@
     {
       "path": "docs/modules/tempus/tempus-structure.md",
       "type": "file",
-      "size_bytes": 4213,
-      "last_modified_commit": "3e4eb25ae",
+      "size_bytes": 5277,
+      "last_modified_commit": "6b744dce5",
       "is_empty": false,
       "extension": ".md",
-      "lines": 107
+      "lines": 185
     },
     {
       "path": "docs/modules/tempus/tempus.md",
@@ -3167,7 +3176,7 @@
       "path": "docs/repo/repo-index.json",
       "type": "file",
       "size_bytes": 150793,
-      "last_modified_commit": "42b975673",
+      "last_modified_commit": "026582051",
       "is_empty": false,
       "extension": ".json",
       "lines": 5516
@@ -3317,6 +3326,24 @@
       "lines": 113
     },
     {
+      "path": "docs/specs/economy/mana-lifecycle.md",
+      "type": "file",
+      "size_bytes": 4742,
+      "last_modified_commit": "986886ccc",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 216
+    },
+    {
+      "path": "docs/specs/economy/rites-credit.md",
+      "type": "file",
+      "size_bytes": 4003,
+      "last_modified_commit": "fa5c16534",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 172
+    },
+    {
       "path": "docs/specs/economy/treasury-flow-model.md",
       "type": "file",
       "size_bytes": 2474,
@@ -3344,6 +3371,33 @@
       "lines": 82
     },
     {
+      "path": "docs/specs/modules/tempus-earning-policy.md",
+      "type": "file",
+      "size_bytes": 4500,
+      "last_modified_commit": "1a73b2488",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 204
+    },
+    {
+      "path": "docs/specs/modules/vitae-economy-boundary.md",
+      "type": "file",
+      "size_bytes": 4884,
+      "last_modified_commit": "d5073e1a0",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 214
+    },
+    {
+      "path": "docs/specs/network/architect-node.md",
+      "type": "file",
+      "size_bytes": 4334,
+      "last_modified_commit": "81d144700",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 168
+    },
+    {
       "path": "docs/specs/network/arcnet-topology-model.md",
       "type": "file",
       "size_bytes": 2501,
@@ -3351,6 +3405,15 @@
       "is_empty": false,
       "extension": ".md",
       "lines": 160
+    },
+    {
+      "path": "docs/specs/network/codex-agent-integration.md",
+      "type": "file",
+      "size_bytes": 3652,
+      "last_modified_commit": "e1aa5dc04",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 175
     },
     {
       "path": "docs/specs/network/node-participation-model.md",
@@ -3369,6 +3432,15 @@
       "is_empty": false,
       "extension": ".md",
       "lines": 276
+    },
+    {
+      "path": "docs/specs/protocol/agent-permission-boundaries.md",
+      "type": "file",
+      "size_bytes": 4400,
+      "last_modified_commit": "f7c5f6f9d",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 224
     },
     {
       "path": "docs/specs/protocol/self-amendment-boundaries.md",
