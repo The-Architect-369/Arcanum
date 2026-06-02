@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-05-31T13:17:04Z",
+  "generated_at": "2026-06-02T09:08:34Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "b134dd70c",
+  "commit": "8a6468e92",
   "generator_version": "1.1",
   "files": [
     {
@@ -1024,11 +1024,11 @@
     {
       "path": "apps/web/src/app/onboard/page.tsx",
       "type": "file",
-      "size_bytes": 7952,
-      "last_modified_commit": "4ffd400bd",
+      "size_bytes": 4060,
+      "last_modified_commit": "537f9aee5",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 245
+      "lines": 125
     },
     {
       "path": "apps/web/src/components/ConnectWallet.tsx",
@@ -1807,11 +1807,11 @@
     {
       "path": "apps/web/src/state/useAccount.ts",
       "type": "file",
-      "size_bytes": 10488,
-      "last_modified_commit": "78c851339",
+      "size_bytes": 12733,
+      "last_modified_commit": "8a6468e92",
       "is_empty": false,
       "extension": ".ts",
-      "lines": 439
+      "lines": 532
     },
     {
       "path": "apps/web/src/state/useActiveTab.ts",
@@ -2015,7 +2015,7 @@
       "path": "chains/arcanum/cmd/arcanumd/root.go",
       "type": "file",
       "size_bytes": 5657,
-      "last_modified_commit": "edc14c0a6",
+      "last_modified_commit": "fa59d6040",
       "is_empty": false,
       "extension": ".go",
       "lines": 204
@@ -2384,7 +2384,7 @@
       "path": "chains/arcanum/x/chaincode/module/module.go",
       "type": "file",
       "size_bytes": 2553,
-      "last_modified_commit": "b7eb8419e",
+      "last_modified_commit": "fa59d6040",
       "is_empty": false,
       "extension": ".go",
       "lines": 97
@@ -2492,7 +2492,7 @@
       "path": "chains/arcanum/x/mana/module/module.go",
       "type": "file",
       "size_bytes": 2529,
-      "last_modified_commit": "62950ac56",
+      "last_modified_commit": "fa59d6040",
       "is_empty": false,
       "extension": ".go",
       "lines": 98
@@ -2573,7 +2573,7 @@
       "path": "chains/arcanum/x/treasury/module/module.go",
       "type": "file",
       "size_bytes": 2121,
-      "last_modified_commit": "cda07327a",
+      "last_modified_commit": "fa59d6040",
       "is_empty": false,
       "extension": ".go",
       "lines": 79
@@ -2968,29 +2968,29 @@
     {
       "path": "docs/governance/architectgpt/architect-gpt-manifest.yaml",
       "type": "file",
-      "size_bytes": 1641,
-      "last_modified_commit": "b4c8d3fe7",
+      "size_bytes": 2071,
+      "last_modified_commit": "a8ace561c",
       "is_empty": false,
       "extension": ".yaml",
-      "lines": 54
+      "lines": 63
     },
     {
       "path": "docs/governance/architectgpt/architect-gpt.md",
       "type": "file",
-      "size_bytes": 19105,
-      "last_modified_commit": "1db12b4b4",
+      "size_bytes": 12779,
+      "last_modified_commit": "3ab1bc7e5",
       "is_empty": false,
       "extension": ".md",
-      "lines": 447
+      "lines": 317
     },
     {
       "path": "docs/governance/architectgpt/architect-log.md",
       "type": "file",
-      "size_bytes": 3658,
-      "last_modified_commit": "3216eebe6",
+      "size_bytes": 5365,
+      "last_modified_commit": "089fe404c",
       "is_empty": false,
       "extension": ".md",
-      "lines": 98
+      "lines": 135
     },
     {
       "path": "docs/governance/architectgpt/sessions/.gitkeep",
@@ -3166,20 +3166,20 @@
     {
       "path": "docs/repo/repo-index.json",
       "type": "file",
-      "size_bytes": 150565,
-      "last_modified_commit": "b134dd70c",
+      "size_bytes": 150792,
+      "last_modified_commit": "fa59d6040",
       "is_empty": false,
       "extension": ".json",
-      "lines": 5507
+      "lines": 5516
     },
     {
       "path": "docs/repo/repo-interface.md",
       "type": "file",
-      "size_bytes": 3958,
-      "last_modified_commit": "cfed935ae",
+      "size_bytes": 5317,
+      "last_modified_commit": "25420635d",
       "is_empty": false,
       "extension": ".md",
-      "lines": 128
+      "lines": 151
     },
     {
       "path": "docs/specs/README.md",
@@ -3238,11 +3238,11 @@
     {
       "path": "docs/specs/app/navigation-and-gates.md",
       "type": "file",
-      "size_bytes": 1678,
-      "last_modified_commit": "b4c8d3fe7",
+      "size_bytes": 1957,
+      "last_modified_commit": "537f9aee5",
       "is_empty": false,
       "extension": ".md",
-      "lines": 66
+      "lines": 72
     },
     {
       "path": "docs/specs/app/tempus-windows.md",
