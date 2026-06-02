@@ -3,7 +3,7 @@ package module
 import (
 	"context"
 	"encoding/json"
-
+    chaincodemodulev1 "arcanum/api/arcanum/chaincode/module/v1"
 	"cosmossdk.io/core/appmodule"
 	abci "github.com/cometbft/cometbft/abci/types"
 
@@ -21,6 +21,14 @@ import (
 type basicModule struct{}
 
 var _ sdkmodule.AppModuleBasic = (*basicModule)(nil)
+
+func init() {
+    appmodule.Register(
+        &chaincodemodulev1.Module{},
+        appmodule.Provide(ProvideModule),
+    )
+}
+func NewBasicModule() sdkmodule.AppModuleBasic { return basicModule{} }
 
 func (basicModule) Name() string                                  { return types.ModuleName }
 func (basicModule) RegisterLegacyAminoCodec(_ *codec.LegacyAmino) {}

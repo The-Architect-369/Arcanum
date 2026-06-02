@@ -28,7 +28,11 @@ export default function WalletBalancesPage() {
     setBusy(true);
     setMessage(null);
     const result = await syncChainBalance();
-    setMessage(result.ok ? `Synced ${result.amount} ${result.denom}.` : result.message);
+    setMessage(
+      result.ok
+        ? `Synced ${result.amount} ${result.denom} from ${result.source}.${result.supply ? ` Supply ${result.supply}.` : ""}`
+        : result.message
+    );
     setBusy(false);
   }
 
@@ -43,12 +47,13 @@ export default function WalletBalancesPage() {
         >
           <div className="space-y-4">
             <p className="text-sm text-zinc-300">
-              This surface reads from stored mobile session state and, when available, syncs the
-              bound ARCnet address over RPC.
+              This surface now prefers live ARCnet module queries for MANA balance, chaincode anchor,
+              and tracked supply when a chain address is bound.
             </p>
 
-            <div className="grid gap-3 md:grid-cols-3">
+            <div className="grid gap-3 md:grid-cols-4">
               <BalanceCard label="MANA" value={`${account.mana} ${baseDenom}`} />
+              <BalanceCard label="Tracked supply" value={account.manaSupply ?? "Unknown"} />
               <BalanceCard
                 label="Settlement"
                 value={account.chainAddress ? "Bound to chain address" : "Device-only"}
@@ -60,6 +65,11 @@ export default function WalletBalancesPage() {
               <div className="space-y-2 text-sm text-zinc-300">
                 <p className="break-all font-mono text-xs text-zinc-400">
                   {account.chainAddress ?? "No chain address bound yet."}
+                </p>
+                <p>
+                  {account.chainAnchorTokenId
+                    ? `ARCnet chaincode witness: ${account.chainAnchorTokenId}`
+                    : "No ARCnet chaincode witness found for this address yet."}
                 </p>
                 <div className="flex flex-wrap gap-3">
                   <button

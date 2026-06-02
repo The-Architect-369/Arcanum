@@ -3,8 +3,8 @@ plugins:
   - plugin: go
     out: .
     opt:
-      - paths=source_relative
+      - module=arcanum
   - plugin: go-grpc
     out: .
     opt:
-      - paths=source_relative
+      - module=arcanum

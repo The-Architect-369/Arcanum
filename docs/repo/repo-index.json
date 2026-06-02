@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-05-27T02:03:14Z",
+  "generated_at": "2026-06-02T10:04:18Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "05971d641",
+  "commit": "f7c5f6f9d",
   "generator_version": "1.1",
   "files": [
     {
@@ -237,6 +237,15 @@
       "is_empty": false,
       "extension": "",
       "lines": 1
+    },
+    {
+      "path": "AGENTS.md",
+      "type": "file",
+      "size_bytes": 3118,
+      "last_modified_commit": "eb0b4c335",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 153
     },
     {
       "path": "README.md",
@@ -502,11 +511,11 @@
     {
       "path": "apps/web/public/sw.js",
       "type": "file",
-      "size_bytes": 1802,
-      "last_modified_commit": "6a64182e1",
+      "size_bytes": 1913,
+      "last_modified_commit": "5193017da",
       "is_empty": false,
       "extension": ".js",
-      "lines": 73
+      "lines": 78
     },
     {
       "path": "apps/web/public/vercel.svg",
@@ -529,11 +538,11 @@
     {
       "path": "apps/web/src/app/(app)/account/page.tsx",
       "type": "file",
-      "size_bytes": 213,
-      "last_modified_commit": "8fb50b9f7",
+      "size_bytes": 5940,
+      "last_modified_commit": "01ee03a3e",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 3
+      "lines": 160
     },
     {
       "path": "apps/web/src/app/(app)/app/page.tsx",
@@ -547,11 +556,11 @@
     {
       "path": "apps/web/src/app/(app)/exchange/page.tsx",
       "type": "file",
-      "size_bytes": 232,
-      "last_modified_commit": "8fb50b9f7",
+      "size_bytes": 6224,
+      "last_modified_commit": "151362ab6",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 3
+      "lines": 173
     },
     {
       "path": "apps/web/src/app/(app)/hope/_components/HopeTabRail.tsx",
@@ -682,11 +691,11 @@
     {
       "path": "apps/web/src/app/(app)/mobile-only/pwa/page.tsx",
       "type": "file",
-      "size_bytes": 5422,
-      "last_modified_commit": "11e76e39f",
+      "size_bytes": 9774,
+      "last_modified_commit": "c5ab58a6c",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 155
+      "lines": 256
     },
     {
       "path": "apps/web/src/app/(app)/nexus/channel/page.tsx",
@@ -727,20 +736,20 @@
     {
       "path": "apps/web/src/app/(app)/notifications/page.tsx",
       "type": "file",
-      "size_bytes": 239,
-      "last_modified_commit": "8fb50b9f7",
+      "size_bytes": 3974,
+      "last_modified_commit": "594995a21",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 3
+      "lines": 106
     },
     {
       "path": "apps/web/src/app/(app)/preferences/page.tsx",
       "type": "file",
-      "size_bytes": 229,
-      "last_modified_commit": "8fb50b9f7",
+      "size_bytes": 3795,
+      "last_modified_commit": "fb2d886fe",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 3
+      "lines": 108
     },
     {
       "path": "apps/web/src/app/(app)/providers.tsx",
@@ -835,20 +844,20 @@
     {
       "path": "apps/web/src/app/(app)/vitae/grade/page.tsx",
       "type": "file",
-      "size_bytes": 850,
-      "last_modified_commit": "6f61137ed",
+      "size_bytes": 3202,
+      "last_modified_commit": "b134dd70c",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 27
+      "lines": 68
     },
     {
       "path": "apps/web/src/app/(app)/vitae/mastery/page.tsx",
       "type": "file",
-      "size_bytes": 1124,
-      "last_modified_commit": "6f61137ed",
+      "size_bytes": 7265,
+      "last_modified_commit": "115473caf",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 36
+      "lines": 177
     },
     {
       "path": "apps/web/src/app/(app)/vitae/page.tsx",
@@ -862,20 +871,20 @@
     {
       "path": "apps/web/src/app/(app)/vitae/path/page.tsx",
       "type": "file",
-      "size_bytes": 849,
-      "last_modified_commit": "6f61137ed",
+      "size_bytes": 3917,
+      "last_modified_commit": "1afd83510",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 27
+      "lines": 101
     },
     {
       "path": "apps/web/src/app/(app)/wallet/balances/page.tsx",
       "type": "file",
-      "size_bytes": 1399,
-      "last_modified_commit": "6f61137ed",
+      "size_bytes": 3721,
+      "last_modified_commit": "41a90bb87",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 41
+      "lines": 100
     },
     {
       "path": "apps/web/src/app/(app)/wallet/page.tsx",
@@ -889,20 +898,20 @@
     {
       "path": "apps/web/src/app/(app)/wallet/receipts/page.tsx",
       "type": "file",
-      "size_bytes": 1354,
-      "last_modified_commit": "6f61137ed",
+      "size_bytes": 3047,
+      "last_modified_commit": "6fca52eea",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 41
+      "lines": 84
     },
     {
       "path": "apps/web/src/app/(app)/wallet/vault/page.tsx",
       "type": "file",
-      "size_bytes": 1361,
-      "last_modified_commit": "6f61137ed",
+      "size_bytes": 3377,
+      "last_modified_commit": "76cbaa085",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 41
+      "lines": 119
     },
     {
       "path": "apps/web/src/app/(marketing)/client-layout.tsx",
@@ -970,11 +979,11 @@
     {
       "path": "apps/web/src/app/api/ipfs/route.ts",
       "type": "file",
-      "size_bytes": 279,
-      "last_modified_commit": "376be12f8",
+      "size_bytes": 469,
+      "last_modified_commit": "d2965b6f0",
       "is_empty": false,
       "extension": ".ts",
-      "lines": 12
+      "lines": 15
     },
     {
       "path": "apps/web/src/app/app-polish.css",
@@ -997,20 +1006,20 @@
     {
       "path": "apps/web/src/app/globals.css",
       "type": "file",
-      "size_bytes": 10412,
-      "last_modified_commit": "94ac6e771",
+      "size_bytes": 6547,
+      "last_modified_commit": "7a3d0bf02",
       "is_empty": false,
       "extension": ".css",
-      "lines": 403
+      "lines": 264
     },
     {
       "path": "apps/web/src/app/layout.tsx",
       "type": "file",
-      "size_bytes": 1636,
-      "last_modified_commit": "21e47c7ca",
+      "size_bytes": 1718,
+      "last_modified_commit": "ba8b1523d",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 60
+      "lines": 62
     },
     {
       "path": "apps/web/src/app/middleware.ts",
@@ -1024,38 +1033,47 @@
     {
       "path": "apps/web/src/app/onboard/page.tsx",
       "type": "file",
-      "size_bytes": 5446,
-      "last_modified_commit": "10a4987c9",
-      "is_empty": false,
-      "extension": ".tsx",
-      "lines": 165
-    },
-    {
-      "path": "apps/web/src/components/ConnectWallet.tsx",
-      "type": "file",
-      "size_bytes": 3544,
-      "last_modified_commit": "f2063ca4c",
+      "size_bytes": 4060,
+      "last_modified_commit": "537f9aee5",
       "is_empty": false,
       "extension": ".tsx",
       "lines": 125
     },
     {
-      "path": "apps/web/src/components/PWARegister.tsx",
+      "path": "apps/web/src/components/ConnectWallet.tsx",
       "type": "file",
-      "size_bytes": 790,
-      "last_modified_commit": "6a64182e1",
+      "size_bytes": 4417,
+      "last_modified_commit": "a5a19e548",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 28
+      "lines": 164
+    },
+    {
+      "path": "apps/web/src/components/DeviceRuntime.tsx",
+      "type": "file",
+      "size_bytes": 10732,
+      "last_modified_commit": "3dc0f51f1",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 284
+    },
+    {
+      "path": "apps/web/src/components/PWARegister.tsx",
+      "type": "file",
+      "size_bytes": 5068,
+      "last_modified_commit": "a0574ec4a",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 155
     },
     {
       "path": "apps/web/src/components/SimpleAccountPreview.tsx",
       "type": "file",
-      "size_bytes": 4259,
-      "last_modified_commit": "f2063ca4c",
+      "size_bytes": 4605,
+      "last_modified_commit": "fcaa3c040",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 116
+      "lines": 131
     },
     {
       "path": "apps/web/src/components/shared/CTAActivate.tsx",
@@ -1087,11 +1105,11 @@
     {
       "path": "apps/web/src/components/ui/ACCOnboardingModal.tsx",
       "type": "file",
-      "size_bytes": 5682,
-      "last_modified_commit": "d32d6affc",
+      "size_bytes": 5542,
+      "last_modified_commit": "a2a353eaa",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 133
+      "lines": 174
     },
     {
       "path": "apps/web/src/components/ui/ActivateBento.tsx",
@@ -1123,11 +1141,11 @@
     {
       "path": "apps/web/src/components/ui/AppHeader.tsx",
       "type": "file",
-      "size_bytes": 4380,
-      "last_modified_commit": "dbb4c25c0",
+      "size_bytes": 5531,
+      "last_modified_commit": "e334efe1d",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 119
+      "lines": 159
     },
     {
       "path": "apps/web/src/components/ui/AppStage.tsx",
@@ -1375,11 +1393,11 @@
     {
       "path": "apps/web/src/hooks/usePWADiagnostics.ts",
       "type": "file",
-      "size_bytes": 5967,
-      "last_modified_commit": "11e76e39f",
+      "size_bytes": 8748,
+      "last_modified_commit": "8f1e04401",
       "is_empty": false,
       "extension": ".ts",
-      "lines": 193
+      "lines": 262
     },
     {
       "path": "apps/web/src/hooks/useTempusWindow.ts",
@@ -1420,11 +1438,11 @@
     {
       "path": "apps/web/src/lib/cosmos/queries.ts",
       "type": "file",
-      "size_bytes": 235,
-      "last_modified_commit": "7dfdd2782",
+      "size_bytes": 2768,
+      "last_modified_commit": "453b49548",
       "is_empty": false,
       "extension": ".ts",
-      "lines": 6
+      "lines": 99
     },
     {
       "path": "apps/web/src/lib/cosmos/tx.ts",
@@ -1465,11 +1483,11 @@
     {
       "path": "apps/web/src/lib/economy/economy.ts",
       "type": "file",
-      "size_bytes": 518,
-      "last_modified_commit": "642fbf2b7",
+      "size_bytes": 608,
+      "last_modified_commit": "36669a616",
       "is_empty": false,
       "extension": ".ts",
-      "lines": 14
+      "lines": 23
     },
     {
       "path": "apps/web/src/lib/economy/guards.ts",
@@ -1528,11 +1546,11 @@
     {
       "path": "apps/web/src/lib/identity/burner.ts",
       "type": "file",
-      "size_bytes": 614,
-      "last_modified_commit": "3e4eb25ae",
+      "size_bytes": 2232,
+      "last_modified_commit": "8c6af186c",
       "is_empty": false,
       "extension": ".ts",
-      "lines": 24
+      "lines": 93
     },
     {
       "path": "apps/web/src/lib/identity/gates.ts",
@@ -1555,11 +1573,11 @@
     {
       "path": "apps/web/src/lib/identity/passkey.ts",
       "type": "file",
-      "size_bytes": 1336,
-      "last_modified_commit": "642fbf2b7",
+      "size_bytes": 4841,
+      "last_modified_commit": "296af6b0c",
       "is_empty": false,
       "extension": ".ts",
-      "lines": 33
+      "lines": 184
     },
     {
       "path": "apps/web/src/lib/identity/trust.ts",
@@ -1618,11 +1636,11 @@
     {
       "path": "apps/web/src/lib/infra/ipfs.ts",
       "type": "file",
-      "size_bytes": 3316,
-      "last_modified_commit": "f2063ca4c",
+      "size_bytes": 1593,
+      "last_modified_commit": "3eb119f9f",
       "is_empty": false,
       "extension": ".ts",
-      "lines": 121
+      "lines": 61
     },
     {
       "path": "apps/web/src/lib/infra/matrix.ts",
@@ -1659,6 +1677,51 @@
       "is_empty": false,
       "extension": ".ts",
       "lines": 1
+    },
+    {
+      "path": "apps/web/src/lib/mobile/installPrompt.ts",
+      "type": "file",
+      "size_bytes": 1347,
+      "last_modified_commit": "113592f6d",
+      "is_empty": false,
+      "extension": ".ts",
+      "lines": 58
+    },
+    {
+      "path": "apps/web/src/lib/mobile/notifications.ts",
+      "type": "file",
+      "size_bytes": 1624,
+      "last_modified_commit": "310fd2f12",
+      "is_empty": false,
+      "extension": ".ts",
+      "lines": 55
+    },
+    {
+      "path": "apps/web/src/lib/mobile/persistence.ts",
+      "type": "file",
+      "size_bytes": 12726,
+      "last_modified_commit": "3e016de9d",
+      "is_empty": false,
+      "extension": ".ts",
+      "lines": 465
+    },
+    {
+      "path": "apps/web/src/lib/mobile/vitae-map.ts",
+      "type": "file",
+      "size_bytes": 4707,
+      "last_modified_commit": "b134dd70c",
+      "is_empty": false,
+      "extension": ".ts",
+      "lines": 71
+    },
+    {
+      "path": "apps/web/src/lib/mobile/vitae.ts",
+      "type": "file",
+      "size_bytes": 4431,
+      "last_modified_commit": "586286a16",
+      "is_empty": false,
+      "extension": ".ts",
+      "lines": 172
     },
     {
       "path": "apps/web/src/lib/nexus/rooms.ts",
@@ -1753,11 +1816,11 @@
     {
       "path": "apps/web/src/state/useAccount.ts",
       "type": "file",
-      "size_bytes": 3499,
-      "last_modified_commit": "d32d6affc",
+      "size_bytes": 12733,
+      "last_modified_commit": "8a6468e92",
       "is_empty": false,
       "extension": ".ts",
-      "lines": 127
+      "lines": 532
     },
     {
       "path": "apps/web/src/state/useActiveTab.ts",
@@ -1771,11 +1834,11 @@
     {
       "path": "apps/web/src/state/usePreference.ts",
       "type": "file",
-      "size_bytes": 709,
-      "last_modified_commit": "d32d6affc",
+      "size_bytes": 1278,
+      "last_modified_commit": "2d006ac1a",
       "is_empty": false,
       "extension": ".ts",
-      "lines": 30
+      "lines": 50
     },
     {
       "path": "apps/web/src/styles/globals.css",
@@ -1834,11 +1897,11 @@
     {
       "path": "chains/arcanum/Makefile",
       "type": "file",
-      "size_bytes": 3112,
-      "last_modified_commit": "5da311ef6",
+      "size_bytes": 2955,
+      "last_modified_commit": "a32ad1daf",
       "is_empty": false,
       "extension": "",
-      "lines": 121
+      "lines": 114
     },
     {
       "path": "chains/arcanum/amino/amino.ts",
@@ -1861,11 +1924,11 @@
     {
       "path": "chains/arcanum/app/app_config.go",
       "type": "file",
-      "size_bytes": 367,
-      "last_modified_commit": "695b32b8d",
+      "size_bytes": 3161,
+      "last_modified_commit": "c253138e1",
       "is_empty": false,
       "extension": ".go",
-      "lines": 10
+      "lines": 107
     },
     {
       "path": "chains/arcanum/app/config.go",
@@ -1895,10 +1958,19 @@
       "lines": 47
     },
     {
+      "path": "chains/arcanum/app/runtime_support.go",
+      "type": "file",
+      "size_bytes": 1817,
+      "last_modified_commit": "365643a0b",
+      "is_empty": false,
+      "extension": ".go",
+      "lines": 81
+    },
+    {
       "path": "chains/arcanum/buf.gen.yaml",
       "type": "file",
-      "size_bytes": 156,
-      "last_modified_commit": "5da311ef6",
+      "size_bytes": 142,
+      "last_modified_commit": "cc2f859b4",
       "is_empty": false,
       "extension": ".yaml",
       "lines": 10
@@ -1951,11 +2023,11 @@
     {
       "path": "chains/arcanum/cmd/arcanumd/root.go",
       "type": "file",
-      "size_bytes": 361,
-      "last_modified_commit": "695b32b8d",
+      "size_bytes": 5657,
+      "last_modified_commit": "fa59d6040",
       "is_empty": false,
       "extension": ".go",
-      "lines": 23
+      "lines": 204
     },
     {
       "path": "chains/arcanum/config.yml",
@@ -2095,11 +2167,11 @@
     {
       "path": "chains/arcanum/proto/arcanum/chaincode/v1/genesis.proto",
       "type": "file",
-      "size_bytes": 296,
-      "last_modified_commit": "975ab5f93",
+      "size_bytes": 453,
+      "last_modified_commit": "72db40252",
       "is_empty": false,
       "extension": ".proto",
-      "lines": 12
+      "lines": 14
     },
     {
       "path": "chains/arcanum/proto/arcanum/chaincode/v1/params.proto",
@@ -2113,11 +2185,11 @@
     {
       "path": "chains/arcanum/proto/arcanum/chaincode/v1/query.proto",
       "type": "file",
-      "size_bytes": 1271,
-      "last_modified_commit": "5da311ef6",
+      "size_bytes": 1558,
+      "last_modified_commit": "c63fd201b",
       "is_empty": false,
       "extension": ".proto",
-      "lines": 44
+      "lines": 53
     },
     {
       "path": "chains/arcanum/proto/arcanum/chaincode/v1/tx.proto",
@@ -2140,11 +2212,11 @@
     {
       "path": "chains/arcanum/proto/arcanum/mana/v1/genesis.proto",
       "type": "file",
-      "size_bytes": 281,
-      "last_modified_commit": "975ab5f93",
+      "size_bytes": 465,
+      "last_modified_commit": "012602670",
       "is_empty": false,
       "extension": ".proto",
-      "lines": 12
+      "lines": 15
     },
     {
       "path": "chains/arcanum/proto/arcanum/mana/v1/params.proto",
@@ -2158,20 +2230,20 @@
     {
       "path": "chains/arcanum/proto/arcanum/mana/v1/query.proto",
       "type": "file",
-      "size_bytes": 1237,
-      "last_modified_commit": "5da311ef6",
+      "size_bytes": 1905,
+      "last_modified_commit": "5d08ca53f",
       "is_empty": false,
       "extension": ".proto",
-      "lines": 42
+      "lines": 71
     },
     {
       "path": "chains/arcanum/proto/arcanum/mana/v1/tx.proto",
       "type": "file",
-      "size_bytes": 2615,
-      "last_modified_commit": "5da311ef6",
+      "size_bytes": 3038,
+      "last_modified_commit": "34e1d99b1",
       "is_empty": false,
       "extension": ".proto",
-      "lines": 82
+      "lines": 96
     },
     {
       "path": "chains/arcanum/proto/arcanum/treasury/module/v1/module.proto",
@@ -2239,11 +2311,11 @@
     {
       "path": "chains/arcanum/readme.md",
       "type": "file",
-      "size_bytes": 891,
-      "last_modified_commit": "975ab5f93",
+      "size_bytes": 2312,
+      "last_modified_commit": "2e15ea811",
       "is_empty": false,
       "extension": ".md",
-      "lines": 40
+      "lines": 86
     },
     {
       "path": "chains/arcanum/scripts/faucet.sh",
@@ -2284,47 +2356,56 @@
     {
       "path": "chains/arcanum/x/chaincode/keeper/genesis.go",
       "type": "file",
-      "size_bytes": 612,
-      "last_modified_commit": "695b32b8d",
+      "size_bytes": 718,
+      "last_modified_commit": "aea2959ad",
       "is_empty": false,
       "extension": ".go",
-      "lines": 31
+      "lines": 36
     },
     {
       "path": "chains/arcanum/x/chaincode/keeper/keeper.go",
       "type": "file",
-      "size_bytes": 2472,
-      "last_modified_commit": "975ab5f93",
+      "size_bytes": 5591,
+      "last_modified_commit": "4fc3b88aa",
       "is_empty": false,
       "extension": ".go",
-      "lines": 102
+      "lines": 209
+    },
+    {
+      "path": "chains/arcanum/x/chaincode/keeper/keeper_test.go",
+      "type": "file",
+      "size_bytes": 3451,
+      "last_modified_commit": "eb532c954",
+      "is_empty": false,
+      "extension": ".go",
+      "lines": 115
     },
     {
       "path": "chains/arcanum/x/chaincode/keeper/query_server.go",
       "type": "file",
-      "size_bytes": 1036,
-      "last_modified_commit": "695b32b8d",
+      "size_bytes": 1401,
+      "last_modified_commit": "c6f7c96a1",
       "is_empty": false,
       "extension": ".go",
-      "lines": 41
+      "lines": 54
     },
     {
       "path": "chains/arcanum/x/chaincode/module/module.go",
       "type": "file",
-      "size_bytes": 2292,
-      "last_modified_commit": "695b32b8d",
+      "size_bytes": 2553,
+      "last_modified_commit": "fa59d6040",
       "is_empty": false,
       "extension": ".go",
-      "lines": 89
+      "lines": 97
     },
     {
       "path": "chains/arcanum/x/chaincode/msg_server.go",
       "type": "file",
-      "size_bytes": 1011,
-      "last_modified_commit": "ebaef9715",
+      "size_bytes": 2171,
+      "last_modified_commit": "c9d0aa7be",
       "is_empty": false,
       "extension": ".go",
-      "lines": 45
+      "lines": 84
     },
     {
       "path": "chains/arcanum/x/chaincode/types/codec.go",
@@ -2383,47 +2464,56 @@
     {
       "path": "chains/arcanum/x/mana/keeper/genesis.go",
       "type": "file",
-      "size_bytes": 602,
-      "last_modified_commit": "695b32b8d",
+      "size_bytes": 1308,
+      "last_modified_commit": "8b2260c9a",
       "is_empty": false,
       "extension": ".go",
-      "lines": 31
+      "lines": 58
     },
     {
       "path": "chains/arcanum/x/mana/keeper/keeper.go",
       "type": "file",
-      "size_bytes": 3380,
-      "last_modified_commit": "975ab5f93",
+      "size_bytes": 4698,
+      "last_modified_commit": "1b0afea06",
       "is_empty": false,
       "extension": ".go",
-      "lines": 145
+      "lines": 196
+    },
+    {
+      "path": "chains/arcanum/x/mana/keeper/keeper_test.go",
+      "type": "file",
+      "size_bytes": 2581,
+      "last_modified_commit": "eb5fd0e73",
+      "is_empty": false,
+      "extension": ".go",
+      "lines": 86
     },
     {
       "path": "chains/arcanum/x/mana/keeper/query_server.go",
       "type": "file",
-      "size_bytes": 943,
-      "last_modified_commit": "695b32b8d",
+      "size_bytes": 1859,
+      "last_modified_commit": "e0d67a616",
       "is_empty": false,
       "extension": ".go",
-      "lines": 38
+      "lines": 66
     },
     {
       "path": "chains/arcanum/x/mana/module/module.go",
       "type": "file",
-      "size_bytes": 2282,
-      "last_modified_commit": "695b32b8d",
+      "size_bytes": 2529,
+      "last_modified_commit": "fa59d6040",
       "is_empty": false,
       "extension": ".go",
-      "lines": 89
+      "lines": 98
     },
     {
       "path": "chains/arcanum/x/mana/msg_server.go",
       "type": "file",
-      "size_bytes": 1532,
-      "last_modified_commit": "a9fedcfe1",
+      "size_bytes": 3465,
+      "last_modified_commit": "491d18c75",
       "is_empty": false,
       "extension": ".go",
-      "lines": 61
+      "lines": 127
     },
     {
       "path": "chains/arcanum/x/mana/types/codec.go",
@@ -2491,11 +2581,11 @@
     {
       "path": "chains/arcanum/x/treasury/module/module.go",
       "type": "file",
-      "size_bytes": 1904,
-      "last_modified_commit": "5da311ef6",
+      "size_bytes": 2121,
+      "last_modified_commit": "fa59d6040",
       "is_empty": false,
       "extension": ".go",
-      "lines": 71
+      "lines": 79
     },
     {
       "path": "chains/arcanum/x/treasury/types/keys.go",
@@ -2887,29 +2977,29 @@
     {
       "path": "docs/governance/architectgpt/architect-gpt-manifest.yaml",
       "type": "file",
-      "size_bytes": 1641,
-      "last_modified_commit": "b4c8d3fe7",
+      "size_bytes": 2071,
+      "last_modified_commit": "a8ace561c",
       "is_empty": false,
       "extension": ".yaml",
-      "lines": 54
+      "lines": 63
     },
     {
       "path": "docs/governance/architectgpt/architect-gpt.md",
       "type": "file",
-      "size_bytes": 13222,
-      "last_modified_commit": "f2063ca4c",
+      "size_bytes": 12779,
+      "last_modified_commit": "3ab1bc7e5",
       "is_empty": false,
       "extension": ".md",
-      "lines": 345
+      "lines": 317
     },
     {
       "path": "docs/governance/architectgpt/architect-log.md",
       "type": "file",
-      "size_bytes": 3658,
-      "last_modified_commit": "b4c8d3fe7",
+      "size_bytes": 5365,
+      "last_modified_commit": "089fe404c",
       "is_empty": false,
       "extension": ".md",
-      "lines": 98
+      "lines": 135
     },
     {
       "path": "docs/governance/architectgpt/sessions/.gitkeep",
@@ -2939,6 +3029,33 @@
       "lines": 34
     },
     {
+      "path": "docs/governance/governance-councils.md",
+      "type": "file",
+      "size_bytes": 1342,
+      "last_modified_commit": "54db93626",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 70
+    },
+    {
+      "path": "docs/governance/governance-lifecycle.md",
+      "type": "file",
+      "size_bytes": 1196,
+      "last_modified_commit": "4a7461ebd",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 56
+    },
+    {
+      "path": "docs/governance/governance-permission-model.md",
+      "type": "file",
+      "size_bytes": 16979,
+      "last_modified_commit": "fc62efd1e",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 511
+    },
+    {
       "path": "docs/governance/governance-specification.md",
       "type": "file",
       "size_bytes": 7349,
@@ -2964,6 +3081,15 @@
       "is_empty": false,
       "extension": ".md",
       "lines": 213
+    },
+    {
+      "path": "docs/governance/vitae-authority-map.md",
+      "type": "file",
+      "size_bytes": 9913,
+      "last_modified_commit": "0a920521b",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 333
     },
     {
       "path": "docs/index.md",
@@ -3013,11 +3139,11 @@
     {
       "path": "docs/modules/tempus/tempus-structure.md",
       "type": "file",
-      "size_bytes": 4213,
-      "last_modified_commit": "3e4eb25ae",
+      "size_bytes": 5277,
+      "last_modified_commit": "6b744dce5",
       "is_empty": false,
       "extension": ".md",
-      "lines": 107
+      "lines": 185
     },
     {
       "path": "docs/modules/tempus/tempus.md",
@@ -3049,20 +3175,20 @@
     {
       "path": "docs/repo/repo-index.json",
       "type": "file",
-      "size_bytes": 143505,
-      "last_modified_commit": "05971d641",
+      "size_bytes": 150793,
+      "last_modified_commit": "026582051",
       "is_empty": false,
       "extension": ".json",
-      "lines": 5237
+      "lines": 5516
     },
     {
       "path": "docs/repo/repo-interface.md",
       "type": "file",
-      "size_bytes": 3958,
-      "last_modified_commit": "cfed935ae",
+      "size_bytes": 5317,
+      "last_modified_commit": "25420635d",
       "is_empty": false,
       "extension": ".md",
-      "lines": 128
+      "lines": 151
     },
     {
       "path": "docs/specs/README.md",
@@ -3083,6 +3209,33 @@
       "lines": 21
     },
     {
+      "path": "docs/specs/app/developer-console-model.md",
+      "type": "file",
+      "size_bytes": 5990,
+      "last_modified_commit": "78083fe0e",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 282
+    },
+    {
+      "path": "docs/specs/app/governance-state-machine.md",
+      "type": "file",
+      "size_bytes": 5519,
+      "last_modified_commit": "fa20b446e",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 326
+    },
+    {
+      "path": "docs/specs/app/governance-ui-model.md",
+      "type": "file",
+      "size_bytes": 5438,
+      "last_modified_commit": "4d706874d",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 267
+    },
+    {
       "path": "docs/specs/app/modules/README.md",
       "type": "file",
       "size_bytes": 760,
@@ -3094,11 +3247,11 @@
     {
       "path": "docs/specs/app/navigation-and-gates.md",
       "type": "file",
-      "size_bytes": 1678,
-      "last_modified_commit": "b4c8d3fe7",
+      "size_bytes": 1957,
+      "last_modified_commit": "537f9aee5",
       "is_empty": false,
       "extension": ".md",
-      "lines": 66
+      "lines": 72
     },
     {
       "path": "docs/specs/app/tempus-windows.md",
@@ -3110,6 +3263,15 @@
       "lines": 47
     },
     {
+      "path": "docs/specs/app/vitae-authority-integration.md",
+      "type": "file",
+      "size_bytes": 8142,
+      "last_modified_commit": "f740deb6a",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 311
+    },
+    {
       "path": "docs/specs/chain/README.md",
       "type": "file",
       "size_bytes": 1242,
@@ -3117,6 +3279,195 @@
       "is_empty": false,
       "extension": ".md",
       "lines": 48
+    },
+    {
+      "path": "docs/specs/chain/authority-state-model.md",
+      "type": "file",
+      "size_bytes": 2870,
+      "last_modified_commit": "03efc6f64",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 164
+    },
+    {
+      "path": "docs/specs/chain/governance-module-design.md",
+      "type": "file",
+      "size_bytes": 2318,
+      "last_modified_commit": "b308e333a",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 146
+    },
+    {
+      "path": "docs/specs/chain/governance-receipts.md",
+      "type": "file",
+      "size_bytes": 3280,
+      "last_modified_commit": "c6219b5f2",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 195
+    },
+    {
+      "path": "docs/specs/chain/local-arcnet.md",
+      "type": "file",
+      "size_bytes": 7136,
+      "last_modified_commit": "14b6e1cf3",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 272
+    },
+    {
+      "path": "docs/specs/economy/mana-governance-model.md",
+      "type": "file",
+      "size_bytes": 1972,
+      "last_modified_commit": "2a18ef27a",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 113
+    },
+    {
+      "path": "docs/specs/economy/mana-lifecycle.md",
+      "type": "file",
+      "size_bytes": 4742,
+      "last_modified_commit": "986886ccc",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 216
+    },
+    {
+      "path": "docs/specs/economy/rites-credit.md",
+      "type": "file",
+      "size_bytes": 4003,
+      "last_modified_commit": "fa5c16534",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 172
+    },
+    {
+      "path": "docs/specs/economy/treasury-flow-model.md",
+      "type": "file",
+      "size_bytes": 2474,
+      "last_modified_commit": "f1f25c440",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 153
+    },
+    {
+      "path": "docs/specs/identity/authority-binding-model.md",
+      "type": "file",
+      "size_bytes": 5419,
+      "last_modified_commit": "b5d0b458f",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 262
+    },
+    {
+      "path": "docs/specs/identity/governance-identity-model.md",
+      "type": "file",
+      "size_bytes": 1539,
+      "last_modified_commit": "d025f83b5",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 82
+    },
+    {
+      "path": "docs/specs/modules/tempus-earning-policy.md",
+      "type": "file",
+      "size_bytes": 4500,
+      "last_modified_commit": "1a73b2488",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 204
+    },
+    {
+      "path": "docs/specs/modules/vitae-economy-boundary.md",
+      "type": "file",
+      "size_bytes": 4884,
+      "last_modified_commit": "d5073e1a0",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 214
+    },
+    {
+      "path": "docs/specs/network/architect-node.md",
+      "type": "file",
+      "size_bytes": 4334,
+      "last_modified_commit": "81d144700",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 168
+    },
+    {
+      "path": "docs/specs/network/arcnet-topology-model.md",
+      "type": "file",
+      "size_bytes": 2501,
+      "last_modified_commit": "1fb83c1ac",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 160
+    },
+    {
+      "path": "docs/specs/network/codex-agent-integration.md",
+      "type": "file",
+      "size_bytes": 3652,
+      "last_modified_commit": "e1aa5dc04",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 175
+    },
+    {
+      "path": "docs/specs/network/node-participation-model.md",
+      "type": "file",
+      "size_bytes": 2998,
+      "last_modified_commit": "da22db1fc",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 183
+    },
+    {
+      "path": "docs/specs/network/node-upgrade-model.md",
+      "type": "file",
+      "size_bytes": 4252,
+      "last_modified_commit": "defef0920",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 276
+    },
+    {
+      "path": "docs/specs/protocol/agent-permission-boundaries.md",
+      "type": "file",
+      "size_bytes": 4400,
+      "last_modified_commit": "f7c5f6f9d",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 224
+    },
+    {
+      "path": "docs/specs/protocol/self-amendment-boundaries.md",
+      "type": "file",
+      "size_bytes": 2992,
+      "last_modified_commit": "ca9c23383",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 142
+    },
+    {
+      "path": "docs/specs/roadmap/pass-13-repository-integration-audit.md",
+      "type": "file",
+      "size_bytes": 12279,
+      "last_modified_commit": "8b6b69508",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 442
+    },
+    {
+      "path": "docs/specs/roadmap/pass-14-vitae-structural-ui-audit.md",
+      "type": "file",
+      "size_bytes": 10506,
+      "last_modified_commit": "b04f9db0b",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 467
     },
     {
       "path": "docs/tooling/archive-manifest.yaml",
@@ -5219,7 +5570,7 @@
       "path": "scripts/verify-sync.sh",
       "type": "file",
       "size_bytes": 6148,
-      "last_modified_commit": "b4c8d3fe7",
+      "last_modified_commit": "3216eebe6",
       "is_empty": false,
       "extension": ".sh",
       "lines": 212

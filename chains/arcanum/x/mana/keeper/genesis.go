@@ -1,31 +1,58 @@
 package keeper
 
 import (
-	sdk "github.com/cosmos/cosmos-sdk/types"
+	sdkmath "cosmossdk.io/math"
+	"github.com/cosmos/cosmos-sdk/types"
 
-	"arcanum/x/mana/types"
+	manaTypes "arcanum/x/mana/types"
 )
 
-func (k Keeper) InitGenesis(ctx sdk.Context, genState *types.GenesisState) {
+func (k Keeper) InitGenesis(ctx types.Context, genState *manaTypes.GenesisState) {
 	if genState == nil {
-		genState = types.DefaultGenesis()
+		genState = manaTypes.DefaultGenesis()
 	}
 	if genState.Params == nil {
-		p := types.DefaultParams()
+		p := manaTypes.DefaultParams()
 		genState.Params = &p
 	}
 	k.SetParams(ctx, *genState.Params)
 
-	// TODO: init any additional mana state
+	total := sdkmath.ZeroInt()
+	for _, balance := range genState.Balances {
+		if err := k.ImportBalance(ctx, balance); err != nil {
+			panic(err)
+		}
+		amount, ok := sdkmath.NewIntFromString(balance.Amount)
+		if !ok {
+			panic("invalid mana balance amount in genesis")
+		}
+		total = total.Add(amount)
+	}
+
+	if genState.Supply != "" {
+		supply, ok := sdkmath.NewIntFromString(genState.Supply)
+		if !ok {
+			panic("invalid mana supply in genesis")
+		}
+		if !supply.Equal(total) {
+			panic("mana genesis supply does not match imported balances")
+		}
+		k.SetSupply(ctx, supply)
+		return
+	}
+
+	k.SetSupply(ctx, total)
 }
 
-func (k Keeper) ExportGenesis(ctx sdk.Context) *types.GenesisState {
+func (k Keeper) ExportGenesis(ctx types.Context) *manaTypes.GenesisState {
 	p, err := k.GetParams(ctx)
 	if err != nil {
-		dp := types.DefaultParams()
+		dp := manaTypes.DefaultParams()
 		p = dp
 	}
-	return &types.GenesisState{
-		Params: &p,
+	return &manaTypes.GenesisState{
+		Params:   &p,
+		Balances: k.GetAllBalances(ctx),
+		Supply:   k.GetSupply(ctx).String(),
 	}
 }

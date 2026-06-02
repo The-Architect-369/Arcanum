@@ -17,7 +17,7 @@ service Query {
     option (google.api.http).get = "/arcanum/chaincode/v1/params";
   }
 
-  // Sbi Queries a list of Sbi items.
+  // Sbi queries the identity anchor for a given owner address.
   rpc Sbi(QuerySbiRequest) returns (QuerySbiResponse) {
     option (google.api.http).get = "/arcanum/chaincode/v1/sbi/{address}";
   }
@@ -35,10 +35,19 @@ message QueryParamsResponse {
   ];
 }
 
+// ChaincodeAnchor defines the minimal identity witness payload returned by query and genesis surfaces.
+message ChaincodeAnchor {
+  string token_id = 1;
+  string owner = 2;
+  string metadata = 3;
+}
+
 // QuerySbiRequest defines the QuerySbiRequest message.
 message QuerySbiRequest {
   string address = 1;
 }
 
 // QuerySbiResponse defines the QuerySbiResponse message.
-message QuerySbiResponse {}
+message QuerySbiResponse {
+  ChaincodeAnchor anchor = 1 [(gogoproto.nullable) = false];
+}
