@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-06-04T21:06:38Z",
+  "generated_at": "2026-06-04T21:21:37Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "a58290079",
+  "commit": "54b59cf21",
   "generator_version": "1.1",
   "files": [
     {
@@ -853,11 +853,11 @@
     {
       "path": "apps/web/src/app/(app)/vitae/mastery/page.tsx",
       "type": "file",
-      "size_bytes": 7265,
-      "last_modified_commit": "115473caf",
+      "size_bytes": 9486,
+      "last_modified_commit": "54b59cf21",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 177
+      "lines": 216
     },
     {
       "path": "apps/web/src/app/(app)/vitae/page.tsx",
@@ -1717,11 +1717,11 @@
     {
       "path": "apps/web/src/lib/mobile/vitae.ts",
       "type": "file",
-      "size_bytes": 4431,
-      "last_modified_commit": "586286a16",
+      "size_bytes": 5449,
+      "last_modified_commit": "9c5e04af7",
       "is_empty": false,
       "extension": ".ts",
-      "lines": 172
+      "lines": 200
     },
     {
       "path": "apps/web/src/lib/nexus/rooms.ts",
@@ -3184,11 +3184,11 @@
     {
       "path": "docs/repo/repo-index.json",
       "type": "file",
-      "size_bytes": 155451,
-      "last_modified_commit": "a7c9eb575",
+      "size_bytes": 155677,
+      "last_modified_commit": "c22c4b73e",
       "is_empty": false,
       "extension": ".json",
-      "lines": 5696
+      "lines": 5705
     },
     {
       "path": "docs/repo/repo-interface.md",
