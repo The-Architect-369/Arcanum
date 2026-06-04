@@ -1,6 +1,7 @@
 "use client";
 
 import { addReceipt, getPersistentValue, setPersistentValue } from "@/lib/mobile/persistence";
+import { issueRitesCredit } from "@/lib/mobile/rites";
 import type { TempusContext } from "@/lib/tempus/context";
 
 export type VitaePathKey = "guardian" | "weaver" | "steward";
@@ -12,6 +13,7 @@ export type VitaeSession = {
   notes: string;
   completedAt: string;
   tempusContext?: TempusContext;
+  ritesCreditId?: string;
 };
 
 export type VitaeState = {
@@ -95,6 +97,7 @@ function normalizeSession(session: VitaeSession): VitaeSession {
     notes: session.notes ?? "",
     completedAt: session.completedAt,
     tempusContext: session.tempusContext,
+    ritesCreditId: session.ritesCreditId,
   };
 }
 
@@ -136,6 +139,7 @@ export async function recordVitaeSession(input: {
   minutes: number;
   notes?: string;
   tempusContext?: TempusContext;
+  issueRitesCredit?: boolean;
 }) {
   const current = await getVitaeState();
   const completedAt = new Date().toISOString();
@@ -147,6 +151,20 @@ export async function recordVitaeSession(input: {
     completedAt,
     tempusContext: input.tempusContext,
   };
+
+  const ritesResult = input.issueRitesCredit
+    ? await issueRitesCredit({
+        source: "vitae_practice_recorded",
+        amount: 1,
+        reason: "Optional local participation credit for recorded Vitae practice.",
+        sourceRef: session.id,
+        tempusContext: session.tempusContext,
+      })
+    : undefined;
+
+  if (ritesResult?.ok) {
+    session.ritesCreditId = ritesResult.credit.id;
+  }
 
   const next: VitaeState = {
     ...current,
@@ -167,6 +185,8 @@ export async function recordVitaeSession(input: {
       practiceId: input.practiceId,
       notes: session.notes,
       selectedPath: current.selectedPath,
+      ritesCreditId: session.ritesCreditId,
+      ritesCreditStatus: ritesResult?.ok ? "issued_local_non_transferable" : input.issueRitesCredit ? "not_issued" : "not_requested",
       tempusContext: session.tempusContext
         ? {
             capturedAt: session.tempusContext.capturedAt,
