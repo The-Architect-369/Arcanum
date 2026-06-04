@@ -13,6 +13,8 @@ import {
   removePersistentValue,
   setPersistentValue,
 } from "@/lib/mobile/persistence";
+import { createWalletContext, createWalletSpendIntent, validateSpendIntentAgainstWallet } from "@/lib/wallet/context";
+import type { WalletSpendCategory } from "@/lib/wallet/context";
 
 export type AccountIdentitySource = "none" | "passkey" | "burner" | "mnemonic";
 
@@ -232,11 +234,42 @@ export function setManaBalance(value: number) {
   setState({ mana: value });
 }
 
-export function spendMana(amount: number) {
-  const safeAmount = Math.max(0, Math.floor(Number.isFinite(amount) ? amount : 0));
-  if (safeAmount <= 0) return true;
-  if (state.mana < safeAmount) return false;
-  setState({ mana: state.mana - safeAmount });
+export function spendMana(
+  amount: number,
+  options: {
+    purpose?: string;
+    category?: WalletSpendCategory;
+    denom?: string;
+    recipient?: string;
+  } = {}
+) {
+  const intentResult = createWalletSpendIntent({
+    amount,
+    denom: options.denom,
+    purpose: options.purpose ?? "Local optional utility spend",
+    category: options.category ?? "optional_utility",
+    recipient: options.recipient,
+  });
+
+  if (!intentResult.ok) return false;
+
+  const walletContext = createWalletContext(state, { denom: intentResult.intent.denom });
+  const guard = validateSpendIntentAgainstWallet(walletContext, intentResult.intent);
+  if (!guard.ok) return false;
+
+  setState({ mana: state.mana - guard.amount });
+  void addReceipt({
+    kind: "wallet_spend",
+    title: "Local MANA spend confirmed",
+    summary: `${guard.amount} ${intentResult.intent.denom} · ${intentResult.intent.purpose}`,
+    amount: guard.amount,
+    status: "confirmed",
+    metadata: {
+      intent: intentResult.intent,
+      source: "local_scaffold",
+      meaning: null,
+    },
+  });
   return true;
 }
 
