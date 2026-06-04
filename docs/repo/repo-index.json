@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-06-02T10:04:18Z",
+  "generated_at": "2026-06-04T20:55:55Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "f7c5f6f9d",
+  "commit": "b30b69a82",
   "generator_version": "1.1",
   "files": [
     {
@@ -3175,11 +3175,11 @@
     {
       "path": "docs/repo/repo-index.json",
       "type": "file",
-      "size_bytes": 150793,
-      "last_modified_commit": "026582051",
+      "size_bytes": 152626,
+      "last_modified_commit": "09c93f8d5",
       "is_empty": false,
       "extension": ".json",
-      "lines": 5516
+      "lines": 5588
     },
     {
       "path": "docs/repo/repo-interface.md",
@@ -3371,6 +3371,60 @@
       "lines": 82
     },
     {
+      "path": "docs/specs/modules/hope-content-foundation.md",
+      "type": "file",
+      "size_bytes": 3289,
+      "last_modified_commit": "000dffca8",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 148
+    },
+    {
+      "path": "docs/specs/modules/hope-context-schema.md",
+      "type": "file",
+      "size_bytes": 3702,
+      "last_modified_commit": "432e5f23e",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 165
+    },
+    {
+      "path": "docs/specs/modules/nexus-content-policy.md",
+      "type": "file",
+      "size_bytes": 2831,
+      "last_modified_commit": "b85a50ad3",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 135
+    },
+    {
+      "path": "docs/specs/modules/nexus-context-schema.md",
+      "type": "file",
+      "size_bytes": 3578,
+      "last_modified_commit": "1b11694e7",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 168
+    },
+    {
+      "path": "docs/specs/modules/tempus-content-foundation.md",
+      "type": "file",
+      "size_bytes": 6068,
+      "last_modified_commit": "f213064e8",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 356
+    },
+    {
+      "path": "docs/specs/modules/tempus-context-schema.md",
+      "type": "file",
+      "size_bytes": 4920,
+      "last_modified_commit": "c2df0e7f8",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 259
+    },
+    {
       "path": "docs/specs/modules/tempus-earning-policy.md",
       "type": "file",
       "size_bytes": 4500,
@@ -3380,6 +3434,42 @@
       "lines": 204
     },
     {
+      "path": "docs/specs/modules/tempus-layer-model.md",
+      "type": "file",
+      "size_bytes": 6794,
+      "last_modified_commit": "987cb126b",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 324
+    },
+    {
+      "path": "docs/specs/modules/text-communication-boundary.md",
+      "type": "file",
+      "size_bytes": 3819,
+      "last_modified_commit": "04213c304",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 160
+    },
+    {
+      "path": "docs/specs/modules/vitae-content-foundation.md",
+      "type": "file",
+      "size_bytes": 4229,
+      "last_modified_commit": "7de4fb3dd",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 183
+    },
+    {
+      "path": "docs/specs/modules/vitae-context-schema.md",
+      "type": "file",
+      "size_bytes": 5138,
+      "last_modified_commit": "dc54e0696",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 227
+    },
+    {
       "path": "docs/specs/modules/vitae-economy-boundary.md",
       "type": "file",
       "size_bytes": 4884,
@@ -3387,6 +3477,24 @@
       "is_empty": false,
       "extension": ".md",
       "lines": 214
+    },
+    {
+      "path": "docs/specs/modules/wallet-context-schema.md",
+      "type": "file",
+      "size_bytes": 3101,
+      "last_modified_commit": "a4b940623",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 146
+    },
+    {
+      "path": "docs/specs/modules/wallet-spend-policy.md",
+      "type": "file",
+      "size_bytes": 2909,
+      "last_modified_commit": "77601b70b",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 135
     },
     {
       "path": "docs/specs/network/architect-node.md",
