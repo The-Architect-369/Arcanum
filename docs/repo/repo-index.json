@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-06-04T21:21:37Z",
+  "generated_at": "2026-06-04T21:43:19Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "54b59cf21",
+  "commit": "378747393",
   "generator_version": "1.1",
   "files": [
     {
@@ -880,11 +880,11 @@
     {
       "path": "apps/web/src/app/(app)/wallet/balances/page.tsx",
       "type": "file",
-      "size_bytes": 3721,
-      "last_modified_commit": "41a90bb87",
+      "size_bytes": 5194,
+      "last_modified_commit": "378747393",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 100
+      "lines": 126
     },
     {
       "path": "apps/web/src/app/(app)/wallet/page.tsx",
@@ -1823,13 +1823,22 @@
       "lines": 6
     },
     {
-      "path": "apps/web/src/state/useAccount.ts",
+      "path": "apps/web/src/lib/wallet/context.ts",
       "type": "file",
-      "size_bytes": 12733,
-      "last_modified_commit": "8a6468e92",
+      "size_bytes": 6053,
+      "last_modified_commit": "064e40aa6",
       "is_empty": false,
       "extension": ".ts",
-      "lines": 532
+      "lines": 208
+    },
+    {
+      "path": "apps/web/src/state/useAccount.ts",
+      "type": "file",
+      "size_bytes": 13726,
+      "last_modified_commit": "69d176c81",
+      "is_empty": false,
+      "extension": ".ts",
+      "lines": 565
     },
     {
       "path": "apps/web/src/state/useActiveTab.ts",
@@ -3185,7 +3194,7 @@
       "path": "docs/repo/repo-index.json",
       "type": "file",
       "size_bytes": 155677,
-      "last_modified_commit": "c22c4b73e",
+      "last_modified_commit": "925aec263",
       "is_empty": false,
       "extension": ".json",
       "lines": 5705
