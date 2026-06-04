@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-06-04T20:55:55Z",
+  "generated_at": "2026-06-04T21:06:38Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "b30b69a82",
+  "commit": "a58290079",
   "generator_version": "1.1",
   "files": [
     {
@@ -1760,6 +1760,15 @@
       "lines": 6
     },
     {
+      "path": "apps/web/src/lib/tempus/context.ts",
+      "type": "file",
+      "size_bytes": 4387,
+      "last_modified_commit": "1e83d3068",
+      "is_empty": false,
+      "extension": ".ts",
+      "lines": 154
+    },
+    {
       "path": "apps/web/src/lib/tempus/index.ts",
       "type": "file",
       "size_bytes": 138,
@@ -1789,8 +1798,8 @@
     {
       "path": "apps/web/src/lib/tempus/window.ts",
       "type": "file",
-      "size_bytes": 1552,
-      "last_modified_commit": "a04c0a7a2",
+      "size_bytes": 1570,
+      "last_modified_commit": "a58290079",
       "is_empty": false,
       "extension": ".ts",
       "lines": 48
@@ -3175,11 +3184,11 @@
     {
       "path": "docs/repo/repo-index.json",
       "type": "file",
-      "size_bytes": 152626,
-      "last_modified_commit": "09c93f8d5",
+      "size_bytes": 155451,
+      "last_modified_commit": "a7c9eb575",
       "is_empty": false,
       "extension": ".json",
-      "lines": 5588
+      "lines": 5696
     },
     {
       "path": "docs/repo/repo-interface.md",
