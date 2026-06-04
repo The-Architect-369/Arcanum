@@ -1,11 +1,12 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import AppStage from "@/components/ui/AppStage";
 import ModuleTabRail from "@/components/ui/ModuleTabRail";
 import PanelShell, { PanelSection } from "@/components/ui/PanelShell";
 import SwipeRoutes from "@/components/ui/SwipeRoutes";
 import { LocalReceipt, listReceipts } from "@/lib/mobile/persistence";
+import { getRitesState, summarizeRites } from "@/lib/mobile/rites";
 
 const ORDER = ["/wallet/balances", "/wallet/receipts", "/wallet/vault"] as const;
 const TABS = [
@@ -16,14 +17,16 @@ const TABS = [
 
 export default function WalletReceiptsPage() {
   const [rows, setRows] = useState<LocalReceipt[]>([]);
+  const [ritesState, setRitesState] = useState<Awaited<ReturnType<typeof getRitesState>> | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     let active = true;
     (async () => {
-      const next = await listReceipts(100);
+      const [nextReceipts, nextRites] = await Promise.all([listReceipts(100), getRitesState()]);
       if (active) {
-        setRows(next);
+        setRows(nextReceipts);
+        setRitesState(nextRites);
         setLoading(false);
       }
     })();
@@ -31,6 +34,11 @@ export default function WalletReceiptsPage() {
       active = false;
     };
   }, []);
+
+  const ritesSummary = useMemo(
+    () => summarizeRites(ritesState ?? { credits: [], updatedAt: null }),
+    [ritesState]
+  );
 
   return (
     <SwipeRoutes order={ORDER}>
@@ -43,8 +51,21 @@ export default function WalletReceiptsPage() {
         >
           <div className="space-y-4">
             <p className="text-sm text-zinc-300">
-              Local factual receipts for activation, sync, and spend events on this device.
+              Local factual receipts for activation, sync, participation credit, and spend events on this device.
             </p>
+
+            <PanelSection title="Local RITES summary">
+              <div className="grid gap-3 md:grid-cols-4">
+                <SummaryCard label="Active credits" value={String(ritesSummary.activeCount)} />
+                <SummaryCard label="Amount" value={String(ritesSummary.activeAmount)} />
+                <SummaryCard label="Voided" value={String(ritesSummary.voidedCount)} />
+                <SummaryCard label="Conversion" value={ritesSummary.conversionStatus} />
+              </div>
+              <p className="mt-3 text-xs text-zinc-400">
+                RITES are local non-transferable participation memory in this scaffold. They are not MANA, not a wallet balance,
+                not authority, and not convertible without future governed policy.
+              </p>
+            </PanelSection>
 
             <PanelSection title="Recent receipts">
               {loading ? (
@@ -80,5 +101,14 @@ export default function WalletReceiptsPage() {
         </PanelShell>
       </AppStage>
     </SwipeRoutes>
+  );
+}
+
+function SummaryCard({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="rounded-xl border border-white/10 bg-white/[0.03] p-3">
+      <div className="text-xs uppercase tracking-wide text-zinc-500">{label}</div>
+      <div className="mt-1 text-sm text-zinc-100">{value}</div>
+    </div>
   );
 }
