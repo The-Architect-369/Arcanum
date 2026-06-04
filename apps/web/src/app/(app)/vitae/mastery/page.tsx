@@ -8,6 +8,7 @@ import PanelShell, { PanelSection } from '@/components/ui/PanelShell';
 import CTAActivate from '@/components/shared/CTAActivate';
 import { LockHint } from '@/components/shared/LockHint';
 import { getVitaeState, recordVitaeSession, summarizeVitae, VITAE_PRACTICES } from '@/lib/mobile/vitae';
+import { captureTempusContext } from '@/lib/tempus/context';
 import { useAccount } from '@/state/useAccount';
 
 const ORDER = ['/vitae/grade', '/vitae/path', '/vitae/mastery'] as const;
@@ -22,6 +23,7 @@ export default function VitaeMasteryPage() {
   const [practiceId, setPracticeId] = useState(VITAE_PRACTICES[0].id);
   const [minutes, setMinutes] = useState(String(VITAE_PRACTICES[0].suggestedMinutes));
   const [notes, setNotes] = useState('');
+  const [includeTempusContext, setIncludeTempusContext] = useState(true);
   const [state, setState] = useState<Awaited<ReturnType<typeof getVitaeState>> | null>(null);
   const [message, setMessage] = useState<string | null>(null);
 
@@ -42,14 +44,21 @@ export default function VitaeMasteryPage() {
       return;
     }
 
+    const tempusContext = includeTempusContext ? captureTempusContext(new Date(), { depth: 'seasonal' }) : undefined;
+
     await recordVitaeSession({
       practiceId,
       minutes: Number(minutes) || 0,
       notes,
+      tempusContext,
     });
 
     setNotes('');
-    setMessage('Recorded a Vitae practice session on this device.');
+    setMessage(
+      tempusContext
+        ? 'Recorded a Vitae practice session with factual Tempus context on this device.'
+        : 'Recorded a Vitae practice session on this device.'
+    );
     await loadState();
   }
 
@@ -125,6 +134,20 @@ export default function VitaeMasteryPage() {
                     placeholder="Optional reflection or what was practiced"
                   />
                 </label>
+                <label className="flex items-start gap-3 rounded-xl border border-white/10 bg-white/[0.03] p-3">
+                  <input
+                    type="checkbox"
+                    checked={includeTempusContext}
+                    onChange={(event) => setIncludeTempusContext(event.target.checked)}
+                    className="mt-1"
+                  />
+                  <span>
+                    <span className="block text-sm text-zinc-100">Attach Tempus context</span>
+                    <span className="block text-xs text-zinc-400">
+                      Stores factual timing context only. It does not advance Vitae, score readiness, or imply worth.
+                    </span>
+                  </span>
+                </label>
                 <button
                   onClick={() => {
                     void logSession();
@@ -144,6 +167,7 @@ export default function VitaeMasteryPage() {
                 ) : (
                   state?.sessions.map((session) => {
                     const practice = VITAE_PRACTICES.find((item) => item.id === session.practiceId);
+                    const tempusContext = session.tempusContext;
                     return (
                       <article key={session.id} className="rounded-xl border border-white/10 bg-black/20 p-3">
                         <div className="flex flex-wrap items-center gap-2 text-xs text-zinc-400">
@@ -154,6 +178,21 @@ export default function VitaeMasteryPage() {
                           <span>{new Date(session.completedAt).toLocaleString()}</span>
                         </div>
                         {session.notes && <div className="mt-2 text-sm text-zinc-300">{session.notes}</div>}
+                        {tempusContext && (
+                          <div className="mt-3 rounded-lg border border-white/10 bg-white/[0.03] p-2 text-xs text-zinc-400">
+                            <div className="font-medium text-zinc-300">Tempus context attached</div>
+                            <div className="mt-1 flex flex-wrap gap-x-3 gap-y-1">
+                              <span>{tempusContext.phase} window</span>
+                              <span>{tempusContext.solar.season}</span>
+                              <span>{tempusContext.lunar.phase}</span>
+                              <span>{tempusContext.zodiac.sign}</span>
+                              <span>{tempusContext.planetary.day}</span>
+                            </div>
+                            <div className="mt-1 text-[11px] text-zinc-500">
+                              Factual context only; not recognition or readiness.
+                            </div>
+                          </div>
+                        )}
                       </article>
                     );
                   })
