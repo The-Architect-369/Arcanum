@@ -1,6 +1,7 @@
 "use client";
 
 import { addReceipt, getPersistentValue, setPersistentValue } from "@/lib/mobile/persistence";
+import type { TempusContext } from "@/lib/tempus/context";
 
 export type VitaePathKey = "guardian" | "weaver" | "steward";
 
@@ -10,6 +11,7 @@ export type VitaeSession = {
   minutes: number;
   notes: string;
   completedAt: string;
+  tempusContext?: TempusContext;
 };
 
 export type VitaeState = {
@@ -85,12 +87,23 @@ function makeSessionId() {
   return `vitae:${suffix}`;
 }
 
+function normalizeSession(session: VitaeSession): VitaeSession {
+  return {
+    id: session.id,
+    practiceId: session.practiceId,
+    minutes: session.minutes,
+    notes: session.notes ?? "",
+    completedAt: session.completedAt,
+    tempusContext: session.tempusContext,
+  };
+}
+
 export async function getVitaeState(): Promise<VitaeState> {
   const persisted = await getPersistentValue<VitaeState>(KEY);
   if (!persisted) return EMPTY_STATE;
   return {
     selectedPath: persisted.selectedPath ?? null,
-    sessions: Array.isArray(persisted.sessions) ? persisted.sessions : [],
+    sessions: Array.isArray(persisted.sessions) ? persisted.sessions.map(normalizeSession) : [],
     updatedAt: persisted.updatedAt ?? null,
   };
 }
@@ -122,14 +135,17 @@ export async function recordVitaeSession(input: {
   practiceId: string;
   minutes: number;
   notes?: string;
+  tempusContext?: TempusContext;
 }) {
   const current = await getVitaeState();
+  const completedAt = new Date().toISOString();
   const session: VitaeSession = {
     id: makeSessionId(),
     practiceId: input.practiceId,
     minutes: Math.max(1, Math.floor(input.minutes || 1)),
     notes: input.notes?.trim() || "",
-    completedAt: new Date().toISOString(),
+    completedAt,
+    tempusContext: input.tempusContext,
   };
 
   const next: VitaeState = {
@@ -151,6 +167,18 @@ export async function recordVitaeSession(input: {
       practiceId: input.practiceId,
       notes: session.notes,
       selectedPath: current.selectedPath,
+      tempusContext: session.tempusContext
+        ? {
+            capturedAt: session.tempusContext.capturedAt,
+            phase: session.tempusContext.phase,
+            depth: session.tempusContext.layers.depth,
+            activeLayers: session.tempusContext.layers.active,
+            lunarPhase: session.tempusContext.lunar.phase,
+            zodiacSign: session.tempusContext.zodiac.sign,
+            planetaryDay: session.tempusContext.planetary.day,
+            interpretation: null,
+          }
+        : undefined,
     },
   });
 
