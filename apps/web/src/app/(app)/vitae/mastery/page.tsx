@@ -24,6 +24,7 @@ export default function VitaeMasteryPage() {
   const [minutes, setMinutes] = useState(String(VITAE_PRACTICES[0].suggestedMinutes));
   const [notes, setNotes] = useState('');
   const [includeTempusContext, setIncludeTempusContext] = useState(true);
+  const [issueRitesCredit, setIssueRitesCredit] = useState(false);
   const [state, setState] = useState<Awaited<ReturnType<typeof getVitaeState>> | null>(null);
   const [message, setMessage] = useState<string | null>(null);
 
@@ -46,18 +47,21 @@ export default function VitaeMasteryPage() {
 
     const tempusContext = includeTempusContext ? captureTempusContext(new Date(), { depth: 'seasonal' }) : undefined;
 
-    await recordVitaeSession({
+    const session = await recordVitaeSession({
       practiceId,
       minutes: Number(minutes) || 0,
       notes,
       tempusContext,
+      issueRitesCredit,
     });
 
     setNotes('');
     setMessage(
-      tempusContext
-        ? 'Recorded a Vitae practice session with factual Tempus context on this device.'
-        : 'Recorded a Vitae practice session on this device.'
+      session.ritesCreditId
+        ? 'Recorded a Vitae practice session with one local non-transferable RITES credit.'
+        : tempusContext
+          ? 'Recorded a Vitae practice session with factual Tempus context on this device.'
+          : 'Recorded a Vitae practice session on this device.'
     );
     await loadState();
   }
@@ -148,6 +152,20 @@ export default function VitaeMasteryPage() {
                     </span>
                   </span>
                 </label>
+                <label className="flex items-start gap-3 rounded-xl border border-white/10 bg-white/[0.03] p-3">
+                  <input
+                    type="checkbox"
+                    checked={issueRitesCredit}
+                    onChange={(event) => setIssueRitesCredit(event.target.checked)}
+                    className="mt-1"
+                  />
+                  <span>
+                    <span className="block text-sm text-zinc-100">Record one local RITES credit</span>
+                    <span className="block text-xs text-zinc-400">
+                      Optional, non-transferable participation memory. It is not MANA, recognition, authority, rank, or readiness.
+                    </span>
+                  </span>
+                </label>
                 <button
                   onClick={() => {
                     void logSession();
@@ -178,6 +196,11 @@ export default function VitaeMasteryPage() {
                           <span>{new Date(session.completedAt).toLocaleString()}</span>
                         </div>
                         {session.notes && <div className="mt-2 text-sm text-zinc-300">{session.notes}</div>}
+                        {session.ritesCreditId && (
+                          <div className="mt-3 rounded-lg border border-amber-300/20 bg-amber-300/5 p-2 text-xs text-amber-100">
+                            Local RITES credit recorded. Non-transferable and not convertible to MANA in this scaffold.
+                          </div>
+                        )}
                         {tempusContext && (
                           <div className="mt-3 rounded-lg border border-white/10 bg-white/[0.03] p-2 text-xs text-zinc-400">
                             <div className="font-medium text-zinc-300">Tempus context attached</div>
