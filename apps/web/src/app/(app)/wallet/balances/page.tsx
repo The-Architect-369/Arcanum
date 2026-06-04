@@ -1,10 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import AppStage from "@/components/ui/AppStage";
 import ModuleTabRail from "@/components/ui/ModuleTabRail";
 import PanelShell, { PanelSection } from "@/components/ui/PanelShell";
 import SwipeRoutes from "@/components/ui/SwipeRoutes";
+import { createWalletContext } from "@/lib/wallet/context";
 import { syncChainBalance, useAccount } from "@/state/useAccount";
 
 const ORDER = ["/wallet/balances", "/wallet/receipts", "/wallet/vault"] as const;
@@ -21,6 +22,7 @@ const baseDenom =
 
 export default function WalletBalancesPage() {
   const account = useAccount();
+  const walletContext = useMemo(() => createWalletContext(account, { denom: baseDenom }), [account]);
   const [message, setMessage] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
 
@@ -60,6 +62,30 @@ export default function WalletBalancesPage() {
               />
               <BalanceCard label="Last sync" value={account.lastSyncedAt ?? "Never"} />
             </div>
+
+            <PanelSection title="Wallet context">
+              <div className="space-y-3 text-sm text-zinc-300">
+                <div className="grid gap-3 md:grid-cols-3">
+                  <BalanceCard label="Context" value={walletContext.version} />
+                  <BalanceCard label="Status" value={walletContext.settlementStatus} />
+                  <BalanceCard label="Source" value={walletContext.balances[0]?.source ?? "unknown"} />
+                </div>
+                <p className="text-xs text-zinc-400">
+                  Wallet context distinguishes local scaffold state from chain-witnessed state. It does not grant authority,
+                  recognition, readiness, or treasury access.
+                </p>
+                {walletContext.warnings.length > 0 && (
+                  <div className="rounded-xl border border-amber-300/20 bg-amber-300/5 p-3 text-xs text-amber-100">
+                    <div className="font-medium">Warnings</div>
+                    <ul className="mt-2 list-disc space-y-1 pl-4">
+                      {walletContext.warnings.map((warning) => (
+                        <li key={warning}>{warning}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </div>
+            </PanelSection>
 
             <PanelSection title="Chain address">
               <div className="space-y-2 text-sm text-zinc-300">
