@@ -91,4 +91,4 @@ EOF
 
 echo
 echo "✅ local reset complete"
-echo "Next: bash scripts/node/local-status.sh"}
+echo "Next: bash scripts/node/local-status.sh"
