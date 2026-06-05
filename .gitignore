@@ -36,3 +36,7 @@ chains/arcanum/.cache/
 .audit/
 # Chain build artifacts
 chains/arcanum/bin/
+
+# Local ARCnet developer state
+.local/
+data/
