@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-06-04T23:10:06Z",
+  "generated_at": "2026-06-05T12:33:52Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "04d021088",
+  "commit": "a6b021546",
   "generator_version": "1.1",
   "files": [
     {
@@ -574,11 +574,11 @@
     {
       "path": "apps/web/src/app/(app)/hope/_components/ReflectionEditor.tsx",
       "type": "file",
-      "size_bytes": 2484,
-      "last_modified_commit": "4a2cd29bc",
+      "size_bytes": 5955,
+      "last_modified_commit": "9a1204429",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 95
+      "lines": 173
     },
     {
       "path": "apps/web/src/app/(app)/hope/_lib/ipfs.ts",
@@ -655,11 +655,11 @@
     {
       "path": "apps/web/src/app/(app)/hope/reflection/page.tsx",
       "type": "file",
-      "size_bytes": 4457,
-      "last_modified_commit": "6f61137ed",
+      "size_bytes": 7838,
+      "last_modified_commit": "2fa2f8155",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 104
+      "lines": 161
     },
     {
       "path": "apps/web/src/app/(app)/hope/stylize/page.tsx",
@@ -709,11 +709,11 @@
     {
       "path": "apps/web/src/app/(app)/nexus/current/page.tsx",
       "type": "file",
-      "size_bytes": 6378,
-      "last_modified_commit": "e7ba2fce1",
+      "size_bytes": 9039,
+      "last_modified_commit": "a6b021546",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 197
+      "lines": 242
     },
     {
       "path": "apps/web/src/app/(app)/nexus/page.tsx",
@@ -727,11 +727,11 @@
     {
       "path": "apps/web/src/app/(app)/nexus/post/page.tsx",
       "type": "file",
-      "size_bytes": 7929,
-      "last_modified_commit": "6f61137ed",
+      "size_bytes": 11627,
+      "last_modified_commit": "d9bcd5139",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 218
+      "lines": 296
     },
     {
       "path": "apps/web/src/app/(app)/notifications/page.tsx",
@@ -1535,6 +1535,15 @@
       "lines": 1
     },
     {
+      "path": "apps/web/src/lib/hope/context.ts",
+      "type": "file",
+      "size_bytes": 6619,
+      "last_modified_commit": "0afada7f6",
+      "is_empty": false,
+      "extension": ".ts",
+      "lines": 239
+    },
+    {
       "path": "apps/web/src/lib/identity/aa.ts",
       "type": "file",
       "size_bytes": 287,
@@ -1731,6 +1740,15 @@
       "is_empty": false,
       "extension": ".ts",
       "lines": 220
+    },
+    {
+      "path": "apps/web/src/lib/nexus/context.ts",
+      "type": "file",
+      "size_bytes": 7124,
+      "last_modified_commit": "08ba78eef",
+      "is_empty": false,
+      "extension": ".ts",
+      "lines": 246
     },
     {
       "path": "apps/web/src/lib/nexus/rooms.ts",
@@ -3202,11 +3220,11 @@
     {
       "path": "docs/repo/repo-index.json",
       "type": "file",
-      "size_bytes": 155903,
-      "last_modified_commit": "ba1c42a0c",
+      "size_bytes": 156129,
+      "last_modified_commit": "d90fa0f44",
       "is_empty": false,
       "extension": ".json",
-      "lines": 5714
+      "lines": 5723
     },
     {
       "path": "docs/repo/repo-interface.md",
