@@ -1,11 +1,13 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import SwipeRoutes from '@/components/ui/SwipeRoutes';
 import { LockHint } from '@/components/shared/LockHint';
 import CTAActivate from '@/components/shared/CTAActivate';
 import PanelShell, { PanelSection } from '@/components/ui/PanelShell';
 import AppStage from '@/components/ui/AppStage';
+import { getHopeState } from '@/lib/hope/context';
+import { useAccount } from '@/state/useAccount';
 import { ReflectionEditor } from '../_components/ReflectionEditor';
 import HopeTabRail from '../_components/HopeTabRail';
 
@@ -17,7 +19,18 @@ const TABS = [
 ] as const;
 
 export default function HopeReflectionPage() {
+  const account = useAccount();
   const [chatTab, setChatTab] = useState<'new' | 'logs'>('new');
+  const [hopeState, setHopeState] = useState<Awaited<ReturnType<typeof getHopeState>> | null>(null);
+
+  async function loadHopeState() {
+    const next = await getHopeState();
+    setHopeState(next);
+  }
+
+  useEffect(() => {
+    void loadHopeState();
+  }, []);
 
   return (
     <SwipeRoutes order={ORDER}>
@@ -33,13 +46,13 @@ export default function HopeReflectionPage() {
             <div className="grid h-full gap-4 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)]">
               <div className="min-h-0 space-y-4">
                 <PanelSection title="Leave a Reflection">
-                  <ReflectionEditor />
+                  <ReflectionEditor onRecorded={() => void loadHopeState()} />
                 </PanelSection>
 
                 <PanelSection title="Guidance Posture">
                   <p className="text-sm text-zinc-300">
                     Reflection is user-initiated. Hope may clarify, mirror, and respond, but it
-                    does not command.
+                    does not command, execute, ratify, or confirm readiness.
                   </p>
                 </PanelSection>
               </div>
@@ -66,31 +79,75 @@ export default function HopeReflectionPage() {
                   >
                     Logs
                   </button>
-                  {chatTab === 'logs' && <LockHint label="ACC required" />}
+                  {chatTab === 'logs' && <LockHint label="Local private" />}
                 </div>
 
                 {chatTab === 'new' ? (
                   <div className="min-h-0 flex flex-1 flex-col">
                     <PanelSection title="Speak with Hope" className="flex min-h-0 flex-1 flex-col">
                       <div className="min-h-0 flex-1 overflow-y-auto rounded-lg border border-white/10 bg-white/[0.03] p-3 text-sm text-zinc-400">
-                        <div className="opacity-70">Your conversation with Hope will appear here.</div>
+                        <div className="opacity-70">
+                          Hope reflection records are local advisory context. They are not governance decisions,
+                          diagnoses, or authority assignments.
+                        </div>
                       </div>
-                      <div className="mt-3 flex items-center gap-2">
-                        <input
-                          placeholder="Speak with Hope…"
-                          className="flex-1 rounded-xl border border-zinc-800 bg-zinc-900 px-3 py-2 outline-none"
-                        />
-                        <button className="rounded-xl bg-white/10 px-4 py-2 hover:bg-white/20">Send</button>
+                      <div className="mt-3 text-xs text-zinc-500">
+                        Conversational response generation is not enabled in this scaffold.
                       </div>
                     </PanelSection>
                   </div>
-                ) : (
+                ) : !account.trusted ? (
                   <PanelSection title="Reflection Logs" className="min-h-0 flex-1">
                     <div className="text-sm text-zinc-400">
-                      Logs are available after ACC activation.
+                      Logs are local-private and available after ACC activation.
                     </div>
                     <div className="mt-3">
                       <CTAActivate />
+                    </div>
+                  </PanelSection>
+                ) : (
+                  <PanelSection title="Reflection Logs" className="min-h-0 flex-1">
+                    <div className="space-y-3">
+                      {(hopeState?.reflections ?? []).length === 0 ? (
+                        <div className="text-sm text-zinc-400">No local Hope reflections recorded yet.</div>
+                      ) : (
+                        hopeState?.reflections.map((reflection) => (
+                          <article key={reflection.id} className="rounded-xl border border-white/10 bg-black/30 p-3">
+                            <div className="flex flex-wrap items-center gap-2 text-xs text-zinc-400">
+                              <span>{reflection.mode}</span>
+                              <span>•</span>
+                              <span>{new Date(reflection.createdAt).toLocaleString()}</span>
+                              <span className="rounded-full border border-white/10 px-2 py-0.5 text-[10px] uppercase">
+                                {reflection.authority}
+                              </span>
+                            </div>
+                            <div className="mt-2 whitespace-pre-wrap text-sm text-zinc-300">{reflection.userText}</div>
+                            {(reflection.context?.tempus || reflection.context?.vitae) && (
+                              <div className="mt-3 rounded-lg border border-white/10 bg-white/[0.03] p-2 text-xs text-zinc-400">
+                                <div className="font-medium text-zinc-300">Attached local context</div>
+                                <div className="mt-1 flex flex-wrap gap-x-3 gap-y-1">
+                                  {reflection.context.tempus && (
+                                    <>
+                                      <span>{reflection.context.tempus.phase} window</span>
+                                      <span>{reflection.context.tempus.solar.season}</span>
+                                      <span>{reflection.context.tempus.lunar.phase}</span>
+                                    </>
+                                  )}
+                                  {reflection.context.vitae && (
+                                    <>
+                                      <span>Vitae sessions: {reflection.context.vitae.sessionCount}</span>
+                                      <span>Path: {reflection.context.vitae.selectedPath ?? 'none'}</span>
+                                    </>
+                                  )}
+                                </div>
+                                <div className="mt-1 text-[11px] text-zinc-500">
+                                  Context only; not interpretation, recognition, or authority.
+                                </div>
+                              </div>
+                            )}
+                          </article>
+                        ))
+                      )}
                     </div>
                   </PanelSection>
                 )}
