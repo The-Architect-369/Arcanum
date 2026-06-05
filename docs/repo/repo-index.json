@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-06-05T22:37:48Z",
+  "generated_at": "2026-06-05T22:57:36Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "aed263add",
+  "commit": "01d52561f",
   "generator_version": "1.1",
   "files": [
     {
@@ -2068,11 +2068,11 @@
     {
       "path": "chains/arcanum/cmd/arcanumd/root.go",
       "type": "file",
-      "size_bytes": 5732,
-      "last_modified_commit": "aed263add",
+      "size_bytes": 5948,
+      "last_modified_commit": "01d52561f",
       "is_empty": false,
       "extension": ".go",
-      "lines": 204
+      "lines": 216
     },
     {
       "path": "chains/arcanum/config.yml",
@@ -3221,7 +3221,7 @@
       "path": "docs/repo/repo-index.json",
       "type": "file",
       "size_bytes": 157466,
-      "last_modified_commit": "3b9f1561d",
+      "last_modified_commit": "cd872c0ee",
       "is_empty": false,
       "extension": ".json",
       "lines": 5777
