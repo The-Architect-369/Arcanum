@@ -9,6 +9,7 @@ BIN_DIR="${ARCANUM_BIN_DIR:-$REPO_ROOT/.local/bin}"
 ARCANUMD="${ARCANUMD:-$BIN_DIR/arcanumd}"
 CHAIN_ID="${ARCANUM_CHAIN_ID:-arcanum-local-1}"
 MONIKER="${ARCANUM_MONIKER:-architect-local}"
+PRUNING="${ARCANUM_PRUNING:-default}"
 
 case "$NODE_HOME" in
   "$REPO_ROOT"/.local/*) ;;
@@ -19,6 +20,28 @@ case "$NODE_HOME" in
     ;;
 esac
 
+normalize_app_config() {
+  local app_toml="$NODE_HOME/config/app.toml"
+  [[ -f "$app_toml" ]] || return 0
+
+  python3 - "$app_toml" "$PRUNING" <<'PY'
+from pathlib import Path
+import re
+import sys
+
+path = Path(sys.argv[1])
+pruning = sys.argv[2]
+text = path.read_text()
+
+if re.search(r'^pruning\s*=', text, flags=re.M):
+    text = re.sub(r'^pruning\s*=.*$', f'pruning = "{pruning}"', text, flags=re.M)
+else:
+    text += f'\npruning = "{pruning}"\n'
+
+path.write_text(text)
+PY
+}
+
 echo "== local ARCnet reset =="
 echo "repo:       $REPO_ROOT"
 echo "chain dir:  $CHAIN_DIR"
@@ -26,22 +49,23 @@ echo "node home:  $NODE_HOME"
 echo "binary:     $ARCANUMD"
 echo "chain id:   $CHAIN_ID"
 echo "moniker:    $MONIKER"
+echo "pruning:    $PRUNING"
 echo
 
-echo "[1/4] Removing local node home"
+echo "[1/5] Removing local node home"
 rm -rf "$NODE_HOME"
 mkdir -p "$NODE_HOME" "$BIN_DIR"
 
-echo "[2/4] Building arcanumd"
+echo "[2/5] Building arcanumd"
 (
   cd "$CHAIN_DIR"
   go build -o "$ARCANUMD" ./cmd/arcanumd
 )
 
-echo "[3/4] Checking daemon version"
+echo "[3/5] Checking daemon version"
 "$ARCANUMD" version || true
 
-echo "[4/4] Initializing local node home when supported"
+echo "[4/5] Initializing local node home when supported"
 if "$ARCANUMD" init "$MONIKER" --chain-id "$CHAIN_ID" --home "$NODE_HOME" >/tmp/arcanum-local-init.log 2>&1; then
   cat /tmp/arcanum-local-init.log
   echo "Initialized local node home."
@@ -51,6 +75,9 @@ else
   echo "The binary was built and the local home directory was prepared." >&2
 fi
 rm -f /tmp/arcanum-local-init.log
+
+echo "[5/5] Normalizing local app config"
+normalize_app_config
 
 cat > "$NODE_HOME/README.local.md" <<EOF
 # Local ARCnet Node Home
@@ -64,4 +91,4 @@ EOF
 
 echo
 echo "✅ local reset complete"
-echo "Next: bash scripts/node/local-status.sh"
+echo "Next: bash scripts/node/local-status.sh"}
