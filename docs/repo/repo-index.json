@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-06-05T12:43:14Z",
+  "generated_at": "2026-06-05T12:47:56Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "b863a4374",
+  "commit": "c9dc019d4",
   "generator_version": "1.1",
   "files": [
     {
@@ -3221,7 +3221,7 @@
       "path": "docs/repo/repo-index.json",
       "type": "file",
       "size_bytes": 156580,
-      "last_modified_commit": "b863a4374",
+      "last_modified_commit": "503e62eae",
       "is_empty": false,
       "extension": ".json",
       "lines": 5741
