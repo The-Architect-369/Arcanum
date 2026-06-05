@@ -164,12 +164,24 @@ func txCommand() *cobra.Command {
 	return cmd
 }
 
+func ensurePruningOption(appOpts servertypes.AppOptions) {
+	v, ok := appOpts.(*viper.Viper)
+	if !ok {
+		return
+	}
+
+	if v.GetString("pruning") == "" {
+		v.Set("pruning", "default")
+	}
+}
+
 func newApp(
 	logger log.Logger,
 	db dbm.DB,
 	traceStore io.Writer,
 	appOpts servertypes.AppOptions,
 ) servertypes.Application {
+	ensurePruningOption(appOpts)
 	baseAppOptions := server.DefaultBaseappOptions(appOpts)
 	return app.New(logger, db, traceStore, true, appOpts, baseAppOptions...)
 }
