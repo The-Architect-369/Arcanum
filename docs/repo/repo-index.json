@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-06-05T12:59:28Z",
+  "generated_at": "2026-06-05T21:25:54Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "971a6449f",
+  "commit": "3b52b3a72",
   "generator_version": "1.1",
   "files": [
     {
@@ -214,11 +214,11 @@
     {
       "path": ".gitignore",
       "type": "file",
-      "size_bytes": 419,
-      "last_modified_commit": "21d6e54ca",
+      "size_bytes": 465,
+      "last_modified_commit": "b19636b94",
       "is_empty": false,
       "extension": "",
-      "lines": 38
+      "lines": 42
     },
     {
       "path": ".npmrc",
@@ -3220,11 +3220,11 @@
     {
       "path": "docs/repo/repo-index.json",
       "type": "file",
-      "size_bytes": 156580,
-      "last_modified_commit": "1588d90b2",
+      "size_bytes": 157466,
+      "last_modified_commit": "7d7e65ab8",
       "is_empty": false,
       "extension": ".json",
-      "lines": 5741
+      "lines": 5777
     },
     {
       "path": "docs/repo/repo-interface.md",
@@ -5515,26 +5515,26 @@
     {
       "path": "scripts/node/local-reset.sh",
       "type": "file",
-      "size_bytes": 2079,
-      "last_modified_commit": "aa2f7038e",
+      "size_bytes": 2685,
+      "last_modified_commit": "e3ee76b93",
       "is_empty": false,
       "extension": ".sh",
-      "lines": 67
+      "lines": 94
     },
     {
       "path": "scripts/node/local-start.sh",
       "type": "file",
-      "size_bytes": 2042,
-      "last_modified_commit": "a63d8dcd1",
+      "size_bytes": 2130,
+      "last_modified_commit": "3b52b3a72",
       "is_empty": false,
       "extension": ".sh",
-      "lines": 70
+      "lines": 72
     },
     {
       "path": "scripts/node/local-status.sh",
       "type": "file",
       "size_bytes": 1853,
-      "last_modified_commit": "971a6449f",
+      "last_modified_commit": "7d7e65ab8",
       "is_empty": false,
       "extension": ".sh",
       "lines": 67
