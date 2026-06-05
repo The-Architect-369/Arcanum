@@ -29,7 +29,6 @@ import (
 	"arcanum/app"
 )
 
-
 func initAppConfig() (string, interface{}) {
 	cfg := serverconfig.DefaultConfig()
 	cfg.MinGasPrices = "0.025umana"
@@ -171,7 +170,8 @@ func newApp(
 	traceStore io.Writer,
 	appOpts servertypes.AppOptions,
 ) servertypes.Application {
-	return app.New(logger, db, traceStore, true, appOpts)
+	baseAppOptions := server.DefaultBaseappOptions(appOpts)
+	return app.New(logger, db, traceStore, true, appOpts, baseAppOptions...)
 }
 
 func appExport(
