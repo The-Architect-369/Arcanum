@@ -8,6 +8,7 @@ NODE_HOME="${ARCANUM_NODE_HOME:-$REPO_ROOT/.local/arcnet-node}"
 BIN_DIR="${ARCANUM_BIN_DIR:-$REPO_ROOT/.local/bin}"
 ARCANUMD="${ARCANUMD:-$BIN_DIR/arcanumd}"
 CHAIN_ID="${ARCANUM_CHAIN_ID:-arcanum-local-1}"
+PRUNING="${ARCANUM_PRUNING:-default}"
 PID_FILE="$NODE_HOME/arcanumd.pid"
 LOG_FILE="$NODE_HOME/arcanumd.log"
 
@@ -17,6 +18,7 @@ echo "chain dir:  $CHAIN_DIR"
 echo "node home:  $NODE_HOME"
 echo "binary:     $ARCANUMD"
 echo "chain id:   $CHAIN_ID"
+echo "pruning:    $PRUNING"
 echo
 
 mkdir -p "$NODE_HOME" "$BIN_DIR"
@@ -48,7 +50,7 @@ echo "[3/3] Starting local daemon in background"
 
 echo "This is a Pre-Genesis developer node attempt. It does not start agents, grant authority, or imply production readiness." > "$LOG_FILE"
 
-if "$ARCANUMD" start --home "$NODE_HOME" --chain-id "$CHAIN_ID" >> "$LOG_FILE" 2>&1 & then
+if "$ARCANUMD" start --home "$NODE_HOME" --chain-id "$CHAIN_ID" --pruning "$PRUNING" >> "$LOG_FILE" 2>&1 & then
   PID="$!"
   echo "$PID" > "$PID_FILE"
   sleep 2
@@ -67,4 +69,4 @@ else
   exit 1
 fi
 
-echo "Next: bash scripts/node/local-status.sh"
+echo "Next: bash scripts/node/local-status.sh"}
