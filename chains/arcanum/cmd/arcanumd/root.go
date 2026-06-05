@@ -29,6 +29,26 @@ import (
 	"arcanum/app"
 )
 
+const defaultPruningStrategy = "default"
+
+type pruningDefaultAppOptions struct {
+	servertypes.AppOptions
+}
+
+func (opts pruningDefaultAppOptions) Get(key string) interface{} {
+	value := opts.AppOptions.Get(key)
+	if key != "pruning" {
+		return value
+	}
+
+	strategy, ok := value.(string)
+	if !ok || strategy == "" {
+		return defaultPruningStrategy
+	}
+
+	return strategy
+}
+
 func initAppConfig() (string, interface{}) {
 	cfg := serverconfig.DefaultConfig()
 	cfg.MinGasPrices = "0.025umana"
@@ -164,15 +184,12 @@ func txCommand() *cobra.Command {
 	return cmd
 }
 
-func ensurePruningOption(appOpts servertypes.AppOptions) {
-	v, ok := appOpts.(*viper.Viper)
-	if !ok {
-		return
+func ensurePruningOption(appOpts servertypes.AppOptions) servertypes.AppOptions {
+	if v, ok := appOpts.(*viper.Viper); ok && v.GetString("pruning") == "" {
+		v.Set("pruning", defaultPruningStrategy)
 	}
 
-	if v.GetString("pruning") == "" {
-		v.Set("pruning", "default")
-	}
+	return pruningDefaultAppOptions{AppOptions: appOpts}
 }
 
 func newApp(
@@ -181,7 +198,7 @@ func newApp(
 	traceStore io.Writer,
 	appOpts servertypes.AppOptions,
 ) servertypes.Application {
-	ensurePruningOption(appOpts)
+	appOpts = ensurePruningOption(appOpts)
 	baseAppOptions := server.DefaultBaseappOptions(appOpts)
 	return app.New(logger, db, traceStore, true, appOpts, baseAppOptions...)
 }
