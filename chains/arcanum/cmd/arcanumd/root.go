@@ -55,6 +55,12 @@ func initAppConfig() (string, interface{}) {
 	return serverconfig.DefaultConfigTemplate, cfg
 }
 
+func ensureGlobalPruningOption() {
+	if viper.GetString("pruning") == "" {
+		viper.Set("pruning", defaultPruningStrategy)
+	}
+}
+
 func NewRootCmd() *cobra.Command {
 	encodingConfig := app.MakeEncodingConfig()
 	customAppTemplate, customAppConfig := initAppConfig()
@@ -86,6 +92,7 @@ func NewRootCmd() *cobra.Command {
 			if err := client.SetCmdClientContextHandler(clientCtx, cmd); err != nil {
 				return err
 			}
+			ensureGlobalPruningOption()
 			return server.InterceptConfigsPreRunHandler(cmd, customAppTemplate, customAppConfig, cmtcfg.DefaultConfig())
 		},
 	}
