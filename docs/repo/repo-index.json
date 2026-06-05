@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-06-02T10:04:18Z",
+  "generated_at": "2026-06-05T12:43:14Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "f7c5f6f9d",
+  "commit": "b863a4374",
   "generator_version": "1.1",
   "files": [
     {
@@ -574,11 +574,11 @@
     {
       "path": "apps/web/src/app/(app)/hope/_components/ReflectionEditor.tsx",
       "type": "file",
-      "size_bytes": 2484,
-      "last_modified_commit": "4a2cd29bc",
+      "size_bytes": 5955,
+      "last_modified_commit": "9a1204429",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 95
+      "lines": 173
     },
     {
       "path": "apps/web/src/app/(app)/hope/_lib/ipfs.ts",
@@ -655,11 +655,11 @@
     {
       "path": "apps/web/src/app/(app)/hope/reflection/page.tsx",
       "type": "file",
-      "size_bytes": 4457,
-      "last_modified_commit": "6f61137ed",
+      "size_bytes": 7838,
+      "last_modified_commit": "2fa2f8155",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 104
+      "lines": 161
     },
     {
       "path": "apps/web/src/app/(app)/hope/stylize/page.tsx",
@@ -709,11 +709,11 @@
     {
       "path": "apps/web/src/app/(app)/nexus/current/page.tsx",
       "type": "file",
-      "size_bytes": 6378,
-      "last_modified_commit": "e7ba2fce1",
+      "size_bytes": 9039,
+      "last_modified_commit": "a6b021546",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 197
+      "lines": 242
     },
     {
       "path": "apps/web/src/app/(app)/nexus/page.tsx",
@@ -727,11 +727,11 @@
     {
       "path": "apps/web/src/app/(app)/nexus/post/page.tsx",
       "type": "file",
-      "size_bytes": 7929,
-      "last_modified_commit": "6f61137ed",
+      "size_bytes": 11627,
+      "last_modified_commit": "d9bcd5139",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 218
+      "lines": 296
     },
     {
       "path": "apps/web/src/app/(app)/notifications/page.tsx",
@@ -853,11 +853,11 @@
     {
       "path": "apps/web/src/app/(app)/vitae/mastery/page.tsx",
       "type": "file",
-      "size_bytes": 7265,
-      "last_modified_commit": "115473caf",
+      "size_bytes": 10850,
+      "last_modified_commit": "497ae6abc",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 177
+      "lines": 239
     },
     {
       "path": "apps/web/src/app/(app)/vitae/page.tsx",
@@ -880,11 +880,11 @@
     {
       "path": "apps/web/src/app/(app)/wallet/balances/page.tsx",
       "type": "file",
-      "size_bytes": 3721,
-      "last_modified_commit": "41a90bb87",
+      "size_bytes": 5194,
+      "last_modified_commit": "378747393",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 100
+      "lines": 126
     },
     {
       "path": "apps/web/src/app/(app)/wallet/page.tsx",
@@ -898,11 +898,11 @@
     {
       "path": "apps/web/src/app/(app)/wallet/receipts/page.tsx",
       "type": "file",
-      "size_bytes": 3047,
-      "last_modified_commit": "6fca52eea",
+      "size_bytes": 4615,
+      "last_modified_commit": "04d021088",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 84
+      "lines": 114
     },
     {
       "path": "apps/web/src/app/(app)/wallet/vault/page.tsx",
@@ -1535,6 +1535,15 @@
       "lines": 1
     },
     {
+      "path": "apps/web/src/lib/hope/context.ts",
+      "type": "file",
+      "size_bytes": 6619,
+      "last_modified_commit": "0afada7f6",
+      "is_empty": false,
+      "extension": ".ts",
+      "lines": 239
+    },
+    {
       "path": "apps/web/src/lib/identity/aa.ts",
       "type": "file",
       "size_bytes": 287,
@@ -1706,6 +1715,15 @@
       "lines": 465
     },
     {
+      "path": "apps/web/src/lib/mobile/rites.ts",
+      "type": "file",
+      "size_bytes": 6270,
+      "last_modified_commit": "dee6b10d5",
+      "is_empty": false,
+      "extension": ".ts",
+      "lines": 217
+    },
+    {
       "path": "apps/web/src/lib/mobile/vitae-map.ts",
       "type": "file",
       "size_bytes": 4707,
@@ -1717,11 +1735,20 @@
     {
       "path": "apps/web/src/lib/mobile/vitae.ts",
       "type": "file",
-      "size_bytes": 4431,
-      "last_modified_commit": "586286a16",
+      "size_bytes": 6187,
+      "last_modified_commit": "6006e8889",
       "is_empty": false,
       "extension": ".ts",
-      "lines": 172
+      "lines": 220
+    },
+    {
+      "path": "apps/web/src/lib/nexus/context.ts",
+      "type": "file",
+      "size_bytes": 7124,
+      "last_modified_commit": "08ba78eef",
+      "is_empty": false,
+      "extension": ".ts",
+      "lines": 246
     },
     {
       "path": "apps/web/src/lib/nexus/rooms.ts",
@@ -1760,6 +1787,15 @@
       "lines": 6
     },
     {
+      "path": "apps/web/src/lib/tempus/context.ts",
+      "type": "file",
+      "size_bytes": 4387,
+      "last_modified_commit": "1e83d3068",
+      "is_empty": false,
+      "extension": ".ts",
+      "lines": 154
+    },
+    {
       "path": "apps/web/src/lib/tempus/index.ts",
       "type": "file",
       "size_bytes": 138,
@@ -1789,8 +1825,8 @@
     {
       "path": "apps/web/src/lib/tempus/window.ts",
       "type": "file",
-      "size_bytes": 1552,
-      "last_modified_commit": "a04c0a7a2",
+      "size_bytes": 1570,
+      "last_modified_commit": "a58290079",
       "is_empty": false,
       "extension": ".ts",
       "lines": 48
@@ -1814,13 +1850,22 @@
       "lines": 6
     },
     {
-      "path": "apps/web/src/state/useAccount.ts",
+      "path": "apps/web/src/lib/wallet/context.ts",
       "type": "file",
-      "size_bytes": 12733,
-      "last_modified_commit": "8a6468e92",
+      "size_bytes": 6053,
+      "last_modified_commit": "064e40aa6",
       "is_empty": false,
       "extension": ".ts",
-      "lines": 532
+      "lines": 208
+    },
+    {
+      "path": "apps/web/src/state/useAccount.ts",
+      "type": "file",
+      "size_bytes": 13726,
+      "last_modified_commit": "69d176c81",
+      "is_empty": false,
+      "extension": ".ts",
+      "lines": 565
     },
     {
       "path": "apps/web/src/state/useActiveTab.ts",
@@ -3175,11 +3220,11 @@
     {
       "path": "docs/repo/repo-index.json",
       "type": "file",
-      "size_bytes": 150793,
-      "last_modified_commit": "026582051",
+      "size_bytes": 156580,
+      "last_modified_commit": "b863a4374",
       "is_empty": false,
       "extension": ".json",
-      "lines": 5516
+      "lines": 5741
     },
     {
       "path": "docs/repo/repo-interface.md",
@@ -3371,6 +3416,60 @@
       "lines": 82
     },
     {
+      "path": "docs/specs/modules/hope-content-foundation.md",
+      "type": "file",
+      "size_bytes": 3289,
+      "last_modified_commit": "000dffca8",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 148
+    },
+    {
+      "path": "docs/specs/modules/hope-context-schema.md",
+      "type": "file",
+      "size_bytes": 3702,
+      "last_modified_commit": "432e5f23e",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 165
+    },
+    {
+      "path": "docs/specs/modules/nexus-content-policy.md",
+      "type": "file",
+      "size_bytes": 2831,
+      "last_modified_commit": "b85a50ad3",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 135
+    },
+    {
+      "path": "docs/specs/modules/nexus-context-schema.md",
+      "type": "file",
+      "size_bytes": 3578,
+      "last_modified_commit": "1b11694e7",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 168
+    },
+    {
+      "path": "docs/specs/modules/tempus-content-foundation.md",
+      "type": "file",
+      "size_bytes": 6068,
+      "last_modified_commit": "f213064e8",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 356
+    },
+    {
+      "path": "docs/specs/modules/tempus-context-schema.md",
+      "type": "file",
+      "size_bytes": 4920,
+      "last_modified_commit": "c2df0e7f8",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 259
+    },
+    {
       "path": "docs/specs/modules/tempus-earning-policy.md",
       "type": "file",
       "size_bytes": 4500,
@@ -3380,6 +3479,42 @@
       "lines": 204
     },
     {
+      "path": "docs/specs/modules/tempus-layer-model.md",
+      "type": "file",
+      "size_bytes": 6794,
+      "last_modified_commit": "987cb126b",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 324
+    },
+    {
+      "path": "docs/specs/modules/text-communication-boundary.md",
+      "type": "file",
+      "size_bytes": 3819,
+      "last_modified_commit": "04213c304",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 160
+    },
+    {
+      "path": "docs/specs/modules/vitae-content-foundation.md",
+      "type": "file",
+      "size_bytes": 4229,
+      "last_modified_commit": "7de4fb3dd",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 183
+    },
+    {
+      "path": "docs/specs/modules/vitae-context-schema.md",
+      "type": "file",
+      "size_bytes": 5138,
+      "last_modified_commit": "dc54e0696",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 227
+    },
+    {
       "path": "docs/specs/modules/vitae-economy-boundary.md",
       "type": "file",
       "size_bytes": 4884,
@@ -3387,6 +3522,24 @@
       "is_empty": false,
       "extension": ".md",
       "lines": 214
+    },
+    {
+      "path": "docs/specs/modules/wallet-context-schema.md",
+      "type": "file",
+      "size_bytes": 3101,
+      "last_modified_commit": "a4b940623",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 146
+    },
+    {
+      "path": "docs/specs/modules/wallet-spend-policy.md",
+      "type": "file",
+      "size_bytes": 2909,
+      "last_modified_commit": "77601b70b",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 135
     },
     {
       "path": "docs/specs/network/architect-node.md",

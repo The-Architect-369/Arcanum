@@ -33,8 +33,8 @@ export function computeWindowState(nowLocal: Date, config: WindowConfig = {}): W
   const planetaryDay = getPlanetaryDay(nowLocal);
   const { sign: zodiacSign, dayOfSign: zodiacDay } = getZodiacSign(nowLocal);
 
-  // Lunar uses UTC tables internally
-  const lunar = getLunarState(new Date());
+  // Lunar uses UTC tables internally, but must use the caller's date for deterministic capture/replay.
+  const lunar = getLunarState(nowLocal);
 
   return {
     phase,

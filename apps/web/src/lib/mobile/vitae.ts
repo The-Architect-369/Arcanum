@@ -1,6 +1,8 @@
 "use client";
 
 import { addReceipt, getPersistentValue, setPersistentValue } from "@/lib/mobile/persistence";
+import { issueRitesCredit } from "@/lib/mobile/rites";
+import type { TempusContext } from "@/lib/tempus/context";
 
 export type VitaePathKey = "guardian" | "weaver" | "steward";
 
@@ -10,6 +12,8 @@ export type VitaeSession = {
   minutes: number;
   notes: string;
   completedAt: string;
+  tempusContext?: TempusContext;
+  ritesCreditId?: string;
 };
 
 export type VitaeState = {
@@ -85,12 +89,24 @@ function makeSessionId() {
   return `vitae:${suffix}`;
 }
 
+function normalizeSession(session: VitaeSession): VitaeSession {
+  return {
+    id: session.id,
+    practiceId: session.practiceId,
+    minutes: session.minutes,
+    notes: session.notes ?? "",
+    completedAt: session.completedAt,
+    tempusContext: session.tempusContext,
+    ritesCreditId: session.ritesCreditId,
+  };
+}
+
 export async function getVitaeState(): Promise<VitaeState> {
   const persisted = await getPersistentValue<VitaeState>(KEY);
   if (!persisted) return EMPTY_STATE;
   return {
     selectedPath: persisted.selectedPath ?? null,
-    sessions: Array.isArray(persisted.sessions) ? persisted.sessions : [],
+    sessions: Array.isArray(persisted.sessions) ? persisted.sessions.map(normalizeSession) : [],
     updatedAt: persisted.updatedAt ?? null,
   };
 }
@@ -122,15 +138,33 @@ export async function recordVitaeSession(input: {
   practiceId: string;
   minutes: number;
   notes?: string;
+  tempusContext?: TempusContext;
+  issueRitesCredit?: boolean;
 }) {
   const current = await getVitaeState();
+  const completedAt = new Date().toISOString();
   const session: VitaeSession = {
     id: makeSessionId(),
     practiceId: input.practiceId,
     minutes: Math.max(1, Math.floor(input.minutes || 1)),
     notes: input.notes?.trim() || "",
-    completedAt: new Date().toISOString(),
+    completedAt,
+    tempusContext: input.tempusContext,
   };
+
+  const ritesResult = input.issueRitesCredit
+    ? await issueRitesCredit({
+        source: "vitae_practice_recorded",
+        amount: 1,
+        reason: "Optional local participation credit for recorded Vitae practice.",
+        sourceRef: session.id,
+        tempusContext: session.tempusContext,
+      })
+    : undefined;
+
+  if (ritesResult?.ok) {
+    session.ritesCreditId = ritesResult.credit.id;
+  }
 
   const next: VitaeState = {
     ...current,
@@ -151,6 +185,20 @@ export async function recordVitaeSession(input: {
       practiceId: input.practiceId,
       notes: session.notes,
       selectedPath: current.selectedPath,
+      ritesCreditId: session.ritesCreditId,
+      ritesCreditStatus: ritesResult?.ok ? "issued_local_non_transferable" : input.issueRitesCredit ? "not_issued" : "not_requested",
+      tempusContext: session.tempusContext
+        ? {
+            capturedAt: session.tempusContext.capturedAt,
+            phase: session.tempusContext.phase,
+            depth: session.tempusContext.layers.depth,
+            activeLayers: session.tempusContext.layers.active,
+            lunarPhase: session.tempusContext.lunar.phase,
+            zodiacSign: session.tempusContext.zodiac.sign,
+            planetaryDay: session.tempusContext.planetary.day,
+            interpretation: null,
+          }
+        : undefined,
     },
   });
 

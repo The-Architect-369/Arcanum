@@ -3,13 +3,14 @@
 import ModuleTabRail from '@/components/ui/ModuleTabRail';
 import SwipeRoutes from '@/components/ui/SwipeRoutes';
 import AppStage from '@/components/ui/AppStage';
-import PanelShell from '@/components/ui/PanelShell';
+import PanelShell, { PanelSection } from '@/components/ui/PanelShell';
 import { useEffect, useMemo, useState } from 'react';
 import { fetchPublicTimeline } from '@/lib/matrix';
 import FreeBadge from '@/components/shared/FreeBadge';
 import type { ArcanumPostV1 } from '@/lib/post';
 import { resolveRoomId, ROOM_ALIAS } from '@/lib/rooms';
 import { getJSONHelia, getBlobHelia } from '@/lib/infra/ipfs';
+import { getNexusState } from '@/lib/nexus/context';
 
 const ORDER = ['/nexus/post', '/nexus/current', '/nexus/channel'] as const;
 const TABS = [
@@ -30,6 +31,7 @@ type MediaView = { url: string; mime: string; name?: string };
 
 export default function NexusCurrentPage() {
   const [rows, setRows] = useState<Row[]>([]);
+  const [nexusState, setNexusState] = useState<Awaited<ReturnType<typeof getNexusState>> | null>(null);
   const [loading, setLoading] = useState(true);
   const [previews, setPreviews] = useState<Record<string, MediaView>>({});
 
@@ -37,7 +39,7 @@ export default function NexusCurrentPage() {
     let alive = true;
     (async () => {
       try {
-        const roomId = await resolveRoomId(CURRENT_ALIAS);
+        const [roomId, localNexusState] = await Promise.all([resolveRoomId(CURRENT_ALIAS), getNexusState()]);
         const events = await fetchPublicTimeline(roomId, 50);
 
         const out: Row[] = [];
@@ -64,8 +66,13 @@ export default function NexusCurrentPage() {
 
         if (!alive) return;
         setRows(out);
+        setNexusState(localNexusState);
       } catch {
-        if (alive) setRows([]);
+        if (alive) {
+          setRows([]);
+          const localNexusState = await getNexusState();
+          if (alive) setNexusState(localNexusState);
+        }
       } finally {
         if (alive) setLoading(false);
       }
@@ -159,6 +166,44 @@ export default function NexusCurrentPage() {
             <p className="text-sm text-zinc-300">
               Reading from <code>{CURRENT_ALIAS}</code>. Arcanum posts load directly from Helia by CID.
             </p>
+
+            <PanelSection title="Local proposal drafts">
+              <div className="space-y-3">
+                {(nexusState?.proposals ?? []).length === 0 ? (
+                  <div className="text-sm text-zinc-400">No local Nexus proposal drafts recorded yet.</div>
+                ) : (
+                  nexusState?.proposals.map((proposal) => (
+                    <article key={proposal.id} className="rounded-xl border border-white/10 bg-black/30 p-3">
+                      <div className="flex flex-wrap items-center gap-2 text-xs text-zinc-400">
+                        <span>{proposal.kind}</span>
+                        <span>•</span>
+                        <span>{proposal.status}</span>
+                        <span>•</span>
+                        <span>{new Date(proposal.createdAt).toLocaleString()}</span>
+                        <span className="rounded-full border border-white/10 px-2 py-0.5 text-[10px] uppercase">
+                          {proposal.authority}
+                        </span>
+                      </div>
+                      <div className="mt-2 text-sm font-medium text-zinc-100">{proposal.title}</div>
+                      <div className="mt-1 whitespace-pre-wrap text-sm text-zinc-300">{proposal.summary}</div>
+                      {proposal.tempusContext && (
+                        <div className="mt-3 rounded-lg border border-white/10 bg-white/[0.03] p-2 text-xs text-zinc-400">
+                          <div className="font-medium text-zinc-300">Tempus context attached</div>
+                          <div className="mt-1 flex flex-wrap gap-x-3 gap-y-1">
+                            <span>{proposal.tempusContext.phase} window</span>
+                            <span>{proposal.tempusContext.solar.season}</span>
+                            <span>{proposal.tempusContext.lunar.phase}</span>
+                          </div>
+                          <div className="mt-1 text-[11px] text-zinc-500">
+                            Draft only; not scheduled, published, executed, or ratified.
+                          </div>
+                        </div>
+                      )}
+                    </article>
+                  ))
+                )}
+              </div>
+            </PanelSection>
 
             {loading && <div className="text-sm text-zinc-400">Loading…</div>}
             {!loading && rows.length === 0 && (

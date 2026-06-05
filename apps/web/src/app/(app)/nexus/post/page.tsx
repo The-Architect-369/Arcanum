@@ -3,7 +3,7 @@
 import ModuleTabRail from '@/components/ui/ModuleTabRail';
 import SwipeRoutes from '@/components/ui/SwipeRoutes';
 import AppStage from '@/components/ui/AppStage';
-import PanelShell from '@/components/ui/PanelShell';
+import PanelShell, { PanelSection } from '@/components/ui/PanelShell';
 import { useEffect, useMemo, useState } from 'react';
 import { useAccount } from '@/state/useAccount';
 import CTAActivate from '@/components/shared/CTAActivate';
@@ -13,6 +13,8 @@ import type { ArcanumPostV1 } from '@/lib/post';
 import { sendArcanumPost } from '@/lib/matrix';
 import { resolveRoomId, ROOM_ALIAS } from '@/lib/rooms';
 import { putFileHelia, putJSONHelia } from '@/lib/infra/ipfs';
+import { recordNexusProposal } from '@/lib/nexus/context';
+import { captureTempusContext } from '@/lib/tempus/context';
 
 const ORDER = ['/nexus/post', '/nexus/current', '/nexus/channel'] as const;
 const TABS = [
@@ -37,6 +39,9 @@ export default function NexusPostPage() {
   const [target, setTarget] = useState<string>(defaultAlias);
   const [roomId, setRoomId] = useState<string>('');
   const [body, setBody] = useState('');
+  const [proposalTitle, setProposalTitle] = useState('');
+  const [proposalKind, setProposalKind] = useState<'event' | 'ritual' | 'post' | 'channel'>('event');
+  const [includeTempusContext, setIncludeTempusContext] = useState(true);
   const [media, setMedia] = useState<MediaItem[]>([]);
   const [msg, setMsg] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
@@ -95,6 +100,39 @@ export default function NexusPostPage() {
     return results;
   };
 
+  const onSaveProposalDraft = async () => {
+    setMsg(null);
+    if (!acc?.trusted) return setMsg('Activate your ACC to save a Nexus proposal draft.');
+    if (!body.trim()) return setMsg('Write a proposal summary first.');
+
+    setBusy(true);
+    try {
+      const result = await recordNexusProposal({
+        kind: proposalKind,
+        title: proposalTitle.trim() || body.trim().slice(0, 72),
+        summary: body.trim(),
+        proposedBy: acc.accId || acc.identityId || null,
+        activeChannelId: roomId || target,
+        visibility: 'private_draft',
+        tempusContext: includeTempusContext ? captureTempusContext(new Date(), { depth: 'seasonal' }) : undefined,
+        executionAuthority: 'human_review',
+      });
+
+      if (!result.ok) {
+        setMsg(result.message);
+        return;
+      }
+
+      setProposalTitle('');
+      setBody('');
+      setMsg('Nexus proposal draft recorded locally. It has not been published, scheduled, or ratified.');
+    } catch (e: any) {
+      setMsg(e?.message || 'Failed to record Nexus proposal draft.');
+    } finally {
+      setBusy(false);
+    }
+  };
+
   const onPublish = async () => {
     setMsg(null);
     if (!acc?.trusted) return setMsg('Activate your ACC to publish.');
@@ -138,7 +176,8 @@ export default function NexusPostPage() {
         <PanelShell tabs={<ModuleTabRail tabs={TABS} />} title="Nexus — Posts" flush className="flex-1">
           <div className="space-y-3">
             <p className="text-sm text-zinc-300">
-              Your device publishes to Helia; Matrix shares the CID. No outside hosting.
+              Your device publishes to Helia; Matrix shares the CID. Local proposal drafts do not publish,
+              schedule, execute, or ratify anything.
             </p>
 
             {!acc?.trusted ? (
@@ -158,6 +197,25 @@ export default function NexusPostPage() {
                   </div>
                 </div>
 
+                <div className="grid gap-2 sm:grid-cols-2">
+                  <input
+                    value={proposalTitle}
+                    onChange={(e) => setProposalTitle(e.target.value)}
+                    placeholder="Optional proposal title"
+                    className="w-full rounded-md border border-white/10 bg-black/20 p-2 text-sm outline-none focus:border-amber-300/50"
+                  />
+                  <select
+                    value={proposalKind}
+                    onChange={(e) => setProposalKind(e.target.value as typeof proposalKind)}
+                    className="w-full rounded-md border border-white/10 bg-black/20 p-2 text-sm outline-none focus:border-amber-300/50"
+                  >
+                    <option value="event">Event proposal</option>
+                    <option value="ritual">Ritual proposal</option>
+                    <option value="post">Post proposal</option>
+                    <option value="channel">Channel proposal</option>
+                  </select>
+                </div>
+
                 <textarea
                   value={body}
                   onChange={(e) => setBody(e.target.value)}
@@ -165,6 +223,19 @@ export default function NexusPostPage() {
                   className="w-full resize-none rounded-md border border-white/10 bg-black/20 p-2 text-sm outline-none focus:border-amber-300/50"
                   rows={4}
                 />
+
+                <label className="flex items-start gap-3 rounded-xl border border-white/10 bg-white/[0.03] p-3 text-xs text-zinc-400">
+                  <input
+                    type="checkbox"
+                    checked={includeTempusContext}
+                    onChange={(event) => setIncludeTempusContext(event.target.checked)}
+                    className="mt-1"
+                  />
+                  <span>
+                    <span className="block text-sm text-zinc-100">Attach Tempus context to local proposal draft</span>
+                    <span>Factual timing context only. It does not schedule or authorize the proposal.</span>
+                  </span>
+                </label>
 
                 <div className="space-y-2">
                   <div className="flex items-center justify-between">
@@ -197,7 +268,14 @@ export default function NexusPostPage() {
                   )}
                 </div>
 
-                <div className="flex items-center justify-end">
+                <div className="flex flex-wrap items-center justify-end gap-2">
+                  <button
+                    onClick={onSaveProposalDraft}
+                    disabled={busy || !body.trim()}
+                    className="rounded-md border border-white/20 px-3 py-1.5 text-xs text-zinc-200 hover:bg-white/10 disabled:opacity-60"
+                  >
+                    {busy ? 'Saving…' : 'Save proposal draft'}
+                  </button>
                   <button
                     onClick={onPublish}
                     disabled={busy || (!body.trim() && media.length === 0)}
