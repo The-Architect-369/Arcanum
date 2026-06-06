@@ -52,6 +52,7 @@ func (opts pruningDefaultAppOptions) Get(key string) interface{} {
 func initAppConfig() (string, interface{}) {
 	cfg := serverconfig.DefaultConfig()
 	cfg.MinGasPrices = "0.025umana"
+	cfg.Pruning = defaultPruningStrategy
 	return serverconfig.DefaultConfigTemplate, cfg
 }
 
