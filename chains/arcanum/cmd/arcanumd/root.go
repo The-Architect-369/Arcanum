@@ -5,9 +5,9 @@ import (
 	"io"
 	"os"
 
-	cmtcfg "github.com/cometbft/cometbft/config"
 	"cosmossdk.io/log"
 	confixcmd "cosmossdk.io/tools/confix/cmd"
+	cmtcfg "github.com/cometbft/cometbft/config"
 	dbm "github.com/cosmos/cosmos-db"
 	"github.com/cosmos/cosmos-sdk/client"
 	clientconfig "github.com/cosmos/cosmos-sdk/client/config"
@@ -17,49 +17,29 @@ import (
 	"github.com/cosmos/cosmos-sdk/client/pruning"
 	"github.com/cosmos/cosmos-sdk/client/rpc"
 	"github.com/cosmos/cosmos-sdk/client/snapshot"
+	addresscodec "github.com/cosmos/cosmos-sdk/codec/address"
 	"github.com/cosmos/cosmos-sdk/server"
 	serverconfig "github.com/cosmos/cosmos-sdk/server/config"
 	servertypes "github.com/cosmos/cosmos-sdk/server/types"
 	sdkmodule "github.com/cosmos/cosmos-sdk/types/module"
 	authcmd "github.com/cosmos/cosmos-sdk/x/auth/client/cli"
+	bankcli "github.com/cosmos/cosmos-sdk/x/bank/client/cli"
 	genutilcli "github.com/cosmos/cosmos-sdk/x/genutil/client/cli"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 
 	"arcanum/app"
+	chaincodecli "arcanum/x/chaincode/client/cli"
+	manacli "arcanum/x/mana/client/cli"
 )
-
-const defaultPruningStrategy = "default"
-
-type pruningDefaultAppOptions struct {
-	servertypes.AppOptions
-}
-
-func (opts pruningDefaultAppOptions) Get(key string) interface{} {
-	value := opts.AppOptions.Get(key)
-	if key != "pruning" {
-		return value
-	}
-
-	strategy, ok := value.(string)
-	if !ok || strategy == "" {
-		return defaultPruningStrategy
-	}
-
-	return strategy
-}
 
 func initAppConfig() (string, interface{}) {
 	cfg := serverconfig.DefaultConfig()
 	cfg.MinGasPrices = "0.025umana"
-	cfg.Pruning = defaultPruningStrategy
+	cfg.Pruning = "default"
+	cfg.PruningKeepRecent = "0"
+	cfg.PruningInterval = "0"
 	return serverconfig.DefaultConfigTemplate, cfg
-}
-
-func ensureGlobalPruningOption() {
-	if viper.GetString("pruning") == "" {
-		viper.Set("pruning", defaultPruningStrategy)
-	}
 }
 
 func NewRootCmd() *cobra.Command {
@@ -93,8 +73,11 @@ func NewRootCmd() *cobra.Command {
 			if err := client.SetCmdClientContextHandler(clientCtx, cmd); err != nil {
 				return err
 			}
-			ensureGlobalPruningOption()
-			return server.InterceptConfigsPreRunHandler(cmd, customAppTemplate, customAppConfig, cmtcfg.DefaultConfig())
+			if err := server.InterceptConfigsPreRunHandler(cmd, customAppTemplate, customAppConfig, cmtcfg.DefaultConfig()); err != nil {
+				return err
+			}
+
+			return nil
 		},
 	}
 
@@ -127,8 +110,8 @@ func initRootCmd(rootCmd *cobra.Command, txConfig client.TxConfig, basicManager 
 	rootCmd.AddCommand(
 		server.StatusCommand(),
 		genutilcli.Commands(txConfig, basicManager, app.DefaultHome()),
-		queryCommand(),
-		txCommand(),
+		queryCommand(basicManager),
+		txCommand(basicManager),
 		keys.Commands(),
 	)
 }
@@ -144,7 +127,7 @@ func versionCmd() *cobra.Command {
 	}
 }
 
-func queryCommand() *cobra.Command {
+func queryCommand(basicManager sdkmodule.BasicManager) *cobra.Command {
 	cmd := &cobra.Command{
 		Use:                        "query",
 		Aliases:                    []string{"q"},
@@ -164,10 +147,17 @@ func queryCommand() *cobra.Command {
 		server.QueryBlockResultsCmd(),
 	)
 
+	basicManager.AddQueryCommands(cmd)
+
+	cmd.AddCommand(
+		chaincodecli.GetQueryCmd(),
+		manacli.GetQueryCmd(),
+	)
+
 	return cmd
 }
 
-func txCommand() *cobra.Command {
+func txCommand(_ sdkmodule.BasicManager) *cobra.Command {
 	cmd := &cobra.Command{
 		Use:                        "tx",
 		Short:                      "Transactions subcommands",
@@ -189,15 +179,13 @@ func txCommand() *cobra.Command {
 		authcmd.GetSimulateCmd(),
 	)
 
+	cmd.AddCommand(
+		bankcli.NewTxCmd(addresscodec.NewBech32Codec(app.AccountAddressPrefix)),
+		chaincodecli.GetTxCmd(),
+		manacli.GetTxCmd(),
+	)
+
 	return cmd
-}
-
-func ensurePruningOption(appOpts servertypes.AppOptions) servertypes.AppOptions {
-	if v, ok := appOpts.(*viper.Viper); ok && v.GetString("pruning") == "" {
-		v.Set("pruning", defaultPruningStrategy)
-	}
-
-	return pruningDefaultAppOptions{AppOptions: appOpts}
 }
 
 func newApp(
@@ -206,8 +194,8 @@ func newApp(
 	traceStore io.Writer,
 	appOpts servertypes.AppOptions,
 ) servertypes.Application {
-	appOpts = ensurePruningOption(appOpts)
 	baseAppOptions := server.DefaultBaseappOptions(appOpts)
+
 	return app.New(logger, db, traceStore, true, appOpts, baseAppOptions...)
 }
 

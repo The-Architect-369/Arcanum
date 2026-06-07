@@ -3,7 +3,9 @@ package module
 import (
 	"context"
 	"encoding/json"
-    chaincodemodulev1 "arcanum/api/arcanum/chaincode/module/v1"
+
+	chaincodemodulev1 "arcanum/api/arcanum/chaincode/module/v1"
+	chaincode "arcanum/x/chaincode"
 	"cosmossdk.io/core/appmodule"
 	abci "github.com/cometbft/cometbft/abci/types"
 
@@ -23,10 +25,10 @@ type basicModule struct{}
 var _ sdkmodule.AppModuleBasic = (*basicModule)(nil)
 
 func init() {
-    appmodule.Register(
-        &chaincodemodulev1.Module{},
-        appmodule.Provide(ProvideModule),
-    )
+	appmodule.Register(
+		&chaincodemodulev1.Module{},
+		appmodule.Provide(ProvideModule),
+	)
 }
 func NewBasicModule() sdkmodule.AppModuleBasic { return basicModule{} }
 
@@ -72,6 +74,11 @@ func (m Module) DefaultGenesis(cdc codec.JSONCodec) json.RawMessage {
 func (m Module) ValidateGenesis(_ codec.JSONCodec, _ client.TxEncodingConfig, _ json.RawMessage) error {
 	// basic validation only
 	return nil
+}
+
+func (m Module) RegisterServices(cfg sdkmodule.Configurator) {
+	types.RegisterMsgServer(cfg.MsgServer(), chaincode.NewMsgServerImpl(m.keeper))
+	types.RegisterQueryServer(cfg.QueryServer(), keeper.QueryServer{Keeper: m.keeper})
 }
 
 func (m Module) InitGenesis(ctx context.Context, _ codec.JSONCodec, data json.RawMessage) []abci.ValidatorUpdate {
