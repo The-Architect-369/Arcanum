@@ -1,6 +1,7 @@
 package main
 
 import (
+	"context"
 	"errors"
 	"io"
 	"os"
@@ -10,7 +11,6 @@ import (
 	cmtcfg "github.com/cometbft/cometbft/config"
 	dbm "github.com/cosmos/cosmos-db"
 	"github.com/cosmos/cosmos-sdk/client"
-	clientconfig "github.com/cosmos/cosmos-sdk/client/config"
 	"github.com/cosmos/cosmos-sdk/client/debug"
 	"github.com/cosmos/cosmos-sdk/client/flags"
 	"github.com/cosmos/cosmos-sdk/client/keys"
@@ -26,6 +26,7 @@ import (
 	bankcli "github.com/cosmos/cosmos-sdk/x/bank/client/cli"
 	genutilcli "github.com/cosmos/cosmos-sdk/x/genutil/client/cli"
 	"github.com/spf13/cobra"
+	"github.com/spf13/pflag"
 	"github.com/spf13/viper"
 
 	"arcanum/app"
@@ -61,30 +62,21 @@ func NewRootCmd() *cobra.Command {
 		SilenceUsage:  true,
 		SilenceErrors: true,
 		PersistentPreRunE: func(cmd *cobra.Command, _ []string) error {
-			clientCtx := initClientCtx.WithCmdContext(cmd.Context())
-			clientCtx, err := client.ReadPersistentCommandFlags(clientCtx, cmd.Flags())
-			if err != nil {
-				return err
-			}
-			clientCtx, err = clientconfig.ReadFromClientConfig(clientCtx)
-			if err != nil {
-				return err
-			}
-			if err := client.SetCmdClientContextHandler(clientCtx, cmd); err != nil {
-				return err
-			}
-			if err := server.InterceptConfigsPreRunHandler(cmd, customAppTemplate, customAppConfig, cmtcfg.DefaultConfig()); err != nil {
+
+			if err := client.SetCmdClientContextHandler(initClientCtx, cmd); err != nil {
 				return err
 			}
 
-			return nil
+			return server.InterceptConfigsPreRunHandler(cmd, customAppTemplate, customAppConfig, cmtcfg.DefaultConfig())
 		},
 	}
+
+	rootCmd.SetContext(context.WithValue(context.Background(), server.ServerContextKey, server.NewDefaultContext()))
 
 	rootCmd.PersistentFlags().String(flags.FlagHome, app.DefaultHome(), "directory for config and data")
 	rootCmd.PersistentFlags().String(flags.FlagChainID, "", "The network chain ID")
 
-	initRootCmd(rootCmd, encodingConfig.TxConfig, app.ModuleBasicsRef())
+	initRootCmd(rootCmd, encodingConfig.TxConfig, app.ModuleBasicsRef(), initClientCtx, customAppTemplate, customAppConfig)
 	return rootCmd
 }
 
@@ -95,7 +87,7 @@ func Execute() {
 	}
 }
 
-func initRootCmd(rootCmd *cobra.Command, txConfig client.TxConfig, basicManager sdkmodule.BasicManager) {
+func initRootCmd(rootCmd *cobra.Command, txConfig client.TxConfig, basicManager sdkmodule.BasicManager, initClientCtx client.Context, customAppTemplate string, customAppConfig interface{}) {
 	rootCmd.AddCommand(
 		versionCmd(),
 		genutilcli.InitCmd(basicManager, app.DefaultHome()),
@@ -106,6 +98,7 @@ func initRootCmd(rootCmd *cobra.Command, txConfig client.TxConfig, basicManager 
 	)
 
 	server.AddCommandsWithStartCmdOptions(rootCmd, app.DefaultHome(), newApp, appExport, server.StartCmdOptions{})
+	patchStartCommandPreRun(rootCmd, initClientCtx, customAppTemplate, customAppConfig)
 
 	rootCmd.AddCommand(
 		server.StatusCommand(),
@@ -114,6 +107,38 @@ func initRootCmd(rootCmd *cobra.Command, txConfig client.TxConfig, basicManager 
 		txCommand(basicManager),
 		keys.Commands(),
 	)
+}
+
+func patchStartCommandPreRun(rootCmd *cobra.Command, initClientCtx client.Context, customAppTemplate string, customAppConfig interface{}) {
+	startCmd, _, err := rootCmd.Find([]string{"start"})
+	if err != nil || startCmd == nil {
+		return
+	}
+
+	originalPersistentPreRunE := startCmd.PersistentPreRunE
+	startCmd.PersistentPreRunE = func(cmd *cobra.Command, args []string) error {
+		// Cosmos SDK v0.53 binds cmd.Flags() and cmd.PersistentFlags()
+		// during InterceptConfigsPreRunHandler, but not inherited parent flags.
+		// Copy inherited root flags onto the start command's persistent flags
+		// before server config is read so --home and root options are visible.
+		cmd.InheritedFlags().VisitAll(func(f *pflag.Flag) {
+			if cmd.PersistentFlags().Lookup(f.Name) == nil {
+				cmd.PersistentFlags().AddFlag(f)
+			}
+		})
+
+		if originalPersistentPreRunE != nil {
+			if err := originalPersistentPreRunE(cmd, args); err != nil {
+				return err
+			}
+		}
+
+		if err := client.SetCmdClientContextHandler(initClientCtx, cmd); err != nil {
+			return err
+		}
+
+		return server.InterceptConfigsPreRunHandler(cmd, customAppTemplate, customAppConfig, cmtcfg.DefaultConfig())
+	}
 }
 
 func versionCmd() *cobra.Command {
