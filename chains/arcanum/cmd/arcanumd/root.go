@@ -25,6 +25,7 @@ import (
 	authcmd "github.com/cosmos/cosmos-sdk/x/auth/client/cli"
 	bankcli "github.com/cosmos/cosmos-sdk/x/bank/client/cli"
 	genutilcli "github.com/cosmos/cosmos-sdk/x/genutil/client/cli"
+	genutiltypes "github.com/cosmos/cosmos-sdk/x/genutil/types"
 	"github.com/spf13/cobra"
 	"github.com/spf13/pflag"
 	"github.com/spf13/viper"
@@ -102,11 +103,29 @@ func initRootCmd(rootCmd *cobra.Command, txConfig client.TxConfig, basicManager 
 
 	rootCmd.AddCommand(
 		server.StatusCommand(),
-		genutilcli.Commands(txConfig, basicManager, app.DefaultHome()),
+		arcnetGenesisCommands(txConfig, basicManager, app.DefaultHome()),
 		queryCommand(basicManager),
 		txCommand(basicManager),
 		keys.Commands(),
 	)
+}
+
+func arcnetGenesisCommands(txConfig client.TxConfig, basicManager sdkmodule.BasicManager, defaultNodeHome string) *cobra.Command {
+	cmd := genutilcli.Commands(txConfig, basicManager, defaultNodeHome)
+
+	if sdkGentxCmd, _, err := cmd.Find([]string{"gentx"}); err == nil && sdkGentxCmd != nil {
+		cmd.RemoveCommand(sdkGentxCmd)
+	}
+
+	cmd.AddCommand(arcnetGentxCmd(
+		basicManager,
+		txConfig,
+		genutiltypes.DefaultGenesisBalancesIterator,
+		defaultNodeHome,
+		addresscodec.NewBech32Codec(app.ValidatorAddressPrefix),
+	))
+
+	return cmd
 }
 
 func patchStartCommandPreRun(rootCmd *cobra.Command, initClientCtx client.Context, customAppTemplate string, customAppConfig interface{}) {
