@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation';
 import BadgeCounter from '@/components/ui/BadgeCounter';
 import ACCOnboardingModal from '@/components/ui/ACCOnboardingModal';
 import { getNotificationCount, setNotificationCount, useAccount } from '@/state/useAccount';
+import { canAccessDeveloperSurface } from '@/lib/developer';
 import { getUnreadNotificationCount } from '@/lib/mobile/notifications';
 
 export default function AppHeader() {
@@ -60,7 +61,7 @@ export default function AppHeader() {
     router.push(path);
   };
 
-  const showDeveloperSurface = process.env.NODE_ENV !== 'production';
+  const showDeveloperSurface = canAccessDeveloperSurface();
 
   return (
     <>
