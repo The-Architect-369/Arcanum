@@ -21,11 +21,12 @@ import (
 	"github.com/cosmos/cosmos-sdk/server"
 	serverconfig "github.com/cosmos/cosmos-sdk/server/config"
 	servertypes "github.com/cosmos/cosmos-sdk/server/types"
+	sdk "github.com/cosmos/cosmos-sdk/types"
 	sdkmodule "github.com/cosmos/cosmos-sdk/types/module"
 	authcmd "github.com/cosmos/cosmos-sdk/x/auth/client/cli"
 	bankcli "github.com/cosmos/cosmos-sdk/x/bank/client/cli"
+	banktypes "github.com/cosmos/cosmos-sdk/x/bank/types"
 	genutilcli "github.com/cosmos/cosmos-sdk/x/genutil/client/cli"
-	genutiltypes "github.com/cosmos/cosmos-sdk/x/genutil/types"
 	"github.com/spf13/cobra"
 	"github.com/spf13/pflag"
 	"github.com/spf13/viper"
@@ -120,9 +121,9 @@ func arcnetGenesisCommands(txConfig client.TxConfig, basicManager sdkmodule.Basi
 	cmd.AddCommand(arcnetGentxCmd(
 		basicManager,
 		txConfig,
-		genutiltypes.DefaultGenesisBalancesIterator,
+		banktypes.GenesisBalancesIterator{},
 		defaultNodeHome,
-		addresscodec.NewBech32Codec(app.ValidatorAddressPrefix),
+		addresscodec.NewBech32Codec(app.AccountAddressPrefix+sdk.PrefixValidator+sdk.PrefixOperator),
 	))
 
 	return cmd

@@ -1,4 +1,4 @@
-package cli
+package main
 
 import (
 	"bufio"
@@ -26,10 +26,11 @@ import (
 	"github.com/cosmos/cosmos-sdk/x/genutil"
 	"github.com/cosmos/cosmos-sdk/x/genutil/types"
 	"github.com/cosmos/cosmos-sdk/x/staking/client/cli"
+	stakingtypes "github.com/cosmos/cosmos-sdk/x/staking/types"
 )
 
 // GenTxCmd builds the application's gentx command.
-func GenTxCmd(mbm module.BasicManager, txEncCfg client.TxEncodingConfig, genBalIterator types.GenesisBalancesIterator, defaultNodeHome string, valAdddressCodec address.Codec) *cobra.Command {
+func arcnetGentxCmd(mbm module.BasicManager, txEncCfg client.TxEncodingConfig, genBalIterator types.GenesisBalancesIterator, defaultNodeHome string, valAdddressCodec address.Codec) *cobra.Command {
 	ipDefault, _ := server.ExternalIP()
 	fsCreateValidator, defaultsDesc := cli.CreateValidatorMsgFlagSet(ipDefault)
 
@@ -157,6 +158,13 @@ $ %s gentx my-key-name 1000000stake --home=/path/to/home/dir --keyring-backend=o
 			txBldr, msg, err := cli.BuildCreateValidatorMsg(clientCtx, createValCfg, txFactory, true, valAdddressCodec)
 			if err != nil {
 				return errors.Wrap(err, "failed to build create-validator message")
+			}
+
+			// ARCnet compatibility fix for Cosmos SDK v0.53.3:
+			// staking.NewMsgCreateValidator leaves DelegatorAddress empty.
+			// Gentx must set this before signing, otherwise InitChain collects no validator.
+			if createValMsg, ok := msg.(*stakingtypes.MsgCreateValidator); ok && createValMsg.DelegatorAddress == "" {
+				createValMsg.DelegatorAddress = clientCtx.GetFromAddress().String()
 			}
 
 			if key.GetType() == keyring.TypeOffline || key.GetType() == keyring.TypeMulti {
