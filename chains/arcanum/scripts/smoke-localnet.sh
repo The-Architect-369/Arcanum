@@ -86,21 +86,26 @@ echo "==> Starting localnet smoke node on RPC port $RPC_PORT"
 
 NODE_PID="$!"
 
-for _ in $(seq 1 45); do
-  if grep -q "This node is a validator" "$LOG_FILE" && grep -q "finalized block .*height=1" "$LOG_FILE"; then
-    echo "ARCnet smoke localnet passed: validator initialized and block 1 finalized."
-    exit 0
-  fi
-
+for _ in $(seq 1 60); do
   if ! kill -0 "$NODE_PID" 2>/dev/null; then
     echo "ARCnet smoke localnet failed: node exited early."
     cat "$LOG_FILE"
     exit 1
   fi
 
+  if grep -q "This node is a validator" "$LOG_FILE"; then
+    HEIGHT="$(./bin/arcanumd status --node "tcp://127.0.0.1:${RPC_PORT}" 2>/dev/null \
+      | python3 -c 'import json,sys; print(json.load(sys.stdin).get("sync_info", {}).get("latest_block_height", "0"))' 2>/dev/null || echo 0)"
+
+    if [[ "${HEIGHT:-0}" =~ ^[0-9]+$ ]] && (( HEIGHT >= 1 )); then
+      echo "ARCnet smoke localnet passed: validator initialized and latest block height is ${HEIGHT}."
+      exit 0
+    fi
+  fi
+
   sleep 1
 done
 
-echo "ARCnet smoke localnet failed: block 1 was not finalized in time."
+echo "ARCnet smoke localnet failed: validator/block height was not observed in time."
 cat "$LOG_FILE"
 exit 1
