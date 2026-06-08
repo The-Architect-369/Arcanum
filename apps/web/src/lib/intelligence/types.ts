@@ -74,3 +74,46 @@ export type IntelligenceProviderDescriptor = {
   storesDataExternally: boolean
   userConsentRequired: boolean
 }
+
+export type IntelligencePrompt = {
+  id: string
+  layer: IntelligenceLayer
+  intent: 'reflect' | 'summarize' | 'audit' | 'recommend' | 'explain'
+  content: string
+  sources: IntelligenceSource[]
+  createdAt: string
+}
+
+export type IntelligenceProviderResponse = {
+  providerId: string
+  promptId: string
+  summary: string
+  recommendations: string[]
+  confidence: InterpretationRecord['confidence']
+  rawText?: string
+}
+
+export type IntelligenceProviderAdapter = {
+  descriptor: IntelligenceProviderDescriptor
+  interpret(prompt: IntelligencePrompt): Promise<IntelligenceProviderResponse>
+}
+
+export type CodexDryRunInput = {
+  id: string
+  sources: IntelligenceSource[]
+  prompt: string
+  createdAt?: string
+}
+
+export type AgentActivationState = 'disabled' | 'dry_run_only' | 'manual_review' | 'active'
+
+export type IntelligenceAgentDefinition = {
+  id: string
+  label: string
+  layer: 'agent'
+  activationState: AgentActivationState
+  purpose: string
+  allowedInputs: IntelligenceSourceKind[]
+  forbiddenActions: ForbiddenAction[]
+  tempusWindow?: string
+}
