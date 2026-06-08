@@ -40,3 +40,6 @@ chains/arcanum/bin/
 # Local ARCnet developer state
 .local/
 data/
+# ARCnet local smoke/debug artifacts
+chains/arcanum/.debug-sdk/
+chains/arcanum/data-*/
