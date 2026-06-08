@@ -5,7 +5,7 @@ visibility: public
 last_updated: 2026-06-08
 phase: "Pre-Genesis"
 layer: "Application / Intelligence"
-description: "Defines the first non-autonomous Codex dry-run implementation and agent registry posture."
+description: "Defines the first non-autonomous Codex dry-run implementation, demo route, and agent registry posture."
 ---
 
 # Codex Dry-Run Service
@@ -29,7 +29,28 @@ apps/web/src/lib/intelligence/records.ts
 apps/web/src/lib/intelligence/codex.ts
 apps/web/src/lib/intelligence/agents.ts
 apps/web/src/lib/intelligence/index.ts
+apps/web/src/app/(app)/intelligence/codex/page.tsx
 ```
+
+## Demo route
+
+The first visual inspection surface is:
+
+```text
+/intelligence/codex
+```
+
+This route renders a static Pre-Genesis Codex dry-run record using only:
+
+- `repo_public` sources
+- `system_generated` sources
+
+It does not request user-private data.
+It does not call an online model.
+It does not require secrets.
+It does not execute autonomous actions.
+
+The route is intended for internal development inspection and should not be treated as a public product surface yet.
 
 ## Runtime posture
 
