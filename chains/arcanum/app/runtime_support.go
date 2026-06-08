@@ -63,10 +63,8 @@ func New(
 	instance.interfaceRegistry = interfaceRegistry
 	instance.legacyAmino = legacyAmino
 
-	if loadLatest {
-		if err := instance.LoadLatestVersion(); err != nil {
-			panic(err)
-		}
+	if err := instance.Load(loadLatest); err != nil {
+		panic(err)
 	}
 
 	return instance
