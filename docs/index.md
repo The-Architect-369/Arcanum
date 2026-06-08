@@ -2,7 +2,7 @@
 title: "Docs Index"
 status: canonical
 visibility: public
-last_updated: 2026-02-28
+last_updated: 2026-06-08
 description: "Navigation index for the Arcanum documentation tree (ARCnet canonical naming)."
 ---
 
@@ -30,6 +30,7 @@ This is the **navigation hub** for the `docs/` tree.
 4) **Modules (product surfaces):** `modules/`  
 5) **Vitae (recognition layer):** `vitae/`  
 6) **Repo discipline (indexing + grounding):** `repo/`
+7) **Intelligence layer contract:** `specs/intelligence/intelligence-layer-contract.md`
 
 ---
 
@@ -78,6 +79,11 @@ This is the **navigation hub** for the `docs/` tree.
 - `modules/hope/hope.md`
 - `modules/tempus/tempus.md`
 - `modules/vitae/vitae-and-becoming.md`
+
+### `specs/` — implementation-facing contracts
+- `specs/app/`
+- `specs/chain/`
+- `specs/intelligence/intelligence-layer-contract.md`
 
 ### `vitae/` — recognition layer + constitution + curriculum tree
 - `vitae/authority.md`

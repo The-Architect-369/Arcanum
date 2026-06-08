@@ -30,3 +30,42 @@ func CmdMintSbi() *cobra.Command {
 	flags.AddTxFlagsToCmd(cmd)
 	return cmd
 }
+
+func GetTxCmd() *cobra.Command {
+	cmd := &cobra.Command{
+		Use:                        "chaincode",
+		Short:                      "ChainCode / ACC identity witness transactions",
+		DisableFlagParsing:         false,
+		SuggestionsMinimumDistance: 2,
+	}
+
+	cmd.AddCommand(
+		CmdMintSbi(),
+		CmdRecoverSbi(),
+	)
+
+	return cmd
+}
+
+func CmdRecoverSbi() *cobra.Command {
+	cmd := &cobra.Command{
+		Use:   "recover-sbi [creator] [to] [proof]",
+		Short: "Recover a chaincode identity anchor to a new address",
+		Args:  cobra.ExactArgs(3),
+		RunE: func(cmd *cobra.Command, args []string) error {
+			clientCtx, err := client.GetClientTxContext(cmd)
+			if err != nil {
+				return err
+			}
+
+			msg := &types.MsgRecoverSbi{
+				Creator: args[0],
+				To:      args[1],
+				Proof:   args[2],
+			}
+			return tx.GenerateOrBroadcastTxCLI(clientCtx, cmd.Flags(), msg)
+		},
+	}
+	flags.AddTxFlagsToCmd(cmd)
+	return cmd
+}

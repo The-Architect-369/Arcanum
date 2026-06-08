@@ -1,11 +1,12 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { Gem, Menu, UserCog, Wallet, ArrowLeftRight, Settings, Bell, CircleUserRound } from 'lucide-react';
+import { Gem, Menu, UserCog, Wallet, ArrowLeftRight, Settings, Bell, CircleUserRound, Code2 } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import BadgeCounter from '@/components/ui/BadgeCounter';
 import ACCOnboardingModal from '@/components/ui/ACCOnboardingModal';
 import { getNotificationCount, setNotificationCount, useAccount } from '@/state/useAccount';
+import { canAccessDeveloperSurface } from '@/lib/developer';
 import { getUnreadNotificationCount } from '@/lib/mobile/notifications';
 
 export default function AppHeader() {
@@ -59,6 +60,8 @@ export default function AppHeader() {
     setOpen(false);
     router.push(path);
   };
+
+  const showDeveloperSurface = canAccessDeveloperSurface();
 
   return (
     <>
@@ -127,6 +130,12 @@ export default function AppHeader() {
               <DrawerItem icon={<ArrowLeftRight size={18} />} label="Exchange" onClick={() => go('/exchange')} />
               <DrawerItem icon={<Bell size={18} />} label="Notifications" onClick={() => go('/notifications')} />
               <DrawerItem icon={<Settings size={18} />} label="Preferences" onClick={() => go('/preferences')} />
+              {showDeveloperSurface && (
+                <>
+                  <div className="my-2 border-t border-white/10" />
+                  <DrawerItem icon={<Code2 size={18} />} label="Developer" onClick={() => go('/developer')} />
+                </>
+              )}
             </nav>
           </aside>
         </div>

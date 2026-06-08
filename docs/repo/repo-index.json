@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-06-05T12:47:56Z",
+  "generated_at": "2026-06-08T15:34:37Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "c9dc019d4",
+  "commit": "7cbfdc97d",
   "generator_version": "1.1",
   "files": [
     {
@@ -214,11 +214,11 @@
     {
       "path": ".gitignore",
       "type": "file",
-      "size_bytes": 419,
-      "last_modified_commit": "21d6e54ca",
+      "size_bytes": 465,
+      "last_modified_commit": "b19636b94",
       "is_empty": false,
       "extension": "",
-      "lines": 38
+      "lines": 42
     },
     {
       "path": ".npmrc",
@@ -554,6 +554,15 @@
       "lines": 16
     },
     {
+      "path": "apps/web/src/app/(app)/developer/page.tsx",
+      "type": "file",
+      "size_bytes": 2658,
+      "last_modified_commit": "646588690",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 64
+    },
+    {
       "path": "apps/web/src/app/(app)/exchange/page.tsx",
       "type": "file",
       "size_bytes": 6224,
@@ -669,6 +678,15 @@
       "is_empty": false,
       "extension": ".tsx",
       "lines": 5
+    },
+    {
+      "path": "apps/web/src/app/(app)/intelligence/codex/page.tsx",
+      "type": "file",
+      "size_bytes": 5392,
+      "last_modified_commit": "c0a86f8df",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 131
     },
     {
       "path": "apps/web/src/app/(app)/layout.tsx",
@@ -1141,11 +1159,11 @@
     {
       "path": "apps/web/src/components/ui/AppHeader.tsx",
       "type": "file",
-      "size_bytes": 5531,
-      "last_modified_commit": "e334efe1d",
+      "size_bytes": 5936,
+      "last_modified_commit": "8caef7bef",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 159
+      "lines": 168
     },
     {
       "path": "apps/web/src/components/ui/AppStage.tsx",
@@ -1463,6 +1481,24 @@
       "lines": 25
     },
     {
+      "path": "apps/web/src/lib/developer/access.ts",
+      "type": "file",
+      "size_bytes": 934,
+      "last_modified_commit": "448facd1a",
+      "is_empty": false,
+      "extension": ".ts",
+      "lines": 34
+    },
+    {
+      "path": "apps/web/src/lib/developer/index.ts",
+      "type": "file",
+      "size_bytes": 25,
+      "last_modified_commit": "e5cc30437",
+      "is_empty": false,
+      "extension": ".ts",
+      "lines": 1
+    },
+    {
       "path": "apps/web/src/lib/economy/config/costs.json",
       "type": "file",
       "size_bytes": 134,
@@ -1600,11 +1636,11 @@
     {
       "path": "apps/web/src/lib/index.ts",
       "type": "file",
-      "size_bytes": 130,
-      "last_modified_commit": "7dfdd2782",
+      "size_bytes": 186,
+      "last_modified_commit": "2d7e653bf",
       "is_empty": false,
       "extension": ".ts",
-      "lines": 5
+      "lines": 7
     },
     {
       "path": "apps/web/src/lib/infra/arcanum.ts",
@@ -1668,6 +1704,78 @@
       "is_empty": false,
       "extension": ".ts",
       "lines": 17
+    },
+    {
+      "path": "apps/web/src/lib/intelligence/adapters.ts",
+      "type": "file",
+      "size_bytes": 835,
+      "last_modified_commit": "43aa50170",
+      "is_empty": false,
+      "extension": ".ts",
+      "lines": 23
+    },
+    {
+      "path": "apps/web/src/lib/intelligence/agents.ts",
+      "type": "file",
+      "size_bytes": 1802,
+      "last_modified_commit": "61f86add6",
+      "is_empty": false,
+      "extension": ".ts",
+      "lines": 51
+    },
+    {
+      "path": "apps/web/src/lib/intelligence/codex.ts",
+      "type": "file",
+      "size_bytes": 1118,
+      "last_modified_commit": "461c1ad2d",
+      "is_empty": false,
+      "extension": ".ts",
+      "lines": 39
+    },
+    {
+      "path": "apps/web/src/lib/intelligence/index.ts",
+      "type": "file",
+      "size_bytes": 179,
+      "last_modified_commit": "fe6df0ff0",
+      "is_empty": false,
+      "extension": ".ts",
+      "lines": 7
+    },
+    {
+      "path": "apps/web/src/lib/intelligence/policy.ts",
+      "type": "file",
+      "size_bytes": 2876,
+      "last_modified_commit": "106445a6d",
+      "is_empty": false,
+      "extension": ".ts",
+      "lines": 99
+    },
+    {
+      "path": "apps/web/src/lib/intelligence/providers.ts",
+      "type": "file",
+      "size_bytes": 984,
+      "last_modified_commit": "ae9db4e6e",
+      "is_empty": false,
+      "extension": ".ts",
+      "lines": 34
+    },
+    {
+      "path": "apps/web/src/lib/intelligence/records.ts",
+      "type": "file",
+      "size_bytes": 1710,
+      "last_modified_commit": "a227ab384",
+      "is_empty": false,
+      "extension": ".ts",
+      "lines": 56
+    },
+    {
+      "path": "apps/web/src/lib/intelligence/types.ts",
+      "type": "file",
+      "size_bytes": 2863,
+      "last_modified_commit": "a4cb966ea",
+      "is_empty": false,
+      "extension": ".ts",
+      "lines": 119
     },
     {
       "path": "apps/web/src/lib/ipfs/index.ts",
@@ -1961,7 +2069,7 @@
       "path": "chains/arcanum/app/app.go",
       "type": "file",
       "size_bytes": 9359,
-      "last_modified_commit": "695b32b8d",
+      "last_modified_commit": "f1a6ad19a",
       "is_empty": false,
       "extension": ".go",
       "lines": 225
@@ -1969,11 +2077,11 @@
     {
       "path": "chains/arcanum/app/app_config.go",
       "type": "file",
-      "size_bytes": 3161,
-      "last_modified_commit": "c253138e1",
+      "size_bytes": 3261,
+      "last_modified_commit": "e8421e536",
       "is_empty": false,
       "extension": ".go",
-      "lines": 107
+      "lines": 108
     },
     {
       "path": "chains/arcanum/app/config.go",
@@ -2057,6 +2165,15 @@
       "lines": 41
     },
     {
+      "path": "chains/arcanum/cmd/arcanumd/gentx.go",
+      "type": "file",
+      "size_bytes": 9057,
+      "last_modified_commit": "b072eee2e",
+      "is_empty": false,
+      "extension": ".go",
+      "lines": 270
+    },
+    {
       "path": "chains/arcanum/cmd/arcanumd/main.go",
       "type": "file",
       "size_bytes": 41,
@@ -2068,11 +2185,11 @@
     {
       "path": "chains/arcanum/cmd/arcanumd/root.go",
       "type": "file",
-      "size_bytes": 5657,
-      "last_modified_commit": "fa59d6040",
+      "size_bytes": 8220,
+      "last_modified_commit": "b072eee2e",
       "is_empty": false,
       "extension": ".go",
-      "lines": 204
+      "lines": 274
     },
     {
       "path": "chains/arcanum/config.yml",
@@ -2381,13 +2498,22 @@
       "lines": 17
     },
     {
-      "path": "chains/arcanum/x/chaincode/client/cli/tx.go",
+      "path": "chains/arcanum/x/chaincode/client/cli/query.go",
       "type": "file",
-      "size_bytes": 734,
-      "last_modified_commit": "a9fedcfe1",
+      "size_bytes": 1655,
+      "last_modified_commit": "f4c47d734",
       "is_empty": false,
       "extension": ".go",
-      "lines": 32
+      "lines": 75
+    },
+    {
+      "path": "chains/arcanum/x/chaincode/client/cli/tx.go",
+      "type": "file",
+      "size_bytes": 1630,
+      "last_modified_commit": "f4c47d734",
+      "is_empty": false,
+      "extension": ".go",
+      "lines": 71
     },
     {
       "path": "chains/arcanum/x/chaincode/genesis.go",
@@ -2437,11 +2563,11 @@
     {
       "path": "chains/arcanum/x/chaincode/module/module.go",
       "type": "file",
-      "size_bytes": 2553,
-      "last_modified_commit": "fa59d6040",
+      "size_bytes": 2796,
+      "last_modified_commit": "f4c47d734",
       "is_empty": false,
       "extension": ".go",
-      "lines": 97
+      "lines": 104
     },
     {
       "path": "chains/arcanum/x/chaincode/msg_server.go",
@@ -2498,13 +2624,22 @@
       "lines": 289
     },
     {
-      "path": "chains/arcanum/x/mana/client/cli/tx.go",
+      "path": "chains/arcanum/x/mana/client/cli/query.go",
       "type": "file",
-      "size_bytes": 880,
-      "last_modified_commit": "a9fedcfe1",
+      "size_bytes": 2755,
+      "last_modified_commit": "f4c47d734",
       "is_empty": false,
       "extension": ".go",
-      "lines": 41
+      "lines": 125
+    },
+    {
+      "path": "chains/arcanum/x/mana/client/cli/tx.go",
+      "type": "file",
+      "size_bytes": 2946,
+      "last_modified_commit": "f4c47d734",
+      "is_empty": false,
+      "extension": ".go",
+      "lines": 131
     },
     {
       "path": "chains/arcanum/x/mana/keeper/genesis.go",
@@ -2545,11 +2680,11 @@
     {
       "path": "chains/arcanum/x/mana/module/module.go",
       "type": "file",
-      "size_bytes": 2529,
-      "last_modified_commit": "fa59d6040",
+      "size_bytes": 2757,
+      "last_modified_commit": "f4c47d734",
       "is_empty": false,
       "extension": ".go",
-      "lines": 98
+      "lines": 105
     },
     {
       "path": "chains/arcanum/x/mana/msg_server.go",
@@ -3139,11 +3274,11 @@
     {
       "path": "docs/index.md",
       "type": "file",
-      "size_bytes": 3597,
-      "last_modified_commit": "9aae3bedc",
+      "size_bytes": 3821,
+      "last_modified_commit": "9a1c781cb",
       "is_empty": false,
       "extension": ".md",
-      "lines": 108
+      "lines": 114
     },
     {
       "path": "docs/manifesto/arcanum-manifesto.md",
@@ -3220,11 +3355,11 @@
     {
       "path": "docs/repo/repo-index.json",
       "type": "file",
-      "size_bytes": 156580,
-      "last_modified_commit": "503e62eae",
+      "size_bytes": 157466,
+      "last_modified_commit": "d60f7afe8",
       "is_empty": false,
       "extension": ".json",
-      "lines": 5741
+      "lines": 5777
     },
     {
       "path": "docs/repo/repo-interface.md",
@@ -3252,6 +3387,15 @@
       "is_empty": false,
       "extension": ".md",
       "lines": 21
+    },
+    {
+      "path": "docs/specs/app/developer-access-policy.md",
+      "type": "file",
+      "size_bytes": 1929,
+      "last_modified_commit": "7cbfdc97d",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 91
     },
     {
       "path": "docs/specs/app/developer-console-model.md",
@@ -3362,6 +3506,15 @@
       "lines": 272
     },
     {
+      "path": "docs/specs/chain/local-node-workflow.md",
+      "type": "file",
+      "size_bytes": 4772,
+      "last_modified_commit": "3c011c0b0",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 233
+    },
+    {
       "path": "docs/specs/economy/mana-governance-model.md",
       "type": "file",
       "size_bytes": 1972,
@@ -3414,6 +3567,24 @@
       "is_empty": false,
       "extension": ".md",
       "lines": 82
+    },
+    {
+      "path": "docs/specs/intelligence/codex-dry-run.md",
+      "type": "file",
+      "size_bytes": 3650,
+      "last_modified_commit": "ae35efa45",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 139
+    },
+    {
+      "path": "docs/specs/intelligence/intelligence-layer-contract.md",
+      "type": "file",
+      "size_bytes": 5589,
+      "last_modified_commit": "bc2400d75",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 217
     },
     {
       "path": "docs/specs/modules/hope-content-foundation.md",
@@ -5502,6 +5673,33 @@
       "is_empty": false,
       "extension": ".sh",
       "lines": 207
+    },
+    {
+      "path": "scripts/node/local-reset.sh",
+      "type": "file",
+      "size_bytes": 2685,
+      "last_modified_commit": "cbac00da9",
+      "is_empty": false,
+      "extension": ".sh",
+      "lines": 94
+    },
+    {
+      "path": "scripts/node/local-start.sh",
+      "type": "file",
+      "size_bytes": 2130,
+      "last_modified_commit": "3b52b3a72",
+      "is_empty": false,
+      "extension": ".sh",
+      "lines": 72
+    },
+    {
+      "path": "scripts/node/local-status.sh",
+      "type": "file",
+      "size_bytes": 1853,
+      "last_modified_commit": "7d7e65ab8",
+      "is_empty": false,
+      "extension": ".sh",
+      "lines": 67
     },
     {
       "path": "scripts/patches/2026-03-04-hope-entrypoints.patch",

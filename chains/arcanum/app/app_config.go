@@ -21,6 +21,7 @@ import (
 	consensus "github.com/cosmos/cosmos-sdk/x/consensus"
 	distribution "github.com/cosmos/cosmos-sdk/x/distribution"
 	genutil "github.com/cosmos/cosmos-sdk/x/genutil"
+	genutiltypes "github.com/cosmos/cosmos-sdk/x/genutil/types"
 	gov "github.com/cosmos/cosmos-sdk/x/gov"
 	govclient "github.com/cosmos/cosmos-sdk/x/gov/client"
 	groupmodule "github.com/cosmos/cosmos-sdk/x/group/module"
@@ -53,7 +54,7 @@ var ModuleBasics = module.NewBasicManager(
 	bank.AppModuleBasic{},
 	consensus.AppModuleBasic{},
 	distribution.AppModuleBasic{},
-	genutil.AppModuleBasic{},
+	genutil.NewAppModuleBasic(genutiltypes.DefaultMessageValidator),
 	gov.NewAppModuleBasic([]govclient.ProposalHandler{}),
 	groupmodule.AppModuleBasic{},
 	mint.AppModuleBasic{},

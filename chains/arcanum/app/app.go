@@ -10,7 +10,6 @@ import (
 	treasurytypes "arcanum/x/treasury/types"
 
 	chaincodetypes "arcanum/x/chaincode/types"
-	appconfig "cosmossdk.io/core/appconfig"
 	runtimev1alpha1 "cosmossdk.io/api/cosmos/app/runtime/v1alpha1"
 	appv1alpha1 "cosmossdk.io/api/cosmos/app/v1alpha1"
 	authmodulev1 "cosmossdk.io/api/cosmos/auth/module/v1"
@@ -32,6 +31,7 @@ import (
 	stakingmodulev1 "cosmossdk.io/api/cosmos/staking/module/v1"
 	txconfigv1 "cosmossdk.io/api/cosmos/tx/config/v1"
 	upgrademodulev1 "cosmossdk.io/api/cosmos/upgrade/module/v1"
+	appconfig "cosmossdk.io/core/appconfig"
 
 	_ "cosmossdk.io/x/circuit"
 	circuittypes "cosmossdk.io/x/circuit/types"
