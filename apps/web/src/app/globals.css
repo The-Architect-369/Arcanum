@@ -6,11 +6,11 @@
   --arcanum-locked-vh: 100svh;
   --arcanum-status-h: env(safe-area-inset-top, 0px);
   --arcanum-safe-bottom: env(safe-area-inset-bottom, 0px);
-  --arcanum-android-nav-clearance: 0.18rem;
+  --arcanum-android-nav-clearance: 0.42rem;
   --arcanum-header-h: 3.5rem;
-  --arcanum-footer-h: 4.25rem;
-  --arcanum-footer-lift: max(0.16rem, var(--arcanum-safe-bottom), var(--arcanum-android-nav-clearance));
-  --arcanum-footer-clearance: calc(var(--arcanum-footer-lift) + 0.6rem);
+  --arcanum-footer-h: clamp(4.65rem, 8.25svh, 5.15rem);
+  --arcanum-footer-lift: max(0.42rem, var(--arcanum-safe-bottom), var(--arcanum-android-nav-clearance));
+  --arcanum-footer-clearance: calc(var(--arcanum-footer-lift) + 0.72rem);
   --arcanum-main-top: calc(var(--arcanum-status-h) + var(--arcanum-header-h));
   --arcanum-main-bottom: calc(var(--arcanum-footer-h) + var(--arcanum-footer-clearance));
 }
@@ -38,17 +38,18 @@ body {
   min-height: var(--arcanum-locked-vh);
   max-height: var(--arcanum-locked-vh);
   background:
-    radial-gradient(circle at 14% 18%, rgba(246,196,83,.52) 0 1.5px, transparent 2.7px),
-    radial-gradient(circle at 82% 12%, rgba(125,190,255,.50) 0 1.5px, transparent 2.7px),
-    radial-gradient(circle at 72% 78%, rgba(246,196,83,.42) 0 1.4px, transparent 2.5px),
-    radial-gradient(circle at 28% 72%, rgba(165,120,255,.42) 0 1.4px, transparent 2.5px),
-    linear-gradient(115deg, transparent 0 28%, rgba(125,190,255,.18) 28.2% 28.45%, transparent 28.75% 100%),
-    linear-gradient(42deg, transparent 0 58%, rgba(246,196,83,.16) 58.1% 58.35%, transparent 58.7% 100%),
-    radial-gradient(circle at 50% -10%, rgba(50,90,180,.42), transparent 44%),
-    radial-gradient(circle at 50% 115%, rgba(246,196,83,.18), transparent 48%),
+    radial-gradient(circle at 14% 18%, rgba(246,196,83,.56) 0 1.5px, transparent 2.7px),
+    radial-gradient(circle at 82% 12%, rgba(125,190,255,.54) 0 1.5px, transparent 2.7px),
+    radial-gradient(circle at 72% 78%, rgba(246,196,83,.46) 0 1.4px, transparent 2.5px),
+    radial-gradient(circle at 28% 72%, rgba(165,120,255,.46) 0 1.4px, transparent 2.5px),
+    linear-gradient(115deg, transparent 0 25%, rgba(125,190,255,.22) 25.2% 25.48%, transparent 25.8% 100%),
+    linear-gradient(42deg, transparent 0 60%, rgba(246,196,83,.20) 60.1% 60.38%, transparent 60.7% 100%),
+    linear-gradient(152deg, transparent 0 42%, rgba(165,120,255,.13) 42.1% 42.32%, transparent 42.7% 100%),
+    radial-gradient(circle at 50% -10%, rgba(50,90,180,.46), transparent 44%),
+    radial-gradient(circle at 50% 115%, rgba(246,196,83,.22), transparent 48%),
     #000;
-  background-size: 7.5rem 7.5rem, 9rem 9rem, 12rem 12rem, 15rem 15rem, auto, auto, auto, auto, auto;
-  animation: arcanum-stars-drift 26s linear infinite, arcanum-starfield-tone 8s ease-in-out infinite;
+  background-size: 7.25rem 7.25rem, 8.6rem 8.6rem, 11.6rem 11.6rem, 14.5rem 14.5rem, auto, auto, auto, auto, auto, auto;
+  animation: arcanum-stars-drift 23s linear infinite, arcanum-starfield-tone 7s ease-in-out infinite;
 }
 
 .arcanum-app-main {
@@ -82,10 +83,10 @@ body {
 
 @keyframes arcanum-stars-drift {
   from {
-    background-position: 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0;
+    background-position: 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0;
   }
   to {
-    background-position: 42px -54px, -48px 38px, 38px 46px, -34px -40px, 0 0, 0 0, 0 0, 0 0, 0 0;
+    background-position: 48px -60px, -54px 42px, 44px 52px, -40px -48px, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0;
   }
 }
 
@@ -94,16 +95,16 @@ body {
     filter: saturate(1) brightness(1);
   }
   50% {
-    filter: saturate(1.22) brightness(1.08);
+    filter: saturate(1.28) brightness(1.1);
   }
 }
 
 @keyframes arcanum-constellation-breathe {
   0%, 100% {
-    opacity: .62;
+    opacity: .68;
   }
   50% {
-    opacity: .98;
+    opacity: 1;
   }
 }
 
@@ -114,11 +115,12 @@ body {
   z-index: 0;
   pointer-events: none;
   background:
-    linear-gradient(115deg, transparent 0 18%, rgba(125,190,255,.20) 18.1% 18.35%, transparent 18.7% 100%),
-    linear-gradient(64deg, transparent 0 72%, rgba(246,196,83,.18) 72.1% 72.35%, transparent 72.7% 100%),
-    radial-gradient(circle at 20% 22%, rgba(246,196,83,.20), transparent 22%),
-    radial-gradient(circle at 78% 30%, rgba(125,190,255,.20), transparent 24%);
-  animation: arcanum-constellation-breathe 5.2s ease-in-out infinite;
+    linear-gradient(115deg, transparent 0 18%, rgba(125,190,255,.24) 18.1% 18.42%, transparent 18.78% 100%),
+    linear-gradient(64deg, transparent 0 72%, rgba(246,196,83,.22) 72.1% 72.42%, transparent 72.78% 100%),
+    linear-gradient(32deg, transparent 0 48%, rgba(165,120,255,.14) 48.1% 48.34%, transparent 48.7% 100%),
+    radial-gradient(circle at 20% 22%, rgba(246,196,83,.24), transparent 24%),
+    radial-gradient(circle at 78% 30%, rgba(125,190,255,.24), transparent 26%);
+  animation: arcanum-constellation-breathe 4.6s ease-in-out infinite;
 }
 
 .arcanum-app-shell::after {
@@ -127,7 +129,7 @@ body {
   inset: 0;
   z-index: 0;
   pointer-events: none;
-  background: radial-gradient(circle at center, transparent 0 40%, rgba(0,0,0,.32) 78%, rgba(0,0,0,.64) 100%);
+  background: radial-gradient(circle at center, transparent 0 40%, rgba(0,0,0,.30) 78%, rgba(0,0,0,.60) 100%);
 }
 
 @keyframes arcanum-card-in-next {
@@ -181,12 +183,12 @@ body {
 
 @keyframes arcanum-edge-stars {
   0%, 100% {
-    opacity: .44;
-    filter: drop-shadow(0 0 3px rgba(246,196,83,.34));
+    opacity: .48;
+    filter: drop-shadow(0 0 4px rgba(246,196,83,.38));
   }
   50% {
-    opacity: .84;
-    filter: drop-shadow(0 0 9px rgba(125,190,255,.44));
+    opacity: .9;
+    filter: drop-shadow(0 0 10px rgba(125,190,255,.50));
   }
 }
 
