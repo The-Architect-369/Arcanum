@@ -21,11 +21,12 @@ export default function SwipeRoutes({
   const locked = useRef<'h' | 'v' | null>(null);
   const previousIndex = useRef<number>(order.indexOf(pathname));
   const releaseTimer = useRef<number | null>(null);
+  const navigating = useRef(false);
 
   const H = 30;
   const SLOPE = 1.22;
-  const MAX_PULL = 16;
-  const RELEASE_MS = 150;
+  const MAX_PULL = 20;
+  const RELEASE_MS = 110;
 
   useEffect(() => {
     const idx = order.indexOf(pathname);
@@ -36,6 +37,7 @@ export default function SwipeRoutes({
     }
 
     previousIndex.current = idx;
+    navigating.current = false;
   }, [order, pathname]);
 
   useEffect(() => {
@@ -59,17 +61,18 @@ export default function SwipeRoutes({
   const setPull = (px: number, transition = false) => {
     const el = shellRef.current;
     if (!el) return;
-    el.style.transition = transition ? `transform ${RELEASE_MS}ms cubic-bezier(.16,.84,.24,1), opacity ${RELEASE_MS}ms ease-out` : 'none';
+    el.style.transition = transition ? `transform ${RELEASE_MS}ms cubic-bezier(.2,.78,.24,1), opacity ${RELEASE_MS}ms ease-out` : 'none';
     el.style.transform = `translate3d(${px}px, 0, 0)`;
-    el.style.opacity = px === 0 ? '1' : '0.988';
+    el.style.opacity = px === 0 ? '1' : '0.99';
   };
 
   const resetPull = () => {
     setPull(0, true);
-    window.setTimeout(clearPullStyles, RELEASE_MS + 40);
+    window.setTimeout(clearPullStyles, RELEASE_MS + 30);
   };
 
   const onTouchStart = (e: React.TouchEvent) => {
+    if (navigating.current) return;
     if (releaseTimer.current) window.clearTimeout(releaseTimer.current);
     const t = e.touches[0];
     start.current = { x: t.clientX, y: t.clientY };
@@ -78,7 +81,7 @@ export default function SwipeRoutes({
   };
 
   const onTouchMove = (e: React.TouchEvent) => {
-    if (!start.current) return;
+    if (!start.current || navigating.current) return;
     const t = e.touches[0];
     const dx = t.clientX - start.current.x;
     const dy = t.clientY - start.current.y;
@@ -93,13 +96,13 @@ export default function SwipeRoutes({
 
     if (locked.current === 'h') {
       e.preventDefault();
-      const eased = Math.max(-MAX_PULL, Math.min(MAX_PULL, dx * 0.09));
+      const eased = Math.max(-MAX_PULL, Math.min(MAX_PULL, dx * 0.1));
       setPull(eased);
     }
   };
 
   const onTouchEnd = (e: React.TouchEvent) => {
-    if (!start.current) return;
+    if (!start.current || navigating.current) return;
     const t = e.changedTouches[0];
     const dx = t.clientX - start.current.x;
     const dy = t.clientY - start.current.y;
@@ -128,8 +131,9 @@ export default function SwipeRoutes({
 
     const direction = next ? 'next' : 'prev';
     const target = next ? order[idx + 1] : order[idx - 1];
+    navigating.current = true;
     document.documentElement.dataset.cardDirection = direction;
-    setPull(next ? -MAX_PULL : MAX_PULL, true);
+    setPull(0, true);
 
     releaseTimer.current = window.setTimeout(() => {
       clearPullStyles();
