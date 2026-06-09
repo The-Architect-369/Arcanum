@@ -22,10 +22,10 @@ export default function SwipeRoutes({
   const previousIndex = useRef<number>(order.indexOf(pathname));
   const releaseTimer = useRef<number | null>(null);
 
-  const H = 28;
-  const SLOPE = 1.18;
-  const MAX_PULL = 18;
-  const RELEASE_MS = 120;
+  const H = 30;
+  const SLOPE = 1.22;
+  const MAX_PULL = 16;
+  const RELEASE_MS = 150;
 
   useEffect(() => {
     const idx = order.indexOf(pathname);
@@ -48,23 +48,25 @@ export default function SwipeRoutes({
     };
   }, []);
 
+  const clearPullStyles = () => {
+    const el = shellRef.current;
+    if (!el) return;
+    el.style.transition = '';
+    el.style.transform = '';
+    el.style.opacity = '';
+  };
+
   const setPull = (px: number, transition = false) => {
     const el = shellRef.current;
     if (!el) return;
-    el.style.transition = transition ? `transform ${RELEASE_MS}ms cubic-bezier(.18,.82,.24,1), opacity ${RELEASE_MS}ms ease-out` : 'none';
+    el.style.transition = transition ? `transform ${RELEASE_MS}ms cubic-bezier(.16,.84,.24,1), opacity ${RELEASE_MS}ms ease-out` : 'none';
     el.style.transform = `translate3d(${px}px, 0, 0)`;
-    el.style.opacity = px === 0 ? '1' : '0.986';
+    el.style.opacity = px === 0 ? '1' : '0.988';
   };
 
   const resetPull = () => {
     setPull(0, true);
-    window.setTimeout(() => {
-      const el = shellRef.current;
-      if (!el) return;
-      el.style.transition = '';
-      el.style.transform = '';
-      el.style.opacity = '';
-    }, RELEASE_MS + 40);
+    window.setTimeout(clearPullStyles, RELEASE_MS + 40);
   };
 
   const onTouchStart = (e: React.TouchEvent) => {
@@ -91,7 +93,7 @@ export default function SwipeRoutes({
 
     if (locked.current === 'h') {
       e.preventDefault();
-      const eased = Math.max(-MAX_PULL, Math.min(MAX_PULL, dx * 0.12));
+      const eased = Math.max(-MAX_PULL, Math.min(MAX_PULL, dx * 0.09));
       setPull(eased);
     }
   };
@@ -130,8 +132,8 @@ export default function SwipeRoutes({
     setPull(next ? -MAX_PULL : MAX_PULL, true);
 
     releaseTimer.current = window.setTimeout(() => {
+      clearPullStyles();
       router.push(target);
-      resetPull();
     }, RELEASE_MS);
   };
 
