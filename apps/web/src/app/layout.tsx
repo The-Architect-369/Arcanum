@@ -30,12 +30,12 @@ export const metadata: Metadata = {
     "apple-mobile-web-app-status-bar-style": "black-translucent",
     "msapplication-navbutton-color": "#000000",
     "msapplication-TileColor": "#000000",
-    "theme-color": "#000000",
+    "theme-color": "rgba(0,0,0,0)",
   },
 };
 
 export const viewport: Viewport = {
-  themeColor: "#000000",
+  themeColor: "rgba(0,0,0,0)",
   colorScheme: "dark",
   viewportFit: "cover",
   width: "device-width",
