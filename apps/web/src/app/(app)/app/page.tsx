@@ -7,9 +7,7 @@ export default function AppEntryPage() {
   const router = useRouter();
 
   useEffect(() => {
-    const initialized = window.localStorage.getItem("ARCANUM_NODE_INITIALIZED");
-    const nextPath = initialized ? "/hope/reflection" : "/activate";
-    router.replace(nextPath);
+    router.replace("/hope/reflection");
   }, [router]);
 
   return null;
