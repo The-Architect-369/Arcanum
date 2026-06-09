@@ -31,8 +31,8 @@ export default function AppFooter() {
     TABS.forEach((tab) => router.prefetch(tab.href));
   }, [router]);
 
-  const isActive = (root: string) =>
-    pathname === root || pathname.startsWith(root + '/');
+  const isActive = (tab: Tab) =>
+    pathname === tab.root || pathname.startsWith(tab.root + '/') || (pathname === '/app' && tab.module === 'hope');
 
   const primeTransition = (tab: Tab, active: boolean) => {
     router.prefetch(tab.href);
@@ -42,13 +42,13 @@ export default function AppFooter() {
 
   return (
     <nav
-      className="arcanum-app-footer absolute inset-x-0 z-50 border-t border-zinc-800 bg-black/75 shadow-[0_-10px_28px_rgba(0,0,0,0.62)] backdrop-blur-md"
+      className="arcanum-app-footer fixed inset-x-0 z-50 border-t border-white/5 bg-black/78 shadow-[0_-10px_28px_rgba(0,0,0,0.62)] backdrop-blur-md"
       role="navigation"
       aria-label="Main"
     >
-      <div className="arcanum-app-footer-row mx-auto grid max-w-5xl grid-cols-5">
+      <div className="arcanum-app-footer-row mx-auto grid max-w-5xl grid-cols-5 px-1.5">
         {TABS.map((t) => {
-          const active = isActive(t.root);
+          const active = isActive(t);
           return (
             <a
               key={t.href}
@@ -56,7 +56,7 @@ export default function AppFooter() {
               onPointerDown={() => primeTransition(t, active)}
               onFocus={() => router.prefetch(t.href)}
               className={cn(
-                'global-tab-link arcanum-app-footer-tab relative grid w-full place-items-center rounded-xl transition-[background,color,transform,box-shadow] duration-200 ease-out active:scale-[0.985]',
+                'global-tab-link arcanum-app-footer-tab relative grid w-full place-items-center rounded-2xl transition-[background,color,transform,box-shadow] duration-200 ease-out active:scale-[0.985]',
                 active
                   ? 'global-tab-active tile-3d-active text-amber-300'
                   : 'text-zinc-400 hover:bg-white/5 active:bg-white/10'
