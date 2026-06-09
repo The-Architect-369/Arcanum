@@ -56,10 +56,10 @@ export default function AppFooter() {
               onPointerDown={() => primeTransition(t, active)}
               onFocus={() => router.prefetch(t.href)}
               className={cn(
-                'global-tab-link arcanum-app-footer-tab relative grid w-full place-items-center rounded-2xl transition-[background,color,transform,box-shadow] duration-200 ease-out active:scale-[0.985]',
+                'global-tab-link arcanum-app-footer-tab relative grid w-full place-items-center rounded-2xl transition-[background,color,box-shadow] duration-200 ease-out active:bg-white/10',
                 active
-                  ? 'global-tab-active tile-3d-active text-amber-300'
-                  : 'text-zinc-400 hover:bg-white/5 active:bg-white/10'
+                  ? 'global-tab-active text-amber-300'
+                  : 'text-zinc-400 hover:bg-white/5'
               )}
               aria-current={active ? 'page' : undefined}
               aria-label={t.label}
