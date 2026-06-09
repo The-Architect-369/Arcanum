@@ -6,10 +6,11 @@
   --arcanum-locked-vh: 100lvh;
   --arcanum-status-h: env(safe-area-inset-top, 0px);
   --arcanum-safe-bottom: env(safe-area-inset-bottom, 0px);
+  --arcanum-android-nav-clearance: 1.15rem;
   --arcanum-header-h: 3.5rem;
   --arcanum-footer-h: 4.25rem;
-  --arcanum-footer-lift: 1.35rem;
-  --arcanum-footer-clearance: calc(max(var(--arcanum-footer-lift), var(--arcanum-safe-bottom)) + 0.75rem);
+  --arcanum-footer-lift: max(1rem, var(--arcanum-safe-bottom), var(--arcanum-android-nav-clearance));
+  --arcanum-footer-clearance: calc(var(--arcanum-footer-lift) + 0.75rem);
   --arcanum-main-top: calc(var(--arcanum-status-h) + var(--arcanum-header-h));
   --arcanum-main-bottom: calc(var(--arcanum-footer-h) + var(--arcanum-footer-clearance));
 }
@@ -69,7 +70,7 @@ body {
 }
 
 .arcanum-app-footer {
-  bottom: max(0.5rem, var(--arcanum-safe-bottom));
+  bottom: var(--arcanum-footer-lift);
   min-height: calc(var(--arcanum-footer-h) + var(--arcanum-safe-bottom));
   padding-bottom: var(--arcanum-safe-bottom);
 }
