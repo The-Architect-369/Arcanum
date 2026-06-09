@@ -28,14 +28,12 @@ export default function ViewportLock() {
     window.addEventListener('resize', lock);
     window.addEventListener('orientationchange', lock);
     window.visualViewport?.addEventListener('resize', lock);
-    window.visualViewport?.addEventListener('scroll', lock);
 
     return () => {
       if (frame) cancelAnimationFrame(frame);
       window.removeEventListener('resize', lock);
       window.removeEventListener('orientationchange', lock);
       window.visualViewport?.removeEventListener('resize', lock);
-      window.visualViewport?.removeEventListener('scroll', lock);
     };
   }, []);
 
