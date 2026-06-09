@@ -6,34 +6,40 @@ export default function ViewportLock() {
   useEffect(() => {
     const root = document.documentElement;
     let frame = 0;
+    let lockedHeight = 0;
 
-    const lock = () => {
+    const measureStableHeight = () => {
+      const screenHeight = window.screen?.availHeight;
+      const layoutHeight = window.innerHeight;
+      const visualHeight = window.visualViewport?.height;
+      const candidates = [screenHeight, layoutHeight, visualHeight]
+        .filter((value): value is number => Number.isFinite(value) && Number(value) > 0);
+
+      return Math.max(...candidates);
+    };
+
+    const lock = (force = false) => {
       if (frame) cancelAnimationFrame(frame);
 
       frame = requestAnimationFrame(() => {
-        const visualHeight = window.visualViewport?.height;
-        const layoutHeight = window.innerHeight;
-        const fallbackHeight = window.screen?.availHeight;
-        const height = [visualHeight, layoutHeight, fallbackHeight]
-          .find((value) => Number.isFinite(value) && Number(value) > 0);
+        const measured = measureStableHeight();
+        if (!measured) return;
 
-        if (!height) return;
+        if (force || !lockedHeight || Math.abs(measured - lockedHeight) > 96) {
+          lockedHeight = measured;
+          root.style.setProperty('--arcanum-locked-vh', `${Math.round(lockedHeight)}px`);
+        }
 
-        root.style.setProperty('--arcanum-locked-vh', `${Math.round(height)}px`);
         frame = 0;
       });
     };
 
-    lock();
-    window.addEventListener('resize', lock);
-    window.addEventListener('orientationchange', lock);
-    window.visualViewport?.addEventListener('resize', lock);
+    lock(true);
+    window.addEventListener('orientationchange', () => lock(true));
 
     return () => {
       if (frame) cancelAnimationFrame(frame);
-      window.removeEventListener('resize', lock);
-      window.removeEventListener('orientationchange', lock);
-      window.visualViewport?.removeEventListener('resize', lock);
+      window.removeEventListener('orientationchange', () => lock(true));
     };
   }, []);
 
