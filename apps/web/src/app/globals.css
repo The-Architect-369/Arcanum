@@ -8,7 +8,7 @@
   --arcanum-safe-bottom: env(safe-area-inset-bottom, 0px);
   --arcanum-android-nav-clearance: 0.42rem;
   --arcanum-header-h: 3.5rem;
-  --arcanum-footer-h: clamp(4.65rem, 8.25svh, 5.15rem);
+  --arcanum-footer-h: clamp(5.25rem, 9.35svh, 5.85rem);
   --arcanum-footer-lift: max(0.42rem, var(--arcanum-safe-bottom), var(--arcanum-android-nav-clearance));
   --arcanum-footer-clearance: calc(var(--arcanum-footer-lift) + 0.72rem);
   --arcanum-main-top: calc(var(--arcanum-status-h) + var(--arcanum-header-h));
@@ -72,13 +72,17 @@ body {
 
 .arcanum-app-footer {
   bottom: var(--arcanum-footer-lift);
+  height: calc(var(--arcanum-footer-h) + var(--arcanum-safe-bottom));
   min-height: calc(var(--arcanum-footer-h) + var(--arcanum-safe-bottom));
+  max-height: calc(var(--arcanum-footer-h) + var(--arcanum-safe-bottom));
   padding-bottom: var(--arcanum-safe-bottom);
 }
 
 .arcanum-app-footer-row,
 .arcanum-app-footer-tab {
   height: var(--arcanum-footer-h);
+  min-height: var(--arcanum-footer-h);
+  max-height: var(--arcanum-footer-h);
 }
 
 @keyframes arcanum-stars-drift {
