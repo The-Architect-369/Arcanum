@@ -6,10 +6,10 @@
   --arcanum-locked-vh: 100lvh;
   --arcanum-status-h: env(safe-area-inset-top, 0px);
   --arcanum-safe-bottom: env(safe-area-inset-bottom, 0px);
-  --arcanum-android-nav-clearance: 1.15rem;
+  --arcanum-android-nav-clearance: 0.72rem;
   --arcanum-header-h: 3.5rem;
   --arcanum-footer-h: 4.25rem;
-  --arcanum-footer-lift: max(1rem, var(--arcanum-safe-bottom), var(--arcanum-android-nav-clearance));
+  --arcanum-footer-lift: max(0.68rem, var(--arcanum-safe-bottom), var(--arcanum-android-nav-clearance));
   --arcanum-footer-clearance: calc(var(--arcanum-footer-lift) + 0.75rem);
   --arcanum-main-top: calc(var(--arcanum-status-h) + var(--arcanum-header-h));
   --arcanum-main-bottom: calc(var(--arcanum-footer-h) + var(--arcanum-footer-clearance));
@@ -38,17 +38,17 @@ body {
   min-height: var(--arcanum-locked-vh);
   max-height: var(--arcanum-locked-vh);
   background:
-    radial-gradient(circle at 14% 18%, rgba(246,196,83,.42) 0 1.5px, transparent 2.7px),
-    radial-gradient(circle at 82% 12%, rgba(125,190,255,.42) 0 1.5px, transparent 2.7px),
-    radial-gradient(circle at 72% 78%, rgba(246,196,83,.36) 0 1.4px, transparent 2.5px),
-    radial-gradient(circle at 28% 72%, rgba(165,120,255,.34) 0 1.4px, transparent 2.5px),
-    linear-gradient(115deg, transparent 0 28%, rgba(125,190,255,.14) 28.2% 28.45%, transparent 28.75% 100%),
-    linear-gradient(42deg, transparent 0 58%, rgba(246,196,83,.12) 58.1% 58.35%, transparent 58.7% 100%),
-    radial-gradient(circle at 50% -10%, rgba(50,90,180,.34), transparent 44%),
-    radial-gradient(circle at 50% 115%, rgba(246,196,83,.12), transparent 48%),
+    radial-gradient(circle at 14% 18%, rgba(246,196,83,.46) 0 1.5px, transparent 2.7px),
+    radial-gradient(circle at 82% 12%, rgba(125,190,255,.44) 0 1.5px, transparent 2.7px),
+    radial-gradient(circle at 72% 78%, rgba(246,196,83,.38) 0 1.4px, transparent 2.5px),
+    radial-gradient(circle at 28% 72%, rgba(165,120,255,.36) 0 1.4px, transparent 2.5px),
+    linear-gradient(115deg, transparent 0 28%, rgba(125,190,255,.15) 28.2% 28.45%, transparent 28.75% 100%),
+    linear-gradient(42deg, transparent 0 58%, rgba(246,196,83,.13) 58.1% 58.35%, transparent 58.7% 100%),
+    radial-gradient(circle at 50% -10%, rgba(50,90,180,.36), transparent 44%),
+    radial-gradient(circle at 50% 115%, rgba(246,196,83,.14), transparent 48%),
     #000;
   background-size: 8rem 8rem, 10rem 10rem, 13rem 13rem, 16rem 16rem, auto, auto, auto, auto, auto;
-  animation: arcanum-stars-drift 46s linear infinite;
+  animation: arcanum-stars-drift 34s linear infinite, arcanum-starfield-tone 12s ease-in-out infinite;
 }
 
 .arcanum-app-main {
@@ -85,16 +85,25 @@ body {
     background-position: 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0;
   }
   to {
-    background-position: 26px -34px, -30px 24px, 22px 28px, -18px -24px, 0 0, 0 0, 0 0, 0 0, 0 0;
+    background-position: 32px -42px, -38px 30px, 28px 34px, -24px -30px, 0 0, 0 0, 0 0, 0 0, 0 0;
+  }
+}
+
+@keyframes arcanum-starfield-tone {
+  0%, 100% {
+    filter: saturate(1) brightness(1);
+  }
+  50% {
+    filter: saturate(1.13) brightness(1.05);
   }
 }
 
 @keyframes arcanum-constellation-breathe {
   0%, 100% {
-    opacity: .62;
+    opacity: .58;
   }
   50% {
-    opacity: .95;
+    opacity: .92;
   }
 }
 
@@ -105,11 +114,11 @@ body {
   z-index: 0;
   pointer-events: none;
   background:
-    linear-gradient(115deg, transparent 0 18%, rgba(125,190,255,.16) 18.1% 18.35%, transparent 18.7% 100%),
-    linear-gradient(64deg, transparent 0 72%, rgba(246,196,83,.14) 72.1% 72.35%, transparent 72.7% 100%),
-    radial-gradient(circle at 20% 22%, rgba(246,196,83,.16), transparent 22%),
-    radial-gradient(circle at 78% 30%, rgba(125,190,255,.16), transparent 24%);
-  animation: arcanum-constellation-breathe 8s ease-in-out infinite;
+    linear-gradient(115deg, transparent 0 18%, rgba(125,190,255,.17) 18.1% 18.35%, transparent 18.7% 100%),
+    linear-gradient(64deg, transparent 0 72%, rgba(246,196,83,.15) 72.1% 72.35%, transparent 72.7% 100%),
+    radial-gradient(circle at 20% 22%, rgba(246,196,83,.17), transparent 22%),
+    radial-gradient(circle at 78% 30%, rgba(125,190,255,.17), transparent 24%);
+  animation: arcanum-constellation-breathe 6.5s ease-in-out infinite;
 }
 
 .arcanum-app-shell::after {
@@ -124,8 +133,8 @@ body {
 @keyframes arcanum-card-in-next {
   from {
     opacity: 0;
-    transform: translate3d(7%, 0, 0) scale(0.99);
-    filter: saturate(0.92) brightness(0.93);
+    transform: translate3d(5%, 0, 0) scale(0.992);
+    filter: saturate(0.96) brightness(0.96);
   }
   to {
     opacity: 1;
@@ -137,8 +146,8 @@ body {
 @keyframes arcanum-card-in-prev {
   from {
     opacity: 0;
-    transform: translate3d(-7%, 0, 0) scale(0.99);
-    filter: saturate(0.92) brightness(0.93);
+    transform: translate3d(-5%, 0, 0) scale(0.992);
+    filter: saturate(0.96) brightness(0.96);
   }
   to {
     opacity: 1;
@@ -153,10 +162,10 @@ body {
     transform: translateX(-38%) skewX(-14deg);
   }
   45% {
-    opacity: 0.9;
+    opacity: 0.7;
   }
   to {
-    opacity: 0.2;
+    opacity: 0.12;
     transform: translateX(38%) skewX(-14deg);
   }
 }
@@ -172,23 +181,23 @@ body {
 
 @keyframes arcanum-edge-stars {
   0%, 100% {
-    opacity: .46;
-    filter: drop-shadow(0 0 3px rgba(246,196,83,.35));
+    opacity: .42;
+    filter: drop-shadow(0 0 3px rgba(246,196,83,.32));
   }
   50% {
-    opacity: .86;
-    filter: drop-shadow(0 0 8px rgba(125,190,255,.42));
+    opacity: .76;
+    filter: drop-shadow(0 0 8px rgba(125,190,255,.38));
   }
 }
 
 @keyframes arcanum-tab-pulse {
   0%, 100% {
     opacity: 1;
-    box-shadow: 0 0 12px rgba(246,196,83,.95), 0 0 26px rgba(125,190,255,.42), inset 0 0 6px rgba(255,255,255,.52);
+    box-shadow: 0 0 12px rgba(246,196,83,.75), 0 0 24px rgba(125,190,255,.32), inset 0 0 6px rgba(255,255,255,.38);
   }
   50% {
-    opacity: .88;
-    box-shadow: 0 0 22px rgba(246,196,83,1), 0 0 42px rgba(125,190,255,.62), inset 0 0 10px rgba(255,255,255,.78);
+    opacity: .9;
+    box-shadow: 0 0 20px rgba(246,196,83,.9), 0 0 38px rgba(125,190,255,.48), inset 0 0 9px rgba(255,255,255,.58);
   }
 }
 
