@@ -33,24 +33,24 @@ export default function PanelShell({
         className
       )}
     >
-      <div className="relative h-full min-h-0 rounded-[2rem] bg-[radial-gradient(circle_at_15%_10%,rgba(246,196,83,.75),transparent_20%),radial-gradient(circle_at_85%_18%,rgba(115,180,255,.7),transparent_22%),linear-gradient(135deg,rgba(246,196,83,.85),rgba(120,180,255,.55),rgba(180,100,255,.4))] p-[2px] shadow-[0_0_42px_rgba(120,180,255,0.24),0_0_26px_rgba(246,196,83,0.14)]">
-        <div className="absolute inset-[2px] rounded-[calc(2rem-2px)] bg-[radial-gradient(circle_at_20%_20%,rgba(255,255,255,.18)_0_1px,transparent_1.5px),radial-gradient(circle_at_70%_30%,rgba(246,196,83,.22)_0_1px,transparent_1.5px),radial-gradient(circle_at_35%_75%,rgba(115,180,255,.2)_0_1px,transparent_1.5px)] opacity-80" aria-hidden="true" />
+      <div className="relative h-full min-h-0 rounded-[2rem] bg-[radial-gradient(circle_at_16%_10%,rgba(246,196,83,.42),transparent_28%),radial-gradient(circle_at_84%_18%,rgba(115,180,255,.36),transparent_30%),linear-gradient(135deg,rgba(246,196,83,.38),rgba(120,180,255,.26),rgba(180,100,255,.18))] p-px shadow-[0_0_34px_rgba(120,180,255,0.16),0_0_22px_rgba(246,196,83,0.10)]">
+        <div className="absolute inset-px rounded-[calc(2rem-1px)] bg-[radial-gradient(circle_at_20%_20%,rgba(255,255,255,.12)_0_1px,transparent_1.5px),radial-gradient(circle_at_70%_30%,rgba(246,196,83,.14)_0_1px,transparent_1.5px),radial-gradient(circle_at_35%_75%,rgba(115,180,255,.12)_0_1px,transparent_1.5px)] opacity-55" aria-hidden="true" />
         <div
           className={cn(
             'tile-3d relative z-10',
             'flex h-full min-h-0 flex-col overflow-hidden',
-            'rounded-[calc(2rem-3px)] border border-white/10',
-            'bg-[rgba(6,8,18,0.72)] backdrop-blur-xl',
-            'shadow-[0_16px_48px_rgba(0,0,0,0.62),inset_0_0_55px_rgba(80,130,255,0.10),inset_0_0_20px_rgba(246,196,83,0.06)]'
+            'rounded-[calc(2rem-2px)] border border-white/[0.06]',
+            'bg-[rgba(6,8,18,0.76)] backdrop-blur-xl',
+            'shadow-[0_16px_44px_rgba(0,0,0,0.58),inset_0_0_44px_rgba(80,130,255,0.08),inset_0_0_18px_rgba(246,196,83,0.045)]'
           )}
         >
-          <div className="card-transition-sheen pointer-events-none absolute inset-0 rounded-[calc(2rem-3px)] bg-[linear-gradient(120deg,rgba(255,255,255,.16),transparent_24%,rgba(120,180,255,.08)_45%,transparent_62%,rgba(246,196,83,.12))] opacity-70" aria-hidden="true" />
-          <div className="pointer-events-none absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-amber-200/70 to-transparent" aria-hidden="true" />
+          <div className="card-transition-sheen pointer-events-none absolute inset-0 rounded-[calc(2rem-2px)] bg-[linear-gradient(120deg,rgba(255,255,255,.10),transparent_26%,rgba(120,180,255,.055)_46%,transparent_64%,rgba(246,196,83,.08))] opacity-55" aria-hidden="true" />
+          <div className="pointer-events-none absolute inset-x-10 top-0 h-px bg-gradient-to-r from-transparent via-amber-200/45 to-transparent" aria-hidden="true" />
 
           {(title || actions) && (
             <div
               className={cn(
-                'relative z-10 shrink-0 flex items-center gap-3 border-b border-white/10 bg-black/10',
+                'relative z-10 shrink-0 flex items-center gap-3 border-b border-white/[0.07] bg-black/10',
                 noPadding ? 'px-0 py-0' : 'px-4 sm:px-6 py-3'
               )}
             >
@@ -70,9 +70,9 @@ export default function PanelShell({
           )}
 
           {tabs && (
-            <div className="relative z-10 shrink-0 border-b border-white/10 bg-black/10 px-4 py-3 sm:px-6">
+            <div className="relative z-10 shrink-0 border-b border-white/[0.07] bg-black/10 px-4 py-3 sm:px-6">
               <div className="flex justify-center">
-                <div className="rounded-full border border-white/10 bg-black/35 px-2 py-1.5 shadow-[0_0_18px_rgba(0,0,0,0.45)] backdrop-blur-md">
+                <div className="rounded-full border border-white/[0.07] bg-black/30 px-2 py-1.5 shadow-[0_0_16px_rgba(0,0,0,0.38)] backdrop-blur-md">
                   {tabs}
                 </div>
               </div>
@@ -106,7 +106,7 @@ export function PanelSection({
   return (
     <section className={cn('mb-6 last:mb-0', className)}>
       {title && <div className="mb-2 text-sm font-semibold tracking-wide text-zinc-300">{title}</div>}
-      <div className="rounded-xl border border-white/10 bg-white/[0.03] p-3">
+      <div className="rounded-xl border border-white/[0.07] bg-white/[0.025] p-3">
         {children}
       </div>
     </section>
