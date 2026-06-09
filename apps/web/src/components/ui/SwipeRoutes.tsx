@@ -23,9 +23,9 @@ export default function SwipeRoutes({
   const releaseTimer = useRef<number | null>(null);
 
   const H = 28;
-  const SLOPE = 1.2;
-  const MAX_PULL = 14;
-  const RELEASE_MS = 70;
+  const SLOPE = 1.18;
+  const MAX_PULL = 18;
+  const RELEASE_MS = 120;
 
   useEffect(() => {
     const idx = order.indexOf(pathname);
@@ -39,6 +39,10 @@ export default function SwipeRoutes({
   }, [order, pathname]);
 
   useEffect(() => {
+    order.forEach((href) => router.prefetch(href));
+  }, [order, router]);
+
+  useEffect(() => {
     return () => {
       if (releaseTimer.current) window.clearTimeout(releaseTimer.current);
     };
@@ -47,9 +51,9 @@ export default function SwipeRoutes({
   const setPull = (px: number, transition = false) => {
     const el = shellRef.current;
     if (!el) return;
-    el.style.transition = transition ? `transform ${RELEASE_MS}ms ease-out, opacity ${RELEASE_MS}ms ease-out` : 'none';
+    el.style.transition = transition ? `transform ${RELEASE_MS}ms cubic-bezier(.18,.82,.24,1), opacity ${RELEASE_MS}ms ease-out` : 'none';
     el.style.transform = `translate3d(${px}px, 0, 0)`;
-    el.style.opacity = px === 0 ? '1' : '0.992';
+    el.style.opacity = px === 0 ? '1' : '0.986';
   };
 
   const resetPull = () => {
@@ -60,7 +64,7 @@ export default function SwipeRoutes({
       el.style.transition = '';
       el.style.transform = '';
       el.style.opacity = '';
-    }, RELEASE_MS + 20);
+    }, RELEASE_MS + 40);
   };
 
   const onTouchStart = (e: React.TouchEvent) => {
@@ -87,7 +91,7 @@ export default function SwipeRoutes({
 
     if (locked.current === 'h') {
       e.preventDefault();
-      const eased = Math.max(-MAX_PULL, Math.min(MAX_PULL, dx * 0.1));
+      const eased = Math.max(-MAX_PULL, Math.min(MAX_PULL, dx * 0.12));
       setPull(eased);
     }
   };
