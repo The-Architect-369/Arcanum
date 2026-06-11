@@ -21,11 +21,12 @@ export default function SwipeRoutes({
   const locked = useRef<'h' | 'v' | null>(null);
   const previousIndex = useRef<number>(order.indexOf(pathname));
   const navigating = useRef(false);
+  const releaseTimer = useRef<number | null>(null);
 
-  const H = 30;
-  const SLOPE = 1.22;
-  const MAX_PULL = 16;
-  const RELEASE_MS = 90;
+  const H = 26;
+  const SLOPE = 1.18;
+  const MAX_PULL = 28;
+  const RELEASE_MS = 84;
 
   useEffect(() => {
     const idx = order.indexOf(pathname);
@@ -44,6 +45,12 @@ export default function SwipeRoutes({
     order.forEach((href) => router.prefetch(href));
   }, [order, router]);
 
+  useEffect(() => {
+    return () => {
+      if (releaseTimer.current) window.clearTimeout(releaseTimer.current);
+    };
+  }, []);
+
   const clearPullStyles = () => {
     const el = shellRef.current;
     if (!el) return;
@@ -55,7 +62,7 @@ export default function SwipeRoutes({
   const setPull = (px: number, transition = false) => {
     const el = shellRef.current;
     if (!el) return;
-    el.style.transition = transition ? `transform ${RELEASE_MS}ms cubic-bezier(.22,.68,.18,1)` : 'none';
+    el.style.transition = transition ? `transform ${RELEASE_MS}ms cubic-bezier(.22,.72,.18,1)` : 'none';
     el.style.transform = `translate3d(${px}px, 0, 0)`;
     el.style.opacity = '1';
   };
@@ -67,6 +74,7 @@ export default function SwipeRoutes({
 
   const onTouchStart = (e: React.TouchEvent) => {
     if (navigating.current) return;
+    if (releaseTimer.current) window.clearTimeout(releaseTimer.current);
     const t = e.touches[0];
     start.current = { x: t.clientX, y: t.clientY };
     locked.current = null;
@@ -89,7 +97,7 @@ export default function SwipeRoutes({
 
     if (locked.current === 'h') {
       e.preventDefault();
-      const eased = Math.max(-MAX_PULL, Math.min(MAX_PULL, dx * 0.085));
+      const eased = Math.max(-MAX_PULL, Math.min(MAX_PULL, dx * 0.14));
       setPull(eased);
     }
   };
@@ -126,7 +134,11 @@ export default function SwipeRoutes({
     const target = next ? order[idx + 1] : order[idx - 1];
     navigating.current = true;
     document.documentElement.dataset.cardDirection = direction;
-    router.push(target);
+    setPull(next ? -MAX_PULL : MAX_PULL, true);
+
+    releaseTimer.current = window.setTimeout(() => {
+      router.push(target);
+    }, RELEASE_MS);
   };
 
   return (
