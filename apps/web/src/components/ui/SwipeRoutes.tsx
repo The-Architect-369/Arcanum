@@ -2,6 +2,7 @@
 
 import { usePathname, useRouter } from 'next/navigation';
 import { useEffect, useRef } from 'react';
+import { directionForRoute, primeRouteMotion } from '@/lib/mobile/routeMotion';
 
 /**
  * Wrap page content to enable horizontal swipe navigation across an ordered set of hrefs.
@@ -19,7 +20,7 @@ export default function SwipeRoutes({
   const shellRef = useRef<HTMLDivElement | null>(null);
   const start = useRef<{ x: number; y: number } | null>(null);
   const locked = useRef<'h' | 'v' | null>(null);
-  const previousIndex = useRef<number>(order.indexOf(pathname));
+  const previousPathname = useRef<string>(pathname);
   const navigating = useRef(false);
   const releaseTimer = useRef<number | null>(null);
 
@@ -29,17 +30,16 @@ export default function SwipeRoutes({
   const RELEASE_MS = 56;
 
   useEffect(() => {
-    const idx = order.indexOf(pathname);
-    const prev = previousIndex.current;
+    const prev = previousPathname.current;
 
-    if (idx !== -1 && prev !== -1 && idx !== prev) {
-      document.documentElement.dataset.cardDirection = idx > prev ? 'next' : 'prev';
+    if (pathname !== prev) {
+      document.documentElement.dataset.cardDirection = directionForRoute(prev, pathname);
     }
 
-    previousIndex.current = idx;
+    previousPathname.current = pathname;
     navigating.current = false;
     clearPullStyles();
-  }, [order, pathname]);
+  }, [pathname]);
 
   useEffect(() => {
     order.forEach((href) => router.prefetch(href));
@@ -130,10 +130,9 @@ export default function SwipeRoutes({
       return;
     }
 
-    const direction = next ? 'next' : 'prev';
     const target = next ? order[idx + 1] : order[idx - 1];
     navigating.current = true;
-    document.documentElement.dataset.cardDirection = direction;
+    primeRouteMotion(pathname, target);
     setPull(next ? -MAX_PULL : MAX_PULL, true);
 
     releaseTimer.current = window.setTimeout(() => {
