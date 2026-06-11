@@ -34,10 +34,8 @@ export default function AppFooter() {
   const isActive = (tab: Tab) =>
     pathname === tab.root || pathname.startsWith(tab.root + '/') || (pathname === '/app' && tab.module === 'hope');
 
-  const primeTransition = (tab: Tab, active: boolean) => {
+  const primeTransition = (tab: Tab) => {
     router.prefetch(tab.href);
-    if (active) return;
-    window.dispatchEvent(new CustomEvent('arcanum:module-reveal', { detail: { module: tab.module } }));
   };
 
   return (
@@ -53,7 +51,7 @@ export default function AppFooter() {
             <a
               key={t.href}
               href={t.href}
-              onPointerDown={() => primeTransition(t, active)}
+              onPointerDown={() => primeTransition(t)}
               onFocus={() => router.prefetch(t.href)}
               className={cn(
                 'global-tab-link arcanum-app-footer-tab relative grid w-full place-items-center rounded-2xl transition-[background,color,box-shadow] duration-150 ease-out',
