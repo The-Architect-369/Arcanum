@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import { BookMarked, Wallet, Globe, Clock, UserRound } from 'lucide-react';
 import { cn } from '@/lib/cn';
+import { primeRouteMotion } from '@/lib/mobile/routeMotion';
 
 type Tab = {
   label: string;
@@ -38,7 +39,10 @@ export default function AppFooter() {
 
   const go = (tab: Tab, active: boolean) => {
     router.prefetch(tab.href);
-    if (!active) router.push(tab.href);
+    if (!active) {
+      primeRouteMotion(pathname, tab.href);
+      router.push(tab.href);
+    }
   };
 
   return (
