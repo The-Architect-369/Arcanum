@@ -24,10 +24,10 @@ export default function SwipeRoutes({
   const navigating = useRef(false);
   const releaseTimer = useRef<number | null>(null);
 
-  const H = 14;
-  const SLOPE = 1.04;
-  const MAX_PULL = 56;
-  const RELEASE_MS = 56;
+  const H = 10;
+  const SLOPE = 1.02;
+  const MAX_PULL = 92;
+  const RELEASE_MS = 52;
 
   useEffect(() => {
     const prev = previousPathname.current;
@@ -62,7 +62,7 @@ export default function SwipeRoutes({
   const setPull = (px: number, transition = false) => {
     const el = shellRef.current;
     if (!el) return;
-    el.style.transition = transition ? `transform ${RELEASE_MS}ms cubic-bezier(.12,.78,.16,1)` : 'none';
+    el.style.transition = transition ? `transform ${RELEASE_MS}ms cubic-bezier(.1,.82,.14,1)` : 'none';
     el.style.transform = `translate3d(${px}px, 0, 0)`;
     el.style.opacity = '1';
   };
@@ -97,7 +97,7 @@ export default function SwipeRoutes({
 
     if (locked.current === 'h') {
       e.preventDefault();
-      const eased = Math.max(-MAX_PULL, Math.min(MAX_PULL, dx * 0.3));
+      const eased = Math.max(-MAX_PULL, Math.min(MAX_PULL, dx * 0.48));
       setPull(eased);
     }
   };
