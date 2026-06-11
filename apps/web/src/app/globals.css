@@ -9,7 +9,7 @@
   --arcanum-android-nav-clearance: 1.72rem;
   --arcanum-header-content-h: 3.05rem;
   --arcanum-header-h: calc(var(--arcanum-status-h) + var(--arcanum-header-content-h));
-  --arcanum-footer-h: 4.55rem;
+  --arcanum-footer-h: 4.75rem;
   --arcanum-footer-lift: max(1.72rem, var(--arcanum-safe-bottom), var(--arcanum-android-nav-clearance));
   --arcanum-footer-clearance: calc(var(--arcanum-footer-lift) + 0.66rem);
   --arcanum-main-top: var(--arcanum-header-h);
@@ -85,12 +85,34 @@ body {
   will-change: auto;
 }
 
+.arcanum-app-footer,
+.arcanum-app-footer * {
+  -webkit-tap-highlight-color: transparent;
+}
+
 .arcanum-app-footer-row,
 .arcanum-app-footer-tab {
   box-sizing: border-box;
   height: var(--arcanum-footer-h);
   min-height: var(--arcanum-footer-h);
   max-height: var(--arcanum-footer-h);
+}
+
+.arcanum-app-footer-tab,
+.arcanum-app-footer-tab:active,
+.arcanum-app-footer-tab:focus,
+.arcanum-app-footer-tab:focus-visible {
+  transform: translate3d(0, 0, 0) !important;
+  transition-property: background, color, box-shadow !important;
+}
+
+.arcanum-app-footer .global-tab-icon {
+  animation: none !important;
+  transform: translate3d(0, 0, 0) !important;
+}
+
+.arcanum-app-footer .global-tab-link:active::before {
+  opacity: 0 !important;
 }
 
 @keyframes arcanum-stars-drift {
