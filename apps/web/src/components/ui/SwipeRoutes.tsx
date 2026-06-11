@@ -125,7 +125,6 @@ export default function SwipeRoutes({
     const target = next ? order[idx + 1] : order[idx - 1];
     navigating.current = true;
     primeRouteMotion(pathname, target);
-    clearPullStyles();
     router.push(target);
   };
 
