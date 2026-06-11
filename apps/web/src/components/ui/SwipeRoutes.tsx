@@ -22,12 +22,11 @@ export default function SwipeRoutes({
   const locked = useRef<'h' | 'v' | null>(null);
   const previousPathname = useRef<string>(pathname);
   const navigating = useRef(false);
-  const releaseTimer = useRef<number | null>(null);
 
   const H = 10;
   const SLOPE = 1.02;
-  const MAX_PULL = 92;
-  const RELEASE_MS = 52;
+  const MAX_PULL = 86;
+  const RESET_MS = 70;
 
   useEffect(() => {
     const prev = previousPathname.current;
@@ -45,12 +44,6 @@ export default function SwipeRoutes({
     order.forEach((href) => router.prefetch(href));
   }, [order, router]);
 
-  useEffect(() => {
-    return () => {
-      if (releaseTimer.current) window.clearTimeout(releaseTimer.current);
-    };
-  }, []);
-
   const clearPullStyles = () => {
     const el = shellRef.current;
     if (!el) return;
@@ -62,19 +55,18 @@ export default function SwipeRoutes({
   const setPull = (px: number, transition = false) => {
     const el = shellRef.current;
     if (!el) return;
-    el.style.transition = transition ? `transform ${RELEASE_MS}ms cubic-bezier(.1,.82,.14,1)` : 'none';
+    el.style.transition = transition ? `transform ${RESET_MS}ms cubic-bezier(.16,.74,.18,1)` : 'none';
     el.style.transform = `translate3d(${px}px, 0, 0)`;
     el.style.opacity = '1';
   };
 
   const resetPull = () => {
     setPull(0, true);
-    window.setTimeout(clearPullStyles, RELEASE_MS + 18);
+    window.setTimeout(clearPullStyles, RESET_MS + 18);
   };
 
   const onTouchStart = (e: React.TouchEvent) => {
     if (navigating.current) return;
-    if (releaseTimer.current) window.clearTimeout(releaseTimer.current);
     const t = e.touches[0];
     start.current = { x: t.clientX, y: t.clientY };
     locked.current = null;
@@ -97,7 +89,7 @@ export default function SwipeRoutes({
 
     if (locked.current === 'h') {
       e.preventDefault();
-      const eased = Math.max(-MAX_PULL, Math.min(MAX_PULL, dx * 0.48));
+      const eased = Math.max(-MAX_PULL, Math.min(MAX_PULL, dx * 0.5));
       setPull(eased);
     }
   };
@@ -133,11 +125,8 @@ export default function SwipeRoutes({
     const target = next ? order[idx + 1] : order[idx - 1];
     navigating.current = true;
     primeRouteMotion(pathname, target);
-    setPull(next ? -MAX_PULL : MAX_PULL, true);
-
-    releaseTimer.current = window.setTimeout(() => {
-      router.push(target);
-    }, RELEASE_MS);
+    clearPullStyles();
+    router.push(target);
   };
 
   return (
