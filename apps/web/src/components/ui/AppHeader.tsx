@@ -2,18 +2,20 @@
 
 import { useEffect, useState } from 'react';
 import { Gem, Menu, UserCog, Wallet, ArrowLeftRight, Settings, Bell, CircleUserRound, Code2 } from 'lucide-react';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import BadgeCounter from '@/components/ui/BadgeCounter';
 import ACCOnboardingModal from '@/components/ui/ACCOnboardingModal';
 import { getNotificationCount, setNotificationCount, useAccount } from '@/state/useAccount';
 import { canAccessDeveloperSurface } from '@/lib/developer';
 import { getUnreadNotificationCount } from '@/lib/mobile/notifications';
+import { primeRouteMotion } from '@/lib/mobile/routeMotion';
 
 const HEADER_ICON_SIZE = 26;
 const HEADER_SMALL_ICON_SIZE = 22;
 
 export default function AppHeader() {
   const router = useRouter();
+  const pathname = usePathname();
   const [open, setOpen] = useState(false);
 
   const acc = useAccount();
@@ -61,6 +63,7 @@ export default function AppHeader() {
 
   const go = (path: string) => {
     setOpen(false);
+    primeRouteMotion(pathname, path);
     router.push(path);
   };
 
