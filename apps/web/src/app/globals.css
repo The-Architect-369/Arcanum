@@ -6,11 +6,11 @@
   --arcanum-locked-vh: 100lvh;
   --arcanum-status-h: env(safe-area-inset-top, 0px);
   --arcanum-safe-bottom: env(safe-area-inset-bottom, 0px);
-  --arcanum-android-nav-clearance: 1.42rem;
+  --arcanum-android-nav-clearance: 1.72rem;
   --arcanum-header-content-h: 3.05rem;
   --arcanum-header-h: calc(var(--arcanum-status-h) + var(--arcanum-header-content-h));
-  --arcanum-footer-h: 4.85rem;
-  --arcanum-footer-lift: max(1.42rem, var(--arcanum-safe-bottom), var(--arcanum-android-nav-clearance));
+  --arcanum-footer-h: 4.55rem;
+  --arcanum-footer-lift: max(1.72rem, var(--arcanum-safe-bottom), var(--arcanum-android-nav-clearance));
   --arcanum-footer-clearance: calc(var(--arcanum-footer-lift) + 0.66rem);
   --arcanum-main-top: var(--arcanum-header-h);
   --arcanum-main-bottom: calc(var(--arcanum-footer-h) + var(--arcanum-footer-clearance));
@@ -72,13 +72,16 @@ body {
 }
 
 .arcanum-app-footer {
+  top: auto;
   bottom: var(--arcanum-footer-lift);
   box-sizing: border-box;
   height: calc(var(--arcanum-footer-h) + var(--arcanum-safe-bottom));
   min-height: calc(var(--arcanum-footer-h) + var(--arcanum-safe-bottom));
   max-height: calc(var(--arcanum-footer-h) + var(--arcanum-safe-bottom));
+  overflow: hidden;
   padding-bottom: var(--arcanum-safe-bottom);
   transform: translateZ(0);
+  transition: none !important;
   will-change: auto;
 }
 
@@ -143,9 +146,9 @@ body {
 
 @keyframes arcanum-card-in-next {
   from {
-    opacity: 0.96;
-    transform: translate3d(2.25%, 0, 0) scale(0.998);
-    filter: saturate(0.995) brightness(0.995);
+    opacity: 0.98;
+    transform: translate3d(1.25%, 0, 0) scale(0.999);
+    filter: saturate(0.998) brightness(0.998);
   }
   to {
     opacity: 1;
@@ -156,9 +159,9 @@ body {
 
 @keyframes arcanum-card-in-prev {
   from {
-    opacity: 0.96;
-    transform: translate3d(-2.25%, 0, 0) scale(0.998);
-    filter: saturate(0.995) brightness(0.995);
+    opacity: 0.98;
+    transform: translate3d(-1.25%, 0, 0) scale(0.999);
+    filter: saturate(0.998) brightness(0.998);
   }
   to {
     opacity: 1;
@@ -173,10 +176,10 @@ body {
     transform: translateX(-38%) skewX(-14deg);
   }
   45% {
-    opacity: 0.38;
+    opacity: 0.28;
   }
   to {
-    opacity: 0.06;
+    opacity: 0.04;
     transform: translateX(38%) skewX(-14deg);
   }
 }
