@@ -34,8 +34,8 @@
 
 @keyframes arcanum-card-polish-next {
   from {
-    opacity: .98;
-    transform: translate3d(1.35%, 0, 0) scale(.999);
+    opacity: .985;
+    transform: translate3d(1.9%, 0, 0) scale(.999);
     filter: saturate(.998) brightness(.998);
   }
   to {
@@ -47,8 +47,8 @@
 
 @keyframes arcanum-card-polish-prev {
   from {
-    opacity: .98;
-    transform: translate3d(-1.35%, 0, 0) scale(.999);
+    opacity: .985;
+    transform: translate3d(-1.9%, 0, 0) scale(.999);
     filter: saturate(.998) brightness(.998);
   }
   to {
@@ -61,14 +61,14 @@
 @keyframes arcanum-card-polish-sheen {
   from {
     opacity: 0;
-    transform: translateX(-24%) skewX(-10deg);
+    transform: translateX(-26%) skewX(-10deg);
   }
   42% {
-    opacity: .26;
+    opacity: .24;
   }
   to {
     opacity: .04;
-    transform: translateX(24%) skewX(-10deg);
+    transform: translateX(26%) skewX(-10deg);
   }
 }
 
@@ -200,16 +200,16 @@
 }
 
 html[data-card-direction='next'] .card-transition-shell {
-  animation: arcanum-card-polish-next 210ms cubic-bezier(.2,.72,.2,1) both;
+  animation: arcanum-card-polish-next 260ms cubic-bezier(.18,.74,.2,1) both;
 }
 
 html[data-card-direction='prev'] .card-transition-shell {
-  animation: arcanum-card-polish-prev 210ms cubic-bezier(.2,.72,.2,1) both;
+  animation: arcanum-card-polish-prev 260ms cubic-bezier(.18,.74,.2,1) both;
 }
 
 html[data-card-direction='next'] .card-transition-sheen,
 html[data-card-direction='prev'] .card-transition-sheen {
-  animation: arcanum-card-polish-sheen 260ms ease-out both;
+  animation: arcanum-card-polish-sheen 300ms ease-out both;
 }
 
 .module-deck-reveal {
