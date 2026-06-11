@@ -26,7 +26,7 @@ export default function SwipeRoutes({
   const H = 30;
   const SLOPE = 1.22;
   const MAX_PULL = 18;
-  const RELEASE_MS = 150;
+  const RELEASE_MS = 120;
 
   useEffect(() => {
     const idx = order.indexOf(pathname);
@@ -38,6 +38,7 @@ export default function SwipeRoutes({
 
     previousIndex.current = idx;
     navigating.current = false;
+    clearPullStyles();
   }, [order, pathname]);
 
   useEffect(() => {
@@ -61,14 +62,14 @@ export default function SwipeRoutes({
   const setPull = (px: number, transition = false) => {
     const el = shellRef.current;
     if (!el) return;
-    el.style.transition = transition ? `transform ${RELEASE_MS}ms cubic-bezier(.18,.76,.2,1), opacity ${RELEASE_MS}ms ease-out` : 'none';
+    el.style.transition = transition ? `transform ${RELEASE_MS}ms cubic-bezier(.2,.74,.2,1), opacity ${RELEASE_MS}ms ease-out` : 'none';
     el.style.transform = `translate3d(${px}px, 0, 0)`;
-    el.style.opacity = px === 0 ? '1' : '0.994';
+    el.style.opacity = '1';
   };
 
   const resetPull = () => {
     setPull(0, true);
-    window.setTimeout(clearPullStyles, RELEASE_MS + 36);
+    window.setTimeout(clearPullStyles, RELEASE_MS + 32);
   };
 
   const onTouchStart = (e: React.TouchEvent) => {
@@ -136,7 +137,6 @@ export default function SwipeRoutes({
     setPull(next ? -MAX_PULL : MAX_PULL, true);
 
     releaseTimer.current = window.setTimeout(() => {
-      clearPullStyles();
       router.push(target);
     }, RELEASE_MS);
   };
