@@ -23,10 +23,10 @@ export default function SwipeRoutes({
   const navigating = useRef(false);
   const releaseTimer = useRef<number | null>(null);
 
-  const H = 18;
-  const SLOPE = 1.08;
-  const MAX_PULL = 44;
-  const RELEASE_MS = 64;
+  const H = 14;
+  const SLOPE = 1.04;
+  const MAX_PULL = 56;
+  const RELEASE_MS = 56;
 
   useEffect(() => {
     const idx = order.indexOf(pathname);
@@ -62,14 +62,14 @@ export default function SwipeRoutes({
   const setPull = (px: number, transition = false) => {
     const el = shellRef.current;
     if (!el) return;
-    el.style.transition = transition ? `transform ${RELEASE_MS}ms cubic-bezier(.16,.74,.18,1)` : 'none';
+    el.style.transition = transition ? `transform ${RELEASE_MS}ms cubic-bezier(.12,.78,.16,1)` : 'none';
     el.style.transform = `translate3d(${px}px, 0, 0)`;
     el.style.opacity = '1';
   };
 
   const resetPull = () => {
     setPull(0, true);
-    window.setTimeout(clearPullStyles, RELEASE_MS + 20);
+    window.setTimeout(clearPullStyles, RELEASE_MS + 18);
   };
 
   const onTouchStart = (e: React.TouchEvent) => {
@@ -97,7 +97,7 @@ export default function SwipeRoutes({
 
     if (locked.current === 'h') {
       e.preventDefault();
-      const eased = Math.max(-MAX_PULL, Math.min(MAX_PULL, dx * 0.22));
+      const eased = Math.max(-MAX_PULL, Math.min(MAX_PULL, dx * 0.3));
       setPull(eased);
     }
   };
