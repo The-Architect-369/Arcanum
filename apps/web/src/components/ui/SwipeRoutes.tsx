@@ -27,6 +27,7 @@ export default function SwipeRoutes({
   const SLOPE = 1.02;
   const MAX_PULL = 86;
   const RESET_MS = 70;
+  const EXIT_MS = 260;
 
   useEffect(() => {
     const prev = previousPathname.current;
@@ -63,6 +64,40 @@ export default function SwipeRoutes({
   const resetPull = () => {
     setPull(0, true);
     window.setTimeout(clearPullStyles, RESET_MS + 18);
+  };
+
+  const spawnExitGhost = (direction: 'next' | 'prev') => {
+    const el = shellRef.current;
+    if (!el) return;
+
+    const rect = el.getBoundingClientRect();
+    const ghost = el.cloneNode(true) as HTMLElement;
+    const transform = el.style.transform || 'translate3d(0, 0, 0)';
+    const exitX = direction === 'next' ? '-38%' : '38%';
+
+    ghost.setAttribute('aria-hidden', 'true');
+    ghost.style.position = 'fixed';
+    ghost.style.inset = 'auto';
+    ghost.style.left = `${rect.left}px`;
+    ghost.style.top = `${rect.top}px`;
+    ghost.style.width = `${rect.width}px`;
+    ghost.style.height = `${rect.height}px`;
+    ghost.style.zIndex = '45';
+    ghost.style.pointerEvents = 'none';
+    ghost.style.overflow = 'hidden';
+    ghost.style.transform = transform;
+    ghost.style.opacity = '1';
+    ghost.style.transition = `transform ${EXIT_MS}ms cubic-bezier(.16,.74,.18,1), opacity ${EXIT_MS}ms ease-out`;
+    ghost.style.willChange = 'transform, opacity';
+
+    document.body.appendChild(ghost);
+
+    window.requestAnimationFrame(() => {
+      ghost.style.transform = `translate3d(${exitX}, 0, 0)`;
+      ghost.style.opacity = '0';
+    });
+
+    window.setTimeout(() => ghost.remove(), EXIT_MS + 48);
   };
 
   const onTouchStart = (e: React.TouchEvent) => {
@@ -122,9 +157,12 @@ export default function SwipeRoutes({
       return;
     }
 
+    const direction = next ? 'next' : 'prev';
     const target = next ? order[idx + 1] : order[idx - 1];
     navigating.current = true;
     primeRouteMotion(pathname, target);
+    spawnExitGhost(direction);
+    clearPullStyles();
     router.push(target);
   };
 
