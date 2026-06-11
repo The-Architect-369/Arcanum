@@ -15,12 +15,14 @@ type Tab = {
   count?: number;
 };
 
+const ICON_SIZE = 26;
+
 const TABS: Tab[] = [
-  { label: 'Hope', href: '/hope/reflection', root: '/hope', module: 'hope', icon: <UserRound size={22} />, badge: 'dot' },
-  { label: 'Tempus', href: '/tempus/clock', root: '/tempus', module: 'tempus', icon: <Clock size={22} />, badge: 'dot' },
-  { label: 'Nexus', href: '/nexus/current', root: '/nexus', module: 'nexus', icon: <Globe size={22} />, badge: 'dot' },
-  { label: 'Wallet', href: '/wallet/receipts', root: '/wallet', module: 'wallet', icon: <Wallet size={22} />, badge: 'dot' },
-  { label: 'Vitae', href: '/vitae/path', root: '/vitae', module: 'vitae', icon: <BookMarked size={22} />, badge: 'dot' },
+  { label: 'Hope', href: '/hope/reflection', root: '/hope', module: 'hope', icon: <UserRound size={ICON_SIZE} strokeWidth={2.1} />, badge: 'dot' },
+  { label: 'Tempus', href: '/tempus/clock', root: '/tempus', module: 'tempus', icon: <Clock size={ICON_SIZE} strokeWidth={2.1} />, badge: 'dot' },
+  { label: 'Nexus', href: '/nexus/current', root: '/nexus', module: 'nexus', icon: <Globe size={ICON_SIZE} strokeWidth={2.1} />, badge: 'dot' },
+  { label: 'Wallet', href: '/wallet/receipts', root: '/wallet', module: 'wallet', icon: <Wallet size={ICON_SIZE} strokeWidth={2.1} />, badge: 'dot' },
+  { label: 'Vitae', href: '/vitae/path', root: '/vitae', module: 'vitae', icon: <BookMarked size={ICON_SIZE} strokeWidth={2.1} />, badge: 'dot' },
 ];
 
 export default function AppFooter() {
@@ -34,8 +36,9 @@ export default function AppFooter() {
   const isActive = (tab: Tab) =>
     pathname === tab.root || pathname.startsWith(tab.root + '/') || (pathname === '/app' && tab.module === 'hope');
 
-  const primeTransition = (tab: Tab) => {
+  const go = (tab: Tab, active: boolean) => {
     router.prefetch(tab.href);
+    if (!active) router.push(tab.href);
   };
 
   return (
@@ -48,13 +51,14 @@ export default function AppFooter() {
         {TABS.map((t) => {
           const active = isActive(t);
           return (
-            <a
+            <button
               key={t.href}
-              href={t.href}
-              onPointerDown={() => primeTransition(t)}
+              type="button"
+              onPointerDown={() => router.prefetch(t.href)}
+              onClick={() => go(t, active)}
               onFocus={() => router.prefetch(t.href)}
               className={cn(
-                'global-tab-link arcanum-app-footer-tab relative grid w-full place-items-center rounded-2xl transition-[background,color,box-shadow] duration-150 ease-out',
+                'global-tab-link arcanum-app-footer-tab relative grid w-full appearance-none place-items-center rounded-2xl border-0 bg-transparent p-0 text-inherit outline-none transition-[background,color,box-shadow] duration-100 ease-out',
                 active
                   ? 'global-tab-active text-amber-300'
                   : 'text-zinc-400 hover:bg-white/5'
@@ -65,7 +69,7 @@ export default function AppFooter() {
             >
               <span className="global-tab-icon relative z-10 grid place-items-center">{t.icon}</span>
               {renderBadge(t)}
-            </a>
+            </button>
           );
         })}
       </div>
