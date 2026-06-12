@@ -1,5 +1,12 @@
 export type RouteMotionDirection = 'next' | 'prev' | 'secondary';
 
+/**
+ * Footer-order route intent for the native shell handoff:
+ * Hope → Tempus → Nexus → Wallet → Vitae.
+ *
+ * Global-to-global transitions move horizontally according to this footer position.
+ * Any transition crossing the secondary/global boundary enters from the bottom.
+ */
 const GLOBAL_ROUTES = ['/hope', '/tempus', '/nexus', '/wallet', '/vitae'] as const;
 const SECONDARY_ROUTES = ['/account', '/exchange', '/notifications', '/preferences', '/developer'] as const;
 
@@ -23,10 +30,11 @@ function isSecondary(path: string) {
 export function directionForRoute(from: string, to: string): RouteMotionDirection {
   const fromGlobalRank = globalRank(from);
   const toGlobalRank = globalRank(to);
+  const fromIsSecondary = isSecondary(from);
+  const toIsSecondary = isSecondary(to);
 
-  if (isSecondary(to)) return 'secondary';
-  if (toGlobalRank === -1) return 'secondary';
-  if (fromGlobalRank === -1) return 'next';
+  if (fromIsSecondary || toIsSecondary) return 'secondary';
+  if (fromGlobalRank === -1 || toGlobalRank === -1) return 'secondary';
   if (fromGlobalRank === toGlobalRank) return 'next';
 
   return toGlobalRank > fromGlobalRank ? 'next' : 'prev';
