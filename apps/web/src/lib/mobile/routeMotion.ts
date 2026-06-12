@@ -24,8 +24,9 @@ export function directionForRoute(from: string, to: string): RouteMotionDirectio
   const fromGlobalRank = globalRank(from);
   const toGlobalRank = globalRank(to);
 
-  if (isSecondary(to) || isSecondary(from)) return 'secondary';
-  if (fromGlobalRank === -1 || toGlobalRank === -1) return 'secondary';
+  if (isSecondary(to)) return 'secondary';
+  if (toGlobalRank === -1) return 'secondary';
+  if (fromGlobalRank === -1) return 'next';
   if (fromGlobalRank === toGlobalRank) return 'next';
 
   return toGlobalRank > fromGlobalRank ? 'next' : 'prev';
