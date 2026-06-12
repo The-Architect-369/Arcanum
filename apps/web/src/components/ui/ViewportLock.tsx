@@ -6,22 +6,21 @@ export default function ViewportLock() {
   useEffect(() => {
     const root = document.documentElement;
 
-    const lock = () => {
-      const candidates = [
-        window.innerHeight,
-        window.visualViewport?.height ?? 0,
-        window.screen?.height ?? 0,
-      ].filter((value) => Number.isFinite(value) && value > 0);
+    const candidates = [
+      window.screen?.height,
+      window.screen?.availHeight,
+      window.innerHeight,
+      window.visualViewport?.height,
+    ].filter((value): value is number => Number.isFinite(value) && Number(value) > 0);
 
-      const height = Math.max(...candidates);
-      root.style.setProperty('--arcanum-locked-vh', `${Math.round(height)}px`);
-    };
+    const stableHeight = candidates.length ? Math.max(...candidates) : 0;
 
-    lock();
-    window.addEventListener('orientationchange', lock);
+    if (stableHeight) {
+      root.style.setProperty('--arcanum-locked-vh', `${Math.round(stableHeight)}px`);
+    }
 
     return () => {
-      window.removeEventListener('orientationchange', lock);
+      root.style.removeProperty('--arcanum-locked-vh');
     };
   }, []);
 

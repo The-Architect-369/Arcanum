@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import { BookMarked, Wallet, Globe, Clock, UserRound } from 'lucide-react';
 import { cn } from '@/lib/cn';
+import { primeRouteMotion } from '@/lib/mobile/routeMotion';
 
 type Tab = {
   label: string;
@@ -15,12 +16,14 @@ type Tab = {
   count?: number;
 };
 
+const ICON_SIZE = 26;
+
 const TABS: Tab[] = [
-  { label: 'Hope', href: '/hope/reflection', root: '/hope', module: 'hope', icon: <UserRound size={22} />, badge: 'dot' },
-  { label: 'Tempus', href: '/tempus/clock', root: '/tempus', module: 'tempus', icon: <Clock size={22} />, badge: 'dot' },
-  { label: 'Nexus', href: '/nexus/current', root: '/nexus', module: 'nexus', icon: <Globe size={22} />, badge: 'dot' },
-  { label: 'Wallet', href: '/wallet/receipts', root: '/wallet', module: 'wallet', icon: <Wallet size={22} />, badge: 'dot' },
-  { label: 'Vitae', href: '/vitae/path', root: '/vitae', module: 'vitae', icon: <BookMarked size={22} />, badge: 'dot' },
+  { label: 'Hope', href: '/hope/reflection', root: '/hope', module: 'hope', icon: <UserRound size={ICON_SIZE} strokeWidth={2.1} />, badge: 'dot' },
+  { label: 'Tempus', href: '/tempus/clock', root: '/tempus', module: 'tempus', icon: <Clock size={ICON_SIZE} strokeWidth={2.1} />, badge: 'dot' },
+  { label: 'Nexus', href: '/nexus/current', root: '/nexus', module: 'nexus', icon: <Globe size={ICON_SIZE} strokeWidth={2.1} />, badge: 'dot' },
+  { label: 'Wallet', href: '/wallet/receipts', root: '/wallet', module: 'wallet', icon: <Wallet size={ICON_SIZE} strokeWidth={2.1} />, badge: 'dot' },
+  { label: 'Vitae', href: '/vitae/path', root: '/vitae', module: 'vitae', icon: <BookMarked size={ICON_SIZE} strokeWidth={2.1} />, badge: 'dot' },
 ];
 
 export default function AppFooter() {
@@ -31,35 +34,38 @@ export default function AppFooter() {
     TABS.forEach((tab) => router.prefetch(tab.href));
   }, [router]);
 
-  const isActive = (root: string) =>
-    pathname === root || pathname.startsWith(root + '/');
+  const isActive = (tab: Tab) =>
+    pathname === tab.root || pathname.startsWith(tab.root + '/') || (pathname === '/app' && tab.module === 'hope');
 
-  const primeTransition = (tab: Tab, active: boolean) => {
+  const go = (tab: Tab, active: boolean) => {
     router.prefetch(tab.href);
-    if (active) return;
-    window.dispatchEvent(new CustomEvent('arcanum:module-reveal', { detail: { module: tab.module } }));
+    if (!active) {
+      primeRouteMotion(pathname, tab.href);
+      router.push(tab.href);
+    }
   };
 
   return (
     <nav
-      className="arcanum-app-footer absolute inset-x-0 z-50 border-t border-zinc-800 bg-black/75 shadow-[0_-10px_28px_rgba(0,0,0,0.62)] backdrop-blur-md"
+      className="arcanum-app-footer absolute inset-x-0 z-50 border-t border-white/5 bg-black/78 shadow-[0_-10px_28px_rgba(0,0,0,0.62)] backdrop-blur-md"
       role="navigation"
       aria-label="Main"
     >
-      <div className="arcanum-app-footer-row mx-auto grid max-w-5xl grid-cols-5">
+      <div className="arcanum-app-footer-row mx-auto grid max-w-5xl grid-cols-5 px-1.5">
         {TABS.map((t) => {
-          const active = isActive(t.root);
+          const active = isActive(t);
           return (
-            <a
+            <button
               key={t.href}
-              href={t.href}
-              onPointerDown={() => primeTransition(t, active)}
+              type="button"
+              onPointerDown={() => router.prefetch(t.href)}
+              onClick={() => go(t, active)}
               onFocus={() => router.prefetch(t.href)}
               className={cn(
-                'global-tab-link arcanum-app-footer-tab relative grid w-full place-items-center rounded-xl transition-[background,color,transform,box-shadow] duration-200 ease-out active:scale-[0.985]',
+                'global-tab-link arcanum-app-footer-tab relative grid w-full appearance-none place-items-center rounded-2xl border-0 bg-transparent p-0 text-inherit outline-none transition-[background,color,box-shadow] duration-100 ease-out',
                 active
-                  ? 'global-tab-active tile-3d-active text-amber-300'
-                  : 'text-zinc-400 hover:bg-white/5 active:bg-white/10'
+                  ? 'global-tab-active text-amber-300'
+                  : 'text-zinc-400 hover:bg-white/5'
               )}
               aria-current={active ? 'page' : undefined}
               aria-label={t.label}
@@ -67,7 +73,7 @@ export default function AppFooter() {
             >
               <span className="global-tab-icon relative z-10 grid place-items-center">{t.icon}</span>
               {renderBadge(t)}
-            </a>
+            </button>
           );
         })}
       </div>

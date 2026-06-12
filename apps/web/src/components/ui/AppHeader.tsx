@@ -2,15 +2,20 @@
 
 import { useEffect, useState } from 'react';
 import { Gem, Menu, UserCog, Wallet, ArrowLeftRight, Settings, Bell, CircleUserRound, Code2 } from 'lucide-react';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import BadgeCounter from '@/components/ui/BadgeCounter';
 import ACCOnboardingModal from '@/components/ui/ACCOnboardingModal';
 import { getNotificationCount, setNotificationCount, useAccount } from '@/state/useAccount';
 import { canAccessDeveloperSurface } from '@/lib/developer';
 import { getUnreadNotificationCount } from '@/lib/mobile/notifications';
+import { primeRouteMotion } from '@/lib/mobile/routeMotion';
+
+const HEADER_ICON_SIZE = 26;
+const HEADER_SMALL_ICON_SIZE = 22;
 
 export default function AppHeader() {
   const router = useRouter();
+  const pathname = usePathname();
   const [open, setOpen] = useState(false);
 
   const acc = useAccount();
@@ -58,6 +63,7 @@ export default function AppHeader() {
 
   const go = (path: string) => {
     setOpen(false);
+    primeRouteMotion(pathname, path);
     router.push(path);
   };
 
@@ -77,8 +83,8 @@ export default function AppHeader() {
             aria-label="Open Account"
             title="Account"
           >
-            <span className="grid h-7 w-7 place-items-center rounded-full border border-amber-300/40 bg-gradient-to-br from-blue-700/80 via-black/60 to-amber-300/20 text-amber-300 shadow-[0_0_14px_rgba(246,196,83,0.25)]">
-              <CircleUserRound size={17} aria-hidden="true" />
+            <span className="grid h-9 w-9 place-items-center rounded-full border border-amber-300/40 bg-gradient-to-br from-blue-700/80 via-black/60 to-amber-300/20 text-amber-300 shadow-[0_0_14px_rgba(246,196,83,0.25)]">
+              <CircleUserRound size={HEADER_ICON_SIZE} strokeWidth={2.1} absoluteStrokeWidth aria-hidden="true" />
             </span>
             <span className="sr-only">The Arcanum Account</span>
           </button>
@@ -91,7 +97,7 @@ export default function AppHeader() {
             aria-label="Open Wallet"
           >
             <span className="text-xs font-semibold tabular-nums">{mana.toLocaleString()}</span>
-            <Gem size={16} aria-hidden="true" />
+            <Gem size={HEADER_SMALL_ICON_SIZE} strokeWidth={2.1} absoluteStrokeWidth aria-hidden="true" />
           </button>
 
           <BadgeCounter count={notifCount} max={9}>
@@ -101,7 +107,7 @@ export default function AppHeader() {
               aria-label="Notifications"
               title="Notifications"
             >
-              <Bell size={18} />
+              <Bell size={HEADER_SMALL_ICON_SIZE} strokeWidth={2.1} absoluteStrokeWidth />
             </button>
           </BadgeCounter>
 
@@ -111,7 +117,7 @@ export default function AppHeader() {
             aria-expanded={open}
             aria-label="Open Menu"
           >
-            <Menu size={18} />
+            <Menu size={HEADER_SMALL_ICON_SIZE} strokeWidth={2.1} absoluteStrokeWidth />
           </button>
         </div>
       </header>
@@ -125,15 +131,15 @@ export default function AppHeader() {
           />
           <aside className="absolute bottom-0 right-0 top-[var(--arcanum-main-top)] w-80 max-w-[88vw] border-l border-zinc-800 bg-black/90 shadow-2xl backdrop-blur-md">
             <nav className="space-y-1 p-3">
-              <DrawerItem icon={<UserCog size={18} />} label="Account" onClick={() => go('/account')} />
-              <DrawerItem icon={<Wallet size={18} />} label="Wallet" onClick={() => go('/wallet')} />
-              <DrawerItem icon={<ArrowLeftRight size={18} />} label="Exchange" onClick={() => go('/exchange')} />
-              <DrawerItem icon={<Bell size={18} />} label="Notifications" onClick={() => go('/notifications')} />
-              <DrawerItem icon={<Settings size={18} />} label="Preferences" onClick={() => go('/preferences')} />
+              <DrawerItem icon={<UserCog size={HEADER_SMALL_ICON_SIZE} strokeWidth={2.1} absoluteStrokeWidth />} label="Account" onClick={() => go('/account')} />
+              <DrawerItem icon={<Wallet size={HEADER_SMALL_ICON_SIZE} strokeWidth={2.1} absoluteStrokeWidth />} label="Wallet" onClick={() => go('/wallet')} />
+              <DrawerItem icon={<ArrowLeftRight size={HEADER_SMALL_ICON_SIZE} strokeWidth={2.1} absoluteStrokeWidth />} label="Exchange" onClick={() => go('/exchange')} />
+              <DrawerItem icon={<Bell size={HEADER_SMALL_ICON_SIZE} strokeWidth={2.1} absoluteStrokeWidth />} label="Notifications" onClick={() => go('/notifications')} />
+              <DrawerItem icon={<Settings size={HEADER_SMALL_ICON_SIZE} strokeWidth={2.1} absoluteStrokeWidth />} label="Preferences" onClick={() => go('/preferences')} />
               {showDeveloperSurface && (
                 <>
                   <div className="my-2 border-t border-white/10" />
-                  <DrawerItem icon={<Code2 size={18} />} label="Developer" onClick={() => go('/developer')} />
+                  <DrawerItem icon={<Code2 size={HEADER_SMALL_ICON_SIZE} strokeWidth={2.1} absoluteStrokeWidth />} label="Developer" onClick={() => go('/developer')} />
                 </>
               )}
             </nav>
