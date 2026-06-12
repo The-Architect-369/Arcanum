@@ -17,7 +17,6 @@ export default function SwipeRoutes({
 }) {
   const router = useRouter();
   const pathname = usePathname();
-  const shellRef = useRef<HTMLDivElement | null>(null);
   const start = useRef<{ x: number; y: number } | null>(null);
   const locked = useRef<'h' | 'v' | null>(null);
   const previousPathname = useRef<string>(pathname);
@@ -25,8 +24,6 @@ export default function SwipeRoutes({
 
   const H = 12;
   const SLOPE = 1.06;
-  const MAX_PULL = 28;
-  const RESET_MS = 64;
 
   useEffect(() => {
     const prev = previousPathname.current;
@@ -37,40 +34,17 @@ export default function SwipeRoutes({
 
     previousPathname.current = pathname;
     navigating.current = false;
-    clearPullStyles();
   }, [pathname]);
 
   useEffect(() => {
     order.forEach((href) => router.prefetch(href));
   }, [order, router]);
 
-  const clearPullStyles = () => {
-    const el = shellRef.current;
-    if (!el) return;
-    el.style.transition = '';
-    el.style.transform = '';
-    el.style.opacity = '';
-  };
-
-  const setPull = (px: number, transition = false) => {
-    const el = shellRef.current;
-    if (!el) return;
-    el.style.transition = transition ? `transform ${RESET_MS}ms cubic-bezier(.18,.74,.18,1)` : 'none';
-    el.style.transform = `translate3d(${px}px, 0, 0)`;
-    el.style.opacity = '1';
-  };
-
-  const resetPull = () => {
-    setPull(0, true);
-    window.setTimeout(clearPullStyles, RESET_MS + 16);
-  };
-
   const onTouchStart = (e: React.TouchEvent) => {
     if (navigating.current) return;
     const t = e.touches[0];
     start.current = { x: t.clientX, y: t.clientY };
     locked.current = null;
-    setPull(0);
   };
 
   const onTouchMove = (e: React.TouchEvent) => {
@@ -89,8 +63,6 @@ export default function SwipeRoutes({
 
     if (locked.current === 'h') {
       e.preventDefault();
-      const eased = Math.max(-MAX_PULL, Math.min(MAX_PULL, dx * 0.16));
-      setPull(eased);
     }
   };
 
@@ -103,36 +75,25 @@ export default function SwipeRoutes({
 
     const ax = Math.abs(dx);
     const ay = Math.abs(dy);
-    if (ax < H || ax <= ay * SLOPE) {
-      resetPull();
-      return;
-    }
+    if (ax < H || ax <= ay * SLOPE) return;
 
     const idx = order.indexOf(pathname);
-    if (idx === -1) {
-      resetPull();
-      return;
-    }
+    if (idx === -1) return;
 
     const next = dx < 0 && idx < order.length - 1;
     const prev = dx > 0 && idx > 0;
 
-    if (!next && !prev) {
-      resetPull();
-      return;
-    }
+    if (!next && !prev) return;
 
     const target = next ? order[idx + 1] : order[idx - 1];
     navigating.current = true;
     primeRouteMotion(pathname, target);
-    clearPullStyles();
     router.push(target);
   };
 
   return (
     <div
-      ref={shellRef}
-      className="h-full min-h-0 touch-pan-y will-change-transform"
+      className="h-full min-h-0 touch-pan-y"
       onTouchStart={onTouchStart}
       onTouchMove={onTouchMove}
       onTouchEnd={onTouchEnd}
