@@ -1,17 +1,7 @@
-export type RouteMotionDirection = 'next' | 'prev';
+export type RouteMotionDirection = 'next' | 'prev' | 'secondary';
 
-const ROUTE_ORDER = [
-  '/account',
-  '/hope',
-  '/tempus',
-  '/nexus',
-  '/wallet',
-  '/exchange',
-  '/vitae',
-  '/notifications',
-  '/preferences',
-  '/developer',
-] as const;
+const GLOBAL_ROUTES = ['/hope', '/tempus', '/nexus', '/wallet', '/vitae'] as const;
+const SECONDARY_ROUTES = ['/account', '/exchange', '/notifications', '/preferences', '/developer'] as const;
 
 function rootFor(path: string) {
   const normalized = path.split('?')[0]?.split('#')[0] || '/';
@@ -19,21 +9,26 @@ function rootFor(path: string) {
   return segment ? `/${segment}` : '/hope';
 }
 
-function routeRank(path: string) {
+function globalRank(path: string) {
   const root = rootFor(path);
-  const direct = ROUTE_ORDER.indexOf(root as (typeof ROUTE_ORDER)[number]);
-  if (direct !== -1) return direct;
+  if (root === '/app') return GLOBAL_ROUTES.indexOf('/hope');
+  return GLOBAL_ROUTES.indexOf(root as (typeof GLOBAL_ROUTES)[number]);
+}
 
-  if (root === '/app') return ROUTE_ORDER.indexOf('/hope');
-  return ROUTE_ORDER.length;
+function isSecondary(path: string) {
+  const root = rootFor(path);
+  return SECONDARY_ROUTES.includes(root as (typeof SECONDARY_ROUTES)[number]);
 }
 
 export function directionForRoute(from: string, to: string): RouteMotionDirection {
-  const fromRank = routeRank(from);
-  const toRank = routeRank(to);
+  const fromGlobalRank = globalRank(from);
+  const toGlobalRank = globalRank(to);
 
-  if (fromRank === toRank) return 'next';
-  return toRank > fromRank ? 'next' : 'prev';
+  if (isSecondary(to) || isSecondary(from)) return 'secondary';
+  if (fromGlobalRank === -1 || toGlobalRank === -1) return 'secondary';
+  if (fromGlobalRank === toGlobalRank) return 'next';
+
+  return toGlobalRank > fromGlobalRank ? 'next' : 'prev';
 }
 
 export function primeRouteMotion(from: string, to: string) {
