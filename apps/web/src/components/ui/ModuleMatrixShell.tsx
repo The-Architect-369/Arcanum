@@ -41,14 +41,49 @@ export default function ModuleMatrixShell({
   className,
   contentClassName,
 }: ModuleMatrixShellProps) {
+  const headerActions = (
+    <div className="flex items-center gap-2 sm:gap-3">
+      <nav aria-label="Horizontal card navigation" className="flex items-end gap-1.5 sm:gap-2">
+        {horizontalTabs.map((tab, index) => {
+          const active = tab.href === activeHorizontalHref;
+          return (
+            <Link
+              key={tab.href}
+              href={tab.href}
+              aria-label={tab.label}
+              aria-current={active ? 'page' : undefined}
+              title={tab.label}
+              className={cn(
+                'relative block h-7 w-5 rounded-t-xl border border-b-0 transition-all duration-300 sm:h-8 sm:w-6',
+                active
+                  ? 'translate-y-px border-amber-200/70 bg-amber-200/18 shadow-[0_0_14px_rgba(246,196,83,.25)]'
+                  : 'border-white/12 bg-white/[0.06] hover:border-white/22 hover:bg-white/[0.10]'
+              )}
+            >
+              <span className="sr-only">{index + 1}. {tab.label}</span>
+              <span
+                aria-hidden="true"
+                className={cn(
+                  'absolute left-1/2 top-1/2 h-3.5 w-1.5 -translate-x-1/2 -translate-y-1/2 rounded-full transition-all sm:h-4',
+                  active ? 'bg-amber-100 shadow-[0_0_10px_rgba(246,196,83,.55)]' : 'bg-white/38'
+                )}
+              />
+            </Link>
+          );
+        })}
+      </nav>
+      {actions ? <div className="hidden text-xs text-zinc-400 sm:block">{actions}</div> : null}
+    </div>
+  );
+
   return (
     <div className={cn('relative h-full min-h-0', className)}>
       <PanelShell
         title={title}
-        actions={actions}
+        actions={headerActions}
         flush
         className="min-h-0 flex-1"
-        contentClassName={cn('px-12 sm:px-14', contentClassName)}
+        contentClassName={cn('px-12 sm:px-10', contentClassName)}
       >
         {children}
       </PanelShell>
@@ -81,34 +116,6 @@ export default function ModuleMatrixShell({
                   )}
                 />
               </button>
-            );
-          })}
-        </nav>
-      </div>
-
-      <div className="pointer-events-none absolute inset-y-0 right-0 z-20 flex items-center pr-1.5 sm:pr-2.5">
-        <nav aria-label="Horizontal card navigation" className="pointer-events-auto flex flex-col gap-2">
-          {horizontalTabs.map((tab, index) => {
-            const active = tab.href === activeHorizontalHref;
-            return (
-              <Link
-                key={tab.href}
-                href={tab.href}
-                aria-label={tab.label}
-                aria-current={active ? 'page' : undefined}
-                title={tab.label}
-                className={cn(
-                  'relative flex min-h-[2.7rem] w-10 items-center justify-center rounded-l-2xl border px-2 text-[10px] font-semibold uppercase tracking-[0.18em] transition-all duration-300',
-                  active
-                    ? 'border-amber-200/60 bg-amber-200/18 text-amber-100 shadow-[0_0_18px_rgba(246,196,83,.28)]'
-                    : 'border-white/10 bg-black/30 text-zinc-400 hover:border-white/20 hover:bg-white/[0.06] hover:text-zinc-200'
-                )}
-              >
-                <span className="sr-only">{index + 1}. {tab.label}</span>
-                <span aria-hidden="true" className="[writing-mode:vertical-rl] [text-orientation:mixed]">
-                  {tab.shortLabel ?? tab.label.slice(0, 4)}
-                </span>
-              </Link>
             );
           })}
         </nav>
