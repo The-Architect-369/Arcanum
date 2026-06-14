@@ -9,7 +9,7 @@ import { useTempusWindow } from '@/hooks/useTempusWindow';
 import { TempusClockFace, TempusCodexLibrary, TempusMonthGrid } from './TempusContent';
 
 type FamilyId = 'codex' | 'clock' | 'calendar';
-type VerticalId = 'overview' | 'detail' | 'notes';
+type VerticalId = 'page-1' | 'page-2' | 'page-3';
 
 type CardConfig = {
   id: VerticalId;
@@ -21,16 +21,15 @@ type CardConfig = {
 type FamilyConfig = {
   href: string;
   label: string;
-  shortLabel: string;
   shellAction: React.ReactNode;
   cards: CardConfig[];
 };
 
 const ORDER = ['/tempus/codex', '/tempus/clock', '/tempus/calendar'] as const;
 const VERTICAL_TABS = [
-  { id: 'overview', label: 'Overview card' },
-  { id: 'detail', label: 'Detail card' },
-  { id: 'notes', label: 'Notes card' },
+  { id: 'page-1', label: 'Page 1' },
+  { id: 'page-2', label: 'Page 2' },
+  { id: 'page-3', label: 'Page 3' },
 ] as const;
 
 function phaseText(phase: 'open' | 'rest' | 'silent') {
@@ -39,30 +38,29 @@ function phaseText(phase: 'open' | 'rest' | 'silent') {
 
 export default function TempusModuleScreen({ family }: { family: FamilyId }) {
   const w = useTempusWindow();
-  const [activeVertical, setActiveVertical] = useState<VerticalId>('overview');
+  const [activeVertical, setActiveVertical] = useState<VerticalId>('page-1');
 
   const families = useMemo<Record<FamilyId, FamilyConfig>>(() => ({
     codex: {
       href: ORDER[0],
       label: 'Codex',
-      shortLabel: 'CODEX',
       shellAction: <div className="text-xs text-zinc-400">Correspondence library</div>,
       cards: [
         {
-          id: 'overview',
-          title: 'Tempus — Codex Overview',
+          id: 'page-1',
+          title: 'Tempus — Codex · Page I',
           caption: 'Reference tables for the rhythms used by Clock and Calendar.',
           render: () => <TempusCodexLibrary current={w} />,
         },
         {
-          id: 'detail',
-          title: 'Tempus — Codex Detail',
+          id: 'page-2',
+          title: 'Tempus — Codex · Page II',
           caption: 'A compact reading card for the current temporal state.',
           render: () => <StateGrid />,
         },
         {
-          id: 'notes',
-          title: 'Tempus — Codex Notes',
+          id: 'page-3',
+          title: 'Tempus — Codex · Page III',
           caption: 'A quiet note card for symbolic context.',
           render: () => <SimpleNote title="Codex note" body="The codex remains interpretive and optional." />,
         },
@@ -71,24 +69,23 @@ export default function TempusModuleScreen({ family }: { family: FamilyId }) {
     clock: {
       href: ORDER[1],
       label: 'Clock',
-      shortLabel: 'CLOCK',
       shellAction: <div className="text-xs text-zinc-400">{w.planetaryDay} · {w.isDay ? 'Day field' : 'Night field'}</div>,
       cards: [
         {
-          id: 'overview',
-          title: 'Tempus — Clock Dial',
+          id: 'page-1',
+          title: 'Tempus — Clock Dial · Page I',
           caption: 'A live rhythm dial for planetary, solar, lunar, and zodiac correspondences.',
           render: () => <TempusClockFace />,
         },
         {
-          id: 'detail',
-          title: 'Tempus — Clock Detail',
+          id: 'page-2',
+          title: 'Tempus — Clock Detail · Page II',
           caption: 'A readable state card for the current window.',
           render: () => <StateGrid />,
         },
         {
-          id: 'notes',
-          title: 'Tempus — Clock Notes',
+          id: 'page-3',
+          title: 'Tempus — Clock Notes · Page III',
           caption: 'A note card for the layered model.',
           render: () => <SimpleNote title="Clock note" body="The clock witnesses timing without assigning status." />,
         },
@@ -97,24 +94,23 @@ export default function TempusModuleScreen({ family }: { family: FamilyId }) {
     calendar: {
       href: ORDER[2],
       label: 'Calendar',
-      shortLabel: 'CAL',
       shellAction: <div className="text-xs text-zinc-400">Month grid · non-coercive</div>,
       cards: [
         {
-          id: 'overview',
-          title: 'Tempus — Calendar Grid',
+          id: 'page-1',
+          title: 'Tempus — Calendar Grid · Page I',
           caption: 'A season-first month surface for planetary days, lunar posture, and local rhythm.',
           render: () => <TempusMonthGrid />,
         },
         {
-          id: 'detail',
-          title: 'Tempus — Calendar Detail',
+          id: 'page-2',
+          title: 'Tempus — Calendar Detail · Page II',
           caption: 'A readable state card for the current window.',
           render: () => <StateGrid />,
         },
         {
-          id: 'notes',
-          title: 'Tempus — Calendar Notes',
+          id: 'page-3',
+          title: 'Tempus — Calendar Notes · Page III',
           caption: 'A note card for optional observation.',
           render: () => <SimpleNote title="Calendar note" body="Observation may be recorded or skipped without penalty." />,
         },
@@ -126,7 +122,7 @@ export default function TempusModuleScreen({ family }: { family: FamilyId }) {
   const activeCard = activeFamily.cards.find((card) => card.id === activeVertical) ?? activeFamily.cards[0];
 
   useEffect(() => {
-    setActiveVertical('overview');
+    setActiveVertical('page-1');
   }, [family]);
 
   return (
@@ -135,7 +131,7 @@ export default function TempusModuleScreen({ family }: { family: FamilyId }) {
         <ModuleMatrixShell
           title={<h1 className="text-lg font-semibold">{activeCard.title}</h1>}
           actions={activeFamily.shellAction}
-          horizontalTabs={Object.values(families).map(({ href, label, shortLabel }) => ({ href, label, shortLabel }))}
+          horizontalTabs={Object.values(families).map(({ href, label }) => ({ href, label }))}
           activeHorizontalHref={activeFamily.href}
           verticalTabs={VERTICAL_TABS}
           activeVerticalId={activeCard.id}
