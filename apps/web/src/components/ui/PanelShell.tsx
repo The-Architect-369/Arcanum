@@ -11,6 +11,7 @@ type PanelShellProps = {
   className?: string;
   flush?: boolean;
   noPadding?: boolean;
+  scrollable?: boolean;
   children: React.ReactNode;
 };
 
@@ -22,6 +23,7 @@ export default function PanelShell({
   className,
   flush = false,
   noPadding = false,
+  scrollable = true,
   children,
 }: PanelShellProps) {
   return (
@@ -81,7 +83,8 @@ export default function PanelShell({
 
           <div
             className={cn(
-              'relative z-10 min-h-0 flex-1 overflow-y-auto scrollbar-none',
+              'relative z-10 min-h-0 flex-1 scrollbar-none',
+              scrollable ? 'overflow-y-auto' : 'overflow-hidden',
               noPadding ? '' : 'p-4 sm:p-6',
               contentClassName
             )}
