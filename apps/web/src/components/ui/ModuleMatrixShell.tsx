@@ -29,16 +29,19 @@ type ModuleMatrixShellProps = {
   contentClassName?: string;
 };
 
-function TempestDepthSwipeZone({
-  activeVerticalId,
+export default function ModuleMatrixShell({
+  title,
+  actions,
+  horizontalTabs,
+  activeHorizontalHref,
   verticalTabs,
+  activeVerticalId,
   onVerticalChange,
-}: {
-  activeVerticalId: string;
-  verticalTabs: readonly VerticalTab[];
-  onVerticalChange: (id: string) => void;
-}) {
-  const zoneRef = React.useRef<HTMLDivElement | null>(null);
+  children,
+  className,
+  contentClassName,
+}: ModuleMatrixShellProps) {
+  const contentGestureRef = React.useRef<HTMLDivElement | null>(null);
   const navigating = React.useRef(false);
 
   const activeVerticalIndex = React.useMemo(
@@ -51,14 +54,20 @@ function TempestDepthSwipeZone({
   }, [activeVerticalId]);
 
   React.useEffect(() => {
-    const el = zoneRef.current;
+    const el = contentGestureRef.current;
     if (!el) return;
 
     let start: { x: number; y: number } | null = null;
     let locked: 'h' | 'v' | null = null;
 
+    const shouldIgnoreTarget = (target: EventTarget | null) => {
+      if (!(target instanceof HTMLElement)) return false;
+      return Boolean(target.closest('a, button, input, textarea, select, [data-no-depth-swipe="true"]'));
+    };
+
     const onTouchStart = (e: TouchEvent) => {
       if (navigating.current) return;
+      if (shouldIgnoreTarget(e.target)) return;
       const t = e.touches[0];
       if (!t) return;
       start = { x: t.clientX, y: t.clientY };
@@ -83,6 +92,7 @@ function TempestDepthSwipeZone({
 
       if (locked === 'v') {
         e.preventDefault();
+        e.stopPropagation();
       }
     };
 
@@ -124,21 +134,6 @@ function TempestDepthSwipeZone({
     };
   }, [activeVerticalIndex, onVerticalChange, verticalTabs]);
 
-  return <div ref={zoneRef} className="absolute inset-0 z-0" style={{ touchAction: 'pan-x' }} aria-hidden="true" />;
-}
-
-export default function ModuleMatrixShell({
-  title,
-  actions,
-  horizontalTabs,
-  activeHorizontalHref,
-  verticalTabs,
-  activeVerticalId,
-  onVerticalChange,
-  children,
-  className,
-  contentClassName,
-}: ModuleMatrixShellProps) {
   const headerActions = (
     <div className="flex items-start gap-3 sm:gap-4">
       <nav aria-label="Horizontal card navigation" className="flex items-end gap-0.5 sm:gap-1">
@@ -177,12 +172,12 @@ export default function ModuleMatrixShell({
   return (
     <div className={cn('relative h-full min-h-0', className)}>
       <div
-        className="absolute inset-y-0 right-0 z-0 w-10 sm:w-12"
+        className="absolute inset-y-0 right-0 z-30 w-10 sm:w-12"
         data-route-swipe-zone="true"
         aria-hidden="true"
       />
       <div
-        className="absolute inset-y-0 left-0 z-0 w-3 sm:w-4"
+        className="absolute inset-y-0 left-12 z-30 w-4 sm:left-14 sm:w-5"
         data-route-swipe-zone="true"
         aria-hidden="true"
       />
@@ -196,18 +191,19 @@ export default function ModuleMatrixShell({
         contentClassName={cn('overflow-hidden px-12 sm:px-10', contentClassName)}
       >
         <div className="relative h-full min-h-0 overflow-hidden">
-          <TempestDepthSwipeZone
-            activeVerticalId={activeVerticalId}
-            verticalTabs={verticalTabs}
-            onVerticalChange={onVerticalChange}
+          <div
+            ref={contentGestureRef}
+            className="absolute inset-0 z-20"
+            style={{ touchAction: 'pan-x' }}
+            aria-hidden="true"
           />
-          <div className="relative z-10 h-full min-h-0 overflow-hidden" data-no-depth-swipe="true">
+          <div className="relative z-10 h-full min-h-0 overflow-hidden">
             {children}
           </div>
         </div>
       </PanelShell>
 
-      <div className="pointer-events-none absolute inset-y-0 left-0 z-20 flex items-center pl-2 sm:pl-3">
+      <div className="pointer-events-none absolute inset-y-0 left-0 z-40 flex items-center pl-2 sm:pl-3">
         <nav aria-label="Depth navigation" className="pointer-events-auto flex flex-col gap-1.5">
           {verticalTabs.map((tab, index) => {
             const active = tab.id === activeVerticalId;
