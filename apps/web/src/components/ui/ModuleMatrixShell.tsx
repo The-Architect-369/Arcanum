@@ -59,20 +59,19 @@ export default function ModuleMatrixShell({
     return Boolean(target.closest('a, button, input, textarea, select, [data-no-depth-swipe="true"]'));
   };
 
-  const onPointerDown = (e: React.PointerEvent) => {
+  const onTouchStartCapture = (e: React.TouchEvent) => {
     if (navigating.current) return;
-    if (e.pointerType === 'mouse') return;
     if (shouldIgnoreTarget(e.target)) return;
-    start.current = { x: e.clientX, y: e.clientY };
+    const t = e.touches[0];
+    start.current = { x: t.clientX, y: t.clientY };
     locked.current = null;
   };
 
-  const onPointerMove = (e: React.PointerEvent) => {
+  const onTouchMoveCapture = (e: React.TouchEvent) => {
     if (!start.current || navigating.current) return;
-    if (e.pointerType === 'mouse') return;
-
-    const dx = e.clientX - start.current.x;
-    const dy = e.clientY - start.current.y;
+    const t = e.touches[0];
+    const dx = t.clientX - start.current.x;
+    const dy = t.clientY - start.current.y;
     const ax = Math.abs(dx);
     const ay = Math.abs(dy);
 
@@ -84,15 +83,15 @@ export default function ModuleMatrixShell({
 
     if (locked.current === 'v') {
       e.preventDefault();
+      e.stopPropagation();
     }
   };
 
-  const onPointerUp = (e: React.PointerEvent) => {
+  const onTouchEndCapture = (e: React.TouchEvent) => {
     if (!start.current || navigating.current) return;
-    if (e.pointerType === 'mouse') return;
-
-    const dx = e.clientX - start.current.x;
-    const dy = e.clientY - start.current.y;
+    const t = e.changedTouches[0];
+    const dx = t.clientX - start.current.x;
+    const dy = t.clientY - start.current.y;
     start.current = null;
 
     const ax = Math.abs(dx);
@@ -106,7 +105,7 @@ export default function ModuleMatrixShell({
     onVerticalChange(verticalTabs[nextIndex].id);
   };
 
-  const onPointerCancel = () => {
+  const onTouchCancelCapture = () => {
     start.current = null;
     locked.current = null;
   };
@@ -148,15 +147,6 @@ export default function ModuleMatrixShell({
 
   return (
     <div className={cn('relative h-full min-h-0', className)}>
-      <div
-        className="absolute inset-0 z-0"
-        style={{ touchAction: 'pan-x' }}
-        onPointerDown={onPointerDown}
-        onPointerMove={onPointerMove}
-        onPointerUp={onPointerUp}
-        onPointerCancel={onPointerCancel}
-      />
-
       <PanelShell
         title={title}
         actions={headerActions}
@@ -165,7 +155,16 @@ export default function ModuleMatrixShell({
         className="relative z-10 min-h-0 flex-1"
         contentClassName={cn('overflow-hidden px-12 sm:px-10', contentClassName)}
       >
-        <div className="h-full min-h-0 overflow-hidden" data-no-depth-swipe="true">{children}</div>
+        <div
+          className="h-full min-h-0 overflow-hidden"
+          style={{ touchAction: 'pan-x' }}
+          onTouchStartCapture={onTouchStartCapture}
+          onTouchMoveCapture={onTouchMoveCapture}
+          onTouchEndCapture={onTouchEndCapture}
+          onTouchCancelCapture={onTouchCancelCapture}
+        >
+          {children}
+        </div>
       </PanelShell>
 
       <div className="pointer-events-none absolute inset-y-0 left-0 z-20 flex items-center pl-2 sm:pl-3" data-no-depth-swipe="true">
