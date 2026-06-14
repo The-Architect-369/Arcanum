@@ -41,8 +41,7 @@ export default function ModuleMatrixShell({
   className,
   contentClassName,
 }: ModuleMatrixShellProps) {
-  const start = React.useRef<{ x: number; y: number } | null>(null);
-  const locked = React.useRef<'h' | 'v' | null>(null);
+  const gestureZoneRef = React.useRef<HTMLDivElement | null>(null);
   const navigating = React.useRef(false);
 
   const activeVerticalIndex = React.useMemo(
@@ -54,63 +53,86 @@ export default function ModuleMatrixShell({
     navigating.current = false;
   }, [activeVerticalId]);
 
-  const shouldIgnoreTarget = (target: EventTarget | null) => {
-    if (!(target instanceof HTMLElement)) return false;
-    return Boolean(target.closest('a, button, input, textarea, select, [data-no-depth-swipe="true"]'));
-  };
+  React.useEffect(() => {
+    const el = gestureZoneRef.current;
+    if (!el) return;
 
-  const onPointerDown = (e: React.PointerEvent) => {
-    if (navigating.current) return;
-    if (e.pointerType === 'mouse') return;
-    if (shouldIgnoreTarget(e.target)) return;
-    start.current = { x: e.clientX, y: e.clientY };
-    locked.current = null;
-  };
+    let start: { x: number; y: number } | null = null;
+    let locked: 'h' | 'v' | null = null;
 
-  const onPointerMove = (e: React.PointerEvent) => {
-    if (!start.current || navigating.current) return;
-    if (e.pointerType === 'mouse') return;
+    const shouldIgnoreTarget = (target: EventTarget | null) => {
+      if (!(target instanceof HTMLElement)) return false;
+      return Boolean(target.closest('a, button, input, textarea, select, [data-no-depth-swipe="true"]'));
+    };
 
-    const dx = e.clientX - start.current.x;
-    const dy = e.clientY - start.current.y;
-    const ax = Math.abs(dx);
-    const ay = Math.abs(dy);
+    const onTouchStart = (e: TouchEvent) => {
+      if (navigating.current) return;
+      if (shouldIgnoreTarget(e.target)) return;
+      const t = e.touches[0];
+      if (!t) return;
+      start = { x: t.clientX, y: t.clientY };
+      locked = null;
+    };
 
-    if (!locked.current) {
-      if (ay >= 14 && ay > ax * 1.08) locked.current = 'v';
-      else if (ax >= 14 && ax > ay * 1.08) locked.current = 'h';
-      else return;
-    }
+    const onTouchMove = (e: TouchEvent) => {
+      if (!start || navigating.current) return;
+      const t = e.touches[0];
+      if (!t) return;
 
-    if (locked.current === 'v') {
-      e.preventDefault();
-      e.stopPropagation();
-    }
-  };
+      const dx = t.clientX - start.x;
+      const dy = t.clientY - start.y;
+      const ax = Math.abs(dx);
+      const ay = Math.abs(dy);
 
-  const onPointerUp = (e: React.PointerEvent) => {
-    if (!start.current || navigating.current) return;
-    if (e.pointerType === 'mouse') return;
+      if (!locked) {
+        if (ay >= 14 && ay > ax * 1.08) locked = 'v';
+        else if (ax >= 14 && ax > ay * 1.08) locked = 'h';
+        else return;
+      }
 
-    const dx = e.clientX - start.current.x;
-    const dy = e.clientY - start.current.y;
-    start.current = null;
+      if (locked === 'v') {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+    };
 
-    const ax = Math.abs(dx);
-    const ay = Math.abs(dy);
-    if (ay < 18 || ay <= ax * 1.08) return;
+    const onTouchEnd = (e: TouchEvent) => {
+      if (!start || navigating.current) return;
+      const t = e.changedTouches[0];
+      if (!t) return;
 
-    const nextIndex = dy < 0 ? activeVerticalIndex + 1 : activeVerticalIndex - 1;
-    if (nextIndex < 0 || nextIndex >= verticalTabs.length) return;
+      const dx = t.clientX - start.x;
+      const dy = t.clientY - start.y;
+      start = null;
 
-    navigating.current = true;
-    onVerticalChange(verticalTabs[nextIndex].id);
-  };
+      const ax = Math.abs(dx);
+      const ay = Math.abs(dy);
+      if (ay < 18 || ay <= ax * 1.08) return;
 
-  const onPointerCancel = () => {
-    start.current = null;
-    locked.current = null;
-  };
+      const nextIndex = dy < 0 ? activeVerticalIndex + 1 : activeVerticalIndex - 1;
+      if (nextIndex < 0 || nextIndex >= verticalTabs.length) return;
+
+      navigating.current = true;
+      onVerticalChange(verticalTabs[nextIndex].id);
+    };
+
+    const onTouchCancel = () => {
+      start = null;
+      locked = null;
+    };
+
+    el.addEventListener('touchstart', onTouchStart, { passive: true });
+    el.addEventListener('touchmove', onTouchMove, { passive: false });
+    el.addEventListener('touchend', onTouchEnd, { passive: true });
+    el.addEventListener('touchcancel', onTouchCancel, { passive: true });
+
+    return () => {
+      el.removeEventListener('touchstart', onTouchStart);
+      el.removeEventListener('touchmove', onTouchMove);
+      el.removeEventListener('touchend', onTouchEnd);
+      el.removeEventListener('touchcancel', onTouchCancel);
+    };
+  }, [activeVerticalIndex, onVerticalChange, verticalTabs]);
 
   const headerActions = (
     <div className="flex items-start gap-3 sm:gap-4" data-no-depth-swipe="true">
@@ -158,12 +180,9 @@ export default function ModuleMatrixShell({
         contentClassName={cn('overflow-hidden px-12 sm:px-10', contentClassName)}
       >
         <div
+          ref={gestureZoneRef}
           className="h-full min-h-0 overflow-hidden"
           style={{ touchAction: 'pan-x' }}
-          onPointerDown={onPointerDown}
-          onPointerMove={onPointerMove}
-          onPointerUp={onPointerUp}
-          onPointerCancel={onPointerCancel}
         >
           {children}
         </div>
