@@ -54,9 +54,15 @@ export default function ModuleMatrixShell({
     navigating.current = false;
   }, [activeVerticalId]);
 
+  const shouldIgnoreTarget = (target: EventTarget | null) => {
+    if (!(target instanceof HTMLElement)) return false;
+    return Boolean(target.closest('a, button, input, textarea, select, [data-no-depth-swipe="true"]'));
+  };
+
   const onPointerDown = (e: React.PointerEvent) => {
     if (navigating.current) return;
     if (e.pointerType === 'mouse') return;
+    if (shouldIgnoreTarget(e.target)) return;
     start.current = { x: e.clientX, y: e.clientY };
     locked.current = null;
   };
@@ -106,7 +112,7 @@ export default function ModuleMatrixShell({
   };
 
   const headerActions = (
-    <div className="flex items-start gap-3 sm:gap-4">
+    <div className="flex items-start gap-3 sm:gap-4" data-no-depth-swipe="true">
       <nav aria-label="Horizontal card navigation" className="flex items-end gap-0.5 sm:gap-1">
         {horizontalTabs.map((tab, index) => {
           const active = tab.href === activeHorizontalHref;
@@ -141,26 +147,28 @@ export default function ModuleMatrixShell({
   );
 
   return (
-    <div
-      className={cn('relative h-full min-h-0', className)}
-      style={{ touchAction: 'none' }}
-      onPointerDown={onPointerDown}
-      onPointerMove={onPointerMove}
-      onPointerUp={onPointerUp}
-      onPointerCancel={onPointerCancel}
-    >
+    <div className={cn('relative h-full min-h-0', className)}>
+      <div
+        className="absolute inset-0 z-0"
+        style={{ touchAction: 'pan-x' }}
+        onPointerDown={onPointerDown}
+        onPointerMove={onPointerMove}
+        onPointerUp={onPointerUp}
+        onPointerCancel={onPointerCancel}
+      />
+
       <PanelShell
         title={title}
         actions={headerActions}
         flush
         scrollable={false}
-        className="min-h-0 flex-1"
+        className="relative z-10 min-h-0 flex-1"
         contentClassName={cn('overflow-hidden px-12 sm:px-10', contentClassName)}
       >
-        <div className="h-full min-h-0 overflow-hidden">{children}</div>
+        <div className="h-full min-h-0 overflow-hidden" data-no-depth-swipe="true">{children}</div>
       </PanelShell>
 
-      <div className="pointer-events-none absolute inset-y-0 left-0 z-20 flex items-center pl-2 sm:pl-3">
+      <div className="pointer-events-none absolute inset-y-0 left-0 z-20 flex items-center pl-2 sm:pl-3" data-no-depth-swipe="true">
         <nav aria-label="Depth navigation" className="pointer-events-auto flex flex-col gap-1.5">
           {verticalTabs.map((tab, index) => {
             const active = tab.id === activeVerticalId;
