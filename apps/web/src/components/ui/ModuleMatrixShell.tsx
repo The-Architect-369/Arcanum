@@ -59,19 +59,20 @@ export default function ModuleMatrixShell({
     return Boolean(target.closest('a, button, input, textarea, select, [data-no-depth-swipe="true"]'));
   };
 
-  const onTouchStartCapture = (e: React.TouchEvent) => {
+  const onPointerDown = (e: React.PointerEvent) => {
     if (navigating.current) return;
+    if (e.pointerType === 'mouse') return;
     if (shouldIgnoreTarget(e.target)) return;
-    const t = e.touches[0];
-    start.current = { x: t.clientX, y: t.clientY };
+    start.current = { x: e.clientX, y: e.clientY };
     locked.current = null;
   };
 
-  const onTouchMoveCapture = (e: React.TouchEvent) => {
+  const onPointerMove = (e: React.PointerEvent) => {
     if (!start.current || navigating.current) return;
-    const t = e.touches[0];
-    const dx = t.clientX - start.current.x;
-    const dy = t.clientY - start.current.y;
+    if (e.pointerType === 'mouse') return;
+
+    const dx = e.clientX - start.current.x;
+    const dy = e.clientY - start.current.y;
     const ax = Math.abs(dx);
     const ay = Math.abs(dy);
 
@@ -87,11 +88,12 @@ export default function ModuleMatrixShell({
     }
   };
 
-  const onTouchEndCapture = (e: React.TouchEvent) => {
+  const onPointerUp = (e: React.PointerEvent) => {
     if (!start.current || navigating.current) return;
-    const t = e.changedTouches[0];
-    const dx = t.clientX - start.current.x;
-    const dy = t.clientY - start.current.y;
+    if (e.pointerType === 'mouse') return;
+
+    const dx = e.clientX - start.current.x;
+    const dy = e.clientY - start.current.y;
     start.current = null;
 
     const ax = Math.abs(dx);
@@ -105,7 +107,7 @@ export default function ModuleMatrixShell({
     onVerticalChange(verticalTabs[nextIndex].id);
   };
 
-  const onTouchCancelCapture = () => {
+  const onPointerCancel = () => {
     start.current = null;
     locked.current = null;
   };
@@ -158,10 +160,10 @@ export default function ModuleMatrixShell({
         <div
           className="h-full min-h-0 overflow-hidden"
           style={{ touchAction: 'pan-x' }}
-          onTouchStartCapture={onTouchStartCapture}
-          onTouchMoveCapture={onTouchMoveCapture}
-          onTouchEndCapture={onTouchEndCapture}
-          onTouchCancelCapture={onTouchCancelCapture}
+          onPointerDown={onPointerDown}
+          onPointerMove={onPointerMove}
+          onPointerUp={onPointerUp}
+          onPointerCancel={onPointerCancel}
         >
           {children}
         </div>
