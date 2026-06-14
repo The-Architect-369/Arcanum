@@ -54,14 +54,14 @@ export default function ModuleMatrixShell({
     navigating.current = false;
   }, [activeVerticalId]);
 
-  const onTouchStart = (e: React.TouchEvent) => {
+  const onTouchStartCapture = (e: React.TouchEvent) => {
     if (navigating.current) return;
     const t = e.touches[0];
     start.current = { x: t.clientX, y: t.clientY };
     locked.current = null;
   };
 
-  const onTouchMove = (e: React.TouchEvent) => {
+  const onTouchMoveCapture = (e: React.TouchEvent) => {
     if (!start.current || navigating.current) return;
     const t = e.touches[0];
     const dx = t.clientX - start.current.x;
@@ -80,7 +80,7 @@ export default function ModuleMatrixShell({
     }
   };
 
-  const onTouchEnd = (e: React.TouchEvent) => {
+  const onTouchEndCapture = (e: React.TouchEvent) => {
     if (!start.current || navigating.current) return;
     const t = e.changedTouches[0];
     const dx = t.clientX - start.current.x;
@@ -136,18 +136,18 @@ export default function ModuleMatrixShell({
   return (
     <div
       className={cn('relative h-full min-h-0', className)}
-      onTouchStart={onTouchStart}
-      onTouchMove={onTouchMove}
-      onTouchEnd={onTouchEnd}
+      onTouchStartCapture={onTouchStartCapture}
+      onTouchMoveCapture={onTouchMoveCapture}
+      onTouchEndCapture={onTouchEndCapture}
     >
       <PanelShell
         title={title}
         actions={headerActions}
         flush
         className="min-h-0 flex-1"
-        contentClassName={cn('px-12 sm:px-10', contentClassName)}
+        contentClassName={cn('overflow-hidden px-12 sm:px-10', contentClassName)}
       >
-        {children}
+        <div className="h-full min-h-0 overflow-hidden">{children}</div>
       </PanelShell>
 
       <div className="pointer-events-none absolute inset-y-0 left-0 z-20 flex items-center pl-2 sm:pl-3">
