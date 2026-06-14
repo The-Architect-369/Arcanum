@@ -54,18 +54,19 @@ export default function ModuleMatrixShell({
     navigating.current = false;
   }, [activeVerticalId]);
 
-  const onTouchStartCapture = (e: React.TouchEvent) => {
+  const onPointerDown = (e: React.PointerEvent) => {
     if (navigating.current) return;
-    const t = e.touches[0];
-    start.current = { x: t.clientX, y: t.clientY };
+    if (e.pointerType === 'mouse') return;
+    start.current = { x: e.clientX, y: e.clientY };
     locked.current = null;
   };
 
-  const onTouchMoveCapture = (e: React.TouchEvent) => {
+  const onPointerMove = (e: React.PointerEvent) => {
     if (!start.current || navigating.current) return;
-    const t = e.touches[0];
-    const dx = t.clientX - start.current.x;
-    const dy = t.clientY - start.current.y;
+    if (e.pointerType === 'mouse') return;
+
+    const dx = e.clientX - start.current.x;
+    const dy = e.clientY - start.current.y;
     const ax = Math.abs(dx);
     const ay = Math.abs(dy);
 
@@ -77,15 +78,15 @@ export default function ModuleMatrixShell({
 
     if (locked.current === 'v') {
       e.preventDefault();
-      e.stopPropagation();
     }
   };
 
-  const onTouchEndCapture = (e: React.TouchEvent) => {
+  const onPointerUp = (e: React.PointerEvent) => {
     if (!start.current || navigating.current) return;
-    const t = e.changedTouches[0];
-    const dx = t.clientX - start.current.x;
-    const dy = t.clientY - start.current.y;
+    if (e.pointerType === 'mouse') return;
+
+    const dx = e.clientX - start.current.x;
+    const dy = e.clientY - start.current.y;
     start.current = null;
 
     const ax = Math.abs(dx);
@@ -97,6 +98,11 @@ export default function ModuleMatrixShell({
 
     navigating.current = true;
     onVerticalChange(verticalTabs[nextIndex].id);
+  };
+
+  const onPointerCancel = () => {
+    start.current = null;
+    locked.current = null;
   };
 
   const headerActions = (
@@ -136,10 +142,12 @@ export default function ModuleMatrixShell({
 
   return (
     <div
-      className={cn('relative h-full min-h-0 touch-none', className)}
-      onTouchStartCapture={onTouchStartCapture}
-      onTouchMoveCapture={onTouchMoveCapture}
-      onTouchEndCapture={onTouchEndCapture}
+      className={cn('relative h-full min-h-0', className)}
+      style={{ touchAction: 'none' }}
+      onPointerDown={onPointerDown}
+      onPointerMove={onPointerMove}
+      onPointerUp={onPointerUp}
+      onPointerCancel={onPointerCancel}
     >
       <PanelShell
         title={title}
