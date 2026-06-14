@@ -138,7 +138,7 @@ export default function TempusModuleScreen({ family }: { family: FamilyId }) {
 
   useEffect(() => {
     setActiveCardId(activeFamily.cards[0]?.id ?? 'a1');
-  }, [activeFamily]);
+  }, [family]);
 
   return (
     <SwipeRoutes order={ORDER}>
