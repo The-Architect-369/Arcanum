@@ -77,6 +77,7 @@ export default function ModuleMatrixShell({
 
     if (locked.current === 'v') {
       e.preventDefault();
+      e.stopPropagation();
     }
   };
 
@@ -135,7 +136,7 @@ export default function ModuleMatrixShell({
 
   return (
     <div
-      className={cn('relative h-full min-h-0', className)}
+      className={cn('relative h-full min-h-0 touch-none', className)}
       onTouchStartCapture={onTouchStartCapture}
       onTouchMoveCapture={onTouchMoveCapture}
       onTouchEndCapture={onTouchEndCapture}
@@ -144,6 +145,7 @@ export default function ModuleMatrixShell({
         title={title}
         actions={headerActions}
         flush
+        scrollable={false}
         className="min-h-0 flex-1"
         contentClassName={cn('overflow-hidden px-12 sm:px-10', contentClassName)}
       >
