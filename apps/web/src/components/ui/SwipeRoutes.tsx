@@ -6,7 +6,8 @@ import { directionForRoute, primeRouteMotion } from '@/lib/mobile/routeMotion';
 
 /**
  * Wrap page content to enable horizontal swipe navigation across an ordered set of hrefs.
- * Mobile: swipe left/right to go next/prev through explicit route gesture zones.
+ * Mobile: swipe left/right to go next/prev through explicit route gesture zones when present,
+ * otherwise fall back to the full wrapped surface.
  */
 export default function SwipeRoutes({
   order,
@@ -17,6 +18,7 @@ export default function SwipeRoutes({
 }) {
   const router = useRouter();
   const pathname = usePathname();
+  const rootRef = useRef<HTMLDivElement | null>(null);
   const start = useRef<{ x: number; y: number } | null>(null);
   const locked = useRef<'h' | 'v' | null>(null);
   const previousPathname = useRef<string>(pathname);
@@ -41,6 +43,10 @@ export default function SwipeRoutes({
   }, [order, router]);
 
   const isRouteZoneTarget = (target: EventTarget | null) => {
+    const root = rootRef.current;
+    const hasExplicitZones = Boolean(root?.querySelector('[data-route-swipe-zone="true"]'));
+
+    if (!hasExplicitZones) return true;
     return target instanceof HTMLElement && Boolean(target.closest('[data-route-swipe-zone="true"]'));
   };
 
@@ -98,6 +104,7 @@ export default function SwipeRoutes({
 
   return (
     <div
+      ref={rootRef}
       className="h-full min-h-0"
       onTouchStart={onTouchStart}
       onTouchMove={onTouchMove}
