@@ -6,8 +6,8 @@ import { directionForRoute, primeRouteMotion } from '@/lib/mobile/routeMotion';
 
 /**
  * Wrap page content to enable horizontal swipe navigation across an ordered set of hrefs.
- * Mobile: swipe left/right to go next/prev through explicit route gesture zones when present,
- * otherwise fall back to the full wrapped surface.
+ * Mobile: swipe left/right to go next/prev across the wrapped surface,
+ * except inside regions marked data-no-route-swipe="true".
  */
 export default function SwipeRoutes({
   order,
@@ -42,20 +42,13 @@ export default function SwipeRoutes({
     order.forEach((href) => router.prefetch(href));
   }, [order, router]);
 
-  const isRouteZoneTarget = (target: EventTarget | null) => {
-    const root = rootRef.current;
-    const hasExplicitZones = Boolean(root?.querySelector('[data-route-swipe-zone="true"]'));
-
-    if (target instanceof HTMLElement && target.closest('[data-no-route-swipe="true"]')) {
-      return false;
-    }
-    if (!hasExplicitZones) return true;
-    return target instanceof HTMLElement && Boolean(target.closest('[data-route-swipe-zone="true"]'));
+  const isRouteSwipeAllowed = (target: EventTarget | null) => {
+    return !(target instanceof HTMLElement && target.closest('[data-no-route-swipe="true"]'));
   };
 
   const onTouchStart = (e: React.TouchEvent) => {
     if (navigating.current) return;
-    if (!isRouteZoneTarget(e.target)) return;
+    if (!isRouteSwipeAllowed(e.target)) return;
     const t = e.touches[0];
     start.current = { x: t.clientX, y: t.clientY };
     locked.current = null;
