@@ -19,6 +19,8 @@ export default function SwipeRoutes({
   const router = useRouter();
   const pathname = usePathname();
   const rootRef = useRef<HTMLDivElement | null>(null);
+  const start = useRef<{ x: number; y: number } | null>(null);
+  const locked = useRef<'h' | 'v' | null>(null);
   const previousPathname = useRef<string>(pathname);
   const navigating = useRef(false);
 
@@ -40,95 +42,77 @@ export default function SwipeRoutes({
     order.forEach((href) => router.prefetch(href));
   }, [order, router]);
 
-  useEffect(() => {
+  const isRouteZoneTarget = (target: EventTarget | null) => {
     const root = rootRef.current;
-    if (!root) return;
+    const hasExplicitZones = Boolean(root?.querySelector('[data-route-swipe-zone="true"]'));
 
-    let start: { x: number; y: number } | null = null;
-    let locked: 'h' | 'v' | null = null;
+    if (target instanceof HTMLElement && target.closest('[data-no-route-swipe="true"]')) {
+      return false;
+    }
+    if (!hasExplicitZones) return true;
+    return target instanceof HTMLElement && Boolean(target.closest('[data-route-swipe-zone="true"]'));
+  };
 
-    const isRouteZoneTarget = (target: EventTarget | null) => {
-      const hasExplicitZones = Boolean(root.querySelector('[data-route-swipe-zone="true"]'));
-      if (!hasExplicitZones) return true;
-      return target instanceof HTMLElement && Boolean(target.closest('[data-route-swipe-zone="true"]'));
-    };
+  const onTouchStart = (e: React.TouchEvent) => {
+    if (navigating.current) return;
+    if (!isRouteZoneTarget(e.target)) return;
+    const t = e.touches[0];
+    start.current = { x: t.clientX, y: t.clientY };
+    locked.current = null;
+  };
 
-    const onTouchStart = (e: TouchEvent) => {
-      if (navigating.current) return;
-      if (!isRouteZoneTarget(e.target)) return;
-      const t = e.touches[0];
-      if (!t) return;
-      start = { x: t.clientX, y: t.clientY };
-      locked = null;
-    };
+  const onTouchMove = (e: React.TouchEvent) => {
+    if (!start.current || navigating.current) return;
+    const t = e.touches[0];
+    const dx = t.clientX - start.current.x;
+    const dy = t.clientY - start.current.y;
+    const ax = Math.abs(dx);
+    const ay = Math.abs(dy);
 
-    const onTouchMove = (e: TouchEvent) => {
-      if (!start || navigating.current) return;
-      const t = e.touches[0];
-      if (!t) return;
+    if (!locked.current) {
+      if (ax >= H && ax > ay * SLOPE) locked.current = 'h';
+      else if (ay >= H && ay > ax) locked.current = 'v';
+      else return;
+    }
 
-      const dx = t.clientX - start.x;
-      const dy = t.clientY - start.y;
-      const ax = Math.abs(dx);
-      const ay = Math.abs(dy);
+    if (locked.current === 'h') {
+      e.preventDefault();
+    }
+  };
 
-      if (!locked) {
-        if (ax >= H && ax > ay * SLOPE) locked = 'h';
-        else if (ay >= H && ay > ax) locked = 'v';
-        else return;
-      }
+  const onTouchEnd = (e: React.TouchEvent) => {
+    if (!start.current || navigating.current) return;
+    const t = e.changedTouches[0];
+    const dx = t.clientX - start.current.x;
+    const dy = t.clientY - start.current.y;
+    start.current = null;
 
-      if (locked === 'h') {
-        e.preventDefault();
-      }
-    };
+    const ax = Math.abs(dx);
+    const ay = Math.abs(dy);
+    if (ax < H || ax <= ay * SLOPE) return;
 
-    const onTouchEnd = (e: TouchEvent) => {
-      if (!start || navigating.current) return;
-      const t = e.changedTouches[0];
-      if (!t) return;
+    const idx = order.indexOf(pathname);
+    if (idx === -1) return;
 
-      const dx = t.clientX - start.x;
-      const dy = t.clientY - start.y;
-      start = null;
+    const next = dx < 0 && idx < order.length - 1;
+    const prev = dx > 0 && idx > 0;
 
-      const ax = Math.abs(dx);
-      const ay = Math.abs(dy);
-      if (ax < H || ax <= ay * SLOPE) return;
+    if (!next && !prev) return;
 
-      const idx = order.indexOf(pathname);
-      if (idx === -1) return;
-
-      const next = dx < 0 && idx < order.length - 1;
-      const prev = dx > 0 && idx > 0;
-      if (!next && !prev) return;
-
-      const target = next ? order[idx + 1] : order[idx - 1];
-      navigating.current = true;
-      primeRouteMotion(pathname, target);
-      router.push(target);
-    };
-
-    const onTouchCancel = () => {
-      start = null;
-      locked = null;
-    };
-
-    root.addEventListener('touchstart', onTouchStart, { passive: true });
-    root.addEventListener('touchmove', onTouchMove, { passive: false });
-    root.addEventListener('touchend', onTouchEnd, { passive: true });
-    root.addEventListener('touchcancel', onTouchCancel, { passive: true });
-
-    return () => {
-      root.removeEventListener('touchstart', onTouchStart);
-      root.removeEventListener('touchmove', onTouchMove);
-      root.removeEventListener('touchend', onTouchEnd);
-      root.removeEventListener('touchcancel', onTouchCancel);
-    };
-  }, [order, pathname, router]);
+    const target = next ? order[idx + 1] : order[idx - 1];
+    navigating.current = true;
+    primeRouteMotion(pathname, target);
+    router.push(target);
+  };
 
   return (
-    <div ref={rootRef} className="h-full min-h-0">
+    <div
+      ref={rootRef}
+      className="h-full min-h-0"
+      onTouchStart={onTouchStart}
+      onTouchMove={onTouchMove}
+      onTouchEnd={onTouchEnd}
+    >
       {children}
     </div>
   );
