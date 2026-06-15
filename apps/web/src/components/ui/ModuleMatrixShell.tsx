@@ -135,7 +135,7 @@ export default function ModuleMatrixShell({
   }, [activeVerticalIndex, onVerticalChange, verticalTabs]);
 
   const headerActions = (
-    <div className="flex items-start gap-3 sm:gap-4">
+    <div className="flex items-start gap-3 sm:gap-4" data-no-route-swipe="true">
       <nav aria-label="Horizontal card navigation" className="flex items-end gap-0.5 sm:gap-1">
         {horizontalTabs.map((tab, index) => {
           const active = tab.href === activeHorizontalHref;
@@ -190,7 +190,7 @@ export default function ModuleMatrixShell({
         className="relative z-10 min-h-0 flex-1"
         contentClassName={cn('overflow-hidden px-12 sm:px-10', contentClassName)}
       >
-        <div className="relative h-full min-h-0 overflow-hidden">
+        <div className="relative h-full min-h-0 overflow-hidden" data-no-route-swipe="true">
           <div
             ref={contentGestureRef}
             className="absolute inset-0 z-20"
@@ -203,7 +203,7 @@ export default function ModuleMatrixShell({
         </div>
       </PanelShell>
 
-      <div className="pointer-events-none absolute inset-y-0 left-0 z-40 flex items-center pl-2 sm:pl-3">
+      <div className="pointer-events-none absolute inset-y-0 left-0 z-40 flex items-center pl-2 sm:pl-3" data-no-route-swipe="true">
         <nav aria-label="Depth navigation" className="pointer-events-auto flex flex-col gap-1.5">
           {verticalTabs.map((tab, index) => {
             const active = tab.id === activeVerticalId;
