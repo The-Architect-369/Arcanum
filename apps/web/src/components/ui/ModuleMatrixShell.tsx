@@ -171,17 +171,6 @@ export default function ModuleMatrixShell({
 
   return (
     <div className={cn('relative h-full min-h-0', className)}>
-      <div
-        className="absolute inset-y-0 right-0 z-30 w-10 sm:w-12"
-        data-route-swipe-zone="true"
-        aria-hidden="true"
-      />
-      <div
-        className="absolute inset-y-0 left-12 z-30 w-4 sm:left-14 sm:w-5"
-        data-route-swipe-zone="true"
-        aria-hidden="true"
-      />
-
       <PanelShell
         title={title}
         actions={headerActions}
