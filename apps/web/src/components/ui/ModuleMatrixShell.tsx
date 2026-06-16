@@ -21,6 +21,7 @@ type ModuleMatrixShellProps = {
   actions?: React.ReactNode;
   horizontalTabs: readonly HorizontalTab[];
   activeHorizontalHref: string;
+  onHorizontalChange?: (href: string) => void;
   verticalTabs: readonly VerticalTab[];
   activeVerticalId: string;
   onVerticalChange: (id: string) => void;
@@ -34,6 +35,7 @@ export default function ModuleMatrixShell({
   actions,
   horizontalTabs,
   activeHorizontalHref,
+  onHorizontalChange,
   verticalTabs,
   activeVerticalId,
   onVerticalChange,
@@ -139,20 +141,14 @@ export default function ModuleMatrixShell({
       <nav aria-label="Horizontal card navigation" className="flex items-end gap-0.5 sm:gap-1">
         {horizontalTabs.map((tab, index) => {
           const active = tab.href === activeHorizontalHref;
-          return (
-            <Link
-              key={tab.href}
-              href={tab.href}
-              aria-label={tab.label}
-              aria-current={active ? 'page' : undefined}
-              title={tab.label}
-              className={cn(
-                'relative -mr-px block h-9 w-8 rounded-t-[1rem] border border-b-0 transition-all duration-300 sm:h-10 sm:w-9',
-                active
-                  ? 'z-20 translate-y-px border-amber-200/75 bg-[linear-gradient(180deg,rgba(246,196,83,.24),rgba(246,196,83,.10))] shadow-[0_0_14px_rgba(246,196,83,.18)]'
-                  : 'z-10 mt-2 border-white/14 bg-[linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.03))] hover:border-white/24 hover:bg-[linear-gradient(180deg,rgba(255,255,255,.12),rgba(255,255,255,.05))]'
-              )}
-            >
+          const tabClassName = cn(
+            'relative -mr-px block h-9 w-8 rounded-t-[1rem] border border-b-0 transition-all duration-300 sm:h-10 sm:w-9',
+            active
+              ? 'z-20 translate-y-px border-amber-200/75 bg-[linear-gradient(180deg,rgba(246,196,83,.24),rgba(246,196,83,.10))] shadow-[0_0_14px_rgba(246,196,83,.18)]'
+              : 'z-10 mt-2 border-white/14 bg-[linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.03))] hover:border-white/24 hover:bg-[linear-gradient(180deg,rgba(255,255,255,.12),rgba(255,255,255,.05))]'
+          );
+          const tabInner = (
+            <>
               <span className="sr-only">{index + 1}. {tab.label}</span>
               <span
                 aria-hidden="true"
@@ -161,6 +157,35 @@ export default function ModuleMatrixShell({
                   active ? 'bg-amber-100 shadow-[0_0_10px_rgba(246,196,83,.55)]' : 'bg-white/34'
                 )}
               />
+            </>
+          );
+
+          if (onHorizontalChange) {
+            return (
+              <button
+                key={tab.href}
+                type="button"
+                aria-label={tab.label}
+                aria-pressed={active}
+                title={tab.label}
+                onClick={() => onHorizontalChange(tab.href)}
+                className={tabClassName}
+              >
+                {tabInner}
+              </button>
+            );
+          }
+
+          return (
+            <Link
+              key={tab.href}
+              href={tab.href}
+              aria-label={tab.label}
+              aria-current={active ? 'page' : undefined}
+              title={tab.label}
+              className={tabClassName}
+            >
+              {tabInner}
             </Link>
           );
         })}
