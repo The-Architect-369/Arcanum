@@ -4,7 +4,6 @@ import * as React from 'react';
 import { useEffect, useMemo, useState } from 'react';
 import AppStage from '@/components/ui/AppStage';
 import ModuleMatrixShell from '@/components/ui/ModuleMatrixShell';
-import SwipeRoutes from '@/components/ui/SwipeRoutes';
 import { useTempusWindow } from '@/hooks/useTempusWindow';
 
 type FamilyId = 'clock' | 'calendar' | 'codex';
@@ -26,13 +25,27 @@ type FamilyConfig = {
 };
 
 const ORDER = ['/tempus/clock', '/tempus/calendar', '/tempus/codex'] as const;
+const FAMILY_BY_HREF: Record<(typeof ORDER)[number], FamilyId> = {
+  '/tempus/clock': 'clock',
+  '/tempus/calendar': 'calendar',
+  '/tempus/codex': 'codex',
+};
 
 function phaseText(phase: 'open' | 'rest' | 'silent') {
   return phase === 'open' ? 'Open' : phase === 'rest' ? 'Resting' : 'Silent';
 }
 
+function familyFromPathname(pathname: string): FamilyId | null {
+  const clean = pathname.split('?')[0]?.split('#')[0] || '';
+  if (clean in FAMILY_BY_HREF) {
+    return FAMILY_BY_HREF[clean as keyof typeof FAMILY_BY_HREF];
+  }
+  return null;
+}
+
 export default function TempusModuleScreen({ family }: { family: FamilyId }) {
   const w = useTempusWindow();
+  const [activeFamilyId, setActiveFamilyId] = useState<FamilyId>(family);
   const [activeCardId, setActiveCardId] = useState<CardId>('a1');
 
   const families = useMemo<Record<FamilyId, FamilyConfig>>(
@@ -132,22 +145,99 @@ export default function TempusModuleScreen({ family }: { family: FamilyId }) {
     [w]
   );
 
-  const activeFamily = families[family];
+  const activeFamily = families[activeFamilyId];
   const activeCard = activeFamily.cards.find((card) => card.id === activeCardId) ?? activeFamily.cards[0];
   const verticalTabs = activeFamily.cards.map((card) => ({ id: card.id, label: card.navLabel }));
 
   useEffect(() => {
-    setActiveCardId(activeFamily.cards[0]?.id ?? 'a1');
+    setActiveFamilyId(family);
   }, [family]);
 
+  useEffect(() => {
+    setActiveCardId(activeFamily.cards[0]?.id ?? 'a1');
+  }, [activeFamilyId]);
+
+  useEffect(() => {
+    const onPopState = () => {
+      const nextFamily = familyFromPathname(window.location.pathname);
+      if (nextFamily) setActiveFamilyId(nextFamily);
+    };
+
+    window.addEventListener('popstate', onPopState);
+    return () => window.removeEventListener('popstate', onPopState);
+  }, []);
+
+  const setFamily = (nextFamily: FamilyId) => {
+    if (nextFamily === activeFamilyId) return;
+    const href = families[nextFamily].href;
+    window.history.replaceState(window.history.state, '', href);
+    setActiveFamilyId(nextFamily);
+  };
+
+  const onHorizontalChange = (href: string) => {
+    const nextFamily = familyFromPathname(href);
+    if (nextFamily) setFamily(nextFamily);
+  };
+
+  const swipeStart = React.useRef<{ x: number; y: number } | null>(null);
+  const swipeLock = React.useRef<'h' | 'v' | null>(null);
+
+  const onTouchStartCapture = (e: React.TouchEvent) => {
+    if (e.target instanceof HTMLElement && e.target.closest('[data-no-route-swipe="true"]')) return;
+    const t = e.touches[0];
+    swipeStart.current = { x: t.clientX, y: t.clientY };
+    swipeLock.current = null;
+  };
+
+  const onTouchMoveCapture = (e: React.TouchEvent) => {
+    if (!swipeStart.current) return;
+    const t = e.touches[0];
+    const dx = t.clientX - swipeStart.current.x;
+    const dy = t.clientY - swipeStart.current.y;
+    const ax = Math.abs(dx);
+    const ay = Math.abs(dy);
+
+    if (!swipeLock.current) {
+      if (ax >= 12 && ax > ay * 1.06) swipeLock.current = 'h';
+      else if (ay >= 12 && ay > ax) swipeLock.current = 'v';
+      else return;
+    }
+
+    if (swipeLock.current === 'h') {
+      e.preventDefault();
+    }
+  };
+
+  const onTouchEndCapture = (e: React.TouchEvent) => {
+    if (!swipeStart.current) return;
+    const t = e.changedTouches[0];
+    const dx = t.clientX - swipeStart.current.x;
+    const dy = t.clientY - swipeStart.current.y;
+    swipeStart.current = null;
+
+    const ax = Math.abs(dx);
+    const ay = Math.abs(dy);
+    if (ax < 12 || ax <= ay * 1.06) return;
+
+    const currentIndex = ORDER.indexOf(activeFamily.href as (typeof ORDER)[number]);
+    if (currentIndex === -1) return;
+
+    const nextIndex = dx < 0 ? currentIndex + 1 : currentIndex - 1;
+    if (nextIndex < 0 || nextIndex >= ORDER.length) return;
+
+    const nextFamily = FAMILY_BY_HREF[ORDER[nextIndex]];
+    setFamily(nextFamily);
+  };
+
   return (
-    <SwipeRoutes order={ORDER}>
-      <AppStage>
+    <AppStage>
+      <div className="h-full min-h-0" onTouchStartCapture={onTouchStartCapture} onTouchMoveCapture={onTouchMoveCapture} onTouchEndCapture={onTouchEndCapture}>
         <ModuleMatrixShell
           title={<h1 className="text-lg font-semibold">{activeCard.title}</h1>}
           actions={activeFamily.shellAction}
           horizontalTabs={Object.values(families).map(({ href, label }) => ({ href, label }))}
           activeHorizontalHref={activeFamily.href}
+          onHorizontalChange={onHorizontalChange}
           verticalTabs={verticalTabs}
           activeVerticalId={activeCard.id}
           onVerticalChange={(id) => setActiveCardId(id)}
@@ -158,8 +248,8 @@ export default function TempusModuleScreen({ family }: { family: FamilyId }) {
             {activeCard.render()}
           </div>
         </ModuleMatrixShell>
-      </AppStage>
-    </SwipeRoutes>
+      </div>
+    </AppStage>
   );
 }
 
