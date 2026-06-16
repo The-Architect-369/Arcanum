@@ -179,7 +179,7 @@ export default function ModuleMatrixShell({
         className="relative z-10 min-h-0 flex-1"
         contentClassName={cn('overflow-hidden px-12 sm:px-10', contentClassName)}
       >
-        <div className="relative h-full min-h-0 overflow-hidden" data-no-route-swipe="true">
+        <div className="relative h-full min-h-0 overflow-hidden">
           <div
             ref={contentGestureRef}
             className="absolute inset-0 z-20"
