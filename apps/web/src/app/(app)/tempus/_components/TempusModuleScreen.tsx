@@ -55,6 +55,10 @@ function motionForFamilyChange(from: FamilyId, to: FamilyId): FamilyMotion {
   return FAMILY_INDEX[to] > FAMILY_INDEX[from] ? 'next' : 'prev';
 }
 
+function subtitleFromCardTitle(title: string) {
+  return title.replace(/^Tempus\s*-\s*/i, '');
+}
+
 export default function TempusModuleScreen({ family }: { family: FamilyId }) {
   const w = useTempusWindow();
   const [activeFamilyId, setActiveFamilyId] = useState<FamilyId>(family);
@@ -162,6 +166,7 @@ export default function TempusModuleScreen({ family }: { family: FamilyId }) {
   const activeFamily = families[activeFamilyId];
   const activeCard = activeFamily.cards.find((card) => card.id === activeCardId) ?? activeFamily.cards[0];
   const verticalTabs = activeFamily.cards.map((card) => ({ id: card.id, label: card.navLabel }));
+  const titleSubtitle = subtitleFromCardTitle(activeCard.title);
 
   useEffect(() => {
     const timer = window.setTimeout(() => setFamilyMotion('idle'), 190);
@@ -257,7 +262,19 @@ export default function TempusModuleScreen({ family }: { family: FamilyId }) {
     <AppStage>
       <div className="h-full min-h-0" onTouchStartCapture={onTouchStartCapture} onTouchMoveCapture={onTouchMoveCapture} onTouchEndCapture={onTouchEndCapture}>
         <ModuleMatrixShell
-          title={<h1 className="text-lg font-semibold">{activeCard.title}</h1>}
+          title={
+            <div
+              key={`title-${activeFamilyId}-${familyMotionKey}`}
+              className={cn(
+                'tempus-title-shell flex min-w-0 items-baseline gap-3 sm:gap-4',
+                familyMotion === 'next' && 'tempus-title-shell--next',
+                familyMotion === 'prev' && 'tempus-title-shell--prev'
+              )}
+            >
+              <span className="tempus-title-word truncate">Tempus</span>
+              <span className="tempus-title-subtitle truncate">{titleSubtitle}</span>
+            </div>
+          }
           actions={activeFamily.shellAction}
           horizontalTabs={Object.values(families).map(({ href, label }) => ({ href, label }))}
           activeHorizontalHref={activeFamily.href}
