@@ -73,6 +73,24 @@
   }
 }
 
+@keyframes arcanum-tempus-family-next {
+  from {
+    transform: translate3d(1.9%, 0, 0);
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes arcanum-tempus-family-prev {
+  from {
+    transform: translate3d(-1.9%, 0, 0);
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
 @keyframes arcanum-deck-polish-fade {
   0% {
     opacity: 0;
@@ -217,6 +235,18 @@ html[data-card-direction='prev'] .card-transition-sheen {
   animation: arcanum-card-polish-sheen 180ms ease-out both;
 }
 
+.tempus-family-panel {
+  will-change: transform;
+}
+
+.tempus-family-panel--next {
+  animation: arcanum-tempus-family-next 180ms cubic-bezier(.18,.76,.18,1) both;
+}
+
+.tempus-family-panel--prev {
+  animation: arcanum-tempus-family-prev 180ms cubic-bezier(.18,.76,.18,1) both;
+}
+
 .module-deck-reveal {
   animation: arcanum-deck-polish-fade 740ms ease both;
 }
@@ -243,6 +273,7 @@ html[data-card-direction='prev'] .card-transition-sheen {
   .global-tab-active .global-tab-icon,
   html[data-card-direction] .card-transition-shell,
   html[data-card-direction] .card-transition-sheen,
+  .tempus-family-panel,
   .module-deck-reveal,
   .module-deck-reveal__card {
     animation: none;
