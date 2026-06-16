@@ -138,64 +138,67 @@ export default function ModuleMatrixShell({
 
   const headerActions = (
     <div className="flex items-start justify-end" data-no-route-swipe="true">
-      <nav aria-label="Horizontal card navigation" className="relative flex h-12 items-start pr-1 pt-0.5 sm:h-[3.15rem]">
+      <nav aria-label="Horizontal card navigation" className="relative flex h-[3.15rem] items-end pr-1 -mb-px overflow-visible sm:h-[3.3rem]">
         <span
           aria-hidden="true"
-          className="pointer-events-none absolute inset-x-1 top-[2.7rem] h-px bg-gradient-to-r from-transparent via-white/16 to-transparent sm:top-[2.9rem]"
+          className="pointer-events-none absolute inset-x-0 bottom-0 h-[2px] rounded-full bg-[linear-gradient(90deg,transparent,rgba(255,255,255,.09),rgba(255,255,255,.05),transparent)]"
         />
         {horizontalTabs.map((tab, index) => {
           const active = tab.href === activeHorizontalHref;
-          const frontIndex = horizontalTabs.findIndex((item) => item.href === activeHorizontalHref);
-          const depthFromFront = Math.abs(index - frontIndex);
-          const offsetY = active ? 0 : Math.min(12, 4 + depthFromFront * 3);
-          const offsetX = index === 0 ? 0 : -12;
-          const zIndex = active ? 40 : 30 - depthFromFront;
+          const activeIndex = horizontalTabs.findIndex((item) => item.href === activeHorizontalHref);
+          const depth = Math.abs(index - activeIndex);
+          const offsetY = active ? 1 : Math.min(11, 5 + depth * 2);
+          const zIndex = active ? 50 : 40 - depth;
           const tabClassName = cn(
-            'relative flex h-11 w-12 items-start justify-center transition-all duration-300 sm:h-[3rem] sm:w-[3.35rem]',
+            'relative flex h-[2.8rem] w-[3.25rem] items-center justify-center transition-all duration-300 sm:h-[2.95rem] sm:w-[3.45rem]',
             !active && 'hover:-translate-y-0.5'
           );
           const tabStyle: React.CSSProperties = {
-            marginLeft: index === 0 ? 0 : offsetX,
+            marginLeft: index === 0 ? 0 : -14,
             transform: `translateY(${offsetY}px)`,
             zIndex,
           };
-          const folderStyle: React.CSSProperties = {
-            clipPath: 'polygon(0 100%, 0 26%, 20% 0, 100% 0, 100% 78%, 86% 100%)',
+          const baseStyle: React.CSSProperties = {
+            clipPath: 'polygon(0 100%, 0 30%, 22% 0, 100% 0, 100% 74%, 86% 100%)',
+          };
+          const lipStyle: React.CSSProperties = {
+            clipPath: 'polygon(0 100%, 0 68%, 18% 0, 100% 0, 100% 100%)',
           };
           const tabInner = (
             <>
               <span
                 aria-hidden="true"
                 className={cn(
-                  'absolute bottom-0 left-0 right-0 top-0 border transition-all',
+                  'absolute inset-0 border border-b-0 transition-all',
                   active
-                    ? 'border-amber-200/78 bg-[linear-gradient(180deg,rgba(246,196,83,.22),rgba(246,196,83,.08))] shadow-[0_10px_18px_rgba(246,196,83,.12)]'
-                    : 'border-white/12 bg-[linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.025))] shadow-[0_8px_14px_rgba(0,0,0,.12)]'
+                    ? 'border-amber-200/76 bg-[linear-gradient(180deg,rgba(246,196,83,.18),rgba(246,196,83,.08)_52%,rgba(6,8,18,.02))] shadow-[0_8px_18px_rgba(246,196,83,.12)]'
+                    : 'border-white/12 bg-[linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.025)_56%,rgba(6,8,18,.02))] shadow-[0_8px_16px_rgba(0,0,0,.10)]'
                 )}
-                style={folderStyle}
+                style={baseStyle}
               />
               <span
                 aria-hidden="true"
                 className={cn(
-                  'absolute left-[22%] right-[10%] top-0 h-[30%] rounded-t-[0.9rem] rounded-br-[0.5rem] border border-b-0 transition-all',
+                  'absolute left-[18%] right-[10%] top-0 h-[28%] border border-b-0 transition-all',
                   active
-                    ? 'border-amber-200/68 bg-[linear-gradient(180deg,rgba(246,196,83,.18),rgba(246,196,83,.08))]'
-                    : 'border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.02))]'
+                    ? 'border-amber-200/62 bg-[linear-gradient(180deg,rgba(246,196,83,.16),rgba(246,196,83,.06))]'
+                    : 'border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02))]'
                 )}
+                style={lipStyle}
               />
               <span className="sr-only">{index + 1}. {tab.label}</span>
               <span
                 aria-hidden="true"
                 className={cn(
-                  'absolute left-1/2 top-[45%] h-4 w-1.5 -translate-x-1/2 -translate-y-1/2 rounded-full transition-all sm:h-[1.05rem]',
-                  active ? 'bg-amber-100 shadow-[0_0_10px_rgba(246,196,83,.55)]' : 'bg-white/34'
+                  'absolute left-1/2 top-[46%] h-4 w-1.5 -translate-x-1/2 -translate-y-1/2 rounded-full transition-all',
+                  active ? 'bg-amber-100 shadow-[0_0_10px_rgba(246,196,83,.55)]' : 'bg-white/28'
                 )}
               />
               <span
                 aria-hidden="true"
                 className={cn(
-                  'pointer-events-none absolute bottom-[3px] left-[18%] right-[14%] h-px rounded-full transition-all',
-                  active ? 'bg-amber-100/58' : 'bg-white/08'
+                  'pointer-events-none absolute inset-x-[16%] bottom-0 h-[2px] rounded-full transition-all',
+                  active ? 'bg-[rgba(6,8,18,.92)]' : 'bg-[rgba(6,8,18,.74)]'
                 )}
               />
             </>
