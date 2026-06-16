@@ -42,6 +42,19 @@ export default function SwipeRoutes({
     order.forEach((href) => router.prefetch(href));
   }, [order, router]);
 
+  useEffect(() => {
+    const idx = order.indexOf(pathname);
+    if (idx === -1) return;
+
+    const current = order[idx];
+    const prev = idx > 0 ? order[idx - 1] : null;
+    const next = idx < order.length - 1 ? order[idx + 1] : null;
+
+    router.prefetch(current);
+    if (prev) router.prefetch(prev);
+    if (next) router.prefetch(next);
+  }, [order, pathname, router]);
+
   const isRouteSwipeAllowed = (target: EventTarget | null) => {
     return !(target instanceof HTMLElement && target.closest('[data-no-route-swipe="true"]'));
   };
@@ -93,6 +106,7 @@ export default function SwipeRoutes({
     if (!next && !prev) return;
 
     const target = next ? order[idx + 1] : order[idx - 1];
+    router.prefetch(target);
     navigating.current = true;
     primeRouteMotion(pathname, target);
     router.push(target);
