@@ -138,48 +138,64 @@ export default function ModuleMatrixShell({
 
   const headerActions = (
     <div className="flex items-start justify-end" data-no-route-swipe="true">
-      <nav aria-label="Horizontal card navigation" className="relative flex items-end pr-1 pt-1">
+      <nav aria-label="Horizontal card navigation" className="relative flex h-12 items-start pr-1 pt-0.5 sm:h-[3.15rem]">
+        <span
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-x-1 top-[2.7rem] h-px bg-gradient-to-r from-transparent via-white/16 to-transparent sm:top-[2.9rem]"
+        />
         {horizontalTabs.map((tab, index) => {
           const active = tab.href === activeHorizontalHref;
-          const offset = index * 14;
-          const raised = (horizontalTabs.length - 1 - index) * 4;
+          const frontIndex = horizontalTabs.findIndex((item) => item.href === activeHorizontalHref);
+          const depthFromFront = Math.abs(index - frontIndex);
+          const offsetY = active ? 0 : Math.min(12, 4 + depthFromFront * 3);
+          const offsetX = index === 0 ? 0 : -12;
+          const zIndex = active ? 40 : 30 - depthFromFront;
           const tabClassName = cn(
-            'relative flex h-10 w-11 items-center justify-center transition-all duration-300 sm:h-11 sm:w-12',
-            active ? 'z-30' : `z-${10 + index}`,
+            'relative flex h-11 w-12 items-start justify-center transition-all duration-300 sm:h-[3rem] sm:w-[3.35rem]',
             !active && 'hover:-translate-y-0.5'
           );
           const tabStyle: React.CSSProperties = {
-            marginLeft: index === 0 ? 0 : -10,
-            transform: `translateY(${raised}px)`,
+            marginLeft: index === 0 ? 0 : offsetX,
+            transform: `translateY(${offsetY}px)`,
+            zIndex,
           };
           const folderStyle: React.CSSProperties = {
-            clipPath: 'polygon(0% 100%, 0% 30%, 12% 0%, 100% 0%, 100% 78%, 88% 100%)',
+            clipPath: 'polygon(0 100%, 0 26%, 20% 0, 100% 0, 100% 78%, 86% 100%)',
           };
           const tabInner = (
             <>
-              <span className="sr-only">{index + 1}. {tab.label}</span>
               <span
                 aria-hidden="true"
                 className={cn(
-                  'absolute inset-0 rounded-[0.95rem] border transition-all',
+                  'absolute bottom-0 left-0 right-0 top-0 border transition-all',
                   active
-                    ? 'border-amber-200/80 bg-[linear-gradient(180deg,rgba(246,196,83,.24),rgba(246,196,83,.10))] shadow-[0_0_14px_rgba(246,196,83,.18)]'
-                    : 'border-white/12 bg-[linear-gradient(180deg,rgba(255,255,255,.10),rgba(255,255,255,.03))]'
+                    ? 'border-amber-200/78 bg-[linear-gradient(180deg,rgba(246,196,83,.22),rgba(246,196,83,.08))] shadow-[0_10px_18px_rgba(246,196,83,.12)]'
+                    : 'border-white/12 bg-[linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.025))] shadow-[0_8px_14px_rgba(0,0,0,.12)]'
                 )}
                 style={folderStyle}
               />
               <span
                 aria-hidden="true"
                 className={cn(
-                  'absolute left-1/2 top-[44%] h-4 w-1.5 -translate-x-1/2 -translate-y-1/2 rounded-full transition-all sm:h-[1.05rem]',
-                  active ? 'bg-amber-100 shadow-[0_0_10px_rgba(246,196,83,.55)]' : 'bg-white/36'
+                  'absolute left-[22%] right-[10%] top-0 h-[30%] rounded-t-[0.9rem] rounded-br-[0.5rem] border border-b-0 transition-all',
+                  active
+                    ? 'border-amber-200/68 bg-[linear-gradient(180deg,rgba(246,196,83,.18),rgba(246,196,83,.08))]'
+                    : 'border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.02))]'
+                )}
+              />
+              <span className="sr-only">{index + 1}. {tab.label}</span>
+              <span
+                aria-hidden="true"
+                className={cn(
+                  'absolute left-1/2 top-[45%] h-4 w-1.5 -translate-x-1/2 -translate-y-1/2 rounded-full transition-all sm:h-[1.05rem]',
+                  active ? 'bg-amber-100 shadow-[0_0_10px_rgba(246,196,83,.55)]' : 'bg-white/34'
                 )}
               />
               <span
                 aria-hidden="true"
                 className={cn(
-                  'pointer-events-none absolute inset-x-1.5 bottom-[3px] h-px rounded-full transition-all',
-                  active ? 'bg-amber-100/55' : 'bg-white/10'
+                  'pointer-events-none absolute bottom-[3px] left-[18%] right-[14%] h-px rounded-full transition-all',
+                  active ? 'bg-amber-100/58' : 'bg-white/08'
                 )}
               />
             </>
