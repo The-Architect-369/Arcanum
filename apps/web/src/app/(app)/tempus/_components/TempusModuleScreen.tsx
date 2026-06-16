@@ -4,10 +4,12 @@ import * as React from 'react';
 import { useEffect, useMemo, useState } from 'react';
 import AppStage from '@/components/ui/AppStage';
 import ModuleMatrixShell from '@/components/ui/ModuleMatrixShell';
+import { cn } from '@/lib/cn';
 import { useTempusWindow } from '@/hooks/useTempusWindow';
 
 type FamilyId = 'clock' | 'calendar' | 'codex';
 type CardId = string;
+type FamilyMotion = 'idle' | 'next' | 'prev';
 
 type CardConfig = {
   id: CardId;
@@ -30,6 +32,11 @@ const FAMILY_BY_HREF: Record<(typeof ORDER)[number], FamilyId> = {
   '/tempus/calendar': 'calendar',
   '/tempus/codex': 'codex',
 };
+const FAMILY_INDEX: Record<FamilyId, number> = {
+  clock: 0,
+  calendar: 1,
+  codex: 2,
+};
 
 function phaseText(phase: 'open' | 'rest' | 'silent') {
   return phase === 'open' ? 'Open' : phase === 'rest' ? 'Resting' : 'Silent';
@@ -43,10 +50,17 @@ function familyFromPathname(pathname: string): FamilyId | null {
   return null;
 }
 
+function motionForFamilyChange(from: FamilyId, to: FamilyId): FamilyMotion {
+  if (from === to) return 'idle';
+  return FAMILY_INDEX[to] > FAMILY_INDEX[from] ? 'next' : 'prev';
+}
+
 export default function TempusModuleScreen({ family }: { family: FamilyId }) {
   const w = useTempusWindow();
   const [activeFamilyId, setActiveFamilyId] = useState<FamilyId>(family);
   const [activeCardId, setActiveCardId] = useState<CardId>('a1');
+  const [familyMotion, setFamilyMotion] = useState<FamilyMotion>('idle');
+  const [familyMotionKey, setFamilyMotionKey] = useState(0);
 
   const families = useMemo<Record<FamilyId, FamilyConfig>>(
     () => ({
@@ -150,7 +164,24 @@ export default function TempusModuleScreen({ family }: { family: FamilyId }) {
   const verticalTabs = activeFamily.cards.map((card) => ({ id: card.id, label: card.navLabel }));
 
   useEffect(() => {
-    setActiveFamilyId(family);
+    const timer = window.setTimeout(() => setFamilyMotion('idle'), 190);
+    return () => window.clearTimeout(timer);
+  }, [familyMotionKey]);
+
+  const transitionToFamily = (nextFamily: FamilyId, syncHistory: boolean) => {
+    if (nextFamily === activeFamilyId) return;
+    const motion = motionForFamilyChange(activeFamilyId, nextFamily);
+    if (syncHistory) {
+      const href = families[nextFamily].href;
+      window.history.replaceState(window.history.state, '', href);
+    }
+    setFamilyMotion(motion);
+    setFamilyMotionKey((value) => value + 1);
+    setActiveFamilyId(nextFamily);
+  };
+
+  useEffect(() => {
+    transitionToFamily(family, false);
   }, [family]);
 
   useEffect(() => {
@@ -160,23 +191,16 @@ export default function TempusModuleScreen({ family }: { family: FamilyId }) {
   useEffect(() => {
     const onPopState = () => {
       const nextFamily = familyFromPathname(window.location.pathname);
-      if (nextFamily) setActiveFamilyId(nextFamily);
+      if (nextFamily) transitionToFamily(nextFamily, false);
     };
 
     window.addEventListener('popstate', onPopState);
     return () => window.removeEventListener('popstate', onPopState);
-  }, []);
-
-  const setFamily = (nextFamily: FamilyId) => {
-    if (nextFamily === activeFamilyId) return;
-    const href = families[nextFamily].href;
-    window.history.replaceState(window.history.state, '', href);
-    setActiveFamilyId(nextFamily);
-  };
+  }, [activeFamilyId, families]);
 
   const onHorizontalChange = (href: string) => {
     const nextFamily = familyFromPathname(href);
-    if (nextFamily) setFamily(nextFamily);
+    if (nextFamily) transitionToFamily(nextFamily, true);
   };
 
   const swipeStart = React.useRef<{ x: number; y: number } | null>(null);
@@ -226,7 +250,7 @@ export default function TempusModuleScreen({ family }: { family: FamilyId }) {
     if (nextIndex < 0 || nextIndex >= ORDER.length) return;
 
     const nextFamily = FAMILY_BY_HREF[ORDER[nextIndex]];
-    setFamily(nextFamily);
+    transitionToFamily(nextFamily, true);
   };
 
   return (
@@ -243,7 +267,14 @@ export default function TempusModuleScreen({ family }: { family: FamilyId }) {
           onVerticalChange={(id) => setActiveCardId(id)}
           className="min-h-0 flex-1"
         >
-          <div className="space-y-4">
+          <div
+            key={`${activeFamilyId}-${familyMotionKey}`}
+            className={cn(
+              'tempus-family-panel space-y-4',
+              familyMotion === 'next' && 'tempus-family-panel--next',
+              familyMotion === 'prev' && 'tempus-family-panel--prev'
+            )}
+          >
             <p className="text-sm text-zinc-300">{activeCard.caption}</p>
             {activeCard.render()}
           </div>
