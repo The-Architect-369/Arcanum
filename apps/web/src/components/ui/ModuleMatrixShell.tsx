@@ -137,15 +137,23 @@ export default function ModuleMatrixShell({
   }, [activeVerticalIndex, onVerticalChange, verticalTabs]);
 
   const headerActions = (
-    <div className="flex items-start gap-3 sm:gap-4" data-no-route-swipe="true">
-      <nav aria-label="Horizontal card navigation" className="flex items-end gap-0.5 sm:gap-1">
+    <div className="flex items-start justify-end" data-no-route-swipe="true">
+      <nav
+        aria-label="Horizontal card navigation"
+        className="flex items-end gap-0 rounded-[1.1rem] border border-white/12 bg-[linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.03))] p-1 shadow-[0_0_18px_rgba(0,0,0,.24)] backdrop-blur-md"
+      >
         {horizontalTabs.map((tab, index) => {
           const active = tab.href === activeHorizontalHref;
+          const first = index === 0;
+          const last = index === horizontalTabs.length - 1;
           const tabClassName = cn(
-            'relative -mr-px block h-9 w-8 rounded-t-[1rem] border border-b-0 transition-all duration-300 sm:h-10 sm:w-9',
+            'relative block h-9 w-8 border-b-0 transition-all duration-300 sm:h-10 sm:w-9',
+            first && 'rounded-l-[0.9rem]',
+            last && 'rounded-r-[0.9rem]',
+            !first && 'border-l border-white/10',
             active
-              ? 'z-20 translate-y-px border-amber-200/75 bg-[linear-gradient(180deg,rgba(246,196,83,.24),rgba(246,196,83,.10))] shadow-[0_0_14px_rgba(246,196,83,.18)]'
-              : 'z-10 mt-2 border-white/14 bg-[linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.03))] hover:border-white/24 hover:bg-[linear-gradient(180deg,rgba(255,255,255,.12),rgba(255,255,255,.05))]'
+              ? 'z-20 -translate-y-0.5 rounded-t-[0.95rem] border border-amber-200/70 bg-[linear-gradient(180deg,rgba(246,196,83,.24),rgba(246,196,83,.10))] shadow-[0_0_14px_rgba(246,196,83,.16)]'
+              : 'z-10 mt-1.5 border border-transparent bg-transparent hover:bg-white/[0.05]'
           );
           const tabInner = (
             <>
@@ -190,7 +198,6 @@ export default function ModuleMatrixShell({
           );
         })}
       </nav>
-      {actions ? <div className="hidden pt-1 text-xs text-zinc-400 sm:block">{actions}</div> : null}
     </div>
   );
 
