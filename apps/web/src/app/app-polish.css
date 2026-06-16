@@ -91,6 +91,28 @@
   }
 }
 
+@keyframes arcanum-tempus-title-next {
+  from {
+    transform: translate3d(1.2%, 0, 0);
+    opacity: .96;
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
+
+@keyframes arcanum-tempus-title-prev {
+  from {
+    transform: translate3d(-1.2%, 0, 0);
+    opacity: .96;
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
+
 @keyframes arcanum-deck-polish-fade {
   0% {
     opacity: 0;
@@ -235,8 +257,41 @@ html[data-card-direction='prev'] .card-transition-sheen {
   animation: arcanum-card-polish-sheen 180ms ease-out both;
 }
 
+.tempus-title-shell,
 .tempus-family-panel {
   will-change: transform;
+}
+
+.tempus-title-shell--next {
+  animation: arcanum-tempus-title-next 180ms cubic-bezier(.18,.76,.18,1) both;
+}
+
+.tempus-title-shell--prev {
+  animation: arcanum-tempus-title-prev 180ms cubic-bezier(.18,.76,.18,1) both;
+}
+
+.tempus-title-word {
+  max-width: 58%;
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: clamp(1.18rem, 3.8vw, 1.6rem);
+  font-weight: 700;
+  letter-spacing: .22em;
+  line-height: 1;
+  text-transform: uppercase;
+  color: rgb(252 211 77);
+  text-shadow: 0 0 12px rgba(246,196,83,.24), 0 0 20px rgba(125,190,255,.08);
+}
+
+.tempus-title-subtitle {
+  min-width: 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: clamp(.72rem, 2.7vw, 1rem);
+  font-weight: 500;
+  letter-spacing: .12em;
+  line-height: 1;
+  text-transform: uppercase;
+  color: rgb(228 228 231);
+  opacity: .94;
 }
 
 .tempus-family-panel--next {
@@ -273,6 +328,7 @@ html[data-card-direction='prev'] .card-transition-sheen {
   .global-tab-active .global-tab-icon,
   html[data-card-direction] .card-transition-shell,
   html[data-card-direction] .card-transition-sheen,
+  .tempus-title-shell,
   .tempus-family-panel,
   .module-deck-reveal,
   .module-deck-reveal__card {
