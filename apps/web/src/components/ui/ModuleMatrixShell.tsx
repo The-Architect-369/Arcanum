@@ -138,31 +138,48 @@ export default function ModuleMatrixShell({
 
   const headerActions = (
     <div className="flex items-start justify-end" data-no-route-swipe="true">
-      <nav
-        aria-label="Horizontal card navigation"
-        className="flex items-end gap-0 rounded-[1.1rem] border border-white/12 bg-[linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.03))] p-1 shadow-[0_0_18px_rgba(0,0,0,.24)] backdrop-blur-md"
-      >
+      <nav aria-label="Horizontal card navigation" className="relative flex items-end pr-1 pt-1">
         {horizontalTabs.map((tab, index) => {
           const active = tab.href === activeHorizontalHref;
-          const first = index === 0;
-          const last = index === horizontalTabs.length - 1;
+          const offset = index * 14;
+          const raised = (horizontalTabs.length - 1 - index) * 4;
           const tabClassName = cn(
-            'relative block h-9 w-8 border-b-0 transition-all duration-300 sm:h-10 sm:w-9',
-            first && 'rounded-l-[0.9rem]',
-            last && 'rounded-r-[0.9rem]',
-            !first && 'border-l border-white/10',
-            active
-              ? 'z-20 -translate-y-0.5 rounded-t-[0.95rem] border border-amber-200/70 bg-[linear-gradient(180deg,rgba(246,196,83,.24),rgba(246,196,83,.10))] shadow-[0_0_14px_rgba(246,196,83,.16)]'
-              : 'z-10 mt-1.5 border border-transparent bg-transparent hover:bg-white/[0.05]'
+            'relative flex h-10 w-11 items-center justify-center transition-all duration-300 sm:h-11 sm:w-12',
+            active ? 'z-30' : `z-${10 + index}`,
+            !active && 'hover:-translate-y-0.5'
           );
+          const tabStyle: React.CSSProperties = {
+            marginLeft: index === 0 ? 0 : -10,
+            transform: `translateY(${raised}px)`,
+          };
+          const folderStyle: React.CSSProperties = {
+            clipPath: 'polygon(0% 100%, 0% 30%, 12% 0%, 100% 0%, 100% 78%, 88% 100%)',
+          };
           const tabInner = (
             <>
               <span className="sr-only">{index + 1}. {tab.label}</span>
               <span
                 aria-hidden="true"
                 className={cn(
-                  'absolute left-1/2 top-1/2 h-4 w-1.5 -translate-x-1/2 -translate-y-1/2 rounded-full transition-all',
-                  active ? 'bg-amber-100 shadow-[0_0_10px_rgba(246,196,83,.55)]' : 'bg-white/34'
+                  'absolute inset-0 rounded-[0.95rem] border transition-all',
+                  active
+                    ? 'border-amber-200/80 bg-[linear-gradient(180deg,rgba(246,196,83,.24),rgba(246,196,83,.10))] shadow-[0_0_14px_rgba(246,196,83,.18)]'
+                    : 'border-white/12 bg-[linear-gradient(180deg,rgba(255,255,255,.10),rgba(255,255,255,.03))]'
+                )}
+                style={folderStyle}
+              />
+              <span
+                aria-hidden="true"
+                className={cn(
+                  'absolute left-1/2 top-[44%] h-4 w-1.5 -translate-x-1/2 -translate-y-1/2 rounded-full transition-all sm:h-[1.05rem]',
+                  active ? 'bg-amber-100 shadow-[0_0_10px_rgba(246,196,83,.55)]' : 'bg-white/36'
+                )}
+              />
+              <span
+                aria-hidden="true"
+                className={cn(
+                  'pointer-events-none absolute inset-x-1.5 bottom-[3px] h-px rounded-full transition-all',
+                  active ? 'bg-amber-100/55' : 'bg-white/10'
                 )}
               />
             </>
@@ -178,6 +195,7 @@ export default function ModuleMatrixShell({
                 title={tab.label}
                 onClick={() => onHorizontalChange(tab.href)}
                 className={tabClassName}
+                style={tabStyle}
               >
                 {tabInner}
               </button>
@@ -192,6 +210,7 @@ export default function ModuleMatrixShell({
               aria-current={active ? 'page' : undefined}
               title={tab.label}
               className={tabClassName}
+              style={tabStyle}
             >
               {tabInner}
             </Link>
