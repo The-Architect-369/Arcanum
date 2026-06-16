@@ -202,7 +202,7 @@ export default function ModuleMatrixShell({
         flush
         scrollable={false}
         className="relative z-10 min-h-0 flex-1"
-        contentClassName={cn('overflow-hidden px-12 sm:px-10', contentClassName)}
+        contentClassName={cn('overflow-hidden px-10 sm:px-9', contentClassName)}
       >
         <div className="relative h-full min-h-0 overflow-hidden">
           <div
@@ -218,7 +218,14 @@ export default function ModuleMatrixShell({
       </PanelShell>
 
       <div className="pointer-events-none absolute inset-y-0 left-0 z-40 flex items-center pl-2 sm:pl-3" data-no-route-swipe="true">
-        <nav aria-label="Depth navigation" className="pointer-events-auto flex flex-col gap-1.5">
+        <nav
+          aria-label="Depth navigation"
+          className="pointer-events-auto relative flex w-5 flex-col items-center gap-1 rounded-r-[1rem] border border-l-0 border-white/12 bg-[linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.03))] px-1 py-2 shadow-[0_0_18px_rgba(0,0,0,.28)] backdrop-blur-md sm:w-6"
+        >
+          <span
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-y-1 right-0 w-px bg-gradient-to-b from-transparent via-sky-200/35 to-transparent"
+          />
           {verticalTabs.map((tab, index) => {
             const active = tab.id === activeVerticalId;
             return (
@@ -230,18 +237,18 @@ export default function ModuleMatrixShell({
                 title={tab.label}
                 onClick={() => onVerticalChange(tab.id)}
                 className={cn(
-                  'group relative flex h-16 w-10 items-center justify-center rounded-r-[1.15rem] border border-l-0 transition-all duration-300',
+                  'group relative flex h-12 w-full items-center justify-center rounded-full transition-all duration-300 sm:h-14',
                   active
-                    ? 'translate-x-0 border-sky-200/60 bg-[linear-gradient(90deg,rgba(125,190,255,.18),rgba(125,190,255,.08))] shadow-[0_0_18px_rgba(125,190,255,.25)]'
-                    : 'translate-x-[-2px] border-white/10 bg-[linear-gradient(90deg,rgba(255,255,255,.06),rgba(255,255,255,.02))] hover:border-white/18 hover:bg-[linear-gradient(90deg,rgba(255,255,255,.09),rgba(255,255,255,.04))]'
+                    ? 'bg-[linear-gradient(180deg,rgba(125,190,255,.18),rgba(125,190,255,.08))] shadow-[0_0_14px_rgba(125,190,255,.20)]'
+                    : 'hover:bg-white/[0.05]'
                 )}
               >
                 <span className="sr-only">{index + 1}. {tab.label}</span>
                 <span
                   aria-hidden="true"
                   className={cn(
-                    'block h-7 w-1.5 rounded-full transition-all',
-                    active ? 'bg-sky-200 shadow-[0_0_10px_rgba(125,190,255,.58)]' : 'bg-white/36 group-hover:bg-white/56'
+                    'block h-5 w-[3px] rounded-full transition-all sm:h-6',
+                    active ? 'bg-sky-200 shadow-[0_0_10px_rgba(125,190,255,.62)]' : 'bg-white/38 group-hover:bg-white/58'
                   )}
                 />
               </button>
