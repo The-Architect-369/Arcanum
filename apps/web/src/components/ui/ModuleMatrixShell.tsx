@@ -138,31 +138,32 @@ export default function ModuleMatrixShell({
 
   const headerActions = (
     <div className="flex items-start justify-end" data-no-route-swipe="true">
-      <nav aria-label="Horizontal card navigation" className="relative flex h-[3.15rem] items-end pr-1 -mb-px overflow-visible sm:h-[3.3rem]">
+      <nav aria-label="Horizontal card navigation" className="relative flex h-[3.05rem] min-w-[10rem] items-end justify-end pr-1 sm:h-[3.2rem] sm:min-w-[10.75rem]">
         <span
           aria-hidden="true"
-          className="pointer-events-none absolute inset-x-0 bottom-0 h-[2px] rounded-full bg-[linear-gradient(90deg,transparent,rgba(255,255,255,.09),rgba(255,255,255,.05),transparent)]"
+          className="pointer-events-none absolute inset-x-0 bottom-[2px] h-[1.45rem] rounded-tl-[1.05rem] rounded-tr-[1.3rem] border border-b-0 border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,.04),rgba(10,14,26,.02))] shadow-[inset_0_1px_0_rgba(255,255,255,.05)]"
+        />
+        <span
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-x-3 bottom-[2px] h-px bg-gradient-to-r from-transparent via-white/12 to-transparent"
         />
         {horizontalTabs.map((tab, index) => {
           const active = tab.href === activeHorizontalHref;
           const activeIndex = horizontalTabs.findIndex((item) => item.href === activeHorizontalHref);
           const depth = Math.abs(index - activeIndex);
-          const offsetY = active ? 1 : Math.min(11, 5 + depth * 2);
-          const zIndex = active ? 50 : 40 - depth;
+          const offsetY = active ? 0 : 6 + depth * 2;
+          const zIndex = active ? 50 : 30 - depth;
           const tabClassName = cn(
-            'relative flex h-[2.8rem] w-[3.25rem] items-center justify-center transition-all duration-300 sm:h-[2.95rem] sm:w-[3.45rem]',
+            'relative flex h-[2.7rem] w-[3rem] items-center justify-center transition-all duration-300 sm:h-[2.85rem] sm:w-[3.15rem]',
             !active && 'hover:-translate-y-0.5'
           );
           const tabStyle: React.CSSProperties = {
-            marginLeft: index === 0 ? 0 : -14,
+            marginLeft: index === 0 ? 0 : -16,
             transform: `translateY(${offsetY}px)`,
             zIndex,
           };
           const baseStyle: React.CSSProperties = {
-            clipPath: 'polygon(0 100%, 0 30%, 22% 0, 100% 0, 100% 74%, 86% 100%)',
-          };
-          const lipStyle: React.CSSProperties = {
-            clipPath: 'polygon(0 100%, 0 68%, 18% 0, 100% 0, 100% 100%)',
+            clipPath: 'polygon(0 100%, 0 32%, 18% 0, 100% 0, 100% 74%, 87% 100%)',
           };
           const tabInner = (
             <>
@@ -171,34 +172,33 @@ export default function ModuleMatrixShell({
                 className={cn(
                   'absolute inset-0 border border-b-0 transition-all',
                   active
-                    ? 'border-amber-200/76 bg-[linear-gradient(180deg,rgba(246,196,83,.18),rgba(246,196,83,.08)_52%,rgba(6,8,18,.02))] shadow-[0_8px_18px_rgba(246,196,83,.12)]'
-                    : 'border-white/12 bg-[linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.025)_56%,rgba(6,8,18,.02))] shadow-[0_8px_16px_rgba(0,0,0,.10)]'
+                    ? 'border-amber-200/78 bg-[linear-gradient(180deg,rgba(246,196,83,.20),rgba(246,196,83,.08)_58%,rgba(10,14,26,0))] shadow-[0_8px_16px_rgba(246,196,83,.10)]'
+                    : 'border-white/12 bg-[linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.018)_58%,rgba(10,14,26,0))] opacity-90'
                 )}
                 style={baseStyle}
               />
               <span
                 aria-hidden="true"
                 className={cn(
-                  'absolute left-[18%] right-[10%] top-0 h-[28%] border border-b-0 transition-all',
+                  'absolute left-[18%] right-[12%] top-0 h-[26%] rounded-t-[0.7rem] border border-b-0 transition-all',
                   active
-                    ? 'border-amber-200/62 bg-[linear-gradient(180deg,rgba(246,196,83,.16),rgba(246,196,83,.06))]'
-                    : 'border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02))]'
+                    ? 'border-amber-200/64 bg-[linear-gradient(180deg,rgba(246,196,83,.15),rgba(246,196,83,.05))]'
+                    : 'border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,.045),rgba(255,255,255,.015))]'
                 )}
-                style={lipStyle}
               />
               <span className="sr-only">{index + 1}. {tab.label}</span>
               <span
                 aria-hidden="true"
                 className={cn(
-                  'absolute left-1/2 top-[46%] h-4 w-1.5 -translate-x-1/2 -translate-y-1/2 rounded-full transition-all',
-                  active ? 'bg-amber-100 shadow-[0_0_10px_rgba(246,196,83,.55)]' : 'bg-white/28'
+                  'absolute left-1/2 top-[45%] h-4 w-1.5 -translate-x-1/2 -translate-y-1/2 rounded-full transition-all',
+                  active ? 'bg-amber-100 shadow-[0_0_10px_rgba(246,196,83,.55)]' : 'bg-white/26'
                 )}
               />
               <span
                 aria-hidden="true"
                 className={cn(
-                  'pointer-events-none absolute inset-x-[16%] bottom-0 h-[2px] rounded-full transition-all',
-                  active ? 'bg-[rgba(6,8,18,.92)]' : 'bg-[rgba(6,8,18,.74)]'
+                  'pointer-events-none absolute inset-x-[14%] bottom-0 h-[3px] rounded-t-full transition-all',
+                  active ? 'bg-[rgba(10,14,26,1)]' : 'bg-[rgba(10,14,26,.94)]'
                 )}
               />
             </>
