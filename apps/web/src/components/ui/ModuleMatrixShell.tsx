@@ -142,64 +142,61 @@ export default function ModuleMatrixShell({
     <div className="flex items-start justify-end" data-no-route-swipe="true">
       <nav
         aria-label="Horizontal card navigation"
-        className="relative h-[2.95rem] w-[7.55rem] shrink-0 sm:h-[3.05rem] sm:w-[8rem]"
+        className="relative h-[2.95rem] w-[7.35rem] shrink-0 sm:h-[3.05rem] sm:w-[7.8rem]"
       >
         <span
           aria-hidden="true"
-          className="pointer-events-none absolute inset-x-0 bottom-0 h-[1.55rem] rounded-tl-[1.15rem] rounded-tr-[1.3rem] border border-b-0 border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,.05),rgba(8,12,22,.02))] shadow-[inset_0_1px_0_rgba(255,255,255,.05)]"
+          className="pointer-events-none absolute inset-x-0 bottom-0 h-[1.55rem] rounded-tl-[1.15rem] rounded-tr-[1.35rem] border border-b-0 border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,.045),rgba(8,12,22,.02))] shadow-[inset_0_1px_0_rgba(255,255,255,.05)]"
         />
         <span
           aria-hidden="true"
           className="pointer-events-none absolute inset-x-3 bottom-0 h-px bg-gradient-to-r from-transparent via-white/12 to-transparent"
         />
+
         {horizontalTabs.map((tab, index) => {
           const active = index === activeHorizontalIndex;
-          const segmentWidth = 44;
-          const left = index * 27;
-          const crestStyle: React.CSSProperties = {
-            left,
-            width: segmentWidth,
-          };
-          const crestClassName = cn(
-            'absolute bottom-0 h-full transition-all duration-300',
-            active ? 'z-30' : 'z-20'
-          );
+          const left = index * 26;
+          const zoneStyle: React.CSSProperties = { left, width: 42 };
+          const zoneClassName = 'absolute bottom-0 top-0 z-20';
           const inner = (
             <>
-              <span
-                aria-hidden="true"
-                className={cn(
-                  'absolute bottom-0 left-0 right-0 h-[2.5rem] border border-b-0 transition-all',
-                  active
-                    ? 'border-amber-200/74 bg-[linear-gradient(180deg,rgba(246,196,83,.18),rgba(246,196,83,.08)_58%,rgba(8,12,22,0))] shadow-[0_7px_14px_rgba(246,196,83,.08)]'
-                    : 'border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.01)_58%,rgba(8,12,22,0))] opacity-85'
-                )}
-                style={{ clipPath: 'polygon(0 100%, 0 36%, 22% 0, 100% 0, 100% 72%, 86% 100%)' }}
-              />
-              <span
-                aria-hidden="true"
-                className={cn(
-                  'absolute left-[18%] right-[14%] top-0 h-[30%] rounded-t-[0.75rem] border border-b-0 transition-all',
-                  active
-                    ? 'border-amber-200/58 bg-[linear-gradient(180deg,rgba(246,196,83,.13),rgba(246,196,83,.04))]'
-                    : 'border-white/08 bg-[linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.01))]'
-                )}
-              />
+              {active ? (
+                <>
+                  <span
+                    aria-hidden="true"
+                    className="absolute bottom-0 left-0 right-0 h-[2.45rem] border border-b-0 border-amber-200/74 bg-[linear-gradient(180deg,rgba(246,196,83,.18),rgba(246,196,83,.08)_60%,rgba(8,12,22,0))] shadow-[0_7px_14px_rgba(246,196,83,.08)]"
+                    style={{ clipPath: 'polygon(0 100%, 0 36%, 22% 0, 100% 0, 100% 72%, 86% 100%)' }}
+                  />
+                  <span
+                    aria-hidden="true"
+                    className="absolute left-[18%] right-[14%] top-0 h-[30%] rounded-t-[0.75rem] border border-b-0 border-amber-200/58 bg-[linear-gradient(180deg,rgba(246,196,83,.13),rgba(246,196,83,.04))]"
+                  />
+                  <span
+                    aria-hidden="true"
+                    className="absolute left-1/2 top-[44%] h-4 w-1.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-amber-100 shadow-[0_0_10px_rgba(246,196,83,.55)]"
+                  />
+                  <span
+                    aria-hidden="true"
+                    className="pointer-events-none absolute bottom-0 left-[12%] right-[12%] h-[3px] rounded-t-full bg-[rgba(8,12,22,1)]"
+                  />
+                </>
+              ) : (
+                <>
+                  <span
+                    aria-hidden="true"
+                    className="absolute left-[22%] right-[18%] top-[4px] h-[0.95rem] rounded-t-[0.7rem] border border-b-0 border-white/10 opacity-80"
+                  />
+                  <span
+                    aria-hidden="true"
+                    className="absolute left-1/2 top-[1.2rem] h-[0.95rem] w-px -translate-x-1/2 bg-gradient-to-b from-white/16 to-transparent"
+                  />
+                  <span
+                    aria-hidden="true"
+                    className="pointer-events-none absolute bottom-[6px] left-[18%] right-[18%] h-px rounded-full bg-[rgba(255,255,255,.10)]"
+                  />
+                </>
+              )}
               <span className="sr-only">{index + 1}. {tab.label}</span>
-              <span
-                aria-hidden="true"
-                className={cn(
-                  'absolute left-1/2 top-[44%] h-4 w-1.5 -translate-x-1/2 -translate-y-1/2 rounded-full transition-all',
-                  active ? 'bg-amber-100 shadow-[0_0_10px_rgba(246,196,83,.55)]' : 'bg-white/24'
-                )}
-              />
-              <span
-                aria-hidden="true"
-                className={cn(
-                  'pointer-events-none absolute bottom-0 left-[12%] right-[12%] h-[3px] rounded-t-full transition-all',
-                  active ? 'bg-[rgba(8,12,22,1)]' : 'bg-[rgba(8,12,22,.98)]'
-                )}
-              />
             </>
           );
 
@@ -212,8 +209,8 @@ export default function ModuleMatrixShell({
                 aria-pressed={active}
                 title={tab.label}
                 onClick={() => onHorizontalChange(tab.href)}
-                className={crestClassName}
-                style={crestStyle}
+                className={zoneClassName}
+                style={zoneStyle}
               >
                 {inner}
               </button>
@@ -227,8 +224,8 @@ export default function ModuleMatrixShell({
               aria-label={tab.label}
               aria-current={active ? 'page' : undefined}
               title={tab.label}
-              className={crestClassName}
-              style={crestStyle}
+              className={zoneClassName}
+              style={zoneStyle}
             >
               {inner}
             </Link>
