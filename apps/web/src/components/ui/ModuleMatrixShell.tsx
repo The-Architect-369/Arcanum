@@ -138,19 +138,18 @@ export default function ModuleMatrixShell({
 
   const activeHorizontalIndex = Math.max(0, horizontalTabs.findIndex((tab) => tab.href === activeHorizontalHref));
   const segmentCount = Math.max(horizontalTabs.length, 1);
-  const segmentWidth = 40;
-  const railPadding = 0;
-  const pocketTop = 3;
-  const pocketHeight = 28;
+  const segmentWidth = 41;
+  const pocketTop = 4;
+  const pocketHeight = 24;
   const railTop = 5;
   const railHeight = 22;
-  const railWidth = railPadding * 2 + segmentCount * segmentWidth;
-  const activeLeft = railPadding + activeHorizontalIndex * segmentWidth;
+  const railWidth = segmentCount * segmentWidth;
+  const activeLeft = activeHorizontalIndex * segmentWidth;
   const motion = '180ms';
 
   const headerActions = (
     <div className="flex items-start justify-end" data-no-route-swipe="true">
-      <nav aria-label="Horizontal card navigation" className="relative h-[2.05rem] shrink-0" style={{ width: `${railWidth + 2}px` }}>
+      <nav aria-label="Horizontal card navigation" className="relative h-[2.0rem] shrink-0" style={{ width: `${railWidth + 2}px` }}>
         <span
           aria-hidden="true"
           className="pointer-events-none absolute inset-x-0 right-0 border border-white/7 bg-[linear-gradient(180deg,rgba(255,255,255,.012),rgba(18,28,56,.022)_50%,rgba(8,12,22,.008))] shadow-[inset_0_1px_0_rgba(255,255,255,.018)]"
