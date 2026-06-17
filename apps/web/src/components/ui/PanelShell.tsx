@@ -57,9 +57,21 @@ export default function PanelShell({
                 'relative z-10 shrink-0 flex gap-3 border-b border-white/[0.07] bg-black/10',
                 headerActionsDock ? 'items-start overflow-visible' : 'items-center',
                 noPadding ? 'px-0 py-0' : 'px-4 sm:px-6 py-3',
-                headerActionsDock && !noPadding && 'pr-[9.25rem] sm:pr-[10.25rem]'
+                headerActionsDock && !noPadding && 'pr-[9.6rem] sm:pr-[10.6rem]'
               )}
             >
+              {headerActionsDock && actions ? (
+                <>
+                  <div
+                    aria-hidden="true"
+                    className="pointer-events-none absolute right-3 top-0 bottom-[-1px] w-[8.7rem] rounded-bl-[1.35rem] rounded-tr-[1.45rem] border border-b-0 border-white/[0.065] bg-[linear-gradient(180deg,rgba(255,255,255,.035),rgba(12,16,28,.012))] shadow-[inset_0_1px_0_rgba(255,255,255,.03),inset_0_-16px_28px_rgba(80,130,255,.04)] sm:right-4 sm:w-[9.2rem]"
+                  />
+                  <div
+                    aria-hidden="true"
+                    className="pointer-events-none absolute right-5 top-[1.1rem] h-px w-[7.4rem] bg-gradient-to-r from-transparent via-white/[0.08] to-transparent sm:right-6 sm:w-[7.8rem]"
+                  />
+                </>
+              ) : null}
               <div className="min-w-0 flex-1">
                 {typeof title === 'string' ? (
                   <h2 className="truncate bg-gradient-to-r from-amber-200 via-zinc-100 to-sky-200 bg-clip-text text-base font-semibold tracking-wide text-transparent drop-shadow-[0_0_10px_rgba(246,196,83,0.25)] sm:text-lg">
@@ -75,7 +87,7 @@ export default function PanelShell({
                 <div
                   className={cn(
                     'shrink-0 flex items-center gap-2',
-                    headerActionsDock ? 'absolute right-4 top-0 sm:right-6' : ''
+                    headerActionsDock ? 'absolute right-4 top-[2px] sm:right-5' : ''
                   )}
                 >
                   {actions}
