@@ -137,6 +137,7 @@ export default function ModuleMatrixShell({
   }, [activeVerticalIndex, onVerticalChange, verticalTabs]);
 
   const activeHorizontalIndex = Math.max(0, horizontalTabs.findIndex((tab) => tab.href === activeHorizontalHref));
+  const activeCrestLeft = activeHorizontalIndex * 24;
 
   const headerActions = (
     <div className="flex items-start justify-end" data-no-route-swipe="true">
@@ -146,54 +147,53 @@ export default function ModuleMatrixShell({
       >
         <span
           aria-hidden="true"
-          className="pointer-events-none absolute inset-x-0 bottom-0 h-[1.8rem] rounded-tl-[1.15rem] rounded-tr-[1.4rem] border border-b-0 border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,.045),rgba(8,12,22,.018))] shadow-[inset_0_1px_0_rgba(255,255,255,.05)]"
+          className="pointer-events-none absolute inset-x-0 bottom-0 h-[1.8rem] rounded-tl-[1.15rem] rounded-tr-[1.45rem] border border-b-0 border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,.04),rgba(8,12,22,.015))] shadow-[inset_0_1px_0_rgba(255,255,255,.04)]"
         />
         <span
           aria-hidden="true"
           className="pointer-events-none absolute inset-x-3 bottom-0 h-px bg-gradient-to-r from-transparent via-white/12 to-transparent"
         />
+        <span
+          aria-hidden="true"
+          className="pointer-events-none absolute bottom-[10px] left-[20px] h-[0.9rem] w-px bg-gradient-to-b from-white/14 to-transparent"
+        />
+        <span
+          aria-hidden="true"
+          className="pointer-events-none absolute bottom-[10px] left-[44px] h-[0.9rem] w-px bg-gradient-to-b from-white/12 to-transparent"
+        />
+        <span
+          aria-hidden="true"
+          className="pointer-events-none absolute bottom-[10px] left-[68px] h-[0.9rem] w-px bg-gradient-to-b from-white/10 to-transparent"
+        />
+
+        <span
+          aria-hidden="true"
+          className="pointer-events-none absolute bottom-0 z-30 h-[2.72rem] w-[2.55rem] border border-b-0 border-amber-200/72 bg-[linear-gradient(180deg,rgba(246,196,83,.18),rgba(246,196,83,.08)_62%,rgba(8,12,22,0))] shadow-[0_8px_14px_rgba(246,196,83,.08)] transition-all duration-300"
+          style={{
+            left: activeCrestLeft,
+            clipPath: 'polygon(0 100%, 0 40%, 20% 0, 100% 0, 100% 74%, 86% 100%)',
+          }}
+        />
+        <span
+          aria-hidden="true"
+          className="pointer-events-none absolute top-[2px] z-40 h-[0.9rem] w-[1.55rem] rounded-t-[0.72rem] border border-b-0 border-amber-200/56 bg-[linear-gradient(180deg,rgba(246,196,83,.13),rgba(246,196,83,.04))] transition-all duration-300"
+          style={{ left: activeCrestLeft + 8 }}
+        />
+        <span
+          aria-hidden="true"
+          className="pointer-events-none absolute top-[1.2rem] z-40 h-4 w-1.5 rounded-full bg-amber-100 shadow-[0_0_10px_rgba(246,196,83,.55)] transition-all duration-300"
+          style={{ left: activeCrestLeft + 18 }}
+        />
+        <span
+          aria-hidden="true"
+          className="pointer-events-none absolute bottom-0 z-40 h-[3px] w-[2rem] rounded-t-full bg-[rgba(8,12,22,1)] transition-all duration-300"
+          style={{ left: activeCrestLeft + 4 }}
+        />
+
         {horizontalTabs.map((tab, index) => {
-          const active = index === activeHorizontalIndex;
-          const left = index * 24;
-          const zoneStyle: React.CSSProperties = { left, width: 40 };
-          const zoneClassName = 'absolute bottom-0 top-0 z-20';
-          const inner = (
-            <>
-              {active ? (
-                <>
-                  <span
-                    aria-hidden="true"
-                    className="absolute bottom-0 left-0 right-0 h-[2.7rem] border border-b-0 border-amber-200/72 bg-[linear-gradient(180deg,rgba(246,196,83,.18),rgba(246,196,83,.08)_62%,rgba(8,12,22,0))] shadow-[0_8px_14px_rgba(246,196,83,.08)]"
-                    style={{ clipPath: 'polygon(0 100%, 0 40%, 20% 0, 100% 0, 100% 74%, 86% 100%)' }}
-                  />
-                  <span
-                    aria-hidden="true"
-                    className="absolute left-[18%] right-[14%] top-[2px] h-[28%] rounded-t-[0.72rem] border border-b-0 border-amber-200/56 bg-[linear-gradient(180deg,rgba(246,196,83,.13),rgba(246,196,83,.04))]"
-                  />
-                  <span
-                    aria-hidden="true"
-                    className="absolute left-1/2 top-[42%] h-4 w-1.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-amber-100 shadow-[0_0_10px_rgba(246,196,83,.55)]"
-                  />
-                  <span
-                    aria-hidden="true"
-                    className="pointer-events-none absolute bottom-0 left-[10%] right-[10%] h-[3px] rounded-t-full bg-[rgba(8,12,22,1)]"
-                  />
-                </>
-              ) : (
-                <>
-                  <span
-                    aria-hidden="true"
-                    className="absolute left-[24%] right-[18%] top-[7px] h-[1rem] rounded-t-[0.72rem] border border-b-0 border-white/10 opacity-78"
-                  />
-                  <span
-                    aria-hidden="true"
-                    className="absolute left-1/2 top-[1.3rem] h-[0.9rem] w-px -translate-x-1/2 bg-gradient-to-b from-white/15 to-transparent"
-                  />
-                </>
-              )}
-              <span className="sr-only">{index + 1}. {tab.label}</span>
-            </>
-          );
+          const zoneStyle: React.CSSProperties = { left: index * 24, width: 40 };
+          const zoneClassName = 'absolute inset-y-0 z-50';
+          const inner = <span className="sr-only">{index + 1}. {tab.label}</span>;
 
           if (onHorizontalChange) {
             return (
@@ -201,7 +201,7 @@ export default function ModuleMatrixShell({
                 key={tab.href}
                 type="button"
                 aria-label={tab.label}
-                aria-pressed={active}
+                aria-pressed={index === activeHorizontalIndex}
                 title={tab.label}
                 onClick={() => onHorizontalChange(tab.href)}
                 className={zoneClassName}
@@ -217,7 +217,7 @@ export default function ModuleMatrixShell({
               key={tab.href}
               href={tab.href}
               aria-label={tab.label}
-              aria-current={active ? 'page' : undefined}
+              aria-current={index === activeHorizontalIndex ? 'page' : undefined}
               title={tab.label}
               className={zoneClassName}
               style={zoneStyle}
