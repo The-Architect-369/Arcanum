@@ -145,23 +145,23 @@ export default function ModuleMatrixShell({
   const pillTop = 5;
   const pillHeight = 24;
   const frameInset = 5;
+  const flushRightOffset = 10;
   const frameWidth = segmentCount * segmentWidth + (segmentCount - 1) * pillGap + frameInset * 2;
   const motion = '180ms';
-  const shellBorderSoft = 'rgba(255,255,255,0.09)';
   const shellBorder = 'rgba(255,255,255,0.12)';
 
   const headerActions = (
     <div className="flex items-start justify-end" data-no-route-swipe="true">
-      <nav aria-label="Horizontal card navigation" className="relative h-[2.56rem] shrink-0" style={{ width: `${frameWidth + 8}px` }}>
+      <nav aria-label="Horizontal card navigation" className="relative h-[2.56rem] shrink-0" style={{ width: `${frameWidth + flushRightOffset}px` }}>
         <span
           aria-hidden="true"
-          className="pointer-events-none absolute bg-[linear-gradient(180deg,rgba(255,255,255,.012),rgba(18,28,56,.022)_50%,rgba(8,12,22,.008))] shadow-[inset_0_1px_0_rgba(255,255,255,.018)]"
+          className="pointer-events-none absolute bg-transparent"
           style={{
             top: `${frameTop}px`,
-            right: '-4px',
-            width: `${frameWidth + 8}px`,
+            right: `-${flushRightOffset}px`,
+            width: `${frameWidth + flushRightOffset}px`,
             height: `${frameHeight}px`,
-            border: `1px solid ${shellBorderSoft}`,
+            border: `1px solid ${shellBorder}`,
             borderTopRightRadius: '1.08rem',
             borderBottomLeftRadius: '1.16rem',
           }}
@@ -185,7 +185,7 @@ export default function ModuleMatrixShell({
                   'pointer-events-none absolute inset-0 rounded-[0.86rem] transition-all ease-out',
                   isActive
                     ? 'bg-[linear-gradient(180deg,rgba(246,196,83,.05),rgba(246,196,83,.014))]'
-                    : 'bg-[linear-gradient(180deg,rgba(255,255,255,.012),rgba(255,255,255,.004))]'
+                    : 'bg-[linear-gradient(180deg,rgba(255,255,255,.008),rgba(255,255,255,.002))]'
                 )}
                 style={{
                   border: `1px solid ${shellBorder}`,
