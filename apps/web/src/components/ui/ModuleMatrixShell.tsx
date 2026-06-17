@@ -144,11 +144,11 @@ export default function ModuleMatrixShell({
   const frameHeight = 38;
   const pillTop = 5;
   const pillHeight = 24;
-  const frameWidth = segmentCount * segmentWidth + (segmentCount - 1) * pillGap + 10;
-  const activeLeft = activeHorizontalIndex * (segmentWidth + pillGap) + 5;
+  const frameInset = 5;
+  const frameWidth = segmentCount * segmentWidth + (segmentCount - 1) * pillGap + frameInset * 2;
   const motion = '180ms';
-  const shellBorder = 'rgba(255,255,255,0.12)';
   const shellBorderSoft = 'rgba(255,255,255,0.09)';
+  const shellBorder = 'rgba(255,255,255,0.12)';
 
   const headerActions = (
     <div className="flex items-start justify-end" data-no-route-swipe="true">
@@ -168,10 +168,9 @@ export default function ModuleMatrixShell({
         />
 
         {horizontalTabs.map((tab, index) => {
-          const left = index * (segmentWidth + pillGap) + 5;
           const isActive = index === activeHorizontalIndex;
           const zoneStyle: React.CSSProperties = {
-            left: `${left}px`,
+            left: `${frameInset + index * (segmentWidth + pillGap)}px`,
             top: `${pillTop}px`,
             width: `${segmentWidth}px`,
             height: `${pillHeight}px`,
@@ -183,13 +182,12 @@ export default function ModuleMatrixShell({
               <span
                 aria-hidden="true"
                 className={cn(
-                  'pointer-events-none absolute rounded-[0.86rem] transition-all ease-out',
+                  'pointer-events-none absolute inset-0 rounded-[0.86rem] transition-all ease-out',
                   isActive
                     ? 'bg-[linear-gradient(180deg,rgba(246,196,83,.05),rgba(246,196,83,.014))]'
                     : 'bg-[linear-gradient(180deg,rgba(255,255,255,.012),rgba(255,255,255,.004))]'
                 )}
                 style={{
-                  ...zoneStyle,
                   border: `1px solid ${shellBorder}`,
                   transitionDuration: motion,
                 }}
@@ -198,22 +196,11 @@ export default function ModuleMatrixShell({
                 <>
                   <span
                     aria-hidden="true"
-                    className="pointer-events-none absolute z-40 h-[1.12rem] w-[1.5px] rounded-full bg-amber-100 shadow-[0_0_3px_rgba(246,196,83,.10)] transition-all ease-out"
-                    style={{
-                      top: `${pillTop + 4}px`,
-                      left: `${left + segmentWidth / 2 - 0.75}px`,
-                      transitionDuration: motion,
-                    }}
+                    className="pointer-events-none absolute left-1/2 top-[4px] z-40 h-[1.12rem] w-[1.5px] -translate-x-1/2 rounded-full bg-amber-100 shadow-[0_0_3px_rgba(246,196,83,.10)]"
                   />
                   <span
                     aria-hidden="true"
-                    className="pointer-events-none absolute z-40 h-[3px] rounded-t-full bg-[rgba(8,12,22,1)] transition-all ease-out"
-                    style={{
-                      top: `${pillTop + pillHeight - 1}px`,
-                      left: `${left + 8}px`,
-                      width: `${segmentWidth - 16}px`,
-                      transitionDuration: motion,
-                    }}
+                    className="pointer-events-none absolute bottom-0 left-[8px] z-40 h-[3px] w-[calc(100%-16px)] rounded-t-full bg-[rgba(8,12,22,1)]"
                   />
                 </>
               ) : null}
