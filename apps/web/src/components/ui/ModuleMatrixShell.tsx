@@ -142,45 +142,50 @@ export default function ModuleMatrixShell({
 
   const headerActions = (
     <div className="flex items-start justify-end" data-no-route-swipe="true">
-      <nav
-        aria-label="Horizontal card navigation"
-        className="relative h-[3.56rem] w-[8.55rem] shrink-0 sm:h-[3.66rem] sm:w-[8.95rem]"
-      >
+      <nav aria-label="Horizontal card navigation" className="relative h-[3.62rem] w-[8.9rem] shrink-0 sm:h-[3.72rem] sm:w-[9.25rem]">
         <span
           aria-hidden="true"
-          className="pointer-events-none absolute inset-x-0 bottom-0 h-[2.06rem] rounded-tl-[1.16rem] rounded-tr-[1.58rem] border border-b-0 border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,.02),rgba(8,12,22,.006))] shadow-[inset_0_1px_0_rgba(255,255,255,.024)]"
+          className="pointer-events-none absolute inset-x-0 bottom-0 h-[2.18rem] rounded-tl-[1.1rem] rounded-tr-[1.6rem] border border-b-0 border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,.02),rgba(8,12,22,.004))] shadow-[inset_0_1px_0_rgba(255,255,255,.025)]"
         />
         <span
           aria-hidden="true"
-          className="pointer-events-none absolute inset-x-4 bottom-[1px] h-px bg-gradient-to-r from-transparent via-white/7 to-transparent"
+          className="pointer-events-none absolute left-[10px] right-[8px] bottom-[1px] h-px bg-gradient-to-r from-transparent via-white/7 to-transparent"
+        />
+        <span
+          aria-hidden="true"
+          className="pointer-events-none absolute left-[12px] right-[18px] top-[1.08rem] h-[1.05rem] rounded-tr-[1.22rem] border border-b-0 border-l-0 border-white/7 opacity-80"
+        />
+        <span
+          aria-hidden="true"
+          className="pointer-events-none absolute left-[18px] right-[28px] top-[1.34rem] h-[0.82rem] rounded-tr-[1rem] border border-b-0 border-l-0 border-white/6 opacity-55"
         />
 
         <span
           aria-hidden="true"
-          className="pointer-events-none absolute bottom-0 z-30 h-[2rem] w-[3.24rem] border border-b-0 border-amber-200/60 bg-[linear-gradient(180deg,rgba(246,196,83,.11),rgba(246,196,83,.04)_72%,rgba(8,12,22,0))] shadow-[0_2px_5px_rgba(246,196,83,.03)] transition-all duration-300"
+          className="pointer-events-none absolute bottom-0 z-30 h-[2.02rem] w-[3.05rem] border border-b-0 border-amber-200/58 bg-[linear-gradient(180deg,rgba(246,196,83,.10),rgba(246,196,83,.03)_72%,rgba(8,12,22,0))] shadow-[0_1px_4px_rgba(246,196,83,.02)] transition-all duration-300"
           style={{
-            left: activeCrestLeft,
-            clipPath: 'polygon(0 100%, 0 54%, 16% 0, 100% 0, 100% 84%, 90% 100%)',
+            left: activeCrestLeft + 2,
+            clipPath: 'polygon(0 100%, 0 58%, 16% 0, 100% 0, 100% 86%, 91% 100%)',
           }}
         />
         <span
           aria-hidden="true"
-          className="pointer-events-none absolute top-[17px] z-40 h-[0.56rem] w-[1.96rem] rounded-t-[0.58rem] border border-b-0 border-amber-200/34 bg-[linear-gradient(180deg,rgba(246,196,83,.065),rgba(246,196,83,.015))] transition-all duration-300"
-          style={{ left: activeCrestLeft + 9 }}
+          className="pointer-events-none absolute top-[18px] z-40 h-[0.48rem] w-[1.88rem] rounded-t-[0.5rem] border border-b-0 border-amber-200/30 bg-[linear-gradient(180deg,rgba(246,196,83,.048),rgba(246,196,83,.012))] transition-all duration-300"
+          style={{ left: activeCrestLeft + 12 }}
         />
         <span
           aria-hidden="true"
-          className="pointer-events-none absolute top-[24px] z-40 h-[1.42rem] w-[1.5px] rounded-full bg-amber-100 shadow-[0_0_6px_rgba(246,196,83,.28)] transition-all duration-300"
-          style={{ left: activeCrestLeft + 21 }}
+          className="pointer-events-none absolute top-[24px] z-40 h-[1.16rem] w-[1.5px] rounded-full bg-amber-100 shadow-[0_0_5px_rgba(246,196,83,.16)] transition-all duration-300"
+          style={{ left: activeCrestLeft + 23 }}
         />
         <span
           aria-hidden="true"
-          className="pointer-events-none absolute bottom-0 z-40 h-[3px] w-[2.2rem] rounded-t-full bg-[rgba(8,12,22,1)] transition-all duration-300"
-          style={{ left: activeCrestLeft + 8 }}
+          className="pointer-events-none absolute bottom-0 z-40 h-[3px] w-[2.18rem] rounded-t-full bg-[rgba(8,12,22,1)] transition-all duration-300"
+          style={{ left: activeCrestLeft + 11 }}
         />
 
         {horizontalTabs.map((tab, index) => {
-          const zoneStyle: React.CSSProperties = { left: index * slotStep, width: 48 };
+          const zoneStyle: React.CSSProperties = { left: index * slotStep, width: 50 };
           const zoneClassName = 'absolute inset-y-0 z-50';
           const inner = <span className="sr-only">{index + 1}. {tab.label}</span>;
 
