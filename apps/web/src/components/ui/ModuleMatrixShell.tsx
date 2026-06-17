@@ -144,48 +144,43 @@ export default function ModuleMatrixShell({
     <div className="flex items-start justify-end" data-no-route-swipe="true">
       <nav
         aria-label="Horizontal card navigation"
-        className="relative h-[3.55rem] w-[8.3rem] shrink-0 sm:h-[3.7rem] sm:w-[8.7rem]"
+        className="relative h-[3.52rem] w-[8.55rem] shrink-0 sm:h-[3.62rem] sm:w-[8.95rem]"
       >
         <span
           aria-hidden="true"
-          className="pointer-events-none absolute inset-x-0 bottom-0 h-[2.05rem] rounded-tl-[1.18rem] rounded-tr-[1.62rem] border border-b-0 border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,.024),rgba(8,12,22,.006))] shadow-[inset_0_1px_0_rgba(255,255,255,.03)]"
+          className="pointer-events-none absolute inset-x-0 bottom-0 h-[2.02rem] rounded-tl-[1.16rem] rounded-tr-[1.58rem] border border-b-0 border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,.022),rgba(8,12,22,.006))] shadow-[inset_0_1px_0_rgba(255,255,255,.028)]"
         />
         <span
           aria-hidden="true"
-          className="pointer-events-none absolute inset-x-4 bottom-[1px] h-px bg-gradient-to-r from-transparent via-white/9 to-transparent"
+          className="pointer-events-none absolute inset-x-4 bottom-[1px] h-px bg-gradient-to-r from-transparent via-white/8 to-transparent"
         />
 
         <span
           aria-hidden="true"
-          className="pointer-events-none absolute bottom-0 z-30 h-[2.18rem] w-[3.02rem] border border-b-0 border-amber-200/68 bg-[linear-gradient(180deg,rgba(246,196,83,.15),rgba(246,196,83,.055)_68%,rgba(8,12,22,0))] shadow-[0_4px_8px_rgba(246,196,83,.05)] transition-all duration-300"
+          className="pointer-events-none absolute bottom-0 z-30 h-[2.05rem] w-[3.2rem] border border-b-0 border-amber-200/66 bg-[linear-gradient(180deg,rgba(246,196,83,.14),rgba(246,196,83,.05)_70%,rgba(8,12,22,0))] shadow-[0_3px_7px_rgba(246,196,83,.045)] transition-all duration-300"
           style={{
             left: activeCrestLeft,
-            clipPath: 'polygon(0 100%, 0 48%, 18% 0, 100% 0, 100% 80%, 89% 100%)',
+            clipPath: 'polygon(0 100%, 0 52%, 16% 0, 100% 0, 100% 82%, 90% 100%)',
           }}
         />
         <span
           aria-hidden="true"
-          className="pointer-events-none absolute top-[13px] z-40 h-[0.7rem] w-[1.78rem] rounded-t-[0.66rem] border border-b-0 border-amber-200/46 bg-[linear-gradient(180deg,rgba(246,196,83,.10),rgba(246,196,83,.026))] transition-all duration-300"
+          className="pointer-events-none absolute top-[15px] z-40 h-[0.62rem] w-[1.92rem] rounded-t-[0.62rem] border border-b-0 border-amber-200/42 bg-[linear-gradient(180deg,rgba(246,196,83,.085),rgba(246,196,83,.02))] transition-all duration-300"
+          style={{ left: activeCrestLeft + 9 }}
+        />
+        <span
+          aria-hidden="true"
+          className="pointer-events-none absolute top-[22px] z-40 h-[1.5rem] w-[1.5px] rounded-full bg-amber-100 shadow-[0_0_8px_rgba(246,196,83,.4)] transition-all duration-300"
+          style={{ left: activeCrestLeft + 21 }}
+        />
+        <span
+          aria-hidden="true"
+          className="pointer-events-none absolute bottom-0 z-40 h-[3px] w-[2.18rem] rounded-t-full bg-[rgba(8,12,22,1)] transition-all duration-300"
           style={{ left: activeCrestLeft + 8 }}
-        />
-        <span
-          aria-hidden="true"
-          className="pointer-events-none absolute top-[21px] z-40 h-[1.62rem] w-[1.55px] rounded-full bg-amber-100 shadow-[0_0_9px_rgba(246,196,83,.44)] transition-all duration-300"
-          style={{ left: activeCrestLeft + 20 }}
-        />
-        <span
-          aria-hidden="true"
-          className="pointer-events-none absolute bottom-0 z-40 h-[3px] w-[2.12rem] rounded-t-full bg-[rgba(8,12,22,1)] transition-all duration-300"
-          style={{ left: activeCrestLeft + 7 }}
-        />
-
-        <span
-          aria-hidden="true"
-          className="pointer-events-none absolute left-[18%] right-[12%] top-[1.62rem] h-[1.15rem] rounded-tr-[1.18rem] border border-b-0 border-l-0 border-white/8 opacity-55"
         />
 
         {horizontalTabs.map((tab, index) => {
-          const zoneStyle: React.CSSProperties = { left: index * slotStep, width: 46 };
+          const zoneStyle: React.CSSProperties = { left: index * slotStep, width: 48 };
           const zoneClassName = 'absolute inset-y-0 z-50';
           const inner = <span className="sr-only">{index + 1}. {tab.label}</span>;
 
