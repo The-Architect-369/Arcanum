@@ -137,45 +137,81 @@ export default function ModuleMatrixShell({
   }, [activeVerticalIndex, onVerticalChange, verticalTabs]);
 
   const activeHorizontalIndex = Math.max(0, horizontalTabs.findIndex((tab) => tab.href === activeHorizontalHref));
-  const slotStep = 26;
-  const activeSegmentLeft = activeHorizontalIndex * slotStep;
+  const segmentCount = Math.max(horizontalTabs.length, 1);
+  const segmentWidth = 28;
+  const gap = 2;
+  const railWidth = segmentCount * segmentWidth + (segmentCount - 1) * gap + 10;
+  const activeLeft = 5 + activeHorizontalIndex * (segmentWidth + gap);
+  const motion = '180ms';
 
   const headerActions = (
     <div className="flex items-start justify-end" data-no-route-swipe="true">
-      <nav aria-label="Horizontal card navigation" className="relative h-[2.84rem] w-[8.05rem] shrink-0 sm:h-[2.94rem] sm:w-[8.4rem]">
+      <nav
+        aria-label="Horizontal card navigation"
+        className="relative h-[2.52rem] shrink-0"
+        style={{ width: `${railWidth}px` }}
+      >
         <span
           aria-hidden="true"
-          className="pointer-events-none absolute inset-x-0 bottom-0 h-[1.5rem] rounded-tl-[0.95rem] rounded-tr-[1.25rem] border border-b-0 border-white/7 bg-[linear-gradient(180deg,rgba(255,255,255,.01),rgba(8,12,22,.004))]"
+          className="pointer-events-none absolute inset-x-0 bottom-0 h-[1.26rem] rounded-tl-[0.9rem] rounded-tr-[1.1rem] border border-b-0 border-white/8 bg-[linear-gradient(180deg,rgba(255,255,255,.012),rgba(8,12,22,.004))]"
         />
         <span
           aria-hidden="true"
-          className="pointer-events-none absolute inset-x-4 bottom-[1px] h-px bg-gradient-to-r from-transparent via-white/6 to-transparent"
+          className="pointer-events-none absolute inset-x-[6px] top-[7px] h-[1.18rem] rounded-[0.9rem] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,.006))]"
         />
         <span
           aria-hidden="true"
-          className="pointer-events-none absolute bottom-[0.9rem] left-[0.7rem] right-[0.8rem] h-px bg-white/5"
-        />
-
-        <span
-          aria-hidden="true"
-          className="pointer-events-none absolute bottom-[0.82rem] z-30 h-[1.26rem] w-[2.34rem] rounded-t-[0.82rem] border border-b-0 border-amber-200/28 bg-[linear-gradient(180deg,rgba(246,196,83,.035),rgba(246,196,83,.01))] transition-all duration-[180ms] ease-out"
-          style={{ left: activeSegmentLeft + 14 }}
-        />
-        <span
-          aria-hidden="true"
-          className="pointer-events-none absolute bottom-[0.45rem] z-40 h-[3px] w-[1.78rem] rounded-t-full bg-[rgba(8,12,22,1)] transition-all duration-[180ms] ease-out"
-          style={{ left: activeSegmentLeft + 18 }}
+          className="pointer-events-none absolute top-[7px] h-[1.18rem] rounded-[0.82rem] border border-amber-200/24 bg-[linear-gradient(180deg,rgba(246,196,83,.05),rgba(246,196,83,.015))] shadow-[0_0_6px_rgba(246,196,83,.08)] transition-all ease-out"
+          style={{
+            left: `${activeLeft}px`,
+            width: `${segmentWidth}px`,
+            transitionDuration: motion,
+          }}
         />
         <span
           aria-hidden="true"
-          className="pointer-events-none absolute bottom-[0.98rem] z-40 h-[0.98rem] w-[1.5px] rounded-full bg-amber-100 shadow-[0_0_3px_rgba(246,196,83,.08)] transition-all duration-[180ms] ease-out"
-          style={{ left: activeSegmentLeft + 32 }}
+          className="pointer-events-none absolute top-[11px] h-[0.66rem] w-[1.5px] rounded-full bg-amber-100 shadow-[0_0_3px_rgba(246,196,83,.12)] transition-all ease-out"
+          style={{
+            left: `${activeLeft + segmentWidth / 2 - 0.75}px`,
+            transitionDuration: motion,
+          }}
+        />
+        <span
+          aria-hidden="true"
+          className="pointer-events-none absolute bottom-[2px] h-[3px] rounded-t-full bg-[rgba(8,12,22,1)] transition-all ease-out"
+          style={{
+            left: `${activeLeft + 4}px`,
+            width: `${segmentWidth - 8}px`,
+            transitionDuration: motion,
+          }}
         />
 
         {horizontalTabs.map((tab, index) => {
-          const zoneStyle: React.CSSProperties = { left: index * slotStep, width: 52 };
-          const zoneClassName = 'absolute inset-y-0 z-50';
-          const inner = <span className="sr-only">{index + 1}. {tab.label}</span>;
+          const isFirst = index === 0;
+          const isLast = index === horizontalTabs.length - 1;
+          const zoneStyle: React.CSSProperties = {
+            left: `${5 + index * (segmentWidth + gap)}px`,
+            top: '7px',
+            width: `${segmentWidth}px`,
+            height: '1.18rem',
+          };
+          const segmentOutline = (
+            <span
+              aria-hidden="true"
+              className={cn(
+                'pointer-events-none absolute inset-0 border border-white/10',
+                isFirst && 'rounded-l-[0.82rem]',
+                isLast && 'rounded-r-[0.82rem]',
+                !isFirst && !isLast && 'rounded-[0.18rem]'
+              )}
+            />
+          );
+          const inner = (
+            <>
+              {segmentOutline}
+              <span className="sr-only">{index + 1}. {tab.label}</span>
+            </>
+          );
 
           if (onHorizontalChange) {
             return (
@@ -186,7 +222,7 @@ export default function ModuleMatrixShell({
                 aria-pressed={index === activeHorizontalIndex}
                 title={tab.label}
                 onClick={() => onHorizontalChange(tab.href)}
-                className={zoneClassName}
+                className="absolute z-50"
                 style={zoneStyle}
               >
                 {inner}
@@ -201,7 +237,7 @@ export default function ModuleMatrixShell({
               aria-label={tab.label}
               aria-current={index === activeHorizontalIndex ? 'page' : undefined}
               title={tab.label}
-              className={zoneClassName}
+              className="absolute z-50"
               style={zoneStyle}
             >
               {inner}
