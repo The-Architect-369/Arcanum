@@ -12,6 +12,7 @@ type PanelShellProps = {
   flush?: boolean;
   noPadding?: boolean;
   scrollable?: boolean;
+  headerActionsDock?: boolean;
   children: React.ReactNode;
 };
 
@@ -24,6 +25,7 @@ export default function PanelShell({
   flush = false,
   noPadding = false,
   scrollable = true,
+  headerActionsDock = false,
   children,
 }: PanelShellProps) {
   return (
@@ -52,8 +54,10 @@ export default function PanelShell({
           {(title || actions) && (
             <div
               className={cn(
-                'relative z-10 shrink-0 flex items-center gap-3 border-b border-white/[0.07] bg-black/10',
-                noPadding ? 'px-0 py-0' : 'px-4 sm:px-6 py-3'
+                'relative z-10 shrink-0 flex gap-3 border-b border-white/[0.07] bg-black/10',
+                headerActionsDock ? 'items-start overflow-visible' : 'items-center',
+                noPadding ? 'px-0 py-0' : 'px-4 sm:px-6 py-3',
+                headerActionsDock && !noPadding && 'pr-[9.25rem] sm:pr-[10.25rem]'
               )}
             >
               <div className="min-w-0 flex-1">
@@ -67,7 +71,16 @@ export default function PanelShell({
                   </div>
                 )}
               </div>
-              {actions && <div className="shrink-0 flex items-center gap-2">{actions}</div>}
+              {actions && (
+                <div
+                  className={cn(
+                    'shrink-0 flex items-center gap-2',
+                    headerActionsDock ? 'absolute right-4 top-0 sm:right-6' : ''
+                  )}
+                >
+                  {actions}
+                </div>
+              )}
             </div>
           )}
 
