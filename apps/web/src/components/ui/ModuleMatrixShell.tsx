@@ -146,34 +146,40 @@ export default function ModuleMatrixShell({
   const railWidth = segmentCount * segmentWidth;
   const activeLeft = activeHorizontalIndex * segmentWidth;
   const motion = '180ms';
+  const shellBorder = 'rgba(255,255,255,0.12)';
+  const shellBorderSoft = 'rgba(255,255,255,0.09)';
 
   const headerActions = (
     <div className="flex items-start justify-end" data-no-route-swipe="true">
-      <nav aria-label="Horizontal card navigation" className="relative h-[2.56rem] shrink-0" style={{ width: `${railWidth + 2}px` }}>
+      <nav aria-label="Horizontal card navigation" className="relative h-[2.56rem] shrink-0" style={{ width: `${railWidth + 8}px` }}>
         <span
           aria-hidden="true"
-          className="pointer-events-none absolute inset-x-0 right-0 border border-white/7 bg-[linear-gradient(180deg,rgba(255,255,255,.012),rgba(18,28,56,.022)_50%,rgba(8,12,22,.008))] shadow-[inset_0_1px_0_rgba(255,255,255,.018)]"
+          className="pointer-events-none absolute bg-[linear-gradient(180deg,rgba(255,255,255,.012),rgba(18,28,56,.022)_50%,rgba(8,12,22,.008))] shadow-[inset_0_1px_0_rgba(255,255,255,.018)]"
           style={{
             top: `${pocketTop}px`,
+            right: '-4px',
+            width: `${railWidth + 8}px`,
             height: `${pocketHeight}px`,
-            borderTopRightRadius: '1.02rem',
-            borderBottomLeftRadius: '1.12rem',
+            border: `1px solid ${shellBorderSoft}`,
+            borderTopRightRadius: '1.08rem',
+            borderBottomLeftRadius: '1.16rem',
           }}
         />
         <span
           aria-hidden="true"
-          className="pointer-events-none absolute inset-x-0 h-px bg-gradient-to-r from-transparent via-white/7 to-transparent"
-          style={{ top: `${pocketTop + 15}px` }}
+          className="pointer-events-none absolute h-px bg-gradient-to-r from-transparent via-white/7 to-transparent"
+          style={{ top: `${pocketTop + 15}px`, left: '0px', right: '-4px' }}
         />
 
         <span
           aria-hidden="true"
-          className="pointer-events-none absolute right-0 border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,.014),rgba(255,255,255,.004))]"
+          className="pointer-events-none absolute right-[-4px] bg-[linear-gradient(180deg,rgba(255,255,255,.014),rgba(255,255,255,.004))]"
           style={{
             top: `${railTop}px`,
-            width: `${railWidth + 1}px`,
+            width: `${railWidth + 5}px`,
             height: `${railHeight}px`,
-            borderRadius: '0.98rem',
+            border: `1px solid ${shellBorder}`,
+            borderRadius: '1rem',
           }}
         />
 
@@ -183,7 +189,7 @@ export default function ModuleMatrixShell({
             <span
               key={`divider-${tab.href}`}
               aria-hidden="true"
-              className="pointer-events-none absolute z-30 h-[22px] w-px bg-white/12"
+              className="pointer-events-none absolute z-30 h-[22px] w-px bg-white/10"
               style={{ left: `${index * segmentWidth}px`, top: `${railTop + 4}px` }}
             />
           );
@@ -191,17 +197,18 @@ export default function ModuleMatrixShell({
 
         <span
           aria-hidden="true"
-          className="pointer-events-none absolute z-20 border border-amber-200/28 bg-[linear-gradient(180deg,rgba(246,196,83,.05),rgba(246,196,83,.014))] transition-all ease-out"
+          className="pointer-events-none absolute z-20 bg-[linear-gradient(180deg,rgba(246,196,83,.05),rgba(246,196,83,.014))] transition-all ease-out"
           style={{
             top: `${railTop}px`,
             left: `${activeLeft}px`,
             width: `${segmentWidth}px`,
             height: `${railHeight}px`,
+            border: `1px solid ${shellBorder}`,
             borderRadius:
               activeHorizontalIndex === 0
-                ? '0.98rem 0.46rem 0.46rem 0.98rem'
+                ? '1rem 0.46rem 0.46rem 1rem'
                 : activeHorizontalIndex === segmentCount - 1
-                  ? '0.46rem 0.98rem 0.98rem 0.46rem'
+                  ? '0.46rem 1rem 1rem 0.46rem'
                   : '0.46rem',
             transitionDuration: motion,
           }}
