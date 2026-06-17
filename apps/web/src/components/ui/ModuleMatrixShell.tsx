@@ -144,38 +144,38 @@ export default function ModuleMatrixShell({
     <div className="flex items-start justify-end" data-no-route-swipe="true">
       <nav
         aria-label="Horizontal card navigation"
-        className="relative h-[3.52rem] w-[8.55rem] shrink-0 sm:h-[3.62rem] sm:w-[8.95rem]"
+        className="relative h-[3.56rem] w-[8.55rem] shrink-0 sm:h-[3.66rem] sm:w-[8.95rem]"
       >
         <span
           aria-hidden="true"
-          className="pointer-events-none absolute inset-x-0 bottom-0 h-[2.02rem] rounded-tl-[1.16rem] rounded-tr-[1.58rem] border border-b-0 border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,.022),rgba(8,12,22,.006))] shadow-[inset_0_1px_0_rgba(255,255,255,.028)]"
+          className="pointer-events-none absolute inset-x-0 bottom-0 h-[2.06rem] rounded-tl-[1.16rem] rounded-tr-[1.58rem] border border-b-0 border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,.02),rgba(8,12,22,.006))] shadow-[inset_0_1px_0_rgba(255,255,255,.024)]"
         />
         <span
           aria-hidden="true"
-          className="pointer-events-none absolute inset-x-4 bottom-[1px] h-px bg-gradient-to-r from-transparent via-white/8 to-transparent"
+          className="pointer-events-none absolute inset-x-4 bottom-[1px] h-px bg-gradient-to-r from-transparent via-white/7 to-transparent"
         />
 
         <span
           aria-hidden="true"
-          className="pointer-events-none absolute bottom-0 z-30 h-[2.05rem] w-[3.2rem] border border-b-0 border-amber-200/66 bg-[linear-gradient(180deg,rgba(246,196,83,.14),rgba(246,196,83,.05)_70%,rgba(8,12,22,0))] shadow-[0_3px_7px_rgba(246,196,83,.045)] transition-all duration-300"
+          className="pointer-events-none absolute bottom-0 z-30 h-[2rem] w-[3.24rem] border border-b-0 border-amber-200/60 bg-[linear-gradient(180deg,rgba(246,196,83,.11),rgba(246,196,83,.04)_72%,rgba(8,12,22,0))] shadow-[0_2px_5px_rgba(246,196,83,.03)] transition-all duration-300"
           style={{
             left: activeCrestLeft,
-            clipPath: 'polygon(0 100%, 0 52%, 16% 0, 100% 0, 100% 82%, 90% 100%)',
+            clipPath: 'polygon(0 100%, 0 54%, 16% 0, 100% 0, 100% 84%, 90% 100%)',
           }}
         />
         <span
           aria-hidden="true"
-          className="pointer-events-none absolute top-[15px] z-40 h-[0.62rem] w-[1.92rem] rounded-t-[0.62rem] border border-b-0 border-amber-200/42 bg-[linear-gradient(180deg,rgba(246,196,83,.085),rgba(246,196,83,.02))] transition-all duration-300"
+          className="pointer-events-none absolute top-[17px] z-40 h-[0.56rem] w-[1.96rem] rounded-t-[0.58rem] border border-b-0 border-amber-200/34 bg-[linear-gradient(180deg,rgba(246,196,83,.065),rgba(246,196,83,.015))] transition-all duration-300"
           style={{ left: activeCrestLeft + 9 }}
         />
         <span
           aria-hidden="true"
-          className="pointer-events-none absolute top-[22px] z-40 h-[1.5rem] w-[1.5px] rounded-full bg-amber-100 shadow-[0_0_8px_rgba(246,196,83,.4)] transition-all duration-300"
+          className="pointer-events-none absolute top-[24px] z-40 h-[1.42rem] w-[1.5px] rounded-full bg-amber-100 shadow-[0_0_6px_rgba(246,196,83,.28)] transition-all duration-300"
           style={{ left: activeCrestLeft + 21 }}
         />
         <span
           aria-hidden="true"
-          className="pointer-events-none absolute bottom-0 z-40 h-[3px] w-[2.18rem] rounded-t-full bg-[rgba(8,12,22,1)] transition-all duration-300"
+          className="pointer-events-none absolute bottom-0 z-40 h-[3px] w-[2.2rem] rounded-t-full bg-[rgba(8,12,22,1)] transition-all duration-300"
           style={{ left: activeCrestLeft + 8 }}
         />
 
