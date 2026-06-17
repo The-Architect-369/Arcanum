@@ -139,108 +139,86 @@ export default function ModuleMatrixShell({
   const activeHorizontalIndex = Math.max(0, horizontalTabs.findIndex((tab) => tab.href === activeHorizontalHref));
   const segmentCount = Math.max(horizontalTabs.length, 1);
   const segmentWidth = 41;
-  const pocketTop = 0;
-  const pocketHeight = 38;
-  const railTop = 4;
-  const railHeight = 30;
-  const railWidth = segmentCount * segmentWidth;
-  const activeLeft = activeHorizontalIndex * segmentWidth;
+  const pillGap = 5;
+  const frameTop = 0;
+  const frameHeight = 38;
+  const pillTop = 5;
+  const pillHeight = 24;
+  const frameWidth = segmentCount * segmentWidth + (segmentCount - 1) * pillGap + 10;
+  const activeLeft = activeHorizontalIndex * (segmentWidth + pillGap) + 5;
   const motion = '180ms';
   const shellBorder = 'rgba(255,255,255,0.12)';
   const shellBorderSoft = 'rgba(255,255,255,0.09)';
 
   const headerActions = (
     <div className="flex items-start justify-end" data-no-route-swipe="true">
-      <nav aria-label="Horizontal card navigation" className="relative h-[2.56rem] shrink-0" style={{ width: `${railWidth + 8}px` }}>
+      <nav aria-label="Horizontal card navigation" className="relative h-[2.56rem] shrink-0" style={{ width: `${frameWidth + 8}px` }}>
         <span
           aria-hidden="true"
           className="pointer-events-none absolute bg-[linear-gradient(180deg,rgba(255,255,255,.012),rgba(18,28,56,.022)_50%,rgba(8,12,22,.008))] shadow-[inset_0_1px_0_rgba(255,255,255,.018)]"
           style={{
-            top: `${pocketTop}px`,
+            top: `${frameTop}px`,
             right: '-4px',
-            width: `${railWidth + 8}px`,
-            height: `${pocketHeight}px`,
+            width: `${frameWidth + 8}px`,
+            height: `${frameHeight}px`,
             border: `1px solid ${shellBorderSoft}`,
             borderTopRightRadius: '1.08rem',
             borderBottomLeftRadius: '1.16rem',
           }}
         />
-        <span
-          aria-hidden="true"
-          className="pointer-events-none absolute h-px bg-gradient-to-r from-transparent via-white/7 to-transparent"
-          style={{ top: `${pocketTop + 15}px`, left: '0px', right: '-4px' }}
-        />
-
-        <span
-          aria-hidden="true"
-          className="pointer-events-none absolute right-[-4px] bg-[linear-gradient(180deg,rgba(255,255,255,.014),rgba(255,255,255,.004))]"
-          style={{
-            top: `${railTop}px`,
-            width: `${railWidth + 5}px`,
-            height: `${railHeight}px`,
-            border: `1px solid ${shellBorder}`,
-            borderRadius: '1rem',
-          }}
-        />
 
         {horizontalTabs.map((tab, index) => {
-          if (index === 0) return null;
-          return (
-            <span
-              key={`divider-${tab.href}`}
-              aria-hidden="true"
-              className="pointer-events-none absolute z-30 h-[22px] w-px bg-white/10"
-              style={{ left: `${index * segmentWidth}px`, top: `${railTop + 4}px` }}
-            />
-          );
-        })}
-
-        <span
-          aria-hidden="true"
-          className="pointer-events-none absolute z-20 bg-[linear-gradient(180deg,rgba(246,196,83,.05),rgba(246,196,83,.014))] transition-all ease-out"
-          style={{
-            top: `${railTop}px`,
-            left: `${activeLeft}px`,
-            width: `${segmentWidth}px`,
-            height: `${railHeight}px`,
-            border: `1px solid ${shellBorder}`,
-            borderRadius:
-              activeHorizontalIndex === 0
-                ? '1rem 0.46rem 0.46rem 1rem'
-                : activeHorizontalIndex === segmentCount - 1
-                  ? '0.46rem 1rem 1rem 0.46rem'
-                  : '0.46rem',
-            transitionDuration: motion,
-          }}
-        />
-        <span
-          aria-hidden="true"
-          className="pointer-events-none absolute z-40 h-[1.12rem] w-[1.5px] rounded-full bg-amber-100 shadow-[0_0_3px_rgba(246,196,83,.10)] transition-all ease-out"
-          style={{
-            top: `${railTop + 6}px`,
-            left: `${activeLeft + segmentWidth / 2 - 0.75}px`,
-            transitionDuration: motion,
-          }}
-        />
-        <span
-          aria-hidden="true"
-          className="pointer-events-none absolute z-40 h-[3px] rounded-t-full bg-[rgba(8,12,22,1)] transition-all ease-out"
-          style={{
-            top: `${railTop + railHeight - 1}px`,
-            left: `${activeLeft + 8}px`,
-            width: `${segmentWidth - 16}px`,
-            transitionDuration: motion,
-          }}
-        />
-
-        {horizontalTabs.map((tab, index) => {
+          const left = index * (segmentWidth + pillGap) + 5;
+          const isActive = index === activeHorizontalIndex;
           const zoneStyle: React.CSSProperties = {
-            left: `${index * segmentWidth}px`,
-            top: `${railTop}px`,
+            left: `${left}px`,
+            top: `${pillTop}px`,
             width: `${segmentWidth}px`,
-            height: `${railHeight}px`,
+            height: `${pillHeight}px`,
           };
           const inner = <span className="sr-only">{index + 1}. {tab.label}</span>;
+
+          const pill = (
+            <>
+              <span
+                aria-hidden="true"
+                className={cn(
+                  'pointer-events-none absolute rounded-[0.86rem] transition-all ease-out',
+                  isActive
+                    ? 'bg-[linear-gradient(180deg,rgba(246,196,83,.05),rgba(246,196,83,.014))]'
+                    : 'bg-[linear-gradient(180deg,rgba(255,255,255,.012),rgba(255,255,255,.004))]'
+                )}
+                style={{
+                  ...zoneStyle,
+                  border: `1px solid ${shellBorder}`,
+                  transitionDuration: motion,
+                }}
+              />
+              {isActive ? (
+                <>
+                  <span
+                    aria-hidden="true"
+                    className="pointer-events-none absolute z-40 h-[1.12rem] w-[1.5px] rounded-full bg-amber-100 shadow-[0_0_3px_rgba(246,196,83,.10)] transition-all ease-out"
+                    style={{
+                      top: `${pillTop + 4}px`,
+                      left: `${left + segmentWidth / 2 - 0.75}px`,
+                      transitionDuration: motion,
+                    }}
+                  />
+                  <span
+                    aria-hidden="true"
+                    className="pointer-events-none absolute z-40 h-[3px] rounded-t-full bg-[rgba(8,12,22,1)] transition-all ease-out"
+                    style={{
+                      top: `${pillTop + pillHeight - 1}px`,
+                      left: `${left + 8}px`,
+                      width: `${segmentWidth - 16}px`,
+                      transitionDuration: motion,
+                    }}
+                  />
+                </>
+              ) : null}
+            </>
+          );
 
           if (onHorizontalChange) {
             return (
@@ -248,12 +226,13 @@ export default function ModuleMatrixShell({
                 key={tab.href}
                 type="button"
                 aria-label={tab.label}
-                aria-pressed={index === activeHorizontalIndex}
+                aria-pressed={isActive}
                 title={tab.label}
                 onClick={() => onHorizontalChange(tab.href)}
                 className="absolute z-50"
                 style={zoneStyle}
               >
+                {pill}
                 {inner}
               </button>
             );
@@ -264,11 +243,12 @@ export default function ModuleMatrixShell({
               key={tab.href}
               href={tab.href}
               aria-label={tab.label}
-              aria-current={index === activeHorizontalIndex ? 'page' : undefined}
+              aria-current={isActive ? 'page' : undefined}
               title={tab.label}
               className="absolute z-50"
               style={zoneStyle}
             >
+              {pill}
               {inner}
             </Link>
           );
