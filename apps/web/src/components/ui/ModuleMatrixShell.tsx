@@ -142,21 +142,20 @@ export default function ModuleMatrixShell({
     <div className="flex items-start justify-end" data-no-route-swipe="true">
       <nav
         aria-label="Horizontal card navigation"
-        className="relative h-[2.95rem] w-[7.35rem] shrink-0 sm:h-[3.05rem] sm:w-[7.8rem]"
+        className="relative h-[3.35rem] w-[7.1rem] shrink-0 sm:h-[3.45rem] sm:w-[7.5rem]"
       >
         <span
           aria-hidden="true"
-          className="pointer-events-none absolute inset-x-0 bottom-0 h-[1.55rem] rounded-tl-[1.15rem] rounded-tr-[1.35rem] border border-b-0 border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,.045),rgba(8,12,22,.02))] shadow-[inset_0_1px_0_rgba(255,255,255,.05)]"
+          className="pointer-events-none absolute inset-x-0 bottom-0 h-[1.8rem] rounded-tl-[1.15rem] rounded-tr-[1.4rem] border border-b-0 border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,.045),rgba(8,12,22,.018))] shadow-[inset_0_1px_0_rgba(255,255,255,.05)]"
         />
         <span
           aria-hidden="true"
           className="pointer-events-none absolute inset-x-3 bottom-0 h-px bg-gradient-to-r from-transparent via-white/12 to-transparent"
         />
-
         {horizontalTabs.map((tab, index) => {
           const active = index === activeHorizontalIndex;
-          const left = index * 26;
-          const zoneStyle: React.CSSProperties = { left, width: 42 };
+          const left = index * 24;
+          const zoneStyle: React.CSSProperties = { left, width: 40 };
           const zoneClassName = 'absolute bottom-0 top-0 z-20';
           const inner = (
             <>
@@ -164,35 +163,31 @@ export default function ModuleMatrixShell({
                 <>
                   <span
                     aria-hidden="true"
-                    className="absolute bottom-0 left-0 right-0 h-[2.45rem] border border-b-0 border-amber-200/74 bg-[linear-gradient(180deg,rgba(246,196,83,.18),rgba(246,196,83,.08)_60%,rgba(8,12,22,0))] shadow-[0_7px_14px_rgba(246,196,83,.08)]"
-                    style={{ clipPath: 'polygon(0 100%, 0 36%, 22% 0, 100% 0, 100% 72%, 86% 100%)' }}
+                    className="absolute bottom-0 left-0 right-0 h-[2.7rem] border border-b-0 border-amber-200/72 bg-[linear-gradient(180deg,rgba(246,196,83,.18),rgba(246,196,83,.08)_62%,rgba(8,12,22,0))] shadow-[0_8px_14px_rgba(246,196,83,.08)]"
+                    style={{ clipPath: 'polygon(0 100%, 0 40%, 20% 0, 100% 0, 100% 74%, 86% 100%)' }}
                   />
                   <span
                     aria-hidden="true"
-                    className="absolute left-[18%] right-[14%] top-0 h-[30%] rounded-t-[0.75rem] border border-b-0 border-amber-200/58 bg-[linear-gradient(180deg,rgba(246,196,83,.13),rgba(246,196,83,.04))]"
+                    className="absolute left-[18%] right-[14%] top-[2px] h-[28%] rounded-t-[0.72rem] border border-b-0 border-amber-200/56 bg-[linear-gradient(180deg,rgba(246,196,83,.13),rgba(246,196,83,.04))]"
                   />
                   <span
                     aria-hidden="true"
-                    className="absolute left-1/2 top-[44%] h-4 w-1.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-amber-100 shadow-[0_0_10px_rgba(246,196,83,.55)]"
+                    className="absolute left-1/2 top-[42%] h-4 w-1.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-amber-100 shadow-[0_0_10px_rgba(246,196,83,.55)]"
                   />
                   <span
                     aria-hidden="true"
-                    className="pointer-events-none absolute bottom-0 left-[12%] right-[12%] h-[3px] rounded-t-full bg-[rgba(8,12,22,1)]"
+                    className="pointer-events-none absolute bottom-0 left-[10%] right-[10%] h-[3px] rounded-t-full bg-[rgba(8,12,22,1)]"
                   />
                 </>
               ) : (
                 <>
                   <span
                     aria-hidden="true"
-                    className="absolute left-[22%] right-[18%] top-[4px] h-[0.95rem] rounded-t-[0.7rem] border border-b-0 border-white/10 opacity-80"
+                    className="absolute left-[24%] right-[18%] top-[7px] h-[1rem] rounded-t-[0.72rem] border border-b-0 border-white/10 opacity-78"
                   />
                   <span
                     aria-hidden="true"
-                    className="absolute left-1/2 top-[1.2rem] h-[0.95rem] w-px -translate-x-1/2 bg-gradient-to-b from-white/16 to-transparent"
-                  />
-                  <span
-                    aria-hidden="true"
-                    className="pointer-events-none absolute bottom-[6px] left-[18%] right-[18%] h-px rounded-full bg-[rgba(255,255,255,.10)]"
+                    className="absolute left-1/2 top-[1.3rem] h-[0.9rem] w-px -translate-x-1/2 bg-gradient-to-b from-white/15 to-transparent"
                   />
                 </>
               )}
@@ -242,6 +237,7 @@ export default function ModuleMatrixShell({
         actions={headerActions}
         flush
         scrollable={false}
+        headerActionsDock
         className="relative z-10 min-h-0 flex-1"
         contentClassName={cn('overflow-hidden px-10 sm:px-9', contentClassName)}
       >
