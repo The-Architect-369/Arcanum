@@ -147,14 +147,10 @@ export default function ModuleMatrixShell({
 
   const headerActions = (
     <div className="flex items-start justify-end" data-no-route-swipe="true">
-      <nav aria-label="Horizontal card navigation" className="relative h-[1.9rem] shrink-0" style={{ width: `${railWidth}px` }}>
+      <nav aria-label="Horizontal card navigation" className="relative h-[1.45rem] shrink-0" style={{ width: `${railWidth}px` }}>
         <span
           aria-hidden="true"
-          className="pointer-events-none absolute inset-x-0 bottom-0 h-[0.52rem] rounded-tl-[0.68rem] rounded-tr-[0.82rem] border border-b-0 border-white/8 bg-[linear-gradient(180deg,rgba(255,255,255,.008),rgba(8,12,22,.003))]"
-        />
-        <span
-          aria-hidden="true"
-          className="pointer-events-none absolute left-0 top-[6px] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,.012),rgba(255,255,255,.004))]"
+          className="pointer-events-none absolute left-0 top-[0px] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,.012),rgba(255,255,255,.004))]"
           style={{
             width: `${railWidth}px`,
             height: `${railHeight}px`,
@@ -168,7 +164,7 @@ export default function ModuleMatrixShell({
             <span
               key={`divider-${tab.href}`}
               aria-hidden="true"
-              className="pointer-events-none absolute top-[7px] z-30 h-[14px] w-px bg-white/12"
+              className="pointer-events-none absolute top-[1px] z-30 h-[14px] w-px bg-white/12"
               style={{ left: `${railPadding + index * segmentWidth}px` }}
             />
           );
@@ -176,7 +172,7 @@ export default function ModuleMatrixShell({
 
         <span
           aria-hidden="true"
-          className="pointer-events-none absolute top-[6px] z-20 border border-amber-200/26 bg-[linear-gradient(180deg,rgba(246,196,83,.05),rgba(246,196,83,.014))] transition-all ease-out"
+          className="pointer-events-none absolute top-[0px] z-20 border border-amber-200/26 bg-[linear-gradient(180deg,rgba(246,196,83,.05),rgba(246,196,83,.014))] transition-all ease-out"
           style={{
             left: `${activeLeft}px`,
             width: `${segmentWidth}px`,
@@ -194,7 +190,7 @@ export default function ModuleMatrixShell({
           aria-hidden="true"
           className="pointer-events-none absolute z-40 h-[0.82rem] w-[1.5px] rounded-full bg-amber-100 shadow-[0_0_3px_rgba(246,196,83,.10)] transition-all ease-out"
           style={{
-            top: '8px',
+            top: '2px',
             left: `${activeLeft + segmentWidth / 2 - 0.75}px`,
             transitionDuration: motion,
           }}
@@ -203,7 +199,7 @@ export default function ModuleMatrixShell({
           aria-hidden="true"
           className="pointer-events-none absolute z-40 h-[3px] rounded-t-full bg-[rgba(8,12,22,1)] transition-all ease-out"
           style={{
-            top: '19px',
+            top: '13px',
             left: `${activeLeft + 6}px`,
             width: `${segmentWidth - 12}px`,
             transitionDuration: motion,
@@ -213,7 +209,7 @@ export default function ModuleMatrixShell({
         {horizontalTabs.map((tab, index) => {
           const zoneStyle: React.CSSProperties = {
             left: `${railPadding + index * segmentWidth}px`,
-            top: '6px',
+            top: '0px',
             width: `${segmentWidth}px`,
             height: `${railHeight}px`,
           };
