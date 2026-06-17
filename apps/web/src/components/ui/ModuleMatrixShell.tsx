@@ -138,8 +138,8 @@ export default function ModuleMatrixShell({
 
   const activeHorizontalIndex = Math.max(0, horizontalTabs.findIndex((tab) => tab.href === activeHorizontalHref));
   const segmentCount = Math.max(horizontalTabs.length, 1);
-  const segmentWidth = 38;
-  const railPadding = 1;
+  const segmentWidth = 42;
+  const railPadding = 0;
   const layerTop = 5;
   const layerHeight = 24;
   const railWidth = railPadding * 2 + segmentCount * segmentWidth;
@@ -151,7 +151,7 @@ export default function ModuleMatrixShell({
       <nav aria-label="Horizontal card navigation" className="relative h-[2.1rem] shrink-0" style={{ width: `${railWidth + 2}px` }}>
         <span
           aria-hidden="true"
-          className="pointer-events-none absolute inset-y-0 right-0 w-full rounded-bl-[1.06rem] rounded-tr-[0.98rem] border border-white/7 bg-[linear-gradient(180deg,rgba(255,255,255,.012),rgba(18,28,56,.022)_50%,rgba(8,12,22,.008))] shadow-[inset_0_1px_0_rgba(255,255,255,.018)]"
+          className="pointer-events-none absolute inset-y-0 right-0 w-full rounded-bl-[1.08rem] rounded-tr-[0.98rem] border border-white/7 bg-[linear-gradient(180deg,rgba(255,255,255,.012),rgba(18,28,56,.022)_50%,rgba(8,12,22,.008))] shadow-[inset_0_1px_0_rgba(255,255,255,.018)]"
         />
         <span
           aria-hidden="true"
@@ -163,9 +163,9 @@ export default function ModuleMatrixShell({
           className="pointer-events-none absolute right-0 border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,.014),rgba(255,255,255,.004))]"
           style={{
             top: `${layerTop}px`,
-            width: `${railWidth}px`,
+            width: `${railWidth + 1}px`,
             height: `${layerHeight}px`,
-            borderRadius: '0.94rem',
+            borderRadius: '0.98rem',
           }}
         />
 
@@ -176,7 +176,7 @@ export default function ModuleMatrixShell({
               key={`divider-${tab.href}`}
               aria-hidden="true"
               className="pointer-events-none absolute z-30 h-[18px] w-px bg-white/12"
-              style={{ left: `${railPadding + index * segmentWidth}px`, top: `${layerTop + 3}px` }}
+              style={{ left: `${index * segmentWidth}px`, top: `${layerTop + 3}px` }}
             />
           );
         })}
@@ -191,9 +191,9 @@ export default function ModuleMatrixShell({
             height: `${layerHeight}px`,
             borderRadius:
               activeHorizontalIndex === 0
-                ? '0.94rem 0.42rem 0.42rem 0.94rem'
+                ? '0.98rem 0.42rem 0.42rem 0.98rem'
                 : activeHorizontalIndex === segmentCount - 1
-                  ? '0.42rem 0.94rem 0.94rem 0.42rem'
+                  ? '0.42rem 0.98rem 0.98rem 0.42rem'
                   : '0.42rem',
             transitionDuration: motion,
           }}
@@ -212,15 +212,15 @@ export default function ModuleMatrixShell({
           className="pointer-events-none absolute z-40 h-[3px] rounded-t-full bg-[rgba(8,12,22,1)] transition-all ease-out"
           style={{
             top: `${layerTop + layerHeight - 1}px`,
-            left: `${activeLeft + 8}px`,
-            width: `${segmentWidth - 16}px`,
+            left: `${activeLeft + 9}px`,
+            width: `${segmentWidth - 18}px`,
             transitionDuration: motion,
           }}
         />
 
         {horizontalTabs.map((tab, index) => {
           const zoneStyle: React.CSSProperties = {
-            left: `${railPadding + index * segmentWidth}px`,
+            left: `${index * segmentWidth}px`,
             top: `${layerTop}px`,
             width: `${segmentWidth}px`,
             height: `${layerHeight}px`,
