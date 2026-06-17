@@ -138,14 +138,14 @@ export default function ModuleMatrixShell({
 
   const activeHorizontalIndex = Math.max(0, horizontalTabs.findIndex((tab) => tab.href === activeHorizontalHref));
   const slotStep = 26;
-  const activeCrestLeft = activeHorizontalIndex * slotStep;
+  const activeSegmentLeft = activeHorizontalIndex * slotStep;
 
   const headerActions = (
     <div className="flex items-start justify-end" data-no-route-swipe="true">
-      <nav aria-label="Horizontal card navigation" className="relative h-[3.12rem] w-[8.2rem] shrink-0 sm:h-[3.22rem] sm:w-[8.55rem]">
+      <nav aria-label="Horizontal card navigation" className="relative h-[2.84rem] w-[8.05rem] shrink-0 sm:h-[2.94rem] sm:w-[8.4rem]">
         <span
           aria-hidden="true"
-          className="pointer-events-none absolute inset-x-0 bottom-0 h-[1.76rem] rounded-tl-[1rem] rounded-tr-[1.35rem] border border-b-0 border-white/7 bg-[linear-gradient(180deg,rgba(255,255,255,.01),rgba(8,12,22,.004))]"
+          className="pointer-events-none absolute inset-x-0 bottom-0 h-[1.5rem] rounded-tl-[0.95rem] rounded-tr-[1.25rem] border border-b-0 border-white/7 bg-[linear-gradient(180deg,rgba(255,255,255,.01),rgba(8,12,22,.004))]"
         />
         <span
           aria-hidden="true"
@@ -153,26 +153,23 @@ export default function ModuleMatrixShell({
         />
         <span
           aria-hidden="true"
-          className="pointer-events-none absolute bottom-0 z-30 h-[1.66rem] w-[2.78rem] border border-b-0 border-amber-200/34 bg-[linear-gradient(180deg,rgba(246,196,83,.05),rgba(246,196,83,.015)_72%,rgba(8,12,22,0))] transition-all duration-[180ms] ease-out"
-          style={{
-            left: activeCrestLeft + 9,
-            clipPath: 'polygon(0 100%, 0 64%, 16% 0, 100% 0, 100% 88%, 91% 100%)',
-          }}
+          className="pointer-events-none absolute bottom-[0.9rem] left-[0.7rem] right-[0.8rem] h-px bg-white/5"
+        />
+
+        <span
+          aria-hidden="true"
+          className="pointer-events-none absolute bottom-[0.82rem] z-30 h-[1.26rem] w-[2.34rem] rounded-t-[0.82rem] border border-b-0 border-amber-200/28 bg-[linear-gradient(180deg,rgba(246,196,83,.035),rgba(246,196,83,.01))] transition-all duration-[180ms] ease-out"
+          style={{ left: activeSegmentLeft + 14 }}
         />
         <span
           aria-hidden="true"
-          className="pointer-events-none absolute top-[19px] z-40 h-[0.38rem] w-[1.66rem] rounded-t-[0.42rem] border border-b-0 border-amber-200/18 bg-[linear-gradient(180deg,rgba(246,196,83,.02),rgba(246,196,83,.006))] transition-all duration-[180ms] ease-out"
-          style={{ left: activeCrestLeft + 18 }}
+          className="pointer-events-none absolute bottom-[0.45rem] z-40 h-[3px] w-[1.78rem] rounded-t-full bg-[rgba(8,12,22,1)] transition-all duration-[180ms] ease-out"
+          style={{ left: activeSegmentLeft + 18 }}
         />
         <span
           aria-hidden="true"
-          className="pointer-events-none absolute top-[23px] z-40 h-[0.96rem] w-[1.5px] rounded-full bg-amber-100 shadow-[0_0_3px_rgba(246,196,83,.08)] transition-all duration-[180ms] ease-out"
-          style={{ left: activeCrestLeft + 29 }}
-        />
-        <span
-          aria-hidden="true"
-          className="pointer-events-none absolute bottom-0 z-40 h-[3px] w-[1.88rem] rounded-t-full bg-[rgba(8,12,22,1)] transition-all duration-[180ms] ease-out"
-          style={{ left: activeCrestLeft + 18 }}
+          className="pointer-events-none absolute bottom-[0.98rem] z-40 h-[0.98rem] w-[1.5px] rounded-full bg-amber-100 shadow-[0_0_3px_rgba(246,196,83,.08)] transition-all duration-[180ms] ease-out"
+          style={{ left: activeSegmentLeft + 32 }}
         />
 
         {horizontalTabs.map((tab, index) => {
