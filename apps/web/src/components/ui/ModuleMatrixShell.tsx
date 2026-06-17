@@ -139,79 +139,85 @@ export default function ModuleMatrixShell({
   const activeHorizontalIndex = Math.max(0, horizontalTabs.findIndex((tab) => tab.href === activeHorizontalHref));
   const segmentCount = Math.max(horizontalTabs.length, 1);
   const segmentWidth = 28;
-  const gap = 2;
-  const railWidth = segmentCount * segmentWidth + (segmentCount - 1) * gap + 10;
-  const activeLeft = 5 + activeHorizontalIndex * (segmentWidth + gap);
+  const railPadding = 6;
+  const railHeight = 22;
+  const railWidth = railPadding * 2 + segmentCount * segmentWidth;
+  const activeLeft = railPadding + activeHorizontalIndex * segmentWidth;
   const motion = '180ms';
 
   const headerActions = (
     <div className="flex items-start justify-end" data-no-route-swipe="true">
-      <nav
-        aria-label="Horizontal card navigation"
-        className="relative h-[2.52rem] shrink-0"
-        style={{ width: `${railWidth}px` }}
-      >
+      <nav aria-label="Horizontal card navigation" className="relative h-[2.2rem] shrink-0" style={{ width: `${railWidth}px` }}>
         <span
           aria-hidden="true"
-          className="pointer-events-none absolute inset-x-0 bottom-0 h-[1.26rem] rounded-tl-[0.9rem] rounded-tr-[1.1rem] border border-b-0 border-white/8 bg-[linear-gradient(180deg,rgba(255,255,255,.012),rgba(8,12,22,.004))]"
+          className="pointer-events-none absolute inset-x-0 bottom-0 h-[0.92rem] rounded-tl-[0.82rem] rounded-tr-[1rem] border border-b-0 border-white/7 bg-[linear-gradient(180deg,rgba(255,255,255,.01),rgba(8,12,22,.004))]"
         />
         <span
           aria-hidden="true"
-          className="pointer-events-none absolute inset-x-[6px] top-[7px] h-[1.18rem] rounded-[0.9rem] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,.006))]"
+          className="pointer-events-none absolute left-0 top-[4px] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,.016),rgba(255,255,255,.006))] shadow-[inset_0_1px_0_rgba(255,255,255,.02)]"
+          style={{
+            width: `${railWidth}px`,
+            height: `${railHeight}px`,
+            borderRadius: '999px',
+          }}
         />
+
+        {horizontalTabs.map((tab, index) => {
+          if (index === 0) return null;
+          return (
+            <span
+              key={`divider-${tab.href}`}
+              aria-hidden="true"
+              className="pointer-events-none absolute top-[7px] z-30 h-[16px] w-px bg-white/12"
+              style={{ left: `${railPadding + index * segmentWidth}px` }}
+            />
+          );
+        })}
+
         <span
           aria-hidden="true"
-          className="pointer-events-none absolute top-[7px] h-[1.18rem] rounded-[0.82rem] border border-amber-200/24 bg-[linear-gradient(180deg,rgba(246,196,83,.05),rgba(246,196,83,.015))] shadow-[0_0_6px_rgba(246,196,83,.08)] transition-all ease-out"
+          className="pointer-events-none absolute top-[4px] z-20 border border-amber-200/24 bg-[linear-gradient(180deg,rgba(246,196,83,.05),rgba(246,196,83,.016))] shadow-[0_0_6px_rgba(246,196,83,.05)] transition-all ease-out"
           style={{
             left: `${activeLeft}px`,
             width: `${segmentWidth}px`,
+            height: `${railHeight}px`,
+            borderRadius:
+              activeHorizontalIndex === 0
+                ? '999px 0 0 999px'
+                : activeHorizontalIndex === segmentCount - 1
+                  ? '0 999px 999px 0'
+                  : '0.45rem',
             transitionDuration: motion,
           }}
         />
         <span
           aria-hidden="true"
-          className="pointer-events-none absolute top-[11px] h-[0.66rem] w-[1.5px] rounded-full bg-amber-100 shadow-[0_0_3px_rgba(246,196,83,.12)] transition-all ease-out"
+          className="pointer-events-none absolute z-40 h-[1rem] w-[1.5px] rounded-full bg-amber-100 shadow-[0_0_3px_rgba(246,196,83,.10)] transition-all ease-out"
           style={{
+            top: '8px',
             left: `${activeLeft + segmentWidth / 2 - 0.75}px`,
             transitionDuration: motion,
           }}
         />
         <span
           aria-hidden="true"
-          className="pointer-events-none absolute bottom-[2px] h-[3px] rounded-t-full bg-[rgba(8,12,22,1)] transition-all ease-out"
+          className="pointer-events-none absolute z-40 h-[3px] rounded-t-full bg-[rgba(8,12,22,1)] transition-all ease-out"
           style={{
-            left: `${activeLeft + 4}px`,
-            width: `${segmentWidth - 8}px`,
+            top: '21px',
+            left: `${activeLeft + 5}px`,
+            width: `${segmentWidth - 10}px`,
             transitionDuration: motion,
           }}
         />
 
         {horizontalTabs.map((tab, index) => {
-          const isFirst = index === 0;
-          const isLast = index === horizontalTabs.length - 1;
           const zoneStyle: React.CSSProperties = {
-            left: `${5 + index * (segmentWidth + gap)}px`,
-            top: '7px',
+            left: `${railPadding + index * segmentWidth}px`,
+            top: '4px',
             width: `${segmentWidth}px`,
-            height: '1.18rem',
+            height: `${railHeight}px`,
           };
-          const segmentOutline = (
-            <span
-              aria-hidden="true"
-              className={cn(
-                'pointer-events-none absolute inset-0 border border-white/10',
-                isFirst && 'rounded-l-[0.82rem]',
-                isLast && 'rounded-r-[0.82rem]',
-                !isFirst && !isLast && 'rounded-[0.18rem]'
-              )}
-            />
-          );
-          const inner = (
-            <>
-              {segmentOutline}
-              <span className="sr-only">{index + 1}. {tab.label}</span>
-            </>
-          );
+          const inner = <span className="sr-only">{index + 1}. {tab.label}</span>;
 
           if (onHorizontalChange) {
             return (
