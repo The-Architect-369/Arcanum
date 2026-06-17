@@ -139,31 +139,31 @@ export default function ModuleMatrixShell({
   const activeHorizontalIndex = Math.max(0, horizontalTabs.findIndex((tab) => tab.href === activeHorizontalHref));
   const segmentCount = Math.max(horizontalTabs.length, 1);
   const segmentWidth = 41;
-  const pocketTop = 3;
-  const pocketHeight = 28;
-  const railTop = 4;
-  const railHeight = 24;
+  const pocketTop = 1;
+  const pocketHeight = 34;
+  const railTop = 3;
+  const railHeight = 28;
   const railWidth = segmentCount * segmentWidth;
   const activeLeft = activeHorizontalIndex * segmentWidth;
   const motion = '180ms';
 
   const headerActions = (
     <div className="flex items-start justify-end" data-no-route-swipe="true">
-      <nav aria-label="Horizontal card navigation" className="relative h-[2.06rem] shrink-0" style={{ width: `${railWidth + 2}px` }}>
+      <nav aria-label="Horizontal card navigation" className="relative h-[2.34rem] shrink-0" style={{ width: `${railWidth + 2}px` }}>
         <span
           aria-hidden="true"
           className="pointer-events-none absolute inset-x-0 right-0 border border-white/7 bg-[linear-gradient(180deg,rgba(255,255,255,.012),rgba(18,28,56,.022)_50%,rgba(8,12,22,.008))] shadow-[inset_0_1px_0_rgba(255,255,255,.018)]"
           style={{
             top: `${pocketTop}px`,
             height: `${pocketHeight}px`,
-            borderTopRightRadius: '0.94rem',
-            borderBottomLeftRadius: '1rem',
+            borderTopRightRadius: '1rem',
+            borderBottomLeftRadius: '1.06rem',
           }}
         />
         <span
           aria-hidden="true"
           className="pointer-events-none absolute inset-x-0 h-px bg-gradient-to-r from-transparent via-white/7 to-transparent"
-          style={{ top: `${pocketTop + 10}px` }}
+          style={{ top: `${pocketTop + 13}px` }}
         />
 
         <span
@@ -173,7 +173,7 @@ export default function ModuleMatrixShell({
             top: `${railTop}px`,
             width: `${railWidth + 1}px`,
             height: `${railHeight}px`,
-            borderRadius: '0.9rem',
+            borderRadius: '0.96rem',
           }}
         />
 
@@ -183,7 +183,7 @@ export default function ModuleMatrixShell({
             <span
               key={`divider-${tab.href}`}
               aria-hidden="true"
-              className="pointer-events-none absolute z-30 h-[16px] w-px bg-white/12"
+              className="pointer-events-none absolute z-30 h-[20px] w-px bg-white/12"
               style={{ left: `${index * segmentWidth}px`, top: `${railTop + 4}px` }}
             />
           );
@@ -199,18 +199,18 @@ export default function ModuleMatrixShell({
             height: `${railHeight}px`,
             borderRadius:
               activeHorizontalIndex === 0
-                ? '0.9rem 0.4rem 0.4rem 0.9rem'
+                ? '0.96rem 0.44rem 0.44rem 0.96rem'
                 : activeHorizontalIndex === segmentCount - 1
-                  ? '0.4rem 0.9rem 0.9rem 0.4rem'
-                  : '0.4rem',
+                  ? '0.44rem 0.96rem 0.96rem 0.44rem'
+                  : '0.44rem',
             transitionDuration: motion,
           }}
         />
         <span
           aria-hidden="true"
-          className="pointer-events-none absolute z-40 h-[1rem] w-[1.5px] rounded-full bg-amber-100 shadow-[0_0_3px_rgba(246,196,83,.10)] transition-all ease-out"
+          className="pointer-events-none absolute z-40 h-[1.06rem] w-[1.5px] rounded-full bg-amber-100 shadow-[0_0_3px_rgba(246,196,83,.10)] transition-all ease-out"
           style={{
-            top: `${railTop + 4}px`,
+            top: `${railTop + 6}px`,
             left: `${activeLeft + segmentWidth / 2 - 0.75}px`,
             transitionDuration: motion,
           }}
