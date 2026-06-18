@@ -153,10 +153,10 @@ export default function ModuleMatrixShell({
       : activeHorizontalIndex === segmentCount - 1
         ? '0.42rem 1rem 1rem 0.42rem'
         : '0.42rem';
-  const glowFill = 'linear-gradient(180deg,rgba(246,196,83,.10),rgba(246,196,83,.028))';
-  const glowShadow = 'inset 0 1px 0 rgba(255,255,255,.03), inset 0 -10px 18px rgba(12,18,32,.12), 0 0 14px rgba(246,196,83,.12), 0 0 22px rgba(255,214,92,.06)';
-  const auraGradient = 'radial-gradient(circle,rgba(246,196,83,.26)_0%,rgba(246,196,83,.14)_44%,rgba(246,196,83,0)_80%)';
-  const lineGlow = '0 0 10px rgba(246,196,83,.52),0 0 18px rgba(255,214,92,.20)';
+  const glowFill = 'linear-gradient(180deg,rgba(246,196,83,.08),rgba(246,196,83,.022))';
+  const glowShadow = 'inset 0 1px 0 rgba(255,255,255,.025), inset 0 -10px 18px rgba(12,18,32,.10), 0 0 10px rgba(246,196,83,.08), 0 0 18px rgba(255,214,92,.04)';
+  const auraGradient = 'radial-gradient(circle,rgba(246,196,83,.16)_0%,rgba(246,196,83,.08)_42%,rgba(246,196,83,0)_84%)';
+  const lineGlow = '0 0 8px rgba(246,196,83,.28),0 0 14px rgba(255,214,92,.10)';
   const horizontalOpticalOffset =
     activeHorizontalIndex === 0 ? 1 : activeHorizontalIndex === segmentCount - 1 ? -1 : 0;
 
@@ -237,7 +237,7 @@ export default function ModuleMatrixShell({
                 <>
                   <span
                     aria-hidden="true"
-                    className="pointer-events-none absolute left-1/2 top-1/2 z-30 h-5 w-7 -translate-x-1/2 -translate-y-1/2 rounded-full blur-[2px] sm:w-8"
+                    className="pointer-events-none absolute left-1/2 top-1/2 z-30 h-7 w-10 -translate-x-1/2 -translate-y-1/2 rounded-full blur-[6px] sm:h-8 sm:w-11"
                     style={{
                       background: auraGradient,
                       marginLeft: `${horizontalOpticalOffset}px`,
@@ -347,7 +347,7 @@ export default function ModuleMatrixShell({
                   {active ? (
                     <span
                       aria-hidden="true"
-                      className="pointer-events-none absolute left-1/2 top-1/2 z-0 h-8 w-5 -translate-x-1/2 -translate-y-1/2 rounded-full blur-[2px]"
+                      className="pointer-events-none absolute left-1/2 top-1/2 z-0 h-10 w-6 -translate-x-1/2 -translate-y-1/2 rounded-full blur-[6px]"
                       style={{ background: auraGradient }}
                     />
                   ) : null}
