@@ -230,7 +230,7 @@ export default function ModuleMatrixShell({
               {isActive ? (
                 <span
                   aria-hidden="true"
-                  className="pointer-events-none absolute left-1/2 top-1/2 z-40 h-5 w-[3px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-sky-200 shadow-[0_0_10px_rgba(125,190,255,.62)] sm:h-6"
+                  className="pointer-events-none absolute left-1/2 top-1/2 z-40 h-[3px] w-5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-sky-200 shadow-[0_0_10px_rgba(125,190,255,.62)] sm:w-6"
                 />
               ) : null}
               {isActive ? (
