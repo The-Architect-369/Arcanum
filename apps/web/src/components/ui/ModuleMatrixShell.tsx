@@ -144,7 +144,6 @@ export default function ModuleMatrixShell({
   const shellWidth = 150;
   const navWidth = shellLeft + shellWidth;
   const navShiftRight = 18;
-  const sectionInsetY = 0;
   const sectionHeight = frameHeight;
   const sectionWidth = shellWidth / segmentCount;
   const motion = '180ms';
@@ -184,20 +183,12 @@ export default function ModuleMatrixShell({
           }}
         >
           <span
-            className="absolute transition-all ease-out"
+            className="absolute inset-y-0 transition-all ease-out"
             style={{
-              top: `${sectionInsetY}px`,
               left: `${activeHorizontalIndex * sectionWidth}px`,
               width: `${sectionWidth}px`,
-              height: `${sectionHeight}px`,
               transitionDuration: motion,
-              background: 'linear-gradient(180deg,rgba(246,196,83,.04),rgba(246,196,83,.012))',
-              borderRadius:
-                activeHorizontalIndex === 0
-                  ? '1rem 0.82rem 0.82rem 1rem'
-                  : activeHorizontalIndex === segmentCount - 1
-                    ? '0.82rem 1rem 0.82rem 0.82rem'
-                    : '0.82rem',
+              background: 'linear-gradient(180deg,rgba(246,196,83,.03),rgba(246,196,83,.01))',
             }}
           />
           {horizontalTabs.map((_, index) =>
