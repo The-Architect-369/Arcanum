@@ -139,7 +139,7 @@ export default function ModuleMatrixShell({
   const activeHorizontalIndex = Math.max(0, horizontalTabs.findIndex((tab) => tab.href === activeHorizontalHref));
   const segmentCount = Math.max(horizontalTabs.length, 1);
   const frameTop = -1;
-  const frameHeight = 41;
+  const frameHeight = 42;
   const shellLeft = 58;
   const shellWidth = 148;
   const navWidth = shellLeft + shellWidth;
@@ -152,7 +152,7 @@ export default function ModuleMatrixShell({
     <div className="flex items-start justify-end" data-no-route-swipe="true">
       <nav
         aria-label="Horizontal card navigation"
-        className="relative h-[2.7rem] shrink-0"
+        className="relative h-[2.76rem] shrink-0"
         style={{ width: `${navWidth}px`, transform: `translateX(${navShiftRight}px)` }}
       >
         <span
@@ -185,7 +185,7 @@ export default function ModuleMatrixShell({
             style={{
               left: `${activeHorizontalIndex * sectionWidth}px`,
               width: `${sectionWidth}px`,
-              background: 'linear-gradient(180deg,rgba(246,196,83,.025),rgba(246,196,83,.008))',
+              background: 'linear-gradient(180deg,rgba(125,190,255,.05),rgba(125,190,255,.012))',
             }}
           />
         </span>
@@ -198,8 +198,8 @@ export default function ModuleMatrixShell({
               className="pointer-events-none absolute z-30 w-px"
               style={{
                 left: `${shellLeft + (index + 1) * sectionWidth}px`,
-                top: `${frameTop + 7}px`,
-                height: `${frameHeight - 14}px`,
+                top: `${frameTop + 8}px`,
+                height: `${frameHeight - 16}px`,
                 background: dividerBorder,
               }}
             />
@@ -222,13 +222,13 @@ export default function ModuleMatrixShell({
               {isActive ? (
                 <span
                   aria-hidden="true"
-                  className="pointer-events-none absolute left-1/2 top-[6px] z-40 h-[1.08rem] w-[1.5px] -translate-x-1/2 rounded-full bg-[#f6c453] shadow-[0_0_10px_rgba(246,196,83,.55),0_0_18px_rgba(115,180,255,.22)]"
+                  className="pointer-events-none absolute left-1/2 top-1/2 z-40 h-5 w-[3px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-sky-200 shadow-[0_0_10px_rgba(125,190,255,.62)] sm:h-6"
                 />
               ) : null}
               {isActive ? (
                 <span
                   aria-hidden="true"
-                  className="pointer-events-none absolute bottom-0 left-[12px] z-40 h-[3px] w-[calc(100%-24px)] rounded-t-full bg-[rgba(8,12,22,1)] shadow-[0_0_8px_rgba(246,196,83,.28)]"
+                  className="pointer-events-none absolute bottom-0 left-[12px] z-40 h-[3px] w-[calc(100%-24px)] rounded-t-full bg-[rgba(8,12,22,1)] shadow-[0_0_8px_rgba(125,190,255,.24)]"
                 />
               ) : null}
               {inner}
