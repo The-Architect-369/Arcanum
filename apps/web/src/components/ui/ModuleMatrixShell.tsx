@@ -140,17 +140,16 @@ export default function ModuleMatrixShell({
   const segmentCount = Math.max(horizontalTabs.length, 1);
   const frameTop = -1;
   const frameHeight = 40;
-  const shellLeft = 58;
-  const shellWidth = 148;
+  const shellLeft = 56;
+  const shellWidth = 150;
   const navWidth = shellLeft + shellWidth;
-  const navShiftRight = 20;
-  const sectionInsetX = 4;
-  const sectionInsetY = 1;
-  const sectionHeight = frameHeight - sectionInsetY;
-  const sectionWidth = (shellWidth - sectionInsetX * 2) / segmentCount;
+  const navShiftRight = 18;
+  const sectionInsetY = 0;
+  const sectionHeight = frameHeight;
+  const sectionWidth = shellWidth / segmentCount;
   const motion = '180ms';
   const shellBorder = 'rgba(255,255,255,0.08)';
-  const dividerBorder = 'rgba(255,255,255,0.08)';
+  const dividerBorder = 'rgba(255,255,255,0.07)';
 
   const headerActions = (
     <div className="flex items-start justify-end" data-no-route-swipe="true">
@@ -188,27 +187,26 @@ export default function ModuleMatrixShell({
             className="absolute transition-all ease-out"
             style={{
               top: `${sectionInsetY}px`,
-              bottom: '0px',
-              left: `${sectionInsetX + activeHorizontalIndex * sectionWidth}px`,
+              left: `${activeHorizontalIndex * sectionWidth}px`,
               width: `${sectionWidth}px`,
+              height: `${sectionHeight}px`,
               transitionDuration: motion,
-              background: 'linear-gradient(180deg,rgba(246,196,83,.05),rgba(246,196,83,.014))',
+              background: 'linear-gradient(180deg,rgba(246,196,83,.04),rgba(246,196,83,.012))',
               borderRadius:
                 activeHorizontalIndex === 0
-                  ? '1rem 0.84rem 0.82rem 1rem'
+                  ? '1rem 0.82rem 0.82rem 1rem'
                   : activeHorizontalIndex === segmentCount - 1
-                    ? '0.84rem 1rem 0.82rem 0.84rem'
-                    : '0.84rem',
-              boxShadow: 'inset 0 0 0 1px rgba(255,255,255,0.08)',
+                    ? '0.82rem 1rem 0.82rem 0.82rem'
+                    : '0.82rem',
             }}
           />
           {horizontalTabs.map((_, index) =>
             index < segmentCount - 1 ? (
               <span
                 key={`divider-${index}`}
-                className="absolute bottom-[6px] top-[6px] w-px"
+                className="absolute bottom-[7px] top-[7px] w-px"
                 style={{
-                  left: `${sectionInsetX + (index + 1) * sectionWidth}px`,
+                  left: `${(index + 1) * sectionWidth}px`,
                   background: dividerBorder,
                 }}
               />
@@ -217,10 +215,10 @@ export default function ModuleMatrixShell({
         </span>
 
         {horizontalTabs.map((tab, index) => {
-          const left = shellLeft + sectionInsetX + index * sectionWidth;
+          const left = shellLeft + index * sectionWidth;
           const zoneStyle: React.CSSProperties = {
             left: `${left}px`,
-            top: `${frameTop + sectionInsetY}px`,
+            top: `${frameTop}px`,
             width: `${sectionWidth}px`,
             height: `${sectionHeight}px`,
           };
@@ -231,11 +229,11 @@ export default function ModuleMatrixShell({
             <>
               <span
                 aria-hidden="true"
-                className="pointer-events-none absolute left-1/2 top-[5px] z-40 h-[1.12rem] w-[1.5px] -translate-x-1/2 rounded-full bg-amber-100 shadow-[0_0_3px_rgba(246,196,83,.10)]"
+                className="pointer-events-none absolute left-1/2 top-[6px] z-40 h-[1.08rem] w-[1.5px] -translate-x-1/2 rounded-full bg-amber-100 shadow-[0_0_3px_rgba(246,196,83,.10)]"
               />
               <span
                 aria-hidden="true"
-                className="pointer-events-none absolute bottom-0 left-[10px] z-40 h-[3px] w-[calc(100%-20px)] rounded-t-full bg-[rgba(8,12,22,1)]"
+                className="pointer-events-none absolute bottom-0 left-[12px] z-40 h-[3px] w-[calc(100%-24px)] rounded-t-full bg-[rgba(8,12,22,1)]"
               />
             </>
           ) : null;
