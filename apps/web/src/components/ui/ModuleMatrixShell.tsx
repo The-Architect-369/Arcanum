@@ -169,6 +169,27 @@ export default function ModuleMatrixShell({
           }}
         />
 
+        <span
+          aria-hidden="true"
+          className="pointer-events-none absolute z-10 overflow-hidden"
+          style={{
+            top: `${frameTop}px`,
+            left: `${shellLeft}px`,
+            width: `${shellWidth}px`,
+            height: `${frameHeight}px`,
+            borderRadius: '1rem 1rem 0.88rem 1rem',
+          }}
+        >
+          <span
+            className="absolute inset-y-0"
+            style={{
+              left: `${activeHorizontalIndex * sectionWidth}px`,
+              width: `${sectionWidth}px`,
+              background: 'linear-gradient(180deg,rgba(246,196,83,.025),rgba(246,196,83,.008))',
+            }}
+          />
+        </span>
+
         {horizontalTabs.map((_, index) =>
           index < segmentCount - 1 ? (
             <span
@@ -188,35 +209,16 @@ export default function ModuleMatrixShell({
         {horizontalTabs.map((tab, index) => {
           const left = shellLeft + index * sectionWidth;
           const isActive = index === activeHorizontalIndex;
-          const isFirst = index === 0;
-          const isLast = index === segmentCount - 1;
           const zoneStyle: React.CSSProperties = {
             left: `${left}px`,
             top: `${frameTop}px`,
             width: `${sectionWidth}px`,
             height: `${frameHeight}px`,
-            borderTopLeftRadius: isFirst ? '1rem' : '0.78rem',
-            borderBottomLeftRadius: isFirst ? '1rem' : '0.78rem',
-            borderTopRightRadius: isLast ? '1rem' : '0.78rem',
-            borderBottomRightRadius: isLast ? '0.88rem' : '0.78rem',
           };
           const inner = <span className="sr-only">{index + 1}. {tab.label}</span>;
 
           const content = (
             <>
-              {isActive ? (
-                <span
-                  aria-hidden="true"
-                  className="pointer-events-none absolute inset-0"
-                  style={{
-                    background: 'linear-gradient(180deg,rgba(246,196,83,.025),rgba(246,196,83,.008))',
-                    borderTopLeftRadius: isFirst ? '1rem' : '0.78rem',
-                    borderBottomLeftRadius: isFirst ? '1rem' : '0.78rem',
-                    borderTopRightRadius: isLast ? '1rem' : '0.78rem',
-                    borderBottomRightRadius: isLast ? '0.88rem' : '0.78rem',
-                  }}
-                />
-              ) : null}
               {isActive ? (
                 <span
                   aria-hidden="true"
@@ -242,7 +244,7 @@ export default function ModuleMatrixShell({
                 aria-pressed={isActive}
                 title={tab.label}
                 onClick={() => onHorizontalChange(tab.href)}
-                className="absolute z-20 overflow-hidden"
+                className="absolute z-20"
                 style={zoneStyle}
               >
                 {content}
@@ -257,7 +259,7 @@ export default function ModuleMatrixShell({
               aria-label={tab.label}
               aria-current={isActive ? 'page' : undefined}
               title={tab.label}
-              className="absolute z-20 overflow-hidden"
+              className="absolute z-20"
               style={zoneStyle}
             >
               {content}
