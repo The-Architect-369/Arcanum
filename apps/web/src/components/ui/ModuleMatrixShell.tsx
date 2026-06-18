@@ -323,7 +323,7 @@ export default function ModuleMatrixShell({
                 className={cn(
                   'group relative flex h-12 w-full items-center justify-center rounded-full transition-all duration-300 sm:h-14',
                   active
-                    ? 'bg-[linear-gradient(180deg,rgba(125,190,255,.18),rgba(125,190,255,.08))] shadow-[0_0_14px_rgba(125,190,255,.20)]'
+                    ? 'bg-[linear-gradient(180deg,rgba(125,190,255,.06),rgba(125,190,255,.016))] shadow-[inset_0_1px_0_rgba(255,255,255,.03),inset_0_-10px_18px_rgba(12,18,32,.12),0_0_12px_rgba(125,190,255,.08)]'
                     : 'hover:bg-white/[0.05]'
                 )}
               >
