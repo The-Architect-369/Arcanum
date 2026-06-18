@@ -140,14 +140,14 @@ export default function ModuleMatrixShell({
   const segmentCount = Math.max(horizontalTabs.length, 1);
   const frameTop = -1;
   const frameHeight = 40;
-  const shellLeft = 52;
-  const shellWidth = 146;
+  const shellLeft = 58;
+  const shellWidth = 148;
   const navWidth = shellLeft + shellWidth;
-  const navShiftRight = 18;
-  const innerInsetX = 6;
-  const innerInsetY = 4;
-  const sectionHeight = frameHeight - innerInsetY * 2;
-  const sectionWidth = (shellWidth - innerInsetX * 2) / segmentCount;
+  const navShiftRight = 20;
+  const sectionInsetX = 4;
+  const sectionInsetY = 1;
+  const sectionHeight = frameHeight - sectionInsetY;
+  const sectionWidth = (shellWidth - sectionInsetX * 2) / segmentCount;
   const motion = '180ms';
   const shellBorder = 'rgba(255,255,255,0.08)';
   const dividerBorder = 'rgba(255,255,255,0.08)';
@@ -177,26 +177,28 @@ export default function ModuleMatrixShell({
           aria-hidden="true"
           className="pointer-events-none absolute overflow-hidden"
           style={{
-            top: `${innerInsetY}px`,
-            left: `${shellLeft + innerInsetX}px`,
-            width: `${shellWidth - innerInsetX * 2}px`,
-            height: `${sectionHeight}px`,
-            borderRadius: '1rem 1rem 0.82rem 1rem',
+            top: `${frameTop}px`,
+            left: `${shellLeft}px`,
+            width: `${shellWidth}px`,
+            height: `${frameHeight}px`,
+            borderRadius: '1rem 1rem 0.88rem 1rem',
           }}
         >
           <span
-            className="absolute inset-y-0 transition-all ease-out"
+            className="absolute transition-all ease-out"
             style={{
-              left: `${activeHorizontalIndex * sectionWidth}px`,
+              top: `${sectionInsetY}px`,
+              bottom: '0px',
+              left: `${sectionInsetX + activeHorizontalIndex * sectionWidth}px`,
               width: `${sectionWidth}px`,
               transitionDuration: motion,
               background: 'linear-gradient(180deg,rgba(246,196,83,.05),rgba(246,196,83,.014))',
               borderRadius:
                 activeHorizontalIndex === 0
-                  ? '1rem 0.78rem 0.78rem 1rem'
+                  ? '1rem 0.84rem 0.82rem 1rem'
                   : activeHorizontalIndex === segmentCount - 1
-                    ? '0.78rem 1rem 0.78rem 0.78rem'
-                    : '0.78rem',
+                    ? '0.84rem 1rem 0.82rem 0.84rem'
+                    : '0.84rem',
               boxShadow: 'inset 0 0 0 1px rgba(255,255,255,0.08)',
             }}
           />
@@ -204,9 +206,9 @@ export default function ModuleMatrixShell({
             index < segmentCount - 1 ? (
               <span
                 key={`divider-${index}`}
-                className="absolute top-[5px] h-[calc(100%-10px)] w-px"
+                className="absolute bottom-[6px] top-[6px] w-px"
                 style={{
-                  left: `${(index + 1) * sectionWidth}px`,
+                  left: `${sectionInsetX + (index + 1) * sectionWidth}px`,
                   background: dividerBorder,
                 }}
               />
@@ -215,10 +217,10 @@ export default function ModuleMatrixShell({
         </span>
 
         {horizontalTabs.map((tab, index) => {
-          const left = shellLeft + innerInsetX + index * sectionWidth;
+          const left = shellLeft + sectionInsetX + index * sectionWidth;
           const zoneStyle: React.CSSProperties = {
             left: `${left}px`,
-            top: `${innerInsetY}px`,
+            top: `${frameTop + sectionInsetY}px`,
             width: `${sectionWidth}px`,
             height: `${sectionHeight}px`,
           };
@@ -229,7 +231,7 @@ export default function ModuleMatrixShell({
             <>
               <span
                 aria-hidden="true"
-                className="pointer-events-none absolute left-1/2 top-[4px] z-40 h-[1.12rem] w-[1.5px] -translate-x-1/2 rounded-full bg-amber-100 shadow-[0_0_3px_rgba(246,196,83,.10)]"
+                className="pointer-events-none absolute left-1/2 top-[5px] z-40 h-[1.12rem] w-[1.5px] -translate-x-1/2 rounded-full bg-amber-100 shadow-[0_0_3px_rgba(246,196,83,.10)]"
               />
               <span
                 aria-hidden="true"
