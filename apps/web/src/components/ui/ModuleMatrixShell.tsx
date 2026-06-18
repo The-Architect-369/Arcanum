@@ -153,6 +153,10 @@ export default function ModuleMatrixShell({
       : activeHorizontalIndex === segmentCount - 1
         ? '0.42rem 1rem 0.88rem 0.2rem'
         : '0.42rem';
+  const glowFill = 'linear-gradient(180deg,rgba(246,196,83,.10),rgba(246,196,83,.028))';
+  const glowShadow = 'inset 0 1px 0 rgba(255,255,255,.03), inset 0 -10px 18px rgba(12,18,32,.12), 0 0 14px rgba(246,196,83,.12), 0 0 22px rgba(255,214,92,.06)';
+  const auraGradient = 'radial-gradient(circle,rgba(246,196,83,.26)_0%,rgba(246,196,83,.14)_44%,rgba(246,196,83,0)_80%)';
+  const lineGlow = '0_0_10px_rgba(246,196,83,.52),0_0_18px_rgba(255,214,92,.20)';
 
   const headerActions = (
     <div className="flex items-start justify-end" data-no-route-swipe="true">
@@ -192,8 +196,8 @@ export default function ModuleMatrixShell({
               left: `${activeHorizontalIndex * sectionWidth}px`,
               width: `${sectionWidth}px`,
               borderRadius: activeFillRadius,
-              background: 'linear-gradient(180deg,rgba(125,190,255,.06),rgba(125,190,255,.016))',
-              boxShadow: 'inset 0 1px 0 rgba(255,255,255,.03), inset 0 -10px 18px rgba(12,18,32,.12), 0 0 12px rgba(125,190,255,.08)',
+              background: glowFill,
+              boxShadow: glowShadow,
             }}
           />
         </span>
@@ -231,19 +235,15 @@ export default function ModuleMatrixShell({
                 <>
                   <span
                     aria-hidden="true"
-                    className="pointer-events-none absolute left-1/2 top-1/2 z-30 h-5 w-6 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(125,190,255,.22)_0%,rgba(125,190,255,.12)_42%,rgba(125,190,255,0)_78%)] blur-[2px]"
+                    className="pointer-events-none absolute left-1/2 top-1/2 z-30 h-5 w-6 -translate-x-1/2 -translate-y-1/2 rounded-full blur-[2px]"
+                    style={{ background: auraGradient }}
                   />
                   <span
                     aria-hidden="true"
-                    className="pointer-events-none absolute left-1/2 top-1/2 z-40 h-[3px] w-5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-sky-200 shadow-[0_0_10px_rgba(125,190,255,.62)] sm:w-6"
+                    className="pointer-events-none absolute left-1/2 top-1/2 z-40 h-[3px] w-5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#f6c453] sm:w-6"
+                    style={{ boxShadow: lineGlow.replaceAll('_', ' ') }}
                   />
                 </>
-              ) : null}
-              {isActive ? (
-                <span
-                  aria-hidden="true"
-                  className="pointer-events-none absolute bottom-0 left-[12px] z-40 h-[3px] w-[calc(100%-24px)] rounded-t-full bg-[rgba(8,12,22,1)] shadow-[0_0_8px_rgba(125,190,255,.24)]"
-                />
               ) : null}
               {inner}
             </>
@@ -318,7 +318,7 @@ export default function ModuleMatrixShell({
         >
           <span
             aria-hidden="true"
-            className="pointer-events-none absolute inset-y-1 right-0 w-px bg-gradient-to-b from-transparent via-sky-200/35 to-transparent"
+            className="pointer-events-none absolute inset-y-1 right-0 w-px bg-gradient-to-b from-transparent via-amber-200/30 to-transparent"
           />
           {verticalTabs.map((tab, index) => {
             const active = tab.id === activeVerticalId;
@@ -332,18 +332,25 @@ export default function ModuleMatrixShell({
                 onClick={() => onVerticalChange(tab.id)}
                 className={cn(
                   'group relative flex h-12 w-full items-center justify-center rounded-full transition-all duration-300 sm:h-14',
-                  active
-                    ? 'bg-[linear-gradient(180deg,rgba(125,190,255,.06),rgba(125,190,255,.016))] shadow-[inset_0_1px_0_rgba(255,255,255,.03),inset_0_-10px_18px_rgba(12,18,32,.12),0_0_12px_rgba(125,190,255,.08)]'
-                    : 'hover:bg-white/[0.05]'
+                  active ? '' : 'hover:bg-white/[0.05]'
                 )}
+                style={active ? { background: glowFill, boxShadow: glowShadow } : undefined}
               >
+                {active ? (
+                  <span
+                    aria-hidden="true"
+                    className="pointer-events-none absolute left-1/2 top-1/2 z-0 h-8 w-5 -translate-x-1/2 -translate-y-1/2 rounded-full blur-[2px]"
+                    style={{ background: auraGradient }}
+                  />
+                ) : null}
                 <span className="sr-only">{index + 1}. {tab.label}</span>
                 <span
                   aria-hidden="true"
                   className={cn(
-                    'block h-5 w-[3px] rounded-full transition-all sm:h-6',
-                    active ? 'bg-sky-200 shadow-[0_0_10px_rgba(125,190,255,.62)]' : 'bg-white/38 group-hover:bg-white/58'
+                    'relative z-10 block h-5 w-[3px] rounded-full transition-all sm:h-6',
+                    active ? 'bg-[#f6c453]' : 'bg-white/38 group-hover:bg-white/58'
                   )}
+                  style={active ? { boxShadow: lineGlow.replaceAll('_', ' ') } : undefined}
                 />
               </button>
             );
