@@ -149,9 +149,9 @@ export default function ModuleMatrixShell({
   const dividerBorder = 'rgba(255,255,255,0.07)';
   const activeFillRadius =
     activeHorizontalIndex === 0
-      ? '1rem 0.42rem 0.2rem 1rem'
+      ? '1rem 0.42rem 0.42rem 1rem'
       : activeHorizontalIndex === segmentCount - 1
-        ? '0.42rem 1rem 0.88rem 0.2rem'
+        ? '0.42rem 1rem 1rem 0.42rem'
         : '0.42rem';
   const glowFill = 'linear-gradient(180deg,rgba(246,196,83,.10),rgba(246,196,83,.028))';
   const glowShadow = 'inset 0 1px 0 rgba(255,255,255,.03), inset 0 -10px 18px rgba(12,18,32,.12), 0 0 14px rgba(246,196,83,.12), 0 0 22px rgba(255,214,92,.06)';
