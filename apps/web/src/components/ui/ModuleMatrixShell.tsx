@@ -145,11 +145,11 @@ export default function ModuleMatrixShell({
   const pillTop = 5;
   const pillHeight = 24;
   const pillTrackWidth = segmentCount * segmentWidth + (segmentCount - 1) * pillGap;
-  const shellLeft = 28;
-  const pillLeft = shellLeft + 8;
+  const shellLeft = 34;
+  const pillLeft = shellLeft + 6;
   const shellInnerRightPadding = 6;
   const flushRightOffset = 14;
-  const shellWidth = pillTrackWidth + 8 + shellInnerRightPadding + flushRightOffset;
+  const shellWidth = pillTrackWidth + 6 + shellInnerRightPadding + flushRightOffset;
   const navWidth = shellLeft + shellWidth;
   const motion = '180ms';
   const shellBorder = 'rgba(255,255,255,0.08)';
