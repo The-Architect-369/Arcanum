@@ -138,17 +138,19 @@ export default function ModuleMatrixShell({
 
   const activeHorizontalIndex = Math.max(0, horizontalTabs.findIndex((tab) => tab.href === activeHorizontalHref));
   const segmentCount = Math.max(horizontalTabs.length, 1);
-  const segmentWidth = 41;
-  const pillGap = 5;
+  const segmentWidth = 39;
+  const pillGap = 7;
   const frameTop = -1;
   const frameHeight = 40;
   const pillTop = 6;
   const pillHeight = 24;
-  const frameInset = 6;
-  const flushRightOffset = 16;
-  const frameWidth = segmentCount * segmentWidth + (segmentCount - 1) * pillGap + frameInset * 2;
+  const pillTrackWidth = segmentCount * segmentWidth + (segmentCount - 1) * pillGap;
+  const pillLeftPadding = 14;
+  const flushRightOffset = 18;
+  const frameWidth = pillTrackWidth + pillLeftPadding + 8;
   const motion = '180ms';
   const shellBorder = 'rgba(255,255,255,0.12)';
+  const pillBorder = 'rgba(255,255,255,0.1)';
 
   const headerActions = (
     <div className="flex items-start justify-end" data-no-route-swipe="true">
@@ -163,14 +165,14 @@ export default function ModuleMatrixShell({
             height: `${frameHeight}px`,
             borderLeft: `1px solid ${shellBorder}`,
             borderBottom: `1px solid ${shellBorder}`,
-            borderBottomLeftRadius: '1.12rem',
+            borderBottomLeftRadius: '1.08rem',
           }}
         />
 
         {horizontalTabs.map((tab, index) => {
           const isActive = index === activeHorizontalIndex;
           const zoneStyle: React.CSSProperties = {
-            left: `${frameInset + index * (segmentWidth + pillGap)}px`,
+            left: `${pillLeftPadding + index * (segmentWidth + pillGap)}px`,
             top: `${pillTop}px`,
             width: `${segmentWidth}px`,
             height: `${pillHeight}px`,
@@ -185,10 +187,10 @@ export default function ModuleMatrixShell({
                   'pointer-events-none absolute inset-0 rounded-[0.86rem] transition-all ease-out',
                   isActive
                     ? 'bg-[linear-gradient(180deg,rgba(246,196,83,.05),rgba(246,196,83,.014))]'
-                    : 'bg-[linear-gradient(180deg,rgba(255,255,255,.008),rgba(255,255,255,.002))]'
+                    : 'bg-[linear-gradient(180deg,rgba(255,255,255,.006),rgba(255,255,255,.001))]'
                 )}
                 style={{
-                  border: `1px solid ${shellBorder}`,
+                  border: `1px solid ${pillBorder}`,
                   transitionDuration: motion,
                 }}
               />
