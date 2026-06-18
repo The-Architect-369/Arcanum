@@ -139,7 +139,7 @@ export default function ModuleMatrixShell({
   const activeHorizontalIndex = Math.max(0, horizontalTabs.findIndex((tab) => tab.href === activeHorizontalHref));
   const segmentCount = Math.max(horizontalTabs.length, 1);
   const frameTop = -1;
-  const frameHeight = 40;
+  const frameHeight = 41;
   const shellLeft = 58;
   const shellWidth = 148;
   const navWidth = shellLeft + shellWidth;
@@ -152,7 +152,7 @@ export default function ModuleMatrixShell({
     <div className="flex items-start justify-end" data-no-route-swipe="true">
       <nav
         aria-label="Horizontal card navigation"
-        className="relative h-[2.62rem] shrink-0"
+        className="relative h-[2.7rem] shrink-0"
         style={{ width: `${navWidth}px`, transform: `translateX(${navShiftRight}px)` }}
       >
         <span
