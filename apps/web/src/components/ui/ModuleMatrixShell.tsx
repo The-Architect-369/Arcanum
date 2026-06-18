@@ -138,23 +138,19 @@ export default function ModuleMatrixShell({
 
   const activeHorizontalIndex = Math.max(0, horizontalTabs.findIndex((tab) => tab.href === activeHorizontalHref));
   const segmentCount = Math.max(horizontalTabs.length, 1);
-  const segmentWidth = 38;
-  const pillGap = 8;
   const frameTop = -1;
   const frameHeight = 40;
-  const pillTop = 5;
-  const pillHeight = 24;
-  const pillTrackWidth = segmentCount * segmentWidth + (segmentCount - 1) * pillGap;
   const shellLeft = 56;
-  const pillLeft = shellLeft + 8;
-  const shellInnerRightPadding = 6;
-  const flushRightOffset = 12;
-  const shellWidth = pillTrackWidth + 8 + shellInnerRightPadding + flushRightOffset;
+  const shellWidth = 144;
   const navWidth = shellLeft + shellWidth;
   const navShiftRight = 26;
+  const sectionInset = 6;
+  const sectionTop = 4;
+  const sectionHeight = frameHeight - 8;
+  const sectionWidth = (shellWidth - sectionInset * 2) / segmentCount;
   const motion = '180ms';
   const shellBorder = 'rgba(255,255,255,0.08)';
-  const pillBorder = 'rgba(255,255,255,0.08)';
+  const dividerBorder = 'rgba(255,255,255,0.08)';
 
   const headerActions = (
     <div className="flex items-start justify-end" data-no-route-swipe="true">
@@ -179,29 +175,45 @@ export default function ModuleMatrixShell({
 
         {horizontalTabs.map((tab, index) => {
           const isActive = index === activeHorizontalIndex;
+          const left = shellLeft + sectionInset + index * sectionWidth;
           const zoneStyle: React.CSSProperties = {
-            left: `${pillLeft + index * (segmentWidth + pillGap)}px`,
-            top: `${pillTop}px`,
-            width: `${segmentWidth}px`,
-            height: `${pillHeight}px`,
+            left: `${left}px`,
+            top: `${sectionTop}px`,
+            width: `${sectionWidth}px`,
+            height: `${sectionHeight}px`,
           };
+          const isFirst = index === 0;
+          const isLast = index === segmentCount - 1;
+          const borderRadius = isFirst
+            ? '1rem 0.78rem 0.78rem 1rem'
+            : isLast
+              ? '0.78rem 1rem 0.78rem 0.78rem'
+              : '0.78rem';
           const inner = <span className="sr-only">{index + 1}. {tab.label}</span>;
 
-          const pill = (
+          const tabSection = (
             <>
               <span
                 aria-hidden="true"
                 className={cn(
-                  'pointer-events-none absolute inset-0 rounded-[0.84rem] transition-all ease-out',
+                  'pointer-events-none absolute inset-0 transition-all ease-out',
                   isActive
                     ? 'bg-[linear-gradient(180deg,rgba(246,196,83,.05),rgba(246,196,83,.014))]'
-                    : 'bg-[linear-gradient(180deg,rgba(255,255,255,.004),rgba(255,255,255,.001))]'
+                    : 'bg-[linear-gradient(180deg,rgba(255,255,255,.012),rgba(255,255,255,.003))]'
                 )}
                 style={{
-                  border: `1px solid ${pillBorder}`,
+                  borderRadius,
                   transitionDuration: motion,
+                  boxShadow: isActive ? 'inset 0 0 0 1px rgba(255,255,255,0.08)' : 'none',
                 }}
               />
+              {!isLast ? (
+                <span
+                  aria-hidden="true"
+                  className="pointer-events-none absolute right-0 top-[5px] h-[calc(100%-10px)] w-px"
+                  style={{ background: dividerBorder }}
+                />
+              ) : null}
               {isActive ? (
                 <>
                   <span
@@ -210,7 +222,7 @@ export default function ModuleMatrixShell({
                   />
                   <span
                     aria-hidden="true"
-                    className="pointer-events-none absolute bottom-0 left-[8px] z-40 h-[3px] w-[calc(100%-16px)] rounded-t-full bg-[rgba(8,12,22,1)]"
+                    className="pointer-events-none absolute bottom-0 left-[9px] z-40 h-[3px] w-[calc(100%-18px)] rounded-t-full bg-[rgba(8,12,22,1)]"
                   />
                 </>
               ) : null}
@@ -229,7 +241,7 @@ export default function ModuleMatrixShell({
                 className="absolute z-50"
                 style={zoneStyle}
               >
-                {pill}
+                {tabSection}
                 {inner}
               </button>
             );
@@ -245,7 +257,7 @@ export default function ModuleMatrixShell({
               className="absolute z-50"
               style={zoneStyle}
             >
-              {pill}
+              {tabSection}
               {inner}
             </Link>
           );
