@@ -138,26 +138,26 @@ export default function ModuleMatrixShell({
 
   const activeHorizontalIndex = Math.max(0, horizontalTabs.findIndex((tab) => tab.href === activeHorizontalHref));
   const segmentCount = Math.max(horizontalTabs.length, 1);
-  const segmentWidth = 39;
-  const pillGap = 7;
+  const segmentWidth = 38;
+  const pillGap = 8;
   const frameTop = -1;
   const frameHeight = 40;
-  const pillTop = 6;
+  const pillTop = 5;
   const pillHeight = 24;
   const pillTrackWidth = segmentCount * segmentWidth + (segmentCount - 1) * pillGap;
-  const shellLeft = 18;
-  const pillLeft = shellLeft + 10;
-  const shellInnerRightPadding = 10;
-  const flushRightOffset = 18;
-  const shellWidth = pillTrackWidth + 10 + shellInnerRightPadding + flushRightOffset;
+  const shellLeft = 28;
+  const pillLeft = shellLeft + 8;
+  const shellInnerRightPadding = 6;
+  const flushRightOffset = 14;
+  const shellWidth = pillTrackWidth + 8 + shellInnerRightPadding + flushRightOffset;
   const navWidth = shellLeft + shellWidth;
   const motion = '180ms';
-  const shellBorder = 'rgba(255,255,255,0.10)';
-  const pillBorder = 'rgba(255,255,255,0.09)';
+  const shellBorder = 'rgba(255,255,255,0.08)';
+  const pillBorder = 'rgba(255,255,255,0.08)';
 
   const headerActions = (
     <div className="flex items-start justify-end" data-no-route-swipe="true">
-      <nav aria-label="Horizontal card navigation" className="relative h-[2.6rem] shrink-0" style={{ width: `${navWidth}px` }}>
+      <nav aria-label="Horizontal card navigation" className="relative h-[2.62rem] shrink-0" style={{ width: `${navWidth}px` }}>
         <span
           aria-hidden="true"
           className="pointer-events-none absolute bg-transparent"
@@ -168,7 +168,7 @@ export default function ModuleMatrixShell({
             height: `${frameHeight}px`,
             borderLeft: `1px solid ${shellBorder}`,
             borderBottom: `1px solid ${shellBorder}`,
-            borderBottomLeftRadius: '1.06rem',
+            borderBottomLeftRadius: '1rem',
           }}
         />
 
@@ -187,10 +187,10 @@ export default function ModuleMatrixShell({
               <span
                 aria-hidden="true"
                 className={cn(
-                  'pointer-events-none absolute inset-0 rounded-[0.86rem] transition-all ease-out',
+                  'pointer-events-none absolute inset-0 rounded-[0.84rem] transition-all ease-out',
                   isActive
                     ? 'bg-[linear-gradient(180deg,rgba(246,196,83,.05),rgba(246,196,83,.014))]'
-                    : 'bg-[linear-gradient(180deg,rgba(255,255,255,.005),rgba(255,255,255,.001))]'
+                    : 'bg-[linear-gradient(180deg,rgba(255,255,255,.004),rgba(255,255,255,.001))]'
                 )}
                 style={{
                   border: `1px solid ${pillBorder}`,
