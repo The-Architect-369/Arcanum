@@ -304,7 +304,11 @@ export default function ModuleMatrixShell({
       <div className="pointer-events-none absolute inset-y-0 left-0 z-40 flex items-center pl-2 sm:pl-3" data-no-route-swipe="true">
         <nav
           aria-label="Depth navigation"
-          className="pointer-events-auto relative flex w-5 flex-col items-center gap-1 rounded-r-[1rem] border border-l-0 border-white/12 bg-[linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.03))] px-1 py-2 shadow-[0_0_18px_rgba(0,0,0,.28)] backdrop-blur-md sm:w-6"
+          className="pointer-events-auto relative flex w-5 flex-col items-center gap-1 rounded-r-[1rem] border border-l-0 px-1 py-2 shadow-[0_0_18px_rgba(0,0,0,.28)] backdrop-blur-md sm:w-6"
+          style={{
+            borderColor: shellBorder,
+            background: 'linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.03))',
+          }}
         >
           <span
             aria-hidden="true"
