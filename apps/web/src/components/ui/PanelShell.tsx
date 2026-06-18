@@ -13,6 +13,7 @@ type PanelShellProps = {
   noPadding?: boolean;
   scrollable?: boolean;
   headerActionsDock?: boolean;
+  headerActionsDockChrome?: boolean;
   children: React.ReactNode;
 };
 
@@ -26,6 +27,7 @@ export default function PanelShell({
   noPadding = false,
   scrollable = true,
   headerActionsDock = false,
+  headerActionsDockChrome = true,
   children,
 }: PanelShellProps) {
   return (
@@ -60,7 +62,7 @@ export default function PanelShell({
                 headerActionsDock && !noPadding && 'pr-[9.6rem] sm:pr-[10.6rem]'
               )}
             >
-              {headerActionsDock && actions ? (
+              {headerActionsDock && actions && headerActionsDockChrome ? (
                 <>
                   <div
                     aria-hidden="true"
