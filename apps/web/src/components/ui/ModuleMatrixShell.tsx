@@ -140,19 +140,19 @@ export default function ModuleMatrixShell({
   const segmentCount = Math.max(horizontalTabs.length, 1);
   const segmentWidth = 41;
   const pillGap = 5;
-  const frameTop = 0;
-  const frameHeight = 38;
-  const pillTop = 5;
+  const frameTop = -1;
+  const frameHeight = 40;
+  const pillTop = 6;
   const pillHeight = 24;
-  const frameInset = 5;
-  const flushRightOffset = 10;
+  const frameInset = 6;
+  const flushRightOffset = 16;
   const frameWidth = segmentCount * segmentWidth + (segmentCount - 1) * pillGap + frameInset * 2;
   const motion = '180ms';
   const shellBorder = 'rgba(255,255,255,0.12)';
 
   const headerActions = (
     <div className="flex items-start justify-end" data-no-route-swipe="true">
-      <nav aria-label="Horizontal card navigation" className="relative h-[2.56rem] shrink-0" style={{ width: `${frameWidth + flushRightOffset}px` }}>
+      <nav aria-label="Horizontal card navigation" className="relative h-[2.6rem] shrink-0" style={{ width: `${frameWidth + flushRightOffset}px` }}>
         <span
           aria-hidden="true"
           className="pointer-events-none absolute bg-transparent"
@@ -161,9 +161,9 @@ export default function ModuleMatrixShell({
             right: `-${flushRightOffset}px`,
             width: `${frameWidth + flushRightOffset}px`,
             height: `${frameHeight}px`,
-            border: `1px solid ${shellBorder}`,
-            borderTopRightRadius: '1.08rem',
-            borderBottomLeftRadius: '1.16rem',
+            borderLeft: `1px solid ${shellBorder}`,
+            borderBottom: `1px solid ${shellBorder}`,
+            borderBottomLeftRadius: '1.12rem',
           }}
         />
 
