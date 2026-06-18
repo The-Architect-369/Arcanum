@@ -146,18 +146,23 @@ export default function ModuleMatrixShell({
   const pillHeight = 24;
   const pillTrackWidth = segmentCount * segmentWidth + (segmentCount - 1) * pillGap;
   const shellLeft = 34;
-  const pillLeft = shellLeft + 6;
+  const pillLeft = shellLeft + 10;
   const shellInnerRightPadding = 6;
   const flushRightOffset = 14;
-  const shellWidth = pillTrackWidth + 6 + shellInnerRightPadding + flushRightOffset;
+  const shellWidth = pillTrackWidth + 10 + shellInnerRightPadding + flushRightOffset;
   const navWidth = shellLeft + shellWidth;
+  const navShiftRight = 12;
   const motion = '180ms';
   const shellBorder = 'rgba(255,255,255,0.08)';
   const pillBorder = 'rgba(255,255,255,0.08)';
 
   const headerActions = (
     <div className="flex items-start justify-end" data-no-route-swipe="true">
-      <nav aria-label="Horizontal card navigation" className="relative h-[2.62rem] shrink-0" style={{ width: `${navWidth}px` }}>
+      <nav
+        aria-label="Horizontal card navigation"
+        className="relative h-[2.62rem] shrink-0"
+        style={{ width: `${navWidth}px`, transform: `translateX(${navShiftRight}px)` }}
+      >
         <span
           aria-hidden="true"
           className="pointer-events-none absolute bg-transparent"
