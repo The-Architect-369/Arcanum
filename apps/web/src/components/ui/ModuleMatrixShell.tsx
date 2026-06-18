@@ -140,13 +140,11 @@ export default function ModuleMatrixShell({
   const segmentCount = Math.max(horizontalTabs.length, 1);
   const frameTop = -1;
   const frameHeight = 40;
-  const shellLeft = 56;
-  const shellWidth = 150;
+  const shellLeft = 58;
+  const shellWidth = 148;
   const navWidth = shellLeft + shellWidth;
   const navShiftRight = 18;
-  const sectionHeight = frameHeight;
   const sectionWidth = shellWidth / segmentCount;
-  const motion = '180ms';
   const shellBorder = 'rgba(255,255,255,0.08)';
   const dividerBorder = 'rgba(255,255,255,0.07)';
 
@@ -159,7 +157,7 @@ export default function ModuleMatrixShell({
       >
         <span
           aria-hidden="true"
-          className="pointer-events-none absolute bg-transparent"
+          className="pointer-events-none absolute"
           style={{
             top: `${frameTop}px`,
             left: `${shellLeft}px`,
@@ -171,63 +169,69 @@ export default function ModuleMatrixShell({
           }}
         />
 
-        <span
-          aria-hidden="true"
-          className="pointer-events-none absolute overflow-hidden"
-          style={{
-            top: `${frameTop}px`,
-            left: `${shellLeft}px`,
-            width: `${shellWidth}px`,
-            height: `${frameHeight}px`,
-            borderRadius: '1rem 1rem 0.88rem 1rem',
-          }}
-        >
-          <span
-            className="absolute inset-y-0 transition-all ease-out"
-            style={{
-              left: `${activeHorizontalIndex * sectionWidth}px`,
-              width: `${sectionWidth}px`,
-              transitionDuration: motion,
-              background: 'linear-gradient(180deg,rgba(246,196,83,.03),rgba(246,196,83,.01))',
-            }}
-          />
-          {horizontalTabs.map((_, index) =>
-            index < segmentCount - 1 ? (
-              <span
-                key={`divider-${index}`}
-                className="absolute bottom-[7px] top-[7px] w-px"
-                style={{
-                  left: `${(index + 1) * sectionWidth}px`,
-                  background: dividerBorder,
-                }}
-              />
-            ) : null
-          )}
-        </span>
+        {horizontalTabs.map((_, index) =>
+          index < segmentCount - 1 ? (
+            <span
+              key={`divider-${index}`}
+              aria-hidden="true"
+              className="pointer-events-none absolute z-30 w-px"
+              style={{
+                left: `${shellLeft + (index + 1) * sectionWidth}px`,
+                top: `${frameTop + 7}px`,
+                height: `${frameHeight - 14}px`,
+                background: dividerBorder,
+              }}
+            />
+          ) : null
+        )}
 
         {horizontalTabs.map((tab, index) => {
           const left = shellLeft + index * sectionWidth;
+          const isActive = index === activeHorizontalIndex;
+          const isFirst = index === 0;
+          const isLast = index === segmentCount - 1;
           const zoneStyle: React.CSSProperties = {
             left: `${left}px`,
             top: `${frameTop}px`,
             width: `${sectionWidth}px`,
-            height: `${sectionHeight}px`,
+            height: `${frameHeight}px`,
+            borderTopLeftRadius: isFirst ? '1rem' : '0.78rem',
+            borderBottomLeftRadius: isFirst ? '1rem' : '0.78rem',
+            borderTopRightRadius: isLast ? '1rem' : '0.78rem',
+            borderBottomRightRadius: isLast ? '0.88rem' : '0.78rem',
           };
-          const isActive = index === activeHorizontalIndex;
           const inner = <span className="sr-only">{index + 1}. {tab.label}</span>;
 
-          const sectionChrome = isActive ? (
+          const content = (
             <>
-              <span
-                aria-hidden="true"
-                className="pointer-events-none absolute left-1/2 top-[6px] z-40 h-[1.08rem] w-[1.5px] -translate-x-1/2 rounded-full bg-amber-100 shadow-[0_0_3px_rgba(246,196,83,.10)]"
-              />
-              <span
-                aria-hidden="true"
-                className="pointer-events-none absolute bottom-0 left-[12px] z-40 h-[3px] w-[calc(100%-24px)] rounded-t-full bg-[rgba(8,12,22,1)]"
-              />
+              {isActive ? (
+                <span
+                  aria-hidden="true"
+                  className="pointer-events-none absolute inset-0"
+                  style={{
+                    background: 'linear-gradient(180deg,rgba(246,196,83,.025),rgba(246,196,83,.008))',
+                    borderTopLeftRadius: isFirst ? '1rem' : '0.78rem',
+                    borderBottomLeftRadius: isFirst ? '1rem' : '0.78rem',
+                    borderTopRightRadius: isLast ? '1rem' : '0.78rem',
+                    borderBottomRightRadius: isLast ? '0.88rem' : '0.78rem',
+                  }}
+                />
+              ) : null}
+              {isActive ? (
+                <span
+                  aria-hidden="true"
+                  className="pointer-events-none absolute left-1/2 top-[6px] z-40 h-[1.08rem] w-[1.5px] -translate-x-1/2 rounded-full bg-amber-100 shadow-[0_0_3px_rgba(246,196,83,.10)]"
+                />
+              ) : null}
+              {isActive ? (
+                <span
+                  aria-hidden="true"
+                  className="pointer-events-none absolute bottom-0 left-[12px] z-40 h-[3px] w-[calc(100%-24px)] rounded-t-full bg-[rgba(8,12,22,1)]"
+                />
+              ) : null}
+              {inner}
             </>
-          ) : null;
+          );
 
           if (onHorizontalChange) {
             return (
@@ -238,11 +242,10 @@ export default function ModuleMatrixShell({
                 aria-pressed={isActive}
                 title={tab.label}
                 onClick={() => onHorizontalChange(tab.href)}
-                className="absolute z-50"
+                className="absolute z-20 overflow-hidden"
                 style={zoneStyle}
               >
-                {sectionChrome}
-                {inner}
+                {content}
               </button>
             );
           }
@@ -254,11 +257,10 @@ export default function ModuleMatrixShell({
               aria-label={tab.label}
               aria-current={isActive ? 'page' : undefined}
               title={tab.label}
-              className="absolute z-50"
+              className="absolute z-20 overflow-hidden"
               style={zoneStyle}
             >
-              {sectionChrome}
-              {inner}
+              {content}
             </Link>
           );
         })}
