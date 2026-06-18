@@ -140,14 +140,14 @@ export default function ModuleMatrixShell({
   const segmentCount = Math.max(horizontalTabs.length, 1);
   const frameTop = -1;
   const frameHeight = 40;
-  const shellLeft = 56;
-  const shellWidth = 144;
+  const shellLeft = 52;
+  const shellWidth = 146;
   const navWidth = shellLeft + shellWidth;
-  const navShiftRight = 26;
-  const sectionInset = 6;
-  const sectionTop = 4;
-  const sectionHeight = frameHeight - 8;
-  const sectionWidth = (shellWidth - sectionInset * 2) / segmentCount;
+  const navShiftRight = 18;
+  const innerInsetX = 6;
+  const innerInsetY = 4;
+  const sectionHeight = frameHeight - innerInsetY * 2;
+  const sectionWidth = (shellWidth - innerInsetX * 2) / segmentCount;
   const motion = '180ms';
   const shellBorder = 'rgba(255,255,255,0.08)';
   const dividerBorder = 'rgba(255,255,255,0.08)';
@@ -173,61 +173,70 @@ export default function ModuleMatrixShell({
           }}
         />
 
+        <span
+          aria-hidden="true"
+          className="pointer-events-none absolute overflow-hidden"
+          style={{
+            top: `${innerInsetY}px`,
+            left: `${shellLeft + innerInsetX}px`,
+            width: `${shellWidth - innerInsetX * 2}px`,
+            height: `${sectionHeight}px`,
+            borderRadius: '1rem 1rem 0.82rem 1rem',
+          }}
+        >
+          <span
+            className="absolute inset-y-0 transition-all ease-out"
+            style={{
+              left: `${activeHorizontalIndex * sectionWidth}px`,
+              width: `${sectionWidth}px`,
+              transitionDuration: motion,
+              background: 'linear-gradient(180deg,rgba(246,196,83,.05),rgba(246,196,83,.014))',
+              borderRadius:
+                activeHorizontalIndex === 0
+                  ? '1rem 0.78rem 0.78rem 1rem'
+                  : activeHorizontalIndex === segmentCount - 1
+                    ? '0.78rem 1rem 0.78rem 0.78rem'
+                    : '0.78rem',
+              boxShadow: 'inset 0 0 0 1px rgba(255,255,255,0.08)',
+            }}
+          />
+          {horizontalTabs.map((_, index) =>
+            index < segmentCount - 1 ? (
+              <span
+                key={`divider-${index}`}
+                className="absolute top-[5px] h-[calc(100%-10px)] w-px"
+                style={{
+                  left: `${(index + 1) * sectionWidth}px`,
+                  background: dividerBorder,
+                }}
+              />
+            ) : null
+          )}
+        </span>
+
         {horizontalTabs.map((tab, index) => {
-          const isActive = index === activeHorizontalIndex;
-          const left = shellLeft + sectionInset + index * sectionWidth;
+          const left = shellLeft + innerInsetX + index * sectionWidth;
           const zoneStyle: React.CSSProperties = {
             left: `${left}px`,
-            top: `${sectionTop}px`,
+            top: `${innerInsetY}px`,
             width: `${sectionWidth}px`,
             height: `${sectionHeight}px`,
           };
-          const isFirst = index === 0;
-          const isLast = index === segmentCount - 1;
-          const borderRadius = isFirst
-            ? '1rem 0.78rem 0.78rem 1rem'
-            : isLast
-              ? '0.78rem 1rem 0.78rem 0.78rem'
-              : '0.78rem';
+          const isActive = index === activeHorizontalIndex;
           const inner = <span className="sr-only">{index + 1}. {tab.label}</span>;
 
-          const tabSection = (
+          const sectionChrome = isActive ? (
             <>
               <span
                 aria-hidden="true"
-                className={cn(
-                  'pointer-events-none absolute inset-0 transition-all ease-out',
-                  isActive
-                    ? 'bg-[linear-gradient(180deg,rgba(246,196,83,.05),rgba(246,196,83,.014))]'
-                    : 'bg-[linear-gradient(180deg,rgba(255,255,255,.012),rgba(255,255,255,.003))]'
-                )}
-                style={{
-                  borderRadius,
-                  transitionDuration: motion,
-                  boxShadow: isActive ? 'inset 0 0 0 1px rgba(255,255,255,0.08)' : 'none',
-                }}
+                className="pointer-events-none absolute left-1/2 top-[4px] z-40 h-[1.12rem] w-[1.5px] -translate-x-1/2 rounded-full bg-amber-100 shadow-[0_0_3px_rgba(246,196,83,.10)]"
               />
-              {!isLast ? (
-                <span
-                  aria-hidden="true"
-                  className="pointer-events-none absolute right-0 top-[5px] h-[calc(100%-10px)] w-px"
-                  style={{ background: dividerBorder }}
-                />
-              ) : null}
-              {isActive ? (
-                <>
-                  <span
-                    aria-hidden="true"
-                    className="pointer-events-none absolute left-1/2 top-[4px] z-40 h-[1.12rem] w-[1.5px] -translate-x-1/2 rounded-full bg-amber-100 shadow-[0_0_3px_rgba(246,196,83,.10)]"
-                  />
-                  <span
-                    aria-hidden="true"
-                    className="pointer-events-none absolute bottom-0 left-[9px] z-40 h-[3px] w-[calc(100%-18px)] rounded-t-full bg-[rgba(8,12,22,1)]"
-                  />
-                </>
-              ) : null}
+              <span
+                aria-hidden="true"
+                className="pointer-events-none absolute bottom-0 left-[10px] z-40 h-[3px] w-[calc(100%-20px)] rounded-t-full bg-[rgba(8,12,22,1)]"
+              />
             </>
-          );
+          ) : null;
 
           if (onHorizontalChange) {
             return (
@@ -241,7 +250,7 @@ export default function ModuleMatrixShell({
                 className="absolute z-50"
                 style={zoneStyle}
               >
-                {tabSection}
+                {sectionChrome}
                 {inner}
               </button>
             );
@@ -257,7 +266,7 @@ export default function ModuleMatrixShell({
               className="absolute z-50"
               style={zoneStyle}
             >
-              {tabSection}
+              {sectionChrome}
               {inner}
             </Link>
           );
