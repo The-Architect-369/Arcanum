@@ -222,13 +222,13 @@ export default function ModuleMatrixShell({
               {isActive ? (
                 <span
                   aria-hidden="true"
-                  className="pointer-events-none absolute left-1/2 top-[6px] z-40 h-[1.08rem] w-[1.5px] -translate-x-1/2 rounded-full bg-amber-100 shadow-[0_0_3px_rgba(246,196,83,.10)]"
+                  className="pointer-events-none absolute left-1/2 top-[6px] z-40 h-[1.08rem] w-[1.5px] -translate-x-1/2 rounded-full bg-[#f6c453] shadow-[0_0_10px_rgba(246,196,83,.55),0_0_18px_rgba(115,180,255,.22)]"
                 />
               ) : null}
               {isActive ? (
                 <span
                   aria-hidden="true"
-                  className="pointer-events-none absolute bottom-0 left-[12px] z-40 h-[3px] w-[calc(100%-24px)] rounded-t-full bg-[rgba(8,12,22,1)]"
+                  className="pointer-events-none absolute bottom-0 left-[12px] z-40 h-[3px] w-[calc(100%-24px)] rounded-t-full bg-[rgba(8,12,22,1)] shadow-[0_0_8px_rgba(246,196,83,.28)]"
                 />
               ) : null}
               {inner}
@@ -278,6 +278,7 @@ export default function ModuleMatrixShell({
         flush
         scrollable={false}
         headerActionsDock
+        headerActionsDockChrome={false}
         className="relative z-10 min-h-0 flex-1"
         contentClassName={cn('overflow-hidden px-10 sm:px-9', contentClassName)}
       >
