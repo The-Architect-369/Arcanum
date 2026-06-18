@@ -147,6 +147,12 @@ export default function ModuleMatrixShell({
   const sectionWidth = shellWidth / segmentCount;
   const shellBorder = 'rgba(255,255,255,0.08)';
   const dividerBorder = 'rgba(255,255,255,0.07)';
+  const activeFillRadius =
+    activeHorizontalIndex === 0
+      ? '1rem 0.42rem 0.2rem 1rem'
+      : activeHorizontalIndex === segmentCount - 1
+        ? '0.42rem 1rem 0.88rem 0.2rem'
+        : '0.42rem';
 
   const headerActions = (
     <div className="flex items-start justify-end" data-no-route-swipe="true">
@@ -185,7 +191,9 @@ export default function ModuleMatrixShell({
             style={{
               left: `${activeHorizontalIndex * sectionWidth}px`,
               width: `${sectionWidth}px`,
-              background: 'linear-gradient(180deg,rgba(125,190,255,.05),rgba(125,190,255,.012))',
+              borderRadius: activeFillRadius,
+              background: 'linear-gradient(180deg,rgba(125,190,255,.06),rgba(125,190,255,.016))',
+              boxShadow: 'inset 0 1px 0 rgba(255,255,255,.03), inset 0 -10px 18px rgba(12,18,32,.12), 0 0 12px rgba(125,190,255,.08)',
             }}
           />
         </span>
