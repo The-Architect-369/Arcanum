@@ -1,6 +1,6 @@
 'use client';
 
-import { VitaeModuleScreen } from '../path/page';
+import { VitaeModuleScreen } from '../_components/VitaeModuleScreen';
 
 export default function VitaeMasteryPage() {
   return <VitaeModuleScreen family="record" />;
