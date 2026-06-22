@@ -126,13 +126,13 @@ export function VitaeModuleScreen({ family }: { family: VitaeFamilyId }) {
       path: {
         href: ORDER[0],
         label: 'Path',
-        shellAction: <div className="text-xs text-zinc-400">A track · present position, state, and next threshold</div>,
+        shellAction: <div className="text-xs text-zinc-400">A track · current position, momentum, and next opening</div>,
         cards: [
           {
             id: 'a1',
             navLabel: 'A1',
             title: 'Vitae - A1 Position',
-            caption: 'The present slice of the Vitae. This surface should answer where you are currently oriented, what school is visible, and what local emphasis is being held on this device.',
+            caption: 'The present slice of development. This is where the user returns to see their current orientation, the visible part of the school, and the path emphasis active on this device.',
             render: () => (
               <PositionCard
                 trusted={account.trusted}
@@ -145,15 +145,15 @@ export function VitaeModuleScreen({ family }: { family: VitaeFamilyId }) {
           {
             id: 'a2',
             navLabel: 'A2',
-            title: 'Vitae - A2 State',
-            caption: 'The state layer. Reliability, continuity, pauses, and device readiness belong here without turning the Vitae into pressure or scorekeeping.',
+            title: 'Vitae - A2 Momentum',
+            caption: 'The continuity layer. Momentum, pauses, rhythm, and return all belong here without turning the Vitae into pressure, scorekeeping, or false status.',
             render: () => <StateCard trusted={account.trusted} state={vitaeState} summary={summary} />,
           },
           {
             id: 'a3',
             navLabel: 'A3',
-            title: 'Vitae - A3 Next Threshold',
-            caption: 'The threshold layer. This card shows what is visible now, what remains later, and how the next opening is approached without false urgency.',
+            title: 'Vitae - A3 Next Opening',
+            caption: 'The threshold layer. This card shows what can open next, what remains further out, and how the next chamber is approached without artificial urgency.',
             render: () => <ThresholdCard selectedPath={selectedPath} summary={summary} visibleGrades={visibleGrades.length} />,
           },
         ],
@@ -161,27 +161,27 @@ export function VitaeModuleScreen({ family }: { family: VitaeFamilyId }) {
       map: {
         href: ORDER[1],
         label: 'Map',
-        shellAction: <div className="text-xs text-zinc-400">B track · schools, grades, atlas, and specializations</div>,
+        shellAction: <div className="text-xs text-zinc-400">B track · core ladder, atlas, and skill domains</div>,
         cards: [
           {
             id: 'b1',
             navLabel: 'B1',
             title: 'Vitae - B1 Core Ladder',
-            caption: 'The core ladder. Schools and grades should be legible first so the whole academy can be understood without pressure or gamified progress.',
+            caption: 'The legible school view. Grades and schools should be understandable first so the larger academy feels coherent before the deeper atlas becomes luminous.',
             render: () => <CoreLadderCard />,
           },
           {
             id: 'b2',
             navLabel: 'B2',
             title: 'Vitae - B2 Atlas',
-            caption: 'The whole-journey view. This is where the wider tree, atlas, and future visual curriculum map can grow without collapsing the academy into a checklist.',
+            caption: 'The whole-journey map. This is where the tree, constellation, and larger learning architecture can unfold without collapsing the Vitae into a checklist.',
             render: () => <AtlasCard />,
           },
           {
             id: 'b3',
             navLabel: 'B3',
-            title: 'Vitae - B3 Specializations',
-            caption: 'The post-Adept layer. Specializations are adjacent stewardship domains, not ranks, and should feel expansive rather than vertical.',
+            title: 'Vitae - B3 Skill Domains',
+            caption: 'The expanding curriculum layer. Skill domains, special studies, and later community-grown disciplines belong here as widening branches rather than vertical ranks.',
             render: () => <SpecializationsCard />,
           },
         ],
@@ -189,27 +189,27 @@ export function VitaeModuleScreen({ family }: { family: VitaeFamilyId }) {
       record: {
         href: ORDER[2],
         label: 'Record',
-        shellAction: <div className="text-xs text-zinc-400">C track · practices, evidence, and permissions</div>,
+        shellAction: <div className="text-xs text-zinc-400">C track · practice shelf, memory, and local permissions</div>,
         cards: [
           {
             id: 'c1',
             navLabel: 'C1',
             title: 'Vitae - C1 Practice Shelf',
-            caption: 'The extractive layer. Practices you want to return to can be surfaced here as a shelf, without forcing you back through the entire Vitae every time.',
+            caption: 'The return layer. Practices you want to revisit can live here as saved return points without forcing you back through the whole Vitae each time.',
             render: () => <PracticeShelfCard trusted={account.trusted} onQuickRecord={logPractice} />,
           },
           {
             id: 'c2',
             navLabel: 'C2',
-            title: 'Vitae - C2 Evidence',
-            caption: 'The evidence layer. Local receipts, continuity memory, and factual traces belong here, separate from claims of advancement or mastery.',
+            title: 'Vitae - C2 Memory',
+            caption: 'The continuity archive. Sessions, notes, timing context, and factual traces belong here as memory of practice rather than proof of superiority or mastery.',
             render: () => <EvidenceCard state={vitaeState} />,
           },
           {
             id: 'c3',
             navLabel: 'C3',
             title: 'Vitae - C3 Permissions',
-            caption: 'The permissions layer. Vitae can remember what this device may hold or record, while governance-level stewardship stays invited rather than claimed.',
+            caption: 'The holding boundary. This is where Vitae states what the device may record or retain while keeping governance, authority, and recognition outside the local record.',
             render: () => <PermissionsCard trusted={account.trusted} summary={summary} />,
           },
         ],
@@ -371,7 +371,7 @@ function PositionCard({
     <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
       <div className="rounded-3xl border border-white/10 bg-white/[0.04] p-4">
         <div className="text-[11px] uppercase tracking-[0.18em] text-zinc-500">Current position</div>
-        <h3 className="mt-2 text-base font-semibold text-zinc-100">Present Vitae locus</h3>
+        <h3 className="mt-2 text-base font-semibold text-zinc-100">Present path signal</h3>
         <div className="mt-4 grid gap-3 sm:grid-cols-2">
           <MetricTile label="Orientation" value={selectedPath?.title ?? 'Unset'} />
           <MetricTile label="Visible school" value="Core Vitae" />
@@ -387,7 +387,7 @@ function PositionCard({
         <div className="flex items-center justify-between gap-3">
           <div>
             <div className="text-[11px] uppercase tracking-[0.18em] text-zinc-500">Path emphasis</div>
-            <h3 className="mt-2 text-base font-semibold text-zinc-100">Choose local orientation</h3>
+            <h3 className="mt-2 text-base font-semibold text-zinc-100">Choose current path</h3>
           </div>
           {trusted ? <LockHint label="Saved on device" /> : <LockHint label="Browse only" />}
         </div>
@@ -420,7 +420,7 @@ function PositionCard({
             );
           })}
         </div>
-        <div className="mt-4 text-xs text-zinc-500">Current session band: {summary.band} · {summary.sessionCount} sessions tracked locally.</div>
+        <div className="mt-4 text-xs text-zinc-500">Current continuity band: {summary.band} · {summary.sessionCount} sessions tracked locally.</div>
       </div>
     </div>
   );
@@ -431,8 +431,8 @@ function StateCard({ trusted, state, summary }: { trusted: boolean; state: Vitae
   return (
     <div className="grid gap-4 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,.95fr)]">
       <div className="rounded-3xl border border-white/10 bg-white/[0.04] p-4">
-        <div className="text-[11px] uppercase tracking-[0.18em] text-zinc-500">State readout</div>
-        <h3 className="mt-2 text-base font-semibold text-zinc-100">Reliability without pressure</h3>
+        <div className="text-[11px] uppercase tracking-[0.18em] text-zinc-500">Momentum readout</div>
+        <h3 className="mt-2 text-base font-semibold text-zinc-100">Continuity without pressure</h3>
         <div className="mt-4 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
           <MetricTile label="State" value={status} />
           <MetricTile label="Band" value={summary.band} />
@@ -446,8 +446,8 @@ function StateCard({ trusted, state, summary }: { trusted: boolean; state: Vitae
         </div>
       </div>
       <div className="rounded-3xl border border-white/10 bg-black/20 p-4">
-        <div className="text-[11px] uppercase tracking-[0.18em] text-zinc-500">Phase notes</div>
-        <h3 className="mt-2 text-base font-semibold text-zinc-100">Current state meanings</h3>
+        <div className="text-[11px] uppercase tracking-[0.18em] text-zinc-500">Momentum notes</div>
+        <h3 className="mt-2 text-base font-semibold text-zinc-100">Current rhythm meanings</h3>
         <div className="mt-4 space-y-3 text-sm text-zinc-300">
           <StateNote title="Ready">The shell is visible and the curriculum map can be explored safely.</StateNote>
           <StateNote title="Active">Local continuity exists. Sessions and evidence are accumulating on this device.</StateNote>
@@ -471,22 +471,22 @@ function ThresholdCard({
   return (
     <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
       <div className="rounded-3xl border border-white/10 bg-white/[0.04] p-4">
-        <div className="text-[11px] uppercase tracking-[0.18em] text-zinc-500">Next threshold</div>
-        <h3 className="mt-2 text-base font-semibold text-zinc-100">What opens next</h3>
+        <div className="text-[11px] uppercase tracking-[0.18em] text-zinc-500">Next opening</div>
+        <h3 className="mt-2 text-base font-semibold text-zinc-100">What can open next</h3>
         <div className="mt-4 space-y-3 text-sm text-zinc-300">
           <ThresholdLine label="Current path" value={selectedPath?.title ?? 'Choose one local orientation'} />
           <ThresholdLine label="Visible map" value={`${visibleGrades} core grades + 10 specializations`} />
           <ThresholdLine label="Next implementation target" value="grade / class / chapter registry" />
-          <ThresholdLine label="Longer threshold" value="consent-aware progression signals without gamification" />
+          <ThresholdLine label="Longer opening" value="consent-aware progression signals without gamification" />
         </div>
       </div>
       <div className="rounded-3xl border border-white/10 bg-black/20 p-4">
         <div className="text-[11px] uppercase tracking-[0.18em] text-zinc-500">Guidance</div>
-        <h3 className="mt-2 text-base font-semibold text-zinc-100">Threshold notes</h3>
+        <h3 className="mt-2 text-base font-semibold text-zinc-100">Opening notes</h3>
         <div className="mt-4 space-y-3 text-sm text-zinc-300">
           <p>Thresholds in Vitae should communicate readiness and visibility, not challenge or prestige.</p>
           <p>The current local record can support continuity, but it does not yet truthfully claim which grade, class, or chapter has stabilized.</p>
-          <p>Until the curriculum registry is expanded, this card should function as an honest threshold notice rather than a false advancement display.</p>
+          <p>Until the curriculum registry is expanded, this card should function as an honest opening notice rather than a false advancement display.</p>
           <div className="rounded-2xl border border-amber-300/20 bg-amber-300/5 px-4 py-3 text-amber-100">
             Current continuity band: {summary.band}. This remains a local memory aid, not canonical recognition.
           </div>
@@ -529,7 +529,7 @@ function AtlasCard() {
     <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
       <div className="rounded-3xl border border-white/10 bg-white/[0.04] p-4">
         <div className="text-[11px] uppercase tracking-[0.18em] text-zinc-500">Atlas scaffold</div>
-        <h3 className="mt-2 text-base font-semibold text-zinc-100">Whole-journey view</h3>
+        <h3 className="mt-2 text-base font-semibold text-zinc-100">Whole-journey map</h3>
         <p className="mt-4 text-sm text-zinc-300">
           This card is the placeholder for the fuller Vitae atlas: tree of life, constellation view, luminous grade map, and the larger school-to-specialization journey.
         </p>
@@ -545,7 +545,7 @@ function AtlasCard() {
         <div className="mt-4 space-y-3 text-sm text-zinc-300">
           <p>The atlas should be exploratory, not prescriptive.</p>
           <p>It can reveal the full architecture while still gating access to what is not yet visible or appropriate.</p>
-          <p>Eventually this is where grades, classes, chapters, and threshold chambers can be browsed as a living library rather than a completion rail.</p>
+          <p>Eventually this is where grades, classes, chapters, threshold chambers, and community skill modules can be browsed as a living library rather than a completion rail.</p>
         </div>
       </div>
     </div>
@@ -557,8 +557,8 @@ function SpecializationsCard() {
     <div className="rounded-3xl border border-white/10 bg-white/[0.04] p-4">
       <div className="flex items-center justify-between gap-3">
         <div>
-          <div className="text-[11px] uppercase tracking-[0.18em] text-zinc-500">Specializations</div>
-          <h3 className="mt-2 text-base font-semibold text-zinc-100">Adjacent stewardship domains</h3>
+          <div className="text-[11px] uppercase tracking-[0.18em] text-zinc-500">Skill domains</div>
+          <h3 className="mt-2 text-base font-semibold text-zinc-100">Expanding curriculum branches</h3>
         </div>
         <div className="rounded-full border border-white/10 px-3 py-1 text-xs text-zinc-400">Non-hierarchical</div>
       </div>
@@ -582,7 +582,7 @@ function PracticeShelfCard({ trusted, onQuickRecord }: { trusted: boolean; onQui
     <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_minmax(0,.92fr)]">
       <div className="rounded-3xl border border-white/10 bg-white/[0.04] p-4">
         <div className="text-[11px] uppercase tracking-[0.18em] text-zinc-500">Practice shelf</div>
-        <h3 className="mt-2 text-base font-semibold text-zinc-100">Extractive return points</h3>
+        <h3 className="mt-2 text-base font-semibold text-zinc-100">Saved return points</h3>
         <div className="mt-4 space-y-3">
           {VITAE_PRACTICES.map((practice) => (
             <button
@@ -605,7 +605,7 @@ function PracticeShelfCard({ trusted, onQuickRecord }: { trusted: boolean; onQui
         <h3 className="mt-2 text-base font-semibold text-zinc-100">How the shelf should behave</h3>
         <div className="mt-4 space-y-3 text-sm text-zinc-300">
           <p>Practices here should feel like saved return points, not extracted trophies.</p>
-          <p>Over time the shelf can separate favorited practices, repeated practices, and practices tied to specific thresholds or grades.</p>
+          <p>Over time the shelf can separate favorited practices, repeated practices, and practices tied to specific thresholds, chapters, or grades.</p>
           {!trusted ? <CTAActivate /> : null}
         </div>
       </div>
@@ -618,14 +618,14 @@ function EvidenceCard({ state }: { state: VitaeState }) {
     <div className="rounded-3xl border border-white/10 bg-white/[0.04] p-4">
       <div className="flex items-center justify-between gap-3">
         <div>
-          <div className="text-[11px] uppercase tracking-[0.18em] text-zinc-500">Evidence</div>
-          <h3 className="mt-2 text-base font-semibold text-zinc-100">Local continuity record</h3>
+          <div className="text-[11px] uppercase tracking-[0.18em] text-zinc-500">Memory</div>
+          <h3 className="mt-2 text-base font-semibold text-zinc-100">Local continuity archive</h3>
         </div>
         <div className="rounded-full border border-white/10 px-3 py-1 text-xs text-zinc-400">{state.sessions.length} entries</div>
       </div>
       <div className="mt-4 space-y-3">
         {state.sessions.length === 0 ? (
-          <div className="rounded-2xl border border-white/10 bg-black/20 p-4 text-sm text-zinc-400">No local Vitae evidence has been recorded yet.</div>
+          <div className="rounded-2xl border border-white/10 bg-black/20 p-4 text-sm text-zinc-400">No local Vitae memory has been recorded yet.</div>
         ) : (
           state.sessions.slice(0, 8).map((session) => {
             const practice = VITAE_PRACTICES.find((item) => item.id === session.practiceId);
