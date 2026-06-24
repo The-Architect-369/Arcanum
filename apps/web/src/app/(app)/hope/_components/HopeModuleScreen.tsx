@@ -2,7 +2,6 @@
 
 import * as React from 'react';
 import { useEffect, useMemo, useState } from 'react';
-import Link from 'next/link';
 import AppStage from '@/components/ui/AppStage';
 import ModuleMatrixShell from '@/components/ui/ModuleMatrixShell';
 import CTAActivate from '@/components/shared/CTAActivate';
@@ -51,13 +50,10 @@ const COSMETIC_ITEMS = ['Founder halo', 'Lumen sash', 'Archive patch', 'Celestia
 
 function familyFromPathname(pathname: string): HopeFamilyId | null {
   const clean = pathname.split('?')[0]?.split('#')[0] || '';
-  if (clean in FAMILY_BY_HREF) {
-    return FAMILY_BY_HREF[clean as keyof typeof FAMILY_BY_HREF];
-  }
+  if (clean in FAMILY_BY_HREF) return FAMILY_BY_HREF[clean as keyof typeof FAMILY_BY_HREF];
   return null;
 }
 
-function motionForFamilyChange(from: HopeFamilyId, to: HopeFamilyMotion): never;
 function motionForFamilyChange(from: HopeFamilyId, to: HopeFamilyId): FamilyMotion {
   if (from === to) return 'idle';
   return FAMILY_INDEX[to] > FAMILY_INDEX[from] ? 'next' : 'prev';
@@ -105,27 +101,27 @@ export function HopeModuleScreen({ family }: { family: HopeFamilyId }) {
       presence: {
         href: ORDER[0],
         label: 'Presence',
-        shellAction: <div className="text-xs text-zinc-400">A track · avatar, snapshot, and direct dialogue</div>,
+        shellAction: <div className="text-xs text-zinc-400">A track · avatar, snapshot, and dialogue</div>,
         cards: [
           {
             id: 'a1',
             navLabel: 'A1',
             title: 'Hope - A1 Avatar',
-            caption: 'The first glance. Hope appears here as the living, stylized reflection of the user: mood, visual state, and immediate presence.',
+            caption: 'The first glance. Hope appears here as the living visual self: the current companion body, active mood treatment, and the first emotionally legible surface of the module.',
             render: () => <AvatarCard trusted={account.trusted} tone={tone} preset={preset} presence={presence} reflectionCount={reflectionCount} />,
           },
           {
             id: 'a2',
             navLabel: 'A2',
             title: 'Hope - A2 Snapshot',
-            caption: 'The present readout. Hope summarizes what feels active now: emotional atmosphere, memory recency, and nearby openings across the user’s private Arcanum life.',
+            caption: 'The present readout. Snapshot explains what Hope is currently showing: emotional atmosphere, active themes, and nearby openings across the Arcanum.',
             render: () => <SnapshotCard latestReflection={latestReflection} trusted={account.trusted} />,
           },
           {
             id: 'a3',
             navLabel: 'A3',
             title: 'Hope - A3 Dialogue',
-            caption: 'The direct conversation surface. This is where the user checks in, asks questions, and speaks with Hope so memory, state, and later campaigns can update from lived input.',
+            caption: 'The direct conversation surface. This is where the user checks in, speaks with Hope, and creates the captured input that later shapes campaigns, logs, and state changes.',
             render: () => <DialogueCard posture={presencePosture} onRecorded={() => void loadHopeState()} />,
           },
         ],
@@ -133,27 +129,27 @@ export function HopeModuleScreen({ family }: { family: HopeFamilyId }) {
       reflection: {
         href: ORDER[1],
         label: 'Campaigns',
-        shellAction: <div className="text-xs text-zinc-400">B track · orientation, active campaigns, and campaign creation</div>,
+        shellAction: <div className="text-xs text-zinc-400">B track · orientation, campaigns, and creation</div>,
         cards: [
           {
             id: 'b1',
             navLabel: 'B1',
             title: 'Hope - B1 Orientation',
-            caption: 'The over-time dashboard. Hope gathers the user’s active Arcanum cues first — Tempus rites, Vitae openings, and current life-direction signals — before expanding into broader custom campaigns.',
+            caption: 'The over-time dashboard. Orientation gathers what is active across Arcanum life first: Tempus windows, Vitae openings, and the highest-priority campaign signals that matter now.',
             render: () => <OrientationCard posture={reflectionPosture} latestReflection={latestReflection} />,
           },
           {
             id: 'b2',
             navLabel: 'B2',
             title: 'Hope - B2 Campaigns',
-            caption: 'The campaign shelf keeps current and remembered life arcs visible. These campaigns are for continuity and follow-through, not authority or rank.',
+            caption: 'The quest log. Campaigns keep active arcs, paused arcs, and remembered life missions visible so the user can understand the larger shape of what Hope is helping them build.',
             render: () => <CampaignsCard state={hopeState} />,
           },
           {
             id: 'b3',
             navLabel: 'B3',
             title: 'Hope - B3 Create',
-            caption: 'The campaign creator shapes new arcs of life attention: healing cycles, habit journeys, intentions, and domain-based missions that conversations can later containerize into.',
+            caption: 'The creation surface. New campaigns, missions, and life-domain arcs should begin here and later be seeded from conversation capture rather than burdensome manual setup alone.',
             render: () => <CampaignBuilderCard trusted={account.trusted} />,
           },
         ],
@@ -161,27 +157,27 @@ export function HopeModuleScreen({ family }: { family: HopeFamilyId }) {
       attunement: {
         href: ORDER[2],
         label: 'Archive',
-        shellAction: <div className="text-xs text-zinc-400">C track · inventory, natal pattern, and private logs</div>,
+        shellAction: <div className="text-xs text-zinc-400">C track · inventory, natal pattern, and logs</div>,
         cards: [
           {
             id: 'c1',
             navLabel: 'C1',
             title: 'Hope - C1 Inventory',
-            caption: 'The expressive inventory. Cosmetics, unlocks, frames, accessories, and community-created adornments gather here as part of Hope’s visible identity.',
+            caption: 'The held-object layer. Cosmetics, unlocks, frames, habitats, and visible Hope adornments gather here so the user can shape the companion’s appearance over time.',
             render: () => <CosmeticInventoryCard tone={tone} preset={preset} onPreset={setPreset} />,
           },
           {
             id: 'c2',
             navLabel: 'C2',
             title: 'Hope - C2 Natal Pattern',
-            caption: 'The foundational symbolic layer. This is where Hope’s deeper patterning can live: natal structure, archetypal tones, and stable cosmic signatures built over time.',
+            caption: 'The symbolic pattern layer. This is where natal structure, archetypal affinities, and later emotional or elemental containers can become readable without collapsing into diagnosis.',
             render: () => <NatalPatternCard tone={tone} preset={preset} presence={presence} frequency={frequency} depth={depth} posture={attunementPosture} />,
           },
           {
             id: 'c3',
             navLabel: 'C3',
             title: 'Hope - C3 Logs',
-            caption: 'The private memory archive. Journal entries, chat history, and attached Tempus or Vitae context remain private reflective memory unless the user chooses otherwise.',
+            caption: 'The private archive. Conversation memory, journal entries, and attached Tempus or Vitae context remain locally held reflective memory unless the user chooses otherwise.',
             render: () => <JournalCard trusted={account.trusted} state={hopeState} />,
           },
         ],
@@ -198,10 +194,7 @@ export function HopeModuleScreen({ family }: { family: HopeFamilyId }) {
   const transitionToFamily = (nextFamily: HopeFamilyId, syncHistory: boolean) => {
     if (nextFamily === activeFamilyId) return;
     const motion = motionForFamilyChange(activeFamilyId, nextFamily);
-    if (syncHistory) {
-      const href = families[nextFamily].href;
-      window.history.replaceState(window.history.state, '', href);
-    }
+    if (syncHistory) window.history.replaceState(window.history.state, '', families[nextFamily].href);
     setFamilyMotion(motion);
     setFamilyMotionKey((value) => value + 1);
     setActiveFamilyId(nextFamily);
@@ -220,7 +213,6 @@ export function HopeModuleScreen({ family }: { family: HopeFamilyId }) {
       const nextFamily = familyFromPathname(window.location.pathname);
       if (nextFamily) transitionToFamily(nextFamily, false);
     };
-
     window.addEventListener('popstate', onPopState);
     return () => window.removeEventListener('popstate', onPopState);
   }, [activeFamilyId, families]);
@@ -247,16 +239,12 @@ export function HopeModuleScreen({ family }: { family: HopeFamilyId }) {
     const dy = t.clientY - swipeStart.current.y;
     const ax = Math.abs(dx);
     const ay = Math.abs(dy);
-
     if (!swipeLock.current) {
       if (ax >= 12 && ax > ay * 1.06) swipeLock.current = 'h';
       else if (ay >= 12 && ay > ax) swipeLock.current = 'v';
       else return;
     }
-
-    if (swipeLock.current === 'h') {
-      e.preventDefault();
-    }
+    if (swipeLock.current === 'h') e.preventDefault();
   };
 
   const onTouchEndCapture = (e: React.TouchEvent) => {
@@ -265,19 +253,14 @@ export function HopeModuleScreen({ family }: { family: HopeFamilyId }) {
     const dx = t.clientX - swipeStart.current.x;
     const dy = t.clientY - swipeStart.current.y;
     swipeStart.current = null;
-
     const ax = Math.abs(dx);
     const ay = Math.abs(dy);
     if (ax < 12 || ax <= ay * 1.06) return;
-
     const currentIndex = ORDER.indexOf(activeFamily.href as (typeof ORDER)[number]);
     if (currentIndex === -1) return;
-
     const nextIndex = dx < 0 ? currentIndex + 1 : currentIndex - 1;
     if (nextIndex < 0 || nextIndex >= ORDER.length) return;
-
-    const nextFamily = FAMILY_BY_HREF[ORDER[nextIndex]];
-    transitionToFamily(nextFamily, true);
+    transitionToFamily(FAMILY_BY_HREF[ORDER[nextIndex]], true);
   };
 
   return (
@@ -353,6 +336,25 @@ function AvatarCard({ trusted, tone, preset, presence, reflectionCount }: { trus
   );
 }
 
+function SnapshotCard({ latestReflection, trusted }: { latestReflection: HopeState['reflections'][number] | null; trusted: boolean }) {
+  return (
+    <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_22rem]">
+      <div className="rounded-3xl border border-white/10 bg-white/[0.04] p-4">
+        <div className="text-[11px] uppercase tracking-[0.18em] text-zinc-500">Snapshot</div>
+        <h3 className="mt-2 text-base font-semibold text-zinc-100">What feels active now</h3>
+        <div className="mt-4 space-y-3">
+          <PermissionRow label="Latest reflection" value={latestReflection ? new Date(latestReflection.createdAt).toLocaleString() : 'No recent entry'} />
+          <PermissionRow label="Current opening" value="Dialogue, memory, and soft self-check-ins" />
+          <PermissionRow label="Notification posture" value="Check-in style, not command style" />
+        </div>
+      </div>
+      <div className="rounded-3xl border border-white/10 bg-black/20 p-4 text-sm text-zinc-300">
+        Hope works best as a gentle companion. {trusted ? 'This device can hold a private continuity of dialogue and memory.' : 'Activate this device to make private continuity and journaling more useful.'}
+      </div>
+    </div>
+  );
+}
+
 function DialogueCard({ posture, onRecorded }: { posture: ReturnType<typeof createHopePosture>; onRecorded: () => void }) {
   return (
     <div className="space-y-4">
@@ -369,32 +371,13 @@ function DialogueCard({ posture, onRecorded }: { posture: ReturnType<typeof crea
   );
 }
 
-function SnapshotCard({ latestReflection, trusted }: { latestReflection: HopeState['reflections'][number] | null; trusted: boolean }) {
-  return (
-    <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_22rem]">
-      <div className="rounded-3xl border border-white/10 bg-white/[0.04] p-4">
-        <div className="text-[11px] uppercase tracking-[0.18em] text-zinc-500">Snapshot</div>
-        <h3 className="mt-2 text-base font-semibold text-zinc-100">What feels active now</h3>
-        <div className="mt-4 space-y-3">
-          <PermissionRow label='Latest reflection' value={latestReflection ? new Date(latestReflection.createdAt).toLocaleString() : 'No recent entry'} />
-          <PermissionRow label='Current opening' value='Dialogue, memory, and soft self-check-ins' />
-          <PermissionRow label='Notification posture' value='Check-in style, not command style' />
-        </div>
-      </div>
-      <div className="rounded-3xl border border-white/10 bg-black/20 p-4 text-sm text-zinc-300">
-        Hope works best as a gentle companion. {trusted ? 'This device can hold a private continuity of dialogue and memory.' : 'Activate this device to make private continuity and journaling more useful.'}
-      </div>
-    </div>
-  );
-}
-
 function OrientationCard({ posture, latestReflection }: { posture: ReturnType<typeof createHopePosture>; latestReflection: HopeState['reflections'][number] | null }) {
   return (
     <div className="grid gap-4 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,.95fr)]">
       <div className="rounded-3xl border border-white/10 bg-white/[0.04] p-4 text-sm text-zinc-300 space-y-3">
         <div className="text-[11px] uppercase tracking-[0.18em] text-zinc-500">Orientation</div>
         <h3 className="text-base font-semibold text-zinc-100">Bigger life pattern</h3>
-        <p>Hope can help the user see themes, recurrences, and emotional weather over time without turning that into command, judgment, or diagnosis.</p>
+        <p>Hope can help the user see themes, recurrences, and active openings across Arcanum life without turning that into command, judgment, or diagnosis.</p>
         <p>{latestReflection ? `The latest remembered entry was recorded on ${new Date(latestReflection.createdAt).toLocaleString()}.` : 'No reflection has been recorded yet, so the pattern layer is still quiet.'}</p>
       </div>
       <div className="rounded-3xl border border-white/10 bg-black/20 p-4">
@@ -410,53 +393,32 @@ function OrientationCard({ posture, latestReflection }: { posture: ReturnType<ty
   );
 }
 
-function CampaignBuilderCard({ trusted }: { trusted: boolean }) {
-  return (
-    <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_22rem]">
-      <div className="rounded-3xl border border-white/10 bg-white/[0.04] p-4 text-sm text-zinc-300 space-y-3">
-        <div className="text-[11px] uppercase tracking-[0.18em] text-zinc-500">Campaign builder</div>
-        <h3 className="text-base font-semibold text-zinc-100">Shape a life arc</h3>
-        <p>This card can later generate guided arcs like healing cycles, habit journeys, reflection missions, or seasonal self-check-ins.</p>
-        <p>The builder belongs in Hope because it is about inner direction and continuity, not governance or rank.</p>
-      </div>
-      <div className="rounded-3xl border border-white/10 bg-black/20 p-4 text-sm text-zinc-300">
-        {trusted ? 'Campaign creation can stay local-first and private by default.' : 'Activation should unlock private saved campaign arcs on this device.'}
-      </div>
-    </div>
-  );
-}
-
 function CampaignsCard({ state }: { state: HopeState }) {
   return (
     <div className="rounded-3xl border border-white/10 bg-white/[0.04] p-4">
       <div className="text-[11px] uppercase tracking-[0.18em] text-zinc-500">Campaign shelf</div>
       <h3 className="mt-2 text-base font-semibold text-zinc-100">Current and remembered arcs</h3>
       <div className="mt-4 grid gap-3 md:grid-cols-3">
-        <MetricTile label='Reflections' value={String(state.reflections.length)} />
-        <MetricTile label='Active arcs' value='Scaffold pending' />
-        <MetricTile label='Completed arcs' value='Scaffold pending' />
+        <MetricTile label="Reflections" value={String(state.reflections.length)} />
+        <MetricTile label="Active arcs" value="Scaffold pending" />
+        <MetricTile label="Completed arcs" value="Scaffold pending" />
       </div>
       <p className="mt-4 text-sm text-zinc-300">This shelf will eventually hold active campaigns, paused campaigns, and completed reflective arcs without turning personal life into a public score.</p>
     </div>
   );
 }
 
-function NatalPatternCard({ tone, preset, presence, frequency, depth, posture }: { tone: string; preset: string; presence: number; frequency: number; depth: number; posture: ReturnType<typeof createHopePosture> }) {
+function CampaignBuilderCard({ trusted }: { trusted: boolean }) {
   return (
-    <div className="grid gap-4 lg:grid-cols-[minmax(0,.95fr)_minmax(0,1.05fr)]">
-      <div className="rounded-3xl border border-white/10 p-4" style={{ background: `linear-gradient(180deg, ${tone}22, rgba(0,0,0,0.28))` }}>
-        <div className="text-[11px] uppercase tracking-[0.18em] text-zinc-500">Natal pattern</div>
-        <h3 className="mt-2 text-base font-semibold text-zinc-100">Foundational signature</h3>
-        <div className="mt-4 grid gap-3 sm:grid-cols-2">
-          <MetricTile label='Preset' value={preset} />
-          <MetricTile label='Presence' value={`${presence}%`} />
-          <MetricTile label='Frequency' value={`${frequency}%`} />
-          <MetricTile label='Depth' value={`${depth}%`} />
-        </div>
+    <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_22rem]">
+      <div className="rounded-3xl border border-white/10 bg-white/[0.04] p-4 text-sm text-zinc-300 space-y-3">
+        <div className="text-[11px] uppercase tracking-[0.18em] text-zinc-500">Create</div>
+        <h3 className="text-base font-semibold text-zinc-100">Shape a new life arc</h3>
+        <p>This card can later generate guided arcs like healing cycles, missions, aspirations, or domain-based campaigns seeded from conversation and user intent.</p>
+        <p>The creator belongs in Hope because it is about shaping continuity and support, not governance or rank.</p>
       </div>
       <div className="rounded-3xl border border-white/10 bg-black/20 p-4 text-sm text-zinc-300">
-        This card can grow into Hope’s natal and symbolic blueprint. For now it holds stable identity tone and posture while leaving room for richer chart interpretation later.
-        <div className="mt-4"><PermissionRow label='Authority posture' value={posture.authority} /></div>
+        {trusted ? 'Campaign creation can stay local-first and private by default.' : 'Activation should unlock private saved campaign arcs on this device.'}
       </div>
     </div>
   );
@@ -466,7 +428,7 @@ function CosmeticInventoryCard({ tone, preset, onPreset }: { tone: string; prese
   return (
     <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_minmax(0,.95fr)]">
       <div className="rounded-3xl border border-white/10 bg-white/[0.04] p-4">
-        <div className="text-[11px] uppercase tracking-[0.18em] text-zinc-500">Cosmetic inventory</div>
+        <div className="text-[11px] uppercase tracking-[0.18em] text-zinc-500">Inventory</div>
         <h3 className="mt-2 text-base font-semibold text-zinc-100">Visible style and adornment</h3>
         <div className="mt-4 grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
           {COSMETIC_ITEMS.map((item) => (
@@ -498,11 +460,32 @@ function CosmeticInventoryCard({ tone, preset, onPreset }: { tone: string; prese
   );
 }
 
+function NatalPatternCard({ tone, preset, presence, frequency, depth, posture }: { tone: string; preset: string; presence: number; frequency: number; depth: number; posture: ReturnType<typeof createHopePosture> }) {
+  return (
+    <div className="grid gap-4 lg:grid-cols-[minmax(0,.95fr)_minmax(0,1.05fr)]">
+      <div className="rounded-3xl border border-white/10 p-4" style={{ background: `linear-gradient(180deg, ${tone}22, rgba(0,0,0,0.28))` }}>
+        <div className="text-[11px] uppercase tracking-[0.18em] text-zinc-500">Natal pattern</div>
+        <h3 className="mt-2 text-base font-semibold text-zinc-100">Foundational signature</h3>
+        <div className="mt-4 grid gap-3 sm:grid-cols-2">
+          <MetricTile label="Preset" value={preset} />
+          <MetricTile label="Presence" value={`${presence}%`} />
+          <MetricTile label="Frequency" value={`${frequency}%`} />
+          <MetricTile label="Depth" value={`${depth}%`} />
+        </div>
+      </div>
+      <div className="rounded-3xl border border-white/10 bg-black/20 p-4 text-sm text-zinc-300">
+        This card can grow into Hope’s natal and symbolic blueprint. For now it holds stable identity tone and posture while leaving room for richer chart interpretation later.
+        <div className="mt-4"><PermissionRow label="Authority posture" value={posture.authority} /></div>
+      </div>
+    </div>
+  );
+}
+
 function JournalCard({ trusted, state }: { trusted: boolean; state: HopeState }) {
   if (!trusted) {
     return (
       <div className="rounded-3xl border border-white/10 bg-black/20 p-4">
-        <div className="text-[11px] uppercase tracking-[0.18em] text-zinc-500">Journal</div>
+        <div className="text-[11px] uppercase tracking-[0.18em] text-zinc-500">Logs</div>
         <h3 className="mt-2 text-base font-semibold text-zinc-100">Private memory after activation</h3>
         <div className="mt-4 text-sm text-zinc-400">Journal memory is local-private and becomes more useful after ACC activation.</div>
         <div className="mt-4"><CTAActivate /></div>
@@ -514,7 +497,7 @@ function JournalCard({ trusted, state }: { trusted: boolean; state: HopeState })
     <div className="rounded-3xl border border-white/10 bg-white/[0.04] p-4">
       <div className="flex items-center justify-between gap-3">
         <div>
-          <div className="text-[11px] uppercase tracking-[0.18em] text-zinc-500">Journal</div>
+          <div className="text-[11px] uppercase tracking-[0.18em] text-zinc-500">Logs</div>
           <h3 className="mt-2 text-base font-semibold text-zinc-100">Local-private memory archive</h3>
         </div>
         <LockHint label="Local private" />
