@@ -57,6 +57,7 @@ function familyFromPathname(pathname: string): HopeFamilyId | null {
   return null;
 }
 
+function motionForFamilyChange(from: HopeFamilyId, to: HopeFamilyMotion): never;
 function motionForFamilyChange(from: HopeFamilyId, to: HopeFamilyId): FamilyMotion {
   if (from === to) return 'idle';
   return FAMILY_INDEX[to] > FAMILY_INDEX[from] ? 'next' : 'prev';
@@ -104,84 +105,84 @@ export function HopeModuleScreen({ family }: { family: HopeFamilyId }) {
       presence: {
         href: ORDER[0],
         label: 'Presence',
-        shellAction: <div className="text-xs text-zinc-400">A track · living self, dialogue, and present snapshot</div>,
+        shellAction: <div className="text-xs text-zinc-400">A track · avatar, snapshot, and direct dialogue</div>,
         cards: [
           {
             id: 'a1',
             navLabel: 'A1',
             title: 'Hope - A1 Avatar',
             caption: 'The first glance. Hope appears here as the living, stylized reflection of the user: mood, visual state, and immediate presence.',
-            render: () => <AvatarCard trusted={account.trusted} tone={tone} preset={preset} presence={presence} reflectionCount={reflectionCount} />, 
+            render: () => <AvatarCard trusted={account.trusted} tone={tone} preset={preset} presence={presence} reflectionCount={reflectionCount} />,
           },
           {
             id: 'a2',
             navLabel: 'A2',
-            title: 'Hope - A2 Dialogue',
-            caption: 'The direct conversation surface. This is where the user checks in, asks questions, and speaks with Hope without pressure or governance claims.',
-            render: () => <DialogueCard posture={presencePosture} onRecorded={() => void loadHopeState()} />, 
+            title: 'Hope - A2 Snapshot',
+            caption: 'The present readout. Hope summarizes what feels active now: emotional atmosphere, memory recency, and nearby openings across the user’s private Arcanum life.',
+            render: () => <SnapshotCard latestReflection={latestReflection} trusted={account.trusted} />,
           },
           {
             id: 'a3',
             navLabel: 'A3',
-            title: 'Hope - A3 Snapshot',
-            caption: 'The present readout. Hope summarizes what feels active now: emotional atmosphere, memory recency, and nearby openings in the app.',
-            render: () => <SnapshotCard latestReflection={latestReflection} trusted={account.trusted} />, 
+            title: 'Hope - A3 Dialogue',
+            caption: 'The direct conversation surface. This is where the user checks in, asks questions, and speaks with Hope so memory, state, and later campaigns can update from lived input.',
+            render: () => <DialogueCard posture={presencePosture} onRecorded={() => void loadHopeState()} />,
           },
         ],
       },
       reflection: {
         href: ORDER[1],
-        label: 'Guidance',
-        shellAction: <div className="text-xs text-zinc-400">B track · orientation, campaign builder, and active life arcs</div>,
+        label: 'Campaigns',
+        shellAction: <div className="text-xs text-zinc-400">B track · orientation, active campaigns, and campaign creation</div>,
         cards: [
           {
             id: 'b1',
             navLabel: 'B1',
             title: 'Hope - B1 Orientation',
-            caption: 'The over-time guidance layer. Hope reflects the current pattern of the user’s life without turning that into command, judgment, or diagnosis.',
-            render: () => <OrientationCard posture={reflectionPosture} latestReflection={latestReflection} />, 
+            caption: 'The over-time dashboard. Hope gathers the user’s active Arcanum cues first — Tempus rites, Vitae openings, and current life-direction signals — before expanding into broader custom campaigns.',
+            render: () => <OrientationCard posture={reflectionPosture} latestReflection={latestReflection} />,
           },
           {
             id: 'b2',
             navLabel: 'B2',
-            title: 'Hope - B2 Campaign Builder',
-            caption: 'The campaign builder shapes new arcs of life attention: healing cycles, intentions, practices, and self-authored missions.',
-            render: () => <CampaignBuilderCard trusted={account.trusted} />, 
+            title: 'Hope - B2 Campaigns',
+            caption: 'The campaign shelf keeps current and remembered life arcs visible. These campaigns are for continuity and follow-through, not authority or rank.',
+            render: () => <CampaignsCard state={hopeState} />,
           },
           {
             id: 'b3',
             navLabel: 'B3',
-            title: 'Hope - B3 Campaigns',
-            caption: 'The campaign shelf keeps current and remembered life arcs visible. These campaigns are for reflection and continuity, not authority or rank.',
-            render: () => <CampaignsCard state={hopeState} />, 
+            title: 'Hope - B3 Create',
+            caption: 'The campaign creator shapes new arcs of life attention: healing cycles, habit journeys, intentions, and domain-based missions that conversations can later containerize into.',
+            render: () => <CampaignBuilderCard trusted={account.trusted} />,
           },
         ],
       },
       attunement: {
         href: ORDER[2],
-        label: 'Memory',
-        shellAction: <div className="text-xs text-zinc-400">C track · natal pattern, cosmetics, and journal memory</div>,
+        label: 'Archive',
+        shellAction: <div className="text-xs text-zinc-400">C track · inventory, natal pattern, and private logs</div>,
         cards: [
           {
             id: 'c1',
             navLabel: 'C1',
-            title: 'Hope - C1 Natal Pattern',
-            caption: 'The foundational symbolic layer. This is where Hope’s deeper patterning can live: natal structure, archetypal tones, and stable identity signatures.',
-            render: () => <NatalPatternCard tone={tone} preset={preset} presence={presence} frequency={frequency} depth={depth} posture={attunementPosture} />, 
+            title: 'Hope - C1 Inventory',
+            caption: 'The expressive inventory. Cosmetics, unlocks, frames, accessories, and community-created adornments gather here as part of Hope’s visible identity.',
+            render: () => <CosmeticInventoryCard tone={tone} preset={preset} onPreset={setPreset} />,
           },
           {
             id: 'c2',
             navLabel: 'C2',
-            title: 'Hope - C2 Cosmetic Inventory',
-            caption: 'The expressive inventory. Cosmetics, unlocks, frames, accessories, and community-created adornments gather here as part of Hope’s visible identity.',
-            render: () => <CosmeticInventoryCard tone={tone} preset={preset} onPreset={setPreset} />, 
+            title: 'Hope - C2 Natal Pattern',
+            caption: 'The foundational symbolic layer. This is where Hope’s deeper patterning can live: natal structure, archetypal tones, and stable cosmic signatures built over time.',
+            render: () => <NatalPatternCard tone={tone} preset={preset} presence={presence} frequency={frequency} depth={depth} posture={attunementPosture} />,
           },
           {
             id: 'c3',
             navLabel: 'C3',
-            title: 'Hope - C3 Journal',
-            caption: 'The memory archive. Journal entries, chat history, and attached Tempus or Vitae context remain private reflective memory unless the user chooses otherwise.',
-            render: () => <JournalCard trusted={account.trusted} state={hopeState} />, 
+            title: 'Hope - C3 Logs',
+            caption: 'The private memory archive. Journal entries, chat history, and attached Tempus or Vitae context remain private reflective memory unless the user chooses otherwise.',
+            render: () => <JournalCard trusted={account.trusted} state={hopeState} />,
           },
         ],
       },
@@ -393,7 +394,7 @@ function OrientationCard({ posture, latestReflection }: { posture: ReturnType<ty
       <div className="rounded-3xl border border-white/10 bg-white/[0.04] p-4 text-sm text-zinc-300 space-y-3">
         <div className="text-[11px] uppercase tracking-[0.18em] text-zinc-500">Orientation</div>
         <h3 className="text-base font-semibold text-zinc-100">Bigger life pattern</h3>
-        <p>Hope can help the user see themes, recurrences, and emotional weather over time without claiming diagnosis or authority.</p>
+        <p>Hope can help the user see themes, recurrences, and emotional weather over time without turning that into command, judgment, or diagnosis.</p>
         <p>{latestReflection ? `The latest remembered entry was recorded on ${new Date(latestReflection.createdAt).toLocaleString()}.` : 'No reflection has been recorded yet, so the pattern layer is still quiet.'}</p>
       </div>
       <div className="rounded-3xl border border-white/10 bg-black/20 p-4">
