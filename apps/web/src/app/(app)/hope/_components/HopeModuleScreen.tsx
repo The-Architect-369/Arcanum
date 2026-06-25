@@ -529,19 +529,19 @@ function CosmeticInventoryCard({
           ))}
         </div>
       </div>
-      <div className="rounded-3xl border border-white/10 bg-black/20 p-4">
-        <div
-          className="grid aspect-square place-items-center rounded-[2rem] border border-white/10"
-          style={{
-            background: `radial-gradient(circle at center, ${visualState.palette.core} 0%, ${visualState.palette.field} 58%, rgba(2,6,23,0.88) 100%)`,
-          }}
-        >
-          <div className="px-4 text-center text-xs uppercase tracking-wide text-white/75">
-            {renderState.emotionalPreset} field
-            <div className="mt-2 text-[11px] tracking-[0.18em] text-white/55">{visualState.motion.profile} motion</div>
-          </div>
+      <HopePresenceScene
+        renderState={renderState}
+        visualState={visualState}
+        size={144}
+        variant="compact"
+        footer={<div className="text-[11px] uppercase tracking-[0.18em] text-white/50">archive field</div>}
+      >
+        <div className="space-y-3">
+          <PermissionRow label="Atmosphere" value={renderState.emotionalPreset} />
+          <PermissionRow label="Motion language" value={visualState.motion.profile} />
+          <PermissionRow label="Field state" value={visualState.environment.backgroundField} />
         </div>
-      </div>
+      </HopePresenceScene>
     </div>
   );
 }
@@ -556,24 +556,29 @@ function NatalPatternCard({
   posture: ReturnType<typeof createHopePosture>;
 }) {
   return (
-    <div className="grid gap-4 lg:grid-cols-[minmax(0,.95fr)_minmax(0,1.05fr)]">
-      <div
-        className="rounded-3xl border border-white/10 p-4"
-        style={{
-          background: `linear-gradient(180deg, ${visualState.palette.field}, rgba(0,0,0,0.28))`,
-        }}
+    <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
+      <HopePresenceScene
+        renderState={renderState}
+        visualState={visualState}
+        size={156}
+        variant="compact"
+        footer={<div className="text-[11px] uppercase tracking-[0.18em] text-white/50">natal field</div>}
       >
-        <div className="text-[11px] uppercase tracking-[0.18em] text-zinc-400">Natal pattern</div>
-        <h3 className="mt-2 text-base font-semibold text-zinc-100">Foundational signature</h3>
-        <div className="mt-4 grid gap-3 sm:grid-cols-2">
-          <MetricTile label="Atmosphere" value={renderState.emotionalPreset} />
-          <MetricTile label="Presence" value={`${renderState.presencePercent}%`} />
-          <MetricTile label="Field state" value={visualState.environment.backgroundField} />
-          <MetricTile label="Transition" value={renderState.transitionState} />
+        <div className="space-y-3">
+          <PermissionRow label="Atmosphere" value={renderState.emotionalPreset} />
+          <PermissionRow label="Presence" value={`${renderState.presencePercent}%`} />
+          <PermissionRow label="Field state" value={visualState.environment.backgroundField} />
+          <PermissionRow label="Transition" value={renderState.transitionState} />
         </div>
-      </div>
+      </HopePresenceScene>
       <div className="rounded-3xl border border-white/10 bg-black/20 p-4 text-sm text-zinc-300">
-        This card can grow into Hope’s natal and symbolic blueprint. For now it names the render-driven visual posture without letting page-local settings impersonate identity.
+        <div className="text-[11px] uppercase tracking-[0.18em] text-zinc-500">Natal pattern</div>
+        <h3 className="mt-2 text-base font-semibold text-zinc-100">Foundational signature</h3>
+        <p className="mt-4">This card can grow into Hope’s natal and symbolic blueprint. For now it names the render-driven visual posture without letting page-local settings impersonate identity.</p>
+        <div className="mt-4 grid gap-3 sm:grid-cols-2">
+          <MetricTile label="Motion" value={visualState.motion.profile} />
+          <MetricTile label="Contrast" value={visualState.palette.contrast} />
+        </div>
         <div className="mt-4">
           <PermissionRow label="Authority posture" value={posture.authority} />
         </div>
