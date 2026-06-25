@@ -1,9 +1,44 @@
 "use client";
 
 import Link from "next/link";
-import HopeOrb from "@/components/ui/HopeOrb";
 import BentoCard from "@/components/ui/BentoCard";
+import { HopePresenceAvatar } from "@/components/hope/HopePresenceAvatar";
+import type { HopeVisualState } from "@/lib/hope/visual";
 import { copy } from "@/content/narrative";
+
+const HERO_VISUAL_STATE: HopeVisualState = {
+  avatar: {
+    form: "orb",
+    openness: 0.72,
+    gazeSoftness: 0.78,
+    silhouetteScale: 1,
+  },
+  aura: {
+    intensity: 0.72,
+    radius: 164,
+    bloom: 0.42,
+    pulseRate: "slow",
+    ringCount: 2,
+  },
+  motion: {
+    profile: "calm",
+    drift: "low",
+    breathMs: 5200,
+    shimmer: "soft",
+    transitionMs: 480,
+  },
+  palette: {
+    field: "rgba(56, 189, 248, 0.22)",
+    core: "rgba(251, 191, 36, 0.34)",
+    aura: "rgba(125, 211, 252, 0.34)",
+    contrast: "medium",
+  },
+  environment: {
+    backgroundField: "breathing",
+    particleDensity: "low",
+    focusVignette: "soft",
+  },
+};
 
 export default function HeroBento() {
   function scrollToActivate(e: React.MouseEvent) {
@@ -20,8 +55,8 @@ export default function HeroBento() {
           {[copy.hero.line1, copy.hero.line2].join(" ")}
         </p>
 
-        <div className="relative z-0 hope-wave my-6">
-          <HopeOrb size={136} intensity={1.08} oscillate irisOffsetPx={-6} />
+        <div className="relative z-0 hope-wave my-6 grid place-items-center" aria-hidden>
+          <HopePresenceAvatar visualState={HERO_VISUAL_STATE} size={136} />
         </div>
 
         <Link
