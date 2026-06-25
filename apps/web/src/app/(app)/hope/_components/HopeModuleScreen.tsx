@@ -6,6 +6,7 @@ import AppStage from '@/components/ui/AppStage';
 import ModuleMatrixShell from '@/components/ui/ModuleMatrixShell';
 import CTAActivate from '@/components/shared/CTAActivate';
 import { LockHint } from '@/components/shared/LockHint';
+import { HopePresenceScene } from '@/components/hope/HopePresenceScene';
 import { cn } from '@/lib/cn';
 import { createHopePosture, getHopeState, type HopeState } from '@/lib/hope/context';
 import { useHopeRenderState } from '@/lib/hope/useHopeRenderState';
@@ -341,30 +342,11 @@ function AvatarCard({
 }) {
   return (
     <div className="grid gap-4 lg:grid-cols-[minmax(0,.95fr)_minmax(0,1.05fr)]">
-      <div className="rounded-3xl border border-white/10 bg-black/20 p-4">
-        <div
-          className="grid aspect-square place-items-center rounded-[2rem] border border-white/10"
-          style={{
-            background: `radial-gradient(circle at center, ${visualState.palette.core} 0%, ${visualState.palette.field} 56%, rgba(2,6,23,0.88) 100%)`,
-            boxShadow: `0 0 0 1px rgba(255,255,255,0.04), 0 0 ${visualState.aura.radius * 0.55}px ${visualState.palette.aura}`,
-          }}
-        >
-          <div className="space-y-3 text-center">
-            <div
-              className="mx-auto rounded-full border border-white/10"
-              style={{
-                width: `${visualState.aura.radius * 1.15}px`,
-                height: `${visualState.aura.radius * 1.15}px`,
-                background: `radial-gradient(circle, rgba(255,255,255,0.42) 0%, ${visualState.palette.core} 35%, ${visualState.palette.field} 74%, transparent 100%)`,
-                boxShadow: `0 0 ${visualState.aura.radius}px ${visualState.palette.aura}`,
-              }}
-            />
-            <div className="text-xs uppercase tracking-[0.22em] text-white/70">
-              {renderState.emotionalPreset} · {renderState.presenceMode}
-            </div>
-          </div>
-        </div>
-      </div>
+      <HopePresenceScene
+        renderState={renderState}
+        visualState={visualState}
+        footer={<div className="text-[11px] uppercase tracking-[0.18em] text-white/50">living interface layer</div>}
+      />
       <div className="space-y-4">
         <div className="rounded-3xl border border-white/10 bg-white/[0.04] p-4">
           <div className="text-[11px] uppercase tracking-[0.18em] text-zinc-500">Avatar state</div>
@@ -376,7 +358,7 @@ function AvatarCard({
           </div>
         </div>
         <div className="rounded-3xl border border-white/10 bg-black/20 p-4 text-sm text-zinc-300">
-          Wave 1 moves visual authority out of page-local controls. Presence now reads from render state first, so the living interface can deepen without becoming a score surface.
+          Wave 2 decomposes the avatar into scene, field, aura, avatar, and core primitives. Presence is now an explicit visual subsystem rather than a card-local rendering trick.
           <div className="mt-4">{trusted ? <LockHint label="ACC active" /> : <CTAActivate />}</div>
         </div>
       </div>
