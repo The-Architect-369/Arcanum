@@ -41,10 +41,11 @@ export function deriveHopeRenderState(state: HopeState, options: { trusted?: boo
   const reflectionDensity: HopeReflectionDensity =
     reflections >= 9 ? 'settled' : reflections >= 3 ? 'gathering' : 'sparse';
 
-  const presenceBase = reflections === 0 ? 28 : 36 + reflections * 7;
-  const recencyBoost = recencyBand === 'now' ? 24 : recencyBand === 'recent' ? 12 : 0;
-  const trustBoost = options.trusted ? 6 : 0;
-  const presencePercent = clamp(Math.round(presenceBase + recencyBoost + trustBoost), 18, 92);
+  const continuityBase = reflections > 0 ? 10 : 0;
+  const densityWeight = reflectionDensity === 'settled' ? 14 : reflectionDensity === 'gathering' ? 8 : 0;
+  const recencyWeight = recencyBand === 'now' ? 24 : recencyBand === 'recent' ? 12 : 0;
+  const trustWeight = options.trusted ? 6 : 0;
+  const presencePercent = clamp(32 + continuityBase + densityWeight + recencyWeight + trustWeight, 24, 88);
 
   const emotionalPreset: HopeEmotionalPreset =
     reflectionDensity === 'settled'
@@ -68,9 +69,9 @@ export function deriveHopeRenderState(state: HopeState, options: { trusted?: boo
       ? 'shifting'
       : reflectionDensity === 'gathering'
         ? 'entering'
-        : reflectionDensity === 'sparse'
-          ? 'stable'
-          : 'leaving';
+        : reflectionDensity === 'settled'
+          ? 'leaving'
+          : 'stable';
 
   return {
     presencePercent,
