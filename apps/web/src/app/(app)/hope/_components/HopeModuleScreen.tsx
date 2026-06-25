@@ -139,7 +139,7 @@ export function HopeModuleScreen({ family }: { family: HopeFamilyId }) {
             title: 'Hope - A3 Dialogue',
             caption:
               'The direct conversation surface. This is where the user checks in, speaks with Hope, and creates the captured input that later shapes campaigns, logs, and state changes.',
-            render: () => <DialogueCard posture={presencePosture} onRecorded={() => void loadHopeState()} />,
+            render: () => <DialogueCard posture={presencePosture} renderState={renderState} visualState={visualState} onRecorded={() => void loadHopeState()} />,
           },
         ],
       },
@@ -403,20 +403,46 @@ function SnapshotCard({
   );
 }
 
-function DialogueCard({ posture, onRecorded }: { posture: ReturnType<typeof createHopePosture>; onRecorded: () => void }) {
+function DialogueCard({
+  posture,
+  renderState,
+  visualState,
+  onRecorded,
+}: {
+  posture: ReturnType<typeof createHopePosture>;
+  renderState: HopeRenderState;
+  visualState: HopeVisualState;
+  onRecorded: () => void;
+}) {
   return (
-    <div className="space-y-4">
-      <div className="rounded-3xl border border-white/10 bg-white/[0.04] p-4">
-        <div className="text-[11px] uppercase tracking-[0.18em] text-zinc-500">Dialogue</div>
-        <h3 className="mt-2 text-base font-semibold text-zinc-100">Speak with Hope</h3>
-        <div className="mt-4">
-          <ReflectionEditor onRecorded={onRecorded} />
+    <div className="grid gap-4 lg:grid-cols-[minmax(0,1.02fr)_minmax(0,.98fr)]">
+      <div className="space-y-4">
+        <div className="rounded-3xl border border-white/10 bg-white/[0.04] p-4">
+          <div className="text-[11px] uppercase tracking-[0.18em] text-zinc-500">Dialogue</div>
+          <h3 className="mt-2 text-base font-semibold text-zinc-100">Speak with Hope</h3>
+          <div className="mt-4">
+            <ReflectionEditor onRecorded={onRecorded} />
+          </div>
+        </div>
+        <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
+          <StateNote title="Clarify">{posture.canClarify ? 'Hope can clarify and mirror.' : 'Clarification is unavailable in this posture.'}</StateNote>
+          <StateNote title="Boundary">Hope does not execute, ratify, or confirm readiness here.</StateNote>
         </div>
       </div>
-      <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
-        <StateNote title="Clarify">{posture.canClarify ? 'Hope can clarify and mirror.' : 'Clarification is unavailable in this posture.'}</StateNote>
-        <StateNote title="Boundary">Hope does not execute, ratify, or confirm readiness here.</StateNote>
-      </div>
+      <HopePresenceScene
+        renderState={renderState}
+        visualState={visualState}
+        size={156}
+        variant="compact"
+        footer={<div className="text-[11px] uppercase tracking-[0.18em] text-white/50">dialogue field</div>}
+      >
+        <div className="space-y-3">
+          <PermissionRow label="Dialogue state" value={renderState.dialogueState} />
+          <PermissionRow label="Transition state" value={renderState.transitionState} />
+          <PermissionRow label="Motion language" value={visualState.motion.profile} />
+          <PermissionRow label="Authority posture" value={posture.authority} />
+        </div>
+      </HopePresenceScene>
     </div>
   );
 }
