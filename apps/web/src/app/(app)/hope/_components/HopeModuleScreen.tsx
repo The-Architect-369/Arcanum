@@ -8,6 +8,10 @@ import CTAActivate from '@/components/shared/CTAActivate';
 import { LockHint } from '@/components/shared/LockHint';
 import { cn } from '@/lib/cn';
 import { createHopePosture, getHopeState, type HopeState } from '@/lib/hope/context';
+import { useHopeRenderState } from '@/lib/hope/useHopeRenderState';
+import { useHopeVisualState } from '@/lib/hope/useHopeVisualState';
+import type { HopeRenderState } from '@/lib/hope/render';
+import type { HopeVisualState } from '@/lib/hope/visual';
 import { useAccount } from '@/state/useAccount';
 import { ReflectionEditor } from './ReflectionEditor';
 
@@ -45,7 +49,6 @@ const EMPTY_STATE: HopeState = {
   reflections: [],
   updatedAt: null,
 };
-const PRESETS = ['quiet', 'steady', 'warm', 'deep'] as const;
 const COSMETIC_ITEMS = ['Founder halo', 'Lumen sash', 'Archive patch', 'Celestial trim', 'Kindred frame', 'Signal bloom'] as const;
 
 function familyFromPathname(pathname: string): HopeFamilyId | null {
@@ -63,6 +66,13 @@ function subtitleFromCardTitle(title: string) {
   return title.replace(/^Hope\s*-\s*/i, '');
 }
 
+function formatTimestamp(value: string | null | undefined) {
+  if (!value) return 'No recent entry';
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return 'No recent entry';
+  return date.toLocaleString();
+}
+
 export function HopeModuleScreen({ family }: { family: HopeFamilyId }) {
   const account = useAccount();
   const [activeFamilyId, setActiveFamilyId] = useState<HopeFamilyId>(family);
@@ -70,11 +80,6 @@ export function HopeModuleScreen({ family }: { family: HopeFamilyId }) {
   const [familyMotion, setFamilyMotion] = useState<FamilyMotion>('idle');
   const [familyMotionKey, setFamilyMotionKey] = useState(0);
   const [hopeState, setHopeState] = useState<HopeState>(EMPTY_STATE);
-  const [tone, setTone] = useState('#9bb8ff');
-  const [presence, setPresence] = useState(35);
-  const [frequency, setFrequency] = useState(30);
-  const [depth, setDepth] = useState(45);
-  const [preset, setPreset] = useState<(typeof PRESETS)[number]>('quiet');
 
   async function loadHopeState() {
     const next = await getHopeState();
@@ -90,7 +95,9 @@ export function HopeModuleScreen({ family }: { family: HopeFamilyId }) {
     return () => window.clearTimeout(timer);
   }, [familyMotionKey]);
 
-  const reflectionCount = hopeState.reflections.length;
+  const renderState = useHopeRenderState(hopeState, { trusted: account.trusted });
+  const visualState = useHopeVisualState(renderState);
+
   const latestReflection = hopeState.reflections[0] ?? null;
   const presencePosture = createHopePosture('presence');
   const reflectionPosture = createHopePosture('reflection');
@@ -107,21 +114,30 @@ export function HopeModuleScreen({ family }: { family: HopeFamilyId }) {
             id: 'a1',
             navLabel: 'A1',
             title: 'Hope - A1 Avatar',
-            caption: 'The first glance. Hope appears here as the living visual self: the current companion body, active mood treatment, and the first emotionally legible surface of the module.',
-            render: () => <AvatarCard trusted={account.trusted} tone={tone} preset={preset} presence={presence} reflectionCount={reflectionCount} />,
+            caption:
+              'The first glance. Hope appears here as the living visual self: the current companion body, active mood treatment, and the first emotionally legible surface of the module.',
+            render: () => (
+              <AvatarCard
+                trusted={account.trusted}
+                renderState={renderState}
+                visualState={visualState}
+                reflectionCount={hopeState.reflections.length}
+              />
+            ),
           },
           {
             id: 'a2',
             navLabel: 'A2',
             title: 'Hope - A2 Snapshot',
             caption: 'The present readout. Snapshot explains what Hope is currently showing: emotional atmosphere, active themes, and nearby openings across the Arcanum.',
-            render: () => <SnapshotCard latestReflection={latestReflection} trusted={account.trusted} />,
+            render: () => <SnapshotCard latestReflection={latestReflection} trusted={account.trusted} renderState={renderState} visualState={visualState} />,
           },
           {
             id: 'a3',
             navLabel: 'A3',
             title: 'Hope - A3 Dialogue',
-            caption: 'The direct conversation surface. This is where the user checks in, speaks with Hope, and creates the captured input that later shapes campaigns, logs, and state changes.',
+            caption:
+              'The direct conversation surface. This is where the user checks in, speaks with Hope, and creates the captured input that later shapes campaigns, logs, and state changes.',
             render: () => <DialogueCard posture={presencePosture} onRecorded={() => void loadHopeState()} />,
           },
         ],
@@ -135,21 +151,24 @@ export function HopeModuleScreen({ family }: { family: HopeFamilyId }) {
             id: 'b1',
             navLabel: 'B1',
             title: 'Hope - B1 Orientation',
-            caption: 'The over-time dashboard. Orientation gathers what is active across Arcanum life first: Tempus windows, Vitae openings, and the highest-priority campaign signals that matter now.',
-            render: () => <OrientationCard posture={reflectionPosture} latestReflection={latestReflection} />,
+            caption:
+              'The over-time dashboard. Orientation gathers what is active across Arcanum life first: Tempus windows, Vitae openings, and the highest-priority campaign signals that matter now.',
+            render: () => <OrientationCard posture={reflectionPosture} latestReflection={latestReflection} renderState={renderState} />,
           },
           {
             id: 'b2',
             navLabel: 'B2',
             title: 'Hope - B2 Campaigns',
-            caption: 'The quest log. Campaigns keep active arcs, paused arcs, and remembered life missions visible so the user can understand the larger shape of what Hope is helping them build.',
-            render: () => <CampaignsCard state={hopeState} />,
+            caption:
+              'The quest log. Campaigns keep active arcs, paused arcs, and remembered life missions visible so the user can understand the larger shape of what Hope is helping them build.',
+            render: () => <CampaignsCard state={hopeState} renderState={renderState} />,
           },
           {
             id: 'b3',
             navLabel: 'B3',
             title: 'Hope - B3 Create',
-            caption: 'The creation surface. New campaigns, missions, and life-domain arcs should begin here and later be seeded from conversation capture rather than burdensome manual setup alone.',
+            caption:
+              'The creation surface. New campaigns, missions, and life-domain arcs should begin here and later be seeded from conversation capture rather than burdensome manual setup alone.',
             render: () => <CampaignBuilderCard trusted={account.trusted} />,
           },
         ],
@@ -163,27 +182,30 @@ export function HopeModuleScreen({ family }: { family: HopeFamilyId }) {
             id: 'c1',
             navLabel: 'C1',
             title: 'Hope - C1 Inventory',
-            caption: 'The held-object layer. Cosmetics, unlocks, frames, habitats, and visible Hope adornments gather here so the user can shape the companion’s appearance over time.',
-            render: () => <CosmeticInventoryCard tone={tone} preset={preset} onPreset={setPreset} />,
+            caption:
+              'The held-object layer. Cosmetics, unlocks, frames, habitats, and visible Hope adornments gather here so the user can shape the companion’s appearance over time.',
+            render: () => <CosmeticInventoryCard renderState={renderState} visualState={visualState} />,
           },
           {
             id: 'c2',
             navLabel: 'C2',
             title: 'Hope - C2 Natal Pattern',
-            caption: 'The symbolic pattern layer. This is where natal structure, archetypal affinities, and later emotional or elemental containers can become readable without collapsing into diagnosis.',
-            render: () => <NatalPatternCard tone={tone} preset={preset} presence={presence} frequency={frequency} depth={depth} posture={attunementPosture} />,
+            caption:
+              'The symbolic pattern layer. This is where natal structure, archetypal affinities, and later emotional or elemental containers can become readable without collapsing into diagnosis.',
+            render: () => <NatalPatternCard renderState={renderState} visualState={visualState} posture={attunementPosture} />,
           },
           {
             id: 'c3',
             navLabel: 'C3',
             title: 'Hope - C3 Logs',
-            caption: 'The private archive. Conversation memory, journal entries, and attached Tempus or Vitae context remain locally held reflective memory unless the user chooses otherwise.',
+            caption:
+              'The private archive. Conversation memory, journal entries, and attached Tempus or Vitae context remain locally held reflective memory unless the user chooses otherwise.',
             render: () => <JournalCard trusted={account.trusted} state={hopeState} />,
           },
         ],
       },
     }),
-    [account.trusted, hopeState, tone, preset, presence, frequency, depth, reflectionCount, latestReflection, presencePosture, reflectionPosture, attunementPosture]
+    [account.trusted, hopeState, latestReflection, presencePosture, reflectionPosture, attunementPosture, renderState, visualState]
   );
 
   const activeFamily = families[activeFamilyId];
@@ -306,14 +328,40 @@ export function HopeModuleScreen({ family }: { family: HopeFamilyId }) {
   );
 }
 
-function AvatarCard({ trusted, tone, preset, presence, reflectionCount }: { trusted: boolean; tone: string; preset: string; presence: number; reflectionCount: number }) {
+function AvatarCard({
+  trusted,
+  renderState,
+  visualState,
+  reflectionCount,
+}: {
+  trusted: boolean;
+  renderState: HopeRenderState;
+  visualState: HopeVisualState;
+  reflectionCount: number;
+}) {
   return (
     <div className="grid gap-4 lg:grid-cols-[minmax(0,.95fr)_minmax(0,1.05fr)]">
       <div className="rounded-3xl border border-white/10 bg-black/20 p-4">
-        <div className="grid aspect-square place-items-center rounded-[2rem] border border-white/10" style={{ background: tone }}>
-          <div className="space-y-2 text-center">
-            <div className="text-5xl">✦</div>
-            <div className="text-xs uppercase tracking-[0.22em] text-black/70">{preset} presence</div>
+        <div
+          className="grid aspect-square place-items-center rounded-[2rem] border border-white/10"
+          style={{
+            background: `radial-gradient(circle at center, ${visualState.palette.core} 0%, ${visualState.palette.field} 56%, rgba(2,6,23,0.88) 100%)`,
+            boxShadow: `0 0 0 1px rgba(255,255,255,0.04), 0 0 ${visualState.aura.radius * 0.55}px ${visualState.palette.aura}`,
+          }}
+        >
+          <div className="space-y-3 text-center">
+            <div
+              className="mx-auto rounded-full border border-white/10"
+              style={{
+                width: `${visualState.aura.radius * 1.15}px`,
+                height: `${visualState.aura.radius * 1.15}px`,
+                background: `radial-gradient(circle, rgba(255,255,255,0.42) 0%, ${visualState.palette.core} 35%, ${visualState.palette.field} 74%, transparent 100%)`,
+                boxShadow: `0 0 ${visualState.aura.radius}px ${visualState.palette.aura}`,
+              }}
+            />
+            <div className="text-xs uppercase tracking-[0.22em] text-white/70">
+              {renderState.emotionalPreset} · {renderState.presenceMode}
+            </div>
           </div>
         </div>
       </div>
@@ -322,13 +370,13 @@ function AvatarCard({ trusted, tone, preset, presence, reflectionCount }: { trus
           <div className="text-[11px] uppercase tracking-[0.18em] text-zinc-500">Avatar state</div>
           <h3 className="mt-2 text-base font-semibold text-zinc-100">Living self snapshot</h3>
           <div className="mt-4 grid gap-3 sm:grid-cols-3">
-            <MetricTile label="Mood hue" value={preset} />
-            <MetricTile label="Presence" value={`${presence}%`} />
+            <MetricTile label="Presence field" value={`${renderState.presencePercent}%`} />
+            <MetricTile label="Atmosphere" value={renderState.emotionalPreset} />
             <MetricTile label="Memory" value={`${reflectionCount} entries`} />
           </div>
         </div>
         <div className="rounded-3xl border border-white/10 bg-black/20 p-4 text-sm text-zinc-300">
-          Hope is meant to feel alive here: stylized, responsive, and personal. This card becomes more compelling as avatar cosmetics, states, and emotes deepen.
+          Wave 1 moves visual authority out of page-local controls. Presence now reads from render state first, so the living interface can deepen without becoming a score surface.
           <div className="mt-4">{trusted ? <LockHint label="ACC active" /> : <CTAActivate />}</div>
         </div>
       </div>
@@ -336,15 +384,26 @@ function AvatarCard({ trusted, tone, preset, presence, reflectionCount }: { trus
   );
 }
 
-function SnapshotCard({ latestReflection, trusted }: { latestReflection: HopeState['reflections'][number] | null; trusted: boolean }) {
+function SnapshotCard({
+  latestReflection,
+  trusted,
+  renderState,
+  visualState,
+}: {
+  latestReflection: HopeState['reflections'][number] | null;
+  trusted: boolean;
+  renderState: HopeRenderState;
+  visualState: HopeVisualState;
+}) {
   return (
     <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_22rem]">
       <div className="rounded-3xl border border-white/10 bg-white/[0.04] p-4">
         <div className="text-[11px] uppercase tracking-[0.18em] text-zinc-500">Snapshot</div>
         <h3 className="mt-2 text-base font-semibold text-zinc-100">What feels active now</h3>
         <div className="mt-4 space-y-3">
-          <PermissionRow label="Latest reflection" value={latestReflection ? new Date(latestReflection.createdAt).toLocaleString() : 'No recent entry'} />
-          <PermissionRow label="Current opening" value="Dialogue, memory, and soft self-check-ins" />
+          <PermissionRow label="Latest reflection" value={formatTimestamp(latestReflection?.createdAt)} />
+          <PermissionRow label="Atmosphere" value={`${renderState.emotionalPreset} · ${renderState.presenceMode}`} />
+          <PermissionRow label="Motion language" value={visualState.motion.profile} />
           <PermissionRow label="Notification posture" value="Check-in style, not command style" />
         </div>
       </div>
@@ -361,7 +420,9 @@ function DialogueCard({ posture, onRecorded }: { posture: ReturnType<typeof crea
       <div className="rounded-3xl border border-white/10 bg-white/[0.04] p-4">
         <div className="text-[11px] uppercase tracking-[0.18em] text-zinc-500">Dialogue</div>
         <h3 className="mt-2 text-base font-semibold text-zinc-100">Speak with Hope</h3>
-        <div className="mt-4"><ReflectionEditor onRecorded={onRecorded} /></div>
+        <div className="mt-4">
+          <ReflectionEditor onRecorded={onRecorded} />
+        </div>
       </div>
       <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
         <StateNote title="Clarify">{posture.canClarify ? 'Hope can clarify and mirror.' : 'Clarification is unavailable in this posture.'}</StateNote>
@@ -371,14 +432,23 @@ function DialogueCard({ posture, onRecorded }: { posture: ReturnType<typeof crea
   );
 }
 
-function OrientationCard({ posture, latestReflection }: { posture: ReturnType<typeof createHopePosture>; latestReflection: HopeState['reflections'][number] | null }) {
+function OrientationCard({
+  posture,
+  latestReflection,
+  renderState,
+}: {
+  posture: ReturnType<typeof createHopePosture>;
+  latestReflection: HopeState['reflections'][number] | null;
+  renderState: HopeRenderState;
+}) {
   return (
     <div className="grid gap-4 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,.95fr)]">
-      <div className="rounded-3xl border border-white/10 bg-white/[0.04] p-4 text-sm text-zinc-300 space-y-3">
+      <div className="rounded-3xl border border-white/10 bg-white/[0.04] p-4 space-y-3 text-sm text-zinc-300">
         <div className="text-[11px] uppercase tracking-[0.18em] text-zinc-500">Orientation</div>
         <h3 className="text-base font-semibold text-zinc-100">Bigger life pattern</h3>
         <p>Hope can help the user see themes, recurrences, and active openings across Arcanum life without turning that into command, judgment, or diagnosis.</p>
-        <p>{latestReflection ? `The latest remembered entry was recorded on ${new Date(latestReflection.createdAt).toLocaleString()}.` : 'No reflection has been recorded yet, so the pattern layer is still quiet.'}</p>
+        <p>{latestReflection ? `The latest remembered entry was recorded on ${formatTimestamp(latestReflection.createdAt)}.` : 'No reflection has been recorded yet, so the pattern layer is still quiet.'}</p>
+        <p>Current atmosphere reads as {renderState.emotionalPreset} with a {renderState.presenceMode} motion posture.</p>
       </div>
       <div className="rounded-3xl border border-white/10 bg-black/20 p-4">
         <div className="text-[11px] uppercase tracking-[0.18em] text-zinc-500">Guidance posture</div>
@@ -393,15 +463,15 @@ function OrientationCard({ posture, latestReflection }: { posture: ReturnType<ty
   );
 }
 
-function CampaignsCard({ state }: { state: HopeState }) {
+function CampaignsCard({ state, renderState }: { state: HopeState; renderState: HopeRenderState }) {
   return (
     <div className="rounded-3xl border border-white/10 bg-white/[0.04] p-4">
       <div className="text-[11px] uppercase tracking-[0.18em] text-zinc-500">Campaign shelf</div>
       <h3 className="mt-2 text-base font-semibold text-zinc-100">Current and remembered arcs</h3>
       <div className="mt-4 grid gap-3 md:grid-cols-3">
         <MetricTile label="Reflections" value={String(state.reflections.length)} />
-        <MetricTile label="Active arcs" value="Scaffold pending" />
-        <MetricTile label="Completed arcs" value="Scaffold pending" />
+        <MetricTile label="Presence mode" value={renderState.presenceMode} />
+        <MetricTile label="Dialogue state" value={renderState.dialogueState} />
       </div>
       <p className="mt-4 text-sm text-zinc-300">This shelf will eventually hold active campaigns, paused campaigns, and completed reflective arcs without turning personal life into a public score.</p>
     </div>
@@ -411,7 +481,7 @@ function CampaignsCard({ state }: { state: HopeState }) {
 function CampaignBuilderCard({ trusted }: { trusted: boolean }) {
   return (
     <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_22rem]">
-      <div className="rounded-3xl border border-white/10 bg-white/[0.04] p-4 text-sm text-zinc-300 space-y-3">
+      <div className="rounded-3xl border border-white/10 bg-white/[0.04] p-4 space-y-3 text-sm text-zinc-300">
         <div className="text-[11px] uppercase tracking-[0.18em] text-zinc-500">Create</div>
         <h3 className="text-base font-semibold text-zinc-100">Shape a new life arc</h3>
         <p>This card can later generate guided arcs like healing cycles, missions, aspirations, or domain-based campaigns seeded from conversation and user intent.</p>
@@ -424,7 +494,13 @@ function CampaignBuilderCard({ trusted }: { trusted: boolean }) {
   );
 }
 
-function CosmeticInventoryCard({ tone, preset, onPreset }: { tone: string; preset: (typeof PRESETS)[number]; onPreset: (value: (typeof PRESETS)[number]) => void }) {
+function CosmeticInventoryCard({
+  renderState,
+  visualState,
+}: {
+  renderState: HopeRenderState;
+  visualState: HopeVisualState;
+}) {
   return (
     <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_minmax(0,.95fr)]">
       <div className="rounded-3xl border border-white/10 bg-white/[0.04] p-4">
@@ -432,50 +508,60 @@ function CosmeticInventoryCard({ tone, preset, onPreset }: { tone: string; prese
         <h3 className="mt-2 text-base font-semibold text-zinc-100">Visible style and adornment</h3>
         <div className="mt-4 grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
           {COSMETIC_ITEMS.map((item) => (
-            <div key={item} className="rounded-2xl border border-white/10 bg-black/20 p-3 text-sm text-zinc-300">{item}</div>
+            <div key={item} className="rounded-2xl border border-white/10 bg-black/20 p-3 text-sm text-zinc-300">
+              {item}
+            </div>
           ))}
         </div>
       </div>
       <div className="rounded-3xl border border-white/10 bg-black/20 p-4">
-        <div className="grid aspect-square place-items-center rounded-[2rem] border border-white/10" style={{ background: tone }}>
-          <div className="px-4 text-center text-xs uppercase tracking-wide text-black/70">{preset} fit</div>
-        </div>
-        <div className="mt-4 flex flex-wrap gap-2">
-          {PRESETS.map((name) => (
-            <button
-              key={name}
-              type="button"
-              onClick={() => onPreset(name)}
-              className={cn(
-                'rounded-md border px-3 py-1.5 text-xs uppercase',
-                preset === name ? 'border-amber-400 bg-blue-700 text-amber-300' : 'border-zinc-600 bg-neutral-900/60 text-zinc-300 hover:bg-white/5'
-              )}
-            >
-              {name}
-            </button>
-          ))}
+        <div
+          className="grid aspect-square place-items-center rounded-[2rem] border border-white/10"
+          style={{
+            background: `radial-gradient(circle at center, ${visualState.palette.core} 0%, ${visualState.palette.field} 58%, rgba(2,6,23,0.88) 100%)`,
+          }}
+        >
+          <div className="px-4 text-center text-xs uppercase tracking-wide text-white/75">
+            {renderState.emotionalPreset} field
+            <div className="mt-2 text-[11px] tracking-[0.18em] text-white/55">{visualState.motion.profile} motion</div>
+          </div>
         </div>
       </div>
     </div>
   );
 }
 
-function NatalPatternCard({ tone, preset, presence, frequency, depth, posture }: { tone: string; preset: string; presence: number; frequency: number; depth: number; posture: ReturnType<typeof createHopePosture> }) {
+function NatalPatternCard({
+  renderState,
+  visualState,
+  posture,
+}: {
+  renderState: HopeRenderState;
+  visualState: HopeVisualState;
+  posture: ReturnType<typeof createHopePosture>;
+}) {
   return (
     <div className="grid gap-4 lg:grid-cols-[minmax(0,.95fr)_minmax(0,1.05fr)]">
-      <div className="rounded-3xl border border-white/10 p-4" style={{ background: `linear-gradient(180deg, ${tone}22, rgba(0,0,0,0.28))` }}>
-        <div className="text-[11px] uppercase tracking-[0.18em] text-zinc-500">Natal pattern</div>
+      <div
+        className="rounded-3xl border border-white/10 p-4"
+        style={{
+          background: `linear-gradient(180deg, ${visualState.palette.field}, rgba(0,0,0,0.28))`,
+        }}
+      >
+        <div className="text-[11px] uppercase tracking-[0.18em] text-zinc-400">Natal pattern</div>
         <h3 className="mt-2 text-base font-semibold text-zinc-100">Foundational signature</h3>
         <div className="mt-4 grid gap-3 sm:grid-cols-2">
-          <MetricTile label="Preset" value={preset} />
-          <MetricTile label="Presence" value={`${presence}%`} />
-          <MetricTile label="Frequency" value={`${frequency}%`} />
-          <MetricTile label="Depth" value={`${depth}%`} />
+          <MetricTile label="Atmosphere" value={renderState.emotionalPreset} />
+          <MetricTile label="Presence" value={`${renderState.presencePercent}%`} />
+          <MetricTile label="Field state" value={visualState.environment.backgroundField} />
+          <MetricTile label="Transition" value={renderState.transitionState} />
         </div>
       </div>
       <div className="rounded-3xl border border-white/10 bg-black/20 p-4 text-sm text-zinc-300">
-        This card can grow into Hope’s natal and symbolic blueprint. For now it holds stable identity tone and posture while leaving room for richer chart interpretation later.
-        <div className="mt-4"><PermissionRow label="Authority posture" value={posture.authority} /></div>
+        This card can grow into Hope’s natal and symbolic blueprint. For now it names the render-driven visual posture without letting page-local settings impersonate identity.
+        <div className="mt-4">
+          <PermissionRow label="Authority posture" value={posture.authority} />
+        </div>
       </div>
     </div>
   );
@@ -486,58 +572,27 @@ function JournalCard({ trusted, state }: { trusted: boolean; state: HopeState })
     return (
       <div className="rounded-3xl border border-white/10 bg-black/20 p-4">
         <div className="text-[11px] uppercase tracking-[0.18em] text-zinc-500">Logs</div>
-        <h3 className="mt-2 text-base font-semibold text-zinc-100">Private memory after activation</h3>
-        <div className="mt-4 text-sm text-zinc-400">Journal memory is local-private and becomes more useful after ACC activation.</div>
-        <div className="mt-4"><CTAActivate /></div>
+        <h3 className="mt-2 text-base font-semibold text-zinc-100">Private archive</h3>
+        <p className="mt-4 text-sm text-zinc-300">Activate this device to keep reflective continuity local-first and private.</p>
       </div>
     );
   }
 
   return (
     <div className="rounded-3xl border border-white/10 bg-white/[0.04] p-4">
-      <div className="flex items-center justify-between gap-3">
-        <div>
-          <div className="text-[11px] uppercase tracking-[0.18em] text-zinc-500">Logs</div>
-          <h3 className="mt-2 text-base font-semibold text-zinc-100">Local-private memory archive</h3>
-        </div>
-        <LockHint label="Local private" />
-      </div>
+      <div className="text-[11px] uppercase tracking-[0.18em] text-zinc-500">Logs</div>
+      <h3 className="mt-2 text-base font-semibold text-zinc-100">Private archive</h3>
       <div className="mt-4 space-y-3">
-        {state.reflections.length === 0 ? (
-          <div className="text-sm text-zinc-400">No local Hope journal entries recorded yet.</div>
-        ) : (
-          state.reflections.map((reflection) => (
-            <article key={reflection.id} className="rounded-2xl border border-white/10 bg-black/30 p-4">
-              <div className="flex flex-wrap items-center gap-2 text-xs text-zinc-400">
-                <span>{reflection.mode}</span>
-                <span>•</span>
-                <span>{new Date(reflection.createdAt).toLocaleString()}</span>
-                <span className="rounded-full border border-white/10 px-2 py-0.5 text-[10px] uppercase">{reflection.authority}</span>
-              </div>
-              <div className="mt-2 whitespace-pre-wrap text-sm text-zinc-300">{reflection.userText}</div>
-              {reflection.context?.tempus || reflection.context?.vitae ? (
-                <div className="mt-3 rounded-xl border border-white/10 bg-white/[0.03] p-3 text-xs text-zinc-400">
-                  <div className="font-medium text-zinc-300">Attached local context</div>
-                  <div className="mt-1 flex flex-wrap gap-x-3 gap-y-1">
-                    {reflection.context?.tempus ? (
-                      <>
-                        <span>{reflection.context.tempus.phase} window</span>
-                        <span>{reflection.context.tempus.solar.season}</span>
-                        <span>{reflection.context.tempus.lunar.phase}</span>
-                      </>
-                    ) : null}
-                    {reflection.context?.vitae ? (
-                      <>
-                        <span>Vitae sessions: {reflection.context.vitae.sessionCount}</span>
-                        <span>Path: {reflection.context.vitae.selectedPath ?? 'none'}</span>
-                      </>
-                    ) : null}
-                  </div>
-                  <div className="mt-1 text-[11px] text-zinc-500">Context only; not interpretation, recognition, or authority.</div>
-                </div>
-              ) : null}
-            </article>
+        {state.reflections.length ? (
+          state.reflections.slice(0, 6).map((entry) => (
+            <div key={entry.id} className="rounded-2xl border border-white/10 bg-black/20 p-3 text-sm text-zinc-300">
+              <div className="text-[11px] uppercase tracking-[0.18em] text-zinc-500">{entry.mode}</div>
+              <div className="mt-1 text-zinc-100">{formatTimestamp(entry.createdAt)}</div>
+              <div className="mt-2 line-clamp-3">{entry.userText}</div>
+            </div>
           ))
+        ) : (
+          <p className="text-sm text-zinc-300">No local reflections have been recorded yet.</p>
         )}
       </div>
     </div>
@@ -547,26 +602,26 @@ function JournalCard({ trusted, state }: { trusted: boolean; state: HopeState })
 function MetricTile({ label, value }: { label: string; value: string }) {
   return (
     <div className="rounded-2xl border border-white/10 bg-black/20 p-3">
-      <div className="text-[11px] uppercase tracking-[0.16em] text-zinc-500">{label}</div>
-      <div className="mt-1 text-sm text-zinc-100">{value}</div>
-    </div>
-  );
-}
-
-function StateNote({ title, children }: { title: string; children: React.ReactNode }) {
-  return (
-    <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-3">
-      <div className="text-sm font-medium text-zinc-100">{title}</div>
-      <div className="mt-1 text-sm text-zinc-300">{children}</div>
+      <div className="text-[11px] uppercase tracking-[0.18em] text-zinc-500">{label}</div>
+      <div className="mt-2 text-sm font-medium text-zinc-100">{value}</div>
     </div>
   );
 }
 
 function PermissionRow({ label, value }: { label: string; value: string }) {
   return (
-    <div className="flex items-start justify-between gap-4 rounded-2xl border border-white/10 bg-black/20 px-4 py-3">
-      <div className="text-sm text-zinc-300">{label}</div>
-      <div className="text-right text-sm text-zinc-100">{value}</div>
+    <div className="flex items-center justify-between gap-4 rounded-2xl border border-white/10 bg-black/20 px-3 py-2">
+      <span className="text-zinc-400">{label}</span>
+      <span className="text-right text-zinc-200">{value}</span>
+    </div>
+  );
+}
+
+function StateNote({ title, children }: { title: string; children: React.ReactNode }) {
+  return (
+    <div className="rounded-3xl border border-white/10 bg-black/20 p-4 text-sm text-zinc-300">
+      <div className="text-[11px] uppercase tracking-[0.18em] text-zinc-500">{title}</div>
+      <div className="mt-2">{children}</div>
     </div>
   );
 }
