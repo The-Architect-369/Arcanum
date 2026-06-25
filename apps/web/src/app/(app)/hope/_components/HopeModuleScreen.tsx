@@ -64,7 +64,7 @@ function motionForFamilyChange(from: HopeFamilyId, to: HopeFamilyId): FamilyMoti
 }
 
 function subtitleFromCardTitle(title: string) {
-  return title.replace(/^Hope\s*-​?\s*/i, '');
+  return title.replace(/^Hope\s*-\s*/i, '');
 }
 
 function formatTimestamp(value: string | null | undefined) {
@@ -201,7 +201,7 @@ export function HopeModuleScreen({ family }: { family: HopeFamilyId }) {
             title: 'Hope - C3 Logs',
             caption:
               'The private archive. Conversation memory, journal entries, and attached Tempus or Vitae context remain locally held reflective memory unless the user chooses otherwise.',
-            render: () => <JournalCard trusted={account.trusted} state={hopeState} />,
+            render: () => <JournalCard trusted={account.trusted} state={hopeState} renderState={renderState} visualState={visualState} />,
           },
         ],
       },
@@ -647,33 +647,74 @@ function NatalPatternCard({
   );
 }
 
-function JournalCard({ trusted, state }: { trusted: boolean; state: HopeState }) {
+function JournalCard({
+  trusted,
+  state,
+  renderState,
+  visualState,
+}: {
+  trusted: boolean;
+  state: HopeState;
+  renderState: HopeRenderState;
+  visualState: HopeVisualState;
+}) {
   if (!trusted) {
     return (
-      <div className="rounded-3xl border border-white/10 bg-black/20 p-4">
-        <div className="text-[11px] uppercase tracking-[0.18em] text-zinc-500">Logs</div>
-        <h3 className="mt-2 text-base font-semibold text-zinc-100">Private archive</h3>
-        <p className="mt-4 text-sm text-zinc-300">Activate this device to keep reflective continuity local-first and private.</p>
+      <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
+        <HopePresenceScene
+          renderState={renderState}
+          visualState={visualState}
+          size={150}
+          variant="compact"
+          footer={<div className="text-[11px] uppercase tracking-[0.18em] text-white/50">archive memory field</div>}
+        >
+          <div className="space-y-3">
+            <PermissionRow label="Archive state" value="locked" />
+            <PermissionRow label="Atmosphere" value={renderState.emotionalPreset} />
+            <PermissionRow label="Field state" value={visualState.environment.backgroundField} />
+          </div>
+        </HopePresenceScene>
+        <div className="rounded-3xl border border-white/10 bg-black/20 p-4">
+          <div className="text-[11px] uppercase tracking-[0.18em] text-zinc-500">Logs</div>
+          <h3 className="mt-2 text-base font-semibold text-zinc-100">Private archive</h3>
+          <p className="mt-4 text-sm text-zinc-300">Activate this device to keep reflective continuity local-first and private.</p>
+        </div>
       </div>
     );
   }
 
   return (
-    <div className="rounded-3xl border border-white/10 bg-white/[0.04] p-4">
-      <div className="text-[11px] uppercase tracking-[0.18em] text-zinc-500">Logs</div>
-      <h3 className="mt-2 text-base font-semibold text-zinc-100">Private archive</h3>
-      <div className="mt-4 space-y-3">
-        {state.reflections.length ? (
-          state.reflections.slice(0, 6).map((entry) => (
-            <div key={entry.id} className="rounded-2xl border border-white/10 bg-black/20 p-3 text-sm text-zinc-300">
-              <div className="text-[11px] uppercase tracking-[0.18em] text-zinc-500">{entry.mode}</div>
-              <div className="mt-1 text-zinc-100">{formatTimestamp(entry.createdAt)}</div>
-              <div className="mt-2 line-clamp-3">{entry.userText}</div>
-            </div>
-          ))
-        ) : (
-          <p className="text-sm text-zinc-300">No local reflections have been recorded yet.</p>
-        )}
+    <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
+      <HopePresenceScene
+        renderState={renderState}
+        visualState={visualState}
+        size={150}
+        variant="compact"
+        footer={<div className="text-[11px] uppercase tracking-[0.18em] text-white/50">archive memory field</div>}
+      >
+        <div className="space-y-3">
+          <PermissionRow label="Entries" value={String(state.reflections.length)} />
+          <PermissionRow label="Latest reflection" value={formatTimestamp(state.reflections[0]?.createdAt)} />
+          <PermissionRow label="Motion language" value={visualState.motion.profile} />
+          <PermissionRow label="Field state" value={visualState.environment.backgroundField} />
+        </div>
+      </HopePresenceScene>
+      <div className="rounded-3xl border border-white/10 bg-white/[0.04] p-4">
+        <div className="text-[11px] uppercase tracking-[0.18em] text-zinc-500">Logs</div>
+        <h3 className="mt-2 text-base font-semibold text-zinc-100">Private archive</h3>
+        <div className="mt-4 space-y-3">
+          {state.reflections.length ? (
+            state.reflections.slice(0, 6).map((entry) => (
+              <div key={entry.id} className="rounded-2xl border border-white/10 bg-black/20 p-3 text-sm text-zinc-300">
+                <div className="text-[11px] uppercase tracking-[0.18em] text-zinc-500">{entry.mode}</div>
+                <div className="mt-1 text-zinc-100">{formatTimestamp(entry.createdAt)}</div>
+                <div className="mt-2 line-clamp-3">{entry.userText}</div>
+              </div>
+            ))
+          ) : (
+            <p className="text-sm text-zinc-300">No local reflections have been recorded yet.</p>
+          )}
+        </div>
       </div>
     </div>
   );
