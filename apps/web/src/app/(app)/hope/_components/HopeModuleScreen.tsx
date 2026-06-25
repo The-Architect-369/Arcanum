@@ -358,7 +358,7 @@ function AvatarCard({
           </div>
         </div>
         <div className="rounded-3xl border border-white/10 bg-black/20 p-4 text-sm text-zinc-300">
-          Wave 2 decomposes the avatar into scene, field, aura, avatar, and core primitives. Presence is now an explicit visual subsystem rather than a card-local rendering trick.
+          Hope appears here as a quiet companion surface: readable, responsive, and steady without turning presence into a score.
           <div className="mt-4">{trusted ? <LockHint label="ACC active" /> : <CTAActivate />}</div>
         </div>
       </div>
@@ -425,7 +425,7 @@ function DialogueCard({
           </div>
         </div>
         <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
-          <StateNote title="Clarify">{posture.canClarify ? 'Hope can clarify and mirror.' : 'Clarification is unavailable in this posture.'}</StateNote>
+          <StateNote title="Clarify">{posture.canClarify ? 'Hope can help clarify and mirror what is already present.' : 'Clarification is unavailable in this posture.'}</StateNote>
           <StateNote title="Boundary">Hope does not execute, ratify, or confirm readiness here.</StateNote>
         </div>
       </div>
@@ -478,7 +478,7 @@ function OrientationCard({
         <div className="text-[11px] uppercase tracking-[0.18em] text-zinc-500">Orientation</div>
         <h3 className="mt-2 text-base font-semibold text-zinc-100">Bigger life pattern</h3>
         <div className="mt-4 space-y-3 text-sm text-zinc-300">
-          <p>Hope can help the user see themes, recurrences, and active openings across Arcanum life without turning that into command, judgment, or diagnosis.</p>
+          <p>Hope can help the user notice themes, recurrences, and nearby openings without turning that into command, judgment, or diagnosis.</p>
           <p>{latestReflection ? `The latest remembered entry was recorded on ${formatTimestamp(latestReflection.createdAt)}.` : 'No reflection has been recorded yet, so the pattern layer is still quiet.'}</p>
           <p>Current atmosphere reads as {renderState.emotionalPreset} with a {renderState.presenceMode} motion posture.</p>
         </div>
@@ -511,7 +511,7 @@ function CampaignsCard({
           <MetricTile label="Presence mode" value={renderState.presenceMode} />
           <MetricTile label="Dialogue state" value={renderState.dialogueState} />
         </div>
-        <p className="mt-4 text-sm text-zinc-300">This shelf will eventually hold active campaigns, paused campaigns, and completed reflective arcs without turning personal life into a public score.</p>
+        <p className="mt-4 text-sm text-zinc-300">This shelf can hold active campaigns, paused campaigns, and completed reflective arcs without turning personal life into a public score.</p>
       </div>
       <HopePresenceScene
         renderState={renderState}
@@ -559,8 +559,8 @@ function CampaignBuilderCard({
       <div className="rounded-3xl border border-white/10 bg-black/20 p-4 text-sm text-zinc-300">
         <div className="text-[11px] uppercase tracking-[0.18em] text-zinc-500">Create</div>
         <h3 className="mt-2 text-base font-semibold text-zinc-100">Shape a new life arc</h3>
-        <p className="mt-4">This card can later generate guided arcs like healing cycles, missions, aspirations, or domain-based campaigns seeded from conversation and user intent.</p>
-        <p className="mt-3">The creator belongs in Hope because it is about shaping continuity and support, not governance or rank.</p>
+        <p className="mt-4">This surface can later open guided arcs like healing cycles, missions, aspirations, or domain-based campaigns seeded from conversation and user intent.</p>
+        <p className="mt-3">Creation belongs in Hope because it supports continuity and care rather than governance or rank.</p>
         <div className="mt-4 rounded-2xl border border-white/10 bg-white/[0.04] px-3 py-2 text-xs uppercase tracking-[0.18em] text-zinc-400">
           {trusted ? 'local-first campaign drafting posture' : 'activation recommended for saved local arcs'}
         </div>
@@ -634,7 +634,7 @@ function NatalPatternCard({
       <div className="rounded-3xl border border-white/10 bg-black/20 p-4 text-sm text-zinc-300">
         <div className="text-[11px] uppercase tracking-[0.18em] text-zinc-500">Natal pattern</div>
         <h3 className="mt-2 text-base font-semibold text-zinc-100">Foundational signature</h3>
-        <p className="mt-4">This card can grow into Hope’s natal and symbolic blueprint. For now it names the render-driven visual posture without letting page-local settings impersonate identity.</p>
+        <p className="mt-4">This card can grow into Hope’s natal and symbolic blueprint. For now it keeps the symbolic atmosphere legible without over-defining identity.</p>
         <div className="mt-4 grid gap-3 sm:grid-cols-2">
           <MetricTile label="Motion" value={visualState.motion.profile} />
           <MetricTile label="Contrast" value={visualState.palette.contrast} />
