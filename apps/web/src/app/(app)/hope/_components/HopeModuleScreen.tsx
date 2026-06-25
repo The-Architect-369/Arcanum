@@ -64,7 +64,7 @@ function motionForFamilyChange(from: HopeFamilyId, to: HopeFamilyId): FamilyMoti
 }
 
 function subtitleFromCardTitle(title: string) {
-  return title.replace(/^Hope\s*-\s*/i, '');
+  return title.replace(/^Hope\s*-​?\s*/i, '');
 }
 
 function formatTimestamp(value: string | null | undefined) {
@@ -154,7 +154,7 @@ export function HopeModuleScreen({ family }: { family: HopeFamilyId }) {
             title: 'Hope - B1 Orientation',
             caption:
               'The over-time dashboard. Orientation gathers what is active across Arcanum life first: Tempus windows, Vitae openings, and the highest-priority campaign signals that matter now.',
-            render: () => <OrientationCard posture={reflectionPosture} latestReflection={latestReflection} renderState={renderState} />,
+            render: () => <OrientationCard posture={reflectionPosture} latestReflection={latestReflection} renderState={renderState} visualState={visualState} />,
           },
           {
             id: 'b2',
@@ -162,7 +162,7 @@ export function HopeModuleScreen({ family }: { family: HopeFamilyId }) {
             title: 'Hope - B2 Campaigns',
             caption:
               'The quest log. Campaigns keep active arcs, paused arcs, and remembered life missions visible so the user can understand the larger shape of what Hope is helping them build.',
-            render: () => <CampaignsCard state={hopeState} renderState={renderState} />,
+            render: () => <CampaignsCard state={hopeState} renderState={renderState} visualState={visualState} />,
           },
           {
             id: 'b3',
@@ -170,7 +170,7 @@ export function HopeModuleScreen({ family }: { family: HopeFamilyId }) {
             title: 'Hope - B3 Create',
             caption:
               'The creation surface. New campaigns, missions, and life-domain arcs should begin here and later be seeded from conversation capture rather than burdensome manual setup alone.',
-            render: () => <CampaignBuilderCard trusted={account.trusted} />,
+            render: () => <CampaignBuilderCard trusted={account.trusted} renderState={renderState} visualState={visualState} />,
           },
         ],
       },
@@ -451,59 +451,119 @@ function OrientationCard({
   posture,
   latestReflection,
   renderState,
+  visualState,
 }: {
   posture: ReturnType<typeof createHopePosture>;
   latestReflection: HopeState['reflections'][number] | null;
   renderState: HopeRenderState;
+  visualState: HopeVisualState;
 }) {
   return (
-    <div className="grid gap-4 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,.95fr)]">
-      <div className="rounded-3xl border border-white/10 bg-white/[0.04] p-4 space-y-3 text-sm text-zinc-300">
-        <div className="text-[11px] uppercase tracking-[0.18em] text-zinc-500">Orientation</div>
-        <h3 className="text-base font-semibold text-zinc-100">Bigger life pattern</h3>
-        <p>Hope can help the user see themes, recurrences, and active openings across Arcanum life without turning that into command, judgment, or diagnosis.</p>
-        <p>{latestReflection ? `The latest remembered entry was recorded on ${formatTimestamp(latestReflection.createdAt)}.` : 'No reflection has been recorded yet, so the pattern layer is still quiet.'}</p>
-        <p>Current atmosphere reads as {renderState.emotionalPreset} with a {renderState.presenceMode} motion posture.</p>
-      </div>
+    <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
+      <HopePresenceScene
+        renderState={renderState}
+        visualState={visualState}
+        size={154}
+        variant="compact"
+        footer={<div className="text-[11px] uppercase tracking-[0.18em] text-white/50">orientation field</div>}
+      >
+        <div className="space-y-3">
+          <PermissionRow label="Latest reflection" value={formatTimestamp(latestReflection?.createdAt)} />
+          <PermissionRow label="Atmosphere" value={`${renderState.emotionalPreset} · ${renderState.presenceMode}`} />
+          <PermissionRow label="Recency band" value={renderState.recencyBand} />
+          <PermissionRow label="Reflection density" value={renderState.reflectionDensity} />
+        </div>
+      </HopePresenceScene>
       <div className="rounded-3xl border border-white/10 bg-black/20 p-4">
-        <div className="text-[11px] uppercase tracking-[0.18em] text-zinc-500">Guidance posture</div>
-        <h3 className="mt-2 text-base font-semibold text-zinc-100">Advisory only</h3>
+        <div className="text-[11px] uppercase tracking-[0.18em] text-zinc-500">Orientation</div>
+        <h3 className="mt-2 text-base font-semibold text-zinc-100">Bigger life pattern</h3>
         <div className="mt-4 space-y-3 text-sm text-zinc-300">
-          <StateNote title="Mirror">{posture.canMirror ? 'Enabled in posture' : 'Disabled'}</StateNote>
-          <StateNote title="Draft">{posture.canDraft ? 'Enabled in posture' : 'Disabled'}</StateNote>
-          <StateNote title="Govern">Never</StateNote>
+          <p>Hope can help the user see themes, recurrences, and active openings across Arcanum life without turning that into command, judgment, or diagnosis.</p>
+          <p>{latestReflection ? `The latest remembered entry was recorded on ${formatTimestamp(latestReflection.createdAt)}.` : 'No reflection has been recorded yet, so the pattern layer is still quiet.'}</p>
+          <p>Current atmosphere reads as {renderState.emotionalPreset} with a {renderState.presenceMode} motion posture.</p>
+        </div>
+        <div className="mt-4 grid gap-3 sm:grid-cols-3">
+          <MetricTile label="Mirror" value={posture.canMirror ? 'Enabled' : 'Disabled'} />
+          <MetricTile label="Draft" value={posture.canDraft ? 'Enabled' : 'Disabled'} />
+          <MetricTile label="Govern" value="Never" />
         </div>
       </div>
     </div>
   );
 }
 
-function CampaignsCard({ state, renderState }: { state: HopeState; renderState: HopeRenderState }) {
+function CampaignsCard({
+  state,
+  renderState,
+  visualState,
+}: {
+  state: HopeState;
+  renderState: HopeRenderState;
+  visualState: HopeVisualState;
+}) {
   return (
-    <div className="rounded-3xl border border-white/10 bg-white/[0.04] p-4">
-      <div className="text-[11px] uppercase tracking-[0.18em] text-zinc-500">Campaign shelf</div>
-      <h3 className="mt-2 text-base font-semibold text-zinc-100">Current and remembered arcs</h3>
-      <div className="mt-4 grid gap-3 md:grid-cols-3">
-        <MetricTile label="Reflections" value={String(state.reflections.length)} />
-        <MetricTile label="Presence mode" value={renderState.presenceMode} />
-        <MetricTile label="Dialogue state" value={renderState.dialogueState} />
+    <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
+      <div className="rounded-3xl border border-white/10 bg-white/[0.04] p-4">
+        <div className="text-[11px] uppercase tracking-[0.18em] text-zinc-500">Campaign shelf</div>
+        <h3 className="mt-2 text-base font-semibold text-zinc-100">Current and remembered arcs</h3>
+        <div className="mt-4 grid gap-3 md:grid-cols-3">
+          <MetricTile label="Reflections" value={String(state.reflections.length)} />
+          <MetricTile label="Presence mode" value={renderState.presenceMode} />
+          <MetricTile label="Dialogue state" value={renderState.dialogueState} />
+        </div>
+        <p className="mt-4 text-sm text-zinc-300">This shelf will eventually hold active campaigns, paused campaigns, and completed reflective arcs without turning personal life into a public score.</p>
       </div>
-      <p className="mt-4 text-sm text-zinc-300">This shelf will eventually hold active campaigns, paused campaigns, and completed reflective arcs without turning personal life into a public score.</p>
+      <HopePresenceScene
+        renderState={renderState}
+        visualState={visualState}
+        size={150}
+        variant="compact"
+        footer={<div className="text-[11px] uppercase tracking-[0.18em] text-white/50">campaign field</div>}
+      >
+        <div className="space-y-3">
+          <PermissionRow label="Atmosphere" value={renderState.emotionalPreset} />
+          <PermissionRow label="Motion language" value={visualState.motion.profile} />
+          <PermissionRow label="Field state" value={visualState.environment.backgroundField} />
+          <PermissionRow label="Reflection density" value={renderState.reflectionDensity} />
+        </div>
+      </HopePresenceScene>
     </div>
   );
 }
 
-function CampaignBuilderCard({ trusted }: { trusted: boolean }) {
+function CampaignBuilderCard({
+  trusted,
+  renderState,
+  visualState,
+}: {
+  trusted: boolean;
+  renderState: HopeRenderState;
+  visualState: HopeVisualState;
+}) {
   return (
-    <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_22rem]">
-      <div className="rounded-3xl border border-white/10 bg-white/[0.04] p-4 space-y-3 text-sm text-zinc-300">
-        <div className="text-[11px] uppercase tracking-[0.18em] text-zinc-500">Create</div>
-        <h3 className="text-base font-semibold text-zinc-100">Shape a new life arc</h3>
-        <p>This card can later generate guided arcs like healing cycles, missions, aspirations, or domain-based campaigns seeded from conversation and user intent.</p>
-        <p>The creator belongs in Hope because it is about shaping continuity and support, not governance or rank.</p>
-      </div>
+    <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
+      <HopePresenceScene
+        renderState={renderState}
+        visualState={visualState}
+        size={152}
+        variant="compact"
+        footer={<div className="text-[11px] uppercase tracking-[0.18em] text-white/50">creation field</div>}
+      >
+        <div className="space-y-3">
+          <PermissionRow label="Atmosphere" value={renderState.emotionalPreset} />
+          <PermissionRow label="Presence mode" value={renderState.presenceMode} />
+          <PermissionRow label="Motion language" value={visualState.motion.profile} />
+          <PermissionRow label="Dialogue state" value={renderState.dialogueState} />
+        </div>
+      </HopePresenceScene>
       <div className="rounded-3xl border border-white/10 bg-black/20 p-4 text-sm text-zinc-300">
-        {trusted ? 'Campaign creation can stay local-first and private by default.' : 'Activation should unlock private saved campaign arcs on this device.'}
+        <div className="text-[11px] uppercase tracking-[0.18em] text-zinc-500">Create</div>
+        <h3 className="mt-2 text-base font-semibold text-zinc-100">Shape a new life arc</h3>
+        <p className="mt-4">This card can later generate guided arcs like healing cycles, missions, aspirations, or domain-based campaigns seeded from conversation and user intent.</p>
+        <p className="mt-3">The creator belongs in Hope because it is about shaping continuity and support, not governance or rank.</p>
+        <div className="mt-4 rounded-2xl border border-white/10 bg-white/[0.04] px-3 py-2 text-xs uppercase tracking-[0.18em] text-zinc-400">
+          {trusted ? 'local-first campaign drafting posture' : 'activation recommended for saved local arcs'}
+        </div>
       </div>
     </div>
   );
