@@ -71,27 +71,27 @@ export default function TempusModuleScreen({ family }: { family: FamilyId }) {
       clock: {
         href: ORDER[0],
         label: 'Clock',
-        shellAction: <div className="text-xs text-zinc-400">A track · local temporal orientation</div>,
+        shellAction: <div className="text-xs text-zinc-400">A track · present time, active layers, and daily rite</div>,
         cards: [
           {
             id: 'a1',
             navLabel: 'A1',
-            title: 'Tempus - A1 Clock',
-            caption: 'Immediate orientation. Local time, Earth-side day or night, and a clean dial belong here before deeper celestial layers appear.',
+            title: 'Tempus - A1 Position',
+            caption: 'The immediate time readout. This is where the user returns to see where they are in the day, what side of the world they stand on, and what window is active now.',
             render: () => <ClockOverviewCard />,
           },
           {
             id: 'a2',
             navLabel: 'A2',
-            title: 'Tempus - A2 Daily Readout',
-            caption: 'The practical dashboard. Conditions for the day gather here first, then deeper seasonal and celestial overlays can enrich the readout over time.',
+            title: 'Tempus - A2 Layer Readout',
+            caption: 'The daily field. Local conditions, celestial overlays, and the first practical cues of the day gather here before expanding into wider calendars and codices.',
             render: () => <DailyReadoutCard />,
           },
           {
             id: 'a3',
             navLabel: 'A3',
             title: 'Tempus - A3 Daily Rite',
-            caption: 'The rite layer. The generator assembles a focused reflective practice from the active conditions and correspondences of the day.',
+            caption: 'The daily invitation. Tempus should eventually generate rites, prompts, challenges, and reflective actions from the active conditions of the present window.',
             render: () => <RiteCard />,
           },
         ],
@@ -99,27 +99,27 @@ export default function TempusModuleScreen({ family }: { family: FamilyId }) {
       calendar: {
         href: ORDER[1],
         label: 'Calendar',
-        shellAction: <div className="text-xs text-zinc-400">B track · temporal mapping across month and year</div>,
+        shellAction: <div className="text-xs text-zinc-400">B track · familiar calendar, annual spiral, and historical lens</div>,
         cards: [
           {
             id: 'b1',
             navLabel: 'B1',
             title: 'Tempus - B1 Calendar',
-            caption: 'A familiar calendar surface first. Gregorian structure, seasonal overlay, and celestial event mapping should live here.',
+            caption: 'The familiar map of time. This is where a user sees the present month first, then gradually understands how celestial overlays and event memory pattern the days.',
             render: () => <CalendarMonthCard />,
           },
           {
             id: 'b2',
             navLabel: 'B2',
             title: 'Tempus - B2 Annual Spiral',
-            caption: 'The spiral of time. Presence lights the year month by month, with past and near-future years coiling around the active year.',
+            caption: 'The year as a living field. Presence, rites, and recorded attention should make the spiral glow month by month and allow the user to feel time as a pattern, not just a grid.',
             render: () => <AnnualSpiralCard />,
           },
           {
             id: 'b3',
             navLabel: 'B3',
-            title: 'Tempus - B3 Historical Sky',
-            caption: 'A wider historical and planetary perspective. This layer is for moving through time and seeing larger celestial context.',
+            title: 'Tempus - B3 Historical Lens',
+            caption: 'The wider time horizon. This layer is for history, larger cycles, and celestial perspective beyond the immediate needs of the current day or month.',
             render: () => <HistoricalSkyCard />,
           },
         ],
@@ -127,34 +127,34 @@ export default function TempusModuleScreen({ family }: { family: FamilyId }) {
       codex: {
         href: ORDER[2],
         label: 'Codex',
-        shellAction: <div className="text-xs text-zinc-400">C track · correspondences and deeper knowledge</div>,
+        shellAction: <div className="text-xs text-zinc-400">C track · fixed correspondences, study, and deeper lookup</div>,
         cards: [
           {
             id: 'c1',
             navLabel: 'C1',
             title: 'Tempus - C1 Seasons',
-            caption: 'The first codex layer. Seasonal correspondences are the clearest bridge between ordinary timekeeping and deeper symbolic context.',
+            caption: 'The first stable correspondence layer. Seasons are the clearest bridge between ordinary timekeeping and the deeper symbolic language of Tempus.',
             render: () => <CodexDomainCard title="Seasons" items={['Spring', 'Summer', 'Autumn', 'Winter']} lockedLabel="Season detail opens upward" />,
           },
           {
             id: 'c2',
             navLabel: 'C2',
             title: 'Tempus - C2 Moon',
-            caption: 'The lunar layer. Phases are visible first, while deeper lunar correspondences can be revealed gradually as the system opens further.',
+            caption: 'The lunar correspondence layer. Phases come first, then reflections, gates, and recurring lunar relations can deepen with study.',
             render: () => <CodexDomainCard title="Moon" items={['Lunar phases', 'Moon reflections', 'Moon gates']} lockedLabel="Deeper lunar knowledge remains gated" />,
           },
           {
             id: 'c3',
             navLabel: 'C3',
             title: 'Tempus - C3 Planets',
-            caption: 'The planetary layer. Day correspondences, planetary tones, and the practical symbolism of the wandering lights belong here.',
+            caption: 'The planetary layer. Day tones, practical symbolism, and the wandering lights belong here as part of the fixed lookup spine of the system.',
             render: () => <CodexDomainCard title="Planets" items={['Planetary days', 'Planetary tones', 'Planetary gates']} lockedLabel="Advanced planetary views unlock later" />,
           },
           {
             id: 'c4',
             navLabel: 'C4',
             title: 'Tempus - C4 Zodiac',
-            caption: 'The outer codex layer. Zodiac and fixed-star structure sits furthest out in the ladder and should feel the most advanced and gated.',
+            caption: 'The outer correspondence layer. Zodiac and larger archetypal structures should feel like the furthest visible edge of Tempus study before the deepest gates open.',
             render: () => <CodexDomainCard title="Zodiac" items={['Signs', 'Archetypes', 'Zodiac gates']} lockedLabel="Deep zodiac knowledge is still locked" />,
           },
         ],
@@ -310,8 +310,8 @@ function ClockOverviewCard() {
       <div className="rounded-3xl border border-white/10 bg-white/[0.04] p-4">
         <div className="flex items-center justify-between gap-3">
           <div>
-            <div className="text-[11px] uppercase tracking-[0.18em] text-zinc-500">Earth clock</div>
-            <h3 className="mt-2 text-base font-semibold text-zinc-100">Grounded local orientation</h3>
+            <div className="text-[11px] uppercase tracking-[0.18em] text-zinc-500">Present position</div>
+            <h3 className="mt-2 text-base font-semibold text-zinc-100">Grounded time readout</h3>
           </div>
           <div className="text-right text-sm text-zinc-300">
             <div>{now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</div>
@@ -334,8 +334,8 @@ function ClockOverviewCard() {
       </div>
       <div className="grid gap-3">
         <StateBlock label="Window phase" value={phaseText(w.phase)} detail={w.isDay ? 'Current local field is on the lit side.' : 'Current local field is on the resting side.'} />
-        <StateBlock label="Planetary day" value={w.planetaryDay} detail="Kept minimal here so the first clock view stays readable." />
-        <StateBlock label="Season" value={w.zodiacSign} detail={`Season day ${w.zodiacDay}. Deeper correspondence belongs later in the track.`} />
+        <StateBlock label="Planetary day" value={w.planetaryDay} detail="Kept readable here so the first Tempus view stays immediate." />
+        <StateBlock label="Season signal" value={w.zodiacSign} detail={`Season day ${w.zodiacDay}. Deeper correspondence belongs later in the track.`} />
       </div>
     </div>
   );
@@ -349,7 +349,7 @@ function DailyReadoutCard() {
       <StateBlock label="Wind" value="7 mph" detail="Daily environmental condition placeholder." />
       <StateBlock label="Pressure" value="1014 mb" detail="Atmospheric pressure placeholder." />
       <StateBlock label="Season layer" value="Active" detail="Seasonal overlay belongs here before lunar and planetary enrichment." />
-      <StateBlock label="Celestial layers" value="Queued" detail="Moon, planet, and zodiac overlays deepen the daily dashboard over time." />
+      <StateBlock label="Celestial layers" value="Queued" detail="Moon, planet, and zodiac overlays deepen the daily field over time." />
     </div>
   );
 }
@@ -359,16 +359,16 @@ function RiteCard() {
     <div className="grid gap-4 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,.95fr)]">
       <div className="rounded-3xl border border-white/10 bg-white/[0.04] p-4">
         <div className="text-[11px] uppercase tracking-[0.18em] text-zinc-500">Daily rite</div>
-        <h3 className="mt-2 text-base font-semibold text-zinc-100">Generated from the day</h3>
+        <h3 className="mt-2 text-base font-semibold text-zinc-100">Generated from the active window</h3>
         <p className="mt-2 text-sm text-zinc-300">
-          This card will become the contract surface for the generated rite. It gathers the active conditions, correspondences, and local context before opening a larger guided field above the base card.
+          This card will become the contract surface for Tempus prompts, daily mantras, challenges, rites, and reflective tasks generated from the current conditions and correspondence layers.
         </p>
         <div className="mt-4 rounded-2xl border border-amber-200/25 bg-amber-200/10 p-3 text-sm text-amber-100">
           Placeholder example: Spend a few minutes with the present conditions, then return with a reflection or observation.
         </div>
       </div>
       <div className="grid gap-3">
-        <StateBlock label="Prompt mode" value="Reflective" detail="Nature, emotion, discipline, or symbol can be emphasized here later." />
+        <StateBlock label="Prompt mode" value="Reflective" detail="Nature, emotion, discipline, symbol, or challenge can be emphasized here later." />
         <StateBlock label="Generator state" value="Pending" detail="Rite parameters will be assembled from active daily inputs." />
       </div>
     </div>
@@ -379,7 +379,7 @@ function CalendarMonthCard() {
   return (
     <div className="grid gap-4 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,.85fr)]">
       <div className="rounded-3xl border border-white/10 bg-white/[0.04] p-4">
-        <div className="text-[11px] uppercase tracking-[0.18em] text-zinc-500">Month view</div>
+        <div className="text-[11px] uppercase tracking-[0.18em] text-zinc-500">Month map</div>
         <div className="mt-3 grid grid-cols-7 gap-2 text-center text-[11px] uppercase tracking-wide text-zinc-500">
           {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map((day) => (
             <div key={day}>{day}</div>
@@ -444,7 +444,7 @@ function HistoricalSkyCard() {
   return (
     <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_18rem]">
       <div className="rounded-3xl border border-white/10 bg-white/[0.04] p-4">
-        <div className="text-[11px] uppercase tracking-[0.18em] text-zinc-500">Historical sky</div>
+        <div className="text-[11px] uppercase tracking-[0.18em] text-zinc-500">Historical lens</div>
         <div className="mt-4 grid place-items-center rounded-[2rem] border border-white/10 bg-black/20 p-6">
           <div className="relative h-72 w-full max-w-[26rem] rounded-[2rem] border border-white/10 bg-[radial-gradient(circle_at_50%_50%,rgba(125,190,255,.14),transparent_18%),radial-gradient(circle_at_50%_50%,rgba(246,196,83,.08),transparent_44%),rgba(6,10,20,.88)]">
             <div className="absolute left-1/2 top-1/2 h-16 w-16 -translate-x-1/2 -translate-y-1/2 rounded-full border border-amber-200/30 bg-amber-200/12" />
@@ -457,7 +457,7 @@ function HistoricalSkyCard() {
         </div>
       </div>
       <div className="grid gap-3">
-        <StateBlock label="Mode" value="Historical" detail="This layer is for moving through wider celestial time, not the daily dashboard." />
+        <StateBlock label="Mode" value="Historical" detail="This layer is for moving through wider celestial time, not the daily readout." />
         <StateBlock label="Source mix" value="Observed / modeled" detail="Scientific reconstruction and mathematically modeled positions can coexist here." />
         <StateBlock label="Governance" value="Future" detail="Community-curated historical layers belong under later governance controls." />
       </div>
