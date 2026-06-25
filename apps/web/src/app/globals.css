@@ -1,4 +1,6 @@
-@tailwind base; @tailwind components; @tailwind utilities;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
   color-scheme: dark;
@@ -149,6 +151,24 @@ body {
   }
   50% {
     opacity: 1;
+  }
+}
+
+@keyframes hope-presence-breathe {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(0, 0, 0) scale(var(--hope-motion-breathe-scale, 1.02));
+  }
+}
+
+@keyframes hope-presence-drift {
+  0%, 100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, var(--hope-motion-drift-y, 0px), 0);
   }
 }
 
