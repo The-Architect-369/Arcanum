@@ -378,19 +378,26 @@ function SnapshotCard({
   visualState: HopeVisualState;
 }) {
   return (
-    <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_22rem]">
-      <div className="rounded-3xl border border-white/10 bg-white/[0.04] p-4">
-        <div className="text-[11px] uppercase tracking-[0.18em] text-zinc-500">Snapshot</div>
-        <h3 className="mt-2 text-base font-semibold text-zinc-100">What feels active now</h3>
-        <div className="mt-4 space-y-3">
+    <div className="grid gap-4 lg:grid-cols-[minmax(0,1.08fr)_22rem]">
+      <HopePresenceScene
+        renderState={renderState}
+        visualState={visualState}
+        size={148}
+        variant="compact"
+        footer={<div className="text-[11px] uppercase tracking-[0.18em] text-white/50">snapshot field</div>}
+      >
+        <div className="space-y-3">
           <PermissionRow label="Latest reflection" value={formatTimestamp(latestReflection?.createdAt)} />
           <PermissionRow label="Atmosphere" value={`${renderState.emotionalPreset} · ${renderState.presenceMode}`} />
           <PermissionRow label="Motion language" value={visualState.motion.profile} />
-          <PermissionRow label="Notification posture" value="Check-in style, not command style" />
+          <PermissionRow label="Field state" value={visualState.environment.backgroundField} />
         </div>
-      </div>
+      </HopePresenceScene>
       <div className="rounded-3xl border border-white/10 bg-black/20 p-4 text-sm text-zinc-300">
         Hope works best as a gentle companion. {trusted ? 'This device can hold a private continuity of dialogue and memory.' : 'Activate this device to make private continuity and journaling more useful.'}
+        <div className="mt-4 rounded-2xl border border-white/10 bg-white/[0.04] px-3 py-2 text-xs uppercase tracking-[0.18em] text-zinc-400">
+          Check-in style, not command style
+        </div>
       </div>
     </div>
   );
