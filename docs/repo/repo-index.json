@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-07-23T05:53:14Z",
+  "generated_at": "2026-07-23T06:02:54Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "9ae142920",
+  "commit": "89627d318",
   "generator_version": "1.2",
   "files": [
     {
@@ -3337,11 +3337,11 @@
     {
       "path": "docs/governance/architectgpt/architect-gpt-manifest.yaml",
       "type": "file",
-      "size_bytes": 4282,
-      "last_modified_commit": "a7a0320",
+      "size_bytes": 4890,
+      "last_modified_commit": "c428853",
       "is_empty": false,
       "extension": ".yaml",
-      "lines": 125
+      "lines": 139
     },
     {
       "path": "docs/governance/architectgpt/architect-gpt.md",
@@ -3405,6 +3405,15 @@
       "is_empty": false,
       "extension": ".md",
       "lines": 133
+    },
+    {
+      "path": "docs/governance/architectgpt/promotion-protocol.md",
+      "type": "file",
+      "size_bytes": 2349,
+      "last_modified_commit": "c89e962",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 79
     },
     {
       "path": "docs/governance/architectgpt/sessions/.gitkeep",
@@ -3590,7 +3599,7 @@
       "path": "docs/repo/repo-index.json",
       "type": "file",
       "size_bytes": 167374,
-      "last_modified_commit": "71fc20f",
+      "last_modified_commit": "48a4fcc",
       "is_empty": false,
       "extension": ".json",
       "lines": 6209
@@ -5873,6 +5882,15 @@
       "lines": 202
     },
     {
+      "path": "scripts/architect/promotion-gate.sh",
+      "type": "file",
+      "size_bytes": 3689,
+      "last_modified_commit": "89627d3",
+      "is_empty": false,
+      "extension": ".sh",
+      "lines": 78
+    },
+    {
       "path": "scripts/architect/validate-evidence.py",
       "type": "file",
       "size_bytes": 5993,
@@ -6190,11 +6208,11 @@
     {
       "path": "scripts/verify-sync.sh",
       "type": "file",
-      "size_bytes": 8292,
-      "last_modified_commit": "18d7052",
+      "size_bytes": 9931,
+      "last_modified_commit": "2b92e45",
       "is_empty": false,
       "extension": ".sh",
-      "lines": 199
+      "lines": 226
     },
     {
       "path": "tsconfig.json",
