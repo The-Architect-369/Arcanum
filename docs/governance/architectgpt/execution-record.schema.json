@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://the-arcanum.net/schemas/architectgpt/execution-record.schema.json",
+  "title": "Architect GPT Execution Record",
+  "description": "Canonical schema for local orchestration execution and provider-evidence records.",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "record_type",
+    "timestamp",
+    "repository",
+    "branch",
+    "commit",
+    "status",
+    "summary"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "record_type": {
+      "enum": ["execution", "provider_evidence"]
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "repository": {
+      "type": "string",
+      "minLength": 1
+    },
+    "branch": {
+      "type": "string",
+      "minLength": 1
+    },
+    "commit": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$|^unknown$"
+    },
+    "permission_class": {
+      "enum": ["R0", "R1", "W1", "W2", "W3", "C1"]
+    },
+    "provider": {
+      "enum": ["github", "vercel", "google_workspace", "notion", "web", "local_termux"]
+    },
+    "status": {
+      "enum": ["success", "failure", "pending", "observed", "unavailable", "denied"]
+    },
+    "reference": {
+      "type": "string"
+    },
+    "summary": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "record_type": {"const": "execution"}
+        }
+      },
+      "then": {
+        "required": ["permission_class"]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "record_type": {"const": "provider_evidence"}
+        }
+      },
+      "then": {
+        "required": ["provider", "reference"]
+      }
+    }
+  ],
+  "additionalProperties": false
+}
