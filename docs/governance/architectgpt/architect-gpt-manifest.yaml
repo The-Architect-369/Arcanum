@@ -109,6 +109,17 @@ ci_promotion_control:
   exact_commit_required: true
   required_checks: [repository_integrity, typecheck, production_build]
 
+provider_health_control:
+  registry: docs/governance/architectgpt/capability-registry.yaml
+  protocol: docs/governance/architectgpt/provider-health-protocol.md
+  snapshot_schema: docs/governance/architectgpt/provider-health.schema.json
+  monitor: scripts/architect/provider-health.py
+  report_directory: .architect-reports/orchestration/provider-health
+  exact_commit_required: true
+  default_max_age_hours: 24
+  health_states: [healthy, degraded, unavailable, unverified]
+  authority: evidentiary_only
+
 mobile_verification:
   environment: Android Termux in isolated work profile
   bootstrap: scripts/mobile/termux-bootstrap.sh
@@ -131,6 +142,8 @@ files:
   execution_record_schema: docs/governance/architectgpt/execution-record.schema.json
   promotion_protocol: docs/governance/architectgpt/promotion-protocol.md
   ci_promotion_protocol: docs/governance/architectgpt/ci-promotion-protocol.md
+  provider_health_protocol: docs/governance/architectgpt/provider-health-protocol.md
+  provider_health_schema: docs/governance/architectgpt/provider-health.schema.json
   hope_guardian: docs/governance/hopegpt/hope-guardian.md
   repo_interface: docs/repo/repo-interface.md
   repo_index: docs/repo/repo-index.json
@@ -140,6 +153,7 @@ files:
   promotion_gate: scripts/architect/promotion-gate.sh
   ci_attestation_generator: scripts/architect/ci-attest.sh
   ci_promotion_workflow: .github/workflows/architect-promotion.yml
+  provider_health_monitor: scripts/architect/provider-health.py
   mobile_bootstrap: scripts/mobile/termux-bootstrap.sh
   mobile_verify: scripts/mobile/termux-verify.sh
 

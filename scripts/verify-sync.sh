@@ -52,7 +52,7 @@ echo
 INDEX_FILE="docs/repo/repo-index.json"
 GEN_SCRIPT="scripts/repo-index.sh"
 
-echo "[1/7] Repo index integrity"
+echo "[1/8] Repo index integrity"
 if [[ ! -f "$GEN_SCRIPT" ]]; then
   fail "Missing generator script: $GEN_SCRIPT"
 elif [[ ! -f "$INDEX_FILE" ]]; then
@@ -97,7 +97,7 @@ else
 fi
 echo
 
-echo "[2/7] Architect GPT manifest integrity"
+echo "[2/8] Architect GPT manifest integrity"
 MANIFEST="docs/governance/architectgpt/architect-gpt-manifest.yaml"
 ARCH_DOC="docs/governance/architectgpt/architect-gpt.md"
 if [[ ! -f "$MANIFEST" ]]; then fail "Missing manifest: $MANIFEST"; fi
@@ -126,7 +126,7 @@ if [[ -f "$MANIFEST" && -f "$ARCH_DOC" ]]; then
 fi
 echo
 
-echo "[3/7] Governance canonical surface checks"
+echo "[3/8] Governance canonical surface checks"
 required_governance_files=(
   "docs/governance/governance-specification.md"
   "docs/governance/treasury-constitution.md"
@@ -141,13 +141,16 @@ required_governance_files=(
   "docs/governance/architectgpt/evidence-protocol.md"
   "docs/governance/architectgpt/execution-record.schema.json"
   "docs/governance/architectgpt/promotion-protocol.md"
+  "docs/governance/architectgpt/ci-promotion-protocol.md"
+  "docs/governance/architectgpt/provider-health-protocol.md"
+  "docs/governance/architectgpt/provider-health.schema.json"
 )
 for f in "${required_governance_files[@]}"; do
   if [[ -f "$f" ]]; then echo "✅ present: $f"; else fail "Missing governance file: $f"; fi
 done
 echo
 
-echo "[4/7] Orchestration control checks"
+echo "[4/8] Orchestration control checks"
 ORCHESTRATOR="scripts/architect/orchestrate.sh"
 REGISTRY="docs/governance/architectgpt/capability-registry.yaml"
 if [[ ! -f "$ORCHESTRATOR" ]]; then
@@ -165,7 +168,7 @@ for permission in R0 R1 W1 W2 W3 C1; do
 done
 echo
 
-echo "[5/7] Evidence schema and validator checks"
+echo "[5/8] Evidence schema and validator checks"
 SCHEMA="docs/governance/architectgpt/execution-record.schema.json"
 VALIDATOR="scripts/architect/validate-evidence.py"
 if jq empty "$SCHEMA" >/dev/null 2>&1; then echo "✅ valid JSON schema document: $SCHEMA"; else fail "Invalid JSON schema document: $SCHEMA"; fi
@@ -192,7 +195,7 @@ else
 fi
 echo
 
-echo "[6/7] Promotion gate checks"
+echo "[6/8] Promotion gate checks"
 PROMOTION_GATE="scripts/architect/promotion-gate.sh"
 PROMOTION_PROTOCOL="docs/governance/architectgpt/promotion-protocol.md"
 if [[ ! -f "$PROMOTION_GATE" ]]; then
@@ -213,7 +216,22 @@ fi
 if [[ -f "$PROMOTION_PROTOCOL" ]]; then echo "✅ promotion protocol present"; else fail "Missing promotion protocol"; fi
 echo
 
-echo "[7/7] Archive checks (deprecated files)"
+echo "[7/8] Provider health and drift checks"
+PROVIDER_SCHEMA="docs/governance/architectgpt/provider-health.schema.json"
+PROVIDER_MONITOR="scripts/architect/provider-health.py"
+PROVIDER_TEST="scripts/architect/test-provider-health.sh"
+if jq empty "$PROVIDER_SCHEMA" >/dev/null 2>&1; then echo "✅ valid provider health schema: $PROVIDER_SCHEMA"; else fail "Invalid provider health schema: $PROVIDER_SCHEMA"; fi
+if python3 -m py_compile "$PROVIDER_MONITOR"; then echo "✅ Python syntax: $PROVIDER_MONITOR"; else fail "Invalid Python syntax: $PROVIDER_MONITOR"; fi
+if bash -n "$PROVIDER_TEST"; then echo "✅ shell syntax: $PROVIDER_TEST"; else fail "Invalid shell syntax: $PROVIDER_TEST"; fi
+if bash "$PROVIDER_TEST" >/dev/null; then
+  echo "✅ provider monitor accepts healthy exact-head evidence"
+  echo "✅ provider monitor rejects drift, stale, and malformed evidence"
+else
+  fail "Provider health integrity fixtures failed"
+fi
+echo
+
+echo "[8/8] Archive checks (deprecated files)"
 archive_files=(
   "docs/archive/architectgpt/architectgpt-core.md"
   "docs/archive/architectgpt/architectgpt-extended.md"
