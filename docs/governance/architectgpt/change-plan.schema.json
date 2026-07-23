@@ -1,0 +1,7 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://the-arcanum.net/schemas/change-plan.v1.json",
+  "title": "Arcanum Repository Change Plan",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "record_type", "repository", "base_commit", "target_branch", "permission_class", "summary", "changes
