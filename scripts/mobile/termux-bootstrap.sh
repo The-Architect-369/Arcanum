@@ -31,9 +31,9 @@ pkg install -y \
 log "Installing Node.js LTS"
 pkg install -y nodejs-lts
 
-log "Enabling Corepack and pnpm"
+log "Enabling Corepack and repository-pinned pnpm"
 corepack enable
-corepack prepare pnpm@latest --activate
+corepack prepare pnpm@9.10.0 --activate
 
 WORKSPACE_ROOT="${ARCANUM_WORKSPACE_ROOT:-$HOME/work}"
 REPO_DIR="${ARCANUM_REPO_DIR:-$WORKSPACE_ROOT/Arcanum}"
