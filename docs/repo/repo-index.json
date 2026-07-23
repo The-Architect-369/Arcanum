@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-07-23T06:02:54Z",
+  "generated_at": "2026-07-23T06:15:28Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "89627d318",
+  "commit": "d2d1e7e13",
   "generator_version": "1.2",
   "files": [
     {
@@ -3409,11 +3409,11 @@
     {
       "path": "docs/governance/architectgpt/promotion-protocol.md",
       "type": "file",
-      "size_bytes": 2349,
-      "last_modified_commit": "c89e962",
+      "size_bytes": 3381,
+      "last_modified_commit": "d2d1e7e",
       "is_empty": false,
       "extension": ".md",
-      "lines": 79
+      "lines": 101
     },
     {
       "path": "docs/governance/architectgpt/sessions/.gitkeep",
@@ -3598,11 +3598,11 @@
     {
       "path": "docs/repo/repo-index.json",
       "type": "file",
-      "size_bytes": 167374,
-      "last_modified_commit": "48a4fcc",
+      "size_bytes": 167837,
+      "last_modified_commit": "fb157bb",
       "is_empty": false,
       "extension": ".json",
-      "lines": 6209
+      "lines": 6227
     },
     {
       "path": "docs/repo/repo-interface.md",
@@ -5884,11 +5884,11 @@
     {
       "path": "scripts/architect/promotion-gate.sh",
       "type": "file",
-      "size_bytes": 3689,
-      "last_modified_commit": "89627d3",
+      "size_bytes": 5263,
+      "last_modified_commit": "c809d70",
       "is_empty": false,
       "extension": ".sh",
-      "lines": 78
+      "lines": 132
     },
     {
       "path": "scripts/architect/validate-evidence.py",
