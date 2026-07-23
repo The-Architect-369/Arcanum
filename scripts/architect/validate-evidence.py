@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate Architect GPT orchestration JSONL evidence records."""
+"""Validate and migrate Architect GPT orchestration JSONL evidence records."""
 
 from __future__ import annotations
 
@@ -32,6 +32,24 @@ ALLOWED_KEYS = {
 
 def fail(message: str) -> None:
     raise ValueError(message)
+
+
+def is_legacy_execution(record: Any) -> bool:
+    if not isinstance(record, dict):
+        return False
+    required = {"timestamp", "repository", "branch", "commit", "permission_class", "status", "summary"}
+    return required.issubset(record) and "schema_version" not in record and "record_type" not in record
+
+
+def migrate_record(record: Any, line_number: int) -> dict[str, Any]:
+    if is_legacy_execution(record):
+        migrated = dict(record)
+        migrated["schema_version"] = "1.0"
+        migrated["record_type"] = "execution"
+        return migrated
+    if not isinstance(record, dict):
+        fail(f"line {line_number}: record must be an object")
+    return record
 
 
 def validate_record(record: Any, line_number: int) -> None:
@@ -85,37 +103,64 @@ def validate_record(record: Any, line_number: int) -> None:
             fail(f"line {line_number}: provider_evidence cannot contain permission_class")
 
 
-def validate_jsonl(path: Path) -> int:
+def read_records(path: Path) -> list[tuple[int, dict[str, Any]]]:
+    records: list[tuple[int, dict[str, Any]]] = []
     if not path.exists():
-        print(f"SKIP evidence log not found: {path}")
-        return 0
-
-    count = 0
+        return records
     with path.open("r", encoding="utf-8") as handle:
         for line_number, raw in enumerate(handle, start=1):
             if not raw.strip():
                 continue
             try:
-                record = json.loads(raw)
+                parsed = json.loads(raw)
             except json.JSONDecodeError as exc:
-                print(f"FAIL line {line_number}: invalid JSON: {exc}", file=sys.stderr)
-                return 1
-            try:
-                validate_record(record, line_number)
-            except ValueError as exc:
-                print(f"FAIL {exc}", file=sys.stderr)
-                return 1
-            count += 1
+                fail(f"line {line_number}: invalid JSON: {exc}")
+            records.append((line_number, migrate_record(parsed, line_number)))
+    return records
 
-    print(f"PASS validated {count} evidence record(s): {path}")
+
+def validate_jsonl(path: Path) -> int:
+    if not path.exists():
+        print(f"SKIP evidence log not found: {path}")
+        return 0
+    try:
+        records = read_records(path)
+        for line_number, record in records:
+            validate_record(record, line_number)
+    except ValueError as exc:
+        print(f"FAIL {exc}", file=sys.stderr)
+        return 1
+    print(f"PASS validated {len(records)} evidence record(s): {path}")
+    return 0
+
+
+def migrate_jsonl(path: Path) -> int:
+    if not path.exists():
+        print(f"SKIP evidence log not found: {path}")
+        return 0
+    try:
+        records = read_records(path)
+        for line_number, record in records:
+            validate_record(record, line_number)
+    except ValueError as exc:
+        print(f"FAIL {exc}", file=sys.stderr)
+        return 1
+
+    tmp = path.with_suffix(path.suffix + ".tmp")
+    with tmp.open("w", encoding="utf-8") as handle:
+        for _, record in records:
+            handle.write(json.dumps(record, separators=(",", ":"), ensure_ascii=False) + "\n")
+    tmp.replace(path)
+    print(f"PASS migrated {len(records)} evidence record(s): {path}")
     return 0
 
 
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("path", type=Path)
+    parser.add_argument("--migrate", action="store_true", help="rewrite legacy execution records to schema 1.0")
     args = parser.parse_args()
-    return validate_jsonl(args.path)
+    return migrate_jsonl(args.path) if args.migrate else validate_jsonl(args.path)
 
 
 if __name__ == "__main__":
