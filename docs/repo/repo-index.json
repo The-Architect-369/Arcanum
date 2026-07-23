@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-07-23T04:11:11Z",
+  "generated_at": "2026-07-23T04:29:12Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "4f5a5cb6e",
+  "commit": "99a01c3f2",
   "generator_version": "1.2",
   "files": [
     {
@@ -3337,11 +3337,11 @@
     {
       "path": "docs/governance/architectgpt/architect-gpt-manifest.yaml",
       "type": "file",
-      "size_bytes": 3242,
-      "last_modified_commit": "c3eeddc",
+      "size_bytes": 3825,
+      "last_modified_commit": "8c3f33d",
       "is_empty": false,
       "extension": ".yaml",
-      "lines": 103
+      "lines": 119
     },
     {
       "path": "docs/governance/architectgpt/architect-gpt.md",
@@ -3373,11 +3373,20 @@
     {
       "path": "docs/governance/architectgpt/capability-registry.yaml",
       "type": "file",
-      "size_bytes": 3237,
-      "last_modified_commit": "737d21d",
+      "size_bytes": 3249,
+      "last_modified_commit": "0c743e3",
       "is_empty": false,
       "extension": ".yaml",
-      "lines": 145
+      "lines": 117
+    },
+    {
+      "path": "docs/governance/architectgpt/orchestration-protocol.md",
+      "type": "file",
+      "size_bytes": 4292,
+      "last_modified_commit": "1c85b58",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 133
     },
     {
       "path": "docs/governance/architectgpt/sessions/.gitkeep",
@@ -3562,11 +3571,11 @@
     {
       "path": "docs/repo/repo-index.json",
       "type": "file",
-      "size_bytes": 161644,
-      "last_modified_commit": "9402e28",
+      "size_bytes": 166194,
+      "last_modified_commit": "dbe1beb",
       "is_empty": false,
       "extension": ".json",
-      "lines": 5939
+      "lines": 6164
     },
     {
       "path": "docs/repo/repo-interface.md",
@@ -5837,6 +5846,15 @@
       "lines": 3
     },
     {
+      "path": "scripts/architect/orchestrate.sh",
+      "type": "file",
+      "size_bytes": 5382,
+      "last_modified_commit": "67e0be9",
+      "is_empty": false,
+      "extension": ".sh",
+      "lines": 139
+    },
+    {
       "path": "scripts/archive-manifest-check.sh",
       "type": "file",
       "size_bytes": 0,
@@ -6145,11 +6163,11 @@
     {
       "path": "scripts/verify-sync.sh",
       "type": "file",
-      "size_bytes": 6148,
-      "last_modified_commit": "3216eeb",
+      "size_bytes": 6305,
+      "last_modified_commit": "99a01c3",
       "is_empty": false,
       "extension": ".sh",
-      "lines": 212
+      "lines": 176
     },
     {
       "path": "tsconfig.json",
