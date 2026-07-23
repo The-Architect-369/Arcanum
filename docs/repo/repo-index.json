@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-07-23T10:45:11Z",
+  "generated_at": "2026-07-23T11:17:05Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "b6199de40",
+  "commit": "2aa0b7178",
   "generator_version": "1.2",
   "files": [
     {
@@ -3346,11 +3346,11 @@
     {
       "path": "docs/governance/architectgpt/architect-gpt-manifest.yaml",
       "type": "file",
-      "size_bytes": 6247,
-      "last_modified_commit": "daec5b2",
+      "size_bytes": 7007,
+      "last_modified_commit": "a4d183d",
       "is_empty": false,
       "extension": ".yaml",
-      "lines": 165
+      "lines": 181
     },
     {
       "path": "docs/governance/architectgpt/architect-gpt.md",
@@ -3387,6 +3387,24 @@
       "is_empty": false,
       "extension": ".yaml",
       "lines": 117
+    },
+    {
+      "path": "docs/governance/architectgpt/change-plan-protocol.md",
+      "type": "file",
+      "size_bytes": 2859,
+      "last_modified_commit": "2376689",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 83
+    },
+    {
+      "path": "docs/governance/architectgpt/change-plan.schema.json",
+      "type": "file",
+      "size_bytes": 1646,
+      "last_modified_commit": "94e328d",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 52
     },
     {
       "path": "docs/governance/architectgpt/ci-promotion-protocol.md",
@@ -3634,11 +3652,11 @@
     {
       "path": "docs/repo/repo-index.json",
       "type": "file",
-      "size_bytes": 168532,
-      "last_modified_commit": "31aab3b",
+      "size_bytes": 170413,
+      "last_modified_commit": "15c3b9b",
       "is_empty": false,
       "extension": ".json",
-      "lines": 6254
+      "lines": 6326
     },
     {
       "path": "docs/repo/repo-interface.md",
@@ -4085,7 +4103,7 @@
       "path": "docs/tooling/doctrine-checksums/doctrine-checksums.yaml",
       "type": "file",
       "size_bytes": 2166,
-      "last_modified_commit": "a4d7f1f",
+      "last_modified_commit": "15c3b9b",
       "is_empty": false,
       "extension": ".yaml",
       "lines": 26
@@ -5909,6 +5927,15 @@
       "lines": 3
     },
     {
+      "path": "scripts/architect/change-plan.py",
+      "type": "file",
+      "size_bytes": 4477,
+      "last_modified_commit": "db2313e",
+      "is_empty": false,
+      "extension": ".py",
+      "lines": 124
+    },
+    {
       "path": "scripts/architect/ci-attest.sh",
       "type": "file",
       "size_bytes": 1839,
@@ -5943,6 +5970,15 @@
       "is_empty": false,
       "extension": ".py",
       "lines": 142
+    },
+    {
+      "path": "scripts/architect/test-change-plan.sh",
+      "type": "file",
+      "size_bytes": 2630,
+      "last_modified_commit": "6c916ec",
+      "is_empty": false,
+      "extension": ".sh",
+      "lines": 76
     },
     {
       "path": "scripts/architect/test-provider-health.sh",
@@ -6271,11 +6307,11 @@
     {
       "path": "scripts/verify-sync.sh",
       "type": "file",
-      "size_bytes": 11252,
-      "last_modified_commit": "b6199de",
+      "size_bytes": 12292,
+      "last_modified_commit": "2aa0b71",
       "is_empty": false,
       "extension": ".sh",
-      "lines": 248
+      "lines": 264
     },
     {
       "path": "tsconfig.json",
