@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-07-23T05:43:31Z",
+  "generated_at": "2026-07-23T05:53:14Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "18d70528c",
+  "commit": "9ae142920",
   "generator_version": "1.2",
   "files": [
     {
@@ -214,11 +214,11 @@
     {
       "path": ".gitignore",
       "type": "file",
-      "size_bytes": 617,
-      "last_modified_commit": "fdb437d",
+      "size_bytes": 640,
+      "last_modified_commit": "9ae1429",
       "is_empty": false,
       "extension": "",
-      "lines": 48
+      "lines": 50
     },
     {
       "path": ".npmrc",
@@ -3589,11 +3589,11 @@
     {
       "path": "docs/repo/repo-index.json",
       "type": "file",
-      "size_bytes": 166660,
-      "last_modified_commit": "108bfa8",
+      "size_bytes": 167374,
+      "last_modified_commit": "71fc20f",
       "is_empty": false,
       "extension": ".json",
-      "lines": 6182
+      "lines": 6209
     },
     {
       "path": "docs/repo/repo-interface.md",
@@ -5866,20 +5866,20 @@
     {
       "path": "scripts/architect/orchestrate.sh",
       "type": "file",
-      "size_bytes": 7096,
-      "last_modified_commit": "3242724",
+      "size_bytes": 7583,
+      "last_modified_commit": "be91066",
       "is_empty": false,
       "extension": ".sh",
-      "lines": 185
+      "lines": 202
     },
     {
       "path": "scripts/architect/validate-evidence.py",
       "type": "file",
-      "size_bytes": 4203,
-      "last_modified_commit": "ef4eea6",
+      "size_bytes": 5993,
+      "last_modified_commit": "15d73d2",
       "is_empty": false,
       "extension": ".py",
-      "lines": 122
+      "lines": 167
     },
     {
       "path": "scripts/archive-manifest-check.sh",
