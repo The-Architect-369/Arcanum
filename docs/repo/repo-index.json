@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-07-23T07:47:23Z",
+  "generated_at": "2026-07-23T07:52:20Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "9b68f4231",
+  "commit": "a4d7f1f2e",
   "generator_version": "1.2",
   "files": [
     {
@@ -3617,7 +3617,7 @@
       "path": "docs/repo/repo-index.json",
       "type": "file",
       "size_bytes": 168531,
-      "last_modified_commit": "c4bed92",
+      "last_modified_commit": "bfa43cb",
       "is_empty": false,
       "extension": ".json",
       "lines": 6254
@@ -4067,7 +4067,7 @@
       "path": "docs/tooling/doctrine-checksums/doctrine-checksums.yaml",
       "type": "file",
       "size_bytes": 2166,
-      "last_modified_commit": "9b68f42",
+      "last_modified_commit": "a4d7f1f",
       "is_empty": false,
       "extension": ".yaml",
       "lines": 26
