@@ -19,10 +19,11 @@ jobs:
   attest:
     runs-on: ubuntu-22.04
     steps:
-      - name: Checkout repository
+      - name: Checkout exact evidence commit
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
 
       - name: Enable Corepack
         run: corepack enable
@@ -54,12 +55,14 @@ jobs:
           ARCANUM_VERIFY_SYNC_RESULT: ${{ steps.verify_sync.outcome }}
           ARCANUM_TYPECHECK_RESULT: ${{ steps.typecheck.outcome }}
           ARCANUM_BUILD_RESULT: ${{ steps.build.outcome }}
+          GITHUB_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+          GITHUB_HEAD_REF: ${{ github.head_ref || github.ref_name }}
         run: bash scripts/architect/ci-attest.sh
 
       - name: Upload promotion attestation
         uses: actions/upload-artifact@v4
         with:
-          name: architect-promotion-${{ github.sha }}
+          name: architect-promotion-${{ github.event.pull_request.head.sha || github.sha }}
           path: .architect-reports/ci/promotion-attestation.json
           if-no-files-found: error
           retention-days: 30
