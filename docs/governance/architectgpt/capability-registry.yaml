@@ -1,8 +1,8 @@
-version: 1.0
+version: 1.1
 architect_gpt_version: 3.5
 phase: Pre-Genesis
 mode: deny_by_default
-last_reviewed: 2026-07-22
+last_reviewed: 2026-07-23
 
 principles:
   - sovereignty
@@ -48,60 +48,30 @@ providers:
     authority: repository_state
     canonicality: authoritative_for_repository_state
     permission_classes: [R1, W1, W2, W3]
-    reads:
-      - repository_metadata
-      - files
-      - commits
-      - branches
-      - pull_requests
-      - issues
-      - reviews
-      - workflow_runs
-      - workflow_logs
-    writes:
-      - branches
-      - files
-      - commits
-      - issues
-      - pull_requests
-      - reviews
-      - merges
-      - workflow_reruns
+    reads: [repository_metadata, files, commits, branches, pull_requests, issues, reviews, workflow_runs, workflow_logs]
+    writes: [branches, files, commits, issues, pull_requests, reviews, merges, workflow_reruns]
     default_read_branch: main
     default_write_branch: mobile
     write_gate: explicit_human_request
 
   vercel:
-    status: unverified
+    status: connected_observed
     authority: deployment_state
     canonicality: authoritative_for_observed_deployment_state
     permission_classes: [R1, W3]
-    reads:
-      - projects
-      - deployments
-      - logs
-      - domains
-      - environment_metadata
-    writes:
-      - deploy
-      - promote
-      - rollback
-      - configure
+    observed_team: the-arcanum-project
+    observed_project: arcanum
+    reads: [projects, deployments, logs, domains, environment_metadata]
+    writes: [deploy, promote, rollback, configure]
     write_gate: explicit_human_request
 
   google_workspace:
-    status: connected_by_user_statement
+    status: connected_observed
     authority: working_context
     canonicality: non_canonical
     permission_classes: [R1, W1]
-    surfaces:
-      - drive
-      - docs
-      - sheets
-      - slides
-      - gmail
-      - calendar
-      - contacts
+    observed_profile: the-architect@the-arcanum.net
+    surfaces: [drive, docs, sheets, slides, gmail, calendar, contacts]
     rule: ratified_results_must_return_to_repository_canon
 
   notion:
@@ -117,12 +87,13 @@ providers:
     permission_classes: [R0]
 
   local_termux:
-    status: bootstrap_added
+    status: verified
     authority: local_verification
     canonicality: verification_evidence_only
-    permission_classes: [R1]
+    permission_classes: [R1, W2]
     bootstrap: scripts/mobile/termux-bootstrap.sh
     verify: scripts/mobile/termux-verify.sh
+    orchestration: scripts/architect/orchestrate.sh
 
 source_authority_order:
   - canonical_doctrine
@@ -143,3 +114,4 @@ hard_rules:
   - no_fabricated_live_state
   - permission_denial_must_be_distinguished_from_missing_data
   - constitutional_changes_require_impact_reporting
+  - every_external_action_must_be_attributable_to_a_permission_class
