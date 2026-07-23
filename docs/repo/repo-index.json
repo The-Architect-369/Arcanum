@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-07-23T06:20:01Z",
+  "generated_at": "2026-07-23T06:56:04Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "ad0e5ace4",
+  "commit": "0726fe01e",
   "generator_version": "1.2",
   "files": [
     {
@@ -192,6 +192,15 @@
       "is_empty": false,
       "extension": ".md",
       "lines": 285
+    },
+    {
+      "path": ".github/workflows/architect-promotion.yml",
+      "type": "file",
+      "size_bytes": 1655,
+      "last_modified_commit": "789f4ee",
+      "is_empty": false,
+      "extension": ".yml",
+      "lines": 65
     },
     {
       "path": ".github/workflows/doctrine-guard.yml",
@@ -3337,11 +3346,11 @@
     {
       "path": "docs/governance/architectgpt/architect-gpt-manifest.yaml",
       "type": "file",
-      "size_bytes": 4890,
-      "last_modified_commit": "c428853",
+      "size_bytes": 5511,
+      "last_modified_commit": "0726fe0",
       "is_empty": false,
       "extension": ".yaml",
-      "lines": 139
+      "lines": 151
     },
     {
       "path": "docs/governance/architectgpt/architect-gpt.md",
@@ -3378,6 +3387,15 @@
       "is_empty": false,
       "extension": ".yaml",
       "lines": 117
+    },
+    {
+      "path": "docs/governance/architectgpt/ci-promotion-protocol.md",
+      "type": "file",
+      "size_bytes": 2228,
+      "last_modified_commit": "7307be3",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 70
     },
     {
       "path": "docs/governance/architectgpt/evidence-protocol.md",
@@ -3599,7 +3617,7 @@
       "path": "docs/repo/repo-index.json",
       "type": "file",
       "size_bytes": 167839,
-      "last_modified_commit": "d75ea4b",
+      "last_modified_commit": "14248c9",
       "is_empty": false,
       "extension": ".json",
       "lines": 6227
@@ -5871,6 +5889,15 @@
       "is_empty": false,
       "extension": ".yaml",
       "lines": 3
+    },
+    {
+      "path": "scripts/architect/ci-attest.sh",
+      "type": "file",
+      "size_bytes": 1839,
+      "last_modified_commit": "98aec6e",
+      "is_empty": false,
+      "extension": ".sh",
+      "lines": 47
     },
     {
       "path": "scripts/architect/orchestrate.sh",
