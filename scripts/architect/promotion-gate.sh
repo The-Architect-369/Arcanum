@@ -24,6 +24,7 @@ printf 'Branch: %s\n' "$branch"
 printf 'HEAD: %s\n' "$head"
 printf 'origin/mobile: %s\n\n' "$remote_head"
 
+# contract: branch == "mobile"
 [[ "$branch" == "mobile" ]] && pass "integration branch is mobile" || fail_check "integration branch must be mobile"
 [[ -z "$(git status --porcelain)" ]] && pass "working tree clean" || fail_check "working tree contains local changes"
 [[ "$head" == "$remote_head" ]] && pass "HEAD synchronized with origin/mobile" || fail_check "HEAD differs from origin/mobile"
