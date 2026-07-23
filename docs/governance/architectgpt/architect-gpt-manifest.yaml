@@ -70,6 +70,7 @@ solve_method:
   - rerun pnpm -C apps/web build when local verification is available
   - capture verification evidence
   - execute the promotion gate after a wave is locally green
+  - require CI-native promotion evidence before guarded merge
   - only then merge or hand off toward main if explicitly requested
 
 capability_rules:
@@ -100,6 +101,14 @@ promotion_control:
   vercel_exact_head_required: true
   merge_guard: expected_head_sha
 
+ci_promotion_control:
+  workflow: .github/workflows/architect-promotion.yml
+  protocol: docs/governance/architectgpt/ci-promotion-protocol.md
+  generator: scripts/architect/ci-attest.sh
+  artifact_path: .architect-reports/ci/promotion-attestation.json
+  exact_commit_required: true
+  required_checks: [repository_integrity, typecheck, production_build]
+
 mobile_verification:
   environment: Android Termux in isolated work profile
   bootstrap: scripts/mobile/termux-bootstrap.sh
@@ -121,6 +130,7 @@ files:
   evidence_protocol: docs/governance/architectgpt/evidence-protocol.md
   execution_record_schema: docs/governance/architectgpt/execution-record.schema.json
   promotion_protocol: docs/governance/architectgpt/promotion-protocol.md
+  ci_promotion_protocol: docs/governance/architectgpt/ci-promotion-protocol.md
   hope_guardian: docs/governance/hopegpt/hope-guardian.md
   repo_interface: docs/repo/repo-interface.md
   repo_index: docs/repo/repo-index.json
@@ -128,6 +138,8 @@ files:
   orchestration_cli: scripts/architect/orchestrate.sh
   evidence_validator: scripts/architect/validate-evidence.py
   promotion_gate: scripts/architect/promotion-gate.sh
+  ci_attestation_generator: scripts/architect/ci-attest.sh
+  ci_promotion_workflow: .github/workflows/architect-promotion.yml
   mobile_bootstrap: scripts/mobile/termux-bootstrap.sh
   mobile_verify: scripts/mobile/termux-verify.sh
 
