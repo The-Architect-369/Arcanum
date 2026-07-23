@@ -22,8 +22,10 @@ from pathlib import Path
 out = Path(sys.argv[1])
 root = Path.cwd()
 
+
 def run(args):
     return subprocess.check_output(args, cwd=root, text=True).strip()
+
 
 def safe_run(args, default="unknown"):
     try:
@@ -31,6 +33,7 @@ def safe_run(args, default="unknown"):
         return value if value else default
     except Exception:
         return default
+
 
 generated_at = safe_run(["date", "-u", "+%Y-%m-%dT%H:%M:%SZ"])
 repo = safe_run(["git", "config", "--get", "remote.origin.url"], "unknown")
@@ -56,51 +59,68 @@ entries = []
 for rel in sorted(tracked):
     path = root / rel
 
-    # Skip vanished files in odd index states.
-    if not path.exists():
+    # Skip vanished files in odd index states. lexists preserves broken symlinks.
+    if not os.path.lexists(path):
         continue
 
     try:
-        st = path.stat()
+        st = path.lstat()
     except OSError:
         continue
 
+    is_symlink = path.is_symlink()
+    entry_type = "symlink" if is_symlink else "file"
     ext = path.suffix
-    size = st.st_size
-    is_empty = size == 0
 
-    lines = 0
-    if path.is_file():
+    if is_symlink:
         try:
-            with path.open("rb") as f:
-                # Count lines only for reasonably text-like files.
-                sample = f.read(4096)
-                if b"\0" not in sample:
-                    f.seek(0)
-                    lines = sum(1 for _ in f)
-        except Exception:
-            lines = 0
+            target = os.readlink(path)
+            size = len(os.fsencode(target))
+        except OSError:
+            size = st.st_size
+        lines = 0
+    else:
+        size = st.st_size
+        lines = 0
+        if path.is_file():
+            try:
+                with path.open("rb") as f:
+                    # Count lines only for reasonably text-like files.
+                    sample = f.read(4096)
+                    if b"\0" not in sample:
+                        f.seek(0)
+                        lines = sum(1 for _ in f)
+            except Exception:
+                lines = 0
 
     last_modified_commit = safe_run(
         ["git", "log", "-1", "--format=%h", "--", rel],
         "unknown",
     )
 
-    entries.append({
+    entry = {
         "path": rel,
-        "type": "file",
+        "type": entry_type,
         "size_bytes": size,
         "last_modified_commit": last_modified_commit,
-        "is_empty": is_empty,
+        "is_empty": size == 0,
         "extension": ext,
         "lines": lines,
-    })
+    }
+
+    if is_symlink:
+        try:
+            entry["target"] = os.readlink(path)
+        except OSError:
+            entry["target"] = "unreadable"
+
+    entries.append(entry)
 
 data = {
     "generated_at": generated_at,
     "repo": repo_name,
     "commit": commit,
-    "generator_version": "1.1",
+    "generator_version": "1.2",
     "files": entries,
 }
 
