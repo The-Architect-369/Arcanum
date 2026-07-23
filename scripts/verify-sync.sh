@@ -12,7 +12,6 @@ fi
 cd "$ROOT_DIR"
 
 STATUS=0
-
 fail() { echo "❌ $*"; STATUS=1; }
 warn() { echo "⚠️  $*"; }
 
@@ -49,7 +48,7 @@ echo
 INDEX_FILE="docs/repo/repo-index.json"
 GEN_SCRIPT="scripts/repo-index.sh"
 
-echo "[1/5] Repo index integrity"
+echo "[1/6] Repo index integrity"
 if [[ ! -f "$GEN_SCRIPT" ]]; then
   fail "Missing generator script: $GEN_SCRIPT"
 elif [[ ! -f "$INDEX_FILE" ]]; then
@@ -94,7 +93,7 @@ else
 fi
 echo
 
-echo "[2/5] Architect GPT manifest integrity"
+echo "[2/6] Architect GPT manifest integrity"
 MANIFEST="docs/governance/architectgpt/architect-gpt-manifest.yaml"
 ARCH_DOC="docs/governance/architectgpt/architect-gpt.md"
 if [[ ! -f "$MANIFEST" ]]; then fail "Missing manifest: $MANIFEST"; fi
@@ -123,7 +122,7 @@ if [[ -f "$MANIFEST" && -f "$ARCH_DOC" ]]; then
 fi
 echo
 
-echo "[3/5] Governance canonical surface checks"
+echo "[3/6] Governance canonical surface checks"
 required_governance_files=(
   "docs/governance/governance-specification.md"
   "docs/governance/treasury-constitution.md"
@@ -135,13 +134,15 @@ required_governance_files=(
   "docs/governance/architectgpt/capability-registry.yaml"
   "docs/governance/architectgpt/capability-fabric.md"
   "docs/governance/architectgpt/orchestration-protocol.md"
+  "docs/governance/architectgpt/evidence-protocol.md"
+  "docs/governance/architectgpt/execution-record.schema.json"
 )
 for f in "${required_governance_files[@]}"; do
   if [[ -f "$f" ]]; then echo "✅ present: $f"; else fail "Missing governance file: $f"; fi
 done
 echo
 
-echo "[4/5] Orchestration control checks"
+echo "[4/6] Orchestration control checks"
 ORCHESTRATOR="scripts/architect/orchestrate.sh"
 REGISTRY="docs/governance/architectgpt/capability-registry.yaml"
 if [[ ! -f "$ORCHESTRATOR" ]]; then
@@ -159,7 +160,29 @@ for permission in R0 R1 W1 W2 W3 C1; do
 done
 echo
 
-echo "[5/5] Archive checks (deprecated files)"
+echo "[5/6] Evidence schema and validator checks"
+SCHEMA="docs/governance/architectgpt/execution-record.schema.json"
+VALIDATOR="scripts/architect/validate-evidence.py"
+if jq empty "$SCHEMA" >/dev/null 2>&1; then echo "✅ valid JSON schema document: $SCHEMA"; else fail "Invalid JSON schema document: $SCHEMA"; fi
+if python3 -m py_compile "$VALIDATOR"; then echo "✅ Python syntax: $VALIDATOR"; else fail "Invalid Python syntax: $VALIDATOR"; fi
+if [[ -n "${tmpdir:-}" ]]; then
+  valid_log="$tmpdir/valid-evidence.jsonl"
+  invalid_log="$tmpdir/invalid-evidence.jsonl"
+  cat > "$valid_log" <<'EOF'
+{"schema_version":"1.0","record_type":"execution","timestamp":"2026-07-23T00:00:00Z","repository":"https://github.com/The-Architect-369/Arcanum.git","branch":"mobile","commit":"0000000000000000000000000000000000000000","permission_class":"W2","status":"success","summary":"validator positive fixture"}
+{"schema_version":"1.0","record_type":"provider_evidence","timestamp":"2026-07-23T00:00:00Z","repository":"https://github.com/The-Architect-369/Arcanum.git","branch":"mobile","commit":"0000000000000000000000000000000000000000","provider":"vercel","status":"observed","reference":"dpl_fixture","summary":"validator provider fixture"}
+EOF
+  cat > "$invalid_log" <<'EOF'
+{"schema_version":"1.0","record_type":"execution","timestamp":"2026-07-23T00:00:00Z","repository":"Arcanum","branch":"mobile","commit":"short","permission_class":"W9","status":"success","summary":"must fail"}
+EOF
+  if python3 "$VALIDATOR" "$valid_log" >/dev/null; then echo "✅ validator accepts canonical fixtures"; else fail "Validator rejected canonical fixtures"; fi
+  if python3 "$VALIDATOR" "$invalid_log" >/dev/null 2>&1; then fail "Validator accepted malformed fixture"; else echo "✅ validator rejects malformed fixtures"; fi
+else
+  fail "Temporary verification directory unavailable"
+fi
+echo
+
+echo "[6/6] Archive checks (deprecated files)"
 archive_files=(
   "docs/archive/architectgpt/architectgpt-core.md"
   "docs/archive/architectgpt/architectgpt-extended.md"
