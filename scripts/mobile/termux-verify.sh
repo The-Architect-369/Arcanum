@@ -5,11 +5,14 @@ ROOT="$(git rev-parse --show-toplevel 2>/dev/null || pwd)"
 REPORT_DIR="$ROOT/.architect-reports/mobile"
 STAMP="$(date -u +%Y%m%dT%H%M%SZ)"
 REPORT="$REPORT_DIR/termux-$STAMP.md"
-mkdir -p "$REPORT_DIR"
+LOG_DIR="$REPORT_DIR/logs-$STAMP"
+mkdir -p "$REPORT_DIR" "$LOG_DIR"
 
 PASS=0
 WARN=0
 FAIL=0
+CURRENT_CHECK="initialization"
+FINALIZED=0
 
 record() {
   local status="$1" label="$2" detail="$3"
@@ -21,15 +24,49 @@ record() {
   esac
 }
 
+finalize_report() {
+  [ "$FINALIZED" -eq 1 ] && return 0
+  FINALIZED=1
+  cat >> "$REPORT" <<EOF
+
+## Result
+
+- PASS: $PASS
+- WARN: $WARN
+- FAIL: $FAIL
+EOF
+}
+
+on_interrupt() {
+  printf '\n[architect-verify] interrupted during: %s\n' "$CURRENT_CHECK" >&2
+  record WARN "verification interrupted" "$CURRENT_CHECK"
+  finalize_report
+  printf '[architect-verify] partial report: %s\n' "$REPORT" >&2
+  exit 130
+}
+
+trap on_interrupt INT TERM
+
 run_check() {
   local label="$1"; shift
-  local output rc
-  output="$("$@" 2>&1)"; rc=$?
+  local slug log rc summary
+  CURRENT_CHECK="$label"
+  slug="$(printf '%s' "$label" | tr '[:upper:] /' '[:lower:]--' | tr -cd 'a-z0-9._-')"
+  log="$LOG_DIR/$slug.log"
+
+  printf '\n[architect-verify] START %s\n' "$label"
+  "$@" 2>&1 | tee "$log"
+  rc=${PIPESTATUS[0]}
+
+  summary="$(tail -n 40 "$log" | tr '\n' '; ')"
   if [ "$rc" -eq 0 ]; then
-    record PASS "$label" "${output//$'\n'/; }"
+    record PASS "$label" "$summary"
+    printf '[architect-verify] PASS  %s\n' "$label"
   else
-    record FAIL "$label" "exit=$rc; ${output//$'\n'/; }"
+    record FAIL "$label" "exit=$rc; $summary"
+    printf '[architect-verify] FAIL  %s (exit=%s)\n' "$label" "$rc" >&2
   fi
+  CURRENT_CHECK="idle"
   return 0
 }
 
@@ -39,6 +76,7 @@ cat > "$REPORT" <<EOF
 - Generated: $(date -u +%Y-%m-%dT%H:%M:%SZ)
 - Repository root: $ROOT
 - Device environment: ${TERMUX_VERSION:+Termux $TERMUX_VERSION}${TERMUX_VERSION:-unknown}
+- Detailed logs: $LOG_DIR
 
 | Status | Check | Evidence |
 |---|---|---|
@@ -104,14 +142,7 @@ else
   record WARN "repository sync" "scripts/verify-sync.sh missing or not executable"
 fi
 
-cat >> "$REPORT" <<EOF
-
-## Result
-
-- PASS: $PASS
-- WARN: $WARN
-- FAIL: $FAIL
-EOF
+finalize_report
 
 printf '\nVerification report: %s\n' "$REPORT"
 cat "$REPORT"
