@@ -78,20 +78,36 @@ capability_rules:
   workspace_canonicality: non_canonical
   ratified_output_destination: repository
 
+orchestration_control:
+  cli: scripts/architect/orchestrate.sh
+  commands: [preflight, session, record]
+  report_directory: .architect-reports/orchestration
+  execution_log: .architect-reports/orchestration/execution.jsonl
+  record_format: jsonl
+
 mobile_verification:
   environment: Android Termux in isolated work profile
   bootstrap: scripts/mobile/termux-bootstrap.sh
   verify: scripts/mobile/termux-verify.sh
   report_directory: .architect-reports/mobile
 
+observed_providers:
+  github: connected
+  google_workspace: connected_observed
+  vercel: connected_observed
+  notion: unverified
+
 files:
   architect_gpt: docs/governance/architectgpt/architect-gpt.md
   architect_gpt_manifest: docs/governance/architectgpt/architect-gpt-manifest.yaml
   capability_registry: docs/governance/architectgpt/capability-registry.yaml
+  capability_fabric: docs/governance/architectgpt/capability-fabric.md
+  orchestration_protocol: docs/governance/architectgpt/orchestration-protocol.md
   hope_guardian: docs/governance/hopegpt/hope-guardian.md
   repo_interface: docs/repo/repo-interface.md
   repo_index: docs/repo/repo-index.json
   verify_script: scripts/verify-sync.sh
+  orchestration_cli: scripts/architect/orchestrate.sh
   mobile_bootstrap: scripts/mobile/termux-bootstrap.sh
   mobile_verify: scripts/mobile/termux-verify.sh
 
