@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-07-23T06:56:04Z",
+  "generated_at": "2026-07-23T07:47:23Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "0726fe01e",
+  "commit": "9b68f4231",
   "generator_version": "1.2",
   "files": [
     {
@@ -196,29 +196,29 @@
     {
       "path": ".github/workflows/architect-promotion.yml",
       "type": "file",
-      "size_bytes": 1655,
-      "last_modified_commit": "789f4ee",
+      "size_bytes": 1922,
+      "last_modified_commit": "54d1a30",
       "is_empty": false,
       "extension": ".yml",
-      "lines": 65
+      "lines": 68
     },
     {
       "path": ".github/workflows/doctrine-guard.yml",
       "type": "file",
-      "size_bytes": 794,
-      "last_modified_commit": "811a912",
+      "size_bytes": 880,
+      "last_modified_commit": "15f9744",
       "is_empty": false,
       "extension": ".yml",
-      "lines": 37
+      "lines": 40
     },
     {
       "path": ".github/workflows/verify-sync.yml",
       "type": "file",
-      "size_bytes": 549,
-      "last_modified_commit": "b936688",
+      "size_bytes": 635,
+      "last_modified_commit": "c93129d",
       "is_empty": false,
       "extension": ".yml",
-      "lines": 27
+      "lines": 28
     },
     {
       "path": ".gitignore",
@@ -3616,11 +3616,11 @@
     {
       "path": "docs/repo/repo-index.json",
       "type": "file",
-      "size_bytes": 167839,
-      "last_modified_commit": "14248c9",
+      "size_bytes": 168531,
+      "last_modified_commit": "c4bed92",
       "is_empty": false,
       "extension": ".json",
-      "lines": 6227
+      "lines": 6254
     },
     {
       "path": "docs/repo/repo-interface.md",
@@ -4067,7 +4067,7 @@
       "path": "docs/tooling/doctrine-checksums/doctrine-checksums.yaml",
       "type": "file",
       "size_bytes": 2166,
-      "last_modified_commit": "9402e28",
+      "last_modified_commit": "9b68f42",
       "is_empty": false,
       "extension": ".yaml",
       "lines": 26
