@@ -22,6 +22,7 @@ Usage:
   bash scripts/architect/orchestrate.sh record <permission-class> <status> <summary>
   bash scripts/architect/orchestrate.sh evidence <provider> <status> <reference> <summary>
   bash scripts/architect/orchestrate.sh validate
+  bash scripts/architect/orchestrate.sh migrate
 
 Commands:
   preflight  Validate local tooling, repository grounding, provider access, and policy files.
@@ -29,6 +30,7 @@ Commands:
   record     Append a schema-compliant execution record.
   evidence   Append a schema-compliant provider-evidence record.
   validate   Validate all local orchestration JSONL evidence.
+  migrate    Rewrite supported legacy execution records to schema 1.0.
 EOF
 }
 
@@ -50,6 +52,11 @@ provider_status() {
 repo_url() { git -C "$ROOT" config --get remote.origin.url 2>/dev/null || echo unknown; }
 branch_name() { git -C "$ROOT" branch --show-current 2>/dev/null || echo unknown; }
 head_sha() { git -C "$ROOT" rev-parse HEAD 2>/dev/null || echo unknown; }
+
+migrate_logs() {
+  python3 "$VALIDATOR" --migrate "$EXECUTION_LOG"
+  python3 "$VALIDATOR" --migrate "$EVIDENCE_LOG"
+}
 
 validate_logs() {
   python3 "$VALIDATOR" "$EXECUTION_LOG"
@@ -81,7 +88,7 @@ preflight() {
   printf 'INFO provider:vercel registry=%s\n' "$(provider_status vercel)"
   printf 'INFO provider:google_workspace registry=%s\n' "$(provider_status google_workspace)"
 
-  if validate_logs; then printf 'PASS evidence:local-jsonl\n'; else printf 'FAIL evidence:local-jsonl\n'; fail=$((fail+1)); fi
+  if migrate_logs >/dev/null && validate_logs; then printf 'PASS evidence:local-jsonl\n'; else printf 'FAIL evidence:local-jsonl\n'; fail=$((fail+1)); fi
 
   if bash "$ROOT/scripts/verify-sync.sh"; then
     printf 'PASS policy:verify-sync\n'
@@ -136,11 +143,20 @@ EOF
   cat "$report"
 }
 
+append_and_validate() {
+  local log="$1" record="$2" tmp
+  tmp="$(mktemp)"
+  printf '%s\n' "$record" > "$tmp"
+  python3 "$VALIDATOR" "$tmp" >/dev/null
+  printf '%s\n' "$record" >> "$log"
+  rm -f "$tmp"
+}
+
 record_execution() {
   [[ "$#" -ge 3 ]] || { usage >&2; exit 2; }
   local permission="$1" status="$2"; shift 2
-  local summary="$*"
-  jq -cn \
+  local summary="$*" record
+  record="$(jq -cn \
     --arg schema_version "1.0" \
     --arg record_type "execution" \
     --arg timestamp "$(date -u +%Y-%m-%dT%H:%M:%SZ)" \
@@ -150,16 +166,16 @@ record_execution() {
     --arg permission_class "$permission" \
     --arg status "$status" \
     --arg summary "$summary" \
-    '{schema_version:$schema_version,record_type:$record_type,timestamp:$timestamp,repository:$repository,branch:$branch,commit:$commit,permission_class:$permission_class,status:$status,summary:$summary}' >> "$EXECUTION_LOG"
-  python3 "$VALIDATOR" "$EXECUTION_LOG" >/dev/null
-  tail -n 1 "$EXECUTION_LOG"
+    '{schema_version:$schema_version,record_type:$record_type,timestamp:$timestamp,repository:$repository,branch:$branch,commit:$commit,permission_class:$permission_class,status:$status,summary:$summary}')"
+  append_and_validate "$EXECUTION_LOG" "$record"
+  printf '%s\n' "$record"
 }
 
 record_evidence() {
   [[ "$#" -ge 4 ]] || { usage >&2; exit 2; }
   local provider="$1" status="$2" reference="$3"; shift 3
-  local summary="$*"
-  jq -cn \
+  local summary="$*" record
+  record="$(jq -cn \
     --arg schema_version "1.0" \
     --arg record_type "provider_evidence" \
     --arg timestamp "$(date -u +%Y-%m-%dT%H:%M:%SZ)" \
@@ -170,9 +186,9 @@ record_evidence() {
     --arg status "$status" \
     --arg reference "$reference" \
     --arg summary "$summary" \
-    '{schema_version:$schema_version,record_type:$record_type,timestamp:$timestamp,repository:$repository,branch:$branch,commit:$commit,provider:$provider,status:$status,reference:$reference,summary:$summary}' >> "$EVIDENCE_LOG"
-  python3 "$VALIDATOR" "$EVIDENCE_LOG" >/dev/null
-  tail -n 1 "$EVIDENCE_LOG"
+    '{schema_version:$schema_version,record_type:$record_type,timestamp:$timestamp,repository:$repository,branch:$branch,commit:$commit,provider:$provider,status:$status,reference:$reference,summary:$summary}')"
+  append_and_validate "$EVIDENCE_LOG" "$record"
+  printf '%s\n' "$record"
 }
 
 case "${1:-}" in
@@ -181,5 +197,6 @@ case "${1:-}" in
   record) shift; record_execution "$@" ;;
   evidence) shift; record_evidence "$@" ;;
   validate) validate_logs ;;
+  migrate) migrate_logs ;;
   *) usage; exit 2 ;;
 esac
