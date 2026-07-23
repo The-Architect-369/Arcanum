@@ -4,7 +4,7 @@ status: canonical
 visibility: public
 last_updated: 2026-07-23
 description: "Wave IV protocol for deterministic promotion readiness and guarded mobile-to-main merges."
-version: "1.0"
+version: "1.1"
 architect_gpt_version: "3.5"
 arcanum_phase: "Pre-Genesis"
 maintainer: "The-Architect-369"
@@ -30,10 +30,31 @@ A promotion attestation may be issued only when all of the following are true:
 4. local execution and provider-evidence logs validate;
 5. `scripts/verify-sync.sh` passes;
 6. the latest Termux verification report references the exact current `HEAD`;
-7. that report contains passing typecheck, production build, and repository-sync evidence;
-8. that report records zero failures.
+7. that exact-head report contains passing typecheck and repository-sync evidence;
+8. that exact-head report records zero failures;
+9. production-build evidence is either present in the exact-head report or inherited from an ancestor report under the safe-inheritance rule.
 
 Vercel readiness is verified externally after the final branch head is pushed. It is not inferred by the local promotion gate.
+
+## Safe build-evidence inheritance
+
+A successful production-build result may be inherited from an ancestor commit only when:
+
+- the source report records a passing production build and zero failures;
+- the source commit is an ancestor of the exact promotion head;
+- every change between the source commit and promotion head is outside runtime-affecting surfaces;
+- the exact promotion head independently passes typecheck and repository synchronization.
+
+Runtime-affecting surfaces include:
+
+- `apps/web/**`;
+- `packages/**`;
+- root package and workspace manifests;
+- `pnpm-lock.yaml`;
+- TypeScript configuration;
+- Next.js configuration.
+
+Changes limited to generated repository indexes, governance documentation, verification scripts, or other non-runtime metadata may inherit an earlier build result when all other gate conditions pass.
 
 ## Attestation
 
@@ -51,7 +72,8 @@ The attestation records:
 - exact commit;
 - wave identifier;
 - check outcomes;
-- source Termux report.
+- exact-head Termux report;
+- build-evidence report and source commit.
 
 Attestations are local verification evidence and are not canonical repository state.
 
