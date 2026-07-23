@@ -43,3 +43,6 @@ data/
 # ARCnet local smoke/debug artifacts
 chains/arcanum/.debug-sdk/
 chains/arcanum/data-*/
+
+# Local Architect GPT verification evidence
+.architect-reports/
