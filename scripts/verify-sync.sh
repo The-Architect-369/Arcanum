@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# verify-sync.sh — repo + governance + orchestration + promotion integrity checks
+# verify-sync.sh — repo + governance + orchestration integrity checks
 # Usage: bash scripts/verify-sync.sh
 
 set -euo pipefail
@@ -198,7 +198,7 @@ elif bash -n "$PROMOTION_GATE"; then
 else
   fail "Invalid shell syntax: $PROMOTION_GATE"
 fi
-for contract in 'branch == "mobile"' 'origin/mobile' 'git status --porcelain' 'web typecheck' 'web build' 'repository sync' 'termux_failures:0'; do
+for contract in '[[ "$branch" == "mobile" ]]' 'origin/mobile' 'git status --porcelain' 'web typecheck' 'web build' 'repository sync' 'termux_failures:0'; do
   if grep -Fq "$contract" "$PROMOTION_GATE"; then echo "✅ promotion contract: $contract"; else fail "Promotion gate lacks contract: $contract"; fi
 done
 if grep -q '^wave_completion_policy: guarded_merge_after_each_green_wave$' "$MANIFEST"; then
