@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://the-arcanum.net/schemas/provider-health.snapshot.v1.json",
+  "title": "Arcanum Provider Health Snapshot",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "record_type", "observed_at", "repository", "commit", "providers"],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "record_type": {"const": "provider_health_snapshot"},
+    "observed_at": {"type": "string", "format": "date-time"},
+    "repository": {"type": "string", "minLength": 1},
+    "commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "providers": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["status", "registry_status"],
+        "properties": {
+          "status": {"enum": ["healthy", "degraded", "unavailable", "unverified"]},
+          "registry_status": {"type": "string", "minLength": 1},
+          "reference": {"type": ["string", "null"]},
+          "detail": {"type": ["string", "null"]}
+        }
+      }
+    }
+  }
+}
