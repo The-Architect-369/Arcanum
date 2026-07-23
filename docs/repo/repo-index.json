@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-07-23T04:29:12Z",
+  "generated_at": "2026-07-23T05:43:31Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "99a01c3f2",
+  "commit": "18d70528c",
   "generator_version": "1.2",
   "files": [
     {
@@ -3337,11 +3337,11 @@
     {
       "path": "docs/governance/architectgpt/architect-gpt-manifest.yaml",
       "type": "file",
-      "size_bytes": 3825,
-      "last_modified_commit": "8c3f33d",
+      "size_bytes": 4282,
+      "last_modified_commit": "a7a0320",
       "is_empty": false,
       "extension": ".yaml",
-      "lines": 119
+      "lines": 125
     },
     {
       "path": "docs/governance/architectgpt/architect-gpt.md",
@@ -3378,6 +3378,24 @@
       "is_empty": false,
       "extension": ".yaml",
       "lines": 117
+    },
+    {
+      "path": "docs/governance/architectgpt/evidence-protocol.md",
+      "type": "file",
+      "size_bytes": 2410,
+      "last_modified_commit": "0d45882",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 65
+    },
+    {
+      "path": "docs/governance/architectgpt/execution-record.schema.json",
+      "type": "file",
+      "size_bytes": 1782,
+      "last_modified_commit": "e1ab874",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 80
     },
     {
       "path": "docs/governance/architectgpt/orchestration-protocol.md",
@@ -3571,11 +3589,11 @@
     {
       "path": "docs/repo/repo-index.json",
       "type": "file",
-      "size_bytes": 166194,
-      "last_modified_commit": "dbe1beb",
+      "size_bytes": 166660,
+      "last_modified_commit": "108bfa8",
       "is_empty": false,
       "extension": ".json",
-      "lines": 6164
+      "lines": 6182
     },
     {
       "path": "docs/repo/repo-interface.md",
@@ -5848,11 +5866,20 @@
     {
       "path": "scripts/architect/orchestrate.sh",
       "type": "file",
-      "size_bytes": 5382,
-      "last_modified_commit": "67e0be9",
+      "size_bytes": 7096,
+      "last_modified_commit": "3242724",
       "is_empty": false,
       "extension": ".sh",
-      "lines": 139
+      "lines": 185
+    },
+    {
+      "path": "scripts/architect/validate-evidence.py",
+      "type": "file",
+      "size_bytes": 4203,
+      "last_modified_commit": "ef4eea6",
+      "is_empty": false,
+      "extension": ".py",
+      "lines": 122
     },
     {
       "path": "scripts/archive-manifest-check.sh",
@@ -6163,11 +6190,11 @@
     {
       "path": "scripts/verify-sync.sh",
       "type": "file",
-      "size_bytes": 6305,
-      "last_modified_commit": "99a01c3",
+      "size_bytes": 8292,
+      "last_modified_commit": "18d7052",
       "is_empty": false,
       "extension": ".sh",
-      "lines": 176
+      "lines": 199
     },
     {
       "path": "tsconfig.json",
