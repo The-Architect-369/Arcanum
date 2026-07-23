@@ -13,6 +13,7 @@ sync_cycle: 14_days
 workflow_mode: github_first
 orchestration_mode: capability_fabric
 merge_policy: human-approved-after-green-verification
+wave_completion_policy: guarded_merge_after_each_green_wave
 write_policy: explicit-request-and-visible-permission
 default_patch_surface: python3
 archive_policy: historical-only
@@ -68,6 +69,7 @@ solve_method:
   - rerun pnpm -C apps/web typecheck when local verification is available
   - rerun pnpm -C apps/web build when local verification is available
   - capture verification evidence
+  - execute the promotion gate after a wave is locally green
   - only then merge or hand off toward main if explicitly requested
 
 capability_rules:
@@ -80,10 +82,23 @@ capability_rules:
 
 orchestration_control:
   cli: scripts/architect/orchestrate.sh
-  commands: [preflight, session, record]
+  commands: [preflight, session, record, evidence, validate, migrate]
   report_directory: .architect-reports/orchestration
   execution_log: .architect-reports/orchestration/execution.jsonl
+  provider_evidence_log: .architect-reports/orchestration/provider-evidence.jsonl
   record_format: jsonl
+  evidence_schema: docs/governance/architectgpt/execution-record.schema.json
+  evidence_validator: scripts/architect/validate-evidence.py
+
+promotion_control:
+  gate: scripts/architect/promotion-gate.sh
+  protocol: docs/governance/architectgpt/promotion-protocol.md
+  attestation_directory: .architect-reports/orchestration/promotions
+  required_branch: mobile
+  required_remote: origin/mobile
+  exact_head_evidence: true
+  vercel_exact_head_required: true
+  merge_guard: expected_head_sha
 
 mobile_verification:
   environment: Android Termux in isolated work profile
@@ -103,11 +118,16 @@ files:
   capability_registry: docs/governance/architectgpt/capability-registry.yaml
   capability_fabric: docs/governance/architectgpt/capability-fabric.md
   orchestration_protocol: docs/governance/architectgpt/orchestration-protocol.md
+  evidence_protocol: docs/governance/architectgpt/evidence-protocol.md
+  execution_record_schema: docs/governance/architectgpt/execution-record.schema.json
+  promotion_protocol: docs/governance/architectgpt/promotion-protocol.md
   hope_guardian: docs/governance/hopegpt/hope-guardian.md
   repo_interface: docs/repo/repo-interface.md
   repo_index: docs/repo/repo-index.json
   verify_script: scripts/verify-sync.sh
   orchestration_cli: scripts/architect/orchestrate.sh
+  evidence_validator: scripts/architect/validate-evidence.py
+  promotion_gate: scripts/architect/promotion-gate.sh
   mobile_bootstrap: scripts/mobile/termux-bootstrap.sh
   mobile_verify: scripts/mobile/termux-verify.sh
 

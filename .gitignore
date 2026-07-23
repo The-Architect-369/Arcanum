@@ -22,6 +22,8 @@ coverage/
 # Misc caches
 .sass-cache/
 .cloudflared/
+__pycache__/
+*.py[cod]
 
 # Cosmos / Go
 chains/arcanum/build/

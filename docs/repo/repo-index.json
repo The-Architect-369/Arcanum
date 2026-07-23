@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-07-23T04:29:12Z",
+  "generated_at": "2026-07-23T06:20:01Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "99a01c3f2",
+  "commit": "ad0e5ace4",
   "generator_version": "1.2",
   "files": [
     {
@@ -214,11 +214,11 @@
     {
       "path": ".gitignore",
       "type": "file",
-      "size_bytes": 617,
-      "last_modified_commit": "fdb437d",
+      "size_bytes": 640,
+      "last_modified_commit": "9ae1429",
       "is_empty": false,
       "extension": "",
-      "lines": 48
+      "lines": 50
     },
     {
       "path": ".npmrc",
@@ -3337,11 +3337,11 @@
     {
       "path": "docs/governance/architectgpt/architect-gpt-manifest.yaml",
       "type": "file",
-      "size_bytes": 3825,
-      "last_modified_commit": "8c3f33d",
+      "size_bytes": 4890,
+      "last_modified_commit": "c428853",
       "is_empty": false,
       "extension": ".yaml",
-      "lines": 119
+      "lines": 139
     },
     {
       "path": "docs/governance/architectgpt/architect-gpt.md",
@@ -3380,6 +3380,24 @@
       "lines": 117
     },
     {
+      "path": "docs/governance/architectgpt/evidence-protocol.md",
+      "type": "file",
+      "size_bytes": 2410,
+      "last_modified_commit": "0d45882",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 65
+    },
+    {
+      "path": "docs/governance/architectgpt/execution-record.schema.json",
+      "type": "file",
+      "size_bytes": 1782,
+      "last_modified_commit": "e1ab874",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 80
+    },
+    {
       "path": "docs/governance/architectgpt/orchestration-protocol.md",
       "type": "file",
       "size_bytes": 4292,
@@ -3387,6 +3405,15 @@
       "is_empty": false,
       "extension": ".md",
       "lines": 133
+    },
+    {
+      "path": "docs/governance/architectgpt/promotion-protocol.md",
+      "type": "file",
+      "size_bytes": 3381,
+      "last_modified_commit": "d2d1e7e",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 101
     },
     {
       "path": "docs/governance/architectgpt/sessions/.gitkeep",
@@ -3571,11 +3598,11 @@
     {
       "path": "docs/repo/repo-index.json",
       "type": "file",
-      "size_bytes": 166194,
-      "last_modified_commit": "dbe1beb",
+      "size_bytes": 167839,
+      "last_modified_commit": "d75ea4b",
       "is_empty": false,
       "extension": ".json",
-      "lines": 6164
+      "lines": 6227
     },
     {
       "path": "docs/repo/repo-interface.md",
@@ -5848,11 +5875,29 @@
     {
       "path": "scripts/architect/orchestrate.sh",
       "type": "file",
-      "size_bytes": 5382,
-      "last_modified_commit": "67e0be9",
+      "size_bytes": 7583,
+      "last_modified_commit": "be91066",
       "is_empty": false,
       "extension": ".sh",
-      "lines": 139
+      "lines": 202
+    },
+    {
+      "path": "scripts/architect/promotion-gate.sh",
+      "type": "file",
+      "size_bytes": 5263,
+      "last_modified_commit": "c809d70",
+      "is_empty": false,
+      "extension": ".sh",
+      "lines": 132
+    },
+    {
+      "path": "scripts/architect/validate-evidence.py",
+      "type": "file",
+      "size_bytes": 5993,
+      "last_modified_commit": "15d73d2",
+      "is_empty": false,
+      "extension": ".py",
+      "lines": 167
     },
     {
       "path": "scripts/archive-manifest-check.sh",
@@ -6163,11 +6208,11 @@
     {
       "path": "scripts/verify-sync.sh",
       "type": "file",
-      "size_bytes": 6305,
-      "last_modified_commit": "99a01c3",
+      "size_bytes": 9928,
+      "last_modified_commit": "ad0e5ac",
       "is_empty": false,
       "extension": ".sh",
-      "lines": 176
+      "lines": 226
     },
     {
       "path": "tsconfig.json",
