@@ -11,10 +11,11 @@ jobs:
   verify-sync:
     runs-on: ubuntu-22.04
     steps:
-      - name: Checkout repository
+      - name: Checkout exact verification commit
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
 
       - name: Install deps
         run: |

@@ -1,0 +1,68 @@
+name: Architect Promotion Evidence
+
+on:
+  push:
+    branches: [mobile]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      wave:
+        description: Wave identifier
+        required: false
+        default: unspecified
+
+permissions:
+  contents: read
+
+jobs:
+  attest:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout exact evidence commit
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+
+      - name: Enable Corepack
+        run: corepack enable
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Verify repository integrity
+        id: verify_sync
+        run: bash scripts/verify-sync.sh
+
+      - name: Typecheck web application
+        id: typecheck
+        run: pnpm -C apps/web typecheck
+
+      - name: Build web application
+        id: build
+        run: pnpm -C apps/web build
+
+      - name: Generate CI promotion attestation
+        env:
+          ARCANUM_WAVE: ${{ inputs.wave || 'wave-v' }}
+          ARCANUM_VERIFY_SYNC_RESULT: ${{ steps.verify_sync.outcome }}
+          ARCANUM_TYPECHECK_RESULT: ${{ steps.typecheck.outcome }}
+          ARCANUM_BUILD_RESULT: ${{ steps.build.outcome }}
+          GITHUB_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+          GITHUB_HEAD_REF: ${{ github.head_ref || github.ref_name }}
+        run: bash scripts/architect/ci-attest.sh
+
+      - name: Upload promotion attestation
+        uses: actions/upload-artifact@v4
+        with:
+          name: architect-promotion-${{ github.event.pull_request.head.sha || github.sha }}
+          path: .architect-reports/ci/promotion-attestation.json
+          if-no-files-found: error
+          retention-days: 30

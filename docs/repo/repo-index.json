@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-07-23T06:20:01Z",
+  "generated_at": "2026-07-23T09:29:54Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "ad0e5ace4",
+  "commit": "561f4b4e7",
   "generator_version": "1.2",
   "files": [
     {
@@ -194,22 +194,31 @@
       "lines": 285
     },
     {
-      "path": ".github/workflows/doctrine-guard.yml",
+      "path": ".github/workflows/architect-promotion.yml",
       "type": "file",
-      "size_bytes": 794,
-      "last_modified_commit": "811a912",
+      "size_bytes": 1922,
+      "last_modified_commit": "54d1a30",
       "is_empty": false,
       "extension": ".yml",
-      "lines": 37
+      "lines": 68
+    },
+    {
+      "path": ".github/workflows/doctrine-guard.yml",
+      "type": "file",
+      "size_bytes": 880,
+      "last_modified_commit": "15f9744",
+      "is_empty": false,
+      "extension": ".yml",
+      "lines": 40
     },
     {
       "path": ".github/workflows/verify-sync.yml",
       "type": "file",
-      "size_bytes": 549,
-      "last_modified_commit": "b936688",
+      "size_bytes": 635,
+      "last_modified_commit": "c93129d",
       "is_empty": false,
       "extension": ".yml",
-      "lines": 27
+      "lines": 28
     },
     {
       "path": ".gitignore",
@@ -3337,11 +3346,11 @@
     {
       "path": "docs/governance/architectgpt/architect-gpt-manifest.yaml",
       "type": "file",
-      "size_bytes": 4890,
-      "last_modified_commit": "c428853",
+      "size_bytes": 5511,
+      "last_modified_commit": "0726fe0",
       "is_empty": false,
       "extension": ".yaml",
-      "lines": 139
+      "lines": 151
     },
     {
       "path": "docs/governance/architectgpt/architect-gpt.md",
@@ -3378,6 +3387,15 @@
       "is_empty": false,
       "extension": ".yaml",
       "lines": 117
+    },
+    {
+      "path": "docs/governance/architectgpt/ci-promotion-protocol.md",
+      "type": "file",
+      "size_bytes": 2228,
+      "last_modified_commit": "7307be3",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 70
     },
     {
       "path": "docs/governance/architectgpt/evidence-protocol.md",
@@ -3598,11 +3616,11 @@
     {
       "path": "docs/repo/repo-index.json",
       "type": "file",
-      "size_bytes": 167839,
-      "last_modified_commit": "d75ea4b",
+      "size_bytes": 168531,
+      "last_modified_commit": "471523d",
       "is_empty": false,
       "extension": ".json",
-      "lines": 6227
+      "lines": 6254
     },
     {
       "path": "docs/repo/repo-interface.md",
@@ -4049,7 +4067,7 @@
       "path": "docs/tooling/doctrine-checksums/doctrine-checksums.yaml",
       "type": "file",
       "size_bytes": 2166,
-      "last_modified_commit": "9402e28",
+      "last_modified_commit": "a4d7f1f",
       "is_empty": false,
       "extension": ".yaml",
       "lines": 26
@@ -5873,6 +5891,15 @@
       "lines": 3
     },
     {
+      "path": "scripts/architect/ci-attest.sh",
+      "type": "file",
+      "size_bytes": 1839,
+      "last_modified_commit": "98aec6e",
+      "is_empty": false,
+      "extension": ".sh",
+      "lines": 47
+    },
+    {
       "path": "scripts/architect/orchestrate.sh",
       "type": "file",
       "size_bytes": 7583,
@@ -6208,11 +6235,11 @@
     {
       "path": "scripts/verify-sync.sh",
       "type": "file",
-      "size_bytes": 9928,
-      "last_modified_commit": "ad0e5ac",
+      "size_bytes": 10131,
+      "last_modified_commit": "561f4b4",
       "is_empty": false,
       "extension": ".sh",
-      "lines": 226
+      "lines": 230
     },
     {
       "path": "tsconfig.json",

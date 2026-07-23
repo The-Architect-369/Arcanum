@@ -33,6 +33,10 @@ files = data.get("files", [])
 files = [f for f in files if f.get("path") != "docs/repo/repo-index.json"]
 for f in files:
     f.pop("last_modified_commit", None)
+    # Filesystem-derived byte and line counts may vary across canonical
+    # Termux and Ubuntu CI checkouts without changing repository structure.
+    f.pop("size_bytes", None)
+    f.pop("lines", None)
 files.sort(key=lambda x: x.get("path", ""))
 data["files"] = files
 json.dump(data, sys.stdout, indent=2, sort_keys=False)
