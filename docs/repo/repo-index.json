@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-07-23T09:29:54Z",
+  "generated_at": "2026-07-23T10:45:11Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "561f4b4e7",
+  "commit": "b6199de40",
   "generator_version": "1.2",
   "files": [
     {
@@ -3346,11 +3346,11 @@
     {
       "path": "docs/governance/architectgpt/architect-gpt-manifest.yaml",
       "type": "file",
-      "size_bytes": 5511,
-      "last_modified_commit": "0726fe0",
+      "size_bytes": 6247,
+      "last_modified_commit": "daec5b2",
       "is_empty": false,
       "extension": ".yaml",
-      "lines": 151
+      "lines": 165
     },
     {
       "path": "docs/governance/architectgpt/architect-gpt.md",
@@ -3432,6 +3432,24 @@
       "is_empty": false,
       "extension": ".md",
       "lines": 101
+    },
+    {
+      "path": "docs/governance/architectgpt/provider-health-protocol.md",
+      "type": "file",
+      "size_bytes": 2872,
+      "last_modified_commit": "1e0f6b1",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 64
+    },
+    {
+      "path": "docs/governance/architectgpt/provider-health.schema.json",
+      "type": "file",
+      "size_bytes": 1158,
+      "last_modified_commit": "7370dfa",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 30
     },
     {
       "path": "docs/governance/architectgpt/sessions/.gitkeep",
@@ -3616,8 +3634,8 @@
     {
       "path": "docs/repo/repo-index.json",
       "type": "file",
-      "size_bytes": 168531,
-      "last_modified_commit": "471523d",
+      "size_bytes": 168532,
+      "last_modified_commit": "31aab3b",
       "is_empty": false,
       "extension": ".json",
       "lines": 6254
@@ -5918,6 +5936,24 @@
       "lines": 132
     },
     {
+      "path": "scripts/architect/provider-health.py",
+      "type": "file",
+      "size_bytes": 5032,
+      "last_modified_commit": "c7792cc",
+      "is_empty": false,
+      "extension": ".py",
+      "lines": 142
+    },
+    {
+      "path": "scripts/architect/test-provider-health.sh",
+      "type": "file",
+      "size_bytes": 3013,
+      "last_modified_commit": "0e01dcf",
+      "is_empty": false,
+      "extension": ".sh",
+      "lines": 105
+    },
+    {
       "path": "scripts/architect/validate-evidence.py",
       "type": "file",
       "size_bytes": 5993,
@@ -6235,11 +6271,11 @@
     {
       "path": "scripts/verify-sync.sh",
       "type": "file",
-      "size_bytes": 10131,
-      "last_modified_commit": "561f4b4",
+      "size_bytes": 11252,
+      "last_modified_commit": "b6199de",
       "is_empty": false,
       "extension": ".sh",
-      "lines": 230
+      "lines": 248
     },
     {
       "path": "tsconfig.json",
