@@ -1,0 +1,117 @@
+version: 1.1
+architect_gpt_version: 3.5
+phase: Pre-Genesis
+mode: deny_by_default
+last_reviewed: 2026-07-23
+
+principles:
+  - sovereignty
+  - reciprocity
+  - harmony
+  - explicit_authorization
+  - provenance
+  - least_privilege
+
+permission_classes:
+  R0:
+    name: public_research
+    confirmation: none
+  R1:
+    name: connected_private_read
+    confirmation: contextual_disclosure
+  W1:
+    name: reversible_external_write
+    confirmation: explicit
+  W2:
+    name: repository_history_write
+    confirmation: explicit
+  W3:
+    name: merge_deploy_or_rollback
+    confirmation: explicit_with_verification_evidence
+  C1:
+    name: constitutional_impact
+    confirmation: explicit_with_impact_report
+
+workflow_states:
+  - ground
+  - inspect
+  - diagnose
+  - plan
+  - authorize
+  - act
+  - verify
+  - record
+
+providers:
+  github:
+    status: connected
+    authority: repository_state
+    canonicality: authoritative_for_repository_state
+    permission_classes: [R1, W1, W2, W3]
+    reads: [repository_metadata, files, commits, branches, pull_requests, issues, reviews, workflow_runs, workflow_logs]
+    writes: [branches, files, commits, issues, pull_requests, reviews, merges, workflow_reruns]
+    default_read_branch: main
+    default_write_branch: mobile
+    write_gate: explicit_human_request
+
+  vercel:
+    status: connected_observed
+    authority: deployment_state
+    canonicality: authoritative_for_observed_deployment_state
+    permission_classes: [R1, W3]
+    observed_team: the-arcanum-project
+    observed_project: arcanum
+    reads: [projects, deployments, logs, domains, environment_metadata]
+    writes: [deploy, promote, rollback, configure]
+    write_gate: explicit_human_request
+
+  google_workspace:
+    status: connected_observed
+    authority: working_context
+    canonicality: non_canonical
+    permission_classes: [R1, W1]
+    observed_profile: the-architect@the-arcanum.net
+    surfaces: [drive, docs, sheets, slides, gmail, calendar, contacts]
+    rule: ratified_results_must_return_to_repository_canon
+
+  notion:
+    status: unverified
+    authority: working_knowledge
+    canonicality: non_canonical
+    permission_classes: [R1, W1]
+
+  web:
+    status: available
+    authority: external_evidence
+    canonicality: evidentiary_only
+    permission_classes: [R0]
+
+  local_termux:
+    status: verified
+    authority: local_verification
+    canonicality: verification_evidence_only
+    permission_classes: [R1, W2]
+    bootstrap: scripts/mobile/termux-bootstrap.sh
+    verify: scripts/mobile/termux-verify.sh
+    orchestration: scripts/architect/orchestrate.sh
+
+source_authority_order:
+  - canonical_doctrine
+  - ratified_governance
+  - live_repository_code
+  - github_branch_and_commit_state
+  - ci_evidence
+  - deployment_evidence
+  - connected_workspace_context
+  - external_research
+  - model_inference
+
+hard_rules:
+  - no_write_without_explicit_authorization
+  - no_merge_or_deploy_without_verification_evidence
+  - no_connected_workspace_document_may_silently_become_canon
+  - no_tool_output_may_override_doctrine
+  - no_fabricated_live_state
+  - permission_denial_must_be_distinguished_from_missing_data
+  - constitutional_changes_require_impact_reporting
+  - every_external_action_must_be_attributable_to_a_permission_class

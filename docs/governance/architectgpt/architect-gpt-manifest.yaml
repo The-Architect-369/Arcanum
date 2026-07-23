@@ -1,4 +1,4 @@
-version: 3.4
+version: 3.5
 phase: Pre-Genesis
 maintainer: The-Architect-369
 environment: Ubuntu 22.04 LTS+
@@ -11,7 +11,36 @@ default_write_branch: mobile
 default_workspace_root: repo-root
 sync_cycle: 14_days
 workflow_mode: github_first
+orchestration_mode: capability_fabric
 merge_policy: human-approved-after-green-verification
+write_policy: explicit-request-and-visible-permission
+default_patch_surface: python3
+archive_policy: historical-only
+
+principles:
+  - Sovereignty
+  - Reciprocity
+  - Harmony
+  - Provenance
+  - Least Privilege
+
+permission_classes:
+  R0: public_research
+  R1: connected_private_read
+  W1: reversible_external_write
+  W2: repository_history_write
+  W3: merge_deploy_or_rollback
+  C1: constitutional_impact
+
+workflow_states:
+  - ground
+  - inspect
+  - diagnose
+  - plan
+  - authorize
+  - act
+  - verify
+  - record
 
 default_repo_aliases:
   - my repo
@@ -24,8 +53,10 @@ grounding_preflight:
   - resolve branch from task intent
   - read docs/repo/repo-index.json
   - inspect generated_at and commit
+  - compare index commit with visible branch head
   - verify sync evidence before deeper analysis
   - open relevant live files before substantive analysis
+  - declare provider and source provenance
 
 solve_method:
   - establish grounding state and branch role
@@ -36,19 +67,49 @@ solve_method:
   - otherwise prefer Python patch scripts for multi-file edits on Ubuntu
   - rerun pnpm -C apps/web typecheck when local verification is available
   - rerun pnpm -C apps/web build when local verification is available
+  - capture verification evidence
   - only then merge or hand off toward main if explicitly requested
 
-write_policy: explicit-request-and-visible-permission
-default_patch_surface: python3
-archive_policy: historical-only
+capability_rules:
+  registry: docs/governance/architectgpt/capability-registry.yaml
+  default: deny
+  write_gate: explicit_human_request
+  merge_deploy_gate: explicit_request_and_green_evidence
+  workspace_canonicality: non_canonical
+  ratified_output_destination: repository
+
+orchestration_control:
+  cli: scripts/architect/orchestrate.sh
+  commands: [preflight, session, record]
+  report_directory: .architect-reports/orchestration
+  execution_log: .architect-reports/orchestration/execution.jsonl
+  record_format: jsonl
+
+mobile_verification:
+  environment: Android Termux in isolated work profile
+  bootstrap: scripts/mobile/termux-bootstrap.sh
+  verify: scripts/mobile/termux-verify.sh
+  report_directory: .architect-reports/mobile
+
+observed_providers:
+  github: connected
+  google_workspace: connected_observed
+  vercel: connected_observed
+  notion: unverified
 
 files:
   architect_gpt: docs/governance/architectgpt/architect-gpt.md
   architect_gpt_manifest: docs/governance/architectgpt/architect-gpt-manifest.yaml
+  capability_registry: docs/governance/architectgpt/capability-registry.yaml
+  capability_fabric: docs/governance/architectgpt/capability-fabric.md
+  orchestration_protocol: docs/governance/architectgpt/orchestration-protocol.md
   hope_guardian: docs/governance/hopegpt/hope-guardian.md
   repo_interface: docs/repo/repo-interface.md
   repo_index: docs/repo/repo-index.json
   verify_script: scripts/verify-sync.sh
+  orchestration_cli: scripts/architect/orchestrate.sh
+  mobile_bootstrap: scripts/mobile/termux-bootstrap.sh
+  mobile_verify: scripts/mobile/termux-verify.sh
 
 legacy_archive_files:
   - docs/archive/architectgpt/architectgpt-core.md
@@ -56,8 +117,3 @@ legacy_archive_files:
   - docs/archive/architectgpt/architect-log-legacy.md
 
 active_log: docs/governance/architectgpt/architect-log.md
-
-principles:
-  - Sovereignty
-  - Reciprocity
-  - Harmony
