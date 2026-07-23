@@ -80,10 +80,13 @@ capability_rules:
 
 orchestration_control:
   cli: scripts/architect/orchestrate.sh
-  commands: [preflight, session, record]
+  commands: [preflight, session, record, evidence, validate]
   report_directory: .architect-reports/orchestration
   execution_log: .architect-reports/orchestration/execution.jsonl
+  provider_evidence_log: .architect-reports/orchestration/provider-evidence.jsonl
   record_format: jsonl
+  evidence_schema: docs/governance/architectgpt/execution-record.schema.json
+  evidence_validator: scripts/architect/validate-evidence.py
 
 mobile_verification:
   environment: Android Termux in isolated work profile
@@ -103,11 +106,14 @@ files:
   capability_registry: docs/governance/architectgpt/capability-registry.yaml
   capability_fabric: docs/governance/architectgpt/capability-fabric.md
   orchestration_protocol: docs/governance/architectgpt/orchestration-protocol.md
+  evidence_protocol: docs/governance/architectgpt/evidence-protocol.md
+  execution_record_schema: docs/governance/architectgpt/execution-record.schema.json
   hope_guardian: docs/governance/hopegpt/hope-guardian.md
   repo_interface: docs/repo/repo-interface.md
   repo_index: docs/repo/repo-index.json
   verify_script: scripts/verify-sync.sh
   orchestration_cli: scripts/architect/orchestrate.sh
+  evidence_validator: scripts/architect/validate-evidence.py
   mobile_bootstrap: scripts/mobile/termux-bootstrap.sh
   mobile_verify: scripts/mobile/termux-verify.sh
 
