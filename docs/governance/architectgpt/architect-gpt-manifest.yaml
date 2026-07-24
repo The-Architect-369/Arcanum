@@ -120,6 +120,18 @@ provider_health_control:
   health_states: [healthy, degraded, unavailable, unverified]
   authority: evidentiary_only
 
+change_plan_control:
+  protocol: docs/governance/architectgpt/change-plan-protocol.md
+  schema: docs/governance/architectgpt/change-plan.schema.json
+  generator: scripts/architect/change-plan.py
+  fixtures: scripts/architect/test-change-plan.sh
+  report_directory: .architect-reports/orchestration/change-plans
+  required_branch: mobile
+  exact_base_required: true
+  deterministic_bundle_required: true
+  supported_actions: [create, update, delete, rename]
+  authority: evidentiary_only
+
 mobile_verification:
   environment: Android Termux in isolated work profile
   bootstrap: scripts/mobile/termux-bootstrap.sh
@@ -144,6 +156,8 @@ files:
   ci_promotion_protocol: docs/governance/architectgpt/ci-promotion-protocol.md
   provider_health_protocol: docs/governance/architectgpt/provider-health-protocol.md
   provider_health_schema: docs/governance/architectgpt/provider-health.schema.json
+  change_plan_protocol: docs/governance/architectgpt/change-plan-protocol.md
+  change_plan_schema: docs/governance/architectgpt/change-plan.schema.json
   hope_guardian: docs/governance/hopegpt/hope-guardian.md
   repo_interface: docs/repo/repo-interface.md
   repo_index: docs/repo/repo-index.json
@@ -154,6 +168,8 @@ files:
   ci_attestation_generator: scripts/architect/ci-attest.sh
   ci_promotion_workflow: .github/workflows/architect-promotion.yml
   provider_health_monitor: scripts/architect/provider-health.py
+  change_plan_generator: scripts/architect/change-plan.py
+  change_plan_fixtures: scripts/architect/test-change-plan.sh
   mobile_bootstrap: scripts/mobile/termux-bootstrap.sh
   mobile_verify: scripts/mobile/termux-verify.sh
 
