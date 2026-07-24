@@ -132,6 +132,19 @@ change_plan_control:
   supported_actions: [create, update, delete, rename]
   authority: evidentiary_only
 
+ast_integrity_control:
+  protocol: docs/governance/architectgpt/ast-integrity-protocol.md
+  report_schema: docs/governance/architectgpt/ast-integrity.schema.json
+  analyzer: scripts/architect/ast-integrity.py
+  fixtures: scripts/architect/test-ast-integrity.sh
+  project: apps/web/tsconfig.json
+  package_manifest: apps/web/package.json
+  report_directory: .architect-reports/orchestration/ast-integrity
+  exact_commit_required: true
+  deterministic_report_required: true
+  required_checks: [compiler, local_import_resolution, declared_dependencies, dependency_cycles]
+  authority: evidentiary_only
+
 mobile_verification:
   environment: Android Termux in isolated work profile
   bootstrap: scripts/mobile/termux-bootstrap.sh
@@ -158,6 +171,8 @@ files:
   provider_health_schema: docs/governance/architectgpt/provider-health.schema.json
   change_plan_protocol: docs/governance/architectgpt/change-plan-protocol.md
   change_plan_schema: docs/governance/architectgpt/change-plan.schema.json
+  ast_integrity_protocol: docs/governance/architectgpt/ast-integrity-protocol.md
+  ast_integrity_schema: docs/governance/architectgpt/ast-integrity.schema.json
   hope_guardian: docs/governance/hopegpt/hope-guardian.md
   repo_interface: docs/repo/repo-interface.md
   repo_index: docs/repo/repo-index.json
@@ -170,6 +185,8 @@ files:
   provider_health_monitor: scripts/architect/provider-health.py
   change_plan_generator: scripts/architect/change-plan.py
   change_plan_fixtures: scripts/architect/test-change-plan.sh
+  ast_integrity_analyzer: scripts/architect/ast-integrity.py
+  ast_integrity_fixtures: scripts/architect/test-ast-integrity.sh
   mobile_bootstrap: scripts/mobile/termux-bootstrap.sh
   mobile_verify: scripts/mobile/termux-verify.sh
 
