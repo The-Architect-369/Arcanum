@@ -51,15 +51,15 @@ def resolve_local(source: Path, specifier: str, source_root: Path) -> Path | Non
     return next((item.resolve() for item in options if item.is_file()), None)
 
 
-def find_cycle(graph: dict[Path, set[Path]]) -> list[str] | None:
+def find_cycle(graph: dict[Path, set[Path]]) -> list[Path] | None:
     visited: set[Path] = set()
     active: set[Path] = set()
     stack: list[Path] = []
 
-    def walk(node: Path) -> list[str] | None:
+    def walk(node: Path) -> list[Path] | None:
         if node in active:
             start = stack.index(node)
-            return [str(item) for item in stack[start:] + [node]]
+            return stack[start:] + [node]
         if node in visited:
             return None
         visited.add(node)
@@ -78,6 +78,19 @@ def find_cycle(graph: dict[Path, set[Path]]) -> list[str] | None:
         if found:
             return found
     return None
+
+
+def node_builtins() -> set[str]:
+    command = [
+        "node",
+        "-e",
+        "console.log(JSON.stringify(require('node:module').builtinModules))",
+    ]
+    try:
+        values = json.loads(subprocess.check_output(command, text=True))
+    except (OSError, subprocess.CalledProcessError, json.JSONDecodeError) as exc:
+        fail(f"unable to resolve Node built-in modules: {exc}")
+    return {str(value).removeprefix("node:") for value in values}
 
 
 def main() -> int:
@@ -107,6 +120,7 @@ def main() -> int:
     declared = set()
     for field in ("dependencies", "devDependencies", "peerDependencies", "optionalDependencies"):
         declared.update((package.get(field) or {}).keys())
+    builtins = node_builtins()
 
     unresolved: list[dict[str, str]] = []
     undeclared: list[dict[str, str]] = []
@@ -124,15 +138,16 @@ def main() -> int:
                     graph[source].add(target)
             elif not specifier.startswith("node:"):
                 name = package_name(specifier)
-                if name not in declared:
+                if name not in declared and name not in builtins:
                     undeclared.append({"file": str(source.relative_to(root)), "specifier": specifier, "package": name})
 
     cycle = find_cycle(graph)
+    normalized_cycle = [str(item.relative_to(root)) for item in cycle] if cycle else None
     findings = {
         "compiler_errors": compiler_errors,
         "unresolved_local_imports": unresolved,
         "undeclared_dependencies": undeclared,
-        "dependency_cycles": [cycle] if cycle else [],
+        "dependency_cycles": [normalized_cycle] if normalized_cycle else [],
     }
     failures = sum(len(items) for items in findings.values())
     report: dict[str, Any] = {
