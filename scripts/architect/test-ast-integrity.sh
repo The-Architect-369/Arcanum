@@ -5,7 +5,7 @@ ROOT="$(git rev-parse --show-toplevel)"
 cd "$ROOT"
 
 ANALYZER="scripts/architect/ast-integrity.py"
-FIXTURE_DIR="apps/web/src/.architect-ast-fixture"
+FIXTURE_DIR="apps/web/src/architect-ast-fixture"
 TMPDIR="$(mktemp -d)"
 
 cleanup() {
