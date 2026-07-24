@@ -1,11 +1,20 @@
-import type { AccountSnapshot } from '@/state/useAccount';
-
 export type WalletSettlementStatus =
   | 'device_only'
   | 'bound'
   | 'syncing'
   | 'sync_error'
   | 'chain_witnessed';
+
+export type WalletAccountView = {
+  identityId: string | null;
+  chainAddress: string | null;
+  chainAnchorTokenId: string | null;
+  chainAnchorMetadata: string | null;
+  mana: number;
+  lastSyncedAt: string | null;
+  settlementStatus: 'unbound' | 'bound' | 'syncing' | 'error';
+  statusMessage: string | null;
+};
 
 export type WalletBalanceState = {
   denom: string;
@@ -74,7 +83,7 @@ const FORBIDDEN_PURPOSE_PATTERNS = [
   /pay\s*to\s*win/i,
 ];
 
-function normalizeSettlementStatus(account: AccountSnapshot): WalletSettlementStatus {
+function normalizeSettlementStatus(account: WalletAccountView): WalletSettlementStatus {
   if (account.settlementStatus === 'syncing') return 'syncing';
   if (account.settlementStatus === 'error') return 'sync_error';
   if (account.chainAddress && account.chainAnchorTokenId) return 'chain_witnessed';
@@ -82,13 +91,13 @@ function normalizeSettlementStatus(account: AccountSnapshot): WalletSettlementSt
   return 'device_only';
 }
 
-function balanceSource(account: AccountSnapshot): WalletBalanceState['source'] {
+function balanceSource(account: WalletAccountView): WalletBalanceState['source'] {
   if (!account.chainAddress) return 'local_scaffold';
   return account.statusMessage?.includes('bank fallback') ? 'bank_fallback' : 'arcnet_mana_module';
 }
 
 export function createWalletContext(
-  account: AccountSnapshot,
+  account: WalletAccountView,
   options: { denom?: string; capturedAt?: Date } = {}
 ): WalletContext {
   const denom = options.denom ?? 'umana';
