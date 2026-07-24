@@ -50,7 +50,7 @@ echo
 INDEX_FILE="docs/repo/repo-index.json"
 GEN_SCRIPT="scripts/repo-index.sh"
 
-echo "[1/9] Repo index integrity"
+echo "[1/10] Repo index integrity"
 if [[ ! -f "$GEN_SCRIPT" ]]; then
   fail "Missing generator script: $GEN_SCRIPT"
 elif [[ ! -f "$INDEX_FILE" ]]; then
@@ -95,7 +95,7 @@ else
 fi
 echo
 
-echo "[2/9] Architect GPT manifest integrity"
+echo "[2/10] Architect GPT manifest integrity"
 MANIFEST="docs/governance/architectgpt/architect-gpt-manifest.yaml"
 ARCH_DOC="docs/governance/architectgpt/architect-gpt.md"
 if [[ ! -f "$MANIFEST" ]]; then fail "Missing manifest: $MANIFEST"; fi
@@ -124,7 +124,7 @@ if [[ -f "$MANIFEST" && -f "$ARCH_DOC" ]]; then
 fi
 echo
 
-echo "[3/9] Governance canonical surface checks"
+echo "[3/10] Governance canonical surface checks"
 required_governance_files=(
   "docs/governance/governance-specification.md"
   "docs/governance/treasury-constitution.md"
@@ -144,13 +144,15 @@ required_governance_files=(
   "docs/governance/architectgpt/provider-health.schema.json"
   "docs/governance/architectgpt/change-plan-protocol.md"
   "docs/governance/architectgpt/change-plan.schema.json"
+  "docs/governance/architectgpt/ast-integrity-protocol.md"
+  "docs/governance/architectgpt/ast-integrity.schema.json"
 )
 for f in "${required_governance_files[@]}"; do
   if [[ -f "$f" ]]; then echo "✅ present: $f"; else fail "Missing governance file: $f"; fi
 done
 echo
 
-echo "[4/9] Orchestration control checks"
+echo "[4/10] Orchestration control checks"
 ORCHESTRATOR="scripts/architect/orchestrate.sh"
 REGISTRY="docs/governance/architectgpt/capability-registry.yaml"
 if [[ ! -f "$ORCHESTRATOR" ]]; then
@@ -168,7 +170,7 @@ for permission in R0 R1 W1 W2 W3 C1; do
 done
 echo
 
-echo "[5/9] Evidence schema and validator checks"
+echo "[5/10] Evidence schema and validator checks"
 SCHEMA="docs/governance/architectgpt/execution-record.schema.json"
 VALIDATOR="scripts/architect/validate-evidence.py"
 if jq empty "$SCHEMA" >/dev/null 2>&1; then echo "✅ valid JSON schema document: $SCHEMA"; else fail "Invalid JSON schema document: $SCHEMA"; fi
@@ -195,7 +197,7 @@ else
 fi
 echo
 
-echo "[6/9] Promotion gate checks"
+echo "[6/10] Promotion gate checks"
 PROMOTION_GATE="scripts/architect/promotion-gate.sh"
 PROMOTION_PROTOCOL="docs/governance/architectgpt/promotion-protocol.md"
 if [[ ! -f "$PROMOTION_GATE" ]]; then
@@ -216,7 +218,7 @@ fi
 if [[ -f "$PROMOTION_PROTOCOL" ]]; then echo "✅ promotion protocol present"; else fail "Missing promotion protocol"; fi
 echo
 
-echo "[7/9] Provider health and drift checks"
+echo "[7/10] Provider health and drift checks"
 PROVIDER_SCHEMA="docs/governance/architectgpt/provider-health.schema.json"
 PROVIDER_MONITOR="scripts/architect/provider-health.py"
 PROVIDER_TEST="scripts/architect/test-provider-health.sh"
@@ -231,7 +233,7 @@ else
 fi
 echo
 
-echo "[8/9] Repository change plan and patch bundle checks"
+echo "[8/10] Repository change plan and patch bundle checks"
 CHANGE_PLAN_SCHEMA="docs/governance/architectgpt/change-plan.schema.json"
 CHANGE_PLAN_GENERATOR="scripts/architect/change-plan.py"
 CHANGE_PLAN_TEST="scripts/architect/test-change-plan.sh"
@@ -247,7 +249,23 @@ else
 fi
 echo
 
-echo "[9/9] Archive checks (deprecated files)"
+echo "[9/10] TypeScript AST and dependency integrity checks"
+AST_SCHEMA="docs/governance/architectgpt/ast-integrity.schema.json"
+AST_ANALYZER="scripts/architect/ast-integrity.py"
+AST_TEST="scripts/architect/test-ast-integrity.sh"
+if jq empty "$AST_SCHEMA" >/dev/null 2>&1; then echo "✅ valid AST integrity schema: $AST_SCHEMA"; else fail "Invalid AST integrity schema: $AST_SCHEMA"; fi
+if python3 -m py_compile "$AST_ANALYZER"; then echo "✅ Python syntax: $AST_ANALYZER"; else fail "Invalid Python syntax: $AST_ANALYZER"; fi
+if bash -n "$AST_TEST"; then echo "✅ shell syntax: $AST_TEST"; else fail "Invalid shell syntax: $AST_TEST"; fi
+if bash "$AST_TEST" >/dev/null; then
+  echo "✅ AST analyzer accepts the canonical TypeScript project"
+  echo "✅ AST analyzer emits deterministic exact-head reports"
+  echo "✅ AST analyzer rejects compiler, resolution, declaration, and cycle failures"
+else
+  fail "TypeScript AST and dependency integrity fixtures failed"
+fi
+echo
+
+echo "[10/10] Archive checks (deprecated files)"
 archive_files=(
   "docs/archive/architectgpt/architectgpt-core.md"
   "docs/archive/architectgpt/architectgpt-extended.md"
