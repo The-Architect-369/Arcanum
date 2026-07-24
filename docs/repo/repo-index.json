@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-07-24T14:32:47Z",
+  "generated_at": "2026-07-24T15:22:51Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "18414c202",
+  "commit": "035879302",
   "generator_version": "1.2",
   "files": [
     {
@@ -205,20 +205,20 @@
     {
       "path": ".github/workflows/doctrine-guard.yml",
       "type": "file",
-      "size_bytes": 880,
-      "last_modified_commit": "15f9744",
+      "size_bytes": 1227,
+      "last_modified_commit": "0358793",
       "is_empty": false,
       "extension": ".yml",
-      "lines": 40
+      "lines": 54
     },
     {
       "path": ".github/workflows/verify-sync.yml",
       "type": "file",
-      "size_bytes": 635,
-      "last_modified_commit": "c93129d",
+      "size_bytes": 990,
+      "last_modified_commit": "27e8c42",
       "is_empty": false,
       "extension": ".yml",
-      "lines": 28
+      "lines": 42
     },
     {
       "path": ".gitignore",
@@ -3670,11 +3670,11 @@
     {
       "path": "docs/repo/repo-index.json",
       "type": "file",
-      "size_bytes": 170413,
-      "last_modified_commit": "9b8403e",
+      "size_bytes": 171353,
+      "last_modified_commit": "7b88a62",
       "is_empty": false,
       "extension": ".json",
-      "lines": 6326
+      "lines": 6362
     },
     {
       "path": "docs/repo/repo-interface.md",
@@ -4121,7 +4121,7 @@
       "path": "docs/tooling/doctrine-checksums/doctrine-checksums.yaml",
       "type": "file",
       "size_bytes": 2166,
-      "last_modified_commit": "9b8403e",
+      "last_modified_commit": "7b88a62",
       "is_empty": false,
       "extension": ".yaml",
       "lines": 26
@@ -5930,7 +5930,7 @@
       "path": "pnpm-lock.yaml",
       "type": "file",
       "size_bytes": 409375,
-      "last_modified_commit": "8afa1f9",
+      "last_modified_commit": "7b88a62",
       "is_empty": false,
       "extension": ".yaml",
       "lines": 12168
@@ -6001,8 +6001,8 @@
     {
       "path": "scripts/architect/test-ast-integrity.sh",
       "type": "file",
-      "size_bytes": 1944,
-      "last_modified_commit": "59cb008",
+      "size_bytes": 1943,
+      "last_modified_commit": "c0bcf2f",
       "is_empty": false,
       "extension": ".sh",
       "lines": 64
