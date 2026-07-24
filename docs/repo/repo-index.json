@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-07-23T11:17:05Z",
+  "generated_at": "2026-07-24T14:32:47Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "2aa0b7178",
+  "commit": "18414c202",
   "generator_version": "1.2",
   "files": [
     {
@@ -385,11 +385,11 @@
     {
       "path": "apps/web/package.json",
       "type": "file",
-      "size_bytes": 1905,
-      "last_modified_commit": "8afa1f9",
+      "size_bytes": 1934,
+      "last_modified_commit": "18414c2",
       "is_empty": false,
       "extension": ".json",
-      "lines": 64
+      "lines": 65
     },
     {
       "path": "apps/web/postcss.config.mjs",
@@ -2131,11 +2131,11 @@
     {
       "path": "apps/web/src/lib/wallet/context.ts",
       "type": "file",
-      "size_bytes": 6053,
-      "last_modified_commit": "064e40a",
+      "size_bytes": 6314,
+      "last_modified_commit": "ae6c96a",
       "is_empty": false,
       "extension": ".ts",
-      "lines": 208
+      "lines": 217
     },
     {
       "path": "apps/web/src/state/useAccount.ts",
@@ -3346,11 +3346,11 @@
     {
       "path": "docs/governance/architectgpt/architect-gpt-manifest.yaml",
       "type": "file",
-      "size_bytes": 7007,
-      "last_modified_commit": "a4d183d",
+      "size_bytes": 7894,
+      "last_modified_commit": "336d3f7",
       "is_empty": false,
       "extension": ".yaml",
-      "lines": 181
+      "lines": 198
     },
     {
       "path": "docs/governance/architectgpt/architect-gpt.md",
@@ -3369,6 +3369,24 @@
       "is_empty": false,
       "extension": ".md",
       "lines": 135
+    },
+    {
+      "path": "docs/governance/architectgpt/ast-integrity-protocol.md",
+      "type": "file",
+      "size_bytes": 2991,
+      "last_modified_commit": "17983a0",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 72
+    },
+    {
+      "path": "docs/governance/architectgpt/ast-integrity.schema.json",
+      "type": "file",
+      "size_bytes": 1697,
+      "last_modified_commit": "e63c2b2",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 53
     },
     {
       "path": "docs/governance/architectgpt/capability-fabric.md",
@@ -3653,7 +3671,7 @@
       "path": "docs/repo/repo-index.json",
       "type": "file",
       "size_bytes": 170413,
-      "last_modified_commit": "15c3b9b",
+      "last_modified_commit": "9b8403e",
       "is_empty": false,
       "extension": ".json",
       "lines": 6326
@@ -4103,7 +4121,7 @@
       "path": "docs/tooling/doctrine-checksums/doctrine-checksums.yaml",
       "type": "file",
       "size_bytes": 2166,
-      "last_modified_commit": "15c3b9b",
+      "last_modified_commit": "9b8403e",
       "is_empty": false,
       "extension": ".yaml",
       "lines": 26
@@ -5911,11 +5929,11 @@
     {
       "path": "pnpm-lock.yaml",
       "type": "file",
-      "size_bytes": 407828,
+      "size_bytes": 409375,
       "last_modified_commit": "8afa1f9",
       "is_empty": false,
       "extension": ".yaml",
-      "lines": 12125
+      "lines": 12168
     },
     {
       "path": "pnpm-workspace.yaml",
@@ -5925,6 +5943,15 @@
       "is_empty": false,
       "extension": ".yaml",
       "lines": 3
+    },
+    {
+      "path": "scripts/architect/ast-integrity.py",
+      "type": "file",
+      "size_bytes": 6407,
+      "last_modified_commit": "c2972da",
+      "is_empty": false,
+      "extension": ".py",
+      "lines": 175
     },
     {
       "path": "scripts/architect/change-plan.py",
@@ -5970,6 +5997,15 @@
       "is_empty": false,
       "extension": ".py",
       "lines": 142
+    },
+    {
+      "path": "scripts/architect/test-ast-integrity.sh",
+      "type": "file",
+      "size_bytes": 1944,
+      "last_modified_commit": "59cb008",
+      "is_empty": false,
+      "extension": ".sh",
+      "lines": 64
     },
     {
       "path": "scripts/architect/test-change-plan.sh",
@@ -6307,11 +6343,11 @@
     {
       "path": "scripts/verify-sync.sh",
       "type": "file",
-      "size_bytes": 12292,
-      "last_modified_commit": "2aa0b71",
+      "size_bytes": 13398,
+      "last_modified_commit": "48fcb89",
       "is_empty": false,
       "extension": ".sh",
-      "lines": 264
+      "lines": 282
     },
     {
       "path": "tsconfig.json",
