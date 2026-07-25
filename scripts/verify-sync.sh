@@ -50,7 +50,7 @@ echo
 INDEX_FILE="docs/repo/repo-index.json"
 GEN_SCRIPT="scripts/repo-index.sh"
 
-echo "[1/14] Repo index integrity"
+echo "[1/15] Repo index integrity"
 if [[ ! -f "$GEN_SCRIPT" ]]; then
   fail "Missing generator script: $GEN_SCRIPT"
 elif [[ ! -f "$INDEX_FILE" ]]; then
@@ -95,7 +95,7 @@ else
 fi
 echo
 
-echo "[2/14] Architect GPT manifest integrity"
+echo "[2/15] Architect GPT manifest integrity"
 MANIFEST="docs/governance/architectgpt/architect-gpt-manifest.yaml"
 ARCH_DOC="docs/governance/architectgpt/architect-gpt.md"
 if [[ ! -f "$MANIFEST" ]]; then fail "Missing manifest: $MANIFEST"; fi
@@ -124,7 +124,7 @@ if [[ -f "$MANIFEST" && -f "$ARCH_DOC" ]]; then
 fi
 echo
 
-echo "[3/14] Governance canonical surface checks"
+echo "[3/15] Governance canonical surface checks"
 required_governance_files=(
   "docs/governance/governance-specification.md"
   "docs/governance/treasury-constitution.md"
@@ -154,13 +154,15 @@ required_governance_files=(
   "docs/governance/architectgpt/impact-graph.schema.json"
   "docs/governance/architectgpt/patch-executor-protocol.md"
   "docs/governance/architectgpt/patch-executor.schema.json"
+  "docs/governance/architectgpt/candidate-commit-protocol.md"
+  "docs/governance/architectgpt/candidate-commit.schema.json"
 )
 for f in "${required_governance_files[@]}"; do
   if [[ -f "$f" ]]; then echo "✅ present: $f"; else fail "Missing governance file: $f"; fi
 done
 echo
 
-echo "[4/14] Orchestration control checks"
+echo "[4/15] Orchestration control checks"
 ORCHESTRATOR="scripts/architect/orchestrate.sh"
 REGISTRY="docs/governance/architectgpt/capability-registry.yaml"
 if [[ ! -f "$ORCHESTRATOR" ]]; then
@@ -178,7 +180,7 @@ for permission in R0 R1 W1 W2 W3 C1; do
 done
 echo
 
-echo "[5/14] Evidence schema and validator checks"
+echo "[5/15] Evidence schema and validator checks"
 SCHEMA="docs/governance/architectgpt/execution-record.schema.json"
 VALIDATOR="scripts/architect/validate-evidence.py"
 if jq empty "$SCHEMA" >/dev/null 2>&1; then echo "✅ valid JSON schema document: $SCHEMA"; else fail "Invalid JSON schema document: $SCHEMA"; fi
@@ -205,7 +207,7 @@ else
 fi
 echo
 
-echo "[6/14] Promotion gate checks"
+echo "[6/15] Promotion gate checks"
 PROMOTION_GATE="scripts/architect/promotion-gate.sh"
 PROMOTION_PROTOCOL="docs/governance/architectgpt/promotion-protocol.md"
 if [[ ! -f "$PROMOTION_GATE" ]]; then
@@ -226,7 +228,7 @@ fi
 if [[ -f "$PROMOTION_PROTOCOL" ]]; then echo "✅ promotion protocol present"; else fail "Missing promotion protocol"; fi
 echo
 
-echo "[7/14] Provider health and drift checks"
+echo "[7/15] Provider health and drift checks"
 PROVIDER_SCHEMA="docs/governance/architectgpt/provider-health.schema.json"
 PROVIDER_MONITOR="scripts/architect/provider-health.py"
 PROVIDER_TEST="scripts/architect/test-provider-health.sh"
@@ -241,7 +243,7 @@ else
 fi
 echo
 
-echo "[8/14] Repository change plan and patch bundle checks"
+echo "[8/15] Repository change plan and patch bundle checks"
 CHANGE_PLAN_SCHEMA="docs/governance/architectgpt/change-plan.schema.json"
 CHANGE_PLAN_GENERATOR="scripts/architect/change-plan.py"
 CHANGE_PLAN_TEST="scripts/architect/test-change-plan.sh"
@@ -257,7 +259,7 @@ else
 fi
 echo
 
-echo "[9/14] TypeScript AST and dependency integrity checks"
+echo "[9/15] TypeScript AST and dependency integrity checks"
 AST_SCHEMA="docs/governance/architectgpt/ast-integrity.schema.json"
 AST_ANALYZER="scripts/architect/ast-integrity.py"
 AST_TEST="scripts/architect/test-ast-integrity.sh"
@@ -273,7 +275,7 @@ else
 fi
 echo
 
-echo "[10/14] Build log diagnostics and deployment attribution checks"
+echo "[10/15] Build log diagnostics and deployment attribution checks"
 BUILD_DIAGNOSTICS_SCHEMA="docs/governance/architectgpt/build-diagnostics.schema.json"
 BUILD_DIAGNOSTICS_PARSER="scripts/architect/build-diagnostics.py"
 BUILD_DIAGNOSTICS_TEST="scripts/architect/test-build-diagnostics.sh"
@@ -303,7 +305,7 @@ else
 fi
 echo
 
-echo "[11/14] Repository timeline and lineage integrity checks"
+echo "[11/15] Repository timeline and lineage integrity checks"
 TIMELINE_SCHEMA="docs/governance/architectgpt/repository-timeline.schema.json"
 TIMELINE_GENERATOR="scripts/architect/repository-timeline.py"
 TIMELINE_TEST="scripts/architect/test-repository-timeline.sh"
@@ -333,7 +335,7 @@ else
 fi
 echo
 
-echo "[12/14] Change impact graph integrity checks"
+echo "[12/15] Change impact graph integrity checks"
 IMPACT_SCHEMA="docs/governance/architectgpt/impact-graph.schema.json"
 IMPACT_GENERATOR="scripts/architect/impact-graph.py"
 IMPACT_TEST="scripts/architect/test-impact-graph.sh"
@@ -368,7 +370,7 @@ fi
 
 echo
 
-echo "[13/14] Isolated patch executor integrity checks"
+echo "[13/15] Isolated patch executor integrity checks"
 PATCH_EXECUTOR_SCHEMA="docs/governance/architectgpt/patch-executor.schema.json"
 PATCH_EXECUTOR="scripts/architect/patch-executor.py"
 PATCH_EXECUTOR_TEST="scripts/architect/test-patch-executor.sh"
@@ -403,7 +405,43 @@ fi
 
 echo
 
-echo "[14/14] Archive checks (deprecated files)"
+echo "[14/15] Deterministic candidate commit integrity checks"
+CANDIDATE_COMMIT_SCHEMA="docs/governance/architectgpt/candidate-commit.schema.json"
+CANDIDATE_COMMIT_BUILDER="scripts/architect/candidate-commit.py"
+CANDIDATE_COMMIT_TEST="scripts/architect/test-candidate-commit.sh"
+
+if jq empty "$CANDIDATE_COMMIT_SCHEMA" >/dev/null 2>&1; then
+  echo "✅ valid candidate commit schema: $CANDIDATE_COMMIT_SCHEMA"
+else
+  fail "Invalid candidate commit schema: $CANDIDATE_COMMIT_SCHEMA"
+fi
+
+if python3 -m py_compile "$CANDIDATE_COMMIT_BUILDER"; then
+  echo "✅ Python syntax: $CANDIDATE_COMMIT_BUILDER"
+else
+  fail "Invalid Python syntax: $CANDIDATE_COMMIT_BUILDER"
+fi
+
+if bash -n "$CANDIDATE_COMMIT_TEST"; then
+  echo "✅ shell syntax: $CANDIDATE_COMMIT_TEST"
+else
+  fail "Invalid shell syntax: $CANDIDATE_COMMIT_TEST"
+fi
+
+if bash "$CANDIDATE_COMMIT_TEST" >/dev/null; then
+  echo "✅ candidate commit builder reconstructs the exact attested diff"
+  echo "✅ candidate commit builder emits deterministic tree, commit, and attestation identities"
+  echo "✅ candidate commit builder binds the exact parent and tree"
+  echo "✅ candidate commit builder preserves source checkout and complete ref state"
+  echo "✅ candidate commit builder rejects tampered, stale, malformed, dirty, and mismatched inputs"
+else
+  fail "Deterministic candidate commit integrity fixtures failed"
+fi
+
+echo
+
+
+echo "[15/15] Archive checks (deprecated files)"
 archive_files=(
   "docs/archive/architectgpt/architectgpt-core.md"
   "docs/archive/architectgpt/architectgpt-extended.md"
