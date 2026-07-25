@@ -207,6 +207,25 @@ isolated_patch_executor_control:
   verification_command_trust: trusted_repository_commands_only
   authority: evidentiary_only
 
+candidate_commit_control:
+  protocol: docs/governance/architectgpt/candidate-commit-protocol.md
+  schema: docs/governance/architectgpt/candidate-commit.schema.json
+  builder: scripts/architect/candidate-commit.py
+  fixtures: scripts/architect/test-candidate-commit.sh
+  report_directory: .architect-reports/orchestration/candidate-commits
+  required_branch: mobile
+  exact_base_required: true
+  clean_source_required: true
+  patch_attestation_required: true
+  deterministic_commit_required: true
+  deterministic_attestation_required: true
+  single_parent_required: true
+  source_checkout_unchanged_required: true
+  refs_unchanged_required: true
+  object_store_effect: unreachable_commit_object
+  forbidden_actions: [head_update, branch_update, tag_update, push, merge, deploy]
+  authority: evidentiary_only
+
 mobile_verification:
   environment: Android Termux in isolated work profile
   bootstrap: scripts/mobile/termux-bootstrap.sh
@@ -243,6 +262,8 @@ files:
   impact_graph_schema: docs/governance/architectgpt/impact-graph.schema.json
   patch_executor_protocol: docs/governance/architectgpt/patch-executor-protocol.md
   patch_executor_schema: docs/governance/architectgpt/patch-executor.schema.json
+  candidate_commit_protocol: docs/governance/architectgpt/candidate-commit-protocol.md
+  candidate_commit_schema: docs/governance/architectgpt/candidate-commit.schema.json
   hope_guardian: docs/governance/hopegpt/hope-guardian.md
   repo_interface: docs/repo/repo-interface.md
   repo_index: docs/repo/repo-index.json
@@ -265,6 +286,8 @@ files:
   impact_graph_fixtures: scripts/architect/test-impact-graph.sh
   patch_executor: scripts/architect/patch-executor.py
   patch_executor_fixtures: scripts/architect/test-patch-executor.sh
+  candidate_commit_builder: scripts/architect/candidate-commit.py
+  candidate_commit_fixtures: scripts/architect/test-candidate-commit.sh
   mobile_bootstrap: scripts/mobile/termux-bootstrap.sh
   mobile_verify: scripts/mobile/termux-verify.sh
 
