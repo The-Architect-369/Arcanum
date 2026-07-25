@@ -50,7 +50,7 @@ echo
 INDEX_FILE="docs/repo/repo-index.json"
 GEN_SCRIPT="scripts/repo-index.sh"
 
-echo "[1/11] Repo index integrity"
+echo "[1/12] Repo index integrity"
 if [[ ! -f "$GEN_SCRIPT" ]]; then
   fail "Missing generator script: $GEN_SCRIPT"
 elif [[ ! -f "$INDEX_FILE" ]]; then
@@ -95,7 +95,7 @@ else
 fi
 echo
 
-echo "[2/11] Architect GPT manifest integrity"
+echo "[2/12] Architect GPT manifest integrity"
 MANIFEST="docs/governance/architectgpt/architect-gpt-manifest.yaml"
 ARCH_DOC="docs/governance/architectgpt/architect-gpt.md"
 if [[ ! -f "$MANIFEST" ]]; then fail "Missing manifest: $MANIFEST"; fi
@@ -124,7 +124,7 @@ if [[ -f "$MANIFEST" && -f "$ARCH_DOC" ]]; then
 fi
 echo
 
-echo "[3/11] Governance canonical surface checks"
+echo "[3/12] Governance canonical surface checks"
 required_governance_files=(
   "docs/governance/governance-specification.md"
   "docs/governance/treasury-constitution.md"
@@ -148,13 +148,15 @@ required_governance_files=(
   "docs/governance/architectgpt/ast-integrity.schema.json"
   "docs/governance/architectgpt/build-diagnostics-protocol.md"
   "docs/governance/architectgpt/build-diagnostics.schema.json"
+  "docs/governance/architectgpt/repository-timeline-protocol.md"
+  "docs/governance/architectgpt/repository-timeline.schema.json"
 )
 for f in "${required_governance_files[@]}"; do
   if [[ -f "$f" ]]; then echo "✅ present: $f"; else fail "Missing governance file: $f"; fi
 done
 echo
 
-echo "[4/11] Orchestration control checks"
+echo "[4/12] Orchestration control checks"
 ORCHESTRATOR="scripts/architect/orchestrate.sh"
 REGISTRY="docs/governance/architectgpt/capability-registry.yaml"
 if [[ ! -f "$ORCHESTRATOR" ]]; then
@@ -172,7 +174,7 @@ for permission in R0 R1 W1 W2 W3 C1; do
 done
 echo
 
-echo "[5/11] Evidence schema and validator checks"
+echo "[5/12] Evidence schema and validator checks"
 SCHEMA="docs/governance/architectgpt/execution-record.schema.json"
 VALIDATOR="scripts/architect/validate-evidence.py"
 if jq empty "$SCHEMA" >/dev/null 2>&1; then echo "✅ valid JSON schema document: $SCHEMA"; else fail "Invalid JSON schema document: $SCHEMA"; fi
@@ -199,7 +201,7 @@ else
 fi
 echo
 
-echo "[6/11] Promotion gate checks"
+echo "[6/12] Promotion gate checks"
 PROMOTION_GATE="scripts/architect/promotion-gate.sh"
 PROMOTION_PROTOCOL="docs/governance/architectgpt/promotion-protocol.md"
 if [[ ! -f "$PROMOTION_GATE" ]]; then
@@ -220,7 +222,7 @@ fi
 if [[ -f "$PROMOTION_PROTOCOL" ]]; then echo "✅ promotion protocol present"; else fail "Missing promotion protocol"; fi
 echo
 
-echo "[7/11] Provider health and drift checks"
+echo "[7/12] Provider health and drift checks"
 PROVIDER_SCHEMA="docs/governance/architectgpt/provider-health.schema.json"
 PROVIDER_MONITOR="scripts/architect/provider-health.py"
 PROVIDER_TEST="scripts/architect/test-provider-health.sh"
@@ -235,7 +237,7 @@ else
 fi
 echo
 
-echo "[8/11] Repository change plan and patch bundle checks"
+echo "[8/12] Repository change plan and patch bundle checks"
 CHANGE_PLAN_SCHEMA="docs/governance/architectgpt/change-plan.schema.json"
 CHANGE_PLAN_GENERATOR="scripts/architect/change-plan.py"
 CHANGE_PLAN_TEST="scripts/architect/test-change-plan.sh"
@@ -251,7 +253,7 @@ else
 fi
 echo
 
-echo "[9/11] TypeScript AST and dependency integrity checks"
+echo "[9/12] TypeScript AST and dependency integrity checks"
 AST_SCHEMA="docs/governance/architectgpt/ast-integrity.schema.json"
 AST_ANALYZER="scripts/architect/ast-integrity.py"
 AST_TEST="scripts/architect/test-ast-integrity.sh"
@@ -267,7 +269,7 @@ else
 fi
 echo
 
-echo "[10/11] Build log diagnostics and deployment attribution checks"
+echo "[10/12] Build log diagnostics and deployment attribution checks"
 BUILD_DIAGNOSTICS_SCHEMA="docs/governance/architectgpt/build-diagnostics.schema.json"
 BUILD_DIAGNOSTICS_PARSER="scripts/architect/build-diagnostics.py"
 BUILD_DIAGNOSTICS_TEST="scripts/architect/test-build-diagnostics.sh"
@@ -297,7 +299,37 @@ else
 fi
 echo
 
-echo "[11/11] Archive checks (deprecated files)"
+echo "[11/12] Repository timeline and lineage integrity checks"
+TIMELINE_SCHEMA="docs/governance/architectgpt/repository-timeline.schema.json"
+TIMELINE_GENERATOR="scripts/architect/repository-timeline.py"
+TIMELINE_TEST="scripts/architect/test-repository-timeline.sh"
+if jq empty "$TIMELINE_SCHEMA" >/dev/null 2>&1; then
+  echo "✅ valid repository timeline schema: $TIMELINE_SCHEMA"
+else
+  fail "Invalid repository timeline schema: $TIMELINE_SCHEMA"
+fi
+if python3 -m py_compile "$TIMELINE_GENERATOR"; then
+  echo "✅ Python syntax: $TIMELINE_GENERATOR"
+else
+  fail "Invalid Python syntax: $TIMELINE_GENERATOR"
+fi
+if bash -n "$TIMELINE_TEST"; then
+  echo "✅ shell syntax: $TIMELINE_TEST"
+else
+  fail "Invalid shell syntax: $TIMELINE_TEST"
+fi
+if bash "$TIMELINE_TEST" >/dev/null; then
+  echo "✅ repository timeline generator emits deterministic exact-head reports"
+  echo "✅ repository timeline generator preserves bounded file lineage"
+  echo "✅ repository timeline generator binds blob and content hashes"
+  echo "✅ repository timeline generator validates node and edge consistency"
+  echo "✅ repository timeline generator rejects path escape and invalid limits"
+else
+  fail "Repository timeline integrity fixtures failed"
+fi
+echo
+
+echo "[12/12] Archive checks (deprecated files)"
 archive_files=(
   "docs/archive/architectgpt/architectgpt-core.md"
   "docs/archive/architectgpt/architectgpt-extended.md"

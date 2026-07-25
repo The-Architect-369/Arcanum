@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-07-25T18:53:23Z",
+  "generated_at": "2026-07-25T19:53:39Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "a22d5076d",
+  "commit": "18be0b624",
   "generator_version": "1.2",
   "files": [
     {
@@ -3346,11 +3346,11 @@
     {
       "path": "docs/governance/architectgpt/architect-gpt-manifest.yaml",
       "type": "file",
-      "size_bytes": 8837,
-      "last_modified_commit": "51895e9",
+      "size_bytes": 9854,
+      "last_modified_commit": "18be0b6",
       "is_empty": false,
       "extension": ".yaml",
-      "lines": 214
+      "lines": 233
     },
     {
       "path": "docs/governance/architectgpt/architect-gpt.md",
@@ -3364,11 +3364,11 @@
     {
       "path": "docs/governance/architectgpt/architect-log.md",
       "type": "file",
-      "size_bytes": 7352,
+      "size_bytes": 9102,
       "last_modified_commit": "a22d507",
       "is_empty": false,
       "extension": ".md",
-      "lines": 178
+      "lines": 222
     },
     {
       "path": "docs/governance/architectgpt/ast-integrity-protocol.md",
@@ -3504,6 +3504,24 @@
       "is_empty": false,
       "extension": ".json",
       "lines": 30
+    },
+    {
+      "path": "docs/governance/architectgpt/repository-timeline-protocol.md",
+      "type": "file",
+      "size_bytes": 2780,
+      "last_modified_commit": "ea27f3c",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 88
+    },
+    {
+      "path": "docs/governance/architectgpt/repository-timeline.schema.json",
+      "type": "file",
+      "size_bytes": 3218,
+      "last_modified_commit": "e4615e4",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 87
     },
     {
       "path": "docs/governance/architectgpt/sessions/.gitkeep",
@@ -3688,11 +3706,11 @@
     {
       "path": "docs/repo/repo-index.json",
       "type": "file",
-      "size_bytes": 171354,
-      "last_modified_commit": "828d2bb",
+      "size_bytes": 172311,
+      "last_modified_commit": "8aa8ed0",
       "is_empty": false,
       "extension": ".json",
-      "lines": 6362
+      "lines": 6398
     },
     {
       "path": "docs/repo/repo-interface.md",
@@ -4139,7 +4157,7 @@
       "path": "docs/tooling/doctrine-checksums/doctrine-checksums.yaml",
       "type": "file",
       "size_bytes": 2166,
-      "last_modified_commit": "7b88a62",
+      "last_modified_commit": "8aa8ed0",
       "is_empty": false,
       "extension": ".yaml",
       "lines": 26
@@ -6026,6 +6044,15 @@
       "lines": 142
     },
     {
+      "path": "scripts/architect/repository-timeline.py",
+      "type": "file",
+      "size_bytes": 4824,
+      "last_modified_commit": "89ae248",
+      "is_empty": false,
+      "extension": ".py",
+      "lines": 138
+    },
+    {
       "path": "scripts/architect/test-ast-integrity.sh",
       "type": "file",
       "size_bytes": 1943,
@@ -6060,6 +6087,15 @@
       "is_empty": false,
       "extension": ".sh",
       "lines": 105
+    },
+    {
+      "path": "scripts/architect/test-repository-timeline.sh",
+      "type": "file",
+      "size_bytes": 2499,
+      "last_modified_commit": "b458b57",
+      "is_empty": false,
+      "extension": ".sh",
+      "lines": 57
     },
     {
       "path": "scripts/architect/validate-evidence.py",
@@ -6379,11 +6415,11 @@
     {
       "path": "scripts/verify-sync.sh",
       "type": "file",
-      "size_bytes": 14867,
-      "last_modified_commit": "48fcb89",
+      "size_bytes": 16243,
+      "last_modified_commit": "8aa8ed0",
       "is_empty": false,
       "extension": ".sh",
-      "lines": 314
+      "lines": 346
     },
     {
       "path": "tsconfig.json",
