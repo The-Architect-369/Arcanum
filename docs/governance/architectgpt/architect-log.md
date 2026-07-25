@@ -33,6 +33,65 @@ Each session entry should include:
 
 ---
 
+## 2026-07-25 — Wave XII Isolated Patch Executor
+
+Grounding:
+
+- Repository: `The-Architect-369/Arcanum`
+- Branch: `mobile`
+- Phase: Pre-Genesis
+- Stable base: `d03640814418c8e161f5bdb485c2002d44ad57b1`
+- Purpose: apply validated patch bundles inside temporary detached Git worktrees without mutating the source checkout
+
+Summary:
+
+- Added a deterministic isolated patch executor consuming canonical repository patch bundles.
+- Added exact-base, clean-source, and `mobile` branch preconditions.
+- Added detached temporary Git worktree execution.
+- Added create, update, delete, and rename application.
+- Added SHA-256 payload verification for create and update actions.
+- Added exact comparison between declared mutations and the staged candidate diff.
+- Added trusted verification-command execution without an intermediate shell.
+- Added deterministic candidate-diff and attestation hashes.
+- Added explicit proof that the source checkout remains unchanged.
+- Added canonical attestation schema, governance protocol, and executable fixtures.
+- Registered the control in the Architect GPT manifest with evidentiary-only authority.
+- Integrated the fixture suite as repository verification layer 13 of 14.
+
+Verification status:
+
+- JSON schema parsing: green.
+- Python syntax: green.
+- Shell fixture syntax: green.
+- Create, update, delete, and rename fixture: green.
+- Dot-prefixed `.github` path preservation: green.
+- Deterministic repeated attestation output: green.
+- Candidate diff hashing: green.
+- Attestation digest verification: green.
+- Source checkout preservation: green.
+- Tampered bundle rejection: green.
+- Payload digest mismatch rejection: green.
+- Failed verification-command rejection: green.
+- Dirty source-checkout rejection: green.
+
+Doctrinal impact:
+
+- Patch execution remains evidentiary and cannot commit, push, move refs, merge, deploy, or authorize promotion.
+- Isolation is limited to a detached Git worktree and is not an operating-system security sandbox.
+- Verification commands inherit the invoking environment's filesystem, credential, process, and network authority.
+- Only trusted repository-owned commands may be supplied for verification.
+- A passing attestation represents a verified candidate diff, not an authorized repository mutation.
+
+Follow-up actions:
+
+- Refresh the manifest doctrine checksum and repository index.
+- Run Doctrine Guard and Verify Sync 14/14.
+- Run exact-head Termux typecheck, production build, and repository synchronization.
+- Generate the Wave XII promotion attestation.
+- Require exact-head CI, Vercel, and expected-head merge evidence before promotion to `main`.
+
+---
+
 ## 2026-07-25 — Wave XI Change Impact Graph
 
 Grounding:
