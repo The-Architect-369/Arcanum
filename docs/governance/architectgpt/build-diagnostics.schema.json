@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://the-arcanum.net/schemas/architectgpt/build-diagnostics.schema.json",
+  "title": "Architect GPT Build Diagnostics Report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "record_type",
+    "repository",
+    "commit",
+    "log_sha256",
+    "status",
+    "summary",
+    "deployment",
+    "diagnostics",
+    "authority",
+    "report_sha256"
+  ],
+  "properties": {
+    "schema_version": { "const": "1.0" },
+    "record_type": { "const": "build_diagnostics_report" },
+    "repository": { "type": "string", "format": "uri" },
+    "commit": { "type": "string", "pattern": "^[0-9a-f]{40}$" },
+    "log_sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "status": { "enum": ["pass", "fail"] },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["errors", "warnings", "diagnostics"],
+      "properties": {
+        "errors": { "type": "integer", "minimum": 0 },
+        "warnings": { "type": "integer", "minimum": 0 },
+        "diagnostics": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "deployment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["provider", "deployment_id", "environment", "state", "branch", "commit"],
+      "properties": {
+        "provider": { "type": ["string", "null"] },
+        "deployment_id": { "type": ["string", "null"] },
+        "environment": { "type": ["string", "null"] },
+        "state": { "type": ["string", "null"] },
+        "branch": { "type": ["string", "null"] },
+        "commit": { "type": ["string", "null"] }
+      }
+    },
+    "diagnostics": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["category", "severity", "message", "source", "line", "column", "code", "id"],
+        "properties": {
+          "category": { "enum": ["typescript", "module_resolution", "environment", "nextjs", "runtime_boundary", "warning"] },
+          "severity": { "enum": ["error", "warning"] },
+          "message": { "type": "string", "minLength": 1 },
+          "source": { "type": ["string", "null"] },
+          "line": { "type": ["integer", "null"], "minimum": 1 },
+          "column": { "type": ["integer", "null"], "minimum": 1 },
+          "code": { "type": ["string", "null"] },
+          "id": { "type": "string", "pattern": "^[0-9a-f]{16}$" }
+        }
+      }
+    },
+    "authority": { "const": "evidentiary_only" },
+    "report_sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" }
+  }
+}
