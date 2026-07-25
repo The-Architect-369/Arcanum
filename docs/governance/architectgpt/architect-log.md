@@ -33,6 +33,50 @@ Each session entry should include:
 
 ---
 
+## 2026-07-25 — Wave X Repository Timeline Graph
+
+Grounding:
+
+- Repository: `The-Architect-369/Arcanum`
+- Branch: `mobile`
+- Phase: Pre-Genesis
+- Purpose: derive deterministic, bounded file-version lineage from repository Git history
+
+Summary:
+
+- Added an offline Repository Timeline Graph generator.
+- Added per-file nodes containing commit, parent, author, timestamp, subject, blob hash, content hash, and diff statistics.
+- Added deterministic `superseded_by` edges and latest-version indexes.
+- Added bounded history controls and repository path-containment enforcement.
+- Added canonical JSON schema, governance protocol, and executable fixtures.
+- Registered the control in the Architect GPT manifest.
+- Preserved rollback as an authorized change-plan operation rather than an automatic timeline action.
+
+Verification status:
+
+- JSON schema parsing: green.
+- Python syntax: green.
+- Shell fixture syntax: green.
+- Deterministic fixture suite: green.
+- Three-path representative graph: 22 nodes, 19 edges, three tracked paths.
+- Exact-head binding and stable report hashing: green.
+
+Doctrinal impact:
+
+- Git history is evidence, not constitutional or operational authority.
+- Timeline reports cannot rewrite history, move refs, merge, deploy, or execute rollback.
+- Rollback guidance must be inspected and implemented through an explicitly authorized change plan.
+- Missing or shallow history must remain visible rather than being reconstructed through inference.
+
+Follow-up actions:
+
+- Integrate repository timeline validation as layer 11 of 12.
+- Move archive verification to layer 12 of 12.
+- Refresh the manifest doctrine checksum and repository index.
+- Run full local, Termux, CI, promotion, and Vercel gates before guarded merge.
+
+---
+
 ## 2026-07-25 — Wave IX Build Diagnostics and Deployment Attribution
 
 Grounding:
