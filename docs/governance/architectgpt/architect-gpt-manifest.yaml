@@ -157,6 +157,21 @@ build_diagnostics_control:
   provider_metadata: [provider, deployment_id, environment, state, branch, commit]
   authority: evidentiary_only
 
+repository_timeline_control:
+  protocol: docs/governance/architectgpt/repository-timeline-protocol.md
+  report_schema: docs/governance/architectgpt/repository-timeline.schema.json
+  generator: scripts/architect/repository-timeline.py
+  fixtures: scripts/architect/test-repository-timeline.sh
+  report_directory: .architect-reports/orchestration/repository-timeline
+  exact_commit_required: true
+  deterministic_report_required: true
+  bounded_history_required: true
+  path_containment_required: true
+  node_fields: [commit, parents, timestamp, author, subject, blob_sha, content_sha256, diff]
+  edge_relation: superseded_by
+  rollback_authority: none
+  authority: evidentiary_only
+
 mobile_verification:
   environment: Android Termux in isolated work profile
   bootstrap: scripts/mobile/termux-bootstrap.sh
@@ -187,6 +202,8 @@ files:
   ast_integrity_schema: docs/governance/architectgpt/ast-integrity.schema.json
   build_diagnostics_protocol: docs/governance/architectgpt/build-diagnostics-protocol.md
   build_diagnostics_schema: docs/governance/architectgpt/build-diagnostics.schema.json
+  repository_timeline_protocol: docs/governance/architectgpt/repository-timeline-protocol.md
+  repository_timeline_schema: docs/governance/architectgpt/repository-timeline.schema.json
   hope_guardian: docs/governance/hopegpt/hope-guardian.md
   repo_interface: docs/repo/repo-interface.md
   repo_index: docs/repo/repo-index.json
@@ -203,6 +220,8 @@ files:
   ast_integrity_fixtures: scripts/architect/test-ast-integrity.sh
   build_diagnostics_parser: scripts/architect/build-diagnostics.py
   build_diagnostics_fixtures: scripts/architect/test-build-diagnostics.sh
+  repository_timeline_generator: scripts/architect/repository-timeline.py
+  repository_timeline_fixtures: scripts/architect/test-repository-timeline.sh
   mobile_bootstrap: scripts/mobile/termux-bootstrap.sh
   mobile_verify: scripts/mobile/termux-verify.sh
 
