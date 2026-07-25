@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-07-25T19:53:39Z",
+  "generated_at": "2026-07-25T21:22:26Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "18be0b624",
+  "commit": "75bcd661c",
   "generator_version": "1.2",
   "files": [
     {
@@ -3346,11 +3346,11 @@
     {
       "path": "docs/governance/architectgpt/architect-gpt-manifest.yaml",
       "type": "file",
-      "size_bytes": 9854,
-      "last_modified_commit": "18be0b6",
+      "size_bytes": 10982,
+      "last_modified_commit": "75bcd66",
       "is_empty": false,
       "extension": ".yaml",
-      "lines": 233
+      "lines": 253
     },
     {
       "path": "docs/governance/architectgpt/architect-gpt.md",
@@ -3364,11 +3364,11 @@
     {
       "path": "docs/governance/architectgpt/architect-log.md",
       "type": "file",
-      "size_bytes": 9102,
-      "last_modified_commit": "a22d507",
+      "size_bytes": 11325,
+      "last_modified_commit": "07e7ea0",
       "is_empty": false,
       "extension": ".md",
-      "lines": 222
+      "lines": 271
     },
     {
       "path": "docs/governance/architectgpt/ast-integrity-protocol.md",
@@ -3468,6 +3468,24 @@
       "is_empty": false,
       "extension": ".json",
       "lines": 80
+    },
+    {
+      "path": "docs/governance/architectgpt/impact-graph-protocol.md",
+      "type": "file",
+      "size_bytes": 3912,
+      "last_modified_commit": "ff1e67c",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 129
+    },
+    {
+      "path": "docs/governance/architectgpt/impact-graph.schema.json",
+      "type": "file",
+      "size_bytes": 4164,
+      "last_modified_commit": "bab79d5",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 116
     },
     {
       "path": "docs/governance/architectgpt/orchestration-protocol.md",
@@ -3706,11 +3724,11 @@
     {
       "path": "docs/repo/repo-index.json",
       "type": "file",
-      "size_bytes": 172311,
-      "last_modified_commit": "8aa8ed0",
+      "size_bytes": 173275,
+      "last_modified_commit": "07e7ea0",
       "is_empty": false,
       "extension": ".json",
-      "lines": 6398
+      "lines": 6434
     },
     {
       "path": "docs/repo/repo-interface.md",
@@ -4157,7 +4175,7 @@
       "path": "docs/tooling/doctrine-checksums/doctrine-checksums.yaml",
       "type": "file",
       "size_bytes": 2166,
-      "last_modified_commit": "8aa8ed0",
+      "last_modified_commit": "07e7ea0",
       "is_empty": false,
       "extension": ".yaml",
       "lines": 26
@@ -6017,6 +6035,15 @@
       "lines": 47
     },
     {
+      "path": "scripts/architect/impact-graph.py",
+      "type": "file",
+      "size_bytes": 11583,
+      "last_modified_commit": "a6966b4",
+      "is_empty": false,
+      "extension": ".py",
+      "lines": 303
+    },
+    {
       "path": "scripts/architect/orchestrate.sh",
       "type": "file",
       "size_bytes": 7583,
@@ -6078,6 +6105,15 @@
       "is_empty": false,
       "extension": ".sh",
       "lines": 76
+    },
+    {
+      "path": "scripts/architect/test-impact-graph.sh",
+      "type": "file",
+      "size_bytes": 5642,
+      "last_modified_commit": "b991e2c",
+      "is_empty": false,
+      "extension": ".sh",
+      "lines": 189
     },
     {
       "path": "scripts/architect/test-provider-health.sh",
@@ -6415,11 +6451,11 @@
     {
       "path": "scripts/verify-sync.sh",
       "type": "file",
-      "size_bytes": 16243,
-      "last_modified_commit": "8aa8ed0",
+      "size_bytes": 17542,
+      "last_modified_commit": "07e7ea0",
       "is_empty": false,
       "extension": ".sh",
-      "lines": 346
+      "lines": 383
     },
     {
       "path": "tsconfig.json",

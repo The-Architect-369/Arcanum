@@ -33,6 +33,55 @@ Each session entry should include:
 
 ---
 
+## 2026-07-25 — Wave XI Change Impact Graph
+
+Grounding:
+
+- Repository: `The-Architect-369/Arcanum`
+- Branch: `mobile`
+- Phase: Pre-Genesis
+- Stable base: `635740fa2a3372ec70338f7948338f66df68ee10`
+- Purpose: calculate deterministic repository blast radius before verification and promotion
+
+Summary:
+
+- Added an exact-base and exact-head Change Impact Graph generator.
+- Added changed-file classification for create, update, delete, and rename operations.
+- Added reverse dependency traversal for direct and transitive TypeScript dependents.
+- Added application-route, package, test, runtime, CI, deployment, and canonical-document classification.
+- Added bounded risk scoring with observable risk factors.
+- Added a minimum required-verification matrix derived from affected surfaces.
+- Added canonical JSON schema, governance protocol, and executable fixtures.
+- Added a synthetic repository fixture proving direct dependency, transitive route, test, CI, and doctrine impact.
+- Registered the control in the Architect GPT manifest with evidentiary-only authority.
+
+Verification status:
+
+- JSON schema parsing: green.
+- Python syntax: green.
+- Shell fixture syntax: green.
+- Deterministic fixture suite: green.
+- Synthetic reverse-dependency and impact-classification fixture: green.
+- Stable-base representative report: four changed files, two canonical documents, moderate risk.
+- Representative report digest verification: green.
+- Exact-base and exact-head binding: green.
+
+Doctrinal impact:
+
+- Impact reports provide engineering evidence but cannot authorize writes, merges, deployment, rollback, or constitutional change.
+- Risk scores are triage signals and do not replace Human Architect judgment.
+- Verification requirements express minimum expected evidence and do not claim that verification occurred.
+- Unsupported languages, dynamic runtime references, and unrecognized aliases must remain visible as analysis boundaries.
+
+Follow-up actions:
+
+- Integrate the Change Impact Graph as verification layer 12 of 13.
+- Move archive verification to layer 13 of 13.
+- Refresh the manifest doctrine checksum and repository index.
+- Run full local, Termux, CI, promotion, and Vercel gates before guarded merge.
+
+---
+
 ## 2026-07-25 — Wave X Repository Timeline Graph
 
 Grounding:
