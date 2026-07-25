@@ -172,6 +172,22 @@ repository_timeline_control:
   rollback_authority: none
   authority: evidentiary_only
 
+impact_graph_control:
+  protocol: docs/governance/architectgpt/impact-graph-protocol.md
+  report_schema: docs/governance/architectgpt/impact-graph.schema.json
+  generator: scripts/architect/impact-graph.py
+  fixtures: scripts/architect/test-impact-graph.sh
+  project: apps/web/tsconfig.json
+  report_directory: .architect-reports/orchestration/impact-graph
+  exact_base_required: true
+  exact_head_required: true
+  deterministic_report_required: true
+  base_ancestor_required: true
+  path_containment_required: true
+  impact_surfaces: [changed_files, direct_dependents, transitive_dependents, routes, packages, tests, runtime_surfaces, canonical_documents]
+  verification_categories: [repository_integrity, web_typecheck, web_production_build, targeted_tests, browser_route_smoke, deployment_preview, doctrine_guard]
+  authority: evidentiary_only
+
 mobile_verification:
   environment: Android Termux in isolated work profile
   bootstrap: scripts/mobile/termux-bootstrap.sh
@@ -204,6 +220,8 @@ files:
   build_diagnostics_schema: docs/governance/architectgpt/build-diagnostics.schema.json
   repository_timeline_protocol: docs/governance/architectgpt/repository-timeline-protocol.md
   repository_timeline_schema: docs/governance/architectgpt/repository-timeline.schema.json
+  impact_graph_protocol: docs/governance/architectgpt/impact-graph-protocol.md
+  impact_graph_schema: docs/governance/architectgpt/impact-graph.schema.json
   hope_guardian: docs/governance/hopegpt/hope-guardian.md
   repo_interface: docs/repo/repo-interface.md
   repo_index: docs/repo/repo-index.json
@@ -222,6 +240,8 @@ files:
   build_diagnostics_fixtures: scripts/architect/test-build-diagnostics.sh
   repository_timeline_generator: scripts/architect/repository-timeline.py
   repository_timeline_fixtures: scripts/architect/test-repository-timeline.sh
+  impact_graph_generator: scripts/architect/impact-graph.py
+  impact_graph_fixtures: scripts/architect/test-impact-graph.sh
   mobile_bootstrap: scripts/mobile/termux-bootstrap.sh
   mobile_verify: scripts/mobile/termux-verify.sh
 
