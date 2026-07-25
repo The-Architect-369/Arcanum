@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build a deterministic candidate Git commit without moving any repository ref."""
+"""Build a deterministic candidate Git commit without moving repository refs."""
 from __future__ import annotations
 
 import argparse
@@ -15,7 +15,7 @@ from datetime import datetime
 from pathlib import Path
 from typing import Any
 
-ALLOWED_ACTIONS = {"create", "update", "delete", "rename"}
+ACTIONS = {"create", "update", "delete", "rename"}
 SHA40 = re.compile(r"^[0-9a-f]{40}$")
 SHA64 = re.compile(r"^[0-9a-f]{64}$")
 
@@ -25,32 +25,30 @@ def fail(message: str) -> None:
     raise SystemExit(1)
 
 
-def run(command: list[str], cwd: Path, *, env: dict[str, str] | None = None) -> str:
+def run(command: list[str], cwd: Path, *, env: dict[str, str] | None = None,
+        input_text: str | None = None) -> str:
     result = subprocess.run(
-        command,
-        cwd=cwd,
-        env=env,
-        text=True,
-        stdout=subprocess.PIPE,
-        stderr=subprocess.STDOUT,
-        check=False,
+        command, cwd=cwd, env=env, input=input_text, text=True,
+        stdout=subprocess.PIPE, stderr=subprocess.STDOUT, check=False,
     )
     if result.returncode != 0:
         fail(f"command failed ({' '.join(command)}): {result.stdout.strip()}")
     return result.stdout.strip()
 
 
-def git(root: Path, *args: str, env: dict[str, str] | None = None) -> str:
-    return run(["git", *args], root, env=env)
+def git(root: Path, *args: str, env: dict[str, str] | None = None,
+        input_text: str | None = None) -> str:
+    return run(["git", *args], root, env=env, input_text=input_text)
 
 
-def digest_bytes(value: bytes) -> str:
+def sha256_bytes(value: bytes) -> str:
     return hashlib.sha256(value).hexdigest()
 
 
-def digest_json(value: dict[str, Any]) -> str:
-    payload = json.dumps(value, sort_keys=True, separators=(",", ":")).encode()
-    return digest_bytes(payload)
+def sha256_json(value: dict[str, Any]) -> str:
+    return sha256_bytes(
+        json.dumps(value, sort_keys=True, separators=(",", ":")).encode()
+    )
 
 
 def load_json(path: Path) -> dict[str, Any]:
@@ -63,13 +61,13 @@ def load_json(path: Path) -> dict[str, Any]:
     return value
 
 
-def verify_signed_json(value: dict[str, Any], field: str, label: str) -> None:
+def verify_digest(value: dict[str, Any], field: str, label: str) -> None:
     expected = str(value.get(field, ""))
     if SHA64.fullmatch(expected) is None:
         fail(f"{label} has invalid {field}")
     unsigned = dict(value)
     unsigned.pop(field, None)
-    actual = digest_json(unsigned)
+    actual = sha256_json(unsigned)
     if actual != expected:
         fail(f"{label} digest mismatch: {actual} != {expected}")
 
@@ -86,7 +84,7 @@ def normalize_path(raw: str) -> str:
     return value
 
 
-def payload_path(root: Path, repo_path: str) -> Path:
+def contained(root: Path, repo_path: str) -> Path:
     candidate = (root / repo_path).resolve()
     try:
         candidate.relative_to(root.resolve())
@@ -95,35 +93,35 @@ def payload_path(root: Path, repo_path: str) -> Path:
     return candidate
 
 
-def validate_timestamp(value: str) -> str:
-    if not value.endswith("Z"):
+def canonical_timestamp(raw: str) -> str:
+    if not raw.endswith("Z"):
         fail("commit timestamp must use UTC Z notation")
     try:
-        parsed = datetime.fromisoformat(value[:-1] + "+00:00")
+        parsed = datetime.fromisoformat(raw[:-1] + "+00:00")
     except ValueError as exc:
         fail(f"invalid commit timestamp: {exc}")
     return parsed.strftime("%Y-%m-%dT%H:%M:%SZ")
 
 
-def validate_inputs(
-    bundle: dict[str, Any],
-    patch: dict[str, Any],
-    request: dict[str, Any],
-    root: Path,
-) -> list[dict[str, Any]]:
-    verify_signed_json(bundle, "bundle_sha256", "patch bundle")
-    verify_signed_json(patch, "attestation_sha256", "patch attestation")
+def refs_snapshot(root: Path) -> str:
+    return git(root, "for-each-ref", "--format=%(refname)%00%(objectname)")
 
+
+def validate(
+    bundle: dict[str, Any], patch: dict[str, Any], request: dict[str, Any], root: Path
+) -> list[dict[str, Any]]:
+    verify_digest(bundle, "bundle_sha256", "patch bundle")
+    verify_digest(patch, "attestation_sha256", "patch attestation")
     if bundle.get("record_type") != "repository_patch_bundle":
         fail("unsupported patch bundle record type")
-    if patch.get("record_type") != "isolated_patch_attestation" or patch.get("status") != "pass":
-        fail("patch attestation must be a passing isolated_patch_attestation")
-    if patch.get("source_checkout_unchanged") is not True:
-        fail("patch attestation does not prove source checkout preservation")
+    if patch.get("record_type") != "isolated_patch_attestation":
+        fail("unsupported patch attestation record type")
+    if patch.get("status") != "pass" or patch.get("source_checkout_unchanged") is not True:
+        fail("patch attestation must be passing and source-preserving")
     if patch.get("bundle_sha256") != bundle.get("bundle_sha256"):
         fail("patch attestation is not bound to the supplied bundle")
     if patch.get("base_commit") != bundle.get("base_commit"):
-        fail("patch attestation base does not match the supplied bundle")
+        fail("patch attestation base does not match bundle")
 
     required = {
         "schema_version", "record_type", "repository", "base_commit",
@@ -135,20 +133,22 @@ def validate_inputs(
         fail(f"candidate commit request missing fields: {', '.join(missing)}")
     if request.get("schema_version") != "1.0" or request.get("record_type") != "candidate_commit_request":
         fail("unsupported candidate commit request")
-    if request.get("repository") != bundle.get("repository"):
-        fail("request repository does not match bundle")
-    if request.get("base_commit") != bundle.get("base_commit"):
-        fail("request base_commit does not match bundle")
-    if request.get("target_branch") != "mobile" or bundle.get("target_branch") != "mobile":
-        fail("candidate commit target_branch must be mobile")
-    if request.get("bundle_sha256") != bundle.get("bundle_sha256"):
-        fail("request bundle digest does not match bundle")
-    if request.get("patch_attestation_sha256") != patch.get("attestation_sha256"):
-        fail("request patch attestation digest does not match attestation")
+    bindings = {
+        "repository": bundle.get("repository"),
+        "base_commit": bundle.get("base_commit"),
+        "target_branch": "mobile",
+        "bundle_sha256": bundle.get("bundle_sha256"),
+        "patch_attestation_sha256": patch.get("attestation_sha256"),
+    }
+    for field, expected in bindings.items():
+        if request.get(field) != expected:
+            fail(f"candidate commit request {field} binding mismatch")
+    if bundle.get("target_branch") != "mobile":
+        fail("patch bundle target_branch must be mobile")
     for field in ("author_name", "author_email", "message"):
         if not str(request.get(field, "")).strip():
             fail(f"candidate commit request {field} is required")
-    validate_timestamp(str(request["timestamp"]))
+    canonical_timestamp(str(request["timestamp"]))
 
     base = str(bundle.get("base_commit", ""))
     if SHA40.fullmatch(base) is None:
@@ -160,16 +160,17 @@ def validate_inputs(
     if git(root, "status", "--porcelain"):
         fail("source checkout must be clean")
 
-    changes = bundle.get("changes")
-    if not isinstance(changes, list) or not changes:
+    raw_changes = bundle.get("changes")
+    if not isinstance(raw_changes, list) or not raw_changes:
         fail("patch bundle changes must be a non-empty array")
-    normalized: list[dict[str, Any]] = []
+    changes: list[dict[str, Any]] = []
     targets: set[str] = set()
-    for index, raw in enumerate(changes):
+    sources: set[str] = set()
+    for index, raw in enumerate(raw_changes):
         if not isinstance(raw, dict):
             fail(f"change {index} must be an object")
         action = str(raw.get("action", ""))
-        if action not in ALLOWED_ACTIONS:
+        if action not in ACTIONS:
             fail(f"change {index} has unsupported action")
         path = normalize_path(str(raw.get("path", "")))
         if path in targets:
@@ -177,17 +178,21 @@ def validate_inputs(
         targets.add(path)
         item: dict[str, Any] = {"action": action, "path": path}
         if action == "rename":
-            item["from_path"] = normalize_path(str(raw.get("from_path", "")))
-        if raw.get("content_sha256") is not None:
-            value = str(raw["content_sha256"])
-            if SHA64.fullmatch(value) is None:
-                fail(f"change {index} has invalid content_sha256")
-            item["content_sha256"] = value
-        normalized.append(item)
-    return normalized
+            source = normalize_path(str(raw.get("from_path", "")))
+            if source in sources or source in targets:
+                fail(f"conflicting rename source: {source}")
+            sources.add(source)
+            item["from_path"] = source
+        if action in {"create", "update"}:
+            digest = str(raw.get("content_sha256", ""))
+            if SHA64.fullmatch(digest) is None:
+                fail(f"change {index} requires valid content_sha256")
+            item["content_sha256"] = digest
+        changes.append(item)
+    return sorted(changes, key=lambda item: (item["path"], item["action"]))
 
 
-def apply_changes(worktree: Path, payload_root: Path, changes: list[dict[str, Any]]) -> None:
+def apply(worktree: Path, payload_root: Path, changes: list[dict[str, Any]]) -> None:
     for change in changes:
         action = change["action"]
         target = worktree / change["path"]
@@ -196,13 +201,12 @@ def apply_changes(worktree: Path, payload_root: Path, changes: list[dict[str, An
                 fail(f"create target already exists: {change['path']}")
             if action == "update" and not target.is_file():
                 fail(f"update target is not a file: {change['path']}")
-            source = payload_path(payload_root, change["path"])
+            source = contained(payload_root, change["path"])
             if not source.is_file():
                 fail(f"missing payload: {change['path']}")
             target.parent.mkdir(parents=True, exist_ok=True)
             shutil.copyfile(source, target)
-            actual = digest_bytes(target.read_bytes())
-            if actual != change.get("content_sha256"):
+            if sha256_bytes(target.read_bytes()) != change["content_sha256"]:
                 fail(f"payload digest mismatch for {change['path']}")
         elif action == "delete":
             if not target.is_file():
@@ -229,28 +233,28 @@ def main() -> int:
     bundle = load_json(args.bundle.resolve())
     patch = load_json(args.patch_attestation.resolve())
     request = load_json(args.request.resolve())
-    changes = validate_inputs(bundle, patch, request, root)
+    changes = validate(bundle, patch, request, root)
     payload_root = args.payload_dir.resolve()
     if not payload_root.is_dir():
         fail(f"payload directory does not exist: {payload_root}")
 
-    source_head = git(root, "rev-parse", "HEAD")
-    source_status = git(root, "status", "--porcelain")
+    head_before = git(root, "rev-parse", "HEAD")
+    status_before = git(root, "status", "--porcelain")
+    refs_before = refs_snapshot(root)
     with tempfile.TemporaryDirectory(prefix="arcanum-commit-") as temp:
         worktree = Path(temp) / "worktree"
-        run(["git", "worktree", "add", "--detach", str(worktree), source_head], root)
+        run(["git", "worktree", "add", "--detach", str(worktree), head_before], root)
         try:
-            apply_changes(worktree, payload_root, changes)
+            apply(worktree, payload_root, changes)
             git(worktree, "add", "-A")
             diff = subprocess.check_output(
-                ["git", "diff", "--cached", "--binary", "HEAD"],
-                cwd=worktree,
+                ["git", "diff", "--cached", "--binary", "HEAD"], cwd=worktree
             )
-            diff_sha = digest_bytes(diff)
+            diff_sha = sha256_bytes(diff)
             if diff_sha != patch.get("candidate_diff_sha256"):
                 fail("reconstructed candidate diff does not match patch attestation")
             tree_sha = git(worktree, "write-tree")
-            timestamp = validate_timestamp(str(request["timestamp"]))
+            timestamp = canonical_timestamp(str(request["timestamp"]))
             env = os.environ.copy()
             env.update({
                 "GIT_AUTHOR_NAME": str(request["author_name"]),
@@ -260,55 +264,47 @@ def main() -> int:
                 "GIT_COMMITTER_EMAIL": str(request["author_email"]),
                 "GIT_COMMITTER_DATE": timestamp,
             })
+            message = str(request["message"]).rstrip() + "\n"
             commit_sha = git(
-                worktree,
-                "commit-tree", tree_sha, "-p", source_head,
-                env=env,
-            ) if False else ""
-            result = subprocess.run(
-                ["git", "commit-tree", tree_sha, "-p", source_head],
-                cwd=worktree,
-                env=env,
-                input=str(request["message"]).rstrip() + "\n",
-                text=True,
-                stdout=subprocess.PIPE,
-                stderr=subprocess.STDOUT,
-                check=False,
+                worktree, "commit-tree", tree_sha, "-p", head_before,
+                env=env, input_text=message,
             )
-            if result.returncode != 0:
-                fail(f"git commit-tree failed: {result.stdout.strip()}")
-            commit_sha = result.stdout.strip()
             if SHA40.fullmatch(commit_sha) is None:
                 fail("git commit-tree did not return a commit SHA")
-            request_sha = digest_json(request)
+            if git(worktree, "cat-file", "-t", commit_sha) != "commit":
+                fail("candidate object is not a Git commit")
+            if git(worktree, "show", "-s", "--format=%P", commit_sha) != head_before:
+                fail("candidate commit parent mismatch")
+            if git(worktree, "show", "-s", "--format=%T", commit_sha) != tree_sha:
+                fail("candidate commit tree mismatch")
             attestation: dict[str, Any] = {
                 "schema_version": "1.0",
                 "record_type": "candidate_commit_attestation",
                 "repository": bundle["repository"],
-                "base_commit": source_head,
+                "base_commit": head_before,
                 "target_branch": "mobile",
                 "bundle_sha256": bundle["bundle_sha256"],
                 "patch_attestation_sha256": patch["attestation_sha256"],
-                "request_sha256": request_sha,
+                "request_sha256": sha256_json(request),
                 "candidate_diff_sha256": diff_sha,
                 "tree_sha": tree_sha,
                 "candidate_commit_sha": commit_sha,
-                "parent_commit": source_head,
+                "parent_commit": head_before,
                 "source_checkout_unchanged": False,
+                "refs_unchanged": False,
                 "ref_updated": False,
                 "authority": "evidentiary_only",
             }
         finally:
             run(["git", "worktree", "remove", "--force", str(worktree)], root)
 
-    unchanged = (
-        git(root, "rev-parse", "HEAD") == source_head
-        and git(root, "status", "--porcelain") == source_status
-    )
-    if not unchanged:
+    if git(root, "rev-parse", "HEAD") != head_before or git(root, "status", "--porcelain") != status_before:
         fail("source checkout changed during candidate commit construction")
+    if refs_snapshot(root) != refs_before:
+        fail("repository refs changed during candidate commit construction")
     attestation["source_checkout_unchanged"] = True
-    attestation["attestation_sha256"] = digest_json(attestation)
+    attestation["refs_unchanged"] = True
+    attestation["attestation_sha256"] = sha256_json(attestation)
     rendered = json.dumps(attestation, indent=2) + "\n"
     if args.output:
         args.output.parent.mkdir(parents=True, exist_ok=True)
