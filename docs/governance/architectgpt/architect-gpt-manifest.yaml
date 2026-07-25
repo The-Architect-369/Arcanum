@@ -188,6 +188,25 @@ impact_graph_control:
   verification_categories: [repository_integrity, web_typecheck, web_production_build, targeted_tests, browser_route_smoke, deployment_preview, doctrine_guard]
   authority: evidentiary_only
 
+isolated_patch_executor_control:
+  protocol: docs/governance/architectgpt/patch-executor-protocol.md
+  attestation_schema: docs/governance/architectgpt/patch-executor.schema.json
+  executor: scripts/architect/patch-executor.py
+  fixtures: scripts/architect/test-patch-executor.sh
+  report_directory: .architect-reports/orchestration/patch-executor
+  required_branch: mobile
+  exact_base_required: true
+  clean_source_required: true
+  detached_worktree_required: true
+  deterministic_attestation_required: true
+  declared_mutation_match_required: true
+  payload_digest_required: [create, update]
+  supported_actions: [create, update, delete, rename]
+  forbidden_actions: [commit, push, ref_update, merge, deploy]
+  isolation_scope: git_worktree_only
+  verification_command_trust: trusted_repository_commands_only
+  authority: evidentiary_only
+
 mobile_verification:
   environment: Android Termux in isolated work profile
   bootstrap: scripts/mobile/termux-bootstrap.sh
@@ -222,6 +241,8 @@ files:
   repository_timeline_schema: docs/governance/architectgpt/repository-timeline.schema.json
   impact_graph_protocol: docs/governance/architectgpt/impact-graph-protocol.md
   impact_graph_schema: docs/governance/architectgpt/impact-graph.schema.json
+  patch_executor_protocol: docs/governance/architectgpt/patch-executor-protocol.md
+  patch_executor_schema: docs/governance/architectgpt/patch-executor.schema.json
   hope_guardian: docs/governance/hopegpt/hope-guardian.md
   repo_interface: docs/repo/repo-interface.md
   repo_index: docs/repo/repo-index.json
@@ -242,6 +263,8 @@ files:
   repository_timeline_fixtures: scripts/architect/test-repository-timeline.sh
   impact_graph_generator: scripts/architect/impact-graph.py
   impact_graph_fixtures: scripts/architect/test-impact-graph.sh
+  patch_executor: scripts/architect/patch-executor.py
+  patch_executor_fixtures: scripts/architect/test-patch-executor.sh
   mobile_bootstrap: scripts/mobile/termux-bootstrap.sh
   mobile_verify: scripts/mobile/termux-verify.sh
 
