@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-07-25T13:13:14Z",
+  "generated_at": "2026-07-25T18:53:23Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "a531be6b3",
+  "commit": "a22d5076d",
   "generator_version": "1.2",
   "files": [
     {
@@ -3346,11 +3346,11 @@
     {
       "path": "docs/governance/architectgpt/architect-gpt-manifest.yaml",
       "type": "file",
-      "size_bytes": 7894,
-      "last_modified_commit": "336d3f7",
+      "size_bytes": 8837,
+      "last_modified_commit": "51895e9",
       "is_empty": false,
       "extension": ".yaml",
-      "lines": 198
+      "lines": 214
     },
     {
       "path": "docs/governance/architectgpt/architect-gpt.md",
@@ -3364,11 +3364,11 @@
     {
       "path": "docs/governance/architectgpt/architect-log.md",
       "type": "file",
-      "size_bytes": 5365,
-      "last_modified_commit": "089fe40",
+      "size_bytes": 7352,
+      "last_modified_commit": "a22d507",
       "is_empty": false,
       "extension": ".md",
-      "lines": 135
+      "lines": 178
     },
     {
       "path": "docs/governance/architectgpt/ast-integrity-protocol.md",
@@ -3387,6 +3387,24 @@
       "is_empty": false,
       "extension": ".json",
       "lines": 53
+    },
+    {
+      "path": "docs/governance/architectgpt/build-diagnostics-protocol.md",
+      "type": "file",
+      "size_bytes": 3428,
+      "last_modified_commit": "8048762",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 112
+    },
+    {
+      "path": "docs/governance/architectgpt/build-diagnostics.schema.json",
+      "type": "file",
+      "size_bytes": 2635,
+      "last_modified_commit": "55c3e72",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 71
     },
     {
       "path": "docs/governance/architectgpt/capability-fabric.md",
@@ -3671,7 +3689,7 @@
       "path": "docs/repo/repo-index.json",
       "type": "file",
       "size_bytes": 171354,
-      "last_modified_commit": "887c453",
+      "last_modified_commit": "828d2bb",
       "is_empty": false,
       "extension": ".json",
       "lines": 6362
@@ -5954,6 +5972,15 @@
       "lines": 175
     },
     {
+      "path": "scripts/architect/build-diagnostics.py",
+      "type": "file",
+      "size_bytes": 5369,
+      "last_modified_commit": "67c6b6d",
+      "is_empty": false,
+      "extension": ".py",
+      "lines": 124
+    },
+    {
       "path": "scripts/architect/change-plan.py",
       "type": "file",
       "size_bytes": 4477,
@@ -6006,6 +6033,15 @@
       "is_empty": false,
       "extension": ".sh",
       "lines": 64
+    },
+    {
+      "path": "scripts/architect/test-build-diagnostics.sh",
+      "type": "file",
+      "size_bytes": 2952,
+      "last_modified_commit": "ef543b2",
+      "is_empty": false,
+      "extension": ".sh",
+      "lines": 65
     },
     {
       "path": "scripts/architect/test-change-plan.sh",
@@ -6343,11 +6379,11 @@
     {
       "path": "scripts/verify-sync.sh",
       "type": "file",
-      "size_bytes": 13398,
+      "size_bytes": 14867,
       "last_modified_commit": "48fcb89",
       "is_empty": false,
       "extension": ".sh",
-      "lines": 282
+      "lines": 314
     },
     {
       "path": "tsconfig.json",

@@ -2,7 +2,7 @@
 title: "ArchitectGPT Log"
 status: canonical-log
 visibility: internal
-last_updated: 2026-05-31
+last_updated: 2026-07-25
 description: "Append-only ArchitectGPT session log for repository, doctrine, tooling, and structural alignment work."
 ---
 
@@ -30,6 +30,49 @@ Each session entry should include:
 - doctrinal impact
 - verification commands and results
 - follow-up actions
+
+---
+
+## 2026-07-25 — Wave IX Build Diagnostics and Deployment Attribution
+
+Grounding:
+
+- Repository: `The-Architect-369/Arcanum`
+- Branch: `mobile`
+- Phase: Pre-Genesis
+- Purpose: convert pnpm, Next.js, React, TypeScript, and deployment failure logs into deterministic, source-linked diagnostic evidence
+
+Summary:
+
+- Added a deterministic offline build-log parser.
+- Added source attribution for TypeScript coordinates and repository file references.
+- Added classification for compiler, module-resolution, environment, Next.js, runtime-boundary, and warning diagnostics.
+- Added duplicate and cascade collapse through stable diagnostic identity keys.
+- Added bounded Vercel or CI deployment metadata correlation.
+- Added canonical JSON schema, governance protocol, and executable positive and negative fixtures.
+- Registered the control in the Architect GPT manifest with evidentiary-only authority.
+- Corrected TSX attribution so generic log references retain `.tsx` rather than truncating to `.ts`.
+
+Verification status:
+
+- JSON schema parsing: green.
+- Python syntax: green.
+- Shell fixture syntax: green.
+- Deterministic fixture suite: green before TSX regression assertion; exact-head rerun required after final integration.
+- Synthetic Vercel failure: four errors, one warning, five diagnostics, correctly bound deployment metadata.
+
+Doctrinal impact:
+
+- Build and deployment evidence remains observational and cannot authorize deployment, merge, rollback, or provider mutation.
+- Raw provider logs are not canonical; normalized exact-log and exact-commit reports are the durable evidence surface.
+- Source attribution supports diagnosis while preserving the Human Architect's W3 authorization boundary.
+
+Follow-up actions:
+
+- Integrate build diagnostics as verification layer 10 of 11.
+- Move archive verification to layer 11 of 11.
+- Refresh the manifest doctrine checksum and repository index.
+- Run full local, Termux, CI, promotion, and Vercel gates before guarded merge.
 
 ---
 
