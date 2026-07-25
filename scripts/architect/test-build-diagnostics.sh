@@ -44,7 +44,7 @@ jq -e '.status == "fail"' "$TMPDIR/fail-one.json" >/dev/null
 jq -e '.summary.errors == 4' "$TMPDIR/fail-one.json" >/dev/null
 jq -e '.summary.diagnostics == 4' "$TMPDIR/fail-one.json" >/dev/null
 jq -e '[.diagnostics[] | select(.category == "typescript" and .code == "TS2322" and .source == "apps/web/src/app/page.tsx" and .line == 12 and .column == 7)] | length == 1' "$TMPDIR/fail-one.json" >/dev/null
-jq -e '[.diagnostics[] | select(.category == "module_resolution")] | length == 1' "$TMPDIR/fail-one.json" >/dev/null
+jq -e '[.diagnostics[] | select(.category == "module_resolution" and .source == "apps/web/src/app/page.tsx")] | length == 1' "$TMPDIR/fail-one.json" >/dev/null
 jq -e '[.diagnostics[] | select(.category == "environment")] | length == 1' "$TMPDIR/fail-one.json" >/dev/null
 jq -e '[.diagnostics[] | select(.category == "nextjs")] | length == 1' "$TMPDIR/fail-one.json" >/dev/null
 jq -e '.deployment.provider == "vercel" and .deployment.deployment_id == "dpl_wave_ix_fixture" and .deployment.environment == "preview"' "$TMPDIR/fail-one.json" >/dev/null
