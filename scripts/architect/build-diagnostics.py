@@ -11,14 +11,14 @@ from pathlib import Path
 from typing import Any
 
 RULES = (
-    ("typescript", "error", re.compile(r"(?P<file>[^\s:(]+\.(?:ts|tsx))[:(](?P<line>\d+)[,:](?P<column>\d+)\)?\s*[-:]?\s*error\s+(?P<code>TS\d+):\s*(?P<message>.+)", re.I)),
+    ("typescript", "error", re.compile(r"(?P<file>[^\s:(]+\.(?:tsx|ts))[:(](?P<line>\d+)[,:](?P<column>\d+)\)?\s*[-:]?\s*error\s+(?P<code>TS\d+):\s*(?P<message>.+)", re.I)),
     ("module_resolution", "error", re.compile(r"(?:Module not found|Cannot find module)[:\s]+[\"']?(?P<message>[^\n]+)", re.I)),
     ("environment", "error", re.compile(r"(?P<message>(?:Missing|required|undefined).*(?:environment variable|env(?:ironment)? variable|process\.env\.[A-Z0-9_]+))", re.I)),
     ("nextjs", "error", re.compile(r"(?P<message>(?:Build error occurred|Failed to compile|Error occurred prerendering page|Export encountered an error).*)", re.I)),
     ("runtime_boundary", "error", re.compile(r"(?P<message>.*(?:Edge Runtime|server-only|client component|Server Component).*(?:unsupported|cannot|must not|only).*)", re.I)),
     ("warning", "warning", re.compile(r"(?P<message>.*\bWARN(?:ING)?\b.*)", re.I)),
 )
-SOURCE_RE = re.compile(r"(?P<file>(?:apps|packages|src)/[^\s:()]+\.(?:ts|tsx|js|jsx|mjs|cjs))(?::(?P<line>\d+)(?::(?P<column>\d+))?)?")
+SOURCE_RE = re.compile(r"(?P<file>(?:apps|packages|src)/[^\s:()]+\.(?:tsx|jsx|mjs|cjs|ts|js))(?::(?P<line>\d+)(?::(?P<column>\d+))?)?")
 
 
 def git_value(*args: str) -> str:
@@ -50,7 +50,7 @@ def main() -> int:
     parser.add_argument("--output", type=Path)
     args = parser.parse_args()
 
-    root = Path(git_value("rev-parse", "--show-toplevel"))
+    Path(git_value("rev-parse", "--show-toplevel"))
     text = args.log.read_text(encoding="utf-8", errors="replace")
     metadata = load_json(args.metadata)
     diagnostics: list[dict[str, Any]] = []
