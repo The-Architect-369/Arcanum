@@ -1,0 +1,116 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://the-arcanum.net/schemas/architectgpt/impact-graph.schema.json",
+  "title": "Architect GPT Change Impact Graph",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "record_type",
+    "repository",
+    "base_commit",
+    "head_commit",
+    "project",
+    "changed_files",
+    "direct_dependents",
+    "transitive_dependents",
+    "affected_routes",
+    "affected_packages",
+    "affected_tests",
+    "affected_runtime_surfaces",
+    "affected_canonical_documents",
+    "edges",
+    "risk",
+    "required_verification",
+    "summary",
+    "authority",
+    "report_sha256"
+  ],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "record_type": {"const": "change_impact_graph"},
+    "repository": {"type": "string", "format": "uri"},
+    "base_commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "head_commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "project": {"type": "string", "minLength": 1},
+    "changed_files": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["status", "path"],
+        "properties": {
+          "status": {"enum": ["create", "update", "delete", "rename"]},
+          "path": {"type": "string", "minLength": 1},
+          "old_path": {"type": "string", "minLength": 1}
+        }
+      }
+    },
+    "direct_dependents": {"$ref": "#/$defs/pathList"},
+    "transitive_dependents": {"$ref": "#/$defs/pathList"},
+    "affected_routes": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "affected_packages": {"$ref": "#/$defs/pathList"},
+    "affected_tests": {"$ref": "#/$defs/pathList"},
+    "affected_runtime_surfaces": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["kind", "path"],
+        "properties": {
+          "kind": {"enum": ["api_route", "middleware", "app_route", "layout", "server_runtime", "ci_workflow", "deployment_config"]},
+          "path": {"type": "string", "minLength": 1}
+        }
+      }
+    },
+    "affected_canonical_documents": {"$ref": "#/$defs/pathList"},
+    "edges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["from", "to", "relation"],
+        "properties": {
+          "from": {"type": "string", "minLength": 1},
+          "to": {"type": "string", "minLength": 1},
+          "relation": {"const": "imports"}
+        }
+      }
+    },
+    "risk": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["score", "level", "factors"],
+      "properties": {
+        "score": {"type": "integer", "minimum": 0, "maximum": 100},
+        "level": {"enum": ["low", "moderate", "high", "critical"]},
+        "factors": {"type": "array", "items": {"type": "string"}, "uniqueItems": true}
+      }
+    },
+    "required_verification": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["changed_files", "direct_dependents", "transitive_dependents", "affected_routes", "affected_packages", "affected_tests", "runtime_surfaces", "canonical_documents"],
+      "properties": {
+        "changed_files": {"type": "integer", "minimum": 0},
+        "direct_dependents": {"type": "integer", "minimum": 0},
+        "transitive_dependents": {"type": "integer", "minimum": 0},
+        "affected_routes": {"type": "integer", "minimum": 0},
+        "affected_packages": {"type": "integer", "minimum": 0},
+        "affected_tests": {"type": "integer", "minimum": 0},
+        "runtime_surfaces": {"type": "integer", "minimum": 0},
+        "canonical_documents": {"type": "integer", "minimum": 0}
+      }
+    },
+    "authority": {"const": "evidentiary_only"},
+    "report_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+  },
+  "$defs": {
+    "pathList": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1},
+      "uniqueItems": true
+    }
+  }
+}
