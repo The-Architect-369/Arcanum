@@ -33,7 +33,7 @@ printf 'stable\n' > src/stable.txt
 git add .
 git commit -qm "fixture base"
 BASE="$(git rev-parse HEAD)"
-REFS_BEFORE="$(git for-each-ref --format='%(refname)%00%(objectname)')"
+REFS_BEFORE="$(git for-each-ref --format='%(refname) %(objectname)')"
 
 printf 'updated\n' > "$PAYLOAD/docs/update.txt"
 printf 'workflow\n' > "$PAYLOAD/.github/workflows/fixture.yml"
@@ -152,7 +152,7 @@ PY
 
 [[ "$(git rev-parse HEAD)" == "$BASE" ]]
 [[ -z "$(git status --porcelain)" ]]
-[[ "$(git for-each-ref --format='%(refname)%00%(objectname)')" == "$REFS_BEFORE" ]]
+[[ "$(git for-each-ref --format='%(refname) %(objectname)')" == "$REFS_BEFORE" ]]
 
 TAMPERED_PATCH="$TMP/tampered-patch.json"
 jq '.candidate_diff_sha256 = ("0" * 64)' "$PATCH" > "$TAMPERED_PATCH"
@@ -184,6 +184,6 @@ fi
 rm dirty.txt
 
 [[ -z "$(git status --porcelain)" ]]
-[[ "$(git for-each-ref --format='%(refname)%00%(objectname)')" == "$REFS_BEFORE" ]]
+[[ "$(git for-each-ref --format='%(refname) %(objectname)')" == "$REFS_BEFORE" ]]
 
 echo "Deterministic candidate commit fixtures passed"
