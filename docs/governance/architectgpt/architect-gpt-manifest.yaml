@@ -145,6 +145,18 @@ ast_integrity_control:
   required_checks: [compiler, local_import_resolution, declared_dependencies, dependency_cycles]
   authority: evidentiary_only
 
+build_diagnostics_control:
+  protocol: docs/governance/architectgpt/build-diagnostics-protocol.md
+  report_schema: docs/governance/architectgpt/build-diagnostics.schema.json
+  parser: scripts/architect/build-diagnostics.py
+  fixtures: scripts/architect/test-build-diagnostics.sh
+  report_directory: .architect-reports/orchestration/build-diagnostics
+  exact_commit_required: true
+  deterministic_report_required: true
+  categories: [typescript, module_resolution, environment, nextjs, runtime_boundary, warning]
+  provider_metadata: [provider, deployment_id, environment, state, branch, commit]
+  authority: evidentiary_only
+
 mobile_verification:
   environment: Android Termux in isolated work profile
   bootstrap: scripts/mobile/termux-bootstrap.sh
@@ -173,6 +185,8 @@ files:
   change_plan_schema: docs/governance/architectgpt/change-plan.schema.json
   ast_integrity_protocol: docs/governance/architectgpt/ast-integrity-protocol.md
   ast_integrity_schema: docs/governance/architectgpt/ast-integrity.schema.json
+  build_diagnostics_protocol: docs/governance/architectgpt/build-diagnostics-protocol.md
+  build_diagnostics_schema: docs/governance/architectgpt/build-diagnostics.schema.json
   hope_guardian: docs/governance/hopegpt/hope-guardian.md
   repo_interface: docs/repo/repo-interface.md
   repo_index: docs/repo/repo-index.json
@@ -187,6 +201,8 @@ files:
   change_plan_fixtures: scripts/architect/test-change-plan.sh
   ast_integrity_analyzer: scripts/architect/ast-integrity.py
   ast_integrity_fixtures: scripts/architect/test-ast-integrity.sh
+  build_diagnostics_parser: scripts/architect/build-diagnostics.py
+  build_diagnostics_fixtures: scripts/architect/test-build-diagnostics.sh
   mobile_bootstrap: scripts/mobile/termux-bootstrap.sh
   mobile_verify: scripts/mobile/termux-verify.sh
 
