@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://the-arcanum.net/schemas/repository-timeline.schema.json",
+  "title": "Repository Timeline Graph",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "record_type",
+    "repository",
+    "commit",
+    "history_limit",
+    "paths",
+    "summary",
+    "nodes",
+    "edges",
+    "latest_by_path",
+    "rollback_guidance",
+    "authority",
+    "report_sha256"
+  ],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "record_type": {"const": "repository_timeline_graph"},
+    "repository": {"const": "https://github.com/The-Architect-369/Arcanum.git"},
+    "commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "history_limit": {"type": "integer", "minimum": 1, "maximum": 200},
+    "paths": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "summary": {
+      "type": "object",
+      "required": ["nodes", "edges", "tracked_paths"],
+      "properties": {
+        "nodes": {"type": "integer", "minimum": 0},
+        "edges": {"type": "integer", "minimum": 0},
+        "tracked_paths": {"type": "integer", "minimum": 1}
+      },
+      "additionalProperties": false
+    },
+    "nodes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "path", "commit", "parents", "timestamp", "author", "subject", "exists", "blob_sha", "size_bytes", "content_sha256", "diff"],
+        "properties": {
+          "id": {"type": "string", "pattern": "^[0-9a-f]{20}$"},
+          "path": {"type": "string"},
+          "commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+          "parents": {"type": "array", "items": {"type": "string", "pattern": "^[0-9a-f]{40}$"}},
+          "timestamp": {"type": "string", "format": "date-time"},
+          "author": {"type": "string"},
+          "subject": {"type": "string"},
+          "exists": {"type": "boolean"},
+          "blob_sha": {"type": ["string", "null"]},
+          "size_bytes": {"type": "integer", "minimum": 0},
+          "content_sha256": {"type": ["string", "null"], "pattern": "^[0-9a-f]{64}$"},
+          "diff": {
+            "type": "object",
+            "required": ["added", "deleted"],
+            "properties": {
+              "added": {"type": "integer", "minimum": 0},
+              "deleted": {"type": "integer", "minimum": 0}
+            },
+            "additionalProperties": false
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "edges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["from", "to", "relation"],
+        "properties": {
+          "from": {"type": "string", "pattern": "^[0-9a-f]{20}$"},
+          "to": {"type": "string", "pattern": "^[0-9a-f]{20}$"},
+          "relation": {"const": "superseded_by"}
+        },
+        "additionalProperties": false
+      }
+    },
+    "latest_by_path": {"type": "object", "additionalProperties": {"type": "string", "pattern": "^[0-9a-f]{20}$"}},
+    "rollback_guidance": {"type": "string", "minLength": 1},
+    "authority": {"const": "evidentiary_only"},
+    "report_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+  },
+  "additionalProperties": false
+}
