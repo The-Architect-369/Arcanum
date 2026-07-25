@@ -9,7 +9,7 @@ import re
 import subprocess
 import sys
 from collections import deque
-from pathlib import Path
+from pathlib import Path, PurePosixPath
 from typing import Any
 
 REPOSITORY = "https://github.com/The-Architect-369/Arcanum.git"
@@ -28,10 +28,10 @@ CANONICAL_PREFIXES = (
 RUNTIME_PATTERNS = (
     (re.compile(r"(^|/)app/api/|route\.(?:ts|tsx|js|jsx)$"), "api_route"),
     (re.compile(r"middleware\.(?:ts|js)$"), "middleware"),
-    (re.compile(r"(^|/)app/.+/page\.(?:ts|tsx|js|jsx)$"), "app_route"),
-    (re.compile(r"(^|/)app/.+/layout\.(?:ts|tsx|js|jsx)$"), "layout"),
+    (re.compile(r"(^|/)app/(?:.+/)?page\.(?:ts|tsx|js|jsx)$"), "app_route"),
+    (re.compile(r"(^|/)app/(?:.+/)?layout\.(?:ts|tsx|js|jsx)$"), "layout"),
     (re.compile(r"(^|/)server/|(^|/)actions?/"), "server_runtime"),
-    (re.compile(r"\.github/workflows/.*\.ya?ml$"), "ci_workflow"),
+    (re.compile(r"^\.github/workflows/.*\.ya?ml$"), "ci_workflow"),
     (re.compile(r"vercel\.json$|next\.config\."), "deployment_config"),
 )
 
@@ -52,10 +52,13 @@ def git(root: Path, *args: str) -> str:
 
 
 def normalize_repo_path(raw: str) -> str:
-    value = Path(raw).as_posix().lstrip("./")
-    if not value or value.startswith("../") or Path(value).is_absolute():
+    value = raw.replace("\\", "/")
+    while value.startswith("./"):
+        value = value[2:]
+    path = PurePosixPath(value)
+    if not value or path.is_absolute() or ".." in path.parts:
         fail(f"path escapes repository: {raw}")
-    return value
+    return path.as_posix()
 
 
 def resolve_local(source: Path, specifier: str, source_root: Path) -> Path | None:
@@ -158,6 +161,11 @@ def package_for(path: str) -> str | None:
     return None
 
 
+def is_test_path(path: str) -> bool:
+    normalized = f"/{path}"
+    return any(marker in normalized for marker in TEST_MARKERS)
+
+
 def runtime_surfaces(paths: set[str]) -> list[dict[str, str]]:
     surfaces: set[tuple[str, str]] = set()
     for path in paths:
@@ -197,7 +205,7 @@ def verification_matrix(paths: set[str], routes: set[str], runtime: list[dict[st
     checks = {"repository_integrity"}
     if any(path.startswith("apps/web/") for path in paths):
         checks.update({"web_typecheck", "web_production_build"})
-    if any(TEST_MARKER[0] in path or TEST_MARKERS[1] in path or TEST_MARKERS[2] in f"/{path}" for path in paths):
+    if any(is_test_path(path) for path in paths):
         checks.add("targeted_tests")
     if routes:
         checks.add("browser_route_smoke")
@@ -233,17 +241,14 @@ def main() -> int:
     source_root = project.parent / "src"
     changes = changed_files(root, base, head)
     changed_paths = {item["path"] for item in changes}
+    changed_paths.update(item["old_path"] for item in changes if "old_path" in item)
     forward, reverse = build_graph(root, source_root)
     code_seeds = changed_paths & set(forward)
     direct, transitive = reverse_closure(code_seeds, reverse)
     impacted_paths = changed_paths | direct | transitive
     routes = {route for path in impacted_paths if (route := route_for(path))}
     packages = {package for path in impacted_paths if (package := package_for(path))}
-    tests = {
-        path
-        for path in impacted_paths
-        if any(marker in path for marker in TEST_MARKERS)
-    }
+    tests = {path for path in impacted_paths if is_test_path(path)}
     canonical = {path for path in changed_paths if path.startswith(CANONICAL_PREFIXES)}
     runtime = runtime_surfaces(impacted_paths)
     risk = risk_score(changes, direct | transitive, routes, runtime, canonical)
