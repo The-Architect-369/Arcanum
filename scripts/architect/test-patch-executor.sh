@@ -97,40 +97,63 @@ python3 "$EXECUTOR" "$BUNDLE" \
 
 cmp "$OUT_A" "$OUT_B"
 
-jq -e --arg base "$BASE" '
-  .schema_version == "1.0"
-  and .record_type == "isolated_patch_attestation"
-  and .base_commit == $base
-  and .target_branch == "mobile"
-  and .permission_class == "W2"
-  and .status == "pass"
-  and .source_checkout_unchanged == true
-  and .authority == "evidentiary_only"
-  and (.declared_changes | length) == 4
-  and (.observed_status | length) == 4
-  and (.observed_status | index(["A", ".github/workflows/fixture.yml"]) != null)
-  and (.observed_status | index(["D", "docs/delete.txt"]) != null)
-  and (.observed_status | index(["M", "docs/update.txt"]) != null)
-  and (.observed_status | index(["R", "old/name.txt", "docs/renamed.txt"]) != null)
-  and (.verification | length) == 2
-  and ([.verification[].status] | all(. == "pass"))
-  and (.candidate_diff_sha256 | test("^[0-9a-f]{64}$"))
-  and (.attestation_sha256 | test("^[0-9a-f]{64}$"))
-' "$OUT_A" >/dev/null
-
-python3 - "$OUT_A" <<'PY'
+python3 - "$OUT_A" "$BASE" <<'PY'
 import hashlib
 import json
+import re
 import sys
 from pathlib import Path
 
 report = json.loads(Path(sys.argv[1]).read_text(encoding="utf-8"))
-expected = report.pop("attestation_sha256")
-actual = hashlib.sha256(
+base = sys.argv[2]
+
+expected_fields = {
+    "schema_version": "1.0",
+    "record_type": "isolated_patch_attestation",
+    "base_commit": base,
+    "target_branch": "mobile",
+    "permission_class": "W2",
+    "status": "pass",
+    "source_checkout_unchanged": True,
+    "authority": "evidentiary_only",
+}
+for field, expected in expected_fields.items():
+    actual = report.get(field)
+    if actual != expected:
+        raise SystemExit(f"{field} mismatch: {actual!r} != {expected!r}")
+
+if len(report.get("declared_changes", [])) != 4:
+    raise SystemExit("declared_changes length mismatch")
+
+expected_status = {
+    ("A", ".github/workflows/fixture.yml"),
+    ("D", "docs/delete.txt"),
+    ("M", "docs/update.txt"),
+    ("R", "old/name.txt", "docs/renamed.txt"),
+}
+observed_status = {tuple(item) for item in report.get("observed_status", [])}
+if observed_status != expected_status:
+    raise SystemExit(
+        f"observed_status mismatch: {sorted(observed_status)!r} != {sorted(expected_status)!r}"
+    )
+
+verification = report.get("verification", [])
+if len(verification) != 2 or any(item.get("status") != "pass" for item in verification):
+    raise SystemExit(f"verification mismatch: {verification!r}")
+
+for field in ("candidate_diff_sha256", "attestation_sha256"):
+    value = report.get(field, "")
+    if re.fullmatch(r"[0-9a-f]{64}", value) is None:
+        raise SystemExit(f"invalid {field}: {value!r}")
+
+expected_digest = report.pop("attestation_sha256")
+actual_digest = hashlib.sha256(
     json.dumps(report, sort_keys=True, separators=(",", ":")).encode()
 ).hexdigest()
-if actual != expected:
-    raise SystemExit(f"attestation digest mismatch: {actual} != {expected}")
+if actual_digest != expected_digest:
+    raise SystemExit(
+        f"attestation digest mismatch: {actual_digest} != {expected_digest}"
+    )
 PY
 
 [[ "$(git rev-parse HEAD)" == "$BASE" ]]
