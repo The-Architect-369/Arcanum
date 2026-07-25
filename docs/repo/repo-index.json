@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-07-25T21:22:26Z",
+  "generated_at": "2026-07-25T22:10:26Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "75bcd661c",
+  "commit": "7f0e67397",
   "generator_version": "1.2",
   "files": [
     {
@@ -3346,11 +3346,11 @@
     {
       "path": "docs/governance/architectgpt/architect-gpt-manifest.yaml",
       "type": "file",
-      "size_bytes": 10982,
-      "last_modified_commit": "75bcd66",
+      "size_bytes": 12111,
+      "last_modified_commit": "c0d1d40",
       "is_empty": false,
       "extension": ".yaml",
-      "lines": 253
+      "lines": 276
     },
     {
       "path": "docs/governance/architectgpt/architect-gpt.md",
@@ -3364,11 +3364,11 @@
     {
       "path": "docs/governance/architectgpt/architect-log.md",
       "type": "file",
-      "size_bytes": 11325,
-      "last_modified_commit": "07e7ea0",
+      "size_bytes": 13962,
+      "last_modified_commit": "0519039",
       "is_empty": false,
       "extension": ".md",
-      "lines": 271
+      "lines": 330
     },
     {
       "path": "docs/governance/architectgpt/ast-integrity-protocol.md",
@@ -3495,6 +3495,24 @@
       "is_empty": false,
       "extension": ".md",
       "lines": 133
+    },
+    {
+      "path": "docs/governance/architectgpt/patch-executor-protocol.md",
+      "type": "file",
+      "size_bytes": 4922,
+      "last_modified_commit": "ee7ec58",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 132
+    },
+    {
+      "path": "docs/governance/architectgpt/patch-executor.schema.json",
+      "type": "file",
+      "size_bytes": 2468,
+      "last_modified_commit": "424ad70",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 76
     },
     {
       "path": "docs/governance/architectgpt/promotion-protocol.md",
@@ -3724,11 +3742,11 @@
     {
       "path": "docs/repo/repo-index.json",
       "type": "file",
-      "size_bytes": 173275,
-      "last_modified_commit": "07e7ea0",
+      "size_bytes": 174217,
+      "last_modified_commit": "0519039",
       "is_empty": false,
       "extension": ".json",
-      "lines": 6434
+      "lines": 6470
     },
     {
       "path": "docs/repo/repo-interface.md",
@@ -4175,7 +4193,7 @@
       "path": "docs/tooling/doctrine-checksums/doctrine-checksums.yaml",
       "type": "file",
       "size_bytes": 2166,
-      "last_modified_commit": "07e7ea0",
+      "last_modified_commit": "0519039",
       "is_empty": false,
       "extension": ".yaml",
       "lines": 26
@@ -6053,6 +6071,15 @@
       "lines": 202
     },
     {
+      "path": "scripts/architect/patch-executor.py",
+      "type": "file",
+      "size_bytes": 11823,
+      "last_modified_commit": "48d5731",
+      "is_empty": false,
+      "extension": ".py",
+      "lines": 291
+    },
+    {
       "path": "scripts/architect/promotion-gate.sh",
       "type": "file",
       "size_bytes": 5263,
@@ -6114,6 +6141,15 @@
       "is_empty": false,
       "extension": ".sh",
       "lines": 189
+    },
+    {
+      "path": "scripts/architect/test-patch-executor.sh",
+      "type": "file",
+      "size_bytes": 6095,
+      "last_modified_commit": "1742363",
+      "is_empty": false,
+      "extension": ".sh",
+      "lines": 198
     },
     {
       "path": "scripts/architect/test-provider-health.sh",
@@ -6451,11 +6487,11 @@
     {
       "path": "scripts/verify-sync.sh",
       "type": "file",
-      "size_bytes": 17542,
-      "last_modified_commit": "07e7ea0",
+      "size_bytes": 18939,
+      "last_modified_commit": "7f0e673",
       "is_empty": false,
       "extension": ".sh",
-      "lines": 383
+      "lines": 420
     },
     {
       "path": "tsconfig.json",
