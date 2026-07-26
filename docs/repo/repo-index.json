@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-07-26T18:34:54Z",
+  "generated_at": "2026-07-26T18:41:31Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "45593126b",
+  "commit": "0d3c2b9fc",
   "generator_version": "1.2",
   "files": [
     {
@@ -3374,7 +3374,7 @@
       "path": "docs/governance/architectgpt/architect-gpt-manifest.yaml",
       "type": "file",
       "size_bytes": 19493,
-      "last_modified_commit": "d9ad796",
+      "last_modified_commit": "0d3c2b9",
       "is_empty": false,
       "extension": ".yaml",
       "lines": 441
@@ -3392,7 +3392,7 @@
       "path": "docs/governance/architectgpt/architect-log.md",
       "type": "file",
       "size_bytes": 30583,
-      "last_modified_commit": "d9ad796",
+      "last_modified_commit": "0d3c2b9",
       "is_empty": false,
       "extension": ".md",
       "lines": 715
@@ -3482,7 +3482,7 @@
       "path": "docs/governance/architectgpt/capability-registry.yaml",
       "type": "file",
       "size_bytes": 4466,
-      "last_modified_commit": "0c743e3",
+      "last_modified_commit": "0d3c2b9",
       "is_empty": false,
       "extension": ".yaml",
       "lines": 156
@@ -3859,11 +3859,11 @@
     {
       "path": "docs/repo/repo-index.json",
       "type": "file",
-      "size_bytes": 179948,
-      "last_modified_commit": "d9ad796",
+      "size_bytes": 181128,
+      "last_modified_commit": "0d3c2b9",
       "is_empty": false,
       "extension": ".json",
-      "lines": 6686
+      "lines": 6731
     },
     {
       "path": "docs/repo/repo-interface.md",
@@ -4309,11 +4309,11 @@
     {
       "path": "docs/tooling/doctrine-checksums/doctrine-checksums.yaml",
       "type": "file",
-      "size_bytes": 2166,
+      "size_bytes": 2286,
       "last_modified_commit": "d9ad796",
       "is_empty": false,
       "extension": ".yaml",
-      "lines": 26
+      "lines": 27
     },
     {
       "path": "docs/tooling/doctrine-checksums/doctrine-checksums.yaml.bak",
@@ -6713,7 +6713,7 @@
       "path": "scripts/verify-sync.sh",
       "type": "file",
       "size_bytes": 28292,
-      "last_modified_commit": "d9ad796",
+      "last_modified_commit": "0d3c2b9",
       "is_empty": false,
       "extension": ".sh",
       "lines": 663
