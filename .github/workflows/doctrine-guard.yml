@@ -25,10 +25,10 @@ jobs:
           sudo apt-get update -qq
           sudo apt-get install -y jq
 
-      - name: Set up Node 20
+      - name: Set up Node 24
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 24
 
       - name: Activate pnpm 9.10.0
         run: |
