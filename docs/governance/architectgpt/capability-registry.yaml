@@ -154,3 +154,36 @@ agent_fabric:
     - every_invocation_must_produce_deterministic_attestation
     - no_agent_tool_execution_in_wave_xviii
     - human_architect_retains_all_action_authority
+
+promotion_orchestration:
+  status: active_guarded_coordination
+  protocol: docs/governance/architectgpt/promotion-orchestrator-protocol.md
+  schema: docs/governance/architectgpt/promotion-orchestrator.schema.json
+  entrypoint: scripts/architect/promote-wave.sh
+  orchestrator: scripts/architect/promotion-orchestrator.py
+  state_directory: .architect-reports/orchestration/waves
+  default_mode: dry_run
+  pre_w3_authority: bounded_coordination
+  merge_authority: explicit_w3_only
+  exact_head_required: true
+  expected_head_guard_required: true
+  clean_checkout_required: true
+  remote_sync_required: true
+  deterministic_state_required: true
+  resumable_state_required: true
+  exact_ci_required: true
+  exact_provider_preview_required: true
+  single_pull_request_required: true
+  automatic_merge_enabled: false
+  automatic_deployment_enabled: false
+  automatic_mobile_sync_enabled: false
+  delegated_merge_executor: scripts/architect/merge-executor.py
+  hard_rules:
+    - fail_closed_on_head_drift
+    - fail_closed_on_state_digest_mismatch
+    - fail_closed_on_evidence_identity_mismatch
+    - fail_closed_on_pull_request_identity_mismatch
+    - no_merge_without_explicit_w3
+    - no_merge_without_exact_request_digest_confirmation
+    - no_mutation_outside_delegated_merge_executor
+    - human_architect_retains_final_merge_authority
