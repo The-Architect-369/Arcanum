@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-07-26T18:41:31Z",
+  "generated_at": "2026-07-26T19:50:16Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "0d3c2b9fc",
+  "commit": "8daf4e89f",
   "generator_version": "1.2",
   "files": [
     {
@@ -3614,6 +3614,24 @@
       "lines": 76
     },
     {
+      "path": "docs/governance/architectgpt/promotion-orchestrator-protocol.md",
+      "type": "file",
+      "size_bytes": 4632,
+      "last_modified_commit": "f13839d",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 140
+    },
+    {
+      "path": "docs/governance/architectgpt/promotion-orchestrator.schema.json",
+      "type": "file",
+      "size_bytes": 2603,
+      "last_modified_commit": "e5d57bf",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 79
+    },
+    {
       "path": "docs/governance/architectgpt/promotion-protocol.md",
       "type": "file",
       "size_bytes": 3381,
@@ -3860,7 +3878,7 @@
       "path": "docs/repo/repo-index.json",
       "type": "file",
       "size_bytes": 181128,
-      "last_modified_commit": "0d3c2b9",
+      "last_modified_commit": "c8410a1",
       "is_empty": false,
       "extension": ".json",
       "lines": 6731
@@ -4310,7 +4328,7 @@
       "path": "docs/tooling/doctrine-checksums/doctrine-checksums.yaml",
       "type": "file",
       "size_bytes": 2286,
-      "last_modified_commit": "d9ad796",
+      "last_modified_commit": "c8410a1",
       "is_empty": false,
       "extension": ".yaml",
       "lines": 27
@@ -6242,6 +6260,15 @@
       "lines": 291
     },
     {
+      "path": "scripts/architect/promote-wave.sh",
+      "type": "file",
+      "size_bytes": 381,
+      "last_modified_commit": "8daf4e8",
+      "is_empty": false,
+      "extension": ".sh",
+      "lines": 13
+    },
+    {
       "path": "scripts/architect/promotion-gate.sh",
       "type": "file",
       "size_bytes": 5263,
@@ -6249,6 +6276,15 @@
       "is_empty": false,
       "extension": ".sh",
       "lines": 132
+    },
+    {
+      "path": "scripts/architect/promotion-orchestrator.py",
+      "type": "file",
+      "size_bytes": 11901,
+      "last_modified_commit": "8daf4e8",
+      "is_empty": false,
+      "extension": ".py",
+      "lines": 280
     },
     {
       "path": "scripts/architect/provider-health.py",
@@ -6366,6 +6402,15 @@
       "is_empty": false,
       "extension": ".sh",
       "lines": 198
+    },
+    {
+      "path": "scripts/architect/test-promotion-orchestrator.sh",
+      "type": "file",
+      "size_bytes": 3962,
+      "last_modified_commit": "8daf4e8",
+      "is_empty": false,
+      "extension": ".sh",
+      "lines": 105
     },
     {
       "path": "scripts/architect/test-provider-health.sh",
