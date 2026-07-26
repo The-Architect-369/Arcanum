@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://the-arcanum.net/schemas/architectgpt/agent-invocation.schema.json",
+  "title": "Architect GPT Agent Invocation Attestation",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "record_type",
+    "repository",
+    "branch",
+    "commit",
+    "agent_id",
+    "agent_display_name",
+    "purpose",
+    "requested_permission_class",
+    "permission_ceiling",
+    "requested_tools",
+    "required_outputs",
+    "task",
+    "mode",
+    "status",
+    "tools_executed",
+    "external_writes_performed",
+    "authority",
+    "request_sha256",
+    "attestation_sha256"
+  ],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "record_type": {"const": "agent_invocation_attestation"},
+    "repository": {"const": "https://github.com/The-Architect-369/Arcanum.git"},
+    "branch": {"const": "mobile"},
+    "commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "agent_id": {"type": "string", "pattern": "^[a-z][a-z0-9_]*$"},
+    "agent_display_name": {"type": "string", "minLength": 1},
+    "purpose": {"type": "string", "minLength": 1},
+    "requested_permission_class": {"enum": ["R0", "R1", "W1", "W2", "W3", "C1"]},
+    "permission_ceiling": {"enum": ["R0", "R1", "W1", "W2", "W3", "C1"]},
+    "requested_tools": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1},
+      "uniqueItems": true
+    },
+    "required_outputs": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1},
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "task": {"type": "string", "minLength": 1},
+    "mode": {"const": "plan_only"},
+    "status": {"const": "ready"},
+    "tools_executed": {"const": false},
+    "external_writes_performed": {"const": false},
+    "authority": {"const": "evidentiary_only"},
+    "request_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "attestation_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+  }
+}
