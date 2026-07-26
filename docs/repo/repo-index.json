@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-07-26T13:49:14Z",
+  "generated_at": "2026-07-26T15:47:51Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "73468bfb6",
+  "commit": "94e515a71",
   "generator_version": "1.2",
   "files": [
     {
@@ -3346,11 +3346,11 @@
     {
       "path": "docs/governance/architectgpt/architect-gpt-manifest.yaml",
       "type": "file",
-      "size_bytes": 16820,
-      "last_modified_commit": "930439e",
+      "size_bytes": 18025,
+      "last_modified_commit": "1903b49",
       "is_empty": false,
       "extension": ".yaml",
-      "lines": 372
+      "lines": 398
     },
     {
       "path": "docs/governance/architectgpt/architect-gpt.md",
@@ -3364,11 +3364,11 @@
     {
       "path": "docs/governance/architectgpt/architect-log.md",
       "type": "file",
-      "size_bytes": 24654,
-      "last_modified_commit": "930439e",
+      "size_bytes": 27499,
+      "last_modified_commit": "1903b49",
       "is_empty": false,
       "extension": ".md",
-      "lines": 574
+      "lines": 639
     },
     {
       "path": "docs/governance/architectgpt/ast-integrity-protocol.md",
@@ -3540,6 +3540,24 @@
       "is_empty": false,
       "extension": ".json",
       "lines": 49
+    },
+    {
+      "path": "docs/governance/architectgpt/merge-executor-protocol.md",
+      "type": "file",
+      "size_bytes": 2407,
+      "last_modified_commit": "cb0f5e3",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 67
+    },
+    {
+      "path": "docs/governance/architectgpt/merge-executor.schema.json",
+      "type": "file",
+      "size_bytes": 3480,
+      "last_modified_commit": "1453c3c",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 75
     },
     {
       "path": "docs/governance/architectgpt/orchestration-protocol.md",
@@ -3814,11 +3832,11 @@
     {
       "path": "docs/repo/repo-index.json",
       "type": "file",
-      "size_bytes": 178039,
-      "last_modified_commit": "930439e",
+      "size_bytes": 179003,
+      "last_modified_commit": "1903b49",
       "is_empty": false,
       "extension": ".json",
-      "lines": 6614
+      "lines": 6650
     },
     {
       "path": "docs/repo/repo-interface.md",
@@ -4265,7 +4283,7 @@
       "path": "docs/tooling/doctrine-checksums/doctrine-checksums.yaml",
       "type": "file",
       "size_bytes": 2166,
-      "last_modified_commit": "930439e",
+      "last_modified_commit": "1903b49",
       "is_empty": false,
       "extension": ".yaml",
       "lines": 26
@@ -6161,6 +6179,15 @@
       "lines": 165
     },
     {
+      "path": "scripts/architect/merge-executor.py",
+      "type": "file",
+      "size_bytes": 9843,
+      "last_modified_commit": "59439e3",
+      "is_empty": false,
+      "extension": ".py",
+      "lines": 250
+    },
+    {
       "path": "scripts/architect/orchestrate.sh",
       "type": "file",
       "size_bytes": 7583,
@@ -6276,6 +6303,15 @@
       "is_empty": false,
       "extension": ".sh",
       "lines": 92
+    },
+    {
+      "path": "scripts/architect/test-merge-executor.sh",
+      "type": "file",
+      "size_bytes": 7957,
+      "last_modified_commit": "94e515a",
+      "is_empty": false,
+      "extension": ".sh",
+      "lines": 234
     },
     {
       "path": "scripts/architect/test-patch-executor.sh",
@@ -6631,11 +6667,11 @@
     {
       "path": "scripts/verify-sync.sh",
       "type": "file",
-      "size_bytes": 25007,
-      "last_modified_commit": "930439e",
+      "size_bytes": 26548,
+      "last_modified_commit": "1903b49",
       "is_empty": false,
       "extension": ".sh",
-      "lines": 574
+      "lines": 614
     },
     {
       "path": "tsconfig.json",
