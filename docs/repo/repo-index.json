@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-07-26T01:21:49Z",
+  "generated_at": "2026-07-26T04:58:02Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "124f20d21",
+  "commit": "5e98fea37",
   "generator_version": "1.2",
   "files": [
     {
@@ -3346,11 +3346,11 @@
     {
       "path": "docs/governance/architectgpt/architect-gpt-manifest.yaml",
       "type": "file",
-      "size_bytes": 14451,
-      "last_modified_commit": "e1ce09a",
+      "size_bytes": 15639,
+      "last_modified_commit": "dc6cb36",
       "is_empty": false,
       "extension": ".yaml",
-      "lines": 323
+      "lines": 348
     },
     {
       "path": "docs/governance/architectgpt/architect-gpt.md",
@@ -3364,11 +3364,11 @@
     {
       "path": "docs/governance/architectgpt/architect-log.md",
       "type": "file",
-      "size_bytes": 19384,
-      "last_modified_commit": "9342207",
+      "size_bytes": 22089,
+      "last_modified_commit": "dc6cb36",
       "is_empty": false,
       "extension": ".md",
-      "lines": 451
+      "lines": 512
     },
     {
       "path": "docs/governance/architectgpt/ast-integrity-protocol.md",
@@ -3578,6 +3578,24 @@
       "lines": 30
     },
     {
+      "path": "docs/governance/architectgpt/remote-publisher-protocol.md",
+      "type": "file",
+      "size_bytes": 3983,
+      "last_modified_commit": "a53d9bd",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 131
+    },
+    {
+      "path": "docs/governance/architectgpt/remote-publisher.schema.json",
+      "type": "file",
+      "size_bytes": 3592,
+      "last_modified_commit": "6560b49",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 100
+    },
+    {
       "path": "docs/governance/architectgpt/repository-timeline-protocol.md",
       "type": "file",
       "size_bytes": 2780,
@@ -3778,11 +3796,11 @@
     {
       "path": "docs/repo/repo-index.json",
       "type": "file",
-      "size_bytes": 176118,
-      "last_modified_commit": "9342207",
+      "size_bytes": 177084,
+      "last_modified_commit": "dc6cb36",
       "is_empty": false,
       "extension": ".json",
-      "lines": 6542
+      "lines": 6578
     },
     {
       "path": "docs/repo/repo-interface.md",
@@ -4229,7 +4247,7 @@
       "path": "docs/tooling/doctrine-checksums/doctrine-checksums.yaml",
       "type": "file",
       "size_bytes": 2166,
-      "last_modified_commit": "9342207",
+      "last_modified_commit": "dc6cb36",
       "is_empty": false,
       "extension": ".yaml",
       "lines": 26
@@ -6152,6 +6170,15 @@
       "lines": 142
     },
     {
+      "path": "scripts/architect/remote-publisher.py",
+      "type": "file",
+      "size_bytes": 9561,
+      "last_modified_commit": "aeb2c9d",
+      "is_empty": false,
+      "extension": ".py",
+      "lines": 230
+    },
+    {
       "path": "scripts/architect/repository-timeline.py",
       "type": "file",
       "size_bytes": 4824,
@@ -6231,6 +6258,15 @@
       "is_empty": false,
       "extension": ".sh",
       "lines": 105
+    },
+    {
+      "path": "scripts/architect/test-remote-publisher.sh",
+      "type": "file",
+      "size_bytes": 8979,
+      "last_modified_commit": "5e98fea",
+      "is_empty": false,
+      "extension": ".sh",
+      "lines": 259
     },
     {
       "path": "scripts/architect/test-repository-timeline.sh",
@@ -6559,11 +6595,11 @@
     {
       "path": "scripts/verify-sync.sh",
       "type": "file",
-      "size_bytes": 21956,
-      "last_modified_commit": "9342207",
+      "size_bytes": 23481,
+      "last_modified_commit": "dc6cb36",
       "is_empty": false,
       "extension": ".sh",
-      "lines": 496
+      "lines": 535
     },
     {
       "path": "tsconfig.json",

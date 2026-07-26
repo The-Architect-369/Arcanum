@@ -246,6 +246,27 @@ candidate_ref_publisher_control:
   dry_run_authority: evidentiary_only
   apply_authority: local_repository_write_only
 
+remote_ref_publisher_control:
+  protocol: docs/governance/architectgpt/remote-publisher-protocol.md
+  schema: docs/governance/architectgpt/remote-publisher.schema.json
+  publisher: scripts/architect/remote-publisher.py
+  fixtures: scripts/architect/test-remote-publisher.sh
+  report_directory: .architect-reports/orchestration/remote-publications
+  required_branch: mobile
+  required_remote: origin
+  required_target_ref: refs/heads/mobile
+  local_publication_attestation_required: true
+  exact_candidate_required: true
+  exact_remote_lease_required: true
+  clean_source_required: true
+  dry_run_default: true
+  explicit_request_digest_confirmation_required: true
+  permission_class: W2
+  allowed_effect: origin_mobile_fast_forward
+  forbidden_actions: [main_update, tag_update, merge, deploy]
+  dry_run_authority: evidentiary_only
+  apply_authority: remote_integration_ref_write_only
+
 mobile_verification:
   environment: Android Termux in isolated work profile
   bootstrap: scripts/mobile/termux-bootstrap.sh
@@ -312,6 +333,10 @@ files:
   candidate_publisher_schema: docs/governance/architectgpt/candidate-publisher.schema.json
   candidate_publisher: scripts/architect/candidate-publisher.py
   candidate_publisher_fixtures: scripts/architect/test-candidate-publisher.sh
+  remote_publisher_protocol: docs/governance/architectgpt/remote-publisher-protocol.md
+  remote_publisher_schema: docs/governance/architectgpt/remote-publisher.schema.json
+  remote_publisher: scripts/architect/remote-publisher.py
+  remote_publisher_fixtures: scripts/architect/test-remote-publisher.sh
   mobile_bootstrap: scripts/mobile/termux-bootstrap.sh
   mobile_verify: scripts/mobile/termux-verify.sh
 
