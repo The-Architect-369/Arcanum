@@ -33,6 +33,66 @@ Each session entry should include:
 
 ---
 
+## 2026-07-26 — Wave XIX Guarded Read-Only Agent Execution
+
+Grounding:
+
+- Repository: `The-Architect-369/Arcanum`
+- Branch: `mobile`
+- Phase: Pre-Genesis
+- Stable base: `b637f39fc783a7e78309d965304e7ecb0c6cf7e8`
+- Initial execution head: `df85a2b`
+- Purpose: permit deterministic local read-only tool execution while preserving existing R1 agent ceilings
+
+Summary:
+
+- Added the guarded read-only agent-execution protocol and schema.
+- Added `agent-execute.py` as a consumer of valid Wave XVIII invocation attestations.
+- Added initial adapters for `repository.read` and `repository.search`.
+- Limited initial execution to the registered `repository_architect`.
+- Enforced exact repository, branch, commit, and `origin/mobile` synchronization.
+- Enforced invocation-attestation and execution-request digest integrity.
+- Enforced agent permission ceilings and per-agent tool allowlists.
+- Added repository-relative path containment and symlink rejection.
+- Added literal-search semantics without regular-expression or shell interpretation.
+- Added deterministic result and execution-attestation hashes.
+- Added proof that HEAD, refs, and the source working tree remain unchanged.
+- Added rejection of W1-or-higher escalation, path traversal, tampering, and repository mutation.
+- Preserved all write, commit, push, merge, deploy, rollback, and ratification prohibitions.
+
+Authority boundary:
+
+- Wave XIX grants only local repository read execution.
+- It does not grant connected private-provider reads.
+- It does not grant filesystem mutation or repository-history authority.
+- It does not alter any registered agent's R1 permission ceiling.
+- It does not create commits, update refs, push, merge, deploy, roll back, or ratify canon.
+- The Human Architect retains all action authority.
+
+Verification status:
+
+- Execution schema parsing: green.
+- Python syntax: green.
+- Shell fixture syntax: green.
+- Deterministic read execution: green.
+- Deterministic search execution: green.
+- Invocation digest enforcement: green.
+- Permission-ceiling enforcement: green.
+- Tool-allowlist enforcement: green.
+- Path traversal and symlink escape rejection: green.
+- W1 escalation rejection: green.
+- Repository-state preservation: green.
+
+Follow-up actions:
+
+- Refresh canonical checksums and repository index.
+- Run Doctrine Guard and Verify Sync 22/22.
+- Run exact-head Termux verification.
+- Generate the Wave XIX promotion attestation.
+- Require exact-head hosted CI and Vercel preview readiness before promotion.
+
+---
+
 ## 2026-07-26 — Wave XVIII-A Guarded Promotion Orchestrator
 
 Grounding:

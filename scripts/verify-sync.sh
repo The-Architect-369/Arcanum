@@ -50,7 +50,7 @@ echo
 INDEX_FILE="docs/repo/repo-index.json"
 GEN_SCRIPT="scripts/repo-index.sh"
 
-echo "[1/21] Repo index integrity"
+echo "[1/22] Repo index integrity"
 if [[ ! -f "$GEN_SCRIPT" ]]; then
   fail "Missing generator script: $GEN_SCRIPT"
 elif [[ ! -f "$INDEX_FILE" ]]; then
@@ -95,7 +95,7 @@ else
 fi
 echo
 
-echo "[2/21] Architect GPT manifest integrity"
+echo "[2/22] Architect GPT manifest integrity"
 MANIFEST="docs/governance/architectgpt/architect-gpt-manifest.yaml"
 ARCH_DOC="docs/governance/architectgpt/architect-gpt.md"
 if [[ ! -f "$MANIFEST" ]]; then fail "Missing manifest: $MANIFEST"; fi
@@ -124,7 +124,7 @@ if [[ -f "$MANIFEST" && -f "$ARCH_DOC" ]]; then
 fi
 echo
 
-echo "[3/21] Governance canonical surface checks"
+echo "[3/22] Governance canonical surface checks"
 required_governance_files=(
   "docs/governance/governance-specification.md"
   "docs/governance/treasury-constitution.md"
@@ -167,6 +167,8 @@ required_governance_files=(
   "docs/governance/architectgpt/agent-registry.yaml"
   "docs/governance/architectgpt/agent-invocation-protocol.md"
   "docs/governance/architectgpt/agent-invocation.schema.json"
+  "docs/governance/architectgpt/agent-execution-protocol.md"
+  "docs/governance/architectgpt/agent-execution.schema.json"
   "docs/governance/architectgpt/promotion-orchestrator-protocol.md"
   "docs/governance/architectgpt/promotion-orchestrator.schema.json"
 )
@@ -175,7 +177,7 @@ for f in "${required_governance_files[@]}"; do
 done
 echo
 
-echo "[4/21] Orchestration control checks"
+echo "[4/22] Orchestration control checks"
 ORCHESTRATOR="scripts/architect/orchestrate.sh"
 REGISTRY="docs/governance/architectgpt/capability-registry.yaml"
 if [[ ! -f "$ORCHESTRATOR" ]]; then
@@ -193,7 +195,7 @@ for permission in R0 R1 W1 W2 W3 C1; do
 done
 echo
 
-echo "[5/21] Evidence schema and validator checks"
+echo "[5/22] Evidence schema and validator checks"
 SCHEMA="docs/governance/architectgpt/execution-record.schema.json"
 VALIDATOR="scripts/architect/validate-evidence.py"
 if jq empty "$SCHEMA" >/dev/null 2>&1; then echo "✅ valid JSON schema document: $SCHEMA"; else fail "Invalid JSON schema document: $SCHEMA"; fi
@@ -220,7 +222,7 @@ else
 fi
 echo
 
-echo "[6/21] Promotion gate checks"
+echo "[6/22] Promotion gate checks"
 PROMOTION_GATE="scripts/architect/promotion-gate.sh"
 PROMOTION_PROTOCOL="docs/governance/architectgpt/promotion-protocol.md"
 if [[ ! -f "$PROMOTION_GATE" ]]; then
@@ -241,7 +243,7 @@ fi
 if [[ -f "$PROMOTION_PROTOCOL" ]]; then echo "✅ promotion protocol present"; else fail "Missing promotion protocol"; fi
 echo
 
-echo "[7/21] Provider health and drift checks"
+echo "[7/22] Provider health and drift checks"
 PROVIDER_SCHEMA="docs/governance/architectgpt/provider-health.schema.json"
 PROVIDER_MONITOR="scripts/architect/provider-health.py"
 PROVIDER_TEST="scripts/architect/test-provider-health.sh"
@@ -256,7 +258,7 @@ else
 fi
 echo
 
-echo "[8/21] Repository change plan and patch bundle checks"
+echo "[8/22] Repository change plan and patch bundle checks"
 CHANGE_PLAN_SCHEMA="docs/governance/architectgpt/change-plan.schema.json"
 CHANGE_PLAN_GENERATOR="scripts/architect/change-plan.py"
 CHANGE_PLAN_TEST="scripts/architect/test-change-plan.sh"
@@ -272,7 +274,7 @@ else
 fi
 echo
 
-echo "[9/21] TypeScript AST and dependency integrity checks"
+echo "[9/22] TypeScript AST and dependency integrity checks"
 AST_SCHEMA="docs/governance/architectgpt/ast-integrity.schema.json"
 AST_ANALYZER="scripts/architect/ast-integrity.py"
 AST_TEST="scripts/architect/test-ast-integrity.sh"
@@ -288,7 +290,7 @@ else
 fi
 echo
 
-echo "[10/21] Build log diagnostics and deployment attribution checks"
+echo "[10/22] Build log diagnostics and deployment attribution checks"
 BUILD_DIAGNOSTICS_SCHEMA="docs/governance/architectgpt/build-diagnostics.schema.json"
 BUILD_DIAGNOSTICS_PARSER="scripts/architect/build-diagnostics.py"
 BUILD_DIAGNOSTICS_TEST="scripts/architect/test-build-diagnostics.sh"
@@ -318,7 +320,7 @@ else
 fi
 echo
 
-echo "[11/21] Repository timeline and lineage integrity checks"
+echo "[11/22] Repository timeline and lineage integrity checks"
 TIMELINE_SCHEMA="docs/governance/architectgpt/repository-timeline.schema.json"
 TIMELINE_GENERATOR="scripts/architect/repository-timeline.py"
 TIMELINE_TEST="scripts/architect/test-repository-timeline.sh"
@@ -348,7 +350,7 @@ else
 fi
 echo
 
-echo "[12/21] Change impact graph integrity checks"
+echo "[12/22] Change impact graph integrity checks"
 IMPACT_SCHEMA="docs/governance/architectgpt/impact-graph.schema.json"
 IMPACT_GENERATOR="scripts/architect/impact-graph.py"
 IMPACT_TEST="scripts/architect/test-impact-graph.sh"
@@ -383,7 +385,7 @@ fi
 
 echo
 
-echo "[13/21] Isolated patch executor integrity checks"
+echo "[13/22] Isolated patch executor integrity checks"
 PATCH_EXECUTOR_SCHEMA="docs/governance/architectgpt/patch-executor.schema.json"
 PATCH_EXECUTOR="scripts/architect/patch-executor.py"
 PATCH_EXECUTOR_TEST="scripts/architect/test-patch-executor.sh"
@@ -418,7 +420,7 @@ fi
 
 echo
 
-echo "[14/21] Deterministic candidate commit integrity checks"
+echo "[14/22] Deterministic candidate commit integrity checks"
 CANDIDATE_COMMIT_SCHEMA="docs/governance/architectgpt/candidate-commit.schema.json"
 CANDIDATE_COMMIT_BUILDER="scripts/architect/candidate-commit.py"
 CANDIDATE_COMMIT_TEST="scripts/architect/test-candidate-commit.sh"
@@ -454,7 +456,7 @@ fi
 echo
 
 
-echo "[15/21] Guarded candidate ref publisher integrity checks"
+echo "[15/22] Guarded candidate ref publisher integrity checks"
 CANDIDATE_PUBLISHER_SCHEMA="docs/governance/architectgpt/candidate-publisher.schema.json"
 CANDIDATE_PUBLISHER="scripts/architect/candidate-publisher.py"
 CANDIDATE_PUBLISHER_TEST="scripts/architect/test-candidate-publisher.sh"
@@ -490,7 +492,7 @@ fi
 echo
 
 
-echo "[16/21] Guarded remote ref publisher integrity checks"
+echo "[16/22] Guarded remote ref publisher integrity checks"
 REMOTE_PUBLISHER_SCHEMA="docs/governance/architectgpt/remote-publisher.schema.json"
 REMOTE_PUBLISHER="scripts/architect/remote-publisher.py"
 REMOTE_PUBLISHER_TEST="scripts/architect/test-remote-publisher.sh"
@@ -527,7 +529,7 @@ fi
 echo
 
 
-echo "[17/21] Deterministic merge authorization integrity checks"
+echo "[17/22] Deterministic merge authorization integrity checks"
 MERGE_AUTH_SCHEMA="docs/governance/architectgpt/merge-authorization.schema.json"
 MERGE_AUTH_BUILDER="scripts/architect/merge-authorization.py"
 MERGE_AUTH_TEST="scripts/architect/test-merge-authorization.sh"
@@ -564,7 +566,7 @@ fi
 echo
 
 
-echo "[18/21] Guarded merge executor integrity checks"
+echo "[18/22] Guarded merge executor integrity checks"
 MERGE_EXECUTOR_SCHEMA="docs/governance/architectgpt/merge-executor.schema.json"
 MERGE_EXECUTOR="scripts/architect/merge-executor.py"
 MERGE_EXECUTOR_TEST="scripts/architect/test-merge-executor.sh"
@@ -602,7 +604,7 @@ fi
 echo
 
 
-echo "[19/21] Agent registry and invocation integrity checks"
+echo "[19/22] Agent registry and invocation integrity checks"
 AGENT_REGISTRY="docs/governance/architectgpt/agent-registry.yaml"
 AGENT_SCHEMA="docs/governance/architectgpt/agent-invocation.schema.json"
 AGENT_RUNNER="scripts/architect/agent-run.py"
@@ -648,7 +650,7 @@ fi
 echo
 
 
-echo "[20/21] Guarded promotion orchestrator integrity checks"
+echo "[20/22] Guarded promotion orchestrator integrity checks"
 PROMOTION_ORCHESTRATOR_PROTOCOL="docs/governance/architectgpt/promotion-orchestrator-protocol.md"
 PROMOTION_ORCHESTRATOR_SCHEMA="docs/governance/architectgpt/promotion-orchestrator.schema.json"
 PROMOTION_ORCHESTRATOR_ENTRYPOINT="scripts/architect/promote-wave.sh"
@@ -726,7 +728,65 @@ fi
 
 echo
 
-echo "[21/21] Archive checks (deprecated files)"
+echo "[21/22] Guarded read-only agent execution integrity checks"
+
+AGENT_EXECUTION_PROTOCOL="docs/governance/architectgpt/agent-execution-protocol.md"
+AGENT_EXECUTION_SCHEMA="docs/governance/architectgpt/agent-execution.schema.json"
+AGENT_EXECUTION_RUNNER="scripts/architect/agent-execute.py"
+AGENT_EXECUTION_TEST="scripts/architect/test-agent-execute.sh"
+
+if grep -q '^status: active$' "$AGENT_EXECUTION_PROTOCOL"; then
+  echo "✅ agent execution protocol is active"
+else
+  fail "Agent execution protocol is not active"
+fi
+
+if jq empty "$AGENT_EXECUTION_SCHEMA" >/dev/null; then
+  echo "✅ valid agent execution schema: $AGENT_EXECUTION_SCHEMA"
+else
+  fail "Invalid agent execution schema: $AGENT_EXECUTION_SCHEMA"
+fi
+
+if python3 -m py_compile "$AGENT_EXECUTION_RUNNER"; then
+  echo "✅ Python syntax: $AGENT_EXECUTION_RUNNER"
+else
+  fail "Invalid Python syntax: $AGENT_EXECUTION_RUNNER"
+fi
+
+if bash -n "$AGENT_EXECUTION_TEST"; then
+  echo "✅ shell syntax: $AGENT_EXECUTION_TEST"
+else
+  fail "Invalid shell syntax: $AGENT_EXECUTION_TEST"
+fi
+
+for executable in \
+  "$AGENT_EXECUTION_RUNNER" \
+  "$AGENT_EXECUTION_TEST"
+do
+  if [[ -x "$executable" ]]; then
+    echo "✅ executable: $executable"
+  else
+    fail "Agent execution surface is not executable: $executable"
+  fi
+done
+
+if "$AGENT_EXECUTION_TEST" >/dev/null; then
+  echo "✅ invocation attestation digests are enforced"
+  echo "✅ exact mobile head and origin/mobile synchronization are enforced"
+  echo "✅ registered-agent and R1 permission ceilings are enforced"
+  echo "✅ requested tools must be explicitly allowlisted"
+  echo "✅ repository paths are bounded and symlink escape is rejected"
+  echo "✅ repository read and literal search results are deterministic"
+  echo "✅ W1 escalation, stale state, and tampering are rejected"
+  echo "✅ repository HEAD, refs, and working tree remain unchanged"
+  echo "✅ external writes, merge, and deployment remain forbidden"
+else
+  fail "Guarded read-only agent execution fixtures failed"
+fi
+
+echo
+
+echo "[22/22] Archive checks (deprecated files)"
 archive_files=(
   "docs/archive/architectgpt/architectgpt-core.md"
   "docs/archive/architectgpt/architectgpt-extended.md"

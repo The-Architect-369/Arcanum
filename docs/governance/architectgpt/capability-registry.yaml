@@ -155,6 +155,47 @@ agent_fabric:
     - no_agent_tool_execution_in_wave_xviii
     - human_architect_retains_all_action_authority
 
+agent_execution:
+  status: active_guarded_read_only
+  wave: XIX
+  registry: docs/governance/architectgpt/agent-registry.yaml
+  invocation_protocol: docs/governance/architectgpt/agent-invocation-protocol.md
+  invocation_runner: scripts/architect/agent-run.py
+  protocol: docs/governance/architectgpt/agent-execution-protocol.md
+  schema: docs/governance/architectgpt/agent-execution.schema.json
+  executor: scripts/architect/agent-execute.py
+  fixtures: scripts/architect/test-agent-execute.sh
+  authority: local_read_only_evidence
+  default_policy: deny
+  maximum_permission_class: R1
+  execution_enabled: true
+  connected_private_reads_enabled: false
+  external_writes_enabled: false
+  supported_agents:
+    - repository_architect
+  supported_tools:
+    - repository.read
+    - repository.search
+  hard_rules:
+    - valid_invocation_attestation_required
+    - invocation_and_execution_requests_must_match
+    - exact_mobile_commit_required
+    - origin_mobile_sync_required
+    - registered_agent_required
+    - requested_permission_must_not_exceed_r1
+    - requested_permission_must_not_exceed_agent_ceiling
+    - requested_tools_must_be_allowlisted
+    - declared_paths_only
+    - repository_path_containment_required
+    - symlink_escape_forbidden
+    - literal_search_only
+    - deterministic_results_required
+    - source_checkout_must_remain_unchanged
+    - refs_must_remain_unchanged
+    - external_writes_forbidden
+    - merge_and_deploy_forbidden
+    - human_architect_retains_all_action_authority
+
 promotion_orchestration:
   status: active_guarded_coordination
   protocol: docs/governance/architectgpt/promotion-orchestrator-protocol.md
