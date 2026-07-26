@@ -33,6 +33,66 @@ Each session entry should include:
 
 ---
 
+## 2026-07-26 — Wave XIV Guarded Candidate Ref Publisher
+
+Grounding:
+
+- Repository: `The-Architect-369/Arcanum`
+- Branch: `mobile`
+- Phase: Pre-Genesis
+- Stable base: `73dd3c3730ab50e5287398fd5ecd68cd6a27187b`
+- Purpose: safely convert an attested candidate commit into a local mobile fast-forward without remote publication
+
+Summary:
+
+- Added a guarded candidate-ref publisher consuming a passing Wave XIII candidate-commit attestation.
+- Added deterministic publication request and attestation records.
+- Added exact binding to repository, base commit, candidate commit, target ref, and candidate-attestation digest.
+- Added exact agreement requirements between HEAD, local mobile, origin/mobile, and the attested base.
+- Added dry-run as the default operating mode.
+- Added explicit request-digest confirmation for apply mode.
+- Added single-parent and candidate-tree verification.
+- Added fast-forward-only local mobile publication.
+- Added explicit proof that origin/mobile remains unchanged.
+- Added explicit negative attestations for push, merge, and deployment effects.
+- Added canonical schema, governance protocol, and executable fixtures.
+- Integrated the fixture suite as repository verification layer 15 of 16.
+
+Verification status:
+
+- JSON schema parsing: green.
+- Python syntax: green.
+- Shell fixture syntax: green.
+- Deterministic dry-run attestation: green.
+- Dry-run ref preservation: green.
+- Exact confirmation binding: green.
+- Local fast-forward application: green.
+- Remote-tracking ref preservation: green.
+- Tampered attestation rejection: green.
+- Unauthorized request rejection: green.
+- Dirty source rejection: green.
+- Stale base rejection: green.
+- Portable Git worktree cleanup: green.
+
+Doctrinal impact:
+
+- Dry-run authority remains evidentiary-only.
+- Apply authority is limited to a local repository write on `refs/heads/mobile`.
+- The publisher cannot update `main`, tags, remote-tracking refs, or remote repository refs.
+- The publisher cannot push, merge a pull request, deploy, or authorize promotion.
+- Remote publication remains a separate W2 action requiring an explicit authorized workflow.
+- Merge and deployment remain W3 actions requiring full promotion evidence.
+
+Follow-up actions:
+
+- Refresh the manifest doctrine checksum and repository index.
+- Run Doctrine Guard and Verify Sync 16/16.
+- Run exact-head Termux typecheck, production build, and repository synchronization.
+- Generate the Wave XIV promotion attestation.
+- Require exact-head CI, Vercel, and expected-head merge evidence before promotion to `main`.
+
+---
+
 ## 2026-07-25 — Wave XIII Deterministic Candidate Commit Builder
 
 Grounding:

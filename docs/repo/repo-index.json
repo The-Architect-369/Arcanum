@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-07-25T23:14:20Z",
+  "generated_at": "2026-07-26T01:21:49Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "e1ce09a99",
+  "commit": "124f20d21",
   "generator_version": "1.2",
   "files": [
     {
@@ -3346,11 +3346,11 @@
     {
       "path": "docs/governance/architectgpt/architect-gpt-manifest.yaml",
       "type": "file",
-      "size_bytes": 13229,
+      "size_bytes": 14451,
       "last_modified_commit": "e1ce09a",
       "is_empty": false,
       "extension": ".yaml",
-      "lines": 299
+      "lines": 323
     },
     {
       "path": "docs/governance/architectgpt/architect-gpt.md",
@@ -3364,11 +3364,11 @@
     {
       "path": "docs/governance/architectgpt/architect-log.md",
       "type": "file",
-      "size_bytes": 16812,
-      "last_modified_commit": "7926eaa",
+      "size_bytes": 19384,
+      "last_modified_commit": "9342207",
       "is_empty": false,
       "extension": ".md",
-      "lines": 391
+      "lines": 451
     },
     {
       "path": "docs/governance/architectgpt/ast-integrity-protocol.md",
@@ -3423,6 +3423,24 @@
       "is_empty": false,
       "extension": ".json",
       "lines": 65
+    },
+    {
+      "path": "docs/governance/architectgpt/candidate-publisher-protocol.md",
+      "type": "file",
+      "size_bytes": 3310,
+      "last_modified_commit": "21d05b6",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 119
+    },
+    {
+      "path": "docs/governance/architectgpt/candidate-publisher.schema.json",
+      "type": "file",
+      "size_bytes": 3672,
+      "last_modified_commit": "b533311",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 91
     },
     {
       "path": "docs/governance/architectgpt/capability-fabric.md",
@@ -3760,11 +3778,11 @@
     {
       "path": "docs/repo/repo-index.json",
       "type": "file",
-      "size_bytes": 175164,
-      "last_modified_commit": "7926eaa",
+      "size_bytes": 176118,
+      "last_modified_commit": "9342207",
       "is_empty": false,
       "extension": ".json",
-      "lines": 6506
+      "lines": 6542
     },
     {
       "path": "docs/repo/repo-interface.md",
@@ -4211,7 +4229,7 @@
       "path": "docs/tooling/doctrine-checksums/doctrine-checksums.yaml",
       "type": "file",
       "size_bytes": 2166,
-      "last_modified_commit": "7926eaa",
+      "last_modified_commit": "9342207",
       "is_empty": false,
       "extension": ".yaml",
       "lines": 26
@@ -6062,6 +6080,15 @@
       "lines": 317
     },
     {
+      "path": "scripts/architect/candidate-publisher.py",
+      "type": "file",
+      "size_bytes": 8236,
+      "last_modified_commit": "80611fe",
+      "is_empty": false,
+      "extension": ".py",
+      "lines": 209
+    },
+    {
       "path": "scripts/architect/change-plan.py",
       "type": "file",
       "size_bytes": 4477,
@@ -6159,6 +6186,15 @@
       "is_empty": false,
       "extension": ".sh",
       "lines": 189
+    },
+    {
+      "path": "scripts/architect/test-candidate-publisher.sh",
+      "type": "file",
+      "size_bytes": 8070,
+      "last_modified_commit": "124f20d",
+      "is_empty": false,
+      "extension": ".sh",
+      "lines": 241
     },
     {
       "path": "scripts/architect/test-change-plan.sh",
@@ -6523,11 +6559,11 @@
     {
       "path": "scripts/verify-sync.sh",
       "type": "file",
-      "size_bytes": 20450,
-      "last_modified_commit": "7f0e673",
+      "size_bytes": 21956,
+      "last_modified_commit": "9342207",
       "is_empty": false,
       "extension": ".sh",
-      "lines": 458
+      "lines": 496
     },
     {
       "path": "tsconfig.json",
