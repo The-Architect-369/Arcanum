@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://the-arcanum.net/schemas/architectgpt/promotion-orchestrator.schema.json",
+  "title": "Architect GPT Promotion Orchestrator State",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "record_type",
+    "repository",
+    "wave",
+    "base_branch",
+    "head_branch",
+    "expected_head_sha",
+    "mode",
+    "status",
+    "stage",
+    "checks",
+    "effects",
+    "authorization",
+    "state_sha256"
+  ],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "record_type": {"const": "promotion_orchestrator_state"},
+    "repository": {"const": "https://github.com/The-Architect-369/Arcanum.git"},
+    "wave": {"type": "string", "pattern": "^wave-[a-z0-9-]+$"},
+    "base_branch": {"const": "main"},
+    "head_branch": {"const": "mobile"},
+    "expected_head_sha": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "pull_request_number": {"type": ["integer", "null"], "minimum": 1},
+    "mode": {"enum": ["dry_run", "prepare"]},
+    "status": {"enum": ["blocked", "in_progress", "ready_for_w3"]},
+    "stage": {
+      "enum": [
+        "ground",
+        "local_verification",
+        "promotion_attestation",
+        "hosted_evidence",
+        "merge_authorization",
+        "ready_for_w3"
+      ]
+    },
+    "checks": {
+      "type": "object",
+      "additionalProperties": {"enum": ["pending", "pass", "fail", "unavailable"]}
+    },
+    "evidence": {
+      "type": "object",
+      "additionalProperties": {"type": ["string", "null"]}
+    },
+    "blockers": {
+      "type": "array",
+      "items": {"type": "string"},
+      "uniqueItems": true
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["performed", "allowed_before_w3", "forbidden_before_w3"],
+      "properties": {
+        "performed": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+        "allowed_before_w3": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+        "forbidden_before_w3": {"type": "array", "items": {"type": "string"}, "uniqueItems": true}
+      }
+    },
+    "authorization": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["required_permission", "human_authorization_required", "merge_performed"],
+      "properties": {
+        "required_permission": {"const": "W3"},
+        "human_authorization_required": {"const": true},
+        "merge_performed": {"const": false}
+      }
+    },
+    "state_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+  }
+}
