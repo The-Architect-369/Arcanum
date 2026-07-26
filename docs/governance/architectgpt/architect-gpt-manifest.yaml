@@ -267,6 +267,26 @@ remote_ref_publisher_control:
   dry_run_authority: evidentiary_only
   apply_authority: remote_integration_ref_write_only
 
+merge_authorization_control:
+  protocol: docs/governance/architectgpt/merge-authorization-protocol.md
+  schema: docs/governance/architectgpt/merge-authorization.schema.json
+  builder: scripts/architect/merge-authorization.py
+  fixtures: scripts/architect/test-merge-authorization.sh
+  report_directory: .architect-reports/orchestration/merge-authorizations
+  required_head_branch: mobile
+  required_base_branch: main
+  permission_class: W3
+  explicit_human_authorization_required: true
+  promotion_attestation_required: true
+  ci_attestation_required: true
+  provider_readiness_required: true
+  exact_head_required: true
+  expected_head_guard_required: true
+  deterministic_package_required: true
+  allowed_effect: authorization_package_only
+  forbidden_actions: [pr_create, commit, push, ref_update, merge, deploy]
+  authority: evidentiary_only
+
 mobile_verification:
   environment: Android Termux in isolated work profile
   bootstrap: scripts/mobile/termux-bootstrap.sh
@@ -337,6 +357,10 @@ files:
   remote_publisher_schema: docs/governance/architectgpt/remote-publisher.schema.json
   remote_publisher: scripts/architect/remote-publisher.py
   remote_publisher_fixtures: scripts/architect/test-remote-publisher.sh
+  merge_authorization_protocol: docs/governance/architectgpt/merge-authorization-protocol.md
+  merge_authorization_schema: docs/governance/architectgpt/merge-authorization.schema.json
+  merge_authorization_builder: scripts/architect/merge-authorization.py
+  merge_authorization_fixtures: scripts/architect/test-merge-authorization.sh
   mobile_bootstrap: scripts/mobile/termux-bootstrap.sh
   mobile_verify: scripts/mobile/termux-verify.sh
 

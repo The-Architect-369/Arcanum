@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-07-26T04:58:02Z",
+  "generated_at": "2026-07-26T13:49:14Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "5e98fea37",
+  "commit": "73468bfb6",
   "generator_version": "1.2",
   "files": [
     {
@@ -3346,11 +3346,11 @@
     {
       "path": "docs/governance/architectgpt/architect-gpt-manifest.yaml",
       "type": "file",
-      "size_bytes": 15639,
-      "last_modified_commit": "dc6cb36",
+      "size_bytes": 16820,
+      "last_modified_commit": "930439e",
       "is_empty": false,
       "extension": ".yaml",
-      "lines": 348
+      "lines": 372
     },
     {
       "path": "docs/governance/architectgpt/architect-gpt.md",
@@ -3364,11 +3364,11 @@
     {
       "path": "docs/governance/architectgpt/architect-log.md",
       "type": "file",
-      "size_bytes": 22089,
-      "last_modified_commit": "dc6cb36",
+      "size_bytes": 24654,
+      "last_modified_commit": "930439e",
       "is_empty": false,
       "extension": ".md",
-      "lines": 512
+      "lines": 574
     },
     {
       "path": "docs/governance/architectgpt/ast-integrity-protocol.md",
@@ -3522,6 +3522,24 @@
       "is_empty": false,
       "extension": ".json",
       "lines": 116
+    },
+    {
+      "path": "docs/governance/architectgpt/merge-authorization-protocol.md",
+      "type": "file",
+      "size_bytes": 2300,
+      "last_modified_commit": "2c064e6",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 53
+    },
+    {
+      "path": "docs/governance/architectgpt/merge-authorization.schema.json",
+      "type": "file",
+      "size_bytes": 1844,
+      "last_modified_commit": "4f3845a",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 49
     },
     {
       "path": "docs/governance/architectgpt/orchestration-protocol.md",
@@ -3796,11 +3814,11 @@
     {
       "path": "docs/repo/repo-index.json",
       "type": "file",
-      "size_bytes": 177084,
-      "last_modified_commit": "dc6cb36",
+      "size_bytes": 178039,
+      "last_modified_commit": "930439e",
       "is_empty": false,
       "extension": ".json",
-      "lines": 6578
+      "lines": 6614
     },
     {
       "path": "docs/repo/repo-interface.md",
@@ -4247,7 +4265,7 @@
       "path": "docs/tooling/doctrine-checksums/doctrine-checksums.yaml",
       "type": "file",
       "size_bytes": 2166,
-      "last_modified_commit": "dc6cb36",
+      "last_modified_commit": "930439e",
       "is_empty": false,
       "extension": ".yaml",
       "lines": 26
@@ -6134,6 +6152,15 @@
       "lines": 303
     },
     {
+      "path": "scripts/architect/merge-authorization.py",
+      "type": "file",
+      "size_bytes": 6522,
+      "last_modified_commit": "eb286c4",
+      "is_empty": false,
+      "extension": ".py",
+      "lines": 165
+    },
+    {
       "path": "scripts/architect/orchestrate.sh",
       "type": "file",
       "size_bytes": 7583,
@@ -6240,6 +6267,15 @@
       "is_empty": false,
       "extension": ".sh",
       "lines": 189
+    },
+    {
+      "path": "scripts/architect/test-merge-authorization.sh",
+      "type": "file",
+      "size_bytes": 4190,
+      "last_modified_commit": "9914ed6",
+      "is_empty": false,
+      "extension": ".sh",
+      "lines": 92
     },
     {
       "path": "scripts/architect/test-patch-executor.sh",
@@ -6595,11 +6631,11 @@
     {
       "path": "scripts/verify-sync.sh",
       "type": "file",
-      "size_bytes": 23481,
-      "last_modified_commit": "dc6cb36",
+      "size_bytes": 25007,
+      "last_modified_commit": "930439e",
       "is_empty": false,
       "extension": ".sh",
-      "lines": 535
+      "lines": 574
     },
     {
       "path": "tsconfig.json",
