@@ -33,6 +33,67 @@ Each session entry should include:
 
 ---
 
+## 2026-07-25 — Wave XIII Deterministic Candidate Commit Builder
+
+Grounding:
+
+- Repository: `The-Architect-369/Arcanum`
+- Branch: `mobile`
+- Phase: Pre-Genesis
+- Stable base: `b27bd1886b163a9161189bc0115f0332f0440273`
+- Purpose: convert a verified candidate diff into a deterministic Git commit object without moving repository refs
+
+Summary:
+
+- Added a deterministic candidate commit builder consuming canonical Wave XII evidence.
+- Added exact binding between the patch bundle, isolated-patch attestation, payloads, and commit request.
+- Added controlled author, committer, UTC timestamp, and commit-message metadata.
+- Added exact reconstruction and SHA-256 verification of the attested binary candidate diff.
+- Added deterministic Git tree construction with `git write-tree`.
+- Added deterministic single-parent commit construction with `git commit-tree`.
+- Added direct verification of candidate object type, parent identity, and tree identity.
+- Added complete source-checkout and Git-ref preservation checks.
+- Added deterministic candidate-commit attestations.
+- Added canonical request and attestation schema, governance protocol, and executable fixtures.
+- Registered the control in the Architect GPT manifest with evidentiary-only authority.
+- Integrated the fixture suite as repository verification layer 14 of 15.
+
+Verification status:
+
+- JSON schema parsing: green.
+- Python syntax: green.
+- Shell fixture syntax: green.
+- Repeated candidate commit identity: green.
+- Repeated attestation identity: green.
+- Exact parent identity: green.
+- Exact tree identity: green.
+- Wave XII candidate-diff reconstruction: green.
+- Source checkout preservation: green.
+- Complete Git-ref preservation: green.
+- Tampered patch-attestation rejection: green.
+- Non-UTC metadata rejection: green.
+- Payload digest mismatch rejection: green.
+- Dirty source-checkout rejection: green.
+- Shell null-byte portability warnings: resolved.
+
+Doctrinal impact:
+
+- Candidate commit attestations remain evidentiary and cannot authorize publication, branch movement, push, merge, deployment, rollback, or constitutional change.
+- The builder does not move HEAD, branches, tags, or remote-tracking refs.
+- `git commit-tree` writes an unreachable object into the local Git object database.
+- The unreachable object is persistent but non-authoritative and may be removed by normal Git garbage collection.
+- A deterministic candidate commit identity does not itself authorize making that object reachable.
+
+Follow-up actions:
+
+- Refresh the manifest doctrine checksum and repository index.
+- Run Doctrine Guard and Verify Sync 15/15.
+- Run exact-head Termux typecheck, production build, and repository synchronization.
+- Generate the Wave XIII promotion attestation.
+- Require exact-head CI, Vercel, and expected-head merge evidence before promotion to `main`.
+
+---
+
 ## 2026-07-25 — Wave XII Isolated Patch Executor
 
 Grounding:
