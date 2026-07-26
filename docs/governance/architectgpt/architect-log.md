@@ -33,6 +33,82 @@ Each session entry should include:
 
 ---
 
+## 2026-07-26 — Wave XVIII Agent Registry and Invocation Protocol
+
+Grounding:
+
+- Repository: `The-Architect-369/Arcanum`
+- Branch: `mobile`
+- Phase: Pre-Genesis
+- Stable base: `c52d3ec98bc1feb99796104e61a5979f17bd8c83`
+- Purpose: establish bounded specialist-agent identities and deterministic invocation attestations
+
+Summary:
+
+- Added the canonical Architect agent registry.
+- Registered Repository Architect, Canon Guardian, Product Steward, Security Sentinel, Verification Oracle, and Release Steward.
+- Added explicit purpose, permission ceiling, tool allowlist, required outputs, and prohibited actions for every agent.
+- Added a deterministic agent-invocation request and attestation contract.
+- Added exact repository, branch, and commit binding.
+- Added explicit human-authorization and request-digest requirements.
+- Added deny-by-default agent identity and tool selection.
+- Added permission-ceiling enforcement.
+- Added rejection of unknown agents, permission escalation, non-allowlisted tools, duplicate tools, empty tasks, stale commits, dirty trees, wrong branches, missing authorization, and digest tampering.
+- Added proof that invocation performs no agent tool execution or external write.
+- Added proof that invocation preserves repository HEAD, refs, and working-tree state.
+- Integrated the agent fabric into the capability registry.
+- Integrated the fixture suite as repository verification layer 19 of 20.
+
+Initial agents:
+
+- Repository Architect
+- Canon Guardian
+- Product Steward
+- Security Sentinel
+- Verification Oracle
+- Release Steward
+
+Verification status:
+
+- Agent registry JSON parsing: green.
+- Invocation schema JSON parsing: green.
+- Python syntax: green.
+- Shell fixture syntax: green.
+- Deterministic invocation output: green.
+- Canonical agent selection: green.
+- Permission-ceiling enforcement: green.
+- Tool allowlist enforcement: green.
+- Explicit human authorization: green.
+- Exact-commit binding: green.
+- Request-digest validation: green.
+- Unknown-agent rejection: green.
+- Permission-escalation rejection: green.
+- Non-allowlisted-tool rejection: green.
+- Duplicate-tool and empty-task rejection: green.
+- Stale, dirty, wrong-branch, and tampered-state rejection: green.
+- Repository mutation preservation: green.
+
+Authority boundary:
+
+- Wave XVIII is plan-only and evidentiary-only.
+- Agents do not execute their declared tools.
+- Agents do not access connected private providers.
+- Agents do not modify files or repository history.
+- Agents do not create or merge pull requests.
+- Agents do not deploy, roll back, or ratify canon.
+- The Human Architect retains all action authority.
+- A future execution layer must consume a valid invocation attestation and establish a separate authorization boundary.
+
+Follow-up actions:
+
+- Refresh canonical checksums and repository index.
+- Run Doctrine Guard and Verify Sync 20/20.
+- Run exact-head Termux typecheck, production build, and repository synchronization.
+- Generate the Wave XVIII promotion attestation.
+- Require exact-head CI and provider readiness before guarded promotion.
+
+---
+
 ## 2026-07-26 — Wave XVII Guarded Merge Executor
 
 Grounding:

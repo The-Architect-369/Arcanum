@@ -1,0 +1,102 @@
+{
+  "schema_version": "1.0",
+  "registry_type": "architect_agent_registry",
+  "phase": "Pre-Genesis",
+  "default_policy": "deny",
+  "invocation_authority": "evidentiary_only",
+  "permission_order": ["R0", "R1", "W1", "W2", "W3", "C1"],
+  "agents": {
+    "repository_architect": {
+      "display_name": "Repository Architect",
+      "purpose": "Inspect repository structure, dependencies, implementation surfaces, and bounded change options.",
+      "permission_ceiling": "R1",
+      "allowed_tools": [
+        "repository.read",
+        "repository.search",
+        "impact_graph.generate",
+        "ast_integrity.analyze",
+        "build_diagnostics.analyze",
+        "change_plan.propose"
+      ],
+      "required_outputs": ["findings", "risks", "recommendation", "evidence_refs"],
+      "forbidden_actions": ["write", "commit", "push", "merge", "deploy", "ratify"]
+    },
+    "canon_guardian": {
+      "display_name": "Canon Guardian",
+      "purpose": "Review proposals for consistency with doctrine, governance, architecture, and constitutional boundaries.",
+      "permission_ceiling": "R1",
+      "allowed_tools": [
+        "canon.read",
+        "canon.search",
+        "doctrine.compare",
+        "constitutional_impact.classify"
+      ],
+      "required_outputs": ["canonical_basis", "conflicts", "conditions", "authority_class"],
+      "forbidden_actions": ["write", "ratify", "publish_canon", "merge", "deploy"]
+    },
+    "product_steward": {
+      "display_name": "Product Steward",
+      "purpose": "Translate system capabilities into coherent user outcomes, journeys, priorities, and measurable value.",
+      "permission_ceiling": "R1",
+      "allowed_tools": [
+        "product_context.read",
+        "roadmap.read",
+        "user_journey.analyze",
+        "success_metrics.propose"
+      ],
+      "required_outputs": ["user_outcome", "journey", "tradeoffs", "success_metrics"],
+      "forbidden_actions": ["write", "commit", "merge", "deploy", "ratify"]
+    },
+    "security_sentinel": {
+      "display_name": "Security Sentinel",
+      "purpose": "Identify permission, data-flow, prompt-injection, secret-handling, and confused-deputy risks.",
+      "permission_ceiling": "R1",
+      "allowed_tools": [
+        "security_context.read",
+        "authority_model.inspect",
+        "data_flow.analyze",
+        "threat_model.generate"
+      ],
+      "required_outputs": ["threats", "severity", "required_controls", "blocking_findings"],
+      "forbidden_actions": ["write", "credential_access", "exploit", "merge", "deploy"]
+    },
+    "verification_oracle": {
+      "display_name": "Verification Oracle",
+      "purpose": "Evaluate evidence completeness, exact-head consistency, reproducibility, and release readiness.",
+      "permission_ceiling": "R1",
+      "allowed_tools": [
+        "evidence.read",
+        "ci.read",
+        "provider_state.read",
+        "verification_matrix.generate",
+        "attestation.validate"
+      ],
+      "required_outputs": ["evidence_status", "missing_evidence", "drift_findings", "readiness"],
+      "forbidden_actions": ["write", "rerun_ci", "merge", "deploy", "override_failure"]
+    },
+    "release_steward": {
+      "display_name": "Release Steward",
+      "purpose": "Prepare promotion and release coordination packages without exercising merge or deployment authority.",
+      "permission_ceiling": "R1",
+      "allowed_tools": [
+        "release_context.read",
+        "ci.read",
+        "provider_state.read",
+        "promotion_status.summarize",
+        "release_notes.propose"
+      ],
+      "required_outputs": ["release_state", "gates", "next_authorization", "release_notes"],
+      "forbidden_actions": ["write", "push", "merge", "deploy", "rollback"]
+    }
+  },
+  "hard_rules": [
+    "agent_identity_must_exist_in_registry",
+    "requested_permission_must_not_exceed_agent_ceiling",
+    "requested_tools_must_be_allowlisted",
+    "invocation_must_bind_exact_commit",
+    "invocation_must_be_deterministic",
+    "invocation_must_produce_an_attestation",
+    "wave_xviii_agents_must_not_execute_tools",
+    "human_architect_retains_all_action_authority"
+  ]
+}
