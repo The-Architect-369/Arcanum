@@ -33,6 +33,67 @@ Each session entry should include:
 
 ---
 
+## 2026-07-26 — Wave XV Guarded Remote Ref Publisher
+
+Grounding:
+
+- Repository: `The-Architect-369/Arcanum`
+- Branch: `mobile`
+- Phase: Pre-Genesis
+- Stable base: `5c9d7bf63b7c28a485d9133735fb04b799eb1855`
+- Purpose: publish an already-attested local candidate to `origin/mobile` through an exact remote lease
+
+Summary:
+
+- Added a guarded remote-ref publisher consuming a passing Wave XIV local-publication attestation.
+- Added deterministic remote-publication request and attestation records.
+- Added exact binding to repository, remote, target ref, expected remote commit, candidate commit, and local-publication attestation digest.
+- Added dry-run as the default mode.
+- Added explicit W2 request-digest confirmation for apply mode.
+- Added exact agreement requirements among HEAD, local mobile, origin/mobile tracking state, and the live remote ref.
+- Added lease-protected publication using `--force-with-lease`.
+- Added fail-closed rejection when the live remote ref drifts from the authorized old commit.
+- Added proof that successful publication affects only `origin/mobile`.
+- Added explicit preservation checks for local checkout state, `main`, tags, merge actions, and deployments.
+- Added canonical schema, protocol, executable fixtures, and deterministic attestations.
+- Integrated the fixture suite as repository verification layer 16 of 17.
+
+Verification status:
+
+- JSON schema parsing: green.
+- Python syntax: green.
+- Shell fixture syntax: green.
+- Deterministic dry-run attestation: green.
+- Dry-run remote preservation: green.
+- Exact request-digest confirmation: green.
+- Explicit W2 authorization: green.
+- Exact remote lease enforcement: green.
+- Remote-drift rejection: green.
+- Authorized `origin/mobile` publication: green.
+- Local checkout preservation: green.
+- Main and tag preservation: green.
+- Merge and deployment prohibition: green.
+- Tampered, stale, dirty, and unauthorized input rejection: green.
+- Bare-origin clone warning removal: green.
+
+Doctrinal impact:
+
+- Dry-run authority remains evidentiary-only.
+- Apply authority is limited to a lease-protected update of `refs/heads/mobile` on `origin`.
+- The publisher cannot update `main` or tags.
+- The publisher cannot merge a pull request, deploy, or authorize promotion.
+- Merge and deployment remain separate W3 actions requiring full exact-head promotion evidence.
+
+Follow-up actions:
+
+- Refresh the manifest doctrine checksum and repository index.
+- Run Doctrine Guard and Verify Sync 17/17.
+- Run exact-head Termux typecheck, production build, and repository synchronization.
+- Generate the Wave XV promotion attestation.
+- Require exact-head CI evidence and provider evidence before promotion to `main`.
+
+---
+
 ## 2026-07-26 — Wave XIV Guarded Candidate Ref Publisher
 
 Grounding:

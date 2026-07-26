@@ -50,7 +50,7 @@ echo
 INDEX_FILE="docs/repo/repo-index.json"
 GEN_SCRIPT="scripts/repo-index.sh"
 
-echo "[1/16] Repo index integrity"
+echo "[1/17] Repo index integrity"
 if [[ ! -f "$GEN_SCRIPT" ]]; then
   fail "Missing generator script: $GEN_SCRIPT"
 elif [[ ! -f "$INDEX_FILE" ]]; then
@@ -95,7 +95,7 @@ else
 fi
 echo
 
-echo "[2/16] Architect GPT manifest integrity"
+echo "[2/17] Architect GPT manifest integrity"
 MANIFEST="docs/governance/architectgpt/architect-gpt-manifest.yaml"
 ARCH_DOC="docs/governance/architectgpt/architect-gpt.md"
 if [[ ! -f "$MANIFEST" ]]; then fail "Missing manifest: $MANIFEST"; fi
@@ -124,7 +124,7 @@ if [[ -f "$MANIFEST" && -f "$ARCH_DOC" ]]; then
 fi
 echo
 
-echo "[3/16] Governance canonical surface checks"
+echo "[3/17] Governance canonical surface checks"
 required_governance_files=(
   "docs/governance/governance-specification.md"
   "docs/governance/treasury-constitution.md"
@@ -158,13 +158,15 @@ required_governance_files=(
   "docs/governance/architectgpt/candidate-commit.schema.json"
   "docs/governance/architectgpt/candidate-publisher-protocol.md"
   "docs/governance/architectgpt/candidate-publisher.schema.json"
+  "docs/governance/architectgpt/remote-publisher-protocol.md"
+  "docs/governance/architectgpt/remote-publisher.schema.json"
 )
 for f in "${required_governance_files[@]}"; do
   if [[ -f "$f" ]]; then echo "✅ present: $f"; else fail "Missing governance file: $f"; fi
 done
 echo
 
-echo "[4/16] Orchestration control checks"
+echo "[4/17] Orchestration control checks"
 ORCHESTRATOR="scripts/architect/orchestrate.sh"
 REGISTRY="docs/governance/architectgpt/capability-registry.yaml"
 if [[ ! -f "$ORCHESTRATOR" ]]; then
@@ -182,7 +184,7 @@ for permission in R0 R1 W1 W2 W3 C1; do
 done
 echo
 
-echo "[5/16] Evidence schema and validator checks"
+echo "[5/17] Evidence schema and validator checks"
 SCHEMA="docs/governance/architectgpt/execution-record.schema.json"
 VALIDATOR="scripts/architect/validate-evidence.py"
 if jq empty "$SCHEMA" >/dev/null 2>&1; then echo "✅ valid JSON schema document: $SCHEMA"; else fail "Invalid JSON schema document: $SCHEMA"; fi
@@ -209,7 +211,7 @@ else
 fi
 echo
 
-echo "[6/16] Promotion gate checks"
+echo "[6/17] Promotion gate checks"
 PROMOTION_GATE="scripts/architect/promotion-gate.sh"
 PROMOTION_PROTOCOL="docs/governance/architectgpt/promotion-protocol.md"
 if [[ ! -f "$PROMOTION_GATE" ]]; then
@@ -230,7 +232,7 @@ fi
 if [[ -f "$PROMOTION_PROTOCOL" ]]; then echo "✅ promotion protocol present"; else fail "Missing promotion protocol"; fi
 echo
 
-echo "[7/16] Provider health and drift checks"
+echo "[7/17] Provider health and drift checks"
 PROVIDER_SCHEMA="docs/governance/architectgpt/provider-health.schema.json"
 PROVIDER_MONITOR="scripts/architect/provider-health.py"
 PROVIDER_TEST="scripts/architect/test-provider-health.sh"
@@ -245,7 +247,7 @@ else
 fi
 echo
 
-echo "[8/16] Repository change plan and patch bundle checks"
+echo "[8/17] Repository change plan and patch bundle checks"
 CHANGE_PLAN_SCHEMA="docs/governance/architectgpt/change-plan.schema.json"
 CHANGE_PLAN_GENERATOR="scripts/architect/change-plan.py"
 CHANGE_PLAN_TEST="scripts/architect/test-change-plan.sh"
@@ -261,7 +263,7 @@ else
 fi
 echo
 
-echo "[9/16] TypeScript AST and dependency integrity checks"
+echo "[9/17] TypeScript AST and dependency integrity checks"
 AST_SCHEMA="docs/governance/architectgpt/ast-integrity.schema.json"
 AST_ANALYZER="scripts/architect/ast-integrity.py"
 AST_TEST="scripts/architect/test-ast-integrity.sh"
@@ -277,7 +279,7 @@ else
 fi
 echo
 
-echo "[10/16] Build log diagnostics and deployment attribution checks"
+echo "[10/17] Build log diagnostics and deployment attribution checks"
 BUILD_DIAGNOSTICS_SCHEMA="docs/governance/architectgpt/build-diagnostics.schema.json"
 BUILD_DIAGNOSTICS_PARSER="scripts/architect/build-diagnostics.py"
 BUILD_DIAGNOSTICS_TEST="scripts/architect/test-build-diagnostics.sh"
@@ -307,7 +309,7 @@ else
 fi
 echo
 
-echo "[11/16] Repository timeline and lineage integrity checks"
+echo "[11/17] Repository timeline and lineage integrity checks"
 TIMELINE_SCHEMA="docs/governance/architectgpt/repository-timeline.schema.json"
 TIMELINE_GENERATOR="scripts/architect/repository-timeline.py"
 TIMELINE_TEST="scripts/architect/test-repository-timeline.sh"
@@ -337,7 +339,7 @@ else
 fi
 echo
 
-echo "[12/16] Change impact graph integrity checks"
+echo "[12/17] Change impact graph integrity checks"
 IMPACT_SCHEMA="docs/governance/architectgpt/impact-graph.schema.json"
 IMPACT_GENERATOR="scripts/architect/impact-graph.py"
 IMPACT_TEST="scripts/architect/test-impact-graph.sh"
@@ -372,7 +374,7 @@ fi
 
 echo
 
-echo "[13/16] Isolated patch executor integrity checks"
+echo "[13/17] Isolated patch executor integrity checks"
 PATCH_EXECUTOR_SCHEMA="docs/governance/architectgpt/patch-executor.schema.json"
 PATCH_EXECUTOR="scripts/architect/patch-executor.py"
 PATCH_EXECUTOR_TEST="scripts/architect/test-patch-executor.sh"
@@ -407,7 +409,7 @@ fi
 
 echo
 
-echo "[14/16] Deterministic candidate commit integrity checks"
+echo "[14/17] Deterministic candidate commit integrity checks"
 CANDIDATE_COMMIT_SCHEMA="docs/governance/architectgpt/candidate-commit.schema.json"
 CANDIDATE_COMMIT_BUILDER="scripts/architect/candidate-commit.py"
 CANDIDATE_COMMIT_TEST="scripts/architect/test-candidate-commit.sh"
@@ -443,7 +445,7 @@ fi
 echo
 
 
-echo "[15/16] Guarded candidate ref publisher integrity checks"
+echo "[15/17] Guarded candidate ref publisher integrity checks"
 CANDIDATE_PUBLISHER_SCHEMA="docs/governance/architectgpt/candidate-publisher.schema.json"
 CANDIDATE_PUBLISHER="scripts/architect/candidate-publisher.py"
 CANDIDATE_PUBLISHER_TEST="scripts/architect/test-candidate-publisher.sh"
@@ -479,7 +481,44 @@ fi
 echo
 
 
-echo "[16/16] Archive checks (deprecated files)"
+echo "[16/17] Guarded remote ref publisher integrity checks"
+REMOTE_PUBLISHER_SCHEMA="docs/governance/architectgpt/remote-publisher.schema.json"
+REMOTE_PUBLISHER="scripts/architect/remote-publisher.py"
+REMOTE_PUBLISHER_TEST="scripts/architect/test-remote-publisher.sh"
+
+if jq empty "$REMOTE_PUBLISHER_SCHEMA" >/dev/null 2>&1; then
+  echo "✅ valid remote publisher schema: $REMOTE_PUBLISHER_SCHEMA"
+else
+  fail "Invalid remote publisher schema: $REMOTE_PUBLISHER_SCHEMA"
+fi
+
+if python3 -m py_compile "$REMOTE_PUBLISHER"; then
+  echo "✅ Python syntax: $REMOTE_PUBLISHER"
+else
+  fail "Invalid Python syntax: $REMOTE_PUBLISHER"
+fi
+
+if bash -n "$REMOTE_PUBLISHER_TEST"; then
+  echo "✅ shell syntax: $REMOTE_PUBLISHER_TEST"
+else
+  fail "Invalid shell syntax: $REMOTE_PUBLISHER_TEST"
+fi
+
+if bash "$REMOTE_PUBLISHER_TEST" >/dev/null; then
+  echo "✅ remote publisher defaults to deterministic dry-run"
+  echo "✅ remote publisher requires exact request-digest confirmation"
+  echo "✅ remote publisher enforces an exact origin/mobile lease"
+  echo "✅ remote publisher updates only the authorized integration ref"
+  echo "✅ remote publisher preserves local state, main, tags, merge, and deploy boundaries"
+  echo "✅ remote publisher rejects drift, tampering, stale evidence, dirty state, and unauthorized requests"
+else
+  fail "Guarded remote ref publisher integrity fixtures failed"
+fi
+
+echo
+
+
+echo "[17/17] Archive checks (deprecated files)"
 archive_files=(
   "docs/archive/architectgpt/architectgpt-core.md"
   "docs/archive/architectgpt/architectgpt-extended.md"
