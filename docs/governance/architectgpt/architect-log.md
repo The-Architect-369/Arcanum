@@ -33,6 +33,48 @@ Each session entry should include:
 
 ---
 
+## 2026-07-26 — Wave XVIII-A Guarded Promotion Orchestrator
+
+Grounding:
+
+- Repository: `The-Architect-369/Arcanum`
+- Branch: `mobile`
+- Phase: Pre-Genesis
+- Stable base: `9500e56392bd486823040c596c5d969af50578b7`
+- Initial integration head: `8daf4e89f2db11a116ea2e0e63633aece745eda3`
+- Purpose: compress promotion into one resumable coordination command while preserving the explicit W3 merge boundary
+
+Summary:
+
+- Added the guarded promotion-orchestrator protocol and state schema.
+- Added the `promote-wave.sh` entrypoint and Python coordinator.
+- Added deterministic resumable state under `.architect-reports/orchestration/waves`.
+- Added exact branch, remote-head, and base-ancestry grounding.
+- Added promotion, PR, CI, provider, authorization-package, and merge-request validation.
+- Added stale-state and state-digest rejection.
+- Delegated the only W3 mutation to the guarded merge executor.
+- Preserved merge, deployment, rollback, tag, mobile-sync, and ratification prohibitions before W3.
+- Added executable deterministic fixtures and Termux-compatible state handling.
+- Integrated the accelerator as repository verification layer 20 of 21.
+
+Authority boundary:
+
+- The orchestrator coordinates evidence and local state before W3.
+- It does not create a new merge primitive.
+- It does not infer or silently grant W3 authorization.
+- It does not deploy, roll back, update tags, synchronize `mobile`, or ratify canon.
+- The Human Architect retains final merge authority.
+
+Follow-up actions:
+
+- Refresh canonical checksums and repository index.
+- Run Doctrine Guard and Verify Sync 21/21.
+- Run exact-head Termux verification.
+- Generate the Wave XVIII-A promotion attestation.
+- Require exact-head hosted CI and provider readiness before promotion.
+
+---
+
 ## 2026-07-26 — Wave XVIII Agent Registry and Invocation Protocol
 
 Grounding:

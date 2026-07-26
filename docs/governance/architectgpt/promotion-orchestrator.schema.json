@@ -21,16 +21,49 @@
     "state_sha256"
   ],
   "properties": {
-    "schema_version": {"const": "1.0"},
-    "record_type": {"const": "promotion_orchestrator_state"},
-    "repository": {"const": "https://github.com/The-Architect-369/Arcanum.git"},
-    "wave": {"type": "string", "pattern": "^wave-[a-z0-9-]+$"},
-    "base_branch": {"const": "main"},
-    "head_branch": {"const": "mobile"},
-    "expected_head_sha": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
-    "pull_request_number": {"type": ["integer", "null"], "minimum": 1},
-    "mode": {"enum": ["dry_run", "prepare"]},
-    "status": {"enum": ["blocked", "in_progress", "ready_for_w3"]},
+    "schema_version": {
+      "const": "1.0"
+    },
+    "record_type": {
+      "const": "promotion_orchestrator_state"
+    },
+    "repository": {
+      "const": "https://github.com/The-Architect-369/Arcanum.git"
+    },
+    "wave": {
+      "type": "string",
+      "pattern": "^wave-[a-z0-9-]+$"
+    },
+    "base_branch": {
+      "const": "main"
+    },
+    "head_branch": {
+      "const": "mobile"
+    },
+    "expected_head_sha": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$"
+    },
+    "pull_request_number": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 1
+    },
+    "mode": {
+      "enum": [
+        "dry_run",
+        "prepare"
+      ]
+    },
+    "status": {
+      "enum": [
+        "blocked",
+        "in_progress",
+        "ready_for_w3"
+      ]
+    },
     "stage": {
       "enum": [
         "ground",
@@ -43,37 +76,93 @@
     },
     "checks": {
       "type": "object",
-      "additionalProperties": {"enum": ["pending", "pass", "fail", "unavailable"]}
+      "additionalProperties": {
+        "enum": [
+          "pending",
+          "pass",
+          "fail",
+          "unavailable"
+        ]
+      }
     },
     "evidence": {
       "type": "object",
-      "additionalProperties": {"type": ["string", "null"]}
+      "additionalProperties": {
+        "type": [
+          "string",
+          "null"
+        ]
+      }
     },
     "blockers": {
       "type": "array",
-      "items": {"type": "string"},
+      "items": {
+        "type": "string"
+      },
       "uniqueItems": true
     },
     "effects": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["performed", "allowed_before_w3", "forbidden_before_w3"],
+      "required": [
+        "performed",
+        "allowed_before_w3",
+        "forbidden_before_w3"
+      ],
       "properties": {
-        "performed": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
-        "allowed_before_w3": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
-        "forbidden_before_w3": {"type": "array", "items": {"type": "string"}, "uniqueItems": true}
+        "performed": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "allowed_before_w3": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "forbidden_before_w3": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        }
       }
     },
     "authorization": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["required_permission", "human_authorization_required", "merge_performed"],
+      "required": [
+        "required_permission",
+        "human_authorization_required",
+        "merge_performed"
+      ],
       "properties": {
-        "required_permission": {"const": "W3"},
-        "human_authorization_required": {"const": true},
-        "merge_performed": {"const": false}
+        "required_permission": {
+          "const": "W3"
+        },
+        "human_authorization_required": {
+          "const": true
+        },
+        "merge_performed": {
+          "const": false
+        },
+        "request_sha256": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^[0-9a-f]{64}$"
+        }
       }
     },
-    "state_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+    "state_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    }
   }
 }

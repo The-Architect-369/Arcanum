@@ -1,6 +1,6 @@
 ---
 title: "Architect GPT Guarded Promotion Orchestrator Protocol"
-status: proposed
+status: active
 version: "1.0"
 phase: "Pre-Genesis"
 authority: "bounded_w2_before_w3"
@@ -49,13 +49,12 @@ The state file is evidentiary and local. It is not canon and must not silently m
 
 ## Stages
 
-1. `grounded`
-2. `local_verified`
-3. `pr_bound`
-4. `hosted_verified`
-5. `authorization_ready`
-6. `merge_ready`
-7. `merged`
+1. `ground`
+2. `local_verification`
+3. `promotion_attestation`
+4. `hosted_evidence`
+5. `merge_authorization`
+6. `ready_for_w3`
 
 Stages are monotonic for one exact head. If the head commit changes, the orchestrator must fail closed and require a new state file or explicit reset.
 

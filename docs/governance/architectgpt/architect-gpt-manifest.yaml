@@ -347,6 +347,46 @@ agent_invocation_control:
     - ratify
   authority: evidentiary_only
 
+promotion_orchestrator_control:
+  protocol: docs/governance/architectgpt/promotion-orchestrator-protocol.md
+  schema: docs/governance/architectgpt/promotion-orchestrator.schema.json
+  entrypoint: scripts/architect/promote-wave.sh
+  orchestrator: scripts/architect/promotion-orchestrator.py
+  fixtures: scripts/architect/test-promotion-orchestrator.sh
+  state_directory: .architect-reports/orchestration/waves
+  required_head_branch: mobile
+  required_base_branch: main
+  exact_head_required: true
+  clean_checkout_required: true
+  remote_sync_required: true
+  base_ancestry_required: true
+  resumable_state_required: true
+  deterministic_state_digest_required: true
+  promotion_attestation_required: true
+  pull_request_identity_required: true
+  ci_attestation_required: true
+  provider_readiness_required: true
+  merge_authorization_package_required: true
+  merge_execution_request_required: true
+  explicit_w3_authorization_required: true
+  request_digest_confirmation_required: true
+  dry_run_default: true
+  allowed_pre_w3_effects:
+    - read_repository
+    - run_local_verification
+    - read_pull_request
+    - validate_evidence
+    - write_local_state
+  forbidden_pre_w3_effects:
+    - merge
+    - deploy
+    - rollback
+    - tag_update
+    - mobile_sync
+    - canonical_ratification
+  delegated_merge_executor: scripts/architect/merge-executor.py
+  authority: bounded_coordination_before_explicit_w3
+
 mobile_verification:
   environment: Android Termux in isolated work profile
   bootstrap: scripts/mobile/termux-bootstrap.sh
@@ -430,6 +470,11 @@ files:
   agent_invocation_schema: docs/governance/architectgpt/agent-invocation.schema.json
   agent_invocation_runner: scripts/architect/agent-run.py
   agent_invocation_fixtures: scripts/architect/test-agent-run.sh
+  promotion_orchestrator_protocol: docs/governance/architectgpt/promotion-orchestrator-protocol.md
+  promotion_orchestrator_schema: docs/governance/architectgpt/promotion-orchestrator.schema.json
+  promotion_orchestrator_entrypoint: scripts/architect/promote-wave.sh
+  promotion_orchestrator: scripts/architect/promotion-orchestrator.py
+  promotion_orchestrator_fixtures: scripts/architect/test-promotion-orchestrator.sh
   mobile_bootstrap: scripts/mobile/termux-bootstrap.sh
   mobile_verify: scripts/mobile/termux-verify.sh
 
