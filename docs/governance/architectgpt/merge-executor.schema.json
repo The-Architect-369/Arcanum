@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://the-arcanum.net/schemas/merge-executor.schema.json",
+  "title": "Architect GPT Guarded Merge Executor Records",
+  "oneOf": [
+    {"$ref": "#/$defs/request"},
+    {"$ref": "#/$defs/attestation"}
+  ],
+  "$defs": {
+    "sha40": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "sha64": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "request": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema_version", "record_type", "repository", "pull_request_number",
+        "base_branch", "head_branch", "expected_head_sha", "merge_method",
+        "merge_authorization_package_sha256", "permission_class",
+        "authorization", "summary", "request_sha256"
+      ],
+      "properties": {
+        "schema_version": {"const": "1.0"},
+        "record_type": {"const": "merge_execution_request"},
+        "repository": {"const": "https://github.com/The-Architect-369/Arcanum.git"},
+        "pull_request_number": {"type": "integer", "minimum": 1},
+        "base_branch": {"const": "main"},
+        "head_branch": {"const": "mobile"},
+        "expected_head_sha": {"$ref": "#/$defs/sha40"},
+        "merge_method": {"const": "merge"},
+        "merge_authorization_package_sha256": {"$ref": "#/$defs/sha64"},
+        "permission_class": {"const": "W3"},
+        "authorization": {"const": "explicit_human_request"},
+        "summary": {"type": "string", "minLength": 1},
+        "request_sha256": {"$ref": "#/$defs/sha64"}
+      }
+    },
+    "attestation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema_version", "record_type", "repository", "pull_request_number",
+        "base_branch", "head_branch", "expected_head_sha",
+        "expected_old_main_sha", "actual_new_main_sha", "merge_method",
+        "merge_authorization_package_sha256", "merge_execution_request_sha256",
+        "mode", "status", "main_updated", "mobile_updated", "tag_updated",
+        "merge_performed", "deploy_performed", "provider_output_sha256",
+        "authority", "attestation_sha256"
+      ],
+      "properties": {
+        "schema_version": {"const": "1.0"},
+        "record_type": {"const": "merge_execution_attestation"},
+        "repository": {"const": "https://github.com/The-Architect-369/Arcanum.git"},
+        "pull_request_number": {"type": "integer", "minimum": 1},
+        "base_branch": {"const": "main"},
+        "head_branch": {"const": "mobile"},
+        "expected_head_sha": {"$ref": "#/$defs/sha40"},
+        "expected_old_main_sha": {"$ref": "#/$defs/sha40"},
+        "actual_new_main_sha": {"oneOf": [{"type": "null"}, {"$ref": "#/$defs/sha40"}]},
+        "merge_method": {"const": "merge"},
+        "merge_authorization_package_sha256": {"$ref": "#/$defs/sha64"},
+        "merge_execution_request_sha256": {"$ref": "#/$defs/sha64"},
+        "mode": {"enum": ["dry_run", "apply"]},
+        "status": {"enum": ["ready", "merged"]},
+        "main_updated": {"type": "boolean"},
+        "mobile_updated": {"const": false},
+        "tag_updated": {"const": false},
+        "merge_performed": {"type": "boolean"},
+        "deploy_performed": {"const": false},
+        "provider_output_sha256": {"oneOf": [{"type": "null"}, {"$ref": "#/$defs/sha64"}]},
+        "authority": {"enum": ["evidentiary_only", "pull_request_merge_only"]},
+        "attestation_sha256": {"$ref": "#/$defs/sha64"}
+      }
+    }
+  }
+}
