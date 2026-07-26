@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-07-26T22:25:49Z",
+  "generated_at": "2026-07-26T22:31:13Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "df85a2bdf",
+  "commit": "535e71899",
   "generator_version": "1.2",
   "files": [
     {
@@ -3392,7 +3392,7 @@
       "path": "docs/governance/architectgpt/architect-gpt-manifest.yaml",
       "type": "file",
       "size_bytes": 22929,
-      "last_modified_commit": "0a9b8dc",
+      "last_modified_commit": "535e718",
       "is_empty": false,
       "extension": ".yaml",
       "lines": 528
@@ -3410,7 +3410,7 @@
       "path": "docs/governance/architectgpt/architect-log.md",
       "type": "file",
       "size_bytes": 34859,
-      "last_modified_commit": "0a9b8dc",
+      "last_modified_commit": "535e718",
       "is_empty": false,
       "extension": ".md",
       "lines": 817
@@ -3500,7 +3500,7 @@
       "path": "docs/governance/architectgpt/capability-registry.yaml",
       "type": "file",
       "size_bytes": 7313,
-      "last_modified_commit": "0a9b8dc",
+      "last_modified_commit": "535e718",
       "is_empty": false,
       "extension": ".yaml",
       "lines": 230
@@ -3895,11 +3895,11 @@
     {
       "path": "docs/repo/repo-index.json",
       "type": "file",
-      "size_bytes": 182329,
-      "last_modified_commit": "0a9b8dc",
+      "size_bytes": 183275,
+      "last_modified_commit": "535e718",
       "is_empty": false,
       "extension": ".json",
-      "lines": 6776
+      "lines": 6812
     },
     {
       "path": "docs/repo/repo-interface.md",
@@ -4346,7 +4346,7 @@
       "path": "docs/tooling/doctrine-checksums/doctrine-checksums.yaml",
       "type": "file",
       "size_bytes": 2286,
-      "last_modified_commit": "0a9b8dc",
+      "last_modified_commit": "535e718",
       "is_empty": false,
       "extension": ".yaml",
       "lines": 27
@@ -6794,7 +6794,7 @@
       "path": "scripts/verify-sync.sh",
       "type": "file",
       "size_bytes": 33370,
-      "last_modified_commit": "0a9b8dc",
+      "last_modified_commit": "535e718",
       "is_empty": false,
       "extension": ".sh",
       "lines": 803
