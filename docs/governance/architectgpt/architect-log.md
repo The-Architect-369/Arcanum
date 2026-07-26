@@ -33,6 +33,68 @@ Each session entry should include:
 
 ---
 
+## 2026-07-26 — Wave XVI Deterministic Merge Authorization Package
+
+Grounding:
+
+- Repository: `The-Architect-369/Arcanum`
+- Branch: `mobile`
+- Phase: Pre-Genesis
+- Stable base: `ac8074c5dfa94b0e7116b143555810e3b5f124e2`
+- Purpose: bind all exact-head promotion evidence into a deterministic, non-mutating W3 merge authorization package
+
+Summary:
+
+- Added a deterministic merge-authorization builder.
+- Added exact binding to the local promotion attestation.
+- Added exact binding to successful CI promotion evidence.
+- Added exact binding to provider readiness evidence.
+- Added pull-request number, head branch, base branch, expected head SHA, and merge-method constraints.
+- Added explicit W3 permission and human-authorization requirements.
+- Added deterministic package identity and digest verification.
+- Added rejection of stale, malformed, mismatched, or unauthorized evidence.
+- Added explicit proof that the capability cannot create a PR, push, update refs, merge, or deploy.
+- Removed an unrelated promotion-PR publisher so Wave XVI retains a singular authority surface.
+- Added canonical schema, protocol, and executable fixtures.
+- Integrated the fixture suite as repository verification layer 17 of 18.
+
+Verification status:
+
+- JSON schema parsing: green.
+- Python syntax: green.
+- Shell fixture syntax: green.
+- Deterministic authorization package: green.
+- Exact promotion-attestation binding: green.
+- Exact CI-attestation binding: green.
+- Exact provider-evidence binding: green.
+- Pull-request and expected-head binding: green.
+- Merge-method binding: green.
+- Explicit W3 human authorization: green.
+- Stale evidence rejection: green.
+- Mismatched evidence rejection: green.
+- Malformed evidence rejection: green.
+- Unauthorized request rejection: green.
+- No mutation authority: green.
+- Concurrent PR-publisher scope removed: green.
+
+Doctrinal impact:
+
+- The authorization package is evidentiary-only.
+- It does not itself exercise W3 merge authority.
+- It cannot create pull requests, commits, pushes, ref updates, merges, deployments, or rollbacks.
+- Actual merge execution remains a separate explicit human-authorized W3 action.
+- Expected-head protection remains mandatory at merge execution time.
+
+Follow-up actions:
+
+- Refresh the manifest doctrine checksum and repository index.
+- Run Doctrine Guard and Verify Sync 18/18.
+- Run exact-head Termux typecheck, production build, and repository synchronization.
+- Generate the Wave XVI promotion attestation.
+- Require exact-head CI and provider evidence before promotion to `main`.
+
+---
+
 ## 2026-07-26 — Wave XV Guarded Remote Ref Publisher
 
 Grounding:
