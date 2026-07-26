@@ -287,6 +287,28 @@ merge_authorization_control:
   forbidden_actions: [pr_create, commit, push, ref_update, merge, deploy]
   authority: evidentiary_only
 
+merge_executor_control:
+  protocol: docs/governance/architectgpt/merge-executor-protocol.md
+  schema: docs/governance/architectgpt/merge-executor.schema.json
+  executor: scripts/architect/merge-executor.py
+  fixtures: scripts/architect/test-merge-executor.sh
+  report_directory: .architect-reports/orchestration/merge-executions
+  required_head_branch: mobile
+  required_base_branch: main
+  required_remote: origin
+  permission_class: W3
+  merge_authorization_package_required: true
+  explicit_human_authorization_required: true
+  request_digest_confirmation_required: true
+  exact_head_required: true
+  expected_head_guard_required: true
+  dry_run_default: true
+  merge_method: merge
+  allowed_effect: expected_head_protected_pull_request_merge
+  forbidden_actions: [pr_create, direct_push, tag_update, mobile_update, deploy, rollback]
+  dry_run_authority: evidentiary_only
+  apply_authority: pull_request_merge_only
+
 mobile_verification:
   environment: Android Termux in isolated work profile
   bootstrap: scripts/mobile/termux-bootstrap.sh
@@ -361,6 +383,10 @@ files:
   merge_authorization_schema: docs/governance/architectgpt/merge-authorization.schema.json
   merge_authorization_builder: scripts/architect/merge-authorization.py
   merge_authorization_fixtures: scripts/architect/test-merge-authorization.sh
+  merge_executor_protocol: docs/governance/architectgpt/merge-executor-protocol.md
+  merge_executor_schema: docs/governance/architectgpt/merge-executor.schema.json
+  merge_executor: scripts/architect/merge-executor.py
+  merge_executor_fixtures: scripts/architect/test-merge-executor.sh
   mobile_bootstrap: scripts/mobile/termux-bootstrap.sh
   mobile_verify: scripts/mobile/termux-verify.sh
 

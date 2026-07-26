@@ -33,6 +33,71 @@ Each session entry should include:
 
 ---
 
+## 2026-07-26 — Wave XVII Guarded Merge Executor
+
+Grounding:
+
+- Repository: `The-Architect-369/Arcanum`
+- Branch: `mobile`
+- Phase: Pre-Genesis
+- Stable base: `4987fec7a7c0decde6c97fceaca580d4983532fc`
+- Purpose: execute one explicitly authorized, expected-head-protected pull-request merge
+
+Summary:
+
+- Added a guarded pull-request merge executor.
+- Added deterministic dry-run and apply attestations.
+- Added exact binding to a valid Wave XVI merge-authorization package.
+- Added a separately digested merge-execution request.
+- Added explicit W3 human authorization and request-digest confirmation.
+- Added exact repository, pull-request, base branch, head branch, expected-head, and merge-method constraints.
+- Added live `origin/main` and `origin/mobile` consistency checks.
+- Added open, non-draft, mergeable pull-request validation.
+- Added expected-head protection through the GitHub merge boundary.
+- Added post-merge verification of the exact two-parent merge identity.
+- Added proof that `main` alone advances while `mobile`, tags, deployment state, and the local checkout remain unchanged.
+- Added replay, drift, tampering, dirty-state, and unauthorized-request rejection.
+- Added canonical schema, protocol, executable fixtures, and deterministic attestations.
+- Integrated the fixture suite as repository verification layer 18 of 19.
+
+Verification status:
+
+- JSON schema parsing: green.
+- Python syntax: green.
+- Shell fixture syntax: green.
+- Deterministic dry-run attestation: green.
+- Dry-run repository preservation: green.
+- Exact authorization-package binding: green.
+- Exact request-digest confirmation: green.
+- Explicit W3 human authorization: green.
+- Pull-request identity validation: green.
+- Expected-head protection: green.
+- Merge-only apply path: green.
+- Two-parent merge identity verification: green.
+- Local and remote mobile preservation: green.
+- Tag and deployment preservation: green.
+- Replay rejection: green.
+- Tampered, stale, dirty, and unauthorized input rejection: green.
+
+Doctrinal impact:
+
+- Dry-run authority remains evidentiary-only.
+- Apply authority is limited to one expected-head-protected pull-request merge.
+- The executor cannot create a pull request or push branches directly.
+- The executor cannot modify `mobile`, tags, deployments, or rollback state.
+- Synchronization of `mobile` after a merge remains a separate operation.
+- Provider production closure remains independently observed and recorded.
+
+Follow-up actions:
+
+- Refresh the manifest doctrine checksum and repository index.
+- Run Doctrine Guard and Verify Sync 19/19.
+- Run exact-head Termux typecheck, production build, and repository synchronization.
+- Generate the Wave XVII promotion attestation.
+- Require exact-head CI, preview-provider readiness, and explicit W3 merge authorization before promotion to `main`.
+
+---
+
 ## 2026-07-26 — Wave XVI Deterministic Merge Authorization Package
 
 Grounding:
