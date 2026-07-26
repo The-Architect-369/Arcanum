@@ -115,3 +115,42 @@ hard_rules:
   - permission_denial_must_be_distinguished_from_missing_data
   - constitutional_changes_require_impact_reporting
   - every_external_action_must_be_attributable_to_a_permission_class
+
+agent_fabric:
+  status: registered_plan_only
+  registry: docs/governance/architectgpt/agent-registry.yaml
+  protocol: docs/governance/architectgpt/agent-invocation-protocol.md
+  runner: scripts/architect/agent-run.py
+  authority: evidentiary_only
+  default_policy: deny
+  permission_ceiling: R1
+  execution_enabled: false
+  connected_private_reads_enabled: false
+  external_writes_enabled: false
+  agents:
+    repository_architect:
+      status: registered
+      permission_ceiling: R1
+    canon_guardian:
+      status: registered
+      permission_ceiling: R1
+    product_steward:
+      status: registered
+      permission_ceiling: R1
+    security_sentinel:
+      status: registered
+      permission_ceiling: R1
+    verification_oracle:
+      status: registered
+      permission_ceiling: R1
+    release_steward:
+      status: registered
+      permission_ceiling: R1
+  hard_rules:
+    - agent_identity_must_be_registered
+    - requested_permission_must_not_exceed_ceiling
+    - requested_tools_must_be_allowlisted
+    - every_invocation_must_bind_exact_commit
+    - every_invocation_must_produce_deterministic_attestation
+    - no_agent_tool_execution_in_wave_xviii
+    - human_architect_retains_all_action_authority

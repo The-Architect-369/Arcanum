@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-07-26T15:47:51Z",
+  "generated_at": "2026-07-26T18:34:54Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "94e515a71",
+  "commit": "45593126b",
   "generator_version": "1.2",
   "files": [
     {
@@ -3344,13 +3344,40 @@
       "lines": 284
     },
     {
-      "path": "docs/governance/architectgpt/architect-gpt-manifest.yaml",
+      "path": "docs/governance/architectgpt/agent-invocation-protocol.md",
       "type": "file",
-      "size_bytes": 18025,
-      "last_modified_commit": "1903b49",
+      "size_bytes": 3439,
+      "last_modified_commit": "c0f523e",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 104
+    },
+    {
+      "path": "docs/governance/architectgpt/agent-invocation.schema.json",
+      "type": "file",
+      "size_bytes": 2018,
+      "last_modified_commit": "d7e168b",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 60
+    },
+    {
+      "path": "docs/governance/architectgpt/agent-registry.yaml",
+      "type": "file",
+      "size_bytes": 4129,
+      "last_modified_commit": "4525416",
       "is_empty": false,
       "extension": ".yaml",
-      "lines": 398
+      "lines": 102
+    },
+    {
+      "path": "docs/governance/architectgpt/architect-gpt-manifest.yaml",
+      "type": "file",
+      "size_bytes": 19493,
+      "last_modified_commit": "d9ad796",
+      "is_empty": false,
+      "extension": ".yaml",
+      "lines": 441
     },
     {
       "path": "docs/governance/architectgpt/architect-gpt.md",
@@ -3364,11 +3391,11 @@
     {
       "path": "docs/governance/architectgpt/architect-log.md",
       "type": "file",
-      "size_bytes": 27499,
-      "last_modified_commit": "1903b49",
+      "size_bytes": 30583,
+      "last_modified_commit": "d9ad796",
       "is_empty": false,
       "extension": ".md",
-      "lines": 639
+      "lines": 715
     },
     {
       "path": "docs/governance/architectgpt/ast-integrity-protocol.md",
@@ -3454,11 +3481,11 @@
     {
       "path": "docs/governance/architectgpt/capability-registry.yaml",
       "type": "file",
-      "size_bytes": 3249,
+      "size_bytes": 4466,
       "last_modified_commit": "0c743e3",
       "is_empty": false,
       "extension": ".yaml",
-      "lines": 117
+      "lines": 156
     },
     {
       "path": "docs/governance/architectgpt/change-plan-protocol.md",
@@ -3832,11 +3859,11 @@
     {
       "path": "docs/repo/repo-index.json",
       "type": "file",
-      "size_bytes": 179003,
-      "last_modified_commit": "1903b49",
+      "size_bytes": 179948,
+      "last_modified_commit": "d9ad796",
       "is_empty": false,
       "extension": ".json",
-      "lines": 6650
+      "lines": 6686
     },
     {
       "path": "docs/repo/repo-interface.md",
@@ -4283,7 +4310,7 @@
       "path": "docs/tooling/doctrine-checksums/doctrine-checksums.yaml",
       "type": "file",
       "size_bytes": 2166,
-      "last_modified_commit": "1903b49",
+      "last_modified_commit": "d9ad796",
       "is_empty": false,
       "extension": ".yaml",
       "lines": 26
@@ -6107,6 +6134,15 @@
       "lines": 3
     },
     {
+      "path": "scripts/architect/agent-run.py",
+      "type": "file",
+      "size_bytes": 7986,
+      "last_modified_commit": "3e6cd95",
+      "is_empty": false,
+      "extension": ".py",
+      "lines": 205
+    },
+    {
       "path": "scripts/architect/ast-integrity.py",
       "type": "file",
       "size_bytes": 6407,
@@ -6240,6 +6276,15 @@
       "is_empty": false,
       "extension": ".py",
       "lines": 138
+    },
+    {
+      "path": "scripts/architect/test-agent-run.sh",
+      "type": "file",
+      "size_bytes": 6009,
+      "last_modified_commit": "4559312",
+      "is_empty": false,
+      "extension": ".sh",
+      "lines": 155
     },
     {
       "path": "scripts/architect/test-ast-integrity.sh",
@@ -6667,11 +6712,11 @@
     {
       "path": "scripts/verify-sync.sh",
       "type": "file",
-      "size_bytes": 26548,
-      "last_modified_commit": "1903b49",
+      "size_bytes": 28292,
+      "last_modified_commit": "d9ad796",
       "is_empty": false,
       "extension": ".sh",
-      "lines": 614
+      "lines": 663
     },
     {
       "path": "tsconfig.json",

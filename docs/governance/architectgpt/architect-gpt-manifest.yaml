@@ -309,6 +309,44 @@ merge_executor_control:
   dry_run_authority: evidentiary_only
   apply_authority: pull_request_merge_only
 
+agent_invocation_control:
+  registry: docs/governance/architectgpt/agent-registry.yaml
+  protocol: docs/governance/architectgpt/agent-invocation-protocol.md
+  schema: docs/governance/architectgpt/agent-invocation.schema.json
+  runner: scripts/architect/agent-run.py
+  fixtures: scripts/architect/test-agent-run.sh
+  report_directory: .architect-reports/orchestration/agent-invocations
+  required_branch: mobile
+  exact_commit_required: true
+  registry_default_policy: deny
+  explicit_human_authorization_required: true
+  permission_ceiling_required: true
+  tool_allowlist_required: true
+  deterministic_attestation_required: true
+  initial_agents:
+    - repository_architect
+    - canon_guardian
+    - product_steward
+    - security_sentinel
+    - verification_oracle
+    - release_steward
+  mode: plan_only
+  tools_executed: false
+  external_writes_performed: false
+  forbidden_actions:
+    - tool_execution
+    - connected_private_read
+    - file_write
+    - commit
+    - ref_update
+    - push
+    - pull_request_create
+    - merge
+    - deploy
+    - rollback
+    - ratify
+  authority: evidentiary_only
+
 mobile_verification:
   environment: Android Termux in isolated work profile
   bootstrap: scripts/mobile/termux-bootstrap.sh
@@ -387,6 +425,11 @@ files:
   merge_executor_schema: docs/governance/architectgpt/merge-executor.schema.json
   merge_executor: scripts/architect/merge-executor.py
   merge_executor_fixtures: scripts/architect/test-merge-executor.sh
+  agent_registry: docs/governance/architectgpt/agent-registry.yaml
+  agent_invocation_protocol: docs/governance/architectgpt/agent-invocation-protocol.md
+  agent_invocation_schema: docs/governance/architectgpt/agent-invocation.schema.json
+  agent_invocation_runner: scripts/architect/agent-run.py
+  agent_invocation_fixtures: scripts/architect/test-agent-run.sh
   mobile_bootstrap: scripts/mobile/termux-bootstrap.sh
   mobile_verify: scripts/mobile/termux-verify.sh
 
