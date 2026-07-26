@@ -48,7 +48,7 @@ CANDIDATE="$(
   GIT_COMMITTER_DATE='2026-07-26T00:00:00Z' \
   git -C "$WORKTREE" commit-tree "$TREE" -p "$BASE"
 )"
-git worktree remove -q --force "$WORKTREE"
+git worktree remove --force "$WORKTREE"
 
 python3 - "$CANDIDATE_ATTESTATION" "$BASE" "$TREE" "$CANDIDATE" <<'PY'
 import hashlib
