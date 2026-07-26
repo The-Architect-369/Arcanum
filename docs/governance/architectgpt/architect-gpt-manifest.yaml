@@ -347,6 +347,44 @@ agent_invocation_control:
     - ratify
   authority: evidentiary_only
 
+agent_execution_control:
+  registry: docs/governance/architectgpt/agent-registry.yaml
+  invocation_protocol: docs/governance/architectgpt/agent-invocation-protocol.md
+  invocation_schema: docs/governance/architectgpt/agent-invocation.schema.json
+  protocol: docs/governance/architectgpt/agent-execution-protocol.md
+  schema: docs/governance/architectgpt/agent-execution.schema.json
+  executor: scripts/architect/agent-execute.py
+  fixtures: scripts/architect/test-agent-execute.sh
+  report_directory: .architect-reports/orchestration/agent-executions
+  required_branch: mobile
+  exact_commit_required: true
+  clean_checkout_required: true
+  registry_default_policy: deny
+  invocation_attestation_required: true
+  explicit_human_authorization_required: true
+  maximum_permission_class: R1
+  permission_ceiling_required: true
+  tool_allowlist_required: true
+  supported_tools:
+    - repository.read
+    - repository.search
+  deterministic_attestation_required: true
+  source_checkout_unchanged_required: true
+  refs_unchanged_required: true
+  external_writes_performed: false
+  forbidden_actions:
+    - connected_private_read
+    - file_write
+    - commit
+    - ref_update
+    - push
+    - pull_request_create
+    - merge
+    - deploy
+    - rollback
+    - ratify
+  authority: guarded_local_read_only_execution
+
 promotion_orchestrator_control:
   protocol: docs/governance/architectgpt/promotion-orchestrator-protocol.md
   schema: docs/governance/architectgpt/promotion-orchestrator.schema.json
@@ -470,6 +508,10 @@ files:
   agent_invocation_schema: docs/governance/architectgpt/agent-invocation.schema.json
   agent_invocation_runner: scripts/architect/agent-run.py
   agent_invocation_fixtures: scripts/architect/test-agent-run.sh
+  agent_execution_protocol: docs/governance/architectgpt/agent-execution-protocol.md
+  agent_execution_schema: docs/governance/architectgpt/agent-execution.schema.json
+  agent_execution_runner: scripts/architect/agent-execute.py
+  agent_execution_fixtures: scripts/architect/test-agent-execute.sh
   promotion_orchestrator_protocol: docs/governance/architectgpt/promotion-orchestrator-protocol.md
   promotion_orchestrator_schema: docs/governance/architectgpt/promotion-orchestrator.schema.json
   promotion_orchestrator_entrypoint: scripts/architect/promote-wave.sh
