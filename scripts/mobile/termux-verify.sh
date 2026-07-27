@@ -109,11 +109,24 @@ else
   record FAIL "git repository" "not inside a Git worktree"
 fi
 
-NODE_MAJOR="$(node -p 'process.versions.node.split(".")[0]' 2>/dev/null || true)"
-if [ "$NODE_MAJOR" = "20" ]; then
-  record PASS "Node engine" "$(node --version) matches apps/web package engine 20.x"
-elif [ -n "$NODE_MAJOR" ]; then
-  record WARN "Node engine" "$(node --version); apps/web declares 20.x"
+NODE_VERSION="$(node -p 'process.versions.node' 2>/dev/null || true)"
+NODE_MAJOR="${NODE_VERSION%%.*}"
+DECLARED_NODE_ENGINE="$(
+  node -p "require('$ROOT/apps/web/package.json').engines?.node || ''"     2>/dev/null || true
+)"
+DECLARED_NODE_MAJOR="$(
+  printf '%s' "$DECLARED_NODE_ENGINE" |
+    sed -nE 's/^[^0-9]*([0-9]+).*$/\1/p'
+)"
+
+if [ -z "$NODE_VERSION" ]; then
+  record FAIL "Node engine" "unable to determine installed Node.js version"
+elif [ -z "$DECLARED_NODE_ENGINE" ] || [ -z "$DECLARED_NODE_MAJOR" ]; then
+  record WARN "Node engine" "$(node --version); unable to parse apps/web package engine"
+elif [ "$NODE_MAJOR" = "$DECLARED_NODE_MAJOR" ]; then
+  record PASS "Node engine" "$(node --version) satisfies apps/web engine $DECLARED_NODE_ENGINE"
+else
+  record WARN "Node engine" "$(node --version); apps/web declares $DECLARED_NODE_ENGINE"
 fi
 
 if [ -f "$ROOT/pnpm-lock.yaml" ]; then
