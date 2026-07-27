@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-07-26T22:31:13Z",
+  "generated_at": "2026-07-27T01:37:47Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "535e71899",
+  "commit": "df2e686ca",
   "generator_version": "1.2",
   "files": [
     {
@@ -197,7 +197,7 @@
       "path": ".github/workflows/architect-promotion.yml",
       "type": "file",
       "size_bytes": 1922,
-      "last_modified_commit": "54d1a30",
+      "last_modified_commit": "df2e686",
       "is_empty": false,
       "extension": ".yml",
       "lines": 68
@@ -206,7 +206,7 @@
       "path": ".github/workflows/doctrine-guard.yml",
       "type": "file",
       "size_bytes": 1205,
-      "last_modified_commit": "a531be6",
+      "last_modified_commit": "df2e686",
       "is_empty": false,
       "extension": ".yml",
       "lines": 53
@@ -215,7 +215,7 @@
       "path": ".github/workflows/verify-sync.yml",
       "type": "file",
       "size_bytes": 968,
-      "last_modified_commit": "c1773bd",
+      "last_modified_commit": "df2e686",
       "is_empty": false,
       "extension": ".yml",
       "lines": 41
@@ -230,6 +230,15 @@
       "lines": 50
     },
     {
+      "path": ".node-version",
+      "type": "file",
+      "size_bytes": 3,
+      "last_modified_commit": "df2e686",
+      "is_empty": false,
+      "extension": "",
+      "lines": 1
+    },
+    {
       "path": ".npmrc",
       "type": "file",
       "size_bytes": 28,
@@ -242,7 +251,7 @@
       "path": ".nvmrc",
       "type": "file",
       "size_bytes": 3,
-      "last_modified_commit": "695b32b",
+      "last_modified_commit": "df2e686",
       "is_empty": false,
       "extension": "",
       "lines": 1
@@ -386,7 +395,7 @@
       "path": "apps/web/package.json",
       "type": "file",
       "size_bytes": 1934,
-      "last_modified_commit": "18414c2",
+      "last_modified_commit": "df2e686",
       "is_empty": false,
       "extension": ".json",
       "lines": 65
@@ -3896,7 +3905,7 @@
       "path": "docs/repo/repo-index.json",
       "type": "file",
       "size_bytes": 183275,
-      "last_modified_commit": "535e718",
+      "last_modified_commit": "4721516",
       "is_empty": false,
       "extension": ".json",
       "lines": 6812
@@ -6145,11 +6154,11 @@
     {
       "path": "package.json",
       "type": "file",
-      "size_bytes": 1092,
-      "last_modified_commit": "5da311e",
+      "size_bytes": 1098,
+      "last_modified_commit": "df2e686",
       "is_empty": false,
       "extension": ".json",
-      "lines": 36
+      "lines": 38
     },
     {
       "path": "pnpm-lock.yaml",
@@ -6541,11 +6550,11 @@
     {
       "path": "scripts/mobile/termux-verify.sh",
       "type": "file",
-      "size_bytes": 4049,
+      "size_bytes": 4595,
       "last_modified_commit": "67fab0c",
       "is_empty": false,
       "extension": ".sh",
-      "lines": 152
+      "lines": 165
     },
     {
       "path": "scripts/node/local-reset.sh",

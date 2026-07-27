@@ -4,7 +4,9 @@
   "version": "1.0.0",
   "description": "Arcanum monorepo (apps: web; contracts: foundry/hardhat).",
   "packageManager": "pnpm@9.10.0",
-  "engines": { "node": "20.x" },
+  "engines": {
+    "node": "24.x"
+  },
   "scripts": {
     "dev": "pnpm -C apps/web dev",
     "build": "pnpm -C apps/web build",
