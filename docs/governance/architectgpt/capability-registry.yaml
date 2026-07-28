@@ -265,3 +265,50 @@ post_merge_closure:
     - rollback_forbidden
     - canonical_ratification_forbidden
     - human_architect_retains_action_authority
+
+production_smoke:
+  status: active_read_only
+  wave: XXI
+  protocol: docs/governance/architectgpt/production-smoke-protocol.md
+  schema: docs/governance/architectgpt/production-smoke.schema.json
+  route_manifest: docs/governance/architectgpt/production-smoke-routes.json
+  entrypoint: scripts/architect/smoke-production.sh
+  executor: scripts/architect/production-smoke.py
+  fixtures: scripts/architect/test-production-smoke.sh
+  report_directory: .architect-reports/orchestration/production-smoke
+  provider: vercel
+  permission_class: R1
+  exact_commit_required: true
+  production_ready_required: true
+  allowlisted_hosts_required: true
+  allowed_methods:
+    - GET
+    - HEAD
+  request_body_forbidden: true
+  credentials_forbidden: true
+  cookies_forbidden: true
+  authorization_headers_forbidden: true
+  same_host_redirects_only: true
+  deterministic_manifest_digest_required: true
+  deterministic_request_digest_required: true
+  automatic_merge_enabled: false
+  automatic_deployment_enabled: false
+  automatic_rollback_enabled: false
+  hard_rules:
+    - fail_closed_on_commit_mismatch
+    - fail_closed_on_non_ready_deployment
+    - fail_closed_on_unallowlisted_host
+    - fail_closed_on_mutation_method
+    - fail_closed_on_cross_host_redirect
+    - fail_closed_on_missing_response_marker
+    - request_bodies_forbidden
+    - credentials_forbidden
+    - cookies_forbidden
+    - authorization_headers_forbidden
+    - wallet_signatures_forbidden
+    - account_mutations_forbidden
+    - merge_forbidden
+    - deploy_forbidden
+    - rollback_forbidden
+    - canonical_ratification_forbidden
+    - human_architect_retains_action_authority

@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-07-28T01:46:30Z",
+  "generated_at": "2026-07-28T09:48:33Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "5db52de88",
+  "commit": "523baf8cd",
   "generator_version": "1.2",
   "files": [
     {
@@ -3400,11 +3400,11 @@
     {
       "path": "docs/governance/architectgpt/architect-gpt-manifest.yaml",
       "type": "file",
-      "size_bytes": 24300,
-      "last_modified_commit": "535e718",
+      "size_bytes": 26464,
+      "last_modified_commit": "688451e",
       "is_empty": false,
       "extension": ".yaml",
-      "lines": 561
+      "lines": 616
     },
     {
       "path": "docs/governance/architectgpt/architect-gpt.md",
@@ -3418,11 +3418,11 @@
     {
       "path": "docs/governance/architectgpt/architect-log.md",
       "type": "file",
-      "size_bytes": 37191,
-      "last_modified_commit": "535e718",
+      "size_bytes": 40069,
+      "last_modified_commit": "688451e",
       "is_empty": false,
       "extension": ".md",
-      "lines": 876
+      "lines": 950
     },
     {
       "path": "docs/governance/architectgpt/ast-integrity-protocol.md",
@@ -3508,11 +3508,11 @@
     {
       "path": "docs/governance/architectgpt/capability-registry.yaml",
       "type": "file",
-      "size_bytes": 8664,
-      "last_modified_commit": "535e718",
+      "size_bytes": 10305,
+      "last_modified_commit": "688451e",
       "is_empty": false,
       "extension": ".yaml",
-      "lines": 267
+      "lines": 314
     },
     {
       "path": "docs/governance/architectgpt/change-plan-protocol.md",
@@ -3659,13 +3659,40 @@
       "lines": 80
     },
     {
-      "path": "docs/governance/architectgpt/promotion-orchestrator-protocol.md",
+      "path": "docs/governance/architectgpt/production-smoke-protocol.md",
       "type": "file",
-      "size_bytes": 4634,
-      "last_modified_commit": "0a9b8dc",
+      "size_bytes": 7440,
+      "last_modified_commit": "2ca68bc",
       "is_empty": false,
       "extension": ".md",
-      "lines": 139
+      "lines": 180
+    },
+    {
+      "path": "docs/governance/architectgpt/production-smoke-routes.json",
+      "type": "file",
+      "size_bytes": 2358,
+      "last_modified_commit": "1f12b45",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 106
+    },
+    {
+      "path": "docs/governance/architectgpt/production-smoke.schema.json",
+      "type": "file",
+      "size_bytes": 5534,
+      "last_modified_commit": "853e75d",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 264
+    },
+    {
+      "path": "docs/governance/architectgpt/promotion-orchestrator-protocol.md",
+      "type": "file",
+      "size_bytes": 6413,
+      "last_modified_commit": "523baf8",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 175
     },
     {
       "path": "docs/governance/architectgpt/promotion-orchestrator.schema.json",
@@ -3679,11 +3706,11 @@
     {
       "path": "docs/governance/architectgpt/promotion-protocol.md",
       "type": "file",
-      "size_bytes": 3381,
-      "last_modified_commit": "d2d1e7e",
+      "size_bytes": 5911,
+      "last_modified_commit": "4140463",
       "is_empty": false,
       "extension": ".md",
-      "lines": 101
+      "lines": 139
     },
     {
       "path": "docs/governance/architectgpt/provider-health-protocol.md",
@@ -3769,11 +3796,11 @@
     {
       "path": "docs/governance/governance-changelog.md",
       "type": "file",
-      "size_bytes": 1133,
+      "size_bytes": 1806,
       "last_modified_commit": "60bd5ee",
       "is_empty": false,
       "extension": ".md",
-      "lines": 34
+      "lines": 51
     },
     {
       "path": "docs/governance/governance-councils.md",
@@ -3922,11 +3949,11 @@
     {
       "path": "docs/repo/repo-index.json",
       "type": "file",
-      "size_bytes": 184648,
-      "last_modified_commit": "47f3372",
+      "size_bytes": 186078,
+      "last_modified_commit": "f67a7ee",
       "is_empty": false,
       "extension": ".json",
-      "lines": 6866
+      "lines": 6920
     },
     {
       "path": "docs/repo/repo-interface.md",
@@ -4372,11 +4399,11 @@
     {
       "path": "docs/tooling/doctrine-checksums/doctrine-checksums.yaml",
       "type": "file",
-      "size_bytes": 2538,
-      "last_modified_commit": "535e718",
+      "size_bytes": 2910,
+      "last_modified_commit": "853e75d",
       "is_empty": false,
       "extension": ".yaml",
-      "lines": 29
+      "lines": 32
     },
     {
       "path": "docs/tooling/doctrine-checksums/doctrine-checksums.yaml.bak",
@@ -6332,6 +6359,15 @@
       "lines": 291
     },
     {
+      "path": "scripts/architect/production-smoke.py",
+      "type": "file",
+      "size_bytes": 14903,
+      "last_modified_commit": "f67a7ee",
+      "is_empty": false,
+      "extension": ".py",
+      "lines": 392
+    },
+    {
       "path": "scripts/architect/promote-wave.sh",
       "type": "file",
       "size_bytes": 381,
@@ -6384,6 +6420,15 @@
       "is_empty": false,
       "extension": ".py",
       "lines": 138
+    },
+    {
+      "path": "scripts/architect/smoke-production.sh",
+      "type": "file",
+      "size_bytes": 155,
+      "last_modified_commit": "688451e",
+      "is_empty": false,
+      "extension": ".sh",
+      "lines": 7
     },
     {
       "path": "scripts/architect/test-agent-execute.sh",
@@ -6492,6 +6537,15 @@
       "is_empty": false,
       "extension": ".sh",
       "lines": 149
+    },
+    {
+      "path": "scripts/architect/test-production-smoke.sh",
+      "type": "file",
+      "size_bytes": 9133,
+      "last_modified_commit": "f67a7ee",
+      "is_empty": false,
+      "extension": ".sh",
+      "lines": 336
     },
     {
       "path": "scripts/architect/test-promotion-orchestrator.sh",
@@ -6847,11 +6901,11 @@
     {
       "path": "scripts/verify-sync.sh",
       "type": "file",
-      "size_bytes": 35607,
-      "last_modified_commit": "535e718",
+      "size_bytes": 40468,
+      "last_modified_commit": "853e75d",
       "is_empty": false,
       "extension": ".sh",
-      "lines": 864
+      "lines": 1003
     },
     {
       "path": "tsconfig.json",
