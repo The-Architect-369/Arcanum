@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-07-28T03:38:15Z",
+  "generated_at": "2026-07-28T05:28:42Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "688451ee4",
+  "commit": "853e75d55",
   "generator_version": "1.2",
   "files": [
     {
@@ -3662,7 +3662,7 @@
       "path": "docs/governance/architectgpt/production-smoke-protocol.md",
       "type": "file",
       "size_bytes": 5679,
-      "last_modified_commit": "a8daa02",
+      "last_modified_commit": "853e75d",
       "is_empty": false,
       "extension": ".md",
       "lines": 153
@@ -3680,7 +3680,7 @@
       "path": "docs/governance/architectgpt/production-smoke.schema.json",
       "type": "file",
       "size_bytes": 5534,
-      "last_modified_commit": "8fc696a",
+      "last_modified_commit": "853e75d",
       "is_empty": false,
       "extension": ".json",
       "lines": 264
@@ -3949,8 +3949,8 @@
     {
       "path": "docs/repo/repo-index.json",
       "type": "file",
-      "size_bytes": 186077,
-      "last_modified_commit": "688451e",
+      "size_bytes": 186078,
+      "last_modified_commit": "853e75d",
       "is_empty": false,
       "extension": ".json",
       "lines": 6920
@@ -4400,7 +4400,7 @@
       "path": "docs/tooling/doctrine-checksums/doctrine-checksums.yaml",
       "type": "file",
       "size_bytes": 2910,
-      "last_modified_commit": "688451e",
+      "last_modified_commit": "853e75d",
       "is_empty": false,
       "extension": ".yaml",
       "lines": 32
@@ -6361,11 +6361,11 @@
     {
       "path": "scripts/architect/production-smoke.py",
       "type": "file",
-      "size_bytes": 14590,
-      "last_modified_commit": "688451e",
+      "size_bytes": 14903,
+      "last_modified_commit": "853e75d",
       "is_empty": false,
       "extension": ".py",
-      "lines": 382
+      "lines": 392
     },
     {
       "path": "scripts/architect/promote-wave.sh",
@@ -6541,11 +6541,11 @@
     {
       "path": "scripts/architect/test-production-smoke.sh",
       "type": "file",
-      "size_bytes": 7547,
-      "last_modified_commit": "688451e",
+      "size_bytes": 9133,
+      "last_modified_commit": "853e75d",
       "is_empty": false,
       "extension": ".sh",
-      "lines": 272
+      "lines": 336
     },
     {
       "path": "scripts/architect/test-promotion-orchestrator.sh",
@@ -6902,7 +6902,7 @@
       "path": "scripts/verify-sync.sh",
       "type": "file",
       "size_bytes": 38185,
-      "last_modified_commit": "688451e",
+      "last_modified_commit": "853e75d",
       "is_empty": false,
       "extension": ".sh",
       "lines": 932

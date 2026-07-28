@@ -269,4 +269,68 @@ PYFIXTURE
 
 echo "PASS provider access protection classification"
 
+python3 - "$EXECUTOR" <<'PYFIXTURE'
+import importlib.util
+import sys
+from pathlib import Path
+
+executor = Path(sys.argv[1])
+spec = importlib.util.spec_from_file_location(
+    "production_smoke_login_wrapper_fixture",
+    executor,
+)
+if spec is None or spec.loader is None:
+    raise SystemExit("unable to load production smoke module")
+
+module = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(module)
+
+
+class FakeResponse:
+    status = 200
+
+    def __enter__(self):
+        return self
+
+    def __exit__(self, *_args):
+        return False
+
+    def geturl(self):
+        return (
+            "https://vercel.com/login"
+            "?next=%2Fsso-api%3Furl%3D"
+            "https%253A%252F%252Ffixture.vercel.app%252F"
+            "%26nonce%3Dfixture"
+        )
+
+
+class FakeOpener:
+    def open(self, request, timeout):
+        assert timeout == 2
+        assert request.get_header("Authorization") is None
+        assert request.get_header("Cookie") is None
+        return FakeResponse()
+
+
+original = module.build_opener
+try:
+    module.build_opener = lambda *_handlers: FakeOpener()
+    result = module.preflight_provider_access(
+        "https://fixture.vercel.app",
+        2000,
+    )
+finally:
+    module.build_opener = original
+
+assert result["status"] == "fail"
+assert result["classification"] == "provider_access_protected"
+assert result["observed_status"] == 200
+assert result["final_url"].startswith(
+    "https://vercel.com/login?next="
+)
+assert "Deployment Protection" in result["error"]
+PYFIXTURE
+
+echo "PASS provider login-wrapper protection classification"
+
 echo "production smoke fixtures passed"

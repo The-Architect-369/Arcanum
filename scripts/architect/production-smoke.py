@@ -13,7 +13,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 from urllib.error import HTTPError, URLError
-from urllib.parse import urljoin, urlparse
+from urllib.parse import parse_qs, unquote, urljoin, urlparse
 from urllib.request import HTTPRedirectHandler, Request, build_opener
 
 ALLOWED_METHODS = {"GET", "HEAD"}
@@ -215,9 +215,19 @@ def preflight_provider_access(
         urlparse(final_url).hostname or ""
     ).lower()
 
+    final_parsed = urlparse(final_url)
+    final_query = parse_qs(final_parsed.query)
+    login_next = unquote(final_query.get("next", [""])[0])
+
     if (
         final_host == "vercel.com"
-        and urlparse(final_url).path.startswith("/sso-api")
+        and (
+            final_parsed.path.startswith("/sso-api")
+            or (
+                final_parsed.path == "/login"
+                and login_next.startswith("/sso-api")
+            )
+        )
     ):
         return {
             "status": "fail",
