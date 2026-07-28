@@ -425,6 +425,34 @@ promotion_orchestrator_control:
   delegated_merge_executor: scripts/architect/merge-executor.py
   authority: bounded_coordination_before_explicit_w3
 
+post_merge_closure_control:
+  protocol: docs/governance/architectgpt/post-merge-closure-protocol.md
+  schema: docs/governance/architectgpt/post-merge-closure.schema.json
+  entrypoint: scripts/architect/close-wave.sh
+  executor: scripts/architect/post-merge-close.py
+  fixtures: scripts/architect/test-post-merge-close.sh
+  report_directory: .architect-reports/orchestration/closures
+  required_base_branch: main
+  required_integration_branch: mobile
+  exact_merge_commit_required: true
+  production_ready_required: true
+  production_commit_match_required: true
+  expected_mobile_lease_required: true
+  fast_forward_only: true
+  clean_checkout_required: true
+  dry_run_default: true
+  explicit_request_digest_confirmation_required: true
+  permission_class: W2
+  allowed_effect: origin_mobile_fast_forward
+  forbidden_actions:
+    - main_update
+    - tag_update
+    - merge
+    - deploy
+    - rollback
+    - canonical_ratification
+  authority: post_merge_integration_ref_closure_only
+
 mobile_verification:
   environment: Android Termux in isolated work profile
   bootstrap: scripts/mobile/termux-bootstrap.sh
@@ -517,6 +545,11 @@ files:
   promotion_orchestrator_entrypoint: scripts/architect/promote-wave.sh
   promotion_orchestrator: scripts/architect/promotion-orchestrator.py
   promotion_orchestrator_fixtures: scripts/architect/test-promotion-orchestrator.sh
+  post_merge_closure_protocol: docs/governance/architectgpt/post-merge-closure-protocol.md
+  post_merge_closure_schema: docs/governance/architectgpt/post-merge-closure.schema.json
+  post_merge_closure_entrypoint: scripts/architect/close-wave.sh
+  post_merge_closure_executor: scripts/architect/post-merge-close.py
+  post_merge_closure_fixtures: scripts/architect/test-post-merge-close.sh
   mobile_bootstrap: scripts/mobile/termux-bootstrap.sh
   mobile_verify: scripts/mobile/termux-verify.sh
 

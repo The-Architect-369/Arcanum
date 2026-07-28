@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-07-27T01:37:47Z",
+  "generated_at": "2026-07-28T01:46:30Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "df2e686ca",
+  "commit": "5db52de88",
   "generator_version": "1.2",
   "files": [
     {
@@ -3400,11 +3400,11 @@
     {
       "path": "docs/governance/architectgpt/architect-gpt-manifest.yaml",
       "type": "file",
-      "size_bytes": 22929,
+      "size_bytes": 24300,
       "last_modified_commit": "535e718",
       "is_empty": false,
       "extension": ".yaml",
-      "lines": 528
+      "lines": 561
     },
     {
       "path": "docs/governance/architectgpt/architect-gpt.md",
@@ -3418,11 +3418,11 @@
     {
       "path": "docs/governance/architectgpt/architect-log.md",
       "type": "file",
-      "size_bytes": 34859,
+      "size_bytes": 37191,
       "last_modified_commit": "535e718",
       "is_empty": false,
       "extension": ".md",
-      "lines": 817
+      "lines": 876
     },
     {
       "path": "docs/governance/architectgpt/ast-integrity-protocol.md",
@@ -3508,11 +3508,11 @@
     {
       "path": "docs/governance/architectgpt/capability-registry.yaml",
       "type": "file",
-      "size_bytes": 7313,
+      "size_bytes": 8664,
       "last_modified_commit": "535e718",
       "is_empty": false,
       "extension": ".yaml",
-      "lines": 230
+      "lines": 267
     },
     {
       "path": "docs/governance/architectgpt/change-plan-protocol.md",
@@ -3639,6 +3639,24 @@
       "is_empty": false,
       "extension": ".json",
       "lines": 76
+    },
+    {
+      "path": "docs/governance/architectgpt/post-merge-closure-protocol.md",
+      "type": "file",
+      "size_bytes": 3445,
+      "last_modified_commit": "48c09d8",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 115
+    },
+    {
+      "path": "docs/governance/architectgpt/post-merge-closure.schema.json",
+      "type": "file",
+      "size_bytes": 2940,
+      "last_modified_commit": "d513b5e",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 80
     },
     {
       "path": "docs/governance/architectgpt/promotion-orchestrator-protocol.md",
@@ -3904,11 +3922,11 @@
     {
       "path": "docs/repo/repo-index.json",
       "type": "file",
-      "size_bytes": 183275,
-      "last_modified_commit": "4721516",
+      "size_bytes": 184648,
+      "last_modified_commit": "47f3372",
       "is_empty": false,
       "extension": ".json",
-      "lines": 6812
+      "lines": 6866
     },
     {
       "path": "docs/repo/repo-interface.md",
@@ -4354,11 +4372,11 @@
     {
       "path": "docs/tooling/doctrine-checksums/doctrine-checksums.yaml",
       "type": "file",
-      "size_bytes": 2286,
+      "size_bytes": 2538,
       "last_modified_commit": "535e718",
       "is_empty": false,
       "extension": ".yaml",
-      "lines": 27
+      "lines": 29
     },
     {
       "path": "docs/tooling/doctrine-checksums/doctrine-checksums.yaml.bak",
@@ -6251,6 +6269,15 @@
       "lines": 47
     },
     {
+      "path": "scripts/architect/close-wave.sh",
+      "type": "file",
+      "size_bytes": 244,
+      "last_modified_commit": "47f3372",
+      "is_empty": false,
+      "extension": ".sh",
+      "lines": 10
+    },
+    {
       "path": "scripts/architect/impact-graph.py",
       "type": "file",
       "size_bytes": 11583,
@@ -6291,6 +6318,15 @@
       "type": "file",
       "size_bytes": 11823,
       "last_modified_commit": "48d5731",
+      "is_empty": false,
+      "extension": ".py",
+      "lines": 291
+    },
+    {
+      "path": "scripts/architect/post-merge-close.py",
+      "type": "file",
+      "size_bytes": 10539,
+      "last_modified_commit": "24c73ca",
       "is_empty": false,
       "extension": ".py",
       "lines": 291
@@ -6449,6 +6485,15 @@
       "lines": 198
     },
     {
+      "path": "scripts/architect/test-post-merge-close.sh",
+      "type": "file",
+      "size_bytes": 4216,
+      "last_modified_commit": "5db52de",
+      "is_empty": false,
+      "extension": ".sh",
+      "lines": 149
+    },
+    {
       "path": "scripts/architect/test-promotion-orchestrator.sh",
       "type": "file",
       "size_bytes": 3962,
@@ -6551,7 +6596,7 @@
       "path": "scripts/mobile/termux-verify.sh",
       "type": "file",
       "size_bytes": 4595,
-      "last_modified_commit": "67fab0c",
+      "last_modified_commit": "2c4de98",
       "is_empty": false,
       "extension": ".sh",
       "lines": 165
@@ -6802,11 +6847,11 @@
     {
       "path": "scripts/verify-sync.sh",
       "type": "file",
-      "size_bytes": 33370,
+      "size_bytes": 35607,
       "last_modified_commit": "535e718",
       "is_empty": false,
       "extension": ".sh",
-      "lines": 803
+      "lines": 864
     },
     {
       "path": "tsconfig.json",
