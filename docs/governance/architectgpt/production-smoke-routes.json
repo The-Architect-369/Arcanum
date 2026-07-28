@@ -1,0 +1,106 @@
+{
+  "schema_version": "1.0",
+  "record_type": "production_smoke_route_manifest",
+  "routes": [
+    {
+      "id": "landing",
+      "method": "GET",
+      "path": "/",
+      "expected_status": 200,
+      "max_redirects": 2,
+      "timeout_ms": 10000,
+      "max_duration_ms": 8000,
+      "required_text": ["Arcanum"]
+    },
+    {
+      "id": "developer",
+      "method": "GET",
+      "path": "/developer",
+      "expected_status": 200,
+      "max_redirects": 2,
+      "timeout_ms": 10000,
+      "max_duration_ms": 8000,
+      "required_text": []
+    },
+    {
+      "id": "activate",
+      "method": "GET",
+      "path": "/activate",
+      "expected_status": 200,
+      "max_redirects": 2,
+      "timeout_ms": 10000,
+      "max_duration_ms": 8000,
+      "required_text": []
+    },
+    {
+      "id": "onboard",
+      "method": "GET",
+      "path": "/onboard",
+      "expected_status": 200,
+      "max_redirects": 2,
+      "timeout_ms": 10000,
+      "max_duration_ms": 8000,
+      "required_text": []
+    },
+    {
+      "id": "app-shell",
+      "method": "GET",
+      "path": "/app",
+      "expected_status": 200,
+      "max_redirects": 2,
+      "timeout_ms": 10000,
+      "max_duration_ms": 8000,
+      "required_text": []
+    },
+    {
+      "id": "account",
+      "method": "GET",
+      "path": "/account",
+      "expected_status": 200,
+      "max_redirects": 2,
+      "timeout_ms": 10000,
+      "max_duration_ms": 8000,
+      "required_text": []
+    },
+    {
+      "id": "wallet",
+      "method": "GET",
+      "path": "/wallet",
+      "expected_status": 200,
+      "max_redirects": 2,
+      "timeout_ms": 10000,
+      "max_duration_ms": 8000,
+      "required_text": []
+    },
+    {
+      "id": "hope",
+      "method": "GET",
+      "path": "/hope",
+      "expected_status": 200,
+      "max_redirects": 2,
+      "timeout_ms": 10000,
+      "max_duration_ms": 8000,
+      "required_text": []
+    },
+    {
+      "id": "tempus",
+      "method": "GET",
+      "path": "/tempus",
+      "expected_status": 200,
+      "max_redirects": 2,
+      "timeout_ms": 10000,
+      "max_duration_ms": 8000,
+      "required_text": []
+    },
+    {
+      "id": "mobile-pwa",
+      "method": "HEAD",
+      "path": "/mobile-only/pwa",
+      "expected_status": 200,
+      "max_redirects": 2,
+      "timeout_ms": 10000,
+      "max_duration_ms": 8000,
+      "required_text": []
+    }
+  ]
+}
