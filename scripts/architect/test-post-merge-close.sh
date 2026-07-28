@@ -119,7 +119,7 @@ else
   bad "remote main and mobile converge"
 fi
 
-python3 - "$WORK/request.json" <<'PY'
+python3 - "$REQUEST" <<'PY'
 import json
 import sys
 from pathlib import Path
@@ -132,7 +132,7 @@ DIGEST2="$(cd "$WORK" && python3 "$EXECUTOR" "$REQUEST" | sed -n 's/^Request SHA
 expect_success "apply is idempotent when branches are synchronized" \
   bash -c "cd '$WORK' && python3 '$EXECUTOR' '$REQUEST' --apply --confirm '$DIGEST2'"
 
-python3 - "$WORK/request.json" <<'PY'
+python3 - "$REQUEST" <<'PY'
 import json
 import sys
 from pathlib import Path

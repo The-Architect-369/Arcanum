@@ -140,7 +140,7 @@ def ensure_checkout() -> None:
         raise ClosureError("not inside a Git worktree")
     if run_git("status", "--porcelain"):
         raise ClosureError("working tree must be clean")
-    remote_url = run_git("remote", "get-url", "origin")
+    remote_url = run_git("config", "--get", "remote.origin.url")
     accepted = {
         REPOSITORY,
         "https://github.com/The-Architect-369/Arcanum.git",
