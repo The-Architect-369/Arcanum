@@ -2,7 +2,7 @@
 title: "ArchitectGPT Log"
 status: canonical-log
 visibility: internal
-last_updated: 2026-07-25
+last_updated: 2026-07-28
 description: "Append-only ArchitectGPT session log for repository, doctrine, tooling, and structural alignment work."
 ---
 
@@ -30,6 +30,65 @@ Each session entry should include:
 - doctrinal impact
 - verification commands and results
 - follow-up actions
+
+---
+
+## 2026-07-28 — Wave XX-C Deterministic Post-Merge Closure
+
+Grounding:
+
+- Repository: `The-Architect-369/Arcanum`
+- Branch: `mobile`
+- Phase: Pre-Genesis
+- Stable base: `1275c51c502b2fe7e8b3735cad2d598c4350bf64`
+- Initial implementation head: `14bfbd33bac9c59ddb0f52b113da7d42e91c2469`
+- Verified fixture head: `5db52de8895e26a886dbb9d91b8c634145bec0db`
+- Purpose: close a merged promotion wave by binding production readiness to the exact merge commit and synchronizing only the integration branch
+
+Summary:
+
+- Added the guarded post-merge closure protocol and schema.
+- Added a deterministic dry-run and request-digest confirmation boundary.
+- Added exact `origin/main`, expected `origin/mobile`, and production-commit binding.
+- Added READY-state validation for Vercel production evidence.
+- Added fast-forward ancestry and remote lease enforcement.
+- Added a single permitted W2 effect: fast-forward `origin/mobile`.
+- Added idempotent closure when `main` and `mobile` already match.
+- Added structured closure attestations under `.architect-reports/orchestration/closures`.
+- Added positive, negative, drift, confirmation, and idempotency fixtures.
+- Preserved `main`, tags, merge, deployment, rollback, and canonical-ratification boundaries.
+
+Authority boundary:
+
+- Wave XX-C grants only bounded W2 integration-ref closure.
+- It does not merge pull requests.
+- It does not deploy or roll back deployments.
+- It does not update `main` or tags.
+- It does not ratify canon.
+- It requires explicit request-digest confirmation before applying a remote ref update.
+- The Human Architect retains all W3 and constitutional authority.
+
+Verification status:
+
+- JSON schema parsing: green.
+- Python syntax: green.
+- Shell syntax: green.
+- Deterministic request digest: green.
+- Incorrect digest rejection: green.
+- Exact production binding: green.
+- Fast-forward-only mobile synchronization: green.
+- Remote branch convergence: green.
+- Idempotent closure: green.
+- Non-READY production rejection: green.
+- Focused fixture result: `PASS=7 FAIL=0`.
+
+Follow-up actions:
+
+- Refresh canonical checksums and repository index.
+- Run Doctrine Guard and Verify Sync 23/23.
+- Run exact-head Termux verification.
+- Generate the Wave XX-C promotion attestation.
+- Require exact-head hosted CI and Vercel preview readiness before promotion.
 
 ---
 

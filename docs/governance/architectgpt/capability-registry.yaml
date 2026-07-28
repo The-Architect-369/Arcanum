@@ -228,3 +228,40 @@ promotion_orchestration:
     - no_merge_without_exact_request_digest_confirmation
     - no_mutation_outside_delegated_merge_executor
     - human_architect_retains_final_merge_authority
+
+post_merge_closure:
+  status: active_guarded_w2
+  wave: XX-C
+  protocol: docs/governance/architectgpt/post-merge-closure-protocol.md
+  schema: docs/governance/architectgpt/post-merge-closure.schema.json
+  entrypoint: scripts/architect/close-wave.sh
+  executor: scripts/architect/post-merge-close.py
+  fixtures: scripts/architect/test-post-merge-close.sh
+  report_directory: .architect-reports/orchestration/closures
+  default_mode: dry_run
+  permission_class: W2
+  exact_merge_commit_required: true
+  production_ready_required: true
+  production_commit_match_required: true
+  expected_mobile_lease_required: true
+  clean_checkout_required: true
+  fast_forward_only: true
+  explicit_request_digest_confirmation_required: true
+  allowed_effect: origin_mobile_fast_forward
+  automatic_merge_enabled: false
+  automatic_deployment_enabled: false
+  automatic_rollback_enabled: false
+  hard_rules:
+    - fail_closed_on_main_drift
+    - fail_closed_on_mobile_lease_drift
+    - fail_closed_on_non_ancestor_mobile
+    - fail_closed_on_production_commit_mismatch
+    - fail_closed_on_non_ready_production
+    - fail_closed_on_request_digest_mismatch
+    - main_update_forbidden
+    - tag_update_forbidden
+    - merge_forbidden
+    - deploy_forbidden
+    - rollback_forbidden
+    - canonical_ratification_forbidden
+    - human_architect_retains_action_authority
