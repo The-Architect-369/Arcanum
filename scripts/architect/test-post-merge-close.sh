@@ -50,6 +50,7 @@ git init -b main "$WORK" >/dev/null
   cd "$WORK"
   git config user.name "Fixture"
   git config user.email "fixture@example.invalid"
+  printf '.architect-reports/\n' >> .git/info/exclude
   printf 'base\n' > README.md
   git add README.md
   git commit -m base >/dev/null
