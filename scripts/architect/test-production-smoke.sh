@@ -209,4 +209,64 @@ if python3 "$EXECUTOR" --deployment-evidence "$TMP/evidence.json" --manifest "$T
 fi
 echo "PASS cross-host redirect rejection"
 
+python3 - "$EXECUTOR" <<'PYFIXTURE'
+import importlib.util
+import sys
+from pathlib import Path
+
+executor = Path(sys.argv[1])
+spec = importlib.util.spec_from_file_location(
+    "production_smoke_fixture",
+    executor,
+)
+if spec is None or spec.loader is None:
+    raise SystemExit("unable to load production smoke module")
+
+module = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(module)
+
+
+class FakeResponse:
+    status = 200
+
+    def __enter__(self):
+        return self
+
+    def __exit__(self, *_args):
+        return False
+
+    def geturl(self):
+        return (
+            "https://vercel.com/sso-api"
+            "?url=https%3A%2F%2Ffixture.vercel.app"
+        )
+
+
+class FakeOpener:
+    def open(self, _request, timeout):
+        assert timeout == 2
+        return FakeResponse()
+
+
+original = module.build_opener
+try:
+    module.build_opener = lambda *_handlers: FakeOpener()
+    result = module.preflight_provider_access(
+        "https://fixture.vercel.app",
+        2000,
+    )
+finally:
+    module.build_opener = original
+
+assert result["status"] == "fail"
+assert result["classification"] == "provider_access_protected"
+assert result["observed_status"] == 200
+assert result["final_url"].startswith(
+    "https://vercel.com/sso-api"
+)
+assert "Deployment Protection" in result["error"]
+PYFIXTURE
+
+echo "PASS provider access protection classification"
+
 echo "production smoke fixtures passed"

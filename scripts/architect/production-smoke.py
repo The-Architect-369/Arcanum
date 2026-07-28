@@ -170,6 +170,87 @@ class BoundedRedirectHandler(HTTPRedirectHandler):
         return super().redirect_request(req, fp, code, msg, headers, newurl)
 
 
+def preflight_provider_access(
+    base_url: str,
+    timeout_ms: int,
+) -> dict[str, Any]:
+    """Detect provider-level access controls before route verification."""
+
+    request = Request(
+        base_url + "/",
+        method="HEAD",
+        headers={"User-Agent": "ArchitectGPT-Production-Smoke/1.0"},
+    )
+    opener = build_opener(HTTPRedirectHandler())
+    started = time.monotonic()
+
+    try:
+        with opener.open(request, timeout=timeout_ms / 1000) as response:
+            final_url = response.geturl()
+            observed_status = response.status
+    except HTTPError as exc:
+        final_url = exc.geturl()
+        observed_status = exc.code
+    except (URLError, TimeoutError, OSError) as exc:
+        return {
+            "status": "fail",
+            "classification": "transport_error",
+            "observed_status": None,
+            "final_url": None,
+            "duration_ms": round(
+                (time.monotonic() - started) * 1000,
+                3,
+            ),
+            "error": str(exc),
+        }
+
+    duration_ms = round(
+        (time.monotonic() - started) * 1000,
+        3,
+    )
+    original_host = (
+        urlparse(base_url).hostname or ""
+    ).lower()
+    final_host = (
+        urlparse(final_url).hostname or ""
+    ).lower()
+
+    if (
+        final_host == "vercel.com"
+        and urlparse(final_url).path.startswith("/sso-api")
+    ):
+        return {
+            "status": "fail",
+            "classification": "provider_access_protected",
+            "observed_status": observed_status,
+            "final_url": final_url,
+            "duration_ms": duration_ms,
+            "error": (
+                "Vercel Deployment Protection prevents "
+                "unauthenticated smoke verification"
+            ),
+        }
+
+    if final_host != original_host:
+        return {
+            "status": "fail",
+            "classification": "cross_host_redirect",
+            "observed_status": observed_status,
+            "final_url": final_url,
+            "duration_ms": duration_ms,
+            "error": "provider preflight crossed host boundary",
+        }
+
+    return {
+        "status": "pass",
+        "classification": "publicly_accessible",
+        "observed_status": observed_status,
+        "final_url": final_url,
+        "duration_ms": duration_ms,
+        "error": None,
+    }
+
+
 def check_route(base_url: str, route: dict[str, Any]) -> dict[str, Any]:
     target = urljoin(base_url + "/", route["path"].lstrip("/"))
     host = (urlparse(base_url).hostname or "").lower()
@@ -246,7 +327,20 @@ def main() -> int:
         "manifest_sha256": manifest_digest,
     }
     request_digest = sha256(canonical_bytes(request_identity))
-    results = [check_route(base_url, route) for route in routes]
+
+    preflight = preflight_provider_access(
+        base_url,
+        min(route["timeout_ms"] for route in routes),
+    )
+
+    if preflight["status"] == "pass":
+        results = [
+            check_route(base_url, route)
+            for route in routes
+        ]
+    else:
+        results = []
+
     passed = sum(result["status"] == "pass" for result in results)
     failed = len(results) - passed
     report = {
@@ -259,16 +353,29 @@ def main() -> int:
         "base_url": base_url,
         "manifest_sha256": manifest_digest,
         "request_sha256": request_digest,
+        "preflight": preflight,
         "routes": results,
-        "summary": {"total": len(results), "passed": passed, "failed": failed},
-        "status": "pass" if failed == 0 else "fail",
+        "summary": {
+            "total": len(results),
+            "passed": passed,
+            "failed": failed,
+        },
+        "status": (
+            "pass"
+            if preflight["status"] == "pass" and failed == 0
+            else "fail"
+        ),
     }
     rendered = json.dumps(report, indent=2) + "\n"
     if args.output:
         args.output.parent.mkdir(parents=True, exist_ok=True)
         args.output.write_text(rendered, encoding="utf-8")
     print(rendered, end="")
-    return 0 if failed == 0 else 1
+    return (
+        0
+        if preflight["status"] == "pass" and failed == 0
+        else 1
+    )
 
 
 if __name__ == "__main__":

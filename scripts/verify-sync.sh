@@ -905,6 +905,8 @@ if bash "$PRODUCTION_SMOKE_TEST" >/dev/null; then
   echo "✅ mutation methods are rejected"
   echo "✅ non-READY deployments are rejected"
   echo "✅ cross-host redirects are rejected"
+  echo "✅ Vercel Deployment Protection is classified before route execution"
+  echo "✅ protected deployments fail closed without authenticated bypass"
   echo "✅ production observations remain GET/HEAD-only"
   echo "✅ credentials, cookies, request bodies, and authorization headers remain forbidden"
   echo "✅ application mutation, wallet signing, merge, deploy, and rollback remain forbidden"

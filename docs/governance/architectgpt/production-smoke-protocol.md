@@ -68,6 +68,30 @@ Production execution permits only HTTPS deployment hosts ending in `.vercel.app`
 
 Redirects are bounded. Every redirect destination must remain on the original host. Cross-host redirects are rejected.
 
+## Provider-access preflight
+
+Before route observations begin, the verifier performs one read-only `HEAD`
+request against the deployment root.
+
+The preflight classifies the deployment as:
+
+- `publicly_accessible`: the final response remains on the deployment host;
+- `provider_access_protected`: Vercel redirects the request to its SSO access
+  surface;
+- `cross_host_redirect`: the preflight reaches another external host;
+- `transport_error`: the deployment cannot be observed because of a network or
+  timeout failure.
+
+Only `publicly_accessible` permits route execution.
+
+A protected deployment is not treated as an unhealthy application. It is
+recorded as unavailable for unauthenticated smoke verification. In this state,
+the attestation fails closed and emits no route observations.
+
+The verifier does not bypass protection, submit authentication credentials,
+accept provider cookies, or follow a protected deployment into an authenticated
+session.
+
 ## Allowed methods
 
 Only `GET` and `HEAD` are permitted. Request bodies are never sent. Cookies, authorization headers, and user credentials are never supplied.
@@ -81,6 +105,7 @@ The verifier emits a JSON attestation containing:
 - repository, commit, deployment, and base URL;
 - canonical route-contract SHA-256;
 - deterministic request SHA-256;
+- provider-access preflight classification;
 - route-level status, redirect, timing, byte-count, and marker evidence;
 - pass and failure totals;
 - overall `pass` or `fail` status.
@@ -98,13 +123,17 @@ A route passes only when:
 5. the optional duration budget is met;
 6. no transport or timeout error occurs.
 
-The overall attestation passes only when every declared route passes.
+The overall attestation passes only when the provider preflight classifies the
+deployment as publicly accessible and every declared route passes.
 
 ## Fail-closed conditions
 
 The verifier rejects or fails on:
 
 - malformed deployment evidence or route contracts;
+- provider-level deployment protection that prevents unauthenticated access;
+- provider preflight redirects to an external host;
+- provider preflight transport or timeout failures;
 - deployment states other than `READY`;
 - unsupported provider or target identity;
 - evidence commits that do not equal exact HEAD;
