@@ -33,6 +33,63 @@ Each session entry should include:
 
 ---
 
+## 2026-07-28 — Wave XXI Production Smoke Verification
+
+Grounding:
+
+- Repository: `The-Architect-369/Arcanum`
+- Branch: `mobile`
+- Phase: Pre-Genesis
+- Stable base: `1420d2a7c15699e9fb76e9bfbf53c71f436a5e95`
+- Initial implementation head: `529dd3fae21784e36c756b230b71298bf16c3367`
+- Purpose: produce exact-deployment, read-only HTTP evidence for critical production routes
+
+Summary:
+
+- Added the production smoke verification protocol and attestation schema.
+- Added a versioned allowlisted production route manifest.
+- Added exact repository-commit and Vercel deployment binding.
+- Added READY-state validation before any route observation.
+- Restricted requests to GET and HEAD.
+- Prohibited request bodies, credentials, cookies, and authorization headers.
+- Restricted redirects to bounded same-host destinations.
+- Added expected-status and required-content-marker checks.
+- Added optional route-duration budgets.
+- Added deterministic manifest and request identities.
+- Added structured smoke attestations under `.architect-reports/orchestration/production-smoke`.
+- Added positive, marker-failure, mutation-method, deployment-state, and redirect-boundary fixtures.
+
+Authority boundary:
+
+- Wave XXI has read-only R1 observation authority.
+- It does not submit forms or mutate application state.
+- It does not perform wallet signatures or account mutations.
+- It does not merge, deploy, roll back, or update tags.
+- It does not ratify canon.
+- The Human Architect retains all action authority.
+
+Verification status:
+
+- Python syntax: green.
+- Shell syntax: green.
+- Exact deployment route contract: green.
+- Deterministic request and manifest identities: green.
+- Missing response-marker rejection: green.
+- Mutation-method rejection: green.
+- Non-READY deployment rejection: green.
+- Cross-host redirect rejection: green.
+- Focused fixture result: `PASS=6 FAIL=0`.
+
+Follow-up actions:
+
+- Refresh canonical checksums and repository index.
+- Run Doctrine Guard and Verify Sync 24/24.
+- Run exact-head Termux verification.
+- Execute the verifier against the exact Wave XXI preview deployment.
+- Bind successful smoke evidence into the Wave XXI promotion record.
+
+---
+
 ## 2026-07-28 — Wave XX-C Deterministic Post-Merge Closure
 
 Grounding:
