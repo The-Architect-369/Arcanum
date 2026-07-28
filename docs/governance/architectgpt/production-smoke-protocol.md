@@ -1,7 +1,7 @@
 ---
 title: "Architect GPT Production Smoke Verification Protocol"
 status: implementation_candidate
-version: "1.0"
+version: "1.1"
 phase: "Pre-Genesis"
 authority: "read_only_runtime_observation"
 ---
@@ -70,31 +70,59 @@ Redirects are bounded. Every redirect destination must remain on the original ho
 
 ## Provider-access preflight
 
-Before route observations begin, the verifier performs one read-only `HEAD`
-request against the deployment root.
+Before route observations begin, the verifier performs one read-only `HEAD` request against the deployment root.
 
 The preflight classifies the deployment as:
 
 - `publicly_accessible`: the final response remains on the deployment host;
-- `provider_access_protected`: Vercel redirects the request to its SSO access
-  surface;
+- `provider_access_protected`: Vercel redirects the request to its SSO access surface;
 - `cross_host_redirect`: the preflight reaches another external host;
-- `transport_error`: the deployment cannot be observed because of a network or
-  timeout failure.
+- `transport_error`: the deployment cannot be observed because of a network or timeout failure.
 
 Only `publicly_accessible` permits route execution.
 
-A protected deployment is not treated as an unhealthy application. It is
-recorded as unavailable for unauthenticated smoke verification. In this state,
-the attestation fails closed and emits no route observations.
+A protected deployment is not treated as an unhealthy application. It is recorded as unavailable for unauthenticated smoke verification. In this state, the attestation fails closed and emits no route observations.
 
-The verifier does not bypass protection, submit authentication credentials,
-accept provider cookies, or follow a protected deployment into an authenticated
-session.
+The verifier does not bypass protection, submit authentication credentials, accept provider cookies, use share tokens, or follow a protected deployment into an authenticated session.
+
+## Wave XXI two-stage bootstrap model
+
+The Human Architect authorized a two-stage bootstrap model for Wave XXI.
+
+### Stage A — capability promotion
+
+Stage A establishes that the verifier is safe, deterministic, exact-head bound, read-only, deployable, and fail-closed.
+
+For Wave XXI only, a `provider_access_protected` preflight may serve as valid Stage A environmental evidence when all of the following are true:
+
+1. the preview deployment is `READY` and bound to the exact pull-request head;
+2. the smoke attestation remains overall `fail`;
+3. zero application routes are executed;
+4. no credentials, cookies, authorization headers, share tokens, or authenticated bypass are used;
+5. implementation fixtures, repository integrity, typecheck, production build, local promotion, and hosted CI all pass;
+6. the pull request is open, non-draft, mergeable, and unchanged;
+7. Stage B is separately tracked as a mandatory operational-closure gate.
+
+Stage A proves the verifier capability. It does not prove application route health and does not convert provider protection into a passing smoke attestation.
+
+### Stage B — operational activation and closure
+
+After Stage A is merged and the resulting exact `main` commit is deployed to production, Stage B requires the canonical verifier to observe the public production deployment without authentication or bypass.
+
+Stage B passes only when:
+
+- preflight classification is `publicly_accessible`;
+- all ten canonical routes are executed;
+- ten routes pass;
+- zero routes fail;
+- overall attestation status is `pass`;
+- repository commit and production deployment identities match exactly.
+
+Wave XXI is not operationally complete until Stage B passes. Stage B is tracked by issue #29.
 
 ## Allowed methods
 
-Only `GET` and `HEAD` are permitted. Request bodies are never sent. Cookies, authorization headers, and user credentials are never supplied.
+Only `GET` and `HEAD` are permitted. Request bodies are never sent. Cookies, authorization headers, user credentials, and share tokens are never supplied.
 
 ## Attestation
 
@@ -123,8 +151,7 @@ A route passes only when:
 5. the optional duration budget is met;
 6. no transport or timeout error occurs.
 
-The overall attestation passes only when the provider preflight classifies the
-deployment as publicly accessible and every declared route passes.
+The overall attestation passes only when the provider preflight classifies the deployment as publicly accessible and every declared route passes.
 
 ## Fail-closed conditions
 
