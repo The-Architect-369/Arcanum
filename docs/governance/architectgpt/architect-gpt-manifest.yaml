@@ -472,7 +472,21 @@ production_smoke_control:
   credentials_forbidden: true
   cookies_forbidden: true
   authorization_headers_forbidden: true
+  share_tokens_forbidden: true
+  authenticated_bypass_forbidden: true
   same_host_redirects_only: true
+  bootstrap_model: two_stage
+  bootstrap_authorized_wave: wave-xxi
+  bootstrap_pull_request: 28
+  stage_a: capability_promotion
+  stage_b: operational_activation
+  provider_access_protected_is_smoke_success: false
+  provider_access_protected_allowed_for_stage_a: true
+  stage_b_public_access_required: true
+  stage_b_required_total_routes: 10
+  stage_b_required_passed_routes: 10
+  stage_b_required_failed_routes: 0
+  operational_closure_requires_stage_b: true
   deterministic_manifest_digest_required: true
   deterministic_request_digest_required: true
   permission_class: R1

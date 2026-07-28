@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-07-28T05:28:42Z",
+  "generated_at": "2026-07-28T09:48:33Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "853e75d55",
+  "commit": "523baf8cd",
   "generator_version": "1.2",
   "files": [
     {
@@ -3400,11 +3400,11 @@
     {
       "path": "docs/governance/architectgpt/architect-gpt-manifest.yaml",
       "type": "file",
-      "size_bytes": 25933,
+      "size_bytes": 26464,
       "last_modified_commit": "688451e",
       "is_empty": false,
       "extension": ".yaml",
-      "lines": 602
+      "lines": 616
     },
     {
       "path": "docs/governance/architectgpt/architect-gpt.md",
@@ -3418,11 +3418,11 @@
     {
       "path": "docs/governance/architectgpt/architect-log.md",
       "type": "file",
-      "size_bytes": 39364,
+      "size_bytes": 40069,
       "last_modified_commit": "688451e",
       "is_empty": false,
       "extension": ".md",
-      "lines": 933
+      "lines": 950
     },
     {
       "path": "docs/governance/architectgpt/ast-integrity-protocol.md",
@@ -3661,11 +3661,11 @@
     {
       "path": "docs/governance/architectgpt/production-smoke-protocol.md",
       "type": "file",
-      "size_bytes": 5679,
-      "last_modified_commit": "853e75d",
+      "size_bytes": 7440,
+      "last_modified_commit": "2ca68bc",
       "is_empty": false,
       "extension": ".md",
-      "lines": 153
+      "lines": 180
     },
     {
       "path": "docs/governance/architectgpt/production-smoke-routes.json",
@@ -3688,11 +3688,11 @@
     {
       "path": "docs/governance/architectgpt/promotion-orchestrator-protocol.md",
       "type": "file",
-      "size_bytes": 4634,
-      "last_modified_commit": "0a9b8dc",
+      "size_bytes": 6413,
+      "last_modified_commit": "523baf8",
       "is_empty": false,
       "extension": ".md",
-      "lines": 139
+      "lines": 175
     },
     {
       "path": "docs/governance/architectgpt/promotion-orchestrator.schema.json",
@@ -3706,11 +3706,11 @@
     {
       "path": "docs/governance/architectgpt/promotion-protocol.md",
       "type": "file",
-      "size_bytes": 3381,
-      "last_modified_commit": "d2d1e7e",
+      "size_bytes": 5911,
+      "last_modified_commit": "4140463",
       "is_empty": false,
       "extension": ".md",
-      "lines": 101
+      "lines": 139
     },
     {
       "path": "docs/governance/architectgpt/provider-health-protocol.md",
@@ -3796,11 +3796,11 @@
     {
       "path": "docs/governance/governance-changelog.md",
       "type": "file",
-      "size_bytes": 1133,
+      "size_bytes": 1806,
       "last_modified_commit": "60bd5ee",
       "is_empty": false,
       "extension": ".md",
-      "lines": 34
+      "lines": 51
     },
     {
       "path": "docs/governance/governance-councils.md",
@@ -3950,7 +3950,7 @@
       "path": "docs/repo/repo-index.json",
       "type": "file",
       "size_bytes": 186078,
-      "last_modified_commit": "853e75d",
+      "last_modified_commit": "f67a7ee",
       "is_empty": false,
       "extension": ".json",
       "lines": 6920
@@ -6362,7 +6362,7 @@
       "path": "scripts/architect/production-smoke.py",
       "type": "file",
       "size_bytes": 14903,
-      "last_modified_commit": "853e75d",
+      "last_modified_commit": "f67a7ee",
       "is_empty": false,
       "extension": ".py",
       "lines": 392
@@ -6542,7 +6542,7 @@
       "path": "scripts/architect/test-production-smoke.sh",
       "type": "file",
       "size_bytes": 9133,
-      "last_modified_commit": "853e75d",
+      "last_modified_commit": "f67a7ee",
       "is_empty": false,
       "extension": ".sh",
       "lines": 336
@@ -6901,11 +6901,11 @@
     {
       "path": "scripts/verify-sync.sh",
       "type": "file",
-      "size_bytes": 38185,
+      "size_bytes": 40468,
       "last_modified_commit": "853e75d",
       "is_empty": false,
       "extension": ".sh",
-      "lines": 932
+      "lines": 1003
     },
     {
       "path": "tsconfig.json",

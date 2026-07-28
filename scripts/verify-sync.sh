@@ -915,6 +915,77 @@ else
 fi
 echo
 
+
+# Wave XXI two-stage bootstrap policy
+require_wave_xxi_policy() {
+  local pattern="$1"
+  local file="$2"
+  local label="$3"
+
+  if grep -Fq -- "$pattern" "$file"; then
+    echo "✅ $label"
+  else
+    echo "❌ missing Wave XXI policy: $label"
+    exit 1
+  fi
+}
+
+require_wave_xxi_policy \
+  "## Wave XXI two-stage bootstrap model" \
+  "docs/governance/architectgpt/production-smoke-protocol.md" \
+  "Wave XXI two-stage bootstrap model is registered"
+
+require_wave_xxi_policy \
+  "### Stage A — capability promotion" \
+  "docs/governance/architectgpt/production-smoke-protocol.md" \
+  "Stage A capability promotion is distinguished"
+
+require_wave_xxi_policy \
+  "### Stage B — operational activation and closure" \
+  "docs/governance/architectgpt/production-smoke-protocol.md" \
+  "Stage B operational closure is distinguished"
+
+require_wave_xxi_policy \
+  "provider_access_protected_is_smoke_success: false" \
+  "docs/governance/architectgpt/architect-gpt-manifest.yaml" \
+  "provider protection is not application-health success"
+
+require_wave_xxi_policy \
+  "bootstrap_authorized_wave: wave-xxi" \
+  "docs/governance/architectgpt/architect-gpt-manifest.yaml" \
+  "bootstrap exception is restricted to Wave XXI"
+
+require_wave_xxi_policy \
+  "authenticated_bypass_forbidden: true" \
+  "docs/governance/architectgpt/architect-gpt-manifest.yaml" \
+  "authenticated deployment bypass remains forbidden"
+
+require_wave_xxi_policy \
+  "stage_b_public_access_required: true" \
+  "docs/governance/architectgpt/architect-gpt-manifest.yaml" \
+  "Stage B requires public production access"
+
+require_wave_xxi_policy \
+  "stage_b_required_total_routes: 10" \
+  "docs/governance/architectgpt/architect-gpt-manifest.yaml" \
+  "Stage B requires ten total routes"
+
+require_wave_xxi_policy \
+  "stage_b_required_passed_routes: 10" \
+  "docs/governance/architectgpt/architect-gpt-manifest.yaml" \
+  "Stage B requires ten passing routes"
+
+require_wave_xxi_policy \
+  "stage_b_required_failed_routes: 0" \
+  "docs/governance/architectgpt/architect-gpt-manifest.yaml" \
+  "Stage B requires zero failed routes"
+
+require_wave_xxi_policy \
+  "operational_closure_requires_stage_b: true" \
+  "docs/governance/architectgpt/architect-gpt-manifest.yaml" \
+  "Wave XXI operational closure requires Stage B"
+
+
 echo "[24/24] Archive checks (deprecated files)"
 archive_files=(
   "docs/archive/architectgpt/architectgpt-core.md"
