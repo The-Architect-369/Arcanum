@@ -43,6 +43,7 @@ expect_failure() {
 
 REMOTE="$TMP/remote.git"
 WORK="$TMP/work"
+REQUEST="$TMP/request.json"
 git init --bare "$REMOTE" >/dev/null
 git init -b main "$WORK" >/dev/null
 (
@@ -63,7 +64,7 @@ git init -b main "$WORK" >/dev/null
   git push origin main >/dev/null
   git switch mobile >/dev/null
   git fetch origin >/dev/null
-  cat > request.json <<JSON
+  cat > "$REQUEST" <<JSON
 {
   "schema_version": "1.0",
   "repository": "https://github.com/The-Architect-369/Arcanum.git",
@@ -95,9 +96,9 @@ trap 'git config --global --unset-all url."'"$REMOTE"'".insteadOf >/dev/null 2>&
 )
 
 expect_success "dry-run accepts exact production-bound fast-forward" \
-  bash -c "cd '$WORK' && python3 '$EXECUTOR' request.json"
+  bash -c "cd '$WORK' && python3 '$EXECUTOR' '$REQUEST'"
 
-DIGEST="$(cd "$WORK" && python3 "$EXECUTOR" request.json | sed -n 's/^Request SHA-256: //p')"
+DIGEST="$(cd "$WORK" && python3 "$EXECUTOR" "$REQUEST" | sed -n 's/^Request SHA-256: //p')"
 if [[ "$DIGEST" =~ ^[0-9a-f]{64}$ ]]; then
   ok "dry-run emits deterministic request digest"
 else
@@ -105,10 +106,10 @@ else
 fi
 
 expect_failure "apply rejects incorrect confirmation digest" \
-  bash -c "cd '$WORK' && python3 '$EXECUTOR' request.json --apply --confirm $(printf '0%.0s' {1..64})"
+  bash -c "cd '$WORK' && python3 '$EXECUTOR' '$REQUEST' --apply --confirm $(printf '0%.0s' {1..64})"
 
 expect_success "apply fast-forwards only mobile" \
-  bash -c "cd '$WORK' && python3 '$EXECUTOR' request.json --apply --confirm '$DIGEST'"
+  bash -c "cd '$WORK' && python3 '$EXECUTOR' '$REQUEST' --apply --confirm '$DIGEST'"
 
 MAIN="$(git --git-dir="$REMOTE" rev-parse refs/heads/main)"
 MOBILE="$(git --git-dir="$REMOTE" rev-parse refs/heads/mobile)"
@@ -127,9 +128,9 @@ data = json.loads(path.read_text())
 data["expected_mobile_commit"] = data["merge_commit"]
 path.write_text(json.dumps(data, indent=2) + "\n")
 PY
-DIGEST2="$(cd "$WORK" && python3 "$EXECUTOR" request.json | sed -n 's/^Request SHA-256: //p')"
+DIGEST2="$(cd "$WORK" && python3 "$EXECUTOR" "$REQUEST" | sed -n 's/^Request SHA-256: //p')"
 expect_success "apply is idempotent when branches are synchronized" \
-  bash -c "cd '$WORK' && python3 '$EXECUTOR' request.json --apply --confirm '$DIGEST2'"
+  bash -c "cd '$WORK' && python3 '$EXECUTOR' '$REQUEST' --apply --confirm '$DIGEST2'"
 
 python3 - "$WORK/request.json" <<'PY'
 import json
@@ -141,7 +142,7 @@ data["production"]["state"] = "ERROR"
 path.write_text(json.dumps(data, indent=2) + "\n")
 PY
 expect_failure "non-READY production evidence is rejected" \
-  bash -c "cd '$WORK' && python3 '$EXECUTOR' request.json"
+  bash -c "cd '$WORK' && python3 '$EXECUTOR' '$REQUEST'"
 
 printf '\nResult: PASS=%d FAIL=%d\n' "$pass" "$fail"
 [ "$fail" -eq 0 ]
