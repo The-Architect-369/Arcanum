@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-07-28T09:48:33Z",
+  "generated_at": "2026-07-29T06:02:43Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "523baf8cd",
+  "commit": "42eeddf96",
   "generator_version": "1.2",
   "files": [
     {
@@ -583,11 +583,11 @@
     {
       "path": "apps/web/src/app/(app)/developer/page.tsx",
       "type": "file",
-      "size_bytes": 2658,
-      "last_modified_commit": "6465886",
+      "size_bytes": 3557,
+      "last_modified_commit": "be7591a",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 64
+      "lines": 79
     },
     {
       "path": "apps/web/src/app/(app)/exchange/page.tsx",
@@ -1166,6 +1166,15 @@
       "lines": 131
     },
     {
+      "path": "apps/web/src/components/developer/ArchitectWorkbench.tsx",
+      "type": "file",
+      "size_bytes": 13051,
+      "last_modified_commit": "9dbbeb2",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 273
+    },
+    {
       "path": "apps/web/src/components/hope/HopeMotionController.tsx",
       "type": "file",
       "size_bytes": 1738,
@@ -1560,6 +1569,15 @@
       "is_empty": false,
       "extension": ".ts",
       "lines": 16
+    },
+    {
+      "path": "apps/web/src/lib/architect/execution.ts",
+      "type": "file",
+      "size_bytes": 1289,
+      "last_modified_commit": "b976044",
+      "is_empty": false,
+      "extension": ".ts",
+      "lines": 57
     },
     {
       "path": "apps/web/src/lib/cn.ts",
@@ -3401,7 +3419,7 @@
       "path": "docs/governance/architectgpt/architect-gpt-manifest.yaml",
       "type": "file",
       "size_bytes": 26464,
-      "last_modified_commit": "688451e",
+      "last_modified_commit": "1a9e78f",
       "is_empty": false,
       "extension": ".yaml",
       "lines": 616
@@ -3419,7 +3437,7 @@
       "path": "docs/governance/architectgpt/architect-log.md",
       "type": "file",
       "size_bytes": 40069,
-      "last_modified_commit": "688451e",
+      "last_modified_commit": "1a9e78f",
       "is_empty": false,
       "extension": ".md",
       "lines": 950
@@ -3797,7 +3815,7 @@
       "path": "docs/governance/governance-changelog.md",
       "type": "file",
       "size_bytes": 1806,
-      "last_modified_commit": "60bd5ee",
+      "last_modified_commit": "1a9e78f",
       "is_empty": false,
       "extension": ".md",
       "lines": 51
@@ -3949,8 +3967,8 @@
     {
       "path": "docs/repo/repo-index.json",
       "type": "file",
-      "size_bytes": 186078,
-      "last_modified_commit": "f67a7ee",
+      "size_bytes": 186079,
+      "last_modified_commit": "1a9e78f",
       "is_empty": false,
       "extension": ".json",
       "lines": 6920
@@ -3981,6 +3999,15 @@
       "is_empty": false,
       "extension": ".md",
       "lines": 21
+    },
+    {
+      "path": "docs/specs/app/architect-workbench-runtime.md",
+      "type": "file",
+      "size_bytes": 4744,
+      "last_modified_commit": "42eeddf",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 159
     },
     {
       "path": "docs/specs/app/developer-access-policy.md",
@@ -4400,7 +4427,7 @@
       "path": "docs/tooling/doctrine-checksums/doctrine-checksums.yaml",
       "type": "file",
       "size_bytes": 2910,
-      "last_modified_commit": "853e75d",
+      "last_modified_commit": "1a9e78f",
       "is_empty": false,
       "extension": ".yaml",
       "lines": 32
@@ -6431,6 +6458,15 @@
       "lines": 7
     },
     {
+      "path": "scripts/architect/termux-broker.py",
+      "type": "file",
+      "size_bytes": 16231,
+      "last_modified_commit": "02f9574",
+      "is_empty": false,
+      "extension": ".py",
+      "lines": 460
+    },
+    {
       "path": "scripts/architect/test-agent-execute.sh",
       "type": "file",
       "size_bytes": 6751,
@@ -6582,6 +6618,15 @@
       "is_empty": false,
       "extension": ".sh",
       "lines": 57
+    },
+    {
+      "path": "scripts/architect/test-termux-broker.sh",
+      "type": "file",
+      "size_bytes": 2574,
+      "last_modified_commit": "f0a177e",
+      "is_empty": false,
+      "extension": ".sh",
+      "lines": 94
     },
     {
       "path": "scripts/architect/validate-evidence.py",
@@ -6902,7 +6947,7 @@
       "path": "scripts/verify-sync.sh",
       "type": "file",
       "size_bytes": 40468,
-      "last_modified_commit": "853e75d",
+      "last_modified_commit": "1a9e78f",
       "is_empty": false,
       "extension": ".sh",
       "lines": 1003
