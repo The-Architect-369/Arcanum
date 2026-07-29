@@ -1,29 +1,44 @@
-import Link from "next/link";
-import AppStage from "@/components/ui/AppStage";
-import PanelShell, { PanelSection } from "@/components/ui/PanelShell";
+import Link from 'next/link'
+import ArchitectWorkbench from '@/components/developer/ArchitectWorkbench'
+import AppStage from '@/components/ui/AppStage'
+import PanelShell, { PanelSection } from '@/components/ui/PanelShell'
 
 const INTERNAL_SURFACES = [
   {
-    href: "/intelligence/codex",
-    title: "Codex dry run",
-    status: "disabled provider",
+    href: '/intelligence/codex',
+    title: 'Codex dry run',
+    status: 'disabled provider',
     description:
-      "Inspect the first Codex interpretation record shape using approved repo/system sources only.",
+      'Inspect the first Codex interpretation record shape using approved repo/system sources only.',
   },
-] as const;
+] as const
 
 export default function DeveloperPage() {
   return (
     <AppStage>
-      <PanelShell title="Developer" flush className="min-h-0 flex-1">
+      <PanelShell title="Architect Workbench" flush className="min-h-0 flex-1">
         <div className="space-y-4">
-          <p className="text-sm text-zinc-300">
-            Internal Pre-Genesis launch surface for implementation inspection. These tools are review
-            artifacts only; they do not grant authority, execute agents, move MANA, sign transactions,
-            or mutate chain/governance state.
-          </p>
+          <div className="rounded-2xl border border-amber-300/15 bg-amber-300/[0.05] p-4">
+            <div className="flex flex-wrap items-start justify-between gap-3">
+              <div>
+                <p className="text-sm font-medium text-amber-100">Human Architect development surface</p>
+                <p className="mt-1 max-w-3xl text-xs leading-relaxed text-zinc-400">
+                  The Workbench can inspect and verify the local Arcanum repository through a separately
+                  started Termux broker. It does not grant governance authority, expose arbitrary shell access,
+                  move MANA, sign transactions, publish repository changes, or mutate chain state.
+                </p>
+              </div>
+              <span className="rounded-full border border-amber-300/20 bg-amber-300/10 px-2.5 py-1 text-[10px] uppercase tracking-wide text-amber-200">
+                Pre-Genesis
+              </span>
+            </div>
+          </div>
 
-          <PanelSection title="Internal surfaces">
+          <PanelSection title="Local Architect execution">
+            <ArchitectWorkbench />
+          </PanelSection>
+
+          <PanelSection title="Additional internal surfaces">
             <div className="grid gap-3 md:grid-cols-2">
               {INTERNAL_SURFACES.map((surface) => (
                 <Link
@@ -48,17 +63,17 @@ export default function DeveloperPage() {
           <PanelSection title="Activation boundary">
             <div className="space-y-2 text-sm text-zinc-300">
               <p>
-                Developer surfaces are currently navigational and diagnostic. Future access can be gated by
-                Architect role, local node credentials, or governance-recognized permissions once those
-                authority checks exist.
+                Every command is selected from a broker-owned registry and requires a fresh Human Architect
+                confirmation. Browser-provided command arguments are not accepted.
               </p>
               <p className="text-xs text-zinc-500">
-                Until then, this page should remain an internal implementation surface, not a public module.
+                Repository writes, unrestricted terminal input, external model providers, deployments, and
+                background agents remain deferred to separately governed capabilities.
               </p>
             </div>
           </PanelSection>
         </div>
       </PanelShell>
     </AppStage>
-  );
+  )
 }
