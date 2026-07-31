@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-07-29T06:02:43Z",
+  "generated_at": "2026-07-31T13:31:57Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "42eeddf96",
+  "commit": "633f1448c",
   "generator_version": "1.2",
   "files": [
     {
@@ -583,8 +583,8 @@
     {
       "path": "apps/web/src/app/(app)/developer/page.tsx",
       "type": "file",
-      "size_bytes": 3557,
-      "last_modified_commit": "be7591a",
+      "size_bytes": 3630,
+      "last_modified_commit": "5ed7240",
       "is_empty": false,
       "extension": ".tsx",
       "lines": 79
@@ -1166,13 +1166,22 @@
       "lines": 131
     },
     {
-      "path": "apps/web/src/components/developer/ArchitectWorkbench.tsx",
+      "path": "apps/web/src/components/developer/ArchitectRuntimeWorkspace.tsx",
       "type": "file",
-      "size_bytes": 13051,
-      "last_modified_commit": "9dbbeb2",
+      "size_bytes": 14565,
+      "last_modified_commit": "d98e932",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 273
+      "lines": 313
+    },
+    {
+      "path": "apps/web/src/components/developer/ArchitectWorkbench.tsx",
+      "type": "file",
+      "size_bytes": 13191,
+      "last_modified_commit": "02356bf",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 277
     },
     {
       "path": "apps/web/src/components/hope/HopeMotionController.tsx",
@@ -1578,6 +1587,15 @@
       "is_empty": false,
       "extension": ".ts",
       "lines": 57
+    },
+    {
+      "path": "apps/web/src/lib/architect/runtime.ts",
+      "type": "file",
+      "size_bytes": 10678,
+      "last_modified_commit": "a12d087",
+      "is_empty": false,
+      "extension": ".ts",
+      "lines": 327
     },
     {
       "path": "apps/web/src/lib/cn.ts",
@@ -3967,11 +3985,11 @@
     {
       "path": "docs/repo/repo-index.json",
       "type": "file",
-      "size_bytes": 186079,
-      "last_modified_commit": "1a9e78f",
+      "size_bytes": 187243,
+      "last_modified_commit": "eb24836",
       "is_empty": false,
       "extension": ".json",
-      "lines": 6920
+      "lines": 6965
     },
     {
       "path": "docs/repo/repo-interface.md",
@@ -3999,6 +4017,15 @@
       "is_empty": false,
       "extension": ".md",
       "lines": 21
+    },
+    {
+      "path": "docs/specs/app/architect-runtime-core.md",
+      "type": "file",
+      "size_bytes": 5347,
+      "last_modified_commit": "651d4d4",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 170
     },
     {
       "path": "docs/specs/app/architect-workbench-runtime.md",
@@ -6483,6 +6510,15 @@
       "is_empty": false,
       "extension": ".sh",
       "lines": 155
+    },
+    {
+      "path": "scripts/architect/test-architect-runtime.sh",
+      "type": "file",
+      "size_bytes": 4064,
+      "last_modified_commit": "633f144",
+      "is_empty": false,
+      "extension": ".sh",
+      "lines": 103
     },
     {
       "path": "scripts/architect/test-ast-integrity.sh",
