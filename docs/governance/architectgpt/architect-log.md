@@ -2,7 +2,7 @@
 title: "ArchitectGPT Log"
 status: canonical-log
 visibility: internal
-last_updated: 2026-07-28
+last_updated: 2026-08-12
 description: "Append-only ArchitectGPT session log for repository, doctrine, tooling, and structural alignment work."
 ---
 
@@ -948,3 +948,48 @@ be declared operationally complete.
 
 Provider protection remains an overall smoke failure and is never interpreted
 as application-health success.
+
+---
+
+## 2026-08-12 — ARC-1 Conversation-Memory Contract Ratification
+
+Grounding:
+
+- Session: `ARC-SES-2`
+- Task: `ARC-1`
+- Repository: `The-Architect-369/Arcanum`
+- Branch: `agent/wave-xxiv-repository-canonicalization`
+- Starting head: `6ce3b9f621d050e1f5667fda2d3e54da29b7000a`
+- Ratification commit: `dae8cb8b3ed87023c26ccfd0b43908ad240c9c5b`
+- Session-record commit: `618af5fd9006acf5cf95613f31ee4ae7a7127655`
+- Grounding state: live GitHub files plus the current Notion dashboard, Work Registry, and Session Ledger.
+
+Summary:
+
+- The Human Architect ratified Architect Conversation-Memory Contract v1.0 as written.
+- Established `docs/governance/architectgpt/architect-log.md` as the sole controlling cross-session log.
+- Established `docs/governance/architectgpt/sessions/` as the canonical per-session ledger.
+- Defined session, decision, idea, correction, and deferred-question record types.
+- Defined stable IDs, required metadata, privacy/redaction boundaries, GitHub/Notion ownership, write timing, human review, append-only integrity, and the canonical closure test.
+- Added the canonical contract and `ARC-SES-2` session record.
+- Preserved the duplicate-log migration question for `ARC-2`; no unique historical record was deleted.
+
+Authority and privacy boundary:
+
+- Ratification came from the Human Architect.
+- No raw transcript, secret, private reflection, raw command output, or provider-local hidden context was persisted.
+- No Economic Constitution, native-shell, Runtime, chain, or application implementation was changed.
+
+Closure status:
+
+- Contract: ratified and written.
+- Session record: `docs/governance/architectgpt/sessions/2026-08-12--arc-ses-0002--arc-1--github-conversation-memory-contract.md`.
+- Notion mirror: synchronized at close.
+- Next task: `ARC-2 — Reconcile duplicate Architect log paths`.
+
+Follow-up actions:
+
+- Inspect both log paths and all repository references.
+- Preserve every unique historical entry with original provenance.
+- Present a migration plan before mutating either log.
+- Align the manifest, index expectations, and verification surfaces with the ratified controlling path.
