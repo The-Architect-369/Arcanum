@@ -2,7 +2,7 @@
 schema: arcanum.architect.session/v1
 record_type: session
 session_id: ARC-SES-2
-status: REVIEW-PENDING
+status: CLOSED
 
 task_id: ARC-1
 task_title: "Ratify the GitHub conversation-memory contract"
@@ -19,7 +19,7 @@ repository: The-Architect-369/Arcanum
 branch: agent/wave-xxiv-repository-canonicalization
 branch_role: feature
 head_commit_start: 6ce3b9f621d050e1f5667fda2d3e54da29b7000a
-head_commit_end: dae8cb8b3ed87023c26ccfd0b43908ad240c9c5b
+head_commit_end: b0023e0429765d8f1b4344c34b072a2c70faae8d
 grounding_state: mixed
 source_refs:
   - "docs/governance/architectgpt/conversation-memory-contract.md"
@@ -30,15 +30,16 @@ source_refs:
   - "GitHub Issue #35 — Wave XXIV: Repository Canonicalization"
   - "Notion — Arcanum Understanding Dashboard"
   - "Notion Work Registry — ARC-1 and ARC-2"
+  - "Notion Session Ledger — ARC-SES-2"
 
 started_at: "2026-08-12"
-closed_at: ""
+closed_at: "2026-08-12T17:05:53-04:00"
 timezone: America/New_York
 
 provider_provenance:
-  - "GitHub connector — live branch and file reads"
-  - "Notion connector — current dashboard, Work Registry, and Session Ledger"
-outcome: "The Human Architect ratified Architect Conversation-Memory Contract v1.0 as written and explicitly authorized the reviewed GitHub and Notion closeout."
+  - "GitHub connector — live branch and file reads and authorized repository writes"
+  - "Notion connector — dashboard, Work Registry, and Session Ledger reads and authorized updates"
+outcome: "The Human Architect ratified Architect Conversation-Memory Contract v1.0 as written. The contract, ARC-SES-2, and the controlling Architect-log digest were persisted to GitHub; ARC-1, ARC-2, the Understanding Dashboard, and the Notion Session Ledger were synchronized."
 decision_state_summary: KNOWN-RATIFIED
 canon_impact: RATIFIED
 canonicalization_status: LANDED
@@ -59,16 +60,22 @@ changed_paths:
   - "docs/governance/architectgpt/sessions/2026-08-12--arc-ses-0002--arc-1--github-conversation-memory-contract.md"
   - "docs/governance/architectgpt/architect-log.md"
 verification:
-  - "Ratification commit created on the authorized Wave XXIV branch."
-  - "Session record and controlling-log digest require final closeout synchronization."
+  - "Canonical contract verified on the authorized Wave XXIV branch."
+  - "ARC-SES-2 exists in the canonical sessions directory."
+  - "Controlling Architect-log digest committed at b0023e0429765d8f1b4344c34b072a2c70faae8d."
+  - "Notion ARC-1 is Done and Known Ratified."
+  - "Notion ARC-2 is Ready with no blocker."
+  - "Notion ARC-SES-2 is Closed and references the GitHub session record."
+  - "Understanding Dashboard now names ARC-2 as the continuity gate."
+  - "Repository index regeneration and verify-sync execution remain separate repository-integrity work and are not represented as completed."
 next_task_id: ARC-2
 next_gate: "Reconcile duplicate Architect log paths without losing unique historical entries, then make every canonical reference resolve to the controlling governance-path log."
 
 review_status: APPROVED
 reviewed_by: "Human Architect"
 reviewed_at: "2026-08-12"
-approval_source: "Current Architect conversation: ratification and explicit closeout/write authorization"
-github_commit: dae8cb8b3ed87023c26ccfd0b43908ad240c9c5b
+approval_source: "Current Architect conversation: ratification and explicit closeout, GitHub-write, and Notion-update authorization"
+github_commit: b0023e0429765d8f1b4344c34b072a2c70faae8d
 ---
 
 # ARC-SES-2 — Ratify the GitHub Conversation-Memory Contract
@@ -86,6 +93,8 @@ Close Work Registry Task `ARC-1` by establishing a durable, privacy-aware, human
 - **Wave:** XXIV — Repository Canonicalization.
 - **Grounding:** live GitHub files plus the current Notion Understanding Dashboard, Work Registry, and Session Ledger.
 - The branch repository index was stale relative to the live branch head and was not treated as exact current truth.
+
+`head_commit_end` records the exact substantive closeout head after the contract, session record, and controlling-log digest landed. The later metadata-finalization commit containing this closed record is discoverable through Git history rather than embedded in the record, avoiding a self-referential commit hash.
 
 ## Source inventory
 
@@ -152,7 +161,7 @@ The contract establishes:
 
 ## Repository changes
 
-The authorized closeout writes are limited to:
+The authorized closeout writes were limited to:
 
 1. the ratified memory contract;
 2. this session record;
@@ -160,12 +169,23 @@ The authorized closeout writes are limited to:
 
 No Economic Constitution, native-shell, Runtime, chain, application, or implementation file was changed.
 
+## Notion synchronization
+
+- Work Registry `ARC-1`: `Done`, `Known Ratified`.
+- Work Registry `ARC-2`: `Ready`, unblocked, next gate set to evidence-preserving reconciliation.
+- Understanding Dashboard: conversation-memory state and continuity gate updated.
+- Session Ledger `ARC-SES-2`: `Closed`, with the GitHub record and closing head attached.
+
 ## Verification state
 
 - Human ratification: complete.
-- Contract write: complete at `dae8cb8b3ed87023c26ccfd0b43908ad240c9c5b`.
-- Session record: written; closure metadata remains pending until the controlling-log digest and Notion mirror are complete.
-- Repository index regeneration and `verify-sync` execution remain separate repository-integrity work and are not represented as completed.
+- Contract write: complete.
+- Canonical session record: complete and closed.
+- Controlling-log digest: complete.
+- Notion mirror: complete.
+- Privacy review: complete.
+- Exact next task: recorded.
+- Repository index regeneration and `verify-sync` execution: not run; these remain separate Wave XXIV repository-integrity work.
 
 ## Exact next task
 
@@ -177,11 +197,11 @@ Use the Arcanum Understanding Dashboard and Work Registry Task `ARC-2`.
 
 Task: Reconcile duplicate Architect log paths.
 
-Success condition: preserve every unique historical entry while establishing `docs/governance/architectgpt/architect-log.md` as the only controlling cross-session log; determine the reviewed disposition of `docs/architect/architect-log.md`; and align the Architect manifest, repository references, index expectations, and verification surfaces with the ratified conversation-memory contract.
+Success condition: preserve every unique historical entry while maintaining `docs/governance/architectgpt/architect-log.md` as the only controlling cross-session log; determine the reviewed disposition of `docs/architect/architect-log.md`; and align the Architect manifest, repository references, index expectations, and verification surfaces with the ratified conversation-memory contract.
 
 Repository: `The-Architect-369/Arcanum`.
 Primary branch context: `agent/wave-xxiv-repository-canonicalization`.
-Grounding requirement: live GitHub files plus the current Notion dashboard and the closed `ARC-SES-2` record.
+Grounding requirement: live GitHub files plus the current Notion dashboard and closed `ARC-SES-2` record.
 
 Non-scope:
 
