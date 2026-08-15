@@ -1,3 +1,30 @@
+---
+title: "Architect Historical Closeout Log"
+status: historical
+visibility: public
+last_updated: 2026-08-14
+authority: historical-only
+cross_session_writes: forbidden
+controlling_log: docs/governance/architectgpt/architect-log.md
+conversation_memory_contract: docs/governance/architectgpt/conversation-memory-contract.md
+---
+
+# Architect Historical Closeout Log
+
+> **Historical boundary — ARC-2**
+>
+> This path is retained in place to preserve two unique pre-contract closeout records and existing historical links. It is not authoritative for cross-session Architect continuity. The sole controlling cross-session log is `docs/governance/architectgpt/architect-log.md`.
+>
+> No new session, continuity, or closeout entries may be added here. Future edits are limited to non-semantic provenance annotations or correction pointers required to keep the preserved record auditable.
+>
+> The entries below are preserved verbatim from their source commits:
+> - `2026-06-12 — Mobile PWA Shell Stabilization and Motion Contract Closeout` — source commit `798eb1a18c5419434c2e3b002597753fd4be04db`.
+> - `2026-06-08 — ARCnet Runtime Genesis Hardening Closed` — source commit `f52a108eb3c5fb2e828891e9d7f1787db3c17e33`.
+>
+> ARC-2 preserves these as historical claims; it does not re-ratify, reinterpret, or upgrade their authority.
+
+---
+
 ## 2026-06-12 — Mobile PWA Shell Stabilization and Motion Contract Closeout
 
 Status: Complete for PWA stabilization baseline  

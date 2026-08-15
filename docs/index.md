@@ -2,7 +2,7 @@
 title: "Docs Index"
 status: canonical
 visibility: public
-last_updated: 2026-06-08
+last_updated: 2026-08-14
 description: "Navigation index for the Arcanum documentation tree (ARCnet canonical naming)."
 ---
 
@@ -61,7 +61,10 @@ This is the **navigation hub** for the `docs/` tree.
 
 **Governance interfaces**
 - HOPE Guardian (public interpretive charter): `governance/hopegpt/hope-guardian.md`
-- ArchitectGPT (internal build interface): `governance/architectgpt/`
+- ArchitectGPT canonical specification: `governance/architectgpt/architect-gpt.md`
+- Architect conversation-memory contract: `governance/architectgpt/conversation-memory-contract.md`
+- Controlling Architect cross-session log: `governance/architectgpt/architect-log.md`
+- Architect session ledger: `governance/architectgpt/sessions/`
 
 ### `whitepaper/` — the “White Pages” (modular)
 - `whitepaper/executive-summary.md`

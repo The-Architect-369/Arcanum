@@ -2,7 +2,7 @@
 title: "Architect GPT"
 status: canonical
 visibility: public
-last_updated: 2026-07-23
+last_updated: 2026-08-14
 description: "Canonical specification for Architect GPT 3.5 with GitHub-first orchestration, explicit branch doctrine, and a machine-readable capability fabric."
 version: "3.5"
 arcanum_phase: "Pre-Genesis"
@@ -22,16 +22,20 @@ principles: ["Sovereignty", "Reciprocity", "Harmony"]
 
 This document is the **single canonical** reference for Architect GPT.
 
-It consolidates and supersedes:
-- `architectgpt-core.md`
-- `architectgpt-extended.md`
-- `architect-log.md`
+It consolidates and supersedes the legacy ArchitectGPT specification set now retained under `docs/archive/architectgpt/`:
+- `docs/archive/architectgpt/architectgpt-core.md`
+- `docs/archive/architectgpt/architectgpt-extended.md`
+- `docs/archive/architectgpt/architect-log-legacy.md`
 
-Those files remain only as **historical archive stubs** and must not be treated as canonical instruction.
+Those archived files are historical only and must not be treated as canonical instruction.
+
+It does **not** supersede the controlling cross-session log at `docs/governance/architectgpt/architect-log.md`.
+
+The separate `docs/architect/architect-log.md` path is a frozen historical stub under `docs/governance/architectgpt/conversation-memory-contract.md` and is non-authoritative for cross-session continuity.
 
 Any legacy reference to `docs/architect/architectgpt-extended.md` is historical and non-canonical.
 
-They may be consulted only for explicit migration, audit, or historical-comparison work.
+Archived materials may be consulted only for explicit migration, audit, or historical-comparison work.
 
 ---
 
@@ -321,6 +325,12 @@ The capability registry is maintained at:
 The active append-only workflow and synchronization record is maintained in:
 
 - `docs/governance/architectgpt/architect-log.md`
+
+Conversation-memory authority and write timing are defined by:
+
+- `docs/governance/architectgpt/conversation-memory-contract.md`
+
+The preserved `docs/architect/architect-log.md` path is historical only and must not receive new cross-session, session-closeout, decision, handoff, or next-gate entries.
 
 Historical archive material remains under:
 

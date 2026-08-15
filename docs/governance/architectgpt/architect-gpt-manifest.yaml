@@ -517,6 +517,8 @@ observed_providers:
 files:
   architect_gpt: docs/governance/architectgpt/architect-gpt.md
   architect_gpt_manifest: docs/governance/architectgpt/architect-gpt-manifest.yaml
+  conversation_memory_contract: docs/governance/architectgpt/conversation-memory-contract.md
+  architect_log: docs/governance/architectgpt/architect-log.md
   capability_registry: docs/governance/architectgpt/capability-registry.yaml
   capability_fabric: docs/governance/architectgpt/capability-fabric.md
   orchestration_protocol: docs/governance/architectgpt/orchestration-protocol.md
@@ -614,3 +616,10 @@ legacy_archive_files:
   - docs/archive/architectgpt/architect-log-legacy.md
 
 active_log: docs/governance/architectgpt/architect-log.md
+conversation_memory_contract: docs/governance/architectgpt/conversation-memory-contract.md
+session_ledger: docs/governance/architectgpt/sessions
+historical_log:
+  path: docs/architect/architect-log.md
+  authority: historical-only
+  policy: frozen_historical_stub
+  cross_session_writes: forbidden

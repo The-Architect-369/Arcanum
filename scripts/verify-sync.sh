@@ -133,6 +133,8 @@ required_governance_files=(
   "docs/governance/hopegpt/hope-guardian.md"
   "docs/governance/architectgpt/architect-gpt.md"
   "docs/governance/architectgpt/architect-gpt-manifest.yaml"
+  "docs/governance/architectgpt/conversation-memory-contract.md"
+  "docs/governance/architectgpt/architect-log.md"
   "docs/governance/architectgpt/capability-registry.yaml"
   "docs/governance/architectgpt/capability-fabric.md"
   "docs/governance/architectgpt/orchestration-protocol.md"
@@ -180,6 +182,54 @@ required_governance_files=(
 for f in "${required_governance_files[@]}"; do
   if [[ -f "$f" ]]; then echo "✅ present: $f"; else fail "Missing governance file: $f"; fi
 done
+echo
+
+MEMORY_CONTRACT="docs/governance/architectgpt/conversation-memory-contract.md"
+HISTORICAL_ARCHITECT_LOG="docs/architect/architect-log.md"
+
+echo "Checking Architect continuity authority..."
+if grep -Fxq 'active_log: docs/governance/architectgpt/architect-log.md' "$MANIFEST"; then
+  echo "✅ manifest active log is canonical governance path"
+else
+  fail "Manifest active_log does not resolve to the canonical governance path"
+fi
+
+if grep -Fxq 'active_log: docs/architect/architect-log.md' "$MANIFEST"; then
+  fail "Historical Architect log is incorrectly configured as active_log"
+else
+  echo "✅ historical Architect log is not configured as active_log"
+fi
+
+if grep -Fq 'The sole cross-session, append-only Architect log is:' "$MEMORY_CONTRACT" \
+  && grep -Fq 'docs/governance/architectgpt/architect-log.md' "$MEMORY_CONTRACT" \
+  && grep -Fq 'is not authoritative for cross-session continuity.' "$MEMORY_CONTRACT"; then
+  echo "✅ conversation-memory contract preserves sole-log authority"
+else
+  fail "Conversation-memory contract no longer proves sole-log authority"
+fi
+
+if [[ -f "$HISTORICAL_ARCHITECT_LOG" ]] \
+  && grep -Fxq 'status: historical' "$HISTORICAL_ARCHITECT_LOG" \
+  && grep -Fxq 'authority: historical-only' "$HISTORICAL_ARCHITECT_LOG" \
+  && grep -Fxq 'cross_session_writes: forbidden' "$HISTORICAL_ARCHITECT_LOG" \
+  && grep -Fxq 'controlling_log: docs/governance/architectgpt/architect-log.md' "$HISTORICAL_ARCHITECT_LOG"; then
+  echo "✅ secondary Architect log is frozen as historical-only"
+else
+  fail "Secondary Architect log is not explicitly frozen as historical-only"
+fi
+
+if grep -Fq -- '- `architect-log.md`' "$ARCH_DOC"; then
+  fail "Architect GPT spec still contains ambiguous bare architect-log.md supersession language"
+else
+  echo "✅ Architect GPT spec has no ambiguous bare architect-log.md authority reference"
+fi
+
+if grep -Fq 'docs/governance/architectgpt/architect-log.md' "$ARCH_DOC" \
+  && grep -Fq 'docs/governance/architectgpt/conversation-memory-contract.md' "$ARCH_DOC"; then
+  echo "✅ Architect GPT spec references canonical continuity surfaces"
+else
+  fail "Architect GPT spec does not reference canonical continuity surfaces"
+fi
 echo
 
 echo "[4/24] Orchestration control checks"
