@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-08-16T18:43:43Z",
+  "generated_at": "2026-08-16T18:45:05Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "bc4120895",
+  "commit": "5c0b1f268",
   "generator_version": "1.2",
   "files": [
     {
@@ -3464,7 +3464,7 @@
       "path": "docs/governance/architectgpt/architect-gpt-manifest.yaml",
       "type": "file",
       "size_bytes": 28815,
-      "last_modified_commit": "c6950e8ff",
+      "last_modified_commit": "5c0b1f268",
       "is_empty": false,
       "extension": ".yaml",
       "lines": 656
@@ -3481,11 +3481,11 @@
     {
       "path": "docs/governance/architectgpt/architect-log.md",
       "type": "file",
-      "size_bytes": 44480,
+      "size_bytes": 45486,
       "last_modified_commit": "deefd724f",
       "is_empty": false,
       "extension": ".md",
-      "lines": 1047
+      "lines": 1063
     },
     {
       "path": "docs/governance/architectgpt/ast-integrity-protocol.md",
@@ -3616,11 +3616,11 @@
     {
       "path": "docs/governance/architectgpt/continuity-index.json",
       "type": "file",
-      "size_bytes": 1652,
+      "size_bytes": 2220,
       "last_modified_commit": "bc4120895",
       "is_empty": false,
       "extension": ".json",
-      "lines": 50
+      "lines": 65
     },
     {
       "path": "docs/governance/architectgpt/continuity-index.schema.json",
@@ -4075,11 +4075,11 @@
     {
       "path": "docs/repo/repo-index.json",
       "type": "file",
-      "size_bytes": 192471,
-      "last_modified_commit": "deefd724f",
+      "size_bytes": 193689,
+      "last_modified_commit": "5c0b1f268",
       "is_empty": false,
       "extension": ".json",
-      "lines": 7100
+      "lines": 7145
     },
     {
       "path": "docs/repo/repo-interface.md",
@@ -4571,7 +4571,7 @@
       "path": "docs/tooling/doctrine-checksums/doctrine-checksums.yaml",
       "type": "file",
       "size_bytes": 3152,
-      "last_modified_commit": "c6950e8ff",
+      "last_modified_commit": "5c0b1f268",
       "is_empty": false,
       "extension": ".yaml",
       "lines": 34
@@ -7127,7 +7127,7 @@
       "path": "scripts/verify-sync.sh",
       "type": "file",
       "size_bytes": 46517,
-      "last_modified_commit": "c6950e8ff",
+      "last_modified_commit": "5c0b1f268",
       "is_empty": false,
       "extension": ".sh",
       "lines": 1131

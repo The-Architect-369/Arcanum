@@ -45,6 +45,21 @@
       "session_id": "ARC-SES-3",
       "status": "CLOSED",
       "task_id": "ARC-3"
+    },
+    {
+      "correction_ids": [],
+      "decision_ids": [
+        "ARC-DEC-4-01"
+      ],
+      "deferred_question_ids": [],
+      "head_commit_end": "5c0b1f26822c180e1db2b84162b12030c2f8fd58",
+      "idea_ids": [],
+      "next_task_id": "ARC-5",
+      "record_path": "docs/governance/architectgpt/sessions/2026-08-16--arc-ses-0004--arc-4--define-machine-readable-continuity-index.md",
+      "record_sha256": "a7be227601402ee569456080faf206ebf6168354f76946f3dc6f48a1b959f84f",
+      "session_id": "ARC-SES-4",
+      "status": "CLOSED",
+      "task_id": "ARC-4"
     }
   ]
 }

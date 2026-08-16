@@ -1045,3 +1045,19 @@ Closure record:
 Exact next task:
 
 - `ARC-4 — Define the machine-readable continuity index`.
+
+---
+
+## 2026-08-16 — ARC-4 Machine-Readable Continuity Index
+
+- Session: `ARC-SES-4`
+- Task: `ARC-4 — Define the machine-readable continuity index`
+- Branch: `agent/wave-xxiv-repository-canonicalization`
+- Substantive implementation commit: `5c0b1f26822c180e1db2b84162b12030c2f8fd58`
+- Canonical record: `docs/governance/architectgpt/sessions/2026-08-16--arc-ses-0004--arc-4--define-machine-readable-continuity-index.md`
+- Decision: `ARC-DEC-4-01` ratified deterministic JSON continuity indexing as a derived, non-authoritative projection.
+- Authority preserved: `architect-log.md` remains the sole controlling cross-session narrative log; `sessions/` remains the canonical per-session ledger.
+- Reservation preserved: `ARC-SES-1` remains reserved; no synthetic record was created.
+- Verification: continuity validator green; Verify Sync 24/24 green; Doctrine Guard green.
+- Next task: `ARC-5 — Backfill Wave XXIV narrative and decision provenance`.
+- Merge / promotion / deployment: not performed.
