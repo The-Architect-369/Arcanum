@@ -37,6 +37,8 @@ This repo intentionally separates **meaning**, **mechanics**, and **execution**.
 
 Architect conversation continuity is governed by `docs/governance/architectgpt/conversation-memory-contract.md`.
 The sole controlling cross-session log is `docs/governance/architectgpt/architect-log.md`, with canonical per-session records under `docs/governance/architectgpt/sessions/`.
+Per-session field types, lifecycle rules, and filename semantics are defined by `docs/governance/architectgpt/session-record-schema.md`.
+The machine-readable frontmatter schema is `docs/governance/architectgpt/session-record.schema.json`.
 Historical or superseded Architect log material does not create a second continuity authority.
 
 ### Whitepaper (“White Pages”)

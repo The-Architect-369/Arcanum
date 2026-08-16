@@ -135,6 +135,8 @@ required_governance_files=(
   "docs/governance/architectgpt/architect-gpt-manifest.yaml"
   "docs/governance/architectgpt/conversation-memory-contract.md"
   "docs/governance/architectgpt/architect-log.md"
+  "docs/governance/architectgpt/session-record-schema.md"
+  "docs/governance/architectgpt/session-record.schema.json"
   "docs/governance/architectgpt/capability-registry.yaml"
   "docs/governance/architectgpt/capability-fabric.md"
   "docs/governance/architectgpt/orchestration-protocol.md"
@@ -186,6 +188,11 @@ echo
 
 MEMORY_CONTRACT="docs/governance/architectgpt/conversation-memory-contract.md"
 HISTORICAL_ARCHITECT_LOG="docs/architect/architect-log.md"
+SESSION_SPEC="docs/governance/architectgpt/session-record-schema.md"
+SESSION_SCHEMA="docs/governance/architectgpt/session-record.schema.json"
+SESSION_VALIDATOR="scripts/architect/validate-session-records.py"
+SESSION_LEDGER="docs/governance/architectgpt/sessions"
+ARCHIVED_HOPE_SESSION="docs/archive/architectgpt/sessions/2026-hope-render-system-v1.md"
 
 echo "Checking Architect continuity authority..."
 if grep -Fxq 'active_log: docs/governance/architectgpt/architect-log.md' "$MANIFEST"; then
@@ -229,6 +236,43 @@ if grep -Fq 'docs/governance/architectgpt/architect-log.md' "$ARCH_DOC" \
   echo "✅ Architect GPT spec references canonical continuity surfaces"
 else
   fail "Architect GPT spec does not reference canonical continuity surfaces"
+fi
+
+echo
+echo "Checking Architect per-session ledger schema..."
+if jq empty "$SESSION_SCHEMA" >/dev/null 2>&1; then
+  echo "✅ valid JSON schema document: $SESSION_SCHEMA"
+else
+  fail "Invalid JSON session schema: $SESSION_SCHEMA"
+fi
+
+if python3 -m py_compile "$SESSION_VALIDATOR"; then
+  echo "✅ Python syntax: $SESSION_VALIDATOR"
+else
+  fail "Invalid Python syntax: $SESSION_VALIDATOR"
+fi
+
+if grep -Fq 'specification: docs/governance/architectgpt/session-record-schema.md' "$MANIFEST" \
+  && grep -Fq 'schema: docs/governance/architectgpt/session-record.schema.json' "$MANIFEST" \
+  && grep -Fq 'validator: scripts/architect/validate-session-records.py' "$MANIFEST" \
+  && grep -Fq 'continuity_index: deferred_to_ARC-4' "$MANIFEST"; then
+  echo "✅ manifest converges on ARC-3 session schema and preserves ARC-4 boundary"
+else
+  fail "Manifest does not converge on ARC-3 session schema control"
+fi
+
+if [[ -f "$SESSION_LEDGER/2026-hope-render-system-v1.md" ]]; then
+  fail "Non-conforming HOPE prototype remains in canonical session ledger"
+elif [[ -f "$ARCHIVED_HOPE_SESSION" ]]; then
+  echo "✅ non-conforming HOPE prototype preserved in historical archive"
+else
+  fail "HOPE prototype is neither canonical nor preserved in archive"
+fi
+
+if python3 "$SESSION_VALIDATOR" --schema "$SESSION_SCHEMA" --ledger "$SESSION_LEDGER"; then
+  echo "✅ canonical session records satisfy ARC-3 validation"
+else
+  fail "Canonical session ledger validation failed"
 fi
 echo
 

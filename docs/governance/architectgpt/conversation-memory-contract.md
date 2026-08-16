@@ -282,6 +282,15 @@ Every decision, idea, correction, and deferred-question record includes:
 - related task or canonical destination;
 - supersession or correction links where applicable.
 
+### 6.3 ARC-3 schema formalization
+
+The minimum metadata and filename authority in this contract are operationalized by:
+
+- `docs/governance/architectgpt/session-record-schema.md` — normative field types, lifecycle rules, filename algorithm, body template, and migration policy;
+- `docs/governance/architectgpt/session-record.schema.json` — machine-readable frontmatter schema.
+
+These ARC-3 artifacts may narrow representation and validation rules, but they may not weaken or reinterpret this contract. If an ARC-3 artifact conflicts with this contract, this contract controls.
+
 ## 7. Privacy and redaction boundaries
 
 Only records classified `PUBLIC` or `PUBLIC-REDACTED` may be committed to the public Arcanum repository.

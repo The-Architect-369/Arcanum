@@ -63,6 +63,8 @@ This is the **navigation hub** for the `docs/` tree.
 - HOPE Guardian (public interpretive charter): `governance/hopegpt/hope-guardian.md`
 - ArchitectGPT canonical specification: `governance/architectgpt/architect-gpt.md`
 - Architect conversation-memory contract: `governance/architectgpt/conversation-memory-contract.md`
+- Architect per-session record specification: `governance/architectgpt/session-record-schema.md`
+- Architect per-session machine schema: `governance/architectgpt/session-record.schema.json`
 - Controlling Architect cross-session log: `governance/architectgpt/architect-log.md`
 - Architect session ledger: `governance/architectgpt/sessions/`
 
