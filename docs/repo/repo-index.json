@@ -1,198 +1,9 @@
 {
-  "generated_at": "2026-08-16T18:47:56Z",
+  "generated_at": "2026-08-16T23:11:11Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "6a65c1405",
+  "commit": "b979e3227",
   "generator_version": "1.2",
   "files": [
-    {
-      "path": ".architect-backups/20260401-071509/apps/web/src/app/(app)/nexus/current/page.tsx",
-      "type": "file",
-      "size_bytes": 6322,
-      "last_modified_commit": "f2063ca4c",
-      "is_empty": false,
-      "extension": ".tsx",
-      "lines": 164
-    },
-    {
-      "path": ".architect-backups/20260401-071509/apps/web/src/app/(app)/nexus/post/page.tsx",
-      "type": "file",
-      "size_bytes": 7586,
-      "last_modified_commit": "f2063ca4c",
-      "is_empty": false,
-      "extension": ".tsx",
-      "lines": 188
-    },
-    {
-      "path": ".architect-backups/20260401-071509/apps/web/src/app/(app)/page.tsx",
-      "type": "file",
-      "size_bytes": 282,
-      "last_modified_commit": "f2063ca4c",
-      "is_empty": false,
-      "extension": ".tsx",
-      "lines": 8
-    },
-    {
-      "path": ".architect-backups/20260401-071509/apps/web/src/app/(marketing)/page.tsx",
-      "type": "file",
-      "size_bytes": 1951,
-      "last_modified_commit": "f2063ca4c",
-      "is_empty": false,
-      "extension": ".tsx",
-      "lines": 58
-    },
-    {
-      "path": ".architect-backups/20260401-071509/apps/web/src/app/onboard/page.tsx",
-      "type": "file",
-      "size_bytes": 1892,
-      "last_modified_commit": "f2063ca4c",
-      "is_empty": false,
-      "extension": ".tsx",
-      "lines": 62
-    },
-    {
-      "path": ".architect-backups/20260401-071509/apps/web/src/app/page.tsx",
-      "type": "file",
-      "size_bytes": 421,
-      "last_modified_commit": "f2063ca4c",
-      "is_empty": false,
-      "extension": ".tsx",
-      "lines": 20
-    },
-    {
-      "path": ".architect-backups/20260401-071509/apps/web/src/components/ConnectWallet.tsx",
-      "type": "file",
-      "size_bytes": 3483,
-      "last_modified_commit": "f2063ca4c",
-      "is_empty": false,
-      "extension": ".tsx",
-      "lines": 114
-    },
-    {
-      "path": ".architect-backups/20260401-071509/apps/web/src/components/SimpleAccountPreview.tsx",
-      "type": "file",
-      "size_bytes": 4250,
-      "last_modified_commit": "f2063ca4c",
-      "is_empty": false,
-      "extension": ".tsx",
-      "lines": 115
-    },
-    {
-      "path": ".architect-backups/20260401-071509/apps/web/src/components/ui/ActivateBento.tsx",
-      "type": "file",
-      "size_bytes": 923,
-      "last_modified_commit": "f2063ca4c",
-      "is_empty": false,
-      "extension": ".tsx",
-      "lines": 36
-    },
-    {
-      "path": ".architect-backups/20260401-071509/apps/web/src/components/ui/ShowcaseGrid.tsx",
-      "type": "file",
-      "size_bytes": 2973,
-      "last_modified_commit": "f2063ca4c",
-      "is_empty": false,
-      "extension": ".tsx",
-      "lines": 99
-    },
-    {
-      "path": ".architect-backups/20260401-071509/apps/web/src/lib/infra/ipfs.ts",
-      "type": "file",
-      "size_bytes": 1634,
-      "last_modified_commit": "f2063ca4c",
-      "is_empty": false,
-      "extension": ".ts",
-      "lines": 69
-    },
-    {
-      "path": ".architect-backups/20260401-071843/apps/web/src/app/(marketing)/activate/page.tsx",
-      "type": "file",
-      "size_bytes": 445,
-      "last_modified_commit": "f2063ca4c",
-      "is_empty": false,
-      "extension": ".tsx",
-      "lines": 15
-    },
-    {
-      "path": ".architect-backups/20260401-071843/apps/web/src/components/ConnectWallet.tsx",
-      "type": "file",
-      "size_bytes": 3535,
-      "last_modified_commit": "f2063ca4c",
-      "is_empty": false,
-      "extension": ".tsx",
-      "lines": 125
-    },
-    {
-      "path": ".architect-backups/20260401-071843/apps/web/src/components/ui/ShowcaseGrid.tsx",
-      "type": "file",
-      "size_bytes": 2786,
-      "last_modified_commit": "f2063ca4c",
-      "is_empty": false,
-      "extension": ".tsx",
-      "lines": 99
-    },
-    {
-      "path": ".architect-backups/20260401-072418/apps/web/src/app/layout.tsx",
-      "type": "file",
-      "size_bytes": 725,
-      "last_modified_commit": "f2063ca4c",
-      "is_empty": false,
-      "extension": ".tsx",
-      "lines": 32
-    },
-    {
-      "path": ".architect-backups/20260401-072418/apps/web/src/lib/infra/ipfs.ts",
-      "type": "file",
-      "size_bytes": 1605,
-      "last_modified_commit": "f2063ca4c",
-      "is_empty": false,
-      "extension": ".ts",
-      "lines": 69
-    },
-    {
-      "path": ".architect-backups/20260401-072418/apps/web/src/lib/infra/wagmi.ts",
-      "type": "file",
-      "size_bytes": 464,
-      "last_modified_commit": "f2063ca4c",
-      "is_empty": false,
-      "extension": ".ts",
-      "lines": 15
-    },
-    {
-      "path": ".architect-backups/20260401-072819/apps/web/next.config.mjs",
-      "type": "file",
-      "size_bytes": 113,
-      "last_modified_commit": "f2063ca4c",
-      "is_empty": false,
-      "extension": ".mjs",
-      "lines": 3
-    },
-    {
-      "path": ".architect-backups/20260401-073029/apps/web/src/app/activate/page.tsx",
-      "type": "file",
-      "size_bytes": 523,
-      "last_modified_commit": "f2063ca4c",
-      "is_empty": false,
-      "extension": ".tsx",
-      "lines": 18
-    },
-    {
-      "path": ".architect-backups/20260404-085515/docs/governance/architectgpt/architect-gpt-manifest.yaml",
-      "type": "file",
-      "size_bytes": 795,
-      "last_modified_commit": "f2063ca4c",
-      "is_empty": false,
-      "extension": ".yaml",
-      "lines": 30
-    },
-    {
-      "path": ".architect-backups/20260404-085515/docs/governance/architectgpt/architect-gpt.md",
-      "type": "file",
-      "size_bytes": 10219,
-      "last_modified_commit": "f2063ca4c",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 285
-    },
     {
       "path": ".github/workflows/architect-promotion.yml",
       "type": "file",
@@ -223,11 +34,11 @@
     {
       "path": ".gitignore",
       "type": "file",
-      "size_bytes": 640,
-      "last_modified_commit": "9ae142920",
+      "size_bytes": 727,
+      "last_modified_commit": "b979e3227",
       "is_empty": false,
       "extension": "",
-      "lines": 50
+      "lines": 54
     },
     {
       "path": ".node-version",
@@ -264,15 +75,6 @@
       "is_empty": false,
       "extension": ".md",
       "lines": 153
-    },
-    {
-      "path": "Arcanum",
-      "type": "file",
-      "size_bytes": 4096,
-      "last_modified_commit": "9d68be2a6",
-      "is_empty": false,
-      "extension": "",
-      "lines": 0
     },
     {
       "path": "README.md",
@@ -4084,11 +3886,11 @@
     {
       "path": "docs/repo/repo-index.json",
       "type": "file",
-      "size_bytes": 193689,
-      "last_modified_commit": "6a65c1405",
+      "size_bytes": 193995,
+      "last_modified_commit": "bf1b08e41",
       "is_empty": false,
       "extension": ".json",
-      "lines": 7145
+      "lines": 7154
     },
     {
       "path": "docs/repo/repo-interface.md",
