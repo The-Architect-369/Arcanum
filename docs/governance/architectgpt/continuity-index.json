@@ -1,0 +1,50 @@
+{
+  "authority": "derived-non-authoritative",
+  "controlling_log": "docs/governance/architectgpt/architect-log.md",
+  "record_type": "continuity-index",
+  "reserved_sessions": [
+    {
+      "session_id": "ARC-SES-1",
+      "source_path": "docs/governance/architectgpt/architect-gpt-manifest.yaml",
+      "state": "RESERVED"
+    }
+  ],
+  "schema": "arcanum.architect.continuity-index/v1",
+  "session_ledger": "docs/governance/architectgpt/sessions",
+  "sessions": [
+    {
+      "correction_ids": [],
+      "decision_ids": [
+        "ARC-DEC-2-01"
+      ],
+      "deferred_question_ids": [
+        "ARC-DQ-2-01"
+      ],
+      "head_commit_end": "b0023e0429765d8f1b4344c34b072a2c70faae8d",
+      "idea_ids": [],
+      "next_task_id": "ARC-2",
+      "record_path": "docs/governance/architectgpt/sessions/2026-08-12--arc-ses-0002--arc-1--github-conversation-memory-contract.md",
+      "record_sha256": "c27f0d7b8aff72e7f4bd9c474fe18204dc8c935c52107c2cf38006f71d7ac5b6",
+      "session_id": "ARC-SES-2",
+      "status": "CLOSED",
+      "task_id": "ARC-1"
+    },
+    {
+      "correction_ids": [],
+      "decision_ids": [
+        "ARC-DEC-3-01"
+      ],
+      "deferred_question_ids": [],
+      "head_commit_end": "c6950e8ffe79b902503b26133f9442af224ffcf6",
+      "idea_ids": [
+        "ARC-IDE-3-01"
+      ],
+      "next_task_id": "ARC-4",
+      "record_path": "docs/governance/architectgpt/sessions/2026-08-15--arc-ses-0003--arc-3--define-per-session-record-schema.md",
+      "record_sha256": "dcb15cc9cbcec2e0618c0ad4485332dbf58db23689f2d5e3dd61295ed7a3b3fc",
+      "session_id": "ARC-SES-3",
+      "status": "CLOSED",
+      "task_id": "ARC-3"
+    }
+  ]
+}
