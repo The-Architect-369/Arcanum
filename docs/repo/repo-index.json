@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-08-16T18:45:05Z",
+  "generated_at": "2026-08-16T18:47:56Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "5c0b1f268",
+  "commit": "6a65c1405",
   "generator_version": "1.2",
   "files": [
     {
@@ -3482,7 +3482,7 @@
       "path": "docs/governance/architectgpt/architect-log.md",
       "type": "file",
       "size_bytes": 45486,
-      "last_modified_commit": "deefd724f",
+      "last_modified_commit": "6a65c1405",
       "is_empty": false,
       "extension": ".md",
       "lines": 1063
@@ -3617,7 +3617,7 @@
       "path": "docs/governance/architectgpt/continuity-index.json",
       "type": "file",
       "size_bytes": 2220,
-      "last_modified_commit": "bc4120895",
+      "last_modified_commit": "6a65c1405",
       "is_empty": false,
       "extension": ".json",
       "lines": 65
@@ -3911,6 +3911,15 @@
       "lines": 222
     },
     {
+      "path": "docs/governance/architectgpt/sessions/2026-08-16--arc-ses-0004--arc-4--define-machine-readable-continuity-index.md",
+      "type": "file",
+      "size_bytes": 9842,
+      "last_modified_commit": "6a65c1405",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 184
+    },
+    {
       "path": "docs/governance/economic-principles.md",
       "type": "file",
       "size_bytes": 9234,
@@ -4076,7 +4085,7 @@
       "path": "docs/repo/repo-index.json",
       "type": "file",
       "size_bytes": 193689,
-      "last_modified_commit": "5c0b1f268",
+      "last_modified_commit": "6a65c1405",
       "is_empty": false,
       "extension": ".json",
       "lines": 7145
