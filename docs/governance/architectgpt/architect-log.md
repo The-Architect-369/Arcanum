@@ -2,7 +2,7 @@
 title: "ArchitectGPT Log"
 status: canonical-log
 visibility: internal
-last_updated: 2026-08-12
+last_updated: 2026-08-16
 description: "Append-only ArchitectGPT session log for repository, doctrine, tooling, and structural alignment work."
 ---
 
@@ -993,3 +993,55 @@ Follow-up actions:
 - Preserve every unique historical entry with original provenance.
 - Present a migration plan before mutating either log.
 - Align the manifest, index expectations, and verification surfaces with the ratified controlling path.
+
+---
+
+## 2026-08-16 — ARC-3 Per-Session Schema Ratification and Closeout
+
+Grounding:
+
+- Session: `ARC-SES-3`
+- Task: `ARC-3`
+- Repository: `The-Architect-369/Arcanum`
+- Branch: `agent/wave-xxiv-repository-canonicalization`
+- Starting head: `60477d90f16de76302d166dc2c6ae02807262ba1`
+- Ratified implementation head: `c6950e8ffe79b902503b26133f9442af224ffcf6`
+- Grounding state: mixed GitHub, Notion, Human review, and Ubuntu-local verification evidence
+
+Summary:
+
+- The Human Architect approved the reviewed ARC-3 closeout packet.
+- Established the normative per-session Markdown specification and machine-readable JSON Schema.
+- Established deterministic session IDs, filenames, lifecycle fields, typed child IDs, provenance, privacy review, verification, and Human-review gates.
+- Added the canonical repository validator and Verify Sync enforcement.
+- Preserved ARC-SES-2 as a reviewed grandfathered record.
+- Archived the non-conforming HOPE prototype without rewriting its historical provenance.
+- Preserved ARC-4 as the explicit boundary for machine-readable continuity-index implementation.
+- Recorded the reviewed execution-evidence and future Tempus continuity concept as `ARC-IDE-3-01`.
+
+Verification status:
+
+- ARC-3 Package A: `c6950e8ffe79b902503b26133f9442af224ffcf6`.
+- Session-ledger validator: green.
+- TypeScript AST integrity and fixtures: green.
+- Verify Sync 24/24: green.
+- Doctrine Guard: green.
+- Protected Architect canonical document remained unchanged.
+- Pre-existing checksum-map drift reconciled.
+- Package B is subject to the same validator, Verify Sync, Doctrine Guard, Git-integrity, and exact-remote-lease checks before publication.
+
+Privacy and authority boundary:
+
+- No raw conversation transcript, credentials, hidden provider context, or raw terminal logs were persisted.
+- Human Architect approval remains the ratification authority.
+- Architect GPT remains instrumental.
+- No merge, deployment, ARC-4 implementation, economics, chain, or application mutation is part of ARC-3 closeout.
+
+Closure record:
+
+- `docs/governance/architectgpt/sessions/2026-08-15--arc-ses-0003--arc-3--define-per-session-record-schema.md`
+- Closed at: `2026-08-16T13:44:17-04:00`
+
+Exact next task:
+
+- `ARC-4 — Define the machine-readable continuity index`.

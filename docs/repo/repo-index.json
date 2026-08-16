@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-08-15T23:48:56Z",
+  "generated_at": "2026-08-16T17:44:17Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "60477d90f",
+  "commit": "c6950e8ff",
   "generator_version": "1.2",
   "files": [
     {
@@ -3014,7 +3014,7 @@
       "path": "docs/README.md",
       "type": "file",
       "size_bytes": 2808,
-      "last_modified_commit": "60477d90f",
+      "last_modified_commit": "c6950e8ff",
       "is_empty": false,
       "extension": ".md",
       "lines": 74
@@ -3185,7 +3185,7 @@
       "path": "docs/archive/architectgpt/README.md",
       "type": "file",
       "size_bytes": 925,
-      "last_modified_commit": "b4c8d3fe7",
+      "last_modified_commit": "c6950e8ff",
       "is_empty": false,
       "extension": ".md",
       "lines": 25
@@ -3221,7 +3221,7 @@
       "path": "docs/archive/architectgpt/sessions/2026-hope-render-system-v1.md",
       "type": "file",
       "size_bytes": 1670,
-      "last_modified_commit": "unknown",
+      "last_modified_commit": "c6950e8ff",
       "is_empty": false,
       "extension": ".md",
       "lines": 50
@@ -3464,7 +3464,7 @@
       "path": "docs/governance/architectgpt/architect-gpt-manifest.yaml",
       "type": "file",
       "size_bytes": 28057,
-      "last_modified_commit": "60477d90f",
+      "last_modified_commit": "c6950e8ff",
       "is_empty": false,
       "extension": ".yaml",
       "lines": 647
@@ -3481,11 +3481,11 @@
     {
       "path": "docs/governance/architectgpt/architect-log.md",
       "type": "file",
-      "size_bytes": 42205,
+      "size_bytes": 44480,
       "last_modified_commit": "b0023e042",
       "is_empty": false,
       "extension": ".md",
-      "lines": 995
+      "lines": 1047
     },
     {
       "path": "docs/governance/architectgpt/ast-integrity-protocol.md",
@@ -3608,7 +3608,7 @@
       "path": "docs/governance/architectgpt/conversation-memory-contract.md",
       "type": "file",
       "size_bytes": 18999,
-      "last_modified_commit": "dae8cb8b3",
+      "last_modified_commit": "c6950e8ff",
       "is_empty": false,
       "extension": ".md",
       "lines": 507
@@ -3842,7 +3842,7 @@
       "path": "docs/governance/architectgpt/session-record-schema.md",
       "type": "file",
       "size_bytes": 16466,
-      "last_modified_commit": "unknown",
+      "last_modified_commit": "c6950e8ff",
       "is_empty": false,
       "extension": ".md",
       "lines": 435
@@ -3851,7 +3851,7 @@
       "path": "docs/governance/architectgpt/session-record.schema.json",
       "type": "file",
       "size_bytes": 7116,
-      "last_modified_commit": "unknown",
+      "last_modified_commit": "c6950e8ff",
       "is_empty": false,
       "extension": ".json",
       "lines": 243
@@ -3873,6 +3873,15 @@
       "is_empty": false,
       "extension": ".md",
       "lines": 215
+    },
+    {
+      "path": "docs/governance/architectgpt/sessions/2026-08-15--arc-ses-0003--arc-3--define-per-session-record-schema.md",
+      "type": "file",
+      "size_bytes": 12336,
+      "last_modified_commit": "unknown",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 222
     },
     {
       "path": "docs/governance/economic-principles.md",
@@ -3959,7 +3968,7 @@
       "path": "docs/index.md",
       "type": "file",
       "size_bytes": 4274,
-      "last_modified_commit": "60477d90f",
+      "last_modified_commit": "c6950e8ff",
       "is_empty": false,
       "extension": ".md",
       "lines": 119
@@ -4039,11 +4048,11 @@
     {
       "path": "docs/repo/repo-index.json",
       "type": "file",
-      "size_bytes": 188189,
-      "last_modified_commit": "bf3dd5e5f",
+      "size_bytes": 192165,
+      "last_modified_commit": "c6950e8ff",
       "is_empty": false,
       "extension": ".json",
-      "lines": 7001
+      "lines": 7091
     },
     {
       "path": "docs/repo/repo-interface.md",
@@ -4535,7 +4544,7 @@
       "path": "docs/tooling/doctrine-checksums/doctrine-checksums.yaml",
       "type": "file",
       "size_bytes": 3152,
-      "last_modified_commit": "1a9e78fde",
+      "last_modified_commit": "c6950e8ff",
       "is_empty": false,
       "extension": ".yaml",
       "lines": 34
@@ -6758,7 +6767,7 @@
       "path": "scripts/architect/validate-session-records.py",
       "type": "file",
       "size_bytes": 11993,
-      "last_modified_commit": "unknown",
+      "last_modified_commit": "c6950e8ff",
       "is_empty": false,
       "extension": ".py",
       "lines": 335
@@ -7073,7 +7082,7 @@
       "path": "scripts/verify-sync.sh",
       "type": "file",
       "size_bytes": 44701,
-      "last_modified_commit": "60477d90f",
+      "last_modified_commit": "c6950e8ff",
       "is_empty": false,
       "extension": ".sh",
       "lines": 1097
