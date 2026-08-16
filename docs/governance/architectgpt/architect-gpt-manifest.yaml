@@ -524,7 +524,11 @@ session_schema_control:
     - docs/governance/architectgpt/sessions/2026-08-12--arc-ses-0002--arc-1--github-conversation-memory-contract.md
   archived_prototypes:
     - docs/archive/architectgpt/sessions/2026-hope-render-system-v1.md
-  continuity_index: deferred_to_ARC-4
+  continuity_index: docs/governance/architectgpt/continuity-index.json
+  continuity_index_specification: docs/governance/architectgpt/continuity-index-spec.md
+  continuity_index_schema: docs/governance/architectgpt/continuity-index.schema.json
+  continuity_index_generator: scripts/architect/generate-continuity-index.py
+  continuity_index_validator: scripts/architect/validate-continuity-index.py
   authority: continuity_metadata_only
 
 observed_providers:
@@ -541,6 +545,11 @@ files:
   session_record_specification: docs/governance/architectgpt/session-record-schema.md
   session_record_schema: docs/governance/architectgpt/session-record.schema.json
   session_record_validator: scripts/architect/validate-session-records.py
+  continuity_index_specification: docs/governance/architectgpt/continuity-index-spec.md
+  continuity_index_schema: docs/governance/architectgpt/continuity-index.schema.json
+  continuity_index: docs/governance/architectgpt/continuity-index.json
+  continuity_index_generator: scripts/architect/generate-continuity-index.py
+  continuity_index_validator: scripts/architect/validate-continuity-index.py
   capability_registry: docs/governance/architectgpt/capability-registry.yaml
   capability_fabric: docs/governance/architectgpt/capability-fabric.md
   orchestration_protocol: docs/governance/architectgpt/orchestration-protocol.md

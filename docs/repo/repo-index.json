@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-08-16T17:44:17Z",
+  "generated_at": "2026-08-16T18:43:43Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "c6950e8ff",
+  "commit": "bc4120895",
   "generator_version": "1.2",
   "files": [
     {
@@ -3463,11 +3463,11 @@
     {
       "path": "docs/governance/architectgpt/architect-gpt-manifest.yaml",
       "type": "file",
-      "size_bytes": 28057,
+      "size_bytes": 28815,
       "last_modified_commit": "c6950e8ff",
       "is_empty": false,
       "extension": ".yaml",
-      "lines": 647
+      "lines": 656
     },
     {
       "path": "docs/governance/architectgpt/architect-gpt.md",
@@ -3482,7 +3482,7 @@
       "path": "docs/governance/architectgpt/architect-log.md",
       "type": "file",
       "size_bytes": 44480,
-      "last_modified_commit": "b0023e042",
+      "last_modified_commit": "deefd724f",
       "is_empty": false,
       "extension": ".md",
       "lines": 1047
@@ -3603,6 +3603,33 @@
       "is_empty": false,
       "extension": ".md",
       "lines": 70
+    },
+    {
+      "path": "docs/governance/architectgpt/continuity-index-spec.md",
+      "type": "file",
+      "size_bytes": 6985,
+      "last_modified_commit": "bc4120895",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 154
+    },
+    {
+      "path": "docs/governance/architectgpt/continuity-index.json",
+      "type": "file",
+      "size_bytes": 1652,
+      "last_modified_commit": "bc4120895",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 50
+    },
+    {
+      "path": "docs/governance/architectgpt/continuity-index.schema.json",
+      "type": "file",
+      "size_bytes": 3749,
+      "last_modified_commit": "bc4120895",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 144
     },
     {
       "path": "docs/governance/architectgpt/conversation-memory-contract.md",
@@ -3878,7 +3905,7 @@
       "path": "docs/governance/architectgpt/sessions/2026-08-15--arc-ses-0003--arc-3--define-per-session-record-schema.md",
       "type": "file",
       "size_bytes": 12336,
-      "last_modified_commit": "unknown",
+      "last_modified_commit": "deefd724f",
       "is_empty": false,
       "extension": ".md",
       "lines": 222
@@ -4048,11 +4075,11 @@
     {
       "path": "docs/repo/repo-index.json",
       "type": "file",
-      "size_bytes": 192165,
-      "last_modified_commit": "c6950e8ff",
+      "size_bytes": 192471,
+      "last_modified_commit": "deefd724f",
       "is_empty": false,
       "extension": ".json",
-      "lines": 7091
+      "lines": 7100
     },
     {
       "path": "docs/repo/repo-interface.md",
@@ -6449,6 +6476,15 @@
       "lines": 10
     },
     {
+      "path": "scripts/architect/generate-continuity-index.py",
+      "type": "file",
+      "size_bytes": 8968,
+      "last_modified_commit": "bc4120895",
+      "is_empty": false,
+      "extension": ".py",
+      "lines": 275
+    },
+    {
       "path": "scripts/architect/impact-graph.py",
       "type": "file",
       "size_bytes": 11583,
@@ -6753,6 +6789,15 @@
       "is_empty": false,
       "extension": ".sh",
       "lines": 94
+    },
+    {
+      "path": "scripts/architect/validate-continuity-index.py",
+      "type": "file",
+      "size_bytes": 10235,
+      "last_modified_commit": "bc4120895",
+      "is_empty": false,
+      "extension": ".py",
+      "lines": 266
     },
     {
       "path": "scripts/architect/validate-evidence.py",
@@ -7081,11 +7126,11 @@
     {
       "path": "scripts/verify-sync.sh",
       "type": "file",
-      "size_bytes": 44701,
+      "size_bytes": 46517,
       "last_modified_commit": "c6950e8ff",
       "is_empty": false,
       "extension": ".sh",
-      "lines": 1097
+      "lines": 1131
     },
     {
       "path": "tsconfig.json",

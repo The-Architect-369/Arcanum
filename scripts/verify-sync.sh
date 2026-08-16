@@ -137,6 +137,9 @@ required_governance_files=(
   "docs/governance/architectgpt/architect-log.md"
   "docs/governance/architectgpt/session-record-schema.md"
   "docs/governance/architectgpt/session-record.schema.json"
+  "docs/governance/architectgpt/continuity-index-spec.md"
+  "docs/governance/architectgpt/continuity-index.schema.json"
+  "docs/governance/architectgpt/continuity-index.json"
   "docs/governance/architectgpt/capability-registry.yaml"
   "docs/governance/architectgpt/capability-fabric.md"
   "docs/governance/architectgpt/orchestration-protocol.md"
@@ -192,6 +195,11 @@ SESSION_SPEC="docs/governance/architectgpt/session-record-schema.md"
 SESSION_SCHEMA="docs/governance/architectgpt/session-record.schema.json"
 SESSION_VALIDATOR="scripts/architect/validate-session-records.py"
 SESSION_LEDGER="docs/governance/architectgpt/sessions"
+CONTINUITY_SPEC="docs/governance/architectgpt/continuity-index-spec.md"
+CONTINUITY_SCHEMA="docs/governance/architectgpt/continuity-index.schema.json"
+CONTINUITY_INDEX="docs/governance/architectgpt/continuity-index.json"
+CONTINUITY_GENERATOR="scripts/architect/generate-continuity-index.py"
+CONTINUITY_VALIDATOR="scripts/architect/validate-continuity-index.py"
 ARCHIVED_HOPE_SESSION="docs/archive/architectgpt/sessions/2026-hope-render-system-v1.md"
 
 echo "Checking Architect continuity authority..."
@@ -255,10 +263,14 @@ fi
 if grep -Fq 'specification: docs/governance/architectgpt/session-record-schema.md' "$MANIFEST" \
   && grep -Fq 'schema: docs/governance/architectgpt/session-record.schema.json' "$MANIFEST" \
   && grep -Fq 'validator: scripts/architect/validate-session-records.py' "$MANIFEST" \
-  && grep -Fq 'continuity_index: deferred_to_ARC-4' "$MANIFEST"; then
-  echo "✅ manifest converges on ARC-3 session schema and preserves ARC-4 boundary"
+  && grep -Fq 'continuity_index: docs/governance/architectgpt/continuity-index.json' "$MANIFEST" \
+  && grep -Fq 'continuity_index_specification: docs/governance/architectgpt/continuity-index-spec.md' "$MANIFEST" \
+  && grep -Fq 'continuity_index_schema: docs/governance/architectgpt/continuity-index.schema.json' "$MANIFEST" \
+  && grep -Fq 'continuity_index_generator: scripts/architect/generate-continuity-index.py' "$MANIFEST" \
+  && grep -Fq 'continuity_index_validator: scripts/architect/validate-continuity-index.py' "$MANIFEST"; then
+  echo "✅ manifest converges on ARC-3 session schema and ARC-4 continuity index"
 else
-  fail "Manifest does not converge on ARC-3 session schema control"
+  fail "Manifest does not converge on ARC-3/ARC-4 continuity controls"
 fi
 
 if [[ -f "$SESSION_LEDGER/2026-hope-render-system-v1.md" ]]; then
@@ -273,6 +285,28 @@ if python3 "$SESSION_VALIDATOR" --schema "$SESSION_SCHEMA" --ledger "$SESSION_LE
   echo "✅ canonical session records satisfy ARC-3 validation"
 else
   fail "Canonical session ledger validation failed"
+fi
+
+echo "Checking ARC-4 machine-readable continuity index..."
+if jq empty "$CONTINUITY_SCHEMA" >/dev/null 2>&1; then
+  echo "✅ valid continuity JSON schema: $CONTINUITY_SCHEMA"
+else
+  fail "Invalid continuity JSON schema: $CONTINUITY_SCHEMA"
+fi
+if jq empty "$CONTINUITY_INDEX" >/dev/null 2>&1; then
+  echo "✅ valid generated continuity JSON: $CONTINUITY_INDEX"
+else
+  fail "Invalid generated continuity JSON: $CONTINUITY_INDEX"
+fi
+if python3 -m py_compile "$CONTINUITY_GENERATOR" "$CONTINUITY_VALIDATOR"; then
+  echo "✅ ARC-4 generator and validator Python syntax"
+else
+  fail "Invalid ARC-4 generator or validator Python syntax"
+fi
+if python3 "$CONTINUITY_VALIDATOR"; then
+  echo "✅ deterministic ARC-4 continuity index and cross-record invariants"
+else
+  fail "ARC-4 continuity validation failed"
 fi
 echo
 
