@@ -4,7 +4,7 @@ status: implementation-candidate
 visibility: public
 phase: "Pre-Genesis"
 wave: "XXIV"
-last_updated: 2026-08-02
+last_updated: 2026-08-17
 maintainer: The-Architect-369
 ---
 
@@ -46,6 +46,21 @@ When two active documents conflict, authority is resolved in this order:
 6. working drafts;
 7. historical archives.
 
+### Domain-specific constitutional precedence
+
+The generic class ordering above does not flatten explicit constitutional hierarchies inside a domain.
+
+For economic conflicts, the authority hierarchy ratified in `../economics/economic-constitution.md` controls:
+
+1. system Doctrine and ratified system-wide constitutional boundaries;
+2. the ARCnet Economic Constitution;
+3. specialized constitutions within their bounded domains, including the Treasury Constitution;
+4. the Governance Specification for operational governance mechanics;
+5. Economic Principles and delegated parameter registries;
+6. implementation.
+
+This domain-specific hierarchy resolves same-class and same-era ambiguity among active economic documents. A lower document cannot override a higher one through recency, paraphrase, omission, contradiction, implementation drift, or summary wording.
+
 ## Canonicalization rules
 
 - Current implementation and future vision must be labeled separately.
@@ -55,6 +70,7 @@ When two active documents conflict, authority is resolved in this order:
 - Branch state must be represented exactly: work on `mobile` is not described as live on `main` until promotion occurs.
 - Local observations and execution receipts are not chain truth, governance ratification, or legal authority.
 - Repository cleanup must be evidence-based and reversible where practical.
+- A summary, index, whitepaper, architecture overview, parameter registry, or implementation document may not silently override a controlling constitutional source.
 
 ## Active repository domains
 
@@ -70,9 +86,9 @@ When two active documents conflict, authority is resolved in this order:
 
 The repository includes deterministic verification, promotion, agent, Workbench, Termux broker, and Architect Runtime surfaces. Their permission and execution boundaries remain separately specified.
 
-### Doctrine and governance
+### Doctrine, economics, and governance
 
-`docs/doctrine`, `docs/governance`, and their canonical indexes define constitutional boundaries and authority relationships.
+`docs/doctrine`, `docs/economics`, `docs/governance`, and their canonical indexes define constitutional boundaries and authority relationships.
 
 ### Repository integrity
 
@@ -101,6 +117,8 @@ Wave XXIV may not:
 - alter chain governance or treasury authority;
 - introduce arbitrary terminal execution;
 - claim unresolved design questions are settled.
+
+ARC-10's ratification of economic document precedence is a documentation-authority decision within this scope. It does not alter MANA parameters, Treasury powers, governance thresholds, or runtime economic behavior.
 
 ## Required verification
 
