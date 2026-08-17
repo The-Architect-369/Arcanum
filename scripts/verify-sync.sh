@@ -247,6 +247,35 @@ else
 fi
 
 echo
+echo "Checking ARC-6 normative session continuity..."
+if grep -Fq '## IV-A. Normative Session Continuity Protocol' "$ARCH_DOC" \
+  && grep -Fq '### Session-start gate' "$ARCH_DOC" \
+  && grep -Fq '### Session-close gate' "$ARCH_DOC" \
+  && grep -Fq 'CONTINUITY WARNING:' "$ARCH_DOC"; then
+  echo "✅ Architect GPT spec makes start/close continuity normative"
+else
+  fail "Architect GPT spec lacks the ARC-6 normative continuity protocol"
+fi
+
+for contract in \
+  'mode: normative' \
+  'substantive_session_binding: exactly_one_work_registry_task' \
+  'canonical_session_allocation_authority: human_architect_review' \
+  'repository_write_on_start: forbidden' \
+  'separate_repository_write_authorization_required: true' \
+  'warning_prefix: "CONTINUITY WARNING"' \
+  'silent_reconstruction_forbidden: true' \
+  'inference_as_repair_forbidden: true' \
+  'fail_closed_validation_preserved: true'
+do
+  if grep -Fq "$contract" "$MANIFEST"; then
+    echo "✅ ARC-6 manifest contract: $contract"
+  else
+    fail "Manifest lacks ARC-6 session-continuity contract: $contract"
+  fi
+done
+
+echo
 echo "Checking Architect per-session ledger schema..."
 if jq empty "$SESSION_SCHEMA" >/dev/null 2>&1; then
   echo "✅ valid JSON schema document: $SESSION_SCHEMA"
@@ -306,6 +335,7 @@ fi
 if python3 "$CONTINUITY_VALIDATOR"; then
   echo "✅ deterministic ARC-4 continuity index and cross-record invariants"
 else
+  warn "CONTINUITY WARNING: canonical Architect continuity is incomplete or inconsistent. Do not reconstruct missing records or decisions by inference. Repair the reported ledger/log/index condition, regenerate the continuity index, and rerun Verify Sync."
   fail "ARC-4 continuity validation failed"
 fi
 echo

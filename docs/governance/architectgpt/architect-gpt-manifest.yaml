@@ -1,4 +1,4 @@
-version: 3.5
+version: 3.6
 phase: Pre-Genesis
 maintainer: The-Architect-369
 environment: Ubuntu 22.04 LTS+
@@ -530,6 +530,40 @@ session_schema_control:
   continuity_index_generator: scripts/architect/generate-continuity-index.py
   continuity_index_validator: scripts/architect/validate-continuity-index.py
   authority: continuity_metadata_only
+
+session_continuity_control:
+  contract: docs/governance/architectgpt/conversation-memory-contract.md
+  mode: normative
+  substantive_session_binding: exactly_one_work_registry_task
+  session_start:
+    continuity_index_read_required: true
+    canonical_session_read_required: true
+    controlling_log_read_required: true
+    operational_registry_read_when_available: true
+    repository_branch_head_capture_required: true
+    provisional_session_candidate_only: true
+    canonical_session_allocation_authority: human_architect_review
+    repository_write_on_start: forbidden
+  session_close:
+    minimized_redacted_packet_required: true
+    typed_record_classification_required: true
+    exact_target_branch_paths_required: true
+    human_record_review_required: true
+    separate_repository_write_authorization_required: true
+    session_record_and_log_digest_same_change_set_preferred: true
+    continuity_index_regeneration_required_after_write: true
+    continuity_validation_required_after_write: true
+    verify_sync_required_after_write: true
+    operational_mirror_update_after_github_close_only: true
+  missing_record_behavior:
+    warning_prefix: "CONTINUITY WARNING"
+    repository_detectable_failure_warning_required: true
+    operational_mirror_mismatch_warning_required: true
+    silent_reconstruction_forbidden: true
+    inference_as_repair_forbidden: true
+    fail_closed_validation_preserved: true
+  write_authority: separate_explicit_human_authorization
+  authority: continuity_workflow_only
 
 observed_providers:
   github: connected
