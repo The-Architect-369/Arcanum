@@ -109,7 +109,7 @@ Close Work Registry Task `ARC-5` by reconstructing a bounded, evidence-first con
 - **Activation anchor:** `2026-08-16T19:24:57-04:00`.
 - **Grounding state:** mixed live GitHub evidence, Notion Work Registry task metadata, Human Architect review, and Ubuntu-local pre-landing verification evidence.
 
-ARC-5 is a continuity-recovery session rather than an Economic Constitution synthesis pass. Its substantive work is the reviewed provenance classification itself; therefore `head_commit_end` and `github_commit` bind the unchanged Wave XXIV substantive repository head. The later metadata closeout commit containing this record, the log digest, the continuity projection, and the repository-index refresh remains discoverable through Git history and is intentionally not self-referential.
+ARC-5 is a continuity-recovery session rather than an Economic Constitution synthesis pass. Its substantive work is the reviewed provenance classification itself; therefore `head_commit_end` and `github_commit` bind the unchanged Wave XXIV substantive repository head. The later metadata closeout commit containing this record, the log digest, and the continuity projection remains discoverable through Git history and is intentionally not self-referential; repository-index refresh and full Verify Sync remain a post-landing local verification step.
 
 ## Source inventory
 
