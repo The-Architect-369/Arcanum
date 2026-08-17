@@ -136,7 +136,7 @@ Verification status:
 - Fast-forward-only mobile synchronization: green.
 - Remote branch convergence: green.
 - Idempotent closure: green.
-- Non-READY production rejection: green.
+- Non-READY deployment rejection: green.
 - Focused fixture result: `PASS=7 FAIL=0`.
 
 Follow-up actions:
@@ -756,7 +756,7 @@ Grounding:
 Summary:
 
 - Added an offline Repository Timeline Graph generator.
-- Added per-file nodes containing commit, parent, author, timestamp, subject, blob hash, content hash, diff statistics.
+- Added per-file nodes containing commit, parent, author, timestamp, subject, blob hash, content hash, and diff statistics.
 - Added deterministic `superseded_by` edges and latest-version indexes.
 - Added bounded history controls and repository path-containment enforcement.
 - Added canonical JSON schema, governance protocol, and executable fixtures.
