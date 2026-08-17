@@ -383,20 +383,66 @@ These parameters require explicit modeling, simulation, risk analysis, and Human
 
 ---
 
-# Section V — Next Constitutional Design Domain
+# Section V — Acquisition and Circulation Event Taxonomy
 
-Section V is intentionally unresolved.
+Section V establishes the factual grammar by which MANA acquisition, circulation, custody, removal, and economic-purpose events are classified.
 
-The next design cycle should determine how MANA **enters circulation through earning, compensation, exchange, grants, distributions, and other lawful acquisition paths**, while preserving the distinction between:
+This taxonomy does not, by itself, authorize a particular economic mechanism, rate, eligibility rule, issuance amount, fee, reward formula, credit program, sink, or distribution program. Those mechanisms remain subject to their applicable constitutional and governance requirements.
 
-- issuance of new MANA;
-- transfer of existing MANA;
-- Treasury allocation;
-- protocol compensation;
-- participant earning;
-- commercial exchange.
+## Taxonomy Boundary
 
-No acquisition mechanism should be inferred as approved merely because it appears in older exploratory material. The next section must be grounded in existing canon and explicitly ratified through the Wave XXIV design process.
+Every material MANA event must preserve two independent dimensions:
+
+1. **Monetary operation** — what happened to supply, an existing balance, custody, a reserve, or a liability.
+2. **Economic purpose** — why that operation occurred.
+
+An economic-purpose label may reference one or more monetary operations. It may not replace or obscure them.
+
+In particular, the word **reward**, **compensation**, **grant**, **payment**, or another purpose label may never conceal whether the underlying value came from existing MANA or from constitutionally authorized new issuance.
+
+## Event Classes
+
+| Event class | Classification | Authority and value source | Required receipt semantics | Forbidden interpretation |
+|---|---|---|---|---|
+| **Issuance** | Monetary operation | Constitutionally authorized monetary authority; no pre-existing payer balance supplies the newly created MANA | Identify issuance authority, issuance category, amount, and resulting supply increase | May not be represented as a transfer, Treasury spending, recycled MANA, ordinary earning, or movement of an existing balance |
+| **Transfer** | Monetary operation | Authorized movement from an existing MANA balance | Identify source, recipient, amount, authorization, and that existing MANA moved without new supply creation | May not be represented as issuance merely because ownership or custody changed |
+| **Reward** | Economic purpose / composite | Funding source must be explicit, including an authorized existing pool, Treasury source, escrow source, or separately authorized issuance | Identify reward purpose and basis, funding source, recipient, amount, and all linked monetary-operation receipts | Reward does not imply human worth, Vitae, governing authority, guaranteed yield, or automatic minting |
+| **Compensation** | Economic purpose / composite | Existing payer funds or a separately identified authorized issuance mechanism | Identify work or service basis, payer, recipient, amount, funding source, and linked monetary operations | Compensation is not authority, status, identity legitimacy, or issuance unless a separate issuance event actually occurred |
+| **Grant** | Economic purpose / composite | Authorized grant program, Treasury/program balance, reserve, or separately authorized issuance | Identify authorizing program, recipient, amount, source of value, and applicable conditions | A grant is not inherently issuance and does not create authority over the recipient |
+| **Treasury allocation** | Economic purpose / composite | Constitutionally governed Treasury assets under authorized allocation authority | Identify authorization, source Treasury lane, destination, amount, and linked transfer or reserve movement | Treasury allocation or spending is not minting; new supply requires a separate authorized issuance event |
+| **Protocol payment** | Economic purpose / composite | Existing protocol, reserve, revenue, or other authorized funding source; issuance only when separately authorized | Identify verified service basis, funding source, recipient, amount, and linked monetary operation | Protocol payment is not guaranteed yield and does not imply that every service or transaction creates new MANA |
+| **Commerce** | Economic purpose / composite | Existing balances voluntarily exchanged by counterparties | Identify counterparties, consideration or exchange context, amount, and linked transfers | Commercial exchange does not create new MANA merely because value changed hands |
+| **Refund** | Economic purpose / composite | Existing funds returned in relation to a prior economic event | Reference the originating receipt or obligation, payer, recipient, amount, and return basis | A refund is not a reward or new issuance |
+| **Escrow placement** | Monetary operation | Existing MANA placed under explicitly scoped escrow terms | Identify depositor, amount, escrow authority or terms, custody state, and release conditions where applicable | Escrow placement is not a burn, sink, expenditure, reward, or issuance merely because funds become temporarily unavailable |
+| **Escrow return** | Monetary operation / purpose | Existing escrowed MANA released according to its governing terms | Reference the originating escrow receipt, release authority or condition, recipient, and amount | Return of escrow is not issuance or a reward |
+| **Holding / saving** | State classification | Existing participant-controlled value remains held; no required payer or recipient exists | Any recorded observation must describe balance or custody state without claiming an economic transfer or supply event | Holding does not imply human worth, authority, Vitae, entitlement, reward, or punishment for inactivity |
+| **Fee** | Economic purpose / composite | Existing MANA charged pursuant to an explicit authorized economic rule | Identify charge basis, amount, payer, destination or routing, and linked monetary operation | Fees may not be hidden, psychologically coercive, or disguised as unrelated punishment |
+| **Sink** | Monetary operation | Existing MANA is removed from circulating availability under an explicitly defined mechanism | Identify amount, source, sink mechanism, circulation effect, and whether the removal is reversible | A sink is not automatically a burn; temporary or routed removal must not be reported as destruction |
+| **Burn** | Monetary operation | Existing MANA is permanently destroyed under an authorized mechanism | Identify amount destroyed, authorization, source, and resulting supply decrease | Burn must not be represented merely as a fee, reserve movement, or generic sink when supply was actually destroyed |
+| **Reserve movement** | Monetary operation | Existing MANA moves between or within authorized reserve or allocation lanes | Identify source reserve lane, destination lane, amount, and authorization | Reserve movement is not issuance even when funds become newly available for use |
+| **Borrowing / credit** | Liability operation | Creates or modifies a claim or liability; any MANA principal transferred must identify its existing funding source or a separate authorized issuance event | Identify creditor, debtor, principal or claim, relevant terms, and any linked MANA transfer | Creation of debt or credit is not itself MANA issuance merely because a new liability exists |
+| **Debt repayment** | Liability and monetary operation | Existing value is transferred to satisfy or reduce an identified liability | Reference the liability, payer, recipient, amount, linked transfer, and resulting liability reduction | Repayment does not create new MANA merely because debt is extinguished |
+
+## Composite Event Integrity
+
+Composite economic events must preserve their underlying primitive receipts.
+
+A purpose label is therefore additive rather than substitutive.
+
+For example:
+
+- a Treasury-funded reward is represented by the applicable Treasury allocation or reserve movement, the transfer of existing MANA, and the factual reward-purpose record;
+- an issuance-funded reward additionally requires a distinct constitutionally authorized issuance event before the subsequent allocation or transfer and reward-purpose record.
+
+The resulting evidence must allow an observer to determine whether supply changed, whose existing balance moved, what authority acted, what source funded the event, and what economic purpose was being served.
+
+Receipts state facts about economic operations. They do not declare human worth, identity legitimacy, moral merit, Vitae, or governing authority.
+
+## Downstream Design Boundary
+
+This taxonomy establishes event distinctions only.
+
+Detailed acquisition policy, eligibility, distribution mechanics, reward formulas, pricing, credit terms, quantitative parameters, and other economic mechanisms require their own evidence-backed design and explicit ratification.
 
 ---
 
