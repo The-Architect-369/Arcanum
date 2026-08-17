@@ -45,7 +45,7 @@ provider_provenance:
   - "notion:connector:read"
   - "notion:connector:write"
   - "user:human-architect:observed"
-outcome: "ARC-10 ratified and landed the controlling economic authority hierarchy: system Doctrine remains supreme; the Economic Constitution controls ARCnet economic law and MANA; specialized constitutions retain bounded domain authority; the Governance Specification controls delegated operational mechanics; Economic Principles remains a subordinate canonical summary and parameter registry; implementation has no independent constitutional authority. Closure remains review-pending only because the controlling-log digest, deterministic repository-index regeneration, continuity validators, and exact-head Verify Sync have not all been reconciled on an available execution surface."
+outcome: "ARC-10 ratified and landed the controlling economic authority hierarchy: system Doctrine remains supreme; the Economic Constitution controls ARCnet economic law and MANA; specialized constitutions retain bounded domain authority; the Governance Specification controls delegated operational mechanics; Economic Principles remains a subordinate canonical summary and parameter registry; implementation has no independent constitutional authority. Closure remains review-pending until the controlling-log digest, deterministic repository/continuity index regeneration, canonical validators, and exact-head Verify Sync all reconcile after the ARC-SES-10 structural repair."
 decision_state_summary: KNOWN-RATIFIED
 canon_impact: RATIFIED
 canonicalization_status: LANDED
@@ -77,8 +77,10 @@ verification:
   - "PASS | GitHub issue provenance | ARC-10 ratification provenance persisted to issue #35"
   - "PASS | Notion Work Registry | ARC-10 decision state is Known Ratified and ARC-11 is identified as the Ready successor"
   - "PASS | Vercel combined status | success at substantive head 1b446cbec1770d56a628e57799799a49c91733ad"
-  - "NOT-RUN | PR-triggered GitHub Actions | no workflow run was present for substantive head 1b446cbec1770d56a628e57799799a49c91733ad"
-  - "NOT-RUN | repository-index regeneration and Verify Sync | docs/repo/repo-index.json remains anchored to c67d47ecb and no Ubuntu/local execution surface is available in this session"
+  - "PASS | user-provided Ubuntu repo-index regeneration | at b4cb49ee7c2f9793bb661e3341a61a45901fa346 repo-index generation completed and Verify Sync step 1 reported integrity green"
+  - "FAIL | user-provided session and continuity validation | at b4cb49ee7c2f9793bb661e3341a61a45901fa346 ARC-SES-10 lacked required canonical body headings, first reported as missing Source inventory"
+  - "FAIL | user-provided Verify Sync | at b4cb49ee7c2f9793bb661e3341a61a45901fa346 verification failed because ARC-3 ledger validation and ARC-4 continuity validation failed on the ARC-SES-10 structural defect"
+  - "NOT-RUN | exact-head post-repair validation | session and continuity validators, deterministic index regeneration, and Verify Sync must be rerun after the structural repair commit"
   - "NOT-RUN | controlling-log digest | canonical append-only architect-log digest has not been landed; CLOSED status is withheld until log/index/verification evidence reconcile"
 next_task_id: ARC-11
 next_gate: "Create the Deferred Decision & Simulation Register: define the canonical register schema and extract every numerical, mechanical, legal, and modeling deferral with source-section provenance while keeping placeholders non-constitutional."
@@ -113,7 +115,24 @@ The `started_at` timestamp is anchored to the first ARC-10 substantive GitHub co
 
 `head_commit_end` and `github_commit` bind the reviewed packet to the substantive ARC-10 state. Any later continuity-metadata commit is intentionally not embedded into those fields, avoiding self-reference.
 
-## Ratified authority hierarchy
+## Source inventory
+
+ARC-10 relied only on the reviewed authority and provenance surfaces already bound in frontmatter:
+
+- `docs/economics/economic-constitution.md` at substantive head `1b446cbec1770d56a628e57799799a49c91733ad`;
+- `docs/governance/economic-principles.md` at the same substantive head;
+- `docs/governance/treasury-constitution.md` at the same substantive head;
+- `docs/governance/governance-specification.md` at the same substantive head;
+- `docs/repo/repository-canonicalization.md` and `docs/index.md` at the same substantive head;
+- GitHub Issue #35 for Wave XXIV decision provenance;
+- Notion Work Registry pages for ARC-10 and ARC-11 as operational mirrors;
+- direct Human Architect ratification and the current close instruction.
+
+No unresolved economic parameter, later Section V issue discussion, or inferred authority rule was imported into ARC-10 through this closeout record.
+
+## Outcome
+
+### Ratified authority hierarchy
 
 ARC-10 establishes the following controlling order for economic authority:
 
@@ -211,19 +230,19 @@ ARC-10's substantive ratification changed:
 
 This continuity write additionally adds this session record and updates the derived continuity index. The controlling Architect log is intentionally not claimed as changed until a safe append-only write is available.
 
-## Verification and closure state
+## Verification
 
 - The feature branch was re-read and remained identical to substantive head `1b446cbec1770d56a628e57799799a49c91733ad` before continuity closeout work.
 - The six ratification documents are already landed on the feature branch.
 - GitHub Issue #35 contains ARC-10 ratification provenance.
 - Work Registry ARC-10 is `Known Ratified`; ARC-11 exists as `Ready`.
 - Vercel combined status is `success` at the substantive head.
-- No PR-triggered GitHub Actions run exists for the substantive head.
-- `docs/repo/repo-index.json` remains anchored to `c67d47ecb`, not the current branch tip.
-- Repository-index regeneration, continuity validators, and `bash scripts/verify-sync.sh` have not been run on the exact closeout head in an Ubuntu/local execution surface available to this session.
+- The Human Architect supplied an Ubuntu run at metadata head `b4cb49ee7c2f9793bb661e3341a61a45901fa346`: `bash scripts/repo-index.sh` regenerated the repository index and Verify Sync step 1 reported repo-index integrity green.
+- That same run failed ARC-3 session-ledger validation because ARC-SES-10 omitted required canonical body headings, beginning with `## Source inventory`; ARC-4 continuity validation and overall Verify Sync therefore failed closed.
+- This repair supplies all missing required headings in canonical order. Exact-head validators, continuity-index regeneration, repository-index regeneration, and Verify Sync must be rerun after the repair lands.
 - The append-only controlling-log digest has not yet been landed.
 
-For those reasons, this record is deliberately `REVIEW-PENDING`, not `CLOSED`. This preserves the fail-closed continuity rule rather than claiming a completed canonical close without reconciled log/index/verification evidence.
+For those reasons, this record remains `REVIEW-PENDING`, not `CLOSED`, until the post-repair exact-head verification and log/index reconciliation are complete.
 
 ## Privacy review
 
@@ -231,6 +250,13 @@ For those reasons, this record is deliberately `REVIEW-PENDING`, not `CLOSED`. T
 - **Review status:** `COMPLETE`.
 - No raw transcript, secret, token, private reflection, hidden provider context, bearer URL, or raw provider/terminal log is persisted.
 - **Redactions applied:** none.
+
+## Unresolved matters
+
+- No substantive ARC-10 authority or conflict-resolution decision remains unresolved within the approved acceptance criteria.
+- The canonical closeout mechanics remain incomplete: the controlling Architect log digest is still absent, and the derived continuity index and repository index must be regenerated after this session-record repair.
+- The canonical session and continuity validators plus `bash scripts/verify-sync.sh` must pass against the exact post-repair head before ARC-SES-10 may be changed to `CLOSED`.
+- No merge, promotion, deployment, stable-branch mutation, or ARC-11 activation is authorized by this repair.
 
 ## Exact next task
 
