@@ -205,7 +205,7 @@ Follow-up actions:
 - Run Doctrine Guard and Verify Sync 22/22.
 - Run exact-head Termux verification.
 - Generate the Wave XIX promotion attestation.
-- Require exact-head hosted CI and provider readiness before promotion.
+- Require exact-head hosted CI and Vercel preview readiness before promotion.
 
 ---
 
