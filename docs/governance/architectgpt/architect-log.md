@@ -756,7 +756,7 @@ Grounding:
 Summary:
 
 - Added an offline Repository Timeline Graph generator.
-- Added per-file nodes containing commit, parent, author, timestamp, subject, blob hash, content hash, and diff statistics.
+- Added per-file nodes containing commit, parent, author, timestamp, subject, blob hash, content hash, diff statistics.
 - Added deterministic `superseded_by` edges and latest-version indexes.
 - Added bounded history controls and repository path-containment enforcement.
 - Added canonical JSON schema, governance protocol, and executable fixtures.
@@ -1151,3 +1151,48 @@ Exact next task:
 
 - `ARC-7 — Apply the evidence-first rebuild protocol to Economic Constitution Section V`.
 - Next gate: begin Section V from directly evidenced acquisition and circulation events; attach an evidence class to every clause, exclude inference, and persist reconfirmed text immediately.
+
+---
+
+## 2026-08-16 — ARC-7 Section V Evidence-First Rebuild Protocol Closeout
+
+Grounding:
+
+- Session: `ARC-SES-7`
+- Task: `ARC-7 — Apply the evidence-first rebuild protocol to Economic Constitution Section V`
+- Repository: `The-Architect-369/Arcanum`
+- Branch: `agent/wave-xxiv-repository-canonicalization`
+- Phase: Pre-Genesis · Wave XXIV — Repository Canonicalization
+- Substantive closing head: `99608654994af80c98d3af54bb6aa4f70510e8d8`
+- Canonical record: `docs/governance/architectgpt/sessions/2026-08-16--arc-ses-0007--arc-7--section-v-evidence-first-rebuild.md`
+
+Summary:
+
+- Ratified the bounded Section V evidence-class provenance map as `ARC-DEC-7-01`.
+- Preserved Sections I–IV as the persisted `KNOWN-RATIFIED` working-draft baseline.
+- Preserved directly evidenced Section 5.1–5.2 decision substance without silently treating unconsolidated normalized prose as already persisted canon.
+- Preserved recoverable Section V material in `RECONFIRM`, Section 5.6 in `UNKNOWN-REDECIDE`, Section 5.9.16 as unratified, and numerical/mechanical/legal/simulation choices as `DEFERRED`.
+- Excluded inference from constitutional reconstruction.
+- Ratified `ARC-8` as the exact successor in `ARC-DEC-7-02`.
+- Performed no Economic Constitution prose edit.
+
+Authority and scope boundary:
+
+- ARC-7 is a provenance-control closeout, not an event-taxonomy or constitutional-prose drafting task.
+- ARC-8 owns the Section V acquisition/circulation event taxonomy.
+- ARC-9 remains downstream of ARC-8 for evidence-backed normalization of Sections 5.3–5.7 and direct Section 5.6 decision.
+- No merge, promotion, deployment, native runtime implementation, or chain-economics implementation is authorized by ARC-7.
+
+Verification status:
+
+- Live branch lease re-read at `99608654994af80c98d3af54bb6aa4f70510e8d8` before closeout.
+- Economic Constitution, Issue #35, ARC-SES-5, ARC-SES-6, and Work Registry ARC-7/8/9 were re-grounded.
+- Vercel combined status was success at the substantive head.
+- No PR-triggered workflow run was visible for the exact substantive head.
+- Human Architect approved the ARC-SES-7 closeout bundle and GitHub/Notion synchronization.
+- Post-closeout repository-index regeneration and full Verify Sync remain not run and must precede any later exact-head repository-integrity claim.
+
+Exact next task:
+
+- `ARC-8 — Rebuild the Section V acquisition and circulation event taxonomy`.
+- Next gate: ratify the event classes and distinctions before drafting policy prose; each event must identify authority, funding source, receipt semantics, and forbidden interpretations, and new issuance must remain distinct from movement of existing MANA.
