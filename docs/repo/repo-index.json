@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-08-17T01:17:58Z",
+  "generated_at": "2026-08-17T02:02:50Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "d7aa90d3c",
+  "commit": "bb803aa69",
   "generator_version": "1.2",
   "files": [
     {
@@ -3265,20 +3265,20 @@
     {
       "path": "docs/governance/architectgpt/architect-gpt-manifest.yaml",
       "type": "file",
-      "size_bytes": 28815,
-      "last_modified_commit": "5c0b1f268",
+      "size_bytes": 30326,
+      "last_modified_commit": "bb803aa69",
       "is_empty": false,
       "extension": ".yaml",
-      "lines": 656
+      "lines": 690
     },
     {
       "path": "docs/governance/architectgpt/architect-gpt.md",
       "type": "file",
-      "size_bytes": 14336,
-      "last_modified_commit": "60477d90f",
+      "size_bytes": 17824,
+      "last_modified_commit": "bb803aa69",
       "is_empty": false,
       "extension": ".md",
-      "lines": 339
+      "lines": 391
     },
     {
       "path": "docs/governance/architectgpt/architect-log.md",
@@ -3896,7 +3896,7 @@
       "path": "docs/repo/repo-index.json",
       "type": "file",
       "size_bytes": 188541,
-      "last_modified_commit": "93134231a",
+      "last_modified_commit": "af0d8bf3e",
       "is_empty": false,
       "extension": ".json",
       "lines": 6965
@@ -6946,11 +6946,11 @@
     {
       "path": "scripts/verify-sync.sh",
       "type": "file",
-      "size_bytes": 46517,
-      "last_modified_commit": "5c0b1f268",
+      "size_bytes": 47860,
+      "last_modified_commit": "bb803aa69",
       "is_empty": false,
       "extension": ".sh",
-      "lines": 1131
+      "lines": 1161
     },
     {
       "path": "tsconfig.json",
