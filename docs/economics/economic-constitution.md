@@ -2,7 +2,7 @@
 title: "ARCnet Economic Constitution"
 status: working-draft
 visibility: public
-last_updated: 2026-08-08
+last_updated: 2026-08-17
 description: "Working constitutional specification for MANA, economic invariants, and issuance architecture. Numerical monetary parameters remain unresolved pending modeling and Human Architect ratification."
 arcanum_phase: Pre-Genesis
 canonical_reference: false
@@ -16,7 +16,7 @@ mode: human-ratified-working-draft
 
 This document is a **working constitutional draft** assembled during Wave XXIV — Repository Canonicalization.
 
-Sections I–IV record decisions ratified by the Human Architect during the Wave XXIV constitutional design process. They extend the existing canonical economic posture in `../governance/economic-principles.md`, `../governance/treasury-constitution.md`, and `../governance/governance-specification.md` without silently replacing those documents while this file remains a working draft.
+Sections I–V record decisions ratified by the Human Architect during the Wave XXIV constitutional design process. They extend the existing canonical economic posture in `../governance/economic-principles.md`, `../governance/treasury-constitution.md`, and `../governance/governance-specification.md` without silently replacing those documents while this file remains a working draft.
 
 Unresolved numerical parameters are intentionally left open. No number, percentage, emission rate, reward rate, exchange price, vesting schedule, or reserve-release schedule should be inferred from this document unless explicitly ratified later.
 
@@ -443,6 +443,294 @@ Receipts state facts about economic operations. They do not declare human worth,
 This taxonomy establishes event distinctions only.
 
 Detailed acquisition policy, eligibility, distribution mechanics, reward formulas, pricing, credit terms, quantitative parameters, and other economic mechanisms require their own evidence-backed design and explicit ratification.
+
+## 5.3 Unified Participant Reward Architecture
+
+ARCnet may support bounded participant rewards across Tempus, Hope, Vitae, Nexus, and future modules under a unified economic architecture.
+
+The purpose of this architecture is to keep reward semantics constitutionally consistent across modules while allowing each authorized domain to recognize its own factual events. A module may define what events are eligible within its bounded domain, but it does not thereby acquire independent monetary authority, unrestricted access to shared funds, or an independent right to create MANA.
+
+### 5.3.1 Unified Reward Semantics
+
+A participant reward is an economic-purpose classification applied to one or more underlying monetary operations.
+
+Modules may recognize meaningful participation, completion, contribution, or other explicitly authorized factual events. Module-specific language or user-interface presentation may not obscure the underlying monetary operation, funding source, or constitutional authority that made the reward possible.
+
+A reward label alone never authorizes issuance.
+
+### 5.3.2 Dignity and Recognition Boundary
+
+Participant rewards may recognize bounded factual events. They may not convert private reflective content, human worth, identity, or Vitae recognition into an economic score.
+
+Reward systems therefore may not:
+
+- price a participant's human worth;
+- make private reflective content a determinant of reward amount;
+- convert Vitae recognition into transferable economic status;
+- imply governance supremacy or identity legitimacy from economic receipt;
+- represent a reward as guaranteed yield merely because a participant remains present in the system.
+
+The factual event may be recognized. The person is not economically ranked.
+
+### 5.3.3 Participation Rewards and Substantial Compensation
+
+Bounded participation or milestone rewards remain distinct from substantial compensation for work, service, creation, stewardship, responsibility, development, representation, or other material contribution.
+
+A module may use bounded rewards to recognize eligible participation events without collapsing substantial labor or responsibility into a nominal participation mechanic. Conversely, substantial compensation may not be disguised as a routine module reward in order to evade the authorization, funding, or receipt requirements applicable to compensation.
+
+### 5.3.4 Funding and Receipt Requirements
+
+Every reward must identify:
+
+- its economic purpose and factual basis;
+- the actual funding source;
+- the recipient;
+- the amount;
+- the applicable authorization or program basis; and
+- every linked monetary operation required to reconstruct the event.
+
+The funding-source constraints established in §5.2 remain controlling. Existing MANA, authorized pools, Treasury resources, escrow sources, or other lawful existing balances must remain distinguishable from any separately authorized issuance mechanism.
+
+If new MANA is created, the issuance event must be recorded independently before the subsequent allocation, transfer, or reward-purpose record. The fact that value was rewarded does not itself prove or authorize minting.
+
+## 5.4 Contribution and Compensation
+
+Compensation may recognize actual work, service, stewardship, responsibility, development, representation, creation, or other authorized contribution.
+
+Compensation exists to pay for legitimate work or responsibility. It is not a mechanism for converting office, identity, founding status, or symbolic position into an automatic claim on ecosystem resources.
+
+### 5.4.1 Legitimate Compensation Basis
+
+A compensation event must have a substantive basis in work, service, responsibility, or contribution actually performed or validly undertaken.
+
+Legitimate bases may include, where otherwise authorized:
+
+- protocol or application development;
+- operations and maintenance;
+- stewardship of bounded ecosystem responsibilities;
+- representation performed on behalf of ARCnet under valid authority;
+- research, design, security, documentation, or infrastructure work;
+- creation or delivery of other material ecosystem value.
+
+The existence of a role may describe responsibility. It does not by itself establish payment entitlement.
+
+### 5.4.2 Founder and Architect Non-Entitlement
+
+Founder, Architect, or other role or title alone creates no automatic or perpetual economic entitlement.
+
+The Human Architect may receive compensation for actual work or uniquely scoped stewardship under the same substantive legitimacy standards that govern compensation of other contributors. Unique responsibility may be recognized when it is real and documented; title alone is insufficient.
+
+No compensation rule may be designed so that founding status silently becomes a permanent extraction right over Treasury, protocol, participant, or ecosystem resources.
+
+### 5.4.3 Compensation Is Not Authority
+
+Compensation and authority are distinct.
+
+Receiving MANA for legitimate work does not purchase or confer:
+
+- identity legitimacy;
+- Vitae recognition;
+- constitutional status;
+- governance supremacy;
+- exemption from constitutional constraints; or
+- ownership of Treasury resources by virtue of compensated role.
+
+Economic payment records value exchanged for work or service. They do not establish the recipient's human, constitutional, or governance rank.
+
+### 5.4.4 Funding, Receipts, and Deferred Mechanics
+
+Every compensation event must identify:
+
+- the work, service, responsibility, or contribution basis;
+- the payer or authorizing source;
+- the recipient;
+- the amount;
+- the actual funding source; and
+- all linked monetary operations.
+
+Existing funds and newly issued MANA remain distinct. If compensation is funded through issuance, that issuance requires its own constitutional authority and receipt; the compensation label does not create mint authority.
+
+Treasury-funded compensation remains subject to the Treasury Constitution and applicable governance authority.
+
+Exact Founder/Architect compensation mechanics, formulas, schedules, numerical treatment, and other implementation parameters remain deferred for separate explicit design and ratification.
+
+## 5.5 Voluntary Transfer and Commerce
+
+Lawful voluntary transfer and commerce using MANA are permitted economic functions.
+
+Participants may exchange value directly or through legitimate application, market, or intermediary mechanisms subject to sovereign custody, affirmative consent, explicit economic terms, and legible receipts.
+
+### 5.5.1 Existing Value and No Automatic Issuance
+
+A transfer moves existing MANA from an authorized source to an authorized recipient.
+
+Transfer of existing MANA does not create new MANA and must remain economically distinct from issuance. The fact that MANA changed hands, acquired a market price, was exchanged for goods or services, or passed through an application does not by itself create or justify new supply.
+
+### 5.5.2 Consent, Custody, and Intermediary Boundaries
+
+Commerce must preserve participant-controlled custody and affirmative authorization to the extent applicable to the chosen transaction mechanism.
+
+An application, market, module, or intermediary may exercise only the economic authority explicitly granted for the transaction or bounded service. Participation in commerce does not grant an intermediary sovereignty over participant identity or assets beyond that authorized scope.
+
+No application may silently convert a payment, listing, market interaction, or exchange relationship into an open-ended spending, custody, or identity authorization.
+
+### 5.5.3 Distinct Economic Purposes
+
+Payments, gifts, exchanges, pricing, and similar voluntary transfers must remain distinguishable from:
+
+- participant rewards;
+- compensation;
+- grants or subsidies;
+- Treasury allocations;
+- borrowing or credit;
+- debt repayment; and
+- issuance.
+
+A transaction may contain more than one economic purpose, but composite events must preserve each applicable primitive receipt rather than flattening the event into a single label.
+
+### 5.5.4 Commerce Receipts
+
+A material commercial or voluntary-transfer receipt must identify, as applicable:
+
+- the source and recipient or counterparties;
+- the MANA amount;
+- the consideration or exchange context;
+- the participant authorization;
+- any intermediary or custody role material to the transaction; and
+- the linked transfer or other monetary-operation receipts.
+
+Receipt semantics describe what happened economically. They do not confer authority over either counterparty beyond the transaction's valid terms.
+
+## 5.6 Holding, Saving, and Non-Compulsory Circulation
+
+Legitimately held MANA may remain under participant control without an obligation to spend, transfer, lend, escrow, or otherwise return it to circulation.
+
+Holding or saving is an economic state. It is not itself a transfer, reward, fee, sink, burn, escrow event, reserve movement, or issuance.
+
+### 5.6.1 Legitimate Holding
+
+A participant may retain legitimately controlled MANA for later use, reserve, optional future exchange, or no immediate economic action at all.
+
+Mere possession, silence, inactivity, or the decision not to transact does not create a new monetary operation and does not create a debt owed to ARCnet, Treasury, a module, or another participant.
+
+Any recorded observation of holding must describe balance or custody state without falsely representing a transfer, supply event, reward, or economic punishment.
+
+### 5.6.2 No Forced Monetary Velocity
+
+ARCnet, Treasury, governance, modules, and applications may not impose balance decay, inactivity penalties, forced spending, forced conversion, or confiscatory economic mechanisms merely to manufacture monetary velocity or compensate for institutional distress.
+
+Legitimate saving is therefore not misconduct and may not be treated as a protocol defect simply because held MANA is not presently circulating.
+
+This prohibition is directed at mere holding or inactivity. It does not erase separately authorized voluntary commitments, valid escrow terms, or independently established liabilities that arise from a distinct economic event and are recorded as such.
+
+### 5.6.3 Voluntary Escrow, Lending, and Locking
+
+A participant may voluntarily place MANA under explicit escrow, lending, lock, or other bounded economic terms where such a mechanism is otherwise lawful and authorized.
+
+Those actions must be:
+
+- affirmative rather than inferred from inactivity;
+- separately classified from ordinary holding;
+- bounded by explicit terms and scope;
+- supported by factual receipts; and
+- distinguishable from fees, sinks, burns, transfers, reserve movements, or issuance as applicable.
+
+A voluntary commitment does not convert the participant's remaining uncommitted balance into protocol-controlled property.
+
+### 5.6.4 No Automatic Yield, Status, or Authority
+
+Holding MANA creates no automatic:
+
+- reward;
+- yield;
+- human status;
+- Vitae recognition;
+- governance authority;
+- constitutional privilege; or
+- guarantee against ordinary economic risk.
+
+The right not to be coerced into circulation is not a promise that held MANA will maintain a particular market value, purchasing power, or economic outcome.
+
+### 5.6.5 Circulation Telemetry and Privacy
+
+System-level circulation and economic-health telemetry may observe aggregate conditions necessary to understand the health and behavior of the economy.
+
+Such observation should not require unnecessary profiling of individual inactivity or transform ordinary saving into a personal behavioral score.
+
+Economic analysis may describe system conditions. It may not convert a participant's choice to hold legitimate MANA into a judgment of human worth, identity legitimacy, Vitae, or civic standing.
+
+## 5.7 Sinks and Fees
+
+Fees and sinks may exist only for legitimate utility, infrastructure consumption, security, coordination, anti-abuse requirements, or explicitly authorized optional services.
+
+They are economic instruments for bounded system purposes. They are not constitutional goals in themselves and may not be used as hidden mechanisms for coercive extraction or manufactured activity.
+
+### 5.7.1 Legitimate Purpose Boundary
+
+A fee or sink must correspond to an identifiable and legitimate economic purpose.
+
+Applicable purposes may include:
+
+- resource or infrastructure consumption;
+- protocol or service costs;
+- security requirements;
+- coordination costs;
+- legitimate anti-abuse mechanisms; or
+- explicitly authorized optional services.
+
+A fee or sink may not be justified merely by a desire to make participants transact more frequently or to reduce balances without a real constitutional or economic basis.
+
+### 5.7.2 Legibility Before Authorization
+
+Material charges must be legible before authorization.
+
+A participant must be able to determine the applicable charge basis and material economic consequence before confirming the action that triggers it. Hidden fees, intentionally obscure routing, and economic mechanisms designed primarily for coercive extraction are prohibited.
+
+Where a fee is optional because it corresponds to an optional service, declining that service must not be misrepresented as misconduct or deficient participation.
+
+### 5.7.3 Distinct Monetary Operations
+
+Fees, sinks, burns, transfers, and routing are distinct economic operations and must remain distinguishable in receipts and accounting.
+
+A **fee** is an economic-purpose classification for an authorized charge of existing MANA.
+
+A **sink** removes existing MANA from circulating availability under an explicitly defined mechanism.
+
+A **burn** permanently destroys existing MANA and therefore decreases supply.
+
+A sink does not constitute a burn unless MANA supply is actually and permanently destroyed. Temporary unavailability, escrow, reserve routing, or movement to another authorized balance may not be reported as a burn.
+
+### 5.7.4 No Punishment for Saving or Silence
+
+Fees and sinks may not punish silence, non-participation, inactivity, or ordinary saving merely to manufacture activity or monetary velocity.
+
+An otherwise legitimate fee tied to a distinct service or economic event remains distinct from a penalty imposed because a participant chose not to transact.
+
+### 5.7.5 Receipt Requirements
+
+A material fee receipt must identify:
+
+- the charge basis;
+- the amount;
+- the payer;
+- the destination or routing; and
+- the linked monetary operation.
+
+A sink receipt must identify:
+
+- the amount and source;
+- the sink mechanism;
+- the circulation effect;
+- whether the removal is reversible; and
+- any related routing or destruction event.
+
+If a burn occurs, the record must additionally state the amount permanently destroyed and the resulting supply decrease.
+
+### 5.7.6 Parameter-Setting Boundary
+
+Fee rates, sink levels, burn percentages, routing percentages, thresholds, and related quantitative implementation parameters are policy instruments rather than constitutional ends.
+
+Those parameters remain deferred to their appropriate parameter-setting, modeling, simulation, governance, and ratification processes. The existence of constitutional authority for a legitimate fee or sink does not imply any particular numerical level.
 
 ---
 
