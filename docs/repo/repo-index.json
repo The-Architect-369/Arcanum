@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-08-17T02:02:50Z",
+  "generated_at": "2026-08-17T02:25:19Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "bb803aa69",
+  "commit": "311b1c72c",
   "generator_version": "1.2",
   "files": [
     {
@@ -3283,11 +3283,11 @@
     {
       "path": "docs/governance/architectgpt/architect-log.md",
       "type": "file",
-      "size_bytes": 47974,
-      "last_modified_commit": "cb62f339a",
+      "size_bytes": 50591,
+      "last_modified_commit": "311b1c72c",
       "is_empty": false,
       "extension": ".md",
-      "lines": 1107
+      "lines": 1153
     },
     {
       "path": "docs/governance/architectgpt/ast-integrity-protocol.md",
@@ -3418,11 +3418,11 @@
     {
       "path": "docs/governance/architectgpt/continuity-index.json",
       "type": "file",
-      "size_bytes": 3024,
-      "last_modified_commit": "d7aa90d3c",
+      "size_bytes": 3627,
+      "last_modified_commit": "2fe0169c7",
       "is_empty": false,
       "extension": ".json",
-      "lines": 92
+      "lines": 109
     },
     {
       "path": "docs/governance/architectgpt/continuity-index.schema.json",
@@ -3731,6 +3731,15 @@
       "lines": 286
     },
     {
+      "path": "docs/governance/architectgpt/sessions/2026-08-16--arc-ses-0006--arc-6--session-continuity-protocol.md",
+      "type": "file",
+      "size_bytes": 13105,
+      "last_modified_commit": "2fe0169c7",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 211
+    },
+    {
       "path": "docs/governance/economic-principles.md",
       "type": "file",
       "size_bytes": 9234,
@@ -3896,7 +3905,7 @@
       "path": "docs/repo/repo-index.json",
       "type": "file",
       "size_bytes": 188541,
-      "last_modified_commit": "af0d8bf3e",
+      "last_modified_commit": "a46e46ec7",
       "is_empty": false,
       "extension": ".json",
       "lines": 6965
