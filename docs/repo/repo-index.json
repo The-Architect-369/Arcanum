@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-08-17T02:25:19Z",
+  "generated_at": "2026-08-17T21:51:35Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "311b1c72c",
+  "commit": "c67d47ecb",
   "generator_version": "1.2",
   "files": [
     {
@@ -3211,11 +3211,11 @@
     {
       "path": "docs/economics/economic-constitution.md",
       "type": "file",
-      "size_bytes": 18198,
-      "last_modified_commit": "6ce3b9f62",
+      "size_bytes": 47955,
+      "last_modified_commit": "8a5d5220e",
       "is_empty": false,
       "extension": ".md",
-      "lines": 415
+      "lines": 868
     },
     {
       "path": "docs/governance/architectgpt/agent-execution-protocol.md",
@@ -3283,11 +3283,11 @@
     {
       "path": "docs/governance/architectgpt/architect-log.md",
       "type": "file",
-      "size_bytes": 50591,
-      "last_modified_commit": "311b1c72c",
+      "size_bytes": 59554,
+      "last_modified_commit": "c67d47ecb",
       "is_empty": false,
       "extension": ".md",
-      "lines": 1153
+      "lines": 1295
     },
     {
       "path": "docs/governance/architectgpt/ast-integrity-protocol.md",
@@ -3418,11 +3418,11 @@
     {
       "path": "docs/governance/architectgpt/continuity-index.json",
       "type": "file",
-      "size_bytes": 3627,
-      "last_modified_commit": "2fe0169c7",
+      "size_bytes": 5585,
+      "last_modified_commit": "c67d47ecb",
       "is_empty": false,
       "extension": ".json",
-      "lines": 109
+      "lines": 166
     },
     {
       "path": "docs/governance/architectgpt/continuity-index.schema.json",
@@ -3740,6 +3740,33 @@
       "lines": 211
     },
     {
+      "path": "docs/governance/architectgpt/sessions/2026-08-16--arc-ses-0007--arc-7--section-v-evidence-first-rebuild.md",
+      "type": "file",
+      "size_bytes": 12853,
+      "last_modified_commit": "2d6ea965c",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 204
+    },
+    {
+      "path": "docs/governance/architectgpt/sessions/2026-08-16--arc-ses-0008--arc-8--section-v-event-taxonomy.md",
+      "type": "file",
+      "size_bytes": 15913,
+      "last_modified_commit": "a0c4c1af7",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 256
+    },
+    {
+      "path": "docs/governance/architectgpt/sessions/2026-08-17--arc-ses-0009--arc-9--section-v-policy-ratification.md",
+      "type": "file",
+      "size_bytes": 19035,
+      "last_modified_commit": "c67d47ecb",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 299
+    },
+    {
       "path": "docs/governance/economic-principles.md",
       "type": "file",
       "size_bytes": 9234,
@@ -3904,11 +3931,11 @@
     {
       "path": "docs/repo/repo-index.json",
       "type": "file",
-      "size_bytes": 188541,
-      "last_modified_commit": "a46e46ec7",
+      "size_bytes": 189426,
+      "last_modified_commit": "996086549",
       "is_empty": false,
       "extension": ".json",
-      "lines": 6965
+      "lines": 6992
     },
     {
       "path": "docs/repo/repo-interface.md",
