@@ -2,7 +2,7 @@
 title: "ArchitectGPT Log"
 status: canonical-log
 visibility: internal
-last_updated: 2026-08-16
+last_updated: 2026-08-17
 description: "Append-only ArchitectGPT session log for repository, doctrine, tooling, and structural alignment work."
 ---
 
@@ -1246,3 +1246,50 @@ Exact next task:
 - `ARC-9 — Reconfirm recovered §5.3–§5.7 decisions and decide §5.6 directly`.
 - **HOLD:** Do not begin ARC-9 until the Human Architect explicitly releases it.
 - After release, next gate: present only evidence-backed normalized text; directly decide anything still unknown, especially the exact Section 5.6 scope.
+
+---
+
+## 2026-08-17 — ARC-9 Section V Policy Ratification Closeout
+
+Grounding:
+
+- Session: `ARC-SES-9`
+- Task: `ARC-9 — Reconfirm recovered §5.3–§5.7 decisions and decide §5.6 directly`
+- Repository: `The-Architect-369/Arcanum`
+- Branch: `agent/wave-xxiv-repository-canonicalization`
+- Phase: Pre-Genesis · Wave XXIV — Repository Canonicalization
+- Starting head: `a0c4c1af7afaf292e79fa5ba55b66132f091d8df`
+- First ARC-9 substantive write: `cbea45caa5816a96c4aa685cdb963a587139e242`
+- Substantive closing head: `8a5d5220eb79efbcffc60cedb4578a553a29074a`
+- Canonical record: `docs/governance/architectgpt/sessions/2026-08-17--arc-ses-0009--arc-9--section-v-policy-ratification.md`
+
+Summary:
+
+- Production-normalized and explicitly reconfirmed the previously ratified §5.1 Participation and Milestone Rewards decision substance.
+- Production-normalized and explicitly reconfirmed the previously ratified §5.2 Reward Funding Sources decision substance.
+- Reconfirmed and normalized recovered §§5.3–5.5 and §5.7 policy decisions.
+- Directly decided §5.6 Holding, Saving, and Non-Compulsory Circulation as new doctrine; the withdrawn historical inference remains withdrawn and is not the source of authority for the new §5.6.
+- Landed a continuous §5.1–§5.7 production policy chain in `docs/economics/economic-constitution.md` at `8a5d5220eb79efbcffc60cedb4578a553a29074a`.
+- Persisted final Human approval and provenance to GitHub Issue #35 and synchronized the Notion Work Registry to `Done / Known Ratified`.
+- Ratified ARC-10 as the exact successor.
+
+Verification status:
+
+- Live feature-branch lease was re-read before the final constitutional write.
+- Exact-head Economic Constitution reread confirmed §§5.1–§5.2 immediately before §5.3 at `8a5d5220eb79efbcffc60cedb4578a553a29074a`.
+- GitHub Issue #35 contains final ARC-9 closeout comment `5320608515`.
+- Notion Work Registry reread shows ARC-9 `Done / Known Ratified` and ARC-10 as the next gate.
+- GitHub combined status reported Vercel `pending` at the substantive closing head; no deployment-success claim is made.
+- Repository-index regeneration and Verify Sync were not run at the new exact head and remain required before the next repository-integrity claim.
+
+Authority and scope boundary:
+
+- No quantitative reward, issuance, compensation, fee, sink, burn, routing, lending, legal, tax, or simulation parameter was ratified by ARC-9.
+- §5.8 and later Section V material remain outside this closeout.
+- Economic document precedence remains unresolved and is owned by ARC-10.
+- No merge, promotion, deployment, `main`/`mobile` mutation, native runtime implementation, or chain-economics implementation is authorized by ARC-9.
+
+Exact next task:
+
+- `ARC-10 — Ratify economic authority and document precedence`.
+- Next gate: approve one explicit authority/conflict hierarchy, preserve specialized Treasury and governance authority, and update the Economic Constitution and dependent documents so summaries cannot silently override the deeper constitutional specification.
