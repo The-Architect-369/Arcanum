@@ -444,6 +444,125 @@ This taxonomy establishes event distinctions only.
 
 Detailed acquisition policy, eligibility, distribution mechanics, reward formulas, pricing, credit terms, quantitative parameters, and other economic mechanisms require their own evidence-backed design and explicit ratification.
 
+## 5.1 Participation and Milestone Rewards
+
+ARCnet may provide bounded MANA rewards for voluntary, meaningful participation, completion, and other explicitly authorized milestone events.
+
+Participation rewards exist to recognize factual events within the ecosystem. They do not measure the worth, superiority, moral value, identity legitimacy, or civic standing of the participant.
+
+### 5.1.1 Eligible Factual Events
+
+A participation or milestone reward must correspond to an identifiable factual event recognized by an authorized module or program.
+
+Eligible events may include voluntary participation, completion, or another explicitly defined milestone where the applicable program has established a legitimate reward basis.
+
+The occurrence of an eligible event may establish reward eligibility subject to the applicable funding and program rules. It does not establish that the participant is more valuable, more worthy, or constitutionally superior to another person.
+
+### 5.1.2 Module Eligibility Without Monetary Sovereignty
+
+Tempus, Hope, Vitae, Nexus, and future authorized modules may define milestone eligibility within their bounded domains.
+
+The authority to recognize an eligible event does not grant a module:
+
+- autonomous mint authority;
+- unrestricted access to Treasury or ecosystem funds;
+- an independent Treasury;
+- an unrestricted right to determine its own source of MANA; or
+- authority to override the Economic Constitution or applicable monetary governance.
+
+A module establishes the factual eligibility condition. The source and movement of MANA remain governed separately by the applicable economic authority.
+
+### 5.1.3 Dignity and Reflective Privacy Boundary
+
+Private reflective content must never determine the amount of MANA awarded.
+
+A system may, where otherwise authorized, recognize the factual completion of a reflection, rite, course, milestone, or similar event. It may not economically grade the participant's private thoughts, beliefs, emotional disclosures, perceived spiritual development, human worth, or Vitae recognition.
+
+The rewarded fact is the authorized event. The participant's interior life is not an economic score.
+
+### 5.1.4 Bounded Reward Programs
+
+Every participation or milestone reward program must have:
+
+- an authorized funding source;
+- a bounded policy defining eligibility;
+- appropriate anti-abuse controls; and
+- a legible receipt for any resulting economic event.
+
+A reward program may not rely on an implied, unlimited, or module-created source of funds.
+
+The existence of an eligible milestone does not itself authorize issuance.
+
+### 5.1.5 Participation Rewards and Substantial Contribution
+
+Bounded participation and milestone rewards remain distinct from substantial compensation for substantial contribution, service, creation, work, stewardship, or responsibility.
+
+Participation mechanisms should not be used to disguise substantial labor as nominal milestone participation or to evade the funding, authorization, and receipt requirements applicable to compensation under §5.4.
+
+This preserves the constitutional boundary that substantial compensation should primarily correspond to substantial contribution, service, creation, or work.
+
+## 5.2 Reward Funding Sources
+
+Every MANA reward must have an identifiable and constitutionally legitimate source of value.
+
+The fact that a participant has become eligible for a reward does not determine where the MANA comes from. Eligibility, funding, transfer, Treasury allocation, escrow return, reimbursement, and issuance remain distinct economic facts.
+
+### 5.2.1 Authorized Reward Funding Lanes
+
+Ordinary human-facing rewards may be funded through one or more authorized sources:
+
+1. **Pre-funded module reward pools** — existing MANA allocated in advance to a bounded reward program.
+2. **Community Genesis Distribution or community reward pools** — existing or constitutionally allocated community resources governed according to their applicable program.
+3. **Governance-approved Treasury programs** — MANA allocated through valid Treasury and governance authority.
+4. **Participant escrow return or reimbursement** — existing participant-linked value returned or reimbursed according to its applicable terms and recorded distinctly from the reward purpose.
+5. **Constitutionally authorized new issuance** — only where an applicable issuance program exists and operates within an explicitly bounded emission budget and its governing constitutional authority.
+
+No reward label creates a sixth, implied source of MANA.
+
+### 5.2.2 Existing MANA Before Adaptive Issuance
+
+Existing MANA should ordinarily fund reward obligations before adaptive new issuance is considered.
+
+Available pre-funded pools, community allocations, authorized Treasury resources, and other legitimate existing funding sources should therefore be evaluated before reliance on an applicable new-issuance mechanism.
+
+This preference does not independently authorize the use of any particular existing balance. Every source remains subject to its own custody, Treasury, governance, program, and authorization constraints.
+
+### 5.2.3 Module Reward Pools Are Accounting Lanes
+
+A module reward pool is an accounting and allocation lane for an authorized reward program.
+
+It is not:
+
+- an independent Treasury;
+- an autonomous monetary authority;
+- an unrestricted reserve;
+- a module-owned mint; or
+- a source of authority to create additional MANA when the pool is exhausted.
+
+Modules may establish eligibility within their authorized domains, but they cannot determine an unrestricted source of funds.
+
+### 5.2.4 Monetary Operations Must Remain Distinguishable
+
+Reward receipts must preserve the actual monetary operations and funding sources underlying the economic event.
+
+In particular:
+
+- a refund remains distinguishable from a reward;
+- an escrow return remains distinguishable from a reward;
+- a Treasury subsidy or allocation remains identifiable as such;
+- a transfer of existing MANA remains distinguishable from issuance; and
+- constitutionally authorized new issuance must appear as a separate issuance event rather than being concealed by the reward label.
+
+A composite reward event must preserve the primitive receipts necessary to determine whether existing MANA moved or new MANA was created.
+
+### 5.2.5 Milestone Validity Is Independent of Reward Availability
+
+The validity of an otherwise completed rite, reflection, course, recognition, participation event, or milestone is independent of whether its associated reward pool presently contains sufficient MANA.
+
+Exhaustion, suspension, or modification of an applicable reward pool may affect whether or how an economic reward is provided. It may not retroactively invalidate the factual milestone itself.
+
+Economic availability governs compensation. It does not rewrite the participant's completed factual event.
+
 ## 5.3 Unified Participant Reward Architecture
 
 ARCnet may support bounded participant rewards across Tempus, Hope, Vitae, Nexus, and future modules under a unified economic architecture.
