@@ -205,7 +205,7 @@ Follow-up actions:
 - Run Doctrine Guard and Verify Sync 22/22.
 - Run exact-head Termux verification.
 - Generate the Wave XIX promotion attestation.
-- Require exact-head hosted CI and Vercel preview readiness before promotion.
+- Require exact-head hosted CI and provider readiness before promotion.
 
 ---
 
@@ -1105,3 +1105,49 @@ Exact next task:
 
 - `ARC-6 — Embed session-start and session-close continuity protocol in Architect canon`.
 - Next gate: amend the Architect specification and manifest so start/close continuity is normative, then add verification coverage; repository writes remain separately authorized.
+
+---
+
+## 2026-08-16 — ARC-6 Session Continuity Protocol Closeout
+
+Grounding:
+
+- Session: `ARC-SES-6`
+- Task: `ARC-6 — Embed session-start and session-close continuity protocol in Architect canon`
+- Repository: `The-Architect-369/Arcanum`
+- Branch: `agent/wave-xxiv-repository-canonicalization`
+- Phase: Pre-Genesis · Wave XXIV — Repository Canonicalization
+- Starting head: `af0d8bf3e821ff11aa0b4a466dca99f6f17d2b32`
+- Substantive implementation commit: `bb803aa692a7152c2ac7083a5ff33b10ba06e733`
+- Verified repository/index head: `a46e46ec7cc3466fe56fa0817230c2dcb3ef4fdd`
+- Canonical record: `docs/governance/architectgpt/sessions/2026-08-16--arc-ses-0006--arc-6--session-continuity-protocol.md`
+
+Summary:
+
+- Ratified session-start continuity as a normative Architect operating requirement.
+- Ratified session-close continuity with Human Architect record review and a separately explicit repository-write authorization gate.
+- Ratified explicit `CONTINUITY WARNING` behavior for detectable missing or inconsistent continuity while forbidding inference as repair.
+- Preserved ARC-3 session-schema and ARC-4 continuity-index fail-closed authority.
+- Landed the substantive ARC-6 specification, manifest, and Verify Sync changes at `bb803aa692a7152c2ac7083a5ff33b10ba06e733`.
+- Regenerated and committed the repository index at `a46e46ec7cc3466fe56fa0817230c2dcb3ef4fdd`.
+- Human-supplied Verify Sync passed 24/24 at both the substantive and repository-index heads.
+- Ratified `ARC-7` as the exact successor.
+
+Authority and scope boundary:
+
+- Session continuity is mandatory; repository mutation is never implied by session start, record review, or session close.
+- Human Architect review remains the canonical session-allocation and ratification authority.
+- No Economic Constitution prose, native runtime implementation, merge, promotion, or deployment is part of ARC-6 closeout.
+
+Verification status:
+
+- Session-ledger validation before closeout: green.
+- Continuity-index regeneration and validation before closeout: green.
+- Verify Sync 24/24 at `bb803aa692a7152c2ac7083a5ff33b10ba06e733`: green.
+- Verify Sync 24/24 at `a46e46ec7cc3466fe56fa0817230c2dcb3ef4fdd`: green.
+- Post-closeout Verify Sync: not yet run against the metadata landing and must be rerun before the next repository-integrity claim.
+
+Exact next task:
+
+- `ARC-7 — Apply the evidence-first rebuild protocol to Economic Constitution Section V`.
+- Next gate: begin Section V from directly evidenced acquisition and circulation events; attach an evidence class to every clause, exclude inference, and persist reconfirmed text immediately.
