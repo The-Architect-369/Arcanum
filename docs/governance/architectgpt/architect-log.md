@@ -136,7 +136,7 @@ Verification status:
 - Fast-forward-only mobile synchronization: green.
 - Remote branch convergence: green.
 - Idempotent closure: green.
-- Non-READY deployment rejection: green.
+- Non-READY production rejection: green.
 - Focused fixture result: `PASS=7 FAIL=0`.
 
 Follow-up actions:
