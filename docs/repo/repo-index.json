@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-08-16T23:11:11Z",
+  "generated_at": "2026-08-17T01:17:58Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "b979e3227",
+  "commit": "d7aa90d3c",
   "generator_version": "1.2",
   "files": [
     {
@@ -3283,11 +3283,11 @@
     {
       "path": "docs/governance/architectgpt/architect-log.md",
       "type": "file",
-      "size_bytes": 45486,
-      "last_modified_commit": "6a65c1405",
+      "size_bytes": 47974,
+      "last_modified_commit": "cb62f339a",
       "is_empty": false,
       "extension": ".md",
-      "lines": 1063
+      "lines": 1107
     },
     {
       "path": "docs/governance/architectgpt/ast-integrity-protocol.md",
@@ -3418,11 +3418,11 @@
     {
       "path": "docs/governance/architectgpt/continuity-index.json",
       "type": "file",
-      "size_bytes": 2220,
-      "last_modified_commit": "6a65c1405",
+      "size_bytes": 3024,
+      "last_modified_commit": "d7aa90d3c",
       "is_empty": false,
       "extension": ".json",
-      "lines": 65
+      "lines": 92
     },
     {
       "path": "docs/governance/architectgpt/continuity-index.schema.json",
@@ -3722,6 +3722,15 @@
       "lines": 184
     },
     {
+      "path": "docs/governance/architectgpt/sessions/2026-08-16--arc-ses-0005--arc-5--backfill-wave-xxiv-provenance.md",
+      "type": "file",
+      "size_bytes": 16835,
+      "last_modified_commit": "d7aa90d3c",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 286
+    },
+    {
       "path": "docs/governance/economic-principles.md",
       "type": "file",
       "size_bytes": 9234,
@@ -3886,11 +3895,11 @@
     {
       "path": "docs/repo/repo-index.json",
       "type": "file",
-      "size_bytes": 193995,
-      "last_modified_commit": "bf1b08e41",
+      "size_bytes": 188541,
+      "last_modified_commit": "93134231a",
       "is_empty": false,
       "extension": ".json",
-      "lines": 7154
+      "lines": 6965
     },
     {
       "path": "docs/repo/repo-interface.md",
