@@ -1061,3 +1061,47 @@ Exact next task:
 - Verification: continuity validator green; Verify Sync 24/24 green; Doctrine Guard green.
 - Next task: `ARC-5 — Backfill Wave XXIV narrative and decision provenance`.
 - Merge / promotion / deployment: not performed.
+
+---
+
+## 2026-08-16 — ARC-5 Wave XXIV Narrative and Decision Provenance Closeout
+
+Grounding:
+
+- Session: `ARC-SES-5`
+- Task: `ARC-5 — Backfill Wave XXIV narrative and decision provenance`
+- Repository: `The-Architect-369/Arcanum`
+- Branch: `agent/wave-xxiv-repository-canonicalization`
+- Phase: Pre-Genesis · Wave XXIV — Repository Canonicalization
+- Substantive head: `93134231af41abc551b4337555f17fa1406e0969`
+- Canonical record: `docs/governance/architectgpt/sessions/2026-08-16--arc-ses-0005--arc-5--backfill-wave-xxiv-provenance.md`
+
+Summary:
+
+- Closed the Wave XXIV narrative gap through a bounded evidence-first provenance map rather than synthetic retroactive sessions.
+- Ratified `ARC-DEC-5-01`, preserving direct-evidence-only recovery and forbidding inference from self-upgrading into canon.
+- Preserved `ARC-DEC-5-02`, `ARC-DEC-5-03`, and `ARC-DEC-5-04` as proposal/reconfirm states rather than silently promoting economic or native implementation-candidate material.
+- Ratified `ARC-DEC-5-05`, establishing `ARC-6` as the exact successor.
+- Preserved `ARC-COR-5-01`, withdrawing the unsupported Section 5.6 `Saving / Holding / Economic Retention` reconstruction.
+- Preserved `ARC-DQ-5-01` through `ARC-DQ-5-05` as bounded unresolved or deferred questions.
+- Preserved ARC-4.5 as maintenance-only with no canonical task or session ID.
+
+Verification status:
+
+- Human-supplied pre-landing session-ledger validation: green at `93134231af41abc551b4337555f17fa1406e0969`.
+- Human-supplied pre-landing repository-index regeneration and Verify Sync 24/24: green at the same substantive head.
+- Branch lease was re-read immediately before closeout and remained exact.
+- Post-closeout Verify Sync: not yet run against the metadata landing and must be rerun before promotion or the next repository-integrity claim.
+
+Authority and scope boundary:
+
+- No Economic Constitution prose was synthesized or promoted.
+- Section 5.6 remains `UNKNOWN / REDECIDE`.
+- Section 5.9.16 remains unratified.
+- Native ARCnet decisions remain implementation-candidate direction.
+- No merge, promotion, deployment, chain-economics change, governance-authority change, or runtime implementation was performed.
+
+Exact next task:
+
+- `ARC-6 — Embed session-start and session-close continuity protocol in Architect canon`.
+- Next gate: amend the Architect specification and manifest so start/close continuity is normative, then add verification coverage; repository writes remain separately authorized.

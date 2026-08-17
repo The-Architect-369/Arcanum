@@ -60,6 +60,33 @@
       "session_id": "ARC-SES-4",
       "status": "CLOSED",
       "task_id": "ARC-4"
+    },
+    {
+      "correction_ids": [
+        "ARC-COR-5-01"
+      ],
+      "decision_ids": [
+        "ARC-DEC-5-01",
+        "ARC-DEC-5-02",
+        "ARC-DEC-5-03",
+        "ARC-DEC-5-04",
+        "ARC-DEC-5-05"
+      ],
+      "deferred_question_ids": [
+        "ARC-DQ-5-01",
+        "ARC-DQ-5-02",
+        "ARC-DQ-5-03",
+        "ARC-DQ-5-04",
+        "ARC-DQ-5-05"
+      ],
+      "head_commit_end": "93134231af41abc551b4337555f17fa1406e0969",
+      "idea_ids": [],
+      "next_task_id": "ARC-6",
+      "record_path": "docs/governance/architectgpt/sessions/2026-08-16--arc-ses-0005--arc-5--backfill-wave-xxiv-provenance.md",
+      "record_sha256": "cd25db6577c998fce9c154e048c08f3dca1a37ebbc278fa6aabaa95847cb2d02",
+      "session_id": "ARC-SES-5",
+      "status": "CLOSED",
+      "task_id": "ARC-5"
     }
   ]
 }
