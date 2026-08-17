@@ -120,6 +120,25 @@
       "session_id": "ARC-SES-7",
       "status": "CLOSED",
       "task_id": "ARC-7"
+    },
+    {
+      "correction_ids": [],
+      "decision_ids": [
+        "ARC-DEC-8-01",
+        "ARC-DEC-8-02",
+        "ARC-DEC-8-03",
+        "ARC-DEC-8-04",
+        "ARC-DEC-8-05"
+      ],
+      "deferred_question_ids": [],
+      "head_commit_end": "70924a7e9c0592a25255d8ecef68be4624933b42",
+      "idea_ids": [],
+      "next_task_id": "ARC-9",
+      "record_path": "docs/governance/architectgpt/sessions/2026-08-16--arc-ses-0008--arc-8--section-v-event-taxonomy.md",
+      "record_sha256": "ac52c346d2019dc1e018e49d3a2a20a4a815f8e056ee314e13e681eb20930ab7",
+      "session_id": "ARC-SES-8",
+      "status": "CLOSED",
+      "task_id": "ARC-8"
     }
   ]
 }

@@ -1196,3 +1196,53 @@ Exact next task:
 
 - `ARC-8 — Rebuild the Section V acquisition and circulation event taxonomy`.
 - Next gate: ratify the event classes and distinctions before drafting policy prose; each event must identify authority, funding source, receipt semantics, and forbidden interpretations, and new issuance must remain distinct from movement of existing MANA.
+
+---
+
+## 2026-08-16 — ARC-8 Section V Acquisition and Circulation Event Taxonomy Closeout
+
+Grounding:
+
+- Session: `ARC-SES-8`
+- Task: `ARC-8 — Rebuild the Section V acquisition and circulation event taxonomy`
+- Repository: `The-Architect-369/Arcanum`
+- Branch: `agent/wave-xxiv-repository-canonicalization`
+- Phase: Pre-Genesis · Wave XXIV — Repository Canonicalization
+- Starting head: `32850d4a189b7525004c1a671b64ae49413ba9ef`
+- Substantive closing head: `70924a7e9c0592a25255d8ecef68be4624933b42`
+- Session start: `2026-08-16T23:03:00-04:00`
+- Closeout approval: `2026-08-16T23:44:00-04:00`
+- Canonical record: `docs/governance/architectgpt/sessions/2026-08-16--arc-ses-0008--arc-8--section-v-event-taxonomy.md`
+
+Summary:
+
+- Ratified `ARC-DEC-8-01`, establishing a two-axis economic grammar that preserves both monetary operation and economic purpose.
+- Ratified `ARC-DEC-8-02`, preserving issuance as the sole MANA supply-creation event class.
+- Ratified `ARC-DEC-8-03`, establishing the Section V acquisition/circulation taxonomy with explicit authority, funding or value source, receipt semantics, and forbidden interpretations.
+- Ratified `ARC-DEC-8-04`, requiring composite events to retain their linked primitive receipts rather than flattening unlike operations into purpose labels.
+- Landed the ratified Section V taxonomy in `docs/economics/economic-constitution.md` at `70924a7e9c0592a25255d8ecef68be4624933b42`.
+- Ratified `ARC-DEC-8-05`, holding ARC-9 until the Human Architect gives a separate explicit release instruction.
+
+Verification status:
+
+- Human-supplied exact-head Ubuntu verification: Verify Sync 24/24 green at `70924a7e9c0592a25255d8ecef68be4624933b42`.
+- Existing session-ledger validation: six canonical records green before ARC-SES-8 closeout.
+- Existing continuity-index validation: six sessions plus reserved ARC-SES-1 green before ARC-SES-8 closeout.
+- Live GitHub branch lease remained exact at the substantive closing head during closeout review.
+- Package A commit scope: only `docs/economics/economic-constitution.md`.
+- Vercel combined status: success at the substantive closing head.
+- No PR-triggered GitHub Actions run was visible for the substantive closing head; no hosted Actions CI claim is made.
+- Post-closeout repository-index regeneration and Verify Sync remain required after the metadata commit lands.
+
+Authority and scope boundary:
+
+- ARC-8 defines factual event distinctions; it does not authorize detailed acquisition policy, quantitative parameters, pricing, reward formulas, credit terms, or unresolved legacy Section V reconstructions.
+- ARC-9 remains the exact successor but is explicitly held.
+- No ARC-9 work may begin until the Human Architect separately releases the hold.
+- No merge, promotion, deployment, stable-branch mutation, native runtime implementation, or chain-economics implementation is authorized by ARC-8.
+
+Exact next task:
+
+- `ARC-9 — Reconfirm recovered §5.3–§5.7 decisions and decide §5.6 directly`.
+- **HOLD:** Do not begin ARC-9 until the Human Architect explicitly releases it.
+- After release, next gate: present only evidence-backed normalized text; directly decide anything still unknown, especially the exact Section 5.6 scope.
