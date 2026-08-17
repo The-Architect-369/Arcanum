@@ -1,32 +1,54 @@
 ---
 title: "ARCnet Economic Constitution"
-status: working-draft
+status: canonical
 visibility: public
 last_updated: 2026-08-17
-description: "Working constitutional specification for MANA, economic invariants, and issuance architecture. Numerical monetary parameters remain unresolved pending modeling and Human Architect ratification."
+description: "Controlling constitutional authority for ARCnet economic law and MANA. Ratified sections bind lower economic documents; unresolved numerical monetary parameters remain non-authorized pending modeling and Human Architect ratification."
 arcanum_phase: Pre-Genesis
-canonical_reference: false
+canonical_reference: true
 maintainer: The-Architect-369
-mode: human-ratified-working-draft
+mode: human-ratified-constitutional-authority
 ---
 
 # ARCnet Economic Constitution
 
 ## Status and Authority
 
-This document is a **working constitutional draft** assembled during Wave XXIV — Repository Canonicalization.
+This document is the **canonical controlling constitutional authority for ARCnet's economy and MANA**, subordinate only to ratified system Doctrine and system-wide constitutional boundaries.
 
-Sections I–V record decisions ratified by the Human Architect during the Wave XXIV constitutional design process. They extend the existing canonical economic posture in `../governance/economic-principles.md`, `../governance/treasury-constitution.md`, and `../governance/governance-specification.md` without silently replacing those documents while this file remains a working draft.
+Sections I–V through §5.7 record decisions ratified by the Human Architect during the Wave XXIV constitutional design process. Those ratified provisions bind lower economic policy, governance, Treasury, summary, and implementation documents according to the precedence hierarchy below.
 
-Unresolved numerical parameters are intentionally left open. No number, percentage, emission rate, reward rate, exchange price, vesting schedule, or reserve-release schedule should be inferred from this document unless explicitly ratified later.
+Unresolved numerical parameters are intentionally left open. No number, percentage, emission rate, reward rate, exchange price, vesting schedule, reserve-release schedule, or other unresolved mechanism should be inferred from this document unless explicitly ratified later.
 
-The design process for later sections is:
+The design process for later sections remains:
 
 1. ground the question in existing repository canon;
 2. identify the unresolved constitutional choice;
 3. develop a coherent proposal and alternatives;
 4. obtain explicit Human Architect approval, rejection, or revision;
-5. only then incorporate the decision into this working draft and, when appropriate, promote it to canon.
+5. only then incorporate the ratified decision into this Constitution.
+
+### Economic Authority and Document Precedence
+
+Economic authority is resolved in this order:
+
+1. **System Doctrine and ratified system-wide constitutional boundaries** — supreme constraints over all economic documents and implementations.
+2. **This Economic Constitution** — controlling constitutional authority for ARCnet economic law, MANA, issuance architecture, and economic invariants.
+3. **Specialized constitutions** — controlling within their expressly bounded domains, currently including `../governance/treasury-constitution.md` for Treasury custody, allocation, and execution, subject to Doctrine and this Constitution.
+4. **Governance Specification** — controlling operational authority for proposals, voting, parameter changes, amendments, time-locks, and execution mechanics; it may exercise only authority delegated by higher constitutional law.
+5. **Economic Principles and parameter registry** — canonical summary and bounded policy/parameter registry; it does not constitute a competing economic constitution.
+6. **Implementation** — code, configuration, implementation specifications, and runtime behavior implement the hierarchy above and possess no independent constitutional authority.
+
+Conflict resolution follows these rules:
+
+- higher authority prevails over lower authority;
+- a specialized constitution controls only within its expressly bounded domain and only where it does not conflict with higher authority;
+- document recency alone never creates constitutional authority;
+- summaries, whitepapers, executive overviews, architecture descriptions, parameter registries, and implementation documents may not amend higher constitutional law by paraphrase, omission, contradiction, or silence;
+- when lower material conflicts with higher authority, the lower material must be corrected rather than treated as an implicit amendment;
+- an unresolved matter remains unresolved until explicitly ratified through the applicable constitutional process.
+
+**ARC-10 ratification boundary:** this precedence decision changes document authority only. It does not ratify any unresolved monetary number, expand Treasury power, create a new issuance mechanism, alter governance thresholds, or activate runtime economic behavior.
 
 ---
 
