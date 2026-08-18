@@ -28,6 +28,7 @@ source_refs:
   - "github:commit:1b446cbec1770d56a628e57799799a49c91733ad"
   - "github:commit:77ee94c6b84ed12e8dd58896c4e53e9b1b52ce48"
   - "github:commit:f9898845fa1eddd98ab5938690152e31e9a06676"
+  - "github:commit:4fa5cb6c0f499b5eb89e0a4babf72a017106c889"
   - "github:file:docs/economics/economic-constitution.md@1b446cbec1770d56a628e57799799a49c91733ad"
   - "github:file:docs/governance/economic-principles.md@1b446cbec1770d56a628e57799799a49c91733ad"
   - "github:file:docs/governance/treasury-constitution.md@1b446cbec1770d56a628e57799799a49c91733ad"
@@ -47,7 +48,7 @@ provider_provenance:
   - "notion:connector:read"
   - "notion:connector:write"
   - "user:human-architect:observed"
-outcome: "ARC-10 ratified and landed the controlling economic authority hierarchy: system Doctrine remains supreme; the Economic Constitution controls ARCnet economic law and MANA; specialized constitutions retain bounded domain authority; the Governance Specification controls delegated operational mechanics; Economic Principles remains a subordinate canonical summary and parameter registry; implementation has no independent constitutional authority. The canonical session ledger, continuity index, repository index, and Verify Sync passed after structural repair, and the single controlling-log digest landed at f9898845fa1eddd98ab5938690152e31e9a06676."
+outcome: "ARC-10 ratified and landed the controlling economic authority hierarchy: system Doctrine remains supreme; the Economic Constitution controls ARCnet economic law and MANA; specialized constitutions retain bounded domain authority; the Governance Specification controls delegated operational mechanics; Economic Principles remains a subordinate canonical summary and parameter registry; implementation has no independent constitutional authority. The canonical session ledger, continuity index, repository index, and Verify Sync passed after structural repair. Commit f9898845fa1eddd98ab5938690152e31e9a06676 then introduced two identical controlling-log closeout blocks; duplicate-repair commit 4fa5cb6c0f499b5eb89e0a4babf72a017106c889 removed only the second copy, leaving exactly one canonical controlling-log block. Final closure confirmation remains subject to exact-head validation after this correction metadata is regenerated."
 decision_state_summary: KNOWN-RATIFIED
 canon_impact: RATIFIED
 canonicalization_status: LANDED
@@ -82,7 +83,7 @@ verification:
   - "PASS | post-repair continuity index | Human Architect Ubuntu run at 77ee94c6b84ed12e8dd58896c4e53e9b1b52ce48 passed deterministic continuity validation for 9 sessions and 1 reserved session"
   - "PASS | post-repair repository index | Human Architect Ubuntu run at 77ee94c6b84ed12e8dd58896c4e53e9b1b52ce48 regenerated docs/repo/repo-index.json and Verify Sync repo-index integrity passed"
   - "PASS | post-repair Verify Sync | Human Architect Ubuntu run at 77ee94c6b84ed12e8dd58896c4e53e9b1b52ce48 passed all 24 verification layers"
-  - "PASS | controlling-log digest | single ARC-SES-10 closeout block naming the canonical record path landed at f9898845fa1eddd98ab5938690152e31e9a06676"
+  - "CORRECTED | controlling-log duplicate | commit f9898845fa1eddd98ab5938690152e31e9a06676 contained two identical ARC-SES-10 closeout blocks; duplicate-repair commit 4fa5cb6c0f499b5eb89e0a4babf72a017106c889 removed only the second copy, leaving exactly one canonical controlling-log block"
   - "PASS | GitHub issue provenance | ARC-10 ratification and closeout provenance persisted to issue #35"
   - "PASS | Notion Work Registry grounding | ARC-10 decision state is Known Ratified and ARC-11 is identified as the Ready successor"
 next_task_id: ARC-11
@@ -112,7 +113,8 @@ Close Work Registry Task `ARC-10` by resolving the competing-authority ambiguity
 - **First substantive ARC-10 write:** `29a67a226e3a03f8b013c8a5698a4c1b28b77323`.
 - **Substantive closing head:** `1b446cbec1770d56a628e57799799a49c91733ad`.
 - **Structural-repair head:** `77ee94c6b84ed12e8dd58896c4e53e9b1b52ce48`.
-- **Controlling-log head:** `f9898845fa1eddd98ab5938690152e31e9a06676`.
+- **Controlling-log initial append head:** `f9898845fa1eddd98ab5938690152e31e9a06676`.
+- **Controlling-log duplicate-repair head:** `4fa5cb6c0f499b5eb89e0a4babf72a017106c889`.
 - **Grounding state:** mixed live GitHub evidence, canonical continuity evidence, Notion Work Registry state, direct Human Architect ratification, and Human-supplied Ubuntu verification.
 - **Human close instruction:** `2026-08-17T18:26:00-04:00`.
 - **Canonical close timestamp:** `2026-08-18T08:21:00-04:00`.
@@ -239,7 +241,7 @@ ARC-10's substantive ratification changed:
 Continuity closure additionally changed:
 
 - this canonical session record;
-- `docs/governance/architectgpt/architect-log.md`, with exactly one ARC-SES-10 controlling-log block landed at `f9898845fa1eddd98ab5938690152e31e9a06676`;
+- `docs/governance/architectgpt/architect-log.md`, where `f9898845fa1eddd98ab5938690152e31e9a06676` unintentionally appended the ARC-SES-10 block twice and `4fa5cb6c0f499b5eb89e0a4babf72a017106c889` removed only the duplicate second copy, leaving exactly one controlling block;
 - `docs/governance/architectgpt/continuity-index.json`, regenerated from canonical session inputs.
 
 ## Verification
@@ -251,7 +253,7 @@ Continuity closure additionally changed:
 - The same run regenerated and passed the deterministic continuity index: 9 sessions and 1 reserved session.
 - The same run regenerated the repository index and passed repository-index integrity.
 - `bash scripts/verify-sync.sh` passed all 24 verification layers at `77ee94c6b84ed12e8dd58896c4e53e9b1b52ce48`.
-- The single controlling-log closeout block naming this canonical record path landed at `f9898845fa1eddd98ab5938690152e31e9a06676`.
+- Commit `f9898845fa1eddd98ab5938690152e31e9a06676` appended two identical ARC-SES-10 closeout blocks; duplicate-repair commit `4fa5cb6c0f499b5eb89e0a4babf72a017106c889` removed only the second copy, leaving exactly one controlling-log block naming this canonical record path.
 - GitHub Issue #35 contains ARC-10 ratification and closeout provenance.
 - Work Registry ARC-10 remains the operational mirror for this canonical record; ARC-11 is the exact successor.
 - After this CLOSED metadata lands, one final exact-head Ubuntu regeneration/Verify Sync run is required before external mirrors are advanced from blocked/review state. Any failure must reopen correction rather than being ignored.
@@ -267,7 +269,7 @@ Continuity closure additionally changed:
 
 - No substantive ARC-10 authority or conflict-resolution decision remains unresolved within the approved acceptance criteria.
 - No numerical, mechanical, legal, or modeling deferral is promoted by this closeout; those remain inputs to ARC-11.
-- The only remaining action after this metadata landing is post-landing verification and external-mirror synchronization. It is a closure confirmation gate, not a new ARC-10 substantive decision.
+- The only remaining action after this correction metadata landing is post-landing exact-head verification and external-mirror synchronization. It is a closure confirmation gate, not a new ARC-10 substantive decision.
 - No merge, promotion, deployment, stable-branch mutation, or runtime economic activation is authorized by ARC-10 closure.
 
 ## Exact next task
