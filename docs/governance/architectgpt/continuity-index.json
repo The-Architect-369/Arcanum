@@ -176,9 +176,9 @@
       "idea_ids": [],
       "next_task_id": "ARC-11",
       "record_path": "docs/governance/architectgpt/sessions/2026-08-17--arc-ses-0010--arc-10--economic-authority-document-precedence.md",
-      "record_sha256": "5c8a7922bf0c1cda5124b042b8d95bc6488ced09c80821a57c7d85dfa74f0dca",
+      "record_sha256": "7a57a57f6ec3cfdf90edcc10304b31f929dcbafc5a503cbf9db8ef496cb8a81c",
       "session_id": "ARC-SES-10",
-      "status": "REVIEW-PENDING",
+      "status": "CLOSED",
       "task_id": "ARC-10"
     }
   ]
