@@ -1293,3 +1293,103 @@ Exact next task:
 
 - `ARC-10 — Ratify economic authority and document precedence`.
 - Next gate: approve one explicit authority/conflict hierarchy, preserve specialized Treasury and governance authority, and update the Economic Constitution and dependent documents so summaries cannot silently override the deeper constitutional specification.
+
+---
+
+## 2026-08-17 — ARC-10 Economic Authority and Document Precedence Closeout
+
+Grounding:
+
+- Session: `ARC-SES-10`
+- Task: `ARC-10 — Ratify economic authority and document precedence`
+- Repository: `The-Architect-369/Arcanum`
+- Branch: `agent/wave-xxiv-repository-canonicalization`
+- Phase: Pre-Genesis · Wave XXIV — Repository Canonicalization
+- Starting head: `6205a31113428af13b18bc5065a36502ed6b9809`
+- First substantive ARC-10 write: `29a67a226e3a03f8b013c8a5698a4c1b28b77323`
+- Substantive closing head: `1b446cbec1770d56a628e57799799a49c91733ad`
+- Structural-repair head: `77ee94c6b84ed12e8dd58896c4e53e9b1b52ce48`
+- Canonical record: `docs/governance/architectgpt/sessions/2026-08-17--arc-ses-0010--arc-10--economic-authority-document-precedence.md`
+
+Summary:
+
+- Ratified Doctrine and ratified system-wide constitutional boundaries as supreme authority.
+- Ratified `docs/economics/economic-constitution.md` as controlling constitutional authority for ARCnet economic law and MANA.
+- Preserved specialized constitutions as controlling only inside their expressly bounded domains.
+- Preserved the Governance Specification as delegated operational governance authority subordinate to higher constitutional law.
+- Classified Economic Principles as a subordinate canonical summary and delegated parameter registry rather than a competing constitution.
+- Established that implementation has no independent constitutional authority.
+- Ratified explicit conflict rules: higher authority prevails, document recency alone creates no authority, and lower summaries or implementation cannot silently amend higher law.
+- Preserved the ARC-10 boundary: no unresolved quantitative parameter, new issuance mechanism, Treasury expansion, governance-threshold change, later Section V material, or runtime economic behavior was ratified.
+
+Verification status:
+
+- Human Architect supplied post-repair Ubuntu verification at `77ee94c6b84ed12e8dd58896c4e53e9b1b52ce48`.
+- Session ledger validation passed: 9 canonical records.
+- Deterministic continuity-index generation and validation passed: 9 sessions plus 1 reserved session.
+- Repository-index generation completed successfully.
+- Verify Sync passed all 24 verification layers.
+- The earlier ARC-SES-10 structural failure is preserved as historical evidence and was corrected by the structural-repair commit.
+- This block is the single controlling-log digest for ARC-SES-10 and explicitly names its canonical session-record path.
+- Final CLOSED metadata landing and post-metadata exact-head verification remain the final confirmation gate.
+
+Authority and scope boundary:
+
+- ARC-10 changes economic document authority and precedence only.
+- No quantitative monetary, reward, fee, reserve, vesting, pricing, lending, tax, or simulation parameter is ratified by this closeout.
+- No merge, promotion, deployment, `main`/`mobile` mutation, or runtime economic activation is authorized.
+
+Exact next task:
+
+- `ARC-11 — Create the Deferred Decision & Simulation Register`.
+- ARC-11 becomes active only after the landed CLOSED metadata passes final exact-head verification and the external mirrors are synchronized.
+
+---
+
+## 2026-08-17 — ARC-10 Economic Authority and Document Precedence Closeout
+
+Grounding:
+
+- Session: `ARC-SES-10`
+- Task: `ARC-10 — Ratify economic authority and document precedence`
+- Repository: `The-Architect-369/Arcanum`
+- Branch: `agent/wave-xxiv-repository-canonicalization`
+- Phase: Pre-Genesis · Wave XXIV — Repository Canonicalization
+- Starting head: `6205a31113428af13b18bc5065a36502ed6b9809`
+- First substantive ARC-10 write: `29a67a226e3a03f8b013c8a5698a4c1b28b77323`
+- Substantive closing head: `1b446cbec1770d56a628e57799799a49c91733ad`
+- Structural-repair head: `77ee94c6b84ed12e8dd58896c4e53e9b1b52ce48`
+- Canonical record: `docs/governance/architectgpt/sessions/2026-08-17--arc-ses-0010--arc-10--economic-authority-document-precedence.md`
+
+Summary:
+
+- Ratified Doctrine and ratified system-wide constitutional boundaries as supreme authority.
+- Ratified `docs/economics/economic-constitution.md` as controlling constitutional authority for ARCnet economic law and MANA.
+- Preserved specialized constitutions as controlling only inside their expressly bounded domains.
+- Preserved the Governance Specification as delegated operational governance authority subordinate to higher constitutional law.
+- Classified Economic Principles as a subordinate canonical summary and delegated parameter registry rather than a competing constitution.
+- Established that implementation has no independent constitutional authority.
+- Ratified explicit conflict rules: higher authority prevails, document recency alone creates no authority, and lower summaries or implementation cannot silently amend higher law.
+- Preserved the ARC-10 boundary: no unresolved quantitative parameter, new issuance mechanism, Treasury expansion, governance-threshold change, later Section V material, or runtime economic behavior was ratified.
+
+Verification status:
+
+- Human Architect supplied post-repair Ubuntu verification at `77ee94c6b84ed12e8dd58896c4e53e9b1b52ce48`.
+- Session ledger validation passed: 9 canonical records.
+- Deterministic continuity-index generation and validation passed: 9 sessions plus 1 reserved session.
+- Repository-index generation completed successfully.
+- Verify Sync passed all 24 verification layers.
+- The earlier ARC-SES-10 structural failure is preserved as historical evidence and was corrected by the structural-repair commit.
+- This block is the single controlling-log digest for ARC-SES-10 and explicitly names its canonical session-record path.
+- Final CLOSED metadata landing and post-metadata exact-head verification remain the final confirmation gate.
+
+Authority and scope boundary:
+
+- ARC-10 changes economic document authority and precedence only.
+- No quantitative monetary, reward, fee, reserve, vesting, pricing, lending, tax, or simulation parameter is ratified by this closeout.
+- No merge, promotion, deployment, `main`/`mobile` mutation, or runtime economic activation is authorized.
+
+Exact next task:
+
+- `ARC-11 — Create the Deferred Decision & Simulation Register`.
+- ARC-11 becomes active only after the landed CLOSED metadata passes final exact-head verification and the external mirrors are synchronized.
