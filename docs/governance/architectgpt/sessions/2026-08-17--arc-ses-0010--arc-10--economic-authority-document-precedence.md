@@ -3,7 +3,7 @@ schema: arcanum.architect.session/v1
 record_type: session
 session_id: ARC-SES-10
 filename_slug: economic-authority-document-precedence
-status: REVIEW-PENDING
+status: CLOSED
 task_id: ARC-10
 task_title: "Ratify economic authority and document precedence"
 domain: "Economic Constitution"
@@ -26,6 +26,8 @@ source_refs:
   - "github:commit:6205a31113428af13b18bc5065a36502ed6b9809"
   - "github:commit:29a67a226e3a03f8b013c8a5698a4c1b28b77323"
   - "github:commit:1b446cbec1770d56a628e57799799a49c91733ad"
+  - "github:commit:77ee94c6b84ed12e8dd58896c4e53e9b1b52ce48"
+  - "github:commit:f9898845fa1eddd98ab5938690152e31e9a06676"
   - "github:file:docs/economics/economic-constitution.md@1b446cbec1770d56a628e57799799a49c91733ad"
   - "github:file:docs/governance/economic-principles.md@1b446cbec1770d56a628e57799799a49c91733ad"
   - "github:file:docs/governance/treasury-constitution.md@1b446cbec1770d56a628e57799799a49c91733ad"
@@ -37,7 +39,7 @@ source_refs:
   - "notion:page:3ba2bb44-20b8-81ff-bccb-d103dfa52eb2"
   - "user:conversation:current"
 started_at: "2026-08-17T18:09:06-04:00"
-closed_at: ""
+closed_at: "2026-08-18T08:21:00-04:00"
 timezone: America/New_York
 provider_provenance:
   - "github:connector:read"
@@ -45,7 +47,7 @@ provider_provenance:
   - "notion:connector:read"
   - "notion:connector:write"
   - "user:human-architect:observed"
-outcome: "ARC-10 ratified and landed the controlling economic authority hierarchy: system Doctrine remains supreme; the Economic Constitution controls ARCnet economic law and MANA; specialized constitutions retain bounded domain authority; the Governance Specification controls delegated operational mechanics; Economic Principles remains a subordinate canonical summary and parameter registry; implementation has no independent constitutional authority. Closure remains review-pending until the controlling-log digest, deterministic repository/continuity index regeneration, canonical validators, and exact-head Verify Sync all reconcile after the ARC-SES-10 structural repair."
+outcome: "ARC-10 ratified and landed the controlling economic authority hierarchy: system Doctrine remains supreme; the Economic Constitution controls ARCnet economic law and MANA; specialized constitutions retain bounded domain authority; the Governance Specification controls delegated operational mechanics; Economic Principles remains a subordinate canonical summary and parameter registry; implementation has no independent constitutional authority. The canonical session ledger, continuity index, repository index, and Verify Sync passed after structural repair, and the single controlling-log digest landed at f9898845fa1eddd98ab5938690152e31e9a06676."
 decision_state_summary: KNOWN-RATIFIED
 canon_impact: RATIFIED
 canonicalization_status: LANDED
@@ -70,24 +72,25 @@ changed_paths:
   - "docs/repo/repository-canonicalization.md"
   - "docs/index.md"
   - "docs/governance/architectgpt/sessions/2026-08-17--arc-ses-0010--arc-10--economic-authority-document-precedence.md"
+  - "docs/governance/architectgpt/architect-log.md"
   - "docs/governance/architectgpt/continuity-index.json"
 verification:
-  - "PASS | exact branch lease | agent/wave-xxiv-repository-canonicalization remained identical to 1b446cbec1770d56a628e57799799a49c91733ad before continuity closeout work"
+  - "PASS | exact branch lease | feature branch was identical to f9898845fa1eddd98ab5938690152e31e9a06676 immediately before CLOSED metadata preparation"
   - "PASS | substantive ratification | Economic Constitution promoted to canonical controlling economic authority and dependent documents aligned across commits 29a67a226e3a03f8b013c8a5698a4c1b28b77323 through 1b446cbec1770d56a628e57799799a49c91733ad"
-  - "PASS | GitHub issue provenance | ARC-10 ratification provenance persisted to issue #35"
-  - "PASS | Notion Work Registry | ARC-10 decision state is Known Ratified and ARC-11 is identified as the Ready successor"
-  - "PASS | Vercel combined status | success at substantive head 1b446cbec1770d56a628e57799799a49c91733ad"
-  - "PASS | user-provided Ubuntu repo-index regeneration | at b4cb49ee7c2f9793bb661e3341a61a45901fa346 repo-index generation completed and Verify Sync step 1 reported integrity green"
-  - "FAIL | user-provided session and continuity validation | at b4cb49ee7c2f9793bb661e3341a61a45901fa346 ARC-SES-10 lacked required canonical body headings, first reported as missing Source inventory"
-  - "FAIL | user-provided Verify Sync | at b4cb49ee7c2f9793bb661e3341a61a45901fa346 verification failed because ARC-3 ledger validation and ARC-4 continuity validation failed on the ARC-SES-10 structural defect"
-  - "NOT-RUN | exact-head post-repair validation | session and continuity validators, deterministic index regeneration, and Verify Sync must be rerun after the structural repair commit"
-  - "NOT-RUN | controlling-log digest | canonical append-only architect-log digest has not been landed; CLOSED status is withheld until log/index/verification evidence reconcile"
+  - "PASS | ARC-SES-10 structural repair | commit 77ee94c6b84ed12e8dd58896c4e53e9b1b52ce48 supplies the required canonical body headings"
+  - "PASS | post-repair session ledger | Human Architect Ubuntu run at 77ee94c6b84ed12e8dd58896c4e53e9b1b52ce48 passed all 9 canonical session records"
+  - "PASS | post-repair continuity index | Human Architect Ubuntu run at 77ee94c6b84ed12e8dd58896c4e53e9b1b52ce48 passed deterministic continuity validation for 9 sessions and 1 reserved session"
+  - "PASS | post-repair repository index | Human Architect Ubuntu run at 77ee94c6b84ed12e8dd58896c4e53e9b1b52ce48 regenerated docs/repo/repo-index.json and Verify Sync repo-index integrity passed"
+  - "PASS | post-repair Verify Sync | Human Architect Ubuntu run at 77ee94c6b84ed12e8dd58896c4e53e9b1b52ce48 passed all 24 verification layers"
+  - "PASS | controlling-log digest | single ARC-SES-10 closeout block naming the canonical record path landed at f9898845fa1eddd98ab5938690152e31e9a06676"
+  - "PASS | GitHub issue provenance | ARC-10 ratification and closeout provenance persisted to issue #35"
+  - "PASS | Notion Work Registry grounding | ARC-10 decision state is Known Ratified and ARC-11 is identified as the Ready successor"
 next_task_id: ARC-11
 next_gate: "Create the Deferred Decision & Simulation Register: define the canonical register schema and extract every numerical, mechanical, legal, and modeling deferral with source-section provenance while keeping placeholders non-constitutional."
 review_status: APPROVED
 reviewed_by: "Human Architect"
 reviewed_at: "2026-08-17T18:26:00-04:00"
-approval_source: "Current Architect conversation: after ARC-10 substantive ratification was landed and the remaining ARC-SES-10 continuity gate was stated explicitly, the Human Architect instructed, 'Close ARC-10' on 2026-08-17."
+approval_source: "Current Architect conversation: after ARC-10 substantive ratification was landed and the remaining ARC-SES-10 continuity gate was stated explicitly, the Human Architect instructed, 'Close ARC-10' on 2026-08-17; subsequent Ubuntu verification and controlling-log landing supplied the required closure evidence."
 github_commit: 1b446cbec1770d56a628e57799799a49c91733ad
 ---
 
@@ -108,25 +111,30 @@ Close Work Registry Task `ARC-10` by resolving the competing-authority ambiguity
 - **Starting head:** `6205a31113428af13b18bc5065a36502ed6b9809`.
 - **First substantive ARC-10 write:** `29a67a226e3a03f8b013c8a5698a4c1b28b77323`.
 - **Substantive closing head:** `1b446cbec1770d56a628e57799799a49c91733ad`.
-- **Grounding state:** mixed live GitHub evidence, canonical continuity evidence, Notion Work Registry state, and direct Human Architect ratification.
+- **Structural-repair head:** `77ee94c6b84ed12e8dd58896c4e53e9b1b52ce48`.
+- **Controlling-log head:** `f9898845fa1eddd98ab5938690152e31e9a06676`.
+- **Grounding state:** mixed live GitHub evidence, canonical continuity evidence, Notion Work Registry state, direct Human Architect ratification, and Human-supplied Ubuntu verification.
 - **Human close instruction:** `2026-08-17T18:26:00-04:00`.
+- **Canonical close timestamp:** `2026-08-18T08:21:00-04:00`.
 
 The `started_at` timestamp is anchored to the first ARC-10 substantive GitHub commit because no earlier exact provider timestamp for preliminary discussion is preserved as canonical evidence.
 
-`head_commit_end` and `github_commit` bind the reviewed packet to the substantive ARC-10 state. Any later continuity-metadata commit is intentionally not embedded into those fields, avoiding self-reference.
+`head_commit_end` and `github_commit` bind the reviewed packet to the substantive ARC-10 state. Later continuity-metadata commits are intentionally not embedded into those fields, avoiding self-reference.
 
 ## Source inventory
 
-ARC-10 relied only on the reviewed authority and provenance surfaces already bound in frontmatter:
+ARC-10 relied only on the reviewed authority and provenance surfaces bound in frontmatter:
 
 - `docs/economics/economic-constitution.md` at substantive head `1b446cbec1770d56a628e57799799a49c91733ad`;
 - `docs/governance/economic-principles.md` at the same substantive head;
 - `docs/governance/treasury-constitution.md` at the same substantive head;
 - `docs/governance/governance-specification.md` at the same substantive head;
 - `docs/repo/repository-canonicalization.md` and `docs/index.md` at the same substantive head;
-- GitHub Issue #35 for Wave XXIV decision provenance;
+- the ARC-SES-10 structural repair at `77ee94c6b84ed12e8dd58896c4e53e9b1b52ce48`;
+- the single controlling-log closeout block at `f9898845fa1eddd98ab5938690152e31e9a06676`;
+- GitHub Issue #35 for Wave XXIV decision and closeout provenance;
 - Notion Work Registry pages for ARC-10 and ARC-11 as operational mirrors;
-- direct Human Architect ratification and the current close instruction.
+- direct Human Architect ratification, close instruction, and Ubuntu verification evidence.
 
 No unresolved economic parameter, later Section V issue discussion, or inferred authority rule was imported into ARC-10 through this closeout record.
 
@@ -228,21 +236,25 @@ ARC-10's substantive ratification changed:
 - `docs/repo/repository-canonicalization.md`;
 - `docs/index.md`.
 
-This continuity write additionally adds this session record and updates the derived continuity index. The controlling Architect log is intentionally not claimed as changed until a safe append-only write is available.
+Continuity closure additionally changed:
+
+- this canonical session record;
+- `docs/governance/architectgpt/architect-log.md`, with exactly one ARC-SES-10 controlling-log block landed at `f9898845fa1eddd98ab5938690152e31e9a06676`;
+- `docs/governance/architectgpt/continuity-index.json`, regenerated from canonical session inputs.
 
 ## Verification
 
-- The feature branch was re-read and remained identical to substantive head `1b446cbec1770d56a628e57799799a49c91733ad` before continuity closeout work.
-- The six ratification documents are already landed on the feature branch.
-- GitHub Issue #35 contains ARC-10 ratification provenance.
-- Work Registry ARC-10 is `Known Ratified`; ARC-11 exists as `Ready`.
-- Vercel combined status is `success` at the substantive head.
-- The Human Architect supplied an Ubuntu run at metadata head `b4cb49ee7c2f9793bb661e3341a61a45901fa346`: `bash scripts/repo-index.sh` regenerated the repository index and Verify Sync step 1 reported repo-index integrity green.
-- That same run failed ARC-3 session-ledger validation because ARC-SES-10 omitted required canonical body headings, beginning with `## Source inventory`; ARC-4 continuity validation and overall Verify Sync therefore failed closed.
-- This repair supplies all missing required headings in canonical order. Exact-head validators, continuity-index regeneration, repository-index regeneration, and Verify Sync must be rerun after the repair lands.
-- The append-only controlling-log digest has not yet been landed.
-
-For those reasons, this record remains `REVIEW-PENDING`, not `CLOSED`, until the post-repair exact-head verification and log/index reconciliation are complete.
+- The feature branch lease was exact at `f9898845fa1eddd98ab5938690152e31e9a06676` immediately before CLOSED metadata preparation.
+- The six substantive ratification documents are landed on the feature branch.
+- The earlier structural validation failure at `b4cb49ee7c2f9793bb661e3341a61a45901fa346` is retained as historical evidence and was repaired at `77ee94c6b84ed12e8dd58896c4e53e9b1b52ce48`.
+- Human-supplied Ubuntu verification after that repair passed the canonical session ledger: 9 records.
+- The same run regenerated and passed the deterministic continuity index: 9 sessions and 1 reserved session.
+- The same run regenerated the repository index and passed repository-index integrity.
+- `bash scripts/verify-sync.sh` passed all 24 verification layers at `77ee94c6b84ed12e8dd58896c4e53e9b1b52ce48`.
+- The single controlling-log closeout block naming this canonical record path landed at `f9898845fa1eddd98ab5938690152e31e9a06676`.
+- GitHub Issue #35 contains ARC-10 ratification and closeout provenance.
+- Work Registry ARC-10 remains the operational mirror for this canonical record; ARC-11 is the exact successor.
+- After this CLOSED metadata lands, one final exact-head Ubuntu regeneration/Verify Sync run is required before external mirrors are advanced from blocked/review state. Any failure must reopen correction rather than being ignored.
 
 ## Privacy review
 
@@ -254,9 +266,9 @@ For those reasons, this record remains `REVIEW-PENDING`, not `CLOSED`, until the
 ## Unresolved matters
 
 - No substantive ARC-10 authority or conflict-resolution decision remains unresolved within the approved acceptance criteria.
-- The canonical closeout mechanics remain incomplete: the controlling Architect log digest is still absent, and the derived continuity index and repository index must be regenerated after this session-record repair.
-- The canonical session and continuity validators plus `bash scripts/verify-sync.sh` must pass against the exact post-repair head before ARC-SES-10 may be changed to `CLOSED`.
-- No merge, promotion, deployment, stable-branch mutation, or ARC-11 activation is authorized by this repair.
+- No numerical, mechanical, legal, or modeling deferral is promoted by this closeout; those remain inputs to ARC-11.
+- The only remaining action after this metadata landing is post-landing verification and external-mirror synchronization. It is a closure confirmation gate, not a new ARC-10 substantive decision.
+- No merge, promotion, deployment, stable-branch mutation, or runtime economic activation is authorized by ARC-10 closure.
 
 ## Exact next task
 
@@ -264,4 +276,4 @@ For those reasons, this record remains `REVIEW-PENDING`, not `CLOSED`, until the
 
 Next gate: create the canonical register schema and extract every numerical, mechanical, legal, and modeling deferral with source-section provenance, stable IDs, dependencies, candidate models, simulation scenarios, metrics, failure cases, legal-review requirements, ratifying authority, and status.
 
-ARC-11 must not be represented as active until ARC-10's controlling-log and exact-head verification closure gates reconcile.
+ARC-11 becomes active only after this CLOSED metadata package passes the final exact-head verification and the external mirrors are synchronized.
