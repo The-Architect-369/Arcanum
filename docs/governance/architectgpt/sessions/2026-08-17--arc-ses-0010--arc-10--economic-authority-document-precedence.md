@@ -83,7 +83,8 @@ verification:
   - "PASS | post-repair continuity index | Human Architect Ubuntu run at 77ee94c6b84ed12e8dd58896c4e53e9b1b52ce48 passed deterministic continuity validation for 9 sessions and 1 reserved session"
   - "PASS | post-repair repository index | Human Architect Ubuntu run at 77ee94c6b84ed12e8dd58896c4e53e9b1b52ce48 regenerated docs/repo/repo-index.json and Verify Sync repo-index integrity passed"
   - "PASS | post-repair Verify Sync | Human Architect Ubuntu run at 77ee94c6b84ed12e8dd58896c4e53e9b1b52ce48 passed all 24 verification layers"
-  - "CORRECTED | controlling-log duplicate | commit f9898845fa1eddd98ab5938690152e31e9a06676 contained two identical ARC-SES-10 closeout blocks; duplicate-repair commit 4fa5cb6c0f499b5eb89e0a4babf72a017106c889 removed only the second copy, leaving exactly one canonical controlling-log block"
+  - "FAIL | controlling-log duplicate detected | exact-head validation at 3b2ce932d94dae9a3b88f5fa4c8a54cfed829293 found two ARC-SES-10 controlling-log blocks instead of exactly one"
+  - "PASS | controlling-log duplicate repair | commit 4fa5cb6c0f499b5eb89e0a4babf72a017106c889 removed only the duplicate second ARC-SES-10 block; session-ledger and continuity-index validation then passed with exactly one controlling-log block"
   - "PASS | GitHub issue provenance | ARC-10 ratification and closeout provenance persisted to issue #35"
   - "PASS | Notion Work Registry grounding | ARC-10 decision state is Known Ratified and ARC-11 is identified as the Ready successor"
 next_task_id: ARC-11
