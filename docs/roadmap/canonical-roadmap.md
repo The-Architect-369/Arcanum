@@ -4,7 +4,7 @@ status: implementation-candidate
 visibility: public
 phase: "Pre-Genesis"
 wave: "XXIV"
-last_updated: 2026-08-02
+last_updated: 2026-08-20
 maintainer: The-Architect-369
 ---
 
@@ -22,6 +22,7 @@ This roadmap distinguishes completed repository capability, current canonicaliza
 - Future vision is not represented as implemented capability.
 - Every promotion requires exact-head verification and explicit Human Architect authorization under the applicable repository protocol.
 - Native ARCnet development must preserve the separation among protocol, local runtime, shell, and hosted applications.
+- Post-Wave-XXIV development proceeds through two mutually dependent spines: **ARCnet Construction** and **Arcanum Embodiment**. Their human-experience and civilizational interpretation is defined in `arcanum-experience-roadmap.md`.
 
 ## Completed capability eras
 
@@ -70,6 +71,7 @@ Make the repository self-describing before native-runtime, institutional, treasu
 - canonical roadmap;
 - locked native architecture decision record;
 - unresolved economics and institutional design ledger;
+- human-experience and civilizational roadmap;
 - evidence-based cleanup findings;
 - deterministic repository-index refresh;
 - exact-head verification and promotion package.
@@ -88,6 +90,7 @@ Make the repository self-describing before native-runtime, institutional, treasu
 - current state, future state, and unresolved state are clearly distinguished;
 - all new documents declare authority posture;
 - Wave XXIII branch state is represented exactly;
+- ARCnet Construction and Arcanum Embodiment are represented as parallel, mutually dependent development spines;
 - no runtime behavior changes are present;
 - required local verification is green;
 - Human Architect approves promotion.
@@ -95,6 +98,19 @@ Make the repository self-describing before native-runtime, institutional, treasu
 ## Approved future direction
 
 The following sequence is architectural planning, not automatic authorization. Wave numbering may be ratified or adjusted during the Wave XXIV exit review.
+
+### Dual-spine interpretation
+
+Post-Wave-XXIV development is interpreted through two mutually dependent spines:
+
+- **ARCnet Construction** — sovereign runtime, native host, identity, storage, networking, signed applications, protocol connectivity, and later community resources.
+- **Arcanum Embodiment** — Navigable Arcanum, Living Guardian, Living Vitae, integrated world model, Terrestrial Codex, participant capability, contributor and builder pathways, and living community.
+
+Seed Node Alpha proves sovereign infrastructure. Navigable Arcanum and Living Guardian prove that the infrastructure carries a coherent human world.
+
+Milestones may be classed as **Sovereignty**, **Experience**, **Knowledge**, **Capability**, **Network**, or **Civilizational**. Adoption and population remain a separate axis from capability.
+
+See `arcanum-experience-roadmap.md` for the broader human-experience, symbolic, curriculum, capability, and civilizational roadmap.
 
 ### Seed Node Foundation
 

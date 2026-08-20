@@ -4,7 +4,7 @@ status: implementation-candidate
 visibility: public
 phase: "Pre-Genesis"
 wave: "XXIV"
-last_updated: 2026-08-02
+last_updated: 2026-08-20
 maintainer: The-Architect-369
 ---
 
@@ -31,6 +31,14 @@ The current user-facing product is a Next.js web/PWA implementation under `apps/
 Implemented application families include the established Arcanum surfaces for Hope, Tempus, Nexus, Wallet, and Vitae, plus the Developer/Architect Workbench.
 
 The web application is transitional. It remains the active product surface while the native ARCnet host and local runtime are designed and implemented in later waves.
+
+### Human-experience embodiment gap
+
+The repository contains substantially more Arcanum/Vitae knowledge architecture than the current application exposes. This is an **embodiment gap, not primarily a content absence**.
+
+The repository already contains constitutional doctrine, canonical modules, deep Vitae curriculum architecture, specialization systems, anatomy and lexicon work, substantial Guardian content, Hope, Tempus, Nexus, Wallet, Architect tooling, and ARCnet foundations. The comparatively underdeveloped surface is the participant's ability to see, navigate, inhabit, connect, practice, and understand those relationships as one coherent world.
+
+Arc 11 records this as a distinct post-Wave-XXIV development spine in `../roadmap/arcanum-experience-roadmap.md` without representing the planned embodiment milestones as implemented capability.
 
 ### ARCnet protocol
 
@@ -105,7 +113,10 @@ The following do not yet exist as production repository surfaces:
 - native Architect application;
 - ARCnet Protection Suite;
 - production ChainCode device enrollment;
-- production tokenomics or institutional operating framework.
+- production tokenomics or institutional operating framework;
+- Navigable Arcanum Alpha as a complete participant experience;
+- Living Guardian Alpha as an inhabitable curriculum experience;
+- Terrestrial Codex Alpha.
 
 ## Current active wave
 
@@ -118,6 +129,7 @@ Objective:
 - record locked native architecture decisions;
 - document the ARCnet Seed Node Alpha handoff;
 - catalogue unresolved economic, legal, governance, entitlement, storage, and compute questions;
+- record the human-experience embodiment gap and its relationship to ARCnet Construction;
 - avoid runtime implementation during the documentation freeze.
 
 ## Planned implementation milestones
@@ -134,6 +146,14 @@ The next native implementation milestone is intended to prove that an Android de
 6. persist encrypted local state;
 7. restart and recover the same state;
 8. inspect a local receipt without claiming chain finality.
+
+### Arcanum Embodiment
+
+Post-Wave-XXIV planning also recognizes an experience spine running in parallel with ARCnet Construction. Its participant-facing milestones include Navigable Arcanum Alpha, Living Guardian Alpha, Living Vitae, the Terrestrial Codex, participant capability, contributor/builder pathways, and living community.
+
+Seed Node Alpha proves sovereign infrastructure. Navigable Arcanum and Living Guardian prove that the infrastructure carries a coherent human world.
+
+See `../roadmap/arcanum-experience-roadmap.md`.
 
 ### Institutional and economic framework
 

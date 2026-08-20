@@ -4,7 +4,7 @@ status: implementation-candidate
 visibility: public
 phase: "Pre-Genesis"
 wave: "XXIV"
-last_updated: 2026-08-02
+last_updated: 2026-08-20
 maintainer: The-Architect-369
 ---
 
@@ -225,6 +225,17 @@ Participants may eventually receive MANA or another ratified reward for measurab
 The runtime must reserve and protect the user's own application and identity needs before allocating contributed capacity.
 
 No storage or compute reward system may be implemented before reliability, encryption, privacy, proof, repair, abuse, accounting, energy, device-wear, and legal questions are resolved.
+
+## Relationship to the Arcanum embodiment roadmap
+
+The native architecture and the human-experience roadmap are parallel authority surfaces and must remain distinct.
+
+- This document defines the planned substrate boundary: local runtime, native host, identity, storage, synchronization, application packaging, protocol connectivity, and related native constraints.
+- `../roadmap/arcanum-experience-roadmap.md` defines the implementation-candidate human-experience, curriculum, symbolic, capability, and civilizational roadmap that the substrate is intended to carry.
+- Native runtime architecture must not absorb or silently redefine Vitae, symbolic design, curriculum meaning, participant capability, or civilizational milestones.
+- The experience roadmap must not silently redefine native security, custody, protocol, or capability boundaries.
+
+Seed Node Alpha proves sovereign infrastructure. Navigable Arcanum and Living Guardian are separate experience milestones proving that the infrastructure carries a coherent human world.
 
 ## Explicitly deferred
 
