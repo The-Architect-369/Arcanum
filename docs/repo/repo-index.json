@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-08-17T21:51:35Z",
+  "generated_at": "2026-08-20T07:07:10Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "c67d47ecb",
+  "commit": "3c332d934",
   "generator_version": "1.2",
   "files": [
     {
@@ -2860,11 +2860,11 @@
     {
       "path": "docs/architecture/arcnet-native-decisions.md",
       "type": "file",
-      "size_bytes": 9607,
-      "last_modified_commit": "90b25a743",
+      "size_bytes": 10641,
+      "last_modified_commit": "3c332d934",
       "is_empty": false,
       "extension": ".md",
-      "lines": 256
+      "lines": 267
     },
     {
       "path": "docs/architecture/canonical-modules.md",
@@ -3211,11 +3211,11 @@
     {
       "path": "docs/economics/economic-constitution.md",
       "type": "file",
-      "size_bytes": 47955,
-      "last_modified_commit": "8a5d5220e",
+      "size_bytes": 50238,
+      "last_modified_commit": "29a67a226",
       "is_empty": false,
       "extension": ".md",
-      "lines": 868
+      "lines": 890
     },
     {
       "path": "docs/governance/architectgpt/agent-execution-protocol.md",
@@ -3283,11 +3283,11 @@
     {
       "path": "docs/governance/architectgpt/architect-log.md",
       "type": "file",
-      "size_bytes": 59554,
-      "last_modified_commit": "c67d47ecb",
+      "size_bytes": 62714,
+      "last_modified_commit": "4fa5cb6c0",
       "is_empty": false,
       "extension": ".md",
-      "lines": 1295
+      "lines": 1345
     },
     {
       "path": "docs/governance/architectgpt/ast-integrity-protocol.md",
@@ -3418,11 +3418,11 @@
     {
       "path": "docs/governance/architectgpt/continuity-index.json",
       "type": "file",
-      "size_bytes": 5585,
-      "last_modified_commit": "c67d47ecb",
+      "size_bytes": 6256,
+      "last_modified_commit": "2fbcc073d",
       "is_empty": false,
       "extension": ".json",
-      "lines": 166
+      "lines": 185
     },
     {
       "path": "docs/governance/architectgpt/continuity-index.schema.json",
@@ -3767,13 +3767,22 @@
       "lines": 299
     },
     {
-      "path": "docs/governance/economic-principles.md",
+      "path": "docs/governance/architectgpt/sessions/2026-08-17--arc-ses-0010--arc-10--economic-authority-document-precedence.md",
       "type": "file",
-      "size_bytes": 9234,
-      "last_modified_commit": "60bd5ee4f",
+      "size_bytes": 19485,
+      "last_modified_commit": "2fbcc073d",
       "is_empty": false,
       "extension": ".md",
-      "lines": 291
+      "lines": 282
+    },
+    {
+      "path": "docs/governance/economic-principles.md",
+      "type": "file",
+      "size_bytes": 10584,
+      "last_modified_commit": "26c07d39b",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 309
     },
     {
       "path": "docs/governance/governance-changelog.md",
@@ -3814,11 +3823,11 @@
     {
       "path": "docs/governance/governance-specification.md",
       "type": "file",
-      "size_bytes": 7349,
-      "last_modified_commit": "60bd5ee4f",
+      "size_bytes": 9734,
+      "last_modified_commit": "d3a378ab8",
       "is_empty": false,
       "extension": ".md",
-      "lines": 286
+      "lines": 309
     },
     {
       "path": "docs/governance/hopegpt/hope-guardian.md",
@@ -3832,11 +3841,11 @@
     {
       "path": "docs/governance/treasury-constitution.md",
       "type": "file",
-      "size_bytes": 5684,
-      "last_modified_commit": "60bd5ee4f",
+      "size_bytes": 7301,
+      "last_modified_commit": "2790ff751",
       "is_empty": false,
       "extension": ".md",
-      "lines": 213
+      "lines": 228
     },
     {
       "path": "docs/governance/vitae-authority-map.md",
@@ -3850,11 +3859,11 @@
     {
       "path": "docs/index.md",
       "type": "file",
-      "size_bytes": 4274,
-      "last_modified_commit": "c6950e8ff",
+      "size_bytes": 4823,
+      "last_modified_commit": "1b446cbec",
       "is_empty": false,
       "extension": ".md",
-      "lines": 119
+      "lines": 124
     },
     {
       "path": "docs/manifesto/arcanum-manifesto.md",
@@ -3931,11 +3940,11 @@
     {
       "path": "docs/repo/repo-index.json",
       "type": "file",
-      "size_bytes": 189426,
-      "last_modified_commit": "996086549",
+      "size_bytes": 189722,
+      "last_modified_commit": "6205a3111",
       "is_empty": false,
       "extension": ".json",
-      "lines": 6992
+      "lines": 7001
     },
     {
       "path": "docs/repo/repo-interface.md",
@@ -3949,20 +3958,29 @@
     {
       "path": "docs/repo/repository-canonicalization.md",
       "type": "file",
-      "size_bytes": 4914,
-      "last_modified_commit": "d06475e24",
+      "size_bytes": 6191,
+      "last_modified_commit": "e733880a2",
       "is_empty": false,
       "extension": ".md",
-      "lines": 127
+      "lines": 145
+    },
+    {
+      "path": "docs/roadmap/arcanum-experience-roadmap.md",
+      "type": "file",
+      "size_bytes": 15525,
+      "last_modified_commit": "3c332d934",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 445
     },
     {
       "path": "docs/roadmap/canonical-roadmap.md",
       "type": "file",
-      "size_bytes": 7294,
-      "last_modified_commit": "7be3b2ec7",
+      "size_bytes": 8648,
+      "last_modified_commit": "3c332d934",
       "is_empty": false,
       "extension": ".md",
-      "lines": 180
+      "lines": 196
     },
     {
       "path": "docs/specs/README.md",
@@ -4408,11 +4426,11 @@
     {
       "path": "docs/status/project-status.md",
       "type": "file",
-      "size_bytes": 5501,
-      "last_modified_commit": "a521b8b1d",
+      "size_bytes": 7135,
+      "last_modified_commit": "3c332d934",
       "is_empty": false,
       "extension": ".md",
-      "lines": 167
+      "lines": 187
     },
     {
       "path": "docs/tooling/archive-manifest.yaml",
@@ -5029,11 +5047,11 @@
     {
       "path": "docs/vitae/curriculum/experience/experience-layer-architecture-canon.md",
       "type": "file",
-      "size_bytes": 5334,
-      "last_modified_commit": "2bc7b14de",
+      "size_bytes": 6667,
+      "last_modified_commit": "3c332d934",
       "is_empty": false,
       "extension": ".md",
-      "lines": 255
+      "lines": 275
     },
     {
       "path": "docs/vitae/curriculum/experience/reason-code-registry.md",
