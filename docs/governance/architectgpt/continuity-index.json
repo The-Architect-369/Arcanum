@@ -1,0 +1,185 @@
+{
+  "authority": "derived-non-authoritative",
+  "controlling_log": "docs/governance/architectgpt/architect-log.md",
+  "record_type": "continuity-index",
+  "reserved_sessions": [
+    {
+      "session_id": "ARC-SES-1",
+      "source_path": "docs/governance/architectgpt/architect-gpt-manifest.yaml",
+      "state": "RESERVED"
+    }
+  ],
+  "schema": "arcanum.architect.continuity-index/v1",
+  "session_ledger": "docs/governance/architectgpt/sessions",
+  "sessions": [
+    {
+      "correction_ids": [],
+      "decision_ids": [
+        "ARC-DEC-2-01"
+      ],
+      "deferred_question_ids": [
+        "ARC-DQ-2-01"
+      ],
+      "head_commit_end": "b0023e0429765d8f1b4344c34b072a2c70faae8d",
+      "idea_ids": [],
+      "next_task_id": "ARC-2",
+      "record_path": "docs/governance/architectgpt/sessions/2026-08-12--arc-ses-0002--arc-1--github-conversation-memory-contract.md",
+      "record_sha256": "c27f0d7b8aff72e7f4bd9c474fe18204dc8c935c52107c2cf38006f71d7ac5b6",
+      "session_id": "ARC-SES-2",
+      "status": "CLOSED",
+      "task_id": "ARC-1"
+    },
+    {
+      "correction_ids": [],
+      "decision_ids": [
+        "ARC-DEC-3-01"
+      ],
+      "deferred_question_ids": [],
+      "head_commit_end": "c6950e8ffe79b902503b26133f9442af224ffcf6",
+      "idea_ids": [
+        "ARC-IDE-3-01"
+      ],
+      "next_task_id": "ARC-4",
+      "record_path": "docs/governance/architectgpt/sessions/2026-08-15--arc-ses-0003--arc-3--define-per-session-record-schema.md",
+      "record_sha256": "dcb15cc9cbcec2e0618c0ad4485332dbf58db23689f2d5e3dd61295ed7a3b3fc",
+      "session_id": "ARC-SES-3",
+      "status": "CLOSED",
+      "task_id": "ARC-3"
+    },
+    {
+      "correction_ids": [],
+      "decision_ids": [
+        "ARC-DEC-4-01"
+      ],
+      "deferred_question_ids": [],
+      "head_commit_end": "5c0b1f26822c180e1db2b84162b12030c2f8fd58",
+      "idea_ids": [],
+      "next_task_id": "ARC-5",
+      "record_path": "docs/governance/architectgpt/sessions/2026-08-16--arc-ses-0004--arc-4--define-machine-readable-continuity-index.md",
+      "record_sha256": "a7be227601402ee569456080faf206ebf6168354f76946f3dc6f48a1b959f84f",
+      "session_id": "ARC-SES-4",
+      "status": "CLOSED",
+      "task_id": "ARC-4"
+    },
+    {
+      "correction_ids": [
+        "ARC-COR-5-01"
+      ],
+      "decision_ids": [
+        "ARC-DEC-5-01",
+        "ARC-DEC-5-02",
+        "ARC-DEC-5-03",
+        "ARC-DEC-5-04",
+        "ARC-DEC-5-05"
+      ],
+      "deferred_question_ids": [
+        "ARC-DQ-5-01",
+        "ARC-DQ-5-02",
+        "ARC-DQ-5-03",
+        "ARC-DQ-5-04",
+        "ARC-DQ-5-05"
+      ],
+      "head_commit_end": "93134231af41abc551b4337555f17fa1406e0969",
+      "idea_ids": [],
+      "next_task_id": "ARC-6",
+      "record_path": "docs/governance/architectgpt/sessions/2026-08-16--arc-ses-0005--arc-5--backfill-wave-xxiv-provenance.md",
+      "record_sha256": "73c255b5ec74bc1da308ca28cd10074d1db5977774aa169af8d455a5a93e0e2b",
+      "session_id": "ARC-SES-5",
+      "status": "CLOSED",
+      "task_id": "ARC-5"
+    },
+    {
+      "correction_ids": [],
+      "decision_ids": [
+        "ARC-DEC-6-01",
+        "ARC-DEC-6-02",
+        "ARC-DEC-6-03"
+      ],
+      "deferred_question_ids": [],
+      "head_commit_end": "a46e46ec7cc3466fe56fa0817230c2dcb3ef4fdd",
+      "idea_ids": [],
+      "next_task_id": "ARC-7",
+      "record_path": "docs/governance/architectgpt/sessions/2026-08-16--arc-ses-0006--arc-6--session-continuity-protocol.md",
+      "record_sha256": "21b97b07e194f43589256d19be7f30a8dccd66979ab079a65f13b490506e24cf",
+      "session_id": "ARC-SES-6",
+      "status": "CLOSED",
+      "task_id": "ARC-6"
+    },
+    {
+      "correction_ids": [],
+      "decision_ids": [
+        "ARC-DEC-7-01",
+        "ARC-DEC-7-02"
+      ],
+      "deferred_question_ids": [],
+      "head_commit_end": "99608654994af80c98d3af54bb6aa4f70510e8d8",
+      "idea_ids": [],
+      "next_task_id": "ARC-8",
+      "record_path": "docs/governance/architectgpt/sessions/2026-08-16--arc-ses-0007--arc-7--section-v-evidence-first-rebuild.md",
+      "record_sha256": "d36ca9dc2946c229d1ca5fc28fe33589cfcb35a6c9c87137e363369a3c07572d",
+      "session_id": "ARC-SES-7",
+      "status": "CLOSED",
+      "task_id": "ARC-7"
+    },
+    {
+      "correction_ids": [],
+      "decision_ids": [
+        "ARC-DEC-8-01",
+        "ARC-DEC-8-02",
+        "ARC-DEC-8-03",
+        "ARC-DEC-8-04",
+        "ARC-DEC-8-05"
+      ],
+      "deferred_question_ids": [],
+      "head_commit_end": "70924a7e9c0592a25255d8ecef68be4624933b42",
+      "idea_ids": [],
+      "next_task_id": "ARC-9",
+      "record_path": "docs/governance/architectgpt/sessions/2026-08-16--arc-ses-0008--arc-8--section-v-event-taxonomy.md",
+      "record_sha256": "ac52c346d2019dc1e018e49d3a2a20a4a815f8e056ee314e13e681eb20930ab7",
+      "session_id": "ARC-SES-8",
+      "status": "CLOSED",
+      "task_id": "ARC-8"
+    },
+    {
+      "correction_ids": [],
+      "decision_ids": [
+        "ARC-DEC-9-01",
+        "ARC-DEC-9-02",
+        "ARC-DEC-9-03",
+        "ARC-DEC-9-04",
+        "ARC-DEC-9-05",
+        "ARC-DEC-9-06",
+        "ARC-DEC-9-07",
+        "ARC-DEC-9-08"
+      ],
+      "deferred_question_ids": [],
+      "head_commit_end": "8a5d5220eb79efbcffc60cedb4578a553a29074a",
+      "idea_ids": [],
+      "next_task_id": "ARC-10",
+      "record_path": "docs/governance/architectgpt/sessions/2026-08-17--arc-ses-0009--arc-9--section-v-policy-ratification.md",
+      "record_sha256": "344cdbd5f1fc24a5c5df1dba2a1029e454bf882f05c3ec36dc5c31a1fbcf9f91",
+      "session_id": "ARC-SES-9",
+      "status": "CLOSED",
+      "task_id": "ARC-9"
+    },
+    {
+      "correction_ids": [],
+      "decision_ids": [
+        "ARC-DEC-10-01",
+        "ARC-DEC-10-02",
+        "ARC-DEC-10-03",
+        "ARC-DEC-10-04",
+        "ARC-DEC-10-05"
+      ],
+      "deferred_question_ids": [],
+      "head_commit_end": "1b446cbec1770d56a628e57799799a49c91733ad",
+      "idea_ids": [],
+      "next_task_id": "ARC-11",
+      "record_path": "docs/governance/architectgpt/sessions/2026-08-17--arc-ses-0010--arc-10--economic-authority-document-precedence.md",
+      "record_sha256": "885168800f892221e46f9ebeaf0d98a2a6ba26cdb5fbc4ba67833d01200b50fa",
+      "session_id": "ARC-SES-10",
+      "status": "CLOSED",
+      "task_id": "ARC-10"
+    }
+  ]
+}

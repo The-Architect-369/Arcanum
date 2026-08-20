@@ -1,4 +1,4 @@
-version: 3.5
+version: 3.6
 phase: Pre-Genesis
 maintainer: The-Architect-369
 environment: Ubuntu 22.04 LTS+
@@ -508,6 +508,63 @@ mobile_verification:
   verify: scripts/mobile/termux-verify.sh
   report_directory: .architect-reports/mobile
 
+session_schema_control:
+  contract: docs/governance/architectgpt/conversation-memory-contract.md
+  specification: docs/governance/architectgpt/session-record-schema.md
+  schema: docs/governance/architectgpt/session-record.schema.json
+  validator: scripts/architect/validate-session-records.py
+  ledger: docs/governance/architectgpt/sessions
+  stable_id_pattern: ARC-SES-N
+  filename_pattern: YYYY-MM-DD--arc-ses-NNNN--arc-TASK--short-kebab-title.md
+  timezone: America/New_York
+  closed_record_mutation_policy: correction_in_later_session
+  reserved_legacy_session_ids:
+    - ARC-SES-1
+  grandfathered_records:
+    - docs/governance/architectgpt/sessions/2026-08-12--arc-ses-0002--arc-1--github-conversation-memory-contract.md
+  archived_prototypes:
+    - docs/archive/architectgpt/sessions/2026-hope-render-system-v1.md
+  continuity_index: docs/governance/architectgpt/continuity-index.json
+  continuity_index_specification: docs/governance/architectgpt/continuity-index-spec.md
+  continuity_index_schema: docs/governance/architectgpt/continuity-index.schema.json
+  continuity_index_generator: scripts/architect/generate-continuity-index.py
+  continuity_index_validator: scripts/architect/validate-continuity-index.py
+  authority: continuity_metadata_only
+
+session_continuity_control:
+  contract: docs/governance/architectgpt/conversation-memory-contract.md
+  mode: normative
+  substantive_session_binding: exactly_one_work_registry_task
+  session_start:
+    continuity_index_read_required: true
+    canonical_session_read_required: true
+    controlling_log_read_required: true
+    operational_registry_read_when_available: true
+    repository_branch_head_capture_required: true
+    provisional_session_candidate_only: true
+    canonical_session_allocation_authority: human_architect_review
+    repository_write_on_start: forbidden
+  session_close:
+    minimized_redacted_packet_required: true
+    typed_record_classification_required: true
+    exact_target_branch_paths_required: true
+    human_record_review_required: true
+    separate_repository_write_authorization_required: true
+    session_record_and_log_digest_same_change_set_preferred: true
+    continuity_index_regeneration_required_after_write: true
+    continuity_validation_required_after_write: true
+    verify_sync_required_after_write: true
+    operational_mirror_update_after_github_close_only: true
+  missing_record_behavior:
+    warning_prefix: "CONTINUITY WARNING"
+    repository_detectable_failure_warning_required: true
+    operational_mirror_mismatch_warning_required: true
+    silent_reconstruction_forbidden: true
+    inference_as_repair_forbidden: true
+    fail_closed_validation_preserved: true
+  write_authority: separate_explicit_human_authorization
+  authority: continuity_workflow_only
+
 observed_providers:
   github: connected
   google_workspace: connected_observed
@@ -517,6 +574,16 @@ observed_providers:
 files:
   architect_gpt: docs/governance/architectgpt/architect-gpt.md
   architect_gpt_manifest: docs/governance/architectgpt/architect-gpt-manifest.yaml
+  conversation_memory_contract: docs/governance/architectgpt/conversation-memory-contract.md
+  architect_log: docs/governance/architectgpt/architect-log.md
+  session_record_specification: docs/governance/architectgpt/session-record-schema.md
+  session_record_schema: docs/governance/architectgpt/session-record.schema.json
+  session_record_validator: scripts/architect/validate-session-records.py
+  continuity_index_specification: docs/governance/architectgpt/continuity-index-spec.md
+  continuity_index_schema: docs/governance/architectgpt/continuity-index.schema.json
+  continuity_index: docs/governance/architectgpt/continuity-index.json
+  continuity_index_generator: scripts/architect/generate-continuity-index.py
+  continuity_index_validator: scripts/architect/validate-continuity-index.py
   capability_registry: docs/governance/architectgpt/capability-registry.yaml
   capability_fabric: docs/governance/architectgpt/capability-fabric.md
   orchestration_protocol: docs/governance/architectgpt/orchestration-protocol.md
@@ -614,3 +681,10 @@ legacy_archive_files:
   - docs/archive/architectgpt/architect-log-legacy.md
 
 active_log: docs/governance/architectgpt/architect-log.md
+conversation_memory_contract: docs/governance/architectgpt/conversation-memory-contract.md
+session_ledger: docs/governance/architectgpt/sessions
+historical_log:
+  path: docs/architect/architect-log.md
+  authority: historical-only
+  policy: frozen_historical_stub
+  cross_session_writes: forbidden

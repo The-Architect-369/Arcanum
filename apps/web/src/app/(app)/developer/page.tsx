@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import ArchitectWorkbench from '@/components/developer/ArchitectWorkbench'
+import ArchitectRuntimeWorkspace from '@/components/developer/ArchitectRuntimeWorkspace'
 import AppStage from '@/components/ui/AppStage'
 import PanelShell, { PanelSection } from '@/components/ui/PanelShell'
 
@@ -23,9 +23,9 @@ export default function DeveloperPage() {
               <div>
                 <p className="text-sm font-medium text-amber-100">Human Architect development surface</p>
                 <p className="mt-1 max-w-3xl text-xs leading-relaxed text-zinc-400">
-                  The Workbench can inspect and verify the local Arcanum repository through a separately
-                  started Termux broker. It does not grant governance authority, expose arbitrary shell access,
-                  move MANA, sign transactions, publish repository changes, or mutate chain state.
+                  The Workbench now combines a private local mission and review runtime with the separately
+                  started Termux broker. Planning decisions remain local and do not grant agent execution,
+                  governance authority, repository publication, MANA movement, or chain-state mutation.
                 </p>
               </div>
               <span className="rounded-full border border-amber-300/20 bg-amber-300/10 px-2.5 py-1 text-[10px] uppercase tracking-wide text-amber-200">
@@ -34,8 +34,8 @@ export default function DeveloperPage() {
             </div>
           </div>
 
-          <PanelSection title="Local Architect execution">
-            <ArchitectWorkbench />
+          <PanelSection title="Architect runtime and local execution">
+            <ArchitectRuntimeWorkspace />
           </PanelSection>
 
           <PanelSection title="Additional internal surfaces">
@@ -63,12 +63,12 @@ export default function DeveloperPage() {
           <PanelSection title="Activation boundary">
             <div className="space-y-2 text-sm text-zinc-300">
               <p>
-                Every command is selected from a broker-owned registry and requires a fresh Human Architect
-                confirmation. Browser-provided command arguments are not accepted.
+                Review-queue approval means approved for planning only. Every broker command still requires a
+                separate, fresh Human Architect confirmation and accepts no browser-provided arguments.
               </p>
               <p className="text-xs text-zinc-500">
-                Repository writes, unrestricted terminal input, external model providers, deployments, and
-                background agents remain deferred to separately governed capabilities.
+                Autonomous agents, repository writes, unrestricted terminal input, external model providers,
+                deployments, chain actions, and background execution remain deferred capabilities.
               </p>
             </div>
           </PanelSection>

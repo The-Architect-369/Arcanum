@@ -48,3 +48,7 @@ chains/arcanum/data-*/
 
 # Local Architect GPT verification evidence
 .architect-reports/
+
+# Pre-canonical Architect workspace residue
+/.architect-backups/
+/.arcanum-*-worktree

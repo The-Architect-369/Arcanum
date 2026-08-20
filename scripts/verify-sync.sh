@@ -133,6 +133,13 @@ required_governance_files=(
   "docs/governance/hopegpt/hope-guardian.md"
   "docs/governance/architectgpt/architect-gpt.md"
   "docs/governance/architectgpt/architect-gpt-manifest.yaml"
+  "docs/governance/architectgpt/conversation-memory-contract.md"
+  "docs/governance/architectgpt/architect-log.md"
+  "docs/governance/architectgpt/session-record-schema.md"
+  "docs/governance/architectgpt/session-record.schema.json"
+  "docs/governance/architectgpt/continuity-index-spec.md"
+  "docs/governance/architectgpt/continuity-index.schema.json"
+  "docs/governance/architectgpt/continuity-index.json"
   "docs/governance/architectgpt/capability-registry.yaml"
   "docs/governance/architectgpt/capability-fabric.md"
   "docs/governance/architectgpt/orchestration-protocol.md"
@@ -180,6 +187,157 @@ required_governance_files=(
 for f in "${required_governance_files[@]}"; do
   if [[ -f "$f" ]]; then echo "✅ present: $f"; else fail "Missing governance file: $f"; fi
 done
+echo
+
+MEMORY_CONTRACT="docs/governance/architectgpt/conversation-memory-contract.md"
+HISTORICAL_ARCHITECT_LOG="docs/architect/architect-log.md"
+SESSION_SPEC="docs/governance/architectgpt/session-record-schema.md"
+SESSION_SCHEMA="docs/governance/architectgpt/session-record.schema.json"
+SESSION_VALIDATOR="scripts/architect/validate-session-records.py"
+SESSION_LEDGER="docs/governance/architectgpt/sessions"
+CONTINUITY_SPEC="docs/governance/architectgpt/continuity-index-spec.md"
+CONTINUITY_SCHEMA="docs/governance/architectgpt/continuity-index.schema.json"
+CONTINUITY_INDEX="docs/governance/architectgpt/continuity-index.json"
+CONTINUITY_GENERATOR="scripts/architect/generate-continuity-index.py"
+CONTINUITY_VALIDATOR="scripts/architect/validate-continuity-index.py"
+ARCHIVED_HOPE_SESSION="docs/archive/architectgpt/sessions/2026-hope-render-system-v1.md"
+
+echo "Checking Architect continuity authority..."
+if grep -Fxq 'active_log: docs/governance/architectgpt/architect-log.md' "$MANIFEST"; then
+  echo "✅ manifest active log is canonical governance path"
+else
+  fail "Manifest active_log does not resolve to the canonical governance path"
+fi
+
+if grep -Fxq 'active_log: docs/architect/architect-log.md' "$MANIFEST"; then
+  fail "Historical Architect log is incorrectly configured as active_log"
+else
+  echo "✅ historical Architect log is not configured as active_log"
+fi
+
+if grep -Fq 'The sole cross-session, append-only Architect log is:' "$MEMORY_CONTRACT" \
+  && grep -Fq 'docs/governance/architectgpt/architect-log.md' "$MEMORY_CONTRACT" \
+  && grep -Fq 'is not authoritative for cross-session continuity.' "$MEMORY_CONTRACT"; then
+  echo "✅ conversation-memory contract preserves sole-log authority"
+else
+  fail "Conversation-memory contract no longer proves sole-log authority"
+fi
+
+if [[ -f "$HISTORICAL_ARCHITECT_LOG" ]] \
+  && grep -Fxq 'status: historical' "$HISTORICAL_ARCHITECT_LOG" \
+  && grep -Fxq 'authority: historical-only' "$HISTORICAL_ARCHITECT_LOG" \
+  && grep -Fxq 'cross_session_writes: forbidden' "$HISTORICAL_ARCHITECT_LOG" \
+  && grep -Fxq 'controlling_log: docs/governance/architectgpt/architect-log.md' "$HISTORICAL_ARCHITECT_LOG"; then
+  echo "✅ secondary Architect log is frozen as historical-only"
+else
+  fail "Secondary Architect log is not explicitly frozen as historical-only"
+fi
+
+if grep -Fq -- '- `architect-log.md`' "$ARCH_DOC"; then
+  fail "Architect GPT spec still contains ambiguous bare architect-log.md supersession language"
+else
+  echo "✅ Architect GPT spec has no ambiguous bare architect-log.md authority reference"
+fi
+
+if grep -Fq 'docs/governance/architectgpt/architect-log.md' "$ARCH_DOC" \
+  && grep -Fq 'docs/governance/architectgpt/conversation-memory-contract.md' "$ARCH_DOC"; then
+  echo "✅ Architect GPT spec references canonical continuity surfaces"
+else
+  fail "Architect GPT spec does not reference canonical continuity surfaces"
+fi
+
+echo
+echo "Checking ARC-6 normative session continuity..."
+if grep -Fq '## IV-A. Normative Session Continuity Protocol' "$ARCH_DOC" \
+  && grep -Fq '### Session-start gate' "$ARCH_DOC" \
+  && grep -Fq '### Session-close gate' "$ARCH_DOC" \
+  && grep -Fq 'CONTINUITY WARNING:' "$ARCH_DOC"; then
+  echo "✅ Architect GPT spec makes start/close continuity normative"
+else
+  fail "Architect GPT spec lacks the ARC-6 normative continuity protocol"
+fi
+
+for contract in \
+  'mode: normative' \
+  'substantive_session_binding: exactly_one_work_registry_task' \
+  'canonical_session_allocation_authority: human_architect_review' \
+  'repository_write_on_start: forbidden' \
+  'separate_repository_write_authorization_required: true' \
+  'warning_prefix: "CONTINUITY WARNING"' \
+  'silent_reconstruction_forbidden: true' \
+  'inference_as_repair_forbidden: true' \
+  'fail_closed_validation_preserved: true'
+do
+  if grep -Fq "$contract" "$MANIFEST"; then
+    echo "✅ ARC-6 manifest contract: $contract"
+  else
+    fail "Manifest lacks ARC-6 session-continuity contract: $contract"
+  fi
+done
+
+echo
+echo "Checking Architect per-session ledger schema..."
+if jq empty "$SESSION_SCHEMA" >/dev/null 2>&1; then
+  echo "✅ valid JSON schema document: $SESSION_SCHEMA"
+else
+  fail "Invalid JSON session schema: $SESSION_SCHEMA"
+fi
+
+if python3 -m py_compile "$SESSION_VALIDATOR"; then
+  echo "✅ Python syntax: $SESSION_VALIDATOR"
+else
+  fail "Invalid Python syntax: $SESSION_VALIDATOR"
+fi
+
+if grep -Fq 'specification: docs/governance/architectgpt/session-record-schema.md' "$MANIFEST" \
+  && grep -Fq 'schema: docs/governance/architectgpt/session-record.schema.json' "$MANIFEST" \
+  && grep -Fq 'validator: scripts/architect/validate-session-records.py' "$MANIFEST" \
+  && grep -Fq 'continuity_index: docs/governance/architectgpt/continuity-index.json' "$MANIFEST" \
+  && grep -Fq 'continuity_index_specification: docs/governance/architectgpt/continuity-index-spec.md' "$MANIFEST" \
+  && grep -Fq 'continuity_index_schema: docs/governance/architectgpt/continuity-index.schema.json' "$MANIFEST" \
+  && grep -Fq 'continuity_index_generator: scripts/architect/generate-continuity-index.py' "$MANIFEST" \
+  && grep -Fq 'continuity_index_validator: scripts/architect/validate-continuity-index.py' "$MANIFEST"; then
+  echo "✅ manifest converges on ARC-3 session schema and ARC-4 continuity index"
+else
+  fail "Manifest does not converge on ARC-3/ARC-4 continuity controls"
+fi
+
+if [[ -f "$SESSION_LEDGER/2026-hope-render-system-v1.md" ]]; then
+  fail "Non-conforming HOPE prototype remains in canonical session ledger"
+elif [[ -f "$ARCHIVED_HOPE_SESSION" ]]; then
+  echo "✅ non-conforming HOPE prototype preserved in historical archive"
+else
+  fail "HOPE prototype is neither canonical nor preserved in archive"
+fi
+
+if python3 "$SESSION_VALIDATOR" --schema "$SESSION_SCHEMA" --ledger "$SESSION_LEDGER"; then
+  echo "✅ canonical session records satisfy ARC-3 validation"
+else
+  fail "Canonical session ledger validation failed"
+fi
+
+echo "Checking ARC-4 machine-readable continuity index..."
+if jq empty "$CONTINUITY_SCHEMA" >/dev/null 2>&1; then
+  echo "✅ valid continuity JSON schema: $CONTINUITY_SCHEMA"
+else
+  fail "Invalid continuity JSON schema: $CONTINUITY_SCHEMA"
+fi
+if jq empty "$CONTINUITY_INDEX" >/dev/null 2>&1; then
+  echo "✅ valid generated continuity JSON: $CONTINUITY_INDEX"
+else
+  fail "Invalid generated continuity JSON: $CONTINUITY_INDEX"
+fi
+if python3 -m py_compile "$CONTINUITY_GENERATOR" "$CONTINUITY_VALIDATOR"; then
+  echo "✅ ARC-4 generator and validator Python syntax"
+else
+  fail "Invalid ARC-4 generator or validator Python syntax"
+fi
+if python3 "$CONTINUITY_VALIDATOR"; then
+  echo "✅ deterministic ARC-4 continuity index and cross-record invariants"
+else
+  warn "CONTINUITY WARNING: canonical Architect continuity is incomplete or inconsistent. Do not reconstruct missing records or decisions by inference. Repair the reported ledger/log/index condition, regenerate the continuity index, and rerun Verify Sync."
+  fail "ARC-4 continuity validation failed"
+fi
 echo
 
 echo "[4/24] Orchestration control checks"

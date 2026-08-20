@@ -2,8 +2,8 @@
 title: "Governance Specification"
 status: canonical
 visibility: public
-last_updated: 2026-03-02
-description: "Operational governance mechanics for ARCnet: proposals, voting, thresholds, neutrality safeguards, and treasury execution rules."
+last_updated: 2026-08-17
+description: "Operational governance mechanics for ARCnet: proposals, voting, thresholds, neutrality safeguards, treasury execution rules, and delegated parameter authority."
 ---
 
 # Governance Specification
@@ -21,7 +21,22 @@ It specifies:
 - treasury execution rules
 - amendment controls and logging
 
-This document does **not** redefine the whitepaper governance model; it operationalizes it.
+This document operationalizes governance authority delegated by higher constitutional law. It does not manufacture economic, Treasury, identity, temporal, or other constitutional authority merely by defining a proposal or voting process.
+
+### Authority and Precedence
+
+Governance operates inside the authority hierarchy ratified for ARC-10:
+
+1. ratified system Doctrine and system-wide constitutional boundaries;
+2. `../economics/economic-constitution.md` for economic constitutional authority;
+3. specialized constitutions within their bounded domains, including `./treasury-constitution.md` for Treasury custody, allocation, and execution;
+4. this Governance Specification for operational governance mechanics;
+5. `./economic-principles.md` and other subordinate policy or parameter registries;
+6. implementation.
+
+Where a governance proposal, vote, parameter change, or execution action conflicts with higher constitutional authority, the higher authority prevails and the governance action is invalid to the extent of the conflict.
+
+Ordinary governance may tune only parameters expressly delegated to governance and only within the bounds established by higher authority. A standard proposal cannot silently amend the Economic Constitution or a specialized constitution.
 
 ---
 
@@ -29,14 +44,16 @@ This document does **not** redefine the whitepaper governance model; it operatio
 
 ARCnet governance operates within this hierarchy:
 
-1. **Constitutional invariants** (non-overridable)
-2. **Protocol parameters** (adjustable within bounds)
-3. **Treasury allocations** (proposal + time-lock)
+1. **Constitutional invariants** (non-overridable by ordinary governance)
+2. **Protocol parameters** (adjustable only where delegated and within bounds)
+3. **Treasury allocations** (proposal + time-lock, within Treasury constitutional authority)
 4. **Module-level governance**
 5. **Application-level governance**
 
 Chain-level rules supersede module-level rules.  
 Application-level governance cannot override protocol invariants.
+
+This operational hierarchy is subordinate to the document-authority hierarchy in §1. Where the two interact, the controlling constitutional document determines whether a parameter or action is delegable at all.
 
 ---
 
@@ -72,12 +89,12 @@ No single vector determines authority.
 ### 5.1 Parameter adjustment proposals
 Modify bounded protocol parameters such as:
 
-- emission rates
+- emission rates, only where constitutional issuance authority expressly delegates the parameter
 - validator thresholds
 - deposit requirements
 - fee multipliers
 
-All changes must remain within predefined ceilings and floors.
+All changes must remain within predefined ceilings, floors, and higher constitutional authority. An unresolved or non-delegated parameter is not made adjustable merely because this proposal type exists.
 
 ### 5.2 Treasury allocation proposals
 Allocate treasury funds for:
@@ -88,7 +105,7 @@ Allocate treasury funds for:
 - operations
 - ecosystem expansion
 
-Require deposit, quorum, and time-lock prior to execution (unless emergency path applies).
+Require deposit, quorum, and time-lock prior to execution (unless emergency path applies), and remain subject to the Treasury Constitution and Economic Constitution.
 
 ### 5.3 Module approval proposals
 Approve or modify:
@@ -107,7 +124,7 @@ Modify governance mechanics:
 - voting periods
 - time-lock rules
 
-May require elevated thresholds depending on impact.
+May require elevated thresholds depending on impact. Governance upgrades cannot use ordinary mechanics to expand authority reserved to higher constitutional documents.
 
 ### 5.5 Interoperability proposals
 Enable or modify:
@@ -150,7 +167,7 @@ Initial recommended posture:
 - **Structural changes:** 60% quorum, >67% approval
 - **Constitutional amendments:** 67% quorum, >75% approval + extended time-lock
 
-These values may evolve through governance within constitutional bounds.
+These values may evolve through governance only within constitutional bounds and applicable amendment authority.
 
 ---
 
@@ -195,14 +212,16 @@ Neutrality refers to ideological restraint, not absence of safety enforcement.
 
 ## 10. Economic Neutrality
 
-Governance may adjust economic parameters but may not:
+Governance may adjust economic parameters only where higher constitutional authority expressly permits adjustment, and may not:
 
 - introduce hidden inflation mechanisms
 - allocate treasury to insiders without explicit disclosure
 - override emission transparency
 - introduce “pay-to-govern” mechanics
+- create new issuance authority through an ordinary proposal
+- treat the Economic Principles parameter registry as authority to override the Economic Constitution
 
-All economic changes require traceability and explicit parameterization.
+All economic changes require traceability, explicit parameterization, and constitutional authorization.
 
 ---
 
@@ -214,6 +233,7 @@ Treasury funds are governed by:
 - time-lock enforcement (where applicable)
 - multi-sig safeguards in early phases (if used)
 - public transparency requirements
+- the specialized authority of the Treasury Constitution
 
 Treasury disbursement requires:
 
@@ -223,6 +243,8 @@ Treasury disbursement requires:
 - execution timestamp/window
 
 No off-chain discretionary treasury allocation is permitted.
+
+Governance approval authorizes execution only within existing constitutional Treasury and economic authority; it does not create independent mint authority.
 
 ---
 
@@ -270,6 +292,7 @@ This specification may be amended through governance under these conditions:
 - structural amendments require supermajority
 - constitutional amendments require extended time-lock
 - amendments must preserve core invariants
+- amendments must remain within the document-authority hierarchy; changes to higher constitutional authority require the applicable higher-order amendment process rather than an ordinary governance-specification revision
 
 All amendments must be logged in:
 

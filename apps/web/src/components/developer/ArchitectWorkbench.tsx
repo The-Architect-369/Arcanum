@@ -5,7 +5,6 @@ import {
   DEFAULT_ARCHITECT_BROKER_URL,
   type ArchitectBrokerError,
   type ArchitectBrokerHealth,
-  type ArchitectCommandDescriptor,
   type ArchitectExecutionReceipt,
   type ArchitectExecutionRequest,
 } from '@/lib/architect/execution'
@@ -15,6 +14,10 @@ type BrokerState =
   | { status: 'checking' }
   | { status: 'ready'; health: ArchitectBrokerHealth }
   | { status: 'error'; message: string }
+
+type ArchitectWorkbenchProps = {
+  onReceipt?: (receipt: ArchitectExecutionReceipt) => void
+}
 
 function errorMessage(value: unknown): string {
   if (value instanceof Error) return value.message
@@ -40,7 +43,7 @@ async function readJson<T>(response: Response): Promise<T> {
   return parsed as T
 }
 
-export default function ArchitectWorkbench() {
+export default function ArchitectWorkbench({ onReceipt }: ArchitectWorkbenchProps) {
   const [brokerUrl, setBrokerUrl] = React.useState(DEFAULT_ARCHITECT_BROKER_URL)
   const [brokerState, setBrokerState] = React.useState<BrokerState>({ status: 'idle' })
   const [selectedCommandId, setSelectedCommandId] = React.useState('')
@@ -89,6 +92,7 @@ export default function ArchitectWorkbench() {
       const nextReceipt = await readJson<ArchitectExecutionReceipt>(response)
       setReceipt(nextReceipt)
       setConfirmed(false)
+      onReceipt?.(nextReceipt)
       await checkBroker()
       setReceipt(nextReceipt)
     } catch (error) {
@@ -96,7 +100,7 @@ export default function ArchitectWorkbench() {
     } finally {
       setExecuting(false)
     }
-  }, [brokerUrl, checkBroker, confirmed, selectedCommand])
+  }, [brokerUrl, checkBroker, confirmed, onReceipt, selectedCommand])
 
   const exportReceipt = React.useCallback(() => {
     if (!receipt) return

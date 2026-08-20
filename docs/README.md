@@ -2,7 +2,7 @@
 title: "Docs"
 status: canonical
 visibility: public
-last_updated: 2026-02-28
+last_updated: 2026-08-14
 description: "Documentation root for Arcanum: doctrine, architecture, governance, modules, repo discipline, and Vitae."
 ---
 
@@ -34,6 +34,12 @@ This repo intentionally separates **meaning**, **mechanics**, and **execution**.
 
 ### Governance
 `docs/governance/` holds operational governance mechanics **and** the public/internal interface charters (HOPE Guardian + ArchitectGPT).
+
+Architect conversation continuity is governed by `docs/governance/architectgpt/conversation-memory-contract.md`.
+The sole controlling cross-session log is `docs/governance/architectgpt/architect-log.md`, with canonical per-session records under `docs/governance/architectgpt/sessions/`.
+Per-session field types, lifecycle rules, and filename semantics are defined by `docs/governance/architectgpt/session-record-schema.md`.
+The machine-readable frontmatter schema is `docs/governance/architectgpt/session-record.schema.json`.
+Historical or superseded Architect log material does not create a second continuity authority.
 
 ### Whitepaper (“White Pages”)
 `docs/whitepaper/` is the investor/institutional-friendly modular narrative: problem, solution, architecture, tokenomics, governance model.

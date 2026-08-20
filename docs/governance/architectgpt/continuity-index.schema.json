@@ -1,0 +1,144 @@
+{
+  "$id": "https://the-arcanum.net/schemas/architectgpt/continuity-index.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "authority": {
+      "const": "derived-non-authoritative"
+    },
+    "controlling_log": {
+      "const": "docs/governance/architectgpt/architect-log.md"
+    },
+    "record_type": {
+      "const": "continuity-index"
+    },
+    "reserved_sessions": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "session_id": {
+            "pattern": "^ARC-SES-[1-9][0-9]*$",
+            "type": "string"
+          },
+          "source_path": {
+            "const": "docs/governance/architectgpt/architect-gpt-manifest.yaml"
+          },
+          "state": {
+            "const": "RESERVED"
+          }
+        },
+        "required": [
+          "session_id",
+          "state",
+          "source_path"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "schema": {
+      "const": "arcanum.architect.continuity-index/v1"
+    },
+    "session_ledger": {
+      "const": "docs/governance/architectgpt/sessions"
+    },
+    "sessions": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "correction_ids": {
+            "items": {
+              "pattern": "^ARC-COR-[1-9][0-9]*-[0-9]{2}$",
+              "type": "string"
+            },
+            "type": "array",
+            "uniqueItems": true
+          },
+          "decision_ids": {
+            "items": {
+              "pattern": "^ARC-DEC-[1-9][0-9]*-[0-9]{2}$",
+              "type": "string"
+            },
+            "type": "array",
+            "uniqueItems": true
+          },
+          "deferred_question_ids": {
+            "items": {
+              "pattern": "^ARC-DQ-[1-9][0-9]*-[0-9]{2}$",
+              "type": "string"
+            },
+            "type": "array",
+            "uniqueItems": true
+          },
+          "head_commit_end": {
+            "pattern": "^$|^[0-9a-f]{40}$",
+            "type": "string"
+          },
+          "idea_ids": {
+            "items": {
+              "pattern": "^ARC-IDE-[1-9][0-9]*-[0-9]{2}$",
+              "type": "string"
+            },
+            "type": "array",
+            "uniqueItems": true
+          },
+          "next_task_id": {
+            "pattern": "^$|^ARC-[1-9][0-9]*$",
+            "type": "string"
+          },
+          "record_path": {
+            "pattern": "^docs/governance/architectgpt/sessions/.+\\.md$",
+            "type": "string"
+          },
+          "record_sha256": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "session_id": {
+            "pattern": "^ARC-SES-[1-9][0-9]*$",
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "OPEN",
+              "REVIEW-PENDING",
+              "CLOSED",
+              "NEEDS-CORRECTION",
+              "BACKFILL"
+            ]
+          },
+          "task_id": {
+            "pattern": "^ARC-[1-9][0-9]*$",
+            "type": "string"
+          }
+        },
+        "required": [
+          "session_id",
+          "task_id",
+          "status",
+          "record_path",
+          "record_sha256",
+          "head_commit_end",
+          "decision_ids",
+          "idea_ids",
+          "correction_ids",
+          "deferred_question_ids",
+          "next_task_id"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    }
+  },
+  "required": [
+    "schema",
+    "record_type",
+    "authority",
+    "controlling_log",
+    "session_ledger",
+    "reserved_sessions",
+    "sessions"
+  ],
+  "title": "Architect GPT Machine-Readable Continuity Index",
+  "type": "object"
+}

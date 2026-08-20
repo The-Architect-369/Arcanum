@@ -2,8 +2,8 @@
 title: "ArchitectGPT Archive"
 status: archived-index
 visibility: public
-last_updated: 2026-05-26
-description: "Legacy ArchitectGPT specs and historical logs superseded by the canonical ArchitectGPT governance interface."
+last_updated: 2026-08-14
+description: "Legacy ArchitectGPT specs, historical logs, and non-canonical session prototypes preserved for audit."
 ---
 
 # ArchitectGPT Archive
@@ -17,3 +17,9 @@ Active canonical reference:
 - `docs/governance/architectgpt/architect-log.md`
 
 Archived files are historical only and must not be treated as active instruction when current canonical files exist.
+
+Historical session prototypes that cannot satisfy the canonical per-session provenance schema are preserved under:
+
+- `docs/archive/architectgpt/sessions/`
+
+The archived prototype `2026-hope-render-system-v1.md` retains its original content and receives no inferred session ID, task binding, branch, or commit provenance.

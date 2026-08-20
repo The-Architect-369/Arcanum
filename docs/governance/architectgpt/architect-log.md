@@ -2,7 +2,7 @@
 title: "ArchitectGPT Log"
 status: canonical-log
 visibility: internal
-last_updated: 2026-07-28
+last_updated: 2026-08-17
 description: "Append-only ArchitectGPT session log for repository, doctrine, tooling, and structural alignment work."
 ---
 
@@ -948,3 +948,398 @@ be declared operationally complete.
 
 Provider protection remains an overall smoke failure and is never interpreted
 as application-health success.
+
+---
+
+## 2026-08-12 — ARC-1 Conversation-Memory Contract Ratification
+
+Grounding:
+
+- Session: `ARC-SES-2`
+- Task: `ARC-1`
+- Repository: `The-Architect-369/Arcanum`
+- Branch: `agent/wave-xxiv-repository-canonicalization`
+- Starting head: `6ce3b9f621d050e1f5667fda2d3e54da29b7000a`
+- Ratification commit: `dae8cb8b3ed87023c26ccfd0b43908ad240c9c5b`
+- Session-record commit: `618af5fd9006acf5cf95613f31ee4ae7a7127655`
+- Grounding state: live GitHub files plus the current Notion dashboard, Work Registry, and Session Ledger.
+
+Summary:
+
+- The Human Architect ratified Architect Conversation-Memory Contract v1.0 as written.
+- Established `docs/governance/architectgpt/architect-log.md` as the sole controlling cross-session log.
+- Established `docs/governance/architectgpt/sessions/` as the canonical per-session ledger.
+- Defined session, decision, idea, correction, and deferred-question record types.
+- Defined stable IDs, required metadata, privacy/redaction boundaries, GitHub/Notion ownership, write timing, human review, append-only integrity, and the canonical closure test.
+- Added the canonical contract and `ARC-SES-2` session record.
+- Preserved the duplicate-log migration question for `ARC-2`; no unique historical record was deleted.
+
+Authority and privacy boundary:
+
+- Ratification came from the Human Architect.
+- No raw transcript, secret, private reflection, raw command output, or provider-local hidden context was persisted.
+- No Economic Constitution, native-shell, Runtime, chain, or application implementation was changed.
+
+Closure status:
+
+- Contract: ratified and written.
+- Session record: `docs/governance/architectgpt/sessions/2026-08-12--arc-ses-0002--arc-1--github-conversation-memory-contract.md`.
+- Notion mirror: synchronized at close.
+- Next task: `ARC-2 — Reconcile duplicate Architect log paths`.
+
+Follow-up actions:
+
+- Inspect both log paths and all repository references.
+- Preserve every unique historical entry with original provenance.
+- Present a migration plan before mutating either log.
+- Align the manifest, index expectations, and verification surfaces with the ratified controlling path.
+
+---
+
+## 2026-08-16 — ARC-3 Per-Session Schema Ratification and Closeout
+
+Grounding:
+
+- Session: `ARC-SES-3`
+- Task: `ARC-3`
+- Repository: `The-Architect-369/Arcanum`
+- Branch: `agent/wave-xxiv-repository-canonicalization`
+- Starting head: `60477d90f16de76302d166dc2c6ae02807262ba1`
+- Ratified implementation head: `c6950e8ffe79b902503b26133f9442af224ffcf6`
+- Grounding state: mixed GitHub, Notion, Human review, and Ubuntu-local verification evidence
+
+Summary:
+
+- The Human Architect approved the reviewed ARC-3 closeout packet.
+- Established the normative per-session Markdown specification and machine-readable JSON Schema.
+- Established deterministic session IDs, filenames, lifecycle fields, typed child IDs, provenance, privacy review, verification, and Human-review gates.
+- Added the canonical repository validator and Verify Sync enforcement.
+- Preserved ARC-SES-2 as a reviewed grandfathered record.
+- Archived the non-conforming HOPE prototype without rewriting its historical provenance.
+- Preserved ARC-4 as the explicit boundary for machine-readable continuity-index implementation.
+- Recorded the reviewed execution-evidence and future Tempus continuity concept as `ARC-IDE-3-01`.
+
+Verification status:
+
+- ARC-3 Package A: `c6950e8ffe79b902503b26133f9442af224ffcf6`.
+- Session-ledger validator: green.
+- TypeScript AST integrity and fixtures: green.
+- Verify Sync 24/24: green.
+- Doctrine Guard: green.
+- Protected Architect canonical document remained unchanged.
+- Pre-existing checksum-map drift reconciled.
+- Package B is subject to the same validator, Verify Sync, Doctrine Guard, Git-integrity, and exact-remote-lease checks before publication.
+
+Privacy and authority boundary:
+
+- No raw conversation transcript, credentials, hidden provider context, or raw terminal logs were persisted.
+- Human Architect approval remains the ratification authority.
+- Architect GPT remains instrumental.
+- No merge, deployment, ARC-4 implementation, economics, chain, or application mutation is part of ARC-3 closeout.
+
+Closure record:
+
+- `docs/governance/architectgpt/sessions/2026-08-15--arc-ses-0003--arc-3--define-per-session-record-schema.md`
+- Closed at: `2026-08-16T13:44:17-04:00`
+
+Exact next task:
+
+- `ARC-4 — Define the machine-readable continuity index`.
+
+---
+
+## 2026-08-16 — ARC-4 Machine-Readable Continuity Index
+
+- Session: `ARC-SES-4`
+- Task: `ARC-4 — Define the machine-readable continuity index`
+- Branch: `agent/wave-xxiv-repository-canonicalization`
+- Substantive implementation commit: `5c0b1f26822c180e1db2b84162b12030c2f8fd58`
+- Canonical record: `docs/governance/architectgpt/sessions/2026-08-16--arc-ses-0004--arc-4--define-machine-readable-continuity-index.md`
+- Decision: `ARC-DEC-4-01` ratified deterministic JSON continuity indexing as a derived, non-authoritative projection.
+- Authority preserved: `architect-log.md` remains the sole controlling cross-session narrative log; `sessions/` remains the canonical per-session ledger.
+- Reservation preserved: `ARC-SES-1` remains reserved; no synthetic record was created.
+- Verification: continuity validator green; Verify Sync 24/24 green; Doctrine Guard green.
+- Next task: `ARC-5 — Backfill Wave XXIV narrative and decision provenance`.
+- Merge / promotion / deployment: not performed.
+
+---
+
+## 2026-08-16 — ARC-5 Wave XXIV Narrative and Decision Provenance Closeout
+
+Grounding:
+
+- Session: `ARC-SES-5`
+- Task: `ARC-5 — Backfill Wave XXIV narrative and decision provenance`
+- Repository: `The-Architect-369/Arcanum`
+- Branch: `agent/wave-xxiv-repository-canonicalization`
+- Phase: Pre-Genesis · Wave XXIV — Repository Canonicalization
+- Substantive head: `93134231af41abc551b4337555f17fa1406e0969`
+- Canonical record: `docs/governance/architectgpt/sessions/2026-08-16--arc-ses-0005--arc-5--backfill-wave-xxiv-provenance.md`
+
+Summary:
+
+- Closed the Wave XXIV narrative gap through a bounded evidence-first provenance map rather than synthetic retroactive sessions.
+- Ratified `ARC-DEC-5-01`, preserving direct-evidence-only recovery and forbidding inference from self-upgrading into canon.
+- Preserved `ARC-DEC-5-02`, `ARC-DEC-5-03`, and `ARC-DEC-5-04` as proposal/reconfirm states rather than silently promoting economic or native implementation-candidate material.
+- Ratified `ARC-DEC-5-05`, establishing `ARC-6` as the exact successor.
+- Preserved `ARC-COR-5-01`, withdrawing the unsupported Section 5.6 `Saving / Holding / Economic Retention` reconstruction.
+- Preserved `ARC-DQ-5-01` through `ARC-DQ-5-05` as bounded unresolved or deferred questions.
+- Preserved ARC-4.5 as maintenance-only with no canonical task or session ID.
+
+Verification status:
+
+- Human-supplied pre-landing session-ledger validation: green at `93134231af41abc551b4337555f17fa1406e0969`.
+- Human-supplied pre-landing repository-index regeneration and Verify Sync 24/24: green at the same substantive head.
+- Branch lease was re-read immediately before closeout and remained exact.
+- Post-closeout Verify Sync: not yet run against the metadata landing and must be rerun before promotion or the next repository-integrity claim.
+
+Authority and scope boundary:
+
+- No Economic Constitution prose was synthesized or promoted.
+- Section 5.6 remains `UNKNOWN / REDECIDE`.
+- Section 5.9.16 remains unratified.
+- Native ARCnet decisions remain implementation-candidate direction.
+- No merge, promotion, deployment, chain-economics change, governance-authority change, or runtime implementation was performed.
+
+Exact next task:
+
+- `ARC-6 — Embed session-start and session-close continuity protocol in Architect canon`.
+- Next gate: amend the Architect specification and manifest so start/close continuity is normative, then add verification coverage; repository writes remain separately authorized.
+
+---
+
+## 2026-08-16 — ARC-6 Session Continuity Protocol Closeout
+
+Grounding:
+
+- Session: `ARC-SES-6`
+- Task: `ARC-6 — Embed session-start and session-close continuity protocol in Architect canon`
+- Repository: `The-Architect-369/Arcanum`
+- Branch: `agent/wave-xxiv-repository-canonicalization`
+- Phase: Pre-Genesis · Wave XXIV — Repository Canonicalization
+- Starting head: `af0d8bf3e821ff11aa0b4a466dca99f6f17d2b32`
+- Substantive implementation commit: `bb803aa692a7152c2ac7083a5ff33b10ba06e733`
+- Verified repository/index head: `a46e46ec7cc3466fe56fa0817230c2dcb3ef4fdd`
+- Canonical record: `docs/governance/architectgpt/sessions/2026-08-16--arc-ses-0006--arc-6--session-continuity-protocol.md`
+
+Summary:
+
+- Ratified session-start continuity as a normative Architect operating requirement.
+- Ratified session-close continuity with Human Architect record review and a separately explicit repository-write authorization gate.
+- Ratified explicit `CONTINUITY WARNING` behavior for detectable missing or inconsistent continuity while forbidding inference as repair.
+- Preserved ARC-3 session-schema and ARC-4 continuity-index fail-closed authority.
+- Landed the substantive ARC-6 specification, manifest, and Verify Sync changes at `bb803aa692a7152c2ac7083a5ff33b10ba06e733`.
+- Regenerated and committed the repository index at `a46e46ec7cc3466fe56fa0817230c2dcb3ef4fdd`.
+- Human-supplied Verify Sync passed 24/24 at both the substantive and repository-index heads.
+- Ratified `ARC-7` as the exact successor.
+
+Authority and scope boundary:
+
+- Session continuity is mandatory; repository mutation is never implied by session start, record review, or session close.
+- Human Architect review remains the canonical session-allocation and ratification authority.
+- No Economic Constitution prose, native runtime implementation, merge, promotion, or deployment is part of ARC-6 closeout.
+
+Verification status:
+
+- Session-ledger validation before closeout: green.
+- Continuity-index regeneration and validation before closeout: green.
+- Verify Sync 24/24 at `bb803aa692a7152c2ac7083a5ff33b10ba06e733`: green.
+- Verify Sync 24/24 at `a46e46ec7cc3466fe56fa0817230c2dcb3ef4fdd`: green.
+- Post-closeout Verify Sync: not yet run against the metadata landing and must be rerun before the next repository-integrity claim.
+
+Exact next task:
+
+- `ARC-7 — Apply the evidence-first rebuild protocol to Economic Constitution Section V`.
+- Next gate: begin Section V from directly evidenced acquisition and circulation events; attach an evidence class to every clause, exclude inference, and persist reconfirmed text immediately.
+
+---
+
+## 2026-08-16 — ARC-7 Section V Evidence-First Rebuild Protocol Closeout
+
+Grounding:
+
+- Session: `ARC-SES-7`
+- Task: `ARC-7 — Apply the evidence-first rebuild protocol to Economic Constitution Section V`
+- Repository: `The-Architect-369/Arcanum`
+- Branch: `agent/wave-xxiv-repository-canonicalization`
+- Phase: Pre-Genesis · Wave XXIV — Repository Canonicalization
+- Substantive closing head: `99608654994af80c98d3af54bb6aa4f70510e8d8`
+- Canonical record: `docs/governance/architectgpt/sessions/2026-08-16--arc-ses-0007--arc-7--section-v-evidence-first-rebuild.md`
+
+Summary:
+
+- Ratified the bounded Section V evidence-class provenance map as `ARC-DEC-7-01`.
+- Preserved Sections I–IV as the persisted `KNOWN-RATIFIED` working-draft baseline.
+- Preserved directly evidenced Section 5.1–5.2 decision substance without silently treating unconsolidated normalized prose as already persisted canon.
+- Preserved recoverable Section V material in `RECONFIRM`, Section 5.6 in `UNKNOWN-REDECIDE`, Section 5.9.16 as unratified, and numerical/mechanical/legal/simulation choices as `DEFERRED`.
+- Excluded inference from constitutional reconstruction.
+- Ratified `ARC-8` as the exact successor in `ARC-DEC-7-02`.
+- Performed no Economic Constitution prose edit.
+
+Authority and scope boundary:
+
+- ARC-7 is a provenance-control closeout, not an event-taxonomy or constitutional-prose drafting task.
+- ARC-8 owns the Section V acquisition/circulation event taxonomy.
+- ARC-9 remains downstream of ARC-8 for evidence-backed normalization of Sections 5.3–5.7 and direct Section 5.6 decision.
+- No merge, promotion, deployment, native runtime implementation, or chain-economics implementation is authorized by ARC-7.
+
+Verification status:
+
+- Live branch lease re-read at `99608654994af80c98d3af54bb6aa4f70510e8d8` before closeout.
+- Economic Constitution, Issue #35, ARC-SES-5, ARC-SES-6, and Work Registry ARC-7/8/9 were re-grounded.
+- Vercel combined status was success at the substantive head.
+- No PR-triggered workflow run was visible for the exact substantive head.
+- Human Architect approved the ARC-SES-7 closeout bundle and GitHub/Notion synchronization.
+- Post-closeout repository-index regeneration and full Verify Sync remain not run and must precede any later exact-head repository-integrity claim.
+
+Exact next task:
+
+- `ARC-8 — Rebuild the Section V acquisition and circulation event taxonomy`.
+- Next gate: ratify the event classes and distinctions before drafting policy prose; each event must identify authority, funding source, receipt semantics, and forbidden interpretations, and new issuance must remain distinct from movement of existing MANA.
+
+---
+
+## 2026-08-16 — ARC-8 Section V Acquisition and Circulation Event Taxonomy Closeout
+
+Grounding:
+
+- Session: `ARC-SES-8`
+- Task: `ARC-8 — Rebuild the Section V acquisition and circulation event taxonomy`
+- Repository: `The-Architect-369/Arcanum`
+- Branch: `agent/wave-xxiv-repository-canonicalization`
+- Phase: Pre-Genesis · Wave XXIV — Repository Canonicalization
+- Starting head: `32850d4a189b7525004c1a671b64ae49413ba9ef`
+- Substantive closing head: `70924a7e9c0592a25255d8ecef68be4624933b42`
+- Session start: `2026-08-16T23:03:00-04:00`
+- Closeout approval: `2026-08-16T23:44:00-04:00`
+- Canonical record: `docs/governance/architectgpt/sessions/2026-08-16--arc-ses-0008--arc-8--section-v-event-taxonomy.md`
+
+Summary:
+
+- Ratified `ARC-DEC-8-01`, establishing a two-axis economic grammar that preserves both monetary operation and economic purpose.
+- Ratified `ARC-DEC-8-02`, preserving issuance as the sole MANA supply-creation event class.
+- Ratified `ARC-DEC-8-03`, establishing the Section V acquisition/circulation taxonomy with explicit authority, funding or value source, receipt semantics, and forbidden interpretations.
+- Ratified `ARC-DEC-8-04`, requiring composite events to retain their linked primitive receipts rather than flattening unlike operations into purpose labels.
+- Landed the ratified Section V taxonomy in `docs/economics/economic-constitution.md` at `70924a7e9c0592a25255d8ecef68be4624933b42`.
+- Ratified `ARC-DEC-8-05`, holding ARC-9 until the Human Architect gives a separate explicit release instruction.
+
+Verification status:
+
+- Human-supplied exact-head Ubuntu verification: Verify Sync 24/24 green at `70924a7e9c0592a25255d8ecef68be4624933b42`.
+- Existing session-ledger validation: six canonical records green before ARC-SES-8 closeout.
+- Existing continuity-index validation: six sessions plus reserved ARC-SES-1 green before ARC-SES-8 closeout.
+- Live GitHub branch lease remained exact at the substantive closing head during closeout review.
+- Package A commit scope: only `docs/economics/economic-constitution.md`.
+- Vercel combined status: success at the substantive closing head.
+- No PR-triggered GitHub Actions run was visible for the substantive closing head; no hosted Actions CI claim is made.
+- Post-closeout repository-index regeneration and Verify Sync remain required after the metadata commit lands.
+
+Authority and scope boundary:
+
+- ARC-8 defines factual event distinctions; it does not authorize detailed acquisition policy, quantitative parameters, pricing, reward formulas, credit terms, or unresolved legacy Section V reconstructions.
+- ARC-9 remains the exact successor but is explicitly held.
+- No ARC-9 work may begin until the Human Architect separately releases the hold.
+- No merge, promotion, deployment, stable-branch mutation, native runtime implementation, or chain-economics implementation is authorized by ARC-8.
+
+Exact next task:
+
+- `ARC-9 — Reconfirm recovered §5.3–§5.7 decisions and decide §5.6 directly`.
+- **HOLD:** Do not begin ARC-9 until the Human Architect explicitly releases it.
+- After release, next gate: present only evidence-backed normalized text; directly decide anything still unknown, especially the exact Section 5.6 scope.
+
+---
+
+## 2026-08-17 — ARC-9 Section V Policy Ratification Closeout
+
+Grounding:
+
+- Session: `ARC-SES-9`
+- Task: `ARC-9 — Reconfirm recovered §5.3–§5.7 decisions and decide §5.6 directly`
+- Repository: `The-Architect-369/Arcanum`
+- Branch: `agent/wave-xxiv-repository-canonicalization`
+- Phase: Pre-Genesis · Wave XXIV — Repository Canonicalization
+- Starting head: `a0c4c1af7afaf292e79fa5ba55b66132f091d8df`
+- First ARC-9 substantive write: `cbea45caa5816a96c4aa685cdb963a587139e242`
+- Substantive closing head: `8a5d5220eb79efbcffc60cedb4578a553a29074a`
+- Canonical record: `docs/governance/architectgpt/sessions/2026-08-17--arc-ses-0009--arc-9--section-v-policy-ratification.md`
+
+Summary:
+
+- Production-normalized and explicitly reconfirmed the previously ratified §5.1 Participation and Milestone Rewards decision substance.
+- Production-normalized and explicitly reconfirmed the previously ratified §5.2 Reward Funding Sources decision substance.
+- Reconfirmed and normalized recovered §§5.3–5.5 and §5.7 policy decisions.
+- Directly decided §5.6 Holding, Saving, and Non-Compulsory Circulation as new doctrine; the withdrawn historical inference remains withdrawn and is not the source of authority for the new §5.6.
+- Landed a continuous §5.1–§5.7 production policy chain in `docs/economics/economic-constitution.md` at `8a5d5220eb79efbcffc60cedb4578a553a29074a`.
+- Persisted final Human approval and provenance to GitHub Issue #35 and synchronized the Notion Work Registry to `Done / Known Ratified`.
+- Ratified ARC-10 as the exact successor.
+
+Verification status:
+
+- Live feature-branch lease was re-read before the final constitutional write.
+- Exact-head Economic Constitution reread confirmed §§5.1–§5.2 immediately before §5.3 at `8a5d5220eb79efbcffc60cedb4578a553a29074a`.
+- GitHub Issue #35 contains final ARC-9 closeout comment `5320608515`.
+- Notion Work Registry reread shows ARC-9 `Done / Known Ratified` and ARC-10 as the next gate.
+- GitHub combined status reported Vercel `pending` at the substantive closing head; no deployment-success claim is made.
+- Repository-index regeneration and Verify Sync were not run at the new exact head and remain required before the next repository-integrity claim.
+
+Authority and scope boundary:
+
+- No quantitative reward, issuance, compensation, fee, sink, burn, routing, lending, legal, tax, or simulation parameter was ratified by ARC-9.
+- §5.8 and later Section V material remain outside this closeout.
+- Economic document precedence remains unresolved and is owned by ARC-10.
+- No merge, promotion, deployment, `main`/`mobile` mutation, native runtime implementation, or chain-economics implementation is authorized by ARC-9.
+
+Exact next task:
+
+- `ARC-10 — Ratify economic authority and document precedence`.
+- Next gate: approve one explicit authority/conflict hierarchy, preserve specialized Treasury and governance authority, and update the Economic Constitution and dependent documents so summaries cannot silently override the deeper constitutional specification.
+
+---
+
+## 2026-08-17 — ARC-10 Economic Authority and Document Precedence Closeout
+
+Grounding:
+
+- Session: `ARC-SES-10`
+- Task: `ARC-10 — Ratify economic authority and document precedence`
+- Repository: `The-Architect-369/Arcanum`
+- Branch: `agent/wave-xxiv-repository-canonicalization`
+- Phase: Pre-Genesis · Wave XXIV — Repository Canonicalization
+- Starting head: `6205a31113428af13b18bc5065a36502ed6b9809`
+- First substantive ARC-10 write: `29a67a226e3a03f8b013c8a5698a4c1b28b77323`
+- Substantive closing head: `1b446cbec1770d56a628e57799799a49c91733ad`
+- Structural-repair head: `77ee94c6b84ed12e8dd58896c4e53e9b1b52ce48`
+- Canonical record: `docs/governance/architectgpt/sessions/2026-08-17--arc-ses-0010--arc-10--economic-authority-document-precedence.md`
+
+Summary:
+
+- Ratified Doctrine and ratified system-wide constitutional boundaries as supreme authority.
+- Ratified `docs/economics/economic-constitution.md` as controlling constitutional authority for ARCnet economic law and MANA.
+- Preserved specialized constitutions as controlling only inside their expressly bounded domains.
+- Preserved the Governance Specification as delegated operational governance authority subordinate to higher constitutional law.
+- Classified Economic Principles as a subordinate canonical summary and delegated parameter registry rather than a competing constitution.
+- Established that implementation has no independent constitutional authority.
+- Ratified explicit conflict rules: higher authority prevails, document recency alone creates no authority, and lower summaries or implementation cannot silently amend higher law.
+- Preserved the ARC-10 boundary: no unresolved quantitative parameter, new issuance mechanism, Treasury expansion, governance-threshold change, later Section V material, or runtime economic behavior was ratified.
+
+Verification status:
+
+- Human Architect supplied post-repair Ubuntu verification at `77ee94c6b84ed12e8dd58896c4e53e9b1b52ce48`.
+- Session ledger validation passed: 9 canonical records.
+- Deterministic continuity-index generation and validation passed: 9 sessions plus 1 reserved session.
+- Repository-index generation completed successfully.
+- Verify Sync passed all 24 verification layers.
+- The earlier ARC-SES-10 structural failure is preserved as historical evidence and was corrected by the structural-repair commit.
+- This block is the single controlling-log digest for ARC-SES-10 and explicitly names its canonical session-record path.
+- Final CLOSED metadata landing and post-metadata exact-head verification remain the final confirmation gate.
+
+Authority and scope boundary:
+
+- ARC-10 changes economic document authority and precedence only.
+- No quantitative monetary, reward, fee, reserve, vesting, pricing, lending, tax, or simulation parameter is ratified by this closeout.
+- No merge, promotion, deployment, `main`/`mobile` mutation, or runtime economic activation is authorized.
+
+Exact next task:
+
+- `ARC-11 — Create the Deferred Decision & Simulation Register`.
+- ARC-11 becomes active only after the landed CLOSED metadata passes final exact-head verification and the external mirrors are synchronized.

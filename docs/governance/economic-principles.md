@@ -2,23 +2,39 @@
 title: "Economic Principles"
 status: canonical
 visibility: public
-last_updated: 2026-03-02
-description: "Economic invariants, policy principles, and adjustable parameters for ARCnet and the Arcanum application economy."
+last_updated: 2026-08-17
+description: "Canonical economic policy summary and bounded parameter registry for ARCnet and the Arcanum application economy, subordinate to the ARCnet Economic Constitution."
 ---
 
 # Economic Principles
 
 ## 1. Purpose
 
-This document defines the economic principles and policy constraints governing **ARCnet** and the **Arcanum** application economy.
+This document defines the canonical economic policy summary and bounded parameter registry governing **ARCnet** and the **Arcanum** application economy.
 
 It complements:
 
+- Controlling economic constitutional authority: `../economics/economic-constitution.md`
 - Whitepaper tokenomics (narrative + design intent): `../whitepaper/tokenomics.md`
 - Governance mechanics (how policy changes): `./governance-specification.md`
 - Treasury constraints (custody + allocation limits): `./treasury-constitution.md`
 
-This file is **constitutional-economic policy**: it defines *what is allowed* and *what is forbidden*, and it names the adjustable parameters that governance may tune over time.
+This file is **not a competing economic constitution**. It summarizes allowed and forbidden economic posture and identifies adjustable parameters that governance may tune only within authority delegated by higher constitutional law.
+
+### Authority and Precedence
+
+For economic conflicts, authority follows the hierarchy ratified in `../economics/economic-constitution.md`:
+
+1. system Doctrine and ratified system-wide constitutional boundaries;
+2. the ARCnet Economic Constitution;
+3. specialized constitutions within their bounded domains, including the Treasury Constitution;
+4. the Governance Specification for operational governance mechanics;
+5. this Economic Principles summary and parameter registry;
+6. implementation.
+
+If this document conflicts with a higher authority, the higher authority prevails and this document must be corrected. Recency, paraphrase, omission, or implementation behavior does not amend the Constitution.
+
+The parameter registry below authorizes no value by itself. Governance may tune a parameter only where a higher constitutional instrument has expressly left that parameter adjustable and the applicable governance process and bounds are satisfied.
 
 ---
 
@@ -254,7 +270,7 @@ Mitigate by:
 
 ## 12. Parameter Registry (What Governance May Tune)
 
-Governance may tune the following, within constitutional bounds:
+Governance may tune the following only where the Economic Constitution or another higher authority has delegated the parameter and only within all applicable constitutional bounds:
 
 - emission rate parameters (bounded)
 - sink pricing parameters (bounded)
@@ -265,10 +281,12 @@ Governance may tune the following, within constitutional bounds:
 
 All changes must be:
 
-- proposed
-- voted
-- time-locked where appropriate
-- documented in governance changelog
+- constitutionally authorized;
+- proposed;
+- voted;
+- kept within delegated bounds;
+- time-locked where appropriate;
+- documented in governance changelog.
 
 See: `./governance-changelog.md`
 

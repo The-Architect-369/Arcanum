@@ -2,7 +2,7 @@
 title: "Experience Layer Architecture Canon"
 status: draft
 visibility: internal
-last_updated: 2026-02-18
+last_updated: 2026-08-20
 description: ""
 ---
 
@@ -11,6 +11,26 @@ description: ""
 **Status:** Canonical  
  **Scope:** System-wide (All Grades & Specializations)  
  **Audience:** Architects, Builders, Content Authors, Auditors
+
+---
+
+## Authority boundary and Arc 11 relationship
+
+This file remains a curriculum-experience **draft** unless and until it is separately ratified through the applicable Vitae and repository authority process. Where the internal `**Status:** Canonical` label or older implementation language in this file conflicts with current canonical doctrine, current canonical doctrine controls.
+
+The broader human-experience and civilizational roadmap is `../../../roadmap/arcanum-experience-roadmap.md`. That roadmap may frame how Vitae is embodied inside Arcanum, but it does not redefine Vitae authority.
+
+Vitae remains:
+
+- non-comparative and non-coercive;
+- private by default;
+- recognition after stabilization rather than automatic progression;
+- economically sterile;
+- not accelerable, purchasable, or bypassable through MANA.
+
+This experience-layer draft may shape rendering, sequence, reflection, practice, and curriculum embodiment only within those boundaries. It may not redefine identity, temporal sovereignty, privacy, economic authority, or the meaning of recognition.
+
+Any requirement in this draft that would compel participation, make private reflection non-erasable, convert presence into surveillance, or treat progression as automatic is non-authoritative unless separately ratified in alignment with current doctrine.
 
 ---
 

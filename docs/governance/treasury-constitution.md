@@ -2,8 +2,8 @@
 title: "Treasury Constitution"
 status: canonical
 visibility: public
-last_updated: 2026-03-02
-description: "Constitutional rules for ARCnet treasury custody, inflows, allocations, and execution constraints."
+last_updated: 2026-08-17
+description: "Specialized constitutional rules for ARCnet treasury custody, inflows, allocations, and execution constraints, subordinate to system Doctrine and the ARCnet Economic Constitution."
 arcanum_phase: Pre-Genesis
 canonical_reference: true
 maintainer: The-Architect-369
@@ -26,6 +26,18 @@ This constitution defines:
 - prohibited actions
 
 The Treasury is a **stewardship instrument**, not an operator with discretionary power.
+
+### Authority and Precedence
+
+This document is a **specialized constitution** controlling Treasury custody, allocation, and execution within its expressly bounded domain.
+
+It is subordinate to ratified system Doctrine and `../economics/economic-constitution.md`. Within that higher constitutional envelope, this Treasury Constitution governs Treasury-specific rules over lower policy summaries and implementation material.
+
+`./governance-specification.md` operationalizes proposals, voting, time-locks, amendments, and execution mechanics. `./economic-principles.md` summarizes economic policy and delegated parameters. Neither document may expand Treasury authority beyond this Constitution or the Economic Constitution.
+
+The Treasury may hold, route, allocate, and spend authorized resources under these rules. It may not create independent monetary authority, self-authorize issuance, or treat ordinary governance approval as authority to bypass constitutional issuance constraints.
+
+If lower material conflicts with this Constitution within the Treasury domain, this Constitution prevails unless the conflict is with a higher authority, in which case the higher authority controls.
 
 ---
 
@@ -191,6 +203,7 @@ The treasury may hold and spend MANA, but:
 - MANA usage may not accelerate time-based progression
 - MANA may not purchase governance authority directly
 - protocol issuance bounds remain binding
+- the Treasury has no independent mint authority; any new MANA allocated to a Treasury lane must arise from an issuance mechanism separately authorized by the Economic Constitution and executed through applicable governance mechanics
 
 ---
 
@@ -201,6 +214,8 @@ This constitution may be amended only via constitutional amendment procedures de
 - elevated quorum and threshold
 - extended time-lock
 - explicit statement of changed invariants
+
+No amendment to this specialized Constitution may override ratified system Doctrine or the Economic Constitution.
 
 ---
 

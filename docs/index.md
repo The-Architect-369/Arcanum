@@ -2,7 +2,7 @@
 title: "Docs Index"
 status: canonical
 visibility: public
-last_updated: 2026-06-08
+last_updated: 2026-08-17
 description: "Navigation index for the Arcanum documentation tree (ARCnet canonical naming)."
 ---
 
@@ -19,18 +19,19 @@ This is the **navigation hub** for the `docs/` tree.
 ## Start here
 
 1) **System overview (recommended first):** `architecture/arcanum-system-overview.md`  
-2) **White Pages (investor / institutional flow):**  
+2) **Economic Constitution (controlling economic authority):** `economics/economic-constitution.md`  
+3) **White Pages (investor / institutional flow):**  
    - `whitepaper/executive-summary.md`  
    - `whitepaper/problem-solution.md`  
    - `whitepaper/technical-architecture.md`  
    - `whitepaper/tokenomics.md`  
    - `whitepaper/governance-constitutional-model.md`  
    - `compliance/compliance-risk.md`  
-3) **Governance & constitution (canon):** `governance/governance-specification.md`  
-4) **Modules (product surfaces):** `modules/`  
-5) **Vitae (recognition layer):** `vitae/`  
-6) **Repo discipline (indexing + grounding):** `repo/`
-7) **Intelligence layer contract:** `specs/intelligence/intelligence-layer-contract.md`
+4) **Governance mechanics + specialized constitutions:** `governance/governance-specification.md`  
+5) **Modules (product surfaces):** `modules/`  
+6) **Vitae (recognition layer):** `vitae/`  
+7) **Repo discipline (indexing + grounding):** `repo/`
+8) **Intelligence layer contract:** `specs/intelligence/intelligence-layer-contract.md`
 
 ---
 
@@ -53,15 +54,23 @@ This is the **navigation hub** for the `docs/` tree.
 - `doctrine/architect-role.md`
 - `doctrine/founder-transition.md`
 
-### `governance/` — operational governance + public interfaces
+### `economics/` — controlling economic constitution
+- `economics/economic-constitution.md` — canonical controlling constitutional authority for ARCnet economic law and MANA, subordinate to system Doctrine
+
+### `governance/` — operational governance + specialized constitutional instruments
 - `governance/governance-specification.md`
 - `governance/treasury-constitution.md`
-- `governance/economic-principles.md`
+- `governance/economic-principles.md` — canonical economic policy summary and delegated parameter registry, subordinate to the Economic Constitution
 - `governance/governance-changelog.md`
 
 **Governance interfaces**
 - HOPE Guardian (public interpretive charter): `governance/hopegpt/hope-guardian.md`
-- ArchitectGPT (internal build interface): `governance/architectgpt/`
+- ArchitectGPT canonical specification: `governance/architectgpt/architect-gpt.md`
+- Architect conversation-memory contract: `governance/architectgpt/conversation-memory-contract.md`
+- Architect per-session record specification: `governance/architectgpt/session-record-schema.md`
+- Architect per-session machine schema: `governance/architectgpt/session-record.schema.json`
+- Controlling Architect cross-session log: `governance/architectgpt/architect-log.md`
+- Architect session ledger: `governance/architectgpt/sessions/`
 
 ### `whitepaper/` — the “White Pages” (modular)
 - `whitepaper/executive-summary.md`
@@ -112,3 +121,4 @@ This is the **navigation hub** for the `docs/` tree.
 - Prefer **relative links from `docs/`** (stable in GitHub + local preview).
 - Treat `repo/repo-index.json` as the authoritative structural snapshot when doing structural analysis.
 - When in doubt: update the docs tree **first**, then update prose.
+- Navigation and summary documents do not override controlling constitutional sources.
