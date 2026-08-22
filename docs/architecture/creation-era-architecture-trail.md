@@ -2,7 +2,7 @@
 title: "Creation Era Architecture Trail"
 status: design-candidate
 visibility: public
-last_updated: 2026-08-21
+last_updated: 2026-08-22
 description: "Preserves the post-Wave-XXIV exploration that produced the eight-point ARCnet topology, sacred-geometry/UI separation, and the 28-edge investigation program."
 phase: "Pre-Genesis"
 authority: "non-canonical design evidence"
@@ -116,13 +116,110 @@ This would move **Nexus** to its own major ARCnet system and stop assuming that 
 
 This is a major departure from the current canonical flat module registry and therefore requires a future Module Architecture v2 review before implementation.
 
-Leading correspondences to test are:
+Leading correspondences currently under study are:
 
 - Arcanum → Nexus through Hope: **reflection → relation/expression**;
 - Arcanum → Commercium through Tempus: **correspondence/timing → physical craft**;
 - Arcanum → Theatrum through Vitae: **journey/practice → symbolic/digital expression**.
 
-These are design candidates, not ratified boundaries.
+These remain design candidates, not ratified boundaries.
+
+## First three Arcanum edge studies
+
+The first three studies intentionally test different kinds of boundary pressure rather than repeating the same sharing pattern.
+
+### Edge Study 01 — Arcanum ↔ Nexus
+
+Primary candidate faculty: **Hope**.
+
+Stress test:
+
+- privacy;
+- voluntary disclosure;
+- audience versus delivery;
+- social publication;
+- explicit return into protected interiority.
+
+Key result:
+
+```text
+private reflection
+  -> bounded passage artifact
+  -> Nexus private draft
+  -> separate publication decision
+```
+
+### Edge Study 02 — Arcanum ↔ Commercium
+
+Primary candidate faculty: **Tempus**.
+
+Stress test:
+
+- observable versus symbolic claims;
+- physical-world evidence;
+- material craft;
+- provenance;
+- economic exchange;
+- physical fulfillment.
+
+Key result:
+
+```text
+selected Tempus context
+  -> Craft Context
+  -> Commercium Craft Draft
+  -> fabrication / evidence
+  -> separate listing and exchange
+```
+
+New candidate laws include a Semantic Attestation Boundary, evidence grades, temporal integrity, physical-fulfillment separation, and non-transitive edge authority.
+
+### Edge Study 03 — Arcanum ↔ Theatrum
+
+Primary candidate faculty: **Vitae**.
+
+Stress test:
+
+- recognition versus representation;
+- symbolic/digital embodiment;
+- cosmetics versus capability;
+- prestige pressure;
+- private embodiment;
+- derivative transferability.
+
+Key result:
+
+```text
+selected Vitae/practice source
+  -> Expression Seed
+  -> Theatrum Creative Draft
+  -> digital artifact
+  -> separate private/equip/share/sell decisions
+```
+
+New candidate laws include Recognition–Representation Separation, Cosmetic–Capability Separation, Private Embodiment, Anti-Prestige, Derivative Transferability, and private-causation/public-meaning separation.
+
+## Emerging three-port pattern
+
+A coherent Arcanum-facing topology is beginning to emerge:
+
+```text
+                 ARCANUM
+             /      |      \
+          Hope    Tempus    Vitae
+           |        |        |
+         Nexus  Commercium Theatrum
+```
+
+This should not yet be treated as canonical module architecture.
+
+Its significance is that each Arcanum faculty appears to face a materially different external domain:
+
+- **Hope** translates interior reflection toward relationship.
+- **Tempus** translates selected temporal/correspondence context toward physical making.
+- **Vitae** translates lived development toward symbolic/digital embodiment.
+
+The next studies should test whether this apparent three-port structure survives examination of the base relationships among Nexus, Commercium, and Theatrum.
 
 ## Sacred geometry and user-interface separation
 
@@ -156,13 +253,17 @@ This exploration is preserved across:
 - GitHub issue #37 — broad conversation-derived design record;
 - this architecture trail — macro topology and scope boundaries;
 - `docs/architecture/arcnet-edge-contract.md` — candidate executable relationship primitive;
-- `docs/architecture/edge-studies/arcanum-nexus.md` — first reference edge study;
+- `docs/architecture/edge-studies/arcanum-nexus.md` — Edge Study 01;
+- `docs/architecture/edge-studies/arcanum-commercium.md` — Edge Study 02;
+- `docs/architecture/edge-studies/arcanum-theatrum.md` — Edge Study 03;
 - `docs/governance/architectgpt/system-development-method.md` — candidate Architect development methodology.
 
 ## Next gate
 
-After this design trail is reviewed, define a milestone/wave/arc roadmap for investigating all 28 candidate relationships.
+Continue edge exploration using the same evidence trail.
 
-Arcanum ↔ Nexus is reference edge 01. The remaining 27 edges should be grouped into waves according to semantic and implementation dependency rather than arbitrary edge counts.
+The three Arcanum kinship edges are now documented as studies 01–03. The next high-value stress test is one of the three base edges among Nexus, Commercium, and Theatrum so the common contract is tested without Arcanum as an endpoint.
+
+The full 28-edge milestone/wave/arc roadmap should be organized after enough edge evidence exists to group relationships by actual semantic and implementation dependency rather than arbitrary counts.
 
 No native runtime behavior is authorized by this document.
