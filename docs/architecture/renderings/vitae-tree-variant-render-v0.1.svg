@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+<title id="title">Vitae Tree variant traversal comparison</title>
+<desc id="desc">Western Cordoveran-style and Lurianic Safed-style twenty-two-path Tree variants with the ten-station Vitae class sequence overlaid. The Western variant matches eight of nine transitions; the Lurianic variant matches all nine.</desc>
+<style>
+  .bg { fill:#fafafa; }
+  text { font-family: system-ui, sans-serif; fill:#171717; }
+  .paneltitle { font-size:22px; font-weight:700; text-anchor:middle; }
+  .status { font-size:14px; text-anchor:middle; fill:#555; }
+  .edge { stroke-width:2.1; opacity:.72; }
+  .edge.h { stroke:#7c3aed; }
+  .edge.v { stroke:#0f766e; }
+  .edge.d { stroke:#64748b; stroke-dasharray:5 4; }
+  .path { stroke:#111827; stroke-width:7; opacity:.72; stroke-linecap:round; }
+  .missing { stroke:#b91c1c; stroke-width:7; stroke-dasharray:10 7; opacity:.88; }
+  .node { fill:white; stroke:#111827; stroke-width:2.5; }
+  .num { font-size:12px; font-weight:700; text-anchor:middle; }
+  .label { font-size:10.5px; text-anchor:middle; }
+  .legend { font-size:13px; }
+  .note { font-size:14px; fill:#333; }
+  .rule { stroke:#d4d4d8; stroke-width:1; }
+</style>
+<rect class="bg" width="1200" height="760"/>
+<text x="600" y="25" text-anchor="middle" font-size="14" fill="#555">Design-candidate render — geometry and sound remain projections, never recognition or authority</text>
+<text class="paneltitle" x="210" y="38">Western / Cordoveran-style</text><text class="status" x="210" y="62">Vitae traversal: 8 / 9 Tree transitions</text>
+<line class="edge h" x1="80" y1="180" x2="340" y2="180"/><line class="edge h" x1="80" y1="270" x2="340" y2="270"/><line class="edge h" x1="80" y1="450" x2="340" y2="450"/>
+<line class="edge v" x1="210" y1="90" x2="210" y2="360"/><line class="edge v" x1="80" y1="180" x2="80" y2="270"/><line class="edge v" x1="80" y1="270" x2="80" y2="450"/><line class="edge v" x1="340" y1="180" x2="340" y2="270"/><line class="edge v" x1="340" y1="270" x2="340" y2="450"/><line class="edge v" x1="210" y1="360" x2="210" y2="540"/><line class="edge v" x1="210" y1="540" x2="210" y2="630"/>
+<line class="edge d" x1="210" y1="90" x2="80" y2="180"/><line class="edge d" x1="210" y1="90" x2="340" y2="180"/><line class="edge d" x1="80" y1="180" x2="210" y2="360"/><line class="edge d" x1="340" y1="180" x2="210" y2="360"/><line class="edge d" x1="80" y1="270" x2="210" y2="360"/><line class="edge d" x1="340" y1="270" x2="210" y2="360"/><line class="edge d" x1="210" y1="360" x2="80" y2="450"/><line class="edge d" x1="210" y1="360" x2="340" y2="450"/><line class="edge d" x1="80" y1="450" x2="210" y2="540"/><line class="edge d" x1="340" y1="450" x2="210" y2="540"/><line class="edge d" x1="80" y1="450" x2="210" y2="630"/><line class="edge d" x1="340" y1="450" x2="210" y2="630"/>
+<line class="path" x1="210" y1="630" x2="210" y2="540"/><line class="path" x1="210" y1="540" x2="340" y2="450"/><line class="path" x1="340" y1="450" x2="80" y2="450"/><line class="path" x1="80" y1="450" x2="210" y2="360"/><line class="path" x1="210" y1="360" x2="340" y2="270"/><line class="path" x1="340" y1="270" x2="80" y2="270"/><line class="missing" x1="80" y1="270" x2="340" y2="180"/><line class="path" x1="340" y1="180" x2="80" y2="180"/><line class="path" x1="80" y1="180" x2="210" y2="90"/>
+<circle class="node" cx="210" cy="630" r="25"/><text class="num" x="210" y="627">1</text><text class="label" x="210" y="645">Malkuth</text>
+<circle class="node" cx="210" cy="540" r="25"/><text class="num" x="210" y="537">2</text><text class="label" x="210" y="555">Yesod</text>
+<circle class="node" cx="340" cy="450" r="25"/><text class="num" x="340" y="447">3</text><text class="label" x="340" y="465">Hod</text>
+<circle class="node" cx="80" cy="450" r="25"/><text class="num" x="80" y="447">4</text><text class="label" x="80" y="465">Netzach</text>
+<circle class="node" cx="210" cy="360" r="25"/><text class="num" x="210" y="357">5</text><text class="label" x="210" y="375">Tiferet</text>
+<circle class="node" cx="340" cy="270" r="25"/><text class="num" x="340" y="267">6</text><text class="label" x="340" y="285">Gevurah</text>
+<circle class="node" cx="80" cy="270" r="25"/><text class="num" x="80" y="267">7</text><text class="label" x="80" y="285">Chesed</text>
+<circle class="node" cx="340" cy="180" r="25"/><text class="num" x="340" y="177">8</text><text class="label" x="340" y="195">Binah</text>
+<circle class="node" cx="80" cy="180" r="25"/><text class="num" x="80" y="177">9</text><text class="label" x="80" y="195">Chokhmah</text>
+<circle class="node" cx="210" cy="90" r="25"/><text class="num" x="210" y="87">10</text><text class="label" x="210" y="105">Keter</text>
+<text class="paneltitle" x="790" y="38">Lurianic / Safed-style</text><text class="status" x="790" y="62">Vitae traversal: 9 / 9 Tree transitions</text>
+<line class="edge h" x1="660" y1="180" x2="920" y2="180"/><line class="edge h" x1="660" y1="270" x2="920" y2="270"/><line class="edge h" x1="660" y1="450" x2="920" y2="450"/>
+<line class="edge v" x1="790" y1="90" x2="790" y2="360"/><line class="edge v" x1="660" y1="180" x2="660" y2="270"/><line class="edge v" x1="660" y1="270" x2="660" y2="450"/><line class="edge v" x1="920" y1="180" x2="920" y2="270"/><line class="edge v" x1="920" y1="270" x2="920" y2="450"/><line class="edge v" x1="790" y1="360" x2="790" y2="540"/><line class="edge v" x1="790" y1="540" x2="790" y2="630"/>
+<line class="edge d" x1="790" y1="90" x2="660" y2="180"/><line class="edge d" x1="790" y1="90" x2="920" y2="180"/><line class="edge d" x1="660" y1="180" x2="790" y2="360"/><line class="edge d" x1="920" y1="180" x2="790" y2="360"/><line class="edge d" x1="660" y1="270" x2="790" y2="360"/><line class="edge d" x1="920" y1="270" x2="790" y2="360"/><line class="edge d" x1="790" y1="360" x2="660" y2="450"/><line class="edge d" x1="790" y1="360" x2="920" y2="450"/><line class="edge d" x1="660" y1="450" x2="790" y2="540"/><line class="edge d" x1="920" y1="450" x2="790" y2="540"/><line class="edge d" x1="660" y1="180" x2="920" y2="270"/><line class="edge d" x1="920" y1="180" x2="660" y2="270"/>
+<line class="path" x1="790" y1="630" x2="790" y2="540"/><line class="path" x1="790" y1="540" x2="920" y2="450"/><line class="path" x1="920" y1="450" x2="660" y2="450"/><line class="path" x1="660" y1="450" x2="790" y2="360"/><line class="path" x1="790" y1="360" x2="920" y2="270"/><line class="path" x1="920" y1="270" x2="660" y2="270"/><line class="path" x1="660" y1="270" x2="920" y2="180"/><line class="path" x1="920" y1="180" x2="660" y2="180"/><line class="path" x1="660" y1="180" x2="790" y2="90"/>
+<circle class="node" cx="790" cy="630" r="25"/><text class="num" x="790" y="627">1</text><text class="label" x="790" y="645">Malkuth</text>
+<circle class="node" cx="790" cy="540" r="25"/><text class="num" x="790" y="537">2</text><text class="label" x="790" y="555">Yesod</text>
+<circle class="node" cx="920" cy="450" r="25"/><text class="num" x="920" y="447">3</text><text class="label" x="920" y="465">Hod</text>
+<circle class="node" cx="660" cy="450" r="25"/><text class="num" x="660" y="447">4</text><text class="label" x="660" y="465">Netzach</text>
+<circle class="node" cx="790" cy="360" r="25"/><text class="num" x="790" y="357">5</text><text class="label" x="790" y="375">Tiferet</text>
+<circle class="node" cx="920" cy="270" r="25"/><text class="num" x="920" y="267">6</text><text class="label" x="920" y="285">Gevurah</text>
+<circle class="node" cx="660" cy="270" r="25"/><text class="num" x="660" y="267">7</text><text class="label" x="660" y="285">Chesed</text>
+<circle class="node" cx="920" cy="180" r="25"/><text class="num" x="920" y="177">8</text><text class="label" x="920" y="195">Binah</text>
+<circle class="node" cx="660" cy="180" r="25"/><text class="num" x="660" y="177">9</text><text class="label" x="660" y="195">Chokhmah</text>
+<circle class="node" cx="790" cy="90" r="25"/><text class="num" x="790" y="87">10</text><text class="label" x="790" y="105">Keter</text>
+<line class="rule" x1="40" y1="692" x2="1160" y2="692"/>
+<g transform="translate(55 716)"><line class="edge h" x1="0" y1="0" x2="32" y2="0"/><text class="legend" x="42" y="5">horizontal / Mother-class slot</text><line class="edge v" x1="245" y1="0" x2="277" y2="0"/><text class="legend" x="287" y="5">vertical / Double-class slot</text><line class="edge d" x1="480" y1="0" x2="512" y2="0"/><text class="legend" x="522" y="5">diagonal / Simple-class slot</text><line class="path" x1="765" y1="0" x2="797" y2="0"/><text class="legend" x="807" y="5">registered Vitae class walk</text></g>
+<text class="note" x="600" y="748" text-anchor="middle">Lurianic walk orientation: V–D–H–D–D–H–D–H–D  →  1 vertical + 3 horizontal + 5 diagonal; all three horizontal paths are crossed.</text>
+</svg>
