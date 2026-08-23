@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="820" viewBox="0 0 1280 820" role="img" aria-labelledby="title desc">
+<title id="title">Sefer Yetzirah letter class by articulation-region matrix</title>
+<desc id="desc">A three by five matrix crossing Mother, Double, and Simple letter classes with throat, palate, tongue, teeth, and lips articulation regions. The twenty-two Hebrew letters occupy twelve of fifteen cells.</desc>
+<style>
+text{font-family:system-ui,-apple-system,sans-serif;fill:#171717}.head{font-size:28px;font-weight:700}.sub{font-size:16px}.row{font-size:20px;font-weight:700}.col{font-size:18px;font-weight:700}.celltitle{font-size:13px;font-weight:700}.letters{font-size:28px}.roman{font-size:13px;fill:#475569}.count{font-size:13px;fill:#64748b}.card{fill:#fff;stroke:#cbd5e1;stroke-width:1.5}.empty{fill:#f8fafc;stroke:#cbd5e1;stroke-width:1.5;stroke-dasharray:5 5}.mother{fill:#faf5ff}.double{fill:#eff6ff}.simple{fill:#ecfdf5}.note{font-size:15px;fill:#334155}
+</style>
+<rect width="1280" height="820" fill="#fafafa"/>
+<text x="44" y="50" class="head">Letter coordinate matrix: class × articulation region</text>
+<text x="44" y="80" class="sub">Historical-reference cross-classification only · no individual Tree-edge, pitch, Vitae-element, or authority assignment</text>
+
+<!-- column headers -->
+<text x="340" y="135" text-anchor="middle" class="col">Guttural</text><text x="340" y="157" text-anchor="middle" class="roman">throat · 4 letters</text>
+<text x="520" y="135" text-anchor="middle" class="col">Palatal</text><text x="520" y="157" text-anchor="middle" class="roman">palate · 4 letters</text>
+<text x="700" y="135" text-anchor="middle" class="col">Lingual</text><text x="700" y="157" text-anchor="middle" class="roman">tongue · 5 letters</text>
+<text x="880" y="135" text-anchor="middle" class="col">Dental</text><text x="880" y="157" text-anchor="middle" class="roman">teeth · 5 letters</text>
+<text x="1060" y="135" text-anchor="middle" class="col">Labial</text><text x="1060" y="157" text-anchor="middle" class="roman">lips · 4 letters</text>
+
+<!-- row headers -->
+<text x="56" y="250" class="row">Mother</text><text x="56" y="274" class="roman">3 total · horizontal class slots</text>
+<text x="56" y="410" class="row">Double</text><text x="56" y="434" class="roman">7 total · vertical class slots</text>
+<text x="56" y="570" class="row">Simple</text><text x="56" y="594" class="roman">12 total · diagonal class slots</text>
+
+<!-- mother cells -->
+<rect x="260" y="190" width="160" height="115" rx="12" class="card mother"/><text x="340" y="222" text-anchor="middle" class="celltitle">1 letter</text><text x="340" y="265" text-anchor="middle" class="letters">א</text><text x="340" y="290" text-anchor="middle" class="roman">Alef</text>
+<rect x="440" y="190" width="160" height="115" rx="12" class="empty"/><text x="520" y="250" text-anchor="middle" class="count">empty</text>
+<rect x="620" y="190" width="160" height="115" rx="12" class="empty"/><text x="700" y="250" text-anchor="middle" class="count">empty</text>
+<rect x="800" y="190" width="160" height="115" rx="12" class="card mother"/><text x="880" y="222" text-anchor="middle" class="celltitle">1 letter</text><text x="880" y="265" text-anchor="middle" class="letters">ש</text><text x="880" y="290" text-anchor="middle" class="roman">Shin</text>
+<rect x="980" y="190" width="160" height="115" rx="12" class="card mother"/><text x="1060" y="222" text-anchor="middle" class="celltitle">1 letter</text><text x="1060" y="265" text-anchor="middle" class="letters">מ</text><text x="1060" y="290" text-anchor="middle" class="roman">Mem</text>
+
+<!-- double cells -->
+<rect x="260" y="350" width="160" height="115" rx="12" class="empty"/><text x="340" y="410" text-anchor="middle" class="count">empty</text>
+<rect x="440" y="350" width="160" height="115" rx="12" class="card double"/><text x="520" y="382" text-anchor="middle" class="celltitle">2 letters</text><text x="520" y="425" text-anchor="middle" class="letters">ג כ</text><text x="520" y="450" text-anchor="middle" class="roman">Gimel · Kaf</text>
+<rect x="620" y="350" width="160" height="115" rx="12" class="card double"/><text x="700" y="382" text-anchor="middle" class="celltitle">2 letters</text><text x="700" y="425" text-anchor="middle" class="letters">ד ת</text><text x="700" y="450" text-anchor="middle" class="roman">Dalet · Tav</text>
+<rect x="800" y="350" width="160" height="115" rx="12" class="card double"/><text x="880" y="382" text-anchor="middle" class="celltitle">1 letter</text><text x="880" y="425" text-anchor="middle" class="letters">ר</text><text x="880" y="450" text-anchor="middle" class="roman">Resh</text>
+<rect x="980" y="350" width="160" height="115" rx="12" class="card double"/><text x="1060" y="382" text-anchor="middle" class="celltitle">2 letters</text><text x="1060" y="425" text-anchor="middle" class="letters">ב פ</text><text x="1060" y="450" text-anchor="middle" class="roman">Bet · Peh</text>
+
+<!-- simple cells -->
+<rect x="260" y="510" width="160" height="115" rx="12" class="card simple"/><text x="340" y="542" text-anchor="middle" class="celltitle">3 letters</text><text x="340" y="585" text-anchor="middle" class="letters">ה ח ע</text><text x="340" y="610" text-anchor="middle" class="roman">Heh · Chet · Ayin</text>
+<rect x="440" y="510" width="160" height="115" rx="12" class="card simple"/><text x="520" y="542" text-anchor="middle" class="celltitle">2 letters</text><text x="520" y="585" text-anchor="middle" class="letters">י ק</text><text x="520" y="610" text-anchor="middle" class="roman">Yod · Qof</text>
+<rect x="620" y="510" width="160" height="115" rx="12" class="card simple"/><text x="700" y="542" text-anchor="middle" class="celltitle">3 letters</text><text x="700" y="585" text-anchor="middle" class="letters">ט ל נ</text><text x="700" y="610" text-anchor="middle" class="roman">Tet · Lamed · Nun</text>
+<rect x="800" y="510" width="160" height="115" rx="12" class="card simple"/><text x="880" y="542" text-anchor="middle" class="celltitle">3 letters</text><text x="880" y="585" text-anchor="middle" class="letters">ז ס צ</text><text x="880" y="610" text-anchor="middle" class="roman">Zayin · Samekh · Tzadi</text>
+<rect x="980" y="510" width="160" height="115" rx="12" class="card simple"/><text x="1060" y="542" text-anchor="middle" class="celltitle">1 letter</text><text x="1060" y="585" text-anchor="middle" class="letters">ו</text><text x="1060" y="610" text-anchor="middle" class="roman">Vav</text>
+
+<rect x="44" y="675" width="1096" height="105" rx="14" class="card"/>
+<text x="66" y="706" class="note">22 letters occupy 12 of 15 possible class × articulation cells. Empty: Mother–Palatal, Mother–Lingual, Double–Guttural.</text>
+<text x="66" y="736" class="note">The three Mothers occupy three distinct articulation regions: Alef–Guttural, Shin–Dental, Mem–Labial. Simple letters span all five regions.</text>
+<text x="66" y="766" class="note">Interpretation: articulation cuts across 3/7/12 class structure; it does not duplicate it. This matrix narrows metadata, not individual Tree paths.</text>
+</svg>
