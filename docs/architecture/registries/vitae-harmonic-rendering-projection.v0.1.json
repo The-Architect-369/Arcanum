@@ -1,0 +1,121 @@
+{
+  "registry": "vitae.harmonic-rendering-projection.v0.1",
+  "status": "design-candidate-projection",
+  "phase": "Pre-Genesis",
+  "authority": "perceptual rendering metadata only; not curriculum authority, historical letter attribution, recognition, readiness, identity, governance, MANA policy, or metaphysical frequency doctrine",
+  "purpose": "Provide one explicit, replaceable projection for rendering the registered Vitae Tree traversal and 36-position class microcycle through geometry and ordinary music-theory operations without allowing the render to create semantic relationships.",
+  "sources": [
+    "docs/architecture/registries/vitae-tree-of-life-class-registry.v0.1.json",
+    "docs/architecture/registries/vitae-tree-of-life-path-registry.v0.1.json",
+    "docs/architecture/registries/vitae-grade-cycle-registry.v0.1.json",
+    "docs/architecture/registries/sefer-yetzirah-letter-wheel-registry.v0.1.json",
+    "docs/architecture/registries/tree-harmonic-sonification-overlay.v0.1.json"
+  ],
+  "invariants": {
+    "projection_is_consumer_not_author": true,
+    "audio_required": false,
+    "plain_text_equivalent_required": true,
+    "individual_hebrew_letter_to_edge_assignment": false,
+    "station_has_intrinsic_pitch": false,
+    "path_has_intrinsic_frequency": false,
+    "consonance_is_moral_value": false,
+    "dissonance_is_failure": false,
+    "recognition_effect": "none",
+    "authority_effect": "none",
+    "mana_effect": "none"
+  },
+  "tree_2d_coordinates": {
+    "coordinate_status": "presentation coordinates only",
+    "x_axis": "left=-1, center=0, right=1",
+    "y_axis": "top=0, bottom=6",
+    "stations": {
+      "keter": {"x":0,"y":0},
+      "chokhmah": {"x":-1,"y":1},
+      "binah": {"x":1,"y":1},
+      "chesed": {"x":-1,"y":2},
+      "gevurah": {"x":1,"y":2},
+      "tiferet": {"x":0,"y":3},
+      "netzach": {"x":-1,"y":4},
+      "hod": {"x":1,"y":4},
+      "yesod": {"x":0,"y":5},
+      "malkuth": {"x":0,"y":6}
+    }
+  },
+  "vitae_class_traversal_render": {
+    "sequence": ["malkuth","yesod","hod","netzach","tiferet","gevurah","chesed","binah","chokhmah","keter"],
+    "lurianic_safed_path_match": "9_of_9",
+    "western_cordoveran_path_match": "8_of_9",
+    "western_missing_transition": "chesed-binah",
+    "lurianic_orientation_sequence": ["vertical","diagonal","horizontal","diagonal","diagonal","horizontal","diagonal","horizontal","diagonal"],
+    "orientation_counts": {"vertical":1,"horizontal":3,"diagonal":5},
+    "letter_class_counts_if_orientation_classes_are_used": {"double_class_slots":1,"mother_class_slots":3,"simple_class_slots":5},
+    "derived_observation": "The traversal crosses all three horizontal/Mother-class path slots exactly once. It uses only one of seven vertical/Double-class slots and five of twelve diagonal/Simple-class slots.",
+    "pillar_weave": ["center","center","right","left","center","right","left","right","left","center"],
+    "posture": "This is a property of the registered graph walk, not an individual Hebrew-letter attribution or spiritual ranking."
+  },
+  "neutral_tree_audition": {
+    "status": "replaceable perceptual experiment",
+    "pitch_space": "12-TET pitch classes",
+    "starting_pitch_class": 0,
+    "starting_display_name": "C",
+    "generator": "pc_next = (pc + 7) mod 12",
+    "station_pitch_classes": [0,7,2,9,4,11,6,1,8,3],
+    "station_display_names": ["C","G","D","A","E","B","F#/Gb","C#/Db","G#/Ab","D#/Eb"],
+    "meaning": "The generator makes traversal order audible. No pitch is owned by a station and another permutation may replace this one.",
+    "optional_spatialization": {
+      "stereo_pan_from_tree_x": true,
+      "register_from_tree_y": "allowed_as_presentation_only",
+      "path_orientation_from_timbre_or_envelope": "allowed_as_presentation_only"
+    }
+  },
+  "class_microcycle": {
+    "slots": 36,
+    "overview_slots": 1,
+    "chapter_section_cells": 35,
+    "chapter_axis": {"count":7,"ids":["moon","mars","mercury","jupiter","venus","saturn","sun"]},
+    "section_axis": {"count":5,"ids":["spirit","air","fire","earth","water"]},
+    "source_structure": "1 + (7 x 5)",
+    "product_space": {
+      "model": "Z7 x Z5 for optional cyclic rendering of the 35 chapter-section combinations",
+      "gcd_7_5": 1,
+      "diagonal_generator": "(chapter, section) -> (chapter+1 mod 7, section+1 mod 5)",
+      "diagonal_period": 35,
+      "visits_every_pair_once": true,
+      "is_curriculum_order": false,
+      "allowed_use": "resonance scan / visualization / audition only"
+    },
+    "fifths_projection": {
+      "model": "assign slot n an optional pitch class ((n-1)*7) mod 12",
+      "pitch_class_period": 12,
+      "complete_pitch_class_cycles_per_class": 3,
+      "because": "36 = 3 x 12",
+      "returns_to_starting_pitch_class_at_class_boundary": true,
+      "semantic_correspondence": false
+    }
+  },
+  "grade_cycle_projection": {
+    "slots_per_grade": 360,
+    "class_count": 10,
+    "class_width": 36,
+    "optional_pitch_class_cycles_if_same_fifths_projection_is_used": 30,
+    "because": "360 = 30 x 12",
+    "semantic_correspondence": false,
+    "vitae_advancement_from_audio_or_phase": false
+  },
+  "candidate_laws": [
+    "Vibration May Encode Relation Without Defining Essence.",
+    "All Three Mother Crossings Is a Traversal Property, Not a Letter Assignment.",
+    "A Microcycle May Be a Product Space Without Becoming Curriculum Order.",
+    "Periodic Closure in a Renderer Does Not Imply Completion in Becoming.",
+    "Projection Is a Consumer, Not an Author."
+  ],
+  "not_encoded": [
+    "sacred hertz values",
+    "individual letter-to-path placement",
+    "planet-to-note doctrine",
+    "element-to-articulation identity",
+    "healing frequency claims",
+    "automatic Tempus synchronization",
+    "recognition from musical response"
+  ]
+}
