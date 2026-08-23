@@ -1,0 +1,146 @@
+{
+  "registry": "sefer-yetzirah.letter-wheel.v0.1",
+  "status": "historical-reference-design-candidate",
+  "phase": "Pre-Genesis",
+  "authority": "historical/symbolic reference registry for Arcanum research; not doctrine, empirical physics, participant typing, recognition, authority, or a claim that Hebrew letters possess fixed intrinsic frequencies",
+  "purpose": "Preserve the historically grounded structural features of the twenty-two foundation letters that are relevant to Tree-path, voice, breath, articulation, combination, and future sonification studies without inventing sacred-Hz correspondences.",
+  "sources": {
+    "primary_text_reference": [
+      "Sefer Yetzirah 1-2: ten sefirot and twenty-two foundation letters; three Mothers, seven Doubles, twelve Simple letters.",
+      "Sefer Yetzirah 2: letters described as engraved/carved with voice and breath and set in the mouth in five articulation places.",
+      "Sefer Yetzirah 2: twenty-two letters fixed in a wheel with 231 gates, turning forward and backward."
+    ],
+    "source_urls": [
+      "https://www.sefaria.org/Sefer_Yetzirah.1-6",
+      "https://www.sefaria.org/Sefer_Yetzirah.2.3",
+      "https://www.sefaria.org/Sefer_Yetzirah.2.4"
+    ]
+  },
+  "invariants": {
+    "letter_count": 22,
+    "mother_count": 3,
+    "double_count": 7,
+    "simple_count": 12,
+    "articulation_group_count": 5,
+    "pairwise_gate_count": 231,
+    "pairwise_gate_formula": "22 * 21 / 2",
+    "letters_have_fixed_hz": false,
+    "letters_determine_personality": false,
+    "letters_determine_readiness": false,
+    "letters_grant_authority": false,
+    "music_mapping_is_historical_fact": false,
+    "pronunciation_model_is_modern_hebrew_phonetics": false
+  },
+  "letter_classes": {
+    "mothers": ["alef", "mem", "shin"],
+    "doubles": ["bet", "gimel", "dalet", "kaf", "peh", "resh", "tav"],
+    "simples": ["heh", "vav", "zayin", "chet", "tet", "yod", "lamed", "nun", "samekh", "ayin", "tzadi", "qof"]
+  },
+  "letters": [
+    {"id":"alef","hebrew":"א","class":"mother","articulation_group":"guttural"},
+    {"id":"bet","hebrew":"ב","class":"double","articulation_group":"labial"},
+    {"id":"gimel","hebrew":"ג","class":"double","articulation_group":"palatal"},
+    {"id":"dalet","hebrew":"ד","class":"double","articulation_group":"lingual"},
+    {"id":"heh","hebrew":"ה","class":"simple","articulation_group":"guttural"},
+    {"id":"vav","hebrew":"ו","class":"simple","articulation_group":"labial"},
+    {"id":"zayin","hebrew":"ז","class":"simple","articulation_group":"dental"},
+    {"id":"chet","hebrew":"ח","class":"simple","articulation_group":"guttural"},
+    {"id":"tet","hebrew":"ט","class":"simple","articulation_group":"lingual"},
+    {"id":"yod","hebrew":"י","class":"simple","articulation_group":"palatal"},
+    {"id":"kaf","hebrew":"כ","class":"double","articulation_group":"palatal"},
+    {"id":"lamed","hebrew":"ל","class":"simple","articulation_group":"lingual"},
+    {"id":"mem","hebrew":"מ","class":"mother","articulation_group":"labial"},
+    {"id":"nun","hebrew":"נ","class":"simple","articulation_group":"lingual"},
+    {"id":"samekh","hebrew":"ס","class":"simple","articulation_group":"dental"},
+    {"id":"ayin","hebrew":"ע","class":"simple","articulation_group":"guttural"},
+    {"id":"peh","hebrew":"פ","class":"double","articulation_group":"labial"},
+    {"id":"tzadi","hebrew":"צ","class":"simple","articulation_group":"dental"},
+    {"id":"qof","hebrew":"ק","class":"simple","articulation_group":"palatal"},
+    {"id":"resh","hebrew":"ר","class":"double","articulation_group":"dental"},
+    {"id":"shin","hebrew":"ש","class":"mother","articulation_group":"dental"},
+    {"id":"tav","hebrew":"ת","class":"double","articulation_group":"lingual"}
+  ],
+  "articulation_groups": [
+    {
+      "id":"guttural",
+      "letters":["alef","heh","chet","ayin"],
+      "count":4,
+      "historical_posture":"throat/guttural grouping in the cited Sefer Yetzirah recension"
+    },
+    {
+      "id":"palatal",
+      "letters":["gimel","yod","kaf","qof"],
+      "count":4,
+      "historical_posture":"palate grouping in the cited recension"
+    },
+    {
+      "id":"lingual",
+      "letters":["dalet","tet","lamed","nun","tav"],
+      "count":5,
+      "historical_posture":"tongue/lingual grouping in the cited recension"
+    },
+    {
+      "id":"dental",
+      "letters":["zayin","samekh","shin","resh","tzadi"],
+      "count":5,
+      "historical_posture":"teeth/dental grouping in the cited recension"
+    },
+    {
+      "id":"labial",
+      "letters":["bet","vav","mem","peh"],
+      "count":4,
+      "historical_posture":"lips/labial grouping in the cited recension"
+    }
+  ],
+  "wheel": {
+    "node_count": 22,
+    "gate_count": 231,
+    "graph_model": "complete undirected pair graph K22 as a modern mathematical representation of all unique two-letter pairings",
+    "historical_language": "wheel / 231 gates / forward and backward combination",
+    "gate_is_tree_path": false,
+    "gate_is_curriculum_requirement": false,
+    "gate_is_edge_contract": false,
+    "interpretation": "The letter wheel treats letters as combinable nodes; the later Tree model may treat the same twenty-two letters as relationship/path classes. These are different information roles and must not be collapsed."
+  },
+  "voice_breath_posture": {
+    "historically_grounded": true,
+    "source_meaning": "letters are described through voice, breath/spirit, and bodily articulation",
+    "safe_arcanum_interpretation": "phonation and articulation provide a legitimate acoustic/embodied dimension for study and optional sonification",
+    "unsafe_inference": [
+      "each letter has one scientifically established sacred frequency",
+      "a participant's body or identity can be diagnosed from a letter frequency",
+      "specific hertz values confer recognition, readiness, healing, authority, or destiny"
+    ]
+  },
+  "flame_language_caution": {
+    "term_flame_letters_is_standard_label": false,
+    "primary_observation": "Sefer Yetzirah 1:7 compares the end and beginning of the ten sefirot to a flame bound to a coal.",
+    "textual_variant_observation": "A later/variant presentation associated with the articulation passage also contains flame-to-coal language about the tongue; the Sefaria editorial note warns that this addition is not actually present in the cited 1562 Mantua printing despite a later editor's claim.",
+    "design_posture": "Use flame imagery only as explicitly labeled interpretive/historical variant metadata, never as proof of an intrinsic frequency system."
+  },
+  "tree_bridge": {
+    "registry": "vitae.tree-of-life-paths.v0.1",
+    "historical_category_relation": {
+      "mothers":"three horizontal Tree paths",
+      "doubles":"seven vertical Tree paths",
+      "simples":"twelve diagonal Tree paths"
+    },
+    "individual_letter_to_tree_edge_assignment":"deferred_to_separate_versioned_correspondence_overlay"
+  },
+  "candidate_laws": [
+    "Voice Before Frequency — historical acoustic evidence begins with voice, breath, and articulation, not invented hertz values.",
+    "Letter Role Is Contextual — a letter may be a node in the 231-gate wheel and an edge/operator in a Tree projection without those graph roles being identical.",
+    "Combination Is Not Completion — 231 possible pairings are a combinatorial field, not a curriculum checklist.",
+    "Textual Variant Must Stay Visible — later additions and differing recensions may inform research but may not be silently presented as a single ancient wording."
+  ],
+  "not_encoded": [
+    "letter frequencies in Hz",
+    "chakra mappings",
+    "healing claims",
+    "participant resonance score",
+    "one canonical Tree letter placement",
+    "musical pitch assignments",
+    "recognition or authority effects",
+    "MANA effects"
+  ]
+}
