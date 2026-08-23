@@ -1,0 +1,163 @@
+{
+  "registry": "tree.harmonic-sonification.v0.1",
+  "status": "design-candidate-overlay",
+  "phase": "Pre-Genesis",
+  "authority": "optional audification/sonification and relational research metadata only; not doctrine, historical Hebrew-letter music attribution, empirical spiritual physics, recognition, readiness, identity, governance, authority, or MANA policy",
+  "purpose": "Test whether music-theory structures can make Tree, letter-wheel, Tempus, and Vitae relationships perceptible through sound while preserving the rule that musical projection consumes semantic registries and never creates their meaning.",
+  "sources": {
+    "registries": [
+      "docs/architecture/registries/vitae-tree-of-life-path-registry.v0.1.json",
+      "docs/architecture/registries/sefer-yetzirah-letter-wheel-registry.v0.1.json",
+      "docs/architecture/registries/vitae-grade-cycle-registry.v0.1.json",
+      "docs/architecture/registries/tempus-zodiac-registry.v0.1.json",
+      "docs/architecture/registries/tempus-vitae-becoming-field-registry.v0.1.json"
+    ],
+    "music_theory_reference": [
+      "Twelve-tone equal-tempered pitch-class space may be represented modulo 12.",
+      "A perfect fifth spans seven semitones in 12-TET; repeatedly adding 7 modulo 12 visits all twelve pitch classes before returning.",
+      "A just perfect fifth is the frequency ratio 3:2.",
+      "Twelve pure 3:2 fifths do not equal seven exact octaves; their mismatch is the Pythagorean comma."
+    ],
+    "reference_urls": [
+      "https://openmusictheory.github.io/mod12.html",
+      "https://openmusictheory.github.io/keySignatures.html",
+      "https://theory.stanford.edu/~blynn/sound/tuning.html"
+    ]
+  },
+  "invariants": {
+    "sonification_is_projection": true,
+    "sonification_creates_semantic_edge": false,
+    "fixed_sacred_hz_assignments": false,
+    "pitch_determines_identity": false,
+    "pitch_determines_readiness": false,
+    "consonance_equals_moral_good": false,
+    "dissonance_equals_moral_bad": false,
+    "healing_claims": false,
+    "geometry_required": false,
+    "audio_required_for_access": false,
+    "plain_text_equivalent_required": true,
+    "reduced_sensory_mode_required": true
+  },
+  "music_models": {
+    "pitch_class_space_12tet": {
+      "count": 12,
+      "representation": "integers 0..11 modulo 12",
+      "default_names": ["C","C#/Db","D","D#/Eb","E","F","F#/Gb","G","G#/Ab","A","A#/Bb","B"],
+      "historical_spiritual_correspondence": "none asserted"
+    },
+    "circle_of_fifths": {
+      "generator_semitones": 7,
+      "generator_operation": "pc_next = (pc + 7) mod 12",
+      "cycle_length": 12,
+      "example_order_from_C": ["C","G","D","A","E","B","F#/Gb","C#/Db","G#/Ab","D#/Eb","A#/Bb","F"],
+      "posture": "relational ordering operator; not a zodiac or Hebrew-letter attribution by itself"
+    },
+    "just_fifth": {
+      "frequency_ratio": "3:2",
+      "twelve_fifths_to_seven_octaves_ratio": "531441:524288",
+      "pythagorean_comma_approx_cents": 23.46,
+      "architectural_observation": "an acoustically pure fifth-cycle does not close perfectly; exact circular closure is a tuning/projection choice"
+    }
+  },
+  "candidate_correspondence_tests": [
+    {
+      "id": "simple_letters_on_fifth_cycle",
+      "source_set": "twelve Simple letters / twelve diagonal Tree-path slots",
+      "music_set": "twelve pitch classes ordered by fifth generator",
+      "status": "count-matched experiment only",
+      "historical_claim": false,
+      "semantic_claim": false,
+      "allowed_use": "temporary sonification permutation to test whether fifth-ordering makes a twelve-path navigation easier to hear or remember",
+      "required_guardrail": "the specific letter-to-pitch permutation must be explicit, replaceable, and separately versioned"
+    },
+    {
+      "id": "double_letters_as_seven_degree_palette",
+      "source_set": "seven Double letters / seven vertical Tree-path slots",
+      "music_set": "seven scale-degree positions",
+      "status": "weak count-matched experiment",
+      "historical_claim": false,
+      "semantic_claim": false,
+      "allowed_use": "auditory differentiation study only",
+      "required_guardrail": "must not be presented as an ancient planetary-to-note system"
+    },
+    {
+      "id": "mother_letters_as_three_voice_relation",
+      "source_set": "three Mother letters / three horizontal Tree-path slots",
+      "music_set": "three simultaneous or alternating voices",
+      "status": "weak structural experiment",
+      "historical_claim": false,
+      "semantic_claim": false,
+      "allowed_use": "counterpoint/balance study only"
+    },
+    {
+      "id": "articulation_groups_as_timbre_families",
+      "source_set": "five Sefer Yetzirah mouth/articulation groups",
+      "music_set": "phonetic/timbral families derived from recorded or synthesized articulation characteristics",
+      "status": "stronger acoustic research candidate",
+      "historical_claim": "voice/breath/articulation basis is source-grounded; modern audio design remains new",
+      "semantic_claim": false,
+      "allowed_use": "embodied pronunciation, timbre, accessibility, and memory experiments",
+      "required_guardrail": "do not equate the five articulation groups with Vitae's Spirit/Air/Fire/Earth/Water section meanings merely because both counts equal five"
+    },
+    {
+      "id": "letter_gate_transition_sonification",
+      "source_set": "231 unique two-letter gates",
+      "music_set": "interval/timbre transitions generated from explicitly selected letter pairs",
+      "status": "design-candidate research tool",
+      "historical_claim": false,
+      "semantic_claim": false,
+      "allowed_use": "hear combinations and transformations without requiring all 231 as curriculum",
+      "required_guardrail": "Combination Is Not Completion"
+    }
+  ],
+  "vitae_spiral_bridge": {
+    "source": "vitae.grade-cycle.v0.1",
+    "observation": "Vitae already models each grade as one 360-position turn and ten grades as a helix.",
+    "music_analogy": "A harmonic cycle may return to an equivalent pitch class while register, tuning, voicing, timbre, context, and accumulated history differ.",
+    "candidate_law": "Harmonic Return Is Not Identity — returning to a named pitch class or curriculum angle does not mean returning to the same lived state.",
+    "closure_caution": "The Pythagorean comma is a useful factual example that apparent circular closure can depend on the chosen tuning model; it is not evidence of metaphysical ascent."
+  },
+  "tempus_bridge": {
+    "source": "tempus.zodiac.v0.1",
+    "twelve_region_count_match": true,
+    "direct_zodiac_to_pitch_mapping": "not encoded",
+    "allowed_experiment": "a participant may select a reversible sonification scheme for temporal regions, but Tempus meaning remains owned by Tempus and the sound mapping remains projection metadata",
+    "timing_causes_vitae_advancement": false
+  },
+  "sonification_event_candidate": {
+    "version": "tree.sonification-event.v0.1",
+    "fields": {
+      "source_registry": "string",
+      "source_id": "string",
+      "projection_id": "string",
+      "pitch_class": "integer|null",
+      "register": "integer|null",
+      "interval_from_previous": "integer|null",
+      "timbre_family": "string|null",
+      "duration_ms": "integer|null",
+      "amplitude_normalized": "number|null",
+      "participant_selected": "boolean",
+      "semantic_effect": "none",
+      "recognition_effect": "none",
+      "authority_effect": "none"
+    }
+  },
+  "candidate_laws": [
+    "Resonance Is Relation, Not Frequency — the primary musical object is a relation among sounds, not an intrinsic sacred number assigned to a person or symbol.",
+    "Sonification Is Projection, Not Ontology — sound may reveal or teach a relationship but does not become the authority that defines it.",
+    "Harmonic Return Is Not Identity — recurrence may preserve a class while context and history change.",
+    "Closure May Be a Projection — a circle can be exact in one representational system while the underlying ratio process forms a near-return or spiral.",
+    "Count Match Is Not Correspondence — 3, 7, 12, or 5 may justify an experiment but not a historical or causal claim.",
+    "Dissonance Is Information, Not Failure — acoustic tension may be rendered without moralizing it or treating it as participant deficiency."
+  ],
+  "not_encoded": [
+    "sacred frequency tables",
+    "Solfeggio-frequency claims",
+    "planet-to-Hz doctrine",
+    "Hebrew-letter-to-Hz doctrine",
+    "zodiac-to-pitch canon",
+    "automatic grade sonification requirements",
+    "recognition or authority from sound",
+    "MANA effects"
+  ]
+}
