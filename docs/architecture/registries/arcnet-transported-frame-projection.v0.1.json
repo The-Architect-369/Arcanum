@@ -1,0 +1,172 @@
+{
+  "registry": "arcnet.transported-frame-projection.v0.1",
+  "status": "design-candidate-projection",
+  "phase": "Pre-Genesis",
+  "authority": "presentation, geometry, and falsification metadata only; transport creates no system, capability, identity, recognition, governance, economic, or constitutional authority",
+  "purpose": "Define a rigid transported rendering of the eight-system ARCnet stellar frame through a Tempus x Vitae becoming-field presentation while proving that system identities, relation classes, derived junctions, Edge Contract requirements, and Identity sovereignty remain invariant under motion.",
+  "sources": [
+    "docs/architecture/creation-era-whole-system-falsification-audit.md",
+    "docs/architecture/arcnet-edge-contract.md",
+    "docs/architecture/registries/becoming-field-geometry-registry.v0.1.json",
+    "docs/architecture/registries/tempus-vitae-becoming-field-registry.v0.1.json",
+    "docs/architecture/registries/tempus-vitae-live-phase-projection.v0.1.json"
+  ],
+  "outer_frame": {
+    "coordinate_scale": "unit cube vertices at x,y,z in {-1,+1}",
+    "systems": [
+      {"id":"arcanum","class":"generative","q":[1,1,1],"mirror":"architect"},
+      {"id":"nexus","class":"generative","q":[1,-1,-1],"mirror":"imperium"},
+      {"id":"commercium","class":"generative","q":[-1,1,-1],"mirror":"aerarium"},
+      {"id":"theatrum","class":"generative","q":[-1,-1,1],"mirror":"protection"},
+      {"id":"architect","class":"stewardship","q":[-1,-1,-1],"mirror":"arcanum"},
+      {"id":"imperium","class":"stewardship","q":[-1,1,1],"mirror":"nexus"},
+      {"id":"aerarium","class":"stewardship","q":[1,-1,1],"mirror":"commercium"},
+      {"id":"protection","class":"stewardship","q":[1,1,-1],"mirror":"theatrum"}
+    ],
+    "center": {
+      "q":[0,0,0],
+      "role":"Human / Identity presentation center",
+      "is_system_vertex":false,
+      "is_ninth_app":false,
+      "identity_posture":"symbolic center does not define the person; canonical Identity remains continuity, not description"
+    }
+  },
+  "edge_distance_decomposition": {
+    "complete_pair_count": 28,
+    "formula": "8*7/2",
+    "classes": [
+      {
+        "distance":"2",
+        "count":12,
+        "geometric_form":"cube edges",
+        "semantic_class":"operational cross-tetrahedron relationships",
+        "authority_effect":"none"
+      },
+      {
+        "distance":"2*sqrt(2)",
+        "count":12,
+        "geometric_form":"cube face diagonals / two tetrahedron edge sets",
+        "semantic_class":"6 generative kinship + 6 stewardship kinship relationships",
+        "authority_effect":"none"
+      },
+      {
+        "distance":"2*sqrt(3)",
+        "count":4,
+        "geometric_form":"cube body diagonals",
+        "semantic_class":"mirror axes",
+        "authority_effect":"none"
+      }
+    ],
+    "audit_result":"PASS as an exact geometric encoding of the existing 12 operational + 12 kinship + 4 mirror semantic partition; this does not make distance a source of permission or legitimacy",
+    "candidate_law":"Distance Class May Encode Relationship Class; It Does Not Grant Relationship Authority."
+  },
+  "inner_octahedron": {
+    "status":"derived coordination geometry only",
+    "junctions": [
+      {"id":"commons-witness","q":[1,0,0],"derived_from":["arcanum-nexus","protection-aerarium"]},
+      {"id":"practice-safety","q":[0,1,0],"derived_from":["arcanum-commercium","protection-imperium"]},
+      {"id":"cultural-commons","q":[0,0,1],"derived_from":["arcanum-theatrum","imperium-aerarium"]},
+      {"id":"market-assurance","q":[0,0,-1],"derived_from":["nexus-commercium","architect-protection"]},
+      {"id":"creator-public-goods","q":[0,-1,0],"derived_from":["nexus-theatrum","architect-aerarium"]},
+      {"id":"standards-and-rights","q":[-1,0,0],"derived_from":["commercium-theatrum","architect-imperium"]}
+    ],
+    "coordinate_rule":"each junction is the shared midpoint of one generative tetrahedron edge and one stewardship tetrahedron edge",
+    "transport_invariance":"for rigid/affine transport T, T((a+b)/2)=(T(a)+T(b))/2; the junction remains derived from the same edge pair after transport",
+    "sovereign":false,
+    "candidate_law":"Derived Junctions Transport as Compositions, Not Authorities."
+  },
+  "becoming_field_embedding": {
+    "semantic_state":"selected Tempus phase S1 x discrete Vitae coordinate (grade 1..10, section 1..360)",
+    "presentation_model":"Tempus circle fiber around the ten-turn Vitae helix",
+    "vitae_base": {
+      "global_index":"((grade_index-1)*360)+grade_section_index",
+      "theta":"2*pi*(global_index-1)/360",
+      "helix_radius":"R_v",
+      "z":"p_v*(global_index-1)/360",
+      "meaning":"embedded curriculum/history coordinate only; movement occurs only on explicit Vitae navigation/practice events"
+    },
+    "tempus_fiber": {
+      "phase":"phi=2*pi*tempus.normalized_phase",
+      "fiber_radius":"R_t",
+      "center":"H(vitae_coordinate)",
+      "meaning":"selected temporal cycle around the current Vitae base coordinate; Tempus may change while Vitae remains fixed"
+    },
+    "transport_position":"P = H + R_t*(cos(phi)*N + sin(phi)*B), where N/B are presentation-only local normal/binormal directions",
+    "rest_behavior":"with Vitae fixed, H is fixed while phi may move around the Tempus fiber; no advancement, debt, lateness, or recognition effect occurs",
+    "vitae_event_behavior":"an explicit Vitae event changes the discrete base coordinate H; it does not derive from Tempus phase",
+    "literal_spacetime_claim":false
+  },
+  "rigid_transport": {
+    "formula":"X_i = P + s*R*q_i",
+    "requirements":[
+      "R is orthonormal",
+      "s is a presentation scale independent of participant status",
+      "P is the selected field presentation position",
+      "q_i is the immutable local coordinate of a system/junction/center"
+    ],
+    "orientation_modes": [
+      {"id":"world_locked","description":"R remains fixed while P changes"},
+      {"id":"path_aligned","description":"R follows a local presentation basis along the helix/fiber"}
+    ],
+    "orientation_semantics":"none",
+    "preserved_quantities":[
+      "system labels",
+      "generative/stewardship membership",
+      "mirror antipodes",
+      "pairwise distances up to common scale s",
+      "edge-class partition",
+      "junction midpoint construction",
+      "center non-system status",
+      "Edge Contract requirements",
+      "authority boundaries"
+    ],
+    "candidate_law":"Transport Orientation Is a Presentation Convention, Not a Semantic Coordinate."
+  },
+  "edge_contract_firewall": {
+    "rule":"frame pose, Tempus phase, Vitae coordinate, geometric distance, junction position, and animation state cannot authorize an invocation",
+    "required_for_execution":[
+      "explicit actor/authorization context",
+      "registered directional action",
+      "required capabilities",
+      "bounded data/disclosure contract",
+      "destination acceptance",
+      "appropriate receipt",
+      "settlement rule when applicable"
+    ],
+    "presentation_metadata_grants_authority":false,
+    "candidate_law":"Pose Is Not Permission."
+  },
+  "falsification_tests": [
+    {"id":"rigid-distance","pass":"all local pairwise distances remain invariant under translation/rotation and common presentation scale"},
+    {"id":"mirror-antipode","pass":"each of the four mirror pairs remains antipodal in the local frame"},
+    {"id":"tetra-membership","pass":"the four generative and four stewardship systems remain the same two tetrahedral sets under transport"},
+    {"id":"junction-midpoint","pass":"all six inner junctions remain derived midpoints of their registered paired edges"},
+    {"id":"identity-center","pass":"Identity remains the non-system center and acquires no application/module semantics"},
+    {"id":"tempus-rest","pass":"Tempus may move around the local fiber while Vitae base coordinate remains fixed"},
+    {"id":"vitae-discreteness","pass":"frame base moves along the Vitae helix only on explicit Vitae coordinate events"},
+    {"id":"orientation-substitution","pass":"world-locked and path-aligned orientation render the same system/relation semantics"},
+    {"id":"geometry-free-equivalence","pass":"the same state can be expressed as a list/card record without loss of authority meaning"}
+  ],
+  "audit_disposition":"PASS as a bounded rigid presentation model, subject to geometry-free equivalence and no use of frame pose as runtime input",
+  "candidate_laws": [
+    "Transport the Frame; Do Not Rewrite the Frame.",
+    "Distance Class May Encode Relationship Class; It Does Not Grant Relationship Authority.",
+    "Derived Junctions Transport as Compositions, Not Authorities.",
+    "Pose Is Not Permission.",
+    "Transport Orientation Is a Presentation Convention, Not a Semantic Coordinate.",
+    "Tempus May Move Around a Vitae State Without Moving the Vitae State.",
+    "A Rendered Trajectory Is History/Context, Not Human Worth."
+  ],
+  "not_encoded": [
+    "physical spacetime theory",
+    "astrological causation",
+    "cosmological proof",
+    "system activation by timing",
+    "capability unlock by Vitae coordinate",
+    "authority from geometric distance",
+    "recognition from motion or completion",
+    "MANA reward from synchronization",
+    "new sovereign inner junctions",
+    "runtime requirement to render geometry"
+  ]
+}
