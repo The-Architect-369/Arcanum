@@ -1,0 +1,118 @@
+{
+  "registry": "arcnet-vitae.nested-subframe-projection.v0.1",
+  "status": "design-candidate-projection",
+  "phase": "Pre-Genesis",
+  "authority": "presentation and falsification metadata only; nesting creates no identity, recognition, capability, system, governance, economic, or constitutional authority",
+  "purpose": "Test whether the ten-station Vitae Tree and its registered twenty-two-path comparison graph can be co-rendered with the transported ARCnet stellar frame without collapsing internal curriculum navigation into outer system topology or Human/Identity semantics.",
+  "sources": [
+    "docs/architecture/registries/vitae-tree-of-life-class-registry.v0.1.json",
+    "docs/architecture/registries/vitae-tree-of-life-path-registry.v0.1.json",
+    "docs/architecture/registries/arcnet-transported-frame-projection.v0.1.json",
+    "docs/architecture/creation-era-whole-system-falsification-audit.md"
+  ],
+  "scale_invariants": {
+    "human_identity_center_is_tree_station": false,
+    "human_identity_center_hosts_tree_by_default": false,
+    "tree_station_is_outer_arcnet_system": false,
+    "tree_path_is_arcnet_edge_contract": false,
+    "tree_activity_changes_outer_system_identity": false,
+    "tree_activity_changes_outer_authority": false,
+    "tree_activity_unlocks_arcnet_system": false,
+    "outer_frame_transport_may_transport_tree_subframe": true,
+    "geometry_required": false
+  },
+  "host_tests": [
+    {
+      "id": "arcanum-local-subframe",
+      "host": "arcanum",
+      "result": "BOUNDED_PASS",
+      "reason": "Vitae is an internal Arcanum curriculum/faculty coordinate. The Tree may therefore be rendered as a local Arcanum-owned navigation subframe while remaining a different node/edge registry."
+    },
+    {
+      "id": "identity-center-host",
+      "host": "human-identity-center",
+      "result": "FAIL_AS_DEFAULT",
+      "reason": "Centering the Tree on Human/Identity would visually imply that symbolic/curriculum stations describe or partition the person, conflicting with Identity as continuity rather than description."
+    },
+    {
+      "id": "outer-vertex-bijection",
+      "host": "arcnet-outer-vertices",
+      "result": "FAIL",
+      "reason": "Ten Tree stations and eight ARCnet systems have different roles, counts, authority classes, and registries; no node-to-node mapping is justified."
+    }
+  ],
+  "tree_local_frame": {
+    "host_vertex": "arcanum",
+    "station_count": 10,
+    "path_count": 22,
+    "preferred_historical_comparison_scheme": "lurianic_safed_style",
+    "scheme_posture": "historical comparison/design candidate only",
+    "presentation_coordinates": {
+      "malkuth": [0,-2.5,0],
+      "yesod": [0,-1.5,0],
+      "hod": [-1,-0.5,0],
+      "netzach": [1,-0.5,0],
+      "tiferet": [0,0.5,0],
+      "gevurah": [-1,1.5,0],
+      "chesed": [1,1.5,0],
+      "binah": [-1,2.5,0],
+      "chokhmah": [1,2.5,0],
+      "keter": [0,3.5,0]
+    },
+    "coordinate_authority": "none; conventional tri-linear presentation only",
+    "transport_formula": "X_tree_i = X_arcanum + s_tree * R_tree * q_tree_i",
+    "host_behavior": "The Arcanum outer vertex remains fixed in the local ARCnet frame. Tree station changes alter only active internal navigation state, not X_arcanum."
+  },
+  "edge_firewall": {
+    "tree_path_meaning": "internal historical/curriculum adjacency",
+    "arcnet_edge_meaning": "cross-system semantic relation and possible future capability-scoped invocation boundary",
+    "tree_path_can_authorize_arcnet_invocation": false,
+    "tree_path_can_imply_cross_system_data_access": false,
+    "candidate_law": "Internal Path Is Not Network Edge."
+  },
+  "active_station_projection": {
+    "source": "Vitae grade_section_index",
+    "class_width": 36,
+    "class_index": "floor((grade_section_index-1)/36)+1",
+    "allowed_effect": "highlight the corresponding Tree station in the local Vitae subframe",
+    "forbidden_effects": [
+      "move the Arcanum outer vertex",
+      "change ARCnet system permissions",
+      "alter mirror/kinship/operational relation classes",
+      "change Identity",
+      "grant recognition",
+      "change MANA/governance authority"
+    ]
+  },
+  "transport_behavior": {
+    "outer_transport": "The complete ARCnet local frame may translate/rotate along the Tempus x Vitae presentation field.",
+    "nested_transport": "The Arcanum-local Vitae Tree inherits the outer frame transport as a passenger subframe plus its own presentation-only local orientation.",
+    "relative_semantics": "No outer semantic relation is created by visual proximity between a Tree station and an ARCnet vertex during projection.",
+    "candidate_law": "Nested Motion Is Not Nested Authority."
+  },
+  "falsification_tests": [
+    {"id":"identity-separation","pass":"moving/highlighting Tree stations leaves Human/Identity center unchanged and non-descriptive"},
+    {"id":"host-separation","pass":"Arcanum remains one outer system while the Tree remains an internal local subframe"},
+    {"id":"edge-type-separation","pass":"22 Tree paths never become ARCnet Edge Contracts"},
+    {"id":"authority-separation","pass":"Tree state never changes capability or authority"},
+    {"id":"transport-separation","pass":"outer transport moves the local Tree frame rigidly without changing its registry"},
+    {"id":"geometry-free-equivalence","pass":"Tree state and ARCnet state remain expressible as separate cards/lists without geometry"}
+  ],
+  "audit_disposition": "BOUNDED_PASS only when hosted as an Arcanum-local Vitae subframe or detached inset; FAIL when centered on Identity or mapped onto outer ARCnet vertices.",
+  "candidate_laws": [
+    "Subframe Belongs to Faculty, Not Identity.",
+    "Internal Path Is Not Network Edge.",
+    "Internal Navigation Cannot Move Outer Authority.",
+    "Host Vertex Remains Host.",
+    "Nested Geometry Does Not Create Cross-Scale Correspondence.",
+    "Nested Motion Is Not Nested Authority."
+  ],
+  "not_encoded": [
+    "Tree station to ARCnet system correspondence",
+    "Tree path to Edge Contract correspondence",
+    "Identity typing from Tree location",
+    "recognition from geometry",
+    "authority from curriculum position",
+    "physical cosmology"
+  ]
+}
