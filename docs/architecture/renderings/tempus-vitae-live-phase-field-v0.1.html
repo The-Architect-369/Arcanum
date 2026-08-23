@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Tempus × Vitae Live Phase Field v0.1</title>
+<style>
+:root{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#171717;background:#f7f7f5}*{box-sizing:border-box}body{margin:0;padding:24px;max-width:1440px;margin-inline:auto}h1{margin:.1rem 0 .4rem}h2{margin-top:0}.muted{color:#667085}.small{font-size:.9rem}.card{background:#fff;border:1px solid #d7d9dd;border-radius:16px;padding:18px;margin:14px 0;box-shadow:0 1px 2px rgba(0,0,0,.03)}.warning{border-left:4px solid #b45309}.ok{border-left:4px solid #047857}.controls{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.controls label{display:flex;align-items:center;gap:7px}.controls input[type=range]{width:260px}button,select,input{font:inherit}button,select{padding:8px 11px;border:1px solid #98a2b3;border-radius:9px;background:#fff}button{cursor:pointer}button:hover{background:#f2f4f7}.grid{display:grid;grid-template-columns:1.15fr .85fr;gap:14px}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.metric{display:flex;justify-content:space-between;gap:16px;padding:8px 0;border-bottom:1px solid #eceef1}.metric:last-child{border-bottom:0}.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}.readout{background:#f8fafc;border:1px solid #e4e7ec;border-radius:10px;padding:12px;white-space:pre-wrap}.views{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}.view{display:none}.view.active{display:block}svg{width:100%;height:auto;display:block}.tag{display:inline-block;border:1px solid #d0d5dd;border-radius:999px;padding:3px 8px;margin:2px;font-size:.8rem}.samples{max-height:240px;overflow:auto}.sample{padding:8px 0;border-bottom:1px solid #eceef1}.station-track{display:grid;grid-template-columns:repeat(10,1fr);gap:4px}.station{padding:7px 3px;border:1px solid #d0d5dd;border-radius:8px;text-align:center;font-size:11px}.station.active{outline:3px solid #111827;background:#fef3c7}.phasebar{height:14px;border-radius:999px;background:linear-gradient(90deg,#eef2ff 0 10%,#f8fafc 10% 20%,#eef2ff 20% 30%,#f8fafc 30% 40%,#eef2ff 40% 50%,#f8fafc 50% 60%,#eef2ff 60% 70%,#f8fafc 70% 80%,#eef2ff 80% 90%,#f8fafc 90% 100%);position:relative;border:1px solid #d0d5dd}.phasebar i{position:absolute;top:-5px;width:3px;height:24px;background:#111827}.law{padding:9px 12px;border-radius:9px;background:#f8fafc;margin:7px 0}.hidden-a11y{position:absolute;left:-10000px;width:1px;height:1px;overflow:hidden}@media(max-width:980px){.grid,.grid3{grid-template-columns:1fr}.controls input[type=range]{width:180px}.station-track{grid-template-columns:repeat(5,1fr)}}@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+</style>
+</head>
+<body>
+<h1>Tempus × Vitae Live Phase Field v0.1</h1>
+<p class="muted">Design-candidate co-observation prototype. Tempus moves independently; Vitae moves only through explicit participant input.</p>
+
+<div class="card warning"><strong>Boundary:</strong> the default Tempus coordinate is local civil-day phase derived from the browser clock. It is <em>not</em> a full <code>TempusContext</code> and does not invent lunar, zodiacal, planetary, ritual, readiness, or advancement data. The torus is a visualization of two independent cycles, not physical spacetime.</div>
+
+<div class="card">
+  <div class="controls">
+    <button id="liveBtn">Live clock</button>
+    <button id="freezeBtn">Freeze Tempus</button>
+    <button id="simBtn">Accelerate ×720</button>
+    <button id="wrapBtn">Test Tempus wrap</button>
+    <label>Grade <select id="grade"></select></label>
+    <label>Vitae section <input id="vitae" type="range" min="1" max="360" value="1" /><span id="vitaeNum" class="mono">1</span></label>
+    <button id="plus1">Vitae +1</button>
+    <button id="plus36">Vitae +36</button>
+    <button id="capture">Capture pair</button>
+    <button id="clear">Clear trail</button>
+  </div>
+</div>
+
+<div class="grid">
+  <div class="card">
+    <div class="views">
+      <button data-view="torus">Torus</button>
+      <button data-view="square">Phase square</button>
+      <button data-view="rings">Dual rings</button>
+      <button data-view="plain">Plain text</button>
+    </div>
+
+    <div id="torus" class="view active">
+      <svg id="torusSvg" viewBox="0 0 760 610" role="img" aria-label="Projected torus showing independent Tempus and Vitae phase coordinates">
+        <rect width="760" height="610" fill="#fbfbfa" rx="14"/>
+        <text x="30" y="36" font-size="20" font-weight="700">S¹ × S¹ becoming-field projection</text>
+        <text x="30" y="60" font-size="13" fill="#667085">Tempus = major-cycle direction · Vitae = minor-cycle direction · neither controls the other</text>
+        <g id="torusGrid"></g>
+        <polyline id="trace" fill="none" stroke="#7c3aed" stroke-width="3" opacity=".65" points=""/>
+        <circle id="point" r="9" fill="#111827" stroke="#fff" stroke-width="3" cx="0" cy="0"/>
+        <text id="pointLabel" x="0" y="0" font-size="12" font-weight="700">current pair</text>
+        <g transform="translate(30 540)">
+          <circle cx="8" cy="8" r="6" fill="#111827"/><text x="22" y="13" font-size="12">current Tempus × Vitae coordinate</text>
+          <line x1="255" y1="8" x2="305" y2="8" stroke="#7c3aed" stroke-width="3"/><text x="315" y="13" font-size="12">captured/sample trail</text>
+        </g>
+      </svg>
+    </div>
+
+    <div id="square" class="view">
+      <svg id="squareSvg" viewBox="0 0 760 610" role="img" aria-label="Phase square with opposite edges identified, representing a torus topology">
+        <rect width="760" height="610" fill="#fbfbfa" rx="14"/>
+        <text x="30" y="36" font-size="20" font-weight="700">Phase square — geometry-light torus equivalent</text>
+        <text x="30" y="60" font-size="13" fill="#667085">Opposite edges are identified: left↔right is Tempus wrap, bottom↔top is Vitae cycle wrap.</text>
+        <rect x="120" y="100" width="500" height="400" fill="#fff" stroke="#667085" stroke-width="2"/>
+        <g id="squareGrid" stroke="#e4e7ec" stroke-width="1"></g>
+        <polyline id="squareTrace" fill="none" stroke="#7c3aed" stroke-width="3" opacity=".65" points=""/>
+        <circle id="squarePoint" r="8" fill="#111827" cx="120" cy="500"/>
+        <text x="360" y="550" text-anchor="middle" font-size="13">Tempus phase →</text>
+        <text x="55" y="300" text-anchor="middle" font-size="13" transform="rotate(-90 55 300)">Vitae grade phase →</text>
+      </svg>
+    </div>
+
+    <div id="rings" class="view">
+      <svg id="ringsSvg" viewBox="0 0 760 610" role="img" aria-label="Two independent phase rings for Tempus and Vitae">
+        <rect width="760" height="610" fill="#fbfbfa" rx="14"/>
+        <text x="30" y="36" font-size="20" font-weight="700">Independent cycles</text>
+        <text x="30" y="60" font-size="13" fill="#667085">Two clocks may be observed together without being phase-locked.</text>
+        <circle cx="235" cy="310" r="150" fill="none" stroke="#d0d5dd" stroke-width="14"/>
+        <circle cx="525" cy="310" r="150" fill="none" stroke="#d0d5dd" stroke-width="14"/>
+        <line id="tempusHand" x1="235" y1="310" x2="235" y2="170" stroke="#2563eb" stroke-width="7" stroke-linecap="round"/>
+        <line id="vitaeHand" x1="525" y1="310" x2="525" y2="170" stroke="#059669" stroke-width="7" stroke-linecap="round"/>
+        <circle cx="235" cy="310" r="8" fill="#111827"/><circle cx="525" cy="310" r="8" fill="#111827"/>
+        <text x="235" y="500" text-anchor="middle" font-size="18" font-weight="700">TEMPUS</text>
+        <text x="525" y="500" text-anchor="middle" font-size="18" font-weight="700">VITAE</text>
+      </svg>
+    </div>
+
+    <div id="plain" class="view">
+      <div id="plainText" class="readout mono"></div>
+    </div>
+  </div>
+
+  <div>
+    <div class="card ok">
+      <h2>Invariant under test</h2>
+      <p><strong>Context Moves; Becoming Need Not.</strong></p>
+      <p class="small muted">Leave the Vitae slider untouched and let Tempus run. The Tempus coordinate must move, including through wrap, while the Vitae coordinate remains identical.</p>
+    </div>
+
+    <div class="card">
+      <h2>Current pair</h2>
+      <div class="metric"><span>Tempus cycle</span><strong>civil day</strong></div>
+      <div class="metric"><span>Tempus phase</span><strong id="tp">0.000000</strong></div>
+      <div class="metric"><span>Vitae grade</span><strong id="vg">I</strong></div>
+      <div class="metric"><span>Vitae section</span><strong id="vs">1 / 360</strong></div>
+      <div class="metric"><span>Vitae phase</span><strong id="vp">0.000000</strong></div>
+      <div class="metric"><span>Tree class station</span><strong id="stationName">Malkuth</strong></div>
+      <div class="metric"><span>Relative phase Δ</span><strong id="delta">0.000000</strong></div>
+      <div class="metric"><span>Judgment</span><strong>none</strong></div>
+      <div class="metric"><span>Recognition effect</span><strong>none</strong></div>
+    </div>
+
+    <div class="card">
+      <h2>Ten class stations</h2>
+      <div id="stations" class="station-track"></div>
+      <div class="phasebar" style="margin-top:13px"><i id="vitaeMarker" style="left:0%"></i></div>
+      <p class="small muted">The 360° bar is a Vitae navigation index. It is not a zodiac degree scale.</p>
+    </div>
+
+    <div class="card">
+      <h2>Captured samples</h2>
+      <div id="samples" class="samples small"><span class="muted">No samples captured.</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="grid3">
+  <div class="card"><h2>Allowed</h2><div class="law">Observe two independent phases.</div><div class="law">Capture the pair at a practice moment.</div><div class="law">Let Tempus move while Vitae rests.</div></div>
+  <div class="card"><h2>Rejected</h2><div class="law">Tempus phase → automatic Vitae section.</div><div class="law">Relative phase → readiness score.</div><div class="law">Cycle wrap → completion or reset of the person.</div></div>
+  <div class="card"><h2>Operator firewall</h2><div class="law">Tempus may timestamp a Tree event.</div><div class="law">Tempus may not change its V/H/D identity.</div><div class="law">Tempus may not alter articulation, carrier, recognition, or authority.</div></div>
+</div>
+
+<div id="a11y" class="hidden-a11y" aria-live="polite"></div>
+
+<script>
+const TAU=Math.PI*2;
+const stations=['Malkuth','Yesod','Hod','Netzach','Tiferet','Gevurah','Chesed','Binah','Chokhmah','Keter'];
+const romans=['I','II','III','IV','V','VI','VII','VIII','IX','X'];
+let mode='live', frozenPhase=0, simStartPerf=0, simStartPhase=0, wrapStart=0;
+let samples=[], tracePoints=[];
+const $=id=>document.getElementById(id);
+for(let i=1;i<=10;i++){const o=document.createElement('option');o.value=i;o.textContent=`${romans[i-1]} — Grade ${i}`;$('grade').appendChild(o)}
+stations.forEach((s,i)=>{const d=document.createElement('div');d.className='station';d.dataset.station=i;d.innerHTML=`<strong>${i+1}</strong><br>${s}`;$('stations').appendChild(d)});
+
+document.querySelectorAll('[data-view]').forEach(b=>b.onclick=()=>{document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));$(b.dataset.view).classList.add('active')});
+
+function civilDayPhase(date=new Date()){
+  const sec=date.getHours()*3600+date.getMinutes()*60+date.getSeconds()+date.getMilliseconds()/1000;
+  return sec/86400;
+}
+function wrap01(x){return ((x%1)+1)%1}
+function relativePhase(t,v){return wrap01(t-v+.5)-.5}
+function currentTempusPhase(){
+  if(mode==='live') return civilDayPhase();
+  if(mode==='frozen') return frozenPhase;
+  if(mode==='sim') return wrap01(simStartPhase+((performance.now()-simStartPerf)/1000)*(720/86400));
+  if(mode==='wrap') return wrap01(.985+((performance.now()-wrapStart)/1000)*.006);
+  return civilDayPhase();
+}
+function vitaeState(){const section=+$('vitae').value;const grade=+$('grade').value;const phase=(section-1)/360;const classIndex=Math.floor((section-1)/36);return{section,grade,phase,classIndex}}
+function torus3(t,v){const R=2.2,r=.8,u=TAU*t,w=TAU*v;return{x:(R+r*Math.cos(w))*Math.cos(u),y:(R+r*Math.cos(w))*Math.sin(u),z:r*Math.sin(w)}}
+function project(p){return{x:380+p.x*92,y:300+p.y*42-p.z*112}}
+function torusPoint(t,v){return project(torus3(t,v))}
+function buildTorus(){
+  const g=$('torusGrid');let html='';
+  for(let j=0;j<12;j++){let pts=[];const t=j/12;for(let k=0;k<=90;k++)pts.push(torusPoint(t,k/90));html+=`<polyline points="${pts.map(p=>`${p.x.toFixed(1)},${p.y.toFixed(1)}`).join(' ')}" fill="none" stroke="#d0d5dd" stroke-width="1"/>`}
+  for(let j=0;j<10;j++){let pts=[];const v=j/10;for(let k=0;k<=120;k++)pts.push(torusPoint(k/120,v));html+=`<polyline points="${pts.map(p=>`${p.x.toFixed(1)},${p.y.toFixed(1)}`).join(' ')}" fill="none" stroke="#e4e7ec" stroke-width="1"/>`}
+  g.innerHTML=html;
+  const sg=$('squareGrid');let sh='';for(let i=1;i<10;i++){const x=120+i*50;sh+=`<line x1="${x}" y1="100" x2="${x}" y2="500"/>`}for(let i=1;i<8;i++){const y=100+i*50;sh+=`<line x1="120" y1="${y}" x2="620" y2="${y}"/>`}sg.innerHTML=sh;
+}
+buildTorus();
+
+function update(){
+  const t=currentTempusPhase(),v=vitaeState(),d=relativePhase(t,v.phase),p=torusPoint(t,v.phase);
+  $('point').setAttribute('cx',p.x);$('point').setAttribute('cy',p.y);$('pointLabel').setAttribute('x',p.x+13);$('pointLabel').setAttribute('y',p.y-12);
+  const sx=120+t*500,sy=500-v.phase*400;$('squarePoint').setAttribute('cx',sx);$('squarePoint').setAttribute('cy',sy);
+  $('tempusHand').setAttribute('transform',`rotate(${t*360} 235 310)`);$('vitaeHand').setAttribute('transform',`rotate(${v.phase*360} 525 310)`);
+  $('tp').textContent=t.toFixed(6);$('vg').textContent=romans[v.grade-1];$('vs').textContent=`${v.section} / 360`;$('vp').textContent=v.phase.toFixed(6);$('stationName').textContent=stations[v.classIndex];$('delta').textContent=(d>=0?'+':'')+d.toFixed(6);$('vitaeNum').textContent=v.section;$('vitaeMarker').style.left=`${v.phase*100}%`;
+  document.querySelectorAll('.station').forEach((el,i)=>el.classList.toggle('active',i===v.classIndex));
+  $('plainText').textContent=`TEMPUS\ncycle: civil_day\nphase: ${t.toFixed(6)}\nsource: ${mode==='live'?'local-device':'simulation'}\n\nVITAE\ngrade: ${romans[v.grade-1]}\nsection: ${v.section}/360\nphase: ${v.phase.toFixed(6)}\nclass station: ${stations[v.classIndex]}\n\nRELATIVE PHASE\ndelta: ${(d>=0?'+':'')+d.toFixed(6)}\nscore: none\nreadiness: none\nrecognition effect: none\n\nTempus movement does not modify Vitae.`;
+  if(tracePoints.length){$('trace').setAttribute('points',tracePoints.map(q=>`${q.torus.x.toFixed(1)},${q.torus.y.toFixed(1)}`).join(' '));$('squareTrace').setAttribute('points',tracePoints.map(q=>`${(120+q.t*500).toFixed(1)},${(500-q.v*400).toFixed(1)}`).join(' '))}
+  requestAnimationFrame(update);
+}
+requestAnimationFrame(update);
+
+$('liveBtn').onclick=()=>{mode='live';$('a11y').textContent='Tempus returned to live local civil-day phase.'};
+$('freezeBtn').onclick=()=>{frozenPhase=currentTempusPhase();mode='frozen';$('a11y').textContent='Tempus phase frozen for display. Vitae unchanged.'};
+$('simBtn').onclick=()=>{simStartPhase=currentTempusPhase();simStartPerf=performance.now();mode='sim';$('a11y').textContent='Accelerated Tempus simulation started. Vitae remains manual.'};
+$('wrapBtn').onclick=()=>{wrapStart=performance.now();mode='wrap';$('a11y').textContent='Tempus wrap test started near the end of the selected cycle. Vitae remains unchanged.'};
+$('plus1').onclick=()=>{$('vitae').value=Math.min(360,+$('vitae').value+1);$('a11y').textContent='Vitae moved one section by explicit control.'};
+$('plus36').onclick=()=>{$('vitae').value=Math.min(360,+$('vitae').value+36);$('a11y').textContent='Vitae moved thirty-six sections by explicit control.'};
+$('capture').onclick=()=>{const t=currentTempusPhase(),v=vitaeState(),now=new Date();const sample={t,v:v.phase,grade:v.grade,section:v.section,station:stations[v.classIndex],at:now.toISOString(),torus:torusPoint(t,v.phase)};samples.push(sample);tracePoints.push(sample);renderSamples();$('a11y').textContent='Current Tempus and Vitae coordinate pair captured locally in the page session.'};
+$('clear').onclick=()=>{samples=[];tracePoints=[];$('trace').setAttribute('points','');$('squareTrace').setAttribute('points','');renderSamples();$('a11y').textContent='Local sample trail cleared.'};
+function renderSamples(){if(!samples.length){$('samples').innerHTML='<span class="muted">No samples captured.</span>';return}$('samples').innerHTML=[...samples].reverse().map((s,i)=>`<div class="sample mono">${samples.length-i}. ${s.at}<br>Tempus ${s.t.toFixed(5)} × Vitae G${s.grade}:${s.section} (${s.station})<br><span class="muted">interpretation none · recognition none</span></div>`).join('')}
+</script>
+</body>
+</html>
