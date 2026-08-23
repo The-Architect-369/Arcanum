@@ -1,0 +1,207 @@
+{
+  "registry": "tempus-vitae.live-phase-projection.v0.1",
+  "status": "design-candidate-projection",
+  "phase": "Pre-Genesis",
+  "authority": "visual and interaction projection only; not a schedule, recognition mechanism, readiness model, authority source, causal cosmology, or replacement for TempusContext",
+  "purpose": "Define a bounded live rendering in which a selected Tempus phase may move independently of a voluntary Vitae grade-cycle coordinate, making pause, rest, phase wrap, and relative motion perceptible without creating timing obligations or advancement effects.",
+  "sources": [
+    "docs/specs/modules/tempus-context-schema.md",
+    "docs/architecture/registries/tempus-vitae-becoming-field-registry.v0.1.json",
+    "docs/architecture/registries/vitae-grade-cycle-registry.v0.1.json",
+    "docs/architecture/registries/vitae-tree-transformation-operator-registry.v0.1.json",
+    "docs/architecture/registries/sefer-yetzirah-articulation-sonification-registry.v0.1.json"
+  ],
+  "invariants": {
+    "tempus_phase_and_vitae_phase_are_independent": true,
+    "tempus_tick_changes_vitae_coordinate": false,
+    "vitae_coordinate_changes_only_by_explicit_participant_or_recorded_practice_input": true,
+    "tempus_cycle_wrap_changes_vitae_coordinate": false,
+    "relative_phase_creates_score": false,
+    "relative_phase_creates_readiness": false,
+    "relative_phase_creates_deadline": false,
+    "missed_window_state_exists": false,
+    "streak_pressure_exists": false,
+    "automatic_recognition": false,
+    "tempus_modulates_tree_operator_identity": false,
+    "tempus_modulates_articulation_identity": false,
+    "tempus_modulates_musical_carrier": false,
+    "pause_is_valid_trajectory": true,
+    "audio_required": false,
+    "plain_text_equivalent_required": true,
+    "geometry_required": false,
+    "interpretation": null,
+    "recognition_effect": "none",
+    "authority_effect": "none",
+    "mana_effect": "none"
+  },
+  "projection_coordinate_types": {
+    "TempusPhaseCoordinate": {
+      "cycle_id": "civil_day|selected_tempus_cycle",
+      "normalized_phase": "number in [0,1)",
+      "captured_at": "ISO-8601",
+      "timezone_offset_minutes": "number|null",
+      "source": "local-device|simulation",
+      "is_full_tempus_context": false,
+      "interpretation": null
+    },
+    "VitaePhaseCoordinate": {
+      "grade_index": "1..10",
+      "grade_section_index": "1..360",
+      "normalized_grade_phase": "(grade_section_index - 1) / 360",
+      "class_index": "ceil(grade_section_index / 36)",
+      "source": "participant-selected|practice-record",
+      "interpretation": null
+    },
+    "LiveBecomingPhaseSample": {
+      "tempus": "TempusPhaseCoordinate",
+      "vitae": "VitaePhaseCoordinate",
+      "relative_phase": "wrapped descriptive difference only",
+      "projection_mode": "phase_square|torus|dual_ring|plain",
+      "interpretation": null,
+      "recognition_effect": "none",
+      "authority_effect": "none"
+    }
+  },
+  "default_tempus_cycle": {
+    "id": "civil_day",
+    "status": "presentation-safe factual cycle derived from device-local clock",
+    "formula": "seconds_since_local_midnight / 86400",
+    "meaning": "where the local civil day currently is",
+    "not_claimed": [
+      "solar longitude",
+      "lunar phase",
+      "zodiac position",
+      "planetary hour",
+      "ritual window",
+      "readiness"
+    ],
+    "reason_for_default": "It can be derived from capturedAt and local timezone without inventing astronomical or symbolic data that the prototype does not actually compute."
+  },
+  "vitae_cycle": {
+    "sections_per_grade": 360,
+    "classes_per_grade": 10,
+    "sections_per_class": 36,
+    "normalized_phase": "(grade_section_index - 1) / 360",
+    "class_index": "floor((grade_section_index - 1) / 36) + 1",
+    "tree_station_order": [
+      "malkuth",
+      "yesod",
+      "hod",
+      "netzach",
+      "tiferet",
+      "gevurah",
+      "chesed",
+      "binah",
+      "chokhmah",
+      "keter"
+    ],
+    "posture": "navigation coordinate only; phase does not imply readiness or completion"
+  },
+  "product_phase_space": {
+    "mathematical_model": "S1 x S1",
+    "common_visualization": "torus",
+    "u": "2*pi*tempus.normalized_phase",
+    "v": "2*pi*vitae.normalized_grade_phase",
+    "torus_embedding_for_renderer": {
+      "major_radius": 2.2,
+      "minor_radius": 0.8,
+      "x": "(R + r*cos(v))*cos(u)",
+      "y": "(R + r*cos(v))*sin(u)",
+      "z": "r*sin(v)"
+    },
+    "display_projection": "isometric-like 2D projection of the 3D embedding",
+    "topological_note": "The phase square with opposite edges identified is the same product topology and must remain available as a geometry-light equivalent."
+  },
+  "relative_phase": {
+    "formula": "delta = ((tempus_phase - vitae_phase + 0.5) mod 1) - 0.5",
+    "range": "[-0.5,0.5)",
+    "allowed_language": [
+      "relative phase",
+      "phase difference",
+      "current pair of coordinates"
+    ],
+    "forbidden_language": [
+      "aligned",
+      "misaligned",
+      "ahead",
+      "behind",
+      "late",
+      "early",
+      "good timing",
+      "bad timing",
+      "optimal window"
+    ],
+    "score": null
+  },
+  "event_semantics": {
+    "TempusTick": {
+      "changes": ["tempus.normalized_phase", "captured_at"],
+      "must_not_change": ["vitae.grade_index", "vitae.grade_section_index", "recognition", "authority"]
+    },
+    "TempusWrap": {
+      "condition": "tempus phase crosses 1 -> 0",
+      "meaning": "cycle recurrence in the selected Tempus projection",
+      "must_not_change": ["vitae coordinate", "recognition", "authority"],
+      "completion_claim": false
+    },
+    "VitaeMove": {
+      "trigger": "explicit participant control or recorded practice/navigation event only",
+      "changes": ["vitae.grade_section_index"],
+      "must_not_change": ["historical Tempus samples"],
+      "automatic": false
+    },
+    "CaptureSample": {
+      "stores": ["tempus coordinate", "vitae coordinate", "capture time"],
+      "interpretation": null,
+      "recognition_effect": "none"
+    }
+  },
+  "pause_and_rest_test": {
+    "initial": "fix Vitae at any grade_section_index",
+    "operation": "allow Tempus phase to advance for one or more complete selected cycles",
+    "required_result": "Vitae remains at the same coordinate while the product-space point traces a closed Tempus-direction loop",
+    "forbidden_result": "debt, lateness, missed lesson, automatic catch-up, loss of standing, recognition change",
+    "status": "required renderer invariant"
+  },
+  "operator_separation": {
+    "tree_operator_source": "vitae.tree-transformation-operators.v0.1",
+    "articulation_source": "sefer-yetzirah articulation projection",
+    "rule": "Tempus is displayed beside or around the current operator event. It may timestamp the event but does not change the operator's pitch trajectory, pan trajectory, timbre family, or semantic identity.",
+    "candidate_law": "Context May Move Around the Operator; It May Not Rewrite the Operator."
+  },
+  "prototype_controls": [
+    "live device-clock Tempus phase",
+    "accelerated Tempus simulation",
+    "freeze/unfreeze Tempus display",
+    "manual Vitae section slider",
+    "manual Vitae +1 section",
+    "manual Vitae +36 section/class",
+    "capture phase-pair sample",
+    "clear local sample trail",
+    "torus / phase-square / plain-text views"
+  ],
+  "candidate_laws": [
+    "Context Moves; Becoming Need Not.",
+    "Co-Observation Is Not Phase Lock.",
+    "Relative Phase Is Descriptive, Not Evaluative.",
+    "Temporal Wrap Is Not Curriculum Return.",
+    "Pause Is a Valid Trajectory.",
+    "Tempus Does Not Modulate the Operator.",
+    "Context May Move Around the Operator; It May Not Rewrite the Operator."
+  ],
+  "not_encoded": [
+    "full astronomical TempusContext computation",
+    "astrological causation",
+    "planetary-day permission",
+    "one section per day",
+    "one section per degree",
+    "phase-lock advancement",
+    "missed timing penalties",
+    "recognition from timing",
+    "authority from timing",
+    "MANA from speed or synchronization",
+    "literal physical spacetime claims",
+    "ARCnet stellar-frame transport"
+  ],
+  "next_gate_if_passed": "Add the stable ARCnet stellar frame as a transported visual frame around captured Tempus-Vitae samples while proving that system identities, authority boundaries, and Edge Contract requirements remain unchanged."
+}
