@@ -3,7 +3,7 @@
   "status": "design-candidate",
   "phase": "Pre-Genesis",
   "authority": "derived cross-faculty projection registry only; not a new module, authority source, recognition mechanism, schedule, or causal cosmology",
-  "purpose": "Define a safe information model for co-projecting voluntary Vitae curriculum position with factual/optional Tempus context, including a ten-turn becoming spiral and an optional transported ARCnet stellar-cube frame.",
+  "purpose": "Define a safe information model for co-projecting voluntary Vitae curriculum position with factual/optional Tempus context, including a ten-turn becoming spiral, an independent two-cycle phase space, and an optional transported ARCnet stellar-cube frame.",
   "sources": [
     "docs/specs/modules/tempus-context-schema.md",
     "docs/specs/modules/vitae-context-schema.md",
@@ -73,7 +73,7 @@
       "vitae_coordinate": "VitaeGradeCycleCoordinate|null",
       "tempus_context_id": "string|null",
       "tempus_context": "TempusContext|null",
-      "projection_mode": "plain|cycle_overlay|spiral|spiral_with_stellar_frame",
+      "projection_mode": "plain|cycle_overlay|torus_phase_space|spiral|spiral_with_stellar_frame",
       "interpretation": "null",
       "recognition_effect": "none",
       "authority_effect": "none"
@@ -91,6 +91,13 @@
       "id": "cycle_overlay",
       "status": "design-candidate",
       "description": "Render Vitae's normalized 360-section grade phase beside selected Tempus cycles without forcing either cycle to define the other.",
+      "causal_claim": false,
+      "advancement_effect": "none"
+    },
+    {
+      "id": "torus_phase_space",
+      "status": "design-candidate",
+      "description": "Treat one selected Tempus cycle and the Vitae grade cycle as independent circles whose product is a two-cycle phase space. Tempus may continue moving while Vitae remains paused.",
       "causal_claim": false,
       "advancement_effect": "none"
     },
@@ -127,6 +134,41 @@
       "Equal total cycle size may support comparison or overlay but does not establish semantic identity."
     ]
   },
+  "phase_space_model": {
+    "status": "design-candidate mathematical projection",
+    "selected_tempus_phase": "S1",
+    "vitae_grade_phase": "S1",
+    "product_space": "S1 x S1",
+    "common_visualization": "torus",
+    "trajectory": "participant history traces a path through the product space as Tempus changes continuously and Vitae changes only through voluntary practice/navigation events",
+    "rest_behavior": "During pause, rest, or silence, the Tempus coordinate may continue to change while the Vitae coordinate remains fixed. No deficit or lateness is created.",
+    "locked_diagonal_rejected": "A forced one-to-one phase lock would convert synchronization into scheduling and is not part of this registry.",
+    "grade_extension": "The discrete/spiral grade coordinate can be added as a separate dimension or rendered as ten successive toroidal/spiral bands without changing authority."
+  },
+  "planetary_chapter_context_comparison": {
+    "status": "design-candidate optional metadata comparison",
+    "vitae_source": "seven planetary chapter labels in the grade-cycle registry",
+    "tempus_source": [
+      "TempusContext.planetary.day",
+      "TempusContext.planetary.hour"
+    ],
+    "allowed_outputs": [
+      "chapter planet label",
+      "captured planetary day label",
+      "captured planetary hour label when available",
+      "same_or_different metadata",
+      "optional participant-requested reflection question"
+    ],
+    "forbidden_outputs": [
+      "recommended advancement",
+      "readiness judgment",
+      "good or bad timing score",
+      "behavior prediction",
+      "required waiting period",
+      "personality typing"
+    ],
+    "candidate_law": "Planetary coincidence may be observed; it may not become permission or destiny."
+  },
   "cycle_interference_hypothesis": {
     "status": "design-candidate research question",
     "vitae_class_partition": "10 x 36 degrees",
@@ -147,7 +189,7 @@
       "Identity sovereignty"
     ],
     "dynamic_properties": [
-      "visual position along the spiral",
+      "visual position along the spiral or phase-space trajectory",
       "current selected faculty",
       "current Tempus context",
       "current Vitae navigation coordinate",
