@@ -1,0 +1,185 @@
+{
+  "registry": "tempus.zodiac.v0.1",
+  "status": "design-candidate",
+  "phase": "Pre-Genesis",
+  "authority": "geometry-independent optional Tempus zodiac navigation data; no causal, identity, readiness, governance, or Vitae authority",
+  "sources": [
+    "docs/doctrine/temporal-model.md",
+    "docs/modules/tempus/tempus.md",
+    "docs/modules/tempus/tempus-structure.md",
+    "docs/specs/modules/tempus-layer-model.md",
+    "docs/specs/modules/tempus-context-schema.md",
+    "docs/specs/modules/tempus-content-foundation.md",
+    "docs/architecture/tempus-dodecahedron-geometry-audit.md"
+  ],
+  "invariants": {
+    "optional_symbolic_layer": true,
+    "describes_time_not_person": true,
+    "astrological_causation": false,
+    "determines_behavior": false,
+    "grants_readiness_or_authority": false,
+    "geometry_required": false
+  },
+  "regions": [
+    {
+      "id": "aries",
+      "label": "Aries",
+      "sequence_index": 1,
+      "previous": "pisces",
+      "next": "taurus",
+      "opposite": "libra",
+      "source_field": "TempusContext.zodiac.sign",
+      "semantic_posture": "optional temporal/cultural-symbolic region"
+    },
+    {
+      "id": "taurus",
+      "label": "Taurus",
+      "sequence_index": 2,
+      "previous": "aries",
+      "next": "gemini",
+      "opposite": "scorpio",
+      "source_field": "TempusContext.zodiac.sign",
+      "semantic_posture": "optional temporal/cultural-symbolic region"
+    },
+    {
+      "id": "gemini",
+      "label": "Gemini",
+      "sequence_index": 3,
+      "previous": "taurus",
+      "next": "cancer",
+      "opposite": "sagittarius",
+      "source_field": "TempusContext.zodiac.sign",
+      "semantic_posture": "optional temporal/cultural-symbolic region"
+    },
+    {
+      "id": "cancer",
+      "label": "Cancer",
+      "sequence_index": 4,
+      "previous": "gemini",
+      "next": "leo",
+      "opposite": "capricorn",
+      "source_field": "TempusContext.zodiac.sign",
+      "semantic_posture": "optional temporal/cultural-symbolic region"
+    },
+    {
+      "id": "leo",
+      "label": "Leo",
+      "sequence_index": 5,
+      "previous": "cancer",
+      "next": "virgo",
+      "opposite": "aquarius",
+      "source_field": "TempusContext.zodiac.sign",
+      "semantic_posture": "optional temporal/cultural-symbolic region"
+    },
+    {
+      "id": "virgo",
+      "label": "Virgo",
+      "sequence_index": 6,
+      "previous": "leo",
+      "next": "libra",
+      "opposite": "pisces",
+      "source_field": "TempusContext.zodiac.sign",
+      "semantic_posture": "optional temporal/cultural-symbolic region"
+    },
+    {
+      "id": "libra",
+      "label": "Libra",
+      "sequence_index": 7,
+      "previous": "virgo",
+      "next": "scorpio",
+      "opposite": "aries",
+      "source_field": "TempusContext.zodiac.sign",
+      "semantic_posture": "optional temporal/cultural-symbolic region"
+    },
+    {
+      "id": "scorpio",
+      "label": "Scorpio",
+      "sequence_index": 8,
+      "previous": "libra",
+      "next": "sagittarius",
+      "opposite": "taurus",
+      "source_field": "TempusContext.zodiac.sign",
+      "semantic_posture": "optional temporal/cultural-symbolic region"
+    },
+    {
+      "id": "sagittarius",
+      "label": "Sagittarius",
+      "sequence_index": 9,
+      "previous": "scorpio",
+      "next": "capricorn",
+      "opposite": "gemini",
+      "source_field": "TempusContext.zodiac.sign",
+      "semantic_posture": "optional temporal/cultural-symbolic region"
+    },
+    {
+      "id": "capricorn",
+      "label": "Capricorn",
+      "sequence_index": 10,
+      "previous": "sagittarius",
+      "next": "aquarius",
+      "opposite": "cancer",
+      "source_field": "TempusContext.zodiac.sign",
+      "semantic_posture": "optional temporal/cultural-symbolic region"
+    },
+    {
+      "id": "aquarius",
+      "label": "Aquarius",
+      "sequence_index": 11,
+      "previous": "capricorn",
+      "next": "pisces",
+      "opposite": "leo",
+      "source_field": "TempusContext.zodiac.sign",
+      "semantic_posture": "optional temporal/cultural-symbolic region"
+    },
+    {
+      "id": "pisces",
+      "label": "Pisces",
+      "sequence_index": 12,
+      "previous": "aquarius",
+      "next": "aries",
+      "opposite": "virgo",
+      "source_field": "TempusContext.zodiac.sign",
+      "semantic_posture": "optional temporal/cultural-symbolic region"
+    }
+  ],
+  "relationships": {
+    "chronology": [
+      ["aries", "taurus"],
+      ["taurus", "gemini"],
+      ["gemini", "cancer"],
+      ["cancer", "leo"],
+      ["leo", "virgo"],
+      ["virgo", "libra"],
+      ["libra", "scorpio"],
+      ["scorpio", "sagittarius"],
+      ["sagittarius", "capricorn"],
+      ["capricorn", "aquarius"],
+      ["aquarius", "pisces"],
+      ["pisces", "aries"]
+    ],
+    "opposition": [
+      ["aries", "libra"],
+      ["taurus", "scorpio"],
+      ["gemini", "sagittarius"],
+      ["cancer", "capricorn"],
+      ["leo", "aquarius"],
+      ["virgo", "pisces"]
+    ]
+  },
+  "not_encoded": [
+    "dodecahedron face coordinates",
+    "secondary dodecahedral face adjacency",
+    "complete zodiac aspect graph",
+    "decan positions",
+    "participant traits or natal personality",
+    "behavioral predictions",
+    "Vitae readiness or advancement",
+    "MANA reward effects"
+  ],
+  "projection_contract": {
+    "registry_must_render_without_geometry": true,
+    "geometry_may_reference_region_ids": true,
+    "geometry_may_not_create_missing_relationships": true,
+    "dodecahedron_projection": "separate versioned metadata if adopted"
+  }
+}
