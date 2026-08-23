@@ -1,0 +1,183 @@
+{
+  "registry": "tempus-vitae.becoming-field.v0.1",
+  "status": "design-candidate",
+  "phase": "Pre-Genesis",
+  "authority": "derived cross-faculty projection registry only; not a new module, authority source, recognition mechanism, schedule, or causal cosmology",
+  "purpose": "Define a safe information model for co-projecting voluntary Vitae curriculum position with factual/optional Tempus context, including a ten-turn becoming spiral and an optional transported ARCnet stellar-cube frame.",
+  "sources": [
+    "docs/specs/modules/tempus-context-schema.md",
+    "docs/specs/modules/vitae-context-schema.md",
+    "docs/architecture/registries/tempus-zodiac-registry.v0.1.json",
+    "docs/architecture/registries/vitae-grade-cycle-registry.v0.1.json",
+    "docs/architecture/registries/vitae-tree-of-life-class-registry.v0.1.json",
+    "docs/architecture/tempus-vitae-duality-audit.md",
+    "docs/architecture/nested-geometry-research-map.md"
+  ],
+  "human_architect_input": "2026-08-23: participation was always intended to synchronize with Tempus; candidate intuition is that Tempus and Vitae form a unified field of becoming through which the ARCnet stellar cube may be visualized as moving.",
+  "invariants": {
+    "tempus_context_may_attach_to_vitae_practice": true,
+    "tempus_context_causes_vitae_advancement": false,
+    "celestial_context_determines_readiness": false,
+    "one_section_per_day": false,
+    "one_section_per_zodiac_degree": false,
+    "missed_window_penalty": false,
+    "streak_pressure": false,
+    "automatic_recognition": false,
+    "geometry_grants_authority": false,
+    "arcnet_system_identity_changes_with_vitae_position": false,
+    "field_is_new_sovereign_module": false,
+    "participant_may_pause_or_remain_silent": true
+  },
+  "coordinate_spaces": {
+    "vitae": {
+      "registry": "vitae.grade-cycle.v0.1",
+      "dimensions": [
+        "grade_index",
+        "class_index",
+        "chapter_index_or_overview",
+        "section_index_or_overview",
+        "grade_section_index",
+        "global_section_index",
+        "normalized_grade_phase",
+        "spiral_theta",
+        "spiral_z"
+      ],
+      "meaning": "participant-selected/recorded curriculum navigation and practice context"
+    },
+    "tempus": {
+      "schema": "tempus.context.v0.1",
+      "dimensions": [
+        "capturedAt",
+        "phase",
+        "solar.season",
+        "lunar.phase",
+        "lunar.moonZodiac",
+        "zodiac.sign",
+        "zodiac.dayOfSign",
+        "planetary.day",
+        "planetary.hour",
+        "layers.active",
+        "layers.depth",
+        "precision",
+        "source"
+      ],
+      "meaning": "factual temporal context plus explicitly selected symbolic depth; interpretation remains null at capture"
+    }
+  },
+  "sample_type": {
+    "name": "BecomingFieldSample",
+    "fields": {
+      "id": "string",
+      "captured_at": "ISO-8601",
+      "vitae_practice_session_id": "string|null",
+      "vitae_coordinate": "VitaeGradeCycleCoordinate|null",
+      "tempus_context_id": "string|null",
+      "tempus_context": "TempusContext|null",
+      "projection_mode": "plain|cycle_overlay|spiral|spiral_with_stellar_frame",
+      "interpretation": "null",
+      "recognition_effect": "none",
+      "authority_effect": "none"
+    }
+  },
+  "synchronization_modes": [
+    {
+      "id": "context_attachment",
+      "status": "schema-grounded",
+      "description": "A VitaePracticeSession may reference TempusContext captured at the moment of practice.",
+      "causal_claim": false,
+      "advancement_effect": "none"
+    },
+    {
+      "id": "cycle_overlay",
+      "status": "design-candidate",
+      "description": "Render Vitae's normalized 360-section grade phase beside selected Tempus cycles without forcing either cycle to define the other.",
+      "causal_claim": false,
+      "advancement_effect": "none"
+    },
+    {
+      "id": "participant_anchor",
+      "status": "future-hypothesis",
+      "description": "A participant may voluntarily choose an anchor between a curriculum cycle and a Tempus cycle for reflection or navigation. The anchor is reversible and does not create deadlines, missed windows, or readiness claims.",
+      "causal_claim": false,
+      "advancement_effect": "none"
+    }
+  ],
+  "vitae_spiral": {
+    "turn_count": 10,
+    "sections_per_turn": 360,
+    "total_indexed_sections": 3600,
+    "theta_degrees": "grade_section_index - 1",
+    "z": "(grade_index - 1) + ((grade_section_index - 1) / 360)",
+    "class_arc_degrees": 36,
+    "chapter_arc_degrees": 5,
+    "class_overview_arc_degrees": 1,
+    "posture": "navigation and history visualization only"
+  },
+  "tempus_overlay": {
+    "zodiac_regions": 12,
+    "zodiac_degrees_conventional": 360,
+    "solar_cycle": "independent",
+    "lunar_cycle": "independent",
+    "planetary_context": "independent",
+    "decanic_regions": 36,
+    "important_non_equivalence": [
+      "36 sections in one Vitae class do not equal the 36 Tempus decans.",
+      "A one-degree Vitae navigation cell is not automatically one zodiac degree.",
+      "Ten 36-degree Vitae class sectors do not equal twelve 30-degree zodiac signs.",
+      "Equal total cycle size may support comparison or overlay but does not establish semantic identity."
+    ]
+  },
+  "cycle_interference_hypothesis": {
+    "status": "design-candidate research question",
+    "vitae_class_partition": "10 x 36 degrees",
+    "tempus_zodiac_partition": "12 x 30 degrees",
+    "shared_boundary_period_degrees": 180,
+    "observation": "With the same zero anchor, class and zodiac-sign boundaries coincide at 0, 180, and 360 degrees. Their differing partitions therefore create a repeating relative-phase pattern rather than a one-to-one correspondence.",
+    "meaning": "This may be useful for reflective visualization precisely because the cycles remain distinct; it must not be interpreted as fate or curriculum scheduling."
+  },
+  "arcnet_stellar_frame_projection": {
+    "status": "design-candidate presentation hypothesis",
+    "source_topology": "eight-system ARCnet stellar cube / stella-octangula semantic frame",
+    "model": "transported_frame",
+    "description": "The stable ARCnet stellar-cube frame may be rendered at the participant's current point on the Tempus-Vitae trajectory, visually carrying the current system constellation through a spiral of recorded time and becoming.",
+    "stable_properties": [
+      "system identities",
+      "system authority boundaries",
+      "Edge Contract requirements",
+      "Identity sovereignty"
+    ],
+    "dynamic_properties": [
+      "visual position along the spiral",
+      "current selected faculty",
+      "current Tempus context",
+      "current Vitae navigation coordinate",
+      "active participant-owned path overlay"
+    ],
+    "prohibited_inference": [
+      "ARCnet topology changes because a participant advances in Vitae.",
+      "A geometric location increases permissions.",
+      "Tempus timing activates system authority.",
+      "Internal Arcanum faculty nodes become outer ARCnet system vertices."
+    ]
+  },
+  "derived_field_posture": {
+    "name": "becoming field",
+    "is_module": false,
+    "is_runtime_authority": false,
+    "is_visual_and_query_projection": true,
+    "formula": "Vitae voluntary curriculum coordinate x Tempus captured context",
+    "plain_language": "where practice is in the curriculum, together with what the moment was like when it happened",
+    "key_law": "Context and path may share a field without either becoming the cause of the other."
+  },
+  "not_encoded": [
+    "astrological causation",
+    "predestination",
+    "required timing windows",
+    "one lesson per day",
+    "automatic synchronization",
+    "recognition from timing",
+    "authority from geometry",
+    "economic rewards from completion speed",
+    "literal physical spacetime claims"
+  ]
+}
