@@ -1,0 +1,163 @@
+{
+  "registry": "vitae.grade-cycle.v0.1",
+  "status": "design-candidate",
+  "phase": "Pre-Genesis",
+  "authority": "geometry-independent curriculum indexing and navigation grammar; not recognition, readiness, rank, identity, authority, schedule, or reward",
+  "purpose": "Encode the Human Architect's intended 10 x 10 x 7 x 5 Vitae curriculum grammar and the resulting 360-section cycle per grade without making geometry or time responsible for advancement.",
+  "sources": {
+    "repository": [
+      "docs/vitae/index.md",
+      "docs/vitae/constitution/grade-architecture-template.md",
+      "docs/vitae/curriculum/elementary-school/grade-i-the-guardian/content/class-01/malkuth-spirit-kernel.md",
+      "docs/vitae/curriculum/elementary-school/grade-i-the-guardian/content/class-01/malkuth-arc-moon-to-sun.md",
+      "docs/vitae/curriculum/elementary-school/grade-i-the-guardian/content/class-01/chapter-01/moon-in-malkuth-kernel-set.md",
+      "docs/specs/modules/vitae-context-schema.md",
+      "docs/architecture/registries/vitae-curriculum-registry.v0.1.json",
+      "docs/architecture/registries/vitae-tree-of-life-class-registry.v0.1.json"
+    ],
+    "human_architect_input": "2026-08-23: ten grades, ten classes per grade, seven chapters per class, five sections per chapter, plus one class overview section."
+  },
+  "counts": {
+    "grades": 10,
+    "classes_per_grade": 10,
+    "chapters_per_class": 7,
+    "chapter_sections_per_chapter": 5,
+    "class_overview_sections_per_class": 1,
+    "chapter_sections_per_class": 35,
+    "sections_per_class": 36,
+    "classes_total": 100,
+    "chapters_total": 700,
+    "class_overview_sections_total": 100,
+    "chapter_sections_total": 3500,
+    "sections_per_grade": 360,
+    "sections_total": 3600,
+    "grade_cycles": 10
+  },
+  "invariants": {
+    "one_grade_equals_one_360_section_navigation_cycle": true,
+    "one_section_equals_one_calendar_day": false,
+    "one_section_equals_one_zodiac_degree": false,
+    "section_position_causes_advancement": false,
+    "time_causes_advancement": false,
+    "completion_percentage_is_human_worth": false,
+    "geometry_required": false,
+    "silence_and_pause_remain_valid": true,
+    "actual_recognition_requires_separate_review": true
+  },
+  "grades": [
+    {"grade_index": 1, "id": "grade-i", "title": "Guardian", "turn_index": 0},
+    {"grade_index": 2, "id": "grade-ii", "title": "Seeker", "turn_index": 1},
+    {"grade_index": 3, "id": "grade-iii", "title": "Disciple", "turn_index": 2},
+    {"grade_index": 4, "id": "grade-iv", "title": "Mystic", "turn_index": 3},
+    {"grade_index": 5, "id": "grade-v", "title": "Scholar", "turn_index": 4},
+    {"grade_index": 6, "id": "grade-vi", "title": "Healer", "turn_index": 5},
+    {"grade_index": 7, "id": "grade-vii", "title": "Alchemist", "turn_index": 6},
+    {"grade_index": 8, "id": "grade-viii", "title": "Sage", "turn_index": 7},
+    {"grade_index": 9, "id": "grade-ix", "title": "Oracle", "turn_index": 8},
+    {"grade_index": 10, "id": "grade-x", "title": "Adept", "turn_index": 9}
+  ],
+  "class_station_reference": {
+    "registry": "vitae.tree-of-life-classes.v0.1",
+    "class_count": 10,
+    "sector_width_degrees": 36,
+    "posture": "Each grade may traverse the same ten class-station slots. Current repository materialization is strongest in Grade I and does not yet prove complete content for every station in every grade."
+  },
+  "chapter_template": [
+    {"chapter_index": 1, "id": "moon", "label": "Moon", "repository_evidence": "Grade I Malkuth chapter-01"},
+    {"chapter_index": 2, "id": "mars", "label": "Mars", "repository_evidence": "Grade I Malkuth chapter-02"},
+    {"chapter_index": 3, "id": "mercury", "label": "Mercury", "repository_evidence": "Grade I Malkuth chapter-03"},
+    {"chapter_index": 4, "id": "jupiter", "label": "Jupiter", "repository_evidence": "Grade I Malkuth chapter-04"},
+    {"chapter_index": 5, "id": "venus", "label": "Venus", "repository_evidence": "Grade I Malkuth chapter-05"},
+    {"chapter_index": 6, "id": "saturn", "label": "Saturn", "repository_evidence": "Grade I Malkuth chapter-06"},
+    {"chapter_index": 7, "id": "sun", "label": "Sun", "repository_evidence": "Grade I Malkuth chapter-07"}
+  ],
+  "chapter_section_template": [
+    {"section_index": 1, "id": "spirit", "label": "Spirit"},
+    {"section_index": 2, "id": "air", "label": "Air"},
+    {"section_index": 3, "id": "fire", "label": "Fire"},
+    {"section_index": 4, "id": "earth", "label": "Earth"},
+    {"section_index": 5, "id": "water", "label": "Water"}
+  ],
+  "class_layout": {
+    "slots_per_class": 36,
+    "slot_1": {
+      "kind": "class_overview",
+      "source_pattern": "class-level Spirit kernel / overview",
+      "angular_width_degrees": 1
+    },
+    "slots_2_through_36": {
+      "kind": "chapter_section",
+      "chapter_count": 7,
+      "sections_per_chapter": 5,
+      "angular_width_degrees_per_section": 1,
+      "angular_width_degrees_per_chapter": 5
+    },
+    "chapter_slot_ranges_within_class": [
+      {"chapter_index": 1, "slot_start": 2, "slot_end": 6},
+      {"chapter_index": 2, "slot_start": 7, "slot_end": 11},
+      {"chapter_index": 3, "slot_start": 12, "slot_end": 16},
+      {"chapter_index": 4, "slot_start": 17, "slot_end": 21},
+      {"chapter_index": 5, "slot_start": 22, "slot_end": 26},
+      {"chapter_index": 6, "slot_start": 27, "slot_end": 31},
+      {"chapter_index": 7, "slot_start": 32, "slot_end": 36}
+    ]
+  },
+  "grade_cycle_layout": {
+    "degrees_per_grade_cycle": 360,
+    "class_sector_width_degrees": 36,
+    "class_sector_ranges": [
+      {"class_index": 1, "section_start": 1, "section_end": 36, "angle_start_degrees": 0, "angle_end_degrees": 36},
+      {"class_index": 2, "section_start": 37, "section_end": 72, "angle_start_degrees": 36, "angle_end_degrees": 72},
+      {"class_index": 3, "section_start": 73, "section_end": 108, "angle_start_degrees": 72, "angle_end_degrees": 108},
+      {"class_index": 4, "section_start": 109, "section_end": 144, "angle_start_degrees": 108, "angle_end_degrees": 144},
+      {"class_index": 5, "section_start": 145, "section_end": 180, "angle_start_degrees": 144, "angle_end_degrees": 180},
+      {"class_index": 6, "section_start": 181, "section_end": 216, "angle_start_degrees": 180, "angle_end_degrees": 216},
+      {"class_index": 7, "section_start": 217, "section_end": 252, "angle_start_degrees": 216, "angle_end_degrees": 252},
+      {"class_index": 8, "section_start": 253, "section_end": 288, "angle_start_degrees": 252, "angle_end_degrees": 288},
+      {"class_index": 9, "section_start": 289, "section_end": 324, "angle_start_degrees": 288, "angle_end_degrees": 324},
+      {"class_index": 10, "section_start": 325, "section_end": 360, "angle_start_degrees": 324, "angle_end_degrees": 360}
+    ],
+    "coordinate_rules": {
+      "grade_section_index": "((class_index - 1) * 36) + class_slot_index",
+      "phase_start_degrees": "grade_section_index - 1",
+      "phase_end_degrees": "grade_section_index",
+      "global_section_index": "((grade_index - 1) * 360) + grade_section_index",
+      "normalized_grade_phase": "(grade_section_index - 1) / 360"
+    }
+  },
+  "spiral_projection": {
+    "status": "design-candidate presentation geometry",
+    "turns": 10,
+    "one_turn_per_grade": true,
+    "theta_degrees": "grade_section_index - 1",
+    "z": "(grade_index - 1) + ((grade_section_index - 1) / 360)",
+    "interpretation": "A participant-visible curriculum coordinate may move around one 360-degree turn while gradually rising through a grade; the next grade begins the next turn. The helix is navigation geometry, not a score or time requirement.",
+    "closure_posture": "Each grade closes a navigational circle, but becoming remains open. Grade X does not imply completion of the human."
+  },
+  "materialization_posture": {
+    "intended_structure": "10 grades x 10 classes x 7 chapters x 5 chapter sections + 1 overview per class",
+    "current_repository": "The repository confirms the pattern strongly in early Grade I content but does not yet contain a complete 3600-section corpus.",
+    "missing_content_is_not_failure": true,
+    "registry_may_index_unmaterialized_slots": true,
+    "unmaterialized_slots_must_be_marked": true
+  },
+  "projection_contract": {
+    "plain_list_or_tree_must_be_supported": true,
+    "spiral_is_optional": true,
+    "section_coordinates_may_be_rendered_as_angles": true,
+    "angles_do_not_create_astrological_meaning": true,
+    "actual_prerequisites_come_from_vitae_dependency_sources": true,
+    "recognition_remains_separate_from_navigation": true
+  },
+  "not_encoded": [
+    "one section per day",
+    "one section per zodiac degree",
+    "deadline or missed-window semantics",
+    "automatic grade advancement",
+    "automatic recognition",
+    "completion percentage as worth",
+    "Tree-of-Life path edges",
+    "3D coordinates for sefirot",
+    "MANA rewards"
+  ]
+}
