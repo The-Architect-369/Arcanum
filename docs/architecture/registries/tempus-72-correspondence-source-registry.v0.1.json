@@ -1,0 +1,258 @@
+{
+  "registry": "tempus.72-correspondence-sources.v0.1",
+  "status": "design-candidate-research",
+  "phase": "Pre-Genesis",
+  "authority": "historical-source and projection metadata only; not doctrine, astronomy, psychology, recognition, Vitae advancement, governance, Treasury, identity, or metaphysical causation",
+  "purpose": "Separate the historically distinct sources that later converge around the number 72 so Tempus can study a 72-sector celestial/calendar projection without falsely presenting a composite system as one ancient tradition.",
+  "parent_registry": "tempus.dodecahedral-compass.v0.1",
+  "research_conclusion": "The proposed 72-sector Tempus map has substantial historical precedents, but no single source establishes the complete modern composite. Jewish seventy-two triplets, Egyptian five-day astrological periods, thirty-six decans, Christian-Kabbalistic angel names, seventy-two zodiacal quinaries, Lenain's five-day genius calendar, the seventy-two Goetic spirits, and later angel-demon pairings are separate strata that must retain provenance.",
+  "source_strata": [
+    {
+      "id": "jewish_shem_term",
+      "period": "rabbinic terminology with later Kabbalistic expansion",
+      "source": "Jewish Encyclopedia, Shem ha-Meforash",
+      "url": "https://www.jewishencyclopedia.com/articles/13542-shem-ha-meforash",
+      "source_class": "historical-reference",
+      "finding": "In ancient tannaitic usage Shem ha-Meforash primarily denotes the distinguished Tetragrammaton. Later Kabbalistic usage includes longer divine-name constructions, including a seventy-two-letter/name tradition.",
+      "architecture_effect": "Do not label every later seventy-two-angel or Goetic overlay as the timeless original meaning of Shem ha-Meforash."
+    },
+    {
+      "id": "jewish_72_triplets",
+      "period": "medieval Jewish commentary and Kabbalistic tradition",
+      "source": "Rashi on Sukkah 45a:2",
+      "url": "https://www.sefaria.org/Rashi_on_Sukkah.45a.2",
+      "source_class": "primary-commentarial-text",
+      "finding": "Rashi describes seventy-two names embedded in Exodus 14:19-21: each verse contains seventy-two letters; the first and third are traversed forward and the middle verse in reverse, producing seventy-two three-letter groups columnwise.",
+      "architecture_effect": "The Jewish root overlay is a seventy-two-triplet/name registry, not a seventy-two-demon registry and not inherently a civil calendar."
+    },
+    {
+      "id": "egyptian_five_day_astrological_calendar",
+      "period": "2nd century CE witness",
+      "source": "British Library Papyrus 1526 / P.Oxy. III 465",
+      "url": "https://searcharchives.bl.uk/",
+      "source_class": "manuscript-catalog",
+      "finding": "The verso preserves an astrological calendar based on five-day intervals, with relevant signs or constellations, presiding divinities, influences, signs, and omens. Modern scholarship describes the represented Egyptian calendar as seventy-two five-day half-weeks.",
+      "architecture_effect": "A 72 x 5-day temporal partition has an independent late-antique Egyptian precedent. It must not be retroactively identified with the Jewish seventy-two triplets without separate evidence."
+    },
+    {
+      "id": "testament_of_solomon_decans",
+      "period": "late-antique manuscript tradition",
+      "source": "Testament of Solomon chapter 18; Robert Daniel, Testament of Solomon: Addendum to P.Rain.Cent. 39",
+      "url": "https://tyche.univie.ac.at/index.php/tyche/article/download/4945/4770",
+      "source_class": "primary-tradition-plus-academic-papyrology",
+      "finding": "Chapter 18 presents thirty-six zodiacal decanal spirits; the papyrological study describes each decan as operative for a ten-day period under one of the twelve zodiac signs.",
+      "architecture_effect": "A 36 x 10-day decanal grid is historically distinct from the later 72 x 5-degree angelic quinary grid. Mathematically, one decan can be represented as two five-unit sectors, but that relationship does not prove shared identity."
+    },
+    {
+      "id": "reuchlin_angelization",
+      "period": "1517 Christian Kabbalah",
+      "source": "Johann Reuchlin, De Arte Cabalistica",
+      "url": "https://cja.huji.ac.il/sch/browser.php?id=40611&mode=set",
+      "source_class": "primary-text-with-scholarly-catalog",
+      "finding": "Reuchlin lists the seventy-two triliteral forms and fuller forms using divine endings such as -IAH and -EL, treating the resulting forms as angelic names within Christian Kabbalah.",
+      "architecture_effect": "The pronounceable seventy-two-angel layer is a later Christian-Kabbalistic overlay on the Jewish triplet tradition, not the root registry itself."
+    },
+    {
+      "id": "agrippa_72_quinaries",
+      "period": "16th-century Renaissance occult philosophy",
+      "source": "Heinrich Cornelius Agrippa, De Occulta Philosophia II.15 and III.25",
+      "url": "https://www.esotericarchives.com/agrippa/op2.htm",
+      "source_class": "primary-text-transcription",
+      "finding": "Agrippa explicitly divides each of the twelve zodiac signs into six parts, producing seventy-two 'fives' or celestial quinaries, and places seventy-two angels/names over them; Book III lists the seventy-two angels and connects them to the celestial quinaries.",
+      "architecture_effect": "The 72 x 5-degree zodiacal angular grid is historically attested in Renaissance Christian occultism. Five degrees are established here; five civil days are not established by Agrippa alone."
+    },
+    {
+      "id": "lenain_72_five_day_calendar",
+      "period": "1823 French occult synthesis",
+      "source": "Lazare Lenain, La science cabalistique",
+      "url": "https://numerabilis.u-pariscite.fr/s/numerabilis/item/214226",
+      "source_class": "primary-text",
+      "finding": "Lenain states that seventy-two geniuses govern seventy-two parts of the circle containing five degrees or five days each; his table runs seventy-two five-day periods from the first degree of Aries and leaves five residual epagomenal days. He also explicitly says that the following calendar tables are his own invention, while drawing the first angelic table from Kircher and Agrippa.",
+      "architecture_effect": "The exact 72 x 5-day genius calendar plus five residual days is a documented historical precedent for the Tempus pentad hypothesis, but it must be labeled a nineteenth-century synthesis rather than ancient Jewish or universally Solomonic doctrine."
+    },
+    {
+      "id": "ars_goetia_72_spirits",
+      "period": "17th-century Lemegeton manuscript tradition",
+      "source": "Lemegeton, Part 1: Goetia, Joseph H. Peterson edition from Sloane MS 3825",
+      "url": "https://www.esotericarchives.com/solomon/goetia.htm",
+      "source_class": "critical-digital-transcription",
+      "finding": "The Ars Goetia presents a catalog of seventy-two spirits. Peterson traces the catalog through the Offices of Spirits / Weyer-Pseudomonarchia stream, where the earlier printed list contains sixty-nine spirits even though the text refers to seventy-two.",
+      "architecture_effect": "The Goetic seventy-two is a separate grimoire lineage. Shared count does not establish origin from the Exodus triplets or from the seventy-two zodiac quinaries."
+    },
+    {
+      "id": "rudd_associated_pairing",
+      "period": "late-17th/early-18th-century manuscript compilation tradition",
+      "source": "Harley MS 6483 and related manuscripts as edited by Stephen Skinner and David Rankine",
+      "url": "https://obnb.uk/p13944751-the-goetia-of-dr-rudd-the-angels-demons-of-liber-malorum-spirituum-seu-goetia-lemegeton-clavicula-salomonis-with-a-study-of-the-techniques-of-evocation-in-the-context-of-the-angel-magic-traditio",
+      "source_class": "manuscript-based-modern-edition",
+      "finding": "This manuscript tradition pairs each of seventy-two Goetic spirits with the same-numbered Shem angel. Attribution of the compilation to Thomas Rudd is disputed and should remain qualified.",
+      "architecture_effect": "Angel-demon positional pairing is historically attested as a later join, not as Jewish root doctrine and not as an intrinsic property of the base Ars Goetia."
+    },
+    {
+      "id": "modern_neuroscience",
+      "period": "modern empirical science",
+      "source": "Nature Communications and large-scale functional-network reviews",
+      "url": "https://www.nature.com/articles/s41467-022-35764-7",
+      "source_class": "peer-reviewed-science",
+      "finding": "Contemporary consciousness research models brain function through interacting networks, connectivity, gradients, and multidimensional state spaces. No credible fixed seventy-two-part neural or cognitive ontology was identified in this audit.",
+      "architecture_effect": "Do not present seventy-two angels, spirits, sectors, or names as seventy-two scientifically established brain facets. Premodern microcosmic body correspondences remain historical symbolism, not neuroscience."
+    }
+  ],
+  "historical_stack": {
+    "do_not_flatten": true,
+    "layers": [
+      "Jewish divine-name / seventy-two-triplet extraction",
+      "independent Egyptian five-day astrological-calendar segmentation",
+      "late-antique thirty-six decans / ten-day periods",
+      "Christian-Kabbalistic angelization of the triplets",
+      "Renaissance seventy-two zodiacal quinaries of five degrees",
+      "seventeenth-century seventy-two-spirit Goetic catalog",
+      "later manuscript angel-Goetic positional pairing",
+      "nineteenth-century Lenain five-day genius calendar with residual days",
+      "later Hermetic/occult elaborations"
+    ],
+    "central_result": "The full angel + demon + five-degree + five-day + zodiac + calendar system is a historical composite assembled across centuries, not one uniformly inherited ancient schema."
+  },
+  "neutral_sector_model": {
+    "id": "tempus.72-sector-coordinate.v0.1-candidate",
+    "status": "safe base for future projection testing",
+    "sector_count": 72,
+    "sector_index": "1..72",
+    "zodiac_face_count": 12,
+    "sectors_per_face": 6,
+    "angular_width_degrees": 5,
+    "angular_start_degrees": "(sector_index - 1) * 5",
+    "angular_end_degrees": "sector_index * 5",
+    "decan_bridge": {
+      "decan_count": 36,
+      "sectors_per_decan": 2,
+      "decan_index": "floor((sector_index - 1) / 2) + 1",
+      "meaning": "mathematical projection bridge only unless a selected historical overlay independently supports it"
+    },
+    "calendar_projection": {
+      "candidate_days_per_sector": 5,
+      "idealized_days": 360,
+      "residual_solar_days": "handled by the parent Tempus compass solar-reconciliation contract",
+      "five_day_identity_is_universal": false
+    },
+    "base_semantics": "ordinal temporal/celestial coordinate only",
+    "personality_effect": "none",
+    "recognition_effect": "none",
+    "authority_effect": "none"
+  },
+  "overlay_contracts": [
+    {
+      "id": "shem_triplet",
+      "provenance": "medieval Jewish / Kabbalistic",
+      "cardinality": 72,
+      "may_attach_to_sector": true,
+      "attachment_status": "requires row-by-row source registry",
+      "causal_effect": "none"
+    },
+    {
+      "id": "christian_kabbalah_angel",
+      "provenance": "Reuchlin/Agrippa and later Christian Kabbalah",
+      "cardinality": 72,
+      "may_attach_to_sector": true,
+      "attachment_status": "historically supports quinary association in Agrippa; exact table/version must be declared",
+      "causal_effect": "none"
+    },
+    {
+      "id": "egyptian_five_day_period",
+      "provenance": "P.Oxy. III 465 / Egyptian astrological calendar tradition",
+      "cardinality": 72,
+      "may_attach_to_sector": "comparative projection only",
+      "attachment_status": "do not assume same names or same zero anchor as later angelic systems",
+      "causal_effect": "none"
+    },
+    {
+      "id": "testament_decan",
+      "provenance": "Testament of Solomon chapter 18",
+      "cardinality": 36,
+      "may_attach_to_sector": true,
+      "attachment_rule": "one decan spans two adjacent five-unit sectors in a normalized 360-part comparison",
+      "attachment_status": "mathematical/historical comparison; not proof of identity with later quinaries",
+      "causal_effect": "none"
+    },
+    {
+      "id": "lenain_pentad",
+      "provenance": "Lenain 1823",
+      "cardinality": 72,
+      "may_attach_to_sector": true,
+      "attachment_status": "source-specific five-day calendar overlay",
+      "causal_effect": "none"
+    },
+    {
+      "id": "goetic_spirit",
+      "provenance": "Lemegeton / Ars Goetia manuscript tradition",
+      "cardinality": 72,
+      "may_attach_to_sector": "only through an explicitly selected later correspondence overlay",
+      "attachment_status": "not intrinsic to neutral Tempus sector",
+      "causal_effect": "none"
+    },
+    {
+      "id": "rudd_pairing",
+      "provenance": "Rudd-associated manuscript compilation tradition",
+      "cardinality": 72,
+      "may_attach_to_sector": "optional historical-study overlay",
+      "attachment_status": "same-index angel/spirit pair; attribution/version must be declared",
+      "causal_effect": "none"
+    },
+    {
+      "id": "neuroscience_72_facets",
+      "provenance": "none established",
+      "cardinality": null,
+      "may_attach_to_sector": false,
+      "attachment_status": "rejected as scientific correspondence",
+      "causal_effect": "none"
+    }
+  ],
+  "audit_dispositions": {
+    "72_triplets_from_exodus": "PASS as historically attested Jewish/Kabbalistic tradition",
+    "72_triplets_are_intrinsically_angels": "FAIL as root-level universal claim; angelization is later Christian-Kabbalistic stratum",
+    "72_zodiac_quinaries_of_five_degrees": "PASS as explicitly attested in Agrippa",
+    "72_five_day_astrological_periods_exist_historically": "PASS with independent Egyptian precedent and explicit Lenain implementation",
+    "72_five_degree_equals_72_five_day_by_nature": "FAIL; these are distinct angular and calendrical coordinates",
+    "36_decans_can_be_compared_as_pairs_of_72_sectors": "BOUNDED PASS as 10-unit to 5-unit mathematical decomposition",
+    "72_goetic_spirits_are_the_same_historical_system_as_72_jewish_names": "FAIL",
+    "72_angel_72_goetic_same_index_pairing_exists": "PASS as later manuscript correspondence tradition",
+    "rudd_authorship_is_certain": "FAIL / DISPUTED",
+    "72_name_calendar_is_one_ancient_solomonic_system": "FAIL",
+    "72_fixed_facets_of_the_brain": "FAIL as scientific claim",
+    "tempus_may_offer_provenance_preserving_72_overlays": "PASS as optional historical/cultural research architecture"
+  },
+  "candidate_laws": [
+    "Shared Count Is Not Shared Origin.",
+    "Correspondence Must Carry Provenance.",
+    "Overlay Before Ontology.",
+    "Five Degrees Is Historically Attested; Five Days Is Source-Specific.",
+    "The Five-Day Pattern Has Independent Egyptian Precedent; It Does Not Therefore Become the Shem.",
+    "The Goetic Pair Is a Later Join, Not the Jewish Root.",
+    "Two Quinaries May Reconstruct a Decan; Neither Erases the Other.",
+    "A Sector May Carry Many Historical Overlays Without Becoming a Person.",
+    "Premodern Microcosm Is Not Neuroscience.",
+    "Historical Continuity Must Be Demonstrated, Not Inferred From Number Equality."
+  ],
+  "next_gates": [
+    "Build a row-by-row seventy-two-sector provenance registry that keeps Hebrew triplet, Christian angel form, Agrippan quinary, Lenain date interval, Goetic index, and Rudd-pair data in separate fields.",
+    "Audit the zero-anchor/orientation choices used by Agrippa, Lenain, later Golden Dawn tables, and any selected astronomical zodiac implementation before assigning sector 1 to a live ephemeris coordinate.",
+    "Audit P.Oxy. III 465 period-by-period to determine whether its seventy-two five-day intervals can be represented as a historical Egyptian overlay without fabricating missing names or correspondences.",
+    "Audit intercalary/epagomenal handling independently from the parent 360-cell Tempus reconciliation model.",
+    "Prototype one neutral 72-sector Tempus ring/dodecahedral face overlay with provenance toggles rather than a fused angel-demon calendar.",
+    "Keep all spiritual/cultural interpretation opt-in, non-causal, non-diagnostic, and non-authoritative."
+  ],
+  "not_encoded": [
+    "individual seventy-two row assignments",
+    "canonical angel names or transliteration standard",
+    "canonical Goetic correspondence",
+    "historical claim that all strata descend from one source",
+    "astrological causation",
+    "birth personality typing",
+    "good or bad timing judgment",
+    "Vitae readiness or advancement",
+    "Identity definition",
+    "governance or Treasury authority",
+    "MANA effects",
+    "literal seventy-two-part brain model"
+  ]
+}
