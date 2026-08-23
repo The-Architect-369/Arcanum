@@ -1,0 +1,266 @@
+{
+  "registry": "tempus.ephemeris-arcnet-unification.v0.1",
+  "status": "design-candidate",
+  "phase": "Pre-Genesis",
+  "authority": "factual astronomical coordinate, exact dual-geometry presentation, and ARCnet transport metadata only; no astrological causation, personality typing, Vitae advancement, recognition, governance, Treasury, identity, capability, or metaphysical authority",
+  "purpose": "Unify the neutral seventy-two-sector Tempus dodecahedral compass with the invariant transported ARCnet stellar frame by resolving an ephemeris-backed geocentric apparent solar longitude into a continuous path on the exact inner icosahedral dual of the dodecahedron.",
+  "parents": [
+    "tempus.dodecahedral-compass.v0.1",
+    "tempus.72-sector-coordinate.v0.1",
+    "arcnet.transported-frame-projection.v0.1"
+  ],
+  "external_references": [
+    {
+      "id": "jpl_horizons_quantity_31",
+      "source": "NASA/JPL Horizons manual",
+      "url": "https://ssd.jpl.nasa.gov/horizons/manual.html",
+      "finding": "Observer quantity 31 returns apparent observer-centered ecliptic-of-date longitude and latitude. For Earth seasonal boundaries JPL specifically directs users to request quantity 31 for the Sun as seen from the geocenter."
+    },
+    {
+      "id": "dodecahedron_icosahedron_duality",
+      "source": "Wolfram MathWorld, Regular Dodecahedron / Dual Polyhedron",
+      "url": "https://mathworld.wolfram.com/RegularDodecahedron.html",
+      "finding": "The regular dodecahedron and regular icosahedron are exact duals; the centers of the twelve dodecahedral faces are the twelve vertices of a regular icosahedron."
+    },
+    {
+      "id": "prototype_ephemeris_backend",
+      "source": "Swiss Ephemeris programmer/general documentation",
+      "url": "https://www.astro.com/swisseph/swephprg.htm",
+      "finding": "The local research runtime can compute geocentric apparent planetary positions; when Swiss/JPL data files are absent the library falls back to the built-in Moshier ephemeris. The Moshier model is a semi-analytical approximation to JPL DE404 and is used here only for the reproducible prototype snapshot, not as a silent production source."
+    }
+  ],
+  "ephemeris_contract": {
+    "canonical_candidate_observable": "geocentric apparent ecliptic longitude of the Sun",
+    "target": {
+      "name": "Sun",
+      "jpl_horizons_id": 10
+    },
+    "observer": {
+      "name": "Earth geocenter",
+      "jpl_horizons_center": "500@399"
+    },
+    "jpl_horizons_quantity": 31,
+    "coordinate_family": "observer-centered ecliptic-of-date apparent longitude/latitude",
+    "longitude_units": "degrees",
+    "normalized_longitude_domain": "[0,360)",
+    "required_provenance_fields": [
+      "capturedAt",
+      "target",
+      "observer",
+      "coordinate/reference frame",
+      "epoch or of-date rule",
+      "ephemeris source/model",
+      "source version when available",
+      "precision",
+      "longitude",
+      "latitude",
+      "interpretation"
+    ],
+    "interpretation": null,
+    "candidate_laws": [
+      "Ephemeris Before Symbolism.",
+      "Observer Before Interpretation.",
+      "Frame Before Meaning.",
+      "Astronomical Position Is Context, Not Permission."
+    ]
+  },
+  "sector_resolution": {
+    "input": "lambda = normalized apparent geocentric solar ecliptic longitude in degrees",
+    "sector_index": "floor(lambda / 5) + 1",
+    "face_index": "floor(lambda / 30) + 1",
+    "zodiac_sign": "tempus.72-sector-coordinate.v0.1 row selected by sector_index",
+    "quinary_in_sign": "floor((lambda mod 30) / 5) + 1",
+    "decan_in_sign": "floor((lambda mod 30) / 10) + 1",
+    "half_of_decan": "floor((lambda mod 10) / 5) + 1",
+    "fraction_within_sector": "(lambda mod 5) / 5",
+    "boundary_rule": "intervals are half-open [start,end); lambda=360 normalizes to 0",
+    "symbolic_five_day_projection_is_same_coordinate": false
+  },
+  "exact_dual_geometry": {
+    "outer": {
+      "solid": "regular dodecahedron",
+      "role": "Tempus zodiac/celestial shell",
+      "faces": 12,
+      "normalized_outer_circumradius": 1
+    },
+    "inner": {
+      "solid": "regular icosahedron",
+      "role": "exact geometric dual / Tempus carrier scaffold only; not a new module and not the Vitae corpus ontology",
+      "vertices": 12,
+      "edges": 30,
+      "faces": 20,
+      "construction": "each inner vertex is the center of one outer dodecahedral face",
+      "normalized_vertex_radius": 0.7946544722917662
+    },
+    "zodiac_face_center_cycle": {
+      "status": "one explicit chronology/opposition-preserving orientation for the existing zodiac shell",
+      "sign_order": [
+        "aries",
+        "taurus",
+        "gemini",
+        "cancer",
+        "leo",
+        "virgo",
+        "libra",
+        "scorpio",
+        "sagittarius",
+        "capricorn",
+        "aquarius",
+        "pisces"
+      ],
+      "inner_icosahedron_vertices_in_sign_order": [
+        [0.417775,0,-0.675973],
+        [-0.417775,0,-0.675973],
+        [-0.675973,-0.417775,0],
+        [-0.675973,0.417775,0],
+        [0,0.675973,-0.417775],
+        [0,0.675973,0.417775],
+        [-0.417775,0,0.675973],
+        [0.417775,0,0.675973],
+        [0.675973,0.417775,0],
+        [0.675973,-0.417775,0],
+        [0,-0.675973,0.417775],
+        [0,-0.675973,-0.417775]
+      ],
+      "all_consecutive_vertices_are_icosahedron_neighbors": true,
+      "cycle_closes": true,
+      "opposite_signs_are_antipodal_vertices": true,
+      "edge_length_normalized": 0.835549
+    }
+  },
+  "breathing_carrier_path": {
+    "status": "exact continuous presentation path derived from duality plus the registered zodiac chronology cycle",
+    "for_face_i": {
+      "previous_center": "C_(i-1)",
+      "current_center": "C_i",
+      "next_center": "C_(i+1)",
+      "entry": "E_i = (C_(i-1) + C_i) / 2",
+      "center": "C_i",
+      "exit": "X_i = (C_i + C_(i+1)) / 2",
+      "local_sign_phase": "u = (lambda mod 30) / 30",
+      "position_if_u_lt_half": "P = E_i + 2u(C_i - E_i)",
+      "position_if_u_gte_half": "P = C_i + (2u - 1)(X_i - C_i)"
+    },
+    "continuity_identity": "X_i = E_(i+1)",
+    "per_sign_path_length": "one full dual-icosahedron edge length: half incoming edge + half outgoing edge",
+    "year_path_length": "twelve equal dual-icosahedron edge lengths",
+    "quinary_geometry": {
+      "q1_q2_q3": "inbound from previous shared-edge midpoint toward current face center",
+      "q4_q5_q6": "outbound from current face center toward next shared-edge midpoint",
+      "decan_1": "q1 + q2",
+      "decan_2": "q3 + q4; center-crossing decan",
+      "decan_3": "q5 + q6"
+    },
+    "important_boundary": "This is a newly derived Arcanum presentation path. Historical sources establish the zodiac/quinary coordinate and the mathematical solid duality separately; they do not establish this exact animated path.",
+    "candidate_laws": [
+      "Duality May Supply a Carrier Without Supplying Semantics.",
+      "The Breath Is a Path Property, Not a Cosmological Claim.",
+      "Boundary Continuity Is Geometric; Meaning Still Requires Registry."
+    ]
+  },
+  "arcnet_transport_bridge": {
+    "local_frame_source": "arcnet.transported-frame-projection.v0.1",
+    "tempus_position": "P_tempus = breathing_carrier_path(lambda)",
+    "transport": "X_system = P_tempus + s R q_system",
+    "q_system_is_immutable": true,
+    "allowed_orientation_modes": [
+      "world_locked",
+      "radial_aligned",
+      "path_tangent_aligned"
+    ],
+    "orientation_semantics": null,
+    "scale_semantics": null,
+    "preserved": [
+      "all eight system/faculty identities",
+      "generative/stewardship tetrahedron membership",
+      "four mirror antipodes",
+      "12 operational + 12 kinship + 4 mirror relation partition",
+      "six derived junction midpoint constructions",
+      "Human/Identity non-system center",
+      "Edge Contract requirements",
+      "authority boundaries"
+    ],
+    "prohibited_inputs_to_authorization": [
+      "solar longitude",
+      "zodiac face",
+      "quinary",
+      "decan",
+      "ARCnet pose",
+      "distance along Tempus path",
+      "orientation",
+      "astronomical coincidence"
+    ],
+    "candidate_law": "The Sky May Position the Vehicle; It May Not Drive Its Authority."
+  },
+  "prototype_snapshot": {
+    "capturedAt": "2026-08-23T23:53:00Z",
+    "local_reference_at_capture": "2026-08-23T19:53:00-04:00",
+    "computation_backend": "Swiss Ephemeris Python binding with requested SWIEPH and automatic Moshier fallback because external ephemeris files were not present",
+    "ephemeris_return_mode": "MOSEPH",
+    "prototype_only": true,
+    "sun_apparent_geocentric_ecliptic_longitude_deg": 150.86603490831627,
+    "sun_apparent_geocentric_ecliptic_latitude_deg": -0.00008326901513160081,
+    "sun_distance_au": 1.011083686682721,
+    "sun_longitude_speed_deg_per_day": 0.9637576553885123,
+    "resolved_sector_index": 31,
+    "resolved_sign": "virgo",
+    "resolved_face_index": 6,
+    "resolved_quinary_in_sign": 1,
+    "resolved_decan_in_sign": 1,
+    "resolved_half_of_decan": 1,
+    "fraction_within_sector": 0.173206981663254,
+    "carrier_position_normalized": [0,0.675973,0.02412],
+    "production_note": "The architecture contract targets an explicitly sourced ephemeris such as JPL Horizons quantity 31. This embedded snapshot proves the coordinate resolver and geometry but is not represented as a JPL Horizons response."
+  },
+  "falsification_tests": [
+    {
+      "id": "dual-construction",
+      "pass": "the twelve dodecahedron face centers are the twelve vertices of a regular inner icosahedron"
+    },
+    {
+      "id": "chronology-cycle",
+      "pass": "all twelve consecutive zodiac anchors, including Pisces to Aries, are edges of the inner icosahedron"
+    },
+    {
+      "id": "opposition-antipodes",
+      "pass": "the six zodiac opposition pairs remain antipodal in the selected dual orientation"
+    },
+    {
+      "id": "path-continuity",
+      "pass": "the exit midpoint of every sign equals the entry midpoint of the next sign"
+    },
+    {
+      "id": "quinary-count",
+      "pass": "each 30-degree sign path contains exactly six ordered five-degree sectors and three paired decans"
+    },
+    {
+      "id": "ephemeris-resolution",
+      "pass": "a sourced longitude resolves deterministically to one sector, sign, quinary, decan, and path position"
+    },
+    {
+      "id": "arcnet-rigidity",
+      "pass": "changing Tempus longitude changes only transport position/orientation, never ARCnet local coordinates or relation classes"
+    },
+    {
+      "id": "authority-firewall",
+      "pass": "no ephemeris field or geometry field is an authorization input"
+    },
+    {
+      "id": "geometry-free-equivalence",
+      "pass": "the current state can be represented as capturedAt + longitude + sector/sign/quinary/decan + unchanged ARCnet capability state without any 3D geometry"
+    }
+  ],
+  "audit_disposition": "BOUNDED PASS: exact dual geometry and continuous ARCnet transport path are mathematically coherent; production ephemeris ingestion remains to be implemented and must preserve source/frame/observer/epoch provenance.",
+  "not_encoded": [
+    "Vitae progression",
+    "Hope state",
+    "planet-to-ARCnet-system identity",
+    "astrological causation",
+    "good or bad timing",
+    "cosmic permission",
+    "physical spacetime theory",
+    "historical claim that ancient sources used this exact dual carrier animation",
+    "automatic chain receipt for every ephemeris tick",
+    "authority or capability change from Tempus position"
+  ]
+}
