@@ -1,0 +1,131 @@
+{
+  "registry": "creation-era.becoming-field-geometry.v0.1",
+  "status": "design-candidate",
+  "phase": "Pre-Genesis",
+  "authority": "presentation and falsification metadata only; geometry creates no module, capability, recognition, identity, or authority",
+  "purpose": "Keep ARCnet stellar-cube, Tree-of-Life class, Vitae spiral, Tempus-Vitae phase-space, and cube-plus-tetrahedron hypotheses in one explicitly typed projection registry without collapsing their scales.",
+  "sources": [
+    "docs/architecture/registries/vitae-tree-of-life-class-registry.v0.1.json",
+    "docs/architecture/registries/vitae-grade-cycle-registry.v0.1.json",
+    "docs/architecture/registries/tempus-vitae-becoming-field-registry.v0.1.json",
+    "docs/architecture/tree-of-life-vitae-tempus-stellar-cube-study.md",
+    "docs/architecture/creation-era-whole-system-falsification-audit.md",
+    "docs/architecture/nested-geometry-research-map.md"
+  ],
+  "invariants": {
+    "same_vertex_count_means_same_ontology": false,
+    "geometric_edge_creates_semantic_edge": false,
+    "geometry_required_for_access": false,
+    "inner_curriculum_node_equals_outer_system_node": false,
+    "additional_coordinate_equals_additional_module": false,
+    "tree_path_edges_must_be_independently_registered": true
+  },
+  "projections": [
+    {
+      "id": "arcnet-stellar-cube-frame",
+      "kind": "system_frame",
+      "status": "design-candidate semantic topology",
+      "vertex_count": 8,
+      "vertex_role": "outer ARCnet system coordinates",
+      "semantic_relationship_model": "K8 candidate relationship field with 28 pairwise studies",
+      "rendered_edge_requirement": "not every semantic relationship must be a literal visible or executable edge",
+      "authority_posture": "unchanged by participant curriculum position"
+    },
+    {
+      "id": "vitae-tree-class-frame",
+      "kind": "curriculum_frame",
+      "status": "design-candidate with partial repository materialization",
+      "vertex_count": 10,
+      "vertex_role": "Tree-of-Life-inspired class stations inside a Vitae grade",
+      "registered_path_edge_count": 0,
+      "reason": "Station identities are being registered before the twenty-two-path question is audited.",
+      "authority_posture": "navigation only"
+    },
+    {
+      "id": "vitae-ten-turn-spiral",
+      "kind": "trajectory_frame",
+      "status": "design-candidate",
+      "turn_count": 10,
+      "positions_per_turn": 360,
+      "total_positions": 3600,
+      "vertex_role": "continuous/discrete navigation coordinates rather than sovereign nodes",
+      "authority_posture": "path history only"
+    },
+    {
+      "id": "tempus-vitae-torus-phase-space",
+      "kind": "phase_space",
+      "status": "design-candidate",
+      "dimensions": [
+        "selected Tempus cycle phase S1",
+        "Vitae grade-cycle phase S1"
+      ],
+      "product": "S1 x S1",
+      "common_visualization": "torus",
+      "rest_semantics": "Tempus may move while Vitae phase remains fixed; rest/silence does not create lateness.",
+      "authority_posture": "co-observation only"
+    },
+    {
+      "id": "cube-edge-tetrahedron-ten-point-extension",
+      "kind": "coordinate_scaffold",
+      "status": "falsification candidate",
+      "base": {
+        "shape": "cube",
+        "vertices": 8,
+        "literal_edges": 12
+      },
+      "extension": {
+        "shape": "tetrahedron",
+        "vertices": 4,
+        "literal_edges": 6,
+        "shared_with_base": "exactly one cube edge",
+        "shared_vertices": 2,
+        "shared_edges": 1,
+        "new_vertices": 2,
+        "new_edges": 5
+      },
+      "union": {
+        "vertices": 10,
+        "literal_polyhedral_edges": 17
+      },
+      "narrow_result": "An edge-sharing tetrahedral extrusion is a valid way to extend an eight-point cube coordinate set to ten points.",
+      "tree_of_life_result": "undefined/not-ratified",
+      "reason_tree_is_not_automatic": "Ten coordinates do not independently supply the Tree-of-Life relationship/path vocabulary. The polyhedral union has seventeen literal edges, while the later ten-sefirah/twenty-two-path framing cannot be recovered from this count without additional independently justified relationships.",
+      "allowed_added_vertex_roles": [
+        "non-system field coordinate",
+        "context/path pole",
+        "moment/becoming pole",
+        "presentation anchor"
+      ],
+      "forbidden_added_vertex_roles": [
+        "automatic Tempus module vertex",
+        "automatic Vitae module vertex",
+        "new sovereign authority",
+        "new canonical module by count"
+      ]
+    }
+  ],
+  "scale_firewall": [
+    {
+      "from": "ARCnet stellar cube",
+      "to": "Vitae Tree stations",
+      "rule": "May be co-rendered or transported together; may not be treated as the same node registry."
+    },
+    {
+      "from": "Tempus-Vitae phase space",
+      "to": "ARCnet system frame",
+      "rule": "May move/render the stable frame along participant history; may not change system authority or Edge Contract semantics."
+    },
+    {
+      "from": "Tree station",
+      "to": "participant Identity",
+      "rule": "A station is curriculum context, never a definition of the person."
+    }
+  ],
+  "next_geometry_gates": [
+    "Register/audit Tree relationship paths independently from polyhedral edges.",
+    "Test a ten-point coordinate layout against the registered Tree graph once edges exist.",
+    "Compare cube-edge-tetrahedron, traditional tri-linear Tree, and tetrahedral ten-point lattice as alternative renderings of the same registry.",
+    "Prototype the stellar cube as a transported frame on synthetic Tempus-Vitae trajectories.",
+    "Require a geometry-free card/tree/list equivalent for every experiment."
+  ]
+}
