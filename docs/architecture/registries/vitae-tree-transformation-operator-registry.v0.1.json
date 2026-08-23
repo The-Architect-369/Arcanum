@@ -1,0 +1,137 @@
+{
+  "registry": "vitae.tree-transformation-operators.v0.1",
+  "status": "design-candidate-projection",
+  "phase": "Pre-Genesis",
+  "authority": "perceptual transformation grammar only; not historical Hebrew-letter music attribution, curriculum authority, recognition, readiness, identity, governance, MANA policy, or metaphysical frequency doctrine",
+  "purpose": "Render the registered Vitae Tree walk as audible geometric transformations while separating path/operator behavior from the carrier pitch used to hear it.",
+  "sources": [
+    "docs/architecture/registries/vitae-tree-of-life-path-registry.v0.1.json",
+    "docs/architecture/registries/vitae-harmonic-rendering-projection.v0.1.json",
+    "docs/architecture/registries/tree-harmonic-sonification-overlay.v0.1.json"
+  ],
+  "invariants": {
+    "operator_is_projection_not_ontology": true,
+    "carrier_is_separate_from_operator": true,
+    "individual_hebrew_letter_assignment_required": false,
+    "fixed_sacred_hz": false,
+    "left_right_handedness_is_semantic": false,
+    "mirror_render_must_remain_valid": true,
+    "audio_required_for_access": false,
+    "plain_text_equivalent_required": true,
+    "recognition_effect": "none",
+    "authority_effect": "none",
+    "mana_effect": "none"
+  },
+  "coordinate_convention": {
+    "x": {"left": -1, "center": 0, "right": 1},
+    "y": "larger values are lower in the 2D presentation; one upward level is delta_y=-1",
+    "mirror_rule": "x may be multiplied by -1 without changing semantic path identity",
+    "status": "presentation coordinates only"
+  },
+  "auditory_projection": {
+    "shared_waveform": "sine",
+    "equal_edge_duration_default": true,
+    "pan_rule": "stereo pan follows source_x to destination_x",
+    "pitch_rule": "an upward one-level move glides from carrier frequency to carrier_frequency * 3/2; a level move keeps carrier frequency constant",
+    "vertical_step_ratio": "3:2 perfect fifth used as a replaceable ordinary-music interval",
+    "amplitude_rule": "same nominal peak amplitude for every edge class",
+    "semantic_posture": "frequency and pan make geometric change audible; they do not define the Tree path or participant"
+  },
+  "operator_classes": [
+    {
+      "path_orientation": "vertical",
+      "historical_letter_class_slot": "double",
+      "auditory_operator": "frequency glide only",
+      "pan_change": false,
+      "pitch_change": true,
+      "plain_language": "rise while remaining centered"
+    },
+    {
+      "path_orientation": "horizontal",
+      "historical_letter_class_slot": "mother",
+      "auditory_operator": "stereo traversal only",
+      "pan_change": true,
+      "pitch_change": false,
+      "plain_language": "cross the field while remaining level"
+    },
+    {
+      "path_orientation": "diagonal",
+      "historical_letter_class_slot": "simple",
+      "auditory_operator": "frequency glide plus stereo traversal",
+      "pan_change": true,
+      "pitch_change": true,
+      "plain_language": "rise while crossing toward another pillar"
+    }
+  ],
+  "carrier_modes": {
+    "fixed_reference": {
+      "purpose": "isolate the transformation operator from pitch-sequence effects",
+      "default_frequency_hz": 220,
+      "historical_correspondence": false
+    },
+    "fifths_carrier": {
+      "purpose": "place the same operators over the earlier replaceable twelve-tone circle-of-fifths carrier",
+      "pitch_class_rule": "pc_n = (7*n) mod 12",
+      "starting_pitch_class": 0,
+      "historical_correspondence": false
+    }
+  },
+  "vitae_walk": {
+    "stations": ["malkuth", "yesod", "hod", "netzach", "tiferet", "gevurah", "chesed", "binah", "chokhmah", "keter"],
+    "transition_classes": ["vertical", "diagonal", "horizontal", "diagonal", "diagonal", "horizontal", "diagonal", "horizontal", "diagonal"],
+    "letter_class_slots": ["double", "simple", "mother", "simple", "simple", "mother", "simple", "mother", "simple"],
+    "vectors_current_2d_projection": [
+      {"from":"malkuth","to":"yesod","dx":0,"dy":-1,"orientation":"vertical"},
+      {"from":"yesod","to":"hod","dx":1,"dy":-1,"orientation":"diagonal"},
+      {"from":"hod","to":"netzach","dx":-2,"dy":0,"orientation":"horizontal"},
+      {"from":"netzach","to":"tiferet","dx":1,"dy":-1,"orientation":"diagonal"},
+      {"from":"tiferet","to":"gevurah","dx":1,"dy":-1,"orientation":"diagonal"},
+      {"from":"gevurah","to":"chesed","dx":-2,"dy":0,"orientation":"horizontal"},
+      {"from":"chesed","to":"binah","dx":2,"dy":-1,"orientation":"diagonal","variant_note":"Lurianic/Safed-style variant edge"},
+      {"from":"binah","to":"chokhmah","dx":-2,"dy":0,"orientation":"horizontal"},
+      {"from":"chokhmah","to":"keter","dx":1,"dy":-1,"orientation":"diagonal"}
+    ]
+  },
+  "derived_projection_analysis": {
+    "net_dx": 0,
+    "net_dy": -6,
+    "horizontal_dx_sum": -6,
+    "diagonal_dx_sum": 6,
+    "vertical_dx_sum": 0,
+    "absolute_horizontal_class_lateral_travel": 6,
+    "absolute_diagonal_class_lateral_travel": 6,
+    "lateral_balance": true,
+    "mirror_invariant_balance_magnitude": true,
+    "interpretation": "In the current 2D projection, all three horizontal/Mother-class crossings move laterally opposite to the five diagonal/Simple-class ascents. Their signed lateral displacement cancels exactly, leaving a net six-level ascent and zero lateral drift.",
+    "variant_dependency": "The full-width Chesed-Binah diagonal contributes two of the six diagonal lateral units and is the Lurianic/Safed-style edge that allows the registered ten-station walk to remain contiguous.",
+    "semantic_status": "derived property of this registered walk plus presentation coordinates; not a historical doctrine"
+  },
+  "phrase_partition": {
+    "mother_crossings_as_optional_auditory_boundaries": true,
+    "non_horizontal_runs": [
+      ["malkuth-yesod", "yesod-hod"],
+      ["netzach-tiferet", "tiferet-gevurah"],
+      ["chesed-binah"],
+      ["chokhmah-keter"]
+    ],
+    "run_lengths": [2, 2, 1, 1],
+    "posture": "This is a rendering aid: horizontal crossings may be made perceptually legible as phrase boundaries, but they acquire no recognition or metaphysical priority."
+  },
+  "candidate_laws": [
+    "Carrier Is Not Operator — changing the pitch carrier must not change path identity.",
+    "Geometry May Drive Sonification Without Becoming Authority.",
+    "Mirror Without Meaning Loss — left/right presentation may reverse while typed relations remain intact.",
+    "Balanced Lateral Motion Is a Rendered Walk Property, Not a Cosmic Proof.",
+    "Audible Difference Must Survive Audio-Off Representation."
+  ],
+  "not_encoded": [
+    "individual Hebrew letters on the nine traversed edges",
+    "fixed letter pitches",
+    "planetary note ownership",
+    "five articulation timbre families",
+    "Spirit/Air/Fire/Earth/Water audio identities",
+    "Tempus scheduling",
+    "healing claims",
+    "recognition or authority"
+  ]
+}
