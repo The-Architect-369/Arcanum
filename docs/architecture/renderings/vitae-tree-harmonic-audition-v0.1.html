@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Vitae Tree Harmonic Audition v0.1</title>
+<style>
+:root{font-family:system-ui,sans-serif;color:#171717;background:#fafafa}body{margin:0;padding:24px;max-width:1100px;margin-inline:auto}.card{background:white;border:1px solid #d4d4d8;border-radius:14px;padding:20px;margin:16px 0}h1{margin:.2rem 0}.muted{color:#5b6470}.controls{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}button{font:inherit;padding:9px 13px;border-radius:9px;border:1px solid #64748b;background:white;cursor:pointer}button:hover{background:#f1f5f9}svg{width:100%;height:auto;max-height:640px}.edge{stroke:#94a3b8;stroke-width:2;fill:none}.walk{stroke:#111827;stroke-width:7;opacity:.7;stroke-linecap:round}.node{fill:white;stroke:#111827;stroke-width:2}.node.active{fill:#fef3c7;stroke:#92400e;stroke-width:4}.label{font-size:12px;text-anchor:middle}.num{font-size:11px;font-weight:700;text-anchor:middle}.readout{font-family:ui-monospace,monospace;background:#f8fafc;padding:12px;border-radius:9px;white-space:pre-wrap}.warning{border-left:4px solid #9a3412;padding-left:12px}.micro{display:grid;grid-template-columns:repeat(5,minmax(55px,1fr));gap:5px}.micro>div{border:1px solid #cbd5e1;border-radius:6px;padding:7px;text-align:center;font-size:12px}.micro>div.active{background:#e0f2fe;border-color:#0369a1}@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+</style>
+</head>
+<body>
+<h1>Vitae Tree Harmonic Audition v0.1</h1>
+<p class="muted">Design-candidate perceptual prototype. It consumes registered relationships; it creates none.</p>
+<div class="card warning"><strong>No sacred-Hz claim.</strong> The pitches below are a replaceable 12-TET circle-of-fifths audition of traversal order. No sefirah, Hebrew letter, planet, element, participant, or authority state owns a pitch or frequency.</div>
+<div class="card">
+<h2>Ten-station Lurianic/Safed-style Vitae walk</h2>
+<div class="controls"><button id="playTree">Play tree traversal</button><button id="stop">Stop audio</button></div>
+<svg viewBox="0 0 560 680" role="img" aria-label="Lurianic-style Tree with registered Vitae class traversal">
+<g id="edges" class="edge">
+<line x1="150" y1="130" x2="410" y2="130"/><line x1="150" y1="230" x2="410" y2="230"/><line x1="150" y1="430" x2="410" y2="430"/>
+<line x1="280" y1="55" x2="280" y2="330"/><line x1="150" y1="130" x2="150" y2="230"/><line x1="150" y1="230" x2="150" y2="430"/><line x1="410" y1="130" x2="410" y2="230"/><line x1="410" y1="230" x2="410" y2="430"/><line x1="280" y1="330" x2="280" y2="530"/><line x1="280" y1="530" x2="280" y2="625"/>
+<line x1="280" y1="55" x2="150" y2="130"/><line x1="280" y1="55" x2="410" y2="130"/><line x1="150" y1="130" x2="280" y2="330"/><line x1="410" y1="130" x2="280" y2="330"/><line x1="150" y1="230" x2="280" y2="330"/><line x1="410" y1="230" x2="280" y2="330"/><line x1="280" y1="330" x2="150" y2="430"/><line x1="280" y1="330" x2="410" y2="430"/><line x1="150" y1="430" x2="280" y2="530"/><line x1="410" y1="430" x2="280" y2="530"/><line x1="150" y1="130" x2="410" y2="230"/><line x1="410" y1="130" x2="150" y2="230"/>
+</g>
+<g class="walk"><line x1="280" y1="625" x2="280" y2="530"/><line x1="280" y1="530" x2="410" y2="430"/><line x1="410" y1="430" x2="150" y2="430"/><line x1="150" y1="430" x2="280" y2="330"/><line x1="280" y1="330" x2="410" y2="230"/><line x1="410" y1="230" x2="150" y2="230"/><line x1="150" y1="230" x2="410" y2="130"/><line x1="410" y1="130" x2="150" y2="130"/><line x1="150" y1="130" x2="280" y2="55"/></g>
+<g data-step="9"><circle class="node" cx="280" cy="55" r="27"/><text class="num" x="280" y="52">10</text><text class="label" x="280" y="69">Keter</text></g>
+<g data-step="8"><circle class="node" cx="150" cy="130" r="27"/><text class="num" x="150" y="127">9</text><text class="label" x="150" y="144">Chokhmah</text></g>
+<g data-step="7"><circle class="node" cx="410" cy="130" r="27"/><text class="num" x="410" y="127">8</text><text class="label" x="410" y="144">Binah</text></g>
+<g data-step="6"><circle class="node" cx="150" cy="230" r="27"/><text class="num" x="150" y="227">7</text><text class="label" x="150" y="244">Chesed</text></g>
+<g data-step="5"><circle class="node" cx="410" cy="230" r="27"/><text class="num" x="410" y="227">6</text><text class="label" x="410" y="244">Gevurah</text></g>
+<g data-step="4"><circle class="node" cx="280" cy="330" r="27"/><text class="num" x="280" y="327">5</text><text class="label" x="280" y="344">Tiferet</text></g>
+<g data-step="3"><circle class="node" cx="150" cy="430" r="27"/><text class="num" x="150" y="427">4</text><text class="label" x="150" y="444">Netzach</text></g>
+<g data-step="2"><circle class="node" cx="410" cy="430" r="27"/><text class="num" x="410" y="427">3</text><text class="label" x="410" y="444">Hod</text></g>
+<g data-step="1"><circle class="node" cx="280" cy="530" r="27"/><text class="num" x="280" y="527">2</text><text class="label" x="280" y="544">Yesod</text></g>
+<g data-step="0"><circle class="node" cx="280" cy="625" r="27"/><text class="num" x="280" y="622">1</text><text class="label" x="280" y="639">Malkuth</text></g>
+</svg>
+<div id="treeReadout" class="readout">Malkuth → Yesod → Hod → Netzach → Tiferet → Gevurah → Chesed → Binah → Chokhmah → Keter
+orientation: V – D – H – D – D – H – D – H – D
+optional pitch audition: C → G → D → A → E → B → F#/Gb → C#/Db → G#/Ab → D#/Eb</div>
+</div>
+<div class="card">
+<h2>One 36-position class</h2>
+<p>Slot 1 is the class overview. Slots 2–36 are the registered 7 chapter × 5 section cells. The audition uses <code>pitch = 7 × (slot−1) mod 12</code>, so one class makes three pitch-class cycles.</p>
+<div class="controls"><button id="playClass">Play 36-slot class</button><button id="playScan">Show 35-cell Z7×Z5 diagonal scan</button></div>
+<div id="micro" class="micro" aria-label="35 chapter section cells"></div>
+<div id="classReadout" class="readout">Overview + 35 cells. Harmonic projection is optional and replaceable.</div>
+</div>
+<script>
+const names=['C','C#/Db','D','D#/Eb','E','F','F#/Gb','G','G#/Ab','A','A#/Bb','B'];
+const stations=['Malkuth','Yesod','Hod','Netzach','Tiferet','Gevurah','Chesed','Binah','Chokhmah','Keter'];
+const xpos=[0,0,1,-1,0,1,-1,1,-1,0];
+const chapters=['Moon','Mars','Mercury','Jupiter','Venus','Saturn','Sun'];
+const sections=['Spirit','Air','Fire','Earth','Water'];
+let ctx=null,timers=[];
+function stopAll(){timers.forEach(clearTimeout);timers=[];document.querySelectorAll('.active').forEach(n=>n.classList.remove('active'));if(ctx){ctx.close().catch(()=>{});ctx=null}}
+function ensureAudio(){stopAll();ctx=new (window.AudioContext||window.webkitAudioContext)();return ctx}
+function frequency(pc,octave=4){const c4=261.625565;return c4*Math.pow(2,pc/12)*Math.pow(2,octave-4)}
+function tone(pc,start,dur,pan=0){const o=ctx.createOscillator(),g=ctx.createGain();o.type='sine';o.frequency.value=frequency(pc);g.gain.setValueAtTime(0.0001,start);g.gain.exponentialRampToValueAtTime(0.16,start+0.025);g.gain.exponentialRampToValueAtTime(0.0001,start+dur);if(ctx.createStereoPanner){const p=ctx.createStereoPanner();p.pan.value=pan;o.connect(g).connect(p).connect(ctx.destination)}else{o.connect(g).connect(ctx.destination)}o.start(start);o.stop(start+dur+.03)}
+function activate(selector,ms){timers.push(setTimeout(()=>{document.querySelectorAll('.active').forEach(n=>n.classList.remove('active'));const el=document.querySelector(selector);if(el){const c=el.querySelector('.node')||el;c.classList.add('active')}},ms))}
+document.getElementById('playTree').onclick=()=>{ensureAudio();const t0=ctx.currentTime+.08;stations.forEach((s,i)=>{const pc=(7*i)%12;tone(pc,t0+i*.48,.38,xpos[i]*.65);activate(`[data-step="${i}"]`,i*480);timers.push(setTimeout(()=>{document.getElementById('treeReadout').textContent=`step ${i+1}/10 — ${s} — optional pitch ${names[pc]} — pan ${xpos[i]<0?'left':xpos[i]>0?'right':'center'}`},i*480))})};
+document.getElementById('stop').onclick=stopAll;
+const micro=document.getElementById('micro');let cells=[];for(let r=0;r<7;r++){for(let c=0;c<5;c++){const d=document.createElement('div');d.dataset.r=r;d.dataset.c=c;d.textContent=`${chapters[r]} · ${sections[c]}`;micro.appendChild(d);cells.push(d)}}
+document.getElementById('playClass').onclick=()=>{ensureAudio();const t0=ctx.currentTime+.05;for(let slot=1;slot<=36;slot++){const pc=(7*(slot-1))%12;tone(pc,t0+(slot-1)*.11,.085,0);timers.push(setTimeout(()=>{document.getElementById('classReadout').textContent=`slot ${slot}/36 — optional pitch ${names[pc]}${slot===1?' — class overview':''}`},(slot-1)*110))}};
+document.getElementById('playScan').onclick=()=>{stopAll();let r=0,c=0;for(let i=0;i<35;i++){const rr=r,cc=c;timers.push(setTimeout(()=>{cells.forEach(x=>x.classList.remove('active'));const cell=cells.find(x=>+x.dataset.r===rr&&+x.dataset.c===cc);if(cell)cell.classList.add('active');document.getElementById('classReadout').textContent=`Z7×Z5 scan ${i+1}/35 — ${chapters[rr]} · ${sections[cc]} — visualization only, not curriculum order`},i*130));r=(r+1)%7;c=(c+1)%5}};
+</script>
+</body>
+</html>
