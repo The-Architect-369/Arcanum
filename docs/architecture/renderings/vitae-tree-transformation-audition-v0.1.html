@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Vitae Tree Transformation Audition v0.1</title>
+<style>
+:root{font-family:system-ui,-apple-system,sans-serif;color:#171717;background:#fafafa}body{margin:0;padding:24px;max-width:1180px;margin-inline:auto}.card{background:#fff;border:1px solid #d4d4d8;border-radius:16px;padding:20px;margin:16px 0}.warning{border-left:4px solid #c2410c}.controls{display:flex;gap:10px;flex-wrap:wrap;align-items:center}button,select{font:inherit;padding:9px 12px;border:1px solid #94a3b8;border-radius:9px;background:#fff}button{cursor:pointer}button:hover{background:#f1f5f9}.muted{color:#5b6470}.readout{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;background:#f8fafc;border-radius:10px;padding:12px;white-space:pre-wrap}.grid{display:grid;grid-template-columns:minmax(440px,1.2fr) minmax(320px,.8fr);gap:16px}.score{display:grid;grid-template-columns:repeat(9,1fr);gap:5px}.score div{border:1px solid #cbd5e1;border-radius:8px;padding:8px 4px;text-align:center;font-size:12px}.score div.active{outline:3px solid #111827}.v{background:#dbeafe}.h{background:#ede9fe}.d{background:#d1fae5}svg{width:100%;height:auto}.edge{stroke-width:7;stroke-linecap:round;opacity:.45}.edge.active{opacity:1;stroke-width:11}.ev{stroke:#2563eb}.eh{stroke:#7c3aed}.ed{stroke:#059669}.node{fill:#fff;stroke:#1f2937;stroke-width:2}.node.active{fill:#fef3c7;stroke:#92400e;stroke-width:4}.label{font-size:12px;text-anchor:middle}.legend{display:grid;gap:10px}.legend>div{padding:12px;border-radius:10px}.metric{display:flex;justify-content:space-between;border-bottom:1px solid #e5e7eb;padding:8px 0}.blind .label,.blind .station-name{visibility:hidden}@media(max-width:850px){.grid{grid-template-columns:1fr}.score{grid-template-columns:repeat(3,1fr)}}@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<h1>Vitae Tree Transformation Audition v0.1</h1>
+<p class="muted">Design-candidate perceptual test: can the registered Tree walk be heard as a sequence of typed transformations without assigning intrinsic pitches to stations or letters?</p>
+<div class="card warning"><strong>Projection boundary.</strong> Vertical displacement controls frequency glide; horizontal displacement controls stereo motion. A fixed carrier isolates the operator. A circle-of-fifths carrier tests whether the same operator grammar survives a changing musical carrier. Neither mode creates Tree meaning.</div>
+
+<div class="card">
+<div class="controls">
+  <button id="play">Play registered walk</button>
+  <button id="visual">Animate without audio</button>
+  <button id="operators">Play V / H / D operators</button>
+  <button id="stop">Stop</button>
+  <label>Carrier <select id="carrier"><option value="fixed">Fixed 220 Hz</option><option value="fifths">Circle-of-fifths sequence</option></select></label>
+  <label><input type="checkbox" id="mirror" /> mirror left/right</label>
+  <label><input type="checkbox" id="blind" /> hide station labels</label>
+</div>
+</div>
+
+<div class="grid">
+<div class="card" id="treeCard">
+<h2>Tree weave</h2>
+<svg viewBox="0 0 560 690" role="img" aria-label="Lurianic Safed-style Tree showing the nine-edge Vitae traversal">
+<g>
+  <line data-edge="0" class="edge ev" x1="280" y1="630" x2="280" y2="535"/>
+  <line data-edge="1" class="edge ed" x1="280" y1="535" x2="410" y2="440"/>
+  <line data-edge="2" class="edge eh" x1="410" y1="440" x2="150" y2="440"/>
+  <line data-edge="3" class="edge ed" x1="150" y1="440" x2="280" y2="340"/>
+  <line data-edge="4" class="edge ed" x1="280" y1="340" x2="410" y2="240"/>
+  <line data-edge="5" class="edge eh" x1="410" y1="240" x2="150" y2="240"/>
+  <line data-edge="6" class="edge ed" x1="150" y1="240" x2="410" y2="140"/>
+  <line data-edge="7" class="edge eh" x1="410" y1="140" x2="150" y2="140"/>
+  <line data-edge="8" class="edge ed" x1="150" y1="140" x2="280" y2="60"/>
+</g>
+<g data-node="9"><circle class="node" cx="280" cy="60" r="27"/><text class="label" x="280" y="65">Keter</text></g>
+<g data-node="8"><circle class="node" cx="150" cy="140" r="27"/><text class="label" x="150" y="145">Chokhmah</text></g>
+<g data-node="7"><circle class="node" cx="410" cy="140" r="27"/><text class="label" x="410" y="145">Binah</text></g>
+<g data-node="6"><circle class="node" cx="150" cy="240" r="27"/><text class="label" x="150" y="245">Chesed</text></g>
+<g data-node="5"><circle class="node" cx="410" cy="240" r="27"/><text class="label" x="410" y="245">Gevurah</text></g>
+<g data-node="4"><circle class="node" cx="280" cy="340" r="27"/><text class="label" x="280" y="345">Tiferet</text></g>
+<g data-node="3"><circle class="node" cx="150" cy="440" r="27"/><text class="label" x="150" y="445">Netzach</text></g>
+<g data-node="2"><circle class="node" cx="410" cy="440" r="27"/><text class="label" x="410" y="445">Hod</text></g>
+<g data-node="1"><circle class="node" cx="280" cy="535" r="27"/><text class="label" x="280" y="540">Yesod</text></g>
+<g data-node="0"><circle class="node" cx="280" cy="630" r="27"/><text class="label" x="280" y="635">Malkuth</text></g>
+</svg>
+<div class="score" id="score">
+<div class="v" data-score="0"><strong>V</strong><br/>Double</div>
+<div class="d" data-score="1"><strong>D</strong><br/>Simple</div>
+<div class="h" data-score="2"><strong>H</strong><br/>Mother</div>
+<div class="d" data-score="3"><strong>D</strong><br/>Simple</div>
+<div class="d" data-score="4"><strong>D</strong><br/>Simple</div>
+<div class="h" data-score="5"><strong>H</strong><br/>Mother</div>
+<div class="d" data-score="6"><strong>D</strong><br/>Simple</div>
+<div class="h" data-score="7"><strong>H</strong><br/>Mother</div>
+<div class="d" data-score="8"><strong>D</strong><br/>Simple</div>
+</div>
+</div>
+
+<div>
+<div class="card">
+<h2>Operator grammar</h2>
+<div class="legend">
+<div class="v"><strong>Vertical / Double slot</strong><br/><span class="muted">frequency rises · pan remains centered</span></div>
+<div class="h"><strong>Horizontal / Mother slot</strong><br/><span class="muted">pitch remains level · pan crosses the field</span></div>
+<div class="d"><strong>Diagonal / Simple slot</strong><br/><span class="muted">frequency rises · pan moves toward the destination pillar</span></div>
+</div>
+</div>
+<div class="card">
+<h2>Current projection balance</h2>
+<div class="metric"><span>horizontal / Mother Σdx</span><strong>−6</strong></div>
+<div class="metric"><span>diagonal / Simple Σdx</span><strong>+6</strong></div>
+<div class="metric"><span>vertical / Double Σdx</span><strong>0</strong></div>
+<div class="metric"><span>net lateral drift</span><strong>0</strong></div>
+<div class="metric"><span>net ascent</span><strong>6 levels</strong></div>
+<p class="muted">Mirroring reverses the signs, not the balance. The long Chesed → Binah diagonal supplies two diagonal lateral units.</p>
+</div>
+</div>
+</div>
+
+<div class="card">
+<h2>Live readout</h2>
+<div id="readout" class="readout">V – D – H – D – D – H – D – H – D
+
+Carrier and operator are intentionally separate.</div>
+</div>
+
+<script>
+const stations=[
+ {id:'Malkuth',x:0,y:6},{id:'Yesod',x:0,y:5},{id:'Hod',x:1,y:4},{id:'Netzach',x:-1,y:4},{id:'Tiferet',x:0,y:3},{id:'Gevurah',x:1,y:2},{id:'Chesed',x:-1,y:2},{id:'Binah',x:1,y:1},{id:'Chokhmah',x:-1,y:1},{id:'Keter',x:0,y:0}
+];
+const classes=['vertical','diagonal','horizontal','diagonal','diagonal','horizontal','diagonal','horizontal','diagonal'];
+const classShort={vertical:'V',horizontal:'H',diagonal:'D'};
+const letterClass={vertical:'Double-class slot',horizontal:'Mother-class slot',diagonal:'Simple-class slot'};
+let ctx=null,timers=[];
+function stopAll(){timers.forEach(clearTimeout);timers=[];document.querySelectorAll('.active').forEach(el=>el.classList.remove('active'));if(ctx){ctx.close().catch(()=>{});ctx=null}}
+function audio(){stopAll();ctx=new (window.AudioContext||window.webkitAudioContext)();return ctx}
+function carrierHz(i){if(document.getElementById('carrier').value==='fixed')return 220;const pc=(7*i)%12;return 261.625565*Math.pow(2,pc/12)}
+function panX(x){const mirrored=document.getElementById('mirror').checked?-x:x;return Math.max(-.82,Math.min(.82,mirrored*.82))}
+function makeGesture(i,start,dur,withAudio){const a=stations[i],b=stations[i+1],kind=classes[i],base=carrierHz(i),end=(b.y<a.y)?base*1.5:base;const p0=panX(a.x),p1=panX(b.x);if(withAudio){const o=ctx.createOscillator(),g=ctx.createGain();o.type='sine';o.frequency.setValueAtTime(base,start);if(end!==base)o.frequency.exponentialRampToValueAtTime(end,start+dur*.82);g.gain.setValueAtTime(.0001,start);g.gain.exponentialRampToValueAtTime(.16,start+.035);g.gain.exponentialRampToValueAtTime(.0001,start+dur);if(ctx.createStereoPanner){const p=ctx.createStereoPanner();p.pan.setValueAtTime(p0,start);p.pan.linearRampToValueAtTime(p1,start+dur*.82);o.connect(g).connect(p).connect(ctx.destination)}else{o.connect(g).connect(ctx.destination)}o.start(start);o.stop(start+dur+.04)}return {a,b,kind,base,end,p0,p1}}
+function activate(i,gesture,ms){timers.push(setTimeout(()=>{document.querySelectorAll('.active').forEach(el=>el.classList.remove('active'));document.querySelector(`[data-edge="${i}"]`)?.classList.add('active');document.querySelector(`[data-node="${i}"] .node`)?.classList.add('active');document.querySelector(`[data-node="${i+1}"] .node`)?.classList.add('active');document.querySelector(`[data-score="${i}"]`)?.classList.add('active');const dx=gesture.b.x-gesture.a.x,dy=gesture.b.y-gesture.a.y;document.getElementById('readout').textContent=`${i+1}/9  ${gesture.a.id} → ${gesture.b.id}\n${classShort[gesture.kind]} / ${letterClass[gesture.kind]}\nvector dx=${dx}, dy=${dy}\ncarrier ${gesture.base.toFixed(1)} Hz → ${gesture.end.toFixed(1)} Hz\npan ${gesture.p0.toFixed(2)} → ${gesture.p1.toFixed(2)}\n\nThe sound renders the vector; it does not define the path.`},ms))}
+function run(withAudio){stopAll();if(withAudio)audio();const dur=.72,gap=.12,t0=withAudio?ctx.currentTime+.08:0;for(let i=0;i<9;i++){const gesture=makeGesture(i,t0+i*(dur+gap),dur,withAudio);activate(i,gesture,i*(dur+gap)*1000)}timers.push(setTimeout(()=>{document.getElementById('readout').textContent='Traversal complete. Net lateral displacement = 0; net ascent = 6 levels.\nMirror the Tree or change the carrier and replay: path identity should remain unchanged.'},9*(dur+gap)*1000))}
+function prototypeGesture(kind,index){const dur=.9,start=ctx.currentTime+.08+index*1.05,base=220;let end=base,p0=0,p1=0;if(kind==='vertical'){end=330}else if(kind==='horizontal'){p0=.8;p1=-.8}else{end=330;p0=-.8;p1=.8}const o=ctx.createOscillator(),g=ctx.createGain();o.type='sine';o.frequency.setValueAtTime(base,start);if(end!==base)o.frequency.exponentialRampToValueAtTime(end,start+dur*.8);g.gain.setValueAtTime(.0001,start);g.gain.exponentialRampToValueAtTime(.16,start+.035);g.gain.exponentialRampToValueAtTime(.0001,start+dur);if(ctx.createStereoPanner){const p=ctx.createStereoPanner();p.pan.setValueAtTime(p0,start);p.pan.linearRampToValueAtTime(p1,start+dur*.8);o.connect(g).connect(p).connect(ctx.destination)}else{o.connect(g).connect(ctx.destination)}o.start(start);o.stop(start+dur+.04);timers.push(setTimeout(()=>{document.getElementById('readout').textContent=`isolated operator ${index+1}/3 — ${kind.toUpperCase()}\n${kind==='vertical'?'pitch rise / centered':kind==='horizontal'?'level pitch / stereo crossing':'pitch rise / stereo crossing'}`},index*1050))}
+document.getElementById('play').onclick=()=>run(true);
+document.getElementById('visual').onclick=()=>run(false);
+document.getElementById('operators').onclick=()=>{audio();['vertical','horizontal','diagonal'].forEach(prototypeGesture)};
+document.getElementById('stop').onclick=stopAll;
+document.getElementById('blind').onchange=e=>document.getElementById('treeCard').classList.toggle('blind',e.target.checked);
+</script>
+</body>
+</html>
