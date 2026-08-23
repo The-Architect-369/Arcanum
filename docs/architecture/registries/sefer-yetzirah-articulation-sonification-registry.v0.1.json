@@ -1,0 +1,207 @@
+{
+  "registry": "sefer-yetzirah.articulation-sonification.v0.1",
+  "status": "design-candidate-projection",
+  "phase": "Pre-Genesis",
+  "authority": "historical articulation metadata plus bounded perceptual stress-test projection only; not historical phonetic reconstruction, Hebrew pronunciation canon, curriculum authority, identity, recognition, readiness, governance, MANA policy, healing claim, or metaphysical frequency doctrine",
+  "purpose": "Test whether the five Sefer Yetzirah articulation regions can vary as an auditory surface while the registered Vitae Tree transformation operators remain invariant and independently legible.",
+  "sources": {
+    "repository": [
+      "docs/architecture/registries/sefer-yetzirah-letter-wheel-registry.v0.1.json",
+      "docs/architecture/registries/vitae-tree-transformation-operator-registry.v0.1.json",
+      "docs/architecture/registries/vitae-harmonic-rendering-projection.v0.1.json"
+    ],
+    "historical_reference": [
+      "Sefer Yetzirah Gra Version 2:3 describes twenty-two foundation letters as engraved with voice, carved with breath, and set in the mouth in five places.",
+      "The five cited groupings are throat/guttural, palate/palatal, tongue/lingual, teeth/dental, and lips/labial."
+    ],
+    "modern_acoustic_reference": [
+      "Speech-perception research shows that place of articulation can be cued by formant transitions, spectral shape, relative spectral energy, burst/noise properties, and their interaction with phonetic context.",
+      "Those findings do not establish one fixed timbre for a historical articulation group and do not reconstruct ancient Hebrew pronunciation."
+    ],
+    "reference_urls": [
+      "https://www.sefaria.org/Sefer_Yetzirah_Gra_Version.2.2",
+      "https://pubmed.ncbi.nlm.nih.gov/8969483/",
+      "https://pubmed.ncbi.nlm.nih.gov/6223060/",
+      "https://pubmed.ncbi.nlm.nih.gov/21499546/"
+    ]
+  },
+  "invariants": {
+    "articulation_group_count": 5,
+    "articulation_group_is_timbre_identity": false,
+    "articulation_group_is_modern_ipa_place": false,
+    "articulation_group_is_vitae_element": false,
+    "individual_letter_pronunciation_encoded": false,
+    "individual_letter_tree_edge_assignment_encoded": false,
+    "operator_identity_owned_by_timbre": false,
+    "carrier_identity_owned_by_timbre": false,
+    "fixed_sacred_hz": false,
+    "audio_required_for_access": false,
+    "recognition_effect": "none",
+    "authority_effect": "none",
+    "mana_effect": "none"
+  },
+  "historical_articulation_regions": [
+    {
+      "id": "guttural",
+      "historical_region": "throat",
+      "letters": ["alef", "heh", "chet", "ayin"],
+      "count": 4,
+      "prototype_timbre_profile": "proxy-a",
+      "prototype_posture": "synthetic differentiation profile only; not a reconstruction of these letters"
+    },
+    {
+      "id": "palatal",
+      "historical_region": "palate",
+      "letters": ["gimel", "yod", "kaf", "qof"],
+      "count": 4,
+      "prototype_timbre_profile": "proxy-b",
+      "prototype_posture": "synthetic differentiation profile only; not a reconstruction of these letters"
+    },
+    {
+      "id": "lingual",
+      "historical_region": "tongue",
+      "letters": ["dalet", "tet", "lamed", "nun", "tav"],
+      "count": 5,
+      "prototype_timbre_profile": "proxy-c",
+      "prototype_posture": "synthetic differentiation profile only; not a reconstruction of these letters"
+    },
+    {
+      "id": "dental",
+      "historical_region": "teeth",
+      "letters": ["zayin", "samekh", "shin", "resh", "tzadi"],
+      "count": 5,
+      "prototype_timbre_profile": "proxy-d",
+      "prototype_posture": "synthetic differentiation profile only; not a reconstruction of these letters"
+    },
+    {
+      "id": "labial",
+      "historical_region": "lips",
+      "letters": ["bet", "vav", "mem", "peh"],
+      "count": 4,
+      "prototype_timbre_profile": "proxy-e",
+      "prototype_posture": "synthetic differentiation profile only; not a reconstruction of these letters"
+    }
+  ],
+  "prototype_signal_architecture": {
+    "order": [
+      "carrier_source",
+      "operator_frequency_trajectory",
+      "timbre_profile_harmonic_mix",
+      "operator_pan_trajectory",
+      "shared_amplitude_envelope",
+      "output"
+    ],
+    "reason": "Pitch/frequency and pan encode the Tree transformation operator. Timbre is inserted as an orthogonal spectral-envelope layer and therefore may vary without rewriting the operator coordinates.",
+    "fundamental_preservation_rule": "Every proxy retains an audible fundamental component throughout the operator so a timbre change cannot intentionally erase the pitch trajectory.",
+    "stereo_preservation_rule": "Timbre shaping is applied before the operator pan stage and has no left/right bias.",
+    "duration_preservation_rule": "All proxy comparisons use the same edge duration and amplitude envelope.",
+    "detune_rule": "Timbre proxies may not detune the carrier fundamental or alter the registered 3:2 vertical-step projection."
+  },
+  "synthetic_timbre_proxies": {
+    "posture": "Five deliberately synthetic spectral envelopes provide different auditory textures for stress testing only. Their mapping to historical group labels is versioned, replaceable, and has no claim of phonetic accuracy.",
+    "profiles": [
+      {
+        "id": "proxy-a",
+        "partial_gains": [1.0, 0.62, 0.28, 0.18, 0.12],
+        "noise_gain": 0.018
+      },
+      {
+        "id": "proxy-b",
+        "partial_gains": [1.0, 0.34, 0.62, 0.42, 0.28],
+        "noise_gain": 0.012
+      },
+      {
+        "id": "proxy-c",
+        "partial_gains": [1.0, 0.52, 0.38, 0.34, 0.24],
+        "noise_gain": 0.022
+      },
+      {
+        "id": "proxy-d",
+        "partial_gains": [1.0, 0.28, 0.34, 0.50, 0.42],
+        "noise_gain": 0.040
+      },
+      {
+        "id": "proxy-e",
+        "partial_gains": [1.0, 0.68, 0.30, 0.14, 0.08],
+        "noise_gain": 0.008
+      }
+    ]
+  },
+  "tree_operator_axis": {
+    "registry": "vitae.tree-transformation-operators.v0.1",
+    "operators": [
+      {
+        "id": "vertical",
+        "historical_letter_class_slot": "double",
+        "semantic_projection": "frequency trajectory changes; pan remains centered"
+      },
+      {
+        "id": "horizontal",
+        "historical_letter_class_slot": "mother",
+        "semantic_projection": "frequency remains level; pan crosses the field"
+      },
+      {
+        "id": "diagonal",
+        "historical_letter_class_slot": "simple",
+        "semantic_projection": "frequency trajectory and pan trajectory change together"
+      }
+    ]
+  },
+  "factorial_stress_test": {
+    "operator_count": 3,
+    "articulation_profile_count": 5,
+    "operator_by_profile_conditions": 15,
+    "carrier_modes": 2,
+    "conditions_with_carriers": 30,
+    "mirror_states": 2,
+    "conditions_with_carriers_and_mirror": 60,
+    "structural_acceptance_criteria": [
+      "Changing timbre profile does not change operator frequency trajectory.",
+      "Changing timbre profile does not change operator pan trajectory.",
+      "Changing carrier does not change operator class.",
+      "Mirroring reverses left/right presentation but not operator class.",
+      "Audio-off plain-language output names the same operator independently of all sound settings."
+    ],
+    "human_perception_acceptance_criteria": [
+      "A listener can distinguish vertical, horizontal, and diagonal operators above chance across multiple timbre profiles without relying on station labels.",
+      "No single timbre profile is required for operator recognition.",
+      "Reduced-sensory and audio-off modes convey equivalent relation identity."
+    ],
+    "human_perception_status": "not_measured_in_repository"
+  },
+  "fivefold_vitae_boundary": {
+    "vitae_section_ids": ["spirit", "air", "fire", "earth", "water"],
+    "articulation_ids": ["guttural", "palatal", "lingual", "dental", "labial"],
+    "same_count": true,
+    "semantic_bridge_encoded": false,
+    "reason": "The two fivefold structures arise from different source grammars. Count equality alone does not justify element-to-articulation correspondence."
+  },
+  "audit_dispositions": {
+    "five_articulation_regions_as_historical_metadata": "pass",
+    "five_articulation_regions_as_independent_perceptual_axis": "bounded_pass",
+    "one_fixed_timbre_as_historical_identity_of_each_region": "fail",
+    "five_articulation_regions_equals_five_vitae_elements": "fail",
+    "synthetic_five_profile_operator_stress_test": "pass_as_prototype_method",
+    "human_operator_recognition_across_profiles": "unresolved_requires_listening_test",
+    "individual_letter_pronunciation_or_tree_path_mapping": "deferred"
+  },
+  "candidate_laws": [
+    "Articulation Region Is Not Timbre Identity — a historical production grouping may guide a perceptual family without claiming one invariant sound signature.",
+    "Timbre May Color an Operator; It May Not Rewrite It.",
+    "Fundamental and Pan Preserve Relation — the operator-defining trajectories remain stable while spectral envelope varies.",
+    "Fivefold Is Not Fivefold Identity — equal cardinality between articulation groups and Vitae section modes creates no correspondence by itself.",
+    "Proxy Before Reconstruction — synthetic timbres must remain explicitly experimental until historically and phonetically grounded recordings or models exist.",
+    "Human Perception Must Be Measured — code-level orthogonality is necessary but does not prove listener-level recognizability."
+  ],
+  "not_encoded": [
+    "historically correct pronunciation of the twenty-two letters",
+    "one authentic timbre for throat, palate, tongue, teeth, or lips",
+    "individual Hebrew letter-to-Tree-edge correspondences",
+    "element-to-articulation correspondences",
+    "sacred frequencies",
+    "healing effects",
+    "participant resonance scoring",
+    "Tempus synchronization",
+    "recognition, readiness, authority, governance, or MANA effects"
+  ]
+}
