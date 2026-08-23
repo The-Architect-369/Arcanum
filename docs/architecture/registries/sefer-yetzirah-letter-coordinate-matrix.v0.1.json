@@ -1,0 +1,127 @@
+{
+  "registry": "sefer-yetzirah.letter-coordinate-matrix.v0.1",
+  "status": "historical-reference-design-candidate",
+  "phase": "Pre-Genesis",
+  "authority": "derived cross-classification of already registered historical letter categories; not a Tree-edge assignment, pronunciation canon, musical correspondence, curriculum authority, recognition, identity, governance, MANA policy, or metaphysical ontology",
+  "purpose": "Represent each of the twenty-two registered letters by the intersection of two independent source-derived categorical axes: Mother/Double/Simple letter class and one of five articulation regions.",
+  "sources": [
+    "docs/architecture/registries/sefer-yetzirah-letter-wheel-registry.v0.1.json",
+    "docs/architecture/registries/sefer-yetzirah-articulation-sonification-registry.v0.1.json"
+  ],
+  "axes": {
+    "letter_class": [
+      {"id":"mother","count":3,"tree_orientation_slot":"horizontal"},
+      {"id":"double","count":7,"tree_orientation_slot":"vertical"},
+      {"id":"simple","count":12,"tree_orientation_slot":"diagonal"}
+    ],
+    "articulation_region": [
+      {"id":"guttural","historical_region":"throat","count":4},
+      {"id":"palatal","historical_region":"palate","count":4},
+      {"id":"lingual","historical_region":"tongue","count":5},
+      {"id":"dental","historical_region":"teeth","count":5},
+      {"id":"labial","historical_region":"lips","count":4}
+    ]
+  },
+  "matrix": {
+    "rows": ["mother","double","simple"],
+    "columns": ["guttural","palatal","lingual","dental","labial"],
+    "cells": {
+      "mother": {
+        "guttural": ["alef"],
+        "palatal": [],
+        "lingual": [],
+        "dental": ["shin"],
+        "labial": ["mem"]
+      },
+      "double": {
+        "guttural": [],
+        "palatal": ["gimel","kaf"],
+        "lingual": ["dalet","tav"],
+        "dental": ["resh"],
+        "labial": ["bet","peh"]
+      },
+      "simple": {
+        "guttural": ["heh","chet","ayin"],
+        "palatal": ["yod","qof"],
+        "lingual": ["tet","lamed","nun"],
+        "dental": ["zayin","samekh","tzadi"],
+        "labial": ["vav"]
+      }
+    }
+  },
+  "counts": {
+    "theoretical_cells": 15,
+    "occupied_cells": 12,
+    "empty_cells": 3,
+    "empty_cell_ids": [
+      "mother-palatal",
+      "mother-lingual",
+      "double-guttural"
+    ],
+    "row_totals": {"mother":3,"double":7,"simple":12},
+    "column_totals": {"guttural":4,"palatal":4,"lingual":5,"dental":5,"labial":4},
+    "letter_total": 22
+  },
+  "letter_coordinates": [
+    {"id":"alef","hebrew":"א","letter_class":"mother","articulation_region":"guttural"},
+    {"id":"bet","hebrew":"ב","letter_class":"double","articulation_region":"labial"},
+    {"id":"gimel","hebrew":"ג","letter_class":"double","articulation_region":"palatal"},
+    {"id":"dalet","hebrew":"ד","letter_class":"double","articulation_region":"lingual"},
+    {"id":"heh","hebrew":"ה","letter_class":"simple","articulation_region":"guttural"},
+    {"id":"vav","hebrew":"ו","letter_class":"simple","articulation_region":"labial"},
+    {"id":"zayin","hebrew":"ז","letter_class":"simple","articulation_region":"dental"},
+    {"id":"chet","hebrew":"ח","letter_class":"simple","articulation_region":"guttural"},
+    {"id":"tet","hebrew":"ט","letter_class":"simple","articulation_region":"lingual"},
+    {"id":"yod","hebrew":"י","letter_class":"simple","articulation_region":"palatal"},
+    {"id":"kaf","hebrew":"כ","letter_class":"double","articulation_region":"palatal"},
+    {"id":"lamed","hebrew":"ל","letter_class":"simple","articulation_region":"lingual"},
+    {"id":"mem","hebrew":"מ","letter_class":"mother","articulation_region":"labial"},
+    {"id":"nun","hebrew":"נ","letter_class":"simple","articulation_region":"lingual"},
+    {"id":"samekh","hebrew":"ס","letter_class":"simple","articulation_region":"dental"},
+    {"id":"ayin","hebrew":"ע","letter_class":"simple","articulation_region":"guttural"},
+    {"id":"peh","hebrew":"פ","letter_class":"double","articulation_region":"labial"},
+    {"id":"tzadi","hebrew":"צ","letter_class":"simple","articulation_region":"dental"},
+    {"id":"qof","hebrew":"ק","letter_class":"simple","articulation_region":"palatal"},
+    {"id":"resh","hebrew":"ר","letter_class":"double","articulation_region":"dental"},
+    {"id":"shin","hebrew":"ש","letter_class":"mother","articulation_region":"dental"},
+    {"id":"tav","hebrew":"ת","letter_class":"double","articulation_region":"lingual"}
+  ],
+  "derived_observations": [
+    "The three Mother letters occupy three different articulation regions: Alef=guttural, Shin=dental, Mem=labial; no Mother is registered in the palatal or lingual columns.",
+    "No Double letter is registered in the guttural column.",
+    "Simple letters occupy all five articulation regions.",
+    "The five articulation regions therefore cut across the 3/7/12 letter classes rather than duplicating them.",
+    "A letter may be represented as a pair (letter_class, articulation_region) before any individual Tree-edge or musical mapping is selected."
+  ],
+  "tree_bridge": {
+    "class_to_orientation": {
+      "mother":"horizontal",
+      "double":"vertical",
+      "simple":"diagonal"
+    },
+    "articulation_to_tree_edge": "none",
+    "individual_letter_to_tree_edge": "none",
+    "safe_use": "If a future sourced correspondence assigns an individual letter to a Tree edge, its articulation-region metadata can travel with that letter as a second independent coordinate.",
+    "unsafe_use": "Choosing a Tree edge merely because its synthetic timbre sounds compatible with an articulation region."
+  },
+  "vitae_boundary": {
+    "five_articulation_regions_equals_five_vitae_sections": false,
+    "three_mothers_equals_tree_horizontal_operator_identity_only_at_class_level": true,
+    "individual_mother_edge_assignment": "unresolved",
+    "posture": "The matrix is letter metadata, not a curriculum prerequisite or recognition structure."
+  },
+  "candidate_laws": [
+    "Two Coordinates Before One Correspondence — preserve class and articulation as independent letter metadata before selecting any individual Tree path.",
+    "Cross-Cutting Axes Are Stronger Than Count Matches — an independently sourced intersection is more informative than two unrelated sets sharing a cardinality.",
+    "Articulation Travels With the Letter, Not With the Tree Edge — only a sourced letter assignment may carry articulation metadata onto a specific path.",
+    "Sparse Matrix Is Not Missing Meaning — empty category intersections do not require invented letters, elements, or paths."
+  ],
+  "not_encoded": [
+    "a canonical historical Tree correspondence scheme",
+    "individual letters on Tree edges",
+    "musical notes or frequencies",
+    "five Vitae section correspondences",
+    "pronunciation reconstruction",
+    "recognition, readiness, Identity, authority, governance, or MANA effects"
+  ]
+}
