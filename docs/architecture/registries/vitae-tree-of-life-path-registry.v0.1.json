@@ -1,0 +1,143 @@
+{
+  "registry": "vitae.tree-of-life-paths.v0.1",
+  "status": "design-candidate",
+  "phase": "Pre-Genesis",
+  "authority": "geometry-independent Tree relationship registry for historical comparison and optional Vitae navigation; not recognition, readiness, identity, governance, authority, or metaphysical causation",
+  "purpose": "Represent the twenty-two-path Tree relationship structure without forcing one historical diagram or one Hebrew-letter-to-path attribution into Vitae canon, and test the existing ten-class Vitae traversal against known path variants.",
+  "sources": {
+    "repository": [
+      "docs/architecture/registries/vitae-tree-of-life-class-registry.v0.1.json",
+      "docs/architecture/registries/vitae-grade-cycle-registry.v0.1.json",
+      "docs/roadmap/arcanum-experience-roadmap.md"
+    ],
+    "historical_context": [
+      "Sefer Yetzirah distinguishes ten sefirot and twenty-two foundation letters, divided as three Mothers, seven Doubles, and twelve Simple letters.",
+      "Later Tree traditions commonly arrange twenty-two channels as three horizontal, seven vertical, and twelve diagonal paths, associating those orientation classes respectively with Mothers, Doubles, and Simples.",
+      "At least two historically discussed Tree schemes differ in two diagonal paths: a common Western/Cordoveran-style arrangement uses Netzach-Malkuth and Hod-Malkuth, while a Lurianic/Safed-style arrangement substitutes Chokhmah-Gevurah and Binah-Chesed."
+    ],
+    "human_architect_input": "2026-08-23: Tree-of-Life/Kabbalah structure inspired the ten-grade system and the intended ten-class traversal inside each grade."
+  },
+  "invariants": {
+    "station_count": 10,
+    "path_count_per_scheme": 22,
+    "horizontal_path_count": 3,
+    "vertical_path_count": 7,
+    "diagonal_path_count": 12,
+    "horizontal_letter_class": "mother",
+    "vertical_letter_class": "double",
+    "diagonal_letter_class": "simple",
+    "individual_letter_path_assignment_encoded": false,
+    "tree_path_is_grade_progression": false,
+    "tree_path_is_recognition": false,
+    "tree_path_grants_authority": false,
+    "tree_path_has_fixed_frequency": false,
+    "geometry_required": false,
+    "historical_variant_must_be_declared": true
+  },
+  "station_registry": "vitae.tree-of-life-classes.v0.1",
+  "orientation_classes": [
+    {
+      "id": "horizontal",
+      "count": 3,
+      "historical_letter_class": "mother",
+      "letters": ["alef", "mem", "shin"],
+      "individual_edge_assignment": "unresolved_by_this_registry"
+    },
+    {
+      "id": "vertical",
+      "count": 7,
+      "historical_letter_class": "double",
+      "letters": ["bet", "gimel", "dalet", "kaf", "peh", "resh", "tav"],
+      "individual_edge_assignment": "unresolved_by_this_registry"
+    },
+    {
+      "id": "diagonal",
+      "count": 12,
+      "historical_letter_class": "simple",
+      "letters": ["heh", "vav", "zayin", "chet", "tet", "yod", "lamed", "nun", "samekh", "ayin", "tzadi", "qof"],
+      "individual_edge_assignment": "unresolved_by_this_registry"
+    }
+  ],
+  "common_edges": [
+    {"id":"h-chokhmah-binah","a":"chokhmah","b":"binah","orientation":"horizontal","letter_class":"mother"},
+    {"id":"h-chesed-gevurah","a":"chesed","b":"gevurah","orientation":"horizontal","letter_class":"mother"},
+    {"id":"h-netzach-hod","a":"netzach","b":"hod","orientation":"horizontal","letter_class":"mother"},
+
+    {"id":"v-keter-tiferet","a":"keter","b":"tiferet","orientation":"vertical","letter_class":"double"},
+    {"id":"v-chokhmah-chesed","a":"chokhmah","b":"chesed","orientation":"vertical","letter_class":"double"},
+    {"id":"v-chesed-netzach","a":"chesed","b":"netzach","orientation":"vertical","letter_class":"double"},
+    {"id":"v-binah-gevurah","a":"binah","b":"gevurah","orientation":"vertical","letter_class":"double"},
+    {"id":"v-gevurah-hod","a":"gevurah","b":"hod","orientation":"vertical","letter_class":"double"},
+    {"id":"v-tiferet-yesod","a":"tiferet","b":"yesod","orientation":"vertical","letter_class":"double"},
+    {"id":"v-yesod-malkuth","a":"yesod","b":"malkuth","orientation":"vertical","letter_class":"double"},
+
+    {"id":"d-keter-chokhmah","a":"keter","b":"chokhmah","orientation":"diagonal","letter_class":"simple"},
+    {"id":"d-keter-binah","a":"keter","b":"binah","orientation":"diagonal","letter_class":"simple"},
+    {"id":"d-chokhmah-tiferet","a":"chokhmah","b":"tiferet","orientation":"diagonal","letter_class":"simple"},
+    {"id":"d-binah-tiferet","a":"binah","b":"tiferet","orientation":"diagonal","letter_class":"simple"},
+    {"id":"d-chesed-tiferet","a":"chesed","b":"tiferet","orientation":"diagonal","letter_class":"simple"},
+    {"id":"d-gevurah-tiferet","a":"gevurah","b":"tiferet","orientation":"diagonal","letter_class":"simple"},
+    {"id":"d-tiferet-netzach","a":"tiferet","b":"netzach","orientation":"diagonal","letter_class":"simple"},
+    {"id":"d-tiferet-hod","a":"tiferet","b":"hod","orientation":"diagonal","letter_class":"simple"},
+    {"id":"d-netzach-yesod","a":"netzach","b":"yesod","orientation":"diagonal","letter_class":"simple"},
+    {"id":"d-hod-yesod","a":"hod","b":"yesod","orientation":"diagonal","letter_class":"simple"}
+  ],
+  "schemes": {
+    "western_cordoveran_style": {
+      "status": "historical_comparison_variant",
+      "variant_edges": [
+        {"id":"d-netzach-malkuth","a":"netzach","b":"malkuth","orientation":"diagonal","letter_class":"simple"},
+        {"id":"d-hod-malkuth","a":"hod","b":"malkuth","orientation":"diagonal","letter_class":"simple"}
+      ],
+      "removed_relative_to_lurianic": ["d-chokhmah-gevurah", "d-binah-chesed"],
+      "total_edges": 22
+    },
+    "lurianic_safed_style": {
+      "status": "historical_comparison_variant",
+      "variant_edges": [
+        {"id":"d-chokhmah-gevurah","a":"chokhmah","b":"gevurah","orientation":"diagonal","letter_class":"simple"},
+        {"id":"d-binah-chesed","a":"binah","b":"chesed","orientation":"diagonal","letter_class":"simple"}
+      ],
+      "removed_relative_to_western": ["d-netzach-malkuth", "d-hod-malkuth"],
+      "total_edges": 22
+    }
+  },
+  "vitae_class_sequence_test": {
+    "sequence": ["malkuth", "yesod", "hod", "netzach", "tiferet", "gevurah", "chesed", "binah", "chokhmah", "keter"],
+    "transition_count": 9,
+    "western_cordoveran_style": {
+      "matched_transitions": 8,
+      "unmatched_transitions": ["chesed-binah"],
+      "result": "fails_as_complete_tree_walk"
+    },
+    "lurianic_safed_style": {
+      "matched_transitions": 9,
+      "unmatched_transitions": [],
+      "result": "passes_as_ten-station_hamiltonian_path_design_candidate"
+    },
+    "interpretation": "The intended reverse-number Vitae class traversal unexpectedly forms a contiguous path through all ten stations in the Lurianic/Safed-style graph. This is structural evidence worth preserving, not proof that Vitae must adopt Lurianic theology, letter attribution, or metaphysical claims."
+  },
+  "relationship_types": {
+    "curriculum_station_sequence": "owned by vitae.tree-of-life-classes.v0.1 and vitae.grade-cycle.v0.1",
+    "tree_path_adjacency": "owned by this registry with explicit historical scheme",
+    "individual_hebrew_letter_path": "future versioned correspondence overlay only",
+    "sonification_or_music": "separate optional projection overlay only",
+    "tempus_context": "separate factual/optional context attachment only"
+  },
+  "candidate_laws": [
+    "Variant Before Correspondence — declare which Tree graph is being used before assigning a path meaning.",
+    "Station Order Is Not Automatically Path Order — a curriculum sequence and a Tree adjacency graph are distinct registries even when they align.",
+    "A Historical Fit Is Evidence, Not Authority — structural correspondence may justify study but not recognition, governance, or metaphysical causation.",
+    "Letter Class Before Letter Assignment — 3/7/12 orientation classes may be preserved before any individual Hebrew letter is placed on an edge."
+  ],
+  "not_encoded": [
+    "a canonical Arcanum choice between Tree variants",
+    "individual Hebrew letter-to-edge assignments",
+    "Tarot correspondences",
+    "fixed musical notes or frequencies",
+    "participant personality",
+    "readiness or recognition",
+    "authority",
+    "MANA effects"
+  ]
+}
