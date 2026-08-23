@@ -1,0 +1,396 @@
+{
+  "registry": "vitae.curriculum.v0.1",
+  "status": "design-candidate",
+  "phase": "Pre-Genesis",
+  "authority": "geometry-independent Vitae curriculum/navigation registry; not recognition, rank, readiness, or authority",
+  "sources": [
+    "docs/modules/vitae/vitae-and-becoming.md",
+    "docs/vitae/index.md",
+    "docs/vitae/overview.md",
+    "docs/vitae/curriculum/elementary-school/elementary-school-canon.md",
+    "docs/vitae/curriculum/intermediate-school/intermediate-school-canon.md",
+    "docs/vitae/curriculum/high-school/high-school-canon.md",
+    "docs/vitae/curriculum/adept/adept-threshold-canon.md",
+    "docs/vitae/curriculum/specializations/specialization-overview-codex.md",
+    "docs/vitae/curriculum/specializations/specialization-wide-invariants-canon.md",
+    "docs/specs/modules/vitae-context-schema.md",
+    "docs/specs/modules/vitae-content-foundation.md",
+    "docs/architecture/vitae-icosahedron-geometry-audit.md",
+    "docs/architecture/vitae-icosahedron-g10-2-follow-up.md"
+  ],
+  "invariants": {
+    "recognition_after_stabilization": true,
+    "silence_valid": true,
+    "worth_scoring": false,
+    "automatic_readiness": false,
+    "paid_advancement": false,
+    "geometry_required": false,
+    "specializations_hierarchical": false,
+    "specialization_required_order": false,
+    "fixed_grade_specialization_bijection": false
+  },
+  "grades": [
+    {
+      "id": "grade-i",
+      "kind": "grade",
+      "order": 1,
+      "roman": "I",
+      "title": "Guardian",
+      "school": "elementary",
+      "function": "Self-governance and reliability",
+      "establishes": [
+        "daily self-regulation",
+        "non-reactive responsibility",
+        "continuity without external prompting"
+      ],
+      "previous_grade": null,
+      "next_grade": "grade-ii",
+      "navigation_posture": "responsibility envelope / curriculum region; never human worth"
+    },
+    {
+      "id": "grade-ii",
+      "kind": "grade",
+      "order": 2,
+      "roman": "II",
+      "title": "Seeker",
+      "school": "elementary",
+      "function": "Meaning discipline and inquiry stability",
+      "establishes": [
+        "inquiry without obsession",
+        "ambiguity without collapse",
+        "cognition without premature coherence"
+      ],
+      "previous_grade": "grade-i",
+      "next_grade": "grade-iii",
+      "navigation_posture": "responsibility envelope / curriculum region; never human worth"
+    },
+    {
+      "id": "grade-iii",
+      "kind": "grade",
+      "order": 3,
+      "roman": "III",
+      "title": "Disciple",
+      "school": "elementary",
+      "function": "Ethical action without authority",
+      "establishes": [
+        "proportional action",
+        "restraint and refusal",
+        "consequence over justification"
+      ],
+      "previous_grade": "grade-ii",
+      "next_grade": "grade-iv",
+      "navigation_posture": "responsibility envelope / curriculum region; never human worth"
+    },
+    {
+      "id": "grade-iv",
+      "kind": "grade",
+      "order": 4,
+      "roman": "IV",
+      "title": "Mystic",
+      "school": "elementary",
+      "function": "Perception without interpretation",
+      "establishes": [
+        "perceptual range with grounding",
+        "observation without doctrine",
+        "containment over expansion"
+      ],
+      "previous_grade": "grade-iii",
+      "next_grade": "grade-v",
+      "navigation_posture": "responsibility envelope / curriculum region; never human worth"
+    },
+    {
+      "id": "grade-v",
+      "kind": "grade",
+      "order": 5,
+      "roman": "V",
+      "title": "Scholar",
+      "school": "intermediate",
+      "function": "Structured knowledge and cognitive architecture",
+      "establishes": [
+        "disciplined learning",
+        "systems thinking",
+        "discernment between signal and noise"
+      ],
+      "previous_grade": "grade-iv",
+      "next_grade": "grade-vi",
+      "navigation_posture": "responsibility envelope / curriculum region; never human worth"
+    },
+    {
+      "id": "grade-vi",
+      "kind": "grade",
+      "order": 6,
+      "roman": "VI",
+      "title": "Healer",
+      "school": "intermediate",
+      "function": "Care, maintenance, and restoration",
+      "establishes": [
+        "repair without ownership",
+        "care without dependency",
+        "restoration without authority"
+      ],
+      "previous_grade": "grade-v",
+      "next_grade": "grade-vii",
+      "navigation_posture": "responsibility envelope / curriculum region; never human worth"
+    },
+    {
+      "id": "grade-vii",
+      "kind": "grade",
+      "order": 7,
+      "roman": "VII",
+      "title": "Alchemist",
+      "school": "intermediate",
+      "function": "Transformation and synthesis",
+      "establishes": [
+        "deliberate change",
+        "synthesis across domains",
+        "transmutation without destabilization"
+      ],
+      "previous_grade": "grade-vi",
+      "next_grade": "grade-viii",
+      "navigation_posture": "responsibility envelope / curriculum region; never human worth"
+    },
+    {
+      "id": "grade-viii",
+      "kind": "grade",
+      "order": 8,
+      "roman": "VIII",
+      "title": "Sage",
+      "school": "intermediate",
+      "function": "Integration and reflective wisdom",
+      "establishes": [
+        "coherent synthesis",
+        "reflection at scale",
+        "embodied understanding"
+      ],
+      "previous_grade": "grade-vii",
+      "next_grade": "grade-ix",
+      "navigation_posture": "responsibility envelope / curriculum region; never human worth"
+    },
+    {
+      "id": "grade-ix",
+      "kind": "grade",
+      "order": 9,
+      "roman": "IX",
+      "title": "Oracle",
+      "school": "high",
+      "function": "Pattern perception and foresight without prophecy",
+      "establishes": [
+        "recognition of emergent patterns",
+        "awareness of second- and third-order effects",
+        "perception without prediction"
+      ],
+      "previous_grade": "grade-viii",
+      "next_grade": "grade-x",
+      "navigation_posture": "responsibility envelope / curriculum region; never human worth"
+    },
+    {
+      "id": "grade-x",
+      "kind": "grade",
+      "order": 10,
+      "roman": "X",
+      "title": "Adept",
+      "school": "high",
+      "function": "Creative stabilization and governance readiness",
+      "establishes": [
+        "synthesis of all prior grades",
+        "containment of generative capability",
+        "readiness to steward advanced domains"
+      ],
+      "previous_grade": "grade-ix",
+      "next_grade": null,
+      "navigation_posture": "responsibility envelope / curriculum region; never human worth"
+    }
+  ],
+  "specializations": [
+    {
+      "id": "specialization-arcanist",
+      "kind": "specialization",
+      "title": "Arcanist",
+      "mandate": "Epistemic stewardship; knowing without authority",
+      "domain": "Knowledge systems, models, limits of knowing",
+      "does_not_do": "Declare truth; claim certainty",
+      "primary_risk": "Dogmatism",
+      "safeguard": "Epistemic humility",
+      "entry_posture": "post-Adept eligibility; voluntary and reversible",
+      "hierarchy": "lateral",
+      "required_order": null,
+      "fixed_neighbors": []
+    },
+    {
+      "id": "specialization-philosopher",
+      "kind": "specialization",
+      "title": "Philosopher",
+      "mandate": "Coherence without closure",
+      "domain": "Meaning, ethics, integration",
+      "does_not_do": "Resolve ambiguity into doctrine",
+      "primary_risk": "Totalizing narratives",
+      "safeguard": "Open-ended inquiry",
+      "entry_posture": "post-Adept eligibility; voluntary and reversible",
+      "hierarchy": "lateral",
+      "required_order": null,
+      "fixed_neighbors": []
+    },
+    {
+      "id": "specialization-illusionist",
+      "kind": "specialization",
+      "title": "Illusionist",
+      "mandate": "Perceptual hygiene; reveal distortion without control",
+      "domain": "Bias, projection, narrative distortion",
+      "does_not_do": "Claim superior sight; declare truth",
+      "primary_risk": "Superiority drift",
+      "safeguard": "Non-claims and consent gates",
+      "entry_posture": "post-Adept eligibility; voluntary and reversible",
+      "hierarchy": "lateral",
+      "required_order": null,
+      "fixed_neighbors": []
+    },
+    {
+      "id": "specialization-astrologer",
+      "kind": "specialization",
+      "title": "Astrologer",
+      "mandate": "Scale and rhythm without fate",
+      "domain": "Cycles, timing, perspective",
+      "does_not_do": "Predict outcomes; assign destiny",
+      "primary_risk": "Fatalism",
+      "safeguard": "Agency preservation",
+      "entry_posture": "post-Adept eligibility; voluntary and reversible",
+      "hierarchy": "lateral",
+      "required_order": null,
+      "fixed_neighbors": []
+    },
+    {
+      "id": "specialization-hierophant",
+      "kind": "specialization",
+      "title": "Hierophant",
+      "mandate": "Threshold stewardship without initiation",
+      "domain": "Liminality, rites, pacing of change",
+      "does_not_do": "Grant readiness or legitimacy",
+      "primary_risk": "Gatekeeping",
+      "safeguard": "Voluntary participation",
+      "entry_posture": "post-Adept eligibility; voluntary and reversible",
+      "hierarchy": "lateral",
+      "required_order": null,
+      "fixed_neighbors": []
+    },
+    {
+      "id": "specialization-druid",
+      "kind": "specialization",
+      "title": "Druid",
+      "mandate": "Living systems stewardship",
+      "domain": "Ecology, embodiment, balance",
+      "does_not_do": "Dominate or romanticize nature",
+      "primary_risk": "Moral superiority",
+      "safeguard": "Relational ethics",
+      "entry_posture": "post-Adept eligibility; voluntary and reversible",
+      "hierarchy": "lateral",
+      "required_order": null,
+      "fixed_neighbors": []
+    },
+    {
+      "id": "specialization-necromancer",
+      "kind": "specialization",
+      "title": "Necromancer",
+      "mandate": "Ethical endings and release",
+      "domain": "Decay, grief, impermanence",
+      "does_not_do": "Glorify death or nihilism",
+      "primary_risk": "Morbid fixation",
+      "safeguard": "Care-first framing",
+      "entry_posture": "post-Adept eligibility; voluntary and reversible",
+      "hierarchy": "lateral",
+      "required_order": null,
+      "fixed_neighbors": []
+    },
+    {
+      "id": "specialization-alchemist",
+      "kind": "specialization",
+      "title": "Alchemist",
+      "mandate": "Ethical transformation under constraint",
+      "domain": "Synthesis, experimentation, change",
+      "does_not_do": "Enact irreversible or coercive change",
+      "primary_risk": "Power inflation",
+      "safeguard": "Reversibility",
+      "entry_posture": "post-Adept eligibility; voluntary and reversible",
+      "hierarchy": "lateral",
+      "required_order": null,
+      "fixed_neighbors": []
+    },
+    {
+      "id": "specialization-artificer",
+      "kind": "specialization",
+      "title": "Artificer",
+      "mandate": "Responsible form and tool stewardship",
+      "domain": "Design, construction, maintenance",
+      "does_not_do": "Exercise technocratic authority",
+      "primary_risk": "Over-optimization",
+      "safeguard": "Transparency and repair priority",
+      "entry_posture": "post-Adept eligibility; voluntary and reversible",
+      "hierarchy": "lateral",
+      "required_order": null,
+      "fixed_neighbors": []
+    },
+    {
+      "id": "specialization-enchanter",
+      "kind": "specialization",
+      "title": "Enchanter",
+      "mandate": "Meaning and resonance without control",
+      "domain": "Atmosphere, aesthetics, symbol",
+      "does_not_do": "Manipulate emotion or belief",
+      "primary_risk": "Charismatic authority",
+      "safeguard": "Impermanence and consent",
+      "entry_posture": "post-Adept eligibility; voluntary and reversible",
+      "hierarchy": "lateral",
+      "required_order": null,
+      "fixed_neighbors": []
+    }
+  ],
+  "relationships": {
+    "grade_sequence": [
+      ["grade-i", "grade-ii"],
+      ["grade-ii", "grade-iii"],
+      ["grade-iii", "grade-iv"],
+      ["grade-iv", "grade-v"],
+      ["grade-v", "grade-vi"],
+      ["grade-vi", "grade-vii"],
+      ["grade-vii", "grade-viii"],
+      ["grade-viii", "grade-ix"],
+      ["grade-ix", "grade-x"]
+    ],
+    "specialization_fixed_adjacency": [],
+    "grade_specialization_fixed_pairings": [],
+    "notes": [
+      "Adept↔Guardian renewal seam is a design-candidate projection relation, not a grade-sequence edge.",
+      "Grade↔specialization semantic resonance is many-to-many and belongs in separately versioned overlay metadata.",
+      "Curriculum dependency enforcement must be generated from canonical dependency sources rather than polyhedral adjacency."
+    ]
+  },
+  "support_layers": [
+    "authority",
+    "constitution",
+    "foundations / thresholds",
+    "anatomy",
+    "experience",
+    "lexicon",
+    "cross-grade dependencies",
+    "cross-specialization overlays",
+    "practice sessions",
+    "review packets",
+    "permission envelopes"
+  ],
+  "not_encoded": [
+    "icosahedron face coordinates",
+    "fixed specialization pentads",
+    "fixed specialization neighbor graph",
+    "fixed grade-specialization spokes",
+    "Vitae readiness score",
+    "worth or rank",
+    "automatic authority",
+    "participant completion percentage"
+  ],
+  "projection_contract": {
+    "registry_must_render_without_geometry": true,
+    "geometry_may_reference_region_ids": true,
+    "geometry_may_not_create_missing_relationships": true,
+    "icosahedron_projection": "separate versioned metadata if adopted",
+    "actual_path_is_overlay_not_geometry": true
+  }
+}
