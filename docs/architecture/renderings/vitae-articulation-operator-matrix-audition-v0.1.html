@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Vitae Articulation × Operator Matrix Audition v0.1</title>
+<style>
+:root{font-family:system-ui,-apple-system,sans-serif;color:#171717;background:#fafafa}body{margin:0;padding:24px;max-width:1180px;margin-inline:auto}.card{background:#fff;border:1px solid #d4d4d8;border-radius:16px;padding:20px;margin:16px 0}.warning{border-left:4px solid #c2410c}.muted{color:#5b6470}.controls{display:flex;gap:10px;flex-wrap:wrap;align-items:center}button,select{font:inherit;padding:8px 11px;border:1px solid #94a3b8;border-radius:9px;background:#fff}button{cursor:pointer}button:hover{background:#f1f5f9}.matrix{display:grid;grid-template-columns:150px repeat(5,minmax(120px,1fr));gap:6px;overflow-x:auto}.cell,.head{border:1px solid #cbd5e1;border-radius:9px;padding:11px;text-align:center}.head{font-weight:700;background:#f8fafc}.cell button{width:100%;height:100%;min-height:66px}.v button{background:#eff6ff}.h button{background:#f5f3ff}.d button{background:#ecfdf5}.readout{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;background:#f8fafc;border-radius:10px;padding:12px;white-space:pre-wrap}.score{display:grid;grid-template-columns:repeat(9,1fr);gap:5px}.score div{border:1px solid #cbd5e1;border-radius:8px;padding:8px 4px;text-align:center;font-size:12px}.score div.active{outline:3px solid #111827}.vbox{background:#dbeafe}.hbox{background:#ede9fe}.dbox{background:#d1fae5}.blind .historical-label{visibility:hidden}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}.metric{display:flex;justify-content:space-between;border-bottom:1px solid #e5e7eb;padding:8px 0}.tag{display:inline-block;border:1px solid #cbd5e1;border-radius:999px;padding:3px 8px;margin:2px;font-size:12px}@media(max-width:900px){.grid2{grid-template-columns:1fr}.matrix{grid-template-columns:130px repeat(5,150px)}.score{grid-template-columns:repeat(3,1fr)}}@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<h1>Vitae Articulation × Operator Matrix Audition v0.1</h1>
+<p class="muted">Design-candidate stress test. Can Vertical, Horizontal, and Diagonal Tree operators remain recognizable while five independent synthetic timbre profiles vary?</p>
+<div class="card warning"><strong>Historical boundary.</strong> Throat, palate, tongue, teeth, and lips are source-derived articulation-region labels from the current Sefer Yetzirah registry. The five sounds below are synthetic differentiation proxies only. They are not reconstructions of ancient Hebrew pronunciation and they do not define Hebrew letters, Vitae elements, people, readiness, healing, or authority.</div>
+
+<div class="card">
+<div class="controls">
+  <button id="stop">Stop</button>
+  <label>Carrier <select id="carrier"><option value="fixed">Fixed 220 Hz</option><option value="fifths">Fifths carrier</option></select></label>
+  <label><input type="checkbox" id="mirror" /> mirror left/right</label>
+  <label><input type="checkbox" id="blind" /> hide articulation labels</label>
+  <button id="playWalk">Play nine-edge Vitae walk</button>
+  <button id="visualOnly">Animate walk without audio</button>
+</div>
+</div>
+
+<div class="card" id="matrixCard">
+<h2>3 × 5 substitution matrix</h2>
+<p class="muted">Rows preserve one operator while timbre changes. Columns preserve one timbre proxy while operator changes.</p>
+<div class="matrix" id="matrix"></div>
+</div>
+
+<div class="grid2">
+<div class="card">
+<h2>Row tests: same operator, five timbres</h2>
+<div class="controls">
+<button data-row="vertical">Play Vertical across five</button>
+<button data-row="horizontal">Play Horizontal across five</button>
+<button data-row="diagonal">Play Diagonal across five</button>
+</div>
+<p class="muted">A successful row test should retain the same pitch/pan transformation despite spectral-envelope changes.</p>
+</div>
+<div class="card">
+<h2>Column tests: same timbre, three operators</h2>
+<div class="controls" id="columnButtons"></div>
+<p class="muted">A successful column test should make V/H/D distinct without requiring a particular articulation profile.</p>
+</div>
+</div>
+
+<div class="card">
+<h2>Registered nine-edge walk</h2>
+<div class="score" id="score">
+<div class="vbox" data-score="0"><strong>V</strong><br/>Double</div>
+<div class="dbox" data-score="1"><strong>D</strong><br/>Simple</div>
+<div class="hbox" data-score="2"><strong>H</strong><br/>Mother</div>
+<div class="dbox" data-score="3"><strong>D</strong><br/>Simple</div>
+<div class="dbox" data-score="4"><strong>D</strong><br/>Simple</div>
+<div class="hbox" data-score="5"><strong>H</strong><br/>Mother</div>
+<div class="dbox" data-score="6"><strong>D</strong><br/>Simple</div>
+<div class="hbox" data-score="7"><strong>H</strong><br/>Mother</div>
+<div class="dbox" data-score="8"><strong>D</strong><br/>Simple</div>
+</div>
+<p class="muted">The walk cycles through the five synthetic articulation profiles only to stress-test substitution. Profile order creates no letter assignment.</p>
+</div>
+
+<div class="card">
+<h2>Structural invariants</h2>
+<div class="metric"><span>Operator axis</span><strong>frequency + pan trajectory</strong></div>
+<div class="metric"><span>Timbre axis</span><strong>harmonic envelope + small noise component</strong></div>
+<div class="metric"><span>Fundamental</span><strong>preserved in every profile</strong></div>
+<div class="metric"><span>Pan</span><strong>applied after timbre shaping</strong></div>
+<div class="metric"><span>Element mapping</span><strong>none</strong></div>
+<div class="metric"><span>Letter-to-edge mapping</span><strong>none</strong></div>
+</div>
+
+<div id="readout" class="readout">Ready. Audio is optional; the same operator labels remain available here in text.</div>
+
+<script>
+const operators={
+  vertical:{label:'Vertical',pitch:true,pan:false,plain:'rise while remaining centered'},
+  horizontal:{label:'Horizontal',pitch:false,pan:true,plain:'cross the field while remaining level'},
+  diagonal:{label:'Diagonal',pitch:true,pan:true,plain:'rise while crossing toward another pillar'}
+};
+const profiles=[
+  {id:'guttural',region:'throat',proxy:'A',partials:[1,.62,.28,.18,.12],noise:.018},
+  {id:'palatal',region:'palate',proxy:'B',partials:[1,.34,.62,.42,.28],noise:.012},
+  {id:'lingual',region:'tongue',proxy:'C',partials:[1,.52,.38,.34,.24],noise:.022},
+  {id:'dental',region:'teeth',proxy:'D',partials:[1,.28,.34,.50,.42],noise:.040},
+  {id:'labial',region:'lips',proxy:'E',partials:[1,.68,.30,.14,.08],noise:.008}
+];
+const walk=['vertical','diagonal','horizontal','diagonal','diagonal','horizontal','diagonal','horizontal','diagonal'];
+const dx=[0,1,-2,1,1,-2,2,-2,1];
+const names=['C','C#/Db','D','D#/Eb','E','F','F#/Gb','G','G#/Ab','A','A#/Bb','B'];
+let ctx=null,timers=[],carrierIndex=0;
+const readout=document.getElementById('readout');
+function stopAll(){timers.forEach(clearTimeout);timers=[];document.querySelectorAll('.active').forEach(n=>n.classList.remove('active'));if(ctx){ctx.close().catch(()=>{});ctx=null}}
+function audio(){stopAll();ctx=new (window.AudioContext||window.webkitAudioContext)();return ctx}
+function frequencyForIndex(i){if(document.getElementById('carrier').value==='fixed')return 220;const pc=(7*i)%12;return 261.625565*Math.pow(2,pc/12)}
+function makeNoise(duration){const length=Math.max(1,Math.floor(ctx.sampleRate*duration)),buf=ctx.createBuffer(1,length,ctx.sampleRate),arr=buf.getChannelData(0);for(let i=0;i<length;i++)arr[i]=(Math.random()*2-1);const src=ctx.createBufferSource();src.buffer=buf;return src}
+function playCondition(opId,profileIndex,start,duration=.72,stepIndex=0,explicitDx=null){const op=operators[opId],p=profiles[profileIndex],f0=frequencyForIndex(stepIndex);const mix=ctx.createGain(),env=ctx.createGain();env.gain.setValueAtTime(.0001,start);env.gain.exponentialRampToValueAtTime(.13,start+.035);env.gain.exponentialRampToValueAtTime(.0001,start+duration);const panner=ctx.createStereoPanner?ctx.createStereoPanner():null;const mirrored=document.getElementById('mirror').checked?-1:1;let localDx=explicitDx===null?(op.pan?2:0):explicitDx;let panStart=0,panEnd=0;if(op.pan){const sign=Math.sign(localDx||1)*mirrored;panStart=-.78*sign;panEnd=.78*sign}if(panner){panner.pan.setValueAtTime(panStart,start);panner.pan.linearRampToValueAtTime(panEnd,start+duration)}p.partials.forEach((gain,i)=>{const osc=ctx.createOscillator(),g=ctx.createGain();osc.type='sine';const mult=i+1;osc.frequency.setValueAtTime(f0*mult,start);if(op.pitch)osc.frequency.exponentialRampToValueAtTime(f0*1.5*mult,start+duration);g.gain.value=gain;osc.connect(g).connect(mix);osc.start(start);osc.stop(start+duration+.04)});if(p.noise>0){const n=makeNoise(duration+.05),ng=ctx.createGain(),hp=ctx.createBiquadFilter();hp.type='highpass';hp.frequency.value=900;ng.gain.value=p.noise;n.connect(hp).connect(ng).connect(mix);n.start(start);n.stop(start+duration+.03)}mix.connect(env);if(panner)env.connect(panner).connect(ctx.destination);else env.connect(ctx.destination);return {op,p,f0,panStart,panEnd}}
+function describe(opId,profileIndex,stepIndex=0){const op=operators[opId],p=profiles[profileIndex],mode=document.getElementById('carrier').value;return `${op.label} — ${op.plain}\narticulation metadata: ${p.id} / ${p.region}\nsynthetic timbre: proxy-${p.proxy} only; not phonetic reconstruction\ncarrier: ${mode}${mode==='fifths'?' · '+names[(7*stepIndex)%12]:''}\noperator identity is defined by frequency/pan trajectory, not timbre.`}
+const matrix=document.getElementById('matrix');matrix.append(Object.assign(document.createElement('div'),{className:'head',textContent:'operator'}));profiles.forEach(p=>{const d=document.createElement('div');d.className='head historical-label';d.innerHTML=`${p.id}<br/><span class="muted">${p.region} · proxy-${p.proxy}</span>`;matrix.append(d)});Object.keys(operators).forEach(opId=>{const r=document.createElement('div');r.className='head';r.textContent=operators[opId].label;matrix.append(r);profiles.forEach((p,pi)=>{const c=document.createElement('div');c.className=`cell ${opId[0]}`;const b=document.createElement('button');b.innerHTML=`Play<br/><span class="historical-label">${p.id}</span>`;b.onclick=()=>{audio();playCondition(opId,pi,ctx.currentTime+.06,.8,carrierIndex++);readout.textContent=describe(opId,pi,carrierIndex-1)};c.append(b);matrix.append(c)})});
+document.querySelectorAll('[data-row]').forEach(btn=>btn.onclick=()=>{audio();const opId=btn.dataset.row,t0=ctx.currentTime+.06;profiles.forEach((p,i)=>{playCondition(opId,i,t0+i*.9,.72,i);timers.push(setTimeout(()=>readout.textContent=describe(opId,i,i),i*900))})});
+const col=document.getElementById('columnButtons');profiles.forEach((p,pi)=>{const b=document.createElement('button');b.className='historical-label';b.textContent=`${p.id}`;b.onclick=()=>{audio();const t0=ctx.currentTime+.06;Object.keys(operators).forEach((opId,i)=>{playCondition(opId,pi,t0+i*.95,.78,i);timers.push(setTimeout(()=>readout.textContent=describe(opId,pi,i),i*950))})};col.append(b)});
+function animateScore(i){document.querySelectorAll('[data-score]').forEach(n=>n.classList.remove('active'));const e=document.querySelector(`[data-score="${i}"]`);if(e)e.classList.add('active')}
+document.getElementById('playWalk').onclick=()=>{audio();const t0=ctx.currentTime+.08;walk.forEach((opId,i)=>{const pi=i%5;playCondition(opId,pi,t0+i*.82,.68,i,dx[i]);timers.push(setTimeout(()=>{animateScore(i);readout.textContent=`walk ${i+1}/9\n${describe(opId,pi,i)}\nprofile cycling is a stress test, not a letter assignment.`},i*820))})};
+document.getElementById('visualOnly').onclick=()=>{stopAll();walk.forEach((opId,i)=>{const pi=i%5;timers.push(setTimeout(()=>{animateScore(i);readout.textContent=`visual-only walk ${i+1}/9\n${describe(opId,pi,i)}\naudio is not required for relation identity.`},i*650))})};
+document.getElementById('stop').onclick=stopAll;document.getElementById('blind').onchange=e=>document.getElementById('matrixCard').classList.toggle('blind',e.target.checked);
+</script>
+</body>
+</html>
