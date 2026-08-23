@@ -16,6 +16,7 @@
     "tempus_tick_changes_vitae_coordinate": false,
     "vitae_coordinate_changes_only_by_explicit_participant_or_recorded_practice_input": true,
     "tempus_cycle_wrap_changes_vitae_coordinate": false,
+    "continuous_renderer_implies_continuous_vitae_advancement": false,
     "relative_phase_creates_score": false,
     "relative_phase_creates_readiness": false,
     "relative_phase_creates_deadline": false,
@@ -29,6 +30,7 @@
     "audio_required": false,
     "plain_text_equivalent_required": true,
     "geometry_required": false,
+    "reduced_motion_must_not_auto_animate": true,
     "interpretation": null,
     "recognition_effect": "none",
     "authority_effect": "none",
@@ -46,10 +48,11 @@
     },
     "VitaePhaseCoordinate": {
       "grade_index": "1..10",
-      "grade_section_index": "1..360",
+      "grade_section_index": "integer 1..360",
       "normalized_grade_phase": "(grade_section_index - 1) / 360",
       "class_index": "ceil(grade_section_index / 36)",
       "source": "participant-selected|practice-record",
+      "is_discrete_navigation_state": true,
       "interpretation": null
     },
     "LiveBecomingPhaseSample": {
@@ -81,6 +84,7 @@
     "sections_per_grade": 360,
     "classes_per_grade": 10,
     "sections_per_class": 36,
+    "state_set": "C360 discrete cyclic index for presentation within one grade; actual advancement and recognition remain outside this projection",
     "normalized_phase": "(grade_section_index - 1) / 360",
     "class_index": "floor((grade_section_index - 1) / 36) + 1",
     "tree_station_order": [
@@ -97,8 +101,22 @@
     ],
     "posture": "navigation coordinate only; phase does not imply readiness or completion"
   },
+  "state_space_refinement": {
+    "semantic_state_space_per_grade": "S1_Tempus x C360_Vitae",
+    "presentation_envelope": "S1 x S1",
+    "reason": "Tempus may be rendered as continuously changing phase, while the registered Vitae state is an explicit integer section coordinate. Normalizing the Vitae index onto a circle is useful for rendering but does not make advancement continuous.",
+    "whole_core_extension": "S1_Tempus x {grade 1..10} x C360_Vitae, with optional ten-turn spiral presentation",
+    "hybrid_dynamics": {
+      "tempus": "continuous or regularly sampled movement",
+      "vitae": "event-driven discrete movement",
+      "pause": "Tempus changes while Vitae index remains fixed",
+      "vitae_event": "Vitae index may change at a captured moment without retroactively changing prior Tempus samples"
+    },
+    "candidate_law": "Continuous Geometry Must Not Imply Continuous Advancement."
+  },
   "product_phase_space": {
-    "mathematical_model": "S1 x S1",
+    "mathematical_model": "S1 x S1 presentation envelope",
+    "semantic_model": "S1 x C360 per grade",
     "common_visualization": "torus",
     "u": "2*pi*tempus.normalized_phase",
     "v": "2*pi*vitae.normalized_grade_phase",
@@ -110,11 +128,13 @@
       "z": "r*sin(v)"
     },
     "display_projection": "isometric-like 2D projection of the 3D embedding",
-    "topological_note": "The phase square with opposite edges identified is the same product topology and must remain available as a geometry-light equivalent."
+    "topological_note": "The phase square with opposite edges identified is the same continuous presentation envelope and must remain available as a geometry-light equivalent.",
+    "state_machine_note": "The renderer may draw smooth geometry between indexed Vitae bands for legibility, but persisted Vitae state must snap to registered section coordinates rather than interpolate."
   },
   "relative_phase": {
     "formula": "delta = ((tempus_phase - vitae_phase + 0.5) mod 1) - 0.5",
     "range": "[-0.5,0.5)",
+    "vitae_phase_basis": "start coordinate of the current indexed Vitae section",
     "allowed_language": [
       "relative phase",
       "phase difference",
@@ -148,13 +168,20 @@
       "trigger": "explicit participant control or recorded practice/navigation event only",
       "changes": ["vitae.grade_section_index"],
       "must_not_change": ["historical Tempus samples"],
-      "automatic": false
+      "automatic": false,
+      "continuous_interpolation": false
     },
     "CaptureSample": {
       "stores": ["tempus coordinate", "vitae coordinate", "capture time"],
       "interpretation": null,
       "recognition_effect": "none"
     }
+  },
+  "trajectory_grammar": {
+    "phase_square": "With Tempus on x and Vitae on y, rest produces horizontal motion/wrap at constant Vitae; explicit Vitae events produce discrete changes in the y coordinate at a moment in Tempus.",
+    "torus": "Rest produces a loop around the Tempus direction at a fixed Vitae band; voluntary Vitae events move the point to another indexed band.",
+    "interpretation": "Participant history is therefore a hybrid event trajectory, not a forced diagonal progress line.",
+    "candidate_law": "Continuous Time, Eventful Becoming."
   },
   "pause_and_rest_test": {
     "initial": "fix Vitae at any grade_section_index",
@@ -178,7 +205,8 @@
     "manual Vitae +36 section/class",
     "capture phase-pair sample",
     "clear local sample trail",
-    "torus / phase-square / plain-text views"
+    "torus / phase-square / dual-ring / plain-text views",
+    "reduced-motion mode begins visually frozen"
   ],
   "candidate_laws": [
     "Context Moves; Becoming Need Not.",
@@ -187,7 +215,10 @@
     "Temporal Wrap Is Not Curriculum Return.",
     "Pause Is a Valid Trajectory.",
     "Tempus Does Not Modulate the Operator.",
-    "Context May Move Around the Operator; It May Not Rewrite the Operator."
+    "Context May Move Around the Operator; It May Not Rewrite the Operator.",
+    "Continuous Geometry Must Not Imply Continuous Advancement.",
+    "Continuous Time, Eventful Becoming.",
+    "The Torus Is an Envelope, Not the State Machine."
   ],
   "not_encoded": [
     "full astronomical TempusContext computation",
