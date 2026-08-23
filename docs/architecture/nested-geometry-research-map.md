@@ -1,9 +1,9 @@
 ---
-title: "Nested Geometry Research Map — Hope, ARCnet, Tempus, Vitae, and Unresolved Polyhedral Layers"
+title: "Nested Geometry Research Map — Post Tempus / Vitae Audits"
 status: design-candidate
 visibility: public
 last_updated: 2026-08-22
-description: "Preserves the current nested-geometry hypotheses and clearly separates established relational scaffolds from unresolved Fruit-of-Life, dodecahedral, icosahedral, and nesting-order questions."
+description: "Current post-audit map of Hope, ARCnet, Tempus, Vitae, Classical Seven, Fruit-of-Life, polyhedral duality, and unresolved nesting questions."
 phase: "Pre-Genesis"
 authority: "non-canonical design evidence"
 source_issue: "https://github.com/The-Architect-369/Arcanum/issues/37"
@@ -13,501 +13,598 @@ source_issue: "https://github.com/The-Architect-369/Arcanum/issues/37"
 
 ## Purpose
 
-The Creation Era studies now have enough evidence to distinguish **what has survived relational audits** from **what remains an open geometric hypothesis**.
+This document is the current post-audit checkpoint for the Creation Era geometry exploration.
 
-This document preserves that boundary so future exploration can continue without silently promoting symbolic correspondences into architecture.
+Earlier versions preserved the dodecahedron and icosahedron as untested hypotheses. Those dedicated falsification audits are now complete:
+
+- `docs/architecture/tempus-dodecahedron-geometry-audit.md`
+- `docs/architecture/vitae-icosahedron-geometry-audit.md`
+- `docs/architecture/tempus-vitae-duality-audit.md`
+
+The goal is no longer to make every layer fit one sacred solid.
+
+The goal is to identify a **family of geometry-independent data models with optional geometric views whose semantic coordinates have independently earned meaning**.
 
 ---
 
-# What currently has evidence
+# Current evidence ladder
 
-## Hope A2 relational scaffold
+```text
+Identity / Self
+→ sovereign center, never a geometric score
+
+Hope A2
+→ six fixed relational directions survive a complete internal-edge audit
+
+Classical Seven
+→ six rotating lenses + optional solar return-to-center survives lens testing
+
+ARCnet outer K8
+→ survives as semantic/information topology, not yet literal runtime graph
+
+ARCnet inner octahedron
+→ six junctions + twelve neighboring coordination relations survive semantic audits
+
+Tempus dodecahedron
+→ bounded pass as optional zodiacal/celestial shell
+
+Vitae icosahedron
+→ bounded pass as optional twenty-face corpus atlas
+
+Dodecahedron ↔ icosahedron duality
+→ mathematical fact, but literal semantic duality currently fails
+
+Fruit of Life
+→ reopened by a genuine twelvefold Tempus set, still unresolved
+
+literal nesting order
+→ unresolved; current evidence favors co-centered views + explicit projections
+```
+
+---
+
+# Stable topology versus living state
+
+The strongest cross-study principle remains:
+
+> **Stable Topology, Living State — a geometry may stabilize relational coordinates while information, context, interpretation, and active pathways remain dynamic.**
+
+Examples:
+
+```text
+STABLE / RELATIVELY STABLE
+Hope relational directions
+ARCnet system identities
+ARCnet junction identities
+Tempus zodiac face identities if celestial view is enabled
+Vitae grade / specialization face identities if atlas view is enabled
+
+DYNAMIC
+Hope observations
+selected archetypal lens
+current TempusContext
+selected Vitae path
+practice records
+actual curriculum dependency overlays
+active ARCnet workflows
+rotation / focus / presentation
+```
+
+---
+
+# Hope A2 — tested relational scaffold
 
 Current design candidate:
 
 ```text
-Identity / Self at center
-6 fixed relational directions
-12 neighboring internal relations
-3 center-mediated antipodal axes
+SELF / IDENTITY at center
+Presence as center-state / orientation
+
+Receptivity   ↔ Responsibility
+Expression    ↔ Discernment
+Relation      ↔ Agency
 ```
 
-Leading fixed directions:
+The six fixed directions produce twelve differentiated octahedral neighbor relations.
 
-```text
-Receptivity
-Expression
-Relation
-Agency
-Discernment
-Responsibility
-```
+Planetary names do not own the coordinates.
 
-Leading axes:
+The six non-solar archetypes rotate across selected relations as optional interpretive operators.
 
-```text
-Receptivity ↔ Responsibility
-Expression  ↔ Discernment
-Relation    ↔ Agency
-```
+Sun remains an optional return-to-center / integration symbol, never Identity itself.
 
-The full twelve-edge audit produced distinct reflective functions.
+Key law:
 
-Planetary archetypes remain rotating lenses, not node identities.
+> **Illumination Measures Articulation, Not Worth.**
 
-## ARCnet outer / inner topology
+---
 
-Current design candidate:
+# ARCnet — tested semantic topology, runtime still bounded
+
+Current outer candidate:
 
 ```text
 8 outer systems
 28 complete pairwise semantic relationships
-4 deep mirror axes
-6 derived inner coordination junctions
-12 inner-junction neighboring coordination relations
-3 inner-junction antipodal axes
+4 mirror axes
 ```
 
-The six junctions and all twelve inner-junction neighbor relations have now produced distinct coordination questions.
-
-This supports the octahedron as a meaningful semantic coordination topology while still not proving literal runtime topology.
-
-## Classical Seven
-
-Current leading interpretation:
+Current inner candidate:
 
 ```text
-6 rotating interpretive lenses
-+
-1 optional solar return-to-center / integration symbol
+6 coordination junctions
+12 neighboring junction relations
+3 antipodal junction axes
 ```
 
-This is an information-design and reflective framework, not ancient encoded geometry, personality science, or causal astrology.
+The geometry continues to survive as semantic / information architecture.
+
+It does not yet prove that every semantic relation needs an executable runtime Edge Contract or that inner junctions require runtime primitives.
+
+Key law:
+
+> **Junction Coordination Is Derived, Not Sovereign.**
 
 ---
 
-# Dynamic versus fixed geometry
-
-A core distinction is now visible.
-
-```text
-FIXED
-relational coordinates
-adjacency
-antipodal structure
-system authority boundaries
-
-DYNAMIC
-current observations
-selected lens
-participant interpretation
-Tempus context
-Vitae references
-active workflows
-visual rotation / presentation
-```
-
-Candidate law:
-
-> **Stable Topology, Living State — a geometry may stabilize relational coordinates while the information, context, interpretation, and active pathways moving through it remain dynamic.**
-
-This is currently the strongest way to interpret the phrase "living geometry" without making metaphysical claims about software structure.
-
----
-
-# Tempus and the dodecahedron — open hypothesis
+# Tempus dodecahedron — audit result
 
 A regular dodecahedron has:
 
 ```text
-12 pentagonal faces
+12 faces
 20 vertices
 30 edges
 ```
 
-The Human Architect's current intuition is that a twelve-faced dodecahedral structure may be useful for **Tempus**, especially because a twelvefold temporal/cultural cycle could map naturally onto twelve face regions.
+## What survived
 
-Possible future uses include:
+The twelve faces can be labeled as the twelve optional zodiac regions while simultaneously preserving:
 
 ```text
-12 temporal regions
-12 seasonal / zodiacal cultural lenses
-12 temple-like orientation surfaces
-12 participant-selectable temporal chambers
+12-step chronological zodiac cycle
++
+6 exact opposite-face zodiac opposition pairs
 ```
 
-No mapping is currently established.
+This is a real structural fit.
 
-Important boundary:
+Leading designation:
 
-> The number twelve alone is not evidence that the dodecahedron is the correct Tempus architecture.
+> **Tempus Dodecahedral Zodiac Shell**
 
-A valid Tempus geometry study must test whether:
+Candidate meaning:
 
-1. all twelve positions have distinct temporal functions;
-2. the 30 adjacency relationships produce useful temporal transitions;
-3. opposite / distant regions have meaningful relationships;
-4. the model remains usable without zodiac symbolism;
-5. astronomy facts remain separate from archetypal/cultural interpretation;
-6. no celestial state causes or predicts participant behavior;
-7. the geometry improves navigation rather than merely matching a number.
+```text
+face
+= optional zodiac region
 
-Candidate research question:
+selected 12-face ring
+= chronological sequence
 
-> **Can the dodecahedron organize temporal orientation because of its relational structure, not merely because it has twelve faces?**
+opposite face
+= zodiac opposition relation
+```
+
+## What failed
+
+The remaining face adjacencies do not uniquely reproduce a full zodiac relationship graph.
+
+Under a valid chronology/opposition orientation, the thirty face adjacencies classify as:
+
+```text
+12 neighboring-sign edges
+6 selected sextile edges
+6 selected square edges
+6 selected trine edges
+```
+
+The sextile/square/trine sets are incomplete and multiple valid orientations select different halves.
+
+Therefore:
+
+```text
+untyped geometric edge
+= presentation only
+```
+
+unless later doctrine independently gives it meaning.
+
+The dodecahedron also fails as the complete Tempus ontology because Tempus is multi-cycle:
+
+```text
+civic
+solar / seasonal
+lunar
+planetary
+zodiac
+36 decans
+ceremonial depth
+rites / receipts
+```
+
+Fivefold pentagonal face symmetry does not generate the threefold decanic structure.
+
+No canonical twenty-part Tempus vertex registry exists.
+
+## Tempus decision
+
+```text
+complete Tempus dodecahedron
+→ rejected
+
+optional zodiac/celestial dodecahedral shell
+→ provisionally accepted as design candidate
+```
 
 ---
 
-# Vitae and the icosahedron — open hypothesis
+# Vitae icosahedron — audit result
 
 A regular icosahedron has:
 
 ```text
-20 triangular faces
+20 faces
 12 vertices
 30 edges
 ```
 
-The Human Architect's current intuition is that the icosahedron may better suit **Vitae** as a river/path/jewel-like corpus with many interrelated facets.
+## What survived
 
-Possible conceptual fit:
+The repository independently contains a genuine high-level twentyfold curriculum set:
 
 ```text
+10 Core Grades
++
+10 Specializations
+=
+20 primary named regions
+```
+
+This is stronger than a superficial count coincidence.
+
+Leading designation:
+
+> **Vitae Icosahedral Corpus Atlas**
+
+Candidate meaning:
+
+```text
+20 faces
+= optional visual atlas of 10 grades + 10 specializations
+
+actual path / dependencies
+= separately derived overlay from a geometry-independent Vitae registry
+```
+
+The solid may function as:
+
+```text
+jewel
+atlas
+terrain
+```
+
+while the lived route remains participant-owned.
+
+## What failed
+
+The thirty face adjacencies do not match the curriculum dependency graph.
+
+A clean ten-face grade path can be embedded, but it necessarily leaves:
+
+```text
+12 grade ↔ specialization geometric adjacencies
+9 specialization ↔ specialization geometric adjacencies
+```
+
+that the corpus does not independently define.
+
+A mathematically elegant `10 + 5 + 5` cycle decomposition also exists, but would falsely create:
+
+```text
+Adept ↔ Guardian cyclic closure
+2 privileged specialization pentads
+10 invented grade ↔ specialization spokes
+```
+
+The ten opposite-face pairs likewise do not correspond to canonical grade/specialization mirror pairs.
+
+No canonical twelve-part Vitae vertex registry exists.
+
+Triangular faces do not reproduce the historical four-artifact grade architecture.
+
+## Vitae decision
+
+```text
+fixed semantic / progression icosahedron
+→ rejected
+
+optional 20-face corpus atlas
+→ provisionally accepted as design candidate
+```
+
+Key laws:
+
+- Corpus Count Does Not Grant Edge Meaning
+- The Map Is Not the Journey
+- Closed Surface, Open Journey
+- No Geometric Progress Meter
+- Coordinate Is Not Recognition
+- Registry Before Render
+
+---
+
+# Tempus ↔ Vitae mathematical duality — audit result
+
+The dodecahedron and icosahedron are exact geometric duals:
+
+```text
+dodecahedron 12 faces ↔ icosahedron 12 vertices
+dodecahedron 20 vertices ↔ icosahedron 20 faces
+30 edges ↔ 30 edges
+```
+
+But the successful module mappings currently occupy:
+
+```text
+Tempus
+12 dodecahedral FACES
+
 Vitae
-= lived paths
-= practices
-= recognized becoming
-= branching / converging journeys
-= many relational facets without supremacy
+20 icosahedral FACES
 ```
 
-The icosahedron's dense triangular surface may potentially support a navigation grammar for interrelated paths or practices.
+Faces do not dual-map to faces.
 
-But no mapping is established.
+Literal semantic duality would require:
 
-A valid Vitae geometry study must test whether:
+```text
+12 Tempus faces
+↔
+12 meaningful Vitae vertices
 
-1. positions correspond to real Vitae concepts already present in doctrine;
-2. adjacency represents meaningful transitions or relations rather than invented categories;
-3. no path becomes a rank ladder;
-4. geometry does not imply universal progression;
-5. multiple valid paths and silence remain possible;
-6. recognition remains responsibility-shaped, not worth-shaped;
-7. MANA cannot accelerate geometric progression;
-8. the shape remains an interface grammar rather than proof of human-development law.
+20 meaningful Tempus vertices
+↔
+20 Vitae faces
+```
 
-Candidate research question:
+The required complementary registries do not currently exist.
 
-> **Can an icosahedral relation graph organize a plural Vitae corpus without turning becoming into a progression game?**
+Tempting count rescues are rejected:
+
+```text
+12 zodiac + 8 lunar phases = 20 Tempus vertices
+→ invalid because zodiac position and lunar phase are orthogonal coordinates
+
+10 grades + 2 thresholds = 12 Vitae vertices
+→ invalid because grades and thresholds are different roles
+```
+
+Therefore:
+
+```text
+literal semantic polyhedral duality
+→ rejected for now
+```
+
+The real repository-derived relationship is instead:
+
+```text
+TempusContext
+→ optional bounded context reference
+VitaePracticeSession
+```
+
+Conceptually:
+
+```text
+Tempus = context / rhythm / orientation
+Vitae  = practice / path / recognized becoming
+```
+
+This supports a **relational duality without a coordinate bijection**.
+
+Key law:
+
+> **Schema Before Symmetry.**
 
 ---
 
-# Dodecahedron / icosahedron duality
+# Co-centered geometry instead of authority-bearing nesting
 
-The dodecahedron and icosahedron are dual polyhedra:
-
-```text
-dodecahedron faces = 12
-icosahedron vertices = 12
-
-dodecahedron vertices = 20
-icosahedron faces = 20
-
-both have 30 edges
-```
-
-This mathematical duality is objectively real.
-
-Its architectural meaning, if any, is not yet known.
-
-A potentially valuable future test is whether Tempus and Vitae exhibit a genuine dual relationship such as:
+The current audits do not justify saying:
 
 ```text
-time contexts ↔ lived paths
-orientation ↔ becoming
-cycles ↔ practices
-container ↔ traversal
+Tempus contains Vitae
+or
+Vitae contains Tempus
 ```
 
-This must be derived from module doctrine and use cases rather than assumed from geometry.
+as an architectural authority relation.
 
-Candidate law:
+The stronger model is:
 
-> **Mathematical Duality Does Not Prove Semantic Duality — polyhedral duals may inspire a test, but the modules must independently demonstrate a reciprocal relationship.**
+```text
+Identity / Self
+        |
+        +-- Hope relational view
+        |
+        +-- Tempus temporal view
+        |     optional dodecahedral zodiac shell
+        |
+        +-- Vitae curriculum view
+              optional icosahedral corpus atlas
+```
+
+The faculties may share a visual center while retaining separate data ownership, doctrine, and authority.
+
+A dodecahedron↔icosahedron morph is therefore a valid **presentation experiment** if it communicates a change of faculty rather than a transfer of semantic labels.
+
+Key laws:
+
+- Co-Centering Does Not Imply Containment
+- Transform Without Transfer
+- Visual Incidence Does Not Create an Edge Contract
 
 ---
 
-# Nesting order — unresolved
-
-Two broad hypotheses are currently open.
-
-## Hypothesis A — cube/stella inside dodecahedral Tempus field
-
-```text
-Identity / Hope
-→ stella-octangula / cube ARCnet structure
-→ surrounding dodecahedral temporal field
-```
-
-Interpretation:
-
-- ARCnet's system structure is stable;
-- Tempus supplies a larger context field through which the system is temporally viewed;
-- time surrounds or contextualizes system state.
-
-Potential strength:
-
-Temporal context naturally applies to all systems and relations.
-
-Potential risk:
-
-A larger enclosing visual can accidentally imply Tempus has authority over all systems.
-
-## Hypothesis B — dodecahedral temporal structure nested within ARCnet field
-
-```text
-ARCnet field
-→ Tempus dodecahedral navigator
-→ selected temporal contexts
-```
-
-Interpretation:
-
-Tempus remains one bounded faculty / module surfaced within the broader network rather than visually containing it.
-
-Potential strength:
-
-Authority boundaries are easier to preserve.
-
-Potential risk:
-
-May understate the fact that time context is relevant across nearly every system.
-
-## Current verdict
-
-No nesting order should be fixed yet.
-
-The correct question is not:
-
-```text
-Which solid physically fits inside which other solid most beautifully?
-```
-
-The correct question is:
-
-> **Which containment or projection relation correctly represents data ownership, context flow, authority, navigation, and user experience?**
-
-Candidate law:
-
-> **Containment Must Mean Something — visual nesting may only become architectural nesting when the containment has a precise information or authority interpretation.**
-
----
-
-# Fruit of Life — unresolved
+# Fruit of Life — reopened but not solved
 
 A common Fruit-of-Life construction is:
 
 ```text
-1 central circle
-+ 12 surrounding circles
-= 13 circles
+1 center
++
+12 surrounding circles
+=
+13 circles
 ```
 
-The current stella-octangula count is:
+The Tempus audit has now produced a genuine independently derived twelvefold set:
 
 ```text
-8 outer vertices
-+ 6 inner octahedral vertices
-+ 1 center
-= 15 notable positions
+12 optional zodiac regions
 ```
 
-Therefore these are not currently the same structure.
+Therefore the Fruit-of-Life question is no longer empty numerology.
 
-The Fruit-of-Life question remains open.
+A future test can ask whether a flat `1 + 12` view improves Tempus navigation.
 
-Possible future roles to test include:
+But the center should not automatically be Identity.
+
+A safer hypothesis is:
 
 ```text
-Self + 12 relations
-Self + 12 temporal regions
-Self + 12 participant-facing pathways
-12 edges around a selected local structure
-another nested information layer entirely
+selected moment / temporal focus
++
+12 zodiac regions
 ```
 
-No current evidence justifies choosing among them.
+because:
 
-Candidate law:
+> **Temporal Center Is Not Identity.**
 
-> **Do Not Rescue a Count — if a 1+12 pattern is useful, derive its twelve functions independently rather than forcing an existing 15-position structure into Fruit-of-Life terminology.**
+No Fruit-of-Life architecture is promoted by the current audits.
 
 ---
 
-# Relationship between Hope, Tempus, Vitae, and Arcanum
+# Classical Seven relationship
 
-A promising conceptual separation now exists:
+The dedicated planetary tests remain unchanged by the new solids.
+
+Leading model:
 
 ```text
-IDENTITY
+planetary resonance = optional metadata
+planetary lens = explicit interpretive operation
+planetary identity = rejected
+planetary authority = prohibited
+```
+
+Hope may rotate Moon/Mercury/Venus/Mars/Jupiter/Saturn lenses over selected relations.
+
+Sun may symbolize return-to-center / integration.
+
+Tempus may provide factual celestial context.
+
+None of this grants Vitae recognition or ARCnet authority.
+
+---
+
+# Current whole-system information view
+
+```text
+IDENTITY / SELF
 sovereign continuity
+
+        ↓
 
 HOPE
 current relational reflection
+fixed six-direction scaffold
+rotating optional lenses
+
+        ↓ optional bounded context
 
 TEMPUS
-time / rhythm / historical and optional symbolic context
+multi-cycle temporal context
+optional dodecahedral zodiac shell
+
+        ↓ factual context reference only
 
 VITAE
-separately recognized stabilized practice / becoming
+practice / becoming / recognition
+geometry-independent curriculum registry
+optional icosahedral atlas
+
+        ↓ participant-facing integration
 
 ARCANUM
-participant-facing lived environment integrating these faculties
+lived human environment
+
+        ↓ explicit bounded crossings
 
 ARCNET
-shared substrate and inter-system relational field
+system field / apps / edge contracts / coordination
+
+        ↓ builder / guardian interface
+
+ARCHITECT
+system becoming / design / inspection / verification
 ```
 
-This framing supports a nested user experience without requiring all modules to share one geometry.
+This is not a mandatory hierarchy of data flow.
 
-Candidate principle:
-
-> **Shared Language Does Not Require Shared Solid — Hope, Tempus, Vitae, and ARCnet may reuse center/edge/facet/path concepts while adopting different geometric representations when their information structures genuinely differ.**
+It is the current conceptual separation of responsibilities.
 
 ---
 
-# Architect relationship
+# Current status matrix
 
-Architect has expanded beyond a narrow Arcanum-builder interpretation during the Creation Era exploration.
-
-The emerging candidate role is:
-
-```text
-Architect
-= builder / guardian interface for system becoming across ARCnet
-```
-
-while preserving:
-
-```text
-Human Architect
-= ratifying sovereign for architectural promotion
-
-Architect system
-= design / build / inspect / verify interface
-not sovereign governance
-not Treasury authority
-not automatic self-ratifier
-```
-
-Hope and Architect may therefore form a useful cross-scale conceptual mirror:
-
-```text
-Hope
-helps the participant inspect relationships of self / experience
-
-Architect
-helps the Human Architect inspect relationships of systems / implementation
-```
-
-This does not imply ambient sharing of Hope's private inner state with Architect.
-
-Candidate law:
-
-> **Reflective–Builder Mirror Without Data Leakage — Hope and Architect may share relational design grammar while private reflective state remains unavailable to Architect unless the participant explicitly exports a bounded artifact for a defined purpose.**
+| Structure | Current result |
+| --- | --- |
+| Hope six-node / octahedral scaffold | Survives full internal-edge audit |
+| Classical Seven | Survives as rotating lenses + solar integration |
+| ARCnet K8 | Survives as semantic/information topology |
+| ARCnet inner octahedron | Survives junction + neighbor semantic audits |
+| Tempus dodecahedron | Bounded pass as optional zodiac shell |
+| Vitae icosahedron | Bounded pass as optional 20-face corpus atlas |
+| Tempus↔Vitae literal polyhedral duality | Fails for now |
+| Tempus↔Vitae context↔path relation | Passes boundedly |
+| Dodeca↔icosa visual morph | Viable presentation experiment |
+| Fruit of Life 1+12 | Reopened, still untested |
+| Literal nesting order | Unresolved; co-centered projection currently stronger |
 
 ---
 
-# MANA engagement hypothesis — unresolved and constrained
+# Next research / prototype gates
 
-The idea of using MANA to encourage initial Hope engagement remains an open product/economic hypothesis, not a decision.
-
-Existing doctrine makes direct reflection mining unsafe.
-
-Future exploration should distinguish:
-
-```text
-REWARDING INNER STATE
-prohibited / highly incompatible
-
-REWARDING REFLECTION COMPLETION
-high risk; may gamify becoming
-
-REWARDING PROTOCOL CONTRIBUTION
-potentially permissible if independently authorized
-
-SUBSIDIZING OPTIONAL CAPACITY
-potentially permissible if consistent with Economic Constitution
-```
-
-No issuance schedule or MANA reward mechanism should be invented in geometry studies.
+1. Define a geometry-independent `TempusZodiacRegion` registry.
+2. Generate/define the geometry-independent Vitae grade + specialization registry from actual repository paths.
+3. Prototype Tempus cards/list first, then the same data as a dodecahedral shell.
+4. Prototype Vitae cards/tree first, then the same data as an icosahedral atlas.
+5. Keep all untyped geometric edges suppressible.
+6. Overlay only actual Vitae dependencies from source data.
+7. Test one bounded `TempusContext → VitaePracticeSession` projection.
+8. Test a non-semantic dodecahedron↔icosahedron faculty morph.
+9. Verify reduced motion, screen readers, and geometry-free operation.
+10. Run a dedicated Fruit-of-Life `1 + 12` Tempus navigation audit only after the registry prototype.
+11. Revisit literal nesting only if a precise information, context, or authority meaning emerges.
+12. Human Architect review decides whether any geometry belongs in Module Architecture v2 or module-specific UI specifications.
 
 ---
 
-# Research sequence
+# Final posture
 
-The next nested-geometry work should proceed in this order:
+The audits did not dissolve the geometric vision.
 
-1. finish Hope fixed-node data/provenance model;
-2. trace selected ARCnet multi-junction workflows through existing Edge Contract primitives;
-3. run a dedicated **Tempus dodecahedron falsification** using actual Tempus functions before zodiac assignment;
-4. run a dedicated **Vitae icosahedron falsification** using actual Vitae corpus/path functions before symbolic naming;
-5. test whether Tempus/Vitae mathematical duality corresponds to real semantic duality;
-6. test nesting directions based on data/context/authority meanings;
-7. revisit Fruit of Life only after a genuine twelvefold function set emerges;
-8. preserve geometry-free UI equivalents throughout.
+They made it more precise.
 
----
+The current architecture is best described as:
 
-# Current whole-system view
+> **one sovereign center, several faculty-specific relational geometries, explicit schema bridges, and living state moving through stable information structures.**
 
-The strongest current picture is not one giant fixed sacred solid.
+Geometry may illuminate architecture.
 
-It is a **family of relational information geometries** organized around sovereign Identity:
-
-```text
-Identity / Self
-      ↓
-Hope relational scaffold
-      ↓ selected bounded context
-Tempus temporal context
-      ↓
-Vitae separate becoming / recognition paths
-      ↓
-Arcanum participant-facing integration
-      ↓ explicit bounded crossings
-ARCnet systems / edges / junction coordination
-      ↓
-Architect builder / guardian interface for system becoming
-```
-
-Some layers may eventually be represented through nested polyhedra.
-
-That remains a hypothesis to earn through edge and adjacency evidence.
-
-## Final posture
-
-```text
-Hope octahedral relational scaffold
-→ survives first complete internal-edge audit
-
-ARCnet inner octahedron
-→ survives individual junction + neighbor-edge semantic audits
-
-Classical Seven
-→ survives as optional rotating lens vocabulary + solar integration symbol
-
-Tempus dodecahedron
-→ promising, untested
-
-Vitae icosahedron
-→ promising, untested
-
-Fruit of Life 1+12
-→ unresolved
-
-polyhedral nesting order
-→ unresolved
-```
-
-The architecture should now move one geometry at a time from intuition → relation map → edge falsification → authority audit → accessible representation → Human review.
+It does not legislate it.
