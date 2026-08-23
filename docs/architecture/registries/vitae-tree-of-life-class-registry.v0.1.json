@@ -1,0 +1,181 @@
+{
+  "registry": "vitae.tree-of-life-classes.v0.1",
+  "status": "design-candidate",
+  "phase": "Pre-Genesis",
+  "authority": "geometry-independent symbolic/curriculum class registry; not recognition, rank, readiness, identity, governance, or authority",
+  "purpose": "Represent the intended ten-station Tree-of-Life class grammar that may repeat inside each Vitae grade without asserting a one-to-one grade-to-sefirah mapping.",
+  "sources": {
+    "repository": [
+      "docs/roadmap/arcanum-experience-roadmap.md",
+      "docs/vitae/index.md",
+      "docs/vitae/constitution/grade-architecture-template.md",
+      "docs/vitae/curriculum/elementary-school/grade-i-the-guardian/content/class-01/malkuth-spirit-kernel.md",
+      "docs/vitae/curriculum/elementary-school/grade-i-the-guardian/content/class-01/malkuth-arc-moon-to-sun.md",
+      "docs/vitae/curriculum/elementary-school/grade-i-the-guardian/content/class-02/yesod-arc-moon-to-sun.md",
+      "docs/vitae/curriculum/elementary-school/grade-i-the-guardian/content/class-03/chapter-01/moon-in-hod-kernel-set.md"
+    ],
+    "human_architect_input": "2026-08-23: Tree-of-Life/Kabbalah structure was the inspiration for the ten-grade system; intended curriculum grammar is ten grades with ten classes per grade.",
+    "historical_context": [
+      "Sefer Yetzirah 1:1-2: ten sefirot and twenty-two foundation letters are distinguished within the thirty-two paths framework.",
+      "Standard ten-sefirah naming commonly uses Keter, Chokhmah, Binah, Chesed, Gevurah, Tiferet, Netzach, Hod, Yesod, Malkhut, with traditions differing on treatment of Da'at/Keter."
+    ]
+  },
+  "invariants": {
+    "station_count": 10,
+    "grade_to_sefirah_bijection_encoded": false,
+    "class_station_repetition_across_grades": "intended_structure_not_yet_fully_materialized",
+    "daat_as_eleventh_station": false,
+    "tree_station_is_human_identity": false,
+    "tree_station_is_recognition": false,
+    "tree_station_grants_authority": false,
+    "geometry_required": false,
+    "path_edges_require_separate_registry": true
+  },
+  "stations": [
+    {
+      "class_index": 1,
+      "id": "malkuth",
+      "label": "Malkuth",
+      "traditional_number": 10,
+      "traversal_posture": "lower-to-upper curriculum station",
+      "evidence_status": "repository_evidenced",
+      "evidence": [
+        "Grade I class-01 is explicitly Malkuth.",
+        "A class-level Malkuth Spirit kernel and Moon-to-Sun class arc exist."
+      ]
+    },
+    {
+      "class_index": 2,
+      "id": "yesod",
+      "label": "Yesod",
+      "traditional_number": 9,
+      "traversal_posture": "lower-to-upper curriculum station",
+      "evidence_status": "repository_evidenced",
+      "evidence": [
+        "Grade I class-02 contains yesod-arc-moon-to-sun.md and yesod-spirit-kernel.md."
+      ]
+    },
+    {
+      "class_index": 3,
+      "id": "hod",
+      "label": "Hod",
+      "traditional_number": 8,
+      "traversal_posture": "lower-to-upper curriculum station",
+      "evidence_status": "repository_evidenced",
+      "evidence": [
+        "Grade I class-03 chapter-01 contains moon-in-hod-kernel-set.md."
+      ]
+    },
+    {
+      "class_index": 4,
+      "id": "netzach",
+      "label": "Netzach",
+      "traditional_number": 7,
+      "traversal_posture": "lower-to-upper curriculum station",
+      "evidence_status": "intended_candidate",
+      "evidence": [
+        "Follows the standard reverse-number traversal after Hod; repository class content is not yet materialized at this station."
+      ]
+    },
+    {
+      "class_index": 5,
+      "id": "tiferet",
+      "label": "Tiferet",
+      "traditional_number": 6,
+      "traversal_posture": "lower-to-upper curriculum station",
+      "evidence_status": "intended_candidate",
+      "evidence": [
+        "Follows the standard reverse-number traversal; repository class content is not yet materialized at this station."
+      ]
+    },
+    {
+      "class_index": 6,
+      "id": "gevurah",
+      "label": "Gevurah",
+      "traditional_number": 5,
+      "traversal_posture": "lower-to-upper curriculum station",
+      "evidence_status": "intended_candidate",
+      "evidence": [
+        "Follows the standard reverse-number traversal; repository class content is not yet materialized at this station."
+      ]
+    },
+    {
+      "class_index": 7,
+      "id": "chesed",
+      "label": "Chesed",
+      "traditional_number": 4,
+      "traversal_posture": "lower-to-upper curriculum station",
+      "evidence_status": "intended_candidate",
+      "evidence": [
+        "Follows the standard reverse-number traversal; repository class content is not yet materialized at this station."
+      ]
+    },
+    {
+      "class_index": 8,
+      "id": "binah",
+      "label": "Binah",
+      "traditional_number": 3,
+      "traversal_posture": "lower-to-upper curriculum station",
+      "evidence_status": "intended_candidate",
+      "evidence": [
+        "Follows the standard reverse-number traversal; repository class content is not yet materialized at this station."
+      ]
+    },
+    {
+      "class_index": 9,
+      "id": "chokhmah",
+      "label": "Chokhmah",
+      "traditional_number": 2,
+      "traversal_posture": "lower-to-upper curriculum station",
+      "evidence_status": "intended_candidate",
+      "evidence": [
+        "Follows the standard reverse-number traversal; repository class content is not yet materialized at this station."
+      ]
+    },
+    {
+      "class_index": 10,
+      "id": "keter",
+      "label": "Keter",
+      "traditional_number": 1,
+      "traversal_posture": "lower-to-upper curriculum station",
+      "evidence_status": "intended_candidate",
+      "evidence": [
+        "Follows the standard reverse-number traversal; repository class content is not yet materialized at this station."
+      ]
+    }
+  ],
+  "relationship_posture": {
+    "class_sequence": [
+      "malkuth",
+      "yesod",
+      "hod",
+      "netzach",
+      "tiferet",
+      "gevurah",
+      "chesed",
+      "binah",
+      "chokhmah",
+      "keter"
+    ],
+    "tree_path_edges": [],
+    "reason_edges_are_empty": "Ten station identities and an intended curriculum traversal do not by themselves establish the later Tree-of-Life path graph or any 3D polyhedral edge semantics.",
+    "future_gate": "Audit the actual 22-path correspondence separately before any path edge becomes curriculum, UI, or runtime semantics."
+  },
+  "scale_boundary": {
+    "vitae_tree_station": "internal curriculum/symbolic coordinate",
+    "arcnet_system_vertex": "outer system-topology coordinate",
+    "may_be_visualized_together": true,
+    "may_be_treated_as_same_node_type": false
+  },
+  "not_encoded": [
+    "one sefirah per Vitae grade",
+    "twenty-two Tree paths",
+    "Da'at as an eleventh class",
+    "3D Tree coordinates",
+    "cube or tetrahedron coordinates",
+    "recognition state",
+    "participant personality",
+    "authority",
+    "MANA effects"
+  ]
+}
