@@ -1,0 +1,128 @@
+{
+  "registry": "tempus.cosmic-motion-correspondence.v0.1",
+  "status": "design-candidate-research",
+  "phase": "Pre-Genesis",
+  "authority": "astronomy-informed comparison and implementation guidance only; celestial mechanics creates no participant typing, readiness, recognition, system capability, governance, economic, or constitutional authority",
+  "purpose": "Classify which observed astronomical motion patterns are legitimately analogous to the Tempus/Vitae/ARCnet presentation model, which are useful implementation constraints for Tempus, and which apparent correspondences must be rejected.",
+  "research_sources": [
+    {"name":"NASA Science — Orbits and Kepler's Laws","url":"https://science.nasa.gov/solar-system/orbits-and-keplers-laws/"},
+    {"name":"NASA Science — Sun Facts","url":"https://science.nasa.gov/sun/facts/"},
+    {"name":"NASA Space Place — What Is a Barycenter?","url":"https://spaceplace.nasa.gov/barycenter/en/"},
+    {"name":"NASA Science — Europa Facts","url":"https://science.nasa.gov/jupiter/jupiter-moons/europa/europa-facts/"},
+    {"name":"NASA Science — Kuiper Belt Facts","url":"https://science.nasa.gov/solar-system/kuiper-belt/facts/"},
+    {"name":"NASA Science — Reference Systems","url":"https://science.nasa.gov/learn/basics-of-space-flight/chapter2-1/"},
+    {"name":"NASA Science — Milankovitch Cycles","url":"https://science.nasa.gov/science-research/earth-science/milankovitch-orbital-cycles-and-their-role-in-earths-climate/"}
+  ],
+  "correspondence_tests": [
+    {
+      "id":"nested-transport",
+      "astronomical_behavior":"The Sun carries the planets, asteroids, comets, and other solar-system bodies while the solar system orbits the Milky Way.",
+      "arcanum_analogy":"A stable local ARCnet frame may be transported along a larger Tempus/Vitae presentation trajectory while preserving its internal relations.",
+      "result":"STRONG_KINEMATIC_ANALOGY",
+      "limits":"ARCnet transport is information/presentation geometry, not gravity or physical galactic motion.",
+      "law":"A Local Frame May Travel Through a Larger Field Without Ceasing to Be Local."
+    },
+    {
+      "id":"barycenter",
+      "astronomical_behavior":"Orbiting bodies revolve about shared centers of mass; the solar-system barycenter changes with planetary configuration.",
+      "arcanum_analogy":"Useful mainly as a corrective: a visual center need not be a physical force center or an immovable point.",
+      "result":"ANTI_CORRESPONDENCE_GUARD",
+      "limits":"Human/Identity is a sovereign semantic center, not a mass center, force source, Sun analogue, or computed barycenter.",
+      "law":"Barycenter Is Not Identity."
+    },
+    {
+      "id":"rotation-revolution-precession",
+      "astronomical_behavior":"Earth simultaneously rotates, revolves around the Sun, and undergoes slower precession/nutation; astronomical reference systems therefore require explicit time/reference conventions.",
+      "arcanum_analogy":"Tempus naturally supports several independent temporal coordinates instead of one master phase.",
+      "result":"STRONG_TEMPUS_ANALOGY",
+      "limits":"Independent cycles may be co-observed but do not collapse into one destiny clock.",
+      "law":"Many Cycles May Describe One Moment Without Becoming One Cause."
+    },
+    {
+      "id":"elliptic-nonuniform-motion",
+      "astronomical_behavior":"Planetary orbits are elliptical and orbital speed varies; equal elapsed time does not mean equal change in true orbital angle.",
+      "arcanum_analogy":"Circular Tempus phase rings are normalized coordinate projections only. Astronomical layers should use ephemeris-derived coordinates rather than assuming uniform angular motion where physics does not support it.",
+      "result":"IMPLEMENTATION_CORRECTION",
+      "limits":"The civil-day prototype may remain a uniform phase because it represents clock time, not planetary true anomaly.",
+      "law":"Circular Phase Is a Coordinate Projection, Not an Orbital Claim."
+    },
+    {
+      "id":"orbital-resonance",
+      "astronomical_behavior":"Some bodies occupy stable or dynamically important integer-ratio orbital resonances, such as Io:Europa:Ganymede at approximately 4:2:1 and Pluto:Neptune at 2:3 orbital counts over the same interval.",
+      "arcanum_analogy":"Independent Tempus cycles can be compared for recurrence, commensurability, beat patterns, and repeated relative configurations.",
+      "result":"BOUNDED_MATHEMATICAL_ANALOGY",
+      "limits":"A resonance ratio cannot grant readiness, meaning, permission, personality, recognition, or authority.",
+      "law":"Resonance Is Relation, Not Permission."
+    },
+    {
+      "id":"apparent-retrograde",
+      "astronomical_behavior":"A planet can appear to reverse direction against the sky because the observer is moving in a different orbit; the apparent reversal is reference-frame dependent.",
+      "arcanum_analogy":"A projection may reverse or loop under a changed observer/reference frame without the underlying semantic state reversing.",
+      "result":"STRONG_REFERENCE_FRAME_ANALOGY",
+      "limits":"No astronomical retrograde state may be interpreted as backward human becoming, loss of progress, or negative status.",
+      "law":"Apparent Reversal May Be Frame-Relative; Becoming Does Not Run Backward."
+    },
+    {
+      "id":"precession-and-epoch",
+      "astronomical_behavior":"Reference axes change slowly through precession/nutation; astronomical coordinate work therefore specifies reference systems and epochs.",
+      "arcanum_analogy":"Any future ephemeris-backed Tempus astronomical coordinate should record enough reference metadata to be reproducible.",
+      "result":"STRONG_IMPLEMENTATION_ANALOGY",
+      "limits":"Reference metadata describes measurement, not participant meaning.",
+      "law":"Epoch Before Interpretation."
+    },
+    {
+      "id":"planet-system-bijection",
+      "astronomical_behavior":"Solar-system bodies have physical identities and dynamical roles determined by mass, position, momentum, gravity, and history.",
+      "arcanum_analogy":"Assigning ARCnet systems or Vitae stations one-to-one to planets merely because a diagram looks solar-system-like.",
+      "result":"FAIL",
+      "limits":"No planet owns an ARCnet system, Tree station, grade, identity type, permission, or human trait by this registry.",
+      "law":"Visual Resemblance Does Not Create Correspondence."
+    },
+    {
+      "id":"celestial-causation-of-becoming",
+      "astronomical_behavior":"Physical celestial motions can have physical effects such as insolation, tides, and orbital perturbations through known mechanisms.",
+      "arcanum_analogy":"Inferring that celestial geometry causes Vitae advancement, recognition, psychological state, moral status, or authority.",
+      "result":"FAIL",
+      "limits":"Tempus may present factual astronomical context and optional participant-selected symbolism; it may not convert celestial configuration into judgment of the human.",
+      "law":"Astronomy May Contextualize; It May Not Judge."
+    }
+  ],
+  "tempus_ephemeris_metadata_candidate": {
+    "status":"future-schema-candidate",
+    "purpose":"Make future astronomical context reproducible before adding symbolic interpretation.",
+    "fields":[
+      "observer_reference",
+      "reference_frame",
+      "epoch_or_coordinate_epoch",
+      "ephemeris_model_or_source",
+      "captured_at",
+      "precision"
+    ],
+    "example_observer_references":["geocentric","topocentric","heliocentric","barycentric"],
+    "interpretation":"null at capture",
+    "law":"Ephemeris Before Symbolism."
+  },
+  "combined_disposition":"The solar-system resemblance is meaningful at the level of nested motion, independent cycles, transported frames, resonance mathematics, and reference-frame effects. It is not evidence that ARCnet or Vitae is a physical solar-system analogue, that the Human/Identity center is a Sun/barycenter, or that planets cause participant becoming.",
+  "candidate_laws":[
+    "A Local Frame May Travel Through a Larger Field Without Ceasing to Be Local.",
+    "Barycenter Is Not Identity.",
+    "Many Cycles May Describe One Moment Without Becoming One Cause.",
+    "Circular Phase Is a Coordinate Projection, Not an Orbital Claim.",
+    "Resonance Is Relation, Not Permission.",
+    "Apparent Reversal May Be Frame-Relative; Becoming Does Not Run Backward.",
+    "Epoch Before Interpretation.",
+    "Ephemeris Before Symbolism.",
+    "Visual Resemblance Does Not Create Correspondence.",
+    "Astronomy May Contextualize; It May Not Judge."
+  ],
+  "not_encoded":[
+    "astrological causation",
+    "planet-to-system assignment",
+    "planet-to-Tree-station assignment",
+    "sacred orbital frequencies",
+    "readiness from conjunctions/aspects",
+    "recognition from celestial timing",
+    "authority from resonance",
+    "literal physical spacetime model for ARCnet"
+  ]
+}
