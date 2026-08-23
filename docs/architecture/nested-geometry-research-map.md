@@ -1,9 +1,9 @@
 ---
-title: "Nested Geometry Research Map — Registry and Vitae Decomposition Checkpoint"
+title: "Nested Geometry Research Map — Becoming Field Checkpoint"
 status: design-candidate
 visibility: public
 last_updated: 2026-08-23
-description: "Current post-audit map of Hope, ARCnet, Tempus, Vitae, registry boundaries, polyhedral duality, Fruit-of-Life, and unresolved projection questions."
+description: "Current Creation Era map of Hope, ARCnet, Tempus, Vitae, Tree-of-Life curriculum cycles, registry boundaries, polyhedral hypotheses, and becoming-field projections."
 phase: "Pre-Genesis"
 authority: "non-canonical design evidence"
 source_issue: "https://github.com/The-Architect-369/Arcanum/issues/37"
@@ -15,18 +15,25 @@ source_issue: "https://github.com/The-Architect-369/Arcanum/issues/37"
 
 This document is the current checkpoint for the Creation Era geometry exploration.
 
+The governing rule is:
+
+> **Registry before projection. Geometry may render source-owned relationships; it may not manufacture them.**
+
 Dedicated studies now include:
 
+- `docs/architecture/creation-era-whole-system-falsification-audit.md`
 - `docs/architecture/tempus-dodecahedron-geometry-audit.md`
 - `docs/architecture/vitae-icosahedron-geometry-audit.md`
 - `docs/architecture/tempus-vitae-duality-audit.md`
 - `docs/architecture/vitae-icosahedron-g10-2-follow-up.md`
+- `docs/architecture/tree-of-life-vitae-tempus-stellar-cube-study.md`
 - `docs/architecture/registries/tempus-zodiac-registry.v0.1.json`
 - `docs/architecture/registries/vitae-curriculum-registry.v0.1.json`
-
-The governing approach is now:
-
-> **Registry before projection. Geometry may render source-owned relationships; it may not manufacture them.**
+- `docs/architecture/registries/vitae-resonance-overlay.v0.1.json`
+- `docs/architecture/registries/vitae-tree-of-life-class-registry.v0.1.json`
+- `docs/architecture/registries/vitae-grade-cycle-registry.v0.1.json`
+- `docs/architecture/registries/tempus-vitae-becoming-field-registry.v0.1.json`
+- `docs/architecture/registries/becoming-field-geometry-registry.v0.1.json`
 
 ---
 
@@ -34,7 +41,7 @@ The governing approach is now:
 
 ```text
 Identity / Self
-→ sovereign center, never a geometric score
+→ sovereign center; never a geometric score
 
 Hope A2
 → six fixed relational directions survive full internal-edge audit
@@ -43,69 +50,81 @@ Classical Seven
 → six rotating lenses + optional solar return-to-center survive lens testing
 
 ARCnet K8
-→ survives as semantic / information topology, not yet literal runtime graph
+→ survives as semantic / information topology, not literal runtime graph
 
 ARCnet inner octahedron
-→ six junctions + twelve neighboring coordination relations survive semantic audits
+→ six derived junctions + twelve neighbor relations survive semantic audits
 
 Tempus dodecahedron
-→ bounded pass as optional zodiacal / celestial shell
+→ bounded pass as optional twelve-face zodiac shell
 
 Vitae icosahedron
 → bounded pass as optional twenty-face corpus atlas
 
 Vitae G(10,2)-style decomposition
-→ outer grade ring partially survives with typed renewal seam;
-  fixed pentads and fixed spokes do not
+→ grade ring partly survives with typed renewal seam;
+  fixed pentads/spokes do not
 
-Tempus / Vitae registries
-→ geometry-independent v0.1 registries now exist on this branch
+Vitae Tree class grammar
+→ Grade I materially confirms Malkuth → Yesod → Hod beginnings;
+  ten-station full sequence is design-candidate registry structure
 
-Dodecahedron ↔ icosahedron duality
-→ mathematical fact; literal semantic duality still fails
+Vitae deep curriculum cycle
+→ 36 positions/class × 10 classes = 360 positions/grade;
+  ten grades produce a ten-turn, 3,600-position spiral candidate
+
+Tempus × Vitae becoming field
+→ schema-grounded context attachment plus optional independent phase-space projection
+
+ARCnet stellar frame
+→ strongest new hypothesis is stable frame transported along participant history
+
+Cube + edge-sharing tetrahedron
+→ valid ten-point coordinate scaffold;
+  not a ratified Tree path graph
 
 Fruit of Life
-→ reopened by genuine twelvefold Tempus registry; still untested
-
-literal nesting order
-→ unresolved; co-centered views + explicit projections remain stronger
+→ reopened by real Tempus twelvefold data; still untested
 ```
 
 ---
 
 # Stable topology versus living state
 
-The strongest cross-study principle remains:
+> **Stable Topology, Living State — geometry may stabilize coordinates while context, interpretation, history, and participant path remain dynamic.**
 
-> **Stable Topology, Living State — a geometry may stabilize relational coordinates while information, context, interpretation, and active pathways remain dynamic.**
-
-Examples:
+Relatively stable:
 
 ```text
-STABLE / RELATIVELY STABLE
+Identity continuity
 Hope relational directions
 ARCnet system identities
 ARCnet junction identities
 Tempus zodiac region identities
-Vitae grade and specialization region identities
+Vitae grade/specialization identities
+Vitae Tree class station identities when registry-supported
+```
 
-DYNAMIC
+Dynamic:
+
+```text
 Hope observations
 selected archetypal lens
 current TempusContext
-selected Vitae path
-practice records
-actual curriculum dependency overlays
-Vitae grade↔specialization resonance overlays
-active ARCnet workflows
-rotation / focus / presentation
+Vitae practice session
+participant-selected path
+curriculum materialization state
+recognition review state
+resonance overlays
+ARCnet workflows
+rendered focus / rotation / trajectory
 ```
 
 ---
 
 # Hope A2
 
-Current design candidate:
+Current design-candidate scaffold:
 
 ```text
 SELF / IDENTITY at center
@@ -116,41 +135,49 @@ Expression    ↔ Discernment
 Relation      ↔ Agency
 ```
 
-The six fixed directions produce twelve differentiated octahedral neighbor relations.
+All twelve neighbor relations differentiate semantically.
 
-Planetary names do not own the coordinates.
+Classical planets do not own these coordinates.
 
-Moon / Mercury / Venus / Mars / Jupiter / Saturn remain optional rotating interpretive lenses.
+Moon / Mercury / Venus / Mars / Jupiter / Saturn remain optional rotating lenses.
 
-Sun remains an optional return-to-center / integration symbol, never Identity itself.
+Sun remains optional return-to-center / integration, never Identity or authority.
 
-Key law:
+Key laws include:
 
-> **Illumination Measures Articulation, Not Worth.**
+- Reflection Is Not Mineable
+- Rotation Creates Insight
+- Resonance Metadata, Not Coordinate Identity
+- Solar Integration, Not Solar Typing
+- No Archetypal Completion State
 
 ---
 
-# ARCnet
+# ARCnet outer and inner geometry
 
-Current outer candidate:
+Outer candidate:
 
 ```text
-8 outer systems
-28 complete pairwise semantic relationships
+8 systems
+28 pairwise semantic studies
 4 mirror axes
 ```
 
-Current inner candidate:
+Inner candidate:
 
 ```text
-6 coordination junctions
-12 neighboring junction relations
-3 antipodal junction axes
+6 derived coordination junctions
+12 neighbor relations
+3 antipodal pairs
 ```
 
-The geometry survives as semantic / information architecture.
+The outer K8 and inner octahedron survive as semantic/information architecture.
 
-It does not prove that every semantic relation needs an executable runtime Edge Contract or that inner junctions require runtime primitives.
+They do not prove:
+
+- every semantic edge needs a runtime Edge Contract;
+- every inner junction needs a runtime primitive;
+- geometric symmetry grants authority.
 
 Key law:
 
@@ -158,9 +185,9 @@ Key law:
 
 ---
 
-# Tempus dodecahedron
+# Tempus dodecahedral zodiac shell
 
-A regular dodecahedron has:
+A regular dodecahedron provides:
 
 ```text
 12 faces
@@ -168,73 +195,34 @@ A regular dodecahedron has:
 30 edges
 ```
 
-## Passed structure
-
-The twelve faces can preserve simultaneously:
+What survives:
 
 ```text
 12 optional zodiac regions
-12-step chronological zodiac cycle
-6 exact opposite-face zodiac opposition pairs
+12-step chronological cycle
+6 exact opposite-face opposition pairs
 ```
 
 Leading designation:
 
 > **Tempus Dodecahedral Zodiac Shell**
 
-## Failed structure
+What fails:
 
-The remaining face adjacencies do not uniquely reproduce a complete zodiac relationship graph.
+- whole-Tempus dodecahedral ontology;
+- complete secondary zodiac-aspect edge semantics;
+- pentagonal symmetry as decan structure;
+- twenty semantic Tempus vertices.
 
-Different chronology/opposition-preserving orientations select different halves of sextile, square, and trine relationships.
+`tempus-zodiac-registry.v0.1.json` now owns region identity, chronology, opposition, and safety posture without geometry coordinates.
 
-Therefore untyped secondary geometric edges remain presentation-only.
-
-The dodecahedron also does not encode all of Tempus, which remains multi-cycle:
-
-```text
-civic
-solar / seasonal
-lunar
-planetary
-zodiac
-36 decans
-ceremonial depth
-rites / receipts
-```
-
-Fivefold pentagonal symmetry does not generate the independent threefold decanic structure.
-
-## Registry checkpoint
-
-`docs/architecture/registries/tempus-zodiac-registry.v0.1.json` now owns the geometry-independent twelvefold data:
-
-```text
-region identity
-chronological previous / next
-six opposition pairs
-TempusContext zodiac source field
-non-causal / non-personal invariants
-```
-
-It deliberately does not encode:
-
-```text
-dodecahedral face coordinates
-secondary dodecahedral adjacency
-participant traits
-behavior prediction
-Vitae advancement
-MANA effects
-```
-
-This makes a cards/list view and a future dodecahedral view consumers of the same semantic source.
+Untyped dodecahedral edges remain presentation-only.
 
 ---
 
-# Vitae icosahedron
+# Vitae icosahedral corpus atlas
 
-A regular icosahedron has:
+A regular icosahedron provides:
 
 ```text
 20 faces
@@ -249,131 +237,63 @@ The repository independently contains:
 +
 10 Specializations
 =
-20 primary curriculum regions
+20 primary named regions
 ```
 
 Leading designation:
 
 > **Vitae Icosahedral Corpus Atlas**
 
-## Original bounded pass
+The twenty faces survive as an optional high-level atlas.
 
-The twenty faces can organize the corpus.
+The thirty geometric adjacencies fail as fixed curriculum dependencies.
 
-The thirty geometric adjacencies cannot become curriculum dependencies merely because the faces touch.
-
-The actual path remains a separate overlay generated from Vitae data.
-
-Key laws remain:
+Key laws:
 
 - Corpus Count Does Not Grant Edge Meaning
 - The Map Is Not the Journey
 - Closed Surface, Open Journey
 - No Geometric Progress Meter
 - Coordinate Is Not Recognition
+- Registry Before Render
 
 ---
 
-# Vitae 10 + 5 + 5 follow-up
+# Vitae G(10,2)-style follow-up
 
-The face-adjacency graph admits a generalized-Petersen-style decomposition:
+The 20-face adjacency graph admits:
 
 ```text
-one outer 10-cycle
+one 10-cycle
 +
-two inner 5-cycles
+two 5-cycles
 +
 ten spokes
 ```
 
-The follow-up study tested the three relationships previously dismissed as fabrication.
-
-## 1. Adept ↔ Guardian closure
-
-As another grade-progression edge:
+Disposition:
 
 ```text
-FAIL
+Adept ↔ Guardian as progression
+→ rejected
+
+Adept ↔ Guardian as renewal / return-to-foundation seam
+→ bounded pass
+
+two specialization pentads as fixed schools/tracks
+→ rejected
+
+two specialization pentads as optional analytic views
+→ viable design candidate
+
+ten fixed grade ↔ specialization spokes
+→ rejected
+
+many-to-many grade ↔ specialization resonance
+→ viable design candidate
 ```
 
-As a typed **renewal / return-to-foundation seam**:
-
-```text
-BOUNDED PASS
-```
-
-Repository support:
-
-- Adept may revisit prior grades with integrative depth;
-- all prior invariants remain in force;
-- specialization remains grounded in foundational disciplines;
-- Guardian remains a foundational reference posture.
-
-Candidate laws:
-
-> **Renewal Is Not Regression.**
-
-> **Completion Returns to Maintenance.**
-
-A future grade ring must therefore distinguish:
-
-```text
-9 sequence edges
-+
-1 renewal seam
-```
-
-rather than visually claiming ten equivalent progression edges.
-
-## 2. Two specialization pentads
-
-As canonical schools, factions, prerequisites, or required tracks:
-
-```text
-FAIL
-```
-
-As optional non-exclusive analytic views:
-
-```text
-VIABLE DESIGN CANDIDATE
-```
-
-One useful analytic split is:
-
-```text
-INTERPRETIVE / REPRESENTATIONAL
-Illusionist
-Arcanist
-Philosopher
-Enchanter
-Astrologer
-
-FORMATION / LIFECYCLE
-Hierophant
-Druid
-Artificer
-Alchemist
-Necromancer
-```
-
-Possible study cycles:
-
-```text
-Illusionist → Arcanist → Philosopher → Enchanter → Astrologer → Illusionist
-
-Hierophant → Druid → Artificer → Alchemist → Necromancer → Hierophant
-```
-
-These may be useful teaching or navigation views only.
-
-Key law:
-
-> **Pentad as Lens, Not Lane.**
-
-## 3. Ten grade ↔ specialization spokes
-
-The corpus contains strong semantic resonance, especially:
+Strong current resonances include:
 
 ```text
 Seeker     ↔ Philosopher
@@ -384,138 +304,384 @@ Oracle     ↔ Astrologer
 Adept      ↔ Artificer
 ```
 
-But the remaining grade regions have multiple plausible advanced expressions:
+but Guardian, Disciple, Healer, and Sage remain multiply resonant.
+
+Key laws:
+
+- Renewal Is Not Regression
+- Completion Returns to Maintenance
+- Pentad as Lens, Not Lane
+- Resonance Is Many-to-Many
+- Spoke Is Suggestion, Not Destiny
+- Semantic Multiplexing Limit
+- Typed Edge Before Meaning
+
+`vitae-resonance-overlay.v0.1.json` keeps those relationships outside the base curriculum registry.
+
+---
+
+# Vitae Tree-of-Life class grammar
+
+The Human Architect clarified that Tree-of-Life / Kabbalah structure was an original inspiration for the tenfold Vitae architecture.
+
+The repository materially confirms early Grade I class stations:
 
 ```text
-Guardian
-→ Hierophant or Druid
-
-Disciple
-→ Hierophant, Necromancer, or Enchanter
-
-Healer
-→ Druid or Necromancer
-
-Sage
-→ Philosopher, Enchanter, Druid, or Alchemist
+Class 1 = Malkuth
+Class 2 = Yesod
+Class 3 = Hod
 ```
 
-Therefore:
+Malkuth also confirms a seven-chapter planetary arc:
 
 ```text
-fixed one-to-one bijection
-→ FAIL
+Moon
+Mars
+Mercury
+Jupiter
+Venus
+Saturn
+Sun
+```
 
-many-to-many resonance overlay
-→ PASS as design-candidate information architecture
+and each chapter kernel contains:
+
+```text
+Spirit
+Air
+Fire
+Earth
+Water
+```
+
+while the class itself has a separate class-level Spirit overview.
+
+The new Tree registry therefore uses:
+
+```text
+Malkuth
+Yesod
+Hod
+Netzach
+Tiferet
+Gevurah
+Chesed
+Binah
+Chokhmah
+Keter
+```
+
+as the intended lower-to-upper ten-station class sequence, with the first three marked repository-evidenced and the remainder marked intended-candidate until content is materialized or otherwise sourced.
+
+Important boundary:
+
+```text
+10 grades
+≠ automatically 10 sefirot identities
+```
+
+The stronger current hypothesis is a repeating ten-class Tree grammar **inside each grade**.
+
+Twenty-two Tree path relationships remain intentionally unregistered pending a separate audit.
+
+---
+
+# Vitae 360-position grade cycle
+
+The clarified curriculum arithmetic is exact:
+
+```text
+1 class overview
++
+7 chapters × 5 sections
+=
+36 positions/class
+
+10 classes × 36
+=
+360 positions/grade
+
+10 grades × 360
+=
+3,600 indexed Core Vitae positions
+```
+
+Supporting totals:
+
+```text
+100 classes
+700 chapters
+100 class overviews
+3,500 chapter sections
+3,600 positions
+```
+
+Each class can occupy a 36-degree curriculum sector.
+
+Within a class:
+
+```text
+1° overview gate
++
+7 × 5° chapter blocks
+=
+36°
+```
+
+This earns a normalized circular curriculum coordinate without claiming that one section is literally one day or one zodiac degree.
+
+Leading deep-path geometry:
+
+> **one 360-position turn per grade → ten-turn Vitae spiral**
+
+The spiral and the icosahedron answer different questions:
+
+```text
+icosahedron
+= high-level corpus atlas
+
+spiral
+= deep Core Vitae traversal / history coordinate
 ```
 
 Key laws:
 
-> **Resonance Is Many-to-Many.**
+- Curriculum Angle Is an Index, Not a Cosmological Claim
+- Return With Difference
+- Deep Path and Corpus Atlas Are Separate Views
 
-> **Spoke Is Suggestion, Not Destiny.**
+---
 
-## Combined-load limit
+# Tempus × Vitae becoming field
 
-The two inner pentagons attach to alternating outer-grade positions.
+The schema-grounded bridge remains:
 
-Therefore fixed specialization pentads and fixed grade-specialization spokes constrain one another.
+```text
+VitaePracticeSession.tempusContextId?
+```
 
-The same graph cannot independently optimize both semantic structures.
+This permits two independent coordinates at a practice event:
+
+```text
+VITAE
+where the selected practice sits in the curriculum
+
+TEMPUS
+what the factual / selected symbolic temporal context was
+```
+
+Leading derived model:
+
+```text
+BecomingField
+=
+Vitae voluntary curriculum coordinate
+×
+Tempus captured context
+```
+
+This is a projection/query field, not a new sovereign module.
+
+## Independent phase-space candidate
+
+If one selected Tempus cycle is normalized to a circle and the Vitae grade cycle is also normalized to a circle:
+
+```text
+Tempus phase S¹
+×
+Vitae phase S¹
+=
+S¹ × S¹
+```
+
+The common visualization is a torus.
+
+This is useful because:
+
+```text
+Tempus can continue moving
+while
+Vitae remains paused
+```
+
+so rest and silence create no lateness or deficit.
+
+A forced diagonal phase lock is rejected.
+
+Synchronization currently means **co-observation**, not scheduling.
+
+## Planetary comparison
+
+Vitae's seven chapter labels may be compared with:
+
+```text
+TempusContext.planetary.day
+TempusContext.planetary.hour?
+```
+
+Allowed output is optional metadata/reflection such as same/different planetary label.
+
+Forbidden output includes readiness, good/bad timing, required waiting, personality typing, or advancement.
+
+Key laws:
+
+- Context and Path May Share a Field Without Either Becoming the Cause of the Other
+- Synchronization May Mean Co-Observation, Not Scheduling
+- Planetary Coincidence May Be Observed; It May Not Become Permission or Destiny
+
+---
+
+# Ten-class / twelve-zodiac interference
+
+The Vitae class partition and zodiac partition differ:
+
+```text
+Vitae
+10 × 36°
+
+Tempus zodiac
+12 × 30°
+```
+
+With a shared zero anchor, their boundaries coincide at:
+
+```text
+0°
+180°
+360°
+```
+
+because `LCM(36, 30) = 180`.
+
+The resulting pattern is changing relative phase, not one-to-one correspondence.
+
+That is a stronger research posture than forcing:
+
+```text
+one class = one sign
+one section = one zodiac degree
+```
+
+Both are rejected for now.
+
+---
+
+# ARCnet stellar frame through the becoming field
+
+The strongest current cross-scale visualization is:
+
+```text
+Tempus / Vitae
+= trajectory / phase field
+
+ARCnet stellar cube
+= stable transported system frame
+```
+
+System identities, authority boundaries, Identity sovereignty, and Edge Contract requirements remain stable.
+
+Dynamic rendering may change:
+
+- position along the history trajectory;
+- selected faculty;
+- current Tempus context;
+- current Vitae coordinate;
+- participant-owned path overlay.
 
 Key law:
 
-> **Semantic Multiplexing Limit — one geometric decomposition may support several views, but independent meanings may not all become fixed edge semantics simply because the same line can display them.**
+> **Transport the Frame; Do Not Rewrite the Frame.**
 
-And:
-
-> **Typed Edge Before Meaning — a meaningful connection must declare whether it is sequence, renewal, resonance, prerequisite, counterbalance, or another bounded relation.**
+This preserves the scale firewall between internal Arcanum faculties and outer ARCnet system vertices.
 
 ---
 
-# Vitae registry checkpoint
+# Cube + tetrahedron ten-point hypothesis
 
-`docs/architecture/registries/vitae-curriculum-registry.v0.1.json` now owns the geometry-independent high-level corpus data.
-
-It contains:
+A cube has:
 
 ```text
-10 grade identities
-school membership
-canonical grade order
-functions and establishment summaries
-10 specialization identities
-mandates
-domains
-primary risks
-safeguards
-post-Adept lateral / voluntary posture
+8 vertices
+12 literal edges
 ```
 
-It deliberately contains empty sets for:
+A tetrahedron has:
 
 ```text
-specialization_fixed_adjacency
-grade_specialization_fixed_pairings
+4 vertices
+6 literal edges
 ```
 
-and deliberately omits:
+If a tetrahedron shares exactly one cube edge, it contributes:
 
 ```text
-icosahedron face coordinates
-fixed specialization pentads
-fixed spoke mapping
-participant completion percentage
-readiness score
-worth / rank
-automatic authority
+2 new vertices
+5 new edges
 ```
 
-The absence of those relationships is part of the architecture.
+so the union has:
 
-A future geometry projection may reference registry IDs.
+```text
+10 vertices
+17 literal polyhedral edges
+```
 
-It may not create relationships missing from the registry.
+Therefore:
+
+> **An edge-sharing tetrahedral extrusion is a valid ten-point 3D coordinate scaffold.**
+
+But:
+
+> **Ten points do not ratify the Tree of Life.**
+
+The Tree relationship/path vocabulary must be registered independently.
+
+The two new coordinates must not automatically become Tempus/Vitae system vertices or new modules.
+
+Candidate safe roles include:
+
+```text
+context ↔ path
+moment ↔ becoming
+field-entry ↔ field-return
+```
+
+as non-sovereign presentation coordinates.
+
+Key laws:
+
+- Ten Vertices Are a Coordinate Opportunity, Not a Tree Ratification
+- Additional Coordinates Need Not Be Additional Authorities
 
 ---
 
-# Tempus ↔ Vitae duality
+# Tempus ↔ Vitae polyhedral duality
 
-The dodecahedron and icosahedron are exact geometric duals:
+Dodecahedron and icosahedron remain exact mathematical duals:
 
 ```text
-dodecahedron 12 faces ↔ icosahedron 12 vertices
-dodecahedron 20 vertices ↔ icosahedron 20 faces
+12 faces ↔ 12 vertices
+20 vertices ↔ 20 faces
 30 edges ↔ 30 edges
 ```
 
-But the successful module mappings are:
+But the successful semantic mappings are both face mappings:
 
 ```text
 Tempus = 12 dodecahedral faces
-Vitae  = 20 icosahedral faces
+Vitae = 20 icosahedral faces
 ```
 
-That is not a literal dual coordinate mapping.
+No homogeneous 20-position Tempus vertex registry or 12-position Vitae vertex registry has emerged.
 
-No canonical 12-position Vitae vertex registry or 20-position Tempus vertex registry has emerged.
+Literal semantic duality therefore still fails.
 
-Therefore literal semantic duality remains rejected.
-
-The source-derived relationship remains:
+The stronger relationship is relational:
 
 ```text
-TempusContext
-→ optional bounded context reference
-VitaePracticeSession
-```
-
-Conceptually:
-
-```text
-Tempus = context / rhythm / orientation
-Vitae  = practice / path / recognized becoming
+context ↔ path
+rhythm ↔ becoming
+moment ↔ continuity of practice
 ```
 
 Key law:
@@ -524,9 +690,9 @@ Key law:
 
 ---
 
-# Co-centered geometry
+# Co-centered architecture
 
-Current evidence favors:
+Current evidence favors faculty-specific views around sovereign Identity:
 
 ```text
 Identity / Self
@@ -537,32 +703,29 @@ Identity / Self
         |     optional dodecahedral zodiac shell
         |
         +-- Vitae curriculum view
-              optional icosahedral corpus atlas
+        |     optional icosahedral corpus atlas
+        |     optional ten-turn deep-path spiral
+        |
+        +-- derived Tempus × Vitae becoming-field view
 ```
 
-rather than claiming that Tempus contains Vitae or Vitae contains Tempus as an authority relation.
+ARCnet is the outer system field carrying the lived environment, not another interior faculty coordinate.
 
-A dodecahedron↔icosahedron morph remains a viable presentation experiment if it communicates a change of faculty, not a transfer of labels.
-
-Key laws:
-
-- Co-Centering Does Not Imply Containment
-- Transform Without Transfer
-- Visual Incidence Does Not Create an Edge Contract
+Co-centering does not imply containment or authority transfer.
 
 ---
 
 # Fruit of Life
 
-A common Fruit-of-Life construction is:
+The Tempus registry supplies a genuine twelvefold set:
 
 ```text
-1 center + 12 surrounding circles = 13
+12 zodiac regions
 ```
 
-The Tempus registry now provides a genuine independently derived twelvefold set.
+Fruit-of-Life `1 + 12` therefore remains reopened but unpromoted.
 
-A dedicated future test may therefore ask whether:
+A safer future test remains:
 
 ```text
 selected moment / temporal focus
@@ -570,117 +733,74 @@ selected moment / temporal focus
 12 zodiac regions
 ```
 
-forms a useful flat Tempus navigator.
-
-The center must not automatically be Identity.
+rather than Identity center + zodiac typing.
 
 Key law:
 
 > **Temporal Center Is Not Identity.**
 
-No Fruit-of-Life architecture is promoted yet.
-
 ---
 
-# Current whole-system information view
-
-```text
-IDENTITY / SELF
-sovereign continuity
-
-        ↓
-
-HOPE
-current relational reflection
-fixed six-direction scaffold
-rotating optional lenses
-
-        ↓ optional bounded context
-
-TEMPUS
-multi-cycle temporal context
-geometry-independent zodiac registry
-optional dodecahedral zodiac shell
-
-        ↓ factual context reference only
-
-VITAE
-practice / becoming / recognition
-geometry-independent curriculum registry
-optional icosahedral corpus atlas
-actual paths + resonance as overlays
-
-        ↓ participant-facing integration
-
-ARCANUM
-lived human environment
-
-        ↓ explicit bounded crossings
-
-ARCNET
-system field / apps / edge contracts / coordination
-
-        ↓ builder / guardian interface
-
-ARCHITECT
-system becoming / design / inspection / verification
-```
-
-This is a conceptual separation of responsibilities, not a mandatory one-way data pipeline.
-
----
-
-# Status matrix
+# Current status matrix
 
 | Structure | Current result |
 | --- | --- |
 | Hope six-node / octahedral scaffold | Survives full internal-edge audit |
 | Classical Seven | Survives as rotating lenses + solar integration |
-| ARCnet K8 | Survives as semantic / information topology |
-| ARCnet inner octahedron | Survives junction + neighbor semantic audits |
+| ARCnet K8 | Survives as semantic/information topology |
+| ARCnet inner octahedron | Survives junction + neighbor audits |
 | Tempus dodecahedron | Bounded pass as optional zodiac shell |
-| Tempus geometry-independent registry | v0.1 created |
+| Tempus zodiac registry | v0.1 exists |
 | Vitae icosahedron | Bounded pass as optional 20-face corpus atlas |
-| Vitae geometry-independent registry | v0.1 created |
-| Adept↔Guardian progression closure | Rejected |
+| Vitae curriculum registry | v0.1 exists |
+| Vitae resonance overlay | v0.1 exists |
+| Adept↔Guardian progression edge | Rejected |
 | Adept↔Guardian renewal seam | Bounded pass |
-| Two fixed specialization schools | Rejected |
-| Two analytic pentad views | Viable, non-canonical |
-| Ten fixed grade↔specialization spokes | Rejected |
-| Many-to-many resonance overlay | Viable design candidate |
+| Fixed specialization pentads | Rejected |
+| Analytic specialization pentad views | Viable, non-canonical |
+| Fixed grade↔specialization spokes | Rejected |
+| Many-to-many resonance | Viable design candidate |
+| Vitae Tree class registry | v0.1 exists; first 3 stations repository-evidenced |
+| Vitae 360-position grade cycle | Structurally earned; v0.1 registry exists |
+| Vitae ten-turn spiral | Viable deep-path projection |
+| Tempus×Vitae context attachment | Schema-grounded |
+| Tempus×Vitae S¹×S¹ phase space | Viable design candidate |
+| ARCnet transported stellar frame | Viable presentation hypothesis |
+| Cube-edge-tetrahedron 10-point scaffold | Mathematically valid; Tree semantics unratified |
 | Tempus↔Vitae literal polyhedral duality | Fails for now |
-| Tempus↔Vitae context↔path relation | Passes boundedly |
-| Dodeca↔icosa visual morph | Viable presentation experiment |
+| Dodeca↔icosa morph | Viable presentation experiment |
 | Fruit of Life 1+12 | Reopened, still untested |
-| Literal nesting order | Unresolved; co-centered projection stronger |
+| Literal authority-bearing nesting | Rejected / unsupported |
 
 ---
 
 # Next gates
 
-1. Validate both v0.1 registries against the source documents and future generated repository indexes.
-2. Define a separate, versioned **Vitae resonance overlay** rather than adding pairings to the curriculum registry.
-3. Prototype Tempus as ordinary cards/list from the zodiac registry.
-4. Render the exact same Tempus registry through an optional dodecahedral shell.
-5. Prototype Vitae as ordinary map/tree/cards from the curriculum registry.
-6. Render the exact same Vitae registry through an optional icosahedral atlas.
-7. In the Vitae geometric view, distinguish `sequence`, `renewal`, and `resonance` visually and semantically.
-8. Keep actual prerequisites generated from source dependency data, not geometric adjacency.
-9. Test one bounded `TempusContext → VitaePracticeSession` projection.
-10. Test geometry-free, reduced-motion, keyboard, and screen-reader operation before any geometric view is promoted.
-11. Run a dedicated Fruit-of-Life `1 + 12` Tempus navigation audit only after the plain Tempus registry view is understood.
-12. Human Architect review decides whether any projection belongs in Module Architecture v2 or module-specific specifications.
+1. Audit the ten intended Tree class stations against surviving curriculum sources.
+2. Create a separate Tree relationship/path registry; do not infer paths from polyhedral edges.
+3. Generate a Grade I 360-position materialization index showing existing versus unmaterialized content.
+4. Verify whether Grades II-X were intended to repeat the same ten-class Tree grammar.
+5. Prototype Grade I as a geometry-free list/tree and a simple 360-position circle before a helix.
+6. Capture TempusContext beside synthetic Vitae practice events without section/day or section/zodiac-degree locking.
+7. Test the S¹×S¹ phase-space view, including pause/rest trajectories.
+8. Test planetary chapter ↔ planetary day/hour comparison as optional metadata only.
+9. Prototype the ARCnet stellar frame transported along synthetic participant history.
+10. After the Tree path registry exists, compare tri-linear Tree, cube-edge-tetrahedron ten-point scaffold, and other 10-point coordinate models against the same graph.
+11. Keep all geometry optional, reduced-motion compatible, screen-reader navigable, and replaceable by cards/list/tree.
+12. Human Architect review decides whether any portion belongs in Module Architecture v2 or module-specific UI specifications.
 
 ---
 
 # Final posture
 
-The geometry is becoming more useful by becoming less authoritarian.
+The strongest current architecture is no longer one sacred solid containing everything.
 
-The strongest current pattern is:
+It is:
 
-> **one sovereign center, source-owned registries, several faculty-specific relational views, typed overlays, and living state moving through stable information structures.**
+> **one sovereign Identity, multiple faculty-specific registries, a repository-derived 360-position Vitae cycle repeated through ten grades, independent Tempus context moving beside voluntary practice, and an ARCnet stellar system frame that may be carried through the resulting history without changing its authority.**
 
-Geometry may illuminate architecture.
+The geometric vision is becoming stronger as each geometry is forced to answer a precise information question.
+
+Geometry may illuminate the field.
 
 It does not legislate it.
