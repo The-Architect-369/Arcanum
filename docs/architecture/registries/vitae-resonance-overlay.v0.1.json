@@ -1,0 +1,164 @@
+{
+  "registry": "vitae.resonance.v0.1",
+  "status": "design-candidate",
+  "phase": "Pre-Genesis",
+  "authority": "optional many-to-many navigation and reflection metadata only; not prerequisite, unlock, recognition, destiny, rank, or authority",
+  "sources": [
+    "docs/vitae/curriculum/elementary-school/elementary-school-canon.md",
+    "docs/vitae/curriculum/intermediate-school/intermediate-school-canon.md",
+    "docs/vitae/curriculum/high-school/high-school-canon.md",
+    "docs/vitae/curriculum/specializations/specialization-overview-codex.md",
+    "docs/vitae/curriculum/specializations/specialization-wide-invariants-canon.md",
+    "docs/architecture/vitae-icosahedron-g10-2-follow-up.md",
+    "docs/architecture/registries/vitae-curriculum-registry.v0.1.json"
+  ],
+  "invariants": {
+    "many_to_many": true,
+    "exclusive_pairing": false,
+    "automatic_specialization": false,
+    "prerequisite_semantics": false,
+    "authority_semantics": false,
+    "participant_typing": false,
+    "geometry_required": false,
+    "suggestion_requires_explicit_selected_context": true
+  },
+  "relationships": [
+    {
+      "grade_id": "grade-ii",
+      "specialization_id": "specialization-philosopher",
+      "confidence": "strong",
+      "basis": "meaning discipline and inquiry stability ↔ coherence without closure; meaning, ethics, integration",
+      "question": "How does disciplined inquiry become stewardship of meaning without collapsing uncertainty?"
+    },
+    {
+      "grade_id": "grade-iv",
+      "specialization_id": "specialization-illusionist",
+      "confidence": "strong",
+      "basis": "perception without interpretation ↔ perceptual hygiene; bias, projection, narrative distortion",
+      "question": "How can widened perception remain protected from projection and superior-sight claims?"
+    },
+    {
+      "grade_id": "grade-v",
+      "specialization_id": "specialization-arcanist",
+      "confidence": "strong",
+      "basis": "structured knowledge and cognitive architecture ↔ epistemic stewardship; knowledge systems, models, limits of knowing",
+      "question": "How does structured knowledge mature into stewardship of models and their limits?"
+    },
+    {
+      "grade_id": "grade-vii",
+      "specialization_id": "specialization-alchemist",
+      "confidence": "strong",
+      "basis": "transformation and synthesis ↔ ethical transformation under constraint",
+      "question": "How does the capacity to transform remain reversible, bounded, and non-coercive?"
+    },
+    {
+      "grade_id": "grade-ix",
+      "specialization_id": "specialization-astrologer",
+      "confidence": "strong",
+      "basis": "pattern perception and foresight without prophecy ↔ scale and rhythm without fate; cycles, timing, perspective",
+      "question": "How can pattern and timing be interpreted without prediction, fate, or causal overreach?"
+    },
+    {
+      "grade_id": "grade-x",
+      "specialization_id": "specialization-artificer",
+      "confidence": "strong",
+      "basis": "creative stabilization and containment of generative capability ↔ responsible form and tool stewardship",
+      "question": "How does stabilized creative capability become responsible form, construction, and maintenance?"
+    },
+    {
+      "grade_id": "grade-i",
+      "specialization_id": "specialization-hierophant",
+      "confidence": "plausible_non_unique",
+      "basis": "self-governance and reliability ↔ threshold stewardship without initiation",
+      "question": "How does reliable self-governance inform stewardship of thresholds without becoming gatekeeping?"
+    },
+    {
+      "grade_id": "grade-i",
+      "specialization_id": "specialization-druid",
+      "confidence": "plausible_non_unique",
+      "basis": "reliability and grounding ↔ living systems stewardship; ecology, embodiment, balance",
+      "question": "How does personal grounding extend into care for living systems without moral superiority?"
+    },
+    {
+      "grade_id": "grade-iii",
+      "specialization_id": "specialization-hierophant",
+      "confidence": "plausible_non_unique",
+      "basis": "ethical action, restraint, and refusal ↔ threshold stewardship and pacing of change",
+      "question": "When does ethical restraint mean holding a threshold rather than advancing it?"
+    },
+    {
+      "grade_id": "grade-iii",
+      "specialization_id": "specialization-necromancer",
+      "confidence": "plausible_non_unique",
+      "basis": "restraint, refusal, and consequence ↔ ethical endings and release",
+      "question": "When is the responsible action to release, end, or refuse continuation?"
+    },
+    {
+      "grade_id": "grade-iii",
+      "specialization_id": "specialization-enchanter",
+      "confidence": "plausible_non_unique",
+      "basis": "ethical action without authority ↔ meaning and resonance without control",
+      "question": "How can expression shape atmosphere without becoming manipulation or command?"
+    },
+    {
+      "grade_id": "grade-vi",
+      "specialization_id": "specialization-druid",
+      "confidence": "strong_non_unique",
+      "basis": "care, maintenance, and restoration ↔ living systems stewardship",
+      "question": "How does care become stewardship of living systems without ownership or domination?"
+    },
+    {
+      "grade_id": "grade-vi",
+      "specialization_id": "specialization-necromancer",
+      "confidence": "strong_non_unique",
+      "basis": "care without dependency and restoration without authority ↔ grief, impermanence, ethical endings and release",
+      "question": "How does care remain present when restoration is not possible and release is the responsible posture?"
+    },
+    {
+      "grade_id": "grade-viii",
+      "specialization_id": "specialization-philosopher",
+      "confidence": "plausible_non_unique",
+      "basis": "integration and reflective wisdom ↔ coherence without closure",
+      "question": "How can integrated understanding remain open rather than harden into a totalizing account?"
+    },
+    {
+      "grade_id": "grade-viii",
+      "specialization_id": "specialization-enchanter",
+      "confidence": "plausible_non_unique",
+      "basis": "embodied understanding and reflection at scale ↔ meaning, atmosphere, aesthetics, symbol",
+      "question": "How can integrated understanding become resonant expression without charismatic control?"
+    },
+    {
+      "grade_id": "grade-viii",
+      "specialization_id": "specialization-druid",
+      "confidence": "plausible_non_unique",
+      "basis": "integration at scale ↔ ecology, embodiment, balance",
+      "question": "How does reflective integration change when the unit of concern is a living system rather than an isolated actor?"
+    },
+    {
+      "grade_id": "grade-viii",
+      "specialization_id": "specialization-alchemist",
+      "confidence": "plausible_non_unique",
+      "basis": "coherent synthesis ↔ transformation under constraint",
+      "question": "When should integrated understanding remain contemplative, and when can it safely become transformation?"
+    }
+  ],
+  "usage_rules": [
+    "A resonance may be displayed only as an optional explanation or question after a grade or specialization is explicitly selected.",
+    "The overlay may not infer a participant's specialization from behavior, Hope state, Tempus state, wealth, identity, or local practice metrics.",
+    "The overlay may not unlock specialization access, recognition, authority, or MANA effects.",
+    "Multiple resonances may be shown simultaneously; absence from this v0.1 file does not imply incompatibility.",
+    "A future renderer may highlight a geometric spoke only when the corresponding overlay relation is explicitly active; inactive geometric spokes remain non-semantic."
+  ],
+  "not_encoded": [
+    "one-to-one canonical matching",
+    "specialization destiny",
+    "compatibility score",
+    "ranking of resonances",
+    "participant personality profile",
+    "curriculum prerequisite",
+    "recognition state",
+    "authority envelope",
+    "icosahedron coordinates"
+  ]
+}
