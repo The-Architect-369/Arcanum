@@ -1,0 +1,301 @@
+{
+  "registry": "tempus.dodecahedral-compass.v0.1",
+  "status": "design-candidate",
+  "phase": "Pre-Genesis",
+  "authority": "Tempus presentation, indexing, and research registry only; not a cosmological proof, astrological cause, recognition mechanism, Vitae advancement rule, governance authority, Treasury authority, or replacement for civil/astronomical time",
+  "purpose": "Encode the Human Architect's current Tempus direction: a dodecahedral celestial compass whose twelve faces can carry a zodiacal year projection, a separate 72-by-5-day contemplative calendar rhythm, factual astronomical overlays, narrative time anchors, and a transported ARCnet presentation without collapsing those coordinate systems into one another.",
+  "sources": {
+    "repository": [
+      "docs/doctrine/temporal-model.md",
+      "docs/specs/modules/tempus-layer-model.md",
+      "docs/specs/modules/tempus-context-schema.md",
+      "docs/architecture/tempus-dodecahedron-geometry-audit.md",
+      "docs/architecture/registries/tempus-zodiac-registry.v0.1.json",
+      "docs/architecture/registries/tempus-vitae-becoming-field-registry.v0.1.json",
+      "docs/architecture/registries/arcnet-transported-frame-projection.v0.1.json"
+    ],
+    "astronomical_reference": [
+      {
+        "source": "NASA Glenn Calendar Calculations",
+        "fact": "mean tropical year approximately 365.2422 mean solar days",
+        "url": "https://www.grc.nasa.gov/www/k-12/Numbers/Math/Mathematical_Thinking/calendar_calculations.htm"
+      },
+      {
+        "source": "NASA GSFC Eclipses and the Moon's Orbit",
+        "fact": "mean synodic month approximately 29.53059 days",
+        "url": "https://eclipse.gsfc.nasa.gov/SEhelp/moonorbit.html"
+      }
+    ],
+    "human_architect_direction": [
+      "Tempus should become the farthest temporal/celestial map or compass around the lived system.",
+      "The transported ARCnet stellar frame may be shown moving through this temporal map while its internal meaning remains invariant.",
+      "A twelve-face dodecahedron is the leading candidate shell for the optional zodiacal/celestial Tempus view.",
+      "A 72-period five-day rhythm should be studied as a contemplative/Solomonic calendar overlay, not silently treated as the astronomical year.",
+      "The five positions of a pentagonal band are candidate day positions; six such bands on a face produce a 30-position idealized face rhythm.",
+      "The face interior may visually spiral or breathe inward/outward, while actual lunar phase remains an independent astronomical overlay.",
+      "A human-readable Tempus stardate may eventually identify the current year/face/pentad/day and factual astronomical context.",
+      "Historical angelic, demonic, Solomonic, 72-name, cognitive, and sacred-geometry correspondences require separate source audits before semantic assignment."
+    ]
+  },
+  "controlling_invariants": {
+    "time_is_rhythmic_cyclical_and_spiral_bound": true,
+    "time_may_not_coerce": true,
+    "tempus_records_context_not_human_worth": true,
+    "participant_can_reduce_symbolic_depth": true,
+    "astronomical_fact_and_symbolic_interpretation_are_separate": true,
+    "civil_time_remains_available_without_geometry": true,
+    "geometry_creates_no_authority": true,
+    "tempus_does_not_automatically_advance_vitae": true,
+    "missed_period_penalty": false,
+    "streak_pressure": false,
+    "astrological_causation": false,
+    "literal_physical_spacetime_claim": false
+  },
+  "coordinate_systems": {
+    "civil_time": {
+      "status": "factual/base",
+      "dimensions": [
+        "capturedAt",
+        "timezoneOffsetMinutes",
+        "civil date",
+        "civil time"
+      ],
+      "role": "ordinary human calendar and deterministic record ordering",
+      "geometry_required": false
+    },
+    "solar_year": {
+      "status": "factual/astronomical when ephemeris-backed",
+      "reference_length_days_mean_tropical_year": 365.2422,
+      "role": "seasonal/solar-year orientation",
+      "note": "The exact operational implementation should use an explicit ephemeris/reference model rather than assuming a uniform 365.2422-day orbit."
+    },
+    "zodiac_angular_cycle": {
+      "status": "optional celestial/symbolic projection",
+      "circle_degrees": 360,
+      "face_count": 12,
+      "degrees_per_face": 30,
+      "five_degree_sectors_per_face": 6,
+      "sector_count": 72,
+      "degrees_per_sector": 5,
+      "role": "equal-angle zodiacal coordinate",
+      "important_non_equivalence": "A five-degree solar-longitude sector is not necessarily five civil days because orbital angular speed is not uniform."
+    },
+    "pentad_calendar_cycle": {
+      "status": "design-candidate contemplative calendar overlay",
+      "idealized_days": 360,
+      "face_count": 12,
+      "days_per_face": 30,
+      "pentads_per_face": 6,
+      "days_per_pentad": 5,
+      "pentads_per_cycle": 72,
+      "role": "human-readable five-day rhythm independent from exact solar-longitude timing",
+      "solar_year_reconciliation_days_mean": 5.2422,
+      "important_non_equivalence": "72 five-civil-day pentads equal 360 days, not one mean tropical year. The residual solar reconciliation interval must remain explicit."
+    },
+    "lunar_cycle": {
+      "status": "factual/astronomical overlay when ephemeris-backed",
+      "mean_synodic_days": 29.53059,
+      "role": "independent phase wave that may be rendered across the dodecahedral shell",
+      "important_non_equivalence": "Lunar new/full/new phase must not be forced to coincide with the start, midpoint, or end of a 30-position zodiac face or five-day pentad."
+    }
+  },
+  "dodecahedral_shell": {
+    "status": "bounded-pass zodiac/celestial presentation shell",
+    "geometry": {
+      "faces": 12,
+      "edges": 30,
+      "vertices": 20,
+      "face_shape": "pentagon"
+    },
+    "face_semantics": "one optional zodiacal temporal region per face",
+    "face_order_source": "tempus.zodiac.v0.1",
+    "face_sequence": [
+      "aries",
+      "taurus",
+      "gemini",
+      "cancer",
+      "leo",
+      "virgo",
+      "libra",
+      "scorpio",
+      "sagittarius",
+      "capricorn",
+      "aquarius",
+      "pisces"
+    ],
+    "opposition_posture": "existing six zodiac oppositions may be represented as opposite faces where the selected orientation preserves the registered chronology/opposition mapping",
+    "secondary_face_adjacency_semantics": "inert unless independently registered",
+    "whole_tempus_ontology": false,
+    "candidate_name": "Tempus Dodecahedral Compass"
+  },
+  "face_internal_projection": {
+    "status": "new design-candidate that supersedes no prior audit",
+    "reason_to_reopen_fivefold_face_question": "The prior dodecahedron audit rejected arbitrary fivefold Tempus semantics because no independent five-part sign-internal set existed. The Human Architect has now proposed an independently derived 72-by-5-day rhythm, producing six five-position pentadal bands per idealized 30-position face. This is sufficient to study a fivefold renderer but not sufficient to canonize it.",
+    "bands_per_face": 6,
+    "positions_per_band": 5,
+    "positions_per_face": 30,
+    "total_positions": 360,
+    "candidate_renderer": "six nested or spiraling pentagonal bands; each band carries five ordinal day/degree positions depending selected coordinate mode",
+    "traversal_modes_to_test": [
+      "outside_to_inside",
+      "inside_to_outside",
+      "alternating_breath",
+      "continuous face-to-face spiral"
+    ],
+    "semantic_firewall": [
+      "pentagonal geometry does not itself name a day",
+      "ordinal day position does not establish angelic/demonic correspondence",
+      "spiral depth does not mean spiritual depth or readiness",
+      "inward/outward motion does not equal lunar waxing/waning unless an actual lunar overlay is being displayed",
+      "fivefold count does not establish correspondence with Vitae Spirit/Air/Fire/Earth/Water"
+    ]
+  },
+  "indexing_rules": {
+    "symbolic_day_range": "1..360",
+    "face_index": "floor((symbolic_day - 1) / 30) + 1",
+    "face_day_index": "((symbolic_day - 1) mod 30) + 1",
+    "pentad_index_within_face": "floor((face_day_index - 1) / 5) + 1",
+    "global_pentad_index": "((face_index - 1) * 6) + pentad_index_within_face",
+    "day_index_within_pentad": "((face_day_index - 1) mod 5) + 1",
+    "angular_sector_index": "1..72 when using the separate equal-angle 5-degree projection",
+    "angular_sector_start_degrees": "(angular_sector_index - 1) * 5",
+    "angular_sector_end_degrees": "angular_sector_index * 5"
+  },
+  "solar_reconciliation": {
+    "status": "required research/design problem",
+    "reason": "A 360-day pentad grid is shorter than the mean tropical year by approximately 5.2422 days.",
+    "allowed_candidate_strategies": [
+      "explicit intercalary bridge interval outside the 72 pentads",
+      "continuous solar-year phase underlay with the 360-cell grid treated only as a normalized symbolic projection",
+      "annual re-anchoring to an astronomical event such as an equinox while preserving the resulting nonuniform relationship between civil days and angular sectors"
+    ],
+    "forbidden_strategy": "silently redefine the astronomical year as exactly 360 days",
+    "decision": "deferred"
+  },
+  "tempus_receipt_direction": {
+    "status": "design-candidate",
+    "principle": "calendar transitions are factual events, but deterministic calendar facts do not automatically require chain settlement",
+    "candidate_local_event_types": [
+      "tempus_year_opened",
+      "tempus_face_region_entered",
+      "tempus_pentad_opened",
+      "tempus_civil_month_opened",
+      "tempus_context_captured"
+    ],
+    "default_receipt_scope": "local deterministic receipt or derived calendar state",
+    "chain_posture": "anchor only when a separate protocol/finality requirement justifies settlement; do not write routine calendar ticks to chain merely because they occurred",
+    "meaning": null
+  },
+  "life_narrative_direction": {
+    "status": "design direction; separate registry required",
+    "anchors": [
+      {
+        "id": "birth_anchor",
+        "source": "participant-supplied or separately verified",
+        "meaning": "Earth-life temporal origin reference",
+        "chain_required": false
+      },
+      {
+        "id": "arcnet_join_anchor",
+        "source": "system factual receipt",
+        "meaning": "first participation/member-system reference",
+        "chain_required": "only if membership/finality policy requires it"
+      }
+    ],
+    "historical_backfill": "A participant may narrate pre-join life events using exact dates, ranges, ages, relative order, or unknown timing. The system preserves uncertainty instead of fabricating precision.",
+    "causality_posture": "Chronological order may be factual; claims that one life event caused another must remain participant-authored/confirmed or explicitly marked as interpretive hypothesis.",
+    "hope_role": "Hope may help ask, remember, organize, and reflect; it must not rewrite uncertain recollection into false fact."
+  },
+  "stardate_direction": {
+    "status": "future design-candidate",
+    "purpose": "Provide a compact participant-facing identifier for temporal position without replacing ordinary date/time.",
+    "candidate_components": [
+      "civil/astronomical year anchor",
+      "dodecahedral face/zodiac region",
+      "pentad index",
+      "day within pentad",
+      "optional lunar/planetary context",
+      "precision/source"
+    ],
+    "format": "deferred",
+    "must_always_offer_plain_civil_date_equivalent": true
+  },
+  "ceremonial_72_research_boundary": {
+    "status": "unresolved historical/cultural correspondence study",
+    "candidate_questions": [
+      "Which historically sourced traditions connect 72 names or spirits to zodiacal/angular subdivisions?",
+      "Are those subdivisions five degrees, five days, decanic subparts, or later occult correspondences?",
+      "Which sources distinguish Jewish Shem traditions from later Christian Kabbalistic, Solomonic, Hermetic, or Goetic systems?",
+      "Can angelic and demonic names be presented as historical/cultural study without moral, psychological, or causal typing?",
+      "Does any credible neuroscience support a 72-part brain or mind mapping?"
+    ],
+    "current_disposition": {
+      "72_names_as_historical_symbolic_material": "study permitted",
+      "72_names_equal_72_five_day_weeks": "not established",
+      "72_angelic_and_72_demonic_names_form_one_historically_uniform_calendar": "not established",
+      "72_names_equal_72_facets_of_brain": "not established scientifically",
+      "symbolic_correspondence_may_be_optional_overlay_after_source_audit": true
+    }
+  },
+  "arcnet_transport_bridge": {
+    "status": "design-candidate presentation bridge",
+    "model": "transported_frame",
+    "description": "The invariant ARCnet stellar frame may be rendered as a local vehicle/piece moving through selected Tempus coordinates while remaining internally unchanged.",
+    "stable": [
+      "system/faculty identities",
+      "authority boundaries",
+      "Edge Contract requirements",
+      "Human/Identity sovereignty"
+    ],
+    "dynamic": [
+      "Tempus position",
+      "calendar/celestial overlays",
+      "participant-selected symbolic depth",
+      "recorded history/path trail"
+    ],
+    "candidate_law": "Time May Move the Frame Through Context; It May Not Rewrite the Frame."
+  },
+  "sensory_projection_direction": {
+    "status": "future integration",
+    "channels": [
+      "visual geometry",
+      "color/light",
+      "sound/sonification",
+      "haptics where available"
+    ],
+    "rule": "Sensory channels render state and relation; they do not manufacture truth, authority, recognition, or a scientifically claimed altered state of consciousness.",
+    "sound_bridge": "Reuse the existing carrier/operator separation: sound may make temporal transitions, phase, recurrence, or relation perceptible without assigning intrinsic sacred frequency to a person, symbol, or period."
+  },
+  "candidate_laws": [
+    "The Compass Is a Projection, Not the Sky Itself.",
+    "Equal Angle and Equal Day Are Different Coordinates.",
+    "The 360-Cell Grid Must Reconcile With the 365.2422-Day Year Explicitly.",
+    "Lunar Phase Is an Overlay, Not a Face Clock.",
+    "Pentagonal Form May Carry Five Ordinal Positions Without Creating Fivefold Doctrine.",
+    "A Calendar Transition May Be Factual Without Requiring Chain Settlement.",
+    "Chronology May Order Narrative; Causality Requires Human Confirmation.",
+    "Ephemeris Before Symbolism.",
+    "Time May Move the Frame Through Context; It May Not Rewrite the Frame."
+  ],
+  "next_gates": [
+    "Historically audit 72-name/Solomonic/Goetic/zodiac subdivision claims before assigning names to any pentad or angular sector.",
+    "Choose and test a solar reconciliation model for the 360-day pentad projection.",
+    "Create a Tempus Life Narrative event/uncertainty registry.",
+    "Create an ephemeris-aware factual astronomy registry with observer/frame/epoch/source metadata.",
+    "Prototype the twelve-face, six-pentad-per-face dodecahedral compass with geometry-free calendar equivalent.",
+    "Test whether the transported ARCnet frame can move through the Tempus compass without geometric position becoming permission or progress."
+  ],
+  "not_encoded": [
+    "canonical dodecahedral Tempus ontology",
+    "one-to-one five-day-to-five-degree identity",
+    "fixed lunar reset at face boundaries",
+    "historically ratified 72-name calendar",
+    "angelic or demonic causation",
+    "brain-facet correspondence",
+    "astrological personality typing",
+    "Vitae recognition or automatic advancement",
+    "governance or Treasury authority",
+    "MANA reward from timing",
+    "physical cosmology"
+  ]
+}
