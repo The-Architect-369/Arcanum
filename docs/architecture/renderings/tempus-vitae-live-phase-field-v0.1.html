@@ -12,7 +12,7 @@
 <h1>Tempus × Vitae Live Phase Field v0.1</h1>
 <p class="muted">Design-candidate co-observation prototype. Tempus moves independently; Vitae moves only through explicit participant input.</p>
 
-<div class="card warning"><strong>Boundary:</strong> the default Tempus coordinate is local civil-day phase derived from the browser clock. It is <em>not</em> a full <code>TempusContext</code> and does not invent lunar, zodiacal, planetary, ritual, readiness, or advancement data. The torus is a visualization of two independent cycles, not physical spacetime.</div>
+<div class="card warning"><strong>Boundary:</strong> the default Tempus coordinate is local civil-day phase derived from the browser clock. It is <em>not</em> a full <code>TempusContext</code> and does not invent lunar, zodiacal, planetary, ritual, readiness, or advancement data. The torus is a visualization of two independent cycles, not physical spacetime. If reduced motion is requested, the visual Tempus coordinate starts frozen until explicitly activated.</div>
 
 <div class="card">
   <div class="controls">
@@ -146,6 +146,8 @@ function civilDayPhase(date=new Date()){
   const sec=date.getHours()*3600+date.getMinutes()*60+date.getSeconds()+date.getMilliseconds()/1000;
   return sec/86400;
 }
+const reduceMotion=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(reduceMotion){frozenPhase=civilDayPhase();mode='frozen';}
 function wrap01(x){return ((x%1)+1)%1}
 function relativePhase(t,v){return wrap01(t-v+.5)-.5}
 function currentTempusPhase(){
@@ -175,7 +177,7 @@ function update(){
   $('tempusHand').setAttribute('transform',`rotate(${t*360} 235 310)`);$('vitaeHand').setAttribute('transform',`rotate(${v.phase*360} 525 310)`);
   $('tp').textContent=t.toFixed(6);$('vg').textContent=romans[v.grade-1];$('vs').textContent=`${v.section} / 360`;$('vp').textContent=v.phase.toFixed(6);$('stationName').textContent=stations[v.classIndex];$('delta').textContent=(d>=0?'+':'')+d.toFixed(6);$('vitaeNum').textContent=v.section;$('vitaeMarker').style.left=`${v.phase*100}%`;
   document.querySelectorAll('.station').forEach((el,i)=>el.classList.toggle('active',i===v.classIndex));
-  $('plainText').textContent=`TEMPUS\ncycle: civil_day\nphase: ${t.toFixed(6)}\nsource: ${mode==='live'?'local-device':'simulation'}\n\nVITAE\ngrade: ${romans[v.grade-1]}\nsection: ${v.section}/360\nphase: ${v.phase.toFixed(6)}\nclass station: ${stations[v.classIndex]}\n\nRELATIVE PHASE\ndelta: ${(d>=0?'+':'')+d.toFixed(6)}\nscore: none\nreadiness: none\nrecognition effect: none\n\nTempus movement does not modify Vitae.`;
+  $('plainText').textContent=`TEMPUS\ncycle: civil_day\nphase: ${t.toFixed(6)}\nsource: ${mode==='live'?'local-device':'simulation-or-frozen'}\n\nVITAE\ngrade: ${romans[v.grade-1]}\nsection: ${v.section}/360\nphase: ${v.phase.toFixed(6)}\nclass station: ${stations[v.classIndex]}\n\nRELATIVE PHASE\ndelta: ${(d>=0?'+':'')+d.toFixed(6)}\nscore: none\nreadiness: none\nrecognition effect: none\n\nTempus movement does not modify Vitae.`;
   if(tracePoints.length){$('trace').setAttribute('points',tracePoints.map(q=>`${q.torus.x.toFixed(1)},${q.torus.y.toFixed(1)}`).join(' '));$('squareTrace').setAttribute('points',tracePoints.map(q=>`${(120+q.t*500).toFixed(1)},${(500-q.v*400).toFixed(1)}`).join(' '))}
   requestAnimationFrame(update);
 }
