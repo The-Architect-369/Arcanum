@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>ARCnet Transported Stellar Frame 3D v0.1</title>
+<style>
+:root{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#171717;background:#f4f4f2}*{box-sizing:border-box}body{margin:0;padding:18px;max-width:1500px;margin-inline:auto}h1{margin:.1rem 0 .35rem}h2{margin:.2rem 0 .7rem}.muted{color:#667085}.small{font-size:.88rem}.card{background:#fff;border:1px solid #d7d9dd;border-radius:16px;padding:16px;margin:12px 0}.warning{border-left:4px solid #b45309}.ok{border-left:4px solid #047857}.grid{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(300px,.6fr);gap:12px}.controls{display:flex;flex-wrap:wrap;gap:9px;align-items:center}.controls label{display:flex;gap:6px;align-items:center}.controls input[type=range]{width:230px}button,select,input{font:inherit}button,select{padding:7px 10px;border:1px solid #98a2b3;border-radius:9px;background:#fff}button{cursor:pointer}button:hover{background:#f2f4f7}canvas{width:100%;height:min(72vh,780px);min-height:520px;border-radius:12px;background:#fbfbfa;display:block;touch-action:none}.metric{display:flex;justify-content:space-between;gap:16px;padding:7px 0;border-bottom:1px solid #eceef1}.metric:last-child{border-bottom:0}.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}.law{padding:8px 10px;border-radius:9px;background:#f8fafc;margin:6px 0}.legend{display:grid;grid-template-columns:1fr 1fr;gap:7px}.key{display:flex;align-items:center;gap:8px;font-size:.88rem}.sw{width:30px;height:0;border-top:2px solid #344054}.sw.op{border-top-width:1px}.sw.mirror{border-top-style:dotted;border-top-width:3px}.sw.stew{border-top-style:dashed}.badge{display:inline-block;border:1px solid #d0d5dd;border-radius:999px;padding:3px 7px;margin:2px;font-size:.78rem}.readout{white-space:pre-wrap;background:#f8fafc;border-radius:10px;padding:10px;font-size:.85rem}.footergrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}@media(max-width:980px){.grid,.footergrid{grid-template-columns:1fr}.controls input[type=range]{width:180px}canvas{min-height:450px}}@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+</style>
+</head>
+<body>
+<h1>ARCnet Transported Stellar Frame — 3D v0.1</h1>
+<p class="muted">Design-candidate falsification render: a rigid eight-system stellar frame transported through a Tempus × Vitae becoming-field presentation.</p>
+
+<div class="card warning"><strong>Boundary.</strong> This is information architecture, not a physical spacetime model. Geometry, timing, pose, proximity, and motion grant no capability, recognition, readiness, authority, MANA, or system activation.</div>
+
+<div class="card">
+  <div class="controls">
+    <button id="tempusToggle">Animate Tempus</button>
+    <button id="restTest">Run rest test</button>
+    <label>Tempus <input id="tempus" type="range" min="0" max="1000" value="180" /><span id="tempusVal" class="mono">0.180</span></label>
+    <label>Vitae <input id="vitae" type="range" min="1" max="3600" value="1045" /><span id="vitaeVal" class="mono">1045</span></label>
+    <button id="vPlus1">+1</button><button id="vPlus36">+36</button><button id="vPlus360">+360</button>
+    <label>Orientation <select id="orientation"><option value="path">path-aligned</option><option value="world">world-locked</option></select></label>
+    <button id="resetView">Reset view</button>
+  </div>
+  <div class="controls" style="margin-top:9px">
+    <label><input id="showOperational" type="checkbox" /> operational cube edges</label>
+    <label><input id="showKinship" type="checkbox" checked /> kinship tetrahedra</label>
+    <label><input id="showMirror" type="checkbox" checked /> mirror axes</label>
+    <label><input id="showJunctions" type="checkbox" checked /> inner octahedron</label>
+    <label><input id="showShell" type="checkbox" checked /> ARCnet shell</label>
+    <label><input id="showLabels" type="checkbox" checked /> labels</label>
+  </div>
+</div>
+
+<div class="grid">
+  <div class="card">
+    <canvas id="scene" width="1100" height="760" aria-label="Interactive three-dimensional rendering of a transported ARCnet stellar frame on a Tempus and Vitae field"></canvas>
+    <p class="small muted">Drag to orbit the camera. Wheel/pinch to zoom. The long helix is the 3,600-position Vitae presentation. The small local ring is the selected Tempus cycle. The stellar frame stays rigid.</p>
+  </div>
+  <div>
+    <div class="card ok">
+      <h2>Transport invariant</h2>
+      <div class="law"><strong>Transport the Frame; Do Not Rewrite the Frame.</strong></div>
+      <div class="law">Pose is not permission.</div>
+      <div class="law">Tempus may move around a Vitae state without moving the Vitae state.</div>
+    </div>
+    <div class="card">
+      <h2>Current field coordinate</h2>
+      <div class="metric"><span>Tempus phase</span><strong id="mTempus">0.180</strong></div>
+      <div class="metric"><span>Vitae global index</span><strong id="mGlobal">1045 / 3600</strong></div>
+      <div class="metric"><span>Grade</span><strong id="mGrade">III</strong></div>
+      <div class="metric"><span>Grade section</span><strong id="mSection">325 / 360</strong></div>
+      <div class="metric"><span>Tree station</span><strong id="mStation">Keter</strong></div>
+      <div class="metric"><span>Orientation</span><strong id="mOrientation">path-aligned</strong></div>
+      <div class="metric"><span>Recognition effect</span><strong>none</strong></div>
+      <div class="metric"><span>Authority effect</span><strong>none</strong></div>
+    </div>
+    <div class="card">
+      <h2>Exact K8 distance shells</h2>
+      <div class="metric"><span>Operational</span><strong>12 × 2</strong></div>
+      <div class="metric"><span>Kinship</span><strong>12 × 2√2</strong></div>
+      <div class="metric"><span>Mirror</span><strong>4 × 2√3</strong></div>
+      <p class="small muted">Distances are local-frame geometry. They encode the existing relation taxonomy but never authorize an Edge Contract invocation.</p>
+    </div>
+    <div class="card">
+      <h2>Local 15-position frame</h2>
+      <span class="badge">8 systems</span><span class="badge">6 derived junctions</span><span class="badge">1 non-system center</span>
+      <div class="legend" style="margin-top:10px">
+        <div class="key"><span class="sw"></span>generative kinship</div>
+        <div class="key"><span class="sw stew"></span>stewardship kinship</div>
+        <div class="key"><span class="sw op"></span>operational</div>
+        <div class="key"><span class="sw mirror"></span>mirror</div>
+      </div>
+    </div>
+    <div class="card"><h2>Plain state</h2><div id="plain" class="readout mono"></div></div>
+  </div>
+</div>
+
+<div class="footergrid">
+  <div class="card"><h2>Fixed</h2><div class="law">System identity</div><div class="law">Edge class</div><div class="law">Authority boundary</div><div class="law">Edge Contract requirements</div></div>
+  <div class="card"><h2>May vary</h2><div class="law">Presentation position</div><div class="law">Tempus phase</div><div class="law">Vitae navigation coordinate</div><div class="law">World/path orientation convention</div></div>
+  <div class="card"><h2>Never inferred</h2><div class="law">Readiness from timing</div><div class="law">Permission from proximity</div><div class="law">Rank from trajectory</div><div class="law">Identity from geometry</div></div>
+</div>
+
+<script>
+const C=document.getElementById('scene'),ctx=C.getContext('2d'),TAU=Math.PI*2;
+const $=id=>document.getElementById(id);
+const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+let yaw=-.65,pitch=.38,zoom=58,anim=false,last=performance.now(),drag=false,px=0,py=0,restMode=false,restV=+$('vitae').value;
+const romans=['I','II','III','IV','V','VI','VII','VIII','IX','X'];
+const stations=['Malkuth','Yesod','Hod','Netzach','Tiferet','Gevurah','Chesed','Binah','Chokhmah','Keter'];
+const systems={
+ arcanum:{q:[1,1,1],c:'g'},nexus:{q:[1,-1,-1],c:'g'},commercium:{q:[-1,1,-1],c:'g'},theatrum:{q:[-1,-1,1],c:'g'},
+ architect:{q:[-1,-1,-1],c:'s'},imperium:{q:[-1,1,1],c:'s'},aerarium:{q:[1,-1,1],c:'s'},protection:{q:[1,1,-1],c:'s'}
+};
+const G=['arcanum','nexus','commercium','theatrum'],S=['architect','imperium','aerarium','protection'];
+const mirrors=[['arcanum','architect'],['nexus','imperium'],['commercium','aerarium'],['theatrum','protection']];
+const junctions={
+ 'Commons Witness':[1,0,0],'Practice Safety':[0,1,0],'Cultural Commons':[0,0,1],
+ 'Market Assurance':[0,0,-1],'Creator Public Goods':[0,-1,0],'Standards and Rights':[-1,0,0]
+};
+const octEdges=[];const jkeys=Object.keys(junctions);
+for(let i=0;i<jkeys.length;i++)for(let j=i+1;j<jkeys.length;j++){const a=junctions[jkeys[i]],b=junctions[jkeys[j]];if(Math.abs(a[0]-b[0])+Math.abs(a[1]-b[1])+Math.abs(a[2]-b[2])===2)octEdges.push([jkeys[i],jkeys[j]])}
+function comb(arr){const out=[];for(let i=0;i<arr.length;i++)for(let j=i+1;j<arr.length;j++)out.push([arr[i],arr[j]]);return out}
+const kinG=comb(G),kinS=comb(S);
+const operational=[];for(const g of G)for(const s of S)if(!mirrors.some(m=>m[0]===g&&m[1]===s))operational.push([g,s]);
+const add=(a,b)=>a.map((v,i)=>v+b[i]),sub=(a,b)=>a.map((v,i)=>v-b[i]),mul=(a,k)=>a.map(v=>v*k),dot=(a,b)=>a.reduce((s,v,i)=>s+v*b[i],0);
+const cross=(a,b)=>[a[1]*b[2]-a[2]*b[1],a[2]*b[0]-a[0]*b[2],a[0]*b[1]-a[1]*b[0]];
+const norm=a=>Math.hypot(...a),unit=a=>{const n=norm(a)||1;return mul(a,1/n)};
+function helix(global){const u=(global-1)/360,th=TAU*u,R=5,p=1.25;return [R*Math.cos(th),R*Math.sin(th),p*u-6.25]}
+function basis(global){const u=(global-1)/360,th=TAU*u,R=5,p=1.25;const N=unit([Math.cos(th),Math.sin(th),0]);const T=unit([-R*Math.sin(th),R*Math.cos(th),p/TAU]);const B=unit(cross(T,N));return {N,B,T}}
+function fieldState(){const global=+$('vitae').value,t=+$('tempus').value/1000,h=helix(global),b=basis(global),phi=TAU*t,rt=1.12;const P=add(h,add(mul(b.N,rt*Math.cos(phi)),mul(b.B,rt*Math.sin(phi))));return{global,t,h,b,P}}
+function frameR(st){if($('orientation').value==='world')return [[1,0,0],[0,1,0],[0,0,1]];return [st.b.N,st.b.B,st.b.T]}
+function applyR(R,q){return add(add(mul(R[0],q[0]),mul(R[1],q[1])),mul(R[2],q[2]))}
+function framePoint(st,q){return add(st.P,mul(applyR(frameR(st),q),.72))}
+function camera(p){let [x,y,z]=p;let cy=Math.cos(yaw),sy=Math.sin(yaw),cp=Math.cos(pitch),sp=Math.sin(pitch);let x1=cy*x-sy*z,z1=sy*x+cy*z;let y1=cp*y-sp*z1,z2=sp*y+cp*z1;return [x1,y1,z2]}
+function project(p){const [x,y,z]=camera(p),d=25,k=zoom*d/(d+z);return [C.width/2+x*k,C.height/2-y*k,z,k]}
+function line3(a,b,opt={}){const A=project(a),B=project(b);ctx.save();ctx.globalAlpha=opt.alpha??1;ctx.lineWidth=opt.w??1.4;ctx.strokeStyle=opt.stroke??'#475467';ctx.setLineDash(opt.dash??[]);ctx.beginPath();ctx.moveTo(A[0],A[1]);ctx.lineTo(B[0],B[1]);ctx.stroke();ctx.restore()}
+function polyline3(points,opt={}){ctx.save();ctx.globalAlpha=opt.alpha??1;ctx.lineWidth=opt.w??1.2;ctx.strokeStyle=opt.stroke??'#98a2b3';ctx.setLineDash(opt.dash??[]);ctx.beginPath();points.forEach((p,i)=>{const P=project(p);i?ctx.lineTo(P[0],P[1]):ctx.moveTo(P[0],P[1])});ctx.stroke();ctx.restore()}
+function point3(p,label,kind='sys'){const P=project(p);ctx.save();ctx.fillStyle=kind==='center'?'#111827':kind==='junction'?'#667085':'#fff';ctx.strokeStyle='#111827';ctx.lineWidth=2;if(kind==='steward'){ctx.fillRect(P[0]-5,P[1]-5,10,10);ctx.strokeRect(P[0]-5,P[1]-5,10,10)}else{ctx.beginPath();ctx.arc(P[0],P[1],kind==='center'?6:5,0,TAU);ctx.fill();ctx.stroke()}if($('showLabels').checked&&label){ctx.fillStyle='#101828';ctx.font=kind==='junction'?'11px system-ui':'12px system-ui';ctx.fillText(label,P[0]+8,P[1]-7)}ctx.restore()}
+function drawShell(st){if(!$('showShell').checked)return;const R=frameR(st),rr=1.42;for(let lat=-2;lat<=2;lat++){const z=lat/2*rr*.78,r=Math.sqrt(Math.max(0,rr*rr-z*z));const pts=[];for(let i=0;i<=48;i++){let a=TAU*i/48;pts.push(add(st.P,applyR(R,[r*Math.cos(a),r*Math.sin(a),z])))}polyline3(pts,{alpha:.16,w:1})}for(let lon=0;lon<6;lon++){const pts=[],a=TAU*lon/6;for(let i=0;i<=48;i++){let v=-Math.PI/2+Math.PI*i/48;pts.push(add(st.P,applyR(R,[rr*Math.cos(v)*Math.cos(a),rr*Math.cos(v)*Math.sin(a),rr*Math.sin(v)])))}polyline3(pts,{alpha:.12,w:1})}}
+function drawField(st){const hp=[];for(let g=1;g<=3600;g+=6)hp.push(helix(g));polyline3(hp,{alpha:.42,w:1.5,stroke:'#98a2b3'});const ring=[];for(let i=0;i<=64;i++){const a=TAU*i/64;ring.push(add(st.h,add(mul(st.b.N,1.12*Math.cos(a)),mul(st.b.B,1.12*Math.sin(a)))))}polyline3(ring,{alpha:.8,w:2,stroke:'#667085'});point3(st.h,'Vitae base','junction');line3(st.h,st.P,{alpha:.55,w:1,dash:[4,4]})}
+function drawFrame(st){drawShell(st);const FP={};for(const [id,o] of Object.entries(systems))FP[id]=framePoint(st,o.q);if($('showOperational').checked)for(const [a,b] of operational)line3(FP[a],FP[b],{alpha:.32,w:1});if($('showKinship').checked){for(const [a,b] of kinG)line3(FP[a],FP[b],{alpha:.84,w:2});for(const [a,b] of kinS)line3(FP[a],FP[b],{alpha:.84,w:2,dash:[7,5]})}if($('showMirror').checked)for(const [a,b] of mirrors)line3(FP[a],FP[b],{alpha:.9,w:2.4,dash:[2,5]});if($('showJunctions').checked){const JP={};for(const [id,q] of Object.entries(junctions))JP[id]=framePoint(st,q);for(const [a,b] of octEdges)line3(JP[a],JP[b],{alpha:.32,w:1});for(const [id,p] of Object.entries(JP))point3(p,id,'junction')}point3(framePoint(st,[0,0,0]),'Human / Identity','center');for(const [id,o] of Object.entries(systems))point3(FP[id],id[0].toUpperCase()+id.slice(1),o.c==='s'?'steward':'sys')}
+function draw(){ctx.clearRect(0,0,C.width,C.height);const st=fieldState();drawField(st);drawFrame(st);updateReadout(st)}
+function vitaeInfo(g){const gi=Math.floor((g-1)/360)+1,sec=((g-1)%360)+1,ci=Math.floor((sec-1)/36);return{gi,sec,ci}}
+function updateReadout(st){const v=vitaeInfo(st.global);$('tempusVal').textContent=st.t.toFixed(3);$('vitaeVal').textContent=st.global;$('mTempus').textContent=st.t.toFixed(3);$('mGlobal').textContent=`${st.global} / 3600`;$('mGrade').textContent=romans[v.gi-1];$('mSection').textContent=`${v.sec} / 360`;$('mStation').textContent=stations[v.ci];$('mOrientation').textContent=$('orientation').value==='path'?'path-aligned':'world-locked';$('plain').textContent=`Tempus phase: ${st.t.toFixed(3)}\nVitae: Grade ${romans[v.gi-1]}, section ${v.sec}/360, ${stations[v.ci]}\nARCnet frame: 8 systems + 6 derived junctions + Human/Identity center\nRelation shells: operational 12, kinship 12, mirror 4\nAuthority effect: none\nRecognition effect: none`}
+function tick(now){let dt=(now-last)/1000;last=now;if(anim&&!reduced){let n=(+$('tempus').value+dt*70)%1000;$('tempus').value=n}if(restMode)$('vitae').value=restV;draw();requestAnimationFrame(tick)}
+$('tempusToggle').onclick=()=>{anim=!anim;$('tempusToggle').textContent=anim?'Pause Tempus':'Animate Tempus'};
+$('restTest').onclick=()=>{restMode=!restMode;restV=+$('vitae').value;anim=restMode?true:anim;$('restTest').textContent=restMode?'Stop rest test':'Run rest test';$('tempusToggle').textContent=anim?'Pause Tempus':'Animate Tempus'};
+$('vPlus1').onclick=()=>{$('vitae').value=Math.min(3600,+$('vitae').value+1);restV=+$('vitae').value};
+$('vPlus36').onclick=()=>{$('vitae').value=Math.min(3600,+$('vitae').value+36);restV=+$('vitae').value};
+$('vPlus360').onclick=()=>{$('vitae').value=Math.min(3600,+$('vitae').value+360);restV=+$('vitae').value};
+$('resetView').onclick=()=>{yaw=-.65;pitch=.38;zoom=58};
+C.addEventListener('pointerdown',e=>{drag=true;px=e.clientX;py=e.clientY;C.setPointerCapture(e.pointerId)});C.addEventListener('pointermove',e=>{if(!drag)return;yaw+=(e.clientX-px)*.008;pitch+=(e.clientY-py)*.008;pitch=Math.max(-1.4,Math.min(1.4,pitch));px=e.clientX;py=e.clientY});C.addEventListener('pointerup',()=>drag=false);C.addEventListener('wheel',e=>{e.preventDefault();zoom*=e.deltaY>0?.92:1.08;zoom=Math.max(25,Math.min(110,zoom))},{passive:false});
+for(const id of ['tempus','vitae','orientation','showOperational','showKinship','showMirror','showJunctions','showShell','showLabels'])$(id).addEventListener('input',()=>{if(id==='vitae')restV=+$('vitae').value});
+if(reduced){anim=false;$('tempusToggle').textContent='Animate Tempus'}
+requestAnimationFrame(tick);
+</script>
+</body>
+</html>
