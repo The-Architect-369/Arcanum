@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ARCnet × Vitae Nested Subframe 3D v0.1</title>
+<style>
+:root{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#171717;background:#f6f6f3}*{box-sizing:border-box}body{margin:0;padding:22px;max-width:1450px;margin-inline:auto}.card{background:#fff;border:1px solid #d6d8dc;border-radius:16px;padding:16px;margin:12px 0}.warn{border-left:4px solid #b45309}.ok{border-left:4px solid #047857}.controls{display:flex;gap:9px;flex-wrap:wrap;align-items:center}button,select{font:inherit;padding:8px 10px;border:1px solid #98a2b3;border-radius:8px;background:#fff}button{cursor:pointer}input[type=range]{width:230px}.muted{color:#667085}.mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace}.grid{display:grid;grid-template-columns:1fr 360px;gap:12px}canvas{width:100%;height:76vh;min-height:560px;background:#fbfbfa;border-radius:12px;touch-action:none}.metric{display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid #eceef1;padding:7px 0}.law{padding:9px 11px;background:#f8fafc;border-radius:9px;margin:6px 0}.bad{background:#fff1f2}.tree-list{display:grid;grid-template-columns:repeat(2,1fr);gap:5px}.tree-list div{border:1px solid #d0d5dd;border-radius:7px;padding:5px;text-align:center;font-size:12px}.tree-list .active{outline:3px solid #111827;background:#fef3c7}@media(max-width:1000px){.grid{grid-template-columns:1fr}canvas{height:65vh}.tree-list{grid-template-columns:repeat(5,1fr)}}@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style></head><body>
+<h1>ARCnet × Vitae Nested Subframe — 3D v0.1</h1>
+<p class="muted">Design-candidate falsification renderer: the Vitae Tree is hosted by the Arcanum system vertex, not by Human/Identity.</p>
+<div class="card warn"><strong>Boundary.</strong> This is information geometry. ARCnet is not a literal solar system; Human/Identity is not a Sun or barycenter; Tree paths are not Edge Contracts; celestial motion does not cause Vitae recognition or authority.</div>
+<div class="card controls">
+<button id="run">Animate Tempus</button>
+<label>Tempus <input id="t" type="range" min="0" max="1000" value="180"><span id="tv" class="mono"></span></label>
+<label>Vitae global <input id="v" type="range" min="1" max="3600" value="1"><span id="vv" class="mono"></span></label>
+<button id="p1">+1</button><button id="p36">+36</button><button id="p360">+360</button>
+<label>Outer orientation <select id="o"><option value="path">path-aligned</option><option value="world">world-locked</option></select></label>
+<label><input id="ops" type="checkbox"> operational cube edges</label>
+<label><input id="paths" type="checkbox" checked> Tree paths</label>
+<label><input id="unsafe" type="checkbox"> unsafe center-Tree comparison</label>
+<label><input id="labs" type="checkbox" checked> labels</label>
+</div>
+<div class="grid">
+<div class="card"><canvas id="c" width="1240" height="820" aria-label="3D transported ARCnet stellar frame with an Arcanum-hosted Vitae Tree subframe"></canvas></div>
+<div>
+<div class="card ok"><h2>Scale firewall</h2><div class="law"><b>Human / Identity</b><br>sovereign center; not Tree host</div><div class="law"><b>Arcanum</b><br>outer system host</div><div class="law"><b>Vitae Tree</b><br>local curriculum subframe</div><div class="law"><b>Tree path</b><br>internal adjacency, never network authority</div></div>
+<div class="card"><h2>Current state</h2><div class="metric"><span>Tempus phase</span><b id="tp">0</b></div><div class="metric"><span>Vitae grade</span><b id="grade">I</b></div><div class="metric"><span>section</span><b id="sec">1 / 360</b></div><div class="metric"><span>active Tree station</span><b id="station">Malkuth</b></div><div class="metric"><span>outer authority change</span><b>none</b></div><div class="metric"><span>recognition effect</span><b>none</b></div></div>
+<div class="card"><h2>Ten Tree stations</h2><div id="treeList" class="tree-list"></div><p class="muted">Changing station highlights the local Vitae subframe only. The Arcanum vertex does not move inside ARCnet.</p></div>
+<div class="card bad" id="unsafeMsg" hidden><b>Unsafe comparison enabled.</b><p>The red ghost Tree is centered on Human/Identity only to expose the rejected interpretation. It is not a valid architecture placement.</p></div>
+</div></div>
+<div class="card"><h2>Audit laws</h2><div class="law">Subframe Belongs to Faculty, Not Identity.</div><div class="law">Internal Path Is Not Network Edge.</div><div class="law">Internal Navigation Cannot Move Outer Authority.</div><div class="law">Nested Geometry Does Not Create Cross-Scale Correspondence.</div><div class="law">Nested Motion Is Not Nested Authority.</div></div>
+<script>
+const C=document.getElementById('c'),ctx=C.getContext('2d'),TAU=Math.PI*2,$=id=>document.getElementById(id);
+let yaw=-.62,pitch=.36,zoom=60,go=false,last=performance.now(),drag=false,mx=0,my=0;
+const romans=['I','II','III','IV','V','VI','VII','VIII','IX','X'];
+const stationOrder=['Malkuth','Yesod','Hod','Netzach','Tiferet','Gevurah','Chesed','Binah','Chokhmah','Keter'];
+const sid=s=>s.toLowerCase();
+const treeQ={malkuth:[0,-2.5,0],yesod:[0,-1.5,0],hod:[-1,-.5,0],netzach:[1,-.5,0],tiferet:[0,.5,0],gevurah:[-1,1.5,0],chesed:[1,1.5,0],binah:[-1,2.5,0],chokhmah:[1,2.5,0],keter:[0,3.5,0]};
+const common=[['chokhmah','binah'],['chesed','gevurah'],['netzach','hod'],['keter','tiferet'],['chokhmah','chesed'],['chesed','netzach'],['binah','gevurah'],['gevurah','hod'],['tiferet','yesod'],['yesod','malkuth'],['keter','chokhmah'],['keter','binah'],['chokhmah','tiferet'],['binah','tiferet'],['chesed','tiferet'],['gevurah','tiferet'],['tiferet','netzach'],['tiferet','hod'],['netzach','yesod'],['hod','yesod']];
+const lur=[...common,['chokhmah','gevurah'],['binah','chesed']];
+const sys={Arcanum:[[1,1,1],'g'],Nexus:[[1,-1,-1],'g'],Commercium:[[-1,1,-1],'g'],Theatrum:[[-1,-1,1],'g'],Architect:[[-1,-1,-1],'s'],Imperium:[[-1,1,1],'s'],Aerarium:[[1,-1,1],'s'],Protection:[[1,1,-1],'s']};
+const G=['Arcanum','Nexus','Commercium','Theatrum'],S=['Architect','Imperium','Aerarium','Protection'],M=[['Arcanum','Architect'],['Nexus','Imperium'],['Commercium','Aerarium'],['Theatrum','Protection']];
+const J={'Commons Witness':[1,0,0],'Practice Safety':[0,1,0],'Cultural Commons':[0,0,1],'Market Assurance':[0,0,-1],'Creator Public Goods':[0,-1,0],'Standards and Rights':[-1,0,0]};
+stationOrder.forEach((n,i)=>{let d=document.createElement('div');d.textContent=`${i+1} ${n}`;d.dataset.i=i;$('treeList').appendChild(d)});
+const add=(a,b)=>a.map((v,i)=>v+b[i]),sub=(a,b)=>a.map((v,i)=>v-b[i]),mul=(a,k)=>a.map(v=>v*k),cross=(a,b)=>[a[1]*b[2]-a[2]*b[1],a[2]*b[0]-a[0]*b[2],a[0]*b[1]-a[1]*b[0]],dot3=(a,b)=>a.reduce((s,v,i)=>s+v*b[i],0),unit=a=>{let n=Math.hypot(...a)||1;return mul(a,1/n)};
+function H(g){let u=(g-1)/360,q=TAU*u;return[5*Math.cos(q),5*Math.sin(q),1.25*u-6.25]}
+function B(g){let u=(g-1)/360,q=TAU*u,N=unit([Math.cos(q),Math.sin(q),0]),T=unit([-5*Math.sin(q),5*Math.cos(q),1.25/TAU]);return[N,unit(cross(T,N)),T]}
+function state(){let g=+$('v').value,t=+$('t').value/1000,h=H(g),b=B(g),q=TAU*t,P=add(h,add(mul(b[0],1.12*Math.cos(q)),mul(b[1],1.12*Math.sin(q))));return{g,t,h,b,P}}
+function rp(R,q){return add(add(mul(R[0],q[0]),mul(R[1],q[1])),mul(R[2],q[2]))}
+function outerR(s){return $('o').value==='world'?[[1,0,0],[0,1,0],[0,0,1]]:s.b}
+function fp(s,q){return add(s.P,mul(rp(outerR(s),q),.72))}
+function treeBasis(s){let R=outerR(s),rad=unit(rp(R,[1,1,1])),u=unit(rp(R,[1,-1,0])),v=unit(cross(rad,u));return{rad,u,v}}
+function treeOrigin(s,centered=false){if(centered)return fp(s,[0,0,0]);let A=fp(s,[1,1,1]),tb=treeBasis(s);return add(A,mul(tb.rad,.62))}
+function treePoint(s,name,centered=false){let o=treeOrigin(s,centered),tb=treeBasis(s),q=treeQ[name],scale=.24;return add(o,add(mul(tb.u,q[0]*scale),mul(tb.v,q[1]*scale)))}
+function cam(p){let[a,b,d]=p,cy=Math.cos(yaw),sy=Math.sin(yaw),cp=Math.cos(pitch),sp=Math.sin(pitch),u=cy*a-sy*d,w=sy*a+cy*d,v=cp*b-sp*w,z=sp*b+cp*w,k=zoom*25/(25+z);return[C.width/2+u*k,C.height/2-v*k]}
+function line(a,b,dash=[],color='#667085',width=1.25){let A=cam(a),B=cam(b);ctx.save();ctx.setLineDash(dash);ctx.strokeStyle=color;ctx.lineWidth=width;ctx.beginPath();ctx.moveTo(...A);ctx.lineTo(...B);ctx.stroke();ctx.restore()}
+function poly(ps,color='#98a2b3',width=1.1){ctx.strokeStyle=color;ctx.lineWidth=width;ctx.beginPath();ps.forEach((p,i)=>{let P=cam(p);i?ctx.lineTo(...P):ctx.moveTo(...P)});ctx.stroke()}
+function dot(p,l,r=4,fill='#fff',stroke='#111',label=true){let P=cam(p);ctx.fillStyle=fill;ctx.strokeStyle=stroke;ctx.lineWidth=1.2;ctx.beginPath();ctx.arc(P[0],P[1],r,0,TAU);ctx.fill();ctx.stroke();if(label&&$('labs').checked){ctx.fillStyle=stroke;ctx.font='12px system-ui';ctx.fillText(l,P[0]+7,P[1]-6)}}
+function comb(a){let z=[];for(let i=0;i<a.length;i++)for(let j=i+1;j<a.length;j++)z.push([a[i],a[j]]);return z}
+function drawTree(s,centered=false){let active=Math.floor(((s.g-1)%360)/36),red=centered; if($('paths').checked)lur.forEach(e=>line(treePoint(s,e[0],centered),treePoint(s,e[1],centered),red?[4,4]:[],red?'#dc2626':'#7c3aed',red?1:1.4));stationOrder.forEach((n,i)=>dot(treePoint(s,sid(n),centered),n,i===active?6:3,i===active?'#fbbf24':'#fff',red?'#dc2626':'#4c1d95',!centered));if(!centered){let A=fp(s,[1,1,1]);line(A,treeOrigin(s,false),[4,4],'#7c3aed',1.4);let O=cam(treeOrigin(s,false));ctx.fillStyle='#4c1d95';ctx.font='bold 12px system-ui';ctx.fillText('Vitae / Tree local subframe',O[0]+8,O[1]+12)}}
+function draw(){ctx.clearRect(0,0,C.width,C.height);let s=state(),hp=[];for(let g=1;g<=3600;g+=6)hp.push(H(g));poly(hp,'#cbd5e1',1);let rg=[];for(let i=0;i<=60;i++){let a=TAU*i/60;rg.push(add(s.h,add(mul(s.b[0],1.12*Math.cos(a)),mul(s.b[1],1.12*Math.sin(a)))))}poly(rg,'#2563eb',1.4);
+let P={};Object.entries(sys).forEach(([n,o])=>P[n]=fp(s,o[0]));comb(G).forEach(e=>line(P[e[0]],P[e[1]],[],'#475467',1.5));comb(S).forEach(e=>line(P[e[0]],P[e[1]],[7,5],'#475467',1.5));M.forEach(e=>line(P[e[0]],P[e[1]],[2,5],'#111827',1.8));if($('ops').checked)G.forEach(g=>S.forEach(st=>{if(!M.some(e=>e[0]===g&&e[1]===st))line(P[g],P[st],[],'#d0d5dd',.9)}));Object.entries(J).forEach(([n,q])=>dot(fp(s,q),n,3,'#fff','#667085',false));dot(fp(s,[0,0,0]),'Human / Identity',6,'#fff','#111827',true);Object.entries(P).forEach(([n,p])=>dot(p,n,n==='Arcanum'?6:5,n==='Arcanum'?'#ddd6fe':'#fff','#111827',true));drawTree(s,false);if($('unsafe').checked)drawTree(s,true);
+let gr=Math.floor((s.g-1)/360)+1,sec=(s.g-1)%360+1,ci=Math.floor((sec-1)/36);$('tp').textContent=s.t.toFixed(4);$('tv').textContent=s.t.toFixed(3);$('vv').textContent=s.g;$('grade').textContent=romans[gr-1];$('sec').textContent=`${sec} / 360`;$('station').textContent=stationOrder[ci];document.querySelectorAll('#treeList div').forEach((d,i)=>d.classList.toggle('active',i===ci));$('unsafeMsg').hidden=!$('unsafe').checked;}
+function tick(n){let dt=(n-last)/1000;last=n;if(go&&!matchMedia('(prefers-reduced-motion: reduce)').matches)$('t').value=(+$('t').value+dt*65)%1000;draw();requestAnimationFrame(tick)}
+$('run').onclick=()=>{go=!go;$('run').textContent=go?'Pause Tempus':'Animate Tempus'};$('p1').onclick=()=>$('v').value=Math.min(3600,+$('v').value+1);$('p36').onclick=()=>$('v').value=Math.min(3600,+$('v').value+36);$('p360').onclick=()=>$('v').value=Math.min(3600,+$('v').value+360);C.onpointerdown=e=>{drag=true;mx=e.clientX;my=e.clientY;C.setPointerCapture(e.pointerId)};C.onpointermove=e=>{if(!drag)return;yaw+=(e.clientX-mx)*.008;pitch+=(e.clientY-my)*.008;mx=e.clientX;my=e.clientY};C.onpointerup=()=>drag=false;C.onwheel=e=>{e.preventDefault();zoom*=e.deltaY>0?.92:1.08};requestAnimationFrame(tick);
+</script></body></html>
