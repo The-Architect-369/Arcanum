@@ -1,0 +1,111 @@
+{
+  "registry": "vitae.icosahedral-fivefold-orientation.v0.1",
+  "status": "design-candidate-reopened-by-human-architect",
+  "phase": "Pre-Genesis",
+  "authority": "Vitae navigation/presentation geometry only; no recognition, readiness, identity, rank, authority, schedule, reward, or automatic curriculum dependency",
+  "purpose": "Encode the exact 5+10+5 face decomposition of a regular icosahedron in a fivefold orientation and test it as a Vitae UI architecture: ten Core Grade faces in an equatorial belt plus two five-face specialization-cap families, while preserving non-hierarchy and event-driven becoming.",
+  "mathematical_orientation": {
+    "circumradius":1,
+    "edge_length_exact":"sqrt(2-2/sqrt(5))",
+    "edge_length_decimal":1.0514622242382672,
+    "vertices": {
+      "north":"N=(0,0,1)",
+      "upper_ring":"U_k=(2/sqrt(5)*cos(2πk/5), 2/sqrt(5)*sin(2πk/5), 1/sqrt(5)), k=0..4",
+      "lower_ring":"L_k=(2/sqrt(5)*cos(2πk/5+π/5), 2/sqrt(5)*sin(2πk/5+π/5), -1/sqrt(5)), k=0..4",
+      "south":"S=(0,0,-1)"
+    },
+    "vertex_decomposition":{"north_pole":1,"upper_ring":5,"lower_ring":5,"south_pole":1,"total":12},
+    "face_decomposition": {
+      "north_cap":{"count":5,"formula":"T_k=[N,U_k,U_(k+1)] mod 5","internal_adjacency":"C5"},
+      "equatorial_belt":{"count":10,"formula_A":"A_k=[U_k,U_(k+1),L_k] mod 5","formula_B":"B_k=[U_k,L_k,L_(k-1)] mod 5","internal_adjacency":"C10 alternating A/B"},
+      "south_cap":{"count":5,"formula":"S_k=[S,L_k,L_(k+1)] mod 5","internal_adjacency":"C5"}
+    },
+    "edge_partition_by_face_group": {
+      "north_cap_internal_edges":5,
+      "belt_internal_edges":10,
+      "south_cap_internal_edges":5,
+      "north_cap_to_belt_edges":5,
+      "south_cap_to_belt_edges":5,
+      "north_cap_to_south_cap_edges":0,
+      "total_icosahedron_edges":30
+    },
+    "exact_topology_statement":"The twenty triangular faces form a 5 + 10 + 5 layered decomposition around any selected fivefold symmetry axis. This is mathematical structure, not a curricular doctrine."
+  },
+  "core_grade_belt_candidate": {
+    "status":"human-architect-directed design candidate",
+    "face_count":10,
+    "mapping":[
+      {"belt_index":1,"grade":"I","title":"Guardian"},
+      {"belt_index":2,"grade":"II","title":"Seeker"},
+      {"belt_index":3,"grade":"III","title":"Disciple"},
+      {"belt_index":4,"grade":"IV","title":"Mystic"},
+      {"belt_index":5,"grade":"V","title":"Scholar"},
+      {"belt_index":6,"grade":"VI","title":"Healer"},
+      {"belt_index":7,"grade":"VII","title":"Alchemist"},
+      {"belt_index":8,"grade":"VIII","title":"Sage"},
+      {"belt_index":9,"grade":"IX","title":"Oracle"},
+      {"belt_index":10,"grade":"X","title":"Adept"}
+    ],
+    "geometric_graph":"C10",
+    "curricular_path":"P10",
+    "required_break":"The geometric belt closes from face 10 back to face 1, but the Core Grade path does not automatically loop Adept to Guardian. That one geometric adjacency remains semantically inert unless a separate return/revisit view is explicitly selected.",
+    "candidate_law":"A Closed Belt May Carry an Open Path."
+  },
+  "specialization_caps_candidate": {
+    "status":"reopened hypothesis; family semantics not canonical",
+    "source_posture":"The repository defines ten specializations as non-hierarchical, non-exclusive, counterbalancing advanced stewardship domains. It does not currently canonize two groups of five.",
+    "human_architect_hypothesis":"Test two five-specialization families roughly distinguished as contemplative/idea-facing and embodied/transformation-facing, corresponding to the two exact five-face caps.",
+    "test_partition_not_ratified": {
+      "cap_A_candidate_label":"contemplative / interpretive",
+      "cap_A_candidate_members":["Arcanist","Philosopher","Illusionist","Astrologer","Hierophant"],
+      "cap_B_candidate_label":"embodied / transformative",
+      "cap_B_candidate_members":["Druid","Necromancer","Alchemist","Artificer","Enchanter"],
+      "basis":"descriptive reading of current mandates plus Human Architect direction; requires explicit content/falsification audit before promotion"
+    },
+    "orientation_neutrality":"North/south or top/bottom has no higher/lower, spiritual/material, prestigious/inferior, or authority meaning. The two caps may be swapped without semantic effect.",
+    "non_exclusivity":"A participant may pursue multiple specializations; cap placement cannot imply exclusivity or required sequence.",
+    "candidate_law":"Fivefold Family Is a Navigation Hypothesis, Not a Hierarchy."
+  },
+  "grade_face_inner_ui": {
+    "human_architect_intent":"A selected Grade face may open into its ten-class Tree-of-Life-oriented curriculum; completing/stabilizing the ten class stations can visually resolve the Grade face before the participant moves onward.",
+    "current_curriculum_reference":"10 classes per grade, each class associated with one intended Tree-of-Life station; seven chapters × five sections plus class overview gives 36 indexed positions per class and 360 per grade.",
+    "triangle_boundary":"The icosahedral face is a container/portal. Its three vertices or three edges do not automatically equal the three Tree-of-Life pillars, thresholds, artifacts, or authority states.",
+    "three_pillar_projection":"HOLD for separate geometric/UI audit. A triangle may host a three-pillar diagram, but that is an embedded projection rather than a fact implied by the icosahedron.",
+    "illumination_rule":"Face lighting may show participant-visible navigation/history state only. It cannot become a worth score, recognition event, capability grant, or mandatory completion meter.",
+    "candidate_law":"The Triangle May Host the Tree; It Does Not Generate the Tree."
+  },
+  "legacy_practice_direction": {
+    "status":"human-architect direction to study",
+    "description":"Legacy rituals may eventually provide a cohesive daily/practice synthesis across the ten Core Grades after the underlying Grade material is understood/stabilized.",
+    "boundary":"A legacy practice may integrate remembered material without collapsing all Grades into one automatic recognition state or imposing compulsory daily timing.",
+    "tempus_effect":"Tempus may timestamp/contextualize practice; timing does not determine Vitae progression."
+  },
+  "relation_to_arcnet_cube": {
+    "standard_embedding":"A regular icosahedron may be embedded inside ARCnet cube [-1,1]^3 with vertices (0,±1/φ,±1), (±1/φ,±1,0), (±1,0,±1/φ).",
+    "edge":"2/φ",
+    "meaning":"This supplies an exact local nesting option for Vitae inside the ARCnet cube without calling cube and icosahedron duals.",
+    "physical_scale":false,
+    "authority_effect":"none"
+  },
+  "falsification_requirements_before_promotion": [
+    "audit whether the proposed five+five specialization partition is supported by the actual specialization corpus rather than naming aesthetics",
+    "prove that no top/bottom orientation creates hierarchy or gender/spirit/matter prestige",
+    "derive the nine active Core Grade transitions from curriculum/recognition data rather than all ten belt edges",
+    "test the embedded Tree/three-pillar interaction on a triangular face for legibility and doctrinal accuracy",
+    "test face illumination against no-progress-meter and silence-is-valid rules",
+    "preserve plain-list/card navigation with equivalent meaning"
+  ],
+  "sources": [
+    {"id":"mathworld_icosa","url":"https://mathworld.wolfram.com/RegularIcosahedron.html","supports":"12 vertices, 30 edges, 20 triangular faces, fivefold symmetry and exact metric formulas"},
+    {"id":"repo_vitae_grade_cycle","path":"docs/architecture/registries/vitae-grade-cycle-registry.v0.1.json","supports":"10 Grades and 360 indexed positions per Grade"},
+    {"id":"repo_specialization_overview","path":"docs/vitae/curriculum/specializations/specialization-overview-codex.md","supports":"10 specialization mandates, non-hierarchy, non-exclusivity and counterbalancing posture"},
+    {"id":"repo_vitae_icosa_audit","path":"docs/architecture/vitae-icosahedron-geometry-audit.md","supports":"prior 20-face atlas pass and earlier warning that 10+5+5 semantics were not yet sourced"}
+  ],
+  "candidate_laws": [
+    "A Closed Belt May Carry an Open Path.",
+    "Fivefold Family Is a Navigation Hypothesis, Not a Hierarchy.",
+    "The Triangle May Host the Tree; It Does Not Generate the Tree.",
+    "Geometry May Offer Families; Doctrine Must Name Them.",
+    "Face Illumination Is Memory/Navigation, Not Human Worth."
+  ]
+}
