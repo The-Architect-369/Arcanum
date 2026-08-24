@@ -1,0 +1,322 @@
+{
+  "registry": "tempus.solar-system-gaia-frame.v0.1",
+  "status": "design-candidate",
+  "phase": "Pre-Genesis",
+  "authority": "astronomical presentation, planetary-node scope, provenance, and stewardship-interface metadata only; no astrological causation, planetary sentience claim, identity override, Vitae advancement, recognition, governance, Treasury, MANA, or automatic capability authority",
+  "purpose": "Replace the primary physical-looking ARCnet-on-polyhedral-carrier visualization with an ephemeris-driven solar-system model in which ARCnet is anchored to Earth/Gaia and translates with Earth's factual state vector while Tempus remains a celestial/cosmic interface shell.",
+  "research_basis": [
+    "docs/architecture/platonic-cosmology-source-and-science-audit.md",
+    "docs/architecture/registries/tempus-ephemeris-arcnet-unification-registry.v0.1.json",
+    "docs/architecture/registries/tempus-lunar-ephemeris-overlay.v0.1.json",
+    "docs/architecture/registries/tempus-vitae-eventful-unification-registry.v0.1.json",
+    "docs/architecture/registries/arcnet-transported-frame-projection.v0.1.json"
+  ],
+  "supersession": {
+    "previous_primary_visual_hypothesis": "solar longitude selects a point on the Tempus dual-icosahedral breathing carrier and transports ARCnet to that point",
+    "new_primary_visual_hypothesis": "solar-system bodies occupy ephemeris-derived physical coordinates; ARCnet is a local Earth/Gaia frame translated to Earth's state vector",
+    "previous_model_deleted": false,
+    "previous_model_new_role": "optional abstract geometry / phase-space / falsification view",
+    "candidate_law": "Move the Astronomical Bodies; Anchor ARCnet to Its Host."
+  },
+  "evidence_layers": [
+    "observable_science",
+    "mathematics",
+    "historically_sourced_tradition",
+    "repository_doctrine",
+    "participant_authored_meaning",
+    "interpretive_synthesis",
+    "metaphysical_claim"
+  ],
+  "physical_coordinate_contract": {
+    "production_reference_frame": "ICRF or ephemeris-native equivalent",
+    "production_dynamical_time": "TDB or ephemeris-native equivalent",
+    "human_orbital_view": "heliocentric ecliptic J2000 or explicitly declared ecliptic-of-date transform",
+    "earth_observer_views": [
+      "geocentric ecliptic",
+      "geocentric equatorial",
+      "topocentric/local horizon"
+    ],
+    "required_provenance": [
+      "capturedAt",
+      "target",
+      "center/observer",
+      "reference_frame",
+      "reference_plane",
+      "epoch_or_of_date_rule",
+      "timescale",
+      "ephemeris_source",
+      "ephemeris_version",
+      "precision",
+      "interpretation"
+    ],
+    "interpretation": null,
+    "candidate_laws": [
+      "Reference Frame Before Meaning.",
+      "A Viewpoint Is Part of the Data.",
+      "Geometry Proposes; Ephemeris Disposes."
+    ]
+  },
+  "solar_system_scope": {
+    "center": {
+      "id": "sol",
+      "physical_role": "Sun",
+      "presentation_role": "heliocentric origin in the primary orbital view",
+      "network_authority": "none by celestial centrality"
+    },
+    "major_bodies": [
+      "Mercury",
+      "Venus",
+      "Earth",
+      "Moon",
+      "Mars",
+      "Jupiter",
+      "Saturn",
+      "Uranus",
+      "Neptune",
+      "Pluto"
+    ],
+    "distributed_regions": [
+      {
+        "id": "main_asteroid_belt",
+        "scientific_shape": "broad belt between Mars and Jupiter",
+        "research_render_range_au": [2.2, 3.3],
+        "note": "population is not uniform; range is a display envelope"
+      },
+      {
+        "id": "kuiper_belt",
+        "scientific_shape": "thick disk / doughnut",
+        "research_render_range_au": [30, 50],
+        "note": "scattered-disk objects extend much farther and may be highly inclined/eccentric"
+      },
+      {
+        "id": "heliosphere",
+        "scientific_shape": "solar-wind plasma bubble with direction-dependent boundary",
+        "research_render_scale_au": "order 100",
+        "note": "not the same boundary as the Oort Cloud"
+      },
+      {
+        "id": "oort_cloud",
+        "scientific_shape": "hypothesized distant approximately spherical shell / swarm",
+        "research_inner_edge_au": [2000, 5000],
+        "research_outer_edge_au": [10000, 100000],
+        "directly_observed": false,
+        "dodecahedral_shape_claim": false
+      }
+    ]
+  },
+  "earth_gaia_node": {
+    "physical_host": "Earth",
+    "node_id": "gaia",
+    "node_kind": "planetary_network_scope",
+    "system_scale_self_label": "Gaia / Earth",
+    "identity_posture": "Earth is the host context for the planetary ARCnet node; it is not a superior human Identity and does not own participant continuity",
+    "arcnet_anchor": {
+      "position": "P_arcnet = Earth ephemeris state position in the selected physical frame",
+      "local_frame": "arcnet.transported-frame-projection.v0.1 q_system coordinates",
+      "transport": "X_system = P_arcnet + s R q_system",
+      "position_source": "Earth ephemeris only",
+      "orientation_modes": [
+        "ecliptic_locked",
+        "ICRF_inertial",
+        "Earth_body_fixed_presentation"
+      ],
+      "orientation_semantics": null,
+      "authority_effect": "none"
+    },
+    "participant_nodes": {
+      "role": "sovereign Human / Identity endpoints operating within the Earth planetary network scope",
+      "are_subordinate_in_worth_or_identity": false,
+      "are_replaceable_modules": false,
+      "may_be_rendered_as_local_nodes": true,
+      "candidate_law": "Planetary Node Is a Network Scope, Not a Superior Identity."
+    }
+  },
+  "gaia_stewardship_overlay": {
+    "status": "optional design-candidate narrative/stewardship interface",
+    "mythic_name_source": "Greek Gaia/Gaea as personification of Earth",
+    "scientific_ground": [
+      "atmosphere",
+      "biosphere",
+      "cryosphere",
+      "geosphere",
+      "hydrosphere",
+      "coupled Earth-system feedbacks",
+      "planetary health"
+    ],
+    "gaia_hypothesis_history": "Lovelock/Margulis life-environment self-regulation is a historically important scientific hypothesis; strong purposive/sentience interpretations are not assumed",
+    "narrative_intent": "Preserve and restore conditions in which Earth's living systems can persist, diversify, recover, and flourish across generations.",
+    "why_not_only_growth": "Earth systems include growth, rest, death, decomposition, disturbance, succession, constraint, and recovery; flourishing is not equivalent to maximum growth",
+    "source_kind": "human-authored stewardship covenant",
+    "sentience_claim": false,
+    "planetary_consent_claim": false,
+    "automatic_governance_authority": false,
+    "automatic_human_obligation": false,
+    "candidate_laws": [
+      "Planetary Personification May Aid Relationship; It May Not Falsify Physics.",
+      "A Stewardship Covenant Speaks for Human Responsibility, Not for Proven Planetary Sentience.",
+      "Flourishing Includes Limits, Renewal, Rest, and Recovery — Not Only Growth."
+    ]
+  },
+  "tempus_cosmos_shell": {
+    "solid": "regular dodecahedron",
+    "primary_role": "celestial/cosmic interaction shell and portal index",
+    "physical_space_metric": false,
+    "historical_root": "Plato Timaeus uses the fifth solid in the decoration of the Universe; physical/receptacle space is treated separately",
+    "oort_relation": {
+      "may_share_display_scale": true,
+      "physical_identity": false,
+      "oort_cloud_render": "diffuse spherical/statistical shell",
+      "dodecahedron_render": "wireframe/interface shell",
+      "candidate_law": "The Oort Cloud May Set Scale; It Does Not Set Polyhedral Shape."
+    },
+    "portal_layers": [
+      {
+        "id": "equal_zodiac_signs",
+        "count": 12,
+        "width_deg": 30,
+        "kind": "cultural / conventional ecliptic-longitude coordinate",
+        "face_assignment": "interface index",
+        "face_normal_is_physical_sky_direction": false
+      },
+      {
+        "id": "iau_zodiac_constellations",
+        "count_on_solar_ecliptic": 13,
+        "kind": "astronomical constellation boundary layer",
+        "equal_width": false,
+        "includes_ophiuchus": true
+      },
+      {
+        "id": "gaia_stellar_neighborhood",
+        "kind": "future 3D stellar-position/distance/proper-motion layer",
+        "source_family": "ESA Gaia catalogue / nearby-star data",
+        "same_as_zodiac": false
+      }
+    ],
+    "camera_contract": "Selecting a dodecahedral portal may remap the camera to the registered ecliptic/celestial sky sector. The physical viewing vector comes from the celestial coordinate layer, not automatically from the geometric face normal.",
+    "candidate_laws": [
+      "The Cosmos May Wear a Form; Space Need Not.",
+      "A Star House Is a Portal, Not a Claim That the Stars Form a House in Space.",
+      "Face Index and Sky Direction Are Different Coordinates.",
+      "Zodiac Sign, IAU Constellation, and Stellar Neighborhood Must Remain Distinct Layers."
+    ]
+  },
+  "platonic_overlay": {
+    "status": "historical-symbolic overlay on exact geometry; no physical elemental causation",
+    "plato": {
+      "tetrahedron": "fire",
+      "octahedron": "air",
+      "icosahedron": "water",
+      "cube": "earth",
+      "dodecahedron": "cosmos / Universe decoration"
+    },
+    "arcnet_stella_octangula": {
+      "two_tetrahedra": "exact compound",
+      "intersection": "regular octahedron",
+      "convex_hull": "cube",
+      "repository_semantics": {
+        "tetrahedron_a": "generative systems",
+        "tetrahedron_b": "stewardship systems",
+        "octahedron": "six derived coordination junctions",
+        "cube_vertices": "eight outer system positions"
+      },
+      "elemental_semantics_are_authority": false
+    },
+    "vitae_icosahedron": {
+      "historical_element": "water",
+      "repository_use": "optional twenty-face corpus atlas for ten Grades plus ten Specializations",
+      "interpretive_resonance": "water may poetically resonate with river/path/becoming imagery",
+      "historical_derivation_of_vitae": false
+    }
+  },
+  "interplanetary_network_future": {
+    "candidate_node_scopes": [
+      "Earth/Gaia",
+      "Moon/Luna",
+      "Mars",
+      "orbital habitats",
+      "asteroid/mining/research installations",
+      "future planetary or deep-space nodes"
+    ],
+    "transport_research_precedent": {
+      "family": "Delay/Disruption Tolerant Networking",
+      "bundle_protocol": "IETF BPv7 / RFC 9171",
+      "nasa_context": ["DTN", "LunaNet", "Solar System Internet"],
+      "architectural_role": "possible transport substrate beneath ARCnet semantic Edge Contracts",
+      "authority_effect": "none"
+    },
+    "candidate_law": "Light-Time Changes Transport, Not Sovereignty."
+  },
+  "presentation_scales": [
+    {
+      "id": "earth_node",
+      "metric": "local symbolic scale around Earth",
+      "focus": "Gaia + ARCnet + Luna + participant-node layer",
+      "physical_distance_faithful": "only for explicitly declared local sublayers"
+    },
+    {
+      "id": "inner_system",
+      "metric": "linear AU",
+      "range_au": 2,
+      "focus": "Mercury through Mars"
+    },
+    {
+      "id": "planetary_system",
+      "metric": "linear AU",
+      "range_au": 40,
+      "focus": "major planets through Pluto"
+    },
+    {
+      "id": "outer_system",
+      "metric": "logarithmic/normalized radial presentation",
+      "range_au": [0.1, 100000],
+      "focus": "planetary system, Kuiper Belt, heliosphere, Oort Cloud, Tempus cosmos shell",
+      "physical_distance_faithful": false,
+      "required_label": "nonlinear distance transform"
+    }
+  ],
+  "prototype_snapshot": {
+    "capturedAt": "2026-08-24T14:50:00Z",
+    "local_reference": "2026-08-24T10:50:00-04:00",
+    "prototype_only": true,
+    "computation_backend": "Swiss Ephemeris Python binding using built-in Moshier mode in the research runtime; not represented as JPL Horizons output",
+    "coordinate_view": "heliocentric ecliptic Cartesian J2000-style research coordinates",
+    "units": "AU",
+    "bodies": {
+      "Mercury": {"xyz":[-0.250219,0.222029,0.041094],"r":0.337039},
+      "Venus": {"xyz":[0.299162,-0.663179,-0.026373],"r":0.728011},
+      "Earth": {"xyz":[0.884979,-0.488705,0.000026],"r":1.010950},
+      "Moon": {"xyz":[0.885916,-0.491218,-0.000130],"earth_distance":0.002686},
+      "Mars": {"xyz":[0.612278,1.380551,0.013918],"r":1.510297},
+      "Jupiter": {"xyz":[-3.269592,4.164130,0.055857],"r":5.294651},
+      "Saturn": {"xyz":[9.307601,1.561661,-0.397693],"r":9.446077},
+      "Uranus": {"xyz":[9.062778,17.207274,-0.053599],"r":19.448062},
+      "Neptune": {"xyz":[29.843818,1.261724,-0.713691],"r":29.879002},
+      "Pluto": {"xyz":[19.863323,-29.409700,-2.597780],"r":35.584133}
+    },
+    "arcnet_anchor": "Earth.xyz",
+    "production_note": "The snapshot is for renderer validation. Production must ingest explicitly sourced ephemeris state vectors with complete frame/time/version provenance."
+  },
+  "falsification_tests": [
+    {"id":"earth-anchor","pass":"changing Earth's ephemeris state translates the Earth ARCnet frame by the same state-vector change without rewriting local ARCnet coordinates"},
+    {"id":"planet-independence","pass":"each planet may change its factual position independently; no Platonic edge is used as an orbital path"},
+    {"id":"moon-locality","pass":"Moon is represented as an Earth-relative body embedded in the heliocentric scene rather than as an abstract Tempus steering point"},
+    {"id":"oort-shape","pass":"Oort Cloud is rendered separately from the dodecahedral interface and is never claimed to be polyhedral"},
+    {"id":"portal-direction","pass":"a zodiac portal can open an actual celestial/ecliptic sky direction even though the dodecahedral face normal is only interface geometry"},
+    {"id":"gaia-persona-firewall","pass":"Gaia narrative intent is explicitly human-authored stewardship metadata, never a scientific sentience field or automatic governance command"},
+    {"id":"human-sovereignty","pass":"Earth/Gaia network scope cannot overwrite canonical Human/Identity sovereignty"},
+    {"id":"geometry-free-equivalence","pass":"all physical state can be represented as ephemeris vectors + network anchors + stewardship metadata without any Platonic rendering"}
+  ],
+  "audit_disposition": "BOUNDED PASS as the new primary celestial rendering direction. The physical solar system is ephemeris-driven; Tempus dodecahedron is a cosmic/navigation interface; ARCnet is Earth/Gaia-anchored; Gaia personification is optional stewardship narrative; human Identity remains sovereign.",
+  "not_encoded": [
+    "physical dodecahedral Oort Cloud",
+    "planetary motion along Platonic edges",
+    "zodiac constellations as neighboring star systems",
+    "Earth or any planet proven conscious",
+    "planetary persona as legal consent",
+    "planetary position as authority",
+    "human worth subordinate to a planetary node",
+    "Vitae advancement from orbit or ephemeris",
+    "astrological causation",
+    "future colony timeline prediction or guarantee"
+  ]
+}
