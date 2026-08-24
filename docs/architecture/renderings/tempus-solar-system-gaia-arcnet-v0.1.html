@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tempus Solar System · Gaia ARCnet v0.1</title>
+<style>
+:root{--bg:#f4f4f1;--card:#fff;--ink:#171717;--muted:#666;--line:#d4d4ce}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:14px system-ui,-apple-system,sans-serif}main{max-width:1450px;margin:auto;padding:16px}h1{font-size:24px;margin:0 0 5px}.muted{color:var(--muted)}.grid{display:grid;grid-template-columns:minmax(650px,1.55fr) minmax(350px,.72fr);gap:12px}.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:13px}canvas{width:100%;height:72vh;min-height:590px;border-radius:12px;background:#fbfbf8;touch-action:none}.controls{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:10px 0}button,select,input{font:inherit}.kv{display:grid;grid-template-columns:155px 1fr;gap:7px 10px;padding:8px 0;border-bottom:1px solid #ecece7}.notice{border-left:3px solid currentColor;padding-left:10px}.pill{display:inline-block;border:1px solid currentColor;border-radius:999px;padding:2px 7px;margin:2px;font-size:12px}.mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace}@media(max-width:950px){.grid{grid-template-columns:1fr}canvas{height:55vh;min-height:430px}}@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body><main>
+<h1>Tempus · Solar-System / Gaia ARCnet Snapshot</h1>
+<p class="muted">Design-candidate research renderer. Astronomical bodies occupy ephemeris-derived coordinates; ARCnet is attached to Earth/Gaia. The Tempus dodecahedron is an interface shell, not the metric or physical boundary of space.</p>
+<div class="controls card">
+<label>View <select id="view"><option value="inner">Inner system · linear</option><option value="planetary" selected>Planetary system · linear</option><option value="outer">Outer/Oort · nonlinear</option><option value="earth">Earth / Gaia node</option></select></label>
+<label><input id="tempus" type="checkbox" checked> Tempus shell</label>
+<label><input id="oort" type="checkbox" checked> Oort context</label>
+<label><input id="humans" type="checkbox" checked> sample human nodes</label>
+<button id="reset">Reset view</button>
+</div>
+<div class="grid">
+<div class="card"><canvas id="scene" width="1120" height="820"></canvas><p class="muted">Drag to orbit · wheel to zoom. Body radii are markers, not size-to-scale. Outer mode uses a nonlinear radial presentation. The Oort points are a statistical visualization, not observed individual comets.</p></div>
+<div>
+<div class="card"><h2 id="title" style="margin-top:0"></h2><div id="detail"></div></div>
+<div class="card notice" style="margin-top:12px"><b>Gaia stewardship overlay</b><p>Human-authored narrative intent: preserve and restore conditions in which Earth's living systems can persist, diversify, recover, and flourish across generations. It is not a scientific statement that Earth is a conscious speaker.</p></div>
+<div class="card notice" style="margin-top:12px"><b>Historical Platonic overlay</b><p><span class="pill">tetrahedron · fire</span><span class="pill">octahedron · air</span><span class="pill">icosahedron · water</span><span class="pill">cube · earth</span><span class="pill">dodecahedron · cosmos</span></p><p class="muted">Historical symbolism is provenance metadata, not a physical cause or permission system.</p></div>
+<div class="card" style="margin-top:12px"><b>Portal firewall</b><p>12 equal zodiac sign sectors, 13 IAU zodiac constellations, and actual 3D neighboring stars are separate layers. A dodecahedral face is a portal index, not automatically the physical sightline.</p></div>
+</div></div>
+</main>
+<script>
+const capturedAt='2026-08-24T14:50:00Z';
+const bodies={
+ Mercury:[-.250219,.222029,.041094],Venus:[.299162,-.663179,-.026373],Earth:[.884979,-.488705,.000026],Moon:[.885916,-.491218,-.000130],Mars:[.612278,1.380551,.013918],Jupiter:[-3.269592,4.164130,.055857],Saturn:[9.307601,1.561661,-.397693],Uranus:[9.062778,17.207274,-.053599],Neptune:[29.843818,1.261724,-.713691],Pluto:[19.863323,-29.409700,-2.597780]
+};
+const names=Object.keys(bodies),$=id=>document.getElementById(id),c=$('scene'),ctx=c.getContext('2d');
+let yaw=-.62,pitch=.34,zoom=315,drag=false,lx=0,ly=0;
+function add(a,b){return a.map((x,i)=>x+b[i])}function sub(a,b){return a.map((x,i)=>x-b[i])}function mul(a,s){return a.map(x=>x*s)}function norm(a){return Math.hypot(...a)}function unit(a){let n=norm(a)||1;return mul(a,1/n)}
+function rot(p){let[x,y,z]=p,cy=Math.cos(yaw),sy=Math.sin(yaw),cp=Math.cos(pitch),sp=Math.sin(pitch);let X=cy*x-sy*z,Z=sy*x+cy*z,Y=cp*y-sp*Z,ZZ=sp*y+cp*Z;return[X,Y,ZZ]}
+function proj(p){let[x,y,z]=rot(p),k=zoom*3.2/(3.2+z*.35);return[c.width/2+x*k,c.height/2-y*k,z]}
+function line(a,b,w=1,dash=[],alpha=1){let A=proj(a),B=proj(b);ctx.save();ctx.globalAlpha=alpha;ctx.beginPath();ctx.setLineDash(dash);ctx.moveTo(A[0],A[1]);ctx.lineTo(B[0],B[1]);ctx.lineWidth=w;ctx.strokeStyle='#303030';ctx.stroke();ctx.restore()}
+function dot(p,r=3,square=false,alpha=1){let A=proj(p);ctx.save();ctx.globalAlpha=alpha;ctx.fillStyle='#111';if(square)ctx.fillRect(A[0]-r,A[1]-r,2*r,2*r);else{ctx.beginPath();ctx.arc(A[0],A[1],r,0,Math.PI*2);ctx.fill()}ctx.restore()}
+function label(p,t,alpha=1){let A=proj(p);ctx.save();ctx.globalAlpha=alpha;ctx.font='11px system-ui';ctx.fillStyle='#222';ctx.fillText(t,A[0]+5,A[1]-4);ctx.restore()}
+function scalePoint(p,view,earth){if(view==='earth')return mul(sub(p,earth),170);let r=norm(p);if(r===0)return[0,0,0];if(view==='inner')return mul(p,.52);if(view==='planetary')return mul(p,.025);let rr=.05+.95*Math.max(0,Math.min(1,(Math.log10(Math.max(.1,r))+1)/6));return mul(unit(p),rr)}
+function drawArcnet(origin,view){let s=view==='earth'?.16:.018;const q=[[1,1,1],[1,-1,-1],[-1,1,-1],[-1,-1,1],[-1,-1,-1],[-1,1,1],[1,-1,1],[1,1,-1]],A=[0,1,2,3],B=[4,5,6,7];let W=q.map(v=>add(origin,mul(v,s)));for(let i=0;i<4;i++)for(let j=i+1;j<4;j++){line(W[A[i]],W[A[j]],1.8);line(W[B[i]],W[B[j]],1.3,[4,3])}for(let i=0;i<8;i++)for(let j=i+1;j<8;j++){let d=q[i].reduce((z,x,k)=>z+Math.abs(x-q[j][k]),0);if(d===2)line(W[i],W[j],.55,[],.4)}const J=[[1,0,0],[-1,0,0],[0,1,0],[0,-1,0],[0,0,1],[0,0,-1]].map(v=>add(origin,mul(v,s))),E=[[0,2],[0,3],[0,4],[0,5],[1,2],[1,3],[1,4],[1,5],[2,4],[2,5],[3,4],[3,5]];for(const[a,b]of E)line(J[a],J[b],.7,[],.55);W.forEach(p=>dot(p,2.4));dot(origin,4,true);label(origin,'Gaia / ARCnet')}
+const phi=(1+Math.sqrt(5))/2,D=[];for(const x of[-1,1])for(const y of[-1,1])for(const z of[-1,1])D.push([x,y,z]);for(const y of[-1,1])for(const z of[-1,1])D.push([0,y/phi,z*phi]);for(const x of[-1,1])for(const y of[-1,1])D.push([x/phi,y*phi,0]);for(const x of[-1,1])for(const z of[-1,1])D.push([x*phi,0,z/phi]);let R=norm(D[0]);for(let i=0;i<D.length;i++)D[i]=mul(D[i],1/R);const edges=[];for(let i=0;i<D.length;i++)for(let j=i+1;j<D.length;j++){let d=norm(sub(D[i],D[j]));if(Math.abs(d-.713644)<.01)edges.push([i,j])}
+function rng(seed){return()=>{seed=(seed*1664525+1013904223)>>>0;return seed/4294967296}}const rand=rng(369),oort=[];for(let i=0;i<300;i++){let u=rand()*2-1,a=rand()*Math.PI*2,s=Math.sqrt(1-u*u),r=.86+.14*rand();oort.push([r*s*Math.cos(a),r*s*Math.sin(a),r*u])}
+function drawOuter(){if($('oort').checked)for(const p of oort)dot(p,.65,false,.18);if($('tempus').checked){for(const[a,b]of edges)line(mul(D[a],1.02),mul(D[b],1.02),1.15,[],.78)}}
+function drawHumans(origin,view){if(view!=='earth'||!$('humans').checked)return;for(let i=0;i<12;i++){let a=2*Math.PI*i/12,p=[origin[0]+.075*Math.cos(a),origin[1]+.075*Math.sin(a),origin[2]+.055*((i%3)-1)];dot(p,2,false,.55)}}
+function draw(){ctx.clearRect(0,0,c.width,c.height);let view=$('view').value,earth=bodies.Earth;if(view==='outer')drawOuter();if(view!=='earth'){dot([0,0,0],6);label([0,0,0],'Sol')}for(const n of names){if(view==='inner'&&!['Mercury','Venus','Earth','Moon','Mars'].includes(n))continue;let p=scalePoint(bodies[n],view,earth);if(view==='earth'&&n==='Earth')continue;dot(p,n==='Earth'?4.7:n==='Moon'?3.5:3.2,n==='Earth');label(p,n)}let ep=view==='earth'?[0,0,0]:scalePoint(earth,view,earth);drawArcnet(ep,view);drawHumans(ep,view);if(view==='earth'){let moon=scalePoint(bodies.Moon,view,earth),sun=scalePoint([0,0,0],view,earth);line(ep,moon,1,[4,3],.7);let u=unit(sun);line(ep,mul(u,.9),.9,[6,4],.5);label(mul(u,.9),'toward Sol')}update(view,earth)}
+function update(view,earth){let moonKm=norm(sub(bodies.Moon,earth))*149597870.7,metric=view==='inner'?'linear reference view · inner planets':view==='planetary'?'linear reference view · major planets':view==='outer'?'nonlinear/log radial presentation · Oort scale':'Earth-relative local presentation';$('title').textContent=view==='earth'?'Earth / Gaia node':view==='outer'?'Outer system + Tempus cosmos shell':'Ephemeris solar-system snapshot';$('detail').innerHTML=`<div class="kv"><b>Captured</b><span class="mono">${capturedAt}</span></div><div class="kv"><b>View metric</b><span>${metric}</span></div><div class="kv"><b>Earth from Sol</b><span class="mono">${norm(earth).toFixed(6)} AU</span></div><div class="kv"><b>Luna from Earth</b><span class="mono">${moonKm.toFixed(0)} km</span></div><div class="kv"><b>ARCnet anchor</b><span>Earth / Gaia state vector</span></div><div class="kv"><b>Tempus shell</b><span>cosmic/navigation interface</span></div><div class="kv"><b>Vitae</b><span>event-driven developmental layer; not orbital</span></div><div class="kv"><b>Prototype source</b><span>local Moshier research snapshot; production ephemeris pending</span></div>`}
+$('view').onchange=draw;$('tempus').onchange=draw;$('oort').onchange=draw;$('humans').onchange=draw;$('reset').onclick=()=>{yaw=-.62;pitch=.34;zoom=315;draw()};c.onpointerdown=e=>{drag=true;lx=e.clientX;ly=e.clientY;c.setPointerCapture(e.pointerId)};c.onpointermove=e=>{if(!drag)return;yaw+=(e.clientX-lx)*.007;pitch+=(e.clientY-ly)*.007;lx=e.clientX;ly=e.clientY;draw()};c.onpointerup=()=>drag=false;c.onwheel=e=>{e.preventDefault();zoom*=e.deltaY>0?.94:1.06;draw()};draw();
+</script></body></html>
