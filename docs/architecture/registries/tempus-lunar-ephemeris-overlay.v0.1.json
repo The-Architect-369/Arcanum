@@ -1,0 +1,238 @@
+{
+  "registry": "tempus.lunar-ephemeris-overlay.v0.1",
+  "status": "design-candidate",
+  "phase": "Pre-Genesis",
+  "authority": "factual lunar ephemeris, derived Sun-Moon phase relation, and presentation metadata only; no astrological causation, personality typing, Vitae advancement, recognition, governance, Treasury, identity, capability, ritual obligation, or metaphysical authority",
+  "purpose": "Add the Moon as an independent factual Tempus trajectory on the existing seventy-two-sector dodecahedral/icosahedral carrier while proving that the solar-driven ARCnet transport, Vitae state, and authority contracts remain invariant under lunar motion.",
+  "parents": [
+    "tempus.ephemeris-arcnet-unification.v0.1",
+    "tempus.72-sector-coordinate.v0.1",
+    "tempus.dodecahedral-compass.v0.1",
+    "arcnet.transported-frame-projection.v0.1"
+  ],
+  "external_references": [
+    {
+      "id": "jpl_horizons_moon_target",
+      "source": "NASA/JPL Horizons manual",
+      "url": "https://ssd.jpl.nasa.gov/horizons/manual.html",
+      "finding": "Horizons identifies the Moon center as target 301, Earth center as 399, and observer quantity 31 as observer-centered apparent ecliptic-of-date longitude/latitude."
+    },
+    {
+      "id": "jpl_lunar_new_moon_definition",
+      "source": "JPL Lunar Constants and Models Document D-32296",
+      "url": "https://ssd.jpl.nasa.gov/doc/lunar_cmd_2005_jpl_d32296.pdf",
+      "finding": "JPL states that strict new Moon occurs when the apparent ecliptic longitudes of Moon and Sun, viewed from Earth's center, are equal."
+    },
+    {
+      "id": "nasa_moon_phase_2026",
+      "source": "NASA Scientific Visualization Studio, Moon Phase and Libration 2026",
+      "url": "https://svs.gsfc.nasa.gov/5587/",
+      "finding": "NASA renders the 2026 Moon geocentrically at hourly intervals and explains that lunar phases arise from the changing Sun-Moon-Earth angle; the lunar orbit is inclined about five degrees to the ecliptic."
+    },
+    {
+      "id": "nasa_august_2026_eclipse",
+      "source": "NASA Scientific Visualization Studio, August 27-28 2026 Deep Partial Lunar Eclipse",
+      "url": "https://svs.gsfc.nasa.gov/5672",
+      "finding": "NASA gives greatest eclipse as 2026-08-28T04:13Z and reports 96.3 percent of the lunar disk inside Earth's umbra, providing a current alignment test for longitude-plus-latitude modeling."
+    }
+  ],
+  "coordinate_contract": {
+    "observer": {
+      "name": "Earth geocenter",
+      "horizons_center": "500@399"
+    },
+    "targets": {
+      "sun": {
+        "name": "Sun",
+        "horizons_id": 10,
+        "role": "primary annual Tempus carrier for ARCnet presentation"
+      },
+      "moon": {
+        "name": "Moon",
+        "horizons_id": 301,
+        "role": "independent lunar Tempus tracer; does not transport ARCnet by default"
+      }
+    },
+    "longitude_latitude_observable": {
+      "horizons_quantity": 31,
+      "family": "observer-centered apparent ecliptic-of-date longitude/latitude",
+      "longitude_domain": "[0,360)",
+      "latitude_units": "degrees",
+      "interpretation": null
+    },
+    "optional_phase_observables": {
+      "horizons_quantity_10": "illuminated fraction",
+      "horizons_quantity_23": "Sun-Observer-Target elongation",
+      "horizons_quantity_24": "Sun-Target-Observer angle",
+      "horizons_quantity_43": "true phase angle and bisector",
+      "rule": "Prefer directly sourced ephemeris quantities for production phase rendering; the normalized longitude difference remains a useful independent ecliptic relative-phase coordinate."
+    },
+    "required_provenance_fields": [
+      "capturedAt",
+      "target",
+      "observer",
+      "coordinate/reference frame",
+      "epoch or of-date rule",
+      "ephemeris source/model",
+      "source version when available",
+      "precision",
+      "longitude",
+      "latitude",
+      "distance when used",
+      "interpretation"
+    ]
+  },
+  "independent_trajectories": {
+    "solar": {
+      "longitude": "lambda_sun",
+      "carrier_position": "P_sun = breathing_carrier_path(lambda_sun)",
+      "arcnet_transport": "X_system = P_sun + s R q_system",
+      "moves_arcnet": true
+    },
+    "lunar": {
+      "longitude": "lambda_moon",
+      "carrier_base_position": "P_moon_base = breathing_carrier_path(lambda_moon)",
+      "latitude": "beta_moon",
+      "moves_arcnet": false,
+      "moves_vitae": false,
+      "presentation": "The Moon may be rendered as a separate tracer at its longitude coordinate with a visibly secondary latitude stem/offset. The offset is a projection of beta_moon, not physical distance from the dodecahedral surface."
+    },
+    "shared_shell_rule": "Sharing the same neutral longitude coordinate does not make Sun and Moon the same clock, role, or authority source."
+  },
+  "lunar_sector_resolution": {
+    "input": "lambda_moon = normalized apparent geocentric lunar ecliptic longitude",
+    "sector_index": "floor(lambda_moon / 5) + 1",
+    "face_index": "floor(lambda_moon / 30) + 1",
+    "quinary_in_sign": "floor((lambda_moon mod 30) / 5) + 1",
+    "decan_in_sign": "floor((lambda_moon mod 30) / 10) + 1",
+    "half_of_decan": "floor((lambda_moon mod 10) / 5) + 1",
+    "role": "factual current lunar coordinate on the neutral Tempus shell only",
+    "automatic_historical_overlay": false
+  },
+  "relative_phase_coordinate": {
+    "id": "sun_moon_relative_phase",
+    "formula": "delta_lambda = (lambda_moon - lambda_sun) mod 360",
+    "domain": "[0,360)",
+    "meaning": "derived ecliptic relative-phase coordinate, not a sovereign state",
+    "landmarks": [
+      {"delta_lambda_deg": 0, "label": "new-Moon longitude conjunction", "note": "strict new Moon criterion uses equality of apparent geocentric ecliptic longitudes"},
+      {"delta_lambda_deg": 90, "label": "first-quarter neighborhood", "note": "phase rendering should use sourced illuminated fraction/phase angle for precision"},
+      {"delta_lambda_deg": 180, "label": "full-Moon longitude opposition", "note": "opposition alone is insufficient to infer an eclipse"},
+      {"delta_lambda_deg": 270, "label": "third-quarter neighborhood", "note": "phase rendering should use sourced illuminated fraction/phase angle for precision"}
+    ],
+    "waxing_waning_projection": {
+      "waxing": "0 < delta_lambda < 180",
+      "waning": "180 < delta_lambda < 360",
+      "boundary_note": "These labels describe lunar illumination progression only; they are not metaphors for participant growth, decline, readiness, or value."
+    },
+    "candidate_law": "Relative Phase Is Derived, Not Sovereign."
+  },
+  "latitude_and_eclipse_firewall": {
+    "reason": "The Moon's orbit is inclined to the ecliptic, so longitude conjunction/opposition does not by itself specify three-body eclipse alignment.",
+    "required_lunar_coordinate": ["longitude", "latitude"],
+    "distance_recommended": true,
+    "eclipse_inference_from_longitude_only": false,
+    "candidate_laws": [
+      "Longitude Coincidence Is Not Whole Alignment.",
+      "Latitude Prevents False Eclipse Inference.",
+      "Phase Is Relative Geometry, Not a Command."
+    ]
+  },
+  "prototype_snapshot": {
+    "capturedAt": "2026-08-24T07:26:00Z",
+    "local_reference_at_capture": "2026-08-24T03:26:00-04:00",
+    "computation_backend": "Swiss Ephemeris Python binding with requested SWIEPH and automatic Moshier fallback because external ephemeris files were not present",
+    "ephemeris_return_mode": "MOSEPH",
+    "prototype_only": true,
+    "sun": {
+      "longitude_deg": 151.16923463151863,
+      "latitude_deg": -0.00007537204508842806,
+      "distance_au": 1.0110157551610905,
+      "longitude_speed_deg_per_day": 0.963865933810834,
+      "resolved_sector": 31,
+      "resolved_sign": "virgo",
+      "resolved_face": 6,
+      "resolved_quinary": 1,
+      "resolved_decan": 1
+    },
+    "moon": {
+      "longitude_deg": 287.121948829726,
+      "latitude_deg": -3.588200265932479,
+      "distance_au": 0.0026908807324304406,
+      "distance_km_approx": 402550.0278792503,
+      "longitude_speed_deg_per_day": 11.999233222788613,
+      "resolved_sector": 58,
+      "resolved_sign": "capricorn",
+      "resolved_face": 10,
+      "resolved_quinary": 4,
+      "resolved_decan": 2,
+      "resolved_half_of_decan": 2
+    },
+    "relative": {
+      "delta_longitude_deg": 135.9527141982074,
+      "relative_longitude_speed_deg_per_day": 11.03536728897778,
+      "ephemeris_elongation_deg": 135.83670946152066,
+      "phase_angle_deg": 44.05709278952427,
+      "illuminated_fraction": 0.8593236230114324,
+      "phase_label": "waxing gibbous"
+    },
+    "production_note": "This snapshot validates the resolver and independent-motion model but is not represented as a JPL Horizons response. Production should ingest explicitly sourced Horizons/SPICE-equivalent data."
+  },
+  "eclipse_falsification_case": {
+    "event": "2026-08-28 deep partial lunar eclipse",
+    "greatest_eclipse_nasa_utc": "2026-08-28T04:13:00Z",
+    "nasa_umbra_fraction_of_lunar_disk_percent": 96.3,
+    "prototype_moshier_at_nasa_event_time": {
+      "sun_longitude_deg": 154.89824981559553,
+      "moon_longitude_deg": 334.8527876723227,
+      "delta_longitude_deg": 179.95453785672714,
+      "moon_latitude_deg": 0.46236182009399623,
+      "illuminated_fraction": 0.9999836437342293
+    },
+    "finding": "The Moon is almost exactly opposite the Sun in longitude at greatest eclipse, while lunar latitude remains nonzero. Eclipse state therefore cannot be reduced to a one-dimensional 180-degree rule; finite body/shadow geometry and latitude matter.",
+    "architecture_effect": "Tempus may display eclipse context only from a separately sourced astronomical event/geometry computation; ordinary longitude opposition never becomes an eclipse claim by itself."
+  },
+  "arcnet_firewall": {
+    "solar_transport_remains_primary": true,
+    "moon_position_can_modify_arcnet_authority": false,
+    "moon_phase_can_modify_arcnet_authority": false,
+    "moon_phase_can_advance_vitae": false,
+    "moon_sector_can_unlock_systems": false,
+    "lunar_conjunction_or_opposition_can_authorize": false,
+    "lunar_coincidence_can_change_mana": false,
+    "candidate_law": "The Moon May Contextualize the Vehicle; It Does Not Steer It."
+  },
+  "falsification_tests": [
+    {"id": "independent-motion", "pass": "lambda_moon may change rapidly while lambda_sun and the solar-carried ARCnet frame change only according to their own coordinates"},
+    {"id": "shared-coordinate-not-shared-role", "pass": "Sun and Moon resolve through the same 72-sector longitude registry without acquiring the same transport semantics"},
+    {"id": "phase-derived", "pass": "lunar relative phase is recomputed from factual Sun/Moon state and owns no authority"},
+    {"id": "latitude-preserved", "pass": "beta_moon remains visible data and is not discarded by the 72-sector longitude projection"},
+    {"id": "eclipse-non-collapse", "pass": "longitude opposition/conjunction alone never emits an eclipse fact"},
+    {"id": "arcnet-rigidity", "pass": "lunar motion does not change any ARCnet local coordinate, relation class, mirror axis, derived junction, capability, or Edge Contract requirement"},
+    {"id": "vitae-invariance", "pass": "lunar phase, wrap, conjunction, opposition, and eclipse context do not change Vitae coordinate, recognition, or readiness"},
+    {"id": "geometry-free-equivalence", "pass": "the state can be expressed as timestamp + Sun lon/lat + Moon lon/lat + derived phase/illumination + unchanged ARCnet/Vitae state without 3D geometry"}
+  ],
+  "candidate_laws": [
+    "Same Shell, Independent Motion.",
+    "Relative Phase Is Derived, Not Sovereign.",
+    "Longitude Coincidence Is Not Whole Alignment.",
+    "Latitude Prevents False Eclipse Inference.",
+    "Phase Is Relative Geometry, Not a Command.",
+    "Waxing and Waning Describe Illumination, Not Human Becoming.",
+    "The Moon May Contextualize the Vehicle; It Does Not Steer It.",
+    "A Lunar Wrap Does Not Reset Vitae.",
+    "Conjunction and Opposition Are Context, Not Evaluation."
+  ],
+  "audit_disposition": "BOUNDED PASS: the Moon is a coherent second factual Tempus trajectory on the same neutral longitude shell when longitude, latitude, phase provenance, and role separation are preserved. Lunar state remains contextual and non-authorizing.",
+  "not_encoded": [
+    "lunar causation of mood or behavior",
+    "lunar timing as readiness",
+    "lunar timing as governance or Treasury permission",
+    "one Moon sector per Vitae state",
+    "Moon-driven ARCnet transport",
+    "automatic historical angelic/ceremonial activation",
+    "automatic eclipse inference from longitude alone",
+    "physical claim that the Moon travels on a dodecahedron or icosahedron",
+    "human worth from waxing, waning, conjunction, opposition, or eclipse"
+  ]
+}
