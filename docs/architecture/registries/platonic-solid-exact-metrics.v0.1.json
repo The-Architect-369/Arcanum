@@ -1,0 +1,139 @@
+{
+  "registry": "geometry.platonic-solid-exact-metrics.v0.1",
+  "status": "design-candidate-mathematics",
+  "phase": "Pre-Genesis",
+  "authority": "exact Euclidean geometry and presentation metadata only; no spiritual, identity, recognition, governance, economic, or physical-causation authority",
+  "purpose": "Provide exact coordinates, radii, dualities, golden-ratio relations, and ARCnet-compatible embeddings for the five convex Platonic solids so symbolic uses can be separated from mathematical facts.",
+  "constants": {
+    "phi": {
+      "symbol": "φ",
+      "exact": "(1+sqrt(5))/2",
+      "decimal": 1.618033988749895,
+      "identities": ["φ^2=φ+1", "1/φ=φ-1", "1/φ^2=2-φ"]
+    }
+  },
+  "existence_test": {
+    "regular_convex_polyhedron": "faces are congruent regular p-gons and exactly q faces meet at every vertex",
+    "local_angle_condition": "q * ((p-2)π/p) < 2π",
+    "equivalent_integer_condition": "(p-2)(q-2) < 4",
+    "only_solutions": [
+      {"p":3,"q":3,"solid":"tetrahedron","schlafli":"{3,3}"},
+      {"p":3,"q":4,"solid":"octahedron","schlafli":"{3,4}"},
+      {"p":4,"q":3,"solid":"cube","schlafli":"{4,3}"},
+      {"p":3,"q":5,"solid":"icosahedron","schlafli":"{3,5}"},
+      {"p":5,"q":3,"solid":"dodecahedron","schlafli":"{5,3}"}
+    ],
+    "euler_check": "V-E+F=2 for every convex Platonic solid"
+  },
+  "solids": [
+    {
+      "id":"tetrahedron","V":4,"E":6,"F":4,"schlafli":"{3,3}","dual":"tetrahedron",
+      "for_edge_a":{"circumradius":"sqrt(6)*a/4","inradius":"sqrt(6)*a/12"},
+      "when_circumradius_1":{"edge":1.632993161855452,"inradius":0.3333333333333333},
+      "platonic_historical_overlay":"fire"
+    },
+    {
+      "id":"cube","V":8,"E":12,"F":6,"schlafli":"{4,3}","dual":"octahedron",
+      "for_edge_a":{"circumradius":"sqrt(3)*a/2","inradius":"a/2","midradius":"sqrt(2)*a/2"},
+      "when_circumradius_1":{"edge":1.1547005383792517,"inradius":0.5773502691896258},
+      "platonic_historical_overlay":"earth"
+    },
+    {
+      "id":"octahedron","V":6,"E":12,"F":8,"schlafli":"{3,4}","dual":"cube",
+      "for_edge_a":{"circumradius":"sqrt(2)*a/2","inradius":"sqrt(6)*a/6","midradius":"a/2"},
+      "when_circumradius_1":{"edge":1.4142135623730951,"inradius":0.5773502691896258},
+      "platonic_historical_overlay":"air"
+    },
+    {
+      "id":"icosahedron","V":12,"E":30,"F":20,"schlafli":"{3,5}","dual":"dodecahedron",
+      "for_edge_a":{"circumradius":"sqrt(10+2*sqrt(5))*a/4","inradius":"(3*sqrt(3)+sqrt(15))*a/12","midradius":"(1+sqrt(5))*a/4"},
+      "when_circumradius_1":{"edge":1.0514622242382672,"inradius":0.7946544722917661},
+      "platonic_historical_overlay":"water"
+    },
+    {
+      "id":"dodecahedron","V":20,"E":30,"F":12,"schlafli":"{5,3}","dual":"icosahedron",
+      "for_edge_a":{"circumradius":"(sqrt(15)+sqrt(3))*a/4","inradius":"sqrt(250+110*sqrt(5))*a/20","midradius":"(3+sqrt(5))*a/4"},
+      "when_circumradius_1":{"edge":0.7136441795461799,"inradius":0.7946544722917661},
+      "platonic_historical_overlay":"cosmos/fifth figure; not a modern physical element"
+    }
+  ],
+  "true_dual_pairs": {
+    "tetrahedron":"self-dual",
+    "cube":"octahedron",
+    "octahedron":"cube",
+    "dodecahedron":"icosahedron",
+    "icosahedron":"dodecahedron",
+    "correction":"Cube and icosahedron are not duals. Any cube↔icosahedron relation used by Arcanum is an embedding/compound relation and must not be called duality."
+  },
+  "dodeca_icosa_dual_scale": {
+    "shared_normalized_inradius_to_circumradius_ratio": {
+      "exact":"sqrt((5+2*sqrt(5))/15)",
+      "decimal":0.7946544722917661
+    },
+    "face_center_construction":"For an outer regular dodecahedron with circumradius R_d, its twelve face centers form an inner regular icosahedron with circumradius R_i = 0.7946544722917661 * R_d before any rescaling.",
+    "important_boundary":"This face-center dual scaling is not the same scale as other concentric cube/icosahedron/dodecahedron embeddings. Registry consumers must name which construction is being used."
+  },
+  "arcnet_exact_coordinate_embedding": {
+    "cube": {
+      "coordinates":"(±1,±1,±1)",
+      "edge":2,
+      "circumradius":"sqrt(3)",
+      "role":"existing ARCnet outer stellar-cube coordinate hull"
+    },
+    "stella_octangula": {
+      "tetrahedron_A":"four alternate cube vertices",
+      "tetrahedron_B":"the complementary four cube vertices",
+      "tetrahedron_edge":"2*sqrt(2)",
+      "convex_hull":"cube",
+      "common_intersection":"regular octahedron",
+      "octahedron_vertices":[[1,0,0],[-1,0,0],[0,1,0],[0,-1,0],[0,0,1],[0,0,-1]],
+      "octahedron_edge":"sqrt(2)",
+      "octahedron_circumradius":1,
+      "historical_element_overlay":"two fire-associated tetrahedra; air-associated octahedral intersection; earth-associated cubic hull",
+      "physical_claim":false
+    },
+    "icosahedron_inside_cube": {
+      "construction":"standard golden-rectangle embedding inside cube [-1,1]^3",
+      "vertices_pattern":["(0,±1/φ,±1)","(±1/φ,±1,0)","(±1,0,±1/φ)"],
+      "edge":"2/φ",
+      "circumradius":"sqrt(3-φ)",
+      "circumradius_decimal":1.1755705045849463,
+      "cube_to_icosa_edge_ratio":"cube_edge / icosa_edge = φ",
+      "icosa_to_cube_circumradius_ratio":0.6787159472735029,
+      "touch_condition":"all twelve icosahedron vertices lie on cube faces",
+      "duality":false
+    },
+    "dodecahedron_sharing_cube_vertices": {
+      "construction":"regular dodecahedron using the eight cube vertices as eight of its twenty vertices",
+      "vertices_pattern":["(±1,±1,±1)","(0,±1/φ,±φ)","(±1/φ,±φ,0)","(±φ,0,±1/φ)"],
+      "edge":"2/φ",
+      "circumradius":"sqrt(3)",
+      "cube_edge_to_dodeca_edge_ratio":"φ",
+      "shared_cube_vertices":8,
+      "shared_circumsphere_with_cube":true
+    },
+    "combined_observation": {
+      "statement":"In this ARCnet-friendly common coordinate choice, the inner cube-inscribed icosahedron and the cube-vertex-sharing dodecahedron both have edge length 2/φ while the cube edge is 2.",
+      "meaning":"exact common-edge/golden-ratio normalization only",
+      "not_meaning":["that the icosahedron and dodecahedron are at face-center dual scale","that these solids describe physical planetary distances","that geometry grants semantic authority"]
+    }
+  },
+  "presentation_scale_rule": {
+    "law":"Exact Embedding and Exact Duality Are Different Relations.",
+    "ui_nesting":"If Hope, Vitae, ARCnet, and Tempus are visually separated by additional radial gaps, those extra scale factors are presentation parameters and must not be described as inherited Platonic constants.",
+    "physical_units":"No normalized solid radius is an AU, kilometer, day, degree, or physical field strength unless an explicit independent mapping says so."
+  },
+  "sources": [
+    {"id":"mathworld_platonic","url":"https://mathworld.wolfram.com/PlatonicSolid.html","supports":"exactly five convex Platonic solids; Schlaefli/count formulas; dual framework"},
+    {"id":"mathworld_stella","url":"https://mathworld.wolfram.com/StellaOctangula.html","supports":"two-tetrahedron compound; cubic convex hull; octahedral common intersection"},
+    {"id":"mathworld_dodeca","url":"https://mathworld.wolfram.com/RegularDodecahedron.html","supports":"dodecahedron coordinates, radii, duality, cube from eight vertices"},
+    {"id":"mathworld_icosa","url":"https://mathworld.wolfram.com/RegularIcosahedron.html","supports":"icosahedron radii, golden-rectangle structure, dodecahedral duality"},
+    {"id":"george_hart_ico_cube","url":"https://www.georgehart.com/virtual-polyhedra/ex-pr1.html","supports":"standard icosahedron-in-cube coordinates and golden-rectangle embedding"}
+  ],
+  "candidate_laws": [
+    "Exact Embedding and Exact Duality Are Different Relations.",
+    "A Golden Ratio May Set Geometry; It Does Not Set Meaning.",
+    "Shared Circumsphere Is Not Shared Ontology.",
+    "Historical Element Is Metadata, Not Physics."
+  ]
+}
