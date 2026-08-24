@@ -1,0 +1,159 @@
+{
+  "registry": "tempus.solar-system-observatory.v0.1",
+  "status": "design-candidate",
+  "phase": "Pre-Genesis",
+  "authority": "astronomical orientation, historical correspondence, presentation, and stewardship metadata only; no celestial causation of Identity, Vitae recognition, authority, governance, Treasury, capability, or human worth",
+  "purpose": "Shift Tempus from an abstract ARCnet-carrier path into a friendly heliocentric solar-system observatory: Sol is the physical center of the displayed planetary system, Earth carries the local ARCnet frame, Luna is resolved relative to Earth, belts/clouds are represented as astronomical regions, and the dodecahedron becomes a celestial navigation/interface shell rather than a literal physical boundary.",
+  "supersedes_as_default_render": "tempus.ephemeris-arcnet-unification.v0.1 solar-carrier animation",
+  "does_not_invalidate": [
+    "tempus.72-sector-coordinate.v0.1",
+    "tempus.lunar-ephemeris-overlay.v0.1",
+    "tempus-vitae.eventful-unification.v0.1",
+    "arcnet.transported-frame-projection.v0.1"
+  ],
+  "historical_precedent": {
+    "plato_timaeus": {
+      "source": "Plato, Timaeus 53c-56c",
+      "assignments": {
+        "tetrahedron": "fire",
+        "octahedron": "air",
+        "icosahedron": "water",
+        "cube": "earth",
+        "dodecahedron": "fifth figure used for the Universe/cosmos; exact elemental label is not stated there"
+      },
+      "rule": "Use the element correspondences as historically sourced symbolic metadata, not modern physics."
+    },
+    "kepler_mysterium_cosmographicum": {
+      "period": "1596; revised 1621",
+      "precedent": "Kepler nested the five regular solids between planetary spheres in an attempt to explain the number and spacing of the then-known planets.",
+      "historical_lesson": "Platonic geometry has a real history as astronomical model-building, but Kepler later recognized that observational data exposed limits in the polyhedral hypothesis. Tempus should inherit the experimental spirit, not preserve disproven planetary-distance claims."
+    },
+    "sefer_yetzirah_flame_coal": {
+      "source": "Sefer Yetzirah 1:7",
+      "historical_statement": "The end is attached to the beginning like a flame bound to a coal.",
+      "platonic_mapping_in_source": false,
+      "arcanum_interpretive_overlay": "A future optional layer may compare flame/coal language with the tetrahedral-fire / cubic-earth geometry, but must label this as modern synthesis rather than inherited doctrine."
+    }
+  },
+  "exact_inner_geometry": {
+    "arcnet_coordinates": "eight cube vertices q in {-1,+1}^3 partitioned into two antipodal tetrahedra",
+    "stella_octangula": "the two tetrahedral vertex sets form the regular tetrahedron compound known as the stella octangula",
+    "convex_hull": {
+      "solid": "cube",
+      "platonic_symbolic_overlay": "earth",
+      "semantic_effect": "none"
+    },
+    "common_intersection": {
+      "solid": "octahedron",
+      "vertices": [[1,0,0],[-1,0,0],[0,1,0],[0,-1,0],[0,0,1],[0,0,-1]],
+      "matches_existing_arcnet_derived_junction_coordinates": true,
+      "platonic_symbolic_overlay": "air",
+      "semantic_effect": "none"
+    },
+    "two_tetrahedra": {
+      "platonic_symbolic_overlay": "fire",
+      "important_boundary": "Two fire-associated tetrahedra producing an air-associated intersection and earth-associated hull is an exact geometric fact plus a sourced Platonic symbolic overlay. It is not a physical theory of matter."
+    }
+  },
+  "outer_dual_geometry": {
+    "dodecahedron": {
+      "role": "Tempus celestial/cosmic navigation shell",
+      "platonic_symbolic_overlay": "cosmos / fifth figure",
+      "literal_oort_cloud_shape": false
+    },
+    "icosahedron": {
+      "role": "exact dual carrier geometry; optionally also a separately typed Vitae corpus-atlas surface",
+      "platonic_symbolic_overlay": "water"
+    },
+    "duality": "regular dodecahedron and regular icosahedron are exact duals",
+    "rule": "Platonic symbolism may annotate a mathematically valid solid without making the symbolic element a physical substance or causal mechanism."
+  },
+  "astronomical_system": {
+    "default_reference": {
+      "origin": "Sol",
+      "frame": "heliocentric ecliptic presentation",
+      "observer_scope": "solar-system overview",
+      "epoch_and_ephemeris_provenance_required": true
+    },
+    "bodies": [
+      {"id":"sol","class":"star","role":"physical central body of the displayed solar system"},
+      {"id":"mercury","class":"planet"},
+      {"id":"venus","class":"planet"},
+      {"id":"earth","class":"planet","display_name":"Gaia","arcnet_host":true},
+      {"id":"moon","class":"natural_satellite","display_name":"Luna","parent":"earth"},
+      {"id":"mars","class":"planet"},
+      {"id":"jupiter","class":"planet"},
+      {"id":"saturn","class":"planet"},
+      {"id":"uranus","class":"planet"},
+      {"id":"neptune","class":"planet"},
+      {"id":"pluto","class":"dwarf_planet","included_for_cultural/navigation continuity rather than planet classification"}
+    ],
+    "regions": [
+      {"id":"main_asteroid_belt","approx_au":[2.2,3.2],"shape":"thick annular region; not a solid ring"},
+      {"id":"kuiper_belt","approx_au":[30,50],"shape":"puffed-up disk/donut region"},
+      {"id":"scattered_disk","approx_outer_au":1000,"shape":"extended trans-Neptunian population"},
+      {"id":"oort_cloud","approx_inner_au":[2000,5000],"approx_outer_au":[10000,100000],"shape":"theorized thick approximately spherical cloud; not directly observed"}
+    ]
+  },
+  "dodecahedral_sky_interface": {
+    "physical_claim": false,
+    "model": "A spherical astronomical sky/Oort context is rendered through a dodecahedral navigation shell whose faces act as selectable viewing portals.",
+    "zodiac_portals": "A twelve-face zodiac mode may align each face with one normalized 30-degree tropical zodiac sector for temporal navigation.",
+    "astronomical_constellation_mode": "Must remain separate because real IAU constellations have unequal angular extents and the ecliptic crosses Ophiuchus as well as the traditional twelve zodiac constellations.",
+    "precession": "Tropical 30-degree signs and astronomical constellations must not be conflated; reference epoch/frame must be visible.",
+    "neighbor_star_rule": "A zodiac face is a direction/window into the distant stellar background, not one neighboring star system and not a claim that zodiac stars lie on one spherical surface."
+  },
+  "earth_arcnet_host": {
+    "default_local_host": "earth",
+    "display_name": "Gaia",
+    "model": "ARCnet stellar-cube topology is attached rigidly to Earth's heliocentric position and travels with Earth. Luna and future off-world nodes are separate network nodes, not vertices manufactured by celestial geometry.",
+    "human_nodes": "Humans remain sovereign participants/identities and may host local ARCnet runtimes. They are not reduced to planetary modules.",
+    "earth_as_system_self": "Allowed only as a scope metaphor for an Earth-node observatory/network view; it does not replace canonical human Identity semantics.",
+    "future_nodes": ["lunar ARCnet node","Mars ARCnet node","orbital/asteroid infrastructure nodes","other planetary or habitat nodes"],
+    "network_rule": "Physical distance and celestial location may inform transport latency, routing, clocks, and observation context; they do not grant governance authority."
+  },
+  "gaia_stewardship_layer": {
+    "status": "participant-authored / civilizational doctrine candidate, not planetary psychology",
+    "allowed_language": "Gaia may be presented as a personified Earth stewardship voice when the interface clearly labels the mode as mythopoetic/personified.",
+    "scientific_grounding_candidate": [
+      "biosphere continuity",
+      "habitability",
+      "ecological resilience",
+      "biodiversity",
+      "resource stewardship",
+      "intergenerational continuity"
+    ],
+    "forbidden_claim": "The planet Earth is scientifically known to possess intentions, preferences, consciousness, or desires.",
+    "candidate_law": "Personification May Carry Stewardship; It May Not Masquerade as Planetary Measurement."
+  },
+  "scale_contract": {
+    "problem": "Mercury-to-Oort distances span more than five orders of magnitude; one linear scene makes either the planets invisible or the Oort Cloud unreachable.",
+    "render_modes": [
+      "inner_system_linear",
+      "planetary_system_linear",
+      "trans_neptunian_linear",
+      "whole_system_logarithmic"
+    ],
+    "logarithmic_mode": "presentation compression only; distances displayed numerically in physical AU/km remain authoritative",
+    "candidate_law": "Compressed Distance May Aid Orientation; It May Not Pretend to Be Physical Scale."
+  },
+  "rejected_or_corrected": [
+    "ARCnet itself orbiting the Tempus icosahedral carrier as the default astronomical model",
+    "Oort Cloud literally having a dodecahedral boundary",
+    "zodiac faces being individual neighboring star systems",
+    "all zodiac constellations occupying equal 30-degree astronomical windows",
+    "retrograde being literal backward planetary orbital motion",
+    "Gaia or another planet having scientifically measured desires",
+    "Platonic-solid element associations being modern physical science"
+  ],
+  "candidate_laws": [
+    "Astronomy Supplies Position; Geometry Supplies Interface.",
+    "The Solar System Moves; ARCnet Travels With Its Host.",
+    "The Dodecahedron Is a Window System, Not the Shape of the Oort Cloud.",
+    "A Zodiac Window Is a Direction, Not a Distance Shell.",
+    "Historical Symbol Is Metadata, Not Physics.",
+    "The Same Geometry May Carry Ancient Meaning and Modern Measurement Only When Their Provenance Remains Separate.",
+    "Personification May Carry Stewardship; It May Not Masquerade as Planetary Measurement.",
+    "Compressed Distance May Aid Orientation; It May Not Pretend to Be Physical Scale."
+  ]
+}
