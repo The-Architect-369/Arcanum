@@ -1,0 +1,221 @@
+{
+  "registry": "tempus-vitae.eventful-unification.v0.1",
+  "status": "design-candidate",
+  "phase": "Pre-Genesis",
+  "authority": "cross-faculty state-transition, typed-cell geometry, and presentation metadata only; not recognition, readiness, identity, astrological causation, governance, Treasury, capability, MANA, or automatic Vitae advancement",
+  "purpose": "Reintroduce Vitae into the factual solar+lunar Tempus field while proving that Tempus changes continuously, Vitae changes only on explicit participant events, ARCnet remains solar-carried, and the Tempus/Vitae icosahedral overlap is a typed geometric carrier rather than an automatic semantic correspondence.",
+  "parents": [
+    "tempus.lunar-ephemeris-overlay.v0.1",
+    "tempus.ephemeris-arcnet-unification.v0.1",
+    "tempus-vitae.becoming-field.v0.1",
+    "vitae.grade-cycle.v0.1",
+    "arcnet.transported-frame-projection.v0.1"
+  ],
+  "state_model": {
+    "tempus": {
+      "continuity": "continuous/sampleable factual context",
+      "fields": ["capturedAt", "sun.longitude", "sun.latitude", "moon.longitude", "moon.latitude", "moon.illumination", "sunMoon.deltaLongitude", "source", "precision", "interpretation"],
+      "interpretation": null
+    },
+    "vitae": {
+      "continuity": "discrete/event-driven participant navigation/practice state",
+      "fields": ["grade_index", "class_index", "class_slot_index", "grade_section_index", "global_section_index"],
+      "clock_input": false,
+      "ephemeris_input": false
+    },
+    "arcnet": {
+      "carrier": "solar Tempus carrier position only",
+      "local_topology_mutable_by_tempus": false,
+      "local_topology_mutable_by_vitae": false
+    }
+  },
+  "transition_law": {
+    "between_vitae_events": "V(t2) = V(t1) for every interval containing no explicit participant Vitae event, regardless of changes in Sun, Moon, phase, sign, sector, eclipse context, or civil date.",
+    "at_vitae_event": "V(t_e+) = apply(event, V(t_e-)); TempusContext(t_e) may be captured on the event receipt but is not a cause of the transition.",
+    "forbidden_transition_sources": [
+      "elapsed civil time",
+      "solar longitude",
+      "solar sign/sector/quinary/decan transition",
+      "lunar longitude",
+      "lunar phase",
+      "new/full Moon",
+      "eclipse",
+      "planetary coincidence",
+      "geometry animation",
+      "ARCnet pose"
+    ],
+    "candidate_laws": [
+      "Event Before Movement.",
+      "Context at Event, Not Cause of Event.",
+      "Continuous Time, Eventful Becoming.",
+      "An Eclipse May Change Tempus Context Without Changing Vitae State."
+    ]
+  },
+  "vitae_event_receipt": {
+    "name": "VitaeNavigationEventReceipt",
+    "required_fields": [
+      "event_id",
+      "occurred_at",
+      "participant_initiated",
+      "event_kind",
+      "before_coordinate",
+      "after_coordinate",
+      "tempus_context_snapshot",
+      "source",
+      "interpretation",
+      "recognition_effect",
+      "authority_effect"
+    ],
+    "participant_initiated": true,
+    "interpretation": null,
+    "recognition_effect": "none unless a separate legitimate recognition process occurs",
+    "authority_effect": "none unless a separate legitimate grant occurs",
+    "chain_required": false,
+    "default_receipt_scope": "local participant-owned receipt"
+  },
+  "synthetic_invariance_test": {
+    "warning": "Synthetic architecture test only; these Vitae coordinates are not asserted to describe the Human Architect.",
+    "initial_vitae_coordinate": {
+      "grade_index": 1,
+      "grade_title": "Guardian",
+      "class_index": 1,
+      "class_slot_index": 1,
+      "grade_section_index": 1,
+      "global_section_index": 1
+    },
+    "start": {
+      "capturedAt": "2026-08-24T14:05:00Z",
+      "sun_longitude_deg": 151.43631968972628,
+      "sun_sector": 31,
+      "sun_sign": "virgo",
+      "sun_quinary": 1,
+      "moon_longitude_deg": 290.4517478012274,
+      "moon_latitude_deg": -3.356904655792764,
+      "moon_sector": 59,
+      "moon_sign": "capricorn",
+      "moon_quinary": 5,
+      "moon_illumination_fraction": 0.8773688577059024,
+      "delta_longitude_deg": 139.0154281115011,
+      "vitae_grade_section_index": 1
+    },
+    "seventy_two_hours_without_vitae_event": {
+      "capturedAt": "2026-08-27T14:05:00Z",
+      "sun_longitude_deg": 154.32985209702932,
+      "sun_sector": 31,
+      "sun_sign": "virgo",
+      "sun_quinary": 1,
+      "moon_longitude_deg": 327.3750925245989,
+      "moon_latitude_deg": -0.22786474468144108,
+      "moon_sector": 66,
+      "moon_sign": "aquarius",
+      "moon_quinary": 6,
+      "moon_illumination_fraction": 0.9963363303917718,
+      "delta_longitude_deg": 173.0452404275696,
+      "vitae_grade_section_index": 1,
+      "result": "PASS: substantial solar/lunar/phase change produced no Vitae movement"
+    },
+    "explicit_synthetic_vitae_event": {
+      "occurred_at": "2026-08-27T14:05:00Z",
+      "event_kind": "practice_navigation_recorded",
+      "before_grade_section_index": 1,
+      "after_grade_section_index": 2,
+      "tempus_context_attached": true,
+      "tempus_caused_transition": false,
+      "recognition_effect": "none",
+      "authority_effect": "none"
+    },
+    "next_seventy_two_hours": {
+      "capturedAt": "2026-08-30T14:05:00Z",
+      "sun_longitude_deg": 157.2270323129124,
+      "sun_sector": 32,
+      "sun_sign": "virgo",
+      "sun_quinary": 2,
+      "moon_longitude_deg": 6.343198601689374,
+      "moon_latitude_deg": 3.144360741820648,
+      "moon_sector": 2,
+      "moon_sign": "aries",
+      "moon_quinary": 2,
+      "moon_illumination_fraction": 0.9364602944791642,
+      "delta_longitude_deg": 209.11616628877698,
+      "vitae_grade_section_index": 2,
+      "result": "PASS: Vitae remained at the event-selected coordinate while Sun and Moon continued moving"
+    },
+    "eclipse_crossing": {
+      "event_time": "2026-08-28T04:13:00Z",
+      "sun_longitude_deg": 154.89824981559553,
+      "moon_longitude_deg": 334.8527876723227,
+      "moon_latitude_deg": 0.46236182009399623,
+      "moon_illumination_fraction": 0.9999836437342293,
+      "vitae_grade_section_index": 2,
+      "result": "PASS: eclipse context changed Tempus only; Vitae remained fixed"
+    },
+    "prototype_backend": "Swiss Ephemeris Python binding requesting SWIEPH with automatic Moshier fallback in the local research environment; not represented as direct JPL Horizons output"
+  },
+  "typed_icosahedral_carrier": {
+    "status": "bounded-pass as shared presentation cell complex; semantic crosswalk remains rejected unless independently registered",
+    "shared_solid": "regular icosahedron",
+    "cell_counts": {"vertices": 12, "edges": 30, "faces": 20},
+    "tempus_use": {
+      "cell_type": "vertices / selected edges",
+      "twelve_vertices": "exact centers of the twelve Tempus dodecahedral zodiac faces",
+      "selected_edges": "registered twelve-edge zodiac chronology carrier cycle",
+      "meaning": "temporal/celestial carrier coordinates"
+    },
+    "vitae_use": {
+      "cell_type": "faces",
+      "twenty_faces": "bounded high-level corpus atlas for ten Grades plus ten Specializations",
+      "meaning": "curriculum-region presentation only; geometric adjacency is not curriculum dependency"
+    },
+    "outer_dodecahedron_dual_bridge": {
+      "tempus_faces_to_icosa_vertices": "12 ↔ 12 exact dual correspondence already used by the solar/lunar carrier",
+      "dodeca_vertices_to_icosa_faces": "20 ↔ 20 exact geometric dual correspondence",
+      "important_boundary": "The twenty dodecahedral vertices have no independent Tempus semantics. They may therefore serve as geometric pointers to the twenty Vitae face slots in a co-renderer without becoming twenty temporal states.",
+      "semantic_mapping_created": false
+    },
+    "incidence_matrix": {
+      "vertex_face_incidence_count": 60,
+      "faces_per_vertex": 5,
+      "vertices_per_face": 3,
+      "meaning": "pure polyhedral incidence unless a separate registry supplies a relationship",
+      "automatic_sign_to_vitae_region_mapping": false
+    },
+    "edge_boundary": {
+      "shared_edge_count": 30,
+      "tempus_selected_cycle_edges": 12,
+      "vitae_dependency_from_edge": false,
+      "vitae_specialization_compatibility_from_edge": false,
+      "candidate_law": "Incidence Is Not Influence."
+    },
+    "candidate_laws": [
+      "Shared Solid, Typed Cells.",
+      "A Dual Pointer Is Not a Correspondence.",
+      "Incidence Is Not Influence.",
+      "Time May Traverse the Carrier While Vitae Occupies the Atlas.",
+      "The Same Geometry May Host Different Faculties Only While Their Cell Types and Authority Remain Distinct."
+    ]
+  },
+  "falsification_tests": [
+    {"id":"continuous-tempus-discrete-vitae","pass":"Sun and Moon may change through arbitrary sampled intervals while Vitae remains bit-for-bit unchanged without an explicit Vitae event"},
+    {"id":"explicit-event-only","pass":"the synthetic Vitae coordinate changes exactly once, at the explicit synthetic participant event"},
+    {"id":"context-not-cause","pass":"the event receipt captures Sun/Moon Tempus context but no ephemeris field appears in the transition rule"},
+    {"id":"eclipse-invariance","pass":"the August 28 eclipse checkpoint changes Tempus context while synthetic Vitae state remains fixed"},
+    {"id":"arcnet-solar-carrier","pass":"ARCnet remains transported by the solar carrier; Vitae and lunar state do not steer it"},
+    {"id":"icosahedral-count-complementarity","pass":"Tempus has a sourced twelvefold use matching icosahedron vertices while Vitae has a sourced twentyfold atlas matching icosahedron faces"},
+    {"id":"dual-pointer","pass":"each of twenty outer dodecahedron vertices corresponds exactly to one inner icosahedron face without requiring a Tempus meaning for that vertex"},
+    {"id":"semantic-incidence","pass":"no sign↔Vitae, edge↔dependency, or vertex↔readiness relationship is inferred from incidence"},
+    {"id":"geometry-free-equivalence","pass":"the same state is expressible as TempusContext + discrete Vitae coordinate + explicit event receipts + unchanged ARCnet contract without any polyhedron"}
+  ],
+  "audit_disposition": "BOUNDED PASS: continuous factual Tempus and discrete participant-event Vitae can coexist in one derived field. The shared icosahedron is a mathematically exact typed-cell carrier: Tempus uses its twelve vertices/selected edges; Vitae may use its twenty faces. This creates a legitimate co-rendering transform but no automatic temporal-to-curriculum semantic crosswalk.",
+  "not_encoded": [
+    "one Vitae section per degree/day/sign/quinary/decan/lunation",
+    "automatic Vitae motion",
+    "eclipse-triggered practice or recognition",
+    "zodiac sign assigned to a Grade or Specialization",
+    "five Vitae regions caused or activated by each Tempus vertex",
+    "30 icosahedral edges as Vitae dependencies",
+    "Tempus dodecahedral vertices as new temporal states",
+    "Vitae progress meter from face completion",
+    "authority from either geometry or timing",
+    "physical claim that becoming occurs inside a Platonic solid"
+  ]
+}
