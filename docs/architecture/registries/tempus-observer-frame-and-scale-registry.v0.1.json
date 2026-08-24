@@ -1,0 +1,158 @@
+{
+  "registry": "tempus.observer-frame-and-scale.v0.1",
+  "status": "design-candidate-mathematics",
+  "phase": "Pre-Genesis",
+  "authority": "astronomical coordinate, unit, frame-transform, and presentation-scale metadata only; no astrological, identity, Vitae, governance, Treasury, or capability authority",
+  "purpose": "Separate heliocentric physical state, geocentric lived sky perspective, topocentric future observation, and human-friendly zoom scales so Tempus can be scientifically grounded without discarding the Earth-centered experience of the sky.",
+  "fundamental_unit": {
+    "astronomical_unit": {
+      "symbol":"au",
+      "exact_meters":149597870700,
+      "status":"IAU 2012 Resolution B2 exact conventional unit of length",
+      "note":"1 au is a unit, not Earth's instantaneous distance from the Sun."
+    }
+  },
+  "frame_stack": [
+    {
+      "id":"solar_system_barycentric_icrf",
+      "origin":"solar-system barycenter",
+      "axes":"ICRF / ephemeris frame",
+      "role":"high-precision underlying dynamical/ephemeris frame",
+      "default_user_view":false
+    },
+    {
+      "id":"heliocentric_ecliptic",
+      "origin":"Sun center",
+      "axes":"explicit ecliptic frame; J2000 or of-date must be declared",
+      "role":"physical solar-system overview and orbit/state-vector view",
+      "default_user_view":"planetary/solar-system zoom"
+    },
+    {
+      "id":"geocentric_ecliptic_apparent",
+      "origin":"Earth geocenter",
+      "axes":"ecliptic-of-date when used for apparent zodiac/seasonal sky context",
+      "role":"Earth-centered sky perspective: Sun, Moon, planets, zodiac directions",
+      "default_user_view":"Tempus sky/portal view"
+    },
+    {
+      "id":"topocentric_observer",
+      "origin":"specific observer/site on a body",
+      "axes":"local horizon plus declared celestial frame",
+      "role":"future local sky, rise/set, azimuth/elevation, horizon and habitat views",
+      "default_user_view":false
+    },
+    {
+      "id":"body_fixed",
+      "origin":"selected planetary/lunar body center",
+      "axes":"declared IAU body frame of date",
+      "role":"future Gaia/Luna/Mars surface maps, local installations and planetary ARCnet nodes",
+      "default_user_view":false
+    }
+  ],
+  "geometric_transform_same_axes": {
+    "body_heliocentric_vector":"r_B^H",
+    "earth_heliocentric_vector":"r_E^H",
+    "body_geocentric_vector":"r_B^G = r_B^H - r_E^H",
+    "sun_geocentric_vector":"r_Sun^G = -r_E^H when the heliocentric Sun origin is exactly zero",
+    "sun_longitude_relation":"for geometric vectors in the same ecliptic frame, lambda_Sun_geo = lambda_Earth_helio + 180 degrees mod 360",
+    "important_boundary":"Apparent observed coordinates additionally require light-time, aberration and selected frame/precession/nutation treatment; do not substitute the simple translation for a production apparent ephemeris."
+  },
+  "perspective_law": {
+    "geocentric_statement":"Earth may be the coordinate origin of the user-facing sky without being claimed as the physical center of the universe.",
+    "heliocentric_statement":"The solar-system overview may be Sun-centered without implying the Sun is the center of the universe.",
+    "candidate_law":"A Viewpoint May Be Central to Experience Without Being Central to Cosmology."
+  },
+  "planetary_reference_values": {
+    "source":"JPL approximate planetary elements, 1800-2050 fit; semi-major-axis-like fitted parameter a_o in au",
+    "warning":"Use production ephemerides for current positions. These values are scale/reference values, not fixed orbital radii.",
+    "bodies":[
+      {"id":"mercury","a0_au":0.38709927},
+      {"id":"venus","a0_au":0.72333566},
+      {"id":"earth_moon_barycenter","a0_au":1.00000261},
+      {"id":"mars","a0_au":1.52371034},
+      {"id":"jupiter","a0_au":5.20288700},
+      {"id":"saturn","a0_au":9.53667594},
+      {"id":"uranus","a0_au":19.18916464},
+      {"id":"neptune","a0_au":30.06992276},
+      {"id":"pluto","average_distance_au_approx":39,"perihelion_au_approx":30,"aphelion_au_approx":49.3,"source":"NASA Pluto facts"}
+    ]
+  },
+  "region_reference_values": [
+    {"id":"main_asteroid_belt","approx_radial_au":[2.2,3.2],"vertical_extent_example":"NASA educational approximation extends roughly 0.5 au above/below ecliptic; population is not uniform"},
+    {"id":"kuiper_belt_main","approx_radial_au":[30,50],"shape":"puffed-up disk/donut"},
+    {"id":"scattered_disk","approx_outer_au":1000,"shape":"extended inclined/eccentric population"},
+    {"id":"oort_cloud","approx_inner_au":[2000,5000],"approx_outer_au":[10000,100000],"shape":"theorized distant thick approximately spherical cloud"}
+  ],
+  "zoom_scales": [
+    {
+      "id":"gaia_luna_local",
+      "origin":"Earth/Gaia",
+      "unit":"km",
+      "suggested_linear_radius_km":500000,
+      "purpose":"Earth, Luna, near-Earth/cislunar infrastructure and local ARCnet-node view",
+      "physical_scale":true
+    },
+    {
+      "id":"inner_system",
+      "origin":"Sol",
+      "unit":"au",
+      "suggested_linear_radius_au":5.5,
+      "purpose":"Mercury through Jupiter neighborhood; main asteroid belt remains legible",
+      "physical_scale":true
+    },
+    {
+      "id":"planetary_tempus",
+      "origin":"Sol",
+      "unit":"au",
+      "suggested_linear_radius_au":50,
+      "purpose":"major planets, Pluto-range orbit, and main Kuiper-belt context",
+      "physical_scale":true
+    },
+    {
+      "id":"outer_solar_context",
+      "origin":"Sol",
+      "unit":"au",
+      "suggested_max_radius_au":100000,
+      "purpose":"scattered disk and Oort awareness",
+      "physical_scale":false,
+      "render_projection":"logarithmic or discontinuous/focus+context compression required for usability",
+      "candidate_formula":"u = log(1+r/r0) / log(1+Rmax/r0), with r0 explicitly declared",
+      "warning":"screen radius u is presentation only; numeric physical radius r remains authoritative"
+    },
+    {
+      "id":"tempus_sky",
+      "origin":"current observer; Earth/Gaia by default",
+      "unit":"angle",
+      "domain":"celestial sphere / directional coordinates",
+      "physical_scale":false,
+      "purpose":"dodecahedral portal UI, zodiac, constellation, star and deep-sky direction",
+      "key_rule":"Sky direction has no implied radial distance. Stars in one portal may be at radically different distances."
+    }
+  ],
+  "scale_transition_contract": {
+    "key_distinction":"Radial distance zoom and angular sky zoom are different coordinate domains.",
+    "planetary_to_sky":"A user may zoom from a Sol-centered physical scene into an Earth-centered angular sky scene by changing origin/frame, not by pretending the dodecahedron has an AU radius.",
+    "sky_to_planetary":"A selected sky direction may be retained as camera bearing when switching back to heliocentric space, but the physical scene must recover real distances.",
+    "candidate_laws":[
+      "Change Frame Before You Change Meaning.",
+      "Angular Shell Is Not Radial Shell.",
+      "Compressed Distance May Aid Orientation; It May Not Pretend to Be Physical Scale."
+    ]
+  },
+  "time_and_ephemeris_provenance": {
+    "required_fields":["capturedAt","time_scale","observer/center","target","reference_frame","reference_plane","epoch_or_of_date_rule","ephemeris_source","source_version","precision","interpretation"],
+    "preferred_production_source":"JPL Horizons/SPICE-equivalent integrated ephemeris",
+    "display_time":"UTC/local civil time may be shown to humans",
+    "dynamical_time":"TDB/ephemeris time may be required internally for precise state evaluation",
+    "interpretation":null
+  },
+  "sources": [
+    {"id":"iau_au","url":"https://iauarchive.eso.org/public/themes/measuring/","supports":"149597870700 m exact astronomical unit"},
+    {"id":"jpl_horizons","url":"https://ssd.jpl.nasa.gov/horizons/manual.html","supports":"reference-frame definitions, geocentric/bodycentric/barycentric centers, ecliptic frames and ephemeris outputs"},
+    {"id":"jpl_approx_planets","url":"https://ssd.jpl.nasa.gov/planets/approx_pos.html","supports":"approximate planetary orbital elements and fitted a0 values"},
+    {"id":"nasa_pluto","url":"https://science.nasa.gov/dwarf-planets/pluto/facts/","supports":"Pluto approximately 30-49.3 au, average about 39 au"},
+    {"id":"nasa_asteroid_belt","url":"https://science.nasa.gov/mission/dawn/faq/","supports":"2.2-3.2 au educational main-belt scale"},
+    {"id":"nasa_kuiper","url":"https://science.nasa.gov/solar-system/kuiper-belt/facts/","supports":"Kuiper main region about 30-50 au; scattered disk approaching 1000 au"},
+    {"id":"nasa_oort","url":"https://science.nasa.gov/solar-system/oort-cloud/facts/","supports":"Oort inner/outer distance estimates and cloud posture"}
+  ]
+}
