@@ -1,0 +1,106 @@
+{
+  "registry": "tempus.geocentric-sky-window.v0.1",
+  "status": "design-candidate-coordinate-registry",
+  "phase": "Pre-Genesis",
+  "authority": "observer-centered angular navigation and provenance metadata only; no fate, personality, readiness, identity, governance, Treasury, or capability authority",
+  "purpose": "Define how a geocentric Tempus portal can preserve twelve equal tropical zodiac sectors, actual IAU constellation regions, and dodecahedral face navigation without falsely claiming that regular dodecahedron faces are literal equal ecliptic sky patches.",
+  "observer_posture": {
+    "default_observer":"Earth geocenter for global Tempus sky context",
+    "future_observers":["topocentric Earth site","Luna node","Mars node","orbital habitat","other declared ARCnet node"],
+    "law":"A Viewpoint May Be Central to Experience Without Being Central to Cosmology."
+  },
+  "ecliptic_direction_math": {
+    "longitude":"lambda in [0,360) degrees",
+    "latitude":"beta in [-90,90] degrees",
+    "unit_direction_vector":"n(lambda,beta) = (cos(beta)cos(lambda), cos(beta)sin(lambda), sin(beta))",
+    "ecliptic_plane":"beta = 0",
+    "note":"Reference frame and epoch/of-date rule must be declared before lambda/beta values are compared across time."
+  },
+  "tropical_zodiac": {
+    "type":"conventional equal-angle ecliptic partition",
+    "anchor":"0 degrees Aries = tropical/equinox reference direction in the selected of-date convention",
+    "sector_width_deg":30,
+    "count":12,
+    "sectors":[
+      {"index":1,"sign":"Aries","start_deg":0,"end_deg":30,"center_deg":15},
+      {"index":2,"sign":"Taurus","start_deg":30,"end_deg":60,"center_deg":45},
+      {"index":3,"sign":"Gemini","start_deg":60,"end_deg":90,"center_deg":75},
+      {"index":4,"sign":"Cancer","start_deg":90,"end_deg":120,"center_deg":105},
+      {"index":5,"sign":"Leo","start_deg":120,"end_deg":150,"center_deg":135},
+      {"index":6,"sign":"Virgo","start_deg":150,"end_deg":180,"center_deg":165},
+      {"index":7,"sign":"Libra","start_deg":180,"end_deg":210,"center_deg":195},
+      {"index":8,"sign":"Scorpio","start_deg":210,"end_deg":240,"center_deg":225},
+      {"index":9,"sign":"Sagittarius","start_deg":240,"end_deg":270,"center_deg":255},
+      {"index":10,"sign":"Capricorn","start_deg":270,"end_deg":300,"center_deg":285},
+      {"index":11,"sign":"Aquarius","start_deg":300,"end_deg":330,"center_deg":315},
+      {"index":12,"sign":"Pisces","start_deg":330,"end_deg":360,"center_deg":345}
+    ],
+    "relation_to_72_sector_registry":"each 30-degree sign contains six neutral 5-degree sectors",
+    "is_iau_constellation_partition":false
+  },
+  "iau_constellation_layer": {
+    "type":"astronomical sky-region lookup",
+    "sky_region_count_total":88,
+    "zodiac_constellation_count_along_ecliptic":13,
+    "includes_ophiuchus":true,
+    "equal_30_degree_widths":false,
+    "stars_share_one_distance_surface":false,
+    "lookup_rule":"Resolve a sky direction against official IAU constellation boundaries in an appropriate celestial coordinate frame; do not infer the constellation from tropical sign index.",
+    "important_boundary":"Tropical zodiac sign, IAU constellation, and physical stellar neighborhood are three different data layers."
+  },
+  "dodecahedral_portal_geometry": {
+    "face_count":12,
+    "face_normals":"the twelve regular-dodecahedron face normals form the twelve vertices of the dual regular icosahedron",
+    "literal_equal_ecliptic_partition":false,
+    "proof_posture":"The twelve dual-icosahedron vertices are not coplanar. A rigid rotation preserves coplanarity, so no orientation can place all twelve face normals onto the one ecliptic great circle as twelve 30-degree directions.",
+    "consequence":"A dodecahedral face may index or frame a zodiac portal, but face normal and zodiac-center direction are distinct coordinates.",
+    "candidate_law":"Face Index and Sky Direction Are Different Coordinates."
+  },
+  "portal_modes": [
+    {
+      "id":"index_shell",
+      "description":"Twelve dodecahedral faces act as stable UI houses. Each face is assigned one tropical sign index, but the physical face normal is not presented as that sign's true sky bearing.",
+      "scientific_posture":"safe",
+      "preferred_for":"overview navigation"
+    },
+    {
+      "id":"focus_face_to_sky",
+      "description":"When a face/sign is selected, rotate the dodecahedral UI so the selected face normal aligns with the actual target direction, e.g. sign center or selected body direction.",
+      "other_faces":"become surrounding navigation geometry only and must not simultaneously be claimed as the other eleven zodiac bearings",
+      "scientific_posture":"safe if clearly shown as camera/UI rotation",
+      "preferred_for":"looking outward through one star house"
+    },
+    {
+      "id":"astronomical_constellation_portal",
+      "description":"Use actual IAU boundary and star-catalog data in the viewport while retaining the dodecahedron only as frame/chrome.",
+      "scientific_posture":"preferred for astronomy mode"
+    }
+  ],
+  "motion_semantics": {
+    "sun":"geocentric apparent solar longitude moves through the tropical sectors over the year",
+    "moon":"geocentric lunar longitude moves faster and independently; latitude is retained separately",
+    "planets":"geocentric apparent longitudes may show direct/stationary/retrograde apparent motion depending on observer-relative geometry",
+    "stars":"on human timescales the background is comparatively slow, but precession/proper motion and epoch matter for long-term precision",
+    "signs":"tropical signs remain an equinox-anchored angular partition rather than star groups moving inside literal pentagonal faces"
+  },
+  "geocentric_heliocentric_bridge": {
+    "physical_scene":"Use heliocentric/barycentric ephemeris state vectors for the solar-system model.",
+    "lived_sky":"Transform/request observer-centered apparent coordinates for what an Earth observer sees.",
+    "sun_example":"In a common geometric ecliptic frame, geocentric Sun direction is opposite Earth's heliocentric position vector; production apparent longitude uses full ephemeris corrections.",
+    "law":"Geocentric Perspective Is an Observer Frame, Not a Cosmological Claim."
+  },
+  "sources": [
+    {"id":"jpl_horizons","url":"https://ssd.jpl.nasa.gov/horizons/manual.html","supports":"observer/center definitions, reference frames, ecliptic-of-date and apparent coordinate outputs"},
+    {"id":"iau_faq_zodiac","url":"https://www.iau.org/IAU/IAU/Astronomy-FAQs/FAQs.aspx","supports":"astronomical zodiac crosses 13 constellations including Ophiuchus; constellations are unequal sky regions"},
+    {"id":"iau_constellation_maps","url":"https://www.iau.org/public/themes/constellations/","supports":"official IAU constellation framework and maps"},
+    {"id":"iau_astroedu_constellations","url":"https://astroedu.iau.org/activities/what-is-a-constellation/","supports":"88 IAU constellations and stars within a constellation occupying different physical distances"},
+    {"id":"mathworld_dodeca","url":"https://mathworld.wolfram.com/RegularDodecahedron.html","supports":"12 faces and dodecahedron-icosahedron duality"}
+  ],
+  "candidate_laws": [
+    "Geocentric Perspective Is an Observer Frame, Not a Cosmological Claim.",
+    "Face Index and Sky Direction Are Different Coordinates.",
+    "A Star House Is a Portal, Not a Claim That the Stars Form a House in Space.",
+    "Zodiac Sign, IAU Constellation, and Stellar Neighborhood Must Remain Distinct Layers.",
+    "One Face May Aim at One Direction; the Other Faces Do Not Inherit Eleven Unproven Directions."
+  ]
+}
