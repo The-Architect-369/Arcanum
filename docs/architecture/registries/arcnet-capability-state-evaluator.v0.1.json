@@ -1,0 +1,73 @@
+{
+  "registry": "arcnet.capability-state-evaluator.v0.1",
+  "status": "architecture-v2-design-candidate",
+  "phase": "Pre-Genesis",
+  "authority": "explainable evaluation and presentation only; this registry and its implementation grant no authority",
+  "source_capability_registry": "docs/architecture/registries/arcnet-capability-requirements.v0.1.json",
+  "runtime_files": [
+    "apps/web/src/lib/capabilities/evaluator.ts",
+    "apps/web/src/lib/capabilities/policies.ts",
+    "apps/web/src/lib/capabilities/evaluator.vectors.ts",
+    "apps/web/src/app/(app)/vitae/capabilities/page.tsx",
+    "apps/web/src/app/(app)/vitae/capabilities/CapabilityEvaluatorDemo.tsx"
+  ],
+  "states": [
+    "INELIGIBLE",
+    "ELIGIBLE",
+    "REVIEWED",
+    "GRANTED",
+    "ACTIVE",
+    "SUSPENDED",
+    "EXPIRED"
+  ],
+  "transition_semantics": {
+    "INELIGIBLE": "one or more action-specific evidence groups are not satisfied",
+    "ELIGIBLE": "eligibility evidence is satisfied; required review is pending",
+    "REVIEWED": "eligibility and review are satisfied; an explicit bounded grant is pending",
+    "GRANTED": "bounded authority exists; registered execution prerequisites are incomplete",
+    "ACTIVE": "eligibility, review, grant, registered action, destination acceptance, and lifecycle checks are satisfied",
+    "SUSPENDED": "a bounded grant exists but has been suspended",
+    "EXPIRED": "a bounded grant existed but its validity window has expired"
+  },
+  "precedence": [
+    "eligibility failure",
+    "review pending",
+    "grant pending",
+    "expiry",
+    "suspension",
+    "execution pending",
+    "active"
+  ],
+  "evidence_group_operators": ["all", "any"],
+  "forbidden_authority_inputs": [
+    "current Vitae navigation position",
+    "Grade index or face illumination",
+    "Architect/Wizard/Magus title display",
+    "icosahedron, junction, or ARCnet geometric alignment"
+  ],
+  "representative_profiles": [
+    "commercium.listing.publish",
+    "commercium.vitae-provenance.attach",
+    "protection.market-assurance.review",
+    "protection.interlock.apply-preauthorized",
+    "imperium.vote.binding",
+    "architect.release-candidate.prepare"
+  ],
+  "geometry_presentation": {
+    "vitae_icosahedron": "source developmental evidence domain",
+    "inner_octahedron": "review and coordination projection",
+    "arcnet_cube_stella": "destination system/action context",
+    "authority_effect": "none",
+    "law": "A Morph May Explain a Permission Boundary; It May Not Execute One."
+  },
+  "candidate_laws": [
+    "Grade Is Evidence, Not a Key.",
+    "Vitae May Gate Verbs, Not Worlds.",
+    "Eligibility May Expand; Authority Must Still Be Granted.",
+    "A Grant Opens a Verb, Not a World.",
+    "Junctions Organize Review; They Do Not Grant Permission.",
+    "Lifecycle Can Disable a Grant Without Rewriting the Person.",
+    "Forbidden Signals May Be Displayed; They Must Remain Non-Authorizing.",
+    "A Morph May Explain a Permission Boundary; It May Not Execute One."
+  ]
+}
