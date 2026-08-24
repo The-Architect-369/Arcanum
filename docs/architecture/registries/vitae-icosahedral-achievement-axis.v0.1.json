@@ -1,0 +1,122 @@
+{
+  "registry": "vitae.icosahedral-achievement-axis.v0.1",
+  "status": "architecture-v2-design-candidate",
+  "phase": "Pre-Genesis",
+  "authority": "Vitae curriculum navigation and participant-facing achievement presentation only; no Identity, worth, rank over people, governance, Treasury, entitlement, capability, readiness, or spiritual authority effect",
+  "purpose": "Ratify the Human Architect's current design decision for the exact fivefold icosahedral 5+10+5 Vitae presentation: a fixed Wizard upper cap, ten-Grade Architect belt, and fixed Magus lower cap, while separating finite curriculum milestones from infinite practice and mastery.",
+  "source_posture": {
+    "mathematical_basis": "A regular icosahedron in fivefold orientation decomposes exactly into 5 upper faces + 10 equatorial faces + 5 lower faces.",
+    "audit_basis": "docs/architecture/registries/vitae-specialization-fivefold-family-audit.v0.1.json",
+    "grade_basis": "docs/architecture/registries/vitae-grade-cycle-registry.v0.1.json",
+    "human_architect_decision": "2026-08-24: Architect is the Core-ring achievement; Wizard is the upward/heavens cap; Magus is the downward/transformation cap; Enchanter belongs with Wizard; Druid belongs with Magus."
+  },
+  "axis": {
+    "upper": {
+      "achievement_title": "Wizard",
+      "working_domain_label": "Orientation & Meaning",
+      "narrative_direction": "upward / heavens",
+      "members": ["Arcanist", "Philosopher", "Illusionist", "Astrologer", "Enchanter"],
+      "shared_function": "Steward knowing, meaning, perception, scale, symbol, resonance, and orientation without authority.",
+      "geometric_marker": "north five-face cap; north pole may display the derived Wizard achievement marker"
+    },
+    "equator": {
+      "achievement_title": "Architect",
+      "working_domain_label": "Core Vitae",
+      "members": ["Guardian", "Seeker", "Disciple", "Mystic", "Scholar", "Healer", "Alchemist", "Sage", "Oracle", "Adept"],
+      "geometric_marker": "ten-face equatorial belt; a derived equatorial halo may display the Architect achievement marker",
+      "curricular_graph": "P10 over a geometric C10; Adept→Guardian closure remains semantically inert unless an explicit revisit mode is selected"
+    },
+    "lower": {
+      "achievement_title": "Magus",
+      "working_domain_label": "Life, Passage & Form",
+      "narrative_direction": "downward / descent into transformation",
+      "members": ["Hierophant", "Druid", "Necromancer", "Alchemist", "Artificer"],
+      "shared_function": "Steward thresholds, living systems, endings, transformation, construction, maintenance, and form without coercion.",
+      "geometric_marker": "south five-face cap; south pole may display the derived Magus achievement marker"
+    }
+  },
+  "achievement_contract": {
+    "type": "participant-facing curriculum milestone",
+    "not": ["office", "rank over people", "identity class", "governance role", "capability grant", "readiness score", "spiritual status", "final mastery claim"],
+    "display_default": "private/local unless participant chooses otherwise",
+    "transferable": false,
+    "purchasable": false,
+    "mana_effect": "none",
+    "authority_effect": "none",
+    "comparison_effect": "none",
+    "historical_receipt_posture": "An earned achievement may remain as a record of completed curriculum history; it does not certify permanent character, current behavior, authority, or final mastery."
+  },
+  "achievement_predicates": {
+    "Architect": {
+      "candidate_condition": "All ten Core Grade completion/recognition requirements are satisfied through Vitae-native evidence and explicit recognition; rendered face fill alone is never sufficient.",
+      "status": "structurally defined; exact recognition predicate remains governed by Vitae sources",
+      "effect": "unlocks eligibility to enter specialization curriculum because current specialization canon places specialization entry after Core Vitae; does not grant governance authority"
+    },
+    "Wizard": {
+      "candidate_condition": "Architect achievement present plus a future-defined foundational curriculum cycle completed for each of the five Wizard-cap specializations.",
+      "status": "title and membership decision ratified as design candidate; finite foundational completion predicate not yet defined in repository",
+      "mastery_boundary": "Completing the foundational cap cycle does not complete or master Arcanist, Philosopher, Illusionist, Astrologer, or Enchanter practice."
+    },
+    "Magus": {
+      "candidate_condition": "Architect achievement present plus a future-defined foundational curriculum cycle completed for each of the five Magus-cap specializations.",
+      "status": "title and membership decision ratified as design candidate; finite foundational completion predicate not yet defined in repository",
+      "mastery_boundary": "Completing the foundational cap cycle does not complete or master Hierophant, Druid, Necromancer, Alchemist, or Artificer practice."
+    }
+  },
+  "coexistence": {
+    "Wizard_and_Magus_are_mutually_exclusive": false,
+    "both_may_be_earned": true,
+    "new_title_after_all_three": null,
+    "reason": "No additional prestige ladder or completion apex is introduced by this decision."
+  },
+  "directional_semantics": {
+    "fixed_orientation": true,
+    "upper_means_superior": false,
+    "lower_means_inferior": false,
+    "heavens_claim": "symbolic/navigation metaphor, not a scientific or moral hierarchy",
+    "descent_claim": "symbolic/navigation metaphor for embodiment, passage, transformation, and form, not degradation or lesser worth"
+  },
+  "name_collision_firewalls": [
+    "Vitae achievement title Architect ≠ Human Architect constitutional role.",
+    "Vitae achievement title Architect ≠ Architect subsystem/application/system role.",
+    "Wizard and Magus achievement titles ≠ governance offices or permission envelopes.",
+    "Achievement title ≠ specialization identity; roles remain inhabited practices, not fixed identities."
+  ],
+  "geometry_boundaries": [
+    "The five edges inside each cap do not create specialization prerequisites or preferred pairings.",
+    "The five cap-to-belt edges do not create Grade↔specialization correspondences.",
+    "The north and south achievement markers are derived UI markers, not new curriculum nodes.",
+    "The remaining icosahedral vertices receive no semantics from this registry.",
+    "Face illumination records participant-visible curriculum history only and may not become a worth/readiness percentage."
+  ],
+  "canon_conflict": {
+    "mastery_path_governance_canon": "Currently rejects formal Wizard/Magus master titles and formalized hybrid tracks.",
+    "cross_specialization_mastery_paths_canon": "Currently enumerates Wizard, Magus, and Architect mastery archetypes but states they are not titles with power and not completion states.",
+    "decision": "Do not rewrite either canon in this gate. This registry intentionally proposes a new Architecture-v2 distinction: achievement title != mastery path != governance role. Canon reconciliation is required before promotion."
+  },
+  "prototype_contract": {
+    "file": "docs/architecture/renderings/vitae-icosahedral-achievement-axis-v0.1.html",
+    "synthetic_state_only": true,
+    "required_features": [
+      "exact fivefold 5+10+5 geometry",
+      "fixed Wizard upper cap and Magus lower cap",
+      "Architect equatorial achievement ring",
+      "Core-first gate before specialization achievement simulation",
+      "independent Wizard and Magus completion",
+      "no semantic spokes",
+      "card/list navigation equivalent to 3D interaction",
+      "explicit title/authority firewall"
+    ]
+  },
+  "candidate_laws": [
+    "Achievement Is a Milestone, Not Mastery.",
+    "The Ring May Be Completed; Becoming Remains Open.",
+    "Architect the Achievement Is Not Architect the Office.",
+    "Upward and Downward Are Directions, Not Ranks.",
+    "Wizard and Magus May Coexist Without Forming a Ladder.",
+    "A Title May Remember Accomplishment Without Defining Identity.",
+    "Cap Completion Does Not Close Specialization Practice.",
+    "Geometry May Stage an Achievement; Evidence Must Earn It."
+  ],
+  "next_gate": "Define the finite foundational specialization-cycle contract that can legitimately trigger Wizard/Magus achievement without contradicting specialization infinite-depth doctrine; then test the single-portal Hope→Vitae→ARCnet→Tempus zoom using this fixed achievement axis."
+}
