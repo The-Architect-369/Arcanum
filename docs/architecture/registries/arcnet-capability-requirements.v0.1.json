@@ -1,0 +1,433 @@
+{
+  "registry": "arcnet.capability-requirements.v0.1",
+  "schema_version": "0.1",
+  "status": "architecture-v2-design-candidate",
+  "phase": "Pre-Genesis",
+  "authority": "This registry describes eligibility, review, grant, execution, receipt, and suspension requirements. It grants no permission by itself. No Vitae coordinate, Grade face, specialization face, achievement title, geometric junction, or ARCnet vertex is an authorization credential.",
+  "purpose": "Provide the first action-specific machine-readable capability registry for Commercium, Protection, Imperium, and Architect so recognized Vitae evidence may support bounded responsibility eligibility without becoming social rank, whole-system access, or automatic authority.",
+  "sources": [
+    "docs/doctrine/authority.md",
+    "docs/governance/vitae-authority-map.md",
+    "docs/governance/governance-permission-model.md",
+    "docs/architecture/arcnet-edge-contract.md",
+    "docs/architecture/registries/vitae-arcnet-capability-overlay.v0.1.json",
+    "docs/architecture/registries/vitae-curriculum-registry.v0.1.json",
+    "docs/architecture/registries/vitae-icosahedral-achievement-axis.v0.1.json",
+    "docs/architecture/registries/arcnet-transported-frame-projection.v0.1.json",
+    "docs/architecture/junction-studies/inner-octahedron-synthesis-and-orientation.md",
+    "docs/architecture/edge-studies/arcanum-commercium.md",
+    "docs/architecture/edge-studies/commercium-protection.md",
+    "docs/architecture/edge-studies/commercium-imperium.md",
+    "docs/architecture/edge-studies/architect-protection.md",
+    "docs/architecture/edge-studies/architect-imperium.md",
+    "docs/architecture/edge-studies/protection-imperium.md"
+  ],
+  "permission_grammar": {
+    "stages": ["eligibility", "review", "authority", "execution"],
+    "eligibility_formula": "eligible(c) = required_vitae_evidence(c) satisfied AND domain_requirements(c) satisfied AND safety_prerequisites(c) satisfied",
+    "activation_formula": "active(c) = eligible(c) AND review_passed(c) AND explicit_grant_or_delegation(c) AND registered_action(c) AND destination_acceptance(c) AND not_suspended_or_expired(c)",
+    "vitae_alone_grants_permission": false,
+    "current_navigation_position_is_evidence": false,
+    "face_illumination_is_evidence": false,
+    "achievement_title_alone_is_evidence": false,
+    "geometry_is_runtime_authorization_input": false,
+    "capability_scope": "action-specific verb; never whole-system vertex access",
+    "basic_participation_rule": "Dignity, belonging, ordinary participation, ordinary local/private use, and ordinary buying/selling may not require Vitae advancement."
+  },
+  "risk_lanes": {
+    "ordinary-participation": {
+      "vitae_gate": "prohibited",
+      "authority_posture": "ordinary product/session authorization only"
+    },
+    "contributory": {
+      "vitae_gate": "normally none; selected evidence may support provenance or review eligibility",
+      "authority_posture": "destination-native acceptance or bounded contribution review"
+    },
+    "stewardship": {
+      "vitae_gate": "may be required as one evidence class",
+      "authority_posture": "explicit bounded role/capability delegation required"
+    },
+    "high-consequence": {
+      "vitae_gate": "may be prerequisite evidence but never sufficient",
+      "authority_posture": "domain-specific governance/security/release process plus explicit authorization required"
+    }
+  },
+  "achievement_posture": {
+    "Architect": "Core Vitae achievement may evidence broad curriculum completion but creates no system authority.",
+    "Wizard": "May be disclosed as optional provenance for orientation/meaning/knowledge-related practice; title alone creates no market, governance, security, or developer privilege.",
+    "Magus": "May be disclosed as optional provenance for life/passage/transformation/form-related practice; title alone creates no market, governance, security, or developer privilege.",
+    "commercium_rule": "Titles May Inform Provenance; They May Not Become Market Rank.",
+    "market_effects_forbidden": [
+      "automatic search boost",
+      "automatic price premium",
+      "universal trust badge",
+      "dispute priority",
+      "automatic verifier status",
+      "buyer or seller rank"
+    ]
+  },
+  "system_junction_context": {
+    "commercium": ["standards-and-rights", "practice-safety", "market-assurance"],
+    "protection": ["commons-witness", "practice-safety", "market-assurance"],
+    "imperium": ["standards-and-rights", "practice-safety", "cultural-commons"],
+    "architect": ["standards-and-rights", "creator-public-goods", "market-assurance"],
+    "rule": "Junctions organize review context only. They are not reviewers, offices, or authority sources. An action uses only the junction contexts justified by its actual contract."
+  },
+  "capabilities": [
+    {
+      "id": "commercium.craft-draft.create",
+      "system": "commercium",
+      "verb": "create-craft-draft",
+      "risk_lane": "ordinary-participation",
+      "human_intent": "Create a private draft for a physical object, service, or craft process.",
+      "vitae": {
+        "required": false,
+        "minimum_envelope": null,
+        "grade_evidence": [],
+        "specialization_evidence": [],
+        "achievement_effect": "none"
+      },
+      "domain_requirements": ["authenticated/local participant context where needed by product", "private destination namespace"],
+      "review_path": "none beyond ordinary product/content/safety rules",
+      "authority_source": "participant control of own draft",
+      "execution_path": "local/private Commercium draft surface",
+      "junction_context": [],
+      "edge_contract_required": false,
+      "settlement": "none",
+      "receipts": ["commercium_craft_draft_created"],
+      "forbidden": ["Vitae gate", "automatic listing", "automatic sale", "automatic public disclosure"]
+    },
+    {
+      "id": "commercium.listing.publish",
+      "system": "commercium",
+      "verb": "publish-listing",
+      "risk_lane": "ordinary-participation",
+      "human_intent": "Offer an ordinary lawful object or service for exchange to a chosen audience.",
+      "vitae": {
+        "required": false,
+        "minimum_envelope": null,
+        "grade_evidence": [],
+        "specialization_evidence": [],
+        "achievement_effect": "none"
+      },
+      "domain_requirements": ["listing disclosure rules", "claim/evidence typing where factual claims are made", "visible economic terms before authorization"],
+      "review_path": "ordinary marketplace/content/safety controls; additional review only for typed regulated or independently verified claims",
+      "authority_source": "participant market participation plus applicable Commercium policy",
+      "execution_path": "Commercium listing publication action",
+      "junction_context": ["standards-and-rights", "practice-safety"],
+      "edge_contract_required": false,
+      "settlement": "none for publication; payment/transfer settlement is a separate action",
+      "receipts": ["commercium_listing_published"],
+      "forbidden": ["Wizard/Magus requirement for ordinary selling", "title-based search ranking", "fabricated provenance", "listing treated as completed sale"]
+    },
+    {
+      "id": "commercium.vitae-provenance.attach",
+      "system": "commercium",
+      "verb": "attach-selected-vitae-provenance",
+      "risk_lane": "contributory",
+      "human_intent": "Voluntarily attach selected Vitae curriculum or achievement receipts to a craft/object/service provenance record.",
+      "vitae": {
+        "required": true,
+        "minimum_envelope": null,
+        "grade_evidence": ["only participant-selected existing recognition/achievement receipts"],
+        "specialization_evidence": ["only participant-selected relevant specialization receipts"],
+        "achievement_effect": "display/provenance only"
+      },
+      "domain_requirements": ["purpose-bound selected receipt references", "audience and retention disclosure", "provenance integrity", "no whole Vitae history export"],
+      "review_path": "participant consent plus destination schema validation",
+      "authority_source": "participant authorization to disclose bounded Vitae projection",
+      "execution_path": "VitaeProjection -> Commercium provenance derivative",
+      "junction_context": ["market-assurance"],
+      "edge_contract_required": true,
+      "settlement": "none by default; optional artifact digest only if a separate provenance-finality need exists",
+      "receipts": ["vitae_projection_authorized", "commercium_vitae_provenance_attached"],
+      "forbidden": ["whole Vitae dossier", "rank computation", "automatic price effect", "automatic verifier privilege", "meaning upgraded into factual product claim"]
+    },
+    {
+      "id": "protection.market-assurance.review",
+      "system": "protection",
+      "verb": "perform-market-assurance-review",
+      "risk_lane": "stewardship",
+      "human_intent": "Review a specific market, provenance, material, fulfillment, signature, or transaction claim and state exactly what evidence supports it.",
+      "vitae": {
+        "required": "candidate",
+        "minimum_envelope": "V3 Module Steward or separately authorized domain reviewer; exact Protection envelope remains design-candidate",
+        "grade_evidence": ["Grade VI Healer may support safety/repair-oriented review eligibility", "Grade V Scholar may support evidence/knowledge review eligibility"],
+        "specialization_evidence": ["Arcanist may support epistemic/claim-review competence", "Artificer may support tool/material/process competence", "other specialization evidence only when the claim registry names it"],
+        "achievement_effect": "Wizard/Magus title alone is insufficient"
+      },
+      "domain_requirements": ["claim-specific subject-matter competence", "independence/conflict disclosure where required", "defined evidence grade", "assurance scope"],
+      "review_path": "Protection/domain review policy; independent verification when claim type requires it",
+      "authority_source": "explicit Protection/domain reviewer delegation and applicable assurance policy",
+      "execution_path": "Protection review envelope -> typed finding/evidence result",
+      "junction_context": ["market-assurance", "practice-safety"],
+      "edge_contract_required": true,
+      "settlement": "normally none; signed review receipt or digest may be anchored when finality is separately required",
+      "receipts": ["protection_market_assurance_review_started", "protection_claim_assurance_issued"],
+      "forbidden": ["generic trusted-person badge", "human worth/reputation score", "paid guaranteed pass", "claim scope silently widened"]
+    },
+    {
+      "id": "protection.release-security.review",
+      "system": "protection",
+      "verb": "perform-release-security-review",
+      "risk_lane": "high-consequence",
+      "human_intent": "Independently review a high-impact release candidate, package, capability diff, or protocol/app change for security and integrity constraints.",
+      "vitae": {
+        "required": true,
+        "minimum_envelope": "V6 Protocol Steward or separately appointed equivalent security reviewer for the scoped artifact",
+        "grade_evidence": ["Grade IX Oracle may support release-candidate/risk review candidacy", "Grade X Adept may support highest technical stewardship candidacy"],
+        "specialization_evidence": ["Arcanist/Artificer evidence may be relevant when the review scope names epistemic, tool, or systems competence"],
+        "achievement_effect": "none without the required active reviewer grant"
+      },
+      "domain_requirements": ["technical/security competence for artifact class", "independent verification path", "capability-diff inspection", "provenance/signature verification", "conflict disclosure where applicable"],
+      "review_path": "release/security review process independent from builder self-certification",
+      "authority_source": "repository/release/security policy plus explicit reviewer appointment",
+      "execution_path": "Architect/other candidate -> Protection review -> typed findings/verification evidence",
+      "junction_context": ["market-assurance", "practice-safety", "commons-witness"],
+      "edge_contract_required": true,
+      "settlement": "review details usually off-chain; release/security decision receipt may require canonical settlement when policy requires",
+      "receipts": ["protection_release_review_started", "protection_finding_issued", "protection_verification_passed", "protection_verification_failed"],
+      "forbidden": ["builder sole self-certification for high-impact change", "signature equals safety", "verification equals deployment authorization", "private faculty dossier in security scoring"]
+    },
+    {
+      "id": "protection.interlock.apply-preauthorized",
+      "system": "protection",
+      "verb": "apply-preauthorized-interlock",
+      "risk_lane": "high-consequence",
+      "human_intent": "Apply a narrowly preauthorized safety control such as rejecting an invalid signature, denying undeclared capability, quarantining corrupted package, or suspending a compromised key within defined scope.",
+      "vitae": {
+        "required": false,
+        "minimum_envelope": null,
+        "grade_evidence": [],
+        "specialization_evidence": [],
+        "achievement_effect": "none; deterministic policy enforcement must not depend on personal Vitae status"
+      },
+      "domain_requirements": ["preexisting policy version", "typed trigger", "bounded scope", "expiry/sunset where action is temporary", "auditability"],
+      "review_path": "policy-defined automatic or operator path; consequential false positives receive review/appeal where meaningful",
+      "authority_source": "already-authorized security invariant or policy; never the finding alone",
+      "execution_path": "Protection runtime/control surface",
+      "junction_context": ["practice-safety"],
+      "edge_contract_required": "only when the interlock acts across a system boundary",
+      "settlement": "depends on affected authority; protocol-wide/key/governance-relevant actions may require canonical receipt",
+      "receipts": ["protection_interlock_applied", "protection_interlock_sunset", "protection_interlock_reviewed"],
+      "forbidden": ["undefined discretionary emergency power", "no-sunset exceptional authority", "Vitae-based threat scoring", "Protection inventing new policy while claiming enforcement"]
+    },
+    {
+      "id": "imperium.proposal.draft",
+      "system": "imperium",
+      "verb": "draft-governance-proposal",
+      "risk_lane": "contributory",
+      "human_intent": "Prepare a non-binding governance proposal draft.",
+      "vitae": {
+        "required": true,
+        "minimum_envelope": "V2 Steward Candidate",
+        "grade_evidence": ["Grade III Disciple may support proposal-drafting eligibility"],
+        "specialization_evidence": [],
+        "achievement_effect": "none"
+      },
+      "domain_requirements": ["proposal scope", "declared authority basis where known", "non-binding draft status"],
+      "review_path": "sponsor or working-group review before formal submission",
+      "authority_source": "governance participation process",
+      "execution_path": "Imperium proposal drafting surface",
+      "junction_context": ["standards-and-rights", "cultural-commons"],
+      "edge_contract_required": false,
+      "settlement": "none until formal submission where chain witnessing is enabled",
+      "receipts": ["imperium_proposal_draft_created"],
+      "forbidden": ["draft treated as binding", "automatic sponsorship", "Vitae recognition treated as vote"]
+    },
+    {
+      "id": "imperium.proposal.sponsor-module",
+      "system": "imperium",
+      "verb": "sponsor-module-proposal",
+      "risk_lane": "stewardship",
+      "human_intent": "Sponsor a bounded module-level proposal into formal governance review.",
+      "vitae": {
+        "required": true,
+        "minimum_envelope": "V3 Module Steward for module proposals; V4 Governance Steward for structural proposals",
+        "grade_evidence": ["Grade VII Alchemist may support module-change sponsorship eligibility", "Grade VIII Sage may support structural governance eligibility"],
+        "specialization_evidence": ["domain-relevant specialization evidence may support review but cannot replace the active authority envelope"],
+        "achievement_effect": "Architect/Wizard/Magus title alone is insufficient"
+      },
+      "domain_requirements": ["module scope", "doctrine/authority check", "proposal fidelity/version", "conflict disclosure when applicable"],
+      "review_path": "governance scope and doctrine validation",
+      "authority_source": "governance permission model and applicable governance rules",
+      "execution_path": "Imperium formal proposal submission",
+      "junction_context": ["standards-and-rights", "practice-safety", "cultural-commons"],
+      "edge_contract_required": "yes when proposal packet originates from another ARCnet system",
+      "settlement": "proposal submission receipt when chain-supported",
+      "receipts": ["imperium_proposal_submitted"],
+      "forbidden": ["bypass quorum/threshold/time-lock", "proposal authorship treated as decision authority", "ordinary process overriding higher law"]
+    },
+    {
+      "id": "imperium.vote.cast-binding",
+      "system": "imperium",
+      "verb": "cast-binding-governance-vote",
+      "risk_lane": "high-consequence",
+      "human_intent": "Cast a binding governance vote where governance activation permits.",
+      "vitae": {
+        "required": true,
+        "minimum_envelope": "V4 Governance Steward plus active governance eligibility",
+        "grade_evidence": ["Grade VIII Sage may support Governance Steward eligibility"],
+        "specialization_evidence": [],
+        "achievement_effect": "none"
+      },
+      "domain_requirements": ["identity/continuity check required by governance", "active governance eligibility", "proposal version/digest", "applicable quorum/threshold/time-lock rules"],
+      "review_path": "governance eligibility and proposal validity checks",
+      "authority_source": "governance specification within higher constitutional bounds",
+      "execution_path": "Imperium governed voting mechanism",
+      "junction_context": ["standards-and-rights", "cultural-commons"],
+      "edge_contract_required": false,
+      "settlement": "canonical receipt where binding vote is chain-supported",
+      "receipts": ["governance_vote_cast"],
+      "forbidden": ["vote based on wealth or title alone", "constitutional override", "vote treated as implementation execution"]
+    },
+    {
+      "id": "imperium.security-mitigation.authorize",
+      "system": "imperium",
+      "verb": "authorize-bounded-security-mitigation",
+      "risk_lane": "high-consequence",
+      "human_intent": "Authorize a bounded mitigation for a verified security condition when existing policy does not already authorize the response.",
+      "vitae": {
+        "required": true,
+        "minimum_envelope": "V4 Governance Steward or the specifically activated governance/security authority required by the applicable policy",
+        "grade_evidence": ["Grade VIII Sage may support governance eligibility", "Grade IX Oracle may support risk-review candidacy"],
+        "specialization_evidence": ["domain evidence may inform review but does not manufacture governance authority"],
+        "achievement_effect": "none"
+      },
+      "domain_requirements": ["Protection evidence packet", "authority basis", "scope", "duration/sunset", "appeal/review path", "restricted disclosure handling where needed"],
+      "review_path": "security governance/emergency path defined by policy",
+      "authority_source": "governance/security policy under higher law",
+      "execution_path": "Imperium authorization -> Protection enforcement as separate action",
+      "junction_context": ["practice-safety", "standards-and-rights"],
+      "edge_contract_required": true,
+      "settlement": "material emergency authority or protocol-wide mitigation may require canonical settlement",
+      "receipts": ["imperium_mitigation_authorized", "imperium_security_review_opened"],
+      "forbidden": ["finding automatically authorizes response", "unlimited surveillance", "no-sunset emergency power", "governance voting away technical evidence"]
+    },
+    {
+      "id": "architect.documentation.propose",
+      "system": "architect",
+      "verb": "propose-documentation-change",
+      "risk_lane": "contributory",
+      "human_intent": "Prepare and submit a documentation change for review.",
+      "vitae": {
+        "required": true,
+        "minimum_envelope": "V2 Steward Candidate",
+        "grade_evidence": ["Grade V Scholar may support documentation/doctrine-drift review eligibility"],
+        "specialization_evidence": ["Arcanist or Philosopher evidence may be relevant to bounded epistemic/coherence review but is not mandatory by title"],
+        "achievement_effect": "none"
+      },
+      "domain_requirements": ["repository contribution rules", "source/provenance discipline", "stronger review for canonical documents"],
+      "review_path": "documentation steward or Architect/Human Architect review according to scope",
+      "authority_source": "repository/documentation process",
+      "execution_path": "branch/patch/PR proposal",
+      "junction_context": ["standards-and-rights"],
+      "edge_contract_required": false,
+      "settlement": "none; repository commit/PR is the primary factual record",
+      "receipts": ["repository_documentation_proposal_recorded"],
+      "forbidden": ["canonical promotion by contributor title", "silent doctrine rewrite", "achievement title treated as merge permission"]
+    },
+    {
+      "id": "architect.app-module.patch",
+      "system": "architect",
+      "verb": "submit-app-module-patch",
+      "risk_lane": "stewardship",
+      "human_intent": "Create or submit a bounded application-module implementation patch for review.",
+      "vitae": {
+        "required": "one eligible path required",
+        "minimum_envelope": "V3 Module Steward or technical contributor under explicit review",
+        "grade_evidence": ["Grade VI Healer may support repair-oriented module stewardship", "Grade VII Alchemist may support bounded module-change/integration eligibility"],
+        "specialization_evidence": ["Artificer may support design/construction/maintenance competence when relevant"],
+        "achievement_effect": "Magus title alone is insufficient"
+      },
+      "domain_requirements": ["technical competence for affected module", "branch/write scope", "typecheck/build/tests appropriate to change", "doctrine and app-chain boundary compliance"],
+      "review_path": "module steward/technical review plus required verification",
+      "authority_source": "repository process and explicit branch/write authorization",
+      "execution_path": "reviewed branch/PR/commit; deployment is separate",
+      "junction_context": ["standards-and-rights", "market-assurance"],
+      "edge_contract_required": "yes when submitting for Protection or governance review across ARCnet systems",
+      "settlement": "none for patch proposal; repository record required",
+      "receipts": ["repository_patch_submitted", "architect_patch_review_requested"],
+      "forbidden": ["repository write from geometry", "deployment from patch submission", "hidden capability expansion", "title-based bypass of review"]
+    },
+    {
+      "id": "architect.release-candidate.prepare",
+      "system": "architect",
+      "verb": "prepare-release-candidate",
+      "risk_lane": "high-consequence",
+      "human_intent": "Prepare a release candidate and its verification packet without unilaterally authorizing deployment.",
+      "vitae": {
+        "required": true,
+        "minimum_envelope": "V6 Protocol Steward or V7 Architect Delegate",
+        "grade_evidence": ["Grade IX Oracle may support release-candidate review candidacy", "Grade X Adept may support Protocol Steward/Architect Delegate eligibility"],
+        "specialization_evidence": ["Artificer/Arcanist evidence may be relevant to implementation and verification competence when explicitly required"],
+        "achievement_effect": "Vitae Architect achievement is not Architect Delegate authority"
+      },
+      "domain_requirements": ["release technical competence", "typecheck/build/test evidence", "verify-sync where applicable", "doctrine review", "capability diff", "rollback/migration plan when applicable"],
+      "review_path": "release process plus independent Protection review for high-impact changes and governance approval where required",
+      "authority_source": "repository/release process plus active steward/delegate grant",
+      "execution_path": "release branch/tag candidate; deployment/upgrade authorization remains separate",
+      "junction_context": ["market-assurance", "standards-and-rights"],
+      "edge_contract_required": true,
+      "settlement": "release review/authorization receipt where policy requires; private build detail remains off-chain",
+      "receipts": ["architect_release_candidate_prepared", "protocol_release_review_requested"],
+      "forbidden": ["self-verification equals independent verification", "candidate equals deployed", "achievement equals release authority", "capability expansion hidden as routine version change"]
+    },
+    {
+      "id": "architect.delegate.coordinate",
+      "system": "architect",
+      "verb": "coordinate-as-architect-delegate",
+      "risk_lane": "high-consequence",
+      "human_intent": "Coordinate bounded cross-layer release, constitutional-risk, and system-continuity work as an explicitly recognized Architect Delegate.",
+      "vitae": {
+        "required": true,
+        "minimum_envelope": "V7 Architect Delegate",
+        "grade_evidence": ["Grade X Adept review is part of candidacy"],
+        "specialization_evidence": ["cross-domain specialization history may support review but cannot replace V7 recognition"],
+        "achievement_effect": "Vitae achievement title Architect is explicitly not this capability"
+      },
+      "domain_requirements": ["long-duration cross-layer reliability", "doctrine/app/protocol/governance literacy", "explicit scope", "logging", "Human Architect review during Pre-Genesis"],
+      "review_path": "Human Architect review during Pre-Genesis; governance review after activation",
+      "authority_source": "Architect doctrine/governance process plus explicit V7 assignment",
+      "execution_path": "logged coordination and separately authorized actions; each consequential write/execution retains its own permission",
+      "junction_context": ["standards-and-rights", "creator-public-goods", "market-assurance"],
+      "edge_contract_required": true,
+      "settlement": "material authority assignment/actions require appropriate factual receipts",
+      "receipts": ["authority_envelope_assigned", "architect_delegate_material_action_logged"],
+      "forbidden": ["replace Human Architect by implication", "unilateral constitutional authority", "hidden control path", "Vitae Architect achievement treated as V7"]
+    }
+  ],
+  "validation_rules": [
+    "Every capability must name a verb and one owning system.",
+    "Every stewardship/high-consequence capability must name review_path, authority_source, execution_path, receipts, and suspension/expiry behavior either directly or through referenced policy before production activation.",
+    "A capability may require selected Vitae evidence, but no capability may use whole Vitae history as ambient input.",
+    "Specialization or achievement evidence must be relevant to the declared action; unrelated receipts are excluded.",
+    "A market or governance interface must not convert achievement receipts into comparative rank.",
+    "A junction may organize review context but cannot satisfy a permission predicate.",
+    "A geometric morph or rendered state may explain capability status but cannot mutate it.",
+    "A passed review is not execution authorization unless the authority source explicitly says so.",
+    "A grant applies to a bounded capability/action, never to unrestricted access to an entire ARCnet system.",
+    "Pre-Genesis Human Architect authority remains controlling for repository/release actions where current governance has not been activated."
+  ],
+  "open_requirements": [
+    "Define the first Protection-specific authority envelopes and reviewer appointment policy.",
+    "Define Commercium claim-type registry and which claims require self-declared, peer-witnessed, device-observed, or independently-verified evidence.",
+    "Define suspension/appeal schema shared by stewardship and high-consequence capabilities.",
+    "Define machine receipt schema and identifiers for active authority grants.",
+    "Define exact public/private visibility rules for disclosed Vitae provenance.",
+    "Reconcile Architecture-v2 Architect/Wizard/Magus achievement titles with existing mastery-path documents before canonical promotion."
+  ],
+  "candidate_laws": [
+    "Vitae May Gate Verbs, Not Worlds.",
+    "Grade Is Evidence, Not a Key.",
+    "Eligibility May Expand; Authority Must Still Be Granted.",
+    "Capability Requirements Are Action-Specific, Not Vertex-Wide.",
+    "Capability Is a Projection of Evidence, Not a Summary of the Person.",
+    "Titles May Inform Provenance; They May Not Become Market Rank.",
+    "Junctions Organize Review; They Do Not Grant Permission.",
+    "Review Is a Claim About an Artifact or Responsibility, Not a Person's Worth.",
+    "A Grant Opens a Verb, Not a World.",
+    "A Morph May Explain a Permission Boundary; It May Not Execute One."
+  ],
+  "next_gate": "Build a capability-state evaluator/prototype that loads this registry and the Vitae→ARCnet overlay, demonstrates ineligible/eligible/reviewed/granted/active/suspended states for representative actions, and renders the 12→6→8 geometric morph as explanation only."
+}
