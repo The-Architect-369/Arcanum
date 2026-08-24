@@ -1,0 +1,143 @@
+{
+  "registry": "vitae.specialization-fivefold-family-audit.v0.1",
+  "status": "design-candidate-audit",
+  "phase": "Pre-Genesis",
+  "authority": "navigation and presentation analysis only; no Identity, recognition, readiness, rank, authority, governance, Treasury, entitlement, or capability effect",
+  "purpose": "Test whether the exact 5+10+5 face decomposition of the Vitae icosahedron can host two meaningful five-specialization navigation families without inventing hierarchy, exclusivity, mastery tracks, grade correspondences, or unsupported doctrine.",
+  "repository_sources": [
+    "docs/vitae/curriculum/specializations/specialization-overview-codex.md",
+    "docs/vitae/curriculum/specializations/specialization-wide-invariants-canon.md",
+    "docs/vitae/curriculum/specializations/arcanist/canon/responsibilities-and-invariants-canon.md",
+    "docs/vitae/curriculum/specializations/philosopher/canon/responsibilities-and-invariants-canon.md",
+    "docs/vitae/curriculum/specializations/illusionist/canon/responsibilities-and-invariants-canon.md",
+    "docs/vitae/curriculum/specializations/astrologer/canon/responsibilities-and-invariants-canon.md",
+    "docs/vitae/curriculum/specializations/hierophant/canon/responsibilities-and-invariants-canon.md",
+    "docs/vitae/curriculum/specializations/druid/canon/responsibilities-and-invariants-canon.md",
+    "docs/vitae/curriculum/specializations/necromancer/canon/responsibilities-and-invariants-canon.md",
+    "docs/vitae/curriculum/specializations/alchemist/canon/responsibilities-and-invariants-canon.md",
+    "docs/vitae/curriculum/specializations/artificer/canon/responsibilities-and-invariants-ca.md",
+    "docs/vitae/curriculum/specializations/enchanter/canon/responsibilities-and-invariants-canon.md",
+    "docs/vitae/curriculum/specializations/cross-specialization-mastery-paths-canon.md",
+    "docs/vitae/curriculum/specializations/mastery-path-governance-canon.md",
+    "docs/architecture/vitae-icosahedron-geometry-audit.md",
+    "docs/architecture/registries/vitae-icosahedral-fivefold-orientation.v0.1.json"
+  ],
+  "geometric_fact": {
+    "fivefold_orientation": "A regular icosahedron decomposes into one five-face cap, one ten-face equatorial belt, and one five-face cap.",
+    "cap_internal_graph": "C5",
+    "belt_internal_graph": "C10",
+    "cap_to_belt_edges_each": 5,
+    "cap_to_cap_edges": 0,
+    "semantic_effect": "none unless separately registered"
+  },
+  "original_partition_under_test": {
+    "family_A_label": "contemplative / interpretive",
+    "family_A": ["Arcanist", "Philosopher", "Illusionist", "Astrologer", "Hierophant"],
+    "family_B_label": "embodied / transformative",
+    "family_B": ["Druid", "Necromancer", "Alchemist", "Artificer", "Enchanter"],
+    "disposition": "REVISE",
+    "reason": "The labels overstate a spirit/matter-style polarity not present in the specialization canon. Hierophant is primarily threshold/rite/pacing/process stewardship, while Enchanter is primarily meaning/resonance/atmosphere/symbol stewardship."
+  },
+  "specialization_domain_evidence": [
+    {"specialization":"Arcanist","primary_domain":"knowledge systems, models, epistemic limits","family_fit":"sensemaking_orientation"},
+    {"specialization":"Philosopher","primary_domain":"meaning, ethics, coherence, paradox","family_fit":"sensemaking_orientation"},
+    {"specialization":"Illusionist","primary_domain":"perception, bias, projection, narrative distortion","family_fit":"sensemaking_orientation"},
+    {"specialization":"Astrologer","primary_domain":"scale, rhythm, cycles, perspective","family_fit":"sensemaking_orientation"},
+    {"specialization":"Enchanter","primary_domain":"meaning, resonance, atmosphere, aesthetics, symbol","family_fit":"sensemaking_orientation"},
+    {"specialization":"Hierophant","primary_domain":"thresholds, rites, pacing, liminal transition safety","family_fit":"life_change_form"},
+    {"specialization":"Druid","primary_domain":"living systems, ecology, embodiment, regeneration","family_fit":"life_change_form"},
+    {"specialization":"Necromancer","primary_domain":"endings, decay, grief, release, renewal","family_fit":"life_change_form"},
+    {"specialization":"Alchemist","primary_domain":"transformation, synthesis, experimentation under constraint","family_fit":"life_change_form"},
+    {"specialization":"Artificer","primary_domain":"form, tools, design, construction, maintenance","family_fit":"life_change_form"}
+  ],
+  "relationship_graph_test": {
+    "source": "Cross-Specialization Constraints sections in the ten specialization responsibility/invariant canons.",
+    "method": "Each declared defer/coordinate/collaborate target is counted as one directed relationship for structural corroboration only. Relationship types are intentionally not weighted. Complement-equivalent 5+5 partitions are counted once by fixing Arcanist in family A.",
+    "directed_relationship_declarations": 47,
+    "unique_undirected_relationships": 31,
+    "balanced_partition_count_tested": 126,
+    "original_partition": {
+      "directed_internal": 28,
+      "directed_cross_family": 19,
+      "undirected_internal": 15,
+      "undirected_cross_family": 16
+    },
+    "recommended_partition": {
+      "directed_internal": 29,
+      "directed_cross_family": 18,
+      "directed_internal_fraction": 0.6170212765957447,
+      "undirected_internal": 17,
+      "undirected_cross_family": 14,
+      "undirected_internal_fraction": 0.5483870967741935,
+      "directed_partition_rank": "1 of 126",
+      "undirected_partition_rank": "tied 1 of 126"
+    },
+    "boundary": "This graph is evidence of current declared coordination structure, not proof of ontology. A family must still pass semantic and governance tests."
+  },
+  "recommended_navigation_partition": {
+    "disposition": "BOUNDED_PASS",
+    "family_A": {
+      "id": "sensemaking_orientation",
+      "working_label": "Orientation & Meaning",
+      "members": ["Arcanist", "Philosopher", "Illusionist", "Astrologer", "Enchanter"],
+      "shared_function": "Steward how experience is known, interpreted, perceived, contextualized, and resonantly framed without authority."
+    },
+    "family_B": {
+      "id": "life_change_form",
+      "working_label": "Life, Passage & Form",
+      "members": ["Hierophant", "Druid", "Necromancer", "Alchemist", "Artificer"],
+      "shared_function": "Steward thresholds, living systems, endings, transformation, and constructed form without coercion or hierarchy."
+    },
+    "critical_boundary": "These are navigation families, not schools, identities, prerequisites, ranks, exclusive tracks, personality types, or mastery paths.",
+    "orientation_neutrality": "Either family may occupy either geometric cap. North/south, top/bottom, light/dark, heaven/earth, masculine/feminine, spirit/matter, subtle/dense, superior/inferior, or advanced/basic meanings are prohibited unless separately and legitimately sourced; none are granted here."
+  },
+  "mastery_path_test": {
+    "cross_specialization_mastery_paths_document": {
+      "enumerated_triplets": {
+        "Wizard": ["Arcanist", "Philosopher", "Illusionist"],
+        "Magus": ["Alchemist", "Artificer", "Enchanter"],
+        "Architect": ["Druid", "Necromancer", "Hierophant"]
+      },
+      "finding": "No balanced 5+5 partition can preserve all three triplets as complete cap families because the two non-Wizard triplets alone contain six distinct specializations. Therefore cap families cannot be defined as mastery-path families."
+    },
+    "governance_conflict": {
+      "mastery_path_governance_canon": "States that cross-specialization combinations are situational/practitioner-specific and must not be enumerated or formalized, and separately rejects formal Wizard/Magus-style master titles.",
+      "cross_specialization_mastery_paths_canon": "Enumerates Wizard, Magus, and Architect archetypes with minimum specialization triplets.",
+      "disposition": "EXISTING_REPOSITORY_CONTRADICTION_REQUIRES_RECONCILIATION_BEFORE_CANON_PROMOTION",
+      "effect_on_this_audit": "Neither document may be silently used to turn the two caps into mastery tracks. The cap model remains navigation-only."
+    }
+  },
+  "family_boundary_tests": {
+    "cross_family_practice": "PASS — canonical non-exclusivity requires cross-cap practice to remain ordinary and unrestricted.",
+    "cap_cycle_semantics": "FAIL if C5 edges are interpreted as privileged specialization pairings; PASS if edges are presentation-only.",
+    "cap_to_grade_spokes": "FAIL — the five geometric cap-to-belt edges may not become specialization↔Grade dependencies or correspondences.",
+    "top_bottom_hierarchy": "FAIL if vertical orientation creates prestige or spiritual/material rank; PASS only with swappable/equivalent caps.",
+    "completion": "FAIL if filling a cap means specialization mastery; specializations remain infinite in depth and non-terminal.",
+    "identity": "FAIL if family membership becomes a user type or identity label; roles are inhabited, not identities."
+  },
+  "renderer_requirements": [
+    "Both caps must have identical geometry, interaction affordance, brightness range, and information density.",
+    "Cap placement must be swappable without changing meaning.",
+    "Do not draw specialization↔Grade spokes as semantic links unless a separately sourced relationship exists.",
+    "Do not treat the five cap-cycle edges as prerequisites, preferred combinations, or incompatibilities.",
+    "Cross-cap navigation must be as easy as within-cap navigation.",
+    "Provide equivalent card/list navigation independent of 3D geometry.",
+    "Family labels must remain descriptive and revisable; specialization names and mandates remain primary."
+  ],
+  "candidate_laws": [
+    "Family Membership Is Navigation Metadata, Not Identity.",
+    "A Cap Is Not a Rank.",
+    "A Five-Face Cycle Does Not Create Five Required Pairings.",
+    "Cross-Cap Practice Is Normal.",
+    "Family Labels Describe Functions; They Do Not Divide Spirit From Matter.",
+    "Mastery Overlay Is Not Family Taxonomy.",
+    "Relationship Graph May Corroborate a Cluster; It May Not Author Doctrine.",
+    "Geometry May Cluster Domains; It May Not Close Practice."
+  ],
+  "final_disposition": {
+    "original_partition": "REVISE",
+    "recommended_partition": "BOUNDED_PASS_AS_OPTIONAL_NAVIGATION",
+    "canonical_promotion": "HOLD",
+    "next_gate": "Prototype the revised 5+10+5 Vitae view with the ten Grade belt, the two swappable specialization caps, no semantic spokes, and equal card/list navigation; separately reconcile the mastery-path governance contradiction before any canonical family language is considered."
+  }
+}
