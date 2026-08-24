@@ -1,0 +1,164 @@
+{
+  "registry": "vitae.arcnet-capability-overlay.v0.1",
+  "status": "architecture-v2-design-candidate",
+  "phase": "Pre-Genesis",
+  "authority": "information architecture, eligibility explanation, and presentation only; no geometry, curriculum coordinate, Grade title, Wizard/Magus/Architect achievement, junction, or system position activates authority by itself",
+  "purpose": "Test whether the audited fivefold Vitae icosahedron can transition into the ARCnet stella-octangula/cube in exact geometry and whether recognized Vitae evidence can legitimately inform action-specific ARCnet capability eligibility without becoming automatic system permission.",
+  "sources": [
+    "docs/architecture/registries/vitae-icosahedral-fivefold-orientation.v0.1.json",
+    "docs/architecture/registries/vitae-icosahedral-achievement-axis.v0.1.json",
+    "docs/architecture/registries/vitae-curriculum-registry.v0.1.json",
+    "docs/architecture/registries/arcnet-transported-frame-projection.v0.1.json",
+    "docs/architecture/junction-studies/inner-octahedron-synthesis-and-orientation.md",
+    "docs/architecture/arcnet-edge-contract.md",
+    "docs/governance/vitae-authority-map.md",
+    "docs/doctrine/authority.md"
+  ],
+  "exact_geometry": {
+    "phi": "(1+sqrt(5))/2",
+    "arcnet_cube": {
+      "domain": "[-1,1]^3",
+      "vertices": "(sx,sy,sz), sx,sy,sz in {-1,+1}",
+      "circumradius": "sqrt(3)"
+    },
+    "cube_embedded_icosahedron": {
+      "vertices": [
+        "(0, +/-1/phi, +/-1)",
+        "(+/-1/phi, +/-1, 0)",
+        "(+/-1, 0, +/-1/phi)"
+      ],
+      "edge_length": "2/phi",
+      "vertex_count": 12,
+      "face_count": 20,
+      "statement": "Every icosahedral vertex lies on one cube face. Each cube face contains exactly two icosahedral vertices."
+    },
+    "vertex_pair_midpoint_collapse": [
+      {"cube_face":"+x","icosa_vertices":["(1,0,-1/phi)","(1,0,+1/phi)"],"midpoint":[1,0,0],"junction":"commons-witness"},
+      {"cube_face":"-x","icosa_vertices":["(-1,0,-1/phi)","(-1,0,+1/phi)"],"midpoint":[-1,0,0],"junction":"standards-and-rights"},
+      {"cube_face":"+y","icosa_vertices":["(-1/phi,1,0)","(+1/phi,1,0)"],"midpoint":[0,1,0],"junction":"practice-safety"},
+      {"cube_face":"-y","icosa_vertices":["(-1/phi,-1,0)","(+1/phi,-1,0)"],"midpoint":[0,-1,0],"junction":"creator-public-goods"},
+      {"cube_face":"+z","icosa_vertices":["(0,-1/phi,1)","(0,+1/phi,1)"],"midpoint":[0,0,1],"junction":"cultural-commons"},
+      {"cube_face":"-z","icosa_vertices":["(0,-1/phi,-1)","(0,+1/phi,-1)"],"midpoint":[0,0,-1],"junction":"market-assurance"}
+    ],
+    "collapse_formula": "m=(v_a+v_b)/2; the six m are exactly {+/-e_x,+/-e_y,+/-e_z}, the current ARCnet inner octahedron vertices",
+    "octahedron_to_cube_duality": {
+      "rule": "For sign triple s=(sx,sy,sz), the octahedron face F_s={sx*e_x, sy*e_y, sz*e_z} has outward normal parallel to s and dual cube vertex q_s=s.",
+      "system_partition_rule": "sx*sy*sz=+1 is the generative tetrahedron; sx*sy*sz=-1 is the stewardship tetrahedron.",
+      "mirror_rule": "q -> -q gives the four registered ARCnet mirror pairs."
+    },
+    "system_aligned_icosahedron_faces": {
+      "count": 8,
+      "rule": "Eight icosahedral face centroids are exactly (phi/3)*(sx,sy,sz), one for each cube/system direction.",
+      "meaning": "exact sightline/alignment only; a face does not inherit the system's authority or capability semantics"
+    },
+    "fivefold_axis_exhaustive_test": {
+      "opposite_axis_pairs": 6,
+      "directed_axis_choices": 12,
+      "invariant_system_face_distribution": {"wizard_cap":2,"core_belt":4,"magus_cap":2},
+      "class_balance": "For every directed fivefold axis, each cap contains exactly one generative-system-aligned face and one stewardship-system-aligned face; the Core belt contains two of each.",
+      "result": "A literal 10-Grade-to-8-system face/vertex permission bijection is impossible in every fivefold orientation."
+    }
+  },
+  "system_junction_dual_incidence": [
+    {"system":"arcanum","q":[1,1,1],"junctions":["commons-witness","practice-safety","cultural-commons"]},
+    {"system":"nexus","q":[1,-1,-1],"junctions":["commons-witness","creator-public-goods","market-assurance"]},
+    {"system":"commercium","q":[-1,1,-1],"junctions":["standards-and-rights","practice-safety","market-assurance"]},
+    {"system":"theatrum","q":[-1,-1,1],"junctions":["standards-and-rights","creator-public-goods","cultural-commons"]},
+    {"system":"architect","q":[-1,-1,-1],"junctions":["standards-and-rights","creator-public-goods","market-assurance"]},
+    {"system":"imperium","q":[-1,1,1],"junctions":["standards-and-rights","practice-safety","cultural-commons"]},
+    {"system":"aerarium","q":[1,-1,1],"junctions":["commons-witness","creator-public-goods","cultural-commons"]},
+    {"system":"protection","q":[1,1,-1],"junctions":["commons-witness","practice-safety","market-assurance"]}
+  ],
+  "vitae_evidence_basis": [
+    {"grade":"I","title":"Guardian","evidence_domain":"self-governance and reliability","source_function":"Self-governance and reliability"},
+    {"grade":"II","title":"Seeker","evidence_domain":"inquiry discipline and ambiguity tolerance","source_function":"Meaning discipline and inquiry stability"},
+    {"grade":"III","title":"Disciple","evidence_domain":"ethical action, restraint, and consequence","source_function":"Ethical action without authority"},
+    {"grade":"IV","title":"Mystic","evidence_domain":"grounded perception and observation restraint","source_function":"Perception without interpretation"},
+    {"grade":"V","title":"Scholar","evidence_domain":"structured knowledge, systems thinking, and discernment","source_function":"Structured knowledge and cognitive architecture"},
+    {"grade":"VI","title":"Healer","evidence_domain":"care, maintenance, repair, and restoration","source_function":"Care, maintenance, and restoration"},
+    {"grade":"VII","title":"Alchemist","evidence_domain":"bounded transformation and synthesis","source_function":"Transformation and synthesis"},
+    {"grade":"VIII","title":"Sage","evidence_domain":"integration and reflective synthesis","source_function":"Integration and reflective wisdom"},
+    {"grade":"IX","title":"Oracle","evidence_domain":"second/third-order consequence awareness","source_function":"Pattern perception and foresight without prophecy"},
+    {"grade":"X","title":"Adept","evidence_domain":"creative containment and stewardship readiness","source_function":"Creative stabilization and governance readiness"}
+  ],
+  "permission_model": {
+    "forbidden_shortcut": "permission = f(grade_index) or permission = f(icosahedron_position)",
+    "recognized_evidence": "Only Vitae recognitions/receipts that already exist through Vitae-native stabilization and recognition processes may be projected. Current navigation position, section index, face fill, practice streak, elapsed time, title display, or geometric adjacency is not evidence by itself.",
+    "vitae_evidence_projection": {
+      "fields": ["selected recognition/achievement receipt references","purpose","target system/action","audience","retention","provenance","revocation/disclosure behavior"],
+      "default_visibility": "private/local",
+      "whole_vitae_history_export": false
+    },
+    "eligibility_formula": "eligible(c) = vitae_requirements(c) satisfied AND domain_requirements(c) satisfied AND all non-authority safety prerequisites satisfied",
+    "activation_formula": "active(c) = eligible(c) AND explicit_grant_or_delegation(c) AND registered_action(c) AND destination_acceptance(c) AND not_suspended_or_expired(c)",
+    "authority_boundary": "Eligibility may justify review. It is not an active capability, office, governance vote, Treasury custody, protocol permission, or repository write right.",
+    "capability_scope": "action-specific; never an entire ARCnet system vertex",
+    "basic_participation_rule": "Basic dignity, belonging, ordinary participation, and ordinary local/private use may not be gated by Vitae."
+  },
+  "capability_risk_lanes": [
+    {"lane":"ordinary-participation","vitae_gate":"prohibited as a condition of dignity/basic participation","grant":"ordinary product/session authorization only"},
+    {"lane":"contributory","vitae_gate":"optional or supporting evidence depending on action","grant":"destination-native acceptance/review"},
+    {"lane":"stewardship","vitae_gate":"may be required as one evidence class","grant":"explicit bounded role/capability delegation required"},
+    {"lane":"high-consequence","vitae_gate":"may be prerequisite evidence but never sufficient","grant":"governance/Treasury/protocol/developer-specific process plus explicit authorization required"}
+  ],
+  "junction_role_in_capability_overlay": {
+    "posture": "review/coordination projection, not authority source",
+    "rule": "The three octahedral junctions incident to a system provide a geometrically exact way to organize relevant review contexts for that system. A capability may use one, two, all three, or none according to its actual contract; geometry does not force all three.",
+    "examples": {
+      "commercium": ["standards-and-rights","practice-safety","market-assurance"],
+      "imperium": ["standards-and-rights","practice-safety","cultural-commons"],
+      "architect": ["standards-and-rights","creator-public-goods","market-assurance"]
+    }
+  },
+  "commercium_case": {
+    "ordinary_maker_listing_requires_wizard_or_magus": false,
+    "achievement_receipts_may_be_attached_as_optional_provenance": true,
+    "automatic_search_rank_or_price_boost_from_title": false,
+    "universal_trust_badge_from_title": false,
+    "advanced_review_or_assurance_roles": "may use relevant Vitae/Core/specialization evidence as one input to explicit role review; domain evidence and separate delegation remain required",
+    "magus_relevance": "Artificer/Alchemist/Druid/Hierophant/Necromancer receipts may support specific craft, transformation, lifecycle, safety, or stewardship claims only when the action's requirement registry names them.",
+    "wizard_relevance": "Arcanist/Philosopher/Illusionist/Astrologer/Enchanter receipts may support specific knowledge, claim-framing, perception, timing, symbolic, or resonance responsibilities only when the action's requirement registry names them.",
+    "law": "Titles May Inform Provenance; They May Not Become Market Rank."
+  },
+  "transition_renderer": {
+    "step_1":"Render Vitae in its local fivefold frame with fixed Wizard-up / Magus-down semantics.",
+    "step_2":"Apply an explicit rotation R_vitae_to_arcnet into the standard cube-embedded icosahedron frame. R is presentation metadata unless separately ratified.",
+    "step_3":"Pair the 12 icosahedral vertices by cube face and interpolate each pair toward its exact midpoint; the endpoint is the six-vertex ARCnet inner octahedron.",
+    "step_4":"Use octahedron/cube duality to reveal the eight cube system vertices; split them by sign parity into the two ARCnet tetrahedra.",
+    "step_5":"Render only capability states obtained from the permission model; the morph itself changes no permission.",
+    "uniqueness_boundary":"The endpoint constructions are exact. The visual interpolation path between endpoints is renderer-defined, not a unique canonical polyhedral morph."
+  },
+  "falsification_results": [
+    {"test":"ten Grades map one-to-one to eight ARCnet systems","result":"FAIL","reason":"count mismatch and exhaustive fivefold orientation gives only four system-aligned faces in the Grade belt"},
+    {"test":"icosahedral face adjacency can authorize ARCnet actions","result":"FAIL","reason":"geometry cannot create capability, Edge Contract, or authority"},
+    {"test":"current Vitae navigation position can change ARCnet permissions","result":"FAIL","reason":"navigation state is not recognized stabilization evidence"},
+    {"test":"recognized Vitae evidence can support action-specific capability eligibility","result":"BOUNDED_PASS","reason":"canonical authority permits Vitae to gate responsibility, provided worth/basic participation are untouched and explicit authorization remains separate"},
+    {"test":"12 icosahedron vertices can project exactly to six existing ARCnet junctions","result":"PASS","reason":"two vertices per cube face have midpoint equal to the registered octahedral face-center junction"},
+    {"test":"six junctions can reconstruct the eight ARCnet system directions","result":"PASS","reason":"the octahedron is exactly dual to the cube; each system is the normal/dual of one three-junction octahedral face"},
+    {"test":"fixed Wizard/Magus fivefold axis has a uniquely justified orientation relative to labeled ARCnet systems","result":"HOLD","reason":"all six opposite fivefold axes are mathematically valid and current capability doctrine does not uniquely select one"},
+    {"test":"Wizard/Magus/Architect achievement directly raises Commercium market rank or authority","result":"FAIL","reason":"achievement can be provenance/evidence context but cannot become generalized trust, rank, pricing privilege, or automatic capability"}
+  ],
+  "candidate_laws": [
+    "Grade Is Evidence, Not a Key.",
+    "Vitae May Gate Verbs, Not Worlds.",
+    "Eligibility May Expand; Authority Must Still Be Granted.",
+    "Capability Requirements Are Action-Specific, Not Vertex-Wide.",
+    "Capability Is a Projection of Evidence, Not a Summary of the Person.",
+    "Current Vitae Position Is Not Recognized Vitae Evidence.",
+    "Pair-to-Junction Is Geometry; Review Meaning Comes From the Registered Junction.",
+    "Three Junctions May Organize a System Review; They Do Not Own the System.",
+    "The Inner Octahedron Mediates; It Does Not Grant.",
+    "The Person Does Not Collapse; the Interface Projects.",
+    "Fivefold Axis Is a Vitae Coordinate Until ARCnet Semantics Independently Select It.",
+    "Titles May Inform Provenance; They May Not Become Market Rank.",
+    "A Morph May Explain a Permission Boundary; It May Not Execute One."
+  ],
+  "final_disposition": {
+    "exact_icosahedron_to_octahedron_to_cube_bridge": "PASS",
+    "direct_grade_to_system_permission_mapping": "FAIL",
+    "vitae_evidence_to_capability_eligibility_overlay": "BOUNDED_PASS",
+    "fixed_labeled_cube_orientation_for_wizard_magus_axis": "HOLD",
+    "runtime_permission_activation_from_geometry": "PROHIBITED",
+    "next_gate": "Define a machine-readable ARCnet capability requirement registry for a small set of representative actions, beginning with Commercium, Imperium, Protection, and Architect, and test whether actual Vitae evidence predicates plus domain evidence and explicit grants can be rendered through the 12→6→8 overlay without creating social rank or automatic authority."
+  }
+}
