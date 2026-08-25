@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-08-20T07:07:10Z",
+  "generated_at": "2026-08-25T05:12:49Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "3c332d934",
-  "generator_version": "1.2",
+  "commit": "a975dd7c6",
+  "generator_version": "1.3",
   "files": [
     {
       "path": ".github/workflows/architect-promotion.yml",
@@ -725,6 +725,33 @@
       "lines": 731
     },
     {
+      "path": "apps/web/src/app/(app)/vitae/capabilities/CapabilityEvaluatorDemo.tsx",
+      "type": "file",
+      "size_bytes": 19651,
+      "last_modified_commit": "e33e4b779",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 430
+    },
+    {
+      "path": "apps/web/src/app/(app)/vitae/capabilities/VerifiableCapabilityEvaluatorDemo.tsx",
+      "type": "file",
+      "size_bytes": 17978,
+      "last_modified_commit": "3b38bd31b",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 426
+    },
+    {
+      "path": "apps/web/src/app/(app)/vitae/capabilities/page.tsx",
+      "type": "file",
+      "size_bytes": 442,
+      "last_modified_commit": "3b38bd31b",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 11
+    },
+    {
       "path": "apps/web/src/app/(app)/vitae/grade/page.tsx",
       "type": "file",
       "size_bytes": 176,
@@ -1398,6 +1425,78 @@
       "is_empty": false,
       "extension": ".ts",
       "lines": 327
+    },
+    {
+      "path": "apps/web/src/lib/capabilities/authorization-gate.ts",
+      "type": "file",
+      "size_bytes": 3414,
+      "last_modified_commit": "a9e339f27",
+      "is_empty": false,
+      "extension": ".ts",
+      "lines": 107
+    },
+    {
+      "path": "apps/web/src/lib/capabilities/authorization-gate.vectors.ts",
+      "type": "file",
+      "size_bytes": 2154,
+      "last_modified_commit": "0cba19e20",
+      "is_empty": false,
+      "extension": ".ts",
+      "lines": 53
+    },
+    {
+      "path": "apps/web/src/lib/capabilities/evaluator.ts",
+      "type": "file",
+      "size_bytes": 8191,
+      "last_modified_commit": "e33e4b779",
+      "is_empty": false,
+      "extension": ".ts",
+      "lines": 270
+    },
+    {
+      "path": "apps/web/src/lib/capabilities/evaluator.vectors.ts",
+      "type": "file",
+      "size_bytes": 4449,
+      "last_modified_commit": "e33e4b779",
+      "is_empty": false,
+      "extension": ".ts",
+      "lines": 146
+    },
+    {
+      "path": "apps/web/src/lib/capabilities/policies.ts",
+      "type": "file",
+      "size_bytes": 10809,
+      "last_modified_commit": "e33e4b779",
+      "is_empty": false,
+      "extension": ".ts",
+      "lines": 244
+    },
+    {
+      "path": "apps/web/src/lib/capabilities/verifiable.demo.ts",
+      "type": "file",
+      "size_bytes": 11640,
+      "last_modified_commit": "3b38bd31b",
+      "is_empty": false,
+      "extension": ".ts",
+      "lines": 357
+    },
+    {
+      "path": "apps/web/src/lib/capabilities/verifiable.ts",
+      "type": "file",
+      "size_bytes": 27245,
+      "last_modified_commit": "b4bf34df7",
+      "is_empty": false,
+      "extension": ".ts",
+      "lines": 800
+    },
+    {
+      "path": "apps/web/src/lib/capabilities/verifiable.vectors.ts",
+      "type": "file",
+      "size_bytes": 4023,
+      "last_modified_commit": "3b38bd31b",
+      "is_empty": false,
+      "extension": ".ts",
+      "lines": 136
     },
     {
       "path": "apps/web/src/lib/cn.ts",
@@ -2849,6 +2948,15 @@
       "lines": 418
     },
     {
+      "path": "docs/architecture/arcanum-living-system-intent-and-direction.md",
+      "type": "file",
+      "size_bytes": 22547,
+      "last_modified_commit": "0c7607f33",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 768
+    },
+    {
       "path": "docs/architecture/arcanum-system-overview.md",
       "type": "file",
       "size_bytes": 7431,
@@ -2856,6 +2964,15 @@
       "is_empty": false,
       "extension": ".md",
       "lines": 564
+    },
+    {
+      "path": "docs/architecture/arcnet-edge-contract.md",
+      "type": "file",
+      "size_bytes": 8799,
+      "last_modified_commit": "31d88056b",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 327
     },
     {
       "path": "docs/architecture/arcnet-native-decisions.md",
@@ -2867,6 +2984,24 @@
       "lines": 267
     },
     {
+      "path": "docs/architecture/arcnet-transported-frame-audit.md",
+      "type": "file",
+      "size_bytes": 13124,
+      "last_modified_commit": "84efc1e58",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 447
+    },
+    {
+      "path": "docs/architecture/arcnet-vitae-nested-cosmic-motion-audit.md",
+      "type": "file",
+      "size_bytes": 12261,
+      "last_modified_commit": "f73ced7a9",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 403
+    },
+    {
       "path": "docs/architecture/canonical-modules.md",
       "type": "file",
       "size_bytes": 7639,
@@ -2874,6 +3009,1149 @@
       "is_empty": false,
       "extension": ".md",
       "lines": 524
+    },
+    {
+      "path": "docs/architecture/capability-authorization-gate-implementation.md",
+      "type": "file",
+      "size_bytes": 5557,
+      "last_modified_commit": "a975dd7c6",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 141
+    },
+    {
+      "path": "docs/architecture/capability-state-evaluator-implementation.md",
+      "type": "file",
+      "size_bytes": 5751,
+      "last_modified_commit": "e33e4b779",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 157
+    },
+    {
+      "path": "docs/architecture/capability-verifiable-records-implementation.md",
+      "type": "file",
+      "size_bytes": 9333,
+      "last_modified_commit": "3b38bd31b",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 343
+    },
+    {
+      "path": "docs/architecture/classical-seven-archetype-layer.md",
+      "type": "file",
+      "size_bytes": 18907,
+      "last_modified_commit": "380026e82",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 724
+    },
+    {
+      "path": "docs/architecture/classical-seven-axis-falsification.md",
+      "type": "file",
+      "size_bytes": 22868,
+      "last_modified_commit": "7d16ade82",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 882
+    },
+    {
+      "path": "docs/architecture/classical-seven-lens-model-test.md",
+      "type": "file",
+      "size_bytes": 37359,
+      "last_modified_commit": "77837f7ce",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 1501
+    },
+    {
+      "path": "docs/architecture/creation-era-architecture-trail.md",
+      "type": "file",
+      "size_bytes": 10533,
+      "last_modified_commit": "834eb9dea",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 269
+    },
+    {
+      "path": "docs/architecture/creation-era-whole-system-falsification-audit.md",
+      "type": "file",
+      "size_bytes": 12815,
+      "last_modified_commit": "2e8a83956",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 435
+    },
+    {
+      "path": "docs/architecture/edge-studies/arcanum-aerarium.md",
+      "type": "file",
+      "size_bytes": 2509,
+      "last_modified_commit": "11e342761",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 57
+    },
+    {
+      "path": "docs/architecture/edge-studies/arcanum-commercium.md",
+      "type": "file",
+      "size_bytes": 17461,
+      "last_modified_commit": "91637e262",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 557
+    },
+    {
+      "path": "docs/architecture/edge-studies/arcanum-imperium.md",
+      "type": "file",
+      "size_bytes": 2561,
+      "last_modified_commit": "f0cb005a7",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 57
+    },
+    {
+      "path": "docs/architecture/edge-studies/arcanum-nexus.md",
+      "type": "file",
+      "size_bytes": 10707,
+      "last_modified_commit": "e9bde6f33",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 361
+    },
+    {
+      "path": "docs/architecture/edge-studies/arcanum-protection.md",
+      "type": "file",
+      "size_bytes": 4010,
+      "last_modified_commit": "96e7cb091",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 97
+    },
+    {
+      "path": "docs/architecture/edge-studies/arcanum-theatrum.md",
+      "type": "file",
+      "size_bytes": 19713,
+      "last_modified_commit": "8adb39da0",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 590
+    },
+    {
+      "path": "docs/architecture/edge-studies/architect-aerarium.md",
+      "type": "file",
+      "size_bytes": 11567,
+      "last_modified_commit": "c5fb5dae5",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 369
+    },
+    {
+      "path": "docs/architecture/edge-studies/architect-imperium.md",
+      "type": "file",
+      "size_bytes": 12263,
+      "last_modified_commit": "029ec04ce",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 372
+    },
+    {
+      "path": "docs/architecture/edge-studies/architect-protection.md",
+      "type": "file",
+      "size_bytes": 13380,
+      "last_modified_commit": "58dec0394",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 420
+    },
+    {
+      "path": "docs/architecture/edge-studies/commercium-architect.md",
+      "type": "file",
+      "size_bytes": 1837,
+      "last_modified_commit": "af1c12f0e",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 36
+    },
+    {
+      "path": "docs/architecture/edge-studies/commercium-imperium.md",
+      "type": "file",
+      "size_bytes": 2316,
+      "last_modified_commit": "0ce47b6ff",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 54
+    },
+    {
+      "path": "docs/architecture/edge-studies/commercium-protection.md",
+      "type": "file",
+      "size_bytes": 2378,
+      "last_modified_commit": "ee0276636",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 49
+    },
+    {
+      "path": "docs/architecture/edge-studies/commercium-theatrum.md",
+      "type": "file",
+      "size_bytes": 10247,
+      "last_modified_commit": "4a0e03e92",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 353
+    },
+    {
+      "path": "docs/architecture/edge-studies/cross-tetrahedron-operational-synthesis.md",
+      "type": "file",
+      "size_bytes": 7641,
+      "last_modified_commit": "df80c6d2d",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 193
+    },
+    {
+      "path": "docs/architecture/edge-studies/generative-tetrahedron-synthesis.md",
+      "type": "file",
+      "size_bytes": 10730,
+      "last_modified_commit": "43266ba1e",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 337
+    },
+    {
+      "path": "docs/architecture/edge-studies/imperium-aerarium.md",
+      "type": "file",
+      "size_bytes": 11056,
+      "last_modified_commit": "e9d4c4ad1",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 352
+    },
+    {
+      "path": "docs/architecture/edge-studies/nexus-aerarium.md",
+      "type": "file",
+      "size_bytes": 2129,
+      "last_modified_commit": "81d7a1450",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 53
+    },
+    {
+      "path": "docs/architecture/edge-studies/nexus-architect.md",
+      "type": "file",
+      "size_bytes": 2094,
+      "last_modified_commit": "3ee7b36d3",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 53
+    },
+    {
+      "path": "docs/architecture/edge-studies/nexus-commercium.md",
+      "type": "file",
+      "size_bytes": 9092,
+      "last_modified_commit": "1a25f4e08",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 316
+    },
+    {
+      "path": "docs/architecture/edge-studies/nexus-protection.md",
+      "type": "file",
+      "size_bytes": 1819,
+      "last_modified_commit": "71c75e5d9",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 36
+    },
+    {
+      "path": "docs/architecture/edge-studies/nexus-theatrum.md",
+      "type": "file",
+      "size_bytes": 7960,
+      "last_modified_commit": "69034c128",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 284
+    },
+    {
+      "path": "docs/architecture/edge-studies/protection-aerarium.md",
+      "type": "file",
+      "size_bytes": 10783,
+      "last_modified_commit": "092f5ff93",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 333
+    },
+    {
+      "path": "docs/architecture/edge-studies/protection-imperium.md",
+      "type": "file",
+      "size_bytes": 10280,
+      "last_modified_commit": "8b701f1f8",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 314
+    },
+    {
+      "path": "docs/architecture/edge-studies/stewardship-tetrahedron-synthesis.md",
+      "type": "file",
+      "size_bytes": 15260,
+      "last_modified_commit": "23a652b79",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 511
+    },
+    {
+      "path": "docs/architecture/edge-studies/theatrum-aerarium.md",
+      "type": "file",
+      "size_bytes": 2151,
+      "last_modified_commit": "b4324d4f5",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 33
+    },
+    {
+      "path": "docs/architecture/edge-studies/theatrum-architect.md",
+      "type": "file",
+      "size_bytes": 1746,
+      "last_modified_commit": "b7d25730e",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 32
+    },
+    {
+      "path": "docs/architecture/edge-studies/theatrum-imperium.md",
+      "type": "file",
+      "size_bytes": 1852,
+      "last_modified_commit": "a845adb0f",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 32
+    },
+    {
+      "path": "docs/architecture/hope-a2-inner-portrait.md",
+      "type": "file",
+      "size_bytes": 16197,
+      "last_modified_commit": "3d9dad0ff",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 581
+    },
+    {
+      "path": "docs/architecture/hope-fixed-nodes-and-internal-edge-audit.md",
+      "type": "file",
+      "size_bytes": 19185,
+      "last_modified_commit": "ba9dce529",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 770
+    },
+    {
+      "path": "docs/architecture/junction-studies/01-commons-witness.md",
+      "type": "file",
+      "size_bytes": 5582,
+      "last_modified_commit": "0ddb97d6a",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 195
+    },
+    {
+      "path": "docs/architecture/junction-studies/02-practice-safety.md",
+      "type": "file",
+      "size_bytes": 3266,
+      "last_modified_commit": "d080a5959",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 104
+    },
+    {
+      "path": "docs/architecture/junction-studies/03-cultural-commons.md",
+      "type": "file",
+      "size_bytes": 3135,
+      "last_modified_commit": "e4306c84c",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 90
+    },
+    {
+      "path": "docs/architecture/junction-studies/04-market-assurance.md",
+      "type": "file",
+      "size_bytes": 3273,
+      "last_modified_commit": "2169ac495",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 90
+    },
+    {
+      "path": "docs/architecture/junction-studies/05-creator-public-goods.md",
+      "type": "file",
+      "size_bytes": 3251,
+      "last_modified_commit": "da447049f",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 88
+    },
+    {
+      "path": "docs/architecture/junction-studies/06-standards-and-rights.md",
+      "type": "file",
+      "size_bytes": 3462,
+      "last_modified_commit": "0e1aaa091",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 89
+    },
+    {
+      "path": "docs/architecture/junction-studies/inner-junction-neighbor-edge-audit.md",
+      "type": "file",
+      "size_bytes": 15442,
+      "last_modified_commit": "425bf6046",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 674
+    },
+    {
+      "path": "docs/architecture/junction-studies/inner-octahedron-synthesis-and-orientation.md",
+      "type": "file",
+      "size_bytes": 14005,
+      "last_modified_commit": "99d96e0f6",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 472
+    },
+    {
+      "path": "docs/architecture/nested-geometry-research-map.md",
+      "type": "file",
+      "size_bytes": 18650,
+      "last_modified_commit": "3218e30f8",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 806
+    },
+    {
+      "path": "docs/architecture/platonic-cosmology-source-and-science-audit.md",
+      "type": "file",
+      "size_bytes": 26847,
+      "last_modified_commit": "8f6670f93",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 734
+    },
+    {
+      "path": "docs/architecture/platonic-scale-frame-and-vitae-mathematics-audit.md",
+      "type": "file",
+      "size_bytes": 17243,
+      "last_modified_commit": "54bf2afbf",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 723
+    },
+    {
+      "path": "docs/architecture/registries/arcnet-authorization-gate.v0.2.json",
+      "type": "file",
+      "size_bytes": 2321,
+      "last_modified_commit": "7c0b2235e",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 67
+    },
+    {
+      "path": "docs/architecture/registries/arcnet-capability-requirements.v0.1.json",
+      "type": "file",
+      "size_bytes": 30084,
+      "last_modified_commit": "78a4f8fb1",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 433
+    },
+    {
+      "path": "docs/architecture/registries/arcnet-capability-state-evaluator.v0.1.json",
+      "type": "file",
+      "size_bytes": 2988,
+      "last_modified_commit": "e33e4b779",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 73
+    },
+    {
+      "path": "docs/architecture/registries/arcnet-capability-verifiable-records.v0.2.json",
+      "type": "file",
+      "size_bytes": 5900,
+      "last_modified_commit": "3b38bd31b",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 133
+    },
+    {
+      "path": "docs/architecture/registries/arcnet-transported-frame-projection.v0.1.json",
+      "type": "file",
+      "size_bytes": 9357,
+      "last_modified_commit": "f579909c9",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 172
+    },
+    {
+      "path": "docs/architecture/registries/arcnet-vitae-nested-subframe-projection.v0.1.json",
+      "type": "file",
+      "size_bytes": 6189,
+      "last_modified_commit": "04ba77628",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 118
+    },
+    {
+      "path": "docs/architecture/registries/becoming-field-geometry-registry.v0.1.json",
+      "type": "file",
+      "size_bytes": 5746,
+      "last_modified_commit": "8d2aa88e7",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 131
+    },
+    {
+      "path": "docs/architecture/registries/platonic-solid-exact-metrics.v0.1.json",
+      "type": "file",
+      "size_bytes": 7927,
+      "last_modified_commit": "c3e76e21c",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 139
+    },
+    {
+      "path": "docs/architecture/registries/registry-validation-v0.1.md",
+      "type": "file",
+      "size_bytes": 9898,
+      "last_modified_commit": "6d6a1fa90",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 507
+    },
+    {
+      "path": "docs/architecture/registries/sefer-yetzirah-articulation-sonification-registry.v0.1.json",
+      "type": "file",
+      "size_bytes": 9972,
+      "last_modified_commit": "17ad55acb",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 207
+    },
+    {
+      "path": "docs/architecture/registries/sefer-yetzirah-letter-coordinate-matrix.v0.1.json",
+      "type": "file",
+      "size_bytes": 6898,
+      "last_modified_commit": "f49a7122b",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 127
+    },
+    {
+      "path": "docs/architecture/registries/sefer-yetzirah-letter-wheel-registry.v0.1.json",
+      "type": "file",
+      "size_bytes": 7825,
+      "last_modified_commit": "5953d3517",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 146
+    },
+    {
+      "path": "docs/architecture/registries/tempus-72-correspondence-source-registry.v0.1.json",
+      "type": "file",
+      "size_bytes": 16841,
+      "last_modified_commit": "1e532df01",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 258
+    },
+    {
+      "path": "docs/architecture/registries/tempus-72-sector-coordinate.v0.1.json",
+      "type": "file",
+      "size_bytes": 7971,
+      "last_modified_commit": "272f5507d",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 35
+    },
+    {
+      "path": "docs/architecture/registries/tempus-cosmic-motion-correspondence.v0.1.json",
+      "type": "file",
+      "size_bytes": 8926,
+      "last_modified_commit": "e1b41201b",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 128
+    },
+    {
+      "path": "docs/architecture/registries/tempus-dodecahedral-compass-registry.v0.1.json",
+      "type": "file",
+      "size_bytes": 15830,
+      "last_modified_commit": "64ba6fa23",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 301
+    },
+    {
+      "path": "docs/architecture/registries/tempus-ephemeris-arcnet-unification-registry.v0.1.json",
+      "type": "file",
+      "size_bytes": 11529,
+      "last_modified_commit": "c8adae185",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 266
+    },
+    {
+      "path": "docs/architecture/registries/tempus-geocentric-sky-window-registry.v0.1.json",
+      "type": "file",
+      "size_bytes": 7646,
+      "last_modified_commit": "27cb68967",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 106
+    },
+    {
+      "path": "docs/architecture/registries/tempus-lunar-ephemeris-overlay.v0.1.json",
+      "type": "file",
+      "size_bytes": 12820,
+      "last_modified_commit": "a18460a83",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 238
+    },
+    {
+      "path": "docs/architecture/registries/tempus-observer-frame-and-scale-registry.v0.1.json",
+      "type": "file",
+      "size_bytes": 8744,
+      "last_modified_commit": "5fead271e",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 158
+    },
+    {
+      "path": "docs/architecture/registries/tempus-solar-system-gaia-frame.v0.1.json",
+      "type": "file",
+      "size_bytes": 15025,
+      "last_modified_commit": "aa572fee9",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 322
+    },
+    {
+      "path": "docs/architecture/registries/tempus-solar-system-observatory-registry.v0.1.json",
+      "type": "file",
+      "size_bytes": 9956,
+      "last_modified_commit": "8f20a9d6e",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 159
+    },
+    {
+      "path": "docs/architecture/registries/tempus-vitae-becoming-field-registry.v0.1.json",
+      "type": "file",
+      "size_bytes": 10049,
+      "last_modified_commit": "31cf4daaa",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 225
+    },
+    {
+      "path": "docs/architecture/registries/tempus-vitae-eventful-unification-registry.v0.1.json",
+      "type": "file",
+      "size_bytes": 11099,
+      "last_modified_commit": "165b517f4",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 221
+    },
+    {
+      "path": "docs/architecture/registries/tempus-vitae-live-phase-projection.v0.1.json",
+      "type": "file",
+      "size_bytes": 10852,
+      "last_modified_commit": "7043f7993",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 238
+    },
+    {
+      "path": "docs/architecture/registries/tempus-zodiac-registry.v0.1.json",
+      "type": "file",
+      "size_bytes": 5521,
+      "last_modified_commit": "b443c9aca",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 185
+    },
+    {
+      "path": "docs/architecture/registries/tree-harmonic-sonification-overlay.v0.1.json",
+      "type": "file",
+      "size_bytes": 8683,
+      "last_modified_commit": "71d3d4030",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 163
+    },
+    {
+      "path": "docs/architecture/registries/vitae-arcnet-capability-overlay.v0.1.json",
+      "type": "file",
+      "size_bytes": 14741,
+      "last_modified_commit": "05b0bc9af",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 164
+    },
+    {
+      "path": "docs/architecture/registries/vitae-curriculum-registry.v0.1.json",
+      "type": "file",
+      "size_bytes": 13622,
+      "last_modified_commit": "a676ccdac",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 396
+    },
+    {
+      "path": "docs/architecture/registries/vitae-grade-cycle-registry.v0.1.json",
+      "type": "file",
+      "size_bytes": 8905,
+      "last_modified_commit": "97542c5d6",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 163
+    },
+    {
+      "path": "docs/architecture/registries/vitae-harmonic-rendering-projection.v0.1.json",
+      "type": "file",
+      "size_bytes": 5798,
+      "last_modified_commit": "3b08cb734",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 121
+    },
+    {
+      "path": "docs/architecture/registries/vitae-icosahedral-achievement-axis.v0.1.json",
+      "type": "file",
+      "size_bytes": 8513,
+      "last_modified_commit": "295dc88a3",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 122
+    },
+    {
+      "path": "docs/architecture/registries/vitae-icosahedral-fivefold-orientation.v0.1.json",
+      "type": "file",
+      "size_bytes": 8521,
+      "last_modified_commit": "2f16eea8a",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 111
+    },
+    {
+      "path": "docs/architecture/registries/vitae-resonance-overlay.v0.1.json",
+      "type": "file",
+      "size_bytes": 8058,
+      "last_modified_commit": "1afe7e15a",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 164
+    },
+    {
+      "path": "docs/architecture/registries/vitae-specialization-fivefold-family-audit.v0.1.json",
+      "type": "file",
+      "size_bytes": 10675,
+      "last_modified_commit": "7430eb258",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 143
+    },
+    {
+      "path": "docs/architecture/registries/vitae-tree-of-life-class-registry.v0.1.json",
+      "type": "file",
+      "size_bytes": 6912,
+      "last_modified_commit": "4ee630bd5",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 181
+    },
+    {
+      "path": "docs/architecture/registries/vitae-tree-of-life-path-registry.v0.1.json",
+      "type": "file",
+      "size_bytes": 8300,
+      "last_modified_commit": "66994d98e",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 143
+    },
+    {
+      "path": "docs/architecture/registries/vitae-tree-transformation-operator-registry.v0.1.json",
+      "type": "file",
+      "size_bytes": 6896,
+      "last_modified_commit": "b98e5fc8f",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 137
+    },
+    {
+      "path": "docs/architecture/renderings/arcnet-transported-stellar-frame-3d-v0.1.html",
+      "type": "file",
+      "size_bytes": 16323,
+      "last_modified_commit": "a0f1e64a4",
+      "is_empty": false,
+      "extension": ".html",
+      "lines": 142
+    },
+    {
+      "path": "docs/architecture/renderings/arcnet-vitae-nested-subframe-3d-v0.1.html",
+      "type": "file",
+      "size_bytes": 11822,
+      "last_modified_commit": "ecfd5b225",
+      "is_empty": false,
+      "extension": ".html",
+      "lines": 64
+    },
+    {
+      "path": "docs/architecture/renderings/sefer-yetzirah-letter-coordinate-matrix-v0.1.svg",
+      "type": "file",
+      "size_bytes": 7184,
+      "last_modified_commit": "f8a254f47",
+      "is_empty": false,
+      "extension": ".svg",
+      "lines": 48
+    },
+    {
+      "path": "docs/architecture/renderings/tempus-72-sector-dodecahedral-compass-v0.1.html",
+      "type": "file",
+      "size_bytes": 7204,
+      "last_modified_commit": "b0d44f4fd",
+      "is_empty": false,
+      "extension": ".html",
+      "lines": 1
+    },
+    {
+      "path": "docs/architecture/renderings/tempus-arcnet-ephemeris-unified-3d-v0.1.html",
+      "type": "file",
+      "size_bytes": 8205,
+      "last_modified_commit": "f57eec656",
+      "is_empty": false,
+      "extension": ".html",
+      "lines": 63
+    },
+    {
+      "path": "docs/architecture/renderings/tempus-arcnet-solar-lunar-unified-3d-v0.1.html",
+      "type": "file",
+      "size_bytes": 8815,
+      "last_modified_commit": "d7e466e2b",
+      "is_empty": false,
+      "extension": ".html",
+      "lines": 44
+    },
+    {
+      "path": "docs/architecture/renderings/tempus-solar-system-gaia-arcnet-v0.1.html",
+      "type": "file",
+      "size_bytes": 10108,
+      "last_modified_commit": "589ddb2e0",
+      "is_empty": false,
+      "extension": ".html",
+      "lines": 52
+    },
+    {
+      "path": "docs/architecture/renderings/tempus-vitae-arcnet-eventful-unification-3d-v0.1.html",
+      "type": "file",
+      "size_bytes": 9732,
+      "last_modified_commit": "9dcf301b3",
+      "is_empty": false,
+      "extension": ".html",
+      "lines": 21
+    },
+    {
+      "path": "docs/architecture/renderings/tempus-vitae-live-phase-field-v0.1.html",
+      "type": "file",
+      "size_bytes": 17142,
+      "last_modified_commit": "a11593d21",
+      "is_empty": false,
+      "extension": ".html",
+      "lines": 197
+    },
+    {
+      "path": "docs/architecture/renderings/vitae-articulation-operator-matrix-audition-v0.1.html",
+      "type": "file",
+      "size_bytes": 12113,
+      "last_modified_commit": "cf35405f7",
+      "is_empty": false,
+      "extension": ".html",
+      "lines": 111
+    },
+    {
+      "path": "docs/architecture/renderings/vitae-class-harmonic-microcycle-v0.1.svg",
+      "type": "file",
+      "size_bytes": 10005,
+      "last_modified_commit": "5a7ba774e",
+      "is_empty": false,
+      "extension": ".svg",
+      "lines": 17
+    },
+    {
+      "path": "docs/architecture/renderings/vitae-icosahedral-achievement-axis-v0.1.html",
+      "type": "file",
+      "size_bytes": 8111,
+      "last_modified_commit": "e34d9a5c1",
+      "is_empty": false,
+      "extension": ".html",
+      "lines": 1
+    },
+    {
+      "path": "docs/architecture/renderings/vitae-tree-harmonic-audition-v0.1.html",
+      "type": "file",
+      "size_bytes": 9270,
+      "last_modified_commit": "e6053b8ef",
+      "is_empty": false,
+      "extension": ".html",
+      "lines": 66
+    },
+    {
+      "path": "docs/architecture/renderings/vitae-tree-transformation-audition-v0.1.html",
+      "type": "file",
+      "size_bytes": 11959,
+      "last_modified_commit": "cdb0dbe3b",
+      "is_empty": false,
+      "extension": ".html",
+      "lines": 118
+    },
+    {
+      "path": "docs/architecture/renderings/vitae-tree-transformation-grammar-v0.1.svg",
+      "type": "file",
+      "size_bytes": 8275,
+      "last_modified_commit": "850d9453d",
+      "is_empty": false,
+      "extension": ".svg",
+      "lines": 82
+    },
+    {
+      "path": "docs/architecture/renderings/vitae-tree-variant-render-v0.1.svg",
+      "type": "file",
+      "size_bytes": 8924,
+      "last_modified_commit": "bfc3e5633",
+      "is_empty": false,
+      "extension": ".svg",
+      "lines": 57
+    },
+    {
+      "path": "docs/architecture/sefer-yetzirah-articulation-timbre-audit.md",
+      "type": "file",
+      "size_bytes": 12351,
+      "last_modified_commit": "fb7cfc8c4",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 471
+    },
+    {
+      "path": "docs/architecture/sovereign-faculty-geometry.md",
+      "type": "file",
+      "size_bytes": 15231,
+      "last_modified_commit": "10af619d6",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 442
+    },
+    {
+      "path": "docs/architecture/tempus-72-correspondence-source-audit.md",
+      "type": "file",
+      "size_bytes": 20555,
+      "last_modified_commit": "ab310ef36",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 667
+    },
+    {
+      "path": "docs/architecture/tempus-72-sector-render-findings.md",
+      "type": "file",
+      "size_bytes": 4964,
+      "last_modified_commit": "9fd479239",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 138
+    },
+    {
+      "path": "docs/architecture/tempus-arcnet-ephemeris-unified-render-findings.md",
+      "type": "file",
+      "size_bytes": 6758,
+      "last_modified_commit": "eab0c1632",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 260
+    },
+    {
+      "path": "docs/architecture/tempus-dodecahedron-geometry-audit.md",
+      "type": "file",
+      "size_bytes": 21043,
+      "last_modified_commit": "c87502230",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 756
+    },
+    {
+      "path": "docs/architecture/tempus-ephemeris-arcnet-unification-audit.md",
+      "type": "file",
+      "size_bytes": 12292,
+      "last_modified_commit": "e5aee830d",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 417
+    },
+    {
+      "path": "docs/architecture/tempus-lunar-gate-audit.md",
+      "type": "file",
+      "size_bytes": 12472,
+      "last_modified_commit": "96607014e",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 475
+    },
+    {
+      "path": "docs/architecture/tempus-lunar-unified-render-findings.md",
+      "type": "file",
+      "size_bytes": 6114,
+      "last_modified_commit": "cbce843b5",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 261
+    },
+    {
+      "path": "docs/architecture/tempus-solar-system-gaia-render-findings.md",
+      "type": "file",
+      "size_bytes": 12810,
+      "last_modified_commit": "46935315b",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 426
+    },
+    {
+      "path": "docs/architecture/tempus-solar-system-observatory-and-platonic-precedent-audit.md",
+      "type": "file",
+      "size_bytes": 10601,
+      "last_modified_commit": "9a0cb81a1",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 321
+    },
+    {
+      "path": "docs/architecture/tempus-solar-system-observatory-render-findings.md",
+      "type": "file",
+      "size_bytes": 6216,
+      "last_modified_commit": "1a3b93336",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 186
+    },
+    {
+      "path": "docs/architecture/tempus-vitae-duality-audit.md",
+      "type": "file",
+      "size_bytes": 17917,
+      "last_modified_commit": "d3d159575",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 693
+    },
+    {
+      "path": "docs/architecture/tempus-vitae-eventful-unification-and-icosahedral-cell-audit.md",
+      "type": "file",
+      "size_bytes": 9991,
+      "last_modified_commit": "54c6147c4",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 353
+    },
+    {
+      "path": "docs/architecture/tempus-vitae-eventful-unification-render-findings.md",
+      "type": "file",
+      "size_bytes": 3125,
+      "last_modified_commit": "4ff9f6e8d",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 80
+    },
+    {
+      "path": "docs/architecture/tempus-vitae-live-phase-audit.md",
+      "type": "file",
+      "size_bytes": 12787,
+      "last_modified_commit": "6d002dbde",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 513
+    },
+    {
+      "path": "docs/architecture/tree-letter-wheel-harmonic-audit.md",
+      "type": "file",
+      "size_bytes": 11229,
+      "last_modified_commit": "fadfee0de",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 437
+    },
+    {
+      "path": "docs/architecture/tree-of-life-vitae-tempus-stellar-cube-study.md",
+      "type": "file",
+      "size_bytes": 17929,
+      "last_modified_commit": "0cdd217e2",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 701
+    },
+    {
+      "path": "docs/architecture/vitae-arcnet-capability-overlay-audit.md",
+      "type": "file",
+      "size_bytes": 23517,
+      "last_modified_commit": "b033fc9b9",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 911
+    },
+    {
+      "path": "docs/architecture/vitae-harmonic-rendering-findings.md",
+      "type": "file",
+      "size_bytes": 9240,
+      "last_modified_commit": "b953a9a32",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 408
+    },
+    {
+      "path": "docs/architecture/vitae-icosahedral-achievement-axis-decision.md",
+      "type": "file",
+      "size_bytes": 7400,
+      "last_modified_commit": "2cce7e486",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 199
+    },
+    {
+      "path": "docs/architecture/vitae-icosahedral-specialization-family-audit.md",
+      "type": "file",
+      "size_bytes": 15890,
+      "last_modified_commit": "c47d55f0e",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 692
+    },
+    {
+      "path": "docs/architecture/vitae-icosahedron-g10-2-follow-up.md",
+      "type": "file",
+      "size_bytes": 19110,
+      "last_modified_commit": "5519359cf",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 823
+    },
+    {
+      "path": "docs/architecture/vitae-icosahedron-geometry-audit.md",
+      "type": "file",
+      "size_bytes": 24570,
+      "last_modified_commit": "7804bd321",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 909
+    },
+    {
+      "path": "docs/architecture/vitae-tree-transformation-render-findings.md",
+      "type": "file",
+      "size_bytes": 9123,
+      "last_modified_commit": "1210052c2",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 379
     },
     {
       "path": "docs/archive/README.md",
@@ -3776,6 +5054,15 @@
       "lines": 282
     },
     {
+      "path": "docs/governance/architectgpt/system-development-method.md",
+      "type": "file",
+      "size_bytes": 7605,
+      "last_modified_commit": "e8254015e",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 240
+    },
+    {
       "path": "docs/governance/economic-principles.md",
       "type": "file",
       "size_bytes": 10584,
@@ -3940,11 +5227,11 @@
     {
       "path": "docs/repo/repo-index.json",
       "type": "file",
-      "size_bytes": 189722,
-      "last_modified_commit": "6205a3111",
+      "size_bytes": 224984,
+      "last_modified_commit": "af82fdac0",
       "is_empty": false,
       "extension": ".json",
-      "lines": 7001
+      "lines": 8306
     },
     {
       "path": "docs/repo/repo-interface.md",
@@ -4445,7 +5732,7 @@
       "path": "docs/tooling/doctrine-checksums/doctrine-checksums.yaml",
       "type": "file",
       "size_bytes": 3152,
-      "last_modified_commit": "5c0b1f268",
+      "last_modified_commit": "07a93bc26",
       "is_empty": false,
       "extension": ".yaml",
       "lines": 34
@@ -6982,11 +8269,11 @@
     {
       "path": "scripts/repo-index.sh",
       "type": "file",
-      "size_bytes": 3156,
+      "size_bytes": 3346,
       "last_modified_commit": "65211fb54",
       "is_empty": false,
       "extension": ".sh",
-      "lines": 131
+      "lines": 137
     },
     {
       "path": "scripts/vercel-setup-web.sh",

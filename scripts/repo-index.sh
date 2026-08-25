@@ -37,7 +37,8 @@ def safe_run(args, default="unknown"):
 
 generated_at = safe_run(["date", "-u", "+%Y-%m-%dT%H:%M:%SZ"])
 repo = safe_run(["git", "config", "--get", "remote.origin.url"], "unknown")
-commit = safe_run(["git", "rev-parse", "--short=9", "HEAD"], "unknown")
+head_commit = safe_run(["git", "rev-parse", "HEAD"], "unknown")
+commit = head_commit[:9] if head_commit != "unknown" else "unknown"
 
 # Normalize common GitHub URLs to owner/repo when possible.
 repo_name = repo
@@ -93,9 +94,14 @@ for rel in sorted(tracked):
             except Exception:
                 lines = 0
 
-    last_modified_commit = safe_run(
-        ["git", "log", "-1", "--format=%h", "--", rel],
+    last_modified_full = safe_run(
+        ["git", "log", "-1", "--format=%H", "--", rel],
         "unknown",
+    )
+    last_modified_commit = (
+        last_modified_full[:9]
+        if last_modified_full != "unknown"
+        else "unknown"
     )
 
     entry = {
@@ -120,7 +126,7 @@ data = {
     "generated_at": generated_at,
     "repo": repo_name,
     "commit": commit,
-    "generator_version": "1.2",
+    "generator_version": "1.3",
     "files": entries,
 }
 
