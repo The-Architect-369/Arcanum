@@ -1,10 +1,11 @@
-import { CapabilityEvaluatorDemo } from './CapabilityEvaluatorDemo';
+import { VerifiableCapabilityEvaluatorDemo } from './VerifiableCapabilityEvaluatorDemo';
 
 export const metadata = {
-  title: 'Vitae → ARCnet Capability Evaluator',
-  description: 'Design-candidate evaluator for action-specific ARCnet eligibility, review, grant, and execution state.',
+  title: 'Vitae → ARCnet Verifiable Capability Evaluator',
+  description:
+    'Design-candidate evaluator for signed evidence, review, bounded grants, lifecycle controls, and destination-owned ARCnet execution.',
 };
 
 export default function VitaeCapabilityEvaluatorPage() {
-  return <CapabilityEvaluatorDemo />;
+  return <VerifiableCapabilityEvaluatorDemo />;
 }

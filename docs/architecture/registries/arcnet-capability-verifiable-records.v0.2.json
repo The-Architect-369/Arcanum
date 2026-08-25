@@ -1,0 +1,133 @@
+{
+  "registry": "arcnet.capability-verifiable-records.v0.2",
+  "schema_version": "0.2",
+  "status": "architecture-v2-design-candidate",
+  "phase": "Pre-Genesis",
+  "authority": "Cryptographic integrity, issuer anchoring, and deterministic capability-state evaluation only. A valid signature does not create legitimacy, office, delegation, or authority.",
+  "supersedes_runtime_input_model": "prototype boolean facts in apps/web/src/lib/capabilities/evaluator.ts for the primary /vitae/capabilities route; v0.1 remains preserved as a historical prototype",
+  "source_registries": [
+    "docs/architecture/registries/arcnet-capability-requirements.v0.1.json",
+    "docs/architecture/registries/arcnet-capability-state-evaluator.v0.1.json"
+  ],
+  "runtime_files": [
+    "apps/web/src/lib/capabilities/verifiable.ts",
+    "apps/web/src/lib/capabilities/verifiable.demo.ts",
+    "apps/web/src/lib/capabilities/verifiable.vectors.ts",
+    "apps/web/src/app/(app)/vitae/capabilities/VerifiableCapabilityEvaluatorDemo.tsx",
+    "apps/web/src/app/(app)/vitae/capabilities/page.tsx"
+  ],
+  "cryptography": {
+    "prototype_algorithm": "ES256 / ECDSA P-256 with SHA-256 using Web Crypto",
+    "payload_digest": "SHA-256 over deterministic canonical JSON subset",
+    "proof_fields": ["alg", "keyId", "keyFingerprint", "payloadDigest", "signature"],
+    "trust_rule": "verification requires an out-of-band trusted issuer anchor matching issuerId, keyId, key fingerprint, required role, capability scope, and system scope",
+    "critical_limit": "the browser demo generates ephemeral keys and in-memory trust anchors; this proves tamper detection and binding only, not durable real-world issuer legitimacy"
+  },
+  "record_kinds": {
+    "evidence": "signed requirement-specific receipt bound to subject, capability, policy digest, evidence kind, validity window, and source receipt IDs",
+    "review": "signed review outcome bound to the selected evidence receipt digests and an explicit review authority basis",
+    "grant": "signed bounded delegation bound to subject, capability, policy digest, selected evidence-set digest, review digest, authority basis, and delegation-chain references",
+    "control": "signed suspend/resume/revoke lifecycle event targeting one exact grant ID and grant digest",
+    "action-registration": "destination-signed registration of the executable action and execution-contract digest",
+    "destination-decision": "destination-signed accept/reject decision bound to one action request, evidence set, review, and grant"
+  },
+  "trust_roles": [
+    "evidence-issuer",
+    "reviewer",
+    "grant-authority",
+    "control-authority",
+    "destination"
+  ],
+  "states": [
+    "INELIGIBLE",
+    "ELIGIBLE",
+    "REVIEWED",
+    "GRANTED",
+    "ACTIVE",
+    "SUSPENDED",
+    "REVOKED",
+    "EXPIRED"
+  ],
+  "state_precedence": [
+    "eligibility failure",
+    "review pending",
+    "grant pending",
+    "revocation",
+    "expiry",
+    "suspension",
+    "destination execution pending",
+    "active"
+  ],
+  "binding_requirements": [
+    "schema version",
+    "record ID",
+    "issuer ID",
+    "subject ID",
+    "policy digest",
+    "capability ID",
+    "destination system",
+    "capability verb",
+    "resource scope",
+    "validity window",
+    "record-kind-specific authority or source fields"
+  ],
+  "destination_execution": {
+    "registered_action_source": "trusted destination signer only",
+    "acceptance_source": "trusted destination signer only",
+    "acceptance_binding": [
+      "actionRequestId",
+      "actionId",
+      "evidenceSetDigest",
+      "reviewDigest",
+      "grantDigest"
+    ],
+    "law": "A Grant Makes an Action Eligible for Execution; the Destination Still Owns Acceptance."
+  },
+  "revocation_model": {
+    "form": "signed lifecycle event; original grant is never rewritten",
+    "controls": ["suspend", "resume", "revoke"],
+    "target_binding": ["targetGrantId", "targetGrantDigest"],
+    "revocation_terminal_for_selected_grant": true,
+    "temporary_suspension_may_include_until": true
+  },
+  "forbidden_authority_inputs": [
+    "current Vitae navigation position",
+    "Grade index or face illumination",
+    "Architect/Wizard/Magus title display",
+    "icosahedron, octahedron, junction, cube, or stella alignment"
+  ],
+  "test_vectors": [
+    "empty records -> INELIGIBLE",
+    "trusted signed evidence -> ELIGIBLE",
+    "evidence-bound signed review -> REVIEWED",
+    "policy/evidence/review-bound signed grant -> GRANTED",
+    "destination-signed action registration and acceptance -> ACTIVE",
+    "signed suspension -> SUSPENDED",
+    "signed revocation -> REVOKED",
+    "expired signed grant -> EXPIRED",
+    "tampered evidence signature -> INELIGIBLE",
+    "missing evidence issuer trust anchor -> INELIGIBLE",
+    "missing destination trust role -> GRANTED"
+  ],
+  "production_deferred": [
+    "durable issuer registry and governance of trust-anchor enrollment",
+    "hardware/device-owned non-exportable private-key custody",
+    "key rotation and compromised-key recovery",
+    "distributed revocation and suspension discovery",
+    "replay/nonce and action-request uniqueness registry",
+    "delegation-chain legitimacy validation beyond signed string references",
+    "persistent receipt storage and local-first synchronization",
+    "optional canonical settlement/finality for actions that separately require it"
+  ],
+  "candidate_laws": [
+    "Signature Is Integrity, Not Authority.",
+    "Trust Anchor Before Trust Claim.",
+    "Policy Digest Before Grant Reuse.",
+    "Evidence Receipt Is a Claim About a Requirement, Not a Score About a Person.",
+    "A Grant Must Bind Subject, Verb, Scope, Policy, and Authority Basis.",
+    "Revocation Is an Event, Not a Rewrite.",
+    "Destination Owns Execution Acceptance.",
+    "Cryptographic Validity Does Not Equal Legitimacy.",
+    "Geometry Remains Outside the Authorization Payload."
+  ]
+}
