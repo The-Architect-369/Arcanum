@@ -1,0 +1,67 @@
+{
+  "id": "arcnet.authorization-gate.v0.2",
+  "status": "design-candidate",
+  "scope": "Creation Era capability authorization enforcement seam",
+  "input": {
+    "policy": "action-specific CapabilityPolicy",
+    "subject": "sovereign identity subject identifier",
+    "actionRequest": "destination-bound action request identifier",
+    "trustAnchors": "issuer key + role + capability + system trust constraints",
+    "records": [
+      "signed evidence receipts",
+      "signed review receipt",
+      "signed bounded grant",
+      "signed lifecycle controls",
+      "destination-signed action registration",
+      "destination-signed acceptance or rejection"
+    ]
+  },
+  "cryptographic_envelope": {
+    "record_schema": "arcanum.capability-record.v0.2",
+    "signature_algorithm": "ES256",
+    "digest": "SHA-256 over canonical JSON",
+    "key_binding": [
+      "issuerId",
+      "keyId",
+      "keyFingerprint",
+      "trusted public JWK"
+    ]
+  },
+  "decision": {
+    "allow_condition": "verified evaluator state is exactly ACTIVE",
+    "otherwise": "DENY",
+    "reason_codes": [
+      "ACTIVE_VERIFIED",
+      "ELIGIBILITY_UNSATISFIED",
+      "REVIEW_REQUIRED",
+      "GRANT_REQUIRED",
+      "GRANT_SUSPENDED",
+      "GRANT_REVOKED",
+      "GRANT_EXPIRED",
+      "EXECUTION_PATH_INCOMPLETE",
+      "VERIFICATION_ERROR"
+    ]
+  },
+  "authority_invariants": [
+    "eligibility evidence cannot itself grant authority",
+    "review cannot itself grant authority",
+    "a grant cannot bypass missing eligibility or required review",
+    "suspension, revocation, and expiry deny execution",
+    "destination acceptance is destination-owned",
+    "verification errors fail closed",
+    "Vitae position, Grade display, titles, geometry, and junction alignment are non-authorizing inputs",
+    "no record may broaden capability scope beyond the registered action policy"
+  ],
+  "implementation": {
+    "verifier": "apps/web/src/lib/capabilities/verifiable.ts",
+    "enforcement_gate": "apps/web/src/lib/capabilities/authorization-gate.ts",
+    "gate_vectors": "apps/web/src/lib/capabilities/authorization-gate.vectors.ts",
+    "demo_surface": "/vitae/capabilities"
+  },
+  "promotion": {
+    "canonical": false,
+    "merge": false,
+    "termux_repo_index_refresh_required": true,
+    "termux_verify_sync_required": true
+  }
+}
