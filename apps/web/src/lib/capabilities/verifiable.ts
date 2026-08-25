@@ -288,8 +288,14 @@ function utf8(value: string): Uint8Array {
   return new TextEncoder().encode(value);
 }
 
+function cryptoBuffer(bytes: Uint8Array): ArrayBuffer {
+  const buffer = new ArrayBuffer(bytes.byteLength);
+  new Uint8Array(buffer).set(bytes);
+  return buffer;
+}
+
 export async function digestCanonicalJson(value: unknown): Promise<string> {
-  const hash = await crypto.subtle.digest('SHA-256', utf8(canonicalJson(value)));
+  const hash = await crypto.subtle.digest('SHA-256', cryptoBuffer(utf8(canonicalJson(value))));
   return `sha256:${bytesToBase64Url(new Uint8Array(hash))}`;
 }
 
@@ -352,7 +358,7 @@ export async function signCapabilityRecord<TPayload extends CapabilityRecordPayl
   const signature = await crypto.subtle.sign(
     { name: 'ECDSA', hash: 'SHA-256' },
     signer.privateKey,
-    utf8(serialized),
+    cryptoBuffer(utf8(serialized)),
   );
 
   return {
@@ -494,8 +500,8 @@ export async function inspectCapabilityRecord(
       const verified = await crypto.subtle.verify(
         { name: 'ECDSA', hash: 'SHA-256' },
         importedKey,
-        base64UrlToBytes(record.proof.signature),
-        utf8(canonicalJson(record.payload)),
+        cryptoBuffer(base64UrlToBytes(record.proof.signature)),
+        cryptoBuffer(utf8(canonicalJson(record.payload))),
       );
       if (!verified) errors.push('Cryptographic signature verification failed.');
     } catch (error) {
