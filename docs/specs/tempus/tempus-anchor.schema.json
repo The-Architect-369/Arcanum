@@ -1,0 +1,209 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:arcanum:ce-w01:tempus-anchor:0.1.0",
+  "title": "TempusAnchor",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "anchorId",
+    "schemaVersion",
+    "capturedAt",
+    "timeScale",
+    "source",
+    "observer",
+    "frame",
+    "observation",
+    "precision",
+    "provenance",
+    "interpretation"
+  ],
+  "properties": {
+    "anchorId": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128,
+      "pattern": "^[A-Za-z0-9._:-]+$"
+    },
+    "schemaVersion": { "const": "0.1.0" },
+    "capturedAt": { "type": "string", "format": "date-time" },
+    "timeScale": { "type": "string", "minLength": 1, "maxLength": 32 },
+    "source": { "$ref": "#/$defs/source" },
+    "observer": {
+      "anyOf": [
+        { "type": "null" },
+        { "$ref": "#/$defs/observer" }
+      ]
+    },
+    "frame": {
+      "anyOf": [
+        { "type": "null" },
+        { "$ref": "#/$defs/frame" }
+      ]
+    },
+    "observation": { "$ref": "#/$defs/observation" },
+    "precision": { "$ref": "#/$defs/precision" },
+    "provenance": { "$ref": "#/$defs/provenance" },
+    "interpretation": { "type": "null" }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "source": {
+            "properties": { "kind": { "const": "ephemeris" } },
+            "required": ["kind"]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "observer": { "$ref": "#/$defs/observer" },
+          "frame": { "$ref": "#/$defs/frame" },
+          "observation": {
+            "allOf": [
+              { "$ref": "#/$defs/observation" },
+              { "required": ["target", "coordinateType"] }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "source": {
+            "properties": { "kind": { "enum": ["system-clock", "monotonic-clock"] } },
+            "required": ["kind"]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "observation": {
+            "allOf": [
+              { "$ref": "#/$defs/observation" },
+              { "properties": { "kind": { "const": "clock" } } }
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "provider", "model", "version", "sourceId"],
+      "properties": {
+        "kind": {
+          "enum": [
+            "system-clock",
+            "monotonic-clock",
+            "ephemeris",
+            "manual-factual-entry"
+          ]
+        },
+        "provider": { "type": ["string", "null"], "maxLength": 256 },
+        "model": { "type": ["string", "null"], "maxLength": 256 },
+        "version": { "type": ["string", "null"], "maxLength": 128 },
+        "sourceId": { "type": ["string", "null"], "maxLength": 256 }
+      }
+    },
+    "observer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "body",
+        "site",
+        "latitudeDeg",
+        "longitudeDeg",
+        "altitudeM"
+      ],
+      "properties": {
+        "kind": {
+          "enum": [
+            "body-center",
+            "topocentric-site",
+            "body-fixed-site",
+            "other-registered"
+          ]
+        },
+        "body": { "type": ["string", "null"], "maxLength": 128 },
+        "site": { "type": ["string", "null"], "maxLength": 256 },
+        "latitudeDeg": { "type": ["number", "null"], "minimum": -90, "maximum": 90 },
+        "longitudeDeg": { "type": ["number", "null"], "minimum": -180, "maximum": 180 },
+        "altitudeM": { "type": ["number", "null"] }
+      }
+    },
+    "frame": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["family", "center", "axes", "referencePlane", "epochRule"],
+      "properties": {
+        "family": { "type": "string", "minLength": 1, "maxLength": 128 },
+        "center": { "type": ["string", "null"], "maxLength": 128 },
+        "axes": { "type": ["string", "null"], "maxLength": 256 },
+        "referencePlane": { "type": ["string", "null"], "maxLength": 128 },
+        "epochRule": { "type": "string", "minLength": 1, "maxLength": 128 }
+      }
+    },
+    "observation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "target",
+        "coordinateType",
+        "longitudeDeg",
+        "latitudeDeg",
+        "distance",
+        "distanceUnit",
+        "additionalProviderFields"
+      ],
+      "properties": {
+        "kind": {
+          "enum": ["clock", "astronomical-coordinate", "manual-factual"]
+        },
+        "target": { "type": ["string", "null"], "maxLength": 128 },
+        "coordinateType": { "type": ["string", "null"], "maxLength": 128 },
+        "longitudeDeg": { "type": ["number", "null"], "minimum": 0, "exclusiveMaximum": 360 },
+        "latitudeDeg": { "type": ["number", "null"], "minimum": -90, "maximum": 90 },
+        "distance": { "type": ["number", "null"], "minimum": 0 },
+        "distanceUnit": { "type": ["string", "null"], "maxLength": 64 },
+        "additionalProviderFields": { "type": "object" }
+      }
+    },
+    "precision": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["timeResolution", "coordinateResolution", "uncertainty", "notes"],
+      "properties": {
+        "timeResolution": { "type": ["string", "null"], "maxLength": 128 },
+        "coordinateResolution": { "type": ["string", "null"], "maxLength": 128 },
+        "uncertainty": { "type": ["string", "number", "null"] },
+        "notes": { "type": ["string", "null"], "maxLength": 512 }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sourceUri",
+        "requestDigest",
+        "softwareVersion",
+        "backend",
+        "fallbackMode",
+        "originalFieldsRetained"
+      ],
+      "properties": {
+        "sourceUri": { "type": ["string", "null"], "maxLength": 2048 },
+        "requestDigest": { "type": ["string", "null"], "maxLength": 256 },
+        "softwareVersion": { "type": ["string", "null"], "maxLength": 128 },
+        "backend": { "type": ["string", "null"], "maxLength": 256 },
+        "fallbackMode": { "type": ["string", "null"], "maxLength": 256 },
+        "originalFieldsRetained": { "type": "boolean" }
+      }
+    }
+  }
+}
