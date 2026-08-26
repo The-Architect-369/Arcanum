@@ -2,7 +2,7 @@
   "name": "arcanum",
   "private": true,
   "version": "1.0.0",
-  "description": "Arcanum monorepo (apps: web; contracts: foundry/hardhat).",
+  "description": "Arcanum monorepo (web application and ARCnet chain).",
   "packageManager": "pnpm@9.10.0",
   "engines": {
     "node": "24.x"
@@ -12,8 +12,6 @@
     "build": "pnpm -C apps/web build",
     "lint": "pnpm -C apps/web lint",
     "typecheck": "pnpm -C apps/web typecheck",
-    "contracts:compile": "pnpm -C contracts compile",
-    "contracts:clean": "pnpm -C contracts clean",
     "deploy:web": "bash scripts/vercel-setup-web.sh",
     "fmt": "prettier -w .",
     "chain:build": "make -C chains/arcanum build",
