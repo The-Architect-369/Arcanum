@@ -1,0 +1,80 @@
+{
+  "vectorSet": "arcnet-coordinate-frame-falsification",
+  "version": "0.1.0",
+  "registry": "./arcnet-coordinate-frame.v0.1.json",
+  "tolerance": 1e-12,
+  "expectations": {
+    "F1": {
+      "cubeVertexCount": 8,
+      "coordinateValues": [-1, 1]
+    },
+    "F2": {
+      "tetrahedronCount": 2,
+      "verticesPerTetrahedron": 4,
+      "tetrahedronEdge": 2.8284271247461903
+    },
+    "F3": {
+      "octahedronVertexCount": 6,
+      "octahedronEdge": 1.4142135623730951,
+      "octahedronCircumradius": 1.0
+    },
+    "F4": {
+      "origin": [0, 0, 0],
+      "originIsSystem": false,
+      "originAuthorityEffect": "none"
+    },
+    "F5": {
+      "transport": {
+        "translation": [3, -2, 5],
+        "scale": 2.5,
+        "rotation": [
+          [0, -1, 0],
+          [1, 0, 0],
+          [0, 0, 1]
+        ]
+      }
+    },
+    "F6": {
+      "optionalOverlaysMayBeRemoved": true
+    },
+    "F7": {
+      "cubeIcosahedronRelation": "embedding",
+      "cubeIcosahedronDuality": false
+    },
+    "F8": {
+      "normalizedUnit": "unitless",
+      "seedOfLifeExactMappingSpecified": false
+    },
+    "F9": {
+      "geometryFreeEquivalentRequired": true
+    },
+    "F10": {
+      "forbiddenAuthorityInputs": [
+        "coordinate",
+        "distance",
+        "orientation",
+        "animation-state",
+        "tempus-phase",
+        "camera-pose",
+        "overlay-state"
+      ]
+    }
+  },
+  "negativeCases": [
+    {
+      "id": "false-duality",
+      "mutation": "optionalOverlays.icosahedron.duality=true",
+      "expectedFailure": "F7"
+    },
+    {
+      "id": "center-becomes-system",
+      "mutation": "origin.isSystem=true",
+      "expectedFailure": "F4"
+    },
+    {
+      "id": "seed-mapping-pretended-exact",
+      "mutation": "optionalOverlays.seedOfLife.exactMappingSpecified=true",
+      "expectedFailure": "F8"
+    }
+  ]
+}
