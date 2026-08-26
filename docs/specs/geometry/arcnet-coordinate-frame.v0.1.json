@@ -1,0 +1,118 @@
+{
+  "$schema": "./arcnet-coordinate-frame.schema.json",
+  "frameId": "arcnet-coordinate-frame",
+  "schemaVersion": "0.1.0",
+  "status": "implementation-candidate",
+  "coordinateDomain": "normalized-euclidean",
+  "unit": "unitless",
+  "authorityEffect": "none",
+  "constants": {
+    "phi": {
+      "exact": "(1+sqrt(5))/2",
+      "decimal": 1.618033988749895
+    },
+    "tolerance": 1e-12
+  },
+  "origin": {
+    "id": "identity-origin",
+    "q": [0, 0, 0],
+    "role": "human-identity-presentation-center",
+    "isSystem": false,
+    "authorityEffect": "none"
+  },
+  "outerCube": {
+    "edge": { "exact": "2", "decimal": 2.0 },
+    "circumradius": { "exact": "sqrt(3)", "decimal": 1.7320508075688772 },
+    "vertices": [
+      { "id": "c_ppp", "q": [1, 1, 1] },
+      { "id": "c_pnn", "q": [1, -1, -1] },
+      { "id": "c_npn", "q": [-1, 1, -1] },
+      { "id": "c_nnp", "q": [-1, -1, 1] },
+      { "id": "c_nnn", "q": [-1, -1, -1] },
+      { "id": "c_npp", "q": [-1, 1, 1] },
+      { "id": "c_pnp", "q": [1, -1, 1] },
+      { "id": "c_ppn", "q": [1, 1, -1] }
+    ]
+  },
+  "tetrahedra": [
+    {
+      "id": "G",
+      "membershipRule": "x*y*z=+1",
+      "edge": { "exact": "2*sqrt(2)", "decimal": 2.8284271247461903 },
+      "vertexIds": ["c_ppp", "c_pnn", "c_npn", "c_nnp"]
+    },
+    {
+      "id": "S",
+      "membershipRule": "x*y*z=-1",
+      "edge": { "exact": "2*sqrt(2)", "decimal": 2.8284271247461903 },
+      "vertexIds": ["c_nnn", "c_npp", "c_pnp", "c_ppn"]
+    }
+  ],
+  "innerOctahedron": {
+    "role": "hope-centered-inner-rendering",
+    "edge": { "exact": "sqrt(2)", "decimal": 1.4142135623730951 },
+    "circumradius": { "exact": "1", "decimal": 1.0 },
+    "vertices": [
+      { "id": "o_px", "q": [1, 0, 0] },
+      { "id": "o_nx", "q": [-1, 0, 0] },
+      { "id": "o_py", "q": [0, 1, 0] },
+      { "id": "o_ny", "q": [0, -1, 0] },
+      { "id": "o_pz", "q": [0, 0, 1] },
+      { "id": "o_nz", "q": [0, 0, -1] }
+    ],
+    "coordinateSemantics": "coordinates-only; semantic assignments require independent registry"
+  },
+  "distanceClasses": [
+    { "exact": "2", "decimal": 2.0, "pairCount": 12 },
+    { "exact": "2*sqrt(2)", "decimal": 2.8284271247461903, "pairCount": 12 },
+    { "exact": "2*sqrt(3)", "decimal": 3.4641016151377544, "pairCount": 4 }
+  ],
+  "optionalOverlays": {
+    "icosahedron": {
+      "enabledByDefault": false,
+      "relationToCube": "embedding",
+      "duality": false,
+      "edge": { "exact": "2/phi", "decimal": 1.2360679774997896 },
+      "circumradius": { "exact": "sqrt(3-phi)", "decimal": 1.1755705045849463 },
+      "vertices": [
+        { "id": "i_01", "q": [0, 0.618033988749895, 1] },
+        { "id": "i_02", "q": [0, 0.618033988749895, -1] },
+        { "id": "i_03", "q": [0, -0.618033988749895, 1] },
+        { "id": "i_04", "q": [0, -0.618033988749895, -1] },
+        { "id": "i_05", "q": [0.618033988749895, 1, 0] },
+        { "id": "i_06", "q": [0.618033988749895, -1, 0] },
+        { "id": "i_07", "q": [-0.618033988749895, 1, 0] },
+        { "id": "i_08", "q": [-0.618033988749895, -1, 0] },
+        { "id": "i_09", "q": [1, 0, 0.618033988749895] },
+        { "id": "i_10", "q": [1, 0, -0.618033988749895] },
+        { "id": "i_11", "q": [-1, 0, 0.618033988749895] },
+        { "id": "i_12", "q": [-1, 0, -0.618033988749895] }
+      ],
+      "authorityEffect": "none"
+    },
+    "seedOfLife": {
+      "enabledByDefault": false,
+      "relationToOctahedron": "unratified-projection-overlay",
+      "exactMappingSpecified": false,
+      "authorityEffect": "none"
+    }
+  },
+  "transport": {
+    "formula": "X_i=P+s*R*q_i",
+    "scaleConstraint": "s>0",
+    "rotationConstraint": "R orthonormal",
+    "semanticMutationAllowed": false,
+    "authorizationInput": false
+  },
+  "geometryFreeEquivalentRequired": true,
+  "forbiddenAuthorityInputs": [
+    "coordinate",
+    "distance",
+    "orientation",
+    "animation-state",
+    "tempus-phase",
+    "camera-pose",
+    "overlay-state"
+  ],
+  "falsificationIds": ["F1", "F2", "F3", "F4", "F5", "F6", "F7", "F8", "F9", "F10"]
+}
