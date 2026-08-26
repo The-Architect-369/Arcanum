@@ -1,0 +1,319 @@
+{
+  "vectorSet": "tempus-anchor-serialization-and-falsification",
+  "version": "0.1.0",
+  "schema": "./tempus-anchor.schema.json",
+  "canonicalSerialization": {
+    "encoding": "UTF-8",
+    "json": "RFC 8259 object encoded with lexicographically sorted keys, no insignificant whitespace, ensure_ascii=false",
+    "digest": "SHA-256 over canonical JSON bytes"
+  },
+  "semanticAssertions": {
+    "automaticProtocolTransaction": false,
+    "astronomicalPositionMayAuthorize": false,
+    "timingMayScoreWorth": false,
+    "preciseLocationRequiredForClock": false,
+    "geometryRequiredForUnderstanding": false
+  },
+  "valid": [
+    {
+      "id": "clock-offline",
+      "covers": ["T1", "T2", "T5", "T8", "T10"],
+      "anchor": {
+        "anchorId": "tempus-fixture-clock-001",
+        "schemaVersion": "0.1.0",
+        "capturedAt": "2026-08-26T06:00:00Z",
+        "timeScale": "UTC",
+        "source": {
+          "kind": "system-clock",
+          "provider": "fixture",
+          "model": null,
+          "version": "1",
+          "sourceId": "fixture-system-clock"
+        },
+        "observer": null,
+        "frame": null,
+        "observation": {
+          "kind": "clock",
+          "target": null,
+          "coordinateType": null,
+          "longitudeDeg": null,
+          "latitudeDeg": null,
+          "distance": null,
+          "distanceUnit": null,
+          "additionalProviderFields": {}
+        },
+        "precision": {
+          "timeResolution": "1 ms",
+          "coordinateResolution": null,
+          "uncertainty": null,
+          "notes": "Deterministic structural fixture; not a live clock claim."
+        },
+        "provenance": {
+          "sourceUri": null,
+          "requestDigest": null,
+          "softwareVersion": "ce-w01-fixture",
+          "backend": "fixture",
+          "fallbackMode": null,
+          "originalFieldsRetained": false
+        },
+        "interpretation": null
+      },
+      "canonicalSha256": "936eb788f23fcabf78372e4b5ced465c94bd9bbbf4e9a2a290317cdf0b91ef5c"
+    },
+    {
+      "id": "ephemeris-provenance",
+      "covers": ["T3", "T4", "T6", "T9", "T10"],
+      "anchor": {
+        "anchorId": "tempus-fixture-ephemeris-001",
+        "schemaVersion": "0.1.0",
+        "capturedAt": "2026-08-26T06:00:00Z",
+        "timeScale": "UTC",
+        "source": {
+          "kind": "ephemeris",
+          "provider": "fixture",
+          "model": "synthetic-structural-vector",
+          "version": "1",
+          "sourceId": "fixture-ephemeris"
+        },
+        "observer": {
+          "kind": "body-center",
+          "body": "Earth",
+          "site": null,
+          "latitudeDeg": null,
+          "longitudeDeg": null,
+          "altitudeM": null
+        },
+        "frame": {
+          "family": "geocentric-ecliptic-apparent",
+          "center": "Earth geocenter",
+          "axes": "provider-declared",
+          "referencePlane": "ecliptic-of-date",
+          "epochRule": "of-date"
+        },
+        "observation": {
+          "kind": "astronomical-coordinate",
+          "target": "Sun",
+          "coordinateType": "apparent-ecliptic-longitude-latitude",
+          "longitudeDeg": 150.0,
+          "latitudeDeg": 0.0,
+          "distance": 1.0,
+          "distanceUnit": "au",
+          "additionalProviderFields": {
+            "fixture": true
+          }
+        },
+        "precision": {
+          "timeResolution": "1 s",
+          "coordinateResolution": "0.001 deg",
+          "uncertainty": "fixture-only",
+          "notes": "Synthetic structural fixture; values are not represented as a live astronomical observation."
+        },
+        "provenance": {
+          "sourceUri": "urn:arcanum:fixture:ephemeris",
+          "requestDigest": "fixture-request-001",
+          "softwareVersion": "ce-w01-fixture",
+          "backend": "fixture",
+          "fallbackMode": null,
+          "originalFieldsRetained": true
+        },
+        "interpretation": null
+      },
+      "canonicalSha256": "9f8c910ca2a1a7203a0a70e0e38e2c0b1b8fa9b4c6c0eac449a78fb483d28336"
+    }
+  ],
+  "invalid": [
+    {
+      "id": "ephemeris-missing-frame",
+      "expectedFailure": "T3",
+      "anchor": {
+        "anchorId": "tempus-fixture-ephemeris-invalid-001",
+        "schemaVersion": "0.1.0",
+        "capturedAt": "2026-08-26T06:00:00Z",
+        "timeScale": "UTC",
+        "source": {
+          "kind": "ephemeris",
+          "provider": "fixture",
+          "model": "synthetic-structural-vector",
+          "version": "1",
+          "sourceId": "fixture-ephemeris"
+        },
+        "observer": {
+          "kind": "body-center",
+          "body": "Earth",
+          "site": null,
+          "latitudeDeg": null,
+          "longitudeDeg": null,
+          "altitudeM": null
+        },
+        "frame": null,
+        "observation": {
+          "kind": "astronomical-coordinate",
+          "target": "Sun",
+          "coordinateType": "apparent-ecliptic-longitude-latitude",
+          "longitudeDeg": 150.0,
+          "latitudeDeg": 0.0,
+          "distance": 1.0,
+          "distanceUnit": "au",
+          "additionalProviderFields": { "fixture": true }
+        },
+        "precision": {
+          "timeResolution": "1 s",
+          "coordinateResolution": "0.001 deg",
+          "uncertainty": "fixture-only",
+          "notes": null
+        },
+        "provenance": {
+          "sourceUri": "urn:arcanum:fixture:ephemeris",
+          "requestDigest": "fixture-request-invalid-001",
+          "softwareVersion": "ce-w01-fixture",
+          "backend": "fixture",
+          "fallbackMode": null,
+          "originalFieldsRetained": true
+        },
+        "interpretation": null
+      }
+    },
+    {
+      "id": "clock-collects-topocentric-location",
+      "expectedFailure": "T8",
+      "anchor": {
+        "anchorId": "tempus-fixture-clock-invalid-location",
+        "schemaVersion": "0.1.0",
+        "capturedAt": "2026-08-26T06:00:00Z",
+        "timeScale": "UTC",
+        "source": {
+          "kind": "system-clock",
+          "provider": "fixture",
+          "model": null,
+          "version": "1",
+          "sourceId": "fixture-system-clock"
+        },
+        "observer": {
+          "kind": "topocentric-site",
+          "body": "Earth",
+          "site": "fixture",
+          "latitudeDeg": 1.0,
+          "longitudeDeg": 2.0,
+          "altitudeM": 3.0
+        },
+        "frame": null,
+        "observation": {
+          "kind": "clock",
+          "target": null,
+          "coordinateType": null,
+          "longitudeDeg": null,
+          "latitudeDeg": null,
+          "distance": null,
+          "distanceUnit": null,
+          "additionalProviderFields": {}
+        },
+        "precision": {
+          "timeResolution": "1 ms",
+          "coordinateResolution": null,
+          "uncertainty": null,
+          "notes": null
+        },
+        "provenance": {
+          "sourceUri": null,
+          "requestDigest": null,
+          "softwareVersion": "ce-w01-fixture",
+          "backend": "fixture",
+          "fallbackMode": null,
+          "originalFieldsRetained": false
+        },
+        "interpretation": null
+      }
+    },
+    {
+      "id": "anchor-contains-authorization-state",
+      "expectedFailure": "T6",
+      "anchor": {
+        "anchorId": "tempus-fixture-clock-invalid-authority",
+        "schemaVersion": "0.1.0",
+        "capturedAt": "2026-08-26T06:00:00Z",
+        "timeScale": "UTC",
+        "source": {
+          "kind": "system-clock",
+          "provider": "fixture",
+          "model": null,
+          "version": "1",
+          "sourceId": "fixture-system-clock"
+        },
+        "observer": null,
+        "frame": null,
+        "observation": {
+          "kind": "clock",
+          "target": null,
+          "coordinateType": null,
+          "longitudeDeg": null,
+          "latitudeDeg": null,
+          "distance": null,
+          "distanceUnit": null,
+          "additionalProviderFields": {}
+        },
+        "precision": {
+          "timeResolution": "1 ms",
+          "coordinateResolution": null,
+          "uncertainty": null,
+          "notes": null
+        },
+        "provenance": {
+          "sourceUri": null,
+          "requestDigest": null,
+          "softwareVersion": "ce-w01-fixture",
+          "backend": "fixture",
+          "fallbackMode": null,
+          "originalFieldsRetained": false
+        },
+        "interpretation": null,
+        "capability": "unlocked"
+      }
+    },
+    {
+      "id": "anchor-contains-interpretation",
+      "expectedFailure": "T6",
+      "anchor": {
+        "anchorId": "tempus-fixture-clock-invalid-interpretation",
+        "schemaVersion": "0.1.0",
+        "capturedAt": "2026-08-26T06:00:00Z",
+        "timeScale": "UTC",
+        "source": {
+          "kind": "system-clock",
+          "provider": "fixture",
+          "model": null,
+          "version": "1",
+          "sourceId": "fixture-system-clock"
+        },
+        "observer": null,
+        "frame": null,
+        "observation": {
+          "kind": "clock",
+          "target": null,
+          "coordinateType": null,
+          "longitudeDeg": null,
+          "latitudeDeg": null,
+          "distance": null,
+          "distanceUnit": null,
+          "additionalProviderFields": {}
+        },
+        "precision": {
+          "timeResolution": "1 ms",
+          "coordinateResolution": null,
+          "uncertainty": null,
+          "notes": null
+        },
+        "provenance": {
+          "sourceUri": null,
+          "requestDigest": null,
+          "softwareVersion": "ce-w01-fixture",
+          "backend": "fixture",
+          "fallbackMode": null,
+          "originalFieldsRetained": false
+        },
+        "interpretation": {
+          "label": "synthetic-symbolic-overlay"
+        }
+      }
+    }
+  ]
+}
