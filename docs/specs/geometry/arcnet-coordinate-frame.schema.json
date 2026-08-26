@@ -1,0 +1,215 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:arcanum:ce-w01:arcnet-coordinate-frame:0.1.0",
+  "title": "ARCnet Coordinate Frame Registry",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "frameId",
+    "schemaVersion",
+    "status",
+    "coordinateDomain",
+    "unit",
+    "authorityEffect",
+    "constants",
+    "origin",
+    "outerCube",
+    "tetrahedra",
+    "innerOctahedron",
+    "distanceClasses",
+    "optionalOverlays",
+    "transport",
+    "geometryFreeEquivalentRequired",
+    "forbiddenAuthorityInputs",
+    "falsificationIds"
+  ],
+  "properties": {
+    "$schema": { "type": "string" },
+    "frameId": { "const": "arcnet-coordinate-frame" },
+    "schemaVersion": { "const": "0.1.0" },
+    "status": { "const": "implementation-candidate" },
+    "coordinateDomain": { "const": "normalized-euclidean" },
+    "unit": { "const": "unitless" },
+    "authorityEffect": { "const": "none" },
+    "constants": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["phi", "tolerance"],
+      "properties": {
+        "phi": { "$ref": "#/$defs/exactNumber" },
+        "tolerance": { "type": "number", "exclusiveMinimum": 0, "maximum": 0.000001 }
+      }
+    },
+    "origin": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "q", "role", "isSystem", "authorityEffect"],
+      "properties": {
+        "id": { "const": "identity-origin" },
+        "q": { "$ref": "#/$defs/vector3" },
+        "role": { "const": "human-identity-presentation-center" },
+        "isSystem": { "const": false },
+        "authorityEffect": { "const": "none" }
+      }
+    },
+    "outerCube": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["edge", "circumradius", "vertices"],
+      "properties": {
+        "edge": { "$ref": "#/$defs/exactNumber" },
+        "circumradius": { "$ref": "#/$defs/exactNumber" },
+        "vertices": {
+          "type": "array",
+          "minItems": 8,
+          "maxItems": 8,
+          "items": { "$ref": "#/$defs/vertex" }
+        }
+      }
+    },
+    "tetrahedra": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "membershipRule", "edge", "vertexIds"],
+        "properties": {
+          "id": { "enum": ["G", "S"] },
+          "membershipRule": { "type": "string" },
+          "edge": { "$ref": "#/$defs/exactNumber" },
+          "vertexIds": {
+            "type": "array",
+            "minItems": 4,
+            "maxItems": 4,
+            "uniqueItems": true,
+            "items": { "type": "string" }
+          }
+        }
+      }
+    },
+    "innerOctahedron": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["role", "edge", "circumradius", "vertices", "coordinateSemantics"],
+      "properties": {
+        "role": { "const": "hope-centered-inner-rendering" },
+        "edge": { "$ref": "#/$defs/exactNumber" },
+        "circumradius": { "$ref": "#/$defs/exactNumber" },
+        "vertices": {
+          "type": "array",
+          "minItems": 6,
+          "maxItems": 6,
+          "items": { "$ref": "#/$defs/vertex" }
+        },
+        "coordinateSemantics": { "type": "string", "minLength": 1 }
+      }
+    },
+    "distanceClasses": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["exact", "decimal", "pairCount"],
+        "properties": {
+          "exact": { "type": "string" },
+          "decimal": { "type": "number", "exclusiveMinimum": 0 },
+          "pairCount": { "type": "integer", "minimum": 1 }
+        }
+      }
+    },
+    "optionalOverlays": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["icosahedron", "seedOfLife"],
+      "properties": {
+        "icosahedron": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["enabledByDefault", "relationToCube", "duality", "edge", "circumradius", "vertices", "authorityEffect"],
+          "properties": {
+            "enabledByDefault": { "const": false },
+            "relationToCube": { "const": "embedding" },
+            "duality": { "const": false },
+            "edge": { "$ref": "#/$defs/exactNumber" },
+            "circumradius": { "$ref": "#/$defs/exactNumber" },
+            "vertices": {
+              "type": "array",
+              "minItems": 12,
+              "maxItems": 12,
+              "items": { "$ref": "#/$defs/vertex" }
+            },
+            "authorityEffect": { "const": "none" }
+          }
+        },
+        "seedOfLife": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["enabledByDefault", "relationToOctahedron", "exactMappingSpecified", "authorityEffect"],
+          "properties": {
+            "enabledByDefault": { "const": false },
+            "relationToOctahedron": { "const": "unratified-projection-overlay" },
+            "exactMappingSpecified": { "const": false },
+            "authorityEffect": { "const": "none" }
+          }
+        }
+      }
+    },
+    "transport": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["formula", "scaleConstraint", "rotationConstraint", "semanticMutationAllowed", "authorizationInput"],
+      "properties": {
+        "formula": { "const": "X_i=P+s*R*q_i" },
+        "scaleConstraint": { "const": "s>0" },
+        "rotationConstraint": { "const": "R orthonormal" },
+        "semanticMutationAllowed": { "const": false },
+        "authorizationInput": { "const": false }
+      }
+    },
+    "geometryFreeEquivalentRequired": { "const": true },
+    "forbiddenAuthorityInputs": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string" }
+    },
+    "falsificationIds": {
+      "type": "array",
+      "minItems": 10,
+      "maxItems": 10,
+      "uniqueItems": true,
+      "items": { "pattern": "^F(?:10|[1-9])$" }
+    }
+  },
+  "$defs": {
+    "vector3": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "items": { "type": "number" }
+    },
+    "vertex": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "q"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "q": { "$ref": "#/$defs/vector3" }
+      }
+    },
+    "exactNumber": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["exact", "decimal"],
+      "properties": {
+        "exact": { "type": "string", "minLength": 1 },
+        "decimal": { "type": "number" }
+      }
+    }
+  }
+}
