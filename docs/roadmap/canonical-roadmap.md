@@ -3,8 +3,9 @@ title: "Canonical Roadmap"
 status: implementation-candidate
 visibility: public
 phase: "Pre-Genesis"
-wave: "XXIV"
-last_updated: 2026-08-20
+era: "Construction Era"
+wave: "CE-W01"
+last_updated: 2026-08-25
 maintainer: The-Architect-369
 ---
 
@@ -12,7 +13,9 @@ maintainer: The-Architect-369
 
 ## Purpose
 
-This roadmap distinguishes completed repository capability, current canonicalization work, approved future direction, and unresolved institutional or economic design. It does not grant implementation authority by itself.
+This roadmap distinguishes completed repository capability, the historical Wave I–XXIV sequence, the current Construction Era baseline work, approved future direction, and unresolved institutional or economic design. It does not grant implementation authority by itself.
+
+The detailed Construction Era map is defined in `construction-era-roadmap.md`.
 
 ## Roadmap principles
 
@@ -22,146 +25,159 @@ This roadmap distinguishes completed repository capability, current canonicaliza
 - Future vision is not represented as implemented capability.
 - Every promotion requires exact-head verification and explicit Human Architect authorization under the applicable repository protocol.
 - Native ARCnet development must preserve the separation among protocol, local runtime, shell, and hosted applications.
-- Post-Wave-XXIV development proceeds through two mutually dependent spines: **ARCnet Construction** and **Arcanum Embodiment**. Their human-experience and civilizational interpretation is defined in `arcanum-experience-roadmap.md`.
+- Historical Waves I–XXIV remain unchanged.
+- Construction Era numbering restarts locally at Wave 1 and uses identifiers such as `CE-W01` to prevent ambiguity with the historical sequence.
+- Construction development proceeds through three synchronized lanes: **Geometry & Mathematics**, **Embodiment & Visual Experience**, and **Architecture & Technology**.
+- **Tempus** is a cross-lane temporal axis, not a fourth peer development lane.
+- Registries are cross-cutting binding/control fabric, not a fourth development lane.
+- Geometry, symbolic correspondence, timing, and visual projection never create authority merely from symmetry, count, position, or coincidence.
 
 ## Completed capability eras
 
 ### Application and interface foundation
 
-Earlier implementation established the web/PWA Arcanum application, its five flagship families, shared shell patterns, Hope presentation work, mobile-oriented navigation, and production deployment surfaces.
+Earlier implementation established the web/PWA Arcanum application, its flagship families, shared shell patterns, Hope presentation work, mobile-oriented navigation, and production deployment surfaces.
 
 ### Architect repository intelligence
 
-Waves I through XI established progressively stronger repository grounding, indexing, verification, provider evidence, change planning, AST analysis, diagnostics, history, and impact analysis.
+Historical Waves I through XI established progressively stronger repository grounding, indexing, verification, provider evidence, change planning, AST analysis, diagnostics, history, and impact analysis.
 
 ### Controlled change and publication
 
-Waves XII through XVII established isolated patch execution, deterministic candidate commits, guarded branch publication, authorization packaging, and guarded merge execution.
+Historical Waves XII through XVII established isolated patch execution, deterministic candidate commits, guarded branch publication, authorization packaging, and guarded merge execution.
 
 ### Registered agent architecture
 
-Waves XVIII and XIX established the canonical agent registry, plan-only invocation, and bounded read-only repository adapters under explicit permission ceilings.
+Historical Waves XVIII and XIX established the canonical agent registry, plan-only invocation, and bounded read-only repository adapters under explicit permission ceilings.
 
 ### Runtime and production controls
 
-Waves XX and XXI established the Node.js 24 runtime posture and exact-deployment production smoke verification.
+Historical Waves XX and XXI established the Node.js runtime posture and exact-deployment production smoke verification.
 
 ### Architect Workbench
 
-Wave XXII is implemented on `main` and established the browser Workbench plus bounded loopback Termux execution broker.
+Historical Wave XXII established the browser Workbench plus bounded loopback Termux execution broker.
 
 ### Architect Runtime Core
 
-Wave XXIII is implemented on `mobile` and established the local mission, review queue, inactive agent roster, minimized receipt ledger, and private browser-local audit history.
+Historical Wave XXIII established the local mission, review queue, inactive agent roster, minimized receipt ledger, and private browser-local audit history on its implementation branch. Repository status documents remain authoritative for exact promotion state.
 
-Wave XXIII must not be described as promoted to `main` until the repository promotion process completes.
+### Repository canonicalization
+
+Historical Wave XXIV established the repository canonicalization contract, project-status snapshot, roadmap/native-decision baseline, unresolved-design ledgers, experience/civilizational roadmap, repository-index discipline, and exact-head promotion posture.
+
+Wave XXIV closes the historical wave sequence and hands the project into the Construction Era.
+
+## Current era
+
+# Construction Era
+
+Formal era identifier:
+
+```text
+Construction Era
+```
+
+Historical research from `docs/creation-era-architecture-trail` used the working term `Creation Era`. That name is retained as provenance for the exploratory phase and does not replace the formal era name.
 
 ## Current wave
 
-## Wave XXIV — Repository Canonicalization
+# CE-W01 — Sovereign Coordinate & Runtime Foundation
 
 ### Objective
 
-Make the repository self-describing before native-runtime, institutional, treasury, or economic implementation proceeds.
+Define the mathematical coordinate system, embodied projection grammar, temporal anchor contract, and sovereign local-runtime boundaries from which ARCnet native construction can proceed.
 
-### Deliverables
+### Development lanes
 
-- repository canonicalization contract;
-- project-status snapshot;
-- canonical roadmap;
-- locked native architecture decision record;
-- unresolved economics and institutional design ledger;
-- human-experience and civilizational roadmap;
-- evidence-based cleanup findings;
-- deterministic repository-index refresh;
-- exact-head verification and promotion package.
+#### Geometry & Mathematics
 
-### Non-scope
+- reconcile project geometric vocabulary with exact mathematical objects;
+- formalize the ARCnet stellar frame / stellar-octahedral-cube / Merkabah project model;
+- define the sovereign center, coordinate system, transformations, projections, and scale boundaries;
+- reconcile retained Hope, Tempus, Vitae, Tree, Seed, octahedral, tetrahedral/cubic, icosahedral, and related research at their proper scales;
+- establish machine-readable geometry/projection registries and falsification tests;
+- require geometry-free equivalent representation.
 
-- Rust runtime implementation;
-- Android host implementation;
-- tokenomics activation;
-- storage or compute rewards;
-- legal entity formation;
-- governance or treasury mutation.
+#### Embodiment & Visual Experience
 
-### Exit criteria
+- establish Hope-centered visual hierarchy;
+- define mathematical-to-visual projection rather than geometry-inspired approximation;
+- establish visual coordinate, scaling, motion, transition, accessibility, and reduced-motion grammar;
+- define candidate spatial relationships without inventing modules or authority to satisfy geometric capacity.
 
-- current state, future state, and unresolved state are clearly distinguished;
-- all new documents declare authority posture;
-- Wave XXIII branch state is represented exactly;
-- ARCnet Construction and Arcanum Embodiment are represented as parallel, mutually dependent development spines;
-- no runtime behavior changes are present;
-- required local verification is green;
-- Human Architect approves promotion.
+#### Architecture & Technology
 
-## Approved future direction
+- establish Rust local-runtime boundary;
+- establish local identity interfaces;
+- establish protected vault/storage contract;
+- establish local application registry and capability isolation;
+- establish local event and receipt models;
+- establish offline lifecycle and restart verification.
 
-The following sequence is architectural planning, not automatic authorization. Wave numbering may be ratified or adjusted during the Wave XXIV exit review.
+#### Tempus cross-lane axis
 
-### Dual-spine interpretation
+- define the minimal `TempusAnchor` contract;
+- define clock/source/observer/frame provenance;
+- preserve the canonical temporal prohibition on urgency, penalties, readiness inference, and timing-based authority;
+- distinguish local temporal witness from optional later protocol finality.
 
-Post-Wave-XXIV development is interpreted through two mutually dependent spines:
+### Exit criterion
 
-- **ARCnet Construction** — sovereign runtime, native host, identity, storage, networking, signed applications, protocol connectivity, and later community resources.
-- **Arcanum Embodiment** — Navigable Arcanum, Living Guardian, Living Vitae, integrated world model, Terrestrial Codex, participant capability, contributor and builder pathways, and living community.
+CE-W02 may begin only when the native host can be derived from stable coordinate, runtime, and temporal contracts rather than recreating those rules inside presentation code.
 
-Seed Node Alpha proves sovereign infrastructure. Navigable Arcanum and Living Guardian prove that the infrastructure carries a coherent human world.
+## Construction Era development model
 
-Milestones may be classed as **Sovereignty**, **Experience**, **Knowledge**, **Capability**, **Network**, or **Civilizational**. Adoption and population remain a separate axis from capability.
+The three lanes are mutually dependent but retain distinct authority surfaces.
 
-See `arcanum-experience-roadmap.md` for the broader human-experience, symbolic, curriculum, capability, and civilizational roadmap.
+```text
+                         HUMAN ARCHITECT
+                               │
+                         DOCTRINE / CANON
+                               │
+              ┌────────────────┼────────────────┐
+              │                │                │
+              ▼                ▼                ▼
+       GEOMETRY & MATH      EMBODIMENT      ARCHITECTURE
+              │                │                │
+       formal structure     lived form       computation
+              │                │                │
+              └────────────────┼────────────────┘
+                               │
+                         REGISTRY FABRIC
+                               │
+                           TEMPUS AXIS
+                               │
+                          EVIDENCE GATES
+                               │
+                        ARCNET CONSTRUCTION
+```
 
-### Seed Node Foundation
+Tempus crosses all three lanes as temporal coordinate/provenance rather than a separate sovereignty domain.
 
-Establish the Rust ARCnet local runtime contracts and prove local lifecycle, application registration, namespaced persistence, identity scaffolding, local events, and capability isolation without introducing network synchronization.
+## Approved Construction Era sequence
 
-### Android Native Host
+The detailed wave map and wave-specific lane responsibilities are maintained in `construction-era-roadmap.md`.
 
-Create the first Kotlin and Jetpack Compose ARCnet shell backed by the Rust runtime. The shell must start offline and report node, identity, application, and storage state accurately.
+The current planning sequence is:
 
-### Arcanum Native Vertical Slice
+1. `CE-W01` — Sovereign Coordinate & Runtime Foundation
+2. `CE-W02` — Native Geometric Host
+3. `CE-W03` — Hope at the Center / Arcanum Native Vertical Slice
+4. `CE-W04` — Seed Node Alpha
+5. `CE-W05` — Personal Constellation
+6. `CE-W06` — ARCnet Protocol Connectivity
+7. `CE-W07` — Trusted Relational Network
+8. `CE-W08` — Signed Application Constellation
+9. `CE-W09` — Application Boundary Canon
+10. `CE-W10` — Multi-App ARCnet Alpha
+11. `CE-W11` — Resource Topology
+12. `CE-W12` — Institutional & Economic Structure
+13. `CE-W13` — Community Resource Network
+14. `CE-W14` — Productive ARCnet
+15. `CE-W15` — Construction Era Closure
 
-Host Arcanum as the flagship ARCnet application and move one Hope reflection workflow through native UI, local runtime, encrypted device storage, and local receipts.
-
-### Seed Node Alpha Verification
-
-Prove installation, offline startup, local identity, Arcanum launch, reflection persistence, process restart recovery, and local receipt inspection on Android.
-
-### Trusted Device Synchronization
-
-Design and implement deliberate pairing and selected-event synchronization between user-owned devices. This precedes open community mesh participation.
-
-### ARCnet Protocol Connectivity
-
-Connect the local runtime to the Cosmos SDK ARCnet protocol for queries, identity anchoring, transaction preparation, explicit signing, submission, and finality observation.
-
-### Signed Application Registry
-
-Separate hosted ARCnet applications from the shell through signed manifests, explicit capabilities, install state, upgrade lineage, and entitlement state.
-
-### Application Expansion
-
-Develop Commercium, Treasury, Architect, and the ARCnet Protection Suite as distinct hosted applications after their authority and economic contracts are documented.
-
-### Community Resource Network
-
-Design storage and compute contribution systems only after measurement, privacy, reliability, repair, abuse, and economic rules are ratified.
-
-### Institutional and Economic Framework
-
-Establish the real-world operating structure, protocol stewardship model, treasury administration, contributor compensation, accounting, tax posture, MANA utility, issuance, and governance implementation with qualified external legal and tax review.
-
-### Additional Platforms
-
-After Android proves the shared runtime boundary:
-
-- desktop host;
-- iOS host;
-- Windows and Linux integration;
-- later device-level or operating-environment exploration.
-
-The shared Rust core is intended to reduce duplication, while each platform retains a native presentation and lifecycle integration layer.
+The titles and dependency spine are planning candidates. Near-term waves through Seed Node Alpha should receive implementation detail first; later waves remain progressively evidence-gated.
 
 ## Major milestone: ARCnet Seed Node Alpha
 
@@ -170,18 +186,26 @@ The milestone is complete when one Android installation can, without internet ac
 1. start the ARCnet local runtime;
 2. create or restore a provisional local identity;
 3. load the native ARCnet shell;
-4. launch Arcanum from the application registry;
+4. launch Arcanum from the local application registry;
 5. create and save a Hope reflection;
 6. persist the record in the device-local protected storage domain;
-7. terminate and restart the application;
-8. recover the same reflection;
-9. display a signed local receipt whose scope is clearly local rather than protocol-finalized.
+7. capture required local temporal provenance without chain dependence;
+8. terminate and restart the application;
+9. recover the same reflection and temporal provenance;
+10. display a signed local receipt whose scope is clearly local rather than protocol-finalized.
+
+Seed Node Alpha proves sovereign infrastructure. Navigable Arcanum and Living Guardian prove that the infrastructure carries a coherent human world.
+
+## Additional platforms
+
+Android remains the first native host because it proves the shared runtime boundary.
+
+Desktop, iOS, Windows/Linux integration, and later device-level exploration may proceed as platform branches after the shared runtime and Seed Node Alpha boundaries are proven. Platform expansion must not block protocol connectivity, signed applications, or network architecture unless a specific dependency is demonstrated.
 
 ## Explicitly deferred
 
 The roadmap does not yet settle:
 
-- final wave numbering after XXIV;
 - MANA supply, issuance, sinks, or rewards;
 - contribution pricing for storage or compute;
 - validator and relay economics;
@@ -191,6 +215,24 @@ The roadmap does not yet settle:
 - governance thresholds;
 - protocol amendment procedures beyond existing doctrine;
 - arbitrary community executable code;
-- full OS replacement or GrapheneOS-derived implementation.
+- full OS replacement or GrapheneOS-derived implementation;
+- any symbolic/geometric mapping that has not survived source, mathematical, semantic, and authority review.
 
 These remain blocked on explicit Human Architect review and documented evidence.
+
+## Baseline consolidation gate
+
+Before the Construction Era baseline is promoted to `main`:
+
+1. audit the post-Wave-XXIV research branch rather than merging it wholesale;
+2. classify research artifacts as promote, synthesize, retain-as-research, relocate, archive, or retire;
+3. synthesize surviving Geometry & Mathematics definitions;
+4. synthesize the minimal Tempus anchor/provenance contract;
+5. perform a holistic repository audit;
+6. reconcile stale, duplicate, contradictory, empty, or mislocated repository material;
+7. regenerate structural indexes/checksums and run repository verification;
+8. run Termux-compatible typecheck/build and all applicable doctrine/schema/chain checks;
+9. review the exact branch head and diff;
+10. receive explicit Human Architect authorization for promotion to `main`.
+
+The active consolidation trail is `docs/repo/construction-era-consolidation-ledger.md` and GitHub issue #39.
