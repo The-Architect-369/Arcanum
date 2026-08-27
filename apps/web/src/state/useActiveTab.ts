@@ -50,7 +50,11 @@ export function useActiveTab({
     (key: string) => {
       const target = tabs.includes(key) ? key : defaultTab;
       const url = href(target);
-      pushHistory ? router.push(url) : router.replace(url);
+      if (pushHistory) {
+        router.push(url);
+      } else {
+        router.replace(url);
+      }
     },
     [defaultTab, href, pushHistory, router, tabs]
   );
