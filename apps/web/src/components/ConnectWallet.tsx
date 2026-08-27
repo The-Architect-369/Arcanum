@@ -67,7 +67,7 @@ export default function ConnectWallet() {
   const active = wagmiAddress ?? burnerAddr;
   const label = useMemo(() => (active ? short(active) : 'Connect Wallet'), [active]);
 
-  async function usePasskey() {
+  async function handlePasskey() {
     if (!passkeySupport.supported) {
       alert(`Passkey unavailable: ${passkeySupport.reason}`);
       return;
@@ -88,7 +88,7 @@ export default function ConnectWallet() {
     }
   }
 
-  async function useBurner() {
+  async function handleBurner() {
     try {
       if (!(await hasBurner())) await createBurner();
       const burner = await loadBurner();
@@ -125,7 +125,7 @@ export default function ConnectWallet() {
 
       <button
         onClick={() => {
-          void usePasskey();
+          void handlePasskey();
         }}
         className="rounded-2xl px-3 py-1.5 text-sm bg-white/10 hover:opacity-90 disabled:opacity-50"
         title={
@@ -140,7 +140,7 @@ export default function ConnectWallet() {
 
       <button
         onClick={() => {
-          void useBurner();
+          void handleBurner();
         }}
         className="rounded-2xl px-3 py-1.5 text-sm bg-white/10 hover:opacity-90"
         title="Create/Load a local dev wallet"
