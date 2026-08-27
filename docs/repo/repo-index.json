@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-08-27T22:56:54Z",
+  "generated_at": "2026-08-27T23:14:06Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "c714332b1",
+  "commit": "7189a6690",
   "generator_version": "1.4",
   "files": [
     {
@@ -1996,11 +1996,11 @@
     {
       "path": "apps/web/src/state/useActiveTab.ts",
       "type": "file",
-      "size_bytes": 2002,
-      "last_modified_commit": "d32d6affc",
+      "size_bytes": 2049,
+      "last_modified_commit": "7189a6690",
       "is_empty": false,
       "extension": ".ts",
-      "lines": 71
+      "lines": 75
     },
     {
       "path": "apps/web/src/state/usePreference.ts",
