@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-08-27T16:36:01Z",
+  "generated_at": "2026-08-27T22:40:45Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "f7427c5e2",
+  "commit": "8ee1b7dd0",
   "generator_version": "1.4",
   "files": [
     {
@@ -934,8 +934,8 @@
     {
       "path": "apps/web/src/components/ConnectWallet.tsx",
       "type": "file",
-      "size_bytes": 4417,
-      "last_modified_commit": "a5a19e548",
+      "size_bytes": 4429,
+      "last_modified_commit": "8ee1b7dd0",
       "is_empty": false,
       "extension": ".tsx",
       "lines": 164
