@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-08-20T07:07:10Z",
+  "generated_at": "2026-08-26T06:55:02Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "3c332d934",
-  "generator_version": "1.2",
+  "commit": "35e255a96",
+  "generator_version": "1.4",
   "files": [
     {
       "path": ".github/workflows/architect-promotion.yml",
@@ -3929,22 +3929,31 @@
       "lines": 224
     },
     {
-      "path": "docs/repo/repo-index-generator-spec.md",
+      "path": "docs/repo/construction-era-consolidation-ledger.md",
       "type": "file",
-      "size_bytes": 1349,
-      "last_modified_commit": "9aae3bedc",
+      "size_bytes": 14798,
+      "last_modified_commit": "79707d41d",
       "is_empty": false,
       "extension": ".md",
-      "lines": 60
+      "lines": 405
     },
     {
-      "path": "docs/repo/repo-index.json",
+      "path": "docs/repo/construction-era-research-disposition.md",
       "type": "file",
-      "size_bytes": 189722,
-      "last_modified_commit": "6205a3111",
+      "size_bytes": 21109,
+      "last_modified_commit": "d296fbc69",
       "is_empty": false,
-      "extension": ".json",
-      "lines": 7001
+      "extension": ".md",
+      "lines": 448
+    },
+    {
+      "path": "docs/repo/repo-index-generator-spec.md",
+      "type": "file",
+      "size_bytes": 7033,
+      "last_modified_commit": "35e255a96",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 191
     },
     {
       "path": "docs/repo/repo-interface.md",
@@ -3967,29 +3976,38 @@
     {
       "path": "docs/roadmap/arcanum-experience-roadmap.md",
       "type": "file",
-      "size_bytes": 15525,
-      "last_modified_commit": "3c332d934",
+      "size_bytes": 19370,
+      "last_modified_commit": "c1584ac98",
       "is_empty": false,
       "extension": ".md",
-      "lines": 445
+      "lines": 481
     },
     {
       "path": "docs/roadmap/canonical-roadmap.md",
       "type": "file",
-      "size_bytes": 8648,
-      "last_modified_commit": "3c332d934",
+      "size_bytes": 11217,
+      "last_modified_commit": "4a3d8e773",
       "is_empty": false,
       "extension": ".md",
-      "lines": 196
+      "lines": 238
+    },
+    {
+      "path": "docs/roadmap/construction-era-roadmap.md",
+      "type": "file",
+      "size_bytes": 14414,
+      "last_modified_commit": "825ca774f",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 341
     },
     {
       "path": "docs/specs/README.md",
       "type": "file",
-      "size_bytes": 536,
-      "last_modified_commit": "b4c8d3fe7",
+      "size_bytes": 2123,
+      "last_modified_commit": "9865765e0",
       "is_empty": false,
       "extension": ".md",
-      "lines": 18
+      "lines": 52
     },
     {
       "path": "docs/specs/app/README.md",
@@ -4179,6 +4197,42 @@
       "is_empty": false,
       "extension": ".md",
       "lines": 153
+    },
+    {
+      "path": "docs/specs/geometry/arcnet-coordinate-frame.md",
+      "type": "file",
+      "size_bytes": 13632,
+      "last_modified_commit": "ad2e138d9",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 423
+    },
+    {
+      "path": "docs/specs/geometry/arcnet-coordinate-frame.schema.json",
+      "type": "file",
+      "size_bytes": 6759,
+      "last_modified_commit": "3db8b79d0",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 215
+    },
+    {
+      "path": "docs/specs/geometry/arcnet-coordinate-frame.v0.1.json",
+      "type": "file",
+      "size_bytes": 4029,
+      "last_modified_commit": "899531967",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 118
+    },
+    {
+      "path": "docs/specs/geometry/arcnet-coordinate-frame.vectors.v0.1.json",
+      "type": "file",
+      "size_bytes": 1839,
+      "last_modified_commit": "c81fff759",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 80
     },
     {
       "path": "docs/specs/identity/authority-binding-model.md",
@@ -4424,6 +4478,33 @@
       "lines": 467
     },
     {
+      "path": "docs/specs/tempus/tempus-anchor.md",
+      "type": "file",
+      "size_bytes": 17718,
+      "last_modified_commit": "d7e54dff6",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 616
+    },
+    {
+      "path": "docs/specs/tempus/tempus-anchor.schema.json",
+      "type": "file",
+      "size_bytes": 6422,
+      "last_modified_commit": "e4e1a78f9",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 209
+    },
+    {
+      "path": "docs/specs/tempus/tempus-anchor.vectors.v0.1.json",
+      "type": "file",
+      "size_bytes": 9725,
+      "last_modified_commit": "5d2a614a1",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 319
+    },
+    {
       "path": "docs/status/project-status.md",
       "type": "file",
       "size_bytes": 7135,
@@ -4445,7 +4526,7 @@
       "path": "docs/tooling/doctrine-checksums/doctrine-checksums.yaml",
       "type": "file",
       "size_bytes": 3152,
-      "last_modified_commit": "5c0b1f268",
+      "last_modified_commit": "07a93bc26",
       "is_empty": false,
       "extension": ".yaml",
       "lines": 34
@@ -6244,8 +6325,8 @@
     {
       "path": "package.json",
       "type": "file",
-      "size_bytes": 1098,
-      "last_modified_commit": "df2e686ca",
+      "size_bytes": 1117,
+      "last_modified_commit": "35e255a96",
       "is_empty": false,
       "extension": ".json",
       "lines": 38
@@ -6262,11 +6343,11 @@
     {
       "path": "pnpm-workspace.yaml",
       "type": "file",
-      "size_bytes": 41,
-      "last_modified_commit": "5da311ef6",
+      "size_bytes": 25,
+      "last_modified_commit": "dd8ed026b",
       "is_empty": false,
       "extension": ".yaml",
-      "lines": 3
+      "lines": 2
     },
     {
       "path": "scripts/architect/agent-execute.py",
@@ -6982,11 +7063,11 @@
     {
       "path": "scripts/repo-index.sh",
       "type": "file",
-      "size_bytes": 3156,
-      "last_modified_commit": "65211fb54",
+      "size_bytes": 4976,
+      "last_modified_commit": "35e255a96",
       "is_empty": false,
       "extension": ".sh",
-      "lines": 131
+      "lines": 204
     },
     {
       "path": "scripts/vercel-setup-web.sh",
@@ -6996,6 +7077,24 @@
       "is_empty": false,
       "extension": ".sh",
       "lines": 32
+    },
+    {
+      "path": "scripts/verify-ce-w01-specs.py",
+      "type": "file",
+      "size_bytes": 11107,
+      "last_modified_commit": "42086ae10",
+      "is_empty": false,
+      "extension": ".py",
+      "lines": 307
+    },
+    {
+      "path": "scripts/verify-repo-index.py",
+      "type": "file",
+      "size_bytes": 2384,
+      "last_modified_commit": "35e255a96",
+      "is_empty": false,
+      "extension": ".py",
+      "lines": 88
     },
     {
       "path": "scripts/verify-sync.sh",
