@@ -5,7 +5,7 @@ visibility: public
 phase: "Pre-Genesis"
 era: "Construction Era"
 wave: "CE-W01"
-last_updated: 2026-08-25
+last_updated: 2026-08-27
 authority: "Human Architect authorized audit/consolidation work; promotion remains separately authorized"
 source_issue: "https://github.com/The-Architect-369/Arcanum/issues/39"
 ---
@@ -293,7 +293,7 @@ Evidence:
 
 ### Checkpoint 1 — Roadmap reconciliation
 
-Status: **IN PROGRESS**
+Status: **COMPLETE**
 
 Required:
 
@@ -304,7 +304,7 @@ Required:
 
 ### Checkpoint 2 — Research branch disposition audit
 
-Status: **NOT STARTED**
+Status: **IN PROGRESS**
 
 Required:
 
@@ -315,7 +315,7 @@ Required:
 
 ### Checkpoint 3 — Geometry/Mathematics synthesis
 
-Status: **NOT STARTED**
+Status: **IN PROGRESS**
 
 Required:
 
@@ -330,7 +330,7 @@ Required:
 
 ### Checkpoint 4 — Tempus anchor synthesis
 
-Status: **NOT STARTED**
+Status: **IN PROGRESS**
 
 Required:
 
@@ -343,7 +343,7 @@ Required:
 
 ### Checkpoint 5 — Holistic repository audit
 
-Status: **NOT STARTED**
+Status: **IN PROGRESS**
 
 Required:
 
@@ -357,13 +357,13 @@ Required:
 
 ### Checkpoint 6 — Consolidation
 
-Status: **NOT STARTED**
+Status: **IN PROGRESS**
 
 No consolidation mutation beyond planning/audit artifacts should occur until the relevant findings are recorded.
 
 ### Checkpoint 7 — Exact-head verification
 
-Status: **NOT STARTED**
+Status: **IN PROGRESS**
 
 Termux-targeted verification should include, where supported by repository tooling:
 
@@ -385,6 +385,95 @@ Additional chain, schema, geometry, and doctrine checks must be added according 
 Status: **BLOCKED**
 
 Promotion to `main` requires exact-head evidence and a separate explicit Human Architect authorization after the completed audit/consolidation diff is visible.
+
+## Checkpoint reconciliation — 2026-08-27
+
+This reconciliation records evidence accumulated since the original checkpoint
+statuses were written. It does not declare unfinished CE-W01 work complete and
+does not authorize promotion to `main`.
+
+### Checkpoint 1 evidence
+
+Roadmap reconciliation is complete for the CE-W01 baseline. Historical Waves
+I–XXIV remain intact; Construction Era numbering begins locally at `CE-W01`;
+the canonical and Construction roadmaps use the same three synchronized
+development lanes; and Tempus is a cross-lane temporal axis rather than a
+fourth peer lane.
+
+### Checkpoint 2 evidence
+
+`docs/repo/construction-era-research-disposition.md` now records bounded
+research-family dispositions. The research branch remains evidence-only and
+has not been merged wholesale. Capability-evaluator work remains research.
+
+Remaining work includes artifact-level archive/relocation reconciliation,
+contradictory status metadata, and historical-formatting cleanup.
+
+### Checkpoint 3 evidence
+
+Geometry synthesis now has textual, schema, registry, and falsification-vector
+artifacts under `docs/specs/geometry/`. Ubuntu verification at
+`0db08ae7f56f2d94588064b773c2e9d930b07346` reported `PASS geometry`.
+
+Remaining work includes the math-to-screen projection contract, geometry-free
+reference implementation, exact Seed mapping, source-authorized semantic
+labels, and final runtime binding.
+
+### Checkpoint 4 evidence
+
+Tempus synthesis now has textual, schema, and deterministic-vector artifacts
+under `docs/specs/tempus/`. Ubuntu verification at
+`0db08ae7f56f2d94588064b773c2e9d930b07346` reported `PASS tempus`.
+
+Remaining work includes local clock/provider binding, persistence and restart
+verification, receipt-signing semantics, and optional later provider
+integration.
+
+### Checkpoint 5 evidence
+
+Holistic audit work has already repaired the stale EVM workspace declarations,
+removed orphaned root contract scripts, repaired deterministic repository-index
+generation, and established exact repo-index verification.
+
+At exact head `0db08ae7f56f2d94588064b773c2e9d930b07346`,
+the Human Architect's Ubuntu run passed:
+
+- `pnpm verify:repo-index`
+- `pnpm verify:ce-w01`
+- all 24 stages of `bash scripts/verify-sync.sh`
+- `pnpm install --frozen-lockfile`
+- `pnpm typecheck`
+- `pnpm build`
+
+The branch was clean and synchronized with
+`origin/construction/ce-w01-baseline`.
+
+Remaining audit work includes documentation/status ambiguity, archive
+boundaries, research cleanup, native-runtime readiness, lint posture,
+CI/deployment assumptions, and final structural review.
+
+### Checkpoint 6 evidence
+
+Selective consolidation is already underway without a wholesale research
+branch merge. Materialized work includes roadmap reconciliation, research
+disposition, workspace cleanup, Geometry synthesis, Tempus synthesis,
+CE-W01 machine verification, and repository-index repair.
+
+### Checkpoint 7 evidence
+
+The Ubuntu verification at
+`0db08ae7f56f2d94588064b773c2e9d930b07346` is a verified intermediate
+exact-head checkpoint.
+
+It is not final CE-W01 certification because additional substantive
+consolidation mutations remain. Final exact-head certification must be repeated
+after those changes and their deterministic repo-index refreshes.
+
+### Checkpoint 8 boundary
+
+Checkpoint 8 remains **BLOCKED**. This reconciliation does not authorize a
+merge to `main`, ratify Module Architecture v2, or promote research material
+wholesale.
 
 ## Cross-chat handoff protocol
 
