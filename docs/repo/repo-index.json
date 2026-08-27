@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-08-27T13:39:01Z",
+  "generated_at": "2026-08-27T16:36:01Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "bca088579",
+  "commit": "f7427c5e2",
   "generator_version": "1.4",
   "files": [
     {
@@ -133,11 +133,11 @@
     {
       "path": "apps/web/eslint.config.mjs",
       "type": "file",
-      "size_bytes": 719,
-      "last_modified_commit": "d32d6affc",
+      "size_bytes": 1973,
+      "last_modified_commit": "f7427c5e2",
       "is_empty": false,
       "extension": ".mjs",
-      "lines": 32
+      "lines": 94
     },
     {
       "path": "apps/web/middleware.ts",
