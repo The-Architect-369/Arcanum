@@ -102,13 +102,19 @@ export default function ConnectWallet() {
   async function forgetAll() {
     try {
       await clearPasskey();
-    } catch {}
+    } catch {
+      // Best-effort cleanup: burner and wagmi teardown must still run.
+    }
     try {
       await forgetBurner();
-    } catch {}
+    } catch {
+      // Best-effort cleanup: wagmi teardown must still run.
+    }
     try {
       disconnect();
-    } catch {}
+    } catch {
+      // Best-effort cleanup: local wallet state must still clear below.
+    }
     setPk(null);
     setBurnerAddr(undefined);
   }
