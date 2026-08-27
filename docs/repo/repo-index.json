@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-08-26T06:55:02Z",
+  "generated_at": "2026-08-27T13:39:01Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "35e255a96",
+  "commit": "bca088579",
   "generator_version": "1.4",
   "files": [
     {
@@ -3931,11 +3931,11 @@
     {
       "path": "docs/repo/construction-era-consolidation-ledger.md",
       "type": "file",
-      "size_bytes": 14798,
-      "last_modified_commit": "79707d41d",
+      "size_bytes": 18242,
+      "last_modified_commit": "bca088579",
       "is_empty": false,
       "extension": ".md",
-      "lines": 405
+      "lines": 494
     },
     {
       "path": "docs/repo/construction-era-research-disposition.md",
