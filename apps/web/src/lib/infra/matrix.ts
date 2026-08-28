@@ -23,7 +23,7 @@ export async function fetchPublicTimeline(roomId: string, limit = 20) {
   try {
     const c = await getMatrixClient();
     let room = c.getRoom(roomId);
-    if (!room) { try { /* @ts-ignore */ await c.peekInRoom(roomId); room = c.getRoom(roomId); } catch {} }
+    if (!room) { try { /* @ts-ignore */ await c.peekInRoom(roomId); room = c.getRoom(roomId); } catch { /* Best-effort peek; missing room is handled below. */ } }
     if (!room) return [];
     // @ts-ignore
     await c.scrollback(room, limit);
@@ -61,7 +61,7 @@ export async function createChannel(opts: { name: string; topic?: string; joinCo
   const roomId = res?.room_id as string;
   try {
     await c.sendStateEvent(roomId, 'arcanum.channel.settings', { joinCost: Number(opts.joinCost) || 0 }, '');
-  } catch {}
+  } catch { /* Best-effort metadata; room creation remains valid. */ }
   return roomId;
 }
 
