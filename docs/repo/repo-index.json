@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-08-28T09:15:14Z",
+  "generated_at": "2026-08-28T10:06:55Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "e57d579fe",
+  "commit": "4d6320ae5",
   "generator_version": "1.4",
   "files": [
     {
@@ -1042,11 +1042,11 @@
     {
       "path": "apps/web/src/components/shared/CTAActivate.tsx",
       "type": "file",
-      "size_bytes": 1026,
-      "last_modified_commit": "d32d6affc",
+      "size_bytes": 982,
+      "last_modified_commit": "4d6320ae5",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 29
+      "lines": 27
     },
     {
       "path": "apps/web/src/components/shared/FreeBadge.tsx",
