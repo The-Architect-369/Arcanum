@@ -13,6 +13,15 @@ const ORDER = ['/text/contacts', '/text/messages', '/text/groups'] as const;
 
 type Row = { sender: string; body: string; at: number };
 
+type MatrixTimelineEvent = {
+  event?: {
+    type?: string;
+    content?: { body?: string };
+    origin_server_ts?: number;
+  };
+  sender?: { userId?: string };
+};
+
 export default function TextMessagesPage() {
   const [rows, setRows] = useState<Row[]>([]);
   const [loading, setLoading] = useState(true);
@@ -25,18 +34,18 @@ export default function TextMessagesPage() {
       try {
         const roomId = await resolveRoomId(currentAlias);
         const events = await fetchPublicTimeline(roomId, 50);
-        const mapped: Row[] = (events || [])
-          .filter((e: any) => e?.event?.type === 'm.room.message')
-          .map((e: any) => ({
+        const mapped: Row[] = ((events || []) as MatrixTimelineEvent[])
+          .filter((e) => e?.event?.type === 'm.room.message')
+          .map((e) => ({
             sender: e?.sender?.userId || 'unknown',
             body: e?.event?.content?.body || '',
             at: e?.event?.origin_server_ts || Date.now(),
           }));
         if (!alive) return;
         setRows(mapped);
-      } catch (e: any) {
+      } catch (e: unknown) {
         if (!alive) return;
-        setErr(e?.message || 'Failed to load timeline');
+        setErr((e as { message?: string } | null)?.message || 'Failed to load timeline');
       } finally {
         if (alive) setLoading(false);
       }

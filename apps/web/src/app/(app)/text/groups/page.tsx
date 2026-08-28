@@ -13,9 +13,16 @@ import { trySpendMana } from '@/lib/economy';
 
 const ORDER = ['/text/contacts', '/text/messages', '/text/groups'] as const;
 
+type PublicRoomSummary = {
+  room_id: string;
+  name?: string;
+  canonical_alias?: string;
+  num_joined_members?: number;
+};
+
 export default function TextGroupsPage() {
   const acc = useAccount();
-  const [rooms, setRooms] = useState<any[]>([]);
+  const [rooms, setRooms] = useState<PublicRoomSummary[]>([]);
   const [loading, setLoading] = useState(true);
   const [name, setName] = useState('');
   const [msg, setMsg] = useState<string | null>(null);

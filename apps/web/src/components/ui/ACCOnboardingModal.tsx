@@ -19,7 +19,7 @@ function safeGetter<T>(fn: (() => T) | undefined, fallback: T): T {
   }
 }
 
-function safeAction<T extends any[]>(fn: ((...args: T) => any) | undefined) {
+function safeAction<T extends unknown[], R>(fn: ((...args: T) => R) | undefined) {
   return (...args: T) => {
     try {
       return fn?.(...args);

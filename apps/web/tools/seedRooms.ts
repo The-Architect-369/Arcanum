@@ -21,7 +21,6 @@ async function main() {
   async function ensureAlias(alias: string, asSpace = false, worldReadable = false) {
     const local = alias.slice(1).split(':')[0];
     try {
-      // @ts-ignore
       const { room_id } = await client.getRoomIdForAlias(alias);
       console.log('Exists:', alias, room_id);
       return room_id as string;

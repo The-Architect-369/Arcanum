@@ -75,8 +75,8 @@ export default function SimpleAccountPreview() {
       })) as Address;
 
       setComputed(addr);
-    } catch (e: any) {
-      setErr(e.message || String(e));
+    } catch (e: unknown) {
+      setErr((e as { message?: string }).message || String(e));
     }
   }
 

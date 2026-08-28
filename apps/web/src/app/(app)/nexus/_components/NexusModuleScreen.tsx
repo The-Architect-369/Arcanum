@@ -15,7 +15,7 @@ import { getNexusState, recordNexusProposal, createNexusContext, type NexusState
 import { captureTempusContext } from '@/lib/tempus/context';
 import { COST, canCreateChan, canPost } from '@/lib/gates';
 import { trySpendMana } from '@/lib/economy';
-import { useAccount } from '@/state/useAccount';
+import { useAccount, type AccountSnapshot } from '@/state/useAccount';
 
 export type NexusFamilyId = 'current' | 'post' | 'channel';
 type CardId = string;
@@ -37,6 +37,18 @@ type MediaItem = {
   size: number;
   status: 'pending' | 'done' | 'error';
 };
+
+type ProposalKind = 'event' | 'ritual' | 'post' | 'channel';
+
+type PublicRoomSummary = {
+  room_id: string;
+  name?: string;
+  canonical_alias?: string;
+  num_joined_members?: number;
+};
+
+type NexusContext = ReturnType<typeof createNexusContext>;
+type StateSetter<T> = React.Dispatch<React.SetStateAction<T>>;
 
 type CardConfig = {
   id: CardId;
@@ -89,13 +101,13 @@ export function NexusModuleScreen({ family }: { family: NexusFamilyId }) {
   const [loadingFeed, setLoadingFeed] = useState(true);
   const [previews, setPreviews] = useState<Record<string, MediaView>>({});
   const [nexusState, setNexusState] = useState<NexusState>(EMPTY_NEXUS);
-  const [rooms, setRooms] = useState<any[]>([]);
+  const [rooms, setRooms] = useState<PublicRoomSummary[]>([]);
   const [loadingRooms, setLoadingRooms] = useState(true);
   const [target, setTarget] = useState<string>(ROOM_ALIAS.ARCHITECT_FEED);
   const [roomId, setRoomId] = useState<string>('');
   const [body, setBody] = useState('');
   const [proposalTitle, setProposalTitle] = useState('');
-  const [proposalKind, setProposalKind] = useState<'event' | 'ritual' | 'post' | 'channel'>('event');
+  const [proposalKind, setProposalKind] = useState<ProposalKind>('event');
   const [includeTempusContext, setIncludeTempusContext] = useState(true);
   const [media, setMedia] = useState<MediaItem[]>([]);
   const [message, setMessage] = useState<string | null>(null);
@@ -263,8 +275,8 @@ export function NexusModuleScreen({ family }: { family: NexusFamilyId }) {
       setBody('');
       setMessage('Nexus draft recorded locally. It has not been published, scheduled, or ratified.');
       await loadNexusState();
-    } catch (e: any) {
-      setMessage(e?.message || 'Failed to record Nexus draft.');
+    } catch (e: unknown) {
+      setMessage((e as { message?: string } | null)?.message || 'Failed to record Nexus draft.');
     } finally {
       setBusy(false);
     }
@@ -294,8 +306,8 @@ export function NexusModuleScreen({ family }: { family: NexusFamilyId }) {
       setMedia([]);
       setMessage(`Posted. CID: ${cid}`);
       await loadCurrent();
-    } catch (e: any) {
-      setMessage(e?.message || 'Failed to publish.');
+    } catch (e: unknown) {
+      setMessage((e as { message?: string } | null)?.message || 'Failed to publish.');
     } finally {
       setBusy(false);
     }
@@ -632,14 +644,29 @@ function ComposeCard({ target, setTarget, roomId, body, setBody, media, onPickFi
   );
 }
 
-function PostDraftCard({ acc, proposalTitle, setProposalTitle, proposalKind, setProposalKind, includeTempusContext, setIncludeTempusContext, onSaveProposalDraft, busy, body, nexusContext, nexusState }: any) {
+type PostDraftCardProps = {
+  acc: AccountSnapshot;
+  proposalTitle: string;
+  setProposalTitle: StateSetter<string>;
+  proposalKind: ProposalKind;
+  setProposalKind: StateSetter<ProposalKind>;
+  includeTempusContext: boolean;
+  setIncludeTempusContext: StateSetter<boolean>;
+  onSaveProposalDraft: () => Promise<void>;
+  busy: boolean;
+  body: string;
+  nexusContext: NexusContext;
+  nexusState: NexusState;
+};
+
+function PostDraftCard({ acc, proposalTitle, setProposalTitle, proposalKind, setProposalKind, includeTempusContext, setIncludeTempusContext, onSaveProposalDraft, busy, body, nexusContext, nexusState }: PostDraftCardProps) {
   if (!acc?.trusted) return <CTAActivate />;
   return (
     <div className="space-y-4">
       <div className="rounded-3xl border border-white/10 bg-white/[0.04] p-4">
         <div className="grid gap-2 sm:grid-cols-2">
           <input value={proposalTitle} onChange={(e) => setProposalTitle(e.target.value)} placeholder="Optional draft title" className="w-full rounded-2xl border border-white/10 bg-black/20 p-3 text-sm outline-none focus:border-amber-300/50" />
-          <select value={proposalKind} onChange={(e) => setProposalKind(e.target.value)} className="w-full rounded-2xl border border-white/10 bg-black/20 p-3 text-sm outline-none focus:border-amber-300/50">
+          <select value={proposalKind} onChange={(e) => setProposalKind(e.target.value as ProposalKind)} className="w-full rounded-2xl border border-white/10 bg-black/20 p-3 text-sm outline-none focus:border-amber-300/50">
             <option value="event">Event draft</option>
             <option value="ritual">Ritual draft</option>
             <option value="post">Post draft</option>
@@ -672,7 +699,16 @@ function PostDraftCard({ acc, proposalTitle, setProposalTitle, proposalKind, set
   );
 }
 
-function PublishCard({ acc, body, media, busy, message, onPublish }: any) {
+type PublishCardProps = {
+  acc: AccountSnapshot;
+  body: string;
+  media: MediaItem[];
+  busy: boolean;
+  message: string | null;
+  onPublish: () => Promise<void>;
+};
+
+function PublishCard({ acc, body, media, busy, message, onPublish }: PublishCardProps) {
   return (
     <div className="space-y-4">
       {!acc?.trusted ? (
@@ -699,7 +735,7 @@ function PublishCard({ acc, body, media, busy, message, onPublish }: any) {
   );
 }
 
-function DirectoryCard({ rooms, loading }: { rooms: any[]; loading: boolean }) {
+function DirectoryCard({ rooms, loading }: { rooms: PublicRoomSummary[]; loading: boolean }) {
   return (
     <div className="rounded-3xl border border-white/10 bg-white/[0.04] p-4">
       <div className="text-[11px] uppercase tracking-[0.18em] text-zinc-500">Public rooms</div>
@@ -720,7 +756,16 @@ function DirectoryCard({ rooms, loading }: { rooms: any[]; loading: boolean }) {
   );
 }
 
-function CreateChannelCard({ acc, channelName, setChannelName, channelPrice, setChannelPrice, onCreateChannel }: any) {
+type CreateChannelCardProps = {
+  acc: AccountSnapshot;
+  channelName: string;
+  setChannelName: StateSetter<string>;
+  channelPrice: number;
+  setChannelPrice: StateSetter<number>;
+  onCreateChannel: () => Promise<void>;
+};
+
+function CreateChannelCard({ acc, channelName, setChannelName, channelPrice, setChannelPrice, onCreateChannel }: CreateChannelCardProps) {
   if (!acc.trusted) return <CTAActivate />;
   return (
     <div className="rounded-3xl border border-white/10 bg-white/[0.04] p-4 space-y-3">
