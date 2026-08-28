@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-08-28T02:32:22Z",
+  "generated_at": "2026-08-28T08:48:39Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "c797a34a9",
+  "commit": "79887cc9d",
   "generator_version": "1.4",
   "files": [
     {
@@ -1168,8 +1168,8 @@
     {
       "path": "apps/web/src/components/ui/Header.tsx",
       "type": "file",
-      "size_bytes": 4344,
-      "last_modified_commit": "7dfdd2782",
+      "size_bytes": 4343,
+      "last_modified_commit": "79887cc9d",
       "is_empty": false,
       "extension": ".tsx",
       "lines": 110
