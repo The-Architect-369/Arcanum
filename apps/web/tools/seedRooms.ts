@@ -47,7 +47,7 @@ async function main() {
       const via = userId.split(':')[1];
       await client.sendStateEvent(spaceId, 'm.space.child', { via: [via] }, childId);
       console.log('Linked child → space:', childId);
-    } catch (e) {
+    } catch {
       console.warn('Link failed (maybe already linked):', childId);
     }
   }
