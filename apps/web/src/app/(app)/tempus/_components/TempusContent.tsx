@@ -152,7 +152,6 @@ export function TempusClockFace() {
   const lunarPhaseIndex = Object.keys(LUNAR).indexOf(w.lunarPhase);
   const moonPhaseAngle = (lunarPhaseIndex / 8) * 360;
   const planetaryHour = planetaryHourFor(now);
-  const planetaryHourIndex = PLANETARY_ORDER.indexOf(planetaryHour);
 
   return (
     <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_18rem]">
