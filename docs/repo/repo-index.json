@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-08-28T00:56:52Z",
+  "generated_at": "2026-08-28T01:06:15Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "5b0599f4e",
+  "commit": "e30e67c15",
   "generator_version": "1.4",
   "files": [
     {
@@ -2032,8 +2032,8 @@
     {
       "path": "apps/web/tools/seedRooms.ts",
       "type": "file",
-      "size_bytes": 2981,
-      "last_modified_commit": "d32d6affc",
+      "size_bytes": 2977,
+      "last_modified_commit": "e30e67c15",
       "is_empty": false,
       "extension": ".ts",
       "lines": 79
