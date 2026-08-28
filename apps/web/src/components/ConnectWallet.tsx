@@ -21,7 +21,7 @@ export default function ConnectWallet() {
   const { disconnect } = useDisconnect();
 
   const injected =
-    connectors.find((c) => (c as any).type === 'injected') ??
+    connectors.find((c) => c.type === 'injected') ??
     connectors.find((c) => c.id === 'injected') ??
     connectors[0];
 
