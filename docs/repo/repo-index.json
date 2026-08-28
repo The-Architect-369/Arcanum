@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-08-28T01:13:30Z",
+  "generated_at": "2026-08-28T02:20:26Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "9092ea4db",
+  "commit": "dcfe3894f",
   "generator_version": "1.4",
   "files": [
     {
@@ -628,11 +628,11 @@
     {
       "path": "apps/web/src/app/(app)/tempus/_components/TempusContent.tsx",
       "type": "file",
-      "size_bytes": 19996,
-      "last_modified_commit": "93d2d624b",
+      "size_bytes": 19927,
+      "last_modified_commit": "dcfe3894f",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 399
+      "lines": 398
     },
     {
       "path": "apps/web/src/app/(app)/tempus/_components/TempusModuleScreen.tsx",
