@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-08-28T10:06:55Z",
+  "generated_at": "2026-08-28T10:42:21Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "4d6320ae5",
+  "commit": "48643a4b7",
   "generator_version": "1.4",
   "files": [
     {
@@ -556,11 +556,11 @@
     {
       "path": "apps/web/src/app/(app)/nexus/_components/NexusModuleScreen.tsx",
       "type": "file",
-      "size_bytes": 35445,
-      "last_modified_commit": "bd37de872",
+      "size_bytes": 36724,
+      "last_modified_commit": "48643a4b7",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 775
+      "lines": 820
     },
     {
       "path": "apps/web/src/app/(app)/nexus/channel/page.tsx",
@@ -691,20 +691,20 @@
     {
       "path": "apps/web/src/app/(app)/text/groups/page.tsx",
       "type": "file",
-      "size_bytes": 3804,
-      "last_modified_commit": "6c3b0d9e1",
+      "size_bytes": 3944,
+      "last_modified_commit": "48643a4b7",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 104
+      "lines": 111
     },
     {
       "path": "apps/web/src/app/(app)/text/messages/page.tsx",
       "type": "file",
-      "size_bytes": 3392,
-      "last_modified_commit": "6c3b0d9e1",
+      "size_bytes": 3611,
+      "last_modified_commit": "48643a4b7",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 101
+      "lines": 110
     },
     {
       "path": "apps/web/src/app/(app)/text/page.tsx",
@@ -961,8 +961,8 @@
     {
       "path": "apps/web/src/components/SimpleAccountPreview.tsx",
       "type": "file",
-      "size_bytes": 4605,
-      "last_modified_commit": "fcaa3c040",
+      "size_bytes": 4635,
+      "last_modified_commit": "48643a4b7",
       "is_empty": false,
       "extension": ".tsx",
       "lines": 131
@@ -1069,8 +1069,8 @@
     {
       "path": "apps/web/src/components/ui/ACCOnboardingModal.tsx",
       "type": "file",
-      "size_bytes": 5542,
-      "last_modified_commit": "a2a353eaa",
+      "size_bytes": 5547,
+      "last_modified_commit": "48643a4b7",
       "is_empty": false,
       "extension": ".tsx",
       "lines": 174
@@ -2032,11 +2032,11 @@
     {
       "path": "apps/web/tools/seedRooms.ts",
       "type": "file",
-      "size_bytes": 2977,
-      "last_modified_commit": "e30e67c15",
+      "size_bytes": 2956,
+      "last_modified_commit": "48643a4b7",
       "is_empty": false,
       "extension": ".ts",
-      "lines": 79
+      "lines": 78
     },
     {
       "path": "apps/web/tsconfig.json",
@@ -6564,6 +6564,15 @@
       "is_empty": false,
       "extension": ".sh",
       "lines": 7
+    },
+    {
+      "path": "scripts/architect/source-tranche-gate.sh",
+      "type": "file",
+      "size_bytes": 5326,
+      "last_modified_commit": "9ca998918",
+      "is_empty": false,
+      "extension": ".sh",
+      "lines": 165
     },
     {
       "path": "scripts/architect/termux-broker.py",
