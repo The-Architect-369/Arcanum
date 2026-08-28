@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-08-28T00:37:57Z",
+  "generated_at": "2026-08-28T00:47:22Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "35f81573b",
+  "commit": "de32c234f",
   "generator_version": "1.4",
   "files": [
     {
@@ -1663,11 +1663,11 @@
     {
       "path": "apps/web/src/lib/infra/chains.ts",
       "type": "file",
-      "size_bytes": 652,
-      "last_modified_commit": "642fbf2b7",
+      "size_bytes": 613,
+      "last_modified_commit": "de32c234f",
       "is_empty": false,
       "extension": ".ts",
-      "lines": 17
+      "lines": 16
     },
     {
       "path": "apps/web/src/lib/infra/helia.ts",
