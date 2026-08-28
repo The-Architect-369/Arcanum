@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-08-28T08:48:39Z",
+  "generated_at": "2026-08-28T08:58:32Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "79887cc9d",
+  "commit": "a21946a6b",
   "generator_version": "1.4",
   "files": [
     {
@@ -1879,11 +1879,11 @@
     {
       "path": "apps/web/src/lib/nexus/rooms.ts",
       "type": "file",
-      "size_bytes": 974,
-      "last_modified_commit": "7dfdd2782",
+      "size_bytes": 942,
+      "last_modified_commit": "a21946a6b",
       "is_empty": false,
       "extension": ".ts",
-      "lines": 25
+      "lines": 24
     },
     {
       "path": "apps/web/src/lib/post.ts",
