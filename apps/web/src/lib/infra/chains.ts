@@ -1,5 +1,4 @@
 import { defineChain } from 'viem';
-import { sepolia } from 'viem/chains';
 
 export const localAnvil = defineChain({
   id: 31337,
