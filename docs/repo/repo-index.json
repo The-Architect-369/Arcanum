@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-08-28T01:06:15Z",
+  "generated_at": "2026-08-28T01:13:30Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "e30e67c15",
+  "commit": "9092ea4db",
   "generator_version": "1.4",
   "files": [
     {
@@ -1267,8 +1267,8 @@
     {
       "path": "apps/web/src/components/ui/TabMenuPager.tsx",
       "type": "file",
-      "size_bytes": 3098,
-      "last_modified_commit": "d32d6affc",
+      "size_bytes": 3089,
+      "last_modified_commit": "9092ea4db",
       "is_empty": false,
       "extension": ".tsx",
       "lines": 96
