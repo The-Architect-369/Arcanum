@@ -2,7 +2,7 @@ export type ArcanumPostV1 = {
   v: 1;
   author: {
     acc: string;        // ACC / identity anchor / DID
-    handle?: string;
+    handle?: string | null;
     peerId?: string;    // Helia/libp2p PeerId of publisher
   };
   room: {

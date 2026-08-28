@@ -91,7 +91,7 @@ function subtitleFromCardTitle(title: string) {
 }
 
 export function NexusModuleScreen({ family }: { family: NexusFamilyId }) {
-  const acc = useAccount() as any;
+  const acc = useAccount();
   const peerId = typeof acc?.peerId === 'string' ? acc.peerId : undefined;
   const [activeFamilyId, setActiveFamilyId] = useState<NexusFamilyId>(family);
   const [activeCardId, setActiveCardId] = useState<CardId>('a1');

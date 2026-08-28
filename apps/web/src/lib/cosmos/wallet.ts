@@ -3,9 +3,19 @@ export type ChainInfo = {
   rpc: string; rest: string; bech32: string; denom: string; decimals: number;
 };
 
+type KeplrBridge = {
+  experimentalSuggestChain(chainInfo: unknown): Promise<void>;
+  enable(chainId: string): Promise<void>;
+  getOfflineSignerAuto(chainId: string): Promise<unknown>;
+};
+
+type KeplrWindow = Window & {
+  keplr?: KeplrBridge;
+};
+
 export async function suggestChainToKeplr(c: ChainInfo) {
   // Minimal suggest; extend as needed
-  await (window as any).keplr.experimentalSuggestChain({
+  await (window as KeplrWindow).keplr!.experimentalSuggestChain({
     chainId: c.chainId, chainName: c.chainName, rpc: c.rpc, rest: c.rest,
     stakeCurrency: { coinMinimalDenom: c.denom, coinDenom: c.denom.toUpperCase(), coinDecimals: c.decimals },
     bech32Config: { bech32PrefixAccAddr: c.bech32, bech32PrefixAccPub: c.bech32+"pub",
@@ -18,7 +28,7 @@ export async function suggestChainToKeplr(c: ChainInfo) {
 }
 
 export async function getKeplrSigner(chainId: string) {
-  const keplr = (window as any).keplr;
+  const keplr = (window as KeplrWindow).keplr;
   if (!keplr) throw new Error("Keplr not found");
   await keplr.enable(chainId);
   return keplr.getOfflineSignerAuto(chainId);
