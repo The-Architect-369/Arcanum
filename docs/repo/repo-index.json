@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-08-28T02:20:26Z",
+  "generated_at": "2026-08-28T02:32:22Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "dcfe3894f",
+  "commit": "c797a34a9",
   "generator_version": "1.4",
   "files": [
     {
@@ -1402,8 +1402,8 @@
     {
       "path": "apps/web/src/lib/cn.ts",
       "type": "file",
-      "size_bytes": 151,
-      "last_modified_commit": "5da311ef6",
+      "size_bytes": 175,
+      "last_modified_commit": "c797a34a9",
       "is_empty": false,
       "extension": ".ts",
       "lines": 6
