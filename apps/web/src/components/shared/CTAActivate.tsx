@@ -9,9 +9,7 @@ export default function CTAActivate({ className = '' }: { className?: string }) 
   // Soft call – if your store exposes setShowOnboarding, we toggle it.
   const openOnboarding = () => {
     try {
-      // @ts-ignore
       if (typeof AccountState.setShowOnboarding === 'function') {
-        // @ts-ignore
         AccountState.setShowOnboarding(true);
       }
     } catch { /* noop */ }
