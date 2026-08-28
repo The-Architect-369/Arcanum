@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-08-28T00:47:22Z",
+  "generated_at": "2026-08-28T00:56:52Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "de32c234f",
+  "commit": "5b0599f4e",
   "generator_version": "1.4",
   "files": [
     {
@@ -1411,11 +1411,11 @@
     {
       "path": "apps/web/src/lib/cosmos/client.ts",
       "type": "file",
-      "size_bytes": 858,
-      "last_modified_commit": "975ab5f93",
+      "size_bytes": 780,
+      "last_modified_commit": "5b0599f4e",
       "is_empty": false,
       "extension": ".ts",
-      "lines": 18
+      "lines": 17
     },
     {
       "path": "apps/web/src/lib/cosmos/index.ts",
