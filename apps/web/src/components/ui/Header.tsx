@@ -16,7 +16,7 @@ export default function Header({ brand = "Arcanum" }: { brand?: string }) {
 
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
-      if (menuRef.current && !(menuRef.current as any).contains(e.target)) {
+      if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
         setMenuOpen(false);
       }
     };
