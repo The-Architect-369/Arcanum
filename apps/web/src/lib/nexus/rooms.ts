@@ -16,7 +16,6 @@ export async function resolveRoomId(aliasOrId: string): Promise<string> {
   if (cache.has(aliasOrId)) return cache.get(aliasOrId)!;
 
   const c = await getMatrixClient();
-  // @ts-ignore runtime method
   const res = await c.getRoomIdForAlias(aliasOrId);
   const roomId = res?.room_id as string;
   if (!roomId) throw new Error(`Cannot resolve alias: ${aliasOrId}`);
