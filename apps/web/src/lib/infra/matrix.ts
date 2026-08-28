@@ -23,9 +23,8 @@ export async function fetchPublicTimeline(roomId: string, limit = 20) {
   try {
     const c = await getMatrixClient();
     let room = c.getRoom(roomId);
-    if (!room) { try { /* @ts-ignore */ await c.peekInRoom(roomId); room = c.getRoom(roomId); } catch { /* Best-effort peek; missing room is handled below. */ } }
+    if (!room) { try { await c.peekInRoom(roomId); room = c.getRoom(roomId); } catch { /* Best-effort peek; missing room is handled below. */ } }
     if (!room) return [];
-    // @ts-ignore
     await c.scrollback(room, limit);
     return room.timeline?.slice(-limit) ?? [];
   } catch { return []; }
@@ -35,7 +34,6 @@ export async function fetchPublicTimeline(roomId: string, limit = 20) {
 export async function listPublicRooms(search?: string, limit = 50) {
   try {
     const c = await getMatrixClient();
-    // @ts-ignore
     const res = await c.publicRooms({ limit, filter: search ? { generic_search_term: search } : undefined });
     return res?.chunk ?? [];
   } catch { return []; }
