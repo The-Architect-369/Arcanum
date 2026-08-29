@@ -1,7 +1,26 @@
 'use client';
 
-let sdkPromise: Promise<typeof import('matrix-js-sdk')> | null = null;
-let client: any | null = null;
+type MatrixSdk = typeof import('matrix-js-sdk');
+type MatrixClient = ReturnType<MatrixSdk['createClient']>;
+type MatrixCreateRoomOptions = Parameters<MatrixClient['createRoom']>[0];
+
+type MatrixWireClient = {
+  sendEvent(
+    roomId: string,
+    eventType: string,
+    content: Record<string, unknown>,
+    txnId?: string,
+  ): Promise<unknown>;
+  sendStateEvent(
+    roomId: string,
+    eventType: string,
+    content: Record<string, unknown>,
+    stateKey?: string,
+  ): Promise<unknown>;
+};
+
+let sdkPromise: Promise<MatrixSdk> | null = null;
+let client: MatrixClient | null = null;
 
 type MatrixCreds = { baseUrl?: string; accessToken?: string; userId?: string };
 
@@ -42,10 +61,10 @@ export async function listPublicRooms(search?: string, limit = 50) {
 // WRITE (Arcanum pointer)
 export async function sendArcanumPost(roomId: string, cid: string, summary?: string) {
   const c = await getMatrixClient();
-  await c.sendEvent(roomId, 'com.arcanum.post', { cid, t: Date.now(), summary }, '');
+  await (c as unknown as MatrixWireClient).sendEvent(roomId, 'com.arcanum.post', { cid, t: Date.now(), summary }, '');
   if (summary) {
     const body = `Arcanum post: ${summary}\nCID: ${cid}`;
-    c.sendEvent(roomId, 'm.room.message', { msgtype: 'm.notice', body }, '').catch(() => {});
+    (c as unknown as MatrixWireClient).sendEvent(roomId, 'm.room.message', { msgtype: 'm.notice', body }, '').catch(() => {});
   }
 }
 
@@ -53,12 +72,14 @@ export async function sendArcanumPost(roomId: string, cid: string, summary?: str
 export async function createChannel(opts: { name: string; topic?: string; joinCost?: number }) {
   const c = await getMatrixClient();
   const res = await c.createRoom({
-    name: opts.name, topic: opts.topic, preset: 'public_chat', visibility: 'public',
+    name: opts.name, topic: opts.topic,
+    preset: 'public_chat' as MatrixCreateRoomOptions['preset'],
+    visibility: 'public' as MatrixCreateRoomOptions['visibility'],
     power_level_content_override: { invite: 50, kick: 50, ban: 50, redact: 50 }
   });
   const roomId = res?.room_id as string;
   try {
-    await c.sendStateEvent(roomId, 'arcanum.channel.settings', { joinCost: Number(opts.joinCost) || 0 }, '');
+    await (c as unknown as MatrixWireClient).sendStateEvent(roomId, 'arcanum.channel.settings', { joinCost: Number(opts.joinCost) || 0 }, '');
   } catch { /* Best-effort metadata; room creation remains valid. */ }
   return roomId;
 }
@@ -66,7 +87,9 @@ export async function createChannel(opts: { name: string; topic?: string; joinCo
 export async function createGroup(opts: { name: string; topic?: string }) {
   const c = await getMatrixClient();
   const res = await c.createRoom({
-    name: opts.name, topic: opts.topic, preset: 'private_chat', visibility: 'private',
+    name: opts.name, topic: opts.topic,
+    preset: 'private_chat' as MatrixCreateRoomOptions['preset'],
+    visibility: 'private' as MatrixCreateRoomOptions['visibility'],
     invite: [], is_direct: false,
     initial_state: [{ type: 'm.room.join_rules', state_key: '', content: { join_rule: 'invite' } }]
   });
