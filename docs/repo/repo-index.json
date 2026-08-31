@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-08-31T09:51:43Z",
+  "generated_at": "2026-08-31T10:23:01Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "c44fefb2e",
+  "commit": "7dd0636e0",
   "generator_version": "1.4",
   "files": [
     {
@@ -1204,11 +1204,11 @@
     {
       "path": "apps/web/src/components/ui/ModuleMatrixShell.tsx",
       "type": "file",
-      "size_bytes": 13165,
-      "last_modified_commit": "572866acb",
+      "size_bytes": 13400,
+      "last_modified_commit": "7dd0636e0",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 381
+      "lines": 390
     },
     {
       "path": "apps/web/src/components/ui/ModuleTabRail.tsx",
