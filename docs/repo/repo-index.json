@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-08-28T10:58:50Z",
+  "generated_at": "2026-08-29T09:17:49Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "b70a45193",
+  "commit": "af0993c1b",
   "generator_version": "1.4",
   "files": [
     {
@@ -1699,11 +1699,11 @@
     {
       "path": "apps/web/src/lib/infra/matrix.ts",
       "type": "file",
-      "size_bytes": 2911,
-      "last_modified_commit": "e57d579fe",
+      "size_bytes": 3688,
+      "last_modified_commit": "af0993c1b",
       "is_empty": false,
       "extension": ".ts",
-      "lines": 74
+      "lines": 97
     },
     {
       "path": "apps/web/src/lib/infra/wagmi.ts",
