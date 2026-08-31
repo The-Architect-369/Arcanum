@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-08-29T09:17:49Z",
+  "generated_at": "2026-08-31T09:51:43Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "af0993c1b",
+  "commit": "c44fefb2e",
   "generator_version": "1.4",
   "files": [
     {
@@ -6568,8 +6568,8 @@
     {
       "path": "scripts/architect/source-tranche-gate.sh",
       "type": "file",
-      "size_bytes": 5326,
-      "last_modified_commit": "9ca998918",
+      "size_bytes": 5452,
+      "last_modified_commit": "c44fefb2e",
       "is_empty": false,
       "extension": ".sh",
       "lines": 165
