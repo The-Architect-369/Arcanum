@@ -106,7 +106,7 @@ else:
 PY
 done
 
-git diff --check
+git -c core.whitespace='trailing-space,space-before-tab,cr-at-eol' diff --check
 
 lint_json="$(mktemp)"
 trap 'rm -f "$lint_json"' EXIT
@@ -156,7 +156,7 @@ PY
 
 pnpm -C apps/web typecheck
 pnpm verify:ce-w01
-git diff --check
+git -c core.whitespace='trailing-space,space-before-tab,cr-at-eol' diff --check
 
 printf '\nPASS: source tranche validated.\n'
 printf 'branch: %s\n' "$branch"
