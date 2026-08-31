@@ -295,7 +295,16 @@ export default function ModuleMatrixShell({
   return (
     <div className={cn('relative h-full min-h-0', className)}>
       <PanelShell
-        title={title}
+        title={
+          actions ? (
+            <div className="min-w-0">
+              {title}
+              <div className="mt-1 min-w-0 truncate [&>*]:truncate">{actions}</div>
+            </div>
+          ) : (
+            title
+          )
+        }
         actions={headerActions}
         flush
         scrollable={false}
