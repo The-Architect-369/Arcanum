@@ -1,0 +1,135 @@
+{
+  "registry": "hope.tempus.orientation-grammar.v0.1",
+  "title": "HOPE–TEMPUS 12/7/5 Personal Orientation Grammar",
+  "status": "design-candidate",
+  "phase": "Pre-Genesis",
+  "version": "0.1",
+  "conceived_at": "2026-09-01",
+  "documented_at": "2026-09-01",
+  "ratified_at": null,
+  "effective_at": null,
+  "authority": "personal orientation and reflection only; no identity, diagnosis, recognition, rank, price, permission, governance, security, or Treasury authority",
+  "purpose": "Encode the exact twelve-domain, seven-rhythm, five-state grammar used to orient HOPE journeys and optional TEMPUS rites while preserving participant sovereignty and metaphysical neutrality.",
+  "sources": [
+    "docs/doctrine/identity-model.md",
+    "docs/doctrine/metaphysical-neutrality.md",
+    "docs/doctrine/temporal-model.md",
+    "docs/doctrine/authority.md",
+    "docs/specs/modules/hope-context-schema.md",
+    "docs/specs/modules/tempus-layer-model.md",
+    "docs/specs/economy/rites-credit.md",
+    "docs/architecture/classical-seven-archetype-layer.md",
+    "docs/architecture/registries/tempus-zodiac-registry.v0.1.json",
+    "docs/architecture/registries/vitae-grade-cycle-registry.v0.1.json"
+  ],
+  "counts": {
+    "life_domains": 12,
+    "rhythmic_lenses": 7,
+    "embodied_states": 5,
+    "orientation_frames": 420,
+    "orientation_formula": "12 * 7 * 5",
+    "sense_layer_multiplier": false
+  },
+  "life_domains": [
+    {"index": 1, "id": "self-agency", "label": "Self & Agency", "zodiac_lens": "Aries"},
+    {"index": 2, "id": "resources-sustenance", "label": "Resources & Sustenance", "zodiac_lens": "Taurus"},
+    {"index": 3, "id": "learning-exchange", "label": "Learning & Exchange", "zodiac_lens": "Gemini"},
+    {"index": 4, "id": "home-belonging", "label": "Home & Belonging", "zodiac_lens": "Cancer"},
+    {"index": 5, "id": "creation-joy", "label": "Creation & Joy", "zodiac_lens": "Leo"},
+    {"index": 6, "id": "health-practice", "label": "Health & Practice", "zodiac_lens": "Virgo"},
+    {"index": 7, "id": "partnership-covenant", "label": "Partnership & Covenant", "zodiac_lens": "Libra"},
+    {"index": 8, "id": "shared-power-transformation", "label": "Shared Power & Transformation", "zodiac_lens": "Scorpio"},
+    {"index": 9, "id": "meaning-exploration", "label": "Meaning & Exploration", "zodiac_lens": "Sagittarius"},
+    {"index": 10, "id": "vocation-stewardship", "label": "Vocation & Stewardship", "zodiac_lens": "Capricorn"},
+    {"index": 11, "id": "community-futures", "label": "Community & Futures", "zodiac_lens": "Aquarius"},
+    {"index": 12, "id": "interior-release", "label": "Interior & Release", "zodiac_lens": "Pisces"}
+  ],
+  "tempus_weekly_rhythm": [
+    {"index": 1, "id": "sun", "operation": ["center", "illuminate"]},
+    {"index": 2, "id": "moon", "operation": ["receive", "remember", "tend"]},
+    {"index": 3, "id": "mars", "operation": ["mobilize", "protect", "separate"]},
+    {"index": 4, "id": "mercury", "operation": ["clarify", "learn", "exchange"]},
+    {"index": 5, "id": "jupiter", "operation": ["enlarge", "connect", "contextualize"]},
+    {"index": 6, "id": "venus", "operation": ["value", "relate", "harmonize"]},
+    {"index": 7, "id": "saturn", "operation": ["contain", "structure", "sustain"]}
+  ],
+  "vitae_instructional_chapter_arc": [
+    "moon",
+    "mars",
+    "mercury",
+    "jupiter",
+    "venus",
+    "saturn",
+    "sun"
+  ],
+  "sequence_boundary": "The TEMPUS weekly rhythm and Vitae Moon-to-Sun instructional chapter arc are distinct scoped sequences and may not silently replace one another.",
+  "embodied_states": [
+    {"index": 1, "id": "spirit", "function": "orientation", "sense": "smell", "cue": "atmosphere / breath / whole presence", "historical_posture": "intentional Arcanum adaptation; not ancient unanimity"},
+    {"index": 2, "id": "air", "function": "discernment", "sense": "hearing", "cue": "voice / rhythm / distinction"},
+    {"index": 3, "id": "fire", "function": "intention", "sense": "sight", "cue": "light / image / chosen focus"},
+    {"index": 4, "id": "earth", "function": "embodiment", "sense": "touch", "cue": "weight / texture / concrete action"},
+    {"index": 5, "id": "water", "function": "integration", "sense": "taste", "cue": "assimilation / response / what remains"}
+  ],
+  "embodied_cycle": [
+    "spirit_senses",
+    "air_names",
+    "fire_chooses",
+    "earth_acts",
+    "water_integrates",
+    "spirit_reorients"
+  ],
+  "domain_frontier": {
+    "primary_active_journeys_per_domain": 1,
+    "cross_domain_links_consume_slots": false,
+    "board_frontier_action_maximum": 12,
+    "tempus_anchor_actions": 1,
+    "tempus_supporting_action_maximum": 2,
+    "additional_same_domain_journey": "MANA breadth candidate; pricing and activation unratified"
+  },
+  "vitae_count_lineage": {
+    "positions_per_class": 36,
+    "positions_per_class_formula": "1 + (7 * 5)",
+    "classes_per_grade": 10,
+    "positions_per_grade": 360,
+    "grades": 10,
+    "core_positions": 3600,
+    "core_positions_formula": "10 * 10 * (1 + (7 * 5))",
+    "rite_envelopes_per_materialized_section": "candidate: zero or one; not ratified",
+    "raw_count_grants_permission": false
+  },
+  "permission_candidate": {
+    "formula": "prerequisites_met && evidence_sufficient && review_passed && consent_current && safety_clear",
+    "section_or_rite_count_may_be_supporting_evidence": true,
+    "section_or_rite_count_may_be_sole_authority": false
+  },
+  "fact_states": [
+    "heard",
+    "confirmed",
+    "evidenced",
+    "superseded"
+  ],
+  "invariants": {
+    "participant_may_rename_or_reject_lenses": true,
+    "ordinary_cards_and_lists_must_preserve_meaning": true,
+    "geometry_required": false,
+    "astrological_causation": false,
+    "metaphysical_belief_required": false,
+    "hidden_personality_scoring": false,
+    "automatic_vitae_recognition": false,
+    "automatic_permission_by_count": false,
+    "automatic_rites_credit_issuance": false,
+    "grade_based_price_discount": false,
+    "no_cosmic_urgency": true,
+    "silence_pause_and_revision_valid": true,
+    "personal_context_local_private_by_default": true
+  },
+  "open_gates": [
+    "ratify or revise the twelve domain labels",
+    "ratify the five state and sense mapping",
+    "decide whether each materialized Vitae section offers zero, one, or multiple Rite Envelopes",
+    "define personal versus system-affecting capability evidence and review",
+    "decide whether one primary Journey per domain is free baseline, capacity default, or presentation-only",
+    "simulate any MANA breadth price using actual resource units",
+    "reconcile with active Creation Era branch before canonical promotion"
+  ]
+}
