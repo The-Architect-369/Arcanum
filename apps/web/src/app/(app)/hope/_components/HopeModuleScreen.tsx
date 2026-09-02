@@ -77,6 +77,7 @@ function formatTimestamp(value: string | null | undefined) {
 export function HopeModuleScreen({ family }: { family: HopeFamilyId }) {
   const account = useAccount();
   const [activeFamilyId, setActiveFamilyId] = useState<HopeFamilyId>(family);
+  const activeFamilyIdRef = React.useRef<HopeFamilyId>(family);
   const [activeCardId, setActiveCardId] = useState<CardId>('a1');
   const [familyMotion, setFamilyMotion] = useState<FamilyMotion>('idle');
   const [familyMotionKey, setFamilyMotionKey] = useState(0);
@@ -210,26 +211,37 @@ export function HopeModuleScreen({ family }: { family: HopeFamilyId }) {
   );
 
   const activeFamily = families[activeFamilyId];
+  const firstActiveCardId = activeFamily.cards[0]?.id ?? 'a1';
   const activeCard = activeFamily.cards.find((card) => card.id === activeCardId) ?? activeFamily.cards[0];
   const verticalTabs = activeFamily.cards.map((card) => ({ id: card.id, label: card.navLabel }));
   const titleSubtitle = subtitleFromCardTitle(activeCard.title);
 
-  const transitionToFamily = (nextFamily: HopeFamilyId, syncHistory: boolean) => {
-    if (nextFamily === activeFamilyId) return;
-    const motion = motionForFamilyChange(activeFamilyId, nextFamily);
-    if (syncHistory) window.history.replaceState(window.history.state, '', families[nextFamily].href);
+  const transitionToFamily = React.useCallback((nextFamily: HopeFamilyId, syncHistory: boolean) => {
+    const currentFamily = activeFamilyIdRef.current;
+    if (nextFamily === currentFamily) return;
+    const motion = motionForFamilyChange(currentFamily, nextFamily);
+
+    if (syncHistory) {
+      window.history.replaceState(
+        window.history.state,
+        '',
+        ORDER[FAMILY_INDEX[nextFamily]]
+      );
+    }
+
+    activeFamilyIdRef.current = nextFamily;
     setFamilyMotion(motion);
     setFamilyMotionKey((value) => value + 1);
     setActiveFamilyId(nextFamily);
-  };
+  }, []);
 
   useEffect(() => {
     transitionToFamily(family, false);
-  }, [family]);
+  }, [family, transitionToFamily]);
 
   useEffect(() => {
-    setActiveCardId(activeFamily.cards[0]?.id ?? 'a1');
-  }, [activeFamilyId]);
+    setActiveCardId(firstActiveCardId);
+  }, [firstActiveCardId]);
 
   useEffect(() => {
     const onPopState = () => {
@@ -238,7 +250,7 @@ export function HopeModuleScreen({ family }: { family: HopeFamilyId }) {
     };
     window.addEventListener('popstate', onPopState);
     return () => window.removeEventListener('popstate', onPopState);
-  }, [activeFamilyId, families]);
+  }, [transitionToFamily]);
 
   const onHorizontalChange = (href: string) => {
     const nextFamily = familyFromPathname(href);

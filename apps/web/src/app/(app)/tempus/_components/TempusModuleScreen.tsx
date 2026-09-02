@@ -60,8 +60,8 @@ function subtitleFromCardTitle(title: string) {
 }
 
 export default function TempusModuleScreen({ family }: { family: FamilyId }) {
-  const w = useTempusWindow();
   const [activeFamilyId, setActiveFamilyId] = useState<FamilyId>(family);
+  const activeFamilyIdRef = React.useRef<FamilyId>(family);
   const [activeCardId, setActiveCardId] = useState<CardId>('a1');
   const [familyMotion, setFamilyMotion] = useState<FamilyMotion>('idle');
   const [familyMotionKey, setFamilyMotionKey] = useState(0);
@@ -160,10 +160,11 @@ export default function TempusModuleScreen({ family }: { family: FamilyId }) {
         ],
       },
     }),
-    [w]
+    []
   );
 
   const activeFamily = families[activeFamilyId];
+  const firstActiveCardId = activeFamily.cards[0]?.id ?? 'a1';
   const activeCard = activeFamily.cards.find((card) => card.id === activeCardId) ?? activeFamily.cards[0];
   const verticalTabs = activeFamily.cards.map((card) => ({ id: card.id, label: card.navLabel }));
   const titleSubtitle = subtitleFromCardTitle(activeCard.title);
@@ -173,25 +174,32 @@ export default function TempusModuleScreen({ family }: { family: FamilyId }) {
     return () => window.clearTimeout(timer);
   }, [familyMotionKey]);
 
-  const transitionToFamily = (nextFamily: FamilyId, syncHistory: boolean) => {
-    if (nextFamily === activeFamilyId) return;
-    const motion = motionForFamilyChange(activeFamilyId, nextFamily);
+  const transitionToFamily = React.useCallback((nextFamily: FamilyId, syncHistory: boolean) => {
+    const currentFamily = activeFamilyIdRef.current;
+    if (nextFamily === currentFamily) return;
+    const motion = motionForFamilyChange(currentFamily, nextFamily);
+
     if (syncHistory) {
-      const href = families[nextFamily].href;
-      window.history.replaceState(window.history.state, '', href);
+      window.history.replaceState(
+        window.history.state,
+        '',
+        ORDER[FAMILY_INDEX[nextFamily]]
+      );
     }
+
+    activeFamilyIdRef.current = nextFamily;
     setFamilyMotion(motion);
     setFamilyMotionKey((value) => value + 1);
     setActiveFamilyId(nextFamily);
-  };
+  }, []);
 
   useEffect(() => {
     transitionToFamily(family, false);
-  }, [family]);
+  }, [family, transitionToFamily]);
 
   useEffect(() => {
-    setActiveCardId(activeFamily.cards[0]?.id ?? 'a1');
-  }, [activeFamilyId]);
+    setActiveCardId(firstActiveCardId);
+  }, [firstActiveCardId]);
 
   useEffect(() => {
     const onPopState = () => {
@@ -201,7 +209,7 @@ export default function TempusModuleScreen({ family }: { family: FamilyId }) {
 
     window.addEventListener('popstate', onPopState);
     return () => window.removeEventListener('popstate', onPopState);
-  }, [activeFamilyId, families]);
+  }, [transitionToFamily]);
 
   const onHorizontalChange = (href: string) => {
     const nextFamily = familyFromPathname(href);

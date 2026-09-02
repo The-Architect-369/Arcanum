@@ -72,6 +72,7 @@ export function WalletModuleScreen({ family }: { family: WalletFamilyId }) {
   const account = useAccount();
   const walletContext = useMemo(() => createWalletContext(account, { denom: baseDenom }), [account]);
   const [activeFamilyId, setActiveFamilyId] = useState<WalletFamilyId>(family);
+  const activeFamilyIdRef = React.useRef<WalletFamilyId>(family);
   const [activeCardId, setActiveCardId] = useState<CardId>("a1");
   const [familyMotion, setFamilyMotion] = useState<FamilyMotion>("idle");
   const [familyMotionKey, setFamilyMotionKey] = useState(0);
@@ -129,7 +130,7 @@ export function WalletModuleScreen({ family }: { family: WalletFamilyId }) {
     await loadReceipts();
   }
 
-  const families = useMemo<Record<WalletFamilyId, FamilyConfig>>(() => ({
+  const families: Record<WalletFamilyId, FamilyConfig> = {
     balances: {
       href: ORDER[0],
       label: "Balances",
@@ -160,24 +161,39 @@ export function WalletModuleScreen({ family }: { family: WalletFamilyId }) {
         { id: "c3", navLabel: "C3", title: "Wallet - C3 Custody", caption: "The recovery and possession layer. This is where the wallet explains what this device truly holds, what can be rebound, and what still depends on local storage rather than wider witness.", render: () => <CustodyCard account={account} /> },
       ],
     },
-  }), [account, bindAddress, busy, message, receiptsLoading, ritesSummary, rows, vaultSummary, walletContext]);
+  };
 
   const activeFamily = families[activeFamilyId];
+  const firstActiveCardId = activeFamily.cards[0]?.id ?? "a1";
   const activeCard = activeFamily.cards.find((card) => card.id === activeCardId) ?? activeFamily.cards[0];
   const verticalTabs = activeFamily.cards.map((card) => ({ id: card.id, label: card.navLabel }));
   const titleSubtitle = subtitleFromCardTitle(activeCard.title);
 
-  const transitionToFamily = (nextFamily: WalletFamilyId, syncHistory: boolean) => {
-    if (nextFamily === activeFamilyId) return;
-    const motion = motionForFamilyChange(activeFamilyId, nextFamily);
-    if (syncHistory) window.history.replaceState(window.history.state, "", families[nextFamily].href);
+  const transitionToFamily = React.useCallback((nextFamily: WalletFamilyId, syncHistory: boolean) => {
+    const currentFamily = activeFamilyIdRef.current;
+    if (nextFamily === currentFamily) return;
+    const motion = motionForFamilyChange(currentFamily, nextFamily);
+
+    if (syncHistory) {
+      window.history.replaceState(
+        window.history.state,
+        "",
+        ORDER[FAMILY_INDEX[nextFamily]]
+      );
+    }
+
+    activeFamilyIdRef.current = nextFamily;
     setFamilyMotion(motion);
     setFamilyMotionKey((value) => value + 1);
     setActiveFamilyId(nextFamily);
-  };
+  }, []);
 
-  useEffect(() => { transitionToFamily(family, false); }, [family]);
-  useEffect(() => { setActiveCardId(activeFamily.cards[0]?.id ?? "a1"); }, [activeFamilyId]);
+  useEffect(() => {
+    transitionToFamily(family, false);
+  }, [family, transitionToFamily]);
+  useEffect(() => {
+    setActiveCardId(firstActiveCardId);
+  }, [firstActiveCardId]);
   useEffect(() => {
     const onPopState = () => {
       const nextFamily = familyFromPathname(window.location.pathname);
@@ -185,7 +201,7 @@ export function WalletModuleScreen({ family }: { family: WalletFamilyId }) {
     };
     window.addEventListener("popstate", onPopState);
     return () => window.removeEventListener("popstate", onPopState);
-  }, [activeFamilyId, families]);
+  }, [transitionToFamily]);
 
   const onHorizontalChange = (href: string) => {
     const nextFamily = familyFromPathname(href);

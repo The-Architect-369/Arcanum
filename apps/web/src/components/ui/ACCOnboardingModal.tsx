@@ -38,10 +38,6 @@ export default function ACCOnboardingModal({
     typeof AccountState.getShowOnboarding === "function"
       ? AccountState.getShowOnboarding
       : undefined;
-  const setShow =
-    typeof AccountState.setShowOnboarding === "function"
-      ? AccountState.setShowOnboarding
-      : undefined;
   const isTrusted =
     typeof AccountState.isTrusted === "function" ? AccountState.isTrusted : undefined;
   const begin =
@@ -64,15 +60,17 @@ export default function ACCOnboardingModal({
   const trusted = safeGetter<boolean>(isTrusted, false);
   const isOpen = open ?? storeOpen ?? localOpen;
 
-  const setOpen = (next: boolean) => {
+  const setOpen = React.useCallback((next: boolean) => {
     try {
-      setShow?.(next);
+      if (typeof AccountState.setShowOnboarding === "function") {
+        AccountState.setShowOnboarding(next);
+      }
     } catch {
       // ignore
     }
     setLocalOpen(next);
     onOpenChange?.(next);
-  };
+  }, [onOpenChange]);
 
   const doBegin = safeAction(begin);
   const doComplete = safeAction(complete);
@@ -85,7 +83,7 @@ export default function ACCOnboardingModal({
     const onKey = (event: KeyboardEvent) => event.key === "Escape" && setOpen(false);
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [isOpen]);
+  }, [isOpen, setOpen]);
 
   if (!mounted || !isOpen) return null;
 

@@ -68,6 +68,7 @@ function subtitleFromCardTitle(title: string) {
 export function VitaeModuleScreen({ family }: { family: VitaeFamilyId }) {
   const account = useAccount();
   const [activeFamilyId, setActiveFamilyId] = useState<VitaeFamilyId>(family);
+  const activeFamilyIdRef = React.useRef<VitaeFamilyId>(family);
   const [activeCardId, setActiveCardId] = useState<CardId>('a1');
   const [familyMotion, setFamilyMotion] = useState<FamilyMotion>('idle');
   const [familyMotionKey, setFamilyMotionKey] = useState(0);
@@ -121,8 +122,7 @@ export function VitaeModuleScreen({ family }: { family: VitaeFamilyId }) {
     setMessage(`Recorded ${practice.title} into the local Vitae record.`);
   }
 
-  const families = useMemo<Record<VitaeFamilyId, FamilyConfig>>(
-    () => ({
+  const families: Record<VitaeFamilyId, FamilyConfig> = {
       path: {
         href: ORDER[0],
         label: 'Path',
@@ -214,34 +214,40 @@ export function VitaeModuleScreen({ family }: { family: VitaeFamilyId }) {
           },
         ],
       },
-    }),
-    [account.trusted, selectedPath, summary, vitaeState]
-  );
+    };
 
   const activeFamily = families[activeFamilyId];
+  const firstActiveCardId = activeFamily.cards[0]?.id ?? 'a1';
   const activeCard = activeFamily.cards.find((card) => card.id === activeCardId) ?? activeFamily.cards[0];
   const verticalTabs = activeFamily.cards.map((card) => ({ id: card.id, label: card.navLabel }));
   const titleSubtitle = subtitleFromCardTitle(activeCard.title);
 
-  const transitionToFamily = (nextFamily: VitaeFamilyId, syncHistory: boolean) => {
-    if (nextFamily === activeFamilyId) return;
-    const motion = motionForFamilyChange(activeFamilyId, nextFamily);
+  const transitionToFamily = React.useCallback((nextFamily: VitaeFamilyId, syncHistory: boolean) => {
+    const currentFamily = activeFamilyIdRef.current;
+    if (nextFamily === currentFamily) return;
+    const motion = motionForFamilyChange(currentFamily, nextFamily);
+
     if (syncHistory) {
-      const href = families[nextFamily].href;
-      window.history.replaceState(window.history.state, '', href);
+      window.history.replaceState(
+        window.history.state,
+        '',
+        ORDER[FAMILY_INDEX[nextFamily]]
+      );
     }
+
+    activeFamilyIdRef.current = nextFamily;
     setFamilyMotion(motion);
     setFamilyMotionKey((value) => value + 1);
     setActiveFamilyId(nextFamily);
-  };
+  }, []);
 
   useEffect(() => {
     transitionToFamily(family, false);
-  }, [family]);
+  }, [family, transitionToFamily]);
 
   useEffect(() => {
-    setActiveCardId(activeFamily.cards[0]?.id ?? 'a1');
-  }, [activeFamilyId]);
+    setActiveCardId(firstActiveCardId);
+  }, [firstActiveCardId]);
 
   useEffect(() => {
     const onPopState = () => {
@@ -251,7 +257,7 @@ export function VitaeModuleScreen({ family }: { family: VitaeFamilyId }) {
 
     window.addEventListener('popstate', onPopState);
     return () => window.removeEventListener('popstate', onPopState);
-  }, [activeFamilyId, families]);
+  }, [transitionToFamily]);
 
   const onHorizontalChange = (href: string) => {
     const nextFamily = familyFromPathname(href);

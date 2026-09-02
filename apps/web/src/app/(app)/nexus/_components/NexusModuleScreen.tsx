@@ -94,6 +94,7 @@ export function NexusModuleScreen({ family }: { family: NexusFamilyId }) {
   const acc = useAccount();
   const peerId = typeof acc?.peerId === 'string' ? acc.peerId : undefined;
   const [activeFamilyId, setActiveFamilyId] = useState<NexusFamilyId>(family);
+  const activeFamilyIdRef = React.useRef<NexusFamilyId>(family);
   const [activeCardId, setActiveCardId] = useState<CardId>('a1');
   const [familyMotion, setFamilyMotion] = useState<FamilyMotion>('idle');
   const [familyMotionKey, setFamilyMotionKey] = useState(0);
@@ -151,7 +152,8 @@ export function NexusModuleScreen({ family }: { family: NexusFamilyId }) {
       setNexusState(localNexusState);
     } catch {
       setRows([]);
-      await loadNexusState();
+      const next = await getNexusState();
+      setNexusState(next);
     } finally {
       setLoadingFeed(false);
     }
@@ -329,8 +331,7 @@ export function NexusModuleScreen({ family }: { family: NexusFamilyId }) {
     }
   };
 
-  const families = useMemo<Record<NexusFamilyId, FamilyConfig>>(
-    () => ({
+  const families: Record<NexusFamilyId, FamilyConfig> = {
       current: {
         href: ORDER[0],
         label: 'Current',
@@ -415,31 +416,40 @@ export function NexusModuleScreen({ family }: { family: NexusFamilyId }) {
           },
         ],
       },
-    }),
-    [rows, loadingFeed, previews, nexusState, target, roomId, body, media, proposalTitle, proposalKind, includeTempusContext, busy, acc, nexusContext, rooms, loadingRooms, channelName, channelPrice, message]
-  );
+    };
 
   const activeFamily = families[activeFamilyId];
+  const firstActiveCardId = activeFamily.cards[0]?.id ?? 'a1';
   const activeCard = activeFamily.cards.find((card) => card.id === activeCardId) ?? activeFamily.cards[0];
   const verticalTabs = activeFamily.cards.map((card) => ({ id: card.id, label: card.navLabel }));
   const titleSubtitle = subtitleFromCardTitle(activeCard.title);
 
-  const transitionToFamily = (nextFamily: NexusFamilyId, syncHistory: boolean) => {
-    if (nextFamily === activeFamilyId) return;
-    const motion = motionForFamilyChange(activeFamilyId, nextFamily);
-    if (syncHistory) window.history.replaceState(window.history.state, '', families[nextFamily].href);
+  const transitionToFamily = React.useCallback((nextFamily: NexusFamilyId, syncHistory: boolean) => {
+    const currentFamily = activeFamilyIdRef.current;
+    if (nextFamily === currentFamily) return;
+    const motion = motionForFamilyChange(currentFamily, nextFamily);
+
+    if (syncHistory) {
+      window.history.replaceState(
+        window.history.state,
+        '',
+        ORDER[FAMILY_INDEX[nextFamily]]
+      );
+    }
+
+    activeFamilyIdRef.current = nextFamily;
     setFamilyMotion(motion);
     setFamilyMotionKey((value) => value + 1);
     setActiveFamilyId(nextFamily);
-  };
+  }, []);
 
   useEffect(() => {
     transitionToFamily(family, false);
-  }, [family]);
+  }, [family, transitionToFamily]);
 
   useEffect(() => {
-    setActiveCardId(activeFamily.cards[0]?.id ?? 'a1');
-  }, [activeFamilyId]);
+    setActiveCardId(firstActiveCardId);
+  }, [firstActiveCardId]);
 
   useEffect(() => {
     const onPopState = () => {
@@ -448,7 +458,7 @@ export function NexusModuleScreen({ family }: { family: NexusFamilyId }) {
     };
     window.addEventListener('popstate', onPopState);
     return () => window.removeEventListener('popstate', onPopState);
-  }, [activeFamilyId, families]);
+  }, [transitionToFamily]);
 
   const onHorizontalChange = (href: string) => {
     const nextFamily = familyFromPathname(href);
