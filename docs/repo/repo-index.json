@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-08-31T10:23:01Z",
+  "generated_at": "2026-09-02T03:53:33Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "7dd0636e0",
+  "commit": "d4505e66b",
   "generator_version": "1.4",
   "files": [
     {
@@ -403,11 +403,11 @@
     {
       "path": "apps/web/src/app/(app)/hope/_components/HopeModuleScreen.tsx",
       "type": "file",
-      "size_bytes": 31871,
-      "last_modified_commit": "ca4472c1e",
+      "size_bytes": 32171,
+      "last_modified_commit": "d4505e66b",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 748
+      "lines": 760
     },
     {
       "path": "apps/web/src/app/(app)/hope/_components/HopeTabRail.tsx",
@@ -556,11 +556,11 @@
     {
       "path": "apps/web/src/app/(app)/nexus/_components/NexusModuleScreen.tsx",
       "type": "file",
-      "size_bytes": 36717,
-      "last_modified_commit": "b70a45193",
+      "size_bytes": 36823,
+      "last_modified_commit": "d4505e66b",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 820
+      "lines": 830
     },
     {
       "path": "apps/web/src/app/(app)/nexus/channel/page.tsx",
@@ -637,11 +637,11 @@
     {
       "path": "apps/web/src/app/(app)/tempus/_components/TempusModuleScreen.tsx",
       "type": "file",
-      "size_bytes": 23413,
-      "last_modified_commit": "dc4026c10",
+      "size_bytes": 23638,
+      "last_modified_commit": "d4505e66b",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 511
+      "lines": 519
     },
     {
       "path": "apps/web/src/app/(app)/tempus/calendar/page.tsx",
@@ -718,11 +718,11 @@
     {
       "path": "apps/web/src/app/(app)/vitae/_components/VitaeModuleScreen.tsx",
       "type": "file",
-      "size_bytes": 33359,
-      "last_modified_commit": "8637d6dd4",
+      "size_bytes": 33538,
+      "last_modified_commit": "d4505e66b",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 731
+      "lines": 737
     },
     {
       "path": "apps/web/src/app/(app)/vitae/grade/page.tsx",
@@ -763,11 +763,11 @@
     {
       "path": "apps/web/src/app/(app)/wallet/_components/WalletModuleScreen.tsx",
       "type": "file",
-      "size_bytes": 25284,
-      "last_modified_commit": "1c742877d",
+      "size_bytes": 25476,
+      "last_modified_commit": "d4505e66b",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 281
+      "lines": 297
     },
     {
       "path": "apps/web/src/app/(app)/wallet/balances/page.tsx",
@@ -1069,11 +1069,11 @@
     {
       "path": "apps/web/src/components/ui/ACCOnboardingModal.tsx",
       "type": "file",
-      "size_bytes": 5547,
-      "last_modified_commit": "48643a4b7",
+      "size_bytes": 5555,
+      "last_modified_commit": "d4505e66b",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 174
+      "lines": 172
     },
     {
       "path": "apps/web/src/components/ui/ActivateBento.tsx",
@@ -1564,11 +1564,11 @@
     {
       "path": "apps/web/src/lib/hope/useHopeRenderState.ts",
       "type": "file",
-      "size_bytes": 344,
-      "last_modified_commit": "ea0a965fb",
+      "size_bytes": 375,
+      "last_modified_commit": "d4505e66b",
       "is_empty": false,
       "extension": ".ts",
-      "lines": 9
+      "lines": 10
     },
     {
       "path": "apps/web/src/lib/hope/useHopeVisualState.ts",
