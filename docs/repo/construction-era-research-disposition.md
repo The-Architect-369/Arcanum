@@ -5,7 +5,7 @@ visibility: public
 phase: "Pre-Genesis"
 era: "Construction Era"
 wave: "CE-W01"
-last_updated: 2026-08-26
+last_updated: 2026-09-02
 authority: "audit evidence only; no disposition here self-ratifies canon"
 source_issue: "https://github.com/The-Architect-369/Arcanum/issues/39"
 research_branch: "docs/creation-era-architecture-trail"
@@ -416,10 +416,17 @@ docs/repo/repo-index.json
 scripts/repo-index.sh
 ```
 
-Primary disposition: **AUDIT-PENDING**.
+Primary disposition: **RETAIN-AS-RESEARCH**.
 
-The branch contains deterministic provenance-hash work at its head. The generator changes must be compared against the current Construction branch and validated independently before any script change is carried over. The research branch's generated index itself must not be promoted because the target tree will differ after consolidation.
+Construction-baseline action: **SYNTHESIZE-COMPLETE / SUPERSEDED**.
 
+Research v1.3 uses wall-clock generation time, current `HEAD`, `git ls-files`, and working-tree file/symlink reads.
+
+Construction v1.4 supersedes that model: it requires clean committed state apart from the index, resolves the latest substantive commit excluding the index, derives generation time from that commit, reads the exact Git tree/blobs, handles committed symlinks, and sorts deterministically.
+
+The research-generated `docs/repo/repo-index.json` must never be imported into Construction because it represents a different tree and generation model.
+
+Family M is closed for CE-W01: retain v1.3 as research provenance; Construction v1.4 is the active deterministic repository-index contract.
 ## Tranche 1 conclusions
 
 The research branch is not one promotable unit. It contains at least five distinct evidence classes:

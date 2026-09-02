@@ -5,7 +5,7 @@ visibility: public
 phase: "Pre-Genesis"
 era: "Construction Era"
 wave: "CE-W01"
-last_updated: 2026-08-27
+last_updated: 2026-09-02
 authority: "Human Architect authorized audit/consolidation work; promotion remains separately authorized"
 source_issue: "https://github.com/The-Architect-369/Arcanum/issues/39"
 ---
@@ -474,6 +474,93 @@ after those changes and their deterministic repo-index refreshes.
 Checkpoint 8 remains **BLOCKED**. This reconciliation does not authorize a
 merge to `main`, ratify Module Architecture v2, or promote research material
 wholesale.
+
+## Checkpoint reconciliation — 2026-09-02
+
+This reconciliation records the completed CE-W01 sovereign-coordinate and runtime-boundary tranche without declaring the remaining Construction Era work complete or authorizing promotion to `main`.
+
+Certified substantive runtime source:
+
+- `6a9950c7f9039f0f4e901d14e2f987e4d5475e02`
+
+Deterministic repository-index companion and certified Construction head:
+
+- `6efc1111c9a5e996d0fa618143b4ef7b4f3d324e`
+
+Human Termux verification for that tranche passed Geometry and Tempus machine verification, lint with zero errors, TypeScript typecheck, and the Next.js production build with 44/44 generated routes.
+
+The deterministic repository index used generator version 1.4 and contained 792 tracked entries.
+
+The exact companion head was independently observed on Vercel as deployment `dpl_G9HNrT6fAegxiYt3YvJjaumFDTp9`, state `READY`, bound to exact Git SHA `6efc1111c9a5e996d0fa618143b4ef7b4f3d324e`, with no production target and no alias error.
+
+The completed runtime tranche materially closes the CE-W01 architecture/runtime semantic boundary for sovereign local coordinates, temporal provenance, deterministic machine contracts, local/protocol separation, and authority firewalls.
+
+### Checkpoint 3 — Geometry/Mathematics synthesis
+
+Status: **IN PROGRESS**
+
+Completed machine artifacts now include the coordinate schema, registry, deterministic vectors, and verification.
+
+Remaining gates are:
+
+- math-to-screen projection contract;
+- geometry-free reference renderer or equivalent;
+- explicit source-authorized semantic label mapping;
+- exact Hope Seed-of-Life projection mathematics if retained;
+- final native/runtime binding.
+
+Geometry does not create module, identity, capability, recognition, economic, governance, protocol, or authority semantics.
+
+### Checkpoint 4 — Tempus anchor synthesis
+
+Status: **IN PROGRESS**
+
+Completed machine artifacts now include the Tempus schema, deterministic vectors, semantic `ClockProvider` boundary, local/protocol separation, and opaque signing-handle boundary.
+
+Remaining gates are:
+
+- bind a concrete `ClockProvider` implementation;
+- persistence/restart tests;
+- optional ephemeris-provider implementation;
+- implement and test local receipt signing through the opaque signing handle;
+- location/privacy tests;
+- later explicit protocol-witness envelope.
+
+Temporal and astronomical data remain provenance/context only and never grant authority.
+
+### Checkpoint 5 — Holistic repository audit
+
+Status: **IN PROGRESS**
+
+The completed runtime tranche materially reduces architecture/runtime ambiguity, but remaining archive, documentation, native-runtime, deployment, and structural audit work continues.
+
+### Checkpoint 6 — Consolidation
+
+Status: **IN PROGRESS**
+
+Selective consolidation continues. The research branch remains evidence-only and is not merged wholesale.
+
+### Checkpoint 7 — Exact-head verification
+
+Status: **IN PROGRESS**
+
+Checkpoint 7 is green for the completed runtime tranche at source `6a9950c7f9039f0f4e901d14e2f987e4d5475e02` plus deterministic companion `6efc1111c9a5e996d0fa618143b4ef7b4f3d324e`.
+
+Because this reconciliation introduces new substantive mutations, the full exact-head verification sequence and deterministic repository-index refresh must run again before this new tranche can inherit that certification.
+
+### Checkpoint 8 — Promotion
+
+Status: **BLOCKED**
+
+No promotion to `main` is authorized.
+
+Explicit exclusions from this reconciliation remain:
+
+- capability-evaluator research;
+- Module Architecture v2 ratification;
+- production cryptographic-provider or algorithm choices;
+- Android/native implementation;
+- promotion or merge to `main`.
 
 ## Cross-chat handoff protocol
 

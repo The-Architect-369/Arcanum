@@ -2,7 +2,7 @@
 title: "TempusAnchor — CE-W01 Temporal Provenance Contract"
 status: implementation-candidate
 visibility: public
-last_updated: 2026-08-26
+last_updated: 2026-09-02
 description: "Minimal local-first temporal provenance contract for CE-W01, separating clock/ephemeris observation from symbolic interpretation, runtime authorization, and optional protocol witnessing."
 era: "Construction Era"
 wave: "CE-W01"
@@ -68,7 +68,7 @@ A normalized local record that captures the observation and its provenance.
 
 An append-only local statement that an anchor was accepted/persisted by the local runtime.
 
-A local receipt may later be signed by a device-held key when the CE-W01 identity/runtime signing boundary exists.
+The CE-W01 local runtime boundary now defines an opaque signing-handle boundary for local receipt signing. This specification does not expose private key material or choose a production signing algorithm/provider; concrete signing implementation and tests remain an implementation gate.
 
 ### Protocol witness
 
@@ -101,7 +101,11 @@ TempusAnchor
 - interpretation
 ```
 
-The exact serialization format will be machine-specified after this semantic contract is accepted.
+The machine-readable serialization contract and deterministic digest vectors are now represented by:
+
+- `docs/specs/tempus/tempus-anchor.schema.json`;
+- `docs/specs/tempus/tempus-anchor.vectors.v0.1.json`;
+- `scripts/verify-ce-w01-specs.py`, which verifies the Tempus schema, vectors, provenance constraints, local/protocol separation, and authority firewall.
 
 ## Required fields
 
@@ -602,15 +606,21 @@ The baseline does not require:
 
 These remain optional research or later explicitly gated features.
 
-## Next implementation gate
+## Machine-verifiable status
 
-Before CE-W02, this specification should gain:
+CE-W01 now provides the machine-readable `TempusAnchor` schema, deterministic serialization/digest vectors, deterministic Tempus verification, semantic `ClockProvider` boundaries, optional ephemeris-provider semantics, and an opaque local signing-handle boundary.
 
-- a machine-readable `TempusAnchor` schema;
-- local serialization/digest test vectors;
-- clock-provider interface semantics;
+These completed semantic and machine-contract items are no longer future implementation gates.
+
+## Remaining implementation gates
+
+Before CE-W02, Tempus still requires:
+
+- binding a concrete `ClockProvider` implementation to the semantic runtime interface;
 - persistence/restart tests;
-- optional ephemeris-provider interface semantics;
-- local receipt signature semantics once the CE-W01 local identity/signing boundary is fixed;
-- privacy tests for location-free default use;
-- protocol-witness envelope semantics for later waves without making network finality mandatory.
+- optional ephemeris-provider implementation;
+- implementation and testing of local receipt signing through the opaque signing handle;
+- location/privacy tests for location-free default use and participant-controlled topocentric features;
+- a later explicit protocol-witness envelope without making network finality mandatory.
+
+Temporal or astronomical data remains context and provenance only. It never grants identity, capability, recognition, economic, governance, protocol, or authority semantics.

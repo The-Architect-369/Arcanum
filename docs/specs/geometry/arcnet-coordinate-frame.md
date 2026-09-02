@@ -2,7 +2,7 @@
 title: "ARCnet Coordinate Frame — CE-W01"
 status: implementation-candidate
 visibility: public
-last_updated: 2026-08-26
+last_updated: 2026-09-02
 description: "Implementation-facing mathematical contract for the CE-W01 ARCnet local coordinate frame, Hope-centered inner geometry, optional overlays, projection boundaries, and falsification invariants."
 era: "Construction Era"
 wave: "CE-W01"
@@ -409,15 +409,21 @@ Verified facts used by this minimum include:
 - the solid common to the two tetrahedra is a regular octahedron;
 - cube↔octahedron and dodecahedron↔icosahedron are the relevant Platonic dual pairs.
 
-The coordinate formulas in this specification are independently testable and should become machine-verified before baseline promotion.
+The coordinate formulas in this specification are now represented by machine-readable Construction artifacts and deterministic verification:
 
-## Next implementation gate
+- `docs/specs/geometry/arcnet-coordinate-frame.schema.json`;
+- `docs/specs/geometry/arcnet-coordinate-frame.v0.1.json`;
+- `docs/specs/geometry/arcnet-coordinate-frame.vectors.v0.1.json`;
+- `scripts/verify-ce-w01-specs.py`, which verifies the Geometry registry, vectors, invariants, and authority firewall.
 
-Before CE-W02 native host work begins, this specification should gain:
+## Remaining implementation gates
 
-- a machine-readable coordinate registry;
-- deterministic geometry tests;
+Before CE-W02 native host work begins, Geometry still requires:
+
 - a declared math-to-screen projection contract;
-- a geometry-free reference renderer;
-- explicit mapping of any ratified ARCnet labels to coordinates;
-- explicit Hope Seed-of-Life projection mathematics if that visual mapping is retained.
+- a geometry-free reference renderer or equivalent;
+- explicit source-authorized semantic label mapping;
+- exact Hope Seed-of-Life projection mathematics if that visual mapping is retained;
+- final native/runtime binding.
+
+None of these gates authorizes Geometry to create module, identity, capability, recognition, economic, governance, protocol, or authority semantics.

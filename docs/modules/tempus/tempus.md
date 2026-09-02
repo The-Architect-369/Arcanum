@@ -2,401 +2,196 @@
 title: "Tempus"
 status: draft
 visibility: public
-last_updated: 2026-02-18
+last_updated: 2026-09-02
 description: ""
 ---
 
-
 # Tempus
 
-\# \*\*TEMPUS — MODULE SPECIFICATION\*\*
+## **TEMPUS — Draft Module Specification**
 
+**Status:** Draft Module Specification
 
+**Layer:** Application
 
-\*\*Status:\*\* Module Specification \\
+**Version:** 1.0
 
-\*\*Layer:\*\* Application \\
+**Last Updated:** 2026-09-02
 
-\*\*Version:\*\* 1.0 \\
-
-\*\*Last Updated:\*\* 2026-02-13
-
-
-
-
+> **Controlling canon:** The canonical Temporal Model (`docs/doctrine/temporal-model.md`) and canonical module registry (`docs/architecture/canonical-modules.md`) remain controlling. This draft does not ratify, promote, amend, or supersede either authority surface.
 
 ---
 
-
-
-
-
-\## \*\*Purpose\*\*
-
-
+## **Purpose**
 
 Tempus is the temporal structuring layer of the Arcanum.
 
-
-
 Tempus provides:
 
+* Rhythmic orientation
 
+* Seasonal grounding
 
+* Cyclical awareness
 
-
-
-
-\* Rhythmic orientation
-
-\* Seasonal grounding
-
-\* Cyclical awareness
-
-\* Long-term pattern coherence
-
-
+* Long-term pattern coherence
 
 Tempus anchors the practitioner within observable cosmic time rather than algorithmic urgency.
 
-
-
-
-
 ---
 
-
-
-
-
-\## \*\*Foundational Principle: Astronomical Grounding\*\*
-
-
+## **Foundational Principle: Astronomical Grounding**
 
 Tempus is structured upon observable astronomical phenomena, including:
 
+* Solar cycles (day/night, seasonal shifts)
 
+* Lunar phases
 
+* Equinoxes and solstices
 
-
-
-
-\* Solar cycles (day/night, seasonal shifts)
-
-\* Lunar phases
-
-\* Equinoxes and solstices
-
-\* Planetary motion as astronomical fact
-
-
+* Planetary motion as astronomical fact
 
 These phenomena are measurable and cross-cultural.
 
-
-
 Tempus does not depend upon astrological causation.
-
-
-
-
 
 ---
 
-
-
-
-
-\## \*\*Pattern Orientation\*\*
-
-
+## **Pattern Orientation**
 
 Tempus may highlight:
 
+* Cycles of expansion and contraction
 
+* Periods of renewal and rest
 
+* Observable natural rhythms
 
-
-
-
-\* Cycles of expansion and contraction
-
-\* Periods of renewal and rest
-
-\* Observable natural rhythms
-
-\* Human circadian alignment
-
-
+* Human circadian alignment
 
 All pattern framing must remain descriptive.
 
-
-
 Tempus does not assert that celestial motion causes personal psychological states.
-
-
-
-
 
 ---
 
-
-
-
-
-\## \*\*Symbolic Overlay (Optional Layer)\*\*
-
-
+## **Symbolic Overlay (Optional Layer)**
 
 Tempus may provide optional symbolic associations historically attributed to celestial bodies across cultures.
 
-
-
 Such symbolic references must:
 
+* Be clearly labeled as archetypal
 
+* Be framed as cultural-historical patterns
 
+* Remain interpretive
 
-
-
-
-\* Be clearly labeled as archetypal
-
-\* Be framed as cultural-historical patterns
-
-\* Remain interpretive
-
-\* Avoid prescriptive claims
-
-
+* Avoid prescriptive claims
 
 Example framing:
 
-
-
 “Across cultures, the moon has symbolized reflection and introspection.”
 
-
-
 Not:
-
-
 
 “The moon causes introspection.”
 
-
-
-
-
 ---
 
-
-
-
-
-\## \*\*Planetary Structuring Model\*\*
-
-
+## **Planetary Structuring Model**
 
 If planetary names are used within Tempus modules, they function as:
 
+* Organizational anchors
 
+* Symbolic containers
 
-
-
-
-
-\* Organizational anchors
-
-\* Symbolic containers
-
-\* Thematic lenses
-
-
+* Thematic lenses
 
 They do not function as deterministic forces.
 
-
-
 Planets are used as universal astronomical reference points rather than doctrinal metaphysical structures.
-
-
-
-
 
 ---
 
-
-
-
-
-\## \*\*Prohibited Assertions\*\*
-
-
+## **Prohibited Assertions**
 
 Tempus shall not:
 
+* Claim planetary retrograde causes behavioral disruption
 
+* Assert celestial determinism
 
+* Encode astrological authority into governance
 
-
-
-
-\* Claim planetary retrograde causes behavioral disruption
-
-\* Assert celestial determinism
-
-\* Encode astrological authority into governance
-
-\* Present symbolic meaning as universal law
-
-
+* Present symbolic meaning as universal law
 
 Interpretation remains practitioner-owned.
 
-
-
-
-
 ---
 
-
-
-
-
-\## \*\*Anti-Urgency Constraint\*\*
-
-
+## **Anti-Urgency Constraint**
 
 Tempus must not:
 
+* Create time-based pressure loops
 
+* Incentivize streak maintenance
 
+* Imply missed cosmic opportunity
 
+* Generate fear-based temporal scarcity
 
-
-
-\* Create time-based pressure loops
-
-\* Incentivize streak maintenance
-
-\* Imply missed cosmic opportunity
-
-\* Generate fear-based temporal scarcity
-
-
-
-Tempus restores rhythm. \\
+Tempus restores rhythm.
 
 It does not create anxiety.
 
-
-
-
-
 ---
 
-
-
-
-
-\## \*\*Integration With Hope\*\*
-
-
+## **Integration With Hope**
 
 Hope may reference Tempus cycles when offering reflection.
 
-
-
 Such references must:
 
+* Remain descriptive
 
+* Avoid deterministic framing
 
-
-
-
-
-\* Remain descriptive
-
-\* Avoid deterministic framing
-
-\* Support sovereignty
-
-
+* Support sovereignty
 
 Example:
 
-
-
 “You’ve historically reflected more during seasonal transitions.”
-
-
 
 Not:
 
-
-
 “This season requires you to change.”
-
-
-
-
 
 ---
 
-
-
-
-
-\## \*\*Civilizational Position\*\*
-
-
+## **Civilizational Position**
 
 Tempus replaces algorithmic urgency with astronomical rhythm.
 
-
-
 It reconnects practitioners to shared cosmic cycles without imposing cosmological doctrine.
-
-
 
 Tempus functions as temporal grounding, not metaphysical enforcement.
 
-
-
-
-
 ---
 
-
-
-
-
-\## \*\*Alignment With Constitutional Invariants\*\*
-
-
+## **Alignment With Constitutional Invariants**
 
 Tempus must remain aligned with:
 
+* METAPHYSICAL_NEUTRALITY_PRINCIPLE
 
+* GOVERNANCE_AND_NEUTRALITY
 
-
-
-
-
-\* METAPHYSICAL\_NEUTRALITY\_PRINCIPLE
-
-\* GOVERNANCE\_AND\_NEUTRALITY
-
-\* DIGNITY\_AND\_CONTENT\_BOUNDARIES
-
-
+* DIGNITY_AND_CONTENT_BOUNDARIES
 
 Any evolution introducing deterministic metaphysical authority shall be constitutionally invalid unless formally amended.
-
-
-
-
 
 ---
