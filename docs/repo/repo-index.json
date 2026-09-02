@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-09-02T06:16:54Z",
+  "generated_at": "2026-09-02T09:07:04Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "6a9950c7f",
+  "commit": "9f9628db8",
   "generator_version": "1.4",
   "files": [
     {
@@ -3913,11 +3913,11 @@
     {
       "path": "docs/modules/tempus/tempus.md",
       "type": "file",
-      "size_bytes": 3799,
-      "last_modified_commit": "3e4eb25ae",
+      "size_bytes": 3749,
+      "last_modified_commit": "9f9628db8",
       "is_empty": false,
       "extension": ".md",
-      "lines": 402
+      "lines": 197
     },
     {
       "path": "docs/modules/vitae/vitae-and-becoming.md",
@@ -3931,20 +3931,20 @@
     {
       "path": "docs/repo/construction-era-consolidation-ledger.md",
       "type": "file",
-      "size_bytes": 18242,
-      "last_modified_commit": "bca088579",
+      "size_bytes": 21928,
+      "last_modified_commit": "9f9628db8",
       "is_empty": false,
       "extension": ".md",
-      "lines": 494
+      "lines": 581
     },
     {
       "path": "docs/repo/construction-era-research-disposition.md",
       "type": "file",
-      "size_bytes": 21109,
-      "last_modified_commit": "d296fbc69",
+      "size_bytes": 21542,
+      "last_modified_commit": "9f9628db8",
       "is_empty": false,
       "extension": ".md",
-      "lines": 448
+      "lines": 455
     },
     {
       "path": "docs/repo/repo-index-generator-spec.md",
@@ -4201,11 +4201,11 @@
     {
       "path": "docs/specs/geometry/arcnet-coordinate-frame.md",
       "type": "file",
-      "size_bytes": 13632,
-      "last_modified_commit": "ad2e138d9",
+      "size_bytes": 14051,
+      "last_modified_commit": "9f9628db8",
       "is_empty": false,
       "extension": ".md",
-      "lines": 423
+      "lines": 429
     },
     {
       "path": "docs/specs/geometry/arcnet-coordinate-frame.schema.json",
@@ -4489,11 +4489,11 @@
     {
       "path": "docs/specs/tempus/tempus-anchor.md",
       "type": "file",
-      "size_bytes": 17718,
-      "last_modified_commit": "d7e54dff6",
+      "size_bytes": 18714,
+      "last_modified_commit": "9f9628db8",
       "is_empty": false,
       "extension": ".md",
-      "lines": 616
+      "lines": 626
     },
     {
       "path": "docs/specs/tempus/tempus-anchor.schema.json",
