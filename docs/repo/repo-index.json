@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-09-02T03:53:33Z",
+  "generated_at": "2026-09-02T06:16:54Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "d4505e66b",
+  "commit": "6a9950c7f",
   "generator_version": "1.4",
   "files": [
     {
@@ -4003,11 +4003,11 @@
     {
       "path": "docs/specs/README.md",
       "type": "file",
-      "size_bytes": 2123,
-      "last_modified_commit": "9865765e0",
+      "size_bytes": 2840,
+      "last_modified_commit": "6a9950c7f",
       "is_empty": false,
       "extension": ".md",
-      "lines": 52
+      "lines": 61
     },
     {
       "path": "docs/specs/app/README.md",
@@ -4476,6 +4476,15 @@
       "is_empty": false,
       "extension": ".md",
       "lines": 467
+    },
+    {
+      "path": "docs/specs/runtime/local-runtime-boundary.md",
+      "type": "file",
+      "size_bytes": 21260,
+      "last_modified_commit": "6a9950c7f",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 625
     },
     {
       "path": "docs/specs/tempus/tempus-anchor.md",
