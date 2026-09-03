@@ -1,0 +1,278 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:arcanum:ce-w01:arcnet-spatial-architecture:0.2.0",
+  "title": "ARCnet Spatial Architecture Registry",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema", "spatialArchitectureId", "schemaVersion", "status", "extendsFrameId",
+    "unit", "authorityEffect", "coordinateFamilies", "flowerLattice", "transforms",
+    "orientationFrames", "correspondenceProfiles", "geometryFreeEquivalent", "topology",
+    "hardwareHypothesis", "quantumTerminology", "forbiddenEffects",
+    "inheritedFalsificationIds", "falsificationIds"
+  ],
+  "properties": {
+    "$schema": { "const": "./arcnet-spatial-architecture.schema.json" },
+    "spatialArchitectureId": { "const": "arcnet-spatial-architecture" },
+    "schemaVersion": { "const": "0.2.0" },
+    "status": { "const": "implementation-candidate" },
+    "extendsFrameId": { "const": "arcnet-coordinate-frame" },
+    "unit": { "const": "unitless" },
+    "authorityEffect": { "const": "none" },
+
+    "coordinateFamilies": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "prefixItems": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["id", "dimension", "role", "canonicalAddressType", "mutableByOrientation", "authorityEffect"],
+          "properties": {
+            "id": { "const": "flower-lattice-2d" },
+            "dimension": { "const": 2 },
+            "role": { "const": "first-class-coordinate-family" },
+            "canonicalAddressType": { "const": "integer-axial-pair" },
+            "mutableByOrientation": { "const": false },
+            "authorityEffect": { "const": "none" }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["id", "dimension", "role", "sourceRef", "mutableByOrientation", "authorityEffect"],
+          "properties": {
+            "id": { "const": "stellar-frame-3d" },
+            "dimension": { "const": 3 },
+            "role": { "const": "inherited-certified-v0.1" },
+            "sourceRef": { "const": "docs/specs/geometry/arcnet-coordinate-frame.md" },
+            "mutableByOrientation": { "const": false },
+            "authorityEffect": { "const": "none" }
+          }
+        }
+      ],
+      "items": false
+    },
+
+    "flowerLattice": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "basis", "originAddress", "neighborOffsets", "circleRadius", "nearestNeighborSpacing",
+        "shellDistanceFormula", "shellCountFormula", "windowCountFormula", "finiteWindows",
+        "initialWindowCounts", "nineEmanationCardinalityClaim"
+      ],
+      "properties": {
+        "basis": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["bQ", "bR"],
+          "properties": {
+            "bQ": { "const": { "exact": ["1", "0"], "decimal": [1.0, 0.0] } },
+            "bR": { "const": { "exact": ["1/2", "sqrt(3)/2"], "decimal": [0.5, 0.8660254037844386] } }
+          }
+        },
+        "originAddress": { "const": [0, 0] },
+        "neighborOffsets": { "const": [[1,0],[-1,0],[0,1],[0,-1],[1,-1],[-1,1]] },
+        "circleRadius": { "const": 1 },
+        "nearestNeighborSpacing": { "const": 1 },
+        "shellDistanceFormula": { "const": "max(abs(q),abs(r),abs(q+r))" },
+        "shellCountFormula": { "const": "6*n for n>0" },
+        "windowCountFormula": { "const": "1+3*n*(n+1)" },
+        "finiteWindows": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "prefixItems": [
+            { "const": { "id": "seed-7", "maxShell": 1, "cumulativeCount": 7, "addressRule": "d(q,r)<=1" } },
+            { "const": { "id": "flower-19", "maxShell": 2, "cumulativeCount": 19, "addressRule": "d(q,r)<=2" } }
+          ],
+          "items": false
+        },
+        "initialWindowCounts": { "const": [1, 7, 19, 37] },
+        "nineEmanationCardinalityClaim": { "const": false }
+      }
+    },
+
+    "transforms": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["planarLift", "strongerFlowerStellarRelation"],
+      "properties": {
+        "planarLift": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["id", "fromFamily", "toFamily", "kind", "formula", "exact", "preservesPlanarDistance"],
+          "properties": {
+            "id": { "const": "flower-planar-lift" },
+            "fromFamily": { "const": "flower-lattice-2d" },
+            "toFamily": { "const": "stellar-frame-3d" },
+            "kind": { "const": "embedding" },
+            "formula": { "const": "L(x,y)=(x,y,0)" },
+            "exact": { "const": true },
+            "preservesPlanarDistance": { "const": true }
+          }
+        },
+        "strongerFlowerStellarRelation": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["status", "ratified", "identityClaim", "requireDerivation", "requireMachineFalsification"],
+          "properties": {
+            "status": { "const": "research" },
+            "ratified": { "const": false },
+            "identityClaim": { "const": false },
+            "requireDerivation": { "const": true },
+            "requireMachineFalsification": { "const": true }
+          }
+        }
+      }
+    },
+
+    "orientationFrames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "bounded", "universalSemanticNorth", "canonicalAddressMutationAllowed", "northKinds",
+        "referenceRootExamples", "requiredFields", "authorityEffect"
+      ],
+      "properties": {
+        "bounded": { "const": true },
+        "universalSemanticNorth": { "const": false },
+        "canonicalAddressMutationAllowed": { "const": false },
+        "northKinds": { "const": ["semantic-root", "geographic", "device", "astronomical", "scene", "custom-registered"] },
+        "referenceRootExamples": { "const": ["Arcanum-facing", "Architect-facing", "AERARIUM-facing", "registered-context"] },
+        "requiredFields": { "const": [
+          "orientationFrameId", "version", "coordinateFamilyId", "referenceRootId",
+          "northReference.kind", "northReference.sourceRef", "northReference.localDirection",
+          "handedness", "positiveRotationConvention", "transformFromCanonical", "authorityEffect"
+        ] },
+        "authorityEffect": { "const": "none" }
+      }
+    },
+
+    "correspondenceProfiles": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sourceOwned", "domainScoped", "coordinatesSelfAuthenticateMeaning", "sourceKinds",
+        "targetKinds", "requiredFields", "domainLanguagePolicy", "authorityEffect"
+      ],
+      "properties": {
+        "sourceOwned": { "const": true },
+        "domainScoped": { "const": true },
+        "coordinatesSelfAuthenticateMeaning": { "const": false },
+        "sourceKinds": { "const": ["canonical", "historical", "tradition", "practitioner", "research", "domain-owned"] },
+        "targetKinds": { "const": ["coordinate", "direction", "root", "shell", "finite-window", "region", "edge-class", "transform-defined-location"] },
+        "requiredFields": { "const": [
+          "profileId", "version", "domainScope", "compatibleCoordinateFamilies",
+          "compatibleOrientationFrames", "sourceKind", "sourceRef", "provenance",
+          "status", "mappings", "authorityEffect"
+        ] },
+        "domainLanguagePolicy": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["arcanum", "aerarium"],
+          "properties": {
+            "arcanum": { "const": "richer-symbolic-language-permitted-with-explicit-provenance" },
+            "aerarium": { "const": "practical-financial-language-with-bounded-poetic-linkage" }
+          }
+        },
+        "authorityEffect": { "const": "none" }
+      }
+    },
+
+    "geometryFreeEquivalent": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["required", "operationalStatePreserved", "authorityMeaningPreserved", "requiredFields"],
+      "properties": {
+        "required": { "const": true },
+        "operationalStatePreserved": { "const": true },
+        "authorityMeaningPreserved": { "const": true },
+        "requiredFields": { "const": [
+          "coordinate-family-id-version", "canonical-address", "derived-shell-or-finite-window",
+          "orientation-frame-id", "reference-root", "north-reference-kind",
+          "correspondence-profile-id", "correspondence-status", "source-provenance",
+          "source-owned-labels", "selected-focus", "active-transform",
+          "logical-topology-state", "topology-mapping-status"
+        ] }
+      }
+    },
+
+    "topology": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "graphTypes", "logicalFlowerTopology", "mappingPipeline",
+        "adapterCanInventPhysicalConnectivity", "absentPhysicalLogicalEdgePolicy"
+      ],
+      "properties": {
+        "graphTypes": { "const": ["semantic-correspondence", "execution", "physical"] },
+        "logicalFlowerTopology": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["preferredResearchHypothesis", "vertexType", "adjacency", "createsExecutionPath", "createsPhysicalEdge"],
+          "properties": {
+            "preferredResearchHypothesis": { "const": true },
+            "vertexType": { "const": "registered-flower-lattice-address" },
+            "adjacency": { "const": "six-neighbor" },
+            "createsExecutionPath": { "const": false },
+            "createsPhysicalEdge": { "const": false }
+          }
+        },
+        "mappingPipeline": { "const": [
+          "logical-arcnet-geometry", "placement-routing-compiler",
+          "hardware-specific-topology-adapter", "measured-mapping-result"
+        ] },
+        "adapterCanInventPhysicalConnectivity": { "const": false },
+        "absentPhysicalLogicalEdgePolicy": { "const": "route-or-report-unmapped" }
+      }
+    },
+
+    "hardwareHypothesis": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "flowerDerivedPreferredResearchHypothesis", "physicalOptimalityClaim",
+        "requiresEmpiricalEvidence", "requiresSeparateRatification",
+        "manufacturingMandate", "comparisonClasses"
+      ],
+      "properties": {
+        "flowerDerivedPreferredResearchHypothesis": { "const": true },
+        "physicalOptimalityClaim": { "const": false },
+        "requiresEmpiricalEvidence": { "const": true },
+        "requiresSeparateRatification": { "const": true },
+        "manufacturingMandate": { "const": false },
+        "comparisonClasses": { "const": [
+          "square-grid", "heavy-hex", "generic-mesh",
+          "switched-all-to-all", "reconfigurable-topology",
+          "hardware-specific-coupling-graph"
+        ] }
+      }
+    },
+
+    "quantumTerminology": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "entanglementReservedForActualQuantumStateRelationships",
+        "classicalTerms", "ceW01QuantumHardwareDependency"
+      ],
+      "properties": {
+        "entanglementReservedForActualQuantumStateRelationships": { "const": true },
+        "classicalTerms": { "const": ["edge", "link", "adjacency", "relationship", "route", "capability-path", "mapping"] },
+        "ceW01QuantumHardwareDependency": { "const": false }
+      }
+    },
+
+    "forbiddenEffects": { "const": [
+      "identity", "identity-classification", "capability", "permission", "authority",
+      "governance-weight", "recognition", "recognition-state", "readiness",
+      "worth", "score", "economic-entitlement", "protocol-finality"
+    ] },
+
+    "inheritedFalsificationIds": { "const": ["F1","F2","F3","F4","F5","F6","F7","F8","F9","F10"] },
+    "falsificationIds": { "const": ["F11","F12","F13","F14","F15","F16","F17","F18","F19","F20"] }
+  }
+}

@@ -186,6 +186,481 @@ def verify_geometry() -> None:
     require(edge_pairs == 30, "optional icosahedron edge count")
 
 
+def verify_spatial_architecture() -> None:
+    schema = load(GEOM / "arcnet-spatial-architecture.schema.json")
+    registry = load(GEOM / "arcnet-spatial-architecture.v0.2.json")
+    vectors = load(GEOM / "arcnet-spatial-architecture.vectors.v0.2.json")
+    tolerance = vectors["tolerance"]
+    expectations = vectors["expectations"]
+
+    require(
+        schema["$schema"].endswith("2020-12/schema"),
+        "spatial architecture schema draft",
+    )
+    require(
+        schema["$id"] == "urn:arcanum:ce-w01:arcnet-spatial-architecture:0.2.0",
+        "spatial architecture schema ID",
+    )
+    require(
+        schema["additionalProperties"] is False,
+        "spatial architecture closed root schema",
+    )
+    require(
+        registry["$schema"] == "./arcnet-spatial-architecture.schema.json",
+        "spatial architecture local schema binding",
+    )
+    require(
+        registry["spatialArchitectureId"] == "arcnet-spatial-architecture",
+        "spatial architecture registry ID",
+    )
+    require(
+        registry["schemaVersion"] == "0.2.0",
+        "spatial architecture schema version",
+    )
+    require(
+        registry["extendsFrameId"] == "arcnet-coordinate-frame",
+        "spatial architecture inherited Geometry v0.1 frame",
+    )
+    require(
+        registry["authorityEffect"] == "none",
+        "spatial architecture authority effect",
+    )
+
+    require(
+        vectors["vectorSet"] == "arcnet-spatial-architecture-falsification",
+        "spatial architecture vector-set ID",
+    )
+    require(vectors["version"] == "0.2.0", "spatial architecture vector version")
+    require(
+        vectors["registry"] == "./arcnet-spatial-architecture.v0.2.json",
+        "spatial architecture vector registry binding",
+    )
+    require(
+        list(expectations) == [f"F{i}" for i in range(11, 21)],
+        "spatial architecture F11-F20 vector coverage",
+    )
+    require(
+        registry["inheritedFalsificationIds"] == [f"F{i}" for i in range(1, 11)],
+        "spatial architecture preserves F1-F10",
+    )
+    require(
+        registry["falsificationIds"] == [f"F{i}" for i in range(11, 21)],
+        "spatial architecture declares F11-F20",
+    )
+
+    families = {entry["id"]: entry for entry in registry["coordinateFamilies"]}
+    require(
+        set(families) == {"flower-lattice-2d", "stellar-frame-3d"},
+        "spatial architecture coordinate families",
+    )
+    require(
+        families["flower-lattice-2d"]["role"] == "first-class-coordinate-family",
+        "Flower lattice first-class coordinate family",
+    )
+    require(
+        families["flower-lattice-2d"]["canonicalAddressType"]
+        == "integer-axial-pair",
+        "Flower canonical address type",
+    )
+    require(
+        families["stellar-frame-3d"]["role"] == "inherited-certified-v0.1",
+        "stellar frame inherited from Geometry v0.1",
+    )
+
+    flower = registry["flowerLattice"]
+
+    def planar(address):
+        q, r = address
+        return (
+            q + r / 2.0,
+            (math.sqrt(3) / 2.0) * r,
+        )
+
+    def lift(point):
+        x, y = point
+        return (x, y, 0.0)
+
+    def shell_distance(address):
+        q, r = address
+        return max(abs(q), abs(r), abs(q + r))
+
+    def window(max_shell):
+        return [
+            (q, r)
+            for q in range(-max_shell, max_shell + 1)
+            for r in range(-max_shell, max_shell + 1)
+            if shell_distance((q, r)) <= max_shell
+        ]
+
+    # F11 — Flower basis and six nearest neighbors.
+    f11 = expectations["F11"]
+
+    require(
+        flower["basis"]["bQ"]["exact"] == ["1", "0"],
+        "F11 exact bQ basis",
+    )
+    require(
+        flower["basis"]["bR"]["exact"] == ["1/2", "sqrt(3)/2"],
+        "F11 exact bR basis",
+    )
+
+    for observed, expected in zip(
+        flower["basis"]["bQ"]["decimal"],
+        f11["basisDecimal"]["bQ"],
+    ):
+        require(close(observed, expected, tolerance), "F11 decimal bQ basis")
+
+    for observed, expected in zip(
+        flower["basis"]["bR"]["decimal"],
+        f11["basisDecimal"]["bR"],
+    ):
+        require(close(observed, expected, tolerance), "F11 decimal bR basis")
+
+    require(
+        flower["neighborOffsets"] == f11["neighborOffsets"],
+        "F11 six-neighbor offsets",
+    )
+    require(
+        len({tuple(offset) for offset in flower["neighborOffsets"]}) == 6,
+        "F11 six unique neighbor offsets",
+    )
+    require(
+        close(
+            flower["nearestNeighborSpacing"],
+            f11["expectedNeighborDistance"],
+            tolerance,
+        ),
+        "F11 nearest-neighbor spacing",
+    )
+    require(
+        close(flower["circleRadius"], 1.0, tolerance),
+        "F11 overlapping-circle radius",
+    )
+
+    for address in f11["sampleAddresses"]:
+        point = planar(address)
+        for dq, dr in f11["neighborOffsets"]:
+            neighbor = [address[0] + dq, address[1] + dr]
+            require(
+                close(
+                    distance(point, planar(neighbor)),
+                    f11["expectedNeighborDistance"],
+                    tolerance,
+                ),
+                "F11 Flower nearest-neighbor distance",
+            )
+
+    # F12 — exact shell and cumulative-window counts.
+    f12 = expectations["F12"]
+
+    require(
+        flower["shellDistanceFormula"] == "max(abs(q),abs(r),abs(q+r))",
+        "F12 shell-distance formula",
+    )
+    require(
+        flower["shellCountFormula"] == "6*n for n>0",
+        "F12 shell-count formula",
+    )
+    require(
+        flower["windowCountFormula"] == "1+3*n*(n+1)",
+        "F12 window-count formula",
+    )
+
+    for case in f12["shellCounts"]:
+        n = case["n"]
+        observed_count = sum(
+            shell_distance(address) == n
+            for address in window(n)
+        )
+        require(
+            observed_count == case["count"],
+            f"F12 shell count n={n}",
+        )
+
+    for case in f12["cumulativeWindowCounts"]:
+        n = case["n"]
+        require(
+            len(window(n)) == case["count"],
+            f"F12 cumulative window count n={n}",
+        )
+
+    finite_windows = {
+        entry["id"]: entry["cumulativeCount"]
+        for entry in flower["finiteWindows"]
+    }
+    require(
+        finite_windows == f12["finiteWindows"],
+        "F12 named finite-window counts",
+    )
+    require(
+        flower["initialWindowCounts"]
+        == [case["count"] for case in f12["cumulativeWindowCounts"]],
+        "F12 exact 1/7/19/37 sequence",
+    )
+    require(
+        flower["nineEmanationCardinalityClaim"] is False,
+        "F12 nine-emanation cardinality boundary",
+    )
+
+    # F13 — axial-address uniqueness.
+    f13 = expectations["F13"]
+    addresses = window(f13["testMaxShell"])
+
+    require(
+        len(addresses) == f13["expectedDistinctAddressCount"],
+        "F13 tested finite-window cardinality",
+    )
+
+    # Exact uniqueness key:
+    # x = q + r/2, so 2*x = 2*q+r; y uniquely determines r.
+    exact_planar_keys = {
+        (2 * q + r, r)
+        for q, r in addresses
+    }
+    require(
+        len(exact_planar_keys) == len(addresses),
+        "F13 axial-address uniqueness",
+    )
+
+    # F14 — exact planar 2D -> 3D lift.
+    f14 = expectations["F14"]
+    planar_lift = registry["transforms"]["planarLift"]
+
+    require(
+        planar_lift["formula"] == f14["formula"],
+        "F14 planar-lift formula",
+    )
+    require(planar_lift["exact"] is True, "F14 planar lift exact")
+    require(
+        planar_lift["preservesPlanarDistance"] is True,
+        "F14 planar lift distance declaration",
+    )
+
+    for address in window(f14["testMaxShell"]):
+        require(
+            close(lift(planar(address))[2], f14["expectedZ"], tolerance),
+            "F14 lifted z coordinate",
+        )
+
+    for pair in f14["samplePairs"]:
+        first = planar(pair["a"])
+        second = planar(pair["b"])
+        require(
+            close(
+                distance(first, second),
+                distance(lift(first), lift(second)),
+                tolerance,
+            ),
+            "F14 pairwise distance preservation",
+        )
+
+    stronger_relation = registry["transforms"]["strongerFlowerStellarRelation"]
+    require(
+        stronger_relation["identityClaim"] is False,
+        "F14 no Flower/stellar identity claim",
+    )
+    require(
+        stronger_relation["ratified"] is False,
+        "F14 stronger Flower/stellar relation unratified",
+    )
+    require(
+        stronger_relation["requireDerivation"] is True,
+        "F14 stronger relation requires derivation",
+    )
+    require(
+        stronger_relation["requireMachineFalsification"] is True,
+        "F14 stronger relation requires machine falsification",
+    )
+
+    # F15 — orientation changes cannot mutate canonical addresses.
+    f15 = expectations["F15"]
+    orientation = registry["orientationFrames"]
+
+    require(orientation["bounded"] is True, "F15 bounded orientation")
+    require(
+        orientation["universalSemanticNorth"] is False,
+        "F15 no universal semantic North",
+    )
+    require(
+        orientation["canonicalAddressMutationAllowed"] is False,
+        "F15 orientation cannot mutate canonical address",
+    )
+    require(
+        orientation["canonicalAddressMutationAllowed"]
+        is f15["canonicalAddressMutationAllowed"],
+        "F15 vector orientation mutation boundary",
+    )
+    require(
+        f15["canonicalAddress"] == f15["expectedCanonicalAddress"],
+        "F15 canonical address invariant",
+    )
+
+    for context in f15["orientationContexts"]:
+        require(
+            context in orientation["referenceRootExamples"],
+            "F15 registered reference-root context",
+        )
+
+    require(
+        set(orientation["northKinds"])
+        == {
+            "semantic-root",
+            "geographic",
+            "device",
+            "astronomical",
+            "scene",
+            "custom-registered",
+        },
+        "F15 typed North references",
+    )
+
+    # F16 — geometry/correspondence cannot independently create authority.
+    f16 = expectations["F16"]
+    correspondence = registry["correspondenceProfiles"]
+
+    require(
+        registry["authorityEffect"] == f16["authorityEffect"],
+        "F16 spatial architecture non-authority",
+    )
+    require(
+        correspondence["authorityEffect"] == f16["authorityEffect"],
+        "F16 correspondence non-authority",
+    )
+    require(
+        set(registry["forbiddenEffects"]) == set(f16["forbiddenEffects"]),
+        "F16 forbidden authority effects",
+    )
+
+    # F17 — correspondence provenance and status are mandatory.
+    f17 = expectations["F17"]
+    required_profile_fields = set(correspondence["requiredFields"])
+
+    require(
+        correspondence["sourceOwned"] is True,
+        "F17 correspondence source ownership",
+    )
+    require(
+        correspondence["domainScoped"] is True,
+        "F17 correspondence domain scope",
+    )
+    require(
+        set(f17["requiredCorrespondenceFields"]).issubset(
+            required_profile_fields
+        ),
+        "F17 correspondence provenance/status fields",
+    )
+    require(
+        correspondence["coordinatesSelfAuthenticateMeaning"]
+        is f17["coordinatesSelfAuthenticateMeaning"],
+        "F17 coordinates do not self-authenticate meaning",
+    )
+
+    # F18 — geometry-free operational equivalence.
+    f18 = expectations["F18"]
+    geometry_free = registry["geometryFreeEquivalent"]
+
+    require(
+        geometry_free["required"] is f18["geometryFreeEquivalentRequired"],
+        "F18 geometry-free equivalent required",
+    )
+    require(
+        geometry_free["operationalStatePreserved"]
+        is f18["operationalStatePreserved"],
+        "F18 operational state preserved",
+    )
+    require(
+        geometry_free["authorityMeaningPreserved"]
+        is f18["authorityMeaningPreserved"],
+        "F18 authority meaning preserved",
+    )
+    require(
+        "topology-mapping-status" in geometry_free["requiredFields"],
+        "F18 topology mapping remains inspectable without geometry",
+    )
+
+    # F19 — semantic/execution/physical graph separation.
+    f19 = expectations["F19"]
+    topology = registry["topology"]
+    logical_topology = topology["logicalFlowerTopology"]
+
+    require(
+        topology["graphTypes"] == f19["graphTypes"],
+        "F19 graph-type separation",
+    )
+    require(
+        len(set(topology["graphTypes"])) == 3,
+        "F19 graph types distinct",
+    )
+    require(
+        logical_topology["createsExecutionPath"]
+        is f19["logicalAdjacencyCreatesExecutionPath"],
+        "F19 Flower adjacency does not create execution path",
+    )
+    require(
+        logical_topology["createsPhysicalEdge"]
+        is f19["logicalAdjacencyCreatesPhysicalEdge"],
+        "F19 Flower adjacency does not create physical edge",
+    )
+    require(
+        topology["adapterCanInventPhysicalConnectivity"]
+        is f19["adapterCanInventPhysicalConnectivity"],
+        "F19 adapter cannot invent physical connectivity",
+    )
+    require(
+        topology["absentPhysicalLogicalEdgePolicy"]
+        == f19["absentPhysicalLogicalEdgePolicy"],
+        "F19 absent physical edge policy",
+    )
+    require(
+        topology["mappingPipeline"]
+        == [
+            "logical-arcnet-geometry",
+            "placement-routing-compiler",
+            "hardware-specific-topology-adapter",
+            "measured-mapping-result",
+        ],
+        "F19 logical-to-physical mapping pipeline",
+    )
+
+    # F20 — hardware remains an empirical research hypothesis.
+    f20 = expectations["F20"]
+    hardware = registry["hardwareHypothesis"]
+
+    for key, expected in f20.items():
+        require(
+            hardware[key] is expected,
+            f"F20 hardware hypothesis field {key}",
+        )
+
+    require(
+        registry["quantumTerminology"][
+            "entanglementReservedForActualQuantumStateRelationships"
+        ]
+        is True,
+        "F20 entanglement reserved for actual quantum-state relationships",
+    )
+    require(
+        registry["quantumTerminology"]["ceW01QuantumHardwareDependency"]
+        is False,
+        "F20 no CE-W01 quantum hardware dependency",
+    )
+
+    negative_cases = vectors["negativeCases"]
+    negative_ids = [case["id"] for case in negative_cases]
+
+    require(
+        len(negative_ids) == len(set(negative_ids)),
+        "spatial architecture negative-case IDs unique",
+    )
+    require(
+        all(
+            case["expectedFailure"] in {f"F{i}" for i in range(11, 21)}
+            for case in negative_cases
+        ),
+        "spatial architecture negative cases target F11-F20",
+    )
+
+
 def parse_datetime(value: str):
     return datetime.fromisoformat(value.replace("Z", "+00:00"))
 
@@ -292,7 +767,11 @@ def verify_tempus() -> None:
 
 
 def main() -> int:
-    for name, check in (("geometry", verify_geometry), ("tempus", verify_tempus)):
+    for name, check in (
+        ("geometry", verify_geometry),
+        ("spatial-architecture", verify_spatial_architecture),
+        ("tempus", verify_tempus),
+    ):
         check()
         print(f"PASS {name}")
     print("PASS CE-W01 machine-readable spec verification")
