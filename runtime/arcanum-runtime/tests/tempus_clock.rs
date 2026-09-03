@@ -1,8 +1,8 @@
 use std::convert::Infallible;
 
 use arcanum_runtime::tempus::{
-    capture_tempus_anchor, tempus_anchor_from_sample, ClockProvider, ClockSample,
-    ClockSourceKind, SystemClockProvider, TEMPUS_ANCHOR_SCHEMA_VERSION, TEMPUS_TIME_SCALE_UTC,
+    capture_tempus_anchor, tempus_anchor_from_sample, ClockProvider, ClockSample, ClockSourceKind,
+    SystemClockProvider, TEMPUS_ANCHOR_SCHEMA_VERSION, TEMPUS_TIME_SCALE_UTC,
 };
 
 #[derive(Debug, Clone)]
@@ -38,12 +38,8 @@ fn fixed_clock_provider_creates_location_free_clock_anchor() {
         sample: fixed_sample(),
     };
 
-    let anchor = capture_tempus_anchor(
-        &provider,
-        "tempus-fixture-clock-001",
-        "ce-w01-cp4-a",
-    )
-    .expect("fixed clock provider is infallible");
+    let anchor = capture_tempus_anchor(&provider, "tempus-fixture-clock-001", "ce-w01-cp4-a")
+        .expect("fixed clock provider is infallible");
 
     assert_eq!(anchor.anchor_id, "tempus-fixture-clock-001");
     assert_eq!(anchor.schema_version, TEMPUS_ANCHOR_SCHEMA_VERSION);
@@ -95,11 +91,8 @@ fn sample_to_anchor_mapping_is_deterministic() {
         "ce-w01-cp4-a",
         sample.clone(),
     );
-    let second = tempus_anchor_from_sample(
-        "tempus-deterministic-clock-001",
-        "ce-w01-cp4-a",
-        sample,
-    );
+    let second =
+        tempus_anchor_from_sample("tempus-deterministic-clock-001", "ce-w01-cp4-a", sample);
 
     assert_eq!(first, second);
 }
