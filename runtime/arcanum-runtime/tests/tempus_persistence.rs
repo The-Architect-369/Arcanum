@@ -5,7 +5,9 @@ use std::sync::atomic::{AtomicU64, Ordering};
 use arcanum_runtime::persistence::{
     FileTempusAnchorStore, TempusAnchorStore, TempusPersistenceError,
 };
-use arcanum_runtime::tempus::{tempus_anchor_from_sample, ClockSample, ClockSourceKind, TempusAnchor};
+use arcanum_runtime::tempus::{
+    tempus_anchor_from_sample, ClockSample, ClockSourceKind, TempusAnchor,
+};
 
 static TEST_DIRECTORY_COUNTER: AtomicU64 = AtomicU64::new(0);
 
@@ -103,10 +105,7 @@ fn existing_anchor_id_is_immutable_but_identical_replay_is_idempotent() {
         .persist(&conflicting)
         .expect_err("conflicting durable content must not replace an existing anchor");
 
-    assert!(matches!(
-        error,
-        TempusPersistenceError::IntegrityFailure(_)
-    ));
+    assert!(matches!(error, TempusPersistenceError::IntegrityFailure(_)));
     assert_eq!(
         store
             .load(&original.anchor_id)
@@ -139,10 +138,7 @@ fn corrupted_durable_anchor_fails_closed_instead_of_becoming_empty_state() {
         .load(&original.anchor_id)
         .expect_err("corrupted durable state must fail visibly");
 
-    assert!(matches!(
-        error,
-        TempusPersistenceError::IntegrityFailure(_)
-    ));
+    assert!(matches!(error, TempusPersistenceError::IntegrityFailure(_)));
 }
 
 fn only_anchor_file(root: &Path) -> PathBuf {

@@ -114,7 +114,10 @@ impl fmt::Display for TempusPersistenceError {
         match self {
             Self::NotFound(anchor_id) => write!(formatter, "Tempus anchor not found: {anchor_id}"),
             Self::StorageUnavailable { operation, source } => {
-                write!(formatter, "Tempus storage unavailable during {operation}: {source}")
+                write!(
+                    formatter,
+                    "Tempus storage unavailable during {operation}: {source}"
+                )
             }
             Self::IntegrityFailure(message) => {
                 write!(formatter, "Tempus persistence integrity failure: {message}")
@@ -122,7 +125,9 @@ impl fmt::Display for TempusPersistenceError {
             Self::VersionIncompatible(version) => {
                 write!(formatter, "unsupported persisted Tempus version: {version}")
             }
-            Self::InvalidInput(message) => write!(formatter, "invalid Tempus persistence input: {message}"),
+            Self::InvalidInput(message) => {
+                write!(formatter, "invalid Tempus persistence input: {message}")
+            }
         }
     }
 }
@@ -140,10 +145,7 @@ fn storage_error(operation: &'static str, source: io::Error) -> TempusPersistenc
     TempusPersistenceError::StorageUnavailable { operation, source }
 }
 
-fn read_anchor_file(
-    path: &Path,
-    anchor_id: &str,
-) -> Result<TempusAnchor, TempusPersistenceError> {
+fn read_anchor_file(path: &Path, anchor_id: &str) -> Result<TempusAnchor, TempusPersistenceError> {
     let metadata = match fs::metadata(path) {
         Ok(metadata) => metadata,
         Err(source) if source.kind() == io::ErrorKind::NotFound => {
@@ -158,7 +160,8 @@ fn read_anchor_file(
         ));
     }
 
-    let bytes = fs::read(path).map_err(|source| storage_error("read Tempus anchor file", source))?;
+    let bytes =
+        fs::read(path).map_err(|source| storage_error("read Tempus anchor file", source))?;
     decode_file(&bytes)
 }
 
@@ -170,9 +173,10 @@ fn validate_anchor_id(anchor_id: &str) -> Result<(), TempusPersistenceError> {
         ));
     }
 
-    if !bytes.iter().all(|byte| {
-        byte.is_ascii_alphanumeric() || matches!(*byte, b'.' | b'_' | b':' | b'-')
-    }) {
+    if !bytes
+        .iter()
+        .all(|byte| byte.is_ascii_alphanumeric() || matches!(*byte, b'.' | b'_' | b':' | b'-'))
+    {
         return Err(TempusPersistenceError::InvalidInput(
             "anchor ID violates the certified TempusAnchor identifier pattern",
         ));
@@ -323,10 +327,7 @@ fn encode_payload(anchor: &TempusAnchor) -> Result<Vec<u8>, TempusPersistenceErr
     put_optional_string(&mut encoded, anchor.precision.notes.as_deref())?;
     put_optional_string(&mut encoded, anchor.provenance.source_uri.as_deref())?;
     put_optional_string(&mut encoded, anchor.provenance.request_digest.as_deref())?;
-    put_optional_string(
-        &mut encoded,
-        anchor.provenance.software_version.as_deref(),
-    )?;
+    put_optional_string(&mut encoded, anchor.provenance.software_version.as_deref())?;
     put_optional_string(&mut encoded, anchor.provenance.backend.as_deref())?;
     put_optional_string(&mut encoded, anchor.provenance.fallback_mode.as_deref())?;
     put_bool(&mut encoded, anchor.provenance.original_fields_retained);
@@ -538,9 +539,12 @@ impl<'a> Decoder<'a> {
     }
 
     fn take(&mut self, len: usize) -> Result<&'a [u8], TempusPersistenceError> {
-        let end = self.cursor.checked_add(len).ok_or(
-            TempusPersistenceError::IntegrityFailure("persisted anchor offset overflow"),
-        )?;
+        let end = self
+            .cursor
+            .checked_add(len)
+            .ok_or(TempusPersistenceError::IntegrityFailure(
+                "persisted anchor offset overflow",
+            ))?;
         if end > self.bytes.len() {
             return Err(TempusPersistenceError::IntegrityFailure(
                 "persisted anchor is truncated",
