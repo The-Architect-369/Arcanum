@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-09-02T09:07:04Z",
+  "generated_at": "2026-09-03T06:11:34Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "9f9628db8",
+  "commit": "56bffcc05",
   "generator_version": "1.4",
   "files": [
     {
@@ -4235,6 +4235,42 @@
       "lines": 80
     },
     {
+      "path": "docs/specs/geometry/arcnet-spatial-architecture.md",
+      "type": "file",
+      "size_bytes": 22192,
+      "last_modified_commit": "56bffcc05",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 881
+    },
+    {
+      "path": "docs/specs/geometry/arcnet-spatial-architecture.schema.json",
+      "type": "file",
+      "size_bytes": 11985,
+      "last_modified_commit": "56bffcc05",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 278
+    },
+    {
+      "path": "docs/specs/geometry/arcnet-spatial-architecture.v0.2.json",
+      "type": "file",
+      "size_bytes": 6501,
+      "last_modified_commit": "56bffcc05",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 255
+    },
+    {
+      "path": "docs/specs/geometry/arcnet-spatial-architecture.vectors.v0.2.json",
+      "type": "file",
+      "size_bytes": 4328,
+      "last_modified_commit": "56bffcc05",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 171
+    },
+    {
       "path": "docs/specs/identity/authority-binding-model.md",
       "type": "file",
       "size_bytes": 5419,
@@ -7099,11 +7135,11 @@
     {
       "path": "scripts/verify-ce-w01-specs.py",
       "type": "file",
-      "size_bytes": 11107,
-      "last_modified_commit": "42086ae10",
+      "size_bytes": 25796,
+      "last_modified_commit": "56bffcc05",
       "is_empty": false,
       "extension": ".py",
-      "lines": 307
+      "lines": 786
     },
     {
       "path": "scripts/verify-repo-index.py",
