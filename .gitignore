@@ -52,3 +52,6 @@ chains/arcanum/data-*/
 # Pre-canonical Architect workspace residue
 /.architect-backups/
 /.arcanum-*-worktree
+
+# Rust / Cargo build artifacts
+target/
