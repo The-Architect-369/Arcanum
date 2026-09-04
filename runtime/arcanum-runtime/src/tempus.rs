@@ -507,9 +507,7 @@ fn validate_ephemeris_sample(sample: &EphemerisSample) -> Result<(), EphemerisVa
         .ok_or(EphemerisValidationError::MissingField("frame"))?;
     validate_frame(frame)?;
 
-    if sample.longitude_deg.is_none()
-        && sample.latitude_deg.is_none()
-        && sample.distance.is_none()
+    if sample.longitude_deg.is_none() && sample.latitude_deg.is_none() && sample.distance.is_none()
     {
         return Err(EphemerisValidationError::MissingField(
             "astronomical coordinates",
@@ -541,7 +539,10 @@ fn validate_ephemeris_sample(sample: &EphemerisSample) -> Result<(), EphemerisVa
         require_optional_non_empty(&sample.distance_unit, "observation.distanceUnit")?;
     }
 
-    require_optional_non_empty(&sample.precision.time_resolution, "precision.timeResolution")?;
+    require_optional_non_empty(
+        &sample.precision.time_resolution,
+        "precision.timeResolution",
+    )?;
     require_optional_non_empty(
         &sample.precision.coordinate_resolution,
         "precision.coordinateResolution",

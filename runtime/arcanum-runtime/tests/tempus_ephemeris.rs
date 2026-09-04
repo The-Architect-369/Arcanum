@@ -55,10 +55,7 @@ impl EphemerisProvider for UnavailableEphemerisProvider {
 
 fn certified_structural_sample() -> EphemerisSample {
     let mut additional_provider_fields = BTreeMap::new();
-    additional_provider_fields.insert(
-        "fixture".to_owned(),
-        TempusProviderField::Boolean(true),
-    );
+    additional_provider_fields.insert("fixture".to_owned(), TempusProviderField::Boolean(true));
 
     EphemerisSample {
         captured_at: "2026-08-26T06:00:00Z".to_owned(),
@@ -116,12 +113,9 @@ fn certified_structural_ephemeris_maps_to_factual_tempus_anchor() {
         calls: Cell::new(0),
     };
 
-    let anchor = capture_ephemeris_anchor(
-        &provider,
-        "tempus-fixture-ephemeris-001",
-        "ce-w01-cp4-c",
-    )
-    .expect("certified structural ephemeris fixture should map");
+    let anchor =
+        capture_ephemeris_anchor(&provider, "tempus-fixture-ephemeris-001", "ce-w01-cp4-c")
+            .expect("certified structural ephemeris fixture should map");
 
     assert_eq!(provider.calls.get(), 1);
     assert_eq!(anchor.anchor_id, "tempus-fixture-ephemeris-001");
@@ -153,7 +147,10 @@ fn certified_structural_ephemeris_maps_to_factual_tempus_anchor() {
     assert!(observer.longitude_deg.is_none());
     assert!(observer.altitude_m.is_none());
 
-    let frame = anchor.frame.as_ref().expect("ephemeris frame must be explicit");
+    let frame = anchor
+        .frame
+        .as_ref()
+        .expect("ephemeris frame must be explicit");
     assert_eq!(frame.family, "geocentric-ecliptic-apparent");
     assert_eq!(frame.center.as_deref(), Some("Earth geocenter"));
     assert_eq!(frame.axes.as_deref(), Some("provider-declared"));
@@ -171,10 +168,7 @@ fn certified_structural_ephemeris_maps_to_factual_tempus_anchor() {
     assert_eq!(anchor.observation.distance, Some(1.0));
     assert_eq!(anchor.observation.distance_unit.as_deref(), Some("au"));
     assert_eq!(
-        anchor
-            .observation
-            .additional_provider_fields
-            .get("fixture"),
+        anchor.observation.additional_provider_fields.get("fixture"),
         Some(&TempusProviderField::Boolean(true))
     );
 
@@ -182,7 +176,10 @@ fn certified_structural_ephemeris_maps_to_factual_tempus_anchor() {
         anchor.precision.coordinate_resolution.as_deref(),
         Some("0.001 deg")
     );
-    assert_eq!(anchor.precision.uncertainty.as_deref(), Some("fixture-only"));
+    assert_eq!(
+        anchor.precision.uncertainty.as_deref(),
+        Some("fixture-only")
+    );
     assert_eq!(
         anchor.provenance.request_digest.as_deref(),
         Some("fixture-request-001")
@@ -201,12 +198,9 @@ fn equal_ephemeris_inputs_produce_equal_anchors() {
         sample.clone(),
     )
     .expect("valid fixture should map");
-    let second = ephemeris_anchor_from_sample(
-        "tempus-deterministic-ephemeris-001",
-        "ce-w01-cp4-c",
-        sample,
-    )
-    .expect("valid fixture should map");
+    let second =
+        ephemeris_anchor_from_sample("tempus-deterministic-ephemeris-001", "ce-w01-cp4-c", sample)
+            .expect("valid fixture should map");
 
     assert_eq!(first, second);
 }
@@ -273,14 +267,13 @@ fn topocentric_location_must_be_explicitly_supplied() {
         longitude_deg: Some(-75.0),
         altitude_m: Some(100.0),
     });
-    let anchor = ephemeris_anchor_from_sample(
-        "topocentric-explicit",
-        "ce-w01-cp4-c",
-        supplied_location,
-    )
-    .expect("explicit topocentric coordinates should be preserved");
+    let anchor =
+        ephemeris_anchor_from_sample("topocentric-explicit", "ce-w01-cp4-c", supplied_location)
+            .expect("explicit topocentric coordinates should be preserved");
 
-    let observer = anchor.observer.expect("topocentric observer should persist");
+    let observer = anchor
+        .observer
+        .expect("topocentric observer should persist");
     assert_eq!(observer.latitude_deg, Some(40.0));
     assert_eq!(observer.longitude_deg, Some(-75.0));
     assert_eq!(observer.altitude_m, Some(100.0));
@@ -299,12 +292,8 @@ fn precision_and_provider_provenance_must_be_explicit() {
     let mut missing_uncertainty = certified_structural_sample();
     missing_uncertainty.precision.uncertainty = None;
     assert_eq!(
-        ephemeris_anchor_from_sample(
-            "missing-uncertainty",
-            "ce-w01-cp4-c",
-            missing_uncertainty,
-        )
-        .expect_err("unknown uncertainty must be explicit rather than fabricated"),
+        ephemeris_anchor_from_sample("missing-uncertainty", "ce-w01-cp4-c", missing_uncertainty,)
+            .expect_err("unknown uncertainty must be explicit rather than fabricated"),
         EphemerisValidationError::MissingField("precision.uncertainty")
     );
 }
