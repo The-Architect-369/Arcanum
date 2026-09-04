@@ -5,7 +5,7 @@ visibility: public
 phase: "Pre-Genesis"
 era: "Construction Era"
 wave: "CE-W01"
-last_updated: 2026-09-02
+last_updated: 2026-09-04
 authority: "audit evidence only; no disposition here self-ratifies canon"
 source_issue: "https://github.com/The-Architect-369/Arcanum/issues/39"
 research_branch: "docs/creation-era-architecture-trail"
@@ -383,7 +383,7 @@ docs/architecture/renderings/vitae-tree-variant-render-v0.1.svg
 
 Primary disposition: **RELOCATE**.
 
-Target: a deliberate research/prototype rendering area rather than the authoritative `docs/architecture/` surface.
+CE-W01 realized action: **do not import these renderings into the active Construction architecture tree**. They remain research/prototype evidence on `docs/creation-era-architecture-trail`; any later physical relocation, archive, or retirement is a separate research/archive task and is not required for CE-W01 closure.
 
 Some renderings may eventually be **ARCHIVE** or **RETIRE** after the source registries and surviving visual findings are consolidated. No generated rendering is architectural authority by itself.
 
@@ -427,29 +427,30 @@ Construction v1.4 supersedes that model: it requires clean committed state apart
 The research-generated `docs/repo/repo-index.json` must never be imported into Construction because it represents a different tree and generation model.
 
 Family M is closed for CE-W01: retain v1.3 as research provenance; Construction v1.4 is the active deterministic repository-index contract.
+
 ## Tranche 1 conclusions
 
 The research branch is not one promotable unit. It contains at least five distinct evidence classes:
 
 1. foundational geometry/Tempus ideas worth synthesis;
 2. detailed relationship/curriculum/symbolic research worth retaining as research;
-3. generated/prototype renderings that should be relocated out of active architecture;
+3. generated/prototype renderings that remain research evidence and stay outside the active Construction architecture tree for CE-W01;
 4. an independent capability-evaluator implementation stream that should not enter CE-W01;
-5. repository-index tooling changes requiring separate verification.
+5. repository-index tooling changes whose research v1.3 variant is superseded by Construction v1.4.
 
 This supports the clean-branch strategy: construct the final baseline from `construction/ce-w01-baseline` and selectively synthesize surviving research rather than merging `docs/creation-era-architecture-trail`.
 
-## Next audit tranche
+## CE-W01 family disposition closure
 
-Open and evaluate the source artifacts that can materially affect CE-W01:
+Families A–M now have explicit primary dispositions and a bounded Construction action. No family retains `AUDIT-PENDING` as its primary disposition.
 
-1. exact ARCnet stellar-frame and Platonic metrics;
-2. whole-system falsification findings;
-3. transported-frame registry;
-4. Tempus ephemeris unification registry;
-5. Tempus 72-sector coordinate registry;
-6. current canonical module registry conflict with sovereign-faculty hypothesis;
-7. research repo-index generator changes;
-8. current root workspace/package inconsistency.
+For CE-W01:
 
-The next tranche should begin producing explicit `PROMOTE` versus `SYNTHESIZE` decisions for the minimal Geometry & Mathematics and Tempus baseline contracts.
+- the capability evaluator remains `RETAIN-AS-RESEARCH` and is not imported;
+- research renderings remain `RELOCATE` in disposition, with the realized CE-W01 action to leave them on the evidence branch and outside the active architecture tree;
+- research repo-index v1.3 remains provenance only; deterministic Construction v1.4 controls the active index contract;
+- Geometry and Tempus synthesis decisions have already been realized in bounded Construction specifications and machine-readable companions;
+- detailed Vitae/curriculum/symbolic research remains research unless a later Embodiment wave explicitly promotes source-grounded relationships;
+- no research artifact becomes authority merely because it appears in this audit.
+
+Remaining CE-W01 work belongs to checkpoint closure and holistic reconciliation, not another research-family classification pass. In particular, any current Vitae metadata/body authority conflict must fail closed to controlling canonical doctrine and be reconciled before affected draft material can be treated as native-runtime input.

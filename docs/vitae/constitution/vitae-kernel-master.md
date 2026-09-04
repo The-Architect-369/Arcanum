@@ -2,12 +2,14 @@
 title: "Vitae Kernel Master"
 status: draft
 visibility: public
-last_updated: 2026-02-18
+last_updated: 2026-09-04
 description: ""
 ---
 
 
 # Vitae Kernel Master
+
+> **CE-W01 authority notice:** This file remains a `draft` design and curriculum source. It is **not controlling canon** and must not be used as a native-runtime authorization input. Legacy wording below that calls this document canonical, restricted, progression-bearing, permission-bearing, readiness-bearing, or governance-gating is retained as historical design content only. It is subordinate to `docs/doctrine/authority.md` and other controlling canonical doctrine and governance. Draft text cannot self-ratify authority or define human worth, identity truth, or authorization by implication.
 
 Arcanum Vitae — Master VK (Vitae Kernel)
 

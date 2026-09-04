@@ -2,7 +2,7 @@
 title: "Vitae"
 status: canonical
 visibility: public
-last_updated: 2026-02-20
+last_updated: 2026-09-04
 description: "Vitae is Arcanum’s recognition layer for becoming: authority, constitution, curriculum, and mastery paths."
 ---
 
@@ -14,10 +14,21 @@ Use this page as the **navigation hub** for everything under `docs/vitae/`.
 
 ---
 
+## Authority precedence
+
+Status is determined per file, not by folder placement or by legacy body language.
+
+- `../doctrine/authority.md` is the controlling Vitae authority doctrine.
+- Canonical system doctrine and governance remain controlling within their declared layers.
+- Files marked `draft`, `canonical-draft`, research, or implementation-candidate are non-controlling unless and until separately ratified.
+- If a draft or legacy Vitae artifact conflicts with controlling doctrine, the controlling doctrine wins and the conflicting text must not be used as a native-runtime authorization input.
+
+---
+
 ## Start here
 
 - **Authority (core framing):** `authority.md`
-- **Vitae Constitution (canonical constraints):** `constitution/`
+- **Vitae Constitution and design sources (mixed status; read each file's frontmatter):** `constitution/`
 - **Curriculum (grades, content, mastery paths):** `curriculum/`
 
 ---
@@ -32,6 +43,8 @@ Use this page as the **navigation hub** for everything under `docs/vitae/`.
 
 Folder: `constitution/`
 
+This folder contains constitutional, design, audit, and template material with **mixed status**. Folder membership does not make a file canonical. Read each file's frontmatter before treating it as controlling input.
+
 - `constitution/master-constitution-and-architecture.md`
 - `constitution/vitae-kernel-master.md`
 - `constitution/vitae-system-wide-audit-pass.md`
@@ -39,7 +52,7 @@ Folder: `constitution/`
 - `constitution/grade-architecture-template.md`
 - `constitution/constitutional-amendment.md`
 
-> Constitutional docs define what Vitae **may** do, what it **must not** do, and how curriculum structures remain coherent across grades and paths.
+> These sources document constraints and design lineage for Vitae. Draft or otherwise non-canonical files are evidence/design inputs only and remain subordinate to controlling doctrine and governance.
 
 ---
 
@@ -169,9 +182,9 @@ Individual specialization folders (each structured as `canon/` + `implement/`):
 
 ## How to use Vitae docs
 
-- Read **Authority** to understand the *non-coercive* posture of recognition.
-- Use **Constitution** to understand non-negotiable boundaries and invariants.
-- Use **Curriculum** when building, teaching, validating, or extending grade content and mastery paths.
+- Read **Authority** to understand the *non-coercive* posture of recognition and the controlling authority boundary.
+- Use **Constitution** as a mixed-status design and constraint surface; inspect frontmatter before treating any file as controlling.
+- Use **Curriculum** when building, teaching, validating, or extending grade content and mastery paths, subject to controlling doctrine and governance.
 
 ---
 

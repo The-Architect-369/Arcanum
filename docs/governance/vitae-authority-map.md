@@ -2,7 +2,7 @@
 title: "Vitae Authority Map"
 status: canonical-draft
 visibility: public
-last_updated: 2026-05-30
+last_updated: 2026-09-04
 description: "Maps Vitae recognition to governance, stewardship, treasury, and developer permissions without converting Vitae into rank, score, or purchased authority."
 phase: "Pre-Genesis"
 layer: "Governance"
@@ -18,9 +18,13 @@ It does not redefine Vitae. It operationalizes the narrow governance question:
 
 > When a being has stabilized enough responsibility, what system permissions may be entrusted without turning that recognition into worth, rank, or domination?
 
-## Canonical dependencies
+## Authority dependencies and draft inputs
 
-This map is subordinate to:
+This map is `canonical-draft`. It is not controlling canon and does not promote any dependency merely by referencing it.
+
+### Controlling dependencies
+
+This map is subordinate to the following canonical doctrine, architecture, and governance sources:
 
 - `docs/doctrine/authority.md`
 - `docs/doctrine/identity-model.md`
@@ -30,11 +34,16 @@ This map is subordinate to:
 - `docs/architecture/canonical-modules.md`
 - `docs/governance/governance-specification.md`
 - `docs/governance/treasury-constitution.md`
+
+### Draft and design inputs
+
+The following Vitae sources inform this map but remain non-controlling while their own frontmatter marks them draft or otherwise non-canonical:
+
 - `docs/vitae/constitution/master-constitution-and-architecture.md`
 - `docs/vitae/constitution/vitae-kernel-master.md`
 - `docs/vitae/constitution/grade-architecture-template.md`
 
-If this document conflicts with those sources, the stricter non-coercive constraint wins.
+If this document or any draft/design input conflicts with a controlling source, the controlling source wins. Legacy body language cannot override frontmatter status or self-ratify authority.
 
 ## Non-negotiable constraints
 
