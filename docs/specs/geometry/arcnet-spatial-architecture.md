@@ -2,7 +2,7 @@
 title: "ARCnet Spatial Architecture — CE-W01 Geometry v0.2"
 status: implementation-candidate
 visibility: public
-last_updated: 2026-09-03
+last_updated: 2026-09-04
 description: "Additive CE-W01 spatial architecture contract defining the Flower lattice coordinate family, bounded orientation frames, source-owned correspondence profiles, exact planar lift, geometry-free equivalence, and the logical-to-physical topology boundary."
 era: "Construction Era"
 wave: "CE-W01"
@@ -838,11 +838,9 @@ This specification does not claim:
 - that classical graph relations are quantum entanglement;
 - that a geometric or symbolic relation establishes protocol truth.
 
-## Planned machine-readable companion artifacts
+## Implemented machine-readable companion artifacts
 
-This Markdown contract is the first bounded v0.2 artifact.
-
-Its planned companion artifacts are:
+The bounded v0.2 contract is implemented as this Markdown specification plus the following machine-readable companion artifacts:
 
 ~~~text
 docs/specs/geometry/arcnet-spatial-architecture.schema.json
@@ -850,9 +848,9 @@ docs/specs/geometry/arcnet-spatial-architecture.v0.2.json
 docs/specs/geometry/arcnet-spatial-architecture.vectors.v0.2.json
 ~~~
 
-After those artifacts exist, `scripts/verify-ce-w01-specs.py` is planned to extend deterministic verification from F1–F10 through F20.
+`scripts/verify-ce-w01-specs.py` now deterministically verifies the Spatial Architecture registry, vectors, invariants, and authority boundaries from F11 through F20 while preserving Geometry v0.1 verification for F1–F10.
 
-The existing v0.1 coordinate-frame artifacts remain intact throughout that extension.
+The existing v0.1 coordinate-frame artifacts remain intact and are verified by the same CE-W01 verifier.
 
 ## Remaining mathematical gate
 
