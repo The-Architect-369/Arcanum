@@ -5,8 +5,8 @@ use std::io::{self, Write};
 use std::path::{Path, PathBuf};
 
 use crate::tempus::{
-    ClockObservation, ClockSourceKind, TempusAnchor, TempusPrecision, TempusProvenance,
-    TempusSource, TEMPUS_ANCHOR_SCHEMA_VERSION, TEMPUS_TIME_SCALE_UTC,
+    TempusAnchor, TempusObservation, TempusPrecision, TempusProvenance, TempusProviderField,
+    TempusSource, TempusSourceKind, TEMPUS_ANCHOR_SCHEMA_VERSION, TEMPUS_TIME_SCALE_UTC,
 };
 
 const STORAGE_MAGIC: &[u8] = b"ARCANUM-TEMPUS-V1";
@@ -23,6 +23,10 @@ pub trait TempusAnchorStore {
 }
 
 /// File-backed implementation of the CE-W01 `tempus/` protected namespace.
+///
+/// The V1 durable encoding remains the certified CP4-B clock-only format.
+/// CP4-C ephemeris anchors are deliberately rejected here until a separately
+/// versioned astronomical persistence format is specified and certified.
 ///
 /// The store performs no network operations. Successfully persisted files are
 /// flushed with `sync_all`, and an existing anchor ID is immutable: replaying
@@ -195,7 +199,12 @@ fn validate_supported_anchor(anchor: &TempusAnchor) -> Result<(), TempusPersiste
     }
     if anchor.time_scale != TEMPUS_TIME_SCALE_UTC {
         return Err(TempusPersistenceError::InvalidInput(
-            "CP4-B persists the current UTC clock-anchor subset only",
+            "CP4-B V1 persistence accepts UTC clock anchors only",
+        ));
+    }
+    if !anchor.source.kind.is_clock() {
+        return Err(TempusPersistenceError::InvalidInput(
+            "CP4-B V1 persistence does not encode ephemeris anchors",
         ));
     }
     if anchor.observer.is_some() || anchor.frame.is_some() || anchor.interpretation.is_some() {
@@ -285,10 +294,15 @@ fn encode_payload(anchor: &TempusAnchor) -> Result<Vec<u8>, TempusPersistenceErr
     put_string(&mut encoded, &anchor.anchor_id)?;
     put_string(&mut encoded, anchor.schema_version)?;
     put_string(&mut encoded, &anchor.captured_at)?;
-    put_string(&mut encoded, anchor.time_scale)?;
+    put_string(&mut encoded, &anchor.time_scale)?;
     encoded.push(match anchor.source.kind {
-        ClockSourceKind::SystemClock => 0,
-        ClockSourceKind::MonotonicClock => 1,
+        TempusSourceKind::SystemClock => 0,
+        TempusSourceKind::MonotonicClock => 1,
+        TempusSourceKind::Ephemeris | TempusSourceKind::ManualFactualEntry => {
+            return Err(TempusPersistenceError::InvalidInput(
+                "CP4-B V1 persistence accepts clock sources only",
+            ));
+        }
     });
     put_optional_string(&mut encoded, anchor.source.provider.as_deref())?;
     put_optional_string(&mut encoded, anchor.source.model.as_deref())?;
@@ -315,7 +329,16 @@ fn encode_payload(anchor: &TempusAnchor) -> Result<Vec<u8>, TempusPersistenceErr
     );
     for (key, value) in &anchor.observation.additional_provider_fields {
         put_string(&mut encoded, key)?;
-        put_string(&mut encoded, value)?;
+        match value {
+            TempusProviderField::String(value) => put_string(&mut encoded, value)?,
+            TempusProviderField::Number(_)
+            | TempusProviderField::Boolean(_)
+            | TempusProviderField::Null => {
+                return Err(TempusPersistenceError::InvalidInput(
+                    "CP4-B V1 persistence accepts string provider fields only",
+                ));
+            }
+        }
     }
 
     put_optional_string(&mut encoded, anchor.precision.time_resolution.as_deref())?;
@@ -356,8 +379,8 @@ fn decode_payload(payload: &[u8]) -> Result<TempusAnchor, TempusPersistenceError
     }
 
     let source_kind = match decoder.byte()? {
-        0 => ClockSourceKind::SystemClock,
-        1 => ClockSourceKind::MonotonicClock,
+        0 => TempusSourceKind::SystemClock,
+        1 => TempusSourceKind::MonotonicClock,
         _ => {
             return Err(TempusPersistenceError::IntegrityFailure(
                 "persisted anchor contains an unknown clock source kind",
@@ -412,7 +435,7 @@ fn decode_payload(payload: &[u8]) -> Result<TempusAnchor, TempusPersistenceError
     let mut additional_provider_fields = BTreeMap::new();
     for _ in 0..provider_field_count {
         let key = decoder.string()?;
-        let value = decoder.string()?;
+        let value = TempusProviderField::String(decoder.string()?);
         if additional_provider_fields.insert(key, value).is_some() {
             return Err(TempusPersistenceError::IntegrityFailure(
                 "persisted anchor contains duplicate provider-field keys",
@@ -450,11 +473,11 @@ fn decode_payload(payload: &[u8]) -> Result<TempusAnchor, TempusPersistenceError
         anchor_id,
         schema_version: TEMPUS_ANCHOR_SCHEMA_VERSION,
         captured_at,
-        time_scale: TEMPUS_TIME_SCALE_UTC,
+        time_scale: TEMPUS_TIME_SCALE_UTC.to_owned(),
         source,
         observer: None,
         frame: None,
-        observation: ClockObservation {
+        observation: TempusObservation {
             kind: "clock",
             target,
             coordinate_type,

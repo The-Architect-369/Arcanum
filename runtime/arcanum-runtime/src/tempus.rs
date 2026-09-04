@@ -22,6 +22,50 @@ impl ClockSourceKind {
     }
 }
 
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum TempusSourceKind {
+    SystemClock,
+    MonotonicClock,
+    Ephemeris,
+    ManualFactualEntry,
+}
+
+impl TempusSourceKind {
+    pub const fn as_schema_value(self) -> &'static str {
+        match self {
+            Self::SystemClock => "system-clock",
+            Self::MonotonicClock => "monotonic-clock",
+            Self::Ephemeris => "ephemeris",
+            Self::ManualFactualEntry => "manual-factual-entry",
+        }
+    }
+
+    pub const fn is_clock(self) -> bool {
+        matches!(self, Self::SystemClock | Self::MonotonicClock)
+    }
+}
+
+impl From<ClockSourceKind> for TempusSourceKind {
+    fn from(value: ClockSourceKind) -> Self {
+        match value {
+            ClockSourceKind::SystemClock => Self::SystemClock,
+            ClockSourceKind::MonotonicClock => Self::MonotonicClock,
+        }
+    }
+}
+
+impl PartialEq<ClockSourceKind> for TempusSourceKind {
+    fn eq(&self, other: &ClockSourceKind) -> bool {
+        *self == Self::from(*other)
+    }
+}
+
+impl PartialEq<TempusSourceKind> for ClockSourceKind {
+    fn eq(&self, other: &TempusSourceKind) -> bool {
+        TempusSourceKind::from(*self) == *other
+    }
+}
+
 /// Factual sample returned by a local clock provider.
 ///
 /// `captured_at` is required to be a civil timestamp with an explicit UTC `Z`
@@ -102,15 +146,61 @@ impl ClockProvider for SystemClockProvider {
 
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub struct TempusSource {
-    pub kind: ClockSourceKind,
+    pub kind: TempusSourceKind,
     pub provider: Option<String>,
     pub model: Option<String>,
     pub version: Option<String>,
     pub source_id: Option<String>,
 }
 
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum TempusObserverKind {
+    BodyCenter,
+    TopocentricSite,
+    BodyFixedSite,
+    OtherRegistered,
+}
+
+impl TempusObserverKind {
+    pub const fn as_schema_value(self) -> &'static str {
+        match self {
+            Self::BodyCenter => "body-center",
+            Self::TopocentricSite => "topocentric-site",
+            Self::BodyFixedSite => "body-fixed-site",
+            Self::OtherRegistered => "other-registered",
+        }
+    }
+}
+
 #[derive(Debug, Clone, PartialEq)]
-pub struct ClockObservation {
+pub struct TempusObserver {
+    pub kind: TempusObserverKind,
+    pub body: Option<String>,
+    pub site: Option<String>,
+    pub latitude_deg: Option<f64>,
+    pub longitude_deg: Option<f64>,
+    pub altitude_m: Option<f64>,
+}
+
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct TempusFrame {
+    pub family: String,
+    pub center: Option<String>,
+    pub axes: Option<String>,
+    pub reference_plane: Option<String>,
+    pub epoch_rule: String,
+}
+
+#[derive(Debug, Clone, PartialEq)]
+pub enum TempusProviderField {
+    String(String),
+    Number(f64),
+    Boolean(bool),
+    Null,
+}
+
+#[derive(Debug, Clone, PartialEq)]
+pub struct TempusObservation {
     pub kind: &'static str,
     pub target: Option<String>,
     pub coordinate_type: Option<String>,
@@ -118,8 +208,11 @@ pub struct ClockObservation {
     pub latitude_deg: Option<f64>,
     pub distance: Option<f64>,
     pub distance_unit: Option<String>,
-    pub additional_provider_fields: BTreeMap<String, String>,
+    pub additional_provider_fields: BTreeMap<String, TempusProviderField>,
 }
+
+/// Backward-compatible type name retained for CP4-A/CP4-B callers.
+pub type ClockObservation = TempusObservation;
 
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub struct TempusPrecision {
@@ -139,21 +232,98 @@ pub struct TempusProvenance {
     pub original_fields_retained: bool,
 }
 
-/// CP4-A clock-backed projection of the certified `TempusAnchor` v0.1.0 contract.
+/// Provider-returned astronomical sample.
 ///
-/// Observer, frame, and interpretation are intentionally uninhabited in this
-/// tranche and therefore remain `None`. Astronomical, persistence, signing,
-/// authority, and protocol-witness semantics remain outside CP4-A.
+/// CP4-C intentionally does not choose an astronomical backend. Implementations
+/// of `EphemerisProvider` may later be local/offline or network-backed, but they
+/// must return this explicit provenance shape and fail visibly when unavailable.
+#[derive(Debug, Clone, PartialEq)]
+pub struct EphemerisSample {
+    pub captured_at: String,
+    pub time_scale: String,
+    pub provider: Option<String>,
+    pub model: Option<String>,
+    pub version: Option<String>,
+    pub source_id: Option<String>,
+    pub observer: Option<TempusObserver>,
+    pub frame: Option<TempusFrame>,
+    pub target: Option<String>,
+    pub coordinate_type: Option<String>,
+    pub longitude_deg: Option<f64>,
+    pub latitude_deg: Option<f64>,
+    pub distance: Option<f64>,
+    pub distance_unit: Option<String>,
+    pub additional_provider_fields: BTreeMap<String, TempusProviderField>,
+    pub precision: TempusPrecision,
+    pub provenance: TempusProvenance,
+}
+
+pub trait EphemerisProvider {
+    type Error;
+
+    fn sample(&self) -> Result<EphemerisSample, Self::Error>;
+}
+
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub enum EphemerisValidationError {
+    MissingField(&'static str),
+    InvalidField(&'static str),
+}
+
+impl fmt::Display for EphemerisValidationError {
+    fn fmt(&self, formatter: &mut fmt::Formatter<'_>) -> fmt::Result {
+        match self {
+            Self::MissingField(field) => write!(formatter, "ephemeris sample is missing {field}"),
+            Self::InvalidField(field) => write!(formatter, "ephemeris sample has invalid {field}"),
+        }
+    }
+}
+
+impl std::error::Error for EphemerisValidationError {}
+
+#[derive(Debug)]
+pub enum EphemerisCaptureError<E> {
+    Provider(E),
+    InvalidSample(EphemerisValidationError),
+}
+
+impl<E: fmt::Display> fmt::Display for EphemerisCaptureError<E> {
+    fn fmt(&self, formatter: &mut fmt::Formatter<'_>) -> fmt::Result {
+        match self {
+            Self::Provider(error) => write!(formatter, "ephemeris provider failed: {error}"),
+            Self::InvalidSample(error) => fmt::Display::fmt(error, formatter),
+        }
+    }
+}
+
+impl<E> std::error::Error for EphemerisCaptureError<E>
+where
+    E: std::error::Error + 'static,
+{
+    fn source(&self) -> Option<&(dyn std::error::Error + 'static)> {
+        match self {
+            Self::Provider(error) => Some(error),
+            Self::InvalidSample(error) => Some(error),
+        }
+    }
+}
+
+/// Runtime-domain projection of the certified `TempusAnchor` v0.1.0 contract.
+///
+/// CP4-C generalizes observer/frame/source/observation types for optional
+/// ephemeris capture while preserving the existing offline clock path.
+/// `interpretation` remains deliberately uninhabited and no field grants
+/// capability, signing, witness submission, or protocol authority.
 #[derive(Debug, Clone, PartialEq)]
 pub struct TempusAnchor {
     pub anchor_id: String,
     pub schema_version: &'static str,
     pub captured_at: String,
-    pub time_scale: &'static str,
+    pub time_scale: String,
     pub source: TempusSource,
-    pub observer: Option<()>,
-    pub frame: Option<()>,
-    pub observation: ClockObservation,
+    pub observer: Option<TempusObserver>,
+    pub frame: Option<TempusFrame>,
+    pub observation: TempusObservation,
     pub precision: TempusPrecision,
     pub provenance: TempusProvenance,
     pub interpretation: Option<()>,
@@ -194,16 +364,19 @@ pub fn tempus_anchor_from_sample(
     let backend = provider.clone();
     let mut additional_provider_fields = BTreeMap::new();
     if let Some(correlation) = monotonic_correlation {
-        additional_provider_fields.insert("monotonicCorrelation".to_owned(), correlation);
+        additional_provider_fields.insert(
+            "monotonicCorrelation".to_owned(),
+            TempusProviderField::String(correlation),
+        );
     }
 
     TempusAnchor {
         anchor_id: anchor_id.into(),
         schema_version: TEMPUS_ANCHOR_SCHEMA_VERSION,
         captured_at,
-        time_scale: TEMPUS_TIME_SCALE_UTC,
+        time_scale: TEMPUS_TIME_SCALE_UTC.to_owned(),
         source: TempusSource {
-            kind: source_kind,
+            kind: source_kind.into(),
             provider,
             model,
             version,
@@ -211,7 +384,7 @@ pub fn tempus_anchor_from_sample(
         },
         observer: None,
         frame: None,
-        observation: ClockObservation {
+        observation: TempusObservation {
             kind: "clock",
             target: None,
             coordinate_type: None,
@@ -236,6 +409,227 @@ pub fn tempus_anchor_from_sample(
             original_fields_retained: false,
         },
         interpretation: None,
+    }
+}
+
+pub fn capture_ephemeris_anchor<P: EphemerisProvider>(
+    provider: &P,
+    anchor_id: impl Into<String>,
+    runtime_version: impl Into<String>,
+) -> Result<TempusAnchor, EphemerisCaptureError<P::Error>> {
+    let sample = provider.sample().map_err(EphemerisCaptureError::Provider)?;
+    ephemeris_anchor_from_sample(anchor_id, runtime_version, sample)
+        .map_err(EphemerisCaptureError::InvalidSample)
+}
+
+/// Pure mapping from an ephemeris sample into the astronomical subset of the
+/// certified TempusAnchor contract. The provider owns astronomical computation;
+/// this runtime validates provenance and preserves the supplied factual values.
+pub fn ephemeris_anchor_from_sample(
+    anchor_id: impl Into<String>,
+    runtime_version: impl Into<String>,
+    sample: EphemerisSample,
+) -> Result<TempusAnchor, EphemerisValidationError> {
+    validate_ephemeris_sample(&sample)?;
+
+    let EphemerisSample {
+        captured_at,
+        time_scale,
+        provider,
+        model,
+        version,
+        source_id,
+        observer,
+        frame,
+        target,
+        coordinate_type,
+        longitude_deg,
+        latitude_deg,
+        distance,
+        distance_unit,
+        additional_provider_fields,
+        precision,
+        mut provenance,
+    } = sample;
+
+    if provenance.software_version.is_none() {
+        provenance.software_version = Some(runtime_version.into());
+    }
+
+    Ok(TempusAnchor {
+        anchor_id: anchor_id.into(),
+        schema_version: TEMPUS_ANCHOR_SCHEMA_VERSION,
+        captured_at,
+        time_scale,
+        source: TempusSource {
+            kind: TempusSourceKind::Ephemeris,
+            provider,
+            model,
+            version,
+            source_id,
+        },
+        observer,
+        frame,
+        observation: TempusObservation {
+            kind: "astronomical-coordinate",
+            target,
+            coordinate_type,
+            longitude_deg,
+            latitude_deg,
+            distance,
+            distance_unit,
+            additional_provider_fields,
+        },
+        precision,
+        provenance,
+        interpretation: None,
+    })
+}
+
+fn validate_ephemeris_sample(sample: &EphemerisSample) -> Result<(), EphemerisValidationError> {
+    require_non_empty(&sample.captured_at, "capturedAt")?;
+    require_non_empty(&sample.time_scale, "timeScale")?;
+    require_optional_non_empty(&sample.provider, "source.provider")?;
+    require_optional_non_empty(&sample.model, "source.model")?;
+    require_optional_non_empty(&sample.version, "source.version")?;
+    require_optional_non_empty(&sample.target, "observation.target")?;
+    require_optional_non_empty(&sample.coordinate_type, "observation.coordinateType")?;
+
+    let observer = sample
+        .observer
+        .as_ref()
+        .ok_or(EphemerisValidationError::MissingField("observer"))?;
+    validate_observer(observer)?;
+
+    let frame = sample
+        .frame
+        .as_ref()
+        .ok_or(EphemerisValidationError::MissingField("frame"))?;
+    validate_frame(frame)?;
+
+    if sample.longitude_deg.is_none()
+        && sample.latitude_deg.is_none()
+        && sample.distance.is_none()
+    {
+        return Err(EphemerisValidationError::MissingField(
+            "astronomical coordinates",
+        ));
+    }
+
+    if let Some(longitude) = sample.longitude_deg {
+        if !longitude.is_finite() || !(0.0..360.0).contains(&longitude) {
+            return Err(EphemerisValidationError::InvalidField(
+                "observation.longitudeDeg",
+            ));
+        }
+    }
+    if let Some(latitude) = sample.latitude_deg {
+        if !latitude.is_finite() || !(-90.0..=90.0).contains(&latitude) {
+            return Err(EphemerisValidationError::InvalidField(
+                "observation.latitudeDeg",
+            ));
+        }
+    }
+    if let Some(distance) = sample.distance {
+        if !distance.is_finite() || distance < 0.0 {
+            return Err(EphemerisValidationError::InvalidField(
+                "observation.distance",
+            ));
+        }
+    }
+    if sample.distance.is_some() {
+        require_optional_non_empty(&sample.distance_unit, "observation.distanceUnit")?;
+    }
+
+    require_optional_non_empty(&sample.precision.time_resolution, "precision.timeResolution")?;
+    require_optional_non_empty(
+        &sample.precision.coordinate_resolution,
+        "precision.coordinateResolution",
+    )?;
+    require_optional_non_empty(&sample.precision.uncertainty, "precision.uncertainty")?;
+    require_optional_non_empty(&sample.provenance.backend, "provenance.backend")?;
+
+    Ok(())
+}
+
+fn validate_observer(observer: &TempusObserver) -> Result<(), EphemerisValidationError> {
+    require_optional_non_empty(&observer.body, "observer.body")?;
+
+    for (value, field) in [
+        (observer.latitude_deg, "observer.latitudeDeg"),
+        (observer.longitude_deg, "observer.longitudeDeg"),
+        (observer.altitude_m, "observer.altitudeM"),
+    ] {
+        if let Some(value) = value {
+            if !value.is_finite() {
+                return Err(EphemerisValidationError::InvalidField(field));
+            }
+        }
+    }
+
+    if let Some(latitude) = observer.latitude_deg {
+        if !(-90.0..=90.0).contains(&latitude) {
+            return Err(EphemerisValidationError::InvalidField(
+                "observer.latitudeDeg",
+            ));
+        }
+    }
+    if let Some(longitude) = observer.longitude_deg {
+        if !(-180.0..=180.0).contains(&longitude) {
+            return Err(EphemerisValidationError::InvalidField(
+                "observer.longitudeDeg",
+            ));
+        }
+    }
+
+    match observer.kind {
+        TempusObserverKind::BodyCenter => {
+            if observer.site.is_some()
+                || observer.latitude_deg.is_some()
+                || observer.longitude_deg.is_some()
+                || observer.altitude_m.is_some()
+            {
+                return Err(EphemerisValidationError::InvalidField(
+                    "body-center observer location",
+                ));
+            }
+        }
+        TempusObserverKind::TopocentricSite | TempusObserverKind::BodyFixedSite => {
+            if observer.latitude_deg.is_none() || observer.longitude_deg.is_none() {
+                return Err(EphemerisValidationError::MissingField(
+                    "explicit site latitude/longitude",
+                ));
+            }
+        }
+        TempusObserverKind::OtherRegistered => {}
+    }
+
+    Ok(())
+}
+
+fn validate_frame(frame: &TempusFrame) -> Result<(), EphemerisValidationError> {
+    require_non_empty(&frame.family, "frame.family")?;
+    require_optional_non_empty(&frame.center, "frame.center")?;
+    require_optional_non_empty(&frame.axes, "frame.axes")?;
+    require_optional_non_empty(&frame.reference_plane, "frame.referencePlane")?;
+    require_non_empty(&frame.epoch_rule, "frame.epochRule")
+}
+
+fn require_non_empty(value: &str, field: &'static str) -> Result<(), EphemerisValidationError> {
+    if value.trim().is_empty() {
+        Err(EphemerisValidationError::MissingField(field))
+    } else {
+        Ok(())
+    }
+}
+
+fn require_optional_non_empty(
+    value: &Option<String>,
+    field: &'static str,
+) -> Result<(), EphemerisValidationError> {
+    match value {
+        Some(value) => require_non_empty(value, field),
+        None => Err(EphemerisValidationError::MissingField(field)),
     }
 }
 
