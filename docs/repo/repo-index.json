@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-09-04T09:02:40Z",
+  "generated_at": "2026-09-04T11:10:12Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "b5fb78406",
+  "commit": "eeb1fb89e",
   "generator_version": "1.4",
   "files": [
     {
@@ -3850,11 +3850,11 @@
     {
       "path": "docs/governance/vitae-authority-map.md",
       "type": "file",
-      "size_bytes": 9913,
-      "last_modified_commit": "0a920521b",
+      "size_bytes": 10429,
+      "last_modified_commit": "eeb1fb89e",
       "is_empty": false,
       "extension": ".md",
-      "lines": 333
+      "lines": 342
     },
     {
       "path": "docs/index.md",
@@ -3940,11 +3940,11 @@
     {
       "path": "docs/repo/construction-era-research-disposition.md",
       "type": "file",
-      "size_bytes": 21542,
-      "last_modified_commit": "9f9628db8",
+      "size_bytes": 22464,
+      "last_modified_commit": "eeb1fb89e",
       "is_empty": false,
       "extension": ".md",
-      "lines": 455
+      "lines": 456
     },
     {
       "path": "docs/repo/repo-index-generator-spec.md",
@@ -4624,11 +4624,11 @@
     {
       "path": "docs/vitae/constitution/vitae-kernel-master.md",
       "type": "file",
-      "size_bytes": 5155,
-      "last_modified_commit": "2bc7b14de",
+      "size_bytes": 5755,
+      "last_modified_commit": "eeb1fb89e",
       "is_empty": false,
       "extension": ".md",
-      "lines": 225
+      "lines": 227
     },
     {
       "path": "docs/vitae/constitution/vitae-system-wide-audit-pass.md",
@@ -6289,11 +6289,11 @@
     {
       "path": "docs/vitae/index.md",
       "type": "file",
-      "size_bytes": 5270,
-      "last_modified_commit": "83a94a753",
+      "size_bytes": 6330,
+      "last_modified_commit": "eeb1fb89e",
       "is_empty": false,
       "extension": ".md",
-      "lines": 181
+      "lines": 194
     },
     {
       "path": "docs/vitae/overview.md",
