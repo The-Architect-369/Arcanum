@@ -2,7 +2,7 @@
 title: "TempusAnchor — CE-W01 Temporal Provenance Contract"
 status: implementation-candidate
 visibility: public
-last_updated: 2026-09-02
+last_updated: 2026-09-04
 description: "Minimal local-first temporal provenance contract for CE-W01, separating clock/ephemeris observation from symbolic interpretation, runtime authorization, and optional protocol witnessing."
 era: "Construction Era"
 wave: "CE-W01"
@@ -68,7 +68,7 @@ A normalized local record that captures the observation and its provenance.
 
 An append-only local statement that an anchor was accepted/persisted by the local runtime.
 
-The CE-W01 local runtime boundary now defines an opaque signing-handle boundary for local receipt signing. This specification does not expose private key material or choose a production signing algorithm/provider; concrete signing implementation and tests remain an implementation gate.
+The CE-W01 local runtime boundary defines an opaque signing-handle boundary for local receipt signing. The CE-W01 runtime now implements and tests the bounded local receipt-signing path through that opaque handle. This specification still does not expose private key material or choose a production signing algorithm/provider; those remain later engineering/provider decisions rather than CE-W01 closure gates.
 
 ### Protocol witness
 
@@ -612,15 +612,16 @@ CE-W01 now provides the machine-readable `TempusAnchor` schema, deterministic se
 
 These completed semantic and machine-contract items are no longer future implementation gates.
 
-## Remaining implementation gates
+## CE-W01 closure and later-wave handoff
 
-Before CE-W02, Tempus still requires:
+The CE-W01 Tempus contract is implemented and certified at the required local-runtime boundary:
 
-- binding a concrete `ClockProvider` implementation to the semantic runtime interface;
-- persistence/restart tests;
-- optional ephemeris-provider implementation;
-- implementation and testing of local receipt signing through the opaque signing handle;
-- location/privacy tests for location-free default use and participant-controlled topocentric features;
-- a later explicit protocol-witness envelope without making network finality mandatory.
+- `SystemClockProvider` provides concrete location-free local clock capture;
+- persistence/restart integrity is implemented and tested;
+- the optional ephemeris-provider boundary and provenance validation are implemented and tested with deterministic fixtures, while production astronomical backend selection remains optional and later;
+- local receipt signing through the opaque signing handle is implemented and tested with fail-closed semantics, while production cryptographic provider/algorithm selection remains deliberately unspecified;
+- location-free default behavior and participant-controlled topocentric boundaries are covered by the certified Tempus implementation and tests.
+
+Protocol witness envelopes, transaction submission, and finality belong to later protocol-connectivity work in CE-W06 and are not CE-W01 gates.
 
 Temporal or astronomical data remains context and provenance only. It never grants identity, capability, recognition, economic, governance, protocol, or authority semantics.

@@ -5,7 +5,7 @@ visibility: public
 phase: "Pre-Genesis"
 era: "Construction Era"
 wave: "CE-W01"
-last_updated: 2026-09-02
+last_updated: 2026-09-04
 authority: "Human Architect authorized audit/consolidation work; promotion remains separately authorized"
 source_issue: "https://github.com/The-Architect-369/Arcanum/issues/39"
 ---
@@ -561,6 +561,84 @@ Explicit exclusions from this reconciliation remain:
 - production cryptographic-provider or algorithm choices;
 - Android/native implementation;
 - promotion or merge to `main`.
+
+## Checkpoint closure reconciliation — 2026-09-04
+
+This section is the current CE-W01 checkpoint handoff. Earlier checkpoint
+sections remain historical snapshots of the state at the time they were
+written; this reconciliation supersedes those snapshots for current status.
+
+### CP1 — Roadmap reconciliation
+
+Status: **COMPLETE / CLOSED**.
+
+### CP2 — Research branch disposition audit
+
+Status: **COMPLETE / CLOSED**.
+
+Families A–M have explicit dispositions and bounded Construction actions.
+No family remains `AUDIT-PENDING`. Vitae authority/status ambiguity has been
+reconciled fail-closed to controlling doctrine.
+
+### CP3 — Geometry/Mathematics synthesis
+
+Status: **COMPLETE / CLOSED FOR CE-W01 SEMANTIC AND MACHINE CONTRACT**.
+
+Geometry v0.1 and Spatial Architecture v0.2 provide the required machine
+contracts and deterministic falsification coverage F1–F20. Exact
+math-to-screen/native-host realization belongs to CE-W02. Deeper retained
+Hope/octahedral/Seed-of-Life realization belongs to CE-W03. A stronger
+Flower↔stellar identity remains research unless separately derived and
+machine-falsified.
+
+### CP4 — Tempus anchor synthesis
+
+Status: **CERTIFIED / CLOSED**.
+
+The certified CE-W01 runtime includes concrete location-free system-clock
+capture, persistence/restart integrity, optional ephemeris-provider boundaries
+and provenance validation, and opaque local receipt-signing behavior with
+fail-closed tests. Production cryptographic-provider selection and protocol
+witness/submission/finality remain later-wave concerns.
+
+### CP5 — Holistic repository audit
+
+Status: **COMPLETE / CLOSED**.
+
+Workspace/package inconsistency, deterministic indexing, authority/status
+ambiguity, archive/research boundaries, native-runtime readiness, lint/type/
+build posture, and deployment assumptions have been dispositioned.
+
+Vercel project Node `22.x` versus repository Node `24.x` remains visible as
+non-blocking administrative drift. The repository engine declaration is
+authoritative and Vercel successfully builds the branch with Node `24.x`.
+
+### CP6 — Consolidation
+
+Status: **SOURCE CLOSURE IN THIS FINAL DOCUMENTATION TRANCHE**.
+
+Selective consolidation is complete without a wholesale research merge.
+This reconciliation removes the remaining CE-W01/later-wave scope ambiguity.
+
+CP6 certification attaches to the deterministic repository-index companion
+generated from this final source tranche.
+
+### CP7 — Exact-head verification
+
+Status: **PENDING FINAL SOURCE/INDEX PAIR**.
+
+After the final deterministic repo-index companion is committed, the complete
+Ubuntu verification suite must run against that exact head. CP7 closure should
+be recorded in issue #39 rather than by another repository mutation so the
+verified head remains unchanged.
+
+### CP8 — Promotion
+
+Status: **BLOCKED PENDING CP7 AND EXPLICIT HUMAN AUTHORIZATION**.
+
+Promotion to `main` occurs only after the CP7 exact-head evidence is visible
+and the Human Architect explicitly authorizes promotion of that exact verified
+head. No earlier approval or checkpoint reconciliation implies promotion.
 
 ## Cross-chat handoff protocol
 

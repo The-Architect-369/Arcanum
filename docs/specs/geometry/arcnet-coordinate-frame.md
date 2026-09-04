@@ -2,7 +2,7 @@
 title: "ARCnet Coordinate Frame — CE-W01"
 status: implementation-candidate
 visibility: public
-last_updated: 2026-09-02
+last_updated: 2026-09-04
 description: "Implementation-facing mathematical contract for the CE-W01 ARCnet local coordinate frame, Hope-centered inner geometry, optional overlays, projection boundaries, and falsification invariants."
 era: "Construction Era"
 wave: "CE-W01"
@@ -416,14 +416,14 @@ The coordinate formulas in this specification are now represented by machine-rea
 - `docs/specs/geometry/arcnet-coordinate-frame.vectors.v0.1.json`;
 - `scripts/verify-ce-w01-specs.py`, which verifies the Geometry registry, vectors, invariants, and authority firewall.
 
-## Remaining implementation gates
+## CE-W01 closure and later-wave handoff
 
-Before CE-W02 native host work begins, Geometry still requires:
+The CE-W01 coordinate-frame contract is complete at the semantic and machine-verifiable level.
 
-- a declared math-to-screen projection contract;
-- a geometry-free reference renderer or equivalent;
-- explicit source-authorized semantic label mapping;
-- exact Hope Seed-of-Life projection mathematics if that visual mapping is retained;
-- final native/runtime binding.
+The following work is intentionally assigned to later waves and is not a CE-W01 closure gate:
 
-None of these gates authorizes Geometry to create module, identity, capability, recognition, economic, governance, protocol, or authority semantics.
+- CE-W02 owns the exact math-to-screen projection contract, reference/native rendering, and final visual host/runtime binding;
+- CE-W03 owns any exact Hope / Seed-of-Life mapping retained for the lived Hope-centered experience;
+- any semantic label mapping remains source-owned and must be independently registered and authorized rather than inferred from geometry.
+
+None of these later-wave responsibilities authorizes Geometry to create module, identity, capability, recognition, economic, governance, protocol, or authority semantics.
