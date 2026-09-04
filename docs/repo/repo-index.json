@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-09-04T11:34:36Z",
+  "generated_at": "2026-09-04T21:01:58Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "4ba54660c",
+  "commit": "afd5aa406",
   "generator_version": "1.4",
   "files": [
     {
@@ -3931,11 +3931,11 @@
     {
       "path": "docs/repo/construction-era-consolidation-ledger.md",
       "type": "file",
-      "size_bytes": 21928,
-      "last_modified_commit": "9f9628db8",
+      "size_bytes": 25021,
+      "last_modified_commit": "afd5aa406",
       "is_empty": false,
       "extension": ".md",
-      "lines": 581
+      "lines": 659
     },
     {
       "path": "docs/repo/construction-era-research-disposition.md",
@@ -4201,8 +4201,8 @@
     {
       "path": "docs/specs/geometry/arcnet-coordinate-frame.md",
       "type": "file",
-      "size_bytes": 14051,
-      "last_modified_commit": "9f9628db8",
+      "size_bytes": 14301,
+      "last_modified_commit": "afd5aa406",
       "is_empty": false,
       "extension": ".md",
       "lines": 429
@@ -4525,11 +4525,11 @@
     {
       "path": "docs/specs/tempus/tempus-anchor.md",
       "type": "file",
-      "size_bytes": 18714,
-      "last_modified_commit": "9f9628db8",
+      "size_bytes": 19293,
+      "last_modified_commit": "afd5aa406",
       "is_empty": false,
       "extension": ".md",
-      "lines": 626
+      "lines": 627
     },
     {
       "path": "docs/specs/tempus/tempus-anchor.schema.json",
