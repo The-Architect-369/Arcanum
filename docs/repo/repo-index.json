@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-09-04T11:10:12Z",
+  "generated_at": "2026-09-04T11:34:36Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "eeb1fb89e",
+  "commit": "4ba54660c",
   "generator_version": "1.4",
   "files": [
     {
@@ -4237,11 +4237,11 @@
     {
       "path": "docs/specs/geometry/arcnet-spatial-architecture.md",
       "type": "file",
-      "size_bytes": 22192,
-      "last_modified_commit": "56bffcc05",
+      "size_bytes": 22334,
+      "last_modified_commit": "4ba54660c",
       "is_empty": false,
       "extension": ".md",
-      "lines": 881
+      "lines": 879
     },
     {
       "path": "docs/specs/geometry/arcnet-spatial-architecture.schema.json",
