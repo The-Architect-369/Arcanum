@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-09-04T07:33:26Z",
+  "generated_at": "2026-09-04T09:02:40Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "314b5dcf5",
+  "commit": "b5fb78406",
   "generator_version": "1.4",
   "files": [
     {
@@ -6415,11 +6415,11 @@
     {
       "path": "runtime/arcanum-runtime/src/lib.rs",
       "type": "file",
-      "size_bytes": 62,
-      "last_modified_commit": "e278a3094",
+      "size_bytes": 79,
+      "last_modified_commit": "04ab4db70",
       "is_empty": false,
       "extension": ".rs",
-      "lines": 4
+      "lines": 5
     },
     {
       "path": "runtime/arcanum-runtime/src/persistence.rs",
@@ -6429,6 +6429,15 @@
       "is_empty": false,
       "extension": ".rs",
       "lines": 643
+    },
+    {
+      "path": "runtime/arcanum-runtime/src/receipt.rs",
+      "type": "file",
+      "size_bytes": 6938,
+      "last_modified_commit": "b5fb78406",
+      "is_empty": false,
+      "extension": ".rs",
+      "lines": 207
     },
     {
       "path": "runtime/arcanum-runtime/src/tempus.rs",
@@ -6465,6 +6474,15 @@
       "is_empty": false,
       "extension": ".rs",
       "lines": 157
+    },
+    {
+      "path": "runtime/arcanum-runtime/tests/tempus_receipt_signing.rs",
+      "type": "file",
+      "size_bytes": 8436,
+      "last_modified_commit": "b5fb78406",
+      "is_empty": false,
+      "extension": ".rs",
+      "lines": 270
     },
     {
       "path": "scripts/architect/agent-execute.py",
