@@ -2,8 +2,8 @@ use std::cell::Cell;
 use std::fmt;
 
 use arcanum_runtime::receipt::{
-    create_tempus_local_receipt, LocalReceiptSigner, LocalSignature, SigningFailure,
-    SigningHandle, TempusReceiptError, LOCAL_RECEIPT_SCOPE, LOCAL_RECEIPT_SCHEMA_VERSION,
+    create_tempus_local_receipt, LocalReceiptSigner, LocalSignature, SigningFailure, SigningHandle,
+    TempusReceiptError, LOCAL_RECEIPT_SCHEMA_VERSION, LOCAL_RECEIPT_SCOPE,
     TEMPUS_LOCAL_RECEIPT_TYPE,
 };
 use arcanum_runtime::tempus::{
@@ -137,7 +137,10 @@ fn signed_tempus_receipt_binds_digest_and_remains_local_only() {
     assert_eq!(receipt.content_digest, digest);
     assert_eq!(receipt.scope, LOCAL_RECEIPT_SCOPE);
     assert_eq!(receipt.signer_ref.as_deref(), Some("fixture-local-signer"));
-    assert!(receipt.signature.as_ref().is_some_and(|value| !value.is_empty()));
+    assert!(receipt
+        .signature
+        .as_ref()
+        .is_some_and(|value| !value.is_empty()));
     assert!(receipt.is_signed());
 
     assert!(!format!("{handle:?}").contains("fixture-opaque-signing-handle"));

@@ -44,7 +44,9 @@ pub enum SigningHandleError {
 impl fmt::Display for SigningHandleError {
     fn fmt(&self, formatter: &mut fmt::Formatter<'_>) -> fmt::Result {
         match self {
-            Self::EmptyReference => formatter.write_str("signing handle reference must not be empty"),
+            Self::EmptyReference => {
+                formatter.write_str("signing handle reference must not be empty")
+            }
         }
     }
 }
@@ -118,7 +120,9 @@ impl<E: fmt::Display> fmt::Display for TempusReceiptError<E> {
     fn fmt(&self, formatter: &mut fmt::Formatter<'_>) -> fmt::Result {
         match self {
             Self::InvalidInput(field) => write!(formatter, "invalid local receipt input: {field}"),
-            Self::SigningProvider(error) => write!(formatter, "local receipt signer failed: {error}"),
+            Self::SigningProvider(error) => {
+                write!(formatter, "local receipt signer failed: {error}")
+            }
             Self::InvalidSignerResult(field) => {
                 write!(formatter, "invalid local signer result: {field}")
             }
@@ -163,22 +167,21 @@ pub fn create_tempus_local_receipt<S: LocalReceiptSigner>(
     require_non_empty(&persisted_at, "persistedAt")?;
     require_non_empty(&runtime_version, "runtimeVersion")?;
 
-    let (signer_ref, signature) =
-        match signer.sign_digest(&content_digest, signing_handle) {
-            Ok(result) => {
-                if result.signer_ref.trim().is_empty() {
-                    return Err(TempusReceiptError::InvalidSignerResult("signerRef"));
-                }
-                if result.signature.is_empty() {
-                    return Err(TempusReceiptError::InvalidSignerResult("signature"));
-                }
-                (Some(result.signer_ref), Some(result.signature))
+    let (signer_ref, signature) = match signer.sign_digest(&content_digest, signing_handle) {
+        Ok(result) => {
+            if result.signer_ref.trim().is_empty() {
+                return Err(TempusReceiptError::InvalidSignerResult("signerRef"));
             }
-            Err(SigningFailure::Unavailable) => (None, None),
-            Err(SigningFailure::Provider(error)) => {
-                return Err(TempusReceiptError::SigningProvider(error));
+            if result.signature.is_empty() {
+                return Err(TempusReceiptError::InvalidSignerResult("signature"));
             }
-        };
+            (Some(result.signer_ref), Some(result.signature))
+        }
+        Err(SigningFailure::Unavailable) => (None, None),
+        Err(SigningFailure::Provider(error)) => {
+            return Err(TempusReceiptError::SigningProvider(error));
+        }
+    };
 
     Ok(TempusLocalReceipt {
         receipt_id,
