@@ -10,6 +10,7 @@ import kotlin.math.abs
 class ArcnetRendererView(
     context: Context,
     private val runtimeBridgeLabel: String,
+    private val runtimeLifecycleLabel: String,
 ) : View(context) {
     private val linePaint =
         Paint(Paint.ANTI_ALIAS_FLAG).apply {
@@ -28,6 +29,12 @@ class ArcnetRendererView(
         Paint(Paint.ANTI_ALIAS_FLAG).apply {
             color = Color.LTGRAY
             textSize = 28.0f
+        }
+
+    private val runtimePaint =
+        Paint(Paint.ANTI_ALIAS_FLAG).apply {
+            color = Color.LTGRAY
+            textSize = 20.0f
         }
 
     private val errorPaint =
@@ -49,6 +56,10 @@ class ArcnetRendererView(
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
         canvas.drawColor(Color.BLACK)
+
+        // Runtime truth remains legible even if geometry fails closed.
+        canvas.drawText(runtimeBridgeLabel, 24.0f, 76.0f, runtimePaint)
+        canvas.drawText(runtimeLifecycleLabel, 24.0f, 104.0f, runtimePaint)
 
         val contracts =
             contractsResult.getOrElse { failure ->
@@ -101,7 +112,6 @@ class ArcnetRendererView(
             40.0f,
             labelPaint,
         )
-        canvas.drawText(runtimeBridgeLabel, 24.0f, 76.0f, labelPaint)
     }
 
     private fun drawCanonicalEdges(
@@ -133,11 +143,11 @@ class ArcnetRendererView(
         canvas: Canvas,
         failure: Throwable,
     ) {
-        canvas.drawText("ARCnet projection unavailable", 24.0f, 40.0f, errorPaint)
+        canvas.drawText("ARCnet projection unavailable", 24.0f, 148.0f, errorPaint)
         canvas.drawText(
             failure.message ?: failure::class.java.simpleName,
             24.0f,
-            76.0f,
+            184.0f,
             errorPaint,
         )
     }
