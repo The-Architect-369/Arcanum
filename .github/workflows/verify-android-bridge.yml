@@ -62,16 +62,20 @@ jobs:
       - name: Verify W02.3 repository contract
         run: python3 scripts/verify-ce-w02-native-bridge.py
 
-      - name: Verify safe bridge facade
-        run: |
-          cargo fmt --manifest-path runtime/arcanum-android-bridge/Cargo.toml --check
-          cargo clippy --manifest-path runtime/arcanum-android-bridge/Cargo.toml --all-targets -- -D warnings
-          cargo test --manifest-path runtime/arcanum-android-bridge/Cargo.toml
+      - name: Check safe bridge formatting
+        run: cargo fmt --manifest-path runtime/arcanum-android-bridge/Cargo.toml --check
 
-      - name: Verify mechanical JNI shim
-        run: |
-          cargo fmt --manifest-path runtime/arcanum-android-jni/Cargo.toml --check
-          cargo clippy --manifest-path runtime/arcanum-android-jni/Cargo.toml --all-targets -- -D warnings
+      - name: Clippy safe bridge facade
+        run: cargo clippy --manifest-path runtime/arcanum-android-bridge/Cargo.toml --all-targets -- -D warnings
+
+      - name: Test safe bridge facade
+        run: cargo test --manifest-path runtime/arcanum-android-bridge/Cargo.toml
+
+      - name: Check mechanical JNI formatting
+        run: cargo fmt --manifest-path runtime/arcanum-android-jni/Cargo.toml --check
+
+      - name: Clippy mechanical JNI shim
+        run: cargo clippy --manifest-path runtime/arcanum-android-jni/Cargo.toml --all-targets -- -D warnings
 
       - name: Cross-compile JNI shim
         run: |
