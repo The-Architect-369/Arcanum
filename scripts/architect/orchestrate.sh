@@ -4,7 +4,6 @@ set -euo pipefail
 ROOT="$(git rev-parse --show-toplevel 2>/dev/null || pwd)"
 REPORT_ROOT="$ROOT/.architect-reports/orchestration"
 MANIFEST="$ROOT/docs/governance/architectgpt/architect-gpt-manifest.yaml"
-REGISTRY="$ROOT/docs/governance/architectgpt/capability-registry.yaml"
 INDEX="$ROOT/docs/repo/repo-index.json"
 SCHEMA="$ROOT/docs/governance/architectgpt/execution-record.schema.json"
 VALIDATOR="$ROOT/scripts/architect/validate-evidence.py"
@@ -14,7 +13,7 @@ mkdir -p "$REPORT_ROOT"
 
 usage() {
   cat <<'EOF'
-Architect GPT orchestration control
+Architect GPT 4.0 orchestration control
 
 Usage:
   bash scripts/architect/orchestrate.sh preflight
@@ -24,17 +23,13 @@ Usage:
   bash scripts/architect/orchestrate.sh validate
   bash scripts/architect/orchestrate.sh migrate
 
-Commands:
-  preflight  Validate local tooling, repository grounding, provider access, and policy files.
-  session    Create a Markdown grounding report for the current repository state.
-  record     Append a schema-compliant execution record.
-  evidence   Append a schema-compliant provider-evidence record.
-  validate   Validate all local orchestration JSONL evidence.
-  migrate    Rewrite supported legacy execution records to schema 1.0.
+This utility records local evidence. It does not grant write, merge, deploy, rollback,
+or ratification authority.
 EOF
 }
 
 have() { command -v "$1" >/dev/null 2>&1; }
+
 yaml_value() {
   local key="$1" file="$2"
   awk -F': *' -v key="$key" '$1 == key {print $2; exit}' "$file" | tr -d '"\r'
@@ -46,11 +41,11 @@ provider_status() {
     $0 ~ "^  " provider ":$" {inside=1; next}
     inside && /^  [a-zA-Z0-9_]+:$/ {exit}
     inside && /^    status:/ {sub(/^    status:[[:space:]]*/, ""); print; exit}
-  ' "$REGISTRY"
+  ' "$MANIFEST"
 }
 
 repo_url() { git -C "$ROOT" config --get remote.origin.url 2>/dev/null || echo unknown; }
-branch_name() { git -C "$ROOT" branch --show-current 2>/dev/null || echo unknown; }
+branch_name() { git -C "$ROOT" branch --show-current 2>/dev/null || echo detached; }
 head_sha() { git -C "$ROOT" rev-parse HEAD 2>/dev/null || echo unknown; }
 
 migrate_logs() {
@@ -65,35 +60,52 @@ validate_logs() {
 
 preflight() {
   local fail=0 warn=0
-  printf '== Architect GPT preflight ==\n'
+  printf '== Architect GPT 4.0 preflight ==\n'
   printf 'Root: %s\n' "$ROOT"
   printf 'Branch: %s\n' "$(branch_name)"
   printf 'Commit: %s\n\n' "$(git -C "$ROOT" rev-parse --short HEAD 2>/dev/null || echo unknown)"
 
   for cmd in git bash python3 jq node pnpm; do
-    if have "$cmd"; then printf 'PASS command:%s -> %s\n' "$cmd" "$(command -v "$cmd")"; else printf 'FAIL command:%s missing\n' "$cmd"; fail=$((fail+1)); fi
+    if have "$cmd"; then
+      printf 'PASS command:%s -> %s\n' "$cmd" "$(command -v "$cmd")"
+    else
+      printf 'FAIL command:%s missing\n' "$cmd"
+      fail=$((fail+1))
+    fi
   done
 
-  for file in "$MANIFEST" "$REGISTRY" "$INDEX" "$SCHEMA" "$VALIDATOR"; do
-    if [[ -f "$file" ]]; then printf 'PASS file:%s\n' "${file#$ROOT/}"; else printf 'FAIL file:%s missing\n' "${file#$ROOT/}"; fail=$((fail+1)); fi
+  for file in "$MANIFEST" "$INDEX" "$SCHEMA" "$VALIDATOR"; do
+    if [[ -f "$file" ]]; then
+      printf 'PASS file:%s\n' "${file#$ROOT/}"
+    else
+      printf 'FAIL file:%s missing\n' "${file#$ROOT/}"
+      fail=$((fail+1))
+    fi
   done
 
   if have gh && gh auth status -h github.com >/dev/null 2>&1; then
     printf 'PASS provider:github authenticated as %s\n' "$(gh api user --jq .login 2>/dev/null || echo unknown)"
   else
-    printf 'WARN provider:github local CLI not authenticated\n'; warn=$((warn+1))
+    printf 'WARN provider:github local CLI not authenticated\n'
+    warn=$((warn+1))
   fi
 
-  printf 'INFO provider:github registry=%s\n' "$(provider_status github)"
-  printf 'INFO provider:vercel registry=%s\n' "$(provider_status vercel)"
-  printf 'INFO provider:google_workspace registry=%s\n' "$(provider_status google_workspace)"
+  for provider in github vercel google_workspace notion web local_termux; do
+    printf 'INFO provider:%s manifest=%s\n' "$provider" "$(provider_status "$provider")"
+  done
 
-  if migrate_logs >/dev/null && validate_logs; then printf 'PASS evidence:local-jsonl\n'; else printf 'FAIL evidence:local-jsonl\n'; fail=$((fail+1)); fi
+  if migrate_logs >/dev/null && validate_logs; then
+    printf 'PASS evidence:local-jsonl\n'
+  else
+    printf 'FAIL evidence:local-jsonl\n'
+    fail=$((fail+1))
+  fi
 
   if bash "$ROOT/scripts/verify-sync.sh"; then
     printf 'PASS policy:verify-sync\n'
   else
-    printf 'FAIL policy:verify-sync\n'; fail=$((fail+1))
+    printf 'FAIL policy:verify-sync\n'
+    fail=$((fail+1))
   fi
 
   printf '\nResult: FAIL=%s WARN=%s\n' "$fail" "$warn"
@@ -102,13 +114,21 @@ preflight() {
 
 session_report() {
   local label="${1:-interactive-session}"
-  local stamp report branch head index_commit index_generated
+  local stamp report branch head index_commit index_generated role
   stamp="$(date -u +%Y%m%dT%H%M%SZ)"
   report="$REPORT_ROOT/session-$stamp.md"
   branch="$(branch_name)"
   head="$(head_sha)"
   index_commit="$(jq -r '.commit // "unknown"' "$INDEX" 2>/dev/null || echo unknown)"
   index_generated="$(jq -r '.generated_at // "unknown"' "$INDEX" 2>/dev/null || echo unknown)"
+
+  if [[ "$branch" == "main" ]]; then
+    role="canonical"
+  elif [[ "$branch" == "detached" || -z "$branch" ]]; then
+    role="detached"
+  else
+    role="disposable-work"
+  fi
 
   cat > "$report" <<EOF
 # Architect GPT Session Grounding
@@ -117,11 +137,12 @@ session_report() {
 - Task: $label
 - Repository: $(repo_url)
 - Branch: $branch
-- Branch role: $([[ "$branch" == "main" ]] && echo stable || ([[ "$branch" == "mobile" ]] && echo integration || echo other))
+- Branch role: $role
 - HEAD: $head
 - Working tree: $([[ -z "$(git -C "$ROOT" status --porcelain 2>/dev/null)" ]] && echo clean || echo modified)
 - Architect GPT version: $(yaml_value version "$MANIFEST")
 - Phase: $(yaml_value phase "$MANIFEST")
+- Wave: $(yaml_value wave "$MANIFEST")
 - Repo index commit: $index_commit
 - Repo index generated: $index_generated
 - Execution evidence: $EXECUTION_LOG
@@ -133,10 +154,14 @@ session_report() {
 - Vercel: $(provider_status vercel)
 - Google Workspace: $(provider_status google_workspace)
 - Notion: $(provider_status notion)
+- Web: $(provider_status web)
+- Local Termux: $(provider_status local_termux)
 
 ## Authority Boundary
 
-Connected workspace and deployment providers supply working context or observed state. They do not override repository canon, ratified governance, or doctrine.
+main is the sole persistent canonical branch. Any non-main branch is a candidate
+work surface only. Provider observations and local reports are evidence; they do
+not override doctrine, ratified canon, or Human Architect authorization.
 EOF
 
   printf '%s\n' "$report"

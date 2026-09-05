@@ -5,7 +5,7 @@ ROOT_DIR="$(git rev-parse --show-toplevel)"
 cd "$ROOT_DIR"
 
 MONITOR="scripts/architect/provider-health.py"
-REGISTRY="docs/governance/architectgpt/capability-registry.yaml"
+MANIFEST="docs/governance/architectgpt/architect-gpt-manifest.yaml"
 TMPDIR_ROOT="$(mktemp -d)"
 trap 'rm -rf "$TMPDIR_ROOT"' EXIT
 
@@ -13,13 +13,13 @@ head_sha="$(git rev-parse HEAD)"
 now="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
 stale="2000-01-01T00:00:00Z"
 
-python3 - "$REGISTRY" "$TMPDIR_ROOT" "$head_sha" "$now" "$stale" <<'PY'
+python3 - "$MANIFEST" "$TMPDIR_ROOT" "$head_sha" "$now" "$stale" <<'PY'
 import json
 import re
 import sys
 from pathlib import Path
 
-registry_path = Path(sys.argv[1])
+manifest_path = Path(sys.argv[1])
 out = Path(sys.argv[2])
 head = sys.argv[3]
 now = sys.argv[4]
@@ -28,7 +28,7 @@ stale = sys.argv[5]
 providers = {}
 current = None
 inside = False
-for raw in registry_path.read_text(encoding="utf-8").splitlines():
+for raw in manifest_path.read_text(encoding="utf-8").splitlines():
     if raw == "providers:":
         inside = True
         continue
@@ -43,11 +43,11 @@ for raw in registry_path.read_text(encoding="utf-8").splitlines():
         providers[current] = status.group(1)
 
 if not providers:
-    raise SystemExit("provider fixture setup could not parse registry")
+    raise SystemExit("provider fixture setup could not parse manifest")
 
 def snapshot(observed_at):
     return {
-        "schema_version": "1.0",
+        "schema_version": "2.0",
         "record_type": "provider_health_snapshot",
         "observed_at": observed_at,
         "repository": "The-Architect-369/Arcanum",
@@ -55,7 +55,7 @@ def snapshot(observed_at):
         "providers": {
             name: {
                 "status": "unverified" if status == "unverified" else "healthy",
-                "registry_status": status,
+                "manifest_status": status,
                 "reference": f"fixture:{name}",
             }
             for name, status in providers.items()
@@ -65,10 +65,10 @@ def snapshot(observed_at):
 healthy = snapshot(now)
 drift = snapshot(now)
 first = next(iter(drift["providers"]))
-drift["providers"][first]["registry_status"] = "drifted_fixture"
+drift["providers"][first]["manifest_status"] = "drifted_fixture"
 stale_snapshot = snapshot(stale)
 malformed = {
-    "schema_version": "1.0",
+    "schema_version": "2.0",
     "record_type": "provider_health_snapshot",
     "observed_at": now,
     "repository": "The-Architect-369/Arcanum",
@@ -85,19 +85,19 @@ for name, value in {
 PY
 
 python3 -m py_compile "$MONITOR"
-python3 "$MONITOR" "$TMPDIR_ROOT/healthy.json" --registry "$REGISTRY" >/dev/null
+python3 "$MONITOR" "$TMPDIR_ROOT/healthy.json" --manifest "$MANIFEST" >/dev/null
 
-if python3 "$MONITOR" "$TMPDIR_ROOT/drift.json" --registry "$REGISTRY" >/dev/null 2>&1; then
-  echo "FAIL provider monitor accepted registry drift" >&2
+if python3 "$MONITOR" "$TMPDIR_ROOT/drift.json" --manifest "$MANIFEST" >/dev/null 2>&1; then
+  echo "FAIL provider monitor accepted manifest drift" >&2
   exit 1
 fi
 
-if python3 "$MONITOR" "$TMPDIR_ROOT/stale.json" --registry "$REGISTRY" >/dev/null 2>&1; then
+if python3 "$MONITOR" "$TMPDIR_ROOT/stale.json" --manifest "$MANIFEST" >/dev/null 2>&1; then
   echo "FAIL provider monitor accepted stale evidence" >&2
   exit 1
 fi
 
-if python3 "$MONITOR" "$TMPDIR_ROOT/malformed.json" --registry "$REGISTRY" >/dev/null 2>&1; then
+if python3 "$MONITOR" "$TMPDIR_ROOT/malformed.json" --manifest "$MANIFEST" >/dev/null 2>&1; then
   echo "FAIL provider monitor accepted malformed evidence" >&2
   exit 1
 fi

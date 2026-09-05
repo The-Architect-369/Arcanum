@@ -25,6 +25,11 @@ jobs:
           fetch-depth: 0
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
 
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y jq
+
       - name: Enable Corepack
         run: corepack enable
 
@@ -42,6 +47,7 @@ jobs:
         run: bash scripts/verify-sync.sh
 
       - name: Lint web application
+        id: lint
         run: pnpm lint
 
       - name: Typecheck web application
@@ -56,6 +62,7 @@ jobs:
         env:
           ARCANUM_WAVE: ${{ inputs.wave || 'unspecified' }}
           ARCANUM_VERIFY_SYNC_RESULT: ${{ steps.verify_sync.outcome }}
+          ARCANUM_LINT_RESULT: ${{ steps.lint.outcome }}
           ARCANUM_TYPECHECK_RESULT: ${{ steps.typecheck.outcome }}
           ARCANUM_BUILD_RESULT: ${{ steps.build.outcome }}
           GITHUB_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
@@ -66,6 +73,6 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: architect-verification-${{ github.event.pull_request.head.sha || github.sha }}
-          path: .architect-reports/ci/promotion-attestation.json
+          path: .architect-reports/ci/verification-attestation.json
           if-no-files-found: error
           retention-days: 30

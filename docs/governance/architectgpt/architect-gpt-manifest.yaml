@@ -1,22 +1,19 @@
-version: 3.6
+version: "4.0"
 phase: Pre-Genesis
+era: Construction Era
+wave: CE-W02
 maintainer: The-Architect-369
 environment: Ubuntu 22.04 LTS+
 repository: https://github.com/The-Architect-369/Arcanum.git
-default_branch: main
-stable_branch: main
-integration_branch: mobile
+canonical_branch: main
+persistent_branches:
+  - main
 default_inspection_branch: main
-default_write_branch: mobile
-default_workspace_root: repo-root
-sync_cycle: 14_days
-workflow_mode: github_first
-orchestration_mode: capability_fabric
-merge_policy: human-approved-after-green-verification
-wave_completion_policy: guarded_merge_after_each_green_wave
-write_policy: explicit-request-and-visible-permission
-default_patch_surface: python3
-archive_policy: historical-only
+default_write_branch: null
+workspace_root: repo-root
+workflow_mode: exact_ref_evidence_first
+orchestration_mode: bounded_local_evidence
+archive_policy: historical_only
 
 principles:
   - Sovereignty
@@ -43,470 +40,210 @@ workflow_states:
   - verify
   - record
 
-default_repo_aliases:
-  - my repo
-  - the repo
-  - check my repo
-  - check Arcanum
+branch_model:
+  sole_persistent_branch: main
+  implicit_integration_branch: forbidden
+  implicit_write_branch: forbidden
+  disposable_work_branch:
+    allowed: true
+    creation_base: exact_current_main
+    explicit_name_required: true
+    authority: candidate_only
+    delete_after_verified_closure: true
+  direct_main_write:
+    allowed_only_when_explicitly_targeted: true
+    verification_and_recording_required: true
+  historical_branch_names_are_not_write_targets: true
+  mobile_term_means_device_or_application_context_only: true
 
 grounding_preflight:
-  - resolve repository automatically
-  - resolve branch from task intent
+  - resolve exact repository and ref
   - read docs/repo/repo-index.json
-  - inspect generated_at and commit
-  - compare index commit with visible branch head
-  - verify sync evidence before deeper analysis
-  - open relevant live files before substantive analysis
-  - declare provider and source provenance
+  - compare index source commit with relevant Git state
+  - inspect current CI or provider evidence when material
+  - open live governing files
+  - declare repository access status and roadmap phase
+  - distinguish canonical, implementation, research, historical, and inferred material
 
-solve_method:
-  - establish grounding state and branch role
-  - inspect the active failure or change surface first
-  - isolate the current hard blocker
-  - produce the smallest coherent fix
-  - prefer direct GitHub branch updates when write mode is active
-  - otherwise prefer Python patch scripts for multi-file edits on Ubuntu
-  - rerun pnpm -C apps/web typecheck when local verification is available
-  - rerun pnpm -C apps/web build when local verification is available
-  - capture verification evidence
-  - execute the promotion gate after a wave is locally green
-  - require CI-native promotion evidence before guarded merge
-  - only then merge or hand off toward main if explicitly requested
+source_index_cadence:
+  source_commit_first: true
+  deterministic_index_generator: scripts/repo-index.sh
+  index_path: docs/repo/repo-index.json
+  hand_edit_index_forbidden: true
+  companion_commit_required: true
+  exact_final_head_verification_required: true
 
-capability_rules:
-  registry: docs/governance/architectgpt/capability-registry.yaml
-  default: deny
-  write_gate: explicit_human_request
-  merge_deploy_gate: explicit_request_and_green_evidence
-  workspace_canonicality: non_canonical
-  ratified_output_destination: repository
+authorization:
+  repository_history_write:
+    permission_class: W2
+    explicit_human_request_required: true
+    exact_target_required: true
+  merge_deploy_rollback:
+    permission_class: W3
+    explicit_human_request_required: true
+    exact_verification_evidence_required: true
+  constitutional_impact:
+    permission_class: C1
+    explicit_human_request_required: true
+    impact_review_required: true
 
-orchestration_control:
+providers:
+  github:
+    status: connected
+    authority: repository_state
+    canonicality: authoritative_for_repository_state
+    permission_classes: [R1, W1, W2, W3]
+    default_read_branch: main
+    default_write_branch: none
+    write_target_policy: explicit_ref_only
+  vercel:
+    status: connected_observed
+    authority: deployment_state
+    canonicality: authoritative_for_observed_deployment_state
+    permission_classes: [R1, W3]
+    observed_team: the-arcanum-project
+    observed_project: arcanum
+    write_gate: explicit_human_request
+  google_workspace:
+    status: connected_observed
+    authority: working_context
+    canonicality: non_canonical
+    permission_classes: [R1, W1]
+    rule: ratified_results_must_return_to_repository_canon
+  notion:
+    status: unverified
+    authority: working_knowledge
+    canonicality: non_canonical
+    permission_classes: [R1, W1]
+  web:
+    status: available
+    authority: external_evidence
+    canonicality: evidentiary_only
+    permission_classes: [R0]
+  local_termux:
+    status: verified
+    authority: local_verification
+    canonicality: verification_evidence_only
+    permission_classes: [R1, W2]
+
+orchestration:
   cli: scripts/architect/orchestrate.sh
-  commands: [preflight, session, record, evidence, validate, migrate]
-  report_directory: .architect-reports/orchestration
-  execution_log: .architect-reports/orchestration/execution.jsonl
-  provider_evidence_log: .architect-reports/orchestration/provider-evidence.jsonl
-  record_format: jsonl
   evidence_schema: docs/governance/architectgpt/execution-record.schema.json
   evidence_validator: scripts/architect/validate-evidence.py
+  report_directory: .architect-reports/orchestration
+  authority: local_evidence_only
 
-promotion_control:
-  gate: scripts/architect/promotion-gate.sh
-  protocol: docs/governance/architectgpt/promotion-protocol.md
-  attestation_directory: .architect-reports/orchestration/promotions
-  required_branch: mobile
-  required_remote: origin/mobile
-  exact_head_evidence: true
-  vercel_exact_head_required: true
-  merge_guard: expected_head_sha
-
-ci_promotion_control:
-  workflow: .github/workflows/architect-promotion.yml
-  protocol: docs/governance/architectgpt/ci-promotion-protocol.md
-  generator: scripts/architect/ci-attest.sh
-  artifact_path: .architect-reports/ci/promotion-attestation.json
-  exact_commit_required: true
-  required_checks: [repository_integrity, typecheck, production_build]
-
-provider_health_control:
-  registry: docs/governance/architectgpt/capability-registry.yaml
-  protocol: docs/governance/architectgpt/provider-health-protocol.md
-  snapshot_schema: docs/governance/architectgpt/provider-health.schema.json
+provider_health:
+  schema: docs/governance/architectgpt/provider-health.schema.json
   monitor: scripts/architect/provider-health.py
-  report_directory: .architect-reports/orchestration/provider-health
+  fixtures: scripts/architect/test-provider-health.sh
+  provider_source: docs/governance/architectgpt/architect-gpt-manifest.yaml
   exact_commit_required: true
-  default_max_age_hours: 24
-  health_states: [healthy, degraded, unavailable, unverified]
   authority: evidentiary_only
 
-change_plan_control:
-  protocol: docs/governance/architectgpt/change-plan-protocol.md
-  schema: docs/governance/architectgpt/change-plan.schema.json
-  generator: scripts/architect/change-plan.py
-  fixtures: scripts/architect/test-change-plan.sh
-  report_directory: .architect-reports/orchestration/change-plans
-  required_branch: mobile
-  exact_base_required: true
-  deterministic_bundle_required: true
-  supported_actions: [create, update, delete, rename]
-  authority: evidentiary_only
-
-ast_integrity_control:
-  protocol: docs/governance/architectgpt/ast-integrity-protocol.md
-  report_schema: docs/governance/architectgpt/ast-integrity.schema.json
+ast_integrity:
+  schema: docs/governance/architectgpt/ast-integrity.schema.json
   analyzer: scripts/architect/ast-integrity.py
   fixtures: scripts/architect/test-ast-integrity.sh
   project: apps/web/tsconfig.json
-  package_manifest: apps/web/package.json
-  report_directory: .architect-reports/orchestration/ast-integrity
   exact_commit_required: true
-  deterministic_report_required: true
-  required_checks: [compiler, local_import_resolution, declared_dependencies, dependency_cycles]
   authority: evidentiary_only
 
-build_diagnostics_control:
-  protocol: docs/governance/architectgpt/build-diagnostics-protocol.md
-  report_schema: docs/governance/architectgpt/build-diagnostics.schema.json
+build_diagnostics:
+  schema: docs/governance/architectgpt/build-diagnostics.schema.json
   parser: scripts/architect/build-diagnostics.py
   fixtures: scripts/architect/test-build-diagnostics.sh
-  report_directory: .architect-reports/orchestration/build-diagnostics
   exact_commit_required: true
-  deterministic_report_required: true
-  categories: [typescript, module_resolution, environment, nextjs, runtime_boundary, warning]
-  provider_metadata: [provider, deployment_id, environment, state, branch, commit]
   authority: evidentiary_only
 
-repository_timeline_control:
-  protocol: docs/governance/architectgpt/repository-timeline-protocol.md
-  report_schema: docs/governance/architectgpt/repository-timeline.schema.json
+repository_timeline:
+  schema: docs/governance/architectgpt/repository-timeline.schema.json
   generator: scripts/architect/repository-timeline.py
   fixtures: scripts/architect/test-repository-timeline.sh
-  report_directory: .architect-reports/orchestration/repository-timeline
   exact_commit_required: true
-  deterministic_report_required: true
   bounded_history_required: true
   path_containment_required: true
-  node_fields: [commit, parents, timestamp, author, subject, blob_sha, content_sha256, diff]
-  edge_relation: superseded_by
-  rollback_authority: none
   authority: evidentiary_only
 
-impact_graph_control:
-  protocol: docs/governance/architectgpt/impact-graph-protocol.md
-  report_schema: docs/governance/architectgpt/impact-graph.schema.json
+impact_graph:
+  schema: docs/governance/architectgpt/impact-graph.schema.json
   generator: scripts/architect/impact-graph.py
   fixtures: scripts/architect/test-impact-graph.sh
   project: apps/web/tsconfig.json
-  report_directory: .architect-reports/orchestration/impact-graph
   exact_base_required: true
   exact_head_required: true
-  deterministic_report_required: true
   base_ancestor_required: true
   path_containment_required: true
-  impact_surfaces: [changed_files, direct_dependents, transitive_dependents, routes, packages, tests, runtime_surfaces, canonical_documents]
-  verification_categories: [repository_integrity, web_typecheck, web_production_build, targeted_tests, browser_route_smoke, deployment_preview, doctrine_guard]
   authority: evidentiary_only
 
-isolated_patch_executor_control:
-  protocol: docs/governance/architectgpt/patch-executor-protocol.md
-  attestation_schema: docs/governance/architectgpt/patch-executor.schema.json
-  executor: scripts/architect/patch-executor.py
-  fixtures: scripts/architect/test-patch-executor.sh
-  report_directory: .architect-reports/orchestration/patch-executor
-  required_branch: mobile
-  exact_base_required: true
-  clean_source_required: true
-  detached_worktree_required: true
-  deterministic_attestation_required: true
-  declared_mutation_match_required: true
-  payload_digest_required: [create, update]
-  supported_actions: [create, update, delete, rename]
-  forbidden_actions: [commit, push, ref_update, merge, deploy]
-  isolation_scope: git_worktree_only
-  verification_command_trust: trusted_repository_commands_only
-  authority: evidentiary_only
-
-candidate_commit_control:
-  protocol: docs/governance/architectgpt/candidate-commit-protocol.md
-  schema: docs/governance/architectgpt/candidate-commit.schema.json
-  builder: scripts/architect/candidate-commit.py
-  fixtures: scripts/architect/test-candidate-commit.sh
-  report_directory: .architect-reports/orchestration/candidate-commits
-  required_branch: mobile
-  exact_base_required: true
-  clean_source_required: true
-  patch_attestation_required: true
-  deterministic_commit_required: true
-  deterministic_attestation_required: true
-  single_parent_required: true
-  source_checkout_unchanged_required: true
-  refs_unchanged_required: true
-  object_store_effect: unreachable_commit_object
-  forbidden_actions: [head_update, branch_update, tag_update, push, merge, deploy]
-  authority: evidentiary_only
-
-candidate_ref_publisher_control:
-  protocol: docs/governance/architectgpt/candidate-publisher-protocol.md
-  schema: docs/governance/architectgpt/candidate-publisher.schema.json
-  publisher: scripts/architect/candidate-publisher.py
-  fixtures: scripts/architect/test-candidate-publisher.sh
-  report_directory: .architect-reports/orchestration/candidate-publications
-  required_branch: mobile
-  required_local_ref: refs/heads/mobile
-  required_remote_tracking_ref: refs/remotes/origin/mobile
-  exact_base_required: true
-  clean_source_required: true
-  candidate_attestation_required: true
-  dry_run_default: true
-  explicit_request_digest_confirmation_required: true
-  fast_forward_only: true
-  allowed_effect: local_mobile_fast_forward
-  forbidden_actions: [push, remote_ref_update, main_update, merge, deploy]
-  dry_run_authority: evidentiary_only
-  apply_authority: local_repository_write_only
-
-remote_ref_publisher_control:
-  protocol: docs/governance/architectgpt/remote-publisher-protocol.md
-  schema: docs/governance/architectgpt/remote-publisher.schema.json
-  publisher: scripts/architect/remote-publisher.py
-  fixtures: scripts/architect/test-remote-publisher.sh
-  report_directory: .architect-reports/orchestration/remote-publications
-  required_branch: mobile
-  required_remote: origin
-  required_target_ref: refs/heads/mobile
-  local_publication_attestation_required: true
-  exact_candidate_required: true
-  exact_remote_lease_required: true
-  clean_source_required: true
-  dry_run_default: true
-  explicit_request_digest_confirmation_required: true
-  permission_class: W2
-  allowed_effect: origin_mobile_fast_forward
-  forbidden_actions: [main_update, tag_update, merge, deploy]
-  dry_run_authority: evidentiary_only
-  apply_authority: remote_integration_ref_write_only
-
-merge_authorization_control:
-  protocol: docs/governance/architectgpt/merge-authorization-protocol.md
-  schema: docs/governance/architectgpt/merge-authorization.schema.json
-  builder: scripts/architect/merge-authorization.py
-  fixtures: scripts/architect/test-merge-authorization.sh
-  report_directory: .architect-reports/orchestration/merge-authorizations
-  required_head_branch: mobile
-  required_base_branch: main
-  permission_class: W3
-  explicit_human_authorization_required: true
-  promotion_attestation_required: true
-  ci_attestation_required: true
-  provider_readiness_required: true
-  exact_head_required: true
-  expected_head_guard_required: true
-  deterministic_package_required: true
-  allowed_effect: authorization_package_only
-  forbidden_actions: [pr_create, commit, push, ref_update, merge, deploy]
-  authority: evidentiary_only
-
-merge_executor_control:
-  protocol: docs/governance/architectgpt/merge-executor-protocol.md
-  schema: docs/governance/architectgpt/merge-executor.schema.json
-  executor: scripts/architect/merge-executor.py
-  fixtures: scripts/architect/test-merge-executor.sh
-  report_directory: .architect-reports/orchestration/merge-executions
-  required_head_branch: mobile
-  required_base_branch: main
-  required_remote: origin
-  permission_class: W3
-  merge_authorization_package_required: true
-  explicit_human_authorization_required: true
-  request_digest_confirmation_required: true
-  exact_head_required: true
-  expected_head_guard_required: true
-  dry_run_default: true
-  merge_method: merge
-  allowed_effect: expected_head_protected_pull_request_merge
-  forbidden_actions: [pr_create, direct_push, tag_update, mobile_update, deploy, rollback]
-  dry_run_authority: evidentiary_only
-  apply_authority: pull_request_merge_only
-
-agent_invocation_control:
-  registry: docs/governance/architectgpt/agent-registry.yaml
-  protocol: docs/governance/architectgpt/agent-invocation-protocol.md
-  schema: docs/governance/architectgpt/agent-invocation.schema.json
-  runner: scripts/architect/agent-run.py
-  fixtures: scripts/architect/test-agent-run.sh
-  report_directory: .architect-reports/orchestration/agent-invocations
-  required_branch: mobile
-  exact_commit_required: true
-  registry_default_policy: deny
-  explicit_human_authorization_required: true
-  permission_ceiling_required: true
-  tool_allowlist_required: true
-  deterministic_attestation_required: true
-  initial_agents:
-    - repository_architect
-    - canon_guardian
-    - product_steward
-    - security_sentinel
-    - verification_oracle
-    - release_steward
-  mode: plan_only
-  tools_executed: false
-  external_writes_performed: false
-  forbidden_actions:
-    - tool_execution
-    - connected_private_read
-    - file_write
-    - commit
-    - ref_update
-    - push
-    - pull_request_create
-    - merge
-    - deploy
-    - rollback
-    - ratify
-  authority: evidentiary_only
-
-agent_execution_control:
-  registry: docs/governance/architectgpt/agent-registry.yaml
-  invocation_protocol: docs/governance/architectgpt/agent-invocation-protocol.md
-  invocation_schema: docs/governance/architectgpt/agent-invocation.schema.json
-  protocol: docs/governance/architectgpt/agent-execution-protocol.md
-  schema: docs/governance/architectgpt/agent-execution.schema.json
-  executor: scripts/architect/agent-execute.py
-  fixtures: scripts/architect/test-agent-execute.sh
-  report_directory: .architect-reports/orchestration/agent-executions
-  required_branch: mobile
-  exact_commit_required: true
-  clean_checkout_required: true
-  registry_default_policy: deny
-  invocation_attestation_required: true
-  explicit_human_authorization_required: true
-  maximum_permission_class: R1
-  permission_ceiling_required: true
-  tool_allowlist_required: true
-  supported_tools:
-    - repository.read
-    - repository.search
-  deterministic_attestation_required: true
-  source_checkout_unchanged_required: true
-  refs_unchanged_required: true
-  external_writes_performed: false
-  forbidden_actions:
-    - connected_private_read
-    - file_write
-    - commit
-    - ref_update
-    - push
-    - pull_request_create
-    - merge
-    - deploy
-    - rollback
-    - ratify
-  authority: guarded_local_read_only_execution
-
-promotion_orchestrator_control:
-  protocol: docs/governance/architectgpt/promotion-orchestrator-protocol.md
-  schema: docs/governance/architectgpt/promotion-orchestrator.schema.json
-  entrypoint: scripts/architect/promote-wave.sh
-  orchestrator: scripts/architect/promotion-orchestrator.py
-  fixtures: scripts/architect/test-promotion-orchestrator.sh
-  state_directory: .architect-reports/orchestration/waves
-  required_head_branch: mobile
-  required_base_branch: main
-  exact_head_required: true
-  clean_checkout_required: true
-  remote_sync_required: true
-  base_ancestry_required: true
-  resumable_state_required: true
-  deterministic_state_digest_required: true
-  promotion_attestation_required: true
-  pull_request_identity_required: true
-  ci_attestation_required: true
-  provider_readiness_required: true
-  merge_authorization_package_required: true
-  merge_execution_request_required: true
-  explicit_w3_authorization_required: true
-  request_digest_confirmation_required: true
-  dry_run_default: true
-  allowed_pre_w3_effects:
-    - read_repository
-    - run_local_verification
-    - read_pull_request
-    - validate_evidence
-    - write_local_state
-  forbidden_pre_w3_effects:
-    - merge
-    - deploy
-    - rollback
-    - tag_update
-    - mobile_sync
-    - canonical_ratification
-  delegated_merge_executor: scripts/architect/merge-executor.py
-  authority: bounded_coordination_before_explicit_w3
-
-post_merge_closure_control:
-  protocol: docs/governance/architectgpt/post-merge-closure-protocol.md
-  schema: docs/governance/architectgpt/post-merge-closure.schema.json
-  entrypoint: scripts/architect/close-wave.sh
-  executor: scripts/architect/post-merge-close.py
-  fixtures: scripts/architect/test-post-merge-close.sh
-  report_directory: .architect-reports/orchestration/closures
-  required_base_branch: main
-  required_integration_branch: mobile
-  exact_merge_commit_required: true
-  production_ready_required: true
-  production_commit_match_required: true
-  expected_mobile_lease_required: true
-  fast_forward_only: true
-  clean_checkout_required: true
-  dry_run_default: true
-  explicit_request_digest_confirmation_required: true
-  permission_class: W2
-  allowed_effect: origin_mobile_fast_forward
-  forbidden_actions:
-    - main_update
-    - tag_update
-    - merge
-    - deploy
-    - rollback
-    - canonical_ratification
-  authority: post_merge_integration_ref_closure_only
-
-production_smoke_control:
-  protocol: docs/governance/architectgpt/production-smoke-protocol.md
+production_smoke:
   schema: docs/governance/architectgpt/production-smoke.schema.json
   route_manifest: docs/governance/architectgpt/production-smoke-routes.json
   entrypoint: scripts/architect/smoke-production.sh
   executor: scripts/architect/production-smoke.py
   fixtures: scripts/architect/test-production-smoke.sh
-  report_directory: .architect-reports/orchestration/production-smoke
   provider: vercel
   exact_commit_required: true
   production_ready_required: true
-  allowlisted_hosts_required: true
-  allowed_methods:
-    - GET
-    - HEAD
-  request_body_forbidden: true
+  allowed_methods: [GET, HEAD]
   credentials_forbidden: true
-  cookies_forbidden: true
-  authorization_headers_forbidden: true
-  share_tokens_forbidden: true
-  authenticated_bypass_forbidden: true
-  same_host_redirects_only: true
-  bootstrap_model: two_stage
-  bootstrap_authorized_wave: wave-xxi
-  bootstrap_pull_request: 28
-  stage_a: capability_promotion
-  stage_b: operational_activation
-  provider_access_protected_is_smoke_success: false
-  provider_access_protected_allowed_for_stage_a: true
-  stage_b_public_access_required: true
-  stage_b_required_total_routes: 10
-  stage_b_required_passed_routes: 10
-  stage_b_required_failed_routes: 0
-  operational_closure_requires_stage_b: true
-  deterministic_manifest_digest_required: true
-  deterministic_request_digest_required: true
-  permission_class: R1
-  allowed_effect: read_only_http_observation
-  forbidden_actions:
-    - application_mutation
-    - wallet_signature
-    - account_mutation
-    - merge
-    - deploy
-    - rollback
-    - tag_update
-    - canonical_ratification
+  application_mutation_forbidden: true
+  merge_deploy_rollback_forbidden: true
   authority: production_observation_only
 
+local_architect_runtime:
+  workbench_spec: docs/specs/app/architect-workbench-runtime.md
+  runtime_spec: docs/specs/app/architect-runtime-core.md
+  broker: scripts/architect/termux-broker.py
+  broker_fixtures: scripts/architect/test-termux-broker.sh
+  runtime_fixtures: scripts/architect/test-architect-runtime.sh
+  broker_scope: loopback_fixed_commands
+  repository_write_commands_registered: false
+
+agent_fabric:
+  registry: docs/governance/architectgpt/agent-registry.yaml
+  status: registry_only
+  authority: advisory_only
+  permission_ceiling: R1
+  repository_local_invocation_engine: retired
+  repository_local_execution_engine: retired
+  autonomous_execution_enabled: false
+  external_writes_enabled: false
+  human_architect_retains_all_action_authority: true
+
+ci_verification:
+  workflow: .github/workflows/architect-verification.yml
+  generator: scripts/architect/ci-attest.sh
+  artifact_path: .architect-reports/ci/verification-attestation.json
+  exact_commit_required: true
+  required_checks:
+    - repository_integrity
+    - lint
+    - typecheck
+    - production_build
+  authority: evidence_only
+
 mobile_verification:
+  meaning: device_environment_only
   environment: Android Termux in isolated work profile
   bootstrap: scripts/mobile/termux-bootstrap.sh
   verify: scripts/mobile/termux-verify.sh
+  default_repository_branch: main
   report_directory: .architect-reports/mobile
+
+retired_controls:
+  - permanent_integration_branch
+  - repository_local_change_plan_pipeline
+  - repository_local_isolated_patch_executor
+  - deterministic_candidate_commit_builder
+  - candidate_ref_publisher
+  - remote_integration_ref_publisher
+  - repository_local_merge_authorization_builder
+  - repository_local_merge_executor
+  - wave_promotion_orchestrator
+  - post_merge_integration_ref_closure
+  - repository_local_agent_invocation_engine
+  - repository_local_agent_execution_engine
 
 session_schema_control:
   contract: docs/governance/architectgpt/conversation-memory-contract.md
@@ -522,8 +259,6 @@ session_schema_control:
     - ARC-SES-1
   grandfathered_records:
     - docs/governance/architectgpt/sessions/2026-08-12--arc-ses-0002--arc-1--github-conversation-memory-contract.md
-  archived_prototypes:
-    - docs/archive/architectgpt/sessions/2026-hope-render-system-v1.md
   continuity_index: docs/governance/architectgpt/continuity-index.json
   continuity_index_specification: docs/governance/architectgpt/continuity-index-spec.md
   continuity_index_schema: docs/governance/architectgpt/continuity-index.schema.json
@@ -533,158 +268,69 @@ session_schema_control:
 
 session_continuity_control:
   contract: docs/governance/architectgpt/conversation-memory-contract.md
-  mode: normative
-  substantive_session_binding: exactly_one_work_registry_task
+  mode: normative_until_epoch_seal
   session_start:
     continuity_index_read_required: true
     canonical_session_read_required: true
     controlling_log_read_required: true
-    operational_registry_read_when_available: true
     repository_branch_head_capture_required: true
-    provisional_session_candidate_only: true
-    canonical_session_allocation_authority: human_architect_review
     repository_write_on_start: forbidden
   session_close:
     minimized_redacted_packet_required: true
-    typed_record_classification_required: true
-    exact_target_branch_paths_required: true
     human_record_review_required: true
     separate_repository_write_authorization_required: true
-    session_record_and_log_digest_same_change_set_preferred: true
     continuity_index_regeneration_required_after_write: true
     continuity_validation_required_after_write: true
     verify_sync_required_after_write: true
-    operational_mirror_update_after_github_close_only: true
   missing_record_behavior:
     warning_prefix: "CONTINUITY WARNING"
-    repository_detectable_failure_warning_required: true
-    operational_mirror_mismatch_warning_required: true
     silent_reconstruction_forbidden: true
     inference_as_repair_forbidden: true
     fail_closed_validation_preserved: true
-  write_authority: separate_explicit_human_authorization
-  authority: continuity_workflow_only
-
-observed_providers:
-  github: connected
-  google_workspace: connected_observed
-  vercel: connected_observed
-  notion: unverified
+  epoch_seal:
+    status: pending_tranche_c
+    provenance_preservation_required: true
+    silent_history_deletion_forbidden: true
 
 files:
   architect_gpt: docs/governance/architectgpt/architect-gpt.md
   architect_gpt_manifest: docs/governance/architectgpt/architect-gpt-manifest.yaml
+  agent_registry: docs/governance/architectgpt/agent-registry.yaml
   conversation_memory_contract: docs/governance/architectgpt/conversation-memory-contract.md
   architect_log: docs/governance/architectgpt/architect-log.md
   session_record_specification: docs/governance/architectgpt/session-record-schema.md
   session_record_schema: docs/governance/architectgpt/session-record.schema.json
-  session_record_validator: scripts/architect/validate-session-records.py
   continuity_index_specification: docs/governance/architectgpt/continuity-index-spec.md
   continuity_index_schema: docs/governance/architectgpt/continuity-index.schema.json
   continuity_index: docs/governance/architectgpt/continuity-index.json
-  continuity_index_generator: scripts/architect/generate-continuity-index.py
-  continuity_index_validator: scripts/architect/validate-continuity-index.py
-  capability_registry: docs/governance/architectgpt/capability-registry.yaml
-  capability_fabric: docs/governance/architectgpt/capability-fabric.md
-  orchestration_protocol: docs/governance/architectgpt/orchestration-protocol.md
-  evidence_protocol: docs/governance/architectgpt/evidence-protocol.md
   execution_record_schema: docs/governance/architectgpt/execution-record.schema.json
-  promotion_protocol: docs/governance/architectgpt/promotion-protocol.md
-  ci_promotion_protocol: docs/governance/architectgpt/ci-promotion-protocol.md
-  provider_health_protocol: docs/governance/architectgpt/provider-health-protocol.md
   provider_health_schema: docs/governance/architectgpt/provider-health.schema.json
-  change_plan_protocol: docs/governance/architectgpt/change-plan-protocol.md
-  change_plan_schema: docs/governance/architectgpt/change-plan.schema.json
-  ast_integrity_protocol: docs/governance/architectgpt/ast-integrity-protocol.md
   ast_integrity_schema: docs/governance/architectgpt/ast-integrity.schema.json
-  build_diagnostics_protocol: docs/governance/architectgpt/build-diagnostics-protocol.md
   build_diagnostics_schema: docs/governance/architectgpt/build-diagnostics.schema.json
-  repository_timeline_protocol: docs/governance/architectgpt/repository-timeline-protocol.md
   repository_timeline_schema: docs/governance/architectgpt/repository-timeline.schema.json
-  impact_graph_protocol: docs/governance/architectgpt/impact-graph-protocol.md
   impact_graph_schema: docs/governance/architectgpt/impact-graph.schema.json
-  patch_executor_protocol: docs/governance/architectgpt/patch-executor-protocol.md
-  patch_executor_schema: docs/governance/architectgpt/patch-executor.schema.json
-  candidate_commit_protocol: docs/governance/architectgpt/candidate-commit-protocol.md
-  candidate_commit_schema: docs/governance/architectgpt/candidate-commit.schema.json
-  hope_guardian: docs/governance/hopegpt/hope-guardian.md
-  repo_interface: docs/repo/repo-interface.md
-  repo_index: docs/repo/repo-index.json
-  verify_script: scripts/verify-sync.sh
-  orchestration_cli: scripts/architect/orchestrate.sh
-  evidence_validator: scripts/architect/validate-evidence.py
-  promotion_gate: scripts/architect/promotion-gate.sh
-  ci_attestation_generator: scripts/architect/ci-attest.sh
-  ci_promotion_workflow: .github/workflows/architect-promotion.yml
-  provider_health_monitor: scripts/architect/provider-health.py
-  change_plan_generator: scripts/architect/change-plan.py
-  change_plan_fixtures: scripts/architect/test-change-plan.sh
-  ast_integrity_analyzer: scripts/architect/ast-integrity.py
-  ast_integrity_fixtures: scripts/architect/test-ast-integrity.sh
-  build_diagnostics_parser: scripts/architect/build-diagnostics.py
-  build_diagnostics_fixtures: scripts/architect/test-build-diagnostics.sh
-  repository_timeline_generator: scripts/architect/repository-timeline.py
-  repository_timeline_fixtures: scripts/architect/test-repository-timeline.sh
-  impact_graph_generator: scripts/architect/impact-graph.py
-  impact_graph_fixtures: scripts/architect/test-impact-graph.sh
-  patch_executor: scripts/architect/patch-executor.py
-  patch_executor_fixtures: scripts/architect/test-patch-executor.sh
-  candidate_commit_builder: scripts/architect/candidate-commit.py
-  candidate_commit_fixtures: scripts/architect/test-candidate-commit.sh
-  candidate_publisher_protocol: docs/governance/architectgpt/candidate-publisher-protocol.md
-  candidate_publisher_schema: docs/governance/architectgpt/candidate-publisher.schema.json
-  candidate_publisher: scripts/architect/candidate-publisher.py
-  candidate_publisher_fixtures: scripts/architect/test-candidate-publisher.sh
-  remote_publisher_protocol: docs/governance/architectgpt/remote-publisher-protocol.md
-  remote_publisher_schema: docs/governance/architectgpt/remote-publisher.schema.json
-  remote_publisher: scripts/architect/remote-publisher.py
-  remote_publisher_fixtures: scripts/architect/test-remote-publisher.sh
-  merge_authorization_protocol: docs/governance/architectgpt/merge-authorization-protocol.md
-  merge_authorization_schema: docs/governance/architectgpt/merge-authorization.schema.json
-  merge_authorization_builder: scripts/architect/merge-authorization.py
-  merge_authorization_fixtures: scripts/architect/test-merge-authorization.sh
-  merge_executor_protocol: docs/governance/architectgpt/merge-executor-protocol.md
-  merge_executor_schema: docs/governance/architectgpt/merge-executor.schema.json
-  merge_executor: scripts/architect/merge-executor.py
-  merge_executor_fixtures: scripts/architect/test-merge-executor.sh
-  agent_registry: docs/governance/architectgpt/agent-registry.yaml
-  agent_invocation_protocol: docs/governance/architectgpt/agent-invocation-protocol.md
-  agent_invocation_schema: docs/governance/architectgpt/agent-invocation.schema.json
-  agent_invocation_runner: scripts/architect/agent-run.py
-  agent_invocation_fixtures: scripts/architect/test-agent-run.sh
-  agent_execution_protocol: docs/governance/architectgpt/agent-execution-protocol.md
-  agent_execution_schema: docs/governance/architectgpt/agent-execution.schema.json
-  agent_execution_runner: scripts/architect/agent-execute.py
-  agent_execution_fixtures: scripts/architect/test-agent-execute.sh
-  promotion_orchestrator_protocol: docs/governance/architectgpt/promotion-orchestrator-protocol.md
-  promotion_orchestrator_schema: docs/governance/architectgpt/promotion-orchestrator.schema.json
-  promotion_orchestrator_entrypoint: scripts/architect/promote-wave.sh
-  promotion_orchestrator: scripts/architect/promotion-orchestrator.py
-  promotion_orchestrator_fixtures: scripts/architect/test-promotion-orchestrator.sh
-  production_smoke_protocol: docs/governance/architectgpt/production-smoke-protocol.md
   production_smoke_schema: docs/governance/architectgpt/production-smoke.schema.json
   production_smoke_routes: docs/governance/architectgpt/production-smoke-routes.json
-  production_smoke_entrypoint: scripts/architect/smoke-production.sh
+  repo_interface: docs/repo/repo-interface.md
+  repo_baseline: docs/repo/arcanum-baseline.md
+  repo_index: docs/repo/repo-index.json
+  verify_sync: scripts/verify-sync.sh
+  orchestration_cli: scripts/architect/orchestrate.sh
+  evidence_validator: scripts/architect/validate-evidence.py
+  provider_health_monitor: scripts/architect/provider-health.py
+  ast_integrity_analyzer: scripts/architect/ast-integrity.py
+  build_diagnostics_parser: scripts/architect/build-diagnostics.py
+  repository_timeline_generator: scripts/architect/repository-timeline.py
+  impact_graph_generator: scripts/architect/impact-graph.py
   production_smoke_executor: scripts/architect/production-smoke.py
-  production_smoke_fixtures: scripts/architect/test-production-smoke.sh
-  post_merge_closure_protocol: docs/governance/architectgpt/post-merge-closure-protocol.md
-  post_merge_closure_schema: docs/governance/architectgpt/post-merge-closure.schema.json
-  post_merge_closure_entrypoint: scripts/architect/close-wave.sh
-  post_merge_closure_executor: scripts/architect/post-merge-close.py
-  post_merge_closure_fixtures: scripts/architect/test-post-merge-close.sh
+  production_smoke_entrypoint: scripts/architect/smoke-production.sh
+  source_tranche_gate: scripts/architect/source-tranche-gate.sh
+  termux_broker: scripts/architect/termux-broker.py
   mobile_bootstrap: scripts/mobile/termux-bootstrap.sh
   mobile_verify: scripts/mobile/termux-verify.sh
-
-legacy_archive_files:
-  - docs/archive/architectgpt/architectgpt-core.md
-  - docs/archive/architectgpt/architectgpt-extended.md
-  - docs/archive/architectgpt/architect-log-legacy.md
+  ci_attestation_generator: scripts/architect/ci-attest.sh
+  ci_verification_workflow: .github/workflows/architect-verification.yml
 
 active_log: docs/governance/architectgpt/architect-log.md
-conversation_memory_contract: docs/governance/architectgpt/conversation-memory-contract.md
 session_ledger: docs/governance/architectgpt/sessions
-historical_log:
-  path: docs/architect/architect-log.md
-  authority: historical-only
-  policy: frozen_historical_stub
-  cross_session_writes: forbidden
+continuity_epoch_status: pre_baseline_epoch_unsealed

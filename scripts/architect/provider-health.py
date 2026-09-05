@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate provider observations against the canonical capability registry."""
+"""Validate provider observations against the Architect GPT 4.0 manifest."""
 
 from __future__ import annotations
 
@@ -30,7 +30,7 @@ def parse_time(value: str) -> datetime:
     return parsed.astimezone(timezone.utc)
 
 
-def registry_providers(path: Path) -> dict[str, str]:
+def manifest_providers(path: Path) -> dict[str, str]:
     providers: dict[str, str] = {}
     current: str | None = None
     in_providers = False
@@ -59,12 +59,16 @@ def git_head() -> str:
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("snapshot", type=Path)
-    parser.add_argument("--registry", type=Path, default=Path("docs/governance/architectgpt/capability-registry.yaml"))
+    parser.add_argument(
+        "--manifest",
+        type=Path,
+        default=Path("docs/governance/architectgpt/architect-gpt-manifest.yaml"),
+    )
     parser.add_argument("--max-age-hours", type=int, default=24)
     parser.add_argument("--output", type=Path)
     args = parser.parse_args()
 
-    registry = registry_providers(args.registry)
+    registry = manifest_providers(args.manifest)
     try:
         snapshot: dict[str, Any] = json.loads(args.snapshot.read_text(encoding="utf-8"))
     except (OSError, json.JSONDecodeError) as exc:
@@ -74,7 +78,7 @@ def main() -> int:
     missing = sorted(required - snapshot.keys())
     if missing:
         fail(f"snapshot missing fields: {', '.join(missing)}")
-    if snapshot["schema_version"] != "1.0" or snapshot["record_type"] != "provider_health_snapshot":
+    if snapshot["schema_version"] != "2.0" or snapshot["record_type"] != "provider_health_snapshot":
         fail("unsupported snapshot schema or record type")
     if snapshot["commit"] != git_head():
         fail("snapshot commit does not match exact HEAD")
@@ -94,29 +98,29 @@ def main() -> int:
     for provider, expected_status in registry.items():
         item = observations.get(provider)
         if not isinstance(item, dict):
-            results[provider] = {"status": "missing", "registry_status": expected_status}
+            results[provider] = {"status": "missing", "manifest_status": expected_status}
             failures += 1
             continue
         observed_status = item.get("status")
         if observed_status not in ALLOWED_OBSERVATIONS:
-            results[provider] = {"status": "invalid", "registry_status": expected_status}
+            results[provider] = {"status": "invalid", "manifest_status": expected_status}
             failures += 1
             continue
-        declared = item.get("registry_status")
+        declared = item.get("manifest_status")
         provider_drift = declared != expected_status
         if provider_drift:
             drift += 1
         results[provider] = {
             "status": observed_status,
-            "registry_status": expected_status,
-            "declared_registry_status": declared,
+            "manifest_status": expected_status,
+            "declared_manifest_status": declared,
             "drift": provider_drift,
             "reference": item.get("reference"),
         }
 
     stale = age_hours > args.max_age_hours
     report = {
-        "schema_version": "1.0",
+        "schema_version": "2.0",
         "record_type": "provider_health_report",
         "observed_at": snapshot["observed_at"],
         "repository": snapshot["repository"],
