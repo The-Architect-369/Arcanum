@@ -2,7 +2,7 @@
 title: "Chain Specs"
 status: canonical
 visibility: public
-last_updated: 2026-05-26
+last_updated: 2026-09-04
 description: "Implementation-facing specifications and artifact policy for ARCnet / Arcanum chain."
 ---
 
@@ -39,10 +39,14 @@ Ignored path:
 
 - `chains/arcanum/bin/`
 
-### Archived disabled source
+### Retained historical disabled source
 
-Disabled source files should not remain in the active chain implementation tree.
+Disabled source files must not remain in the active chain implementation tree.
 
-Historical disabled files belong under:
+The bounded working-tree location for disabled chain app source is:
 
 - `docs/archive/chain/arcanum/app-disabled/`
+
+Only the disabled source preserved there is retained as current migration/recovery context. It is not a build input and has no canonical authority.
+
+Superseded command scaffolds and other retired chain implementation bodies are Git-history-only. The certified pre-contraction archive snapshot is `17ab0eec51622a0cfbffae867e27d65059a29b60`.

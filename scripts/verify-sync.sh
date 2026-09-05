@@ -76,7 +76,7 @@ print(f"manifest active-file map: {len(paths)} path(s)")
 PY
 ok "every manifest active-file path exists"
 
-step 4 "Retired Wave-era machinery is absent"
+step 4 "Retired machinery and superseded archive bodies"
 retired=(
   docs/governance/architectgpt/capability-fabric.md
   docs/governance/architectgpt/capability-registry.yaml
@@ -138,11 +138,27 @@ retired=(
   scripts/architect/agent-execute.py
   scripts/architect/test-agent-execute.sh
   .github/workflows/architect-promotion.yml
+  docs/archive/app
+  docs/archive/architectgpt
+  docs/archive/migration-notes
+  docs/archive/chain/arcanum/cmd-scaffold
+  docs/tooling/archive-manifest.yaml
 )
 for path in "${retired[@]}"; do
   [[ ! -e "$path" ]] || { echo "FAIL retired path still active: $path" >&2; exit 1; }
 done
-ok "retired publication, promotion, patch-pipeline, and local-agent engines are absent"
+
+retained_archive=(
+  docs/archive/chain/arcanum/app-disabled/export.go.disabled
+  docs/archive/chain/arcanum/app-disabled/ibc.go.disabled
+  docs/archive/chain/arcanum/app-disabled/module_basics.go.disabled
+)
+for path in "${retained_archive[@]}"; do
+  require_file "$path"
+done
+grep -Fq 'docs/archive/chain/arcanum/app-disabled/' docs/specs/chain/README.md
+grep -Fq '17ab0eec51622a0cfbffae867e27d65059a29b60' docs/archive/README.md
+ok "retired machinery and superseded archive bodies are absent; bounded disabled-chain archive remains explicit"
 
 step 5 "No persistent-mobile branch semantics in active operating surfaces"
 scan_paths=(

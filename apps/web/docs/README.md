@@ -2,7 +2,7 @@
 title: "Web App Docs"
 status: implementation-notes
 visibility: internal
-last_updated: 2026-05-26
+last_updated: 2026-09-04
 description: "Implementation-only notes for the web app. Canonical app behavior lives under docs/specs/app."
 ---
 
@@ -10,7 +10,7 @@ description: "Implementation-only notes for the web app. Canonical app behavior 
 
 This folder is for implementation-only notes tied directly to `apps/web`.
 
-Canonical app behavior now lives in:
+Canonical app behavior lives in:
 
 - `docs/specs/app/`
 - `docs/specs/app/modules/`
@@ -18,9 +18,6 @@ Canonical app behavior now lives in:
 - `docs/architecture/canonical-modules.md`
 - `docs/doctrine/`
 
-Historical app-local drafts were moved to:
+Superseded app-local drafts are preserved in Git history rather than carried as active-tree archive copies. The certified pre-contraction archive snapshot is `17ab0eec51622a0cfbffae867e27d65059a29b60`.
 
-- `docs/archive/app/`
-- `docs/archive/app/modules/`
-
-Do not place doctrine, governance, chain policy, reward policy, or canonical module definitions here.
+Do not restore historical drafts as current guidance. Do not place doctrine, governance, chain policy, reward policy, or canonical module definitions here.

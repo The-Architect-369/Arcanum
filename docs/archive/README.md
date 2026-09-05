@@ -3,28 +3,49 @@ title: "Historical Material"
 status: canonical
 visibility: public
 last_updated: 2026-09-04
-description: "Boundary for superseded historical material; active instruction must come from current canonical sources."
+description: "Boundary for superseded historical material; active instruction comes only from current canonical sources."
 ---
 
 # Historical Material
 
-`docs/archive/` contains superseded material retained temporarily or intentionally for bounded audit/migration purposes.
+`docs/archive/` is a bounded historical surface, not a second source of current truth.
 
 ## Authority rule
 
 Archived material is **never active instruction** merely because it remains in the working tree.
 
-A current canonical source always wins. Active code, specifications, validators, or Architect instructions must not depend on an archived document for present semantics.
+Current doctrine, governance, architecture, specifications, implementation, and exact Git state control their respective domains. Active code, validators, or Architect instructions must not depend on a superseded archive body for present semantics.
 
-## Post-CE-W01 policy
+## Working-tree archive boundary
 
-The repository is moving to a leaner history model:
+After the post-CE-W01 cleanup, the only historical implementation payload intentionally retained in `docs/archive/` is:
 
-- Git commit history is the durable source for superseded document bodies;
-- the active tree should retain only historical material with a demonstrated current audit/migration need;
-- when that need is absent, keep a compact provenance/replacement pointer and remove the old body from the working tree;
-- deleting a superseded working-tree copy does not erase its Git history.
+- `docs/archive/chain/arcanum/app-disabled/`
 
-Until the post-CE-W01 cleanup is certified, some legacy bodies remain here because existing validators still reference them. Their presence does not grant authority.
+That exception exists because `docs/specs/chain/README.md` explicitly assigns disabled chain source to that location for bounded migration/recovery context. Those `.disabled` files are not active build inputs.
 
-See `docs/tooling/archive-manifest.yaml` for replacement mappings and GitHub issue #41 for the cleanup record.
+Superseded app guides, legacy ArchitectGPT bodies, the pre-schema HOPE session prototype, old migration notes, and the obsolete chain command scaffold are Git-history-only. They do not remain as working-tree copies.
+
+Architect continuity before `ARC-CONT-EPOCH-2` is preserved by `docs/governance/architectgpt/continuity-epoch.json`, not by archive replay.
+
+## Provenance anchor
+
+The certified pre-contraction working-tree archive is preserved at:
+
+```text
+17ab0eec51622a0cfbffae867e27d65059a29b60
+```
+
+Recover a removed historical path without reactivating it:
+
+```bash
+git show 17ab0eec51622a0cfbffae867e27d65059a29b60:<path>
+```
+
+List the complete pre-contraction archive tree:
+
+```bash
+git ls-tree -r --name-only 17ab0eec51622a0cfbffae867e27d65059a29b60 docs/archive
+```
+
+That commit is a provenance anchor only. It has no current instructional authority.

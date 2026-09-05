@@ -2,7 +2,7 @@
 title: "App Navigation and Gates"
 status: canonical
 visibility: public
-last_updated: 2026-05-26
+last_updated: 2026-09-04
 description: "Current app navigation and gating posture constrained by doctrine, identity, economy, and app-chain boundaries."
 ---
 
@@ -67,6 +67,6 @@ Avoid terms:
 - pay-to-win
 - progression purchase
 
-## Replacement note
+## Historical replacement
 
-Historical UI release-candidate material has been archived under `docs/archive/app/ui/`.
+Historical UI release-candidate material is superseded and preserved in Git history only. Current implementation must use this specification rather than an archived release-candidate guide.

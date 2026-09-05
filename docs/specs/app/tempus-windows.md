@@ -2,7 +2,7 @@
 title: "Tempus Windows"
 status: canonical
 visibility: public
-last_updated: 2026-05-26
+last_updated: 2026-09-04
 description: "Non-coercive app implementation posture for Tempus windows, cycles, and calendar surfaces."
 ---
 
@@ -42,6 +42,6 @@ If Tempus touches ARCnet, it may emit factual receipts only.
 
 Receipts may state that an action occurred. They must not interpret what that action means.
 
-## Replacement note
+## Historical replacement
 
-Older Tempus reward-system drafts have been archived under `docs/archive/app/tempus/`.
+Older Tempus reward-system drafts are superseded and preserved in Git history only. Current implementation must use this specification and controlling doctrine rather than restoring an archived draft.

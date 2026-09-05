@@ -2,14 +2,14 @@
 title: "Disabled Chain App Files"
 status: archived-index
 visibility: public
-last_updated: 2026-05-26
-description: "Disabled Go files moved out of active chain source while preserving migration history."
+last_updated: 2026-09-04
+description: "Disabled Go files retained outside active chain source as bounded migration/recovery context."
 ---
 
 # Disabled Chain App Files
 
-These files were previously stored in `chains/arcanum/app/` with a `.disabled` suffix.
+These `.disabled` files were previously stored under `chains/arcanum/app/`.
 
-They were moved here to keep the active chain source tree clean while preserving historical implementation context.
+They remain here only because `docs/specs/chain/README.md` explicitly assigns disabled chain app source to this bounded historical location.
 
-They are not active build inputs.
+They are not active build inputs, canonical doctrine, or current implementation authority. Any reactivation requires a new reviewed implementation change rather than copying assumptions from these files into active source.
