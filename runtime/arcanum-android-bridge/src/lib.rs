@@ -1,9 +1,9 @@
 #![forbid(unsafe_code)]
 
-use arcanum_runtime::{
-    tempus::{capture_tempus_anchor, SystemClockProvider, TEMPUS_ANCHOR_SCHEMA_VERSION},
-    ARCANUM_RUNTIME_VERSION,
+use arcanum_runtime::tempus::{
+    capture_tempus_anchor, SystemClockProvider, TEMPUS_ANCHOR_SCHEMA_VERSION,
 };
+use arcanum_runtime::ARCANUM_RUNTIME_VERSION;
 
 pub const BRIDGE_ABI_VERSION: i32 = 1;
 pub const STATUS_OK: i32 = 0;
@@ -22,23 +22,26 @@ pub fn bridge_capability_mask() -> i64 {
 }
 
 pub fn tempus_system_clock_probe() -> i32 {
-    match capture_tempus_anchor(
+    let anchor = match capture_tempus_anchor(
         &SystemClockProvider,
         "ce-w02-native-bridge-probe",
         ARCANUM_RUNTIME_VERSION,
     ) {
-        Ok(anchor)
-            if anchor.schema_version == TEMPUS_ANCHOR_SCHEMA_VERSION
-                && anchor.source.kind.is_clock()
-                && anchor.observer.is_none()
-                && anchor.frame.is_none()
-                && anchor.observation.kind == "clock"
-                && anchor.interpretation.is_none() =>
-        {
-            STATUS_OK
-        }
-        Ok(_) => STATUS_CONTRACT_ERROR,
-        Err(_) => STATUS_CAPTURE_ERROR,
+        Ok(anchor) => anchor,
+        Err(_) => return STATUS_CAPTURE_ERROR,
+    };
+
+    let contract_matches = anchor.schema_version == TEMPUS_ANCHOR_SCHEMA_VERSION
+        && anchor.source.kind.is_clock()
+        && anchor.observer.is_none()
+        && anchor.frame.is_none()
+        && anchor.observation.kind == "clock"
+        && anchor.interpretation.is_none();
+
+    if contract_matches {
+        STATUS_OK
+    } else {
+        STATUS_CONTRACT_ERROR
     }
 }
 
