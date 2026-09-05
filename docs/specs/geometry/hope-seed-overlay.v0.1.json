@@ -4,6 +4,7 @@
   "status": "implementation-candidate",
   "wave": "CE-W03",
   "tranche": "W03.1",
+  "sourceCertificationWorkflow": ".github/workflows/verify-ce-w03.yml",
   "source": {
     "registry": "./arcnet-coordinate-frame.v0.1.json",
     "frameId": "arcnet-coordinate-frame",
