@@ -60,3 +60,6 @@ target/
 apps/android/.gradle/
 apps/android/**/build/
 apps/android/local.properties
+
+# CE-W02 native bridge cross-compile output
+apps/android/app/src/main/jniLibs/

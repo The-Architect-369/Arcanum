@@ -1,0 +1,89 @@
+{
+  "$schema": "./android-runtime-bridge.schema.json",
+  "bridgeContractId": "android-runtime-bridge",
+  "schemaVersion": "0.1.0",
+  "status": "implementation-candidate",
+  "runtimeCrate": "runtime/arcanum-runtime",
+  "bridgeCrate": "runtime/arcanum-android-bridge",
+  "ffiCrate": "runtime/arcanum-android-jni",
+  "androidHost": "apps/android",
+  "abi": {
+    "kind": "jni",
+    "version": 1,
+    "library": "arcanum_android_jni",
+    "primitiveOnly": true,
+    "jniPointersDereferenced": false,
+    "safeFacadeForbidsUnsafeCode": true,
+    "ffiUnsafeLinkerAttributes": 3,
+    "ffiUnsafeBlocks": false,
+    "ffiUnsafeFunctions": false,
+    "exportedMethods": [
+      "nativeAbiVersion",
+      "nativeCapabilityMask",
+      "nativeTempusClockProbe"
+    ]
+  },
+  "capabilities": {
+    "mask": 1,
+    "allowed": [
+      "tempus-system-clock-probe"
+    ],
+    "forbidden": [
+      "persistence-write",
+      "persistence-read",
+      "receipt-create",
+      "signing",
+      "private-key-export",
+      "network",
+      "protocol-submit",
+      "authority",
+      "governance-weight",
+      "economic-entitlement"
+    ]
+  },
+  "tempusProbe": {
+    "provider": "SystemClockProvider",
+    "runtimeOperation": "capture_tempus_anchor",
+    "persists": false,
+    "returnsAnchorToHost": false,
+    "collectsLocation": false,
+    "authorityEffect": "none"
+  },
+  "presentation": {
+    "bridgeAvailabilityGatesGeometry": false,
+    "bridgeStatusIsInformational": true,
+    "geometryFreeEquivalentRequired": true,
+    "authorityEffect": "none"
+  },
+  "androidBuild": {
+    "abis": [
+      "arm64-v8a",
+      "x86_64"
+    ],
+    "rustToolchainVersion": "1.98.1",
+    "rustComponents": [
+      "rustfmt",
+      "clippy"
+    ],
+    "cargoNdkVersion": "4.1.2",
+    "commitNativeBinaries": false,
+    "verifyExportedSymbols": true,
+    "assembleDebug": true
+  },
+  "deferredToW02_4": [
+    "TempusAnchor persistence",
+    "TempusAnchor read/recovery",
+    "receipt presentation",
+    "offline lifecycle UI"
+  ],
+  "authorityEffect": "none",
+  "inheritedFalsificationIds": [
+    "F1", "F2", "F3", "F4", "F5", "F6", "F7", "F8", "F9", "F10",
+    "F11", "F12", "F13", "F14", "F15", "F16", "F17", "F18", "F19", "F20",
+    "F21", "F22", "F23", "F24", "F25", "F26", "F27", "F28", "F29", "F30",
+    "F31", "F32", "F33", "F34", "F35", "F36"
+  ],
+  "falsificationIds": [
+    "F37", "F38", "F39", "F40", "F41", "F42", "F43", "F44"
+  ]
+}

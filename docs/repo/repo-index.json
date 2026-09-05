@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-09-05T04:06:55Z",
+  "generated_at": "2026-09-05T10:48:29Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "11dee4ad6",
+  "commit": "e42c1b6b5",
   "generator_version": "1.4",
   "files": [
     {
@@ -21,6 +21,15 @@
       "is_empty": false,
       "extension": ".yml",
       "lines": 53
+    },
+    {
+      "path": ".github/workflows/verify-android-bridge.yml",
+      "type": "file",
+      "size_bytes": 4363,
+      "last_modified_commit": "e42c1b6b5",
+      "is_empty": false,
+      "extension": ".yml",
+      "lines": 118
     },
     {
       "path": ".github/workflows/verify-android-native.yml",
@@ -43,11 +52,11 @@
     {
       "path": ".gitignore",
       "type": "file",
-      "size_bytes": 878,
-      "last_modified_commit": "11dee4ad6",
+      "size_bytes": 958,
+      "last_modified_commit": "4b2e26a4f",
       "is_empty": false,
       "extension": "",
-      "lines": 62
+      "lines": 65
     },
     {
       "path": ".node-version",
@@ -124,20 +133,20 @@
     {
       "path": "apps/android/app/src/main/java/org/arcanum/nativehost/MainActivity.kt",
       "type": "file",
-      "size_bytes": 335,
-      "last_modified_commit": "11dee4ad6",
+      "size_bytes": 696,
+      "last_modified_commit": "4b2e26a4f",
       "is_empty": false,
       "extension": ".kt",
-      "lines": 12
+      "lines": 21
     },
     {
       "path": "apps/android/app/src/main/java/org/arcanum/nativehost/geometry/ArcnetRendererView.kt",
       "type": "file",
-      "size_bytes": 4301,
-      "last_modified_commit": "11dee4ad6",
+      "size_bytes": 4415,
+      "last_modified_commit": "4b2e26a4f",
       "is_empty": false,
       "extension": ".kt",
-      "lines": 147
+      "lines": 149
     },
     {
       "path": "apps/android/app/src/main/java/org/arcanum/nativehost/geometry/CanonicalContracts.kt",
@@ -158,6 +167,24 @@
       "lines": 178
     },
     {
+      "path": "apps/android/app/src/main/java/org/arcanum/nativehost/runtime/BridgeContract.kt",
+      "type": "file",
+      "size_bytes": 885,
+      "last_modified_commit": "4b2e26a4f",
+      "is_empty": false,
+      "extension": ".kt",
+      "lines": 27
+    },
+    {
+      "path": "apps/android/app/src/main/java/org/arcanum/nativehost/runtime/NativeRuntimeBridge.kt",
+      "type": "file",
+      "size_bytes": 526,
+      "last_modified_commit": "fca5cefde",
+      "is_empty": false,
+      "extension": ".kt",
+      "lines": 20
+    },
+    {
       "path": "apps/android/app/src/test/java/org/arcanum/nativehost/geometry/ProjectionContractTest.kt",
       "type": "file",
       "size_bytes": 1346,
@@ -165,6 +192,15 @@
       "is_empty": false,
       "extension": ".kt",
       "lines": 40
+    },
+    {
+      "path": "apps/android/app/src/test/java/org/arcanum/nativehost/runtime/BridgeContractTest.kt",
+      "type": "file",
+      "size_bytes": 1189,
+      "last_modified_commit": "4b2e26a4f",
+      "is_empty": false,
+      "extension": ".kt",
+      "lines": 43
     },
     {
       "path": "apps/android/build.gradle.kts",
@@ -4154,6 +4190,33 @@
       "lines": 467
     },
     {
+      "path": "docs/specs/runtime/android-runtime-bridge.md",
+      "type": "file",
+      "size_bytes": 5574,
+      "last_modified_commit": "73d154968",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 162
+    },
+    {
+      "path": "docs/specs/runtime/android-runtime-bridge.schema.json",
+      "type": "file",
+      "size_bytes": 2990,
+      "last_modified_commit": "fca5cefde",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 91
+    },
+    {
+      "path": "docs/specs/runtime/android-runtime-bridge.v0.1.json",
+      "type": "file",
+      "size_bytes": 2409,
+      "last_modified_commit": "da392e4ed",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 89
+    },
+    {
       "path": "docs/specs/runtime/local-runtime-boundary.md",
       "type": "file",
       "size_bytes": 21260,
@@ -5992,8 +6055,8 @@
     {
       "path": "package.json",
       "type": "file",
-      "size_bytes": 1256,
-      "last_modified_commit": "11dee4ad6",
+      "size_bytes": 1306,
+      "last_modified_commit": "4b2e26a4f",
       "is_empty": false,
       "extension": ".json",
       "lines": 39
@@ -6017,6 +6080,60 @@
       "lines": 2
     },
     {
+      "path": "runtime/arcanum-android-bridge/Cargo.lock",
+      "type": "file",
+      "size_bytes": 261,
+      "last_modified_commit": "4b2e26a4f",
+      "is_empty": false,
+      "extension": ".lock",
+      "lines": 14
+    },
+    {
+      "path": "runtime/arcanum-android-bridge/Cargo.toml",
+      "type": "file",
+      "size_bytes": 208,
+      "last_modified_commit": "fca5cefde",
+      "is_empty": false,
+      "extension": ".toml",
+      "lines": 12
+    },
+    {
+      "path": "runtime/arcanum-android-bridge/src/lib.rs",
+      "type": "file",
+      "size_bytes": 1719,
+      "last_modified_commit": "3b143ee75",
+      "is_empty": false,
+      "extension": ".rs",
+      "lines": 63
+    },
+    {
+      "path": "runtime/arcanum-android-jni/Cargo.lock",
+      "type": "file",
+      "size_bytes": 367,
+      "last_modified_commit": "fca5cefde",
+      "is_empty": false,
+      "extension": ".lock",
+      "lines": 21
+    },
+    {
+      "path": "runtime/arcanum-android-jni/Cargo.toml",
+      "type": "file",
+      "size_bytes": 272,
+      "last_modified_commit": "fca5cefde",
+      "is_empty": false,
+      "extension": ".toml",
+      "lines": 14
+    },
+    {
+      "path": "runtime/arcanum-android-jni/src/lib.rs",
+      "type": "file",
+      "size_bytes": 847,
+      "last_modified_commit": "73d154968",
+      "is_empty": false,
+      "extension": ".rs",
+      "lines": 32
+    },
+    {
       "path": "runtime/arcanum-runtime/Cargo.lock",
       "type": "file",
       "size_bytes": 159,
@@ -6037,11 +6154,11 @@
     {
       "path": "runtime/arcanum-runtime/src/lib.rs",
       "type": "file",
-      "size_bytes": 79,
-      "last_modified_commit": "04ab4db70",
+      "size_bytes": 149,
+      "last_modified_commit": "4b2e26a4f",
       "is_empty": false,
       "extension": ".rs",
-      "lines": 5
+      "lines": 7
     },
     {
       "path": "runtime/arcanum-runtime/src/persistence.rs",
@@ -6395,13 +6512,22 @@
       "lines": 786
     },
     {
-      "path": "scripts/verify-ce-w02-native-shell.py",
+      "path": "scripts/verify-ce-w02-native-bridge.py",
       "type": "file",
-      "size_bytes": 9514,
-      "last_modified_commit": "11dee4ad6",
+      "size_bytes": 9257,
+      "last_modified_commit": "73d154968",
       "is_empty": false,
       "extension": ".py",
-      "lines": 164
+      "lines": 209
+    },
+    {
+      "path": "scripts/verify-ce-w02-native-shell.py",
+      "type": "file",
+      "size_bytes": 9625,
+      "last_modified_commit": "fca5cefde",
+      "is_empty": false,
+      "extension": ".py",
+      "lines": 166
     },
     {
       "path": "scripts/verify-ce-w02-projection.py",

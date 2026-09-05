@@ -155,7 +155,9 @@ def verify() -> None:
     require('"build-tools;35.0.0"' in workflow, "F36 Android build tools")
     require("gradle -p apps/android testDebugUnitTest assembleDebug --stacktrace" in workflow, "F36 native test + assemble tasks")
     require("compileSdk = 35" in app_gradle, "F36 compileSdk")
-    require(package["scripts"]["verify:ce-w02"] == "pnpm verify:ce-w01 && python3 scripts/verify-ce-w02-projection.py && python3 scripts/verify-ce-w02-native-shell.py", "F36 root CE-W02 verification wiring")
+    root_verify = package["scripts"]["verify:ce-w02"]
+    w02_2_prefix = "pnpm verify:ce-w01 && python3 scripts/verify-ce-w02-projection.py && python3 scripts/verify-ce-w02-native-shell.py"
+    require(root_verify == w02_2_prefix or root_verify.startswith(w02_2_prefix + " && "), "F36 root CE-W02 verification prefix")
 
     print("✅ CE-W02 native-shell verification passed: F31-F36")
 
