@@ -18,6 +18,14 @@ class ArcnetRendererView(
             strokeWidth = 2.0f
         }
 
+    private val seedPaint =
+        Paint(Paint.ANTI_ALIAS_FLAG).apply {
+            color = Color.LTGRAY
+            style = Paint.Style.STROKE
+            strokeWidth = 1.5f
+            alpha = 150
+        }
+
     private val pointPaint =
         Paint(Paint.ANTI_ALIAS_FLAG).apply {
             color = Color.WHITE
@@ -46,12 +54,30 @@ class ArcnetRendererView(
         }
     }
 
+    private val seedOverlayResult: Result<HopeSeedOverlay> by lazy {
+        runCatching {
+            HopeSeedOverlay.fromAssets(context.assets).also { overlay ->
+                val vectors =
+                    context.assets.open(HopeSeedOverlay.VECTOR_ASSET).bufferedReader().use { it.readText() }
+                require(overlay.verifyReferenceVectors(vectors)) {
+                    "CE-W03 Seed overlay vectors do not match presentation mapping"
+                }
+            }
+        }
+    }
+
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
         canvas.drawColor(Color.BLACK)
 
         val contracts =
             contractsResult.getOrElse { failure ->
+                drawFailClosed(canvas, failure)
+                return
+            }
+
+        val seedOverlay =
+            seedOverlayResult.getOrElse { failure ->
                 drawFailClosed(canvas, failure)
                 return
             }
@@ -87,6 +113,16 @@ class ArcnetRendererView(
             }
 
         engine.project(contracts.origin.q, viewport)?.let { projected ->
+            seedOverlay
+                .mapToScreen(projected.screenX, projected.screenY, viewport.width, viewport.height)
+                .forEach { circle ->
+                    canvas.drawCircle(
+                        circle.centerX.toFloat(),
+                        circle.centerY.toFloat(),
+                        circle.radius.toFloat(),
+                        seedPaint,
+                    )
+                }
             canvas.drawCircle(
                 projected.screenX.toFloat(),
                 projected.screenY.toFloat(),
@@ -102,6 +138,12 @@ class ArcnetRendererView(
             labelPaint,
         )
         canvas.drawText(runtimeBridgeLabel, 24.0f, 76.0f, labelPaint)
+        canvas.drawText(
+            "Hope Seed · symbolic presentation overlay · authorityEffect=none",
+            24.0f,
+            112.0f,
+            labelPaint,
+        )
     }
 
     private fun drawCanonicalEdges(
