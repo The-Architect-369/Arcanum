@@ -165,7 +165,7 @@ scan_paths=(
   scripts/mobile
 )
 pattern='refs/heads/mobile|refs/remotes/origin/mobile|origin/mobile|integration_branch:[[:space:]]*mobile|default_write_branch:[[:space:]]*mobile|required_branch:[[:space:]]*mobile|required_head_branch:[[:space:]]*mobile|required_integration_branch:[[:space:]]*mobile'
-if grep -R -n -E "$pattern" "${scan_paths[@]}" 2>/dev/null; then
+if git grep -n -E "$pattern" -- "${scan_paths[@]}" 2>/dev/null; then
   echo "FAIL stale persistent-mobile branch semantics detected" >&2
   exit 1
 fi
