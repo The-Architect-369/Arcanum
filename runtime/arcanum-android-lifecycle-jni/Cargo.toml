@@ -1,0 +1,12 @@
+[package]
+name = "arcanum-android-lifecycle-jni"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+arcanum-android-lifecycle = { path = "../arcanum-android-lifecycle" }
+jni = { version = "=0.21.1", default-features = false }

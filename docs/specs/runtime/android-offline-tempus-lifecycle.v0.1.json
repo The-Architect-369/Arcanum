@@ -1,0 +1,81 @@
+{
+  "$schema": "./android-offline-tempus-lifecycle.schema.json",
+  "specVersion": "0.1.0",
+  "constructionEra": "CE-W02",
+  "tranche": "W02.4",
+  "inheritedFalsificationIds": [
+    "F1", "F2", "F3", "F4", "F5", "F6", "F7", "F8", "F9", "F10",
+    "F11", "F12", "F13", "F14", "F15", "F16", "F17", "F18", "F19", "F20",
+    "F21", "F22", "F23", "F24", "F25", "F26", "F27", "F28", "F29", "F30",
+    "F31", "F32", "F33", "F34", "F35", "F36", "F37", "F38", "F39", "F40",
+    "F41", "F42", "F43", "F44"
+  ],
+  "falsificationIds": ["F45", "F46", "F47", "F48", "F49", "F50", "F51", "F52"],
+  "safeLifecycleCrate": "runtime/arcanum-android-lifecycle",
+  "ffiCrate": "runtime/arcanum-android-lifecycle-jni",
+  "storage": {
+    "androidRoot": "Context.filesDir",
+    "anchorStore": "arcanum_runtime::persistence::FileTempusAnchorStore",
+    "kotlinPersistsAnchorContent": false,
+    "kotlinStoresOpaqueLastAnchorId": true,
+    "externalStorage": false,
+    "networkRequired": false
+  },
+  "capture": {
+    "provider": "SystemClockProvider",
+    "collectsLocation": false,
+    "identifierSource": "host-local UUID; identifier only"
+  },
+  "receipt": {
+    "runtimeConstructor": "create_tempus_local_receipt",
+    "contentDigest": "SHA-256",
+    "scope": "local",
+    "signingProvider": "unavailable",
+    "hostSigningCapability": false,
+    "privateKeyExposure": false,
+    "persistedInW02_4": false
+  },
+  "abi": {
+    "version": 1,
+    "library": "arcanum_android_lifecycle_jni",
+    "managedStringBoundary": true,
+    "domainObjectCrossesJni": false,
+    "exportedMethods": [
+      "nativeLifecycleAbiVersion",
+      "nativeLifecycleCapabilityMask",
+      "nativeCapturePersist",
+      "nativeRecover"
+    ]
+  },
+  "recovery": {
+    "explicitAnchorId": true,
+    "autoReplaceOnRecoveryFailure": false,
+    "requiresNetwork": false
+  },
+  "presentation": {
+    "geometryGatesLifecycle": false,
+    "geometryFreeEquivalentRequired": true,
+    "receiptLabelIncludesLocalScope": true,
+    "authorityEffect": "none"
+  },
+  "androidBuild": {
+    "workflow": ".github/workflows/verify-android-offline-tempus.yml",
+    "rustToolchainVersion": "1.98.1",
+    "cargoNdkVersion": "4.1.2",
+    "androidNdkVersion": "27.2.12479018",
+    "abis": ["arm64-v8a", "x86_64"],
+    "commitNativeBinaries": false
+  },
+  "forbiddenCapabilities": [
+    "signing",
+    "private-key-export",
+    "network",
+    "protocol-submit",
+    "protocol-finality",
+    "authority",
+    "governance-weight",
+    "economic-entitlement",
+    "location-collection"
+  ],
+  "authorityEffect": "none"
+}

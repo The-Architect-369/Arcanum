@@ -1,0 +1,9 @@
+[package]
+name = "arcanum-android-lifecycle"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[dependencies]
+arcanum-runtime = { path = "../arcanum-runtime" }
+sha2 = "=0.10.9"

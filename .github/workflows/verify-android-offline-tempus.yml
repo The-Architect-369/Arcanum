@@ -1,0 +1,146 @@
+name: CE-W02 Android Offline Tempus Lifecycle
+
+on:
+  push:
+    paths:
+      - "runtime/arcanum-android-lifecycle/**"
+      - "runtime/arcanum-android-lifecycle-jni/**"
+      - "runtime/arcanum-android-jni/**"
+      - "apps/android/**"
+      - "docs/specs/runtime/android-offline-tempus-lifecycle*"
+      - "scripts/verify-ce-w02-offline-tempus.py"
+      - "scripts/verify-ce-w02-native-bridge.py"
+      - "package.json"
+      - ".github/workflows/verify-android-offline-tempus.yml"
+  pull_request:
+    paths:
+      - "runtime/arcanum-android-lifecycle/**"
+      - "runtime/arcanum-android-lifecycle-jni/**"
+      - "runtime/arcanum-android-jni/**"
+      - "apps/android/**"
+      - "docs/specs/runtime/android-offline-tempus-lifecycle*"
+      - "scripts/verify-ce-w02-offline-tempus.py"
+      - "scripts/verify-ce-w02-native-bridge.py"
+      - "package.json"
+      - ".github/workflows/verify-android-offline-tempus.yml"
+
+jobs:
+  verify-android-offline-tempus:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - uses: android-actions/setup-android@v3
+
+      - name: Install Android SDK and NDK
+        shell: bash
+        run: |
+          yes | sdkmanager --licenses >/dev/null || true
+          sdkmanager \
+            "platforms;android-35" \
+            "build-tools;35.0.0" \
+            "ndk;27.2.12479018"
+          echo "ANDROID_NDK_HOME=$ANDROID_SDK_ROOT/ndk/27.2.12479018" >> "$GITHUB_ENV"
+          echo "ANDROID_NDK_ROOT=$ANDROID_SDK_ROOT/ndk/27.2.12479018" >> "$GITHUB_ENV"
+
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: "1.98.1"
+          components: rustfmt,clippy
+          targets: aarch64-linux-android,x86_64-linux-android
+
+      - name: Install cargo-ndk
+        run: cargo install cargo-ndk --version 4.1.2 --locked
+
+      - name: Verify W02.4 repository contract
+        run: python3 scripts/verify-ce-w02-offline-tempus.py
+
+      - name: Check lifecycle facade formatting
+        run: cargo fmt --manifest-path runtime/arcanum-android-lifecycle/Cargo.toml --check
+
+      - name: Clippy lifecycle facade
+        run: cargo clippy --manifest-path runtime/arcanum-android-lifecycle/Cargo.toml --all-targets -- -D warnings
+
+      - name: Test lifecycle facade
+        run: cargo test --manifest-path runtime/arcanum-android-lifecycle/Cargo.toml
+
+      - name: Check lifecycle JNI formatting
+        run: cargo fmt --manifest-path runtime/arcanum-android-lifecycle-jni/Cargo.toml --check
+
+      - name: Clippy lifecycle JNI shim
+        run: cargo clippy --manifest-path runtime/arcanum-android-lifecycle-jni/Cargo.toml --all-targets -- -D warnings
+
+      - name: Emit generated dependency locks
+        shell: bash
+        run: |
+          echo "=== BEGIN lifecycle Cargo.lock ==="
+          cat runtime/arcanum-android-lifecycle/Cargo.lock
+          echo "=== END lifecycle Cargo.lock ==="
+          echo "=== BEGIN lifecycle-jni Cargo.lock ==="
+          cat runtime/arcanum-android-lifecycle-jni/Cargo.lock
+          echo "=== END lifecycle-jni Cargo.lock ==="
+
+      - name: Cross-compile W02.3 JNI shim
+        shell: bash
+        working-directory: runtime/arcanum-android-jni
+        run: |
+          rm -rf "$GITHUB_WORKSPACE/apps/android/app/src/main/jniLibs"
+          cargo ndk \
+            -t arm64-v8a \
+            -t x86_64 \
+            -o "$GITHUB_WORKSPACE/apps/android/app/src/main/jniLibs" \
+            build \
+            --release
+
+      - name: Cross-compile W02.4 lifecycle JNI
+        shell: bash
+        working-directory: runtime/arcanum-android-lifecycle-jni
+        run: |
+          cargo ndk \
+            -t arm64-v8a \
+            -t x86_64 \
+            -o "$GITHUB_WORKSPACE/apps/android/app/src/main/jniLibs" \
+            build \
+            --release
+
+      - name: Verify exported JNI symbols
+        shell: bash
+        run: |
+          NM="$ANDROID_NDK_HOME/toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-nm"
+          for abi in arm64-v8a x86_64; do
+            base="apps/android/app/src/main/jniLibs/$abi"
+            old="$base/libarcanum_android_jni.so"
+            lifecycle="$base/libarcanum_android_lifecycle_jni.so"
+            test -f "$old"
+            test -f "$lifecycle"
+            "$NM" -D --defined-only "$old" | grep -q "Java_org_arcanum_nativehost_runtime_NativeRuntimeBridge_nativeAbiVersion"
+            "$NM" -D --defined-only "$old" | grep -q "Java_org_arcanum_nativehost_runtime_NativeRuntimeBridge_nativeCapabilityMask"
+            "$NM" -D --defined-only "$old" | grep -q "Java_org_arcanum_nativehost_runtime_NativeRuntimeBridge_nativeTempusClockProbe"
+            "$NM" -D --defined-only "$lifecycle" | grep -q "Java_org_arcanum_nativehost_runtime_TempusLifecycleBridge_nativeLifecycleAbiVersion"
+            "$NM" -D --defined-only "$lifecycle" | grep -q "Java_org_arcanum_nativehost_runtime_TempusLifecycleBridge_nativeLifecycleCapabilityMask"
+            "$NM" -D --defined-only "$lifecycle" | grep -q "Java_org_arcanum_nativehost_runtime_TempusLifecycleBridge_nativeCapturePersist"
+            "$NM" -D --defined-only "$lifecycle" | grep -q "Java_org_arcanum_nativehost_runtime_TempusLifecycleBridge_nativeRecover"
+          done
+
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: "8.9"
+
+      - name: Unit test and assemble Android host with lifecycle
+        run: gradle -p apps/android testDebugUnitTest assembleDebug --stacktrace
+
+      - name: Verify both native libraries are packaged
+        shell: bash
+        run: |
+          APK="apps/android/app/build/outputs/apk/debug/app-debug.apk"
+          test -f "$APK"
+          for abi in arm64-v8a x86_64; do
+            unzip -l "$APK" | grep -q "lib/$abi/libarcanum_android_jni.so"
+            unzip -l "$APK" | grep -q "lib/$abi/libarcanum_android_lifecycle_jni.so"
+          done

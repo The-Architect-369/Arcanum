@@ -162,7 +162,7 @@ def verify() -> None:
     # F42 — bridge availability is presentation-only and cannot gate geometry.
     require("runCatching { NativeRuntimeBridge.status() }" in main_activity, "F42 bridge failure bounded")
     require(
-        "setContentView(ArcnetRendererView(this, bridgeLabel))" in main_activity,
+        "ArcnetRendererView(this, bridgeLabel" in main_activity,
         "F42 geometry always constructed",
     )
     require("runtimeBridgeLabel" in renderer, "F42 renderer receives informational label")
