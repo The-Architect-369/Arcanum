@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-09-05T02:40:59Z",
+  "generated_at": "2026-09-05T03:46:16Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "b6661a06d",
+  "commit": "9d868170d",
   "generator_version": "1.4",
   "files": [
     {
@@ -3704,6 +3704,42 @@
       "lines": 80
     },
     {
+      "path": "docs/specs/geometry/arcnet-screen-projection.md",
+      "type": "file",
+      "size_bytes": 9600,
+      "last_modified_commit": "9d868170d",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 377
+    },
+    {
+      "path": "docs/specs/geometry/arcnet-screen-projection.schema.json",
+      "type": "file",
+      "size_bytes": 2568,
+      "last_modified_commit": "9d868170d",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 77
+    },
+    {
+      "path": "docs/specs/geometry/arcnet-screen-projection.v0.1.json",
+      "type": "file",
+      "size_bytes": 2924,
+      "last_modified_commit": "9d868170d",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 99
+    },
+    {
+      "path": "docs/specs/geometry/arcnet-screen-projection.vectors.v0.1.json",
+      "type": "file",
+      "size_bytes": 4003,
+      "last_modified_commit": "9d868170d",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 106
+    },
+    {
       "path": "docs/specs/geometry/arcnet-spatial-architecture.md",
       "type": "file",
       "size_bytes": 22334,
@@ -5821,11 +5857,11 @@
     {
       "path": "package.json",
       "type": "file",
-      "size_bytes": 1117,
-      "last_modified_commit": "35e255a96",
+      "size_bytes": 1207,
+      "last_modified_commit": "9d868170d",
       "is_empty": false,
       "extension": ".json",
-      "lines": 38
+      "lines": 39
     },
     {
       "path": "pnpm-lock.yaml",
@@ -6222,6 +6258,15 @@
       "is_empty": false,
       "extension": ".py",
       "lines": 786
+    },
+    {
+      "path": "scripts/verify-ce-w02-projection.py",
+      "type": "file",
+      "size_bytes": 13951,
+      "last_modified_commit": "9d868170d",
+      "is_empty": false,
+      "extension": ".py",
+      "lines": 364
     },
     {
       "path": "scripts/verify-repo-index.py",
