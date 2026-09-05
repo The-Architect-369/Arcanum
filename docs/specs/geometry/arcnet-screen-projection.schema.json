@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:arcanum:ce-w02:arcnet-screen-projection:0.1.0",
+  "title": "ARCnet Screen Projection CE-W02 v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "projectionContractId",
+    "schemaVersion",
+    "sourceFrame",
+    "vectorConvention",
+    "modelTransform",
+    "camera",
+    "perspective",
+    "viewport",
+    "referenceProfile",
+    "inheritedFalsificationIds",
+    "falsificationIds",
+    "geometryFreeEquivalentRequired",
+    "authorityEffect",
+    "forbiddenAuthorityInputs"
+  ],
+  "properties": {
+    "$schema": { "const": "./arcnet-screen-projection.schema.json" },
+    "projectionContractId": { "const": "arcnet-screen-projection" },
+    "schemaVersion": { "const": "0.1.0" },
+    "sourceFrame": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["frameId", "frameVersion", "spatialArchitectureVersion", "sourceCoordinatesMutable"],
+      "properties": {
+        "frameId": { "const": "arcnet-coordinate-frame" },
+        "frameVersion": { "const": "0.1.0" },
+        "spatialArchitectureVersion": { "const": "0.2.0" },
+        "sourceCoordinatesMutable": { "const": false }
+      }
+    },
+    "vectorConvention": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["vectorType", "matrixApplication", "handedness", "positiveRotationConvention", "cameraLocalForward", "compositionOrder"],
+      "properties": {
+        "vectorType": { "const": "homogeneous-column" },
+        "matrixApplication": { "const": "left-multiply" },
+        "handedness": { "const": "right-handed" },
+        "positiveRotationConvention": { "const": "right-hand-rule" },
+        "cameraLocalForward": { "const": "-Z" },
+        "compositionOrder": { "const": "rightmost-first" }
+      }
+    },
+    "modelTransform": { "type": "object" },
+    "camera": { "type": "object" },
+    "perspective": { "type": "object" },
+    "viewport": { "type": "object" },
+    "referenceProfile": { "type": "object" },
+    "inheritedFalsificationIds": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 20,
+      "maxItems": 20
+    },
+    "falsificationIds": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 10,
+      "maxItems": 10
+    },
+    "geometryFreeEquivalentRequired": { "const": true },
+    "authorityEffect": { "const": "none" },
+    "forbiddenAuthorityInputs": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1
+    }
+  }
+}
