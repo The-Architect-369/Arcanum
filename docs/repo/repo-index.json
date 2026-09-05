@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-09-05T11:34:04Z",
+  "generated_at": "2026-09-05T12:13:50Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "f38380538",
+  "commit": "7657156c2",
   "generator_version": "1.4",
   "files": [
     {
@@ -48,6 +48,15 @@
       "is_empty": false,
       "extension": ".yml",
       "lines": 141
+    },
+    {
+      "path": ".github/workflows/verify-ce-w02-integrated.yml",
+      "type": "file",
+      "size_bytes": 7592,
+      "last_modified_commit": "b6eabadae",
+      "is_empty": false,
+      "extension": ".yml",
+      "lines": 205
     },
     {
       "path": ".github/workflows/verify-sync.yml",
@@ -3722,6 +3731,33 @@
       "lines": 159
     },
     {
+      "path": "docs/specs/app/ce-w02-integrated-evidence.md",
+      "type": "file",
+      "size_bytes": 4458,
+      "last_modified_commit": "7657156c2",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 126
+    },
+    {
+      "path": "docs/specs/app/ce-w02-integrated-evidence.schema.json",
+      "type": "file",
+      "size_bytes": 6064,
+      "last_modified_commit": "b6eabadae",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 138
+    },
+    {
+      "path": "docs/specs/app/ce-w02-integrated-evidence.v0.1.json",
+      "type": "file",
+      "size_bytes": 3375,
+      "last_modified_commit": "b6eabadae",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 85
+    },
+    {
       "path": "docs/specs/app/developer-access-policy.md",
       "type": "file",
       "size_bytes": 1929,
@@ -6127,11 +6163,11 @@
     {
       "path": "package.json",
       "type": "file",
-      "size_bytes": 1359,
-      "last_modified_commit": "a525268d3",
+      "size_bytes": 1460,
+      "last_modified_commit": "b6eabadae",
       "is_empty": false,
       "extension": ".json",
-      "lines": 39
+      "lines": 40
     },
     {
       "path": "pnpm-lock.yaml",
@@ -6627,6 +6663,15 @@
       "is_empty": false,
       "extension": ".py",
       "lines": 786
+    },
+    {
+      "path": "scripts/verify-ce-w02-integrated.py",
+      "type": "file",
+      "size_bytes": 12450,
+      "last_modified_commit": "b6eabadae",
+      "is_empty": false,
+      "extension": ".py",
+      "lines": 281
     },
     {
       "path": "scripts/verify-ce-w02-native-bridge.py",
