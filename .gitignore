@@ -63,3 +63,6 @@ apps/android/local.properties
 
 # CE-W02 native bridge cross-compile output
 apps/android/app/src/main/jniLibs/
+
+# W02.4 JNI dependency resolution is generated locally/CI; exact direct versions are pinned.
+runtime/arcanum-android-tempus-lifecycle-jni/Cargo.lock
