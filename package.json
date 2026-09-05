@@ -13,7 +13,7 @@
     "lint": "pnpm -C apps/web lint",
     "typecheck": "pnpm -C apps/web typecheck",
     "verify:ce-w01": "python3 scripts/verify-ce-w01-specs.py",
-    "verify:ce-w02": "pnpm verify:ce-w01 && python3 scripts/verify-ce-w02-projection.py",
+    "verify:ce-w02": "pnpm verify:ce-w01 && python3 scripts/verify-ce-w02-projection.py && python3 scripts/verify-ce-w02-native-shell.py",
     "verify:repo-index": "python3 scripts/verify-repo-index.py",
     "deploy:web": "bash scripts/vercel-setup-web.sh",
     "fmt": "prettier -w .",

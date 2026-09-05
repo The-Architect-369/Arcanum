@@ -55,3 +55,8 @@ chains/arcanum/data-*/
 
 # Rust / Cargo build artifacts
 target/
+
+# Android / Gradle build artifacts
+apps/android/.gradle/
+apps/android/**/build/
+apps/android/local.properties

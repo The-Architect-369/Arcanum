@@ -1,0 +1,53 @@
+name: CE-W02 Android Native Host
+
+on:
+  push:
+    paths:
+      - "apps/android/**"
+      - "docs/specs/app/android-geometric-host*"
+      - "docs/specs/geometry/arcnet-coordinate-frame.v0.1.json"
+      - "docs/specs/geometry/arcnet-screen-projection.v0.1.json"
+      - "docs/specs/geometry/arcnet-screen-projection.vectors.v0.1.json"
+      - "scripts/verify-ce-w02-native-shell.py"
+      - "package.json"
+      - ".github/workflows/verify-android-native.yml"
+  pull_request:
+    paths:
+      - "apps/android/**"
+      - "docs/specs/app/android-geometric-host*"
+      - "docs/specs/geometry/arcnet-coordinate-frame.v0.1.json"
+      - "docs/specs/geometry/arcnet-screen-projection.v0.1.json"
+      - "docs/specs/geometry/arcnet-screen-projection.vectors.v0.1.json"
+      - "scripts/verify-ce-w02-native-shell.py"
+      - "package.json"
+      - ".github/workflows/verify-android-native.yml"
+
+jobs:
+  verify-android-native:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - uses: android-actions/setup-android@v3
+
+      - name: Install Android SDK 35
+        shell: bash
+        run: |
+          yes | sdkmanager --licenses >/dev/null || true
+          sdkmanager "platforms;android-35" "build-tools;35.0.0"
+
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: "8.9"
+
+      - name: Verify CE-W02 repository contract
+        run: python3 scripts/verify-ce-w02-native-shell.py
+
+      - name: Unit test and assemble native host
+        run: gradle -p apps/android testDebugUnitTest assembleDebug --stacktrace

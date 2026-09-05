@@ -1,0 +1,88 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:arcanum:ce-w02:android-geometric-host:0.1.0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "hostContractId",
+    "schemaVersion",
+    "status",
+    "constructionEra",
+    "tranche",
+    "platform",
+    "canonicalInputs",
+    "sourceOwnership",
+    "startupValidation",
+    "rendering",
+    "capabilityCeiling",
+    "buildEvidence",
+    "geometryFreeEquivalentRequired",
+    "authorityEffect",
+    "inheritedFalsificationIds",
+    "falsificationIds"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./android-geometric-host.schema.json"
+    },
+    "hostContractId": {
+      "const": "arcnet-android-geometric-host"
+    },
+    "schemaVersion": {
+      "const": "0.1.0"
+    },
+    "status": {
+      "type": "string"
+    },
+    "constructionEra": {
+      "const": "CE-W02"
+    },
+    "tranche": {
+      "const": "W02.2"
+    },
+    "platform": {
+      "type": "object"
+    },
+    "canonicalInputs": {
+      "type": "array",
+      "minItems": 3,
+      "items": {
+        "type": "string"
+      }
+    },
+    "sourceOwnership": {
+      "type": "object"
+    },
+    "startupValidation": {
+      "type": "object"
+    },
+    "rendering": {
+      "type": "object"
+    },
+    "capabilityCeiling": {
+      "type": "object"
+    },
+    "buildEvidence": {
+      "type": "object"
+    },
+    "geometryFreeEquivalentRequired": {
+      "const": true
+    },
+    "authorityEffect": {
+      "const": "none"
+    },
+    "inheritedFalsificationIds": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "falsificationIds": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}
