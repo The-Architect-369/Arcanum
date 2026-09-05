@@ -1,0 +1,102 @@
+{
+  "$schema": "./android-geometric-host.schema.json",
+  "hostContractId": "arcnet-android-geometric-host",
+  "schemaVersion": "0.1.0",
+  "status": "implementation-candidate",
+  "constructionEra": "CE-W02",
+  "tranche": "W02.2",
+  "platform": {
+    "os": "android",
+    "language": "kotlin",
+    "uiSurface": "android.view.View+android.graphics.Canvas",
+    "composeRequired": false,
+    "androidXRequired": false
+  },
+  "canonicalInputs": [
+    "docs/specs/geometry/arcnet-coordinate-frame.v0.1.json",
+    "docs/specs/geometry/arcnet-screen-projection.v0.1.json",
+    "docs/specs/geometry/arcnet-screen-projection.vectors.v0.1.json"
+  ],
+  "sourceOwnership": {
+    "androidCopiesCanonicalCoordinates": false,
+    "androidCopiesExpectedScreenValues": false,
+    "assetSource": "../../../docs/specs/geometry"
+  },
+  "startupValidation": {
+    "requiresSourceFrameBinding": true,
+    "requiresSourceCoordinatesImmutable": true,
+    "requiresAuthorityEffectNone": true,
+    "requiresGeometryFreeEquivalent": true,
+    "requiresF25NativeSelfCheck": true,
+    "failurePolicy": "fail-closed-no-geometry"
+  },
+  "rendering": {
+    "sourceCoordinatesMutable": false,
+    "runtimeViewportDimensions": true,
+    "fixedVerticalFov": true,
+    "homogeneousSegmentClippingBeforeDivide": true,
+    "screenCoincidenceCreatesSemanticRelation": false,
+    "drawOrderCreatesAuthority": false
+  },
+  "capabilityCeiling": {
+    "networkPermission": false,
+    "networkClient": false,
+    "jniBridge": false,
+    "rustBridge": false,
+    "signing": false,
+    "privateKeys": false,
+    "protocolFinality": false
+  },
+  "buildEvidence": {
+    "workflow": ".github/workflows/verify-android-native.yml",
+    "gradleVersion": "8.9",
+    "jdkVersion": 17,
+    "compileSdk": 35,
+    "tasks": [
+      "testDebugUnitTest",
+      "assembleDebug"
+    ]
+  },
+  "geometryFreeEquivalentRequired": true,
+  "authorityEffect": "none",
+  "inheritedFalsificationIds": [
+    "F1",
+    "F2",
+    "F3",
+    "F4",
+    "F5",
+    "F6",
+    "F7",
+    "F8",
+    "F9",
+    "F10",
+    "F11",
+    "F12",
+    "F13",
+    "F14",
+    "F15",
+    "F16",
+    "F17",
+    "F18",
+    "F19",
+    "F20",
+    "F21",
+    "F22",
+    "F23",
+    "F24",
+    "F25",
+    "F26",
+    "F27",
+    "F28",
+    "F29",
+    "F30"
+  ],
+  "falsificationIds": [
+    "F31",
+    "F32",
+    "F33",
+    "F34",
+    "F35",
+    "F36"
+  ]
+}
