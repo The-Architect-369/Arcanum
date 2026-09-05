@@ -129,6 +129,8 @@ The JNI shim is cross-compiled for:
 - `arm64-v8a`;
 - `x86_64`.
 
+W02.3 pins the CI Rust toolchain to `1.98.1` and `cargo-ndk` to `4.1.2`. The toolchain pin is part of the falsifiable contract so rustfmt, clippy, linker behavior, and Android cross-compilation do not depend on a moving `stable` alias.
+
 Generated `.so` files are build artifacts and are not committed.
 
 CI must verify all three JNI symbol names in each ABI library, then assemble the Android debug APK and verify both libraries are packaged.
@@ -154,7 +156,7 @@ W02.3 reserves F37–F44:
 - **F40** — probe traverses the existing runtime Tempus path;
 - **F41** — Android loads only the declared JNI library and exact native methods;
 - **F42** — bridge status cannot gate or mutate geometry;
-- **F43** — deterministic cross-ABI symbol and APK evidence;
+- **F43** — deterministic pinned-toolchain cross-ABI symbol and APK evidence;
 - **F44** — geometry-free/authority firewall and W02.4 deferral.
 
 F1–F36 remain inherited. Earlier tranche verifiers must accept later CE-W02 verifier extensions as an ordered prefix rather than requiring the historical root command to remain terminal forever.

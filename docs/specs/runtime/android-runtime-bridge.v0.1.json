@@ -60,6 +60,7 @@
       "arm64-v8a",
       "x86_64"
     ],
+    "rustToolchainVersion": "1.98.1",
     "cargoNdkVersion": "4.1.2",
     "commitNativeBinaries": false,
     "verifyExportedSymbols": true,

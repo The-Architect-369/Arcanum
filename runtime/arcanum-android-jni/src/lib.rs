@@ -3,7 +3,9 @@
 
 use std::ffi::c_void;
 
-use arcanum_android_bridge::{bridge_abi_version, bridge_capability_mask, tempus_system_clock_probe};
+use arcanum_android_bridge::{
+    bridge_abi_version, bridge_capability_mask, tempus_system_clock_probe,
+};
 
 #[unsafe(no_mangle)]
 pub extern "system" fn Java_org_arcanum_nativehost_runtime_NativeRuntimeBridge_nativeAbiVersion(

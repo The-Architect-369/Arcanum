@@ -172,10 +172,11 @@ def verify() -> None:
         "F42 registry independence",
     )
 
-    # F43 — cross-ABI and packaging evidence is explicit.
+    # F43 — cross-ABI and packaging evidence is explicit and reproducible.
     for token in (
         "arm64-v8a",
         "x86_64",
+        'toolchain: "1.98.1"',
         "cargo-ndk --version 4.1.2",
         "llvm-nm",
         "runtime/arcanum-android-jni/Cargo.toml",
@@ -184,6 +185,8 @@ def verify() -> None:
         "lib/x86_64/libarcanum_android_jni.so",
     ):
         require(token in workflow, f"F43 workflow evidence {token}")
+    require(registry["androidBuild"]["rustToolchainVersion"] == "1.98.1", "F43 pinned Rust toolchain")
+    require(registry["androidBuild"]["cargoNdkVersion"] == "4.1.2", "F43 pinned cargo-ndk")
     require(registry["androidBuild"]["commitNativeBinaries"] is False, "F43 binaries uncommitted")
 
     # F44 — explicit deferral and authority firewall.
