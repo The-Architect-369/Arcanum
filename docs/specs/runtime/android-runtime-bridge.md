@@ -17,7 +17,7 @@ source_issue: "https://github.com/The-Architect-369/Arcanum/issues/42"
 
 W02.3 establishes the first native Android ↔ Rust boundary without exporting the internal runtime domain model.
 
-The bridge is intentionally smaller than `arcanum-runtime`. It proves that the Android host can load a Rust `cdylib`, confirm a versioned ABI, inspect an explicit capability ceiling, and traverse the existing factual local Tempus clock path.
+The bridge is intentionally smaller than `arcanum-runtime`. It proves that the Android host can load a Rust JNI library, confirm a versioned ABI, inspect an explicit capability ceiling, and traverse the existing factual local Tempus clock path.
 
 It does not implement the W02.4 offline lifecycle.
 
@@ -28,7 +28,11 @@ Android presentation
         |
         | three primitive JNI probes
         v
-arcanum-android-bridge
+arcanum-android-jni       mechanical FFI shim
+        |
+        | safe Rust calls only
+        v
+arcanum-android-bridge    safe host facade
         |
         | safe Rust call
         v
@@ -38,14 +42,29 @@ arcanum-runtime
         +-- capture_tempus_anchor(...)
 ```
 
-`arcanum-android-bridge` is an adapter, not a canonical module.
+Neither adapter crate is a canonical domain module. The runtime remains the source of Tempus semantics.
+
+## Safety boundary
+
+Rust's current language model treats `no_mangle` as an unsafe attribute because exported linker symbols occupy a global namespace. W02.3 therefore does not make the false claim that a JNI-exporting crate can simultaneously forbid all unsafe code.
+
+Instead:
+
+- `arcanum-android-bridge` is the safe host facade and retains `#![forbid(unsafe_code)]`;
+- `arcanum-android-jni` is a mechanical `cdylib` shim;
+- the JNI shim uses exactly three explicit `#[unsafe(no_mangle)]` attributes;
+- the JNI shim contains no unsafe block and no unsafe function;
+- the `JNIEnv` and receiver pointers are opaque and are never dereferenced;
+- no runtime domain object crosses JNI.
+
+This isolates the unavoidable linker-level proof obligation from runtime/domain logic.
 
 ## Bridge ABI v1
 
 The Android library name is:
 
 ```text
-arcanum_android_bridge
+arcanum_android_jni
 ```
 
 The complete JNI surface is exactly:
@@ -56,9 +75,7 @@ nativeCapabilityMask() -> Long
 nativeTempusClockProbe() -> Int
 ```
 
-No domain object crosses JNI in W02.3.
-
-The `JNIEnv` and receiver pointers are opaque and are never dereferenced. The bridge crate retains `#![forbid(unsafe_code)]`.
+The shim delegates all behavior to the safe facade.
 
 ## Capability ceiling
 
@@ -76,7 +93,7 @@ A bridge implementation that returns any undeclared capability bit fails closed 
 
 ## Tempus probe
 
-`nativeTempusClockProbe()` must traverse:
+`nativeTempusClockProbe()` delegates through the safe facade and must traverse:
 
 ```text
 SystemClockProvider
@@ -107,7 +124,7 @@ The host shows only a bounded bridge status label. It does not expose raw runtim
 
 ## Native build evidence
 
-The bridge is cross-compiled for:
+The JNI shim is cross-compiled for:
 
 - `arm64-v8a`;
 - `x86_64`.
@@ -125,19 +142,19 @@ Deferred to W02.4:
 - local receipt presentation;
 - offline lifecycle UI.
 
-Adding those operations requires a separately reviewed safe host facade and new falsification evidence. They are not implied by the W02.3 ABI.
+Adding those operations requires a separately reviewed safe host facade extension and new falsification evidence. They are not implied by the W02.3 ABI.
 
 ## Falsification
 
 W02.3 reserves F37–F44:
 
-- **F37** — separate bridge crate and closed machine contract;
-- **F38** — safe Rust / primitive-only exact JNI ABI;
+- **F37** — separate safe facade, mechanical FFI shim, and closed machine contract;
+- **F38** — safe facade plus exactly three auditable unsafe linker attributes, with no unsafe blocks/functions or pointer dereference;
 - **F39** — explicit one-bit capability ceiling;
 - **F40** — probe traverses the existing runtime Tempus path;
-- **F41** — Android loads only the declared library and exact native methods;
+- **F41** — Android loads only the declared JNI library and exact native methods;
 - **F42** — bridge status cannot gate or mutate geometry;
 - **F43** — deterministic cross-ABI symbol and APK evidence;
 - **F44** — geometry-free/authority firewall and W02.4 deferral.
 
-F1–F36 remain inherited.
+F1–F36 remain inherited. Earlier tranche verifiers must accept later CE-W02 verifier extensions as an ordered prefix rather than requiring the historical root command to remain terminal forever.

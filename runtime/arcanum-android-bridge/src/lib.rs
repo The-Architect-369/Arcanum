@@ -1,7 +1,5 @@
 #![forbid(unsafe_code)]
 
-use std::ffi::c_void;
-
 use arcanum_runtime::{
     tempus::{capture_tempus_anchor, SystemClockProvider, TEMPUS_ANCHOR_SCHEMA_VERSION},
     ARCANUM_RUNTIME_VERSION,
@@ -42,30 +40,6 @@ pub fn tempus_system_clock_probe() -> i32 {
         Ok(_) => STATUS_CONTRACT_ERROR,
         Err(_) => STATUS_CAPTURE_ERROR,
     }
-}
-
-#[no_mangle]
-pub extern "system" fn Java_org_arcanum_nativehost_runtime_NativeRuntimeBridge_nativeAbiVersion(
-    _env: *mut c_void,
-    _instance: *mut c_void,
-) -> i32 {
-    bridge_abi_version()
-}
-
-#[no_mangle]
-pub extern "system" fn Java_org_arcanum_nativehost_runtime_NativeRuntimeBridge_nativeCapabilityMask(
-    _env: *mut c_void,
-    _instance: *mut c_void,
-) -> i64 {
-    bridge_capability_mask()
-}
-
-#[no_mangle]
-pub extern "system" fn Java_org_arcanum_nativehost_runtime_NativeRuntimeBridge_nativeTempusClockProbe(
-    _env: *mut c_void,
-    _instance: *mut c_void,
-) -> i32 {
-    tempus_system_clock_probe()
 }
 
 #[cfg(test)]

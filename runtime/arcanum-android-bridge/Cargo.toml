@@ -6,9 +6,7 @@ rust-version = "1.78"
 publish = false
 
 [lib]
-name = "arcanum_android_bridge"
 path = "src/lib.rs"
-crate-type = ["cdylib", "rlib"]
 
 [dependencies]
 arcanum-runtime = { path = "../arcanum-runtime" }

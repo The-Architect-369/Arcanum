@@ -11,6 +11,7 @@
     "status",
     "runtimeCrate",
     "bridgeCrate",
+    "ffiCrate",
     "androidHost",
     "abi",
     "capabilities",
@@ -29,6 +30,7 @@
     "status": { "const": "implementation-candidate" },
     "runtimeCrate": { "const": "runtime/arcanum-runtime" },
     "bridgeCrate": { "const": "runtime/arcanum-android-bridge" },
+    "ffiCrate": { "const": "runtime/arcanum-android-jni" },
     "androidHost": { "const": "apps/android" },
     "abi": {
       "type": "object",
@@ -39,14 +41,22 @@
         "library",
         "primitiveOnly",
         "jniPointersDereferenced",
+        "safeFacadeForbidsUnsafeCode",
+        "ffiUnsafeLinkerAttributes",
+        "ffiUnsafeBlocks",
+        "ffiUnsafeFunctions",
         "exportedMethods"
       ],
       "properties": {
         "kind": { "const": "jni" },
         "version": { "const": 1 },
-        "library": { "const": "arcanum_android_bridge" },
+        "library": { "const": "arcanum_android_jni" },
         "primitiveOnly": { "const": true },
         "jniPointersDereferenced": { "const": false },
+        "safeFacadeForbidsUnsafeCode": { "const": true },
+        "ffiUnsafeLinkerAttributes": { "const": 3 },
+        "ffiUnsafeBlocks": { "const": false },
+        "ffiUnsafeFunctions": { "const": false },
         "exportedMethods": {
           "type": "array",
           "prefixItems": [

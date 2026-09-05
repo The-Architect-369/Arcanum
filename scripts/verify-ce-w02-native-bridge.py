@@ -9,6 +9,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 RUNTIME = ROOT / "runtime" / "arcanum-runtime"
 BRIDGE = ROOT / "runtime" / "arcanum-android-bridge"
+JNI = ROOT / "runtime" / "arcanum-android-jni"
 ANDROID = ROOT / "apps" / "android"
 SPEC = ROOT / "docs" / "specs" / "runtime"
 
@@ -30,8 +31,10 @@ def require(condition: bool, message: str) -> None:
 def verify() -> None:
     schema = load_json(SPEC / "android-runtime-bridge.schema.json")
     registry = load_json(SPEC / "android-runtime-bridge.v0.1.json")
-    rust = text(BRIDGE / "src" / "lib.rs")
-    cargo = text(BRIDGE / "Cargo.toml")
+    bridge_rust = text(BRIDGE / "src" / "lib.rs")
+    bridge_cargo = text(BRIDGE / "Cargo.toml")
+    jni_rust = text(JNI / "src" / "lib.rs")
+    jni_cargo = text(JNI / "Cargo.toml")
     core_lib = text(RUNTIME / "src" / "lib.rs")
     bridge_contract = text(
         ANDROID
@@ -50,7 +53,9 @@ def verify() -> None:
     )
     manifest = text(ANDROID / "app/src/main/AndroidManifest.xml")
     workflow = text(ROOT / ".github/workflows/verify-android-bridge.yml")
+    package = load_json(ROOT / "package.json")
 
+    # F37 — separate safe facade, mechanical FFI shim, and closed contract.
     require(schema["additionalProperties"] is False, "F37 closed root schema")
     require(
         registry["inheritedFalsificationIds"] == [f"F{i}" for i in range(1, 37)],
@@ -62,30 +67,52 @@ def verify() -> None:
     )
     require(
         registry["bridgeCrate"] == "runtime/arcanum-android-bridge",
-        "F37 bridge crate path",
+        "F37 safe bridge crate path",
     )
     require(
-        'arcanum-runtime = { path = "../arcanum-runtime" }' in cargo,
-        "F37 bridge depends on runtime",
+        registry["ffiCrate"] == "runtime/arcanum-android-jni",
+        "F37 FFI crate path",
     )
-    require("[dependencies]" in cargo and "jni =" not in cargo, "F37 no JNI helper dependency")
+    require(
+        'arcanum-runtime = { path = "../arcanum-runtime" }' in bridge_cargo,
+        "F37 safe facade depends on runtime",
+    )
+    require(
+        'arcanum-android-bridge = { path = "../arcanum-android-bridge" }' in jni_cargo,
+        "F37 JNI shim depends on safe facade",
+    )
+    require("jni =" not in bridge_cargo and "jni =" not in jni_cargo, "F37 no JNI helper dependency")
+    root_verify = package["scripts"]["verify:ce-w02"]
+    w02_3_prefix = (
+        "pnpm verify:ce-w01 && python3 scripts/verify-ce-w02-projection.py "
+        "&& python3 scripts/verify-ce-w02-native-shell.py "
+        "&& python3 scripts/verify-ce-w02-native-bridge.py"
+    )
+    require(
+        root_verify == w02_3_prefix or root_verify.startswith(w02_3_prefix + " && "),
+        "F37 root CE-W02 verification prefix",
+    )
 
-    # F38 — safe Rust and exact primitive-only ABI.
-    require("#![forbid(unsafe_code)]" in rust, "F38 unsafe code forbidden")
-    require("unsafe {" not in rust and "unsafe fn" not in rust, "F38 no unsafe body")
+    # F38 — safe facade plus the smallest explicit linker-unsafe shim.
+    require("#![forbid(unsafe_code)]" in bridge_rust, "F38 safe facade forbids unsafe code")
+    require("#[no_mangle]" not in bridge_rust and "#[unsafe(no_mangle)]" not in bridge_rust, "F38 no exports in safe facade")
+    require("unsafe {" not in bridge_rust and "unsafe fn" not in bridge_rust, "F38 safe facade no unsafe body")
+    require("#![deny(unsafe_attr_outside_unsafe)]" in jni_rust, "F38 explicit unsafe attribute discipline")
+    require(jni_rust.count("#[unsafe(no_mangle)]") == 3, "F38 exactly three unsafe linker attributes")
+    require("unsafe {" not in jni_rust and "unsafe fn" not in jni_rust, "F38 JNI shim has no unsafe blocks/functions")
     expected_symbols = [
         "Java_org_arcanum_nativehost_runtime_NativeRuntimeBridge_nativeAbiVersion",
         "Java_org_arcanum_nativehost_runtime_NativeRuntimeBridge_nativeCapabilityMask",
         "Java_org_arcanum_nativehost_runtime_NativeRuntimeBridge_nativeTempusClockProbe",
     ]
     for symbol in expected_symbols:
-        require(rust.count(symbol) == 1, f"F38 exact export {symbol}")
-    require(rust.count("#[no_mangle]") == 3, "F38 exactly three JNI exports")
-    require(registry["abi"]["primitiveOnly"] is True, "F38 primitive-only registry")
-    require(
-        registry["abi"]["jniPointersDereferenced"] is False,
-        "F38 opaque JNI pointers",
-    )
+        require(jni_rust.count(symbol) == 1, f"F38 exact export {symbol}")
+    abi = registry["abi"]
+    require(abi["primitiveOnly"] is True, "F38 primitive-only registry")
+    require(abi["jniPointersDereferenced"] is False, "F38 opaque JNI pointers")
+    require(abi["safeFacadeForbidsUnsafeCode"] is True, "F38 safe facade registry")
+    require(abi["ffiUnsafeLinkerAttributes"] == 3, "F38 linker attribute count")
+    require(abi["ffiUnsafeBlocks"] is False and abi["ffiUnsafeFunctions"] is False, "F38 no executable unsafe Rust")
 
     # F39 — single capability bit and denied authority surfaces.
     require(registry["capabilities"]["mask"] == 1, "F39 capability mask")
@@ -117,15 +144,16 @@ def verify() -> None:
 
     # F40 — no duplicate clock semantics; traverse the certified runtime.
     for token in ("capture_tempus_anchor", "SystemClockProvider", "ARCANUM_RUNTIME_VERSION"):
-        require(token in rust, f"F40 runtime traversal {token}")
-    require("SystemTime" not in rust and "UNIX_EPOCH" not in rust, "F40 no duplicate clock implementation")
+        require(token in bridge_rust, f"F40 runtime traversal {token}")
+    require("SystemTime" not in bridge_rust and "UNIX_EPOCH" not in bridge_rust, "F40 no duplicate clock implementation")
     require("pub const ARCANUM_RUNTIME_VERSION" in core_lib, "F40 runtime version source-owned")
+    require("bridge_abi_version" in jni_rust and "tempus_system_clock_probe" in jni_rust, "F40 shim delegates to safe facade")
     require(registry["tempusProbe"]["persists"] is False, "F40 no persistence")
     require(registry["tempusProbe"]["returnsAnchorToHost"] is False, "F40 no anchor export")
     require(registry["tempusProbe"]["collectsLocation"] is False, "F40 no location")
 
     # F41 — Android owns a tiny declared library surface.
-    require('System.loadLibrary("arcanum_android_bridge")' in native_bridge, "F41 library name")
+    require('System.loadLibrary("arcanum_android_jni")' in native_bridge, "F41 library name")
     require(native_bridge.count("external fun") == 3, "F41 exactly three Kotlin native methods")
     for method in registry["abi"]["exportedMethods"]:
         require(f"fun {method}" in native_bridge, f"F41 Kotlin method {method}")
@@ -150,9 +178,10 @@ def verify() -> None:
         "x86_64",
         "cargo-ndk --version 4.1.2",
         "llvm-nm",
+        "runtime/arcanum-android-jni/Cargo.toml",
         "assembleDebug",
-        "lib/arm64-v8a/libarcanum_android_bridge.so",
-        "lib/x86_64/libarcanum_android_bridge.so",
+        "lib/arm64-v8a/libarcanum_android_jni.so",
+        "lib/x86_64/libarcanum_android_jni.so",
     ):
         require(token in workflow, f"F43 workflow evidence {token}")
     require(registry["androidBuild"]["commitNativeBinaries"] is False, "F43 binaries uncommitted")

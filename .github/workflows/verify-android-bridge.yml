@@ -5,8 +5,10 @@ on:
     paths:
       - "runtime/arcanum-runtime/src/lib.rs"
       - "runtime/arcanum-android-bridge/**"
+      - "runtime/arcanum-android-jni/**"
       - "apps/android/**"
       - "docs/specs/runtime/android-runtime-bridge*"
+      - "scripts/verify-ce-w02-native-shell.py"
       - "scripts/verify-ce-w02-native-bridge.py"
       - "package.json"
       - ".gitignore"
@@ -15,8 +17,10 @@ on:
     paths:
       - "runtime/arcanum-runtime/src/lib.rs"
       - "runtime/arcanum-android-bridge/**"
+      - "runtime/arcanum-android-jni/**"
       - "apps/android/**"
       - "docs/specs/runtime/android-runtime-bridge*"
+      - "scripts/verify-ce-w02-native-shell.py"
       - "scripts/verify-ce-w02-native-bridge.py"
       - "package.json"
       - ".gitignore"
@@ -57,13 +61,18 @@ jobs:
       - name: Verify W02.3 repository contract
         run: python3 scripts/verify-ce-w02-native-bridge.py
 
-      - name: Verify Rust bridge crate
+      - name: Verify safe bridge facade
         run: |
           cargo fmt --manifest-path runtime/arcanum-android-bridge/Cargo.toml --check
           cargo clippy --manifest-path runtime/arcanum-android-bridge/Cargo.toml --all-targets -- -D warnings
           cargo test --manifest-path runtime/arcanum-android-bridge/Cargo.toml
 
-      - name: Cross-compile JNI bridge
+      - name: Verify mechanical JNI shim
+        run: |
+          cargo fmt --manifest-path runtime/arcanum-android-jni/Cargo.toml --check
+          cargo clippy --manifest-path runtime/arcanum-android-jni/Cargo.toml --all-targets -- -D warnings
+
+      - name: Cross-compile JNI shim
         run: |
           rm -rf apps/android/app/src/main/jniLibs
           cargo ndk \
@@ -71,7 +80,7 @@ jobs:
             -t x86_64 \
             -o apps/android/app/src/main/jniLibs \
             build \
-            --manifest-path runtime/arcanum-android-bridge/Cargo.toml \
+            --manifest-path runtime/arcanum-android-jni/Cargo.toml \
             --release
 
       - name: Verify exported JNI symbols
@@ -79,7 +88,7 @@ jobs:
         run: |
           NM="$ANDROID_NDK_HOME/toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-nm"
           for abi in arm64-v8a x86_64; do
-            so="apps/android/app/src/main/jniLibs/$abi/libarcanum_android_bridge.so"
+            so="apps/android/app/src/main/jniLibs/$abi/libarcanum_android_jni.so"
             test -f "$so"
             "$NM" -D --defined-only "$so" | grep -q "Java_org_arcanum_nativehost_runtime_NativeRuntimeBridge_nativeAbiVersion"
             "$NM" -D --defined-only "$so" | grep -q "Java_org_arcanum_nativehost_runtime_NativeRuntimeBridge_nativeCapabilityMask"
@@ -98,5 +107,5 @@ jobs:
         run: |
           APK="apps/android/app/build/outputs/apk/debug/app-debug.apk"
           test -f "$APK"
-          unzip -l "$APK" | grep -q "lib/arm64-v8a/libarcanum_android_bridge.so"
-          unzip -l "$APK" | grep -q "lib/x86_64/libarcanum_android_bridge.so"
+          unzip -l "$APK" | grep -q "lib/arm64-v8a/libarcanum_android_jni.so"
+          unzip -l "$APK" | grep -q "lib/x86_64/libarcanum_android_jni.so"
