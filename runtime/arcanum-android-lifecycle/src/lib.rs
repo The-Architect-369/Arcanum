@@ -7,8 +7,8 @@ use arcanum_runtime::persistence::{
     FileTempusAnchorStore, TempusAnchorStore, TempusPersistenceError,
 };
 use arcanum_runtime::receipt::{
-    create_tempus_local_receipt, LocalReceiptSigner, LocalSignature, SigningFailure,
-    SigningHandle, LOCAL_RECEIPT_SCOPE,
+    create_tempus_local_receipt, LocalReceiptSigner, LocalSignature, SigningFailure, SigningHandle,
+    LOCAL_RECEIPT_SCOPE,
 };
 use arcanum_runtime::tempus::{
     capture_tempus_anchor, ClockProvider, SystemClockProvider, TempusAnchor, TempusProviderField,
@@ -394,7 +394,9 @@ mod tests {
         assert_eq!(created.anchor_id, anchor_id);
         assert_eq!(created.receipt_scope.as_deref(), Some("local"));
         assert_eq!(created.receipt_signed, Some(false));
-        assert!(created.presentation_line().contains("receipt=local/unsigned"));
+        assert!(created
+            .presentation_line()
+            .contains("receipt=local/unsigned"));
         assert!(created.presentation_line().contains("authorityEffect=none"));
 
         let recovered = recover_tempus_anchor(&root, anchor_id)
@@ -402,7 +404,9 @@ mod tests {
         assert_eq!(recovered.state, LifecycleState::Recovered);
         assert_eq!(recovered.anchor_id, created.anchor_id);
         assert_eq!(recovered.captured_at, created.captured_at);
-        assert!(recovered.presentation_line().contains("Tempus local · recovered"));
+        assert!(recovered
+            .presentation_line()
+            .contains("Tempus local · recovered"));
 
         fs::remove_dir_all(&root).expect("fixture directory should cleanly remove");
     }
