@@ -10,8 +10,7 @@ use arcanum_runtime::persistence::{
     FileTempusAnchorStore, TempusAnchorStore, TempusPersistenceError,
 };
 use arcanum_runtime::receipt::{
-    create_tempus_local_receipt, LocalReceiptSigner, LocalSignature, SigningFailure,
-    SigningHandle,
+    create_tempus_local_receipt, LocalReceiptSigner, LocalSignature, SigningFailure, SigningHandle,
 };
 use arcanum_runtime::tempus::{
     capture_tempus_anchor, ClockProvider, SystemClockProvider, TempusAnchor, TempusSourceKind,
@@ -85,9 +84,13 @@ impl fmt::Display for TempusLifecycleError {
             Self::InvalidInput(message) => write!(formatter, "invalid lifecycle input: {message}"),
             Self::Clock(message) => write!(formatter, "Tempus clock unavailable: {message}"),
             Self::Persistence(message) => write!(formatter, "Tempus persistence failed: {message}"),
-            Self::StorageRead(message) => write!(formatter, "Tempus durable bytes unavailable: {message}"),
+            Self::StorageRead(message) => {
+                write!(formatter, "Tempus durable bytes unavailable: {message}")
+            }
             Self::Receipt(message) => write!(formatter, "Tempus local receipt failed: {message}"),
-            Self::Contract(message) => write!(formatter, "Tempus lifecycle contract failure: {message}"),
+            Self::Contract(message) => {
+                write!(formatter, "Tempus lifecycle contract failure: {message}")
+            }
         }
     }
 }
@@ -121,12 +124,8 @@ pub fn capture_and_persist(
     validate_storage_root(storage_root)?;
 
     let anchor_id = next_anchor_id()?;
-    let anchor = capture_tempus_anchor(
-        &SystemClockProvider,
-        anchor_id,
-        ARCANUM_RUNTIME_VERSION,
-    )
-    .map_err(|error| TempusLifecycleError::Clock(error.to_string()))?;
+    let anchor = capture_tempus_anchor(&SystemClockProvider, anchor_id, ARCANUM_RUNTIME_VERSION)
+        .map_err(|error| TempusLifecycleError::Clock(error.to_string()))?;
     validate_clock_anchor(&anchor)?;
 
     let store = FileTempusAnchorStore::open(storage_root)?;
@@ -304,27 +303,20 @@ fn json_string(value: &str) -> String {
 
 fn sha256(input: &[u8]) -> [u8; 32] {
     const INITIAL: [u32; 8] = [
-        0x6a09e667,
-        0xbb67ae85,
-        0x3c6ef372,
-        0xa54ff53a,
-        0x510e527f,
-        0x9b05688c,
-        0x1f83d9ab,
+        0x6a09e667, 0xbb67ae85, 0x3c6ef372, 0xa54ff53a, 0x510e527f, 0x9b05688c, 0x1f83d9ab,
         0x5be0cd19,
     ];
     const K: [u32; 64] = [
-        0x428a2f98, 0x71374491, 0xb5c0fbcf, 0xe9b5dba5, 0x3956c25b, 0x59f111f1,
-        0x923f82a4, 0xab1c5ed5, 0xd807aa98, 0x12835b01, 0x243185be, 0x550c7dc3,
-        0x72be5d74, 0x80deb1fe, 0x9bdc06a7, 0xc19bf174, 0xe49b69c1, 0xefbe4786,
-        0x0fc19dc6, 0x240ca1cc, 0x2de92c6f, 0x4a7484aa, 0x5cb0a9dc, 0x76f988da,
-        0x983e5152, 0xa831c66d, 0xb00327c8, 0xbf597fc7, 0xc6e00bf3, 0xd5a79147,
-        0x06ca6351, 0x14292967, 0x27b70a85, 0x2e1b2138, 0x4d2c6dfc, 0x53380d13,
-        0x650a7354, 0x766a0abb, 0x81c2c92e, 0x92722c85, 0xa2bfe8a1, 0xa81a664b,
-        0xc24b8b70, 0xc76c51a3, 0xd192e819, 0xd6990624, 0xf40e3585, 0x106aa070,
-        0x19a4c116, 0x1e376c08, 0x2748774c, 0x34b0bcb5, 0x391c0cb3, 0x4ed8aa4a,
-        0x5b9cca4f, 0x682e6ff3, 0x748f82ee, 0x78a5636f, 0x84c87814, 0x8cc70208,
-        0x90befffa, 0xa4506ceb, 0xbef9a3f7, 0xc67178f2,
+        0x428a2f98, 0x71374491, 0xb5c0fbcf, 0xe9b5dba5, 0x3956c25b, 0x59f111f1, 0x923f82a4,
+        0xab1c5ed5, 0xd807aa98, 0x12835b01, 0x243185be, 0x550c7dc3, 0x72be5d74, 0x80deb1fe,
+        0x9bdc06a7, 0xc19bf174, 0xe49b69c1, 0xefbe4786, 0x0fc19dc6, 0x240ca1cc, 0x2de92c6f,
+        0x4a7484aa, 0x5cb0a9dc, 0x76f988da, 0x983e5152, 0xa831c66d, 0xb00327c8, 0xbf597fc7,
+        0xc6e00bf3, 0xd5a79147, 0x06ca6351, 0x14292967, 0x27b70a85, 0x2e1b2138, 0x4d2c6dfc,
+        0x53380d13, 0x650a7354, 0x766a0abb, 0x81c2c92e, 0x92722c85, 0xa2bfe8a1, 0xa81a664b,
+        0xc24b8b70, 0xc76c51a3, 0xd192e819, 0xd6990624, 0xf40e3585, 0x106aa070, 0x19a4c116,
+        0x1e376c08, 0x2748774c, 0x34b0bcb5, 0x391c0cb3, 0x4ed8aa4a, 0x5b9cca4f, 0x682e6ff3,
+        0x748f82ee, 0x78a5636f, 0x84c87814, 0x8cc70208, 0x90befffa, 0xa4506ceb, 0xbef9a3f7,
+        0xc67178f2,
     ];
 
     let bit_length = (input.len() as u64).wrapping_mul(8);
@@ -445,10 +437,16 @@ mod tests {
         assert!(captured.persisted);
         assert!(!captured.recovered);
         assert_eq!(captured.source_kind, "system-clock");
-        let receipt = captured.receipt.as_ref().expect("capture should expose receipt");
+        let receipt = captured
+            .receipt
+            .as_ref()
+            .expect("capture should expose receipt");
         assert_eq!(receipt.scope, "local");
         assert!(!receipt.signed);
-        assert_eq!(receipt.content_digest_sha256, captured.persisted_digest_sha256);
+        assert_eq!(
+            receipt.content_digest_sha256,
+            captured.persisted_digest_sha256
+        );
         assert!(persisted_anchor_path(&root, &captured.anchor_id).is_file());
 
         let recovered = recover_anchor(&root, &captured.anchor_id)
