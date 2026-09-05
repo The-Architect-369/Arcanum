@@ -1,0 +1,74 @@
+{
+  "active_epoch": {
+    "controlling_log": "docs/governance/architectgpt/architect-log.md",
+    "epoch_id": "ARC-CONT-EPOCH-2",
+    "first_session_number": 11,
+    "predecessor_ids_never_reused": true,
+    "session_ledger": "docs/governance/architectgpt/sessions",
+    "starts_after_commit": "1212f02b61ab0895a84700b9371847a6c5ebe47f",
+    "status": "ACTIVE"
+  },
+  "authority": "continuity-metadata-only",
+  "record_type": "continuity-epoch-seal",
+  "schema": "arcanum.architect.continuity-epoch/v1",
+  "sealed_epoch": {
+    "controlling_log": {
+      "git_blob_sha": "2158ade2faa7164399270fc77c3d85c70299b0c9",
+      "path": "docs/governance/architectgpt/architect-log.md"
+    },
+    "epoch_id": "ARC-CONT-EPOCH-1",
+    "reserved_session_ids": [
+      "ARC-SES-1"
+    ],
+    "scope": "pre-baseline-developmental-continuity",
+    "sealed_through_commit": "1212f02b61ab0895a84700b9371847a6c5ebe47f",
+    "session_records": [
+      {
+        "git_blob_sha": "61e9eaf889a7d8586468a550f5ae6532f8e0fdfd",
+        "path": "docs/governance/architectgpt/sessions/2026-08-12--arc-ses-0002--arc-1--github-conversation-memory-contract.md",
+        "session_id": "ARC-SES-2"
+      },
+      {
+        "git_blob_sha": "8e557386e257f33a3112bf956e62b00d1d2b8a7c",
+        "path": "docs/governance/architectgpt/sessions/2026-08-15--arc-ses-0003--arc-3--define-per-session-record-schema.md",
+        "session_id": "ARC-SES-3"
+      },
+      {
+        "git_blob_sha": "0752404400362243b98adadf8f10abc5e98114e2",
+        "path": "docs/governance/architectgpt/sessions/2026-08-16--arc-ses-0004--arc-4--define-machine-readable-continuity-index.md",
+        "session_id": "ARC-SES-4"
+      },
+      {
+        "git_blob_sha": "565dd5f28728e538add50ae93ccce7b446579b55",
+        "path": "docs/governance/architectgpt/sessions/2026-08-16--arc-ses-0005--arc-5--backfill-wave-xxiv-provenance.md",
+        "session_id": "ARC-SES-5"
+      },
+      {
+        "git_blob_sha": "6deed3cea00c55228aad05600113fc2aa06605e4",
+        "path": "docs/governance/architectgpt/sessions/2026-08-16--arc-ses-0006--arc-6--session-continuity-protocol.md",
+        "session_id": "ARC-SES-6"
+      },
+      {
+        "git_blob_sha": "0cbe6410570f98194598d160d329d9948edd4b51",
+        "path": "docs/governance/architectgpt/sessions/2026-08-16--arc-ses-0007--arc-7--section-v-evidence-first-rebuild.md",
+        "session_id": "ARC-SES-7"
+      },
+      {
+        "git_blob_sha": "c5e1faf29fc17848b8f6d9109b3ba0a207b75d50",
+        "path": "docs/governance/architectgpt/sessions/2026-08-16--arc-ses-0008--arc-8--section-v-event-taxonomy.md",
+        "session_id": "ARC-SES-8"
+      },
+      {
+        "git_blob_sha": "ef8a57d3b8c51b71a86fe5eb4f9caf993e73668a",
+        "path": "docs/governance/architectgpt/sessions/2026-08-17--arc-ses-0009--arc-9--section-v-policy-ratification.md",
+        "session_id": "ARC-SES-9"
+      },
+      {
+        "git_blob_sha": "48279116aaabcd3ec550b5365d195ec3a0a9e87e",
+        "path": "docs/governance/architectgpt/sessions/2026-08-17--arc-ses-0010--arc-10--economic-authority-document-precedence.md",
+        "session_id": "ARC-SES-10"
+      }
+    ],
+    "status": "SEALED"
+  }
+}

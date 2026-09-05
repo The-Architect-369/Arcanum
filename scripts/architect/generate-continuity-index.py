@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate the deterministic, derived Architect continuity index."""
+"""Generate the deterministic post-seal Architect continuity index."""
 
 from __future__ import annotations
 
@@ -11,12 +11,15 @@ import subprocess
 import sys
 from pathlib import Path
 
-SCHEMA_ID = "arcanum.architect.continuity-index/v1"
+SCHEMA_ID = "arcanum.architect.continuity-index/v2"
 INDEX_AUTHORITY = "derived-non-authoritative"
-CONTROLLING_LOG = "docs/governance/architectgpt/architect-log.md"
+EPOCH_SEAL = "docs/governance/architectgpt/continuity-epoch.json"
 SESSION_LEDGER = "docs/governance/architectgpt/sessions"
-MANIFEST_PATH = "docs/governance/architectgpt/architect-gpt-manifest.yaml"
 SESSION_RE = re.compile(r"^ARC-SES-([1-9][0-9]*)$")
+
+
+def fail(message: str) -> None:
+    raise ValueError(message)
 
 
 def parse_scalar(raw: str):
@@ -41,14 +44,14 @@ def parse_scalar(raw: str):
 def parse_frontmatter(text: str) -> dict:
     lines = text.splitlines()
     if not lines or lines[0] != "---":
-        raise ValueError("missing opening frontmatter delimiter")
+        fail("missing opening frontmatter delimiter")
     try:
         end = lines.index("---", 1)
     except ValueError as exc:
         raise ValueError("missing closing frontmatter delimiter") from exc
 
-    fm_lines = lines[1:end]
     data: dict[str, object] = {}
+    fm_lines = lines[1:end]
     i = 0
     while i < len(fm_lines):
         line = fm_lines[i]
@@ -56,17 +59,15 @@ def parse_frontmatter(text: str) -> dict:
         if not line.strip():
             continue
         if line.startswith((" ", "\t")):
-            # Nested mappings belong to fields not projected by ARC-4.
-            continue
+            fail(f"unexpected indentation in frontmatter: {line!r}")
         if ":" not in line:
-            raise ValueError(f"invalid frontmatter line: {line!r}")
+            fail(f"invalid frontmatter line: {line!r}")
         key, raw = line.split(":", 1)
         key = key.strip()
         raw = raw.strip()
         if raw:
             data[key] = parse_scalar(raw)
             continue
-
         items: list[object] = []
         while i < len(fm_lines):
             candidate = fm_lines[i]
@@ -85,106 +86,88 @@ def parse_frontmatter(text: str) -> dict:
 def session_number(session_id: str) -> int:
     match = SESSION_RE.fullmatch(session_id)
     if not match:
-        raise ValueError(f"invalid session identifier: {session_id!r}")
+        fail(f"invalid session identifier: {session_id!r}")
     return int(match.group(1))
 
 
-def read_reserved_session_ids(manifest: Path) -> list[str]:
-    lines = manifest.read_text(encoding="utf-8").splitlines()
-    in_control = False
-    in_reserved = False
-    found: list[str] = []
-    for line in lines:
-        if line == "session_schema_control:":
-            in_control = True
-            in_reserved = False
-            continue
-        if in_control and line and not line.startswith(" "):
-            break
-        if not in_control:
-            continue
-        if line == "  reserved_legacy_session_ids:":
-            in_reserved = True
-            continue
-        if in_reserved:
-            if line.startswith("    - "):
-                value = line[6:].strip()
-                session_number(value)
-                found.append(value)
-                continue
-            if line.strip():
-                in_reserved = False
-
-    if len(found) != len(set(found)):
-        raise ValueError("duplicate reserved session identifier in Architect manifest")
-    return sorted(found, key=session_number)
-
-
-def run_session_validator(ledger: Path) -> None:
+def run_session_validator(ledger: Path, seal: Path) -> None:
     validator = Path(__file__).with_name("validate-session-records.py")
-    schema = Path("docs/governance/architectgpt/session-record.schema.json")
     completed = subprocess.run(
-        [sys.executable, str(validator), "--schema", str(schema), "--ledger", str(ledger)],
+        [
+            sys.executable, str(validator),
+            "--ledger", str(ledger),
+            "--epoch-seal", str(seal),
+        ],
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE,
         text=True,
     )
     if completed.returncode != 0:
         detail = completed.stderr.strip() or completed.stdout.strip()
-        raise ValueError(f"ARC-3 session validation failed: {detail}")
+        fail(f"active session validation failed: {detail}")
+
+
+def load_seal(path: Path) -> dict:
+    seal = json.loads(path.read_text(encoding="utf-8"))
+    if seal.get("schema") != "arcanum.architect.continuity-epoch/v1":
+        fail("unsupported continuity epoch seal schema")
+    if seal.get("record_type") != "continuity-epoch-seal":
+        fail("invalid continuity epoch record_type")
+    sealed = seal["sealed_epoch"]
+    active = seal["active_epoch"]
+    records = sealed["session_records"]
+    if sealed["status"] != "SEALED" or active["status"] != "ACTIVE":
+        fail("continuity epoch states are invalid")
+    if not records:
+        fail("sealed predecessor session record set is empty")
+    numbers = [session_number(item["session_id"]) for item in records]
+    if numbers != sorted(numbers) or len(numbers) != len(set(numbers)):
+        fail("sealed predecessor sessions are not unique and numerically ordered")
+    if active["first_session_number"] != max(numbers) + 1:
+        fail("active first_session_number must immediately follow sealed predecessor")
+    return seal
 
 
 def build_index(
     ledger: Path = Path(SESSION_LEDGER),
-    manifest: Path = Path(MANIFEST_PATH),
+    seal_path: Path = Path(EPOCH_SEAL),
     *,
     validate_sessions: bool = True,
 ) -> dict:
+    seal = load_seal(seal_path)
     if validate_sessions:
-        run_session_validator(ledger)
+        run_session_validator(ledger, seal_path)
 
-    records = sorted(p for p in ledger.glob("*.md") if p.name != "README.md")
-    if not records:
-        raise ValueError("no canonical session records found")
+    active = seal["active_epoch"]
+    sealed = seal["sealed_epoch"]
+    first = active["first_session_number"]
 
     sessions: list[dict] = []
-    seen_sessions: dict[str, Path] = {}
-    for path in records:
-        raw_bytes = path.read_bytes()
-        text = raw_bytes.decode("utf-8")
-        data = parse_frontmatter(text)
+    seen: set[str] = set()
+    for path in sorted(p for p in ledger.glob("*.md") if p.name != "README.md"):
+        raw = path.read_bytes()
+        data = parse_frontmatter(raw.decode("utf-8"))
         session_id = str(data.get("session_id", ""))
-        session_number(session_id)
-        if session_id in seen_sessions:
-            raise ValueError(
-                f"duplicate session identifier {session_id}: "
-                f"{seen_sessions[session_id]} and {path}"
-            )
-        seen_sessions[session_id] = path
-
+        number = session_number(session_id)
+        if number < first:
+            fail(f"sealed predecessor session found in active ledger: {session_id}")
+        if session_id in seen:
+            fail(f"duplicate active session identifier: {session_id}")
+        seen.add(session_id)
         required = (
-            "task_id",
-            "status",
-            "head_commit_end",
-            "decision_ids",
-            "idea_ids",
-            "correction_ids",
-            "deferred_question_ids",
-            "next_task_id",
+            "task_id", "status", "head_commit_end", "decision_ids", "idea_ids",
+            "correction_ids", "deferred_question_ids", "next_task_id",
         )
         missing = [key for key in required if key not in data]
         if missing:
-            raise ValueError(
-                f"{path}: missing projected frontmatter field(s): {', '.join(missing)}"
-            )
-
+            fail(f"{path}: missing projected field(s): {', '.join(missing)}")
         sessions.append(
             {
                 "session_id": session_id,
                 "task_id": data["task_id"],
                 "status": data["status"],
                 "record_path": path.as_posix(),
-                "record_sha256": hashlib.sha256(raw_bytes).hexdigest(),
+                "record_sha256": hashlib.sha256(raw).hexdigest(),
                 "head_commit_end": data["head_commit_end"],
                 "decision_ids": list(data["decision_ids"]),
                 "idea_ids": list(data["idea_ids"]),
@@ -195,40 +178,34 @@ def build_index(
         )
 
     sessions.sort(key=lambda item: session_number(item["session_id"]))
-    reserved_ids = read_reserved_session_ids(manifest)
-    collisions = sorted(set(reserved_ids) & set(seen_sessions), key=session_number)
-    if collisions:
-        raise ValueError(
-            "reserved session identifier also has canonical record: "
-            + ", ".join(collisions)
-        )
-
-    reserved_sessions = [
-        {
-            "session_id": session_id,
-            "state": "RESERVED",
-            "source_path": MANIFEST_PATH,
-        }
-        for session_id in reserved_ids
-    ]
-
-    represented = {session_number(s["session_id"]) for s in sessions}
-    represented.update(session_number(s["session_id"]) for s in reserved_sessions)
-    if represented:
-        missing_numbers = sorted(set(range(1, max(represented) + 1)) - represented)
-        if missing_numbers:
-            raise ValueError(
-                "missing session identifier(s) without explicit reservation: "
-                + ", ".join(f"ARC-SES-{number}" for number in missing_numbers)
+    if sessions:
+        numbers = [session_number(item["session_id"]) for item in sessions]
+        expected = list(range(first, max(numbers) + 1))
+        if numbers != expected:
+            fail(
+                "active session identifier gap: expected "
+                + ", ".join(f"ARC-SES-{n}" for n in expected)
             )
 
+    predecessor_records = sealed["session_records"]
     return {
         "schema": SCHEMA_ID,
         "record_type": "continuity-index",
         "authority": INDEX_AUTHORITY,
-        "controlling_log": CONTROLLING_LOG,
-        "session_ledger": SESSION_LEDGER,
-        "reserved_sessions": reserved_sessions,
+        "epoch_seal": EPOCH_SEAL,
+        "predecessor_epoch": {
+            "epoch_id": sealed["epoch_id"],
+            "status": sealed["status"],
+            "sealed_through_commit": sealed["sealed_through_commit"],
+            "last_session_id": predecessor_records[-1]["session_id"],
+            "record_count": len(predecessor_records),
+        },
+        "active_epoch": {
+            "epoch_id": active["epoch_id"],
+            "first_session_number": first,
+            "controlling_log": active["controlling_log"],
+            "session_ledger": active["session_ledger"],
+        },
         "sessions": sessions,
     }
 
@@ -240,23 +217,16 @@ def serialize_index(data: dict) -> str:
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--ledger", default=SESSION_LEDGER)
-    parser.add_argument("--manifest", default=MANIFEST_PATH)
-    parser.add_argument(
-        "--output",
-        default="docs/governance/architectgpt/continuity-index.json",
-    )
+    parser.add_argument("--epoch-seal", default=EPOCH_SEAL)
+    parser.add_argument("--output", default="docs/governance/architectgpt/continuity-index.json")
     parser.add_argument("--stdout", action="store_true")
-    parser.add_argument(
-        "--skip-session-validation",
-        action="store_true",
-        help="Testing only; canonical generation must not use this flag.",
-    )
+    parser.add_argument("--skip-session-validation", action="store_true")
     args = parser.parse_args()
 
     try:
         data = build_index(
             Path(args.ledger),
-            Path(args.manifest),
+            Path(args.epoch_seal),
             validate_sessions=not args.skip_session_validation,
         )
         rendered = serialize_index(data)

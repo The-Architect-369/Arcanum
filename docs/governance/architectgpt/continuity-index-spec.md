@@ -1,68 +1,78 @@
 ---
 title: Architect GPT Machine-Readable Continuity Index
 status: canonical-specification
-version: 1.0
+version: 2.0
 visibility: public
-ratified_by: Human Architect
-ratified_at: 2026-08-16
+last_updated: 2026-09-04
+continuity_epoch: ARC-CONT-EPOCH-2
 ---
 
 # Architect GPT Machine-Readable Continuity Index
 
 ## Purpose
 
-This specification defines the deterministic machine-readable continuity index introduced by ARC-4. The index exists to make canonical Architect session continuity mechanically discoverable and verifiable without creating a second source of continuity authority.
+The continuity index is the deterministic, derived projection of active Architect
+session records plus a compact summary of the sealed predecessor epoch.
+
+It is evidence, not authority.
 
 ## Authority boundary
 
-The following authority order is unchanged:
+Current authority is:
 
-1. `docs/governance/architectgpt/architect-log.md` is the sole controlling cross-session narrative log.
-2. `docs/governance/architectgpt/sessions/` is the canonical per-session ledger.
-3. `docs/governance/architectgpt/continuity-index.json` is a generated, derived, non-authoritative projection of those canonical records plus explicit reviewed reservation metadata from the Architect manifest.
-4. Notion is an operational mirror. It is never an input to continuity-index generation and cannot allocate or redefine canonical identifiers.
+1. Human Architect and controlling doctrine/canon.
+2. `conversation-memory-contract.md` for continuity rules.
+3. `continuity-epoch.json` for the exact predecessor seal and active-epoch boundary.
+4. Active `architect-log.md` and `sessions/` for post-seal continuity.
+5. `continuity-index.json` as deterministic derived metadata.
 
-The index MUST be fully regenerable from canonical GitHub evidence. It MUST NOT contain independent narrative truth, allocate session identifiers, repair records, infer missing sessions, or supersede the controlling log or per-session ledger.
+The index must not allocate IDs, infer missing history, repair records, or reproduce
+developmental narrative bodies.
+
+## Epoch boundary
+
+`ARC-CONT-EPOCH-1` is sealed through exact commit
+`1212f02b61ab0895a84700b9371847a6c5ebe47f`.
+
+The seal records exact Git blob identities for the predecessor controlling log and
+the nine predecessor session records `ARC-SES-2` through `ARC-SES-10`, plus the
+permanent reservation of `ARC-SES-1`.
+
+`ARC-CONT-EPOCH-2` starts at `ARC-SES-11`.
+
+The validator must prove that every sealed blob still matches the recorded path at
+the sealed commit. Missing Git history fails closed.
 
 ## Canonical files
 
-- Specification: `docs/governance/architectgpt/continuity-index-spec.md`
-- JSON Schema: `docs/governance/architectgpt/continuity-index.schema.json`
-- Generated index: `docs/governance/architectgpt/continuity-index.json`
+- Epoch seal: `docs/governance/architectgpt/continuity-epoch.json`
+- Epoch schema: `docs/governance/architectgpt/continuity-epoch.schema.json`
+- Index: `docs/governance/architectgpt/continuity-index.json`
+- Index schema: `docs/governance/architectgpt/continuity-index.schema.json`
 - Generator: `scripts/architect/generate-continuity-index.py`
 - Validator: `scripts/architect/validate-continuity-index.py`
-
-JSON is the ratified canonical serialization format.
-
-## Canonical inputs
-
-Session entries derive only from validated Markdown records in `docs/governance/architectgpt/sessions/`.
-
-Reserved session identifiers derive from `session_schema_control.reserved_legacy_session_ids` in `docs/governance/architectgpt/architect-gpt-manifest.yaml`. ARC-SES-1 remains a reservation and MUST NOT be materialized as a synthetic session record.
-
-The controlling Architect log is a reconciliation input to the validator for closed-session orphan detection. It is not copied into the index.
-
-ARC-SES-2 remains the reviewed grandfathered record defined by ARC-3. ARC-3 filename, lifecycle, privacy, Human-review, and typed-record semantics are unchanged.
+- Active session validator: `scripts/architect/validate-session-records.py`
 
 ## Index shape
 
-The top-level document contains:
+The v2 top level contains:
 
-- `schema`: `arcanum.architect.continuity-index/v1`
-- `record_type`: `continuity-index`
-- `authority`: `derived-non-authoritative`
-- `controlling_log`: the canonical Architect log path
-- `session_ledger`: the canonical session-ledger path
-- `reserved_sessions`: reviewed reserved IDs, ordered numerically
-- `sessions`: canonical session records, ordered numerically
+- `schema`
+- `record_type`
+- `authority`
+- `epoch_seal`
+- `predecessor_epoch`
+- `active_epoch`
+- `sessions`
 
-Each reserved-session entry contains only:
+`predecessor_epoch` is a compact summary only. Exact historical paths and blob
+identities remain in the epoch seal.
 
-- `session_id`
-- `state`, fixed to `RESERVED`
-- `source_path`
+`sessions` contains only active-epoch session projections.
 
-Each session entry contains only:
+## Active session projection
+
+Each active session entry contains:
 
 - `session_id`
 - `task_id`
@@ -76,79 +86,40 @@ Each session entry contains only:
 - `deferred_question_ids`
 - `next_task_id`
 
-These fields are continuity pointers and integrity anchors. Titles, outcomes, domain, priority, privacy detail, verification prose, provider mirrors, and narrative summaries remain in canonical source records and are deliberately not duplicated into the index.
+The SHA-256 is computed from the exact active Markdown record bytes.
 
-## Ordering
+## Ordering and gaps
 
-Session and reservation order is determined by the integer suffix of `ARC-SES-N`.
+Active sessions are ordered by numeric `ARC-SES-N`.
 
-Lexicographic filename order, creation date, task number, and wall-clock time MUST NOT determine continuity order.
+If active records exist, their numbers must form a contiguous sequence beginning at
+11. No predecessor ID may reappear in the active ledger.
 
-The used-ID set is the union of canonical session IDs and explicit reserved IDs. From 1 through the greatest represented session number, every integer MUST be represented by either a canonical session record or an explicit reservation. A numeric hole is a validation failure.
+An empty active ledger is valid.
 
 ## Deterministic serialization
 
-The generator MUST produce UTF-8 JSON using:
+The generator emits UTF-8 JSON with two-space indentation, lexicographically sorted
+object keys, deterministic array ordering, LF endings, and one trailing newline.
 
-- two-space indentation;
-- lexicographically sorted object keys;
-- array ordering defined by this specification;
-- `ensure_ascii=false`;
-- LF line endings;
-- exactly one trailing newline.
+It contains no wall-clock timestamp, random identifier, current HEAD, or
+environment-specific path.
 
-The generated document MUST NOT contain `generated_at`, the current commit SHA, random identifiers, environment-specific paths, or any other volatile value.
+## Validation
 
-`record_sha256` is the lowercase SHA-256 digest of the exact source Markdown bytes for the indexed session record.
+Validation fails when:
 
-## Generator behavior
+- the epoch seal shape or constants are wrong;
+- the sealed predecessor commit is unavailable;
+- a sealed path resolves to a Git blob different from the recorded blob;
+- a sealed predecessor body remains in the active session ledger;
+- active session validation fails;
+- an active ID is below 11, duplicated, or leaves a numeric gap;
+- the committed index differs from deterministic regeneration;
+- the active log does not declare the active epoch and predecessor commit.
 
-The generator MUST:
+GitHub Actions uses full-history checkout so sealed Git object verification remains
+available in CI.
 
-1. invoke the ARC-3 session-record validator before projection;
-2. read canonical session Markdown records only from the configured ledger;
-3. read only the explicit reviewed reservation list from the canonical Architect manifest;
-4. reject duplicate or malformed session identifiers;
-5. hash exact record bytes;
-6. order records numerically;
-7. emit only the schema-defined derived fields;
-8. serialize deterministically.
-
-The generator MUST NOT allocate IDs, alter source records, alter the controlling log, consult Notion, or repair missing evidence.
-
-## Validator behavior
-
-The continuity validator MUST fail closed when any of the following is true:
-
-- the ARC-3 session ledger is invalid;
-- the committed index differs byte-for-byte from deterministic regeneration;
-- a session identifier is duplicated;
-- a typed child identifier is duplicated across canonical sessions;
-- a numeric session ID is neither recorded nor explicitly reserved;
-- a reserved identifier collides with a canonical record;
-- session ordering is non-numeric or unstable;
-- an indexed record path is absent or mismatched;
-- `record_sha256` does not match exact source bytes;
-- a `CLOSED` or `BACKFILL` session lacks exactly one controlling-log block containing both its session ID and canonical record path;
-- the controlling log names a non-reserved session that has no canonical record;
-- a manually inserted or stale index entry survives in the committed document.
-
-`OPEN`, `REVIEW-PENDING`, and `NEEDS-CORRECTION` records may be indexed while active and do not require a closure-log block. Closure-log reconciliation begins when a record reaches `CLOSED` or `BACKFILL`.
-
-## CI integration
-
-ARC-4 validation runs in the existing Verify Sync GitHub Actions job after repository-level verification. This preserves one verification pipeline rather than establishing a competing workflow or continuity authority.
-
-A green continuity validation proves deterministic regeneration and cross-record consistency. It does not grant ratification authority and it does not authorize merge, deployment, or identifier allocation.
-
-## Non-scope
-
-ARC-4 does not:
-
-- amend the ARC-3 per-session record schema;
-- backfill ARC-SES-1;
-- modify Tempus, Runtime, economics, chain, native, or application surfaces;
-- migrate GitHub canon into Notion;
-- merge, promote, or deploy the Wave XXIV branch.
-
-Human Architect review remains the ratification and session-allocation authority.
+A green result proves integrity and determinism only. It does not grant merge,
+deployment, write, or ratification authority.

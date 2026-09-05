@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Architect GPT 4.0 repository integrity verification.
-# Read-only: this script validates the checked-out tree and never edits source,
-# stages files, commits, pushes, merges, deploys, or rewrites refs.
+# Read-only: validates the checked-out tree and never edits source, stages files,
+# commits, pushes, merges, deploys, or rewrites refs.
 set -euo pipefail
 
 ROOT="$(git rev-parse --show-toplevel 2>/dev/null || true)"
@@ -11,18 +11,9 @@ cd "$ROOT"
 PASS=0
 TOTAL=15
 
-step() {
-  printf '\n[%s/%s] %s\n' "$1" "$TOTAL" "$2"
-}
-
-ok() {
-  printf '✅ %s\n' "$*"
-  PASS=$((PASS + 1))
-}
-
-require_file() {
-  [[ -f "$1" ]] || { echo "FAIL missing required file: $1" >&2; exit 1; }
-}
+step() { printf '\n[%s/%s] %s\n' "$1" "$TOTAL" "$2"; }
+ok() { printf '✅ %s\n' "$*"; PASS=$((PASS + 1)); }
+require_file() { [[ -f "$1" ]] || { echo "FAIL missing required file: $1" >&2; exit 1; }; }
 
 echo "== verify-sync =="
 echo "Repo: $(basename "$ROOT")"
@@ -175,8 +166,10 @@ step 6 "Doctrine and canonical checksums"
 bash scripts/doctrine-guard.sh
 ok "doctrine guard passed"
 
-step 7 "Continuity ledger and deterministic index"
+step 7 "Continuity epoch seal and active ledger"
 jq empty docs/governance/architectgpt/session-record.schema.json
+jq empty docs/governance/architectgpt/continuity-epoch.schema.json
+jq empty docs/governance/architectgpt/continuity-epoch.json
 jq empty docs/governance/architectgpt/continuity-index.schema.json
 jq empty docs/governance/architectgpt/continuity-index.json
 python3 -m py_compile \
@@ -185,7 +178,7 @@ python3 -m py_compile \
   scripts/architect/validate-continuity-index.py
 python3 scripts/architect/validate-session-records.py
 python3 scripts/architect/validate-continuity-index.py
-ok "pre-epoch-seal continuity remains deterministic and valid"
+ok "sealed predecessor continuity and active epoch are deterministic and valid"
 
 step 8 "Orchestration, evidence, and CI syntax"
 require_file .github/workflows/architect-verification.yml

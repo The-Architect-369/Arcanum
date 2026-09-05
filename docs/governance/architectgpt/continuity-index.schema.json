@@ -3,44 +3,73 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "additionalProperties": false,
   "properties": {
+    "active_epoch": {
+      "additionalProperties": false,
+      "properties": {
+        "controlling_log": {
+          "const": "docs/governance/architectgpt/architect-log.md"
+        },
+        "epoch_id": {
+          "const": "ARC-CONT-EPOCH-2"
+        },
+        "first_session_number": {
+          "minimum": 1,
+          "type": "integer"
+        },
+        "session_ledger": {
+          "const": "docs/governance/architectgpt/sessions"
+        }
+      },
+      "required": [
+        "epoch_id",
+        "first_session_number",
+        "controlling_log",
+        "session_ledger"
+      ],
+      "type": "object"
+    },
     "authority": {
       "const": "derived-non-authoritative"
     },
-    "controlling_log": {
-      "const": "docs/governance/architectgpt/architect-log.md"
+    "epoch_seal": {
+      "const": "docs/governance/architectgpt/continuity-epoch.json"
+    },
+    "predecessor_epoch": {
+      "additionalProperties": false,
+      "properties": {
+        "epoch_id": {
+          "const": "ARC-CONT-EPOCH-1"
+        },
+        "last_session_id": {
+          "pattern": "^ARC-SES-[1-9][0-9]*$",
+          "type": "string"
+        },
+        "record_count": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "sealed_through_commit": {
+          "pattern": "^[0-9a-f]{40}$",
+          "type": "string"
+        },
+        "status": {
+          "const": "SEALED"
+        }
+      },
+      "required": [
+        "epoch_id",
+        "status",
+        "sealed_through_commit",
+        "last_session_id",
+        "record_count"
+      ],
+      "type": "object"
     },
     "record_type": {
       "const": "continuity-index"
     },
-    "reserved_sessions": {
-      "items": {
-        "additionalProperties": false,
-        "properties": {
-          "session_id": {
-            "pattern": "^ARC-SES-[1-9][0-9]*$",
-            "type": "string"
-          },
-          "source_path": {
-            "const": "docs/governance/architectgpt/architect-gpt-manifest.yaml"
-          },
-          "state": {
-            "const": "RESERVED"
-          }
-        },
-        "required": [
-          "session_id",
-          "state",
-          "source_path"
-        ],
-        "type": "object"
-      },
-      "type": "array"
-    },
     "schema": {
-      "const": "arcanum.architect.continuity-index/v1"
-    },
-    "session_ledger": {
-      "const": "docs/governance/architectgpt/sessions"
+      "const": "arcanum.architect.continuity-index/v2"
     },
     "sessions": {
       "items": {
@@ -134,9 +163,9 @@
     "schema",
     "record_type",
     "authority",
-    "controlling_log",
-    "session_ledger",
-    "reserved_sessions",
+    "epoch_seal",
+    "predecessor_epoch",
+    "active_epoch",
     "sessions"
   ],
   "title": "Architect GPT Machine-Readable Continuity Index",
