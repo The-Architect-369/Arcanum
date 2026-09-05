@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-09-05T02:17:38Z",
+  "generated_at": "2026-09-05T02:29:06Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "5956f81b9",
+  "commit": "f6710f286",
   "generator_version": "1.4",
   "files": [
     {
@@ -3229,29 +3229,29 @@
     {
       "path": "docs/governance/architectgpt/architect-gpt-manifest.yaml",
       "type": "file",
-      "size_bytes": 12775,
-      "last_modified_commit": "de6368a46",
+      "size_bytes": 12724,
+      "last_modified_commit": "f6710f286",
       "is_empty": false,
       "extension": ".yaml",
-      "lines": 336
+      "lines": 333
     },
     {
       "path": "docs/governance/architectgpt/architect-gpt.md",
       "type": "file",
-      "size_bytes": 13259,
-      "last_modified_commit": "de6368a46",
+      "size_bytes": 8261,
+      "last_modified_commit": "f6710f286",
       "is_empty": false,
       "extension": ".md",
-      "lines": 347
+      "lines": 264
     },
     {
       "path": "docs/governance/architectgpt/architect-log.md",
       "type": "file",
-      "size_bytes": 62714,
-      "last_modified_commit": "4fa5cb6c0",
+      "size_bytes": 1277,
+      "last_modified_commit": "f6710f286",
       "is_empty": false,
       "extension": ".md",
-      "lines": 1345
+      "lines": 35
     },
     {
       "path": "docs/governance/architectgpt/ast-integrity.schema.json",
@@ -3272,40 +3272,58 @@
       "lines": 71
     },
     {
+      "path": "docs/governance/architectgpt/continuity-epoch.json",
+      "type": "file",
+      "size_bytes": 3167,
+      "last_modified_commit": "f6710f286",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 74
+    },
+    {
+      "path": "docs/governance/architectgpt/continuity-epoch.schema.json",
+      "type": "file",
+      "size_bytes": 3625,
+      "last_modified_commit": "f6710f286",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 142
+    },
+    {
       "path": "docs/governance/architectgpt/continuity-index-spec.md",
       "type": "file",
-      "size_bytes": 6985,
-      "last_modified_commit": "bc4120895",
+      "size_bytes": 3871,
+      "last_modified_commit": "f6710f286",
       "is_empty": false,
       "extension": ".md",
-      "lines": 154
+      "lines": 125
     },
     {
       "path": "docs/governance/architectgpt/continuity-index.json",
       "type": "file",
-      "size_bytes": 6256,
-      "last_modified_commit": "2fbcc073d",
+      "size_bytes": 674,
+      "last_modified_commit": "f6710f286",
       "is_empty": false,
       "extension": ".json",
-      "lines": 185
+      "lines": 20
     },
     {
       "path": "docs/governance/architectgpt/continuity-index.schema.json",
       "type": "file",
-      "size_bytes": 3749,
-      "last_modified_commit": "bc4120895",
+      "size_bytes": 4417,
+      "last_modified_commit": "f6710f286",
       "is_empty": false,
       "extension": ".json",
-      "lines": 144
+      "lines": 173
     },
     {
       "path": "docs/governance/architectgpt/conversation-memory-contract.md",
       "type": "file",
-      "size_bytes": 18999,
-      "last_modified_commit": "c6950e8ff",
+      "size_bytes": 6476,
+      "last_modified_commit": "f6710f286",
       "is_empty": false,
       "extension": ".md",
-      "lines": 507
+      "lines": 176
     },
     {
       "path": "docs/governance/architectgpt/execution-record.schema.json",
@@ -3364,110 +3382,29 @@
     {
       "path": "docs/governance/architectgpt/session-record-schema.md",
       "type": "file",
-      "size_bytes": 16466,
-      "last_modified_commit": "c6950e8ff",
+      "size_bytes": 3160,
+      "last_modified_commit": "f6710f286",
       "is_empty": false,
       "extension": ".md",
-      "lines": 435
+      "lines": 133
     },
     {
       "path": "docs/governance/architectgpt/session-record.schema.json",
       "type": "file",
-      "size_bytes": 7116,
-      "last_modified_commit": "c6950e8ff",
+      "size_bytes": 8396,
+      "last_modified_commit": "f6710f286",
       "is_empty": false,
       "extension": ".json",
-      "lines": 243
+      "lines": 389
     },
     {
-      "path": "docs/governance/architectgpt/sessions/.gitkeep",
+      "path": "docs/governance/architectgpt/sessions/README.md",
       "type": "file",
-      "size_bytes": 0,
-      "last_modified_commit": "b4c8d3fe7",
-      "is_empty": true,
-      "extension": "",
-      "lines": 0
-    },
-    {
-      "path": "docs/governance/architectgpt/sessions/2026-08-12--arc-ses-0002--arc-1--github-conversation-memory-contract.md",
-      "type": "file",
-      "size_bytes": 9699,
-      "last_modified_commit": "e96ad3de9",
+      "size_bytes": 637,
+      "last_modified_commit": "f6710f286",
       "is_empty": false,
       "extension": ".md",
-      "lines": 215
-    },
-    {
-      "path": "docs/governance/architectgpt/sessions/2026-08-15--arc-ses-0003--arc-3--define-per-session-record-schema.md",
-      "type": "file",
-      "size_bytes": 12336,
-      "last_modified_commit": "deefd724f",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 222
-    },
-    {
-      "path": "docs/governance/architectgpt/sessions/2026-08-16--arc-ses-0004--arc-4--define-machine-readable-continuity-index.md",
-      "type": "file",
-      "size_bytes": 9842,
-      "last_modified_commit": "6a65c1405",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 184
-    },
-    {
-      "path": "docs/governance/architectgpt/sessions/2026-08-16--arc-ses-0005--arc-5--backfill-wave-xxiv-provenance.md",
-      "type": "file",
-      "size_bytes": 16835,
-      "last_modified_commit": "d7aa90d3c",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 286
-    },
-    {
-      "path": "docs/governance/architectgpt/sessions/2026-08-16--arc-ses-0006--arc-6--session-continuity-protocol.md",
-      "type": "file",
-      "size_bytes": 13105,
-      "last_modified_commit": "2fe0169c7",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 211
-    },
-    {
-      "path": "docs/governance/architectgpt/sessions/2026-08-16--arc-ses-0007--arc-7--section-v-evidence-first-rebuild.md",
-      "type": "file",
-      "size_bytes": 12853,
-      "last_modified_commit": "2d6ea965c",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 204
-    },
-    {
-      "path": "docs/governance/architectgpt/sessions/2026-08-16--arc-ses-0008--arc-8--section-v-event-taxonomy.md",
-      "type": "file",
-      "size_bytes": 15913,
-      "last_modified_commit": "a0c4c1af7",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 256
-    },
-    {
-      "path": "docs/governance/architectgpt/sessions/2026-08-17--arc-ses-0009--arc-9--section-v-policy-ratification.md",
-      "type": "file",
-      "size_bytes": 19035,
-      "last_modified_commit": "c67d47ecb",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 299
-    },
-    {
-      "path": "docs/governance/architectgpt/sessions/2026-08-17--arc-ses-0010--arc-10--economic-authority-document-precedence.md",
-      "type": "file",
-      "size_bytes": 19485,
-      "last_modified_commit": "2fbcc073d",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 282
+      "lines": 15
     },
     {
       "path": "docs/governance/economic-principles.md",
@@ -6208,11 +6145,11 @@
     {
       "path": "scripts/architect/generate-continuity-index.py",
       "type": "file",
-      "size_bytes": 8968,
-      "last_modified_commit": "bc4120895",
+      "size_bytes": 8484,
+      "last_modified_commit": "f6710f286",
       "is_empty": false,
       "extension": ".py",
-      "lines": 275
+      "lines": 245
     },
     {
       "path": "scripts/architect/impact-graph.py",
@@ -6361,11 +6298,11 @@
     {
       "path": "scripts/architect/validate-continuity-index.py",
       "type": "file",
-      "size_bytes": 10235,
-      "last_modified_commit": "bc4120895",
+      "size_bytes": 8781,
+      "last_modified_commit": "f6710f286",
       "is_empty": false,
       "extension": ".py",
-      "lines": 266
+      "lines": 206
     },
     {
       "path": "scripts/architect/validate-evidence.py",
@@ -6379,11 +6316,11 @@
     {
       "path": "scripts/architect/validate-session-records.py",
       "type": "file",
-      "size_bytes": 11993,
-      "last_modified_commit": "c6950e8ff",
+      "size_bytes": 10357,
+      "last_modified_commit": "f6710f286",
       "is_empty": false,
       "extension": ".py",
-      "lines": 335
+      "lines": 281
     },
     {
       "path": "scripts/doctrine-guard.sh",
@@ -6478,11 +6415,11 @@
     {
       "path": "scripts/verify-sync.sh",
       "type": "file",
-      "size_bytes": 10235,
-      "last_modified_commit": "5956f81b9",
+      "size_bytes": 10359,
+      "last_modified_commit": "f6710f286",
       "is_empty": false,
       "extension": ".sh",
-      "lines": 248
+      "lines": 241
     },
     {
       "path": "tsconfig.json",
