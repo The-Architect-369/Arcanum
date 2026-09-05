@@ -1,17 +1,17 @@
 {
-  "generated_at": "2026-09-04T21:01:58Z",
+  "generated_at": "2026-09-05T00:27:29Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "afd5aa406",
+  "commit": "0412d2719",
   "generator_version": "1.4",
   "files": [
     {
       "path": ".github/workflows/architect-promotion.yml",
       "type": "file",
-      "size_bytes": 1922,
-      "last_modified_commit": "df2e686ca",
+      "size_bytes": 1987,
+      "last_modified_commit": "0412d2719",
       "is_empty": false,
       "extension": ".yml",
-      "lines": 68
+      "lines": 71
     },
     {
       "path": ".github/workflows/doctrine-guard.yml",
@@ -70,20 +70,20 @@
     {
       "path": "AGENTS.md",
       "type": "file",
-      "size_bytes": 3118,
-      "last_modified_commit": "eb0b4c335",
+      "size_bytes": 3875,
+      "last_modified_commit": "0412d2719",
       "is_empty": false,
       "extension": ".md",
-      "lines": 153
+      "lines": 94
     },
     {
       "path": "README.md",
       "type": "file",
-      "size_bytes": 485,
-      "last_modified_commit": "0f075f352",
+      "size_bytes": 2309,
+      "last_modified_commit": "0412d2719",
       "is_empty": false,
       "extension": ".md",
-      "lines": 21
+      "lines": 55
     },
     {
       "path": "apps/web/.gitignore",
@@ -2878,11 +2878,11 @@
     {
       "path": "docs/archive/README.md",
       "type": "file",
-      "size_bytes": 1178,
-      "last_modified_commit": "b4c8d3fe7",
+      "size_bytes": 1386,
+      "last_modified_commit": "0412d2719",
       "is_empty": false,
       "extension": ".md",
-      "lines": 28
+      "lines": 30
     },
     {
       "path": "docs/archive/app/2025-10-master-arcanum-index-v1-rc.md",
@@ -3310,11 +3310,11 @@
     {
       "path": "docs/governance/architectgpt/build-diagnostics-protocol.md",
       "type": "file",
-      "size_bytes": 3428,
-      "last_modified_commit": "804876232",
+      "size_bytes": 2745,
+      "last_modified_commit": "0412d2719",
       "is_empty": false,
       "extension": ".md",
-      "lines": 112
+      "lines": 68
     },
     {
       "path": "docs/governance/architectgpt/build-diagnostics.schema.json",
@@ -3859,11 +3859,11 @@
     {
       "path": "docs/index.md",
       "type": "file",
-      "size_bytes": 4823,
-      "last_modified_commit": "1b446cbec",
+      "size_bytes": 3056,
+      "last_modified_commit": "0412d2719",
       "is_empty": false,
       "extension": ".md",
-      "lines": 124
+      "lines": 78
     },
     {
       "path": "docs/manifesto/arcanum-manifesto.md",
@@ -3877,11 +3877,11 @@
     {
       "path": "docs/mobile/termux-verification.md",
       "type": "file",
-      "size_bytes": 3403,
-      "last_modified_commit": "c0791d06e",
+      "size_bytes": 2594,
+      "last_modified_commit": "0412d2719",
       "is_empty": false,
       "extension": ".md",
-      "lines": 112
+      "lines": 82
     },
     {
       "path": "docs/modules/hope/g1-hope-seal.md",
@@ -3929,22 +3929,31 @@
       "lines": 224
     },
     {
-      "path": "docs/repo/construction-era-consolidation-ledger.md",
+      "path": "docs/repo/arcanum-baseline.md",
       "type": "file",
-      "size_bytes": 25021,
-      "last_modified_commit": "afd5aa406",
+      "size_bytes": 6866,
+      "last_modified_commit": "0412d2719",
       "is_empty": false,
       "extension": ".md",
-      "lines": 659
+      "lines": 151
+    },
+    {
+      "path": "docs/repo/construction-era-consolidation-ledger.md",
+      "type": "file",
+      "size_bytes": 1830,
+      "last_modified_commit": "0412d2719",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 46
     },
     {
       "path": "docs/repo/construction-era-research-disposition.md",
       "type": "file",
-      "size_bytes": 22464,
-      "last_modified_commit": "eeb1fb89e",
+      "size_bytes": 3112,
+      "last_modified_commit": "0412d2719",
       "is_empty": false,
       "extension": ".md",
-      "lines": 456
+      "lines": 69
     },
     {
       "path": "docs/repo/repo-index-generator-spec.md",
@@ -3958,11 +3967,11 @@
     {
       "path": "docs/repo/repo-interface.md",
       "type": "file",
-      "size_bytes": 5317,
-      "last_modified_commit": "25420635d",
+      "size_bytes": 4911,
+      "last_modified_commit": "0412d2719",
       "is_empty": false,
       "extension": ".md",
-      "lines": 151
+      "lines": 117
     },
     {
       "path": "docs/repo/repository-canonicalization.md",
@@ -3985,20 +3994,20 @@
     {
       "path": "docs/roadmap/canonical-roadmap.md",
       "type": "file",
-      "size_bytes": 11217,
-      "last_modified_commit": "4a3d8e773",
+      "size_bytes": 5578,
+      "last_modified_commit": "0412d2719",
       "is_empty": false,
       "extension": ".md",
-      "lines": 238
+      "lines": 140
     },
     {
       "path": "docs/roadmap/construction-era-roadmap.md",
       "type": "file",
-      "size_bytes": 14414,
-      "last_modified_commit": "825ca774f",
+      "size_bytes": 10902,
+      "last_modified_commit": "0412d2719",
       "is_empty": false,
       "extension": ".md",
-      "lines": 341
+      "lines": 210
     },
     {
       "path": "docs/specs/README.md",
@@ -4552,11 +4561,11 @@
     {
       "path": "docs/status/project-status.md",
       "type": "file",
-      "size_bytes": 7135,
-      "last_modified_commit": "3c332d934",
+      "size_bytes": 3122,
+      "last_modified_commit": "0412d2719",
       "is_empty": false,
       "extension": ".md",
-      "lines": 187
+      "lines": 84
     },
     {
       "path": "docs/tooling/archive-manifest.yaml",
@@ -4575,15 +4584,6 @@
       "is_empty": false,
       "extension": ".yaml",
       "lines": 34
-    },
-    {
-      "path": "docs/tooling/doctrine-checksums/doctrine-checksums.yaml.bak",
-      "type": "file",
-      "size_bytes": 465,
-      "last_modified_commit": "3e4eb25ae",
-      "is_empty": false,
-      "extension": ".bak",
-      "lines": 4
     },
     {
       "path": "docs/vitae/constitution/constitutional-amendment.md",
@@ -6703,11 +6703,11 @@
     {
       "path": "scripts/architect/source-tranche-gate.sh",
       "type": "file",
-      "size_bytes": 5452,
-      "last_modified_commit": "c44fefb2e",
+      "size_bytes": 5626,
+      "last_modified_commit": "0412d2719",
       "is_empty": false,
       "extension": ".sh",
-      "lines": 165
+      "lines": 160
     },
     {
       "path": "scripts/architect/termux-broker.py",
@@ -6917,42 +6917,6 @@
       "lines": 335
     },
     {
-      "path": "scripts/archive-manifest-check.sh",
-      "type": "file",
-      "size_bytes": 0,
-      "last_modified_commit": "b4c8d3fe7",
-      "is_empty": true,
-      "extension": ".sh",
-      "lines": 0
-    },
-    {
-      "path": "scripts/audit-app-copy.sh",
-      "type": "file",
-      "size_bytes": 0,
-      "last_modified_commit": "b4c8d3fe7",
-      "is_empty": true,
-      "extension": ".sh",
-      "lines": 0
-    },
-    {
-      "path": "scripts/audit-chain-semantics.sh",
-      "type": "file",
-      "size_bytes": 0,
-      "last_modified_commit": "b4c8d3fe7",
-      "is_empty": true,
-      "extension": ".sh",
-      "lines": 0
-    },
-    {
-      "path": "scripts/audit-doc-canon.sh",
-      "type": "file",
-      "size_bytes": 0,
-      "last_modified_commit": "b4c8d3fe7",
-      "is_empty": true,
-      "extension": ".sh",
-      "lines": 0
-    },
-    {
       "path": "scripts/doctrine-guard.sh",
       "type": "file",
       "size_bytes": 6818,
@@ -6964,20 +6928,20 @@
     {
       "path": "scripts/mobile/termux-bootstrap.sh",
       "type": "file",
-      "size_bytes": 2238,
-      "last_modified_commit": "7eb0c8067",
+      "size_bytes": 2467,
+      "last_modified_commit": "0412d2719",
       "is_empty": false,
       "extension": ".sh",
-      "lines": 88
+      "lines": 92
     },
     {
       "path": "scripts/mobile/termux-verify.sh",
       "type": "file",
-      "size_bytes": 4595,
-      "last_modified_commit": "2c4de9856",
+      "size_bytes": 4879,
+      "last_modified_commit": "0412d2719",
       "is_empty": false,
       "extension": ".sh",
-      "lines": 165
+      "lines": 166
     },
     {
       "path": "scripts/node/local-reset.sh",
@@ -7005,204 +6969,6 @@
       "is_empty": false,
       "extension": ".sh",
       "lines": 67
-    },
-    {
-      "path": "scripts/patches/2026-03-04-hope-entrypoints.patch",
-      "type": "file",
-      "size_bytes": 8295,
-      "last_modified_commit": "60bd5ee4f",
-      "is_empty": false,
-      "extension": ".patch",
-      "lines": 247
-    },
-    {
-      "path": "scripts/patches/check_repo_index_drift.py",
-      "type": "file",
-      "size_bytes": 1854,
-      "last_modified_commit": "0d6f0e25e",
-      "is_empty": false,
-      "extension": ".py",
-      "lines": 63
-    },
-    {
-      "path": "scripts/patches/normalize-doc-headers.py",
-      "type": "file",
-      "size_bytes": 5300,
-      "last_modified_commit": "60bd5ee4f",
-      "is_empty": false,
-      "extension": ".py",
-      "lines": 173
-    },
-    {
-      "path": "scripts/patches/patch_app_shell_pass.py",
-      "type": "file",
-      "size_bytes": 10897,
-      "last_modified_commit": "fdb4ed510",
-      "is_empty": false,
-      "extension": ".py",
-      "lines": 297
-    },
-    {
-      "path": "scripts/patches/patch_bentoshowcase_mobile_cards.py",
-      "type": "file",
-      "size_bytes": 9286,
-      "last_modified_commit": "0d6f0e25e",
-      "is_empty": false,
-      "extension": ".py",
-      "lines": 235
-    },
-    {
-      "path": "scripts/patches/patch_global_shell_parity_pass.py",
-      "type": "file",
-      "size_bytes": 38344,
-      "last_modified_commit": "6c3b0d9e1",
-      "is_empty": false,
-      "extension": ".py",
-      "lines": 941
-    },
-    {
-      "path": "scripts/patches/patch_marketing_layout_remove_nested_html.py",
-      "type": "file",
-      "size_bytes": 1937,
-      "last_modified_commit": "781e2a017",
-      "is_empty": false,
-      "extension": ".py",
-      "lines": 83
-    },
-    {
-      "path": "scripts/patches/patch_marketing_panelshell_frame.py",
-      "type": "file",
-      "size_bytes": 3876,
-      "last_modified_commit": "af981eff6",
-      "is_empty": false,
-      "extension": ".py",
-      "lines": 116
-    },
-    {
-      "path": "scripts/patches/patch_minimal_service_worker.py",
-      "type": "file",
-      "size_bytes": 5072,
-      "last_modified_commit": "6a64182e1",
-      "is_empty": false,
-      "extension": ".py",
-      "lines": 202
-    },
-    {
-      "path": "scripts/patches/patch_mobile_onboarding.py",
-      "type": "file",
-      "size_bytes": 6108,
-      "last_modified_commit": "10a4987c9",
-      "is_empty": false,
-      "extension": ".py",
-      "lines": 194
-    },
-    {
-      "path": "scripts/patches/patch_pwa_diagnostics_page.py",
-      "type": "file",
-      "size_bytes": 15050,
-      "last_modified_commit": "11e76e39f",
-      "is_empty": false,
-      "extension": ".py",
-      "lines": 399
-    },
-    {
-      "path": "scripts/patches/patch_pwa_icon_and_logo_assets.py",
-      "type": "file",
-      "size_bytes": 6483,
-      "last_modified_commit": "55b94d7a8",
-      "is_empty": false,
-      "extension": ".py",
-      "lines": 208
-    },
-    {
-      "path": "scripts/patches/patch_pwa_metadata_and_manifest.py",
-      "type": "file",
-      "size_bytes": 3977,
-      "last_modified_commit": "b1eac4ecf",
-      "is_empty": false,
-      "extension": ".py",
-      "lines": 143
-    },
-    {
-      "path": "scripts/patches/patch_rebase_global_nav_to_canon.py",
-      "type": "file",
-      "size_bytes": 6766,
-      "last_modified_commit": "9486f93d6",
-      "is_empty": false,
-      "extension": ".py",
-      "lines": 184
-    },
-    {
-      "path": "scripts/patches/patch_refactor_hope_content.py",
-      "type": "file",
-      "size_bytes": 19398,
-      "last_modified_commit": "4a2cd29bc",
-      "is_empty": false,
-      "extension": ".py",
-      "lines": 475
-    },
-    {
-      "path": "scripts/patches/patch_refactor_hope_routes.py",
-      "type": "file",
-      "size_bytes": 14738,
-      "last_modified_commit": "66565f668",
-      "is_empty": false,
-      "extension": ".py",
-      "lines": 351
-    },
-    {
-      "path": "scripts/patches/patch_route_and_viewport_fit_pass.py",
-      "type": "file",
-      "size_bytes": 14820,
-      "last_modified_commit": "c59285406",
-      "is_empty": false,
-      "extension": ".py",
-      "lines": 394
-    },
-    {
-      "path": "scripts/patches/patch_style_hope_stage_and_tabs.py",
-      "type": "file",
-      "size_bytes": 18377,
-      "last_modified_commit": "0f27093bd",
-      "is_empty": false,
-      "extension": ".py",
-      "lines": 418
-    },
-    {
-      "path": "scripts/patches/patch_viewport_contract_pass.py",
-      "type": "file",
-      "size_bytes": 18301,
-      "last_modified_commit": "67dae7c5f",
-      "is_empty": false,
-      "extension": ".py",
-      "lines": 432
-    },
-    {
-      "path": "scripts/patches/rename-vitae-curriculum.py",
-      "type": "file",
-      "size_bytes": 8415,
-      "last_modified_commit": "60bd5ee4f",
-      "is_empty": false,
-      "extension": ".py",
-      "lines": 284
-    },
-    {
-      "path": "scripts/patches/update-checksums-paths.py",
-      "type": "file",
-      "size_bytes": 4518,
-      "last_modified_commit": "60bd5ee4f",
-      "is_empty": false,
-      "extension": ".py",
-      "lines": 146
-    },
-    {
-      "path": "scripts/patches/vercel-setup-web.sh",
-      "type": "file",
-      "size_bytes": 1232,
-      "last_modified_commit": "dce9099de",
-      "is_empty": false,
-      "extension": ".sh",
-      "lines": 52
     },
     {
       "path": "scripts/repo-index.sh",
