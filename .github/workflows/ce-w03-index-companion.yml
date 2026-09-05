@@ -1,0 +1,58 @@
+name: CE-W03 deterministic repo-index companion
+
+on:
+  push:
+    branches:
+      - "work/ce-w03-*"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: ce-w03-index-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  generate-index-companion:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout exact branch head
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.ref_name }}
+
+      - name: Generate deterministic repository index
+        run: bash scripts/repo-index.sh
+
+      - name: Verify generated repository index
+        run: python3 scripts/verify-repo-index.py
+
+      - name: Enforce index-only companion mutation
+        shell: bash
+        run: |
+          set -euo pipefail
+          changed="$(git diff --name-only)"
+          if [[ -z "$changed" ]]; then
+            echo "Repository index already current."
+            exit 0
+          fi
+          if [[ "$changed" != "docs/repo/repo-index.json" ]]; then
+            echo "Unexpected generated mutations:" >&2
+            printf '%s\n' "$changed" >&2
+            exit 1
+          fi
+
+      - name: Commit and push index companion
+        shell: bash
+        run: |
+          set -euo pipefail
+          if git diff --quiet -- docs/repo/repo-index.json; then
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/repo/repo-index.json
+          git commit -m "chore(repo-index): CE-W03 generated companion for ${GITHUB_SHA::9}"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
