@@ -9,6 +9,7 @@ import kotlin.math.abs
 
 class ArcnetRendererView(
     context: Context,
+    private val runtimeBridgeLabel: String,
 ) : View(context) {
     private val linePaint =
         Paint(Paint.ANTI_ALIAS_FLAG).apply {
@@ -100,6 +101,7 @@ class ArcnetRendererView(
             40.0f,
             labelPaint,
         )
+        canvas.drawText(runtimeBridgeLabel, 24.0f, 76.0f, labelPaint)
     }
 
     private fun drawCanonicalEdges(

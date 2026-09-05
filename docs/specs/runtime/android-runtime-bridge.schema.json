@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:arcanum:ce-w02:android-runtime-bridge:0.1.0",
+  "title": "CE-W02 Android Runtime Bridge",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "bridgeContractId",
+    "schemaVersion",
+    "status",
+    "runtimeCrate",
+    "bridgeCrate",
+    "androidHost",
+    "abi",
+    "capabilities",
+    "tempusProbe",
+    "presentation",
+    "androidBuild",
+    "deferredToW02_4",
+    "authorityEffect",
+    "inheritedFalsificationIds",
+    "falsificationIds"
+  ],
+  "properties": {
+    "$schema": { "const": "./android-runtime-bridge.schema.json" },
+    "bridgeContractId": { "const": "android-runtime-bridge" },
+    "schemaVersion": { "const": "0.1.0" },
+    "status": { "const": "implementation-candidate" },
+    "runtimeCrate": { "const": "runtime/arcanum-runtime" },
+    "bridgeCrate": { "const": "runtime/arcanum-android-bridge" },
+    "androidHost": { "const": "apps/android" },
+    "abi": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "version",
+        "library",
+        "primitiveOnly",
+        "jniPointersDereferenced",
+        "exportedMethods"
+      ],
+      "properties": {
+        "kind": { "const": "jni" },
+        "version": { "const": 1 },
+        "library": { "const": "arcanum_android_bridge" },
+        "primitiveOnly": { "const": true },
+        "jniPointersDereferenced": { "const": false },
+        "exportedMethods": {
+          "type": "array",
+          "prefixItems": [
+            { "const": "nativeAbiVersion" },
+            { "const": "nativeCapabilityMask" },
+            { "const": "nativeTempusClockProbe" }
+          ],
+          "items": false,
+          "minItems": 3,
+          "maxItems": 3
+        }
+      }
+    },
+    "capabilities": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["mask", "allowed", "forbidden"],
+      "properties": {
+        "mask": { "const": 1 },
+        "allowed": { "type": "array", "items": { "type": "string" } },
+        "forbidden": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "tempusProbe": { "type": "object" },
+    "presentation": { "type": "object" },
+    "androidBuild": { "type": "object" },
+    "deferredToW02_4": { "type": "array", "items": { "type": "string" } },
+    "authorityEffect": { "const": "none" },
+    "inheritedFalsificationIds": { "type": "array", "items": { "type": "string" } },
+    "falsificationIds": { "type": "array", "items": { "type": "string" } }
+  }
+}
