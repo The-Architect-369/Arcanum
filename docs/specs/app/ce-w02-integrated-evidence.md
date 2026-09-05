@@ -1,7 +1,7 @@
 # CE-W02 Integrated Evidence — W02.5
 
-Status: implementation-candidate  
-Construction Era: CE-W02 / W02.5  
+Status: implementation-candidate
+Construction Era: CE-W02 / W02.5
 Authority effect: none
 
 ## Purpose
