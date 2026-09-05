@@ -1,0 +1,107 @@
+{
+  "$schema": "./android-tempus-lifecycle.schema.json",
+  "lifecycleContractId": "android-tempus-lifecycle",
+  "schemaVersion": "0.1.0",
+  "status": "implementation-candidate",
+  "constructionEra": "CE-W02",
+  "tranche": "W02.4",
+  "canonicalBase": "81262baa366d151a941c496356f49a42bd49603e",
+  "runtimeCrate": "runtime/arcanum-runtime",
+  "lifecycleCrate": "runtime/arcanum-android-tempus-lifecycle",
+  "ffiCrate": "runtime/arcanum-android-tempus-lifecycle-jni",
+  "androidHost": "apps/android",
+  "w02_3BridgeFrozen": {
+    "library": "arcanum_android_jni",
+    "exportedMethodCount": 3,
+    "methods": [
+      "nativeAbiVersion",
+      "nativeCapabilityMask",
+      "nativeTempusClockProbe"
+    ]
+  },
+  "storage": {
+    "androidRoot": "filesDir",
+    "runtimeStore": "FileTempusAnchorStore",
+    "namespace": "tempus",
+    "rustOwnsAnchorPersistence": true,
+    "kotlinPersistsOnlyOpaqueAnchorId": true,
+    "networkRequired": false
+  },
+  "capture": {
+    "provider": "SystemClockProvider",
+    "runtimeOperation": "capture_tempus_anchor",
+    "locationCollected": false,
+    "interpretationProduced": false,
+    "persistThenReloadExact": true
+  },
+  "receipt": {
+    "runtimeOperation": "create_tempus_local_receipt",
+    "scope": "local",
+    "digest": "sha256-exact-persisted-anchor-bytes",
+    "signingMode": "explicitly-unavailable",
+    "signed": false,
+    "persistedByW02_4": false,
+    "protocolFinality": false
+  },
+  "recovery": {
+    "runtimeOperation": "FileTempusAnchorStore.load",
+    "captureOnMissing": false,
+    "mutatesPersistedAnchor": false,
+    "reissuesReceipt": false,
+    "networkRequired": false
+  },
+  "abi": {
+    "kind": "jni",
+    "version": 1,
+    "library": "arcanum_android_tempus_lifecycle_jni",
+    "separateFromW02_3": true,
+    "wireFormat": "bounded-json-v1",
+    "returnsRuntimeDomainObjects": false,
+    "unsafeLinkerAttributes": 2,
+    "unsafeBlocks": false,
+    "unsafeFunctions": false,
+    "exportedMethods": [
+      "nativeCapturePersist",
+      "nativeRecover"
+    ]
+  },
+  "presentation": {
+    "standardAndroidControls": true,
+    "geometryGatesLifecycle": false,
+    "geometryFreeEquivalentRequired": true,
+    "localReceiptVisible": true,
+    "recoveryVisible": true,
+    "authorityEffect": "none"
+  },
+  "capabilityCeiling": {
+    "network": false,
+    "signing": false,
+    "privateKeyExport": false,
+    "protocolSubmit": false,
+    "protocolFinality": false,
+    "governanceWeight": false,
+    "economicEntitlement": false
+  },
+  "androidBuild": {
+    "abis": [
+      "arm64-v8a",
+      "x86_64"
+    ],
+    "rustToolchainVersion": "1.98.1",
+    "cargoNdkVersion": "4.1.2",
+    "commitNativeBinaries": false,
+    "assembleDebug": true,
+    "verifyExportedSymbols": true
+  },
+  "authorityEffect": "none",
+  "inheritedFalsificationIds": [
+    "F1", "F2", "F3", "F4", "F5", "F6", "F7", "F8", "F9", "F10",
+    "F11", "F12", "F13", "F14", "F15", "F16", "F17", "F18", "F19", "F20",
+    "F21", "F22", "F23", "F24", "F25", "F26", "F27", "F28", "F29", "F30",
+    "F31", "F32", "F33", "F34", "F35", "F36", "F37", "F38", "F39", "F40",
+    "F41", "F42", "F43", "F44"
+  ],
+  "falsificationIds": [
+    "F45", "F46", "F47", "F48", "F49", "F50", "F51", "F52"
+  ]
+}

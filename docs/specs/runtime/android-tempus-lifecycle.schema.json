@@ -1,0 +1,208 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://arcanum.local/specs/runtime/android-tempus-lifecycle.schema.json",
+  "title": "Android Tempus Offline Lifecycle",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "lifecycleContractId",
+    "schemaVersion",
+    "status",
+    "constructionEra",
+    "tranche",
+    "canonicalBase",
+    "runtimeCrate",
+    "lifecycleCrate",
+    "ffiCrate",
+    "androidHost",
+    "w02_3BridgeFrozen",
+    "storage",
+    "capture",
+    "receipt",
+    "recovery",
+    "abi",
+    "presentation",
+    "capabilityCeiling",
+    "androidBuild",
+    "authorityEffect",
+    "inheritedFalsificationIds",
+    "falsificationIds"
+  ],
+  "properties": {
+    "$schema": { "type": "string" },
+    "lifecycleContractId": { "const": "android-tempus-lifecycle" },
+    "schemaVersion": { "const": "0.1.0" },
+    "status": { "const": "implementation-candidate" },
+    "constructionEra": { "const": "CE-W02" },
+    "tranche": { "const": "W02.4" },
+    "canonicalBase": { "type": "string", "pattern": "^[0-9a-f]{40}$" },
+    "runtimeCrate": { "const": "runtime/arcanum-runtime" },
+    "lifecycleCrate": { "const": "runtime/arcanum-android-tempus-lifecycle" },
+    "ffiCrate": { "const": "runtime/arcanum-android-tempus-lifecycle-jni" },
+    "androidHost": { "const": "apps/android" },
+    "w02_3BridgeFrozen": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["library", "exportedMethodCount", "methods"],
+      "properties": {
+        "library": { "const": "arcanum_android_jni" },
+        "exportedMethodCount": { "const": 3 },
+        "methods": {
+          "type": "array",
+          "prefixItems": [
+            { "const": "nativeAbiVersion" },
+            { "const": "nativeCapabilityMask" },
+            { "const": "nativeTempusClockProbe" }
+          ],
+          "items": false,
+          "minItems": 3,
+          "maxItems": 3
+        }
+      }
+    },
+    "storage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["androidRoot", "runtimeStore", "namespace", "rustOwnsAnchorPersistence", "kotlinPersistsOnlyOpaqueAnchorId", "networkRequired"],
+      "properties": {
+        "androidRoot": { "const": "filesDir" },
+        "runtimeStore": { "const": "FileTempusAnchorStore" },
+        "namespace": { "const": "tempus" },
+        "rustOwnsAnchorPersistence": { "const": true },
+        "kotlinPersistsOnlyOpaqueAnchorId": { "const": true },
+        "networkRequired": { "const": false }
+      }
+    },
+    "capture": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["provider", "runtimeOperation", "locationCollected", "interpretationProduced", "persistThenReloadExact"],
+      "properties": {
+        "provider": { "const": "SystemClockProvider" },
+        "runtimeOperation": { "const": "capture_tempus_anchor" },
+        "locationCollected": { "const": false },
+        "interpretationProduced": { "const": false },
+        "persistThenReloadExact": { "const": true }
+      }
+    },
+    "receipt": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["runtimeOperation", "scope", "digest", "signingMode", "signed", "persistedByW02_4", "protocolFinality"],
+      "properties": {
+        "runtimeOperation": { "const": "create_tempus_local_receipt" },
+        "scope": { "const": "local" },
+        "digest": { "const": "sha256-exact-persisted-anchor-bytes" },
+        "signingMode": { "const": "explicitly-unavailable" },
+        "signed": { "const": false },
+        "persistedByW02_4": { "const": false },
+        "protocolFinality": { "const": false }
+      }
+    },
+    "recovery": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["runtimeOperation", "captureOnMissing", "mutatesPersistedAnchor", "reissuesReceipt", "networkRequired"],
+      "properties": {
+        "runtimeOperation": { "const": "FileTempusAnchorStore.load" },
+        "captureOnMissing": { "const": false },
+        "mutatesPersistedAnchor": { "const": false },
+        "reissuesReceipt": { "const": false },
+        "networkRequired": { "const": false }
+      }
+    },
+    "abi": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "version", "library", "separateFromW02_3", "wireFormat", "returnsRuntimeDomainObjects", "unsafeLinkerAttributes", "unsafeBlocks", "unsafeFunctions", "exportedMethods"],
+      "properties": {
+        "kind": { "const": "jni" },
+        "version": { "const": 1 },
+        "library": { "const": "arcanum_android_tempus_lifecycle_jni" },
+        "separateFromW02_3": { "const": true },
+        "wireFormat": { "const": "bounded-json-v1" },
+        "returnsRuntimeDomainObjects": { "const": false },
+        "unsafeLinkerAttributes": { "const": 2 },
+        "unsafeBlocks": { "const": false },
+        "unsafeFunctions": { "const": false },
+        "exportedMethods": {
+          "type": "array",
+          "prefixItems": [
+            { "const": "nativeCapturePersist" },
+            { "const": "nativeRecover" }
+          ],
+          "items": false,
+          "minItems": 2,
+          "maxItems": 2
+        }
+      }
+    },
+    "presentation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["standardAndroidControls", "geometryGatesLifecycle", "geometryFreeEquivalentRequired", "localReceiptVisible", "recoveryVisible", "authorityEffect"],
+      "properties": {
+        "standardAndroidControls": { "const": true },
+        "geometryGatesLifecycle": { "const": false },
+        "geometryFreeEquivalentRequired": { "const": true },
+        "localReceiptVisible": { "const": true },
+        "recoveryVisible": { "const": true },
+        "authorityEffect": { "const": "none" }
+      }
+    },
+    "capabilityCeiling": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["network", "signing", "privateKeyExport", "protocolSubmit", "protocolFinality", "governanceWeight", "economicEntitlement"],
+      "properties": {
+        "network": { "const": false },
+        "signing": { "const": false },
+        "privateKeyExport": { "const": false },
+        "protocolSubmit": { "const": false },
+        "protocolFinality": { "const": false },
+        "governanceWeight": { "const": false },
+        "economicEntitlement": { "const": false }
+      }
+    },
+    "androidBuild": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["abis", "rustToolchainVersion", "cargoNdkVersion", "commitNativeBinaries", "assembleDebug", "verifyExportedSymbols"],
+      "properties": {
+        "abis": {
+          "type": "array",
+          "prefixItems": [
+            { "const": "arm64-v8a" },
+            { "const": "x86_64" }
+          ],
+          "items": false,
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "rustToolchainVersion": { "const": "1.98.1" },
+        "cargoNdkVersion": { "const": "4.1.2" },
+        "commitNativeBinaries": { "const": false },
+        "assembleDebug": { "const": true },
+        "verifyExportedSymbols": { "const": true }
+      }
+    },
+    "authorityEffect": { "const": "none" },
+    "inheritedFalsificationIds": {
+      "type": "array",
+      "minItems": 44,
+      "maxItems": 44,
+      "items": { "type": "string", "pattern": "^F([1-9]|[1-3][0-9]|4[0-4])$" }
+    },
+    "falsificationIds": {
+      "type": "array",
+      "prefixItems": [
+        { "const": "F45" }, { "const": "F46" }, { "const": "F47" }, { "const": "F48" },
+        { "const": "F49" }, { "const": "F50" }, { "const": "F51" }, { "const": "F52" }
+      ],
+      "items": false,
+      "minItems": 8,
+      "maxItems": 8
+    }
+  }
+}

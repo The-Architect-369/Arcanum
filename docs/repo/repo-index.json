@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-09-05T10:48:29Z",
+  "generated_at": "2026-09-05T11:34:04Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "e42c1b6b5",
+  "commit": "f38380538",
   "generator_version": "1.4",
   "files": [
     {
@@ -41,6 +41,15 @@
       "lines": 53
     },
     {
+      "path": ".github/workflows/verify-android-tempus-lifecycle.yml",
+      "type": "file",
+      "size_bytes": 5678,
+      "last_modified_commit": "a525268d3",
+      "is_empty": false,
+      "extension": ".yml",
+      "lines": 141
+    },
+    {
       "path": ".github/workflows/verify-sync.yml",
       "type": "file",
       "size_bytes": 968,
@@ -52,11 +61,11 @@
     {
       "path": ".gitignore",
       "type": "file",
-      "size_bytes": 958,
-      "last_modified_commit": "4b2e26a4f",
+      "size_bytes": 1108,
+      "last_modified_commit": "a525268d3",
       "is_empty": false,
       "extension": "",
-      "lines": 65
+      "lines": 68
     },
     {
       "path": ".node-version",
@@ -133,11 +142,11 @@
     {
       "path": "apps/android/app/src/main/java/org/arcanum/nativehost/MainActivity.kt",
       "type": "file",
-      "size_bytes": 696,
-      "last_modified_commit": "4b2e26a4f",
+      "size_bytes": 1111,
+      "last_modified_commit": "a525268d3",
       "is_empty": false,
       "extension": ".kt",
-      "lines": 21
+      "lines": 33
     },
     {
       "path": "apps/android/app/src/main/java/org/arcanum/nativehost/geometry/ArcnetRendererView.kt",
@@ -185,6 +194,33 @@
       "lines": 20
     },
     {
+      "path": "apps/android/app/src/main/java/org/arcanum/nativehost/tempus/TempusLifecycleBridge.kt",
+      "type": "file",
+      "size_bytes": 834,
+      "last_modified_commit": "a525268d3",
+      "is_empty": false,
+      "extension": ".kt",
+      "lines": 29
+    },
+    {
+      "path": "apps/android/app/src/main/java/org/arcanum/nativehost/tempus/TempusLifecycleContract.kt",
+      "type": "file",
+      "size_bytes": 4866,
+      "last_modified_commit": "a525268d3",
+      "is_empty": false,
+      "extension": ".kt",
+      "lines": 116
+    },
+    {
+      "path": "apps/android/app/src/main/java/org/arcanum/nativehost/tempus/TempusLifecyclePanel.kt",
+      "type": "file",
+      "size_bytes": 4007,
+      "last_modified_commit": "a525268d3",
+      "is_empty": false,
+      "extension": ".kt",
+      "lines": 110
+    },
+    {
       "path": "apps/android/app/src/test/java/org/arcanum/nativehost/geometry/ProjectionContractTest.kt",
       "type": "file",
       "size_bytes": 1346,
@@ -198,6 +234,15 @@
       "type": "file",
       "size_bytes": 1189,
       "last_modified_commit": "4b2e26a4f",
+      "is_empty": false,
+      "extension": ".kt",
+      "lines": 43
+    },
+    {
+      "path": "apps/android/app/src/test/java/org/arcanum/nativehost/tempus/TempusLifecycleContractTest.kt",
+      "type": "file",
+      "size_bytes": 2250,
+      "last_modified_commit": "a525268d3",
       "is_empty": false,
       "extension": ".kt",
       "lines": 43
@@ -4217,6 +4262,33 @@
       "lines": 89
     },
     {
+      "path": "docs/specs/runtime/android-tempus-lifecycle.md",
+      "type": "file",
+      "size_bytes": 5806,
+      "last_modified_commit": "a525268d3",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 126
+    },
+    {
+      "path": "docs/specs/runtime/android-tempus-lifecycle.schema.json",
+      "type": "file",
+      "size_bytes": 7715,
+      "last_modified_commit": "a525268d3",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 208
+    },
+    {
+      "path": "docs/specs/runtime/android-tempus-lifecycle.v0.1.json",
+      "type": "file",
+      "size_bytes": 3209,
+      "last_modified_commit": "a525268d3",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 107
+    },
+    {
       "path": "docs/specs/runtime/local-runtime-boundary.md",
       "type": "file",
       "size_bytes": 21260,
@@ -6055,8 +6127,8 @@
     {
       "path": "package.json",
       "type": "file",
-      "size_bytes": 1306,
-      "last_modified_commit": "4b2e26a4f",
+      "size_bytes": 1359,
+      "last_modified_commit": "a525268d3",
       "is_empty": false,
       "extension": ".json",
       "lines": 39
@@ -6132,6 +6204,51 @@
       "is_empty": false,
       "extension": ".rs",
       "lines": 32
+    },
+    {
+      "path": "runtime/arcanum-android-tempus-lifecycle-jni/Cargo.toml",
+      "type": "file",
+      "size_bytes": 382,
+      "last_modified_commit": "a525268d3",
+      "is_empty": false,
+      "extension": ".toml",
+      "lines": 15
+    },
+    {
+      "path": "runtime/arcanum-android-tempus-lifecycle-jni/src/lib.rs",
+      "type": "file",
+      "size_bytes": 2417,
+      "last_modified_commit": "a525268d3",
+      "is_empty": false,
+      "extension": ".rs",
+      "lines": 74
+    },
+    {
+      "path": "runtime/arcanum-android-tempus-lifecycle/Cargo.lock",
+      "type": "file",
+      "size_bytes": 271,
+      "last_modified_commit": "a525268d3",
+      "is_empty": false,
+      "extension": ".lock",
+      "lines": 14
+    },
+    {
+      "path": "runtime/arcanum-android-tempus-lifecycle/Cargo.toml",
+      "type": "file",
+      "size_bytes": 218,
+      "last_modified_commit": "a525268d3",
+      "is_empty": false,
+      "extension": ".toml",
+      "lines": 12
+    },
+    {
+      "path": "runtime/arcanum-android-tempus-lifecycle/src/lib.rs",
+      "type": "file",
+      "size_bytes": 16891,
+      "last_modified_commit": "f38380538",
+      "is_empty": false,
+      "extension": ".rs",
+      "lines": 481
     },
     {
       "path": "runtime/arcanum-runtime/Cargo.lock",
@@ -6537,6 +6654,15 @@
       "is_empty": false,
       "extension": ".py",
       "lines": 364
+    },
+    {
+      "path": "scripts/verify-ce-w02-tempus-lifecycle.py",
+      "type": "file",
+      "size_bytes": 9738,
+      "last_modified_commit": "a525268d3",
+      "is_empty": false,
+      "extension": ".py",
+      "lines": 185
     },
     {
       "path": "scripts/verify-repo-index.py",
