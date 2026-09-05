@@ -4,13 +4,13 @@ status: implementation-candidate
 visibility: public
 phase: "Pre-Genesis"
 era: "Construction Era"
-wave: "CE-W02"
-last_updated: 2026-09-04
+wave: "CE-W03"
+last_updated: 2026-09-05
 maintainer: The-Architect-369
 authority: "Human Architect planning direction; implementation remains evidence-gated"
 baseline_record: "docs/repo/arcanum-baseline.md"
 ce_w01_closure_issue: "https://github.com/The-Architect-369/Arcanum/issues/39"
-post_closure_cleanup_issue: "https://github.com/The-Architect-369/Arcanum/issues/41"
+ce_w03_umbrella_issue: "https://github.com/The-Architect-369/Arcanum/issues/49"
 ---
 
 # Construction Era Roadmap
@@ -19,9 +19,9 @@ post_closure_cleanup_issue: "https://github.com/The-Architect-369/Arcanum/issues
 
 This document defines the Construction Era development structure following historical Waves I-XXIV.
 
-CE-W01 is complete and certified. The current implementation wave is **CE-W02 — Native Geometric Host**.
+CE-W01 and CE-W02 are complete and certified. The current implementation wave is **CE-W03 — Hope at the Center / Arcanum Native Vertical Slice**.
 
-This roadmap is planning authority only. It does not by itself authorize runtime, protocol, economic, governance, treasury, or production mutation.
+This roadmap is planning authority only. CE-W03 implementation authority is separately recorded in GitHub issue #49 and the synchronized 2026-09-05 decision handoff.
 
 ## Era naming and provenance
 
@@ -101,26 +101,30 @@ CE-W01 established the sovereign coordinate/frame contracts, Geometry/Spatial ma
 
 Its exact certified baseline is `main@22b1255c5063e5fbfebc248c75f6f5e2668a46c4`.
 
-### CE-W02 — Native Geometric Host — CURRENT
+### CE-W02 — Native Geometric Host — COMPLETE
 
-- G: define exact mathematical-to-screen projection and transformation rules.
-- E: construct the polygonal/native ARCnet shell faithful to the formal model.
-- A: create Android/Kotlin host, narrow Rust bridge, offline lifecycle, and application launcher.
-- Tempus: integrate local temporal observation/provider behavior without network dependence.
+CE-W02 established exact mathematical-to-screen projection, the native Android/Kotlin ARCnet host, bounded Rust/JNI runtime bridge, offline Tempus lifecycle integration, dual-ABI/APK evidence, and integrated F1–F60 closure.
 
-### CE-W03 — Hope at the Center / Arcanum Native Vertical Slice
+Its exact certified closure baseline is `main@cb42fb0f9497e406b189230f753c1398c22e6afd`.
 
-- G: formalize retained Hope/octahedral/Seed-of-Life relationships with scale boundaries.
-- E: make Hope the experiential center of native Arcanum.
-- A: implement Arcanum native application, Hope reflection, protected persistence, and local receipt.
-- Tempus: capture/render a local anchor beside participant-owned experience without making timing causal or authoritative.
+### CE-W03 — Hope at the Center / Arcanum Native Vertical Slice — CURRENT
+
+Ratified 2026-09-05. Frozen falsification allocation: **F61–F72**.
+
+- G: preserve the exact inherited Hope-centered octahedral source; type Seed-of-Life as symbolic/presentation overlay unless exact derivation is independently proven; provide deterministic vectors and geometry-free equivalence.
+- E: make Hope the experiential center of native Arcanum with calm reflection capture/recall, curated/static presence copy, silence-valid UX, and no authority/progression semantics.
+- A: register/launch Arcanum through the existing local boundary; implement `hope.reflection.v0.1`; protect the Hope namespace with Android Keystore-backed non-exportable key material and authenticated AES-GCM; recover exactly and fail closed on missing/corrupt/tampered state; emit truthful local-only receipt metadata without private body leakage.
+- Tempus: attach only optional factual local provenance; timing remains context, never causation/readiness/permission.
+- Capability ceiling: no required network/cloud/IPFS/model/chain/MANA/Vitae/Nexus/governance dependency.
 
 ### CE-W04 — Seed Node Alpha
 
 - G: verify geometric implementation against formal definitions.
 - E: verify coherent offline embodied experience and recovery.
-- A: prove clean install → identity → runtime → Arcanum → Hope → persistence → restart → local receipt.
+- A: prove clean install → provisional identity → runtime → native shell → Arcanum → Hope → protected persistence → restart → recovery → **signed** local receipt.
 - Tempus: prove temporal provenance survives persistence/restart and remains local unless explicitly submitted.
+
+CE-W04 retains identity/signing integration and the whole-install signed `scope=local` proof; CE-W03 does not absorb it.
 
 ### CE-W05 — Personal Constellation
 
@@ -201,10 +205,12 @@ Its exact certified baseline is `main@22b1255c5063e5fbfebc248c75f6f5e2668a46c4`.
 
 ## Ratification posture
 
-CE-W01 through CE-W04 receive the highest near-term implementation detail. Later waves remain progressively evidence-gated and must not silently settle unresolved economics, legal structure, governance thresholds, resource rewards, or arbitrary community executable-code policy.
+CE-W03 is explicitly implementation-authorized under issue #49. Later waves remain progressively evidence-gated and must not silently settle unresolved economics, legal structure, governance thresholds, resource rewards, arbitrary executable-code policy, or stronger symbolic geometry.
 
 ## Promotion discipline
 
-A wave becomes a new stable capability only when its exact source state, deterministic generated companions/indexes where applicable, verification evidence, provider evidence where applicable, and required Human Architect approval reconcile.
+Every substantive CE-W03 tranche follows:
 
-The post-CE-W01 cleanup tracked in issue #41 is repository hygiene/runtime preparation and does not reopen CE-W01.
+`latest canonical main → disposable branch → substantive source commit(s) → exact-source certification → deterministic repo-index generation → separate index companion commit → exact indexed-head CI → normal merge commit → verify canonical main → next tranche`
+
+A wave becomes a new stable capability only when its exact source state, deterministic generated companions/indexes, verification evidence, provider evidence where applicable, and required Human Architect approval reconcile.

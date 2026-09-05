@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ce-w03-native-hope.schema.json",
+  "title": "CE-W03 Native Hope Contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "contractId",
+    "schemaVersion",
+    "status",
+    "constructionEra",
+    "canonicalBase",
+    "authorityEffect",
+    "ratifiedAt",
+    "ratificationIssue",
+    "decisions",
+    "falsificationIds",
+    "tranches",
+    "hopeRecord",
+    "storage",
+    "geometry",
+    "capabilityCeiling",
+    "ceW04Reserved"
+  ],
+  "properties": {
+    "$schema": {"type": "string"},
+    "contractId": {"const": "ce-w03-native-hope.v0.1"},
+    "schemaVersion": {"const": "0.1"},
+    "status": {"const": "implementation-candidate"},
+    "constructionEra": {"const": "CE-W03"},
+    "canonicalBase": {"const": "cb42fb0f9497e406b189230f753c1398c22e6afd"},
+    "authorityEffect": {"const": "none"},
+    "ratifiedAt": {"const": "2026-09-05"},
+    "ratificationIssue": {"const": 49},
+    "decisions": {"type": "object", "required": ["D1","D2","D3","D4","D5","D6","D7"]},
+    "falsificationIds": {
+      "type": "object",
+      "required": ["F61","F62","F63","F64","F65","F66","F67","F68","F69","F70","F71","F72"],
+      "additionalProperties": false,
+      "properties": {
+        "F61": {"type": "string"}, "F62": {"type": "string"}, "F63": {"type": "string"},
+        "F64": {"type": "string"}, "F65": {"type": "string"}, "F66": {"type": "string"},
+        "F67": {"type": "string"}, "F68": {"type": "string"}, "F69": {"type": "string"},
+        "F70": {"type": "string"}, "F71": {"type": "string"}, "F72": {"type": "string"}
+      }
+    },
+    "tranches": {"const": ["W03.0","W03.1","W03.2","W03.3","W03.4","W03.5"]},
+    "hopeRecord": {"type": "object"},
+    "storage": {"type": "object"},
+    "geometry": {"type": "object"},
+    "capabilityCeiling": {"type": "object"},
+    "ceW04Reserved": {"type": "array", "items": {"type": "string"}}
+  }
+}

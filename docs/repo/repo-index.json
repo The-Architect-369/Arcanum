@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-09-05T12:13:50Z",
+  "generated_at": "2026-09-05T15:10:08Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "7657156c2",
+  "commit": "14e8d2ada",
   "generator_version": "1.4",
   "files": [
     {
@@ -12,6 +12,15 @@
       "is_empty": false,
       "extension": ".yml",
       "lines": 78
+    },
+    {
+      "path": ".github/workflows/ce-w03-index-companion.yml",
+      "type": "file",
+      "size_bytes": 1693,
+      "last_modified_commit": "14e8d2ada",
+      "is_empty": false,
+      "extension": ".yml",
+      "lines": 58
     },
     {
       "path": ".github/workflows/doctrine-guard.yml",
@@ -115,8 +124,8 @@
     {
       "path": "README.md",
       "type": "file",
-      "size_bytes": 2309,
-      "last_modified_commit": "0412d2719",
+      "size_bytes": 2370,
+      "last_modified_commit": "714b4f931",
       "is_empty": false,
       "extension": ".md",
       "lines": 55
@@ -3652,20 +3661,20 @@
     {
       "path": "docs/roadmap/canonical-roadmap.md",
       "type": "file",
-      "size_bytes": 5578,
-      "last_modified_commit": "0412d2719",
+      "size_bytes": 6888,
+      "last_modified_commit": "5209de2d2",
       "is_empty": false,
       "extension": ".md",
-      "lines": 140
+      "lines": 150
     },
     {
       "path": "docs/roadmap/construction-era-roadmap.md",
       "type": "file",
-      "size_bytes": 10902,
-      "last_modified_commit": "0412d2719",
+      "size_bytes": 12000,
+      "last_modified_commit": "fdbb9158d",
       "is_empty": false,
       "extension": ".md",
-      "lines": 210
+      "lines": 216
     },
     {
       "path": "docs/specs/README.md",
@@ -3756,6 +3765,33 @@
       "is_empty": false,
       "extension": ".json",
       "lines": 85
+    },
+    {
+      "path": "docs/specs/app/ce-w03-native-hope.md",
+      "type": "file",
+      "size_bytes": 6525,
+      "last_modified_commit": "887506eb6",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 103
+    },
+    {
+      "path": "docs/specs/app/ce-w03-native-hope.schema.json",
+      "type": "file",
+      "size_bytes": 1962,
+      "last_modified_commit": "4fe635da2",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 55
+    },
+    {
+      "path": "docs/specs/app/ce-w03-native-hope.v0.1.json",
+      "type": "file",
+      "size_bytes": 2848,
+      "last_modified_commit": "20061052e",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 78
     },
     {
       "path": "docs/specs/app/developer-access-policy.md",
@@ -4363,11 +4399,11 @@
     {
       "path": "docs/status/project-status.md",
       "type": "file",
-      "size_bytes": 3122,
-      "last_modified_commit": "0412d2719",
+      "size_bytes": 4122,
+      "last_modified_commit": "a8575294d",
       "is_empty": false,
       "extension": ".md",
-      "lines": 84
+      "lines": 101
     },
     {
       "path": "docs/tooling/doctrine-checksums/doctrine-checksums.yaml",
@@ -6163,11 +6199,11 @@
     {
       "path": "package.json",
       "type": "file",
-      "size_bytes": 1460,
-      "last_modified_commit": "b6eabadae",
+      "size_bytes": 1550,
+      "last_modified_commit": "d7b0e43f3",
       "is_empty": false,
       "extension": ".json",
-      "lines": 40
+      "lines": 41
     },
     {
       "path": "pnpm-lock.yaml",
@@ -6708,6 +6744,15 @@
       "is_empty": false,
       "extension": ".py",
       "lines": 185
+    },
+    {
+      "path": "scripts/verify-ce-w03.py",
+      "type": "file",
+      "size_bytes": 3205,
+      "last_modified_commit": "42f1baadd",
+      "is_empty": false,
+      "extension": ".py",
+      "lines": 63
     },
     {
       "path": "scripts/verify-repo-index.py",

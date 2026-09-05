@@ -1,0 +1,78 @@
+{
+  "$schema": "./ce-w03-native-hope.schema.json",
+  "contractId": "ce-w03-native-hope.v0.1",
+  "schemaVersion": "0.1",
+  "status": "implementation-candidate",
+  "constructionEra": "CE-W03",
+  "canonicalBase": "cb42fb0f9497e406b189230f753c1398c22e6afd",
+  "authorityEffect": "none",
+  "ratifiedAt": "2026-09-05",
+  "ratificationIssue": 49,
+  "decisions": {
+    "D1": "reflection_capture_and_recall_with_curated_presence",
+    "D2": "hope.reflection.v0.1_derived_from_hope.context.v0.1",
+    "D3": "android_keystore_non_exportable_aes_gcm_key_never_crosses_jni_rust_namespace_owner",
+    "D4": "truthful_local_receipt_unsigned_allowed_ce_w04_owns_signing",
+    "D5": "seed_of_life_symbolic_presentation_overlay_over_exact_octahedral_source",
+    "D6": "network_cloud_ipfs_sync_deferred",
+    "D7": "curated_static_hope_responses_no_model_dependency"
+  },
+  "falsificationIds": {
+    "F61": "inherited_ce_w02_integrity",
+    "F62": "bounded_arcanum_registration_launch",
+    "F63": "closed_construction_hope_record",
+    "F64": "protected_key_encryption_boundary",
+    "F65": "exact_durable_recovery_fail_closed_corruption",
+    "F66": "private_content_firewall_bounded_receipt_binding",
+    "F67": "tempus_factual_provenance_boundary",
+    "F68": "hope_advisory_ux_authority_firewall",
+    "F69": "hope_seed_geometry_typing",
+    "F70": "geometry_free_equivalence",
+    "F71": "offline_capability_ceiling",
+    "F72": "integrated_dual_abi_apk_exact_head_evidence"
+  },
+  "tranches": ["W03.0", "W03.1", "W03.2", "W03.3", "W03.4", "W03.5"],
+  "hopeRecord": {
+    "version": "hope.reflection.v0.1",
+    "visibilityDefault": "local_private",
+    "authority": "advisory_only",
+    "interpretation": null,
+    "receiptScope": "local",
+    "receiptSigningRequired": false,
+    "tempusProvenance": "optional_factual_local"
+  },
+  "storage": {
+    "namespace": "hope",
+    "owner": "rust_runtime_contract",
+    "cipher": "AES/GCM/NoPadding",
+    "platformKeyProvider": "AndroidKeyStore",
+    "keyExportable": false,
+    "keyCrossesJni": false,
+    "tamperFailure": "fail_closed",
+    "missingStateFailure": "fail_closed"
+  },
+  "geometry": {
+    "inheritedSource": "exact_ce_w01_hope_centered_octahedral_source",
+    "seedRelationship": "symbolic_presentation_overlay",
+    "exactIdentityClaimed": false,
+    "geometryFreeEquivalentRequired": true
+  },
+  "capabilityCeiling": {
+    "networkRequired": false,
+    "cloudSync": false,
+    "ipfsPublication": false,
+    "protocolSubmission": false,
+    "protocolFinality": false,
+    "manaEffect": false,
+    "vitaeEffect": false,
+    "nexusEffect": false,
+    "governanceEffect": false,
+    "modelDependency": false
+  },
+  "ceW04Reserved": [
+    "provisional_local_identity_integration",
+    "identity_restoration",
+    "local_receipt_signing_integration",
+    "whole_clean_install_seed_node_alpha_proof"
+  ]
+}
