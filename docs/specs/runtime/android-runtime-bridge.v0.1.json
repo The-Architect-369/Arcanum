@@ -61,6 +61,10 @@
       "x86_64"
     ],
     "rustToolchainVersion": "1.98.1",
+    "rustComponents": [
+      "rustfmt",
+      "clippy"
+    ],
     "cargoNdkVersion": "4.1.2",
     "commitNativeBinaries": false,
     "verifyExportedSymbols": true,
