@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-09-05T03:46:16Z",
+  "generated_at": "2026-09-05T04:06:55Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "9d868170d",
+  "commit": "11dee4ad6",
   "generator_version": "1.4",
   "files": [
     {
@@ -23,6 +23,15 @@
       "lines": 53
     },
     {
+      "path": ".github/workflows/verify-android-native.yml",
+      "type": "file",
+      "size_bytes": 1701,
+      "last_modified_commit": "11dee4ad6",
+      "is_empty": false,
+      "extension": ".yml",
+      "lines": 53
+    },
+    {
       "path": ".github/workflows/verify-sync.yml",
       "type": "file",
       "size_bytes": 968,
@@ -34,11 +43,11 @@
     {
       "path": ".gitignore",
       "type": "file",
-      "size_bytes": 767,
-      "last_modified_commit": "b6c939242",
+      "size_bytes": 878,
+      "last_modified_commit": "11dee4ad6",
       "is_empty": false,
       "extension": "",
-      "lines": 57
+      "lines": 62
     },
     {
       "path": ".node-version",
@@ -84,6 +93,105 @@
       "is_empty": false,
       "extension": ".md",
       "lines": 55
+    },
+    {
+      "path": "apps/android/README.md",
+      "type": "file",
+      "size_bytes": 733,
+      "last_modified_commit": "11dee4ad6",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 26
+    },
+    {
+      "path": "apps/android/app/build.gradle.kts",
+      "type": "file",
+      "size_bytes": 1073,
+      "last_modified_commit": "11dee4ad6",
+      "is_empty": false,
+      "extension": ".kts",
+      "lines": 44
+    },
+    {
+      "path": "apps/android/app/src/main/AndroidManifest.xml",
+      "type": "file",
+      "size_bytes": 657,
+      "last_modified_commit": "11dee4ad6",
+      "is_empty": false,
+      "extension": ".xml",
+      "lines": 17
+    },
+    {
+      "path": "apps/android/app/src/main/java/org/arcanum/nativehost/MainActivity.kt",
+      "type": "file",
+      "size_bytes": 335,
+      "last_modified_commit": "11dee4ad6",
+      "is_empty": false,
+      "extension": ".kt",
+      "lines": 12
+    },
+    {
+      "path": "apps/android/app/src/main/java/org/arcanum/nativehost/geometry/ArcnetRendererView.kt",
+      "type": "file",
+      "size_bytes": 4301,
+      "last_modified_commit": "11dee4ad6",
+      "is_empty": false,
+      "extension": ".kt",
+      "lines": 147
+    },
+    {
+      "path": "apps/android/app/src/main/java/org/arcanum/nativehost/geometry/CanonicalContracts.kt",
+      "type": "file",
+      "size_bytes": 9757,
+      "last_modified_commit": "11dee4ad6",
+      "is_empty": false,
+      "extension": ".kt",
+      "lines": 276
+    },
+    {
+      "path": "apps/android/app/src/main/java/org/arcanum/nativehost/geometry/ProjectionEngine.kt",
+      "type": "file",
+      "size_bytes": 5732,
+      "last_modified_commit": "11dee4ad6",
+      "is_empty": false,
+      "extension": ".kt",
+      "lines": 178
+    },
+    {
+      "path": "apps/android/app/src/test/java/org/arcanum/nativehost/geometry/ProjectionContractTest.kt",
+      "type": "file",
+      "size_bytes": 1346,
+      "last_modified_commit": "11dee4ad6",
+      "is_empty": false,
+      "extension": ".kt",
+      "lines": 40
+    },
+    {
+      "path": "apps/android/build.gradle.kts",
+      "type": "file",
+      "size_bytes": 142,
+      "last_modified_commit": "11dee4ad6",
+      "is_empty": false,
+      "extension": ".kts",
+      "lines": 4
+    },
+    {
+      "path": "apps/android/gradle.properties",
+      "type": "file",
+      "size_bytes": 104,
+      "last_modified_commit": "11dee4ad6",
+      "is_empty": false,
+      "extension": ".properties",
+      "lines": 3
+    },
+    {
+      "path": "apps/android/settings.gradle.kts",
+      "type": "file",
+      "size_bytes": 400,
+      "last_modified_commit": "11dee4ad6",
+      "is_empty": false,
+      "extension": ".kts",
+      "lines": 20
     },
     {
       "path": "apps/web/.gitignore",
@@ -3488,6 +3596,33 @@
       "lines": 21
     },
     {
+      "path": "docs/specs/app/android-geometric-host.md",
+      "type": "file",
+      "size_bytes": 5313,
+      "last_modified_commit": "11dee4ad6",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 126
+    },
+    {
+      "path": "docs/specs/app/android-geometric-host.schema.json",
+      "type": "file",
+      "size_bytes": 1742,
+      "last_modified_commit": "11dee4ad6",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 88
+    },
+    {
+      "path": "docs/specs/app/android-geometric-host.v0.1.json",
+      "type": "file",
+      "size_bytes": 2351,
+      "last_modified_commit": "11dee4ad6",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 102
+    },
+    {
       "path": "docs/specs/app/architect-runtime-core.md",
       "type": "file",
       "size_bytes": 5347,
@@ -5857,8 +5992,8 @@
     {
       "path": "package.json",
       "type": "file",
-      "size_bytes": 1207,
-      "last_modified_commit": "9d868170d",
+      "size_bytes": 1256,
+      "last_modified_commit": "11dee4ad6",
       "is_empty": false,
       "extension": ".json",
       "lines": 39
@@ -6258,6 +6393,15 @@
       "is_empty": false,
       "extension": ".py",
       "lines": 786
+    },
+    {
+      "path": "scripts/verify-ce-w02-native-shell.py",
+      "type": "file",
+      "size_bytes": 9514,
+      "last_modified_commit": "11dee4ad6",
+      "is_empty": false,
+      "extension": ".py",
+      "lines": 164
     },
     {
       "path": "scripts/verify-ce-w02-projection.py",
