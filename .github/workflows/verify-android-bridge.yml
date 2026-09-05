@@ -27,6 +27,24 @@ on:
       - ".github/workflows/verify-android-bridge.yml"
 
 jobs:
+  rustfmt-diagnostic:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: "1.98.1"
+
+      - name: Print canonical safe-facade rustfmt diff
+        shell: bash
+        run: |
+          cargo fmt --manifest-path runtime/arcanum-android-bridge/Cargo.toml
+          echo "=== RUSTFMT DIFF BEGIN ==="
+          git diff -- runtime/arcanum-android-bridge/src/lib.rs
+          echo "=== RUSTFMT DIFF END ==="
+
   verify-android-bridge:
     runs-on: ubuntu-22.04
     timeout-minutes: 30
