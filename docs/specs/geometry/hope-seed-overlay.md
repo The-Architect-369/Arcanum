@@ -20,6 +20,8 @@ The controlling source remains `arcnet-coordinate-frame.v0.1.json`:
 - source coordinates are immutable to CE-W03;
 - no Seed geometry is asserted as an exact mathematical identity of that octahedron.
 
+The inherited coordinate registry is intentionally **not edited by W03.1**; this overlay is a separate Construction-era presentation contract bound to it.
+
 ## Overlay type
 
 `hope-seed-overlay.v0.1.json` is explicitly `symbolic-presentation-overlay`.
