@@ -1,0 +1,99 @@
+{
+  "$schema": "./arcnet-screen-projection.schema.json",
+  "projectionContractId": "arcnet-screen-projection",
+  "schemaVersion": "0.1.0",
+  "sourceFrame": {
+    "frameId": "arcnet-coordinate-frame",
+    "frameVersion": "0.1.0",
+    "spatialArchitectureVersion": "0.2.0",
+    "sourceCoordinatesMutable": false
+  },
+  "vectorConvention": {
+    "vectorType": "homogeneous-column",
+    "matrixApplication": "left-multiply",
+    "handedness": "right-handed",
+    "positiveRotationConvention": "right-hand-rule",
+    "cameraLocalForward": "-Z",
+    "compositionOrder": "rightmost-first"
+  },
+  "modelTransform": {
+    "formula": "X=P+s*R*q",
+    "scaleConstraint": "s>0",
+    "rotationConstraint": "transpose(R)*R=I",
+    "anisotropicScaleAllowed": false
+  },
+  "camera": {
+    "forwardFormula": "normalize(target-eye)",
+    "rightFormula": "normalize(forward×upReference)",
+    "upFormula": "right×forward",
+    "viewX": "dot(right,X-eye)",
+    "viewY": "dot(up,X-eye)",
+    "viewZ": "-dot(forward,X-eye)",
+    "frontCondition": "viewZ<0",
+    "viewDepth": "-viewZ",
+    "degenerateInputsFailClosed": true
+  },
+  "perspective": {
+    "fovAxis": "vertical",
+    "matrixConvention": "opengl-style-right-handed",
+    "ndcDepthRange": [-1.0, 1.0],
+    "clipRule": "w>0 && -w<=x<=w && -w<=y<=w && -w<=z<=w",
+    "nearFarConstraint": "0<near<far",
+    "fovConstraintDegrees": "0<fovY<180"
+  },
+  "viewport": {
+    "origin": "top-left",
+    "xAxis": "right",
+    "yAxis": "down",
+    "coordinateType": "continuous-edge",
+    "screenX": "x0+(ndcX+1)*width/2",
+    "screenY": "y0+(1-ndcY)*height/2",
+    "pixelCenterBackendOwned": true
+  },
+  "referenceProfile": {
+    "id": "ce-w02-projection-reference-v0.1",
+    "model": {
+      "translation": [0, 0, 0],
+      "scale": 1.0,
+      "rotationOrder": ["Ry(+45deg)", "Rx(-30deg)"],
+      "compositeMatrix": [
+        [0.7071067811865476, 0.0, 0.7071067811865475],
+        [-0.3535533905932737, 0.8660254037844387, 0.35355339059327373],
+        [-0.6123724356957945, -0.5, 0.6123724356957946]
+      ]
+    },
+    "camera": {
+      "eye": [0, 0, 5],
+      "target": [0, 0, 0],
+      "upReference": [0, 1, 0]
+    },
+    "perspective": {
+      "fovYDegrees": 60.0,
+      "near": 0.1,
+      "far": 100.0
+    },
+    "viewport": {
+      "x0": 0.0,
+      "y0": 0.0,
+      "width": 1000.0,
+      "height": 1000.0
+    }
+  },
+  "inheritedFalsificationIds": ["F1", "F2", "F3", "F4", "F5", "F6", "F7", "F8", "F9", "F10", "F11", "F12", "F13", "F14", "F15", "F16", "F17", "F18", "F19", "F20"],
+  "falsificationIds": ["F21", "F22", "F23", "F24", "F25", "F26", "F27", "F28", "F29", "F30"],
+  "geometryFreeEquivalentRequired": true,
+  "authorityEffect": "none",
+  "forbiddenAuthorityInputs": [
+    "identity",
+    "capability",
+    "permission",
+    "authority",
+    "governanceWeight",
+    "recognition",
+    "readiness",
+    "worth",
+    "score",
+    "economicEntitlement",
+    "protocolFinality"
+  ]
+}

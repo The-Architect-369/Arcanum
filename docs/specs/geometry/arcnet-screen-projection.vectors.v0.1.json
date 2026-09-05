@@ -1,0 +1,106 @@
+{
+  "vectorSet": "arcnet-screen-projection-falsification",
+  "version": "0.1.0",
+  "registry": "./arcnet-screen-projection.v0.1.json",
+  "tolerance": 1e-9,
+  "expectations": {
+    "F21": {
+      "sourceFrameId": "arcnet-coordinate-frame",
+      "sourceCoordinatesMutable": false
+    },
+    "F22": {
+      "rotationMatrix": [
+        [0.7071067811865476, 0.0, 0.7071067811865475],
+        [-0.3535533905932737, 0.8660254037844387, 0.35355339059327373],
+        [-0.6123724356957945, -0.5, 0.6123724356957946]
+      ],
+      "scale": 1.0,
+      "translation": [0, 0, 0]
+    },
+    "F23": {
+      "handedness": "right-handed",
+      "positiveRotationConvention": "right-hand-rule",
+      "cameraLocalForward": "-Z",
+      "vectorType": "homogeneous-column",
+      "compositionOrder": "rightmost-first"
+    },
+    "F24": {
+      "referenceOriginView": [0.0, 0.0, -5.0],
+      "referenceBasis": {
+        "right": [1.0, 0.0, 0.0],
+        "up": [0.0, 1.0, 0.0],
+        "forward": [0.0, 0.0, -1.0]
+      }
+    },
+    "F25": {
+      "samples": [
+        {"id": "origin", "q": [0, 0, 0], "screen": [500.0, 500.0], "viewDepth": 5.0},
+        {"id": "o_px", "q": [1, 0, 0], "screen": [609.111154455999, 554.555577227999], "viewDepth": 5.612372435696},
+        {"id": "o_nx", "q": [-1, 0, 0], "screen": [360.431992752123, 430.215996376061], "viewDepth": 4.387627564304},
+        {"id": "o_py", "q": [0, 1, 0], "screen": [500.0, 363.636363636364], "viewDepth": 5.5},
+        {"id": "o_ny", "q": [0, -1, 0], "screen": [500.0, 666.666666666667], "viewDepth": 4.5},
+        {"id": "o_pz", "q": [0, 0, 1], "screen": [639.568007247877, 430.215996376061], "viewDepth": 4.387627564304},
+        {"id": "o_nz", "q": [0, 0, -1], "screen": [390.888845544001, 554.555577227999], "viewDepth": 5.612372435696},
+        {"id": "c_ppp", "q": [1, 1, 1], "screen": [722.680885707562, 363.636363636364], "viewDepth": 5.5},
+        {"id": "c_pnn", "q": [1, -1, -1], "screen": [500.0, 737.979589711327], "viewDepth": 5.724744871392},
+        {"id": "c_npn", "q": [-1, 1, -1], "screen": [277.319114292438, 363.636363636364], "viewDepth": 5.5},
+        {"id": "c_nnp", "q": [-1, -1, 1], "screen": [500.0, 542.020410288673], "viewDepth": 3.275255128608},
+        {"id": "c_nnn", "q": [-1, -1, -1], "screen": [227.834473024091, 666.666666666667], "viewDepth": 4.5},
+        {"id": "c_npp", "q": [-1, 1, 1], "screen": [500.0, 181.335406961024], "viewDepth": 4.275255128608},
+        {"id": "c_pnp", "q": [1, -1, 1], "screen": [772.165526975909, 666.666666666667], "viewDepth": 4.5},
+        {"id": "c_ppn", "q": [1, 1, -1], "screen": [500.0, 479.534158256367], "viewDepth": 6.724744871392}
+      ]
+    },
+    "F26": {
+      "wideViewport": {"width": 1000.0, "height": 500.0},
+      "equalPixelScaleCase": {
+        "cameraDepth": 5.0,
+        "unitX": [1.0, 0.0, 0.0],
+        "unitY": [0.0, 1.0, 0.0]
+      }
+    },
+    "F27": {
+      "nearCrossingSegment": {
+        "aWorld": [0.0, 0.0, 4.95],
+        "bWorld": [0.0, 0.0, 4.5],
+        "expectedNearIntersectionWorld": [0.0, 0.0, 4.9],
+        "expectedT": 0.1111111111111111
+      }
+    },
+    "F28": {
+      "nearer": "c_nnp",
+      "farther": "c_ppn",
+      "nearerDepth": 3.275255128608,
+      "fartherDepth": 6.724744871392
+    },
+    "F29": {
+      "identityCoincidence": {
+        "first": [0.0, 0.0, 1.0],
+        "second": [0.0, 0.0, -1.0],
+        "expectedScreen": [500.0, 500.0],
+        "firstDepth": 4.0,
+        "secondDepth": 6.0,
+        "spatiallyIdentical": false,
+        "semanticRelationshipCreated": false,
+        "executableRelationCreated": false
+      }
+    },
+    "F30": {
+      "authorityEffect": "none",
+      "geometryFreeEquivalentRequired": true,
+      "forbiddenAuthorityInputs": [
+        "identity",
+        "capability",
+        "permission",
+        "authority",
+        "governanceWeight",
+        "recognition",
+        "readiness",
+        "worth",
+        "score",
+        "economicEntitlement",
+        "protocolFinality"
+      ]
+    }
+  }
+}
