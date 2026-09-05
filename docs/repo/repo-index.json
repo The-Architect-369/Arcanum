@@ -1,17 +1,17 @@
 {
-  "generated_at": "2026-09-05T00:27:29Z",
+  "generated_at": "2026-09-05T02:13:23Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "0412d2719",
+  "commit": "10478fa42",
   "generator_version": "1.4",
   "files": [
     {
-      "path": ".github/workflows/architect-promotion.yml",
+      "path": ".github/workflows/architect-verification.yml",
       "type": "file",
-      "size_bytes": 1987,
-      "last_modified_commit": "0412d2719",
+      "size_bytes": 2193,
+      "last_modified_commit": "de6368a46",
       "is_empty": false,
       "extension": ".yml",
-      "lines": 71
+      "lines": 78
     },
     {
       "path": ".github/workflows/doctrine-guard.yml",
@@ -3218,67 +3218,31 @@
       "lines": 890
     },
     {
-      "path": "docs/governance/architectgpt/agent-execution-protocol.md",
-      "type": "file",
-      "size_bytes": 3328,
-      "last_modified_commit": "55b3103e5",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 79
-    },
-    {
-      "path": "docs/governance/architectgpt/agent-execution.schema.json",
-      "type": "file",
-      "size_bytes": 4107,
-      "last_modified_commit": "93efcc046",
-      "is_empty": false,
-      "extension": ".json",
-      "lines": 96
-    },
-    {
-      "path": "docs/governance/architectgpt/agent-invocation-protocol.md",
-      "type": "file",
-      "size_bytes": 3439,
-      "last_modified_commit": "c0f523e00",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 104
-    },
-    {
-      "path": "docs/governance/architectgpt/agent-invocation.schema.json",
-      "type": "file",
-      "size_bytes": 2018,
-      "last_modified_commit": "d7e168b3f",
-      "is_empty": false,
-      "extension": ".json",
-      "lines": 60
-    },
-    {
       "path": "docs/governance/architectgpt/agent-registry.yaml",
       "type": "file",
-      "size_bytes": 4129,
-      "last_modified_commit": "452541617",
+      "size_bytes": 4787,
+      "last_modified_commit": "de6368a46",
       "is_empty": false,
       "extension": ".yaml",
-      "lines": 102
+      "lines": 175
     },
     {
       "path": "docs/governance/architectgpt/architect-gpt-manifest.yaml",
       "type": "file",
-      "size_bytes": 30326,
-      "last_modified_commit": "bb803aa69",
+      "size_bytes": 12775,
+      "last_modified_commit": "de6368a46",
       "is_empty": false,
       "extension": ".yaml",
-      "lines": 690
+      "lines": 336
     },
     {
       "path": "docs/governance/architectgpt/architect-gpt.md",
       "type": "file",
-      "size_bytes": 17824,
-      "last_modified_commit": "bb803aa69",
+      "size_bytes": 13259,
+      "last_modified_commit": "de6368a46",
       "is_empty": false,
       "extension": ".md",
-      "lines": 391
+      "lines": 347
     },
     {
       "path": "docs/governance/architectgpt/architect-log.md",
@@ -3290,15 +3254,6 @@
       "lines": 1345
     },
     {
-      "path": "docs/governance/architectgpt/ast-integrity-protocol.md",
-      "type": "file",
-      "size_bytes": 2991,
-      "last_modified_commit": "17983a0fa",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 72
-    },
-    {
       "path": "docs/governance/architectgpt/ast-integrity.schema.json",
       "type": "file",
       "size_bytes": 1697,
@@ -3308,15 +3263,6 @@
       "lines": 53
     },
     {
-      "path": "docs/governance/architectgpt/build-diagnostics-protocol.md",
-      "type": "file",
-      "size_bytes": 2745,
-      "last_modified_commit": "0412d2719",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 68
-    },
-    {
       "path": "docs/governance/architectgpt/build-diagnostics.schema.json",
       "type": "file",
       "size_bytes": 2635,
@@ -3324,87 +3270,6 @@
       "is_empty": false,
       "extension": ".json",
       "lines": 71
-    },
-    {
-      "path": "docs/governance/architectgpt/candidate-commit-protocol.md",
-      "type": "file",
-      "size_bytes": 3456,
-      "last_modified_commit": "4e3136365",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 92
-    },
-    {
-      "path": "docs/governance/architectgpt/candidate-commit.schema.json",
-      "type": "file",
-      "size_bytes": 2802,
-      "last_modified_commit": "d5af95329",
-      "is_empty": false,
-      "extension": ".json",
-      "lines": 65
-    },
-    {
-      "path": "docs/governance/architectgpt/candidate-publisher-protocol.md",
-      "type": "file",
-      "size_bytes": 3310,
-      "last_modified_commit": "21d05b6eb",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 119
-    },
-    {
-      "path": "docs/governance/architectgpt/candidate-publisher.schema.json",
-      "type": "file",
-      "size_bytes": 3672,
-      "last_modified_commit": "b53331172",
-      "is_empty": false,
-      "extension": ".json",
-      "lines": 91
-    },
-    {
-      "path": "docs/governance/architectgpt/capability-fabric.md",
-      "type": "file",
-      "size_bytes": 6557,
-      "last_modified_commit": "22f0105c6",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 196
-    },
-    {
-      "path": "docs/governance/architectgpt/capability-registry.yaml",
-      "type": "file",
-      "size_bytes": 10305,
-      "last_modified_commit": "688451ee4",
-      "is_empty": false,
-      "extension": ".yaml",
-      "lines": 314
-    },
-    {
-      "path": "docs/governance/architectgpt/change-plan-protocol.md",
-      "type": "file",
-      "size_bytes": 2859,
-      "last_modified_commit": "237668982",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 83
-    },
-    {
-      "path": "docs/governance/architectgpt/change-plan.schema.json",
-      "type": "file",
-      "size_bytes": 1646,
-      "last_modified_commit": "94e328d17",
-      "is_empty": false,
-      "extension": ".json",
-      "lines": 52
-    },
-    {
-      "path": "docs/governance/architectgpt/ci-promotion-protocol.md",
-      "type": "file",
-      "size_bytes": 2228,
-      "last_modified_commit": "7307be314",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 70
     },
     {
       "path": "docs/governance/architectgpt/continuity-index-spec.md",
@@ -3443,15 +3308,6 @@
       "lines": 507
     },
     {
-      "path": "docs/governance/architectgpt/evidence-protocol.md",
-      "type": "file",
-      "size_bytes": 2410,
-      "last_modified_commit": "0d458820d",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 65
-    },
-    {
       "path": "docs/governance/architectgpt/execution-record.schema.json",
       "type": "file",
       "size_bytes": 1782,
@@ -3461,15 +3317,6 @@
       "lines": 80
     },
     {
-      "path": "docs/governance/architectgpt/impact-graph-protocol.md",
-      "type": "file",
-      "size_bytes": 3912,
-      "last_modified_commit": "ff1e67c30",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 129
-    },
-    {
       "path": "docs/governance/architectgpt/impact-graph.schema.json",
       "type": "file",
       "size_bytes": 4164,
@@ -3477,96 +3324,6 @@
       "is_empty": false,
       "extension": ".json",
       "lines": 116
-    },
-    {
-      "path": "docs/governance/architectgpt/merge-authorization-protocol.md",
-      "type": "file",
-      "size_bytes": 2300,
-      "last_modified_commit": "2c064e6a9",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 53
-    },
-    {
-      "path": "docs/governance/architectgpt/merge-authorization.schema.json",
-      "type": "file",
-      "size_bytes": 1844,
-      "last_modified_commit": "4f3845a77",
-      "is_empty": false,
-      "extension": ".json",
-      "lines": 49
-    },
-    {
-      "path": "docs/governance/architectgpt/merge-executor-protocol.md",
-      "type": "file",
-      "size_bytes": 2407,
-      "last_modified_commit": "cb0f5e3c1",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 67
-    },
-    {
-      "path": "docs/governance/architectgpt/merge-executor.schema.json",
-      "type": "file",
-      "size_bytes": 3480,
-      "last_modified_commit": "1453c3c34",
-      "is_empty": false,
-      "extension": ".json",
-      "lines": 75
-    },
-    {
-      "path": "docs/governance/architectgpt/orchestration-protocol.md",
-      "type": "file",
-      "size_bytes": 4292,
-      "last_modified_commit": "1c85b585e",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 133
-    },
-    {
-      "path": "docs/governance/architectgpt/patch-executor-protocol.md",
-      "type": "file",
-      "size_bytes": 4922,
-      "last_modified_commit": "ee7ec5892",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 132
-    },
-    {
-      "path": "docs/governance/architectgpt/patch-executor.schema.json",
-      "type": "file",
-      "size_bytes": 2468,
-      "last_modified_commit": "424ad7074",
-      "is_empty": false,
-      "extension": ".json",
-      "lines": 76
-    },
-    {
-      "path": "docs/governance/architectgpt/post-merge-closure-protocol.md",
-      "type": "file",
-      "size_bytes": 3445,
-      "last_modified_commit": "48c09d878",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 115
-    },
-    {
-      "path": "docs/governance/architectgpt/post-merge-closure.schema.json",
-      "type": "file",
-      "size_bytes": 2940,
-      "last_modified_commit": "d513b5e57",
-      "is_empty": false,
-      "extension": ".json",
-      "lines": 80
-    },
-    {
-      "path": "docs/governance/architectgpt/production-smoke-protocol.md",
-      "type": "file",
-      "size_bytes": 7440,
-      "last_modified_commit": "2ca68bc89",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 180
     },
     {
       "path": "docs/governance/architectgpt/production-smoke-routes.json",
@@ -3587,76 +3344,13 @@
       "lines": 264
     },
     {
-      "path": "docs/governance/architectgpt/promotion-orchestrator-protocol.md",
-      "type": "file",
-      "size_bytes": 6413,
-      "last_modified_commit": "523baf8cd",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 175
-    },
-    {
-      "path": "docs/governance/architectgpt/promotion-orchestrator.schema.json",
-      "type": "file",
-      "size_bytes": 3434,
-      "last_modified_commit": "0a9b8dcd1",
-      "is_empty": false,
-      "extension": ".json",
-      "lines": 168
-    },
-    {
-      "path": "docs/governance/architectgpt/promotion-protocol.md",
-      "type": "file",
-      "size_bytes": 5911,
-      "last_modified_commit": "4140463d2",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 139
-    },
-    {
-      "path": "docs/governance/architectgpt/provider-health-protocol.md",
-      "type": "file",
-      "size_bytes": 2872,
-      "last_modified_commit": "1e0f6b10f",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 64
-    },
-    {
       "path": "docs/governance/architectgpt/provider-health.schema.json",
       "type": "file",
-      "size_bytes": 1158,
-      "last_modified_commit": "7370dfa8a",
+      "size_bytes": 1556,
+      "last_modified_commit": "de6368a46",
       "is_empty": false,
       "extension": ".json",
-      "lines": 30
-    },
-    {
-      "path": "docs/governance/architectgpt/remote-publisher-protocol.md",
-      "type": "file",
-      "size_bytes": 3983,
-      "last_modified_commit": "a53d9bd75",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 131
-    },
-    {
-      "path": "docs/governance/architectgpt/remote-publisher.schema.json",
-      "type": "file",
-      "size_bytes": 3592,
-      "last_modified_commit": "6560b49e2",
-      "is_empty": false,
-      "extension": ".json",
-      "lines": 100
-    },
-    {
-      "path": "docs/governance/architectgpt/repository-timeline-protocol.md",
-      "type": "file",
-      "size_bytes": 2780,
-      "last_modified_commit": "ea27f3c2c",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 88
+      "lines": 73
     },
     {
       "path": "docs/governance/architectgpt/repository-timeline.schema.json",
@@ -4579,11 +4273,11 @@
     {
       "path": "docs/tooling/doctrine-checksums/doctrine-checksums.yaml",
       "type": "file",
-      "size_bytes": 3152,
-      "last_modified_commit": "07a93bc26",
+      "size_bytes": 1916,
+      "last_modified_commit": "10478fa42",
       "is_empty": false,
       "extension": ".yaml",
-      "lines": 34
+      "lines": 25
     },
     {
       "path": "docs/vitae/constitution/constitutional-amendment.md",
@@ -6485,24 +6179,6 @@
       "lines": 270
     },
     {
-      "path": "scripts/architect/agent-execute.py",
-      "type": "file",
-      "size_bytes": 11488,
-      "last_modified_commit": "df85a2bdf",
-      "is_empty": false,
-      "extension": ".py",
-      "lines": 299
-    },
-    {
-      "path": "scripts/architect/agent-run.py",
-      "type": "file",
-      "size_bytes": 7986,
-      "last_modified_commit": "3e6cd95a8",
-      "is_empty": false,
-      "extension": ".py",
-      "lines": 205
-    },
-    {
       "path": "scripts/architect/ast-integrity.py",
       "type": "file",
       "size_bytes": 6407,
@@ -6521,49 +6197,13 @@
       "lines": 124
     },
     {
-      "path": "scripts/architect/candidate-commit.py",
-      "type": "file",
-      "size_bytes": 13293,
-      "last_modified_commit": "0022f2cdd",
-      "is_empty": false,
-      "extension": ".py",
-      "lines": 317
-    },
-    {
-      "path": "scripts/architect/candidate-publisher.py",
-      "type": "file",
-      "size_bytes": 8236,
-      "last_modified_commit": "80611feb6",
-      "is_empty": false,
-      "extension": ".py",
-      "lines": 209
-    },
-    {
-      "path": "scripts/architect/change-plan.py",
-      "type": "file",
-      "size_bytes": 4477,
-      "last_modified_commit": "db2313e44",
-      "is_empty": false,
-      "extension": ".py",
-      "lines": 124
-    },
-    {
       "path": "scripts/architect/ci-attest.sh",
       "type": "file",
-      "size_bytes": 1839,
-      "last_modified_commit": "98aec6ea5",
+      "size_bytes": 2027,
+      "last_modified_commit": "de6368a46",
       "is_empty": false,
       "extension": ".sh",
-      "lines": 47
-    },
-    {
-      "path": "scripts/architect/close-wave.sh",
-      "type": "file",
-      "size_bytes": 244,
-      "last_modified_commit": "47f33726b",
-      "is_empty": false,
-      "extension": ".sh",
-      "lines": 10
+      "lines": 69
     },
     {
       "path": "scripts/architect/generate-continuity-index.py",
@@ -6584,49 +6224,13 @@
       "lines": 303
     },
     {
-      "path": "scripts/architect/merge-authorization.py",
-      "type": "file",
-      "size_bytes": 6522,
-      "last_modified_commit": "eb286c47c",
-      "is_empty": false,
-      "extension": ".py",
-      "lines": 165
-    },
-    {
-      "path": "scripts/architect/merge-executor.py",
-      "type": "file",
-      "size_bytes": 9843,
-      "last_modified_commit": "59439e39c",
-      "is_empty": false,
-      "extension": ".py",
-      "lines": 250
-    },
-    {
       "path": "scripts/architect/orchestrate.sh",
       "type": "file",
-      "size_bytes": 7583,
-      "last_modified_commit": "be9106616",
+      "size_bytes": 7448,
+      "last_modified_commit": "de6368a46",
       "is_empty": false,
       "extension": ".sh",
-      "lines": 202
-    },
-    {
-      "path": "scripts/architect/patch-executor.py",
-      "type": "file",
-      "size_bytes": 11823,
-      "last_modified_commit": "48d5731e0",
-      "is_empty": false,
-      "extension": ".py",
-      "lines": 291
-    },
-    {
-      "path": "scripts/architect/post-merge-close.py",
-      "type": "file",
-      "size_bytes": 10539,
-      "last_modified_commit": "24c73caba",
-      "is_empty": false,
-      "extension": ".py",
-      "lines": 291
+      "lines": 227
     },
     {
       "path": "scripts/architect/production-smoke.py",
@@ -6638,49 +6242,13 @@
       "lines": 392
     },
     {
-      "path": "scripts/architect/promote-wave.sh",
-      "type": "file",
-      "size_bytes": 381,
-      "last_modified_commit": "8daf4e89f",
-      "is_empty": false,
-      "extension": ".sh",
-      "lines": 13
-    },
-    {
-      "path": "scripts/architect/promotion-gate.sh",
-      "type": "file",
-      "size_bytes": 5263,
-      "last_modified_commit": "c809d7023",
-      "is_empty": false,
-      "extension": ".sh",
-      "lines": 132
-    },
-    {
-      "path": "scripts/architect/promotion-orchestrator.py",
-      "type": "file",
-      "size_bytes": 11901,
-      "last_modified_commit": "8daf4e89f",
-      "is_empty": false,
-      "extension": ".py",
-      "lines": 280
-    },
-    {
       "path": "scripts/architect/provider-health.py",
       "type": "file",
-      "size_bytes": 5032,
-      "last_modified_commit": "c7792ccdc",
+      "size_bytes": 5063,
+      "last_modified_commit": "de6368a46",
       "is_empty": false,
       "extension": ".py",
-      "lines": 142
-    },
-    {
-      "path": "scripts/architect/remote-publisher.py",
-      "type": "file",
-      "size_bytes": 9561,
-      "last_modified_commit": "aeb2c9d10",
-      "is_empty": false,
-      "extension": ".py",
-      "lines": 230
+      "lines": 146
     },
     {
       "path": "scripts/architect/repository-timeline.py",
@@ -6719,24 +6287,6 @@
       "lines": 460
     },
     {
-      "path": "scripts/architect/test-agent-execute.sh",
-      "type": "file",
-      "size_bytes": 6751,
-      "last_modified_commit": "df85a2bdf",
-      "is_empty": false,
-      "extension": ".sh",
-      "lines": 141
-    },
-    {
-      "path": "scripts/architect/test-agent-run.sh",
-      "type": "file",
-      "size_bytes": 6009,
-      "last_modified_commit": "45593126b",
-      "is_empty": false,
-      "extension": ".sh",
-      "lines": 155
-    },
-    {
       "path": "scripts/architect/test-architect-runtime.sh",
       "type": "file",
       "size_bytes": 4064,
@@ -6764,33 +6314,6 @@
       "lines": 65
     },
     {
-      "path": "scripts/architect/test-candidate-commit.sh",
-      "type": "file",
-      "size_bytes": 6901,
-      "last_modified_commit": "9c22a63ab",
-      "is_empty": false,
-      "extension": ".sh",
-      "lines": 189
-    },
-    {
-      "path": "scripts/architect/test-candidate-publisher.sh",
-      "type": "file",
-      "size_bytes": 8070,
-      "last_modified_commit": "124f20d21",
-      "is_empty": false,
-      "extension": ".sh",
-      "lines": 241
-    },
-    {
-      "path": "scripts/architect/test-change-plan.sh",
-      "type": "file",
-      "size_bytes": 2630,
-      "last_modified_commit": "6c916ec82",
-      "is_empty": false,
-      "extension": ".sh",
-      "lines": 76
-    },
-    {
       "path": "scripts/architect/test-impact-graph.sh",
       "type": "file",
       "size_bytes": 5642,
@@ -6798,42 +6321,6 @@
       "is_empty": false,
       "extension": ".sh",
       "lines": 189
-    },
-    {
-      "path": "scripts/architect/test-merge-authorization.sh",
-      "type": "file",
-      "size_bytes": 4190,
-      "last_modified_commit": "9914ed6a8",
-      "is_empty": false,
-      "extension": ".sh",
-      "lines": 92
-    },
-    {
-      "path": "scripts/architect/test-merge-executor.sh",
-      "type": "file",
-      "size_bytes": 7957,
-      "last_modified_commit": "94e515a71",
-      "is_empty": false,
-      "extension": ".sh",
-      "lines": 234
-    },
-    {
-      "path": "scripts/architect/test-patch-executor.sh",
-      "type": "file",
-      "size_bytes": 6095,
-      "last_modified_commit": "174236352",
-      "is_empty": false,
-      "extension": ".sh",
-      "lines": 198
-    },
-    {
-      "path": "scripts/architect/test-post-merge-close.sh",
-      "type": "file",
-      "size_bytes": 4216,
-      "last_modified_commit": "5db52de88",
-      "is_empty": false,
-      "extension": ".sh",
-      "lines": 149
     },
     {
       "path": "scripts/architect/test-production-smoke.sh",
@@ -6845,31 +6332,13 @@
       "lines": 336
     },
     {
-      "path": "scripts/architect/test-promotion-orchestrator.sh",
-      "type": "file",
-      "size_bytes": 3962,
-      "last_modified_commit": "8daf4e89f",
-      "is_empty": false,
-      "extension": ".sh",
-      "lines": 105
-    },
-    {
       "path": "scripts/architect/test-provider-health.sh",
       "type": "file",
-      "size_bytes": 3013,
-      "last_modified_commit": "0e01dcf12",
+      "size_bytes": 3016,
+      "last_modified_commit": "de6368a46",
       "is_empty": false,
       "extension": ".sh",
       "lines": 105
-    },
-    {
-      "path": "scripts/architect/test-remote-publisher.sh",
-      "type": "file",
-      "size_bytes": 8979,
-      "last_modified_commit": "5e98fea37",
-      "is_empty": false,
-      "extension": ".sh",
-      "lines": 259
     },
     {
       "path": "scripts/architect/test-repository-timeline.sh",
@@ -7009,11 +6478,11 @@
     {
       "path": "scripts/verify-sync.sh",
       "type": "file",
-      "size_bytes": 47860,
-      "last_modified_commit": "bb803aa69",
+      "size_bytes": 10231,
+      "last_modified_commit": "de6368a46",
       "is_empty": false,
       "extension": ".sh",
-      "lines": 1161
+      "lines": 248
     },
     {
       "path": "tsconfig.json",
