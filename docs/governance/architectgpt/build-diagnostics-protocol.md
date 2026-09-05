@@ -11,31 +11,20 @@ authority: evidentiary_only
 
 ## Purpose
 
-Wave IX converts raw build and deployment logs into deterministic diagnostic evidence without granting the parser authority to modify code, retry deployments, or promote commits.
+The build-diagnostics control converts raw build/deployment logs into deterministic diagnostic evidence without granting the parser authority to modify code, retry deployments, or promote commits.
 
-The control serves four functions:
+It:
 
-1. classify recognized TypeScript, module-resolution, Next.js, runtime-boundary, environment, and warning signals;
-2. map diagnostics to repository source paths and line or column locations when present;
-3. collapse repeated instances of the same root signal so cascading logs do not inflate the apparent failure count;
-4. bind optional deployment metadata to the analyzed log for Vercel and CI attribution.
+1. classifies recognized TypeScript, module-resolution, Next.js, runtime-boundary, environment, and warning signals;
+2. maps diagnostics to source paths/locations when present;
+3. collapses repeated instances of the same root signal;
+4. binds optional deployment metadata for provider attribution.
 
 ## Inputs
 
-The parser accepts:
+The parser accepts one UTF-8 build/deployment log, optional JSON deployment metadata, and an optional output path.
 
-- one UTF-8 build or deployment log;
-- optional JSON deployment metadata;
-- an optional output path.
-
-Supported deployment metadata fields are:
-
-- `provider`;
-- `deployment_id`;
-- `environment`;
-- `state`;
-- `branch`;
-- `commit`.
+Supported deployment metadata fields are `provider`, `deployment_id`, `environment`, `state`, `branch`, and `commit`.
 
 Network access is not required. Provider data must be captured separately and supplied as bounded evidence.
 
@@ -43,65 +32,32 @@ Network access is not required. Provider data must be captured separately and su
 
 Recognized categories are:
 
-- `typescript` — compiler diagnostics with TS codes and source locations;
-- `module_resolution` — missing modules or unresolved imports;
-- `environment` — absent or undefined environment configuration;
-- `nextjs` — framework compilation, prerender, or export failures;
-- `runtime_boundary` — Edge, server-only, client-component, or Server Component boundary violations;
-- `warning` — non-fatal warning signals.
+- `typescript`
+- `module_resolution`
+- `environment`
+- `nextjs`
+- `runtime_boundary`
+- `warning`
 
 Errors set report status to `fail`. Warning-only or empty logs produce `pass`.
 
-## Attribution
+## Attribution and determinism
 
-Attribution is evidence, not proof of causality. A diagnostic may include:
+Attribution is evidence, not proof of causality. Diagnostics may include source path, one-based line/column, compiler code, and stable diagnostic identity.
 
-- repository-relative source path;
-- one-based line number;
-- one-based column number;
-- compiler code;
-- stable diagnostic identifier.
+Repeated diagnostics with the same category, code/normalized message, and source path are collapsed.
 
-Repeated diagnostics with the same category, code or normalized message, and source path are collapsed into one record. This prevents a single root failure from being counted repeatedly when tools echo the same message.
+The report binds the exact repository commit, SHA-256 of the input log, sorted diagnostics, and SHA-256 of canonical report content before the final report digest is added. Identical commit/log/metadata input must produce the same `report_sha256`.
 
-## Determinism
+## Authority boundary
 
-The report binds:
+The parser is `evidentiary_only`. It must not change repository files, install dependencies, fetch provider logs, retry/cancel deployments, infer or expose secrets, or authorize promotion/merge.
 
-- exact repository commit;
-- SHA-256 of the complete input log;
-- sorted diagnostics;
-- SHA-256 of the canonical report content before the final report digest is added.
-
-The same repository commit, log bytes, and metadata must produce the same `report_sha256`.
-
-## Authority Boundary
-
-The parser is `evidentiary_only`.
-
-It must not:
-
-- change repository files;
-- install dependencies;
-- fetch provider logs;
-- retry or cancel deployments;
-- infer secrets or expose environment values;
-- authorize promotion or merge.
-
-Provider connectors and human review remain responsible for obtaining trustworthy logs and deciding remediation.
+Provider connectors and Human review remain responsible for trustworthy source evidence and remediation decisions.
 
 ## Verification
 
-Canonical verification requires executable fixtures proving:
-
-- deterministic output for identical inputs;
-- TypeScript source and code attribution;
-- module-resolution classification;
-- environment and Next.js failure classification;
-- warning-only pass semantics;
-- duplicate collapse;
-- deployment metadata binding;
-- malformed metadata rejection.
+Canonical fixtures must prove deterministic output, TypeScript/source attribution, module-resolution/environment/Next.js classification, warning-only pass semantics, duplicate collapse, deployment metadata binding, and malformed-metadata rejection.
 
 Reports belong under:
 
@@ -109,4 +65,4 @@ Reports belong under:
 .architect-reports/orchestration/build-diagnostics/
 ```
 
-Refer to full module schema in docs/architect/architectgpt-extended.md.
+Current Architect operating authority is defined by `docs/governance/architectgpt/architect-gpt.md` and its machine manifest. Archived Architect specifications are not dependencies of this protocol.

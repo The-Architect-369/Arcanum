@@ -1,456 +1,69 @@
 ---
-title: "Construction Era Research Branch Disposition"
-status: implementation-candidate
+title: "Construction Era Research Disposition — Historical Summary"
+status: historical
 visibility: public
 phase: "Pre-Genesis"
 era: "Construction Era"
 wave: "CE-W01"
 last_updated: 2026-09-04
-authority: "audit evidence only; no disposition here self-ratifies canon"
+authority: "historical audit evidence only"
+canonical_baseline: "docs/repo/arcanum-baseline.md"
 source_issue: "https://github.com/The-Architect-369/Arcanum/issues/39"
-research_branch: "docs/creation-era-architecture-trail"
+post_closure_cleanup_issue: "https://github.com/The-Architect-369/Arcanum/issues/41"
 research_head: "5e4be0cd733845e21a172b122aa8c1b157b4f674"
-stable_base: "cfd332516597501301b7a1ad4d0fc84943ed57f5"
 ---
 
-# Construction Era Research Branch Disposition
+# Construction Era Research Disposition — Historical Summary
 
 ## Purpose
 
-This document records the artifact-by-artifact and family-by-family disposition audit of the post-Wave-XXIV research branch before any research material is consolidated into the Construction Era baseline.
+This file preserves the outcome of the CE-W01 research-branch audit without carrying the entire development-era decision tree as an active instruction surface.
 
-It complements `construction-era-consolidation-ledger.md` and must be read as audit evidence rather than canonical architecture.
+The full pre-cleanup disposition record remains recoverable from Git history:
 
-## Exact comparison grounding
-
-At audit start:
-
-```text
-base: main@cfd332516597501301b7a1ad4d0fc84943ed57f5
-head: docs/creation-era-architecture-trail@5e4be0cd733845e21a172b122aa8c1b157b4f674
-status: ahead
-commits ahead: 147
-commits behind: 0
-merge base: cfd332516597501301b7a1ad4d0fc84943ed57f5
+```bash
+git show 22b1255c5063e5fbfebc248c75f6f5e2668a46c4:docs/repo/construction-era-research-disposition.md
 ```
 
-The research branch therefore has one clean stable ancestor. Consolidation does not require conflict archaeology; it requires evidence-based selection.
+## Audited lineage
 
-GitHub's compare metadata reports some files with zero textual additions/deletions when patch statistics are not materialized. That metadata must not be interpreted as proof that those files are empty. Content-level disposition requires opening the source artifact.
-
-## Disposition states
-
-Primary dispositions are:
-
-- `PROMOTE` — artifact or bounded content is ready for active baseline after verification.
-- `SYNTHESIZE` — surviving content should be rewritten into a smaller authoritative artifact.
-- `RETAIN-AS-RESEARCH` — useful evidence remains, but it is not active authority.
-- `RELOCATE` — content survives but belongs in a different repository layer.
-- `ARCHIVE` — historical/rejected evidence worth preserving outside active research.
-- `RETIRE` — no durable value remains after surviving knowledge is preserved.
-
-This audit additionally uses `VERIFY-BEFORE-PROMOTE` and `AUDIT-PENDING` as temporary qualifiers. They are not final primary dispositions.
-
-## Tranche 1 — branch-family separation
-
-### A. Capability evaluator application stream
-
-Paths:
+Primary Creation-era research head:
 
 ```text
-apps/web/src/app/(app)/vitae/capabilities/CapabilityEvaluatorDemo.tsx
-apps/web/src/app/(app)/vitae/capabilities/VerifiableCapabilityEvaluatorDemo.tsx
-apps/web/src/app/(app)/vitae/capabilities/page.tsx
-apps/web/src/lib/capabilities/authorization-gate.ts
-apps/web/src/lib/capabilities/authorization-gate.vectors.ts
-apps/web/src/lib/capabilities/evaluator.ts
-apps/web/src/lib/capabilities/evaluator.vectors.ts
-apps/web/src/lib/capabilities/policies.ts
-apps/web/src/lib/capabilities/verifiable.demo.ts
-apps/web/src/lib/capabilities/verifiable.ts
-apps/web/src/lib/capabilities/verifiable.vectors.ts
-docs/architecture/capability-authorization-gate-implementation.md
-docs/architecture/capability-state-evaluator-implementation.md
-docs/architecture/capability-verifiable-records-implementation.md
-docs/architecture/registries/arcnet-authorization-gate.v0.2.json
-docs/architecture/registries/arcnet-capability-requirements.v0.1.json
-docs/architecture/registries/arcnet-capability-state-evaluator.v0.1.json
-docs/architecture/registries/arcnet-capability-verifiable-records.v0.2.json
+docs/creation-era-architecture-trail
+5e4be0cd733845e21a172b122aa8c1b157b4f674
 ```
 
-Primary disposition: **RETAIN-AS-RESEARCH**.
-
-Construction-baseline action: **do not import into CE-W01 implementation**.
-
-Reasoning:
-
-- this stream is materially different from the geometry/Tempus consolidation purpose;
-- its own implementation document says the evaluator is not an authorization service and remains design-candidate implementation evidence;
-- it has unresolved production prerequisites around signed provenance, grants, lifecycle, destination verification, Edge Contract invocation, decision receipts, and policy digests;
-- importing the code because it shares a research branch would collapse an independent capability/authorization workstream into the native-runtime baseline without a dedicated wave gate.
-
-Surviving principles may later be synthesized into the capability architecture, especially the firewall that geometry, display titles, and current Vitae position are non-authorizing inputs.
-
-### B. Whole-system geometry synthesis sources
-
-Paths:
+Later HOPE/TEMPUS/VITAE journey research head:
 
 ```text
-docs/architecture/arcanum-living-system-intent-and-direction.md
-docs/architecture/creation-era-architecture-trail.md
-docs/architecture/creation-era-whole-system-falsification-audit.md
-docs/architecture/nested-geometry-research-map.md
-docs/architecture/sovereign-faculty-geometry.md
-docs/architecture/arcnet-transported-frame-audit.md
-docs/architecture/arcnet-vitae-nested-cosmic-motion-audit.md
-docs/architecture/tree-of-life-vitae-tempus-stellar-cube-study.md
-docs/architecture/platonic-scale-frame-and-vitae-mathematics-audit.md
-docs/architecture/platonic-cosmology-source-and-science-audit.md
+docs/architects-arcanum-hope-track
+77f1d9c021f3e0c243e1a530b5bde94ce130bdcd
 ```
 
-Primary disposition: **SYNTHESIZE**.
+The latter is exactly two commits beyond the primary research head and remained non-canonical design evidence.
 
-Construction-baseline target: a compact Geometry & Mathematics authority surface plus clearly labeled research provenance.
+## Final disposition
 
-Already-supported surviving constraints include:
+The research branch was **not merged wholesale**.
 
-- registry/source meaning precedes geometric projection;
-- semantic edge is not automatically executable edge;
-- geometry does not create authority;
-- self-similar layers require a scale firewall;
-- Identity is not merely a geometric point;
-- geometric accessibility must have a geometry-free equivalent;
-- exact mathematical object, project symbolic name, screen projection, and runtime behavior must remain separately typed;
-- no module/application/authority may be invented merely to satisfy a numerical or geometric count.
+All audited research families received a final disposition before CE-W01 closure. No family remained `AUDIT-PENDING` as its primary state.
 
-The sovereign-faculty artifact remains explicitly non-canonical and acknowledges that the current canonical module registry controls until a future Module Architecture v2 review. Therefore it is evidence for synthesis, not a direct promotion artifact.
+The surviving outcome was:
 
-### C. ARCnet edge studies
+- Geometry/frame laws strong enough for Construction were **synthesized** into current Geometry and Spatial Architecture specifications/machine companions.
+- Minimal Tempus observer/source/frame/provenance, persistence, and local receipt semantics were **synthesized** into current Tempus/runtime contracts and certified implementation/tests.
+- Capability-evaluator implementation remained **research**, not CE-W01 runtime authority.
+- Detailed ARCnet edge studies, inner-junction studies, Classical Seven material, large symbolic/astronomical overlays, and other exploratory relationship systems remained **research evidence** unless separately promoted later.
+- Hope relational geometry survived only as bounded later-wave input; deeper Hope/octahedral/Seed-of-Life realization belongs to CE-W03.
+- Research renderings and branch-local artifacts did not become active architecture merely by existing.
+- Research repo-index/provenance variants were superseded by the Construction repository-index contract.
+- Vitae draft/legacy language cannot override its controlling authority map/doctrine.
 
-Paths:
+## Authority boundary
 
-```text
-docs/architecture/arcnet-edge-contract.md
-docs/architecture/edge-studies/arcanum-aerarium.md
-docs/architecture/edge-studies/arcanum-commercium.md
-docs/architecture/edge-studies/arcanum-imperium.md
-docs/architecture/edge-studies/arcanum-nexus.md
-docs/architecture/edge-studies/arcanum-protection.md
-docs/architecture/edge-studies/arcanum-theatrum.md
-docs/architecture/edge-studies/architect-aerarium.md
-docs/architecture/edge-studies/architect-imperium.md
-docs/architecture/edge-studies/architect-protection.md
-docs/architecture/edge-studies/commercium-architect.md
-docs/architecture/edge-studies/commercium-imperium.md
-docs/architecture/edge-studies/commercium-protection.md
-docs/architecture/edge-studies/commercium-theatrum.md
-docs/architecture/edge-studies/cross-tetrahedron-operational-synthesis.md
-docs/architecture/edge-studies/generative-tetrahedron-synthesis.md
-docs/architecture/edge-studies/imperium-aerarium.md
-docs/architecture/edge-studies/nexus-aerarium.md
-docs/architecture/edge-studies/nexus-architect.md
-docs/architecture/edge-studies/nexus-commercium.md
-docs/architecture/edge-studies/nexus-protection.md
-docs/architecture/edge-studies/nexus-theatrum.md
-docs/architecture/edge-studies/protection-aerarium.md
-docs/architecture/edge-studies/protection-imperium.md
-docs/architecture/edge-studies/stewardship-tetrahedron-synthesis.md
-docs/architecture/edge-studies/theatrum-aerarium.md
-docs/architecture/edge-studies/theatrum-architect.md
-docs/architecture/edge-studies/theatrum-imperium.md
-```
+Historical research may be reopened only for an explicit later Construction question. Its branch name, geometric symmetry, age, detail, or surviving Git history does not grant it current authority.
 
-Primary disposition: **RETAIN-AS-RESEARCH**.
+The forward state is encoded in `docs/repo/arcanum-baseline.md` and the controlling canonical sources it references.
 
-Secondary action: **SYNTHESIZE** only the relationship laws that survive the full family audit.
-
-Reasoning:
-
-- the branch's own falsification work rejects treating every possible K8 pair as a required executable contract;
-- detailed bilateral studies preserve useful provenance and domain reasoning but would overload the active architecture surface;
-- CE-W01 requires stable coordinate/runtime/temporal contracts, not a premature ratification of all future system-to-system edge semantics.
-
-No edge study may be promoted merely because an eight-point graph mathematically permits the relationship.
-
-### D. Inner junction studies
-
-Paths:
-
-```text
-docs/architecture/junction-studies/01-commons-witness.md
-docs/architecture/junction-studies/02-practice-safety.md
-docs/architecture/junction-studies/03-cultural-commons.md
-docs/architecture/junction-studies/04-market-assurance.md
-docs/architecture/junction-studies/05-creator-public-goods.md
-docs/architecture/junction-studies/06-standards-and-rights.md
-docs/architecture/junction-studies/inner-junction-neighbor-edge-audit.md
-docs/architecture/junction-studies/inner-octahedron-synthesis-and-orientation.md
-```
-
-Primary disposition: **RETAIN-AS-RESEARCH**.
-
-Construction-baseline synthesis law: an inner geometric junction may be a presentation/composition coordinate, but it is not automatically an application, sovereign actor, authority source, or runtime executor.
-
-### E. Hope relational geometry
-
-Paths:
-
-```text
-docs/architecture/hope-a2-inner-portrait.md
-docs/architecture/hope-fixed-nodes-and-internal-edge-audit.md
-```
-
-Primary disposition: **SYNTHESIZE**.
-
-Required safeguards before promotion of any derived model:
-
-- participant observation must not harden into personality typing;
-- any observation/projection requires source/provenance and revisability where applicable;
-- geometry may organize reflection without defining identity, worth, capability, or destiny;
-- Hope remains subject to controlling module/doctrine boundaries.
-
-### F. Classical Seven research
-
-Paths:
-
-```text
-docs/architecture/classical-seven-archetype-layer.md
-docs/architecture/classical-seven-axis-falsification.md
-docs/architecture/classical-seven-lens-model-test.md
-```
-
-Primary disposition: **RETAIN-AS-RESEARCH**.
-
-Reasoning: the branch treats the Classical Seven as an exploratory lens/archetype layer. It is not required for the CE-W01 runtime or coordinate minimum and must remain clearly separated from empirical astronomy and authorization.
-
-### G. Tempus observer/frame mathematics
-
-Opened source:
-
-```text
-docs/architecture/registries/tempus-observer-frame-and-scale-registry.v0.1.json
-```
-
-Primary disposition: **SYNTHESIZE** with qualifier **VERIFY-BEFORE-PROMOTE**.
-
-Strong surviving content:
-
-- separation of solar-system barycentric, heliocentric, geocentric apparent, topocentric, and body-fixed frames;
-- explicit observer/center and axes;
-- explicit physical versus angular presentation domains;
-- exact distinction between an astronomical unit and Earth's instantaneous solar distance;
-- frame translation boundaries;
-- explicit warning that a simple geometric transform is not a production apparent ephemeris;
-- required ephemeris/time provenance;
-- explicit separation of physical-scale and compressed presentation-scale values;
-- law that a viewpoint may be central to experience without being central to cosmology.
-
-Before any numerical/source claim is promoted, its external scientific references must be independently verified against current authoritative sources.
-
-Construction-baseline target: derive the minimal `TempusAnchor` source/observer/frame/time/provenance contract rather than importing the full research registry unchanged.
-
-### H. Tempus geometry, ephemeris, and phase-space family
-
-Paths:
-
-```text
-docs/architecture/tempus-72-correspondence-source-audit.md
-docs/architecture/tempus-72-sector-render-findings.md
-docs/architecture/tempus-arcnet-ephemeris-unified-render-findings.md
-docs/architecture/tempus-dodecahedron-geometry-audit.md
-docs/architecture/tempus-ephemeris-arcnet-unification-audit.md
-docs/architecture/tempus-lunar-gate-audit.md
-docs/architecture/tempus-lunar-unified-render-findings.md
-docs/architecture/tempus-solar-system-gaia-render-findings.md
-docs/architecture/tempus-solar-system-observatory-and-platonic-precedent-audit.md
-docs/architecture/tempus-solar-system-observatory-render-findings.md
-docs/architecture/tempus-vitae-duality-audit.md
-docs/architecture/tempus-vitae-eventful-unification-and-icosahedral-cell-audit.md
-docs/architecture/tempus-vitae-eventful-unification-render-findings.md
-docs/architecture/tempus-vitae-live-phase-audit.md
-docs/architecture/registries/tempus-72-correspondence-source-registry.v0.1.json
-docs/architecture/registries/tempus-72-sector-coordinate.v0.1.json
-docs/architecture/registries/tempus-cosmic-motion-correspondence.v0.1.json
-docs/architecture/registries/tempus-dodecahedral-compass-registry.v0.1.json
-docs/architecture/registries/tempus-ephemeris-arcnet-unification-registry.v0.1.json
-docs/architecture/registries/tempus-geocentric-sky-window-registry.v0.1.json
-docs/architecture/registries/tempus-lunar-ephemeris-overlay.v0.1.json
-docs/architecture/registries/tempus-solar-system-gaia-frame.v0.1.json
-docs/architecture/registries/tempus-solar-system-observatory-registry.v0.1.json
-docs/architecture/registries/tempus-vitae-becoming-field-registry.v0.1.json
-docs/architecture/registries/tempus-vitae-eventful-unification-registry.v0.1.json
-docs/architecture/registries/tempus-vitae-live-phase-projection.v0.1.json
-docs/architecture/registries/tempus-zodiac-registry.v0.1.json
-```
-
-Primary disposition: **RETAIN-AS-RESEARCH** with bounded **SYNTHESIZE** targets.
-
-Immediate Construction synthesis targets:
-
-1. source/observer/frame/time provenance;
-2. coordinate-domain separation;
-3. local `TempusAnchor` semantics;
-4. transport/persistence rules;
-5. astronomy/symbolism authority firewall;
-6. optional later protocol witness semantics.
-
-Not required for CE-W01 baseline activation:
-
-- mandatory 72-sector UI;
-- mandatory zodiac presentation;
-- full dodecahedral compass ontology;
-- lunar/solar live rendering suite;
-- Tempus × Vitae torus/phase-space UI;
-- automatic chain witness of ephemeris movement.
-
-Those may remain future research even if mathematically coherent.
-
-### I. Vitae geometry and curriculum projection family
-
-Paths:
-
-```text
-docs/architecture/sefer-yetzirah-articulation-timbre-audit.md
-docs/architecture/tree-letter-wheel-harmonic-audit.md
-docs/architecture/vitae-arcnet-capability-overlay-audit.md
-docs/architecture/vitae-harmonic-rendering-findings.md
-docs/architecture/vitae-icosahedral-achievement-axis-decision.md
-docs/architecture/vitae-icosahedral-specialization-family-audit.md
-docs/architecture/vitae-icosahedron-g10-2-follow-up.md
-docs/architecture/vitae-icosahedron-geometry-audit.md
-docs/architecture/vitae-tree-transformation-render-findings.md
-docs/architecture/registries/sefer-yetzirah-articulation-sonification-registry.v0.1.json
-docs/architecture/registries/sefer-yetzirah-letter-coordinate-matrix.v0.1.json
-docs/architecture/registries/sefer-yetzirah-letter-wheel-registry.v0.1.json
-docs/architecture/registries/tree-harmonic-sonification-overlay.v0.1.json
-docs/architecture/registries/vitae-arcnet-capability-overlay.v0.1.json
-docs/architecture/registries/vitae-curriculum-registry.v0.1.json
-docs/architecture/registries/vitae-grade-cycle-registry.v0.1.json
-docs/architecture/registries/vitae-harmonic-rendering-projection.v0.1.json
-docs/architecture/registries/vitae-icosahedral-achievement-axis.v0.1.json
-docs/architecture/registries/vitae-icosahedral-fivefold-orientation.v0.1.json
-docs/architecture/registries/vitae-resonance-overlay.v0.1.json
-docs/architecture/registries/vitae-specialization-fivefold-family-audit.v0.1.json
-docs/architecture/registries/vitae-tree-of-life-class-registry.v0.1.json
-docs/architecture/registries/vitae-tree-of-life-path-registry.v0.1.json
-docs/architecture/registries/vitae-tree-transformation-operator-registry.v0.1.json
-```
-
-Primary disposition: **RETAIN-AS-RESEARCH**.
-
-Secondary action: **SYNTHESIZE** only source-grounded curriculum relations needed by future Embodiment waves.
-
-The baseline must preserve the already-surviving rejection of geometry as a progress meter, fixed curriculum adjacency merely because of icosahedral edges, fixed grade-specialization spokes, or symbolic geometry as recognition/authorization input.
-
-### J. Core geometry/projection registries
-
-Paths:
-
-```text
-docs/architecture/registries/arcnet-transported-frame-projection.v0.1.json
-docs/architecture/registries/arcnet-vitae-nested-subframe-projection.v0.1.json
-docs/architecture/registries/becoming-field-geometry-registry.v0.1.json
-docs/architecture/registries/platonic-solid-exact-metrics.v0.1.json
-docs/architecture/registries/registry-validation-v0.1.md
-```
-
-Primary disposition: **SYNTHESIZE** with qualifier **VERIFY-BEFORE-PROMOTE**.
-
-These are candidate inputs to the CE-W01 Geometry & Mathematics registry surface. Exact metrics and transformation claims require independent mathematical/source verification; presentation-only registries must not be confused with runtime authority.
-
-### K. Research renderings
-
-Paths:
-
-```text
-docs/architecture/renderings/arcnet-transported-stellar-frame-3d-v0.1.html
-docs/architecture/renderings/arcnet-vitae-nested-subframe-3d-v0.1.html
-docs/architecture/renderings/sefer-yetzirah-letter-coordinate-matrix-v0.1.svg
-docs/architecture/renderings/tempus-72-sector-dodecahedral-compass-v0.1.html
-docs/architecture/renderings/tempus-arcnet-ephemeris-unified-3d-v0.1.html
-docs/architecture/renderings/tempus-arcnet-solar-lunar-unified-3d-v0.1.html
-docs/architecture/renderings/tempus-solar-system-gaia-arcnet-v0.1.html
-docs/architecture/renderings/tempus-vitae-arcnet-eventful-unification-3d-v0.1.html
-docs/architecture/renderings/tempus-vitae-live-phase-field-v0.1.html
-docs/architecture/renderings/vitae-articulation-operator-matrix-audition-v0.1.html
-docs/architecture/renderings/vitae-class-harmonic-microcycle-v0.1.svg
-docs/architecture/renderings/vitae-icosahedral-achievement-axis-v0.1.html
-docs/architecture/renderings/vitae-tree-harmonic-audition-v0.1.html
-docs/architecture/renderings/vitae-tree-transformation-audition-v0.1.html
-docs/architecture/renderings/vitae-tree-transformation-grammar-v0.1.svg
-docs/architecture/renderings/vitae-tree-variant-render-v0.1.svg
-```
-
-Primary disposition: **RELOCATE**.
-
-CE-W01 realized action: **do not import these renderings into the active Construction architecture tree**. They remain research/prototype evidence on `docs/creation-era-architecture-trail`; any later physical relocation, archive, or retirement is a separate research/archive task and is not required for CE-W01 closure.
-
-Some renderings may eventually be **ARCHIVE** or **RETIRE** after the source registries and surviving visual findings are consolidated. No generated rendering is architectural authority by itself.
-
-### L. Architect system-development method
-
-Path:
-
-```text
-docs/governance/architectgpt/system-development-method.md
-```
-
-Primary disposition: **SYNTHESIZE**.
-
-Reasoning:
-
-- it explicitly remains non-canonical design evidence;
-- its Arc → Wave → Milestone grammar is already reflected in the Construction roadmap;
-- it correctly preserves the separate bounded-operation lifecycle `GROUND → INSPECT → DIAGNOSE → PLAN → AUTHORIZE → ACT → VERIFY → RECORD`;
-- it keeps Human review/ratification as a constitutional boundary;
-- it rejects self-ratification, productivity-as-worth, and gamified status.
-
-The surviving methodology should be reconciled with the canonical Architect specification/manifest rather than copied wholesale into authority.
-
-### M. Repository index changes on research branch
-
-Paths:
-
-```text
-docs/repo/repo-index.json
-scripts/repo-index.sh
-```
-
-Primary disposition: **RETAIN-AS-RESEARCH**.
-
-Construction-baseline action: **SYNTHESIZE-COMPLETE / SUPERSEDED**.
-
-Research v1.3 uses wall-clock generation time, current `HEAD`, `git ls-files`, and working-tree file/symlink reads.
-
-Construction v1.4 supersedes that model: it requires clean committed state apart from the index, resolves the latest substantive commit excluding the index, derives generation time from that commit, reads the exact Git tree/blobs, handles committed symlinks, and sorts deterministically.
-
-The research-generated `docs/repo/repo-index.json` must never be imported into Construction because it represents a different tree and generation model.
-
-Family M is closed for CE-W01: retain v1.3 as research provenance; Construction v1.4 is the active deterministic repository-index contract.
-
-## Tranche 1 conclusions
-
-The research branch is not one promotable unit. It contains at least five distinct evidence classes:
-
-1. foundational geometry/Tempus ideas worth synthesis;
-2. detailed relationship/curriculum/symbolic research worth retaining as research;
-3. generated/prototype renderings that remain research evidence and stay outside the active Construction architecture tree for CE-W01;
-4. an independent capability-evaluator implementation stream that should not enter CE-W01;
-5. repository-index tooling changes whose research v1.3 variant is superseded by Construction v1.4.
-
-This supports the clean-branch strategy: construct the final baseline from `construction/ce-w01-baseline` and selectively synthesize surviving research rather than merging `docs/creation-era-architecture-trail`.
-
-## CE-W01 family disposition closure
-
-Families A–M now have explicit primary dispositions and a bounded Construction action. No family retains `AUDIT-PENDING` as its primary disposition.
-
-For CE-W01:
-
-- the capability evaluator remains `RETAIN-AS-RESEARCH` and is not imported;
-- research renderings remain `RELOCATE` in disposition, with the realized CE-W01 action to leave them on the evidence branch and outside the active architecture tree;
-- research repo-index v1.3 remains provenance only; deterministic Construction v1.4 controls the active index contract;
-- Geometry and Tempus synthesis decisions have already been realized in bounded Construction specifications and machine-readable companions;
-- detailed Vitae/curriculum/symbolic research remains research unless a later Embodiment wave explicitly promotes source-grounded relationships;
-- no research artifact becomes authority merely because it appears in this audit.
-
-Remaining CE-W01 work belongs to checkpoint closure and holistic reconciliation, not another research-family classification pass. In particular, any current Vitae metadata/body authority conflict must fail closed to controlling canonical doctrine and be reconciled before affected draft material can be treated as native-runtime input.
+PR #38 and PR #40 were closed without merge. Issue #37 was closed as historical design evidence.

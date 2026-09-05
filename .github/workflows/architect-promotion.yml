@@ -1,14 +1,14 @@
-name: Architect Promotion Evidence
+name: Architect Verification Evidence
 
 on:
   push:
-    branches: [mobile]
+    branches: [main]
   pull_request:
     branches: [main]
   workflow_dispatch:
     inputs:
       wave:
-        description: Wave identifier
+        description: Construction/wave identifier
         required: false
         default: unspecified
 
@@ -41,17 +41,20 @@ jobs:
         id: verify_sync
         run: bash scripts/verify-sync.sh
 
+      - name: Lint web application
+        run: pnpm lint
+
       - name: Typecheck web application
         id: typecheck
-        run: pnpm -C apps/web typecheck
+        run: pnpm typecheck
 
       - name: Build web application
         id: build
-        run: pnpm -C apps/web build
+        run: pnpm build
 
-      - name: Generate CI promotion attestation
+      - name: Generate exact-head Architect attestation
         env:
-          ARCANUM_WAVE: ${{ inputs.wave || 'wave-v' }}
+          ARCANUM_WAVE: ${{ inputs.wave || 'unspecified' }}
           ARCANUM_VERIFY_SYNC_RESULT: ${{ steps.verify_sync.outcome }}
           ARCANUM_TYPECHECK_RESULT: ${{ steps.typecheck.outcome }}
           ARCANUM_BUILD_RESULT: ${{ steps.build.outcome }}
@@ -59,10 +62,10 @@ jobs:
           GITHUB_HEAD_REF: ${{ github.head_ref || github.ref_name }}
         run: bash scripts/architect/ci-attest.sh
 
-      - name: Upload promotion attestation
+      - name: Upload Architect attestation
         uses: actions/upload-artifact@v4
         with:
-          name: architect-promotion-${{ github.event.pull_request.head.sha || github.sha }}
+          name: architect-verification-${{ github.event.pull_request.head.sha || github.sha }}
           path: .architect-reports/ci/promotion-attestation.json
           if-no-files-found: error
           retention-days: 30

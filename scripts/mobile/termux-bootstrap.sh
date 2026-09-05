@@ -10,7 +10,7 @@ log "Updating Termux packages"
 pkg update -y
 pkg upgrade -y
 
-log "Installing the mobile development toolchain"
+log "Installing repository verification toolchain"
 pkg install -y \
   bash \
   coreutils \
@@ -37,23 +37,27 @@ corepack prepare pnpm@9.10.0 --activate
 
 WORKSPACE_ROOT="${ARCANUM_WORKSPACE_ROOT:-$HOME/work}"
 REPO_DIR="${ARCANUM_REPO_DIR:-$WORKSPACE_ROOT/Arcanum}"
+ENV_FILE="$HOME/.config/arcanum/repo.env"
 mkdir -p "$WORKSPACE_ROOT" "$HOME/.config/arcanum"
 
-cat > "$HOME/.config/arcanum/mobile.env" <<EOF
+cat > "$ENV_FILE" <<EOF
 export ARCANUM_REPOSITORY="https://github.com/The-Architect-369/Arcanum.git"
-export ARCANUM_STABLE_BRANCH="main"
-export ARCANUM_INTEGRATION_BRANCH="mobile"
+export ARCANUM_CANONICAL_BRANCH="main"
 export ARCANUM_WORKSPACE_ROOT="$WORKSPACE_ROOT"
 export ARCANUM_REPO_DIR="$REPO_DIR"
+unset ARCANUM_INTEGRATION_BRANCH 2>/dev/null || true
 EOF
 
 SHELL_RC="$HOME/.bashrc"
 touch "$SHELL_RC"
-if ! grep -Fq '.config/arcanum/mobile.env' "$SHELL_RC"; then
+# Stop automatically sourcing the retired branch-era environment if it was
+# installed by an older bootstrap. The old file itself is left untouched.
+sed -i '\|\.config/arcanum/mobile\.env|d' "$SHELL_RC" 2>/dev/null || true
+if ! grep -Fq '.config/arcanum/repo.env' "$SHELL_RC"; then
   cat >> "$SHELL_RC" <<'EOF'
 
-# Arcanum mobile work-profile environment
-[ -f "$HOME/.config/arcanum/mobile.env" ] && . "$HOME/.config/arcanum/mobile.env"
+# Arcanum repository environment
+[ -f "$HOME/.config/arcanum/repo.env" ] && . "$HOME/.config/arcanum/repo.env"
 EOF
 fi
 
@@ -75,14 +79,14 @@ cat <<EOF
 Bootstrap complete.
 
 Next:
-  source "$HOME/.config/arcanum/mobile.env"
+  source "$ENV_FILE"
   mkdir -p "$WORKSPACE_ROOT"
   cd "$WORKSPACE_ROOT"
-  git clone --branch mobile --single-branch \
+  git clone --branch main \
     https://github.com/The-Architect-369/Arcanum.git Arcanum
   cd "$REPO_DIR"
-  bash scripts/mobile/termux-verify.sh
+  ARCANUM_EXPECTED_BRANCH=main bash scripts/mobile/termux-verify.sh
 
-For a private repository, configure GitHub authentication before cloning.
+For authenticated operations, configure GitHub authentication separately.
 Do not paste tokens into shell history or repository files.
 EOF

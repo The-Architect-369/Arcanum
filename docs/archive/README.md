@@ -1,28 +1,30 @@
 ---
-title: "Archive"
+title: "Historical Material"
 status: canonical
 visibility: public
-last_updated: 2026-05-26
-description: "Historical, deprecated, and superseded Arcanum materials. Archive files are retrievable but non-canonical."
+last_updated: 2026-09-04
+description: "Boundary for superseded historical material; active instruction must come from current canonical sources."
 ---
 
-# Archive
+# Historical Material
 
-This folder stores historical Arcanum materials that must remain retrievable without remaining active canon.
+`docs/archive/` contains superseded material retained temporarily or intentionally for bounded audit/migration purposes.
 
-Archive files are non-canonical unless a current canonical file explicitly references them for migration, audit, or historical comparison.
+## Authority rule
 
-## Archive rules
+Archived material is **never active instruction** merely because it remains in the working tree.
 
-- Archived files must not define active doctrine, governance, app behavior, or chain behavior.
-- Active files should link here only when historical context is required.
-- Each archive subfolder should include a README explaining why the materials were moved.
-- When possible, archived files should name their superseding active reference.
+A current canonical source always wins. Active code, specifications, validators, or Architect instructions must not depend on an archived document for present semantics.
 
-## Subfolders
+## Post-CE-W01 policy
 
-- `app/` — outdated app-local implementation drafts and product assumptions
-- `architectgpt/` — legacy ArchitectGPT specs and historical logs
-- `chain/` — deprecated chain implementation notes, if added later
-- `doctrine/` — superseded doctrine, if added later
-- `governance/` — superseded governance drafts, if added later
+The repository is moving to a leaner history model:
+
+- Git commit history is the durable source for superseded document bodies;
+- the active tree should retain only historical material with a demonstrated current audit/migration need;
+- when that need is absent, keep a compact provenance/replacement pointer and remove the old body from the working tree;
+- deleting a superseded working-tree copy does not erase its Git history.
+
+Until the post-CE-W01 cleanup is certified, some legacy bodies remain here because existing validators still reference them. Their presence does not grant authority.
+
+See `docs/tooling/archive-manifest.yaml` for replacement mappings and GitHub issue #41 for the cleanup record.

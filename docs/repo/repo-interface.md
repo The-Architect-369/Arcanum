@@ -1,151 +1,117 @@
 ---
-title: "Repo Interface"
+title: "Architect Repository Interface"
 status: canonical
 visibility: public
-last_updated: 2026-05-31
-description: "Grounding rules and GitHub-first branch workflow for reasoning about the Arcanum repository."
+last_updated: 2026-09-04
+description: "Grounding, branch, provenance, and change rules for reasoning about the Arcanum repository."
 ---
 
 # Architect Repository Interface
 
-This document defines how architectural and doctrinal reasoning must interface with the Arcanum repository.
+## Purpose
 
-## Default repository contract
+This contract defines how Architect reasoning and assisted changes interface with the Arcanum repository.
 
-Unless the user explicitly names a different repository or branch, phrases such as:
+## Default repository
 
-- `check my repo`
-- `my repo`
-- `the repo`
-- `check Arcanum`
+Unless the Human Architect explicitly names another repository, references such as `my repo`, `the repo`, or `check Arcanum` resolve to:
 
-must resolve to:
+```text
+repository: https://github.com/The-Architect-369/Arcanum.git
+persistent canonical branch: main
+workspace root: Arcanum monorepo root
+```
 
-- Repository: `https://github.com/The-Architect-369/Arcanum.git`
-- Stable branch: `main`
-- Integration branch: `mobile`
-- Workspace root: Arcanum monorepo root
+There is **no implicit permanent integration branch**.
 
-The user is not required to restate this default for routine analysis inside the Architect GPT context.
+## Branch model
 
-When no branch is explicitly named, branch choice must follow task intent:
+`main` is the sole persistent canonical branch.
 
-- Use `main` for stable-state inspection, deployment-facing questions, and canonical/live-state reads.
-- Use `mobile` for implementation work, documentation updates, repository writes, and active workstream changes.
+For read-only inspection, default to the exact current `main` state unless another ref is explicitly relevant.
 
-If a different repository or branch is explicitly named, that explicit reference wins for that task.
+For writes:
 
-## Principle
+- never infer a historical branch name;
+- use the branch explicitly named by the Human Architect when one is supplied;
+- when isolation is required and authorized, create an explicitly named disposable task branch from the exact current `main` head;
+- after verification and authorized merge/closure, delete the disposable branch;
+- direct writes to `main` require an explicit instruction that unambiguously targets `main` and still require the applicable verification/recording discipline.
 
-**No authoritative analysis may be issued without a declared repository grounding state and active branch role.**
-
-The assistant must determine and declare the grounding state automatically. The burden is on the assistant, not on the user, to resolve the best available grounding before analysis.
-
-If grounding is insufficient, the correct behavior is refusal or request for regeneration, not inference.
-
----
-
-## GitHub-first workflow mode
-
-Structured repository changes follow a GitHub-first workflow.
-
-- GitHub branch state is the canonical integration surface for structured changes.
-- Local working copies are verification, pull, and merge surfaces; they must not silently supersede GitHub branch truth.
-- `mobile` is the default integration branch for implementation and documentation updates unless the user names another branch.
-- `main` remains the stable branch and merge target for work that is already verified and explicitly approved.
-- Merge to `main` only after green verification and explicit Human Architect approval.
-
----
+A temporary branch is not a second authority surface. Its contents remain candidate work until promoted.
 
 ## Grounding states
 
-Any analysis must explicitly declare one of:
+Every substantive repository analysis must declare one of:
 
-### 1) `live-file`
-- Specific file(s) were opened directly (content known)
-- Use for drafting, editing, or validating known documents
+### `live-file`
+Specific live files were opened directly and their content is known.
 
-### 2) `index-snapshot`
-- The repo index artifact was used (paths/metadata known)
-- Use for structural integrity checks and tree audits
+### `index-snapshot`
+The deterministic repository index was used for structural reasoning.
 
-### 3) `partial-scan`
-- Only a subset of the repo was observed
-- Allowed for asking questions, not for conclusions
+### `partial-scan`
+Only a bounded subset of the repository was observed. This permits bounded findings but not whole-repository certainty.
 
-**Forbidden**
-- assumed structure
-- cached memory without declaration
-- inference-based certainty
+Forbidden: assumed structure, undeclared cached state, or inference presented as live repository fact.
 
----
+## Automatic preflight
 
-## Automatic preflight on default repo tasks
+For a default-repository task:
 
-When the user asks to inspect, analyze, or update `my repo` without naming a repository, branch, or specific file set, the assistant must:
+1. resolve the repository and exact active ref;
+2. inspect `docs/repo/repo-index.json`, including its source commit;
+3. compare the index source with the relevant visible branch/head state;
+4. inspect available verification/CI/provider evidence when it matters to the requested claim;
+5. open the live files governing the requested surface;
+6. declare repository access/grounding state before conclusions.
 
-1. Resolve the default repository automatically.
-2. Resolve the active branch from task intent:
-   - `main` for stable inspection
-   - `mobile` for implementation/update work
-3. Read `docs/repo/repo-index.json` and inspect `generated_at` and `commit`.
-4. Check sync evidence through `scripts/verify-sync.sh`, CI, or equivalent live validation when available.
-5. Use `live-file` for requested files when available; otherwise use `index-snapshot`.
-6. If the repo index is stale, missing, or inconsistent with visible branch state, pause substantive analysis and instruct the maintainer to re-sync first.
+A stale index limits structural claims; it does not authorize silently reconstructing the tree from memory.
 
-This preflight is automatic and should happen before deeper assistance.
+## Source/index cadence
 
----
+For substantive tracked-source changes, the normal cadence is:
+
+1. make one coherent source change;
+2. validate the source change;
+3. commit the substantive source change;
+4. regenerate `docs/repo/repo-index.json` with `scripts/repo-index.sh` from that source commit;
+5. commit the deterministic index companion separately;
+6. run exact-final-head verification;
+7. publish or merge only after the required evidence is green.
+
+The repository index is generated evidence. It must not be hand-edited or fabricated.
 
 ## Canonical structural artifact
 
-The repo maintains a deterministic structural snapshot:
+`docs/repo/repo-index.json` is the deterministic structural snapshot for tracked paths and metadata. It does not replace opening live files for content-level reasoning.
 
-- `docs/repo/repo-index.json`
+## Authority and provenance
 
-This file is treated as authoritative for:
-- what exists
-- where it lives
-- basic metadata needed for integrity checks
+- controlling doctrine and ratified canonical documents govern meaning;
+- live repository code governs current implementation state within those boundaries;
+- Git branch/commit state governs repository identity;
+- CI and provider state are evidence for verification/deployment claims;
+- summaries, issues, pull requests, research, and history are evidence, not automatic authority.
 
-It is not a content mirror, and it does not replace opening live files when content-level reasoning is required.
+## Archive and history policy
 
----
+Files under `docs/archive/`, historical commits, closed issues, and closed pull requests are non-canonical provenance unless a current canonical document explicitly delegates a bounded migration/audit purpose to them.
 
-## Operating rule
+Active instructions must not depend on archived Architect documents when a current canonical Architect contract exists.
 
-When repo structure or repo health matters:
-
-1. Prefer `live-file` if the relevant file is already open.
-2. Otherwise require `index-snapshot` via `docs/repo/repo-index.json`.
-3. If either is unavailable or stale, require regeneration.
-4. Use `scripts/verify-sync.sh` as the first integrity gate before asserting structural coherence.
-5. Declare whether the active branch role is `stable` (`main`) or `integration` (`mobile`).
-
----
+When historical material is fully superseded and its lineage is preserved by Git, the active tree may retain only a compact provenance pointer rather than the full historical body.
 
 ## Human maintainer responsibilities
 
-- Keep `docs/repo/repo-index.json` current on the branch being worked.
-- Run `scripts/verify-sync.sh` before claiming structural integrity.
-- Treat failing checks as a stop-ship signal for documentation releases.
-- Pull from GitHub before local continuation when structured changes have been written directly to the active branch.
-
----
+- keep the repository index synchronized with the source commit it describes;
+- treat failed required checks as a stop condition;
+- review exact diffs and exact heads before consequential promotion;
+- explicitly authorize repository history writes, merge/deploy actions, and constitutional-impacting changes at the applicable gate.
 
 ## Tooling references
 
-- Generator spec: `docs/repo/repo-index-generator-spec.md`
-- Generator script: `scripts/repo-index.sh`
-- Verification script: `scripts/verify-sync.sh`
-
-## Archive policy
-
-Files under `docs/archive/` are historical only.
-
-They may be consulted only for:
-- explicit migration work
-- historical comparison
-- audit trails
-
-They must not be cited as active canonical instruction when a current canonical file exists elsewhere.
+- Index generator spec: `docs/repo/repo-index-generator-spec.md`
+- Index generator: `scripts/repo-index.sh`
+- Repository verification: `scripts/verify-sync.sh`
+- Forward baseline: `docs/repo/arcanum-baseline.md`

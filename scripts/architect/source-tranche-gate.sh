@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
-# Reusable source-tranche validation gate for Architect GPT / Human Architect work.
-# Read-only with respect to source: it validates state, scope, EOLs, lint, typecheck,
-# and CE-W01. It never edits, stages, commits, pushes, rebases, or rewrites history.
+# Reusable source-tranche validation gate for Architect/Human Architect work.
+# It validates branch/base/scope/EOL/lint/typecheck/CE-W01 without staging,
+# committing, pushing, rebasing, merging, or rewriting history.
 set -euo pipefail
 
-EXPECTED_BRANCH="${EXPECTED_BRANCH:-construction/ce-w01-baseline}"
+EXPECTED_BRANCH="${EXPECTED_BRANCH:-}"
 EXPECTED_BASE="${EXPECTED_BASE:-$(git rev-parse HEAD)}"
 EXPECTED_MAIN="${EXPECTED_MAIN:-}"
 EXPECTED_ERRORS="${EXPECTED_ERRORS:-}"
@@ -12,10 +12,7 @@ EXPECTED_WARNINGS="${EXPECTED_WARNINGS:-}"
 EXPECTED_ANY="${EXPECTED_ANY:-}"
 EXPECTED_BAN="${EXPECTED_BAN:-}"
 
-fail() {
-  printf 'FAIL: %s\n' "$*" >&2
-  exit 1
-}
+fail() { printf 'FAIL: %s\n' "$*" >&2; exit 1; }
 
 [[ "$#" -gt 0 ]] || fail "pass the exact dirty paths expected in this tranche"
 
@@ -25,15 +22,22 @@ cd "$ROOT"
 branch="$(git branch --show-current)"
 head="$(git rev-parse HEAD)"
 [[ -n "$branch" ]] || fail "detached HEAD is not allowed"
-[[ "$branch" == "$EXPECTED_BRANCH" ]] || fail "branch moved: expected $EXPECTED_BRANCH, got $branch"
+
+if [[ -n "$EXPECTED_BRANCH" ]]; then
+  [[ "$branch" == "$EXPECTED_BRANCH" ]] || fail "branch moved: expected $EXPECTED_BRANCH, got $branch"
+else
+  EXPECTED_BRANCH="$branch"
+fi
 [[ "$head" == "$EXPECTED_BASE" ]] || fail "starting HEAD moved: expected $EXPECTED_BASE, got $head"
 
 git fetch origin --prune
-remote="$(git rev-parse "origin/$EXPECTED_BRANCH")"
+remote="$(git rev-parse "origin/$EXPECTED_BRANCH" 2>/dev/null || true)"
 main="$(git rev-parse origin/main)"
-[[ "$remote" == "$EXPECTED_BASE" ]] || fail "remote Construction moved: expected $EXPECTED_BASE, got $remote"
+if [[ -n "$remote" ]]; then
+  [[ "$remote" == "$EXPECTED_BASE" ]] || fail "remote branch moved: expected $EXPECTED_BASE, got $remote"
+fi
 if [[ -n "$EXPECTED_MAIN" ]]; then
-  [[ "$main" == "$EXPECTED_MAIN" ]] || fail "stable main moved: expected $EXPECTED_MAIN, got $main"
+  [[ "$main" == "$EXPECTED_MAIN" ]] || fail "main moved: expected $EXPECTED_MAIN, got $main"
 fi
 
 mapfile -t expected_paths < <(printf '%s\n' "$@" | sed '/^$/d' | LC_ALL=C sort -u)
@@ -49,20 +53,20 @@ mapfile -t dirty_paths < <(
   printf 'Expected dirty paths:\n' >&2
   printf '  %s\n' "${expected_paths[@]}" >&2
   printf 'Actual dirty paths:\n' >&2
-  if [[ "${#dirty_paths[@]}" -gt 0 ]]; then
-    printf '  %s\n' "${dirty_paths[@]}" >&2
-  else
-    printf '  <none>\n' >&2
-  fi
+  if [[ "${#dirty_paths[@]}" -gt 0 ]]; then printf '  %s\n' "${dirty_paths[@]}" >&2; else printf '  <none>\n' >&2; fi
   fail "dirty scope differs"
 }
-
 for i in "${!expected_paths[@]}"; do
   [[ "${dirty_paths[$i]}" == "${expected_paths[$i]}" ]] || fail "dirty scope differs"
 done
 
 for path in "${dirty_paths[@]}"; do
-  [[ -f "$path" ]] || fail "expected dirty path is not a regular file: $path"
+  if [[ ! -e "$path" ]]; then
+    git cat-file -e "HEAD:$path" 2>/dev/null || fail "missing dirty path was not tracked at HEAD: $path"
+    printf 'DELETE OK: %s\n' "$path"
+    continue
+  fi
+  [[ -f "$path" ]] || fail "dirty path is not a regular file: $path"
   python3 - "$path" <<'PY'
 from pathlib import Path
 import subprocess
@@ -70,7 +74,6 @@ import sys
 
 path = Path(sys.argv[1])
 work = path.read_bytes()
-
 
 def eol_kind(data: bytes) -> str:
     crlf = data.count(b"\r\n")
@@ -97,9 +100,7 @@ proc = subprocess.run(
 if proc.returncode == 0:
     head_kind = eol_kind(proc.stdout)
     if work_kind != head_kind:
-        raise SystemExit(
-            f"FAIL EOL contract changed: {path} was {head_kind}, now {work_kind}"
-        )
+        raise SystemExit(f"FAIL EOL contract changed: {path} was {head_kind}, now {work_kind}")
     print(f"EOL OK: {path} ({work_kind})")
 else:
     print(f"EOL OK: {path} ({work_kind}; new file)")
@@ -122,10 +123,8 @@ import sys
 path = sys.argv[1]
 lint_rc = int(sys.argv[2])
 expected_errors, expected_warnings, expected_any, expected_ban = sys.argv[3:7]
-
 with open(path, encoding="utf-8") as f:
     report = json.load(f)
-
 errors = sum(item["errorCount"] for item in report)
 warnings = sum(item["warningCount"] for item in report)
 rules = {}
@@ -133,23 +132,19 @@ for item in report:
     for msg in item["messages"]:
         rule = msg.get("ruleId") or "<parser/config>"
         rules[rule] = rules.get(rule, 0) + 1
-
 print(f"lint: {errors} errors + {warnings} warnings")
 for rule, count in sorted(rules.items()):
     print(f"  {rule}: {count}")
-
 if errors == 0 and lint_rc != 0:
     raise SystemExit(f"FAIL ESLint returned {lint_rc} with zero reported errors")
 if errors > 0 and lint_rc == 0:
     raise SystemExit("FAIL ESLint returned zero despite reported errors")
-
-checks = [
+for label, actual, expected in [
     ("errors", errors, expected_errors),
     ("warnings", warnings, expected_warnings),
     ("@typescript-eslint/no-explicit-any", rules.get("@typescript-eslint/no-explicit-any", 0), expected_any),
     ("@typescript-eslint/ban-ts-comment", rules.get("@typescript-eslint/ban-ts-comment", 0), expected_ban),
-]
-for label, actual, expected in checks:
+]:
     if expected and actual != int(expected):
         raise SystemExit(f"FAIL expected {label}={expected}, got {actual}")
 PY
@@ -162,4 +157,4 @@ printf '\nPASS: source tranche validated.\n'
 printf 'branch: %s\n' "$branch"
 printf 'base:   %s\n' "$head"
 printf 'main:   %s\n' "$main"
-printf 'Review the diff before any commit or push.\n'
+printf 'Review the exact diff before commit/push.\n'

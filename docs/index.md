@@ -2,123 +2,77 @@
 title: "Docs Index"
 status: canonical
 visibility: public
-last_updated: 2026-08-17
-description: "Navigation index for the Arcanum documentation tree (ARCnet canonical naming)."
+last_updated: 2026-09-04
+description: "Navigation index for the current Arcanum/ARCnet documentation surface."
 ---
 
 # Docs Index
 
-This is the **navigation hub** for the `docs/` tree.
+This is the navigation hub for the current `docs/` tree.
 
 **Canonical naming**
-- **ARCnet**: the sovereign network / infrastructure layer.
-- **Arcanum**: the application + doctrine + module ecosystem built on ARCnet.
 
----
+- **ARCnet** — sovereign local/network infrastructure substrate.
+- **Arcanum** — application, doctrine, module, and lived-experience ecosystem built on ARCnet.
 
 ## Start here
 
-1) **System overview (recommended first):** `architecture/arcanum-system-overview.md`  
-2) **Economic Constitution (controlling economic authority):** `economics/economic-constitution.md`  
-3) **White Pages (investor / institutional flow):**  
-   - `whitepaper/executive-summary.md`  
-   - `whitepaper/problem-solution.md`  
-   - `whitepaper/technical-architecture.md`  
-   - `whitepaper/tokenomics.md`  
-   - `whitepaper/governance-constitutional-model.md`  
-   - `compliance/compliance-risk.md`  
-4) **Governance mechanics + specialized constitutions:** `governance/governance-specification.md`  
-5) **Modules (product surfaces):** `modules/`  
-6) **Vitae (recognition layer):** `vitae/`  
-7) **Repo discipline (indexing + grounding):** `repo/`
-8) **Intelligence layer contract:** `specs/intelligence/intelligence-layer-contract.md`
+1. **Current encoded baseline:** `repo/arcanum-baseline.md`
+2. **System overview:** `architecture/arcanum-system-overview.md`
+3. **Current roadmap:** `roadmap/canonical-roadmap.md`
+4. **Construction detail:** `roadmap/construction-era-roadmap.md`
+5. **Economic Constitution:** `economics/economic-constitution.md`
+6. **Governance:** `governance/governance-specification.md`
+7. **Repository interface/index:** `repo/repo-interface.md`, `repo/repo-index.json`
+8. **Architect operating contract:** `governance/architectgpt/architect-gpt.md`
 
----
+## Canonical folders
 
-## Folder map (live structure)
+### `architecture/`
+Cross-layer system architecture and App ↔ Chain ↔ Doctrine boundaries.
 
-> The folders listed below reflect the current docs structure and are intended to remain stable as the repo grows.
+Key entrypoints:
 
-### `architecture/` — system architecture + boundaries
 - `architecture/arcanum-system-overview.md`
 - `architecture/app-chain-doctrine.md`
 - `architecture/canonical-modules.md`
 - `architecture/arcanum-chain.md`
 
-### `doctrine/` — constitutional principles + layer constraints
-- `doctrine/layer-boundaries.md`
-- `doctrine/identity-model.md`
-- `doctrine/temporal-model.md`
-- `doctrine/metaphysical-neutrality.md`
-- `doctrine/authority.md`
-- `doctrine/architect-role.md`
-- `doctrine/founder-transition.md`
+### `doctrine/`
+Constitutional layer constraints including identity, time, metaphysical neutrality, authority, and Architect/founder roles.
 
-### `economics/` — controlling economic constitution
-- `economics/economic-constitution.md` — canonical controlling constitutional authority for ARCnet economic law and MANA, subordinate to system Doctrine
+### `economics/`
+Controlling Economic Constitution and economic authority.
 
-### `governance/` — operational governance + specialized constitutional instruments
-- `governance/governance-specification.md`
-- `governance/treasury-constitution.md`
-- `governance/economic-principles.md` — canonical economic policy summary and delegated parameter registry, subordinate to the Economic Constitution
-- `governance/governance-changelog.md`
+### `governance/`
+Operational governance, Treasury/economic instruments, HOPE Guardian, and Architect governance/tooling contracts.
 
-**Governance interfaces**
-- HOPE Guardian (public interpretive charter): `governance/hopegpt/hope-guardian.md`
-- ArchitectGPT canonical specification: `governance/architectgpt/architect-gpt.md`
-- Architect conversation-memory contract: `governance/architectgpt/conversation-memory-contract.md`
-- Architect per-session record specification: `governance/architectgpt/session-record-schema.md`
-- Architect per-session machine schema: `governance/architectgpt/session-record.schema.json`
-- Controlling Architect cross-session log: `governance/architectgpt/architect-log.md`
-- Architect session ledger: `governance/architectgpt/sessions/`
+### `modules/`
+Human-facing module documentation for Hope, Tempus, Vitae, and other ratified application surfaces.
 
-### `whitepaper/` — the “White Pages” (modular)
-- `whitepaper/executive-summary.md`
-- `whitepaper/problem-solution.md`
-- `whitepaper/technical-architecture.md`
-- `whitepaper/tokenomics.md`
-- `whitepaper/governance-constitutional-model.md`
+### `vitae/`
+Vitae authority, constitution, curriculum, recognition, and implementation discipline.
 
-### `compliance/` — compliance posture + risk boundaries
-- `compliance/compliance-risk.md`
-- `compliance/dignity-content-boundaries.md`
-- `compliance/license-and-attribution.md`
+### `specs/`
+Implementation-facing contracts, including app, chain, Geometry/Spatial, Tempus, runtime, and intelligence boundaries.
 
-### `modules/` — module overview docs (human-facing)
-- `modules/hope/hope.md`
-- `modules/tempus/tempus.md`
-- `modules/vitae/vitae-and-becoming.md`
+### `roadmap/`
+Current planning/evidence sequence. Roadmaps do not independently grant implementation authority.
 
-### `specs/` — implementation-facing contracts
-- `specs/app/`
-- `specs/chain/`
-- `specs/intelligence/intelligence-layer-contract.md`
+### `repo/`
+Repository grounding, canonical baseline, deterministic indexing, and historical consolidation summaries.
 
-### `vitae/` — recognition layer + constitution + curriculum tree
-- `vitae/authority.md`
-- `vitae/constitution/`
-- `vitae/curriculum/`
+### `tooling/`
+Machine integrity inputs such as doctrine checksums and archive/provenance mappings.
 
-### `repo/` — repository grounding + indexing (non-optional)
-- `repo/repo-interface.md`
-- `repo/repo-index-generator-spec.md`
-- `repo/repo-index.json`
+### `archive/`
+Non-authoritative historical material retained only for bounded migration/audit needs. Git history is the preferred long-term source for superseded bodies.
 
-### `tooling/` — checksums + integrity tooling inputs
-- `tooling/doctrine-checksums/`
+## Rules of the road
 
-### `manifesto/` — mythic tone (explicitly non-whitepaper)
-- `manifesto/arcanum-manifesto.md`
-
-### `reference/` — glossary + changelog (if present)
-- `reference/` (if/when used)
-
----
-
-## Rules of the road (short)
-
-- Use **kebab-case** for files/folders.
-- Prefer **relative links from `docs/`** (stable in GitHub + local preview).
-- Treat `repo/repo-index.json` as the authoritative structural snapshot when doing structural analysis.
-- When in doubt: update the docs tree **first**, then update prose.
-- Navigation and summary documents do not override controlling constitutional sources.
+- Use current canonical sources for present semantics.
+- Navigation/status summaries do not override controlling doctrine.
+- Treat `repo/repo-index.json` as the deterministic structural snapshot, not a content mirror.
+- Generated indexes are regenerated from source; they are never hand-authored.
+- Research, archives, closed issues/PRs, and old commits are provenance unless a current canonical source explicitly promotes bounded content.
+- `main` is the sole persistent canonical branch; temporary work branches are disposable review surfaces.

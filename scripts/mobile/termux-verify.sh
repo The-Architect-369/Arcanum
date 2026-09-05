@@ -2,7 +2,7 @@
 set -uo pipefail
 
 ROOT="$(git rev-parse --show-toplevel 2>/dev/null || pwd)"
-REPORT_DIR="$ROOT/.architect-reports/mobile"
+REPORT_DIR="$ROOT/.architect-reports/termux"
 STAMP="$(date -u +%Y%m%dT%H%M%SZ)"
 REPORT="$REPORT_DIR/termux-$STAMP.md"
 LOG_DIR="$REPORT_DIR/logs-$STAMP"
@@ -57,8 +57,8 @@ run_check() {
   printf '\n[architect-verify] START %s\n' "$label"
   "$@" 2>&1 | tee "$log"
   rc=${PIPESTATUS[0]}
-
   summary="$(tail -n 40 "$log" | tr '\n' '; ')"
+
   if [ "$rc" -eq 0 ]; then
     record PASS "$label" "$summary"
     printf '[architect-verify] PASS  %s\n' "$label"
@@ -71,7 +71,7 @@ run_check() {
 }
 
 cat > "$REPORT" <<EOF
-# Arcanum Mobile Verification Report
+# Arcanum Termux Verification Report
 
 - Generated: $(date -u +%Y-%m-%dT%H:%M:%SZ)
 - Repository root: $ROOT
@@ -94,10 +94,15 @@ if git -C "$ROOT" rev-parse --is-inside-work-tree >/dev/null 2>&1; then
   BRANCH="$(git -C "$ROOT" branch --show-current)"
   HEAD="$(git -C "$ROOT" rev-parse HEAD)"
   record PASS "git repository" "$HEAD"
-  if [ "$BRANCH" = "mobile" ]; then
-    record PASS "integration branch" "$BRANCH"
+
+  if [ -z "$BRANCH" ]; then
+    record FAIL "branch" "detached HEAD"
+  elif [ -n "${ARCANUM_EXPECTED_BRANCH:-}" ] && [ "$BRANCH" != "$ARCANUM_EXPECTED_BRANCH" ]; then
+    record FAIL "branch" "expected $ARCANUM_EXPECTED_BRANCH; found $BRANCH"
+  elif [ "$BRANCH" = "main" ]; then
+    record PASS "branch" "main (canonical)"
   else
-    record WARN "integration branch" "expected mobile; found ${BRANCH:-detached}"
+    record PASS "branch" "$BRANCH (explicit work branch)"
   fi
 
   if [ -z "$(git -C "$ROOT" status --porcelain)" ]; then
@@ -111,28 +116,23 @@ fi
 
 NODE_VERSION="$(node -p 'process.versions.node' 2>/dev/null || true)"
 NODE_MAJOR="${NODE_VERSION%%.*}"
-DECLARED_NODE_ENGINE="$(
-  node -p "require('$ROOT/apps/web/package.json').engines?.node || ''"     2>/dev/null || true
-)"
-DECLARED_NODE_MAJOR="$(
-  printf '%s' "$DECLARED_NODE_ENGINE" |
-    sed -nE 's/^[^0-9]*([0-9]+).*$/\1/p'
-)"
+DECLARED_NODE_ENGINE="$(node -p "require('$ROOT/package.json').engines?.node || ''" 2>/dev/null || true)"
+DECLARED_NODE_MAJOR="$(printf '%s' "$DECLARED_NODE_ENGINE" | sed -nE 's/^[^0-9]*([0-9]+).*$/\1/p')"
 
 if [ -z "$NODE_VERSION" ]; then
   record FAIL "Node engine" "unable to determine installed Node.js version"
 elif [ -z "$DECLARED_NODE_ENGINE" ] || [ -z "$DECLARED_NODE_MAJOR" ]; then
-  record WARN "Node engine" "$(node --version); unable to parse apps/web package engine"
+  record WARN "Node engine" "$(node --version); unable to parse root package engine"
 elif [ "$NODE_MAJOR" = "$DECLARED_NODE_MAJOR" ]; then
-  record PASS "Node engine" "$(node --version) satisfies apps/web engine $DECLARED_NODE_ENGINE"
+  record PASS "Node engine" "$(node --version) satisfies root engine $DECLARED_NODE_ENGINE"
 else
-  record WARN "Node engine" "$(node --version); apps/web declares $DECLARED_NODE_ENGINE"
+  record WARN "Node engine" "$(node --version); root declares $DECLARED_NODE_ENGINE"
 fi
 
 if [ -f "$ROOT/pnpm-lock.yaml" ]; then
   record PASS "pnpm lockfile" "present"
 else
-  record WARN "pnpm lockfile" "missing at repository root"
+  record FAIL "pnpm lockfile" "missing at repository root"
 fi
 
 if [ "${ARCANUM_SKIP_INSTALL:-0}" = "1" ]; then
@@ -141,12 +141,14 @@ else
   run_check "pnpm install" pnpm -C "$ROOT" install --frozen-lockfile --ignore-scripts
 fi
 
-run_check "web typecheck" pnpm -C "$ROOT/apps/web" typecheck
+run_check "CE-W01 regression" pnpm -C "$ROOT" verify:ce-w01
+run_check "repository index" pnpm -C "$ROOT" verify:repo-index
+run_check "web typecheck" pnpm -C "$ROOT" typecheck
 
 if [ "${ARCANUM_SKIP_BUILD:-0}" = "1" ]; then
   record WARN "web build" "skipped by ARCANUM_SKIP_BUILD=1"
 else
-  run_check "web build" pnpm -C "$ROOT/apps/web" build
+  run_check "web build" pnpm -C "$ROOT" build
 fi
 
 if [ -x "$ROOT/scripts/verify-sync.sh" ]; then
@@ -156,7 +158,6 @@ else
 fi
 
 finalize_report
-
 printf '\nVerification report: %s\n' "$REPORT"
 cat "$REPORT"
 

@@ -2,152 +2,93 @@
 
 ## Purpose
 
-This file defines the repository-level operating contract for AI-assisted agents working on Arcanum.
+This file defines the repository-level contract for AI-assisted work on Arcanum.
 
-Agents may assist development.
+Agents may inspect, analyze, draft, implement bounded changes, and verify evidence when explicitly authorized. Agents do not own the repository and do not acquire authority from automation.
 
-Agents do not own the repository.
+## Repository posture
 
-## Canonical posture
+- `main` is the **sole persistent canonical branch**.
+- There is no default permanent integration branch.
+- A temporary work branch may be created from the exact current `main` head when isolation or review is useful.
+- Temporary branches are disposable: verify, merge or close, record evidence, then delete the branch.
+- A repository write requires explicit Human Architect authorization and an exact target surface.
+- Merge, deploy, rollback, or constitutional-impacting changes require the stronger applicable authorization and evidence gate.
 
-Arcanum uses a governed branch model:
+Never infer a historical branch name from old commits, archived documents, session records, or issue discussions.
 
-- `main` is stable and requires Human Architect approval before merge.
-- `mobile` is the active integration branch for implementation work.
-- agent-generated work must remain reviewable, auditable, and reversible.
+## Architect and registered agent roles
 
-## Agent classes
+Architect GPT is the doctrine-aware builder/review interface. The registered supporting roles in `docs/governance/architectgpt/agent-registry.yaml` are bounded analytical lenses, not independent authorities.
 
-### Architect GPT
+No registered agent may:
 
-Architect GPT is the doctrine-aware architecture and review agent.
+- ratify canon;
+- override the Human Architect;
+- expose secrets or private user data;
+- silently broaden scope;
+- bypass verification;
+- manufacture permissions, identity, recognition, governance weight, or economic rights.
 
-It may:
+## Grounding before action
 
-- inspect repository structure,
-- draft specs,
-- propose patches,
-- identify drift,
-- prepare implementation plans,
-- review build logs and diffs,
-- help maintain branch discipline.
+For repository work:
 
-It may not:
+1. resolve the exact repository and branch/ref;
+2. inspect `docs/repo/repo-index.json` and current Git state;
+3. open the live files that govern the requested surface;
+4. distinguish canonical sources from summaries, research, and history;
+5. state any missing evidence rather than filling gaps by assumption.
 
-- approve merges to `main`,
-- override the Human Architect,
-- expose secrets,
-- bypass verification,
-- claim sovereign authority.
+`docs/archive/` and old Git history are historical evidence only. They may be consulted for explicit audit or migration work, but they must not supply active operating instructions when a current canonical source exists.
 
-### Codex / implementation agent
+## Change discipline
 
-Codex or a similar implementation agent may produce code and documentation changes within explicit task scope.
+- Keep commits small and coherent.
+- Prefer one substantive source commit followed by the deterministic `docs/repo/repo-index.json` companion commit.
+- Do not hand-edit or fabricate repository-index output.
+- Preserve source/index lineage and exact-head evidence.
+- Do not squash or rewrite certified history merely to make the repository look cleaner.
 
-It may:
+Preferred commit prefixes include `docs(...)`, `feat(...)`, `fix(...)`, `chore(...)`, and `test(...)`.
 
-- edit files on authorized branches,
-- run tests where available,
-- prepare pull requests,
-- implement bounded tasks,
-- update generated indexes when instructed.
+## Verification
 
-It may not:
-
-- broaden scope silently,
-- bypass doctrine,
-- commit secrets,
-- modify protected branch policy,
-- merge to `main` without approval.
-
-### Local node agents
-
-Future local agents may live on a personal or development node.
-
-They may:
-
-- draft changes locally,
-- run local checks,
-- prepare receipts or logs,
-- synchronize approved work.
-
-They may not:
-
-- fabricate receipts,
-- assign authority,
-- make governance decisions,
-- execute treasury actions,
-- alter identity state without explicit consent.
-
-## Branch rules
-
-Agent work should target `mobile` unless a task explicitly names another branch.
-
-Before modifying active docs or implementation, agents should identify whether the change is:
-
-- local-only,
-- application-level,
-- protocol-level,
-- governance-impacting,
-- constitutional-impacting.
-
-Higher-impact changes require more explicit review.
-
-## Required verification
-
-After file changes, agents should recommend or run the appropriate checks:
+Use the checks appropriate to the touched surface. The full repository baseline includes:
 
 ```bash
-bash scripts/repo-index.sh
+pnpm install --frozen-lockfile
+pnpm verify:ce-w01
+pnpm verify:repo-index
 bash scripts/verify-sync.sh
-pnpm -C apps/web typecheck
-pnpm -C apps/web build
-cd chains/arcanum && go test ./... && cd ../..
+pnpm lint
+pnpm typecheck
+pnpm build
+
+git diff --check
 ```
 
-If a check cannot be run, the agent must say so.
+For the Rust local runtime:
+
+```bash
+cargo fmt --manifest-path runtime/arcanum-runtime/Cargo.toml --all -- --check
+cargo clippy --manifest-path runtime/arcanum-runtime/Cargo.toml \
+  --all-targets --all-features --locked --offline -- -D warnings
+cargo test --manifest-path runtime/arcanum-runtime/Cargo.toml --locked --offline
+```
+
+If a required check cannot be run, report that fact explicitly; absence of evidence is not a pass.
 
 ## Doctrine boundaries
 
-Agents must preserve:
+All assisted work must preserve controlling doctrine, including dignity, non-coercion, human sovereignty, consent, provenance, separation of authority layers, factual receipt semantics, and the prohibition on deriving human worth or permission from geometry, timing, counts, payment, or symbolic correspondence.
 
-- dignity boundaries,
-- non-coercion,
-- no worth scoring,
-- no pay-to-recognition,
-- no time acceleration by payment,
-- chain receipts as factual only,
-- user consent for identity and private data.
+## Secrets
 
-## Secrets and credentials
+Never expose or commit API keys, private keys, wallet seeds, passwords, session tokens, credentials, or private user data.
 
-Agents must never expose or commit:
+## Closure
 
-- API keys,
-- private keys,
-- wallet seeds,
-- passwords,
-- session tokens,
-- private user data.
+Agents may build. Agents may advise. Agents may verify.
 
-## Commit posture
-
-Agent commits should be small and descriptive.
-
-Preferred prefixes:
-
-- `docs(...)`
-- `feat(...)`
-- `fix(...)`
-- `chore(...)`
-- `test(...)`
-
-## Canonical closure
-
-Agents may build.
-
-Agents may advise.
-
-Agents may verify.
-
-Governance and the Human Architect retain final authority.
+The Human Architect and ratified governance/doctrine retain final authority.
