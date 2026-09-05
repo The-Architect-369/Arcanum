@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-09-05T15:10:08Z",
+  "generated_at": "2026-09-05T15:16:49Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "14e8d2ada",
+  "commit": "c3a5d113f",
   "generator_version": "1.4",
   "files": [
     {
@@ -169,11 +169,11 @@
     {
       "path": "apps/android/app/src/main/java/org/arcanum/nativehost/geometry/ArcnetRendererView.kt",
       "type": "file",
-      "size_bytes": 4415,
-      "last_modified_commit": "4b2e26a4f",
+      "size_bytes": 5898,
+      "last_modified_commit": "0bf79ce0d",
       "is_empty": false,
       "extension": ".kt",
-      "lines": 149
+      "lines": 191
     },
     {
       "path": "apps/android/app/src/main/java/org/arcanum/nativehost/geometry/CanonicalContracts.kt",
@@ -183,6 +183,15 @@
       "is_empty": false,
       "extension": ".kt",
       "lines": 276
+    },
+    {
+      "path": "apps/android/app/src/main/java/org/arcanum/nativehost/geometry/HopeSeedOverlay.kt",
+      "type": "file",
+      "size_bytes": 5175,
+      "last_modified_commit": "7dd5ceb93",
+      "is_empty": false,
+      "extension": ".kt",
+      "lines": 123
     },
     {
       "path": "apps/android/app/src/main/java/org/arcanum/nativehost/geometry/ProjectionEngine.kt",
@@ -237,6 +246,15 @@
       "is_empty": false,
       "extension": ".kt",
       "lines": 110
+    },
+    {
+      "path": "apps/android/app/src/test/java/org/arcanum/nativehost/geometry/HopeSeedOverlayTest.kt",
+      "type": "file",
+      "size_bytes": 1623,
+      "last_modified_commit": "c3a5d113f",
+      "is_empty": false,
+      "extension": ".kt",
+      "lines": 40
     },
     {
       "path": "apps/android/app/src/test/java/org/arcanum/nativehost/geometry/ProjectionContractTest.kt",
@@ -4062,6 +4080,33 @@
       "is_empty": false,
       "extension": ".json",
       "lines": 171
+    },
+    {
+      "path": "docs/specs/geometry/hope-seed-overlay.md",
+      "type": "file",
+      "size_bytes": 2038,
+      "last_modified_commit": "b75bcd863",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 42
+    },
+    {
+      "path": "docs/specs/geometry/hope-seed-overlay.v0.1.json",
+      "type": "file",
+      "size_bytes": 1580,
+      "last_modified_commit": "ca987432c",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 45
+    },
+    {
+      "path": "docs/specs/geometry/hope-seed-overlay.vectors.v0.1.json",
+      "type": "file",
+      "size_bytes": 847,
+      "last_modified_commit": "682d846ba",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 22
     },
     {
       "path": "docs/specs/identity/authority-binding-model.md",
