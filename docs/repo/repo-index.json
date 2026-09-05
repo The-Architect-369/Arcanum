@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-09-05T02:29:06Z",
+  "generated_at": "2026-09-05T02:40:59Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "f6710f286",
+  "commit": "b6661a06d",
   "generator_version": "1.4",
   "files": [
     {
@@ -115,11 +115,11 @@
     {
       "path": "apps/web/docs/README.md",
       "type": "file",
-      "size_bytes": 698,
-      "last_modified_commit": "f17204d93",
+      "size_bytes": 854,
+      "last_modified_commit": "b6661a06d",
       "is_empty": false,
       "extension": ".md",
-      "lines": 26
+      "lines": 23
     },
     {
       "path": "apps/web/docs/TEXT_GUIDE.md",
@@ -2878,170 +2878,26 @@
     {
       "path": "docs/archive/README.md",
       "type": "file",
-      "size_bytes": 1386,
-      "last_modified_commit": "0412d2719",
+      "size_bytes": 1972,
+      "last_modified_commit": "b6661a06d",
       "is_empty": false,
       "extension": ".md",
-      "lines": 30
+      "lines": 51
     },
     {
-      "path": "docs/archive/app/2025-10-master-arcanum-index-v1-rc.md",
+      "path": "docs/archive/chain/README.md",
       "type": "file",
-      "size_bytes": 5226,
-      "last_modified_commit": "b4c8d3fe7",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 180
-    },
-    {
-      "path": "docs/archive/app/README.md",
-      "type": "file",
-      "size_bytes": 635,
-      "last_modified_commit": "b4c8d3fe7",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 20
-    },
-    {
-      "path": "docs/archive/app/modules/2025-hope-guide-v1-rc.md",
-      "type": "file",
-      "size_bytes": 2163,
-      "last_modified_commit": "f17204d93",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 80
-    },
-    {
-      "path": "docs/archive/app/modules/2025-nexus-guide-v1-rc.md",
-      "type": "file",
-      "size_bytes": 1466,
-      "last_modified_commit": "f17204d93",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 53
-    },
-    {
-      "path": "docs/archive/app/modules/2025-tempus-guide-v1-rc.md",
-      "type": "file",
-      "size_bytes": 1929,
-      "last_modified_commit": "f17204d93",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 63
-    },
-    {
-      "path": "docs/archive/app/modules/2025-vitae-guide-v1-rc.md",
-      "type": "file",
-      "size_bytes": 1890,
-      "last_modified_commit": "f17204d93",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 55
-    },
-    {
-      "path": "docs/archive/app/modules/README.md",
-      "type": "file",
-      "size_bytes": 542,
-      "last_modified_commit": "f17204d93",
+      "size_bytes": 714,
+      "last_modified_commit": "b6661a06d",
       "is_empty": false,
       "extension": ".md",
       "lines": 19
     },
     {
-      "path": "docs/archive/app/tempus/2025-10-tempus-reward-system-calendar-draft-v1.md",
-      "type": "file",
-      "size_bytes": 4546,
-      "last_modified_commit": "b4c8d3fe7",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 104
-    },
-    {
-      "path": "docs/archive/app/tempus/README.md",
-      "type": "file",
-      "size_bytes": 499,
-      "last_modified_commit": "b4c8d3fe7",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 15
-    },
-    {
-      "path": "docs/archive/app/ui/2025-09-core-ui-guide-v1-rc.md",
-      "type": "file",
-      "size_bytes": 9822,
-      "last_modified_commit": "b4c8d3fe7",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 232
-    },
-    {
-      "path": "docs/archive/app/ui/README.md",
-      "type": "file",
-      "size_bytes": 461,
-      "last_modified_commit": "b4c8d3fe7",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 13
-    },
-    {
-      "path": "docs/archive/architectgpt/README.md",
-      "type": "file",
-      "size_bytes": 925,
-      "last_modified_commit": "c6950e8ff",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 25
-    },
-    {
-      "path": "docs/archive/architectgpt/architect-log-legacy.md",
-      "type": "file",
-      "size_bytes": 9736,
-      "last_modified_commit": "b4c8d3fe7",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 252
-    },
-    {
-      "path": "docs/archive/architectgpt/architectgpt-core.md",
-      "type": "file",
-      "size_bytes": 14639,
-      "last_modified_commit": "b4c8d3fe7",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 197
-    },
-    {
-      "path": "docs/archive/architectgpt/architectgpt-extended.md",
-      "type": "file",
-      "size_bytes": 8396,
-      "last_modified_commit": "b4c8d3fe7",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 264
-    },
-    {
-      "path": "docs/archive/architectgpt/sessions/2026-hope-render-system-v1.md",
-      "type": "file",
-      "size_bytes": 1670,
-      "last_modified_commit": "c6950e8ff",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 50
-    },
-    {
-      "path": "docs/archive/chain/README.md",
-      "type": "file",
-      "size_bytes": 446,
-      "last_modified_commit": "21d6e54ca",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 13
-    },
-    {
       "path": "docs/archive/chain/arcanum/README.md",
       "type": "file",
-      "size_bytes": 399,
-      "last_modified_commit": "21d6e54ca",
+      "size_bytes": 571,
+      "last_modified_commit": "b6661a06d",
       "is_empty": false,
       "extension": ".md",
       "lines": 19
@@ -3049,8 +2905,8 @@
     {
       "path": "docs/archive/chain/arcanum/app-disabled/README.md",
       "type": "file",
-      "size_bytes": 479,
-      "last_modified_commit": "21d6e54ca",
+      "size_bytes": 689,
+      "last_modified_commit": "b6661a06d",
       "is_empty": false,
       "extension": ".md",
       "lines": 15
@@ -3081,33 +2937,6 @@
       "is_empty": false,
       "extension": ".disabled",
       "lines": 21
-    },
-    {
-      "path": "docs/archive/chain/arcanum/cmd-scaffold/README.md",
-      "type": "file",
-      "size_bytes": 777,
-      "last_modified_commit": "564b53752",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 21
-    },
-    {
-      "path": "docs/archive/chain/arcanum/cmd-scaffold/commands.go.disabled",
-      "type": "file",
-      "size_bytes": 4334,
-      "last_modified_commit": "564b53752",
-      "is_empty": false,
-      "extension": ".disabled",
-      "lines": 163
-    },
-    {
-      "path": "docs/archive/migration-notes/2026-05-26-structural-alignment/suggested-first-wave.md",
-      "type": "file",
-      "size_bytes": 582,
-      "last_modified_commit": "2af2ae693",
-      "is_empty": false,
-      "extension": ".md",
-      "lines": 19
     },
     {
       "path": "docs/changelog.md",
@@ -3724,8 +3553,8 @@
     {
       "path": "docs/specs/app/navigation-and-gates.md",
       "type": "file",
-      "size_bytes": 1957,
-      "last_modified_commit": "537f9aee5",
+      "size_bytes": 2064,
+      "last_modified_commit": "b6661a06d",
       "is_empty": false,
       "extension": ".md",
       "lines": 72
@@ -3733,8 +3562,8 @@
     {
       "path": "docs/specs/app/tempus-windows.md",
       "type": "file",
-      "size_bytes": 1274,
-      "last_modified_commit": "b4c8d3fe7",
+      "size_bytes": 1394,
+      "last_modified_commit": "b6661a06d",
       "is_empty": false,
       "extension": ".md",
       "lines": 47
@@ -3751,11 +3580,11 @@
     {
       "path": "docs/specs/chain/README.md",
       "type": "file",
-      "size_bytes": 1242,
-      "last_modified_commit": "21d6e54ca",
+      "size_bytes": 1620,
+      "last_modified_commit": "b6661a06d",
       "is_empty": false,
       "extension": ".md",
-      "lines": 48
+      "lines": 52
     },
     {
       "path": "docs/specs/chain/authority-state-model.md",
@@ -4197,15 +4026,6 @@
       "is_empty": false,
       "extension": ".md",
       "lines": 84
-    },
-    {
-      "path": "docs/tooling/archive-manifest.yaml",
-      "type": "file",
-      "size_bytes": 4303,
-      "last_modified_commit": "f17204d93",
-      "is_empty": false,
-      "extension": ".yaml",
-      "lines": 93
     },
     {
       "path": "docs/tooling/doctrine-checksums/doctrine-checksums.yaml",
@@ -6415,11 +6235,11 @@
     {
       "path": "scripts/verify-sync.sh",
       "type": "file",
-      "size_bytes": 10359,
-      "last_modified_commit": "f6710f286",
+      "size_bytes": 10984,
+      "last_modified_commit": "b6661a06d",
       "is_empty": false,
       "extension": ".sh",
-      "lines": 241
+      "lines": 257
     },
     {
       "path": "tsconfig.json",
