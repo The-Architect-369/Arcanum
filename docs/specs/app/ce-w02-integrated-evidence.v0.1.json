@@ -1,0 +1,85 @@
+{
+  "$schema": "./ce-w02-integrated-evidence.schema.json",
+  "evidenceContractId": "ce-w02-integrated-evidence",
+  "schemaVersion": "0.1.0",
+  "status": "implementation-candidate",
+  "constructionEra": "CE-W02",
+  "tranche": "W02.5",
+  "canonicalBase": "e05dbf6cb5ce3b819512dbde1fff29cea12571d8",
+  "components": {
+    "projection": {
+      "registry": "docs/specs/geometry/arcnet-screen-projection.v0.1.json",
+      "falsificationIds": ["F21", "F22", "F23", "F24", "F25", "F26", "F27", "F28", "F29", "F30"]
+    },
+    "nativeHost": {
+      "registry": "docs/specs/app/android-geometric-host.v0.1.json",
+      "falsificationIds": ["F31", "F32", "F33", "F34", "F35", "F36"]
+    },
+    "runtimeBridge": {
+      "registry": "docs/specs/runtime/android-runtime-bridge.v0.1.json",
+      "falsificationIds": ["F37", "F38", "F39", "F40", "F41", "F42", "F43", "F44"]
+    },
+    "tempusLifecycle": {
+      "registry": "docs/specs/runtime/android-tempus-lifecycle.v0.1.json",
+      "falsificationIds": ["F45", "F46", "F47", "F48", "F49", "F50", "F51", "F52"]
+    }
+  },
+  "integration": {
+    "androidEntryPoint": "apps/android/app/src/main/java/org/arcanum/nativehost/MainActivity.kt",
+    "geometrySurface": "ArcnetRendererView",
+    "bridgeSurface": "NativeRuntimeBridge",
+    "lifecycleSurface": "TempusLifecyclePanel",
+    "geometryGatesRuntime": false,
+    "geometryGatesLifecycle": false,
+    "runtimeDomainObjectsCrossJni": false,
+    "networkRequired": false,
+    "authorityEffect": "none"
+  },
+  "nativePackaging": {
+    "abis": ["arm64-v8a", "x86_64"],
+    "libraries": [
+      {"name": "libarcanum_android_jni.so", "exportedMethods": 3},
+      {"name": "libarcanum_android_tempus_lifecycle_jni.so", "exportedMethods": 2}
+    ],
+    "commitNativeBinaries": false,
+    "apkEvidenceRequired": true
+  },
+  "restartRecovery": {
+    "runtimeStore": "FileTempusAnchorStore",
+    "kotlinPersistsOnlyOpaqueAnchorId": true,
+    "captureOnRecoveryFailure": false,
+    "receiptReissuedOnRecovery": false,
+    "networkRequired": false
+  },
+  "repositoryEvidence": {
+    "rootVerifier": "pnpm verify:ce-w02:integrated",
+    "verifySyncRequiredForPromotion": true,
+    "doctrineGuard": true,
+    "architectEvidence": true,
+    "webLint": true,
+    "webTypecheck": true,
+    "webBuild": true,
+    "vercelRequiredForPromotion": true,
+    "workflow": ".github/workflows/verify-ce-w02-integrated.yml"
+  },
+  "promotion": {
+    "deterministicIndexCompanionRequired": true,
+    "sourceIndexSeparationRequired": true,
+    "mergeMethod": "merge",
+    "closeIssueOnlyAfterCanonicalMerge": true
+  },
+  "capabilityCeiling": {
+    "network": false,
+    "signing": false,
+    "privateKeyExport": false,
+    "protocolSubmit": false,
+    "protocolFinality": false,
+    "governanceWeight": false,
+    "economicEntitlement": false,
+    "identityAuthority": false,
+    "geometryDerivedAuthority": false
+  },
+  "authorityEffect": "none",
+  "inheritedFalsificationIds": ["F1", "F2", "F3", "F4", "F5", "F6", "F7", "F8", "F9", "F10", "F11", "F12", "F13", "F14", "F15", "F16", "F17", "F18", "F19", "F20", "F21", "F22", "F23", "F24", "F25", "F26", "F27", "F28", "F29", "F30", "F31", "F32", "F33", "F34", "F35", "F36", "F37", "F38", "F39", "F40", "F41", "F42", "F43", "F44", "F45", "F46", "F47", "F48", "F49", "F50", "F51", "F52"],
+  "falsificationIds": ["F53", "F54", "F55", "F56", "F57", "F58", "F59", "F60"]
+}

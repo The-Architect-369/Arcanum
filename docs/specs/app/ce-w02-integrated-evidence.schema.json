@@ -1,0 +1,138 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:arcanum:ce-w02:integrated-evidence:0.1.0",
+  "title": "CE-W02 Integrated Evidence Contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["$schema", "evidenceContractId", "schemaVersion", "status", "constructionEra", "tranche", "canonicalBase", "components", "integration", "nativePackaging", "restartRecovery", "repositoryEvidence", "promotion", "capabilityCeiling", "authorityEffect", "inheritedFalsificationIds", "falsificationIds"],
+  "properties": {
+    "$schema": {"const": "./ce-w02-integrated-evidence.schema.json"},
+    "evidenceContractId": {"const": "ce-w02-integrated-evidence"},
+    "schemaVersion": {"const": "0.1.0"},
+    "status": {"enum": ["implementation-candidate", "certified"]},
+    "constructionEra": {"const": "CE-W02"},
+    "tranche": {"const": "W02.5"},
+    "canonicalBase": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "components": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["projection", "nativeHost", "runtimeBridge", "tempusLifecycle"],
+      "properties": {
+        "projection": {"$ref": "#/$defs/component"},
+        "nativeHost": {"$ref": "#/$defs/component"},
+        "runtimeBridge": {"$ref": "#/$defs/component"},
+        "tempusLifecycle": {"$ref": "#/$defs/component"}
+      }
+    },
+    "integration": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["androidEntryPoint", "geometrySurface", "bridgeSurface", "lifecycleSurface", "geometryGatesRuntime", "geometryGatesLifecycle", "runtimeDomainObjectsCrossJni", "networkRequired", "authorityEffect"],
+      "properties": {
+        "androidEntryPoint": {"type": "string"},
+        "geometrySurface": {"type": "string"},
+        "bridgeSurface": {"type": "string"},
+        "lifecycleSurface": {"type": "string"},
+        "geometryGatesRuntime": {"type": "boolean"},
+        "geometryGatesLifecycle": {"type": "boolean"},
+        "runtimeDomainObjectsCrossJni": {"type": "boolean"},
+        "networkRequired": {"type": "boolean"},
+        "authorityEffect": {"const": "none"}
+      }
+    },
+    "nativePackaging": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["abis", "libraries", "commitNativeBinaries", "apkEvidenceRequired"],
+      "properties": {
+        "abis": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+        "libraries": {"type": "array", "items": {"$ref": "#/$defs/library"}, "uniqueItems": true},
+        "commitNativeBinaries": {"type": "boolean"},
+        "apkEvidenceRequired": {"type": "boolean"}
+      }
+    },
+    "restartRecovery": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["runtimeStore", "kotlinPersistsOnlyOpaqueAnchorId", "captureOnRecoveryFailure", "receiptReissuedOnRecovery", "networkRequired"],
+      "properties": {
+        "runtimeStore": {"type": "string"},
+        "kotlinPersistsOnlyOpaqueAnchorId": {"type": "boolean"},
+        "captureOnRecoveryFailure": {"type": "boolean"},
+        "receiptReissuedOnRecovery": {"type": "boolean"},
+        "networkRequired": {"type": "boolean"}
+      }
+    },
+    "repositoryEvidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["rootVerifier", "verifySyncRequiredForPromotion", "doctrineGuard", "architectEvidence", "webLint", "webTypecheck", "webBuild", "vercelRequiredForPromotion", "workflow"],
+      "properties": {
+        "rootVerifier": {"type": "string"},
+        "verifySyncRequiredForPromotion": {"type": "boolean"},
+        "doctrineGuard": {"type": "boolean"},
+        "architectEvidence": {"type": "boolean"},
+        "webLint": {"type": "boolean"},
+        "webTypecheck": {"type": "boolean"},
+        "webBuild": {"type": "boolean"},
+        "vercelRequiredForPromotion": {"type": "boolean"},
+        "workflow": {"type": "string"}
+      }
+    },
+    "promotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["deterministicIndexCompanionRequired", "sourceIndexSeparationRequired", "mergeMethod", "closeIssueOnlyAfterCanonicalMerge"],
+      "properties": {
+        "deterministicIndexCompanionRequired": {"type": "boolean"},
+        "sourceIndexSeparationRequired": {"type": "boolean"},
+        "mergeMethod": {"const": "merge"},
+        "closeIssueOnlyAfterCanonicalMerge": {"type": "boolean"}
+      }
+    },
+    "capabilityCeiling": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["network", "signing", "privateKeyExport", "protocolSubmit", "protocolFinality", "governanceWeight", "economicEntitlement", "identityAuthority", "geometryDerivedAuthority"],
+      "properties": {
+        "network": {"type": "boolean"},
+        "signing": {"type": "boolean"},
+        "privateKeyExport": {"type": "boolean"},
+        "protocolSubmit": {"type": "boolean"},
+        "protocolFinality": {"type": "boolean"},
+        "governanceWeight": {"type": "boolean"},
+        "economicEntitlement": {"type": "boolean"},
+        "identityAuthority": {"type": "boolean"},
+        "geometryDerivedAuthority": {"type": "boolean"}
+      }
+    },
+    "authorityEffect": {"const": "none"},
+    "inheritedFalsificationIds": {"$ref": "#/$defs/falsificationIds"},
+    "falsificationIds": {"$ref": "#/$defs/falsificationIds"}
+  },
+  "$defs": {
+    "component": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["registry", "falsificationIds"],
+      "properties": {
+        "registry": {"type": "string"},
+        "falsificationIds": {"$ref": "#/$defs/falsificationIds"}
+      }
+    },
+    "library": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "exportedMethods"],
+      "properties": {
+        "name": {"type": "string"},
+        "exportedMethods": {"type": "integer", "minimum": 1}
+      }
+    },
+    "falsificationIds": {
+      "type": "array",
+      "items": {"type": "string", "pattern": "^F[1-9][0-9]*$"},
+      "uniqueItems": true
+    }
+  }
+}
