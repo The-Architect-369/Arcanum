@@ -79,7 +79,9 @@ jobs:
         run: cargo clippy --manifest-path runtime/arcanum-android-jni/Cargo.toml --all-targets -- -D warnings
 
       - name: Cross-compile JNI shim
+        shell: bash
         run: |
+          set +e
           rm -rf apps/android/app/src/main/jniLibs
           cargo ndk \
             -t arm64-v8a \
@@ -87,7 +89,20 @@ jobs:
             -o apps/android/app/src/main/jniLibs \
             build \
             --manifest-path runtime/arcanum-android-jni/Cargo.toml \
-            --release
+            --release \
+            > /tmp/cargo-ndk.log 2>&1
+          status=$?
+          if [ "$status" -ne 0 ]; then
+            echo "=== cargo-ndk diagnostic ==="
+            echo "rustc: $(rustc --version)"
+            echo "cargo-ndk: $(cargo ndk --version)"
+            echo "ANDROID_SDK_ROOT=${ANDROID_SDK_ROOT:-<unset>}"
+            echo "ANDROID_NDK_HOME=${ANDROID_NDK_HOME:-<unset>}"
+            echo "ANDROID_NDK_ROOT=${ANDROID_NDK_ROOT:-<unset>}"
+            echo "--- last 80 cargo-ndk lines ---"
+            tail -n 80 /tmp/cargo-ndk.log
+          fi
+          exit "$status"
 
       - name: Verify exported JNI symbols
         shell: bash
