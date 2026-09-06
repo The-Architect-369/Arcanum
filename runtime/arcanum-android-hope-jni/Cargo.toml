@@ -1,0 +1,15 @@
+[package]
+name = "arcanum-android-hope-jni"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.82"
+publish = false
+
+[lib]
+name = "arcanum_android_hope_jni"
+path = "src/lib.rs"
+crate-type = ["cdylib"]
+
+[dependencies]
+arcanum-hope-runtime = { path = "../arcanum-hope-runtime" }
+jni = { version = "=0.21.1", default-features = false }

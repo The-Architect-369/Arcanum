@@ -8,6 +8,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 CONTRACT = ROOT / "docs/specs/app/ce-w03-native-hope.v0.1.json"
 REGISTRATION = ROOT / "docs/specs/app/arcanum-native-registration.v0.1.json"
+HOPE_RECORD = ROOT / "docs/specs/app/hope-reflection.v0.1.json"
 SEED = ROOT / "docs/specs/geometry/hope-seed-overlay.v0.1.json"
 SEED_VECTORS = ROOT / "docs/specs/geometry/hope-seed-overlay.vectors.v0.1.json"
 SOURCE = ROOT / "docs/specs/geometry/arcnet-coordinate-frame.v0.1.json"
@@ -59,6 +60,73 @@ def verify_arcanum_registration() -> None:
     panel = read("apps/android/app/src/main/java/org/arcanum/nativehost/application/ArcanumLaunchPanel.kt")
     require("Arcanum · Hope · local/private · authorityEffect=none" in panel, "F62 Hope-centered native presentation")
     require("fail-closed · authorityEffect=none" in panel, "F62 blocked presentation truthful")
+
+
+def verify_hope_record_and_storage() -> None:
+    specification = json.loads(HOPE_RECORD.read_text(encoding="utf-8"))
+    require(specification["contractId"] == "hope-reflection.v0.1", "F63 closed Construction Hope contract ID")
+    require(specification["derivedFrom"].endswith("hope.context.v0.1"), "F63 Hope record derivation audited from hope.context.v0.1")
+    audit = specification["derivationAudit"]
+    excluded = set(audit["excludedFromConstructionRecord"])
+    require({"identityId", "Vitae summaries", "consented_export visibility", "queued receipt status", "anchored receipt status"}.issubset(excluded), "F63 broader web states excluded from Construction record")
+    record = specification["record"]
+    require(record["version"] == "hope.reflection.v0.1" and record["mode"] == "reflection", "F63 Hope record identity fixed")
+    require(record["requiredFields"] == ["id", "createdAt", "userText"], "F63 required Hope fields closed")
+    require(record["optionalFields"] == ["prompt", "hopeText", "context.tempus"], "F63 optional Hope fields closed")
+    require(record["visibility"] == "local_private" and record["receiptStatus"] == "local_only", "F63 Hope local-only states fixed")
+    require(record["authority"] == "advisory_only" and record["interpretation"] is None, "F63 Hope advisory/null interpretation fixed")
+    require(record["additionalFieldsAllowed"] is False, "F63 additional record fields forbidden")
+    tempus = specification["tempus"]
+    require(tempus["optional"] is True and tempus["sourceKind"] == "system-clock", "F67 Tempus provenance optional and factual")
+    require(tempus["interpretation"] is None and tempus["authorityEffect"] == "none" and tempus["causalMeaningAllowed"] is False, "F67 Tempus meaning/authority firewall")
+
+    storage = specification["storage"]
+    require(storage["namespace"] == "hope" and storage["relativePath"] == "hope/reflections.v0.1.enc", "F64 Rust-owned Hope namespace/path fixed")
+    require(storage["owner"] == "arcanum-hope-runtime", "F64 Hope storage contract owner fixed")
+    require(storage["platformKeyProvider"] == "AndroidKeyStore" and storage["cipher"] == "AES/GCM/NoPadding", "F64 platform encryption contract fixed")
+    require(storage["keyExportable"] is False and storage["keyCrossesJni"] is False, "F64 key isolation fixed")
+    require(storage["atomicReplaceRequired"] is True and storage["authenticatedEnvelope"] is True, "F65 atomic authenticated envelope required")
+    require(storage["missingStateFailure"] == "fail_closed" and storage["corruptionFailure"] == "fail_closed", "F65 missing/corrupt state fail closed")
+
+    rust = read("runtime/arcanum-hope-runtime/src/lib.rs")
+    require('pub const HOPE_NAMESPACE: &str = "hope";' in rust, "F64 Rust owns Hope namespace")
+    require('pub const HOPE_RECORD_VERSION: &str = "hope.reflection.v0.1";' in rust, "F63 Rust owns Hope record version")
+    require('pub const HOPE_STORAGE_RELATIVE_PATH: &str = "hope/reflections.v0.1.enc";' in rust, "F64 Rust owns durable Hope path")
+    require("pub fn canonical_reflection(" in rust, "F63 Rust canonical reflection constructor present")
+    require('pub const TEMPUS_SOURCE_SYSTEM_CLOCK: &str = "system-clock";' in rust, "F67 factual Tempus source fixed")
+
+    jni = read("runtime/arcanum-android-hope-jni/src/lib.rs")
+    require("Java_org_arcanum_nativehost_hope_HopeRuntimeBridge_nativeContract" in jni, "F64 Hope JNI contract export present")
+    require("Java_org_arcanum_nativehost_hope_HopeRuntimeBridge_nativeBuildReflection" in jni, "F63 Hope JNI record export present")
+    require(all(token not in jni for token in ["AndroidKeyStore", "SecretKey", "KeyStore", ".encoded"]), "F64 key material absent from JNI boundary")
+
+    bridge = read("apps/android/app/src/main/java/org/arcanum/nativehost/hope/HopeRuntimeBridge.kt")
+    require('System.loadLibrary("arcanum_android_hope_jni")' in bridge, "F64 dedicated Hope JNI library loaded")
+    require("nativeContract(): String" in bridge and "nativeBuildReflection(" in bridge, "F63/F64 bounded Hope JNI surface")
+    require(all(token not in bridge for token in ["SecretKey", "KeyStore", ".encoded"]), "F64 Android bridge does not expose keys")
+
+    key_manager = read("apps/android/app/src/main/java/org/arcanum/nativehost/hope/AndroidHopeKeyManager.kt")
+    require('KEYSTORE_PROVIDER = "AndroidKeyStore"' in key_manager, "F64 Android Keystore provider used")
+    require("KeyGenParameterSpec.Builder(" in key_manager and "KeyProperties.KEY_ALGORITHM_AES" in key_manager, "F64 non-exportable platform AES key generated")
+    require("KeyProperties.BLOCK_MODE_GCM" in key_manager and "KeyProperties.ENCRYPTION_PADDING_NONE" in key_manager, "F64 GCM/no-padding key policy fixed")
+    require(".setKeySize(256)" in key_manager and ".setRandomizedEncryptionRequired(true)" in key_manager, "F64 256-bit randomized key policy fixed")
+    require(".encoded" not in key_manager, "F64 key bytes are never exported")
+
+    protected_store = read("apps/android/app/src/main/java/org/arcanum/nativehost/hope/HopeProtectedStore.kt")
+    require('CIPHER = "AES/GCM/NoPadding"' in protected_store, "F64 authenticated cipher fixed in protected store")
+    require("GCMParameterSpec" in protected_store and "updateAAD(aad())" in protected_store, "F64 envelope metadata authenticated")
+    require("StandardCopyOption.ATOMIC_MOVE" in protected_store and "output.fd.sync()" in protected_store, "F65 durable atomic replace path")
+    require("AEADBadTagException" in protected_store and "HopeStateCorruptException" in protected_store, "F65 tamper fails closed")
+    require("HopeStateMissingException" in protected_store and "Hope protected state is missing" in protected_store, "F65 missing state explicit")
+    require('MAGIC = "ARCHOPE1"' in protected_store, "F65 versioned protected envelope present")
+
+    tests = read("apps/android/app/src/test/java/org/arcanum/nativehost/hope/HopeProtectedStoreTest.kt")
+    for test_name in ["protectedStateRoundTripsExactly", "missingStateFailsClosed", "tamperedCiphertextFailsClosed", "truncatedEnvelopeFailsClosed"]:
+        require(f"fun {test_name}()" in tests, f"F65 protected-store test {test_name}")
+
+    workflow = read(".github/workflows/verify-ce-w03-native-hope.yml")
+    require("arcanum-android-hope-jni" in workflow, "F64 dedicated Hope JNI built in CI")
+    require("libarcanum_android_jni.so" in workflow and "libarcanum_android_tempus_lifecycle_jni.so" in workflow and "libarcanum_android_hope_jni.so" in workflow, "F61/F64 three-library dual-ABI packaging verified")
 
 
 def verify_seed_overlay() -> None:
@@ -120,6 +188,7 @@ def main() -> None:
     require(geometry["exactIdentityClaimed"] is False, "no unproved Seed/octahedron identity")
     require(geometry["geometryFreeEquivalentRequired"] is True, "geometry-free equivalent required")
     verify_arcanum_registration()
+    verify_hope_record_and_storage()
     verify_seed_overlay()
     ceiling = data["capabilityCeiling"]
     require(all(value is False for value in ceiling.values()), "offline/capability ceiling is closed")

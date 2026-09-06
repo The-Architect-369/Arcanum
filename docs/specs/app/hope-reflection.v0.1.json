@@ -1,0 +1,74 @@
+{
+  "contractId": "hope-reflection.v0.1",
+  "constructionEra": "CE-W03",
+  "tranche": "W03.3",
+  "derivedFrom": "apps/web/src/lib/hope/context.ts#hope.context.v0.1",
+  "derivationAudit": {
+    "retained": [
+      "reflection mode",
+      "prompt optional",
+      "user text",
+      "Hope text optional",
+      "local-private default",
+      "advisory-only authority",
+      "null interpretation"
+    ],
+    "narrowed": [
+      "visibility is local_private only",
+      "receipt status is local_only only",
+      "Tempus provenance is optional factual system-clock metadata only"
+    ],
+    "excludedFromConstructionRecord": [
+      "identityId",
+      "Vitae summaries",
+      "consented_export visibility",
+      "queued receipt status",
+      "anchored receipt status",
+      "remote or local model output dependency"
+    ]
+  },
+  "record": {
+    "version": "hope.reflection.v0.1",
+    "mode": "reflection",
+    "requiredFields": ["id", "createdAt", "userText"],
+    "optionalFields": ["prompt", "hopeText", "context.tempus"],
+    "visibility": "local_private",
+    "receiptStatus": "local_only",
+    "authority": "advisory_only",
+    "interpretation": null,
+    "additionalFieldsAllowed": false
+  },
+  "tempus": {
+    "optional": true,
+    "sourceKind": "system-clock",
+    "allowedFields": ["anchorId", "capturedAt", "sourceKind", "interpretation", "authorityEffect"],
+    "interpretation": null,
+    "authorityEffect": "none",
+    "causalMeaningAllowed": false
+  },
+  "storage": {
+    "namespace": "hope",
+    "relativePath": "hope/reflections.v0.1.enc",
+    "owner": "arcanum-hope-runtime",
+    "platformKeyProvider": "AndroidKeyStore",
+    "cipher": "AES/GCM/NoPadding",
+    "keyExportable": false,
+    "keyCrossesJni": false,
+    "atomicReplaceRequired": true,
+    "authenticatedEnvelope": true,
+    "missingStateFailure": "fail_closed",
+    "corruptionFailure": "fail_closed"
+  },
+  "receiptBoundary": {
+    "scope": "local",
+    "signingRequired": false,
+    "privateBodyAllowed": false
+  },
+  "capabilityCeiling": {
+    "networkRequired": false,
+    "cloudSync": false,
+    "ipfsPublication": false,
+    "protocolSubmission": false,
+    "modelDependency": false
+  }
+}
