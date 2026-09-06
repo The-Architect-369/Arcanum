@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-09-05T15:24:07Z",
+  "generated_at": "2026-09-06T11:17:20Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "3877feb8c",
+  "commit": "dd0f55cbc",
   "generator_version": "1.4",
   "files": [
     {
@@ -169,11 +169,29 @@
     {
       "path": "apps/android/app/src/main/java/org/arcanum/nativehost/MainActivity.kt",
       "type": "file",
-      "size_bytes": 1111,
-      "last_modified_commit": "a525268d3",
+      "size_bytes": 1836,
+      "last_modified_commit": "dd0f55cbc",
       "is_empty": false,
       "extension": ".kt",
-      "lines": 33
+      "lines": 49
+    },
+    {
+      "path": "apps/android/app/src/main/java/org/arcanum/nativehost/application/ArcanumLaunchPanel.kt",
+      "type": "file",
+      "size_bytes": 985,
+      "last_modified_commit": "dd0f55cbc",
+      "is_empty": false,
+      "extension": ".kt",
+      "lines": 32
+    },
+    {
+      "path": "apps/android/app/src/main/java/org/arcanum/nativehost/application/NativeApplicationRegistry.kt",
+      "type": "file",
+      "size_bytes": 2154,
+      "last_modified_commit": "dd0f55cbc",
+      "is_empty": false,
+      "extension": ".kt",
+      "lines": 58
     },
     {
       "path": "apps/android/app/src/main/java/org/arcanum/nativehost/geometry/ArcnetRendererView.kt",
@@ -255,6 +273,15 @@
       "is_empty": false,
       "extension": ".kt",
       "lines": 110
+    },
+    {
+      "path": "apps/android/app/src/test/java/org/arcanum/nativehost/application/NativeApplicationRegistryTest.kt",
+      "type": "file",
+      "size_bytes": 2381,
+      "last_modified_commit": "dd0f55cbc",
+      "is_empty": false,
+      "extension": ".kt",
+      "lines": 60
     },
     {
       "path": "apps/android/app/src/test/java/org/arcanum/nativehost/geometry/HopeSeedOverlayTest.kt",
@@ -3749,6 +3776,15 @@
       "lines": 102
     },
     {
+      "path": "docs/specs/app/arcanum-native-registration.v0.1.json",
+      "type": "file",
+      "size_bytes": 993,
+      "last_modified_commit": "dd0f55cbc",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 42
+    },
+    {
       "path": "docs/specs/app/architect-runtime-core.md",
       "type": "file",
       "size_bytes": 5347,
@@ -6802,11 +6838,11 @@
     {
       "path": "scripts/verify-ce-w03.py",
       "type": "file",
-      "size_bytes": 6110,
-      "last_modified_commit": "7aa98b892",
+      "size_bytes": 9382,
+      "last_modified_commit": "dd0f55cbc",
       "is_empty": false,
       "extension": ".py",
-      "lines": 98
+      "lines": 134
     },
     {
       "path": "scripts/verify-repo-index.py",
