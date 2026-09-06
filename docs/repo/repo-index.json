@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-09-06T11:46:30Z",
+  "generated_at": "2026-09-06T12:00:12Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "384a42f00",
+  "commit": "2fd96fb53",
   "generator_version": "1.4",
   "files": [
     {
@@ -66,6 +66,15 @@
       "is_empty": false,
       "extension": ".yml",
       "lines": 205
+    },
+    {
+      "path": ".github/workflows/verify-ce-w03-integrated.yml",
+      "type": "file",
+      "size_bytes": 8093,
+      "last_modified_commit": "2fd96fb53",
+      "is_empty": false,
+      "extension": ".yml",
+      "lines": 200
     },
     {
       "path": ".github/workflows/verify-ce-w03-native-hope.yml",
@@ -142,11 +151,11 @@
     {
       "path": "README.md",
       "type": "file",
-      "size_bytes": 2370,
-      "last_modified_commit": "714b4f931",
+      "size_bytes": 2677,
+      "last_modified_commit": "2fd96fb53",
       "is_empty": false,
       "extension": ".md",
-      "lines": 55
+      "lines": 59
     },
     {
       "path": "apps/android/README.md",
@@ -3724,11 +3733,11 @@
     {
       "path": "docs/repo/arcanum-baseline.md",
       "type": "file",
-      "size_bytes": 6866,
-      "last_modified_commit": "0412d2719",
+      "size_bytes": 7791,
+      "last_modified_commit": "2fd96fb53",
       "is_empty": false,
       "extension": ".md",
-      "lines": 151
+      "lines": 169
     },
     {
       "path": "docs/repo/construction-era-consolidation-ledger.md",
@@ -3787,20 +3796,20 @@
     {
       "path": "docs/roadmap/canonical-roadmap.md",
       "type": "file",
-      "size_bytes": 6888,
-      "last_modified_commit": "5209de2d2",
+      "size_bytes": 6777,
+      "last_modified_commit": "2fd96fb53",
       "is_empty": false,
       "extension": ".md",
-      "lines": 150
+      "lines": 144
     },
     {
       "path": "docs/roadmap/construction-era-roadmap.md",
       "type": "file",
-      "size_bytes": 12000,
-      "last_modified_commit": "fdbb9158d",
+      "size_bytes": 12322,
+      "last_modified_commit": "2fd96fb53",
       "is_empty": false,
       "extension": ".md",
-      "lines": 216
+      "lines": 217
     },
     {
       "path": "docs/specs/README.md",
@@ -4579,11 +4588,11 @@
     {
       "path": "docs/status/project-status.md",
       "type": "file",
-      "size_bytes": 4122,
-      "last_modified_commit": "a8575294d",
+      "size_bytes": 4483,
+      "last_modified_commit": "2fd96fb53",
       "is_empty": false,
       "extension": ".md",
-      "lines": 101
+      "lines": 90
     },
     {
       "path": "docs/tooling/doctrine-checksums/doctrine-checksums.yaml",
@@ -6379,11 +6388,11 @@
     {
       "path": "package.json",
       "type": "file",
-      "size_bytes": 1597,
-      "last_modified_commit": "384a42f00",
+      "size_bytes": 1692,
+      "last_modified_commit": "2fd96fb53",
       "is_empty": false,
       "extension": ".json",
-      "lines": 41
+      "lines": 42
     },
     {
       "path": "pnpm-lock.yaml",
@@ -6960,6 +6969,15 @@
       "is_empty": false,
       "extension": ".py",
       "lines": 185
+    },
+    {
+      "path": "scripts/verify-ce-w03-closure.py",
+      "type": "file",
+      "size_bytes": 3738,
+      "last_modified_commit": "2fd96fb53",
+      "is_empty": false,
+      "extension": ".py",
+      "lines": 68
     },
     {
       "path": "scripts/verify-ce-w03-reflection.py",
