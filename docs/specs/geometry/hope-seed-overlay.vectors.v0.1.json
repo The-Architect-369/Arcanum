@@ -1,0 +1,22 @@
+{
+  "registry": "./hope-seed-overlay.v0.1.json",
+  "tolerance": 1e-9,
+  "referenceViewport": {"width": 1000.0, "height": 1000.0},
+  "referenceOrigin": [500.0, 500.0],
+  "unitRadiusPixels": 80.0,
+  "samples": [
+    {"id":"seed_center","screen":[500.0,500.0],"radius":80.0},
+    {"id":"seed_e","screen":[580.0,500.0],"radius":80.0},
+    {"id":"seed_ne","screen":[540.0,430.7179676972449],"radius":80.0},
+    {"id":"seed_nw","screen":[460.0,430.7179676972449],"radius":80.0},
+    {"id":"seed_w","screen":[420.0,500.0],"radius":80.0},
+    {"id":"seed_sw","screen":[460.0,569.282032302755],"radius":80.0},
+    {"id":"seed_se","screen":[540.0,569.282032302755],"radius":80.0}
+  ],
+  "claims": {
+    "exactOctahedralDerivation": false,
+    "symbolicPresentationOnly": true,
+    "authorityEffect": "none",
+    "geometryFreeEquivalentRequired": true
+  }
+}

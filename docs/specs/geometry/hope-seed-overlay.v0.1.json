@@ -1,0 +1,46 @@
+{
+  "contractId": "hope-seed-overlay.v0.1",
+  "schemaVersion": "0.1",
+  "status": "implementation-candidate",
+  "wave": "CE-W03",
+  "tranche": "W03.1",
+  "sourceCertificationWorkflow": ".github/workflows/verify-ce-w03.yml",
+  "source": {
+    "registry": "./arcnet-coordinate-frame.v0.1.json",
+    "frameId": "arcnet-coordinate-frame",
+    "innerRole": "hope-centered-inner-rendering",
+    "sourceCoordinatesMutable": false
+  },
+  "overlay": {
+    "id": "seed-of-life-hope-presentation",
+    "type": "symbolic-presentation-overlay",
+    "relationToOctahedron": "centered-on-projected-hope-origin",
+    "exactMappingSpecified": false,
+    "mathematicalIdentityClaimed": false,
+    "authorityEffect": "none",
+    "semanticMutationAllowed": false,
+    "plane": "screen-presentation",
+    "unitRadius": 1.0,
+    "centers": [
+      {"id": "seed_center", "p": [0.0, 0.0]},
+      {"id": "seed_e", "p": [1.0, 0.0]},
+      {"id": "seed_ne", "p": [0.5, 0.8660254037844386]},
+      {"id": "seed_nw", "p": [-0.5, 0.8660254037844386]},
+      {"id": "seed_w", "p": [-1.0, 0.0]},
+      {"id": "seed_sw", "p": [-0.5, -0.8660254037844386]},
+      {"id": "seed_se", "p": [0.5, -0.8660254037844386]}
+    ]
+  },
+  "presentationScale": {
+    "type": "viewport-relative-presentation-only",
+    "unitRadiusFractionOfMinViewport": 0.08,
+    "centerAnchor": "projected-identity-origin",
+    "derivationClaim": "none"
+  },
+  "geometryFreeEquivalent": {
+    "required": true,
+    "operation": "Hope reflection capture and recall remain fully available without geometric rendering",
+    "presentationLabel": "Hope · private reflection"
+  },
+  "falsificationIds": ["F69", "F70"]
+}
