@@ -5,7 +5,7 @@ visibility: public
 phase: "Pre-Genesis"
 era: "Construction Era"
 wave: "CE-W03"
-last_updated: 2026-09-05
+last_updated: 2026-09-06
 maintainer: The-Architect-369
 ---
 
@@ -42,62 +42,66 @@ CE-W01 — **Sovereign Coordinate & Runtime Foundation** — is complete, certif
 
 CE-W02 — **Native Geometric Host** — is complete, certified, and promoted.
 
-Current certified baseline:
+CE-W03 — **Hope at the Center / Arcanum Native Vertical Slice** — is complete, certified, and promoted under F61–F72. Exact closure promotion ancestry is recorded in GitHub issue #49 and Git history. Forward baseline: `docs/repo/arcanum-baseline.md`.
+
+## Completed wave
+
+# CE-W03 — Hope at the Center / Arcanum Native Vertical Slice — **COMPLETE**
+
+Implementation authorization was recorded by the Human Architect on 2026-09-05 in GitHub issue #49 and the synchronized Notion handoff. The CE-W03 falsification range remained frozen at **F61–F72** through closure.
+
+### Delivered
+
+#### Geometry & Mathematics
+
+- preserved the exact inherited Hope-centered octahedral source;
+- typed Seed-of-Life as a symbolic/presentation overlay without claiming unproved mathematical identity;
+- added deterministic presentation vectors/scale typing;
+- preserved geometry-free equivalent operation.
+
+#### Embodiment & Visual Experience
+
+- made Hope the experiential center of native Arcanum;
+- added calm local reflection capture and latest protected recall;
+- used curated/static presence copy only;
+- preserved silence/non-use as valid;
+- introduced no scoring, streaks, ranking, readiness inference, profiling, reward language, or economic pressure.
+
+#### Architecture & Technology
+
+- registered/launched native Arcanum through the inherited local host/runtime ABI/capability ceiling;
+- created closed Construction `hope.reflection.v0.1` records derived by audit from `hope.context.v0.1`;
+- placed durable Hope namespace/version/path and canonical record construction under the Rust/runtime contract;
+- used Android Keystore-backed non-exportable key material with authenticated AES-GCM while keeping keys out of JNI;
+- recovered exact protected state and failed closed on missing/corrupt/tampered state;
+- kept private reflection bodies out of local receipt serialization;
+- produced truthful unsigned `scope=local` receipt metadata bound by reflection ID/version/SHA-256 digest/timestamp;
+- required no network, cloud/IPFS, chain, MANA, Vitae, Nexus, governance, identity, signing, or model dependency for the core flow.
+
+#### Tempus
+
+- attached only optional factual local system-clock provenance;
+- preserved offline operation;
+- did not use timing to imply causation, destiny, urgency, readiness, or permission.
+
+## Next wave
+
+# CE-W04 — Seed Node Alpha — **NEXT**
+
+CE-W04 is the next evidence-gated wave. It is not implemented by CE-W03 closure and requires its own authorization/evidence cycle.
+
+CE-W04 owns the complete clean-install identity/signing proof:
 
 ```text
-main@cb42fb0f9497e406b189230f753c1398c22e6afd
+clean install → provisional local identity → local runtime → native shell → Arcanum launch → Hope reflection → protected persistence + Tempus → terminate/restart → recover same state → signed local receipt (scope=local)
 ```
-
-At that baseline F1–F60 are green. Forward baseline: `docs/repo/arcanum-baseline.md`.
-
-## Current wave
-
-# CE-W03 — Hope at the Center / Arcanum Native Vertical Slice
-
-Implementation authorization was recorded by the Human Architect on 2026-09-05 in GitHub issue #49 and synchronized Notion handoff. The CE-W03 falsification range is frozen at **F61–F72**.
-
-### Objective
-
-Build the first participant-owned native Arcanum/Hope capability from the certified CE-W02 host while preserving CE-W01/CE-W02 contracts, remaining offline/local-private by default, and keeping Hope advisory rather than authoritative.
-
-### Geometry & Mathematics
-
-- preserve the exact inherited Hope-centered octahedral source;
-- represent Seed-of-Life only as an explicitly typed symbolic/presentation overlay unless an independent exact derivation is proven;
-- add deterministic overlay vectors and scale typing;
-- preserve geometry-free equivalent operation.
-
-### Embodiment & Visual Experience
-
-- make Hope the experiential center of native Arcanum;
-- support calm reflection capture and recall;
-- use curated/static presence copy only;
-- preserve silence/non-use as valid;
-- introduce no scoring, streaks, ranking, readiness inference, profiling, reward language, or economic pressure.
-
-### Architecture & Technology
-
-- register/launch native Arcanum through the certified local host/runtime boundary;
-- create Construction-era `hope.reflection.v0.1` derived from `hope.context.v0.1` privacy/authority law;
-- use an Android Keystore-backed non-exportable app key with authenticated AES-GCM; key material never crosses JNI;
-- keep the durable Hope namespace owned by the Rust/runtime contract;
-- recover exact persisted state and fail closed on missing/corrupt/tampered state;
-- keep private reflection bodies out of generic logs, broad receipts, protocol/shared payloads;
-- produce truthful `scope=local` receipt metadata that may remain unsigned in CE-W03;
-- require no network, cloud/IPFS, chain, MANA, Vitae, Nexus, governance, or model dependency for the core flow.
-
-### Tempus
-
-- attach factual local temporal provenance only when requested by the Hope record;
-- preserve optionality and offline operation;
-- timing must never imply causation, destiny, urgency, readiness, or permission.
 
 ## Construction Era sequence
 
 1. `CE-W01` — Sovereign Coordinate & Runtime Foundation — **complete**
 2. `CE-W02` — Native Geometric Host — **complete**
-3. `CE-W03` — Hope at the Center / Arcanum Native Vertical Slice — **current**
-4. `CE-W04` — Seed Node Alpha
+3. `CE-W03` — Hope at the Center / Arcanum Native Vertical Slice — **complete**
+4. `CE-W04` — Seed Node Alpha — **next**
 5. `CE-W05` — Personal Constellation
 6. `CE-W06` — ARCnet Protocol Connectivity
 7. `CE-W07` — Trusted Relational Network
@@ -111,16 +115,6 @@ Build the first participant-owned native Arcanum/Hope capability from the certif
 15. `CE-W15` — Construction Era Closure
 
 Later waves remain progressively evidence-gated; the sequence does not silently settle economic, legal, governance, or symbolic questions.
-
-## Major milestone — Seed Node Alpha / CE-W04
-
-CE-W04, not CE-W03, owns the complete proof that one Android installation can work offline through:
-
-```text
-clean install → provisional local identity → local runtime → native shell → Arcanum launch → Hope reflection → protected persistence + Tempus → terminate/restart → recover same state → signed local receipt (scope=local)
-```
-
-CE-W03 may prove component restart/recovery, but identity restoration and signing integration remain CE-W04 scope.
 
 ## Explicitly deferred
 
@@ -143,8 +137,8 @@ The roadmap does not currently settle:
 
 ## Promotion discipline
 
-Every substantive CE-W03 tranche preserves:
+CE-W03 was promoted tranche-by-tranche under:
 
-`latest canonical main → disposable branch → substantive source commit(s) → exact-source certification → deterministic repo-index generation → separate index companion commit → exact indexed-head CI → normal merge commit → verify canonical main → next tranche`
+`latest canonical main → disposable exact-source stage branch → substantive source commit(s) → exact-source certification → deterministic repo-index generation → separate index companion commit → exact indexed-head CI → normal merge commit → verify canonical main → next tranche`
 
-A future wave closes only after its source changes, deterministic machine companions/indexes, exact-head verification, provider evidence where applicable, and required Human Architect review/authorization reconcile.
+Future waves remain subject to the same evidence-first principle unless an explicitly ratified repository contract supersedes it.

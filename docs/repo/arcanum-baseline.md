@@ -4,38 +4,35 @@ status: canonical
 visibility: public
 phase: "Pre-Genesis"
 era: "Construction Era"
-wave: "CE-W02"
-last_updated: 2026-09-04
+wave: "CE-W03"
+last_updated: 2026-09-06
 maintainer: The-Architect-369
-authority: "Human Architect ratified CE-W01 closure and promotion"
+authority: "Human Architect ratified CE-W03 decisions and implementation; exact closure promotion recorded in GitHub issue #49"
 canonical_branch: "main"
-ce_w01_certified_head: "22b1255c5063e5fbfebc248c75f6f5e2668a46c4"
-ce_w01_substantive_source: "afd5aa40619abdf734be1df820acf06ec5281e81"
-closure_issue: "https://github.com/The-Architect-369/Arcanum/issues/39"
-cleanup_issue: "https://github.com/The-Architect-369/Arcanum/issues/41"
+ce_w03_opening_baseline: "cb42fb0f9497e406b189230f753c1398c22e6afd"
+closure_issue: "https://github.com/The-Architect-369/Arcanum/issues/49"
 ---
 
 # ARCnet Canonical Construction Baseline
 
 ## Purpose
 
-This document is the compact forward-facing state produced by CE-W01.
+This document is the compact forward-facing Construction state through CE-W03. It records **what ARCnet/Arcanum is now** after CE-W01, CE-W02, and CE-W03 were audited, implemented, verified, and promoted.
 
-It records **what ARCnet is now** after the exploratory and consolidation decisions were audited, encoded, verified, and promoted. It is not a transcript of the deliberation that produced those decisions. Git history, closed issues, closed pull requests, and explicitly historical records preserve that provenance.
+It is not a transcript of the deliberation that produced the state. Git history, closed issues, pull requests, exact-head CI, provider evidence, and historical records preserve provenance. The exact CE-W03 closure promotion SHA and source/index ancestry are recorded in GitHub issue #49 because a commit cannot canonically contain its own SHA.
 
-Forward implementation starts from this baseline plus the controlling doctrine, architecture, specifications, registries, and runtime artifacts on `main`.
+## Certified evidence range
 
-## Certified repository state
+- CE-W01/CE-W02 inherited Construction evidence: **F1–F60**.
+- CE-W03 frozen falsification range: **F61–F72**.
+- Forward certified Construction range after CE-W03: **F1–F72**.
+- CE-W03 closure additionally requires Atman exact-source `git diff --check`, deterministic repository-index verification, exact indexed-head CI, Architect exact-head attestation, dual-ABI/APK evidence, and Vercel deployment evidence.
 
-CE-W01 closed CP1 through CP8 and was promoted without rewriting its certified head:
+CE-W03 opened from:
 
 ```text
-canonical branch: main
-certified baseline: 22b1255c5063e5fbfebc248c75f6f5e2668a46c4
-final substantive source: afd5aa40619abdf734be1df820acf06ec5281e81
+main@cb42fb0f9497e406b189230f753c1398c22e6afd
 ```
-
-The exact CE-W01 baseline passed Rust format/clippy/tests, deterministic Geometry/Spatial/Tempus verification, repository-index verification, Verify Sync 24/24, lint, typecheck, Next.js production build, diff integrity, and exact-head Vercel preview/production checks.
 
 ## System structure
 
@@ -45,107 +42,128 @@ ARCnet construction proceeds through three synchronized lanes:
 2. **Embodiment & Visual Experience** — lived form, navigation, interaction, accessibility, Hope/Vitae experience, and faithful mathematical projection.
 3. **Architecture & Technology** — sovereign local runtime, native host, identity/storage boundaries, applications, networking, protocol, and later resource infrastructure.
 
-**Tempus** is a cross-lane temporal axis, not a fourth peer lane.
-
-Registries and provenance are cross-cutting binding/control fabric, not a peer sovereignty domain.
+**Tempus** is a cross-lane temporal axis, not a fourth peer lane. Registries and provenance are cross-cutting binding/control fabric, not a peer sovereignty domain.
 
 ## Authority laws carried forward
 
 - Human identity, dignity, capability, recognition, governance weight, economic entitlement, or permission cannot arise merely from geometry, timing, symbolic correspondence, counts, filenames, provider location, or implementation detail.
 - Registry/source-owned meaning precedes projection.
 - Geometry may represent registered relationships; it does not manufacture authority.
-- Temporal and astronomical observations are context/provenance unless a separately authorized protocol explicitly uses them.
+- Temporal observations are factual context/provenance unless a separately authorized protocol explicitly uses them.
 - Lower implementation layers cannot amend higher controlling doctrine.
 - Conflicting authority information fails closed.
 - Provider location does not define object identity or institutional authority.
-- Research and historical evidence may inform later work but do not become canon merely by remaining retrievable.
+- Historical/research evidence may inform later work but does not become canon merely by remaining retrievable.
 
-## CE-W01 Geometry baseline
+## Geometry and native-host baseline
 
-Geometry v0.1 and Spatial Architecture v0.2 establish the formal coordinate foundation and deterministic falsification coverage F1-F20.
+CE-W01 and CE-W02 established the coordinate/runtime foundation, exact mathematical-to-screen projection, Android native host, bounded runtime bridge, local Tempus lifecycle, and dual-ABI packaging.
 
-The baseline includes:
+CE-W03 carries forward the exact inherited Hope-centered octahedral source. The Seed-of-Life relationship is an explicitly typed **symbolic/presentation overlay** with no authority effect and no claim of exact mathematical identity unless independently proven. Geometry-free equivalent operation is required.
 
-- ARCnet local coordinate-frame contracts;
-- bounded Flower-lattice/spatial architecture;
-- explicit orientation-frame ownership;
-- source-owned correspondence boundaries;
-- geometry-free equivalence;
-- logical/execution/physical graph separation;
-- explicit research status for stronger unproved geometric identities.
+## Arcanum and Hope baseline
 
-Exact screen projection and native rendering are CE-W02 responsibilities.
+Native Arcanum is registered and launched only through the inherited bounded runtime ABI/capability ceiling. Hope is the experiential center, not an authority source.
 
-Deeper retained Hope/octahedral/Seed-of-Life realization is a CE-W03 responsibility.
-
-## CE-W01 local runtime and Tempus baseline
-
-The Rust local runtime establishes the required local boundary for:
-
-- location-free system-clock capture;
-- deterministic `TempusAnchor` formation;
-- local persistence and restart integrity;
-- optional ephemeris-provider boundaries with explicit provenance;
-- opaque local receipt-signing handles;
-- fail-closed signer/provider behavior;
-- local receipts whose scope is not misrepresented as protocol finality.
-
-Production cryptographic-provider selection remains a later engineering decision. Protocol witness, submission, connectivity, and finality belong to later protocol work, including CE-W06.
-
-## Research disposition
-
-The post-Wave-XXIV Creation research lineage was audited rather than merged wholesale.
+The Construction Hope record is:
 
 ```text
-docs/creation-era-architecture-trail
-5e4be0cd733845e21a172b122aa8c1b157b4f674
+hope.reflection.v0.1
 ```
 
-A later HOPE/TEMPUS/VITAE journey track ended at:
+Its stable CE-W03 posture is:
+
+- reflection capture and latest protected recall;
+- local-private visibility;
+- advisory-only Hope authority;
+- `interpretation: null`;
+- silence/non-use valid;
+- curated/static presence copy;
+- no conversational, remote, or local model dependency;
+- no scoring, ranking, streaks, profiling, readiness inference, or reward pressure.
+
+## Protected local state baseline
+
+The Rust Hope contract owns the durable namespace, record version, storage-relative path, and canonical record construction.
+
+Android holds the encryption boundary:
+
+- non-exportable application key under **Android Keystore**;
+- authenticated **AES-GCM** (`AES/GCM/NoPadding`);
+- key material never crosses JNI and is never exported as key bytes;
+- versioned authenticated envelope with namespace/version/path bound as AAD;
+- durable fsync + atomic replacement;
+- exact protected-state recovery;
+- explicit missing-state failure;
+- fail-closed corruption/tamper authentication failure;
+- no silent reset/default after corruption.
+
+## Receipt and privacy baseline
+
+CE-W03 receipts are truthful local metadata and may remain unsigned.
+
+A local Hope receipt binds only bounded metadata such as receipt/reflection ID, record version, persistence time, local scope, and SHA-256 content digest. The receipt does **not** serialize private `userText`, prompt, Hope text, or a reflection body.
+
+CE-W03 does not fabricate a signer, signature, identity, protocol submission, or finality claim.
+
+## Tempus baseline
+
+Hope may attach optional factual local Tempus provenance containing only bounded system-clock evidence such as anchor ID, capture time, and source kind.
+
+Tempus does not infer causation, destiny, urgency, readiness, permission, or human worth from timing.
+
+## Offline capability ceiling
+
+CE-W03 core operation requires no:
+
+- network or cloud service;
+- IPFS publication/synchronization;
+- ARCnet protocol submission/finality;
+- MANA, Vitae, Nexus, or governance dependency;
+- participant identity creation/restoration;
+- receipt signing;
+- remote or local AI model.
+
+Those absences are part of the certified capability ceiling, not missing implied functionality.
+
+## Repository and evidence posture
+
+`main` is the sole persistent canonical branch. Substantive Construction tranches use disposable exact-source stage branches and generated-index work branches.
+
+The required ancestry is:
 
 ```text
-docs/architects-arcanum-hope-track
-77f1d9c021f3e0c243e1a530b5bde94ce130bdcd
+latest canonical main
+→ exact-source stage branch
+→ source commit(s)
+→ exact-source certification
+→ generated repo-index companion
+→ exact indexed-head CI/provider evidence
+→ normal merge commit
+→ verify canonical main
 ```
 
-Unpromoted material from those lineages remains historical research evidence. Surviving CE-W01 conclusions were rewritten into current Construction specifications rather than importing the research branches wholesale.
+`docs/repo/repo-index.json` is deterministic generated state and is never hand-edited as substantive source.
 
-Detailed disposition provenance remains recoverable from Git history and the historical research-disposition record.
+## Current handoff — CE-W04
 
-## Repository-history meaning
-
-Git history is provenance, not active authority.
-
-The project does not squash or orphan the certified lineage merely to make the repository appear younger. Earlier decisions remain recoverable when historical comparison is intentionally requested, while the active tree should present the surviving result instead of requiring future builders to replay the deliberation.
-
-Closed issues and pull requests have the same posture: evidence of how the system arrived here, not an unresolved instruction queue.
-
-## Branch posture
-
-`main` is the sole persistent canonical branch.
-
-Future work may use explicitly named disposable branches when review isolation is useful. Such branches must begin at an exact known `main` head and are deleted after merge/closure. They are work surfaces, not parallel truths.
-
-## Current handoff
-
-CE-W01 is complete. Current Construction work is:
+CE-W03 is complete. The next evidence-gated wave is:
 
 ```text
-CE-W02 — Native Geometric Host
+CE-W04 — Seed Node Alpha
 ```
 
-CE-W02 owns:
+CE-W04, not CE-W03, owns the whole-install identity/signing proof:
 
-- exact math-to-screen projection;
-- faithful native ARCnet shell realization;
-- Android/Kotlin host construction;
-- the narrow Rust/native bridge;
-- offline local-runtime lifecycle integration;
-- local Tempus provider integration without requiring network finality.
+```text
+clean install → provisional local identity → local runtime → native shell → Arcanum launch → Hope reflection → protected persistence + Tempus → terminate/restart → recover same state → signed local receipt (scope=local)
+```
 
-CE-W03 owns the deeper Hope-centered native vertical slice. CE-W06 owns later protocol connectivity/finality.
+CE-W04 may introduce online/offline persistence or synchronization only through its own explicit privacy, capability, network, and consent review. CE-W03 closure does not authorize or implement those additions.
 
 ## Records
 
-- GitHub issue #39 — CE-W01 implementation/audit/closure; closed completed.
-- GitHub issue #41 — post-closure canonical repository cleanup; active until cleanup certification and branch retirement.
+- GitHub issue #39 — CE-W01 closure provenance.
+- GitHub issue #49 — CE-W03 ratification, tranche implementation, exact source/index ancestry, final F61–F72 closure, and CE-W04 handoff.
+- `docs/roadmap/canonical-roadmap.md` — current ordered Construction roadmap.
+- `docs/roadmap/construction-era-roadmap.md` — lane-by-lane wave responsibilities.

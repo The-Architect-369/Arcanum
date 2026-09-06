@@ -5,7 +5,7 @@ visibility: public
 phase: "Pre-Genesis"
 era: "Construction Era"
 wave: "CE-W03"
-last_updated: 2026-09-05
+last_updated: 2026-09-06
 maintainer: The-Architect-369
 authority: "Human Architect planning direction; implementation remains evidence-gated"
 baseline_record: "docs/repo/arcanum-baseline.md"
@@ -19,9 +19,9 @@ ce_w03_umbrella_issue: "https://github.com/The-Architect-369/Arcanum/issues/49"
 
 This document defines the Construction Era development structure following historical Waves I-XXIV.
 
-CE-W01 and CE-W02 are complete and certified. The current implementation wave is **CE-W03 — Hope at the Center / Arcanum Native Vertical Slice**.
+CE-W01, CE-W02, and CE-W03 are complete and certified. The next evidence-gated wave is **CE-W04 — Seed Node Alpha**.
 
-This roadmap is planning authority only. CE-W03 implementation authority is separately recorded in GitHub issue #49 and the synchronized 2026-09-05 decision handoff.
+This roadmap is planning authority only. CE-W03 implementation authority and closure evidence are recorded in GitHub issue #49 and the synchronized decision handoff.
 
 ## Era naming and provenance
 
@@ -107,24 +107,25 @@ CE-W02 established exact mathematical-to-screen projection, the native Android/K
 
 Its exact certified closure baseline is `main@cb42fb0f9497e406b189230f753c1398c22e6afd`.
 
-### CE-W03 — Hope at the Center / Arcanum Native Vertical Slice — CURRENT
+### CE-W03 — Hope at the Center / Arcanum Native Vertical Slice — COMPLETE
 
-Ratified 2026-09-05. Frozen falsification allocation: **F61–F72**.
+Ratified 2026-09-05 and closed under the frozen falsification allocation **F61–F72**.
 
-- G: preserve the exact inherited Hope-centered octahedral source; type Seed-of-Life as symbolic/presentation overlay unless exact derivation is independently proven; provide deterministic vectors and geometry-free equivalence.
-- E: make Hope the experiential center of native Arcanum with calm reflection capture/recall, curated/static presence copy, silence-valid UX, and no authority/progression semantics.
-- A: register/launch Arcanum through the existing local boundary; implement `hope.reflection.v0.1`; protect the Hope namespace with Android Keystore-backed non-exportable key material and authenticated AES-GCM; recover exactly and fail closed on missing/corrupt/tampered state; emit truthful local-only receipt metadata without private body leakage.
-- Tempus: attach only optional factual local provenance; timing remains context, never causation/readiness/permission.
-- Capability ceiling: no required network/cloud/IPFS/model/chain/MANA/Vitae/Nexus/governance dependency.
+- G: preserved the exact inherited Hope-centered octahedral source; typed Seed-of-Life as symbolic/presentation overlay without asserting unproved identity; added deterministic presentation vectors and geometry-free equivalence.
+- E: made Hope the experiential center of native Arcanum with calm local reflection capture/recall, curated/static presence copy, silence-valid UX, and no authority/progression semantics.
+- A: registered/launched Arcanum through the inherited local boundary; implemented closed `hope.reflection.v0.1`; protected the Hope namespace with Android Keystore-backed non-exportable key material and authenticated AES-GCM; recovered exactly and failed closed on missing/corrupt/tampered state; emitted truthful local-only unsigned receipt metadata without private body leakage.
+- Tempus: attached only optional factual local system-clock provenance; timing remained context, never causation/readiness/permission.
+- Capability ceiling: no required network/cloud/IPFS/model/chain/MANA/Vitae/Nexus/governance/identity/signing dependency.
+- Evidence: exact-source certification, deterministic index companions, exact indexed-head CI, Architect attestation, dual-ABI/APK checks, and Vercel provider evidence.
 
-### CE-W04 — Seed Node Alpha
+### CE-W04 — Seed Node Alpha — NEXT
 
 - G: verify geometric implementation against formal definitions.
 - E: verify coherent offline embodied experience and recovery.
 - A: prove clean install → provisional identity → runtime → native shell → Arcanum → Hope → protected persistence → restart → recovery → **signed** local receipt.
 - Tempus: prove temporal provenance survives persistence/restart and remains local unless explicitly submitted.
 
-CE-W04 retains identity/signing integration and the whole-install signed `scope=local` proof; CE-W03 does not absorb it.
+CE-W04 retains identity/signing integration and the whole-install signed `scope=local` proof; CE-W03 did not absorb it.
 
 ### CE-W05 — Personal Constellation
 
@@ -205,12 +206,12 @@ CE-W04 retains identity/signing integration and the whole-install signed `scope=
 
 ## Ratification posture
 
-CE-W03 is explicitly implementation-authorized under issue #49. Later waves remain progressively evidence-gated and must not silently settle unresolved economics, legal structure, governance thresholds, resource rewards, arbitrary executable-code policy, or stronger symbolic geometry.
+CE-W03 is closed as an implemented stable capability under issue #49. CE-W04 and later waves remain progressively evidence-gated and must not silently settle unresolved economics, legal structure, governance thresholds, resource rewards, arbitrary executable-code policy, stronger symbolic geometry, identity/signing, or network synchronization.
 
 ## Promotion discipline
 
-Every substantive CE-W03 tranche follows:
+CE-W03 substantive tranches followed:
 
-`latest canonical main → disposable branch → substantive source commit(s) → exact-source certification → deterministic repo-index generation → separate index companion commit → exact indexed-head CI → normal merge commit → verify canonical main → next tranche`
+`latest canonical main → disposable exact-source stage branch → substantive source commit(s) → exact-source certification → deterministic repo-index generation → separate index companion commit → exact indexed-head CI → normal merge commit → verify canonical main → next tranche`
 
-A wave becomes a new stable capability only when its exact source state, deterministic generated companions/indexes, verification evidence, provider evidence where applicable, and required Human Architect approval reconcile.
+A future wave becomes a new stable capability only when its exact source state, deterministic generated companions/indexes, verification evidence, provider evidence where applicable, and required Human Architect approval reconcile.
