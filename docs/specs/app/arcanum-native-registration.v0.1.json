@@ -1,0 +1,42 @@
+{
+  "contractId": "arcanum-native-registration.v0.1",
+  "constructionEra": "CE-W03",
+  "tranche": "W03.2",
+  "appId": "arcanum",
+  "displayName": "Arcanum",
+  "launchSurface": "hope",
+  "runtime": {
+    "requiredAbiVersion": 1,
+    "requiredCapabilityMask": 1,
+    "allowedCapabilityMask": 1,
+    "failClosed": true
+  },
+  "authority": {
+    "authorityEffect": "none",
+    "protocolAuthority": false,
+    "canExecute": false,
+    "canRatify": false,
+    "canConfirmReadiness": false
+  },
+  "capabilityCeiling": {
+    "networkRequired": false,
+    "cloudSync": false,
+    "ipfsPublication": false,
+    "protocolSubmission": false,
+    "modelDependency": false
+  },
+  "geometry": {
+    "optional": true,
+    "source": "inherited_hope_centered_octahedral",
+    "seedOverlayAuthorityEffect": "none"
+  },
+  "receipt": {
+    "scope": "local",
+    "signingRequired": false
+  },
+  "ceW04Reserved": [
+    "provisional_local_identity",
+    "receipt_signing",
+    "networked_seed_node_alpha_proof"
+  ]
+}

@@ -7,6 +7,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 CONTRACT = ROOT / "docs/specs/app/ce-w03-native-hope.v0.1.json"
+REGISTRATION = ROOT / "docs/specs/app/arcanum-native-registration.v0.1.json"
 SEED = ROOT / "docs/specs/geometry/hope-seed-overlay.v0.1.json"
 SEED_VECTORS = ROOT / "docs/specs/geometry/hope-seed-overlay.vectors.v0.1.json"
 SOURCE = ROOT / "docs/specs/geometry/arcnet-coordinate-frame.v0.1.json"
@@ -24,6 +25,40 @@ def read(path: str) -> str:
 
 def close(a: float, b: float, tolerance: float) -> bool:
     return abs(a - b) <= tolerance * max(1.0, abs(a), abs(b))
+
+
+def verify_arcanum_registration() -> None:
+    registration = json.loads(REGISTRATION.read_text(encoding="utf-8"))
+    require(registration["contractId"] == "arcanum-native-registration.v0.1", "F62 Arcanum registration contract ID")
+    require(registration["constructionEra"] == "CE-W03" and registration["tranche"] == "W03.2", "F62 registration tranche identity")
+    require(registration["appId"] == "arcanum" and registration["launchSurface"] == "hope", "F62 Arcanum launches into Hope")
+    runtime = registration["runtime"]
+    require(runtime == {"requiredAbiVersion": 1, "requiredCapabilityMask": 1, "allowedCapabilityMask": 1, "failClosed": True}, "F62 inherited runtime ceiling exact")
+    authority = registration["authority"]
+    require(authority["authorityEffect"] == "none", "F62 launch has no authority effect")
+    require(all(authority[key] is False for key in ["protocolAuthority", "canExecute", "canRatify", "canConfirmReadiness"]), "F62 protocol authority closed")
+    ceiling = registration["capabilityCeiling"]
+    require(all(value is False for value in ceiling.values()), "F71 registered app capability ceiling closed")
+    geometry = registration["geometry"]
+    require(geometry["optional"] is True and geometry["seedOverlayAuthorityEffect"] == "none", "F62 geometry remains optional presentation")
+    receipt = registration["receipt"]
+    require(receipt == {"scope": "local", "signingRequired": False}, "F62 CE-W03 receipt boundary remains local unsigned")
+
+    registry = read("apps/android/app/src/main/java/org/arcanum/nativehost/application/NativeApplicationRegistry.kt")
+    require('appId = "arcanum"' in registry and 'launchSurface = "hope"' in registry, "F62 native registry contains Arcanum/Hope binding")
+    require("requiredRuntimeAbi = BridgeContract.ABI_VERSION" in registry, "F62 native registry reuses inherited ABI")
+    require("requiredCapabilityMask = BridgeContract.CAP_TEMPUS_SYSTEM_CLOCK_PROBE" in registry, "F62 native registry reuses inherited capability")
+    require('authorityEffect = "none"' in registry and "protocolAuthority = false" in registry, "F62 native registry authority firewall")
+    require("networkRequired = false" in registry and "modelDependency = false" in registry, "F71 native registry offline/model ceiling")
+    require('NativeApplicationLaunch.Blocked("runtime_not_ready")' in registry, "F62 launch fails closed when runtime is not ready")
+
+    activity = read("apps/android/app/src/main/java/org/arcanum/nativehost/MainActivity.kt")
+    require("setContentView(ArcnetRendererView(this, bridgeLabel))" in activity, "F61 inherited renderer host preserved")
+    require("TempusLifecyclePanel(this)" in activity, "F61 inherited Tempus panel preserved")
+    require("ArcanumLaunchPanel(this, appLaunch)" in activity, "F62 Arcanum launch surface mounted")
+    panel = read("apps/android/app/src/main/java/org/arcanum/nativehost/application/ArcanumLaunchPanel.kt")
+    require("Arcanum · Hope · local/private · authorityEffect=none" in panel, "F62 Hope-centered native presentation")
+    require("fail-closed · authorityEffect=none" in panel, "F62 blocked presentation truthful")
 
 
 def verify_seed_overlay() -> None:
@@ -84,6 +119,7 @@ def main() -> None:
     require(geometry["seedRelationship"] == "symbolic_presentation_overlay", "Seed overlay typing")
     require(geometry["exactIdentityClaimed"] is False, "no unproved Seed/octahedron identity")
     require(geometry["geometryFreeEquivalentRequired"] is True, "geometry-free equivalent required")
+    verify_arcanum_registration()
     verify_seed_overlay()
     ceiling = data["capabilityCeiling"]
     require(all(value is False for value in ceiling.values()), "offline/capability ceiling is closed")
