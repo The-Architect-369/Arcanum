@@ -1,0 +1,78 @@
+{
+  "contractId": "hope-local-reflection.v0.1",
+  "constructionEra": "CE-W03",
+  "tranche": "W03.4",
+  "recordContract": "./hope-reflection.v0.1.json",
+  "interaction": {
+    "capture": true,
+    "recall": "latest_protected_reflection",
+    "silenceValid": true,
+    "curatedPresence": "Your reflection is held locally.",
+    "conversationalModelRequired": false,
+    "remoteModelRequired": false,
+    "localModelRequired": false
+  },
+  "persistence": {
+    "protected": true,
+    "exactRoundTripRequired": true,
+    "missingStateIsExplicit": true,
+    "corruptionFailsClosed": true,
+    "silentResetForbidden": true
+  },
+  "receipt": {
+    "scope": "local",
+    "signed": false,
+    "signerRef": null,
+    "signature": null,
+    "authorityEffect": "none",
+    "requiredFields": [
+      "receiptId",
+      "reflectionId",
+      "contentDigestSha256",
+      "persistedAt",
+      "recordVersion",
+      "scope",
+      "signed",
+      "signerRef",
+      "signature",
+      "authorityEffect",
+      "privateBodyIncluded"
+    ],
+    "privateBodyIncluded": false,
+    "forbiddenFields": [
+      "userText",
+      "prompt",
+      "hopeText",
+      "reflectionBody",
+      "privateContent"
+    ]
+  },
+  "tempus": {
+    "optional": true,
+    "sourceKind": "system-clock",
+    "fields": ["anchorId", "capturedAt", "sourceKind"],
+    "interpretation": null,
+    "causalMeaningAllowed": false,
+    "failureMayFabricateContext": false
+  },
+  "hope": {
+    "authority": "advisory_only",
+    "authorityEffect": "none",
+    "canExecute": false,
+    "canRatify": false,
+    "canConfirmReadiness": false,
+    "profiling": false,
+    "scoring": false,
+    "streaks": false,
+    "ranking": false
+  },
+  "capabilityCeiling": {
+    "networkRequired": false,
+    "cloudSync": false,
+    "ipfsPublication": false,
+    "protocolSubmission": false,
+    "identityRequired": false,
+    "signingRequired": false,
+    "modelDependency": false
+  }
+}

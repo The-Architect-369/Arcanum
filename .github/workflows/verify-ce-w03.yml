@@ -20,4 +20,6 @@ jobs:
       - name: Checkout exact source
         uses: actions/checkout@v4
       - name: Verify CE-W03 contract and implemented tranche invariants
-        run: python3 scripts/verify-ce-w03.py
+        run: |
+          python3 scripts/verify-ce-w03.py
+          python3 scripts/verify-ce-w03-reflection.py

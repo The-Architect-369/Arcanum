@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-09-06T11:32:46Z",
+  "generated_at": "2026-09-06T11:46:30Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "b8c82882a",
+  "commit": "384a42f00",
   "generator_version": "1.4",
   "files": [
     {
@@ -79,11 +79,11 @@
     {
       "path": ".github/workflows/verify-ce-w03.yml",
       "type": "file",
-      "size_bytes": 456,
-      "last_modified_commit": "44b3278bc",
+      "size_bytes": 522,
+      "last_modified_commit": "7382f5cbc",
       "is_empty": false,
       "extension": ".yml",
-      "lines": 23
+      "lines": 25
     },
     {
       "path": ".github/workflows/verify-sync.yml",
@@ -178,11 +178,11 @@
     {
       "path": "apps/android/app/src/main/java/org/arcanum/nativehost/MainActivity.kt",
       "type": "file",
-      "size_bytes": 1836,
-      "last_modified_commit": "dd0f55cbc",
+      "size_bytes": 2155,
+      "last_modified_commit": "7382f5cbc",
       "is_empty": false,
       "extension": ".kt",
-      "lines": 49
+      "lines": 58
     },
     {
       "path": "apps/android/app/src/main/java/org/arcanum/nativehost/application/ArcanumLaunchPanel.kt",
@@ -248,6 +248,15 @@
       "lines": 41
     },
     {
+      "path": "apps/android/app/src/main/java/org/arcanum/nativehost/hope/HopeLocalStateCodec.kt",
+      "type": "file",
+      "size_bytes": 5533,
+      "last_modified_commit": "7382f5cbc",
+      "is_empty": false,
+      "extension": ".kt",
+      "lines": 140
+    },
+    {
       "path": "apps/android/app/src/main/java/org/arcanum/nativehost/hope/HopeProtectedStore.kt",
       "type": "file",
       "size_bytes": 6408,
@@ -255,6 +264,15 @@
       "is_empty": false,
       "extension": ".kt",
       "lines": 162
+    },
+    {
+      "path": "apps/android/app/src/main/java/org/arcanum/nativehost/hope/HopeReflectionPanel.kt",
+      "type": "file",
+      "size_bytes": 6238,
+      "last_modified_commit": "7382f5cbc",
+      "is_empty": false,
+      "extension": ".kt",
+      "lines": 181
     },
     {
       "path": "apps/android/app/src/main/java/org/arcanum/nativehost/hope/HopeRuntimeBridge.kt",
@@ -336,6 +354,15 @@
       "is_empty": false,
       "extension": ".kt",
       "lines": 40
+    },
+    {
+      "path": "apps/android/app/src/test/java/org/arcanum/nativehost/hope/HopeLocalStateCodecTest.kt",
+      "type": "file",
+      "size_bytes": 2619,
+      "last_modified_commit": "7382f5cbc",
+      "is_empty": false,
+      "extension": ".kt",
+      "lines": 67
     },
     {
       "path": "apps/android/app/src/test/java/org/arcanum/nativehost/hope/HopeProtectedStoreTest.kt",
@@ -3938,6 +3965,15 @@
       "lines": 267
     },
     {
+      "path": "docs/specs/app/hope-local-reflection.v0.1.json",
+      "type": "file",
+      "size_bytes": 1919,
+      "last_modified_commit": "7382f5cbc",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 78
+    },
+    {
       "path": "docs/specs/app/hope-reflection.v0.1.json",
       "type": "file",
       "size_bytes": 2179,
@@ -6343,8 +6379,8 @@
     {
       "path": "package.json",
       "type": "file",
-      "size_bytes": 1550,
-      "last_modified_commit": "d7b0e43f3",
+      "size_bytes": 1597,
+      "last_modified_commit": "384a42f00",
       "is_empty": false,
       "extension": ".json",
       "lines": 41
@@ -6924,6 +6960,15 @@
       "is_empty": false,
       "extension": ".py",
       "lines": 185
+    },
+    {
+      "path": "scripts/verify-ce-w03-reflection.py",
+      "type": "file",
+      "size_bytes": 7635,
+      "last_modified_commit": "7382f5cbc",
+      "is_empty": false,
+      "extension": ".py",
+      "lines": 94
     },
     {
       "path": "scripts/verify-ce-w03.py",
