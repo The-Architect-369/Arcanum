@@ -62,9 +62,7 @@ pub fn contract_json() -> String {
     )
 }
 
-pub fn canonical_reflection(
-    input: HopeReflectionInput<'_>,
-) -> Result<String, HopeRecordError> {
+pub fn canonical_reflection(input: HopeReflectionInput<'_>) -> Result<String, HopeRecordError> {
     require_nonblank(input.id, "id")?;
     require_nonblank(input.created_at, "createdAt")?;
     require_nonblank(input.user_text, "userText")?;
