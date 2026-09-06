@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-09-06T11:17:20Z",
+  "generated_at": "2026-09-06T11:32:46Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "dd0f55cbc",
+  "commit": "b8c82882a",
   "generator_version": "1.4",
   "files": [
     {
@@ -66,6 +66,15 @@
       "is_empty": false,
       "extension": ".yml",
       "lines": 205
+    },
+    {
+      "path": ".github/workflows/verify-ce-w03-native-hope.yml",
+      "type": "file",
+      "size_bytes": 5954,
+      "last_modified_commit": "723639630",
+      "is_empty": false,
+      "extension": ".yml",
+      "lines": 142
     },
     {
       "path": ".github/workflows/verify-ce-w03.yml",
@@ -230,6 +239,33 @@
       "lines": 178
     },
     {
+      "path": "apps/android/app/src/main/java/org/arcanum/nativehost/hope/AndroidHopeKeyManager.kt",
+      "type": "file",
+      "size_bytes": 1438,
+      "last_modified_commit": "723639630",
+      "is_empty": false,
+      "extension": ".kt",
+      "lines": 41
+    },
+    {
+      "path": "apps/android/app/src/main/java/org/arcanum/nativehost/hope/HopeProtectedStore.kt",
+      "type": "file",
+      "size_bytes": 6408,
+      "last_modified_commit": "723639630",
+      "is_empty": false,
+      "extension": ".kt",
+      "lines": 162
+    },
+    {
+      "path": "apps/android/app/src/main/java/org/arcanum/nativehost/hope/HopeRuntimeBridge.kt",
+      "type": "file",
+      "size_bytes": 2997,
+      "last_modified_commit": "723639630",
+      "is_empty": false,
+      "extension": ".kt",
+      "lines": 89
+    },
+    {
       "path": "apps/android/app/src/main/java/org/arcanum/nativehost/runtime/BridgeContract.kt",
       "type": "file",
       "size_bytes": 885,
@@ -300,6 +336,15 @@
       "is_empty": false,
       "extension": ".kt",
       "lines": 40
+    },
+    {
+      "path": "apps/android/app/src/test/java/org/arcanum/nativehost/hope/HopeProtectedStoreTest.kt",
+      "type": "file",
+      "size_bytes": 2741,
+      "last_modified_commit": "723639630",
+      "is_empty": false,
+      "extension": ".kt",
+      "lines": 83
     },
     {
       "path": "apps/android/app/src/test/java/org/arcanum/nativehost/runtime/BridgeContractTest.kt",
@@ -3893,6 +3938,15 @@
       "lines": 267
     },
     {
+      "path": "docs/specs/app/hope-reflection.v0.1.json",
+      "type": "file",
+      "size_bytes": 2179,
+      "last_modified_commit": "723639630",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 74
+    },
+    {
       "path": "docs/specs/app/modules/README.md",
       "type": "file",
       "size_bytes": 760,
@@ -6341,6 +6395,24 @@
       "lines": 63
     },
     {
+      "path": "runtime/arcanum-android-hope-jni/Cargo.toml",
+      "type": "file",
+      "size_bytes": 334,
+      "last_modified_commit": "723639630",
+      "is_empty": false,
+      "extension": ".toml",
+      "lines": 15
+    },
+    {
+      "path": "runtime/arcanum-android-hope-jni/src/lib.rs",
+      "type": "file",
+      "size_bytes": 4394,
+      "last_modified_commit": "723639630",
+      "is_empty": false,
+      "extension": ".rs",
+      "lines": 126
+    },
+    {
       "path": "runtime/arcanum-android-jni/Cargo.lock",
       "type": "file",
       "size_bytes": 367,
@@ -6411,6 +6483,24 @@
       "is_empty": false,
       "extension": ".rs",
       "lines": 481
+    },
+    {
+      "path": "runtime/arcanum-hope-runtime/Cargo.toml",
+      "type": "file",
+      "size_bytes": 156,
+      "last_modified_commit": "723639630",
+      "is_empty": false,
+      "extension": ".toml",
+      "lines": 11
+    },
+    {
+      "path": "runtime/arcanum-hope-runtime/src/lib.rs",
+      "type": "file",
+      "size_bytes": 8276,
+      "last_modified_commit": "b8c82882a",
+      "is_empty": false,
+      "extension": ".rs",
+      "lines": 225
     },
     {
       "path": "runtime/arcanum-runtime/Cargo.lock",
@@ -6838,11 +6928,11 @@
     {
       "path": "scripts/verify-ce-w03.py",
       "type": "file",
-      "size_bytes": 9382,
-      "last_modified_commit": "dd0f55cbc",
+      "size_bytes": 16042,
+      "last_modified_commit": "723639630",
       "is_empty": false,
       "extension": ".py",
-      "lines": 134
+      "lines": 203
     },
     {
       "path": "scripts/verify-repo-index.py",
