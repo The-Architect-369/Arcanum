@@ -1,41 +1,19 @@
 {
   "name": "arcanum",
+  "version": "0.0.0",
   "private": true,
-  "version": "1.0.0",
-  "description": "Arcanum monorepo (web application and ARCnet chain).",
-  "packageManager": "pnpm@9.10.0",
-  "engines": {
-    "node": "24.x"
-  },
   "scripts": {
-    "dev": "pnpm -C apps/web dev",
-    "build": "pnpm -C apps/web build",
-    "lint": "pnpm -C apps/web lint",
-    "typecheck": "pnpm -C apps/web typecheck",
-    "verify:ce-w01": "python3 scripts/verify-ce-w01-specs.py",
-    "verify:ce-w02": "pnpm verify:ce-w01 && python3 scripts/verify-ce-w02-projection.py && python3 scripts/verify-ce-w02-native-shell.py && python3 scripts/verify-ce-w02-native-bridge.py && python3 scripts/verify-ce-w02-tempus-lifecycle.py",
-    "verify:ce-w02:integrated": "pnpm verify:ce-w02 && python3 scripts/verify-ce-w02-integrated.py",
-    "verify:ce-w03": "pnpm verify:ce-w02:integrated && python3 scripts/verify-ce-w03.py",
-    "verify:repo-index": "python3 scripts/verify-repo-index.py",
-    "deploy:web": "bash scripts/vercel-setup-web.sh",
-    "fmt": "prettier -w .",
-    "chain:build": "make -C chains/arcanum build",
-    "chain:start-local": "make -C chains/arcanum localnet",
-    "chain:stop-local": "make -C chains/arcanum down",
-    "proto:gen": "bash chains/arcanum/tools/gen-proto.sh",
-    "proto:clean": "rimraf apps/web/src/lib/arcanum-types"
+    "dev": "pnpm --filter web dev",
+    "build": "pnpm --filter web build",
+    "typecheck": "pnpm --filter web typecheck",
+    "lint": "pnpm --filter web lint",
+    "sync:architect": "bash scripts/sync-architect.sh",
+    "verify:architect": "bash scripts/verify-architect.sh",
+    "verify:repo-index": "bash scripts/verify-repo-index.sh",
+    "verify:construction-docs": "python3 scripts/verify-construction-docs.py",
+    "verify:ce-w01": "python3 scripts/verify-ce-w01.py",
+    "verify:ce-w02:integrated": "python3 scripts/verify-ce-w02-integrated.py",
+    "verify:ce-w03": "pnpm verify:ce-w02:integrated && python3 scripts/verify-ce-w03.py && python3 scripts/verify-ce-w03-reflection.py"
   },
-  "pnpm": {
-    "packageExtensions": {
-      "styled-jsx@*": {
-        "dependencies": {
-          "client-only": "^0.0.1"
-        }
-      }
-    }
-  },
-  "devDependencies": {
-    "prettier": "^3.3.3",
-    "typescript": "^5.5.4"
-  }
+  "packageManager": "pnpm@9.10.0"
 }

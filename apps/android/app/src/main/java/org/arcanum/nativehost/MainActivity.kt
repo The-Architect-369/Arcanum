@@ -9,6 +9,7 @@ import org.arcanum.nativehost.application.ArcanumLaunchPanel
 import org.arcanum.nativehost.application.NativeApplicationLaunch
 import org.arcanum.nativehost.application.NativeApplicationRegistry
 import org.arcanum.nativehost.geometry.ArcnetRendererView
+import org.arcanum.nativehost.hope.HopeReflectionPanel
 import org.arcanum.nativehost.runtime.NativeRuntimeBridge
 import org.arcanum.nativehost.tempus.TempusLifecyclePanel
 
@@ -35,6 +36,14 @@ class MainActivity : Activity() {
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT,
                 Gravity.TOP,
+            ),
+        )
+        addContentView(
+            HopeReflectionPanel(this),
+            FrameLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT,
+                Gravity.CENTER,
             ),
         )
         addContentView(
