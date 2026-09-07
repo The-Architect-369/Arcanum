@@ -1,4 +1,4 @@
-name: CE-W04 Architect Observer
+name: CE-W04 Architect Observer + Bridge
 
 on:
   push:
@@ -84,7 +84,7 @@ jobs:
       - name: Install frozen workspace
         run: pnpm install --frozen-lockfile
 
-      - name: Verify CE-W04 Architect Observer contract
+      - name: Verify CE-W04 Architect Observer + Bridge contract
         run: python3 scripts/verify-ce-w04-architect-observer.py
 
       - name: Verify inherited CE-W03 closure and doctrine
@@ -113,7 +113,7 @@ jobs:
         with:
           gradle-version: "8.9"
 
-      - name: Unit test and assemble Seed Node Alpha observer candidate
+      - name: Unit test and assemble Seed Node Alpha bridge candidate
         run: gradle -p apps/android testDebugUnitTest assembleDebug --stacktrace
 
       - name: Verify dual-ABI native packaging
@@ -128,10 +128,10 @@ jobs:
             unzip -l "$APK" | grep -q "lib/$abi/libarcanum_android_hope_jni.so"
           done
 
-      - name: Upload exact-head W04 observer APK
+      - name: Upload exact-head W04 bridge APK
         uses: actions/upload-artifact@v4
         with:
-          name: arcanum-ce-w04-architect-observer-${{ github.sha }}
+          name: arcanum-ce-w04-architect-bridge-${{ github.sha }}
           path: apps/android/app/build/outputs/apk/debug/app-debug.apk
           if-no-files-found: error
           retention-days: 14

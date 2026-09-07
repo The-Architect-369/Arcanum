@@ -6,6 +6,7 @@ import android.widget.Button
 class ArchitectPulseButton(
     context: Context,
     onPulse: () -> Unit,
+    onShare: () -> Unit,
 ) : Button(context) {
     init {
         text = "A"
@@ -16,7 +17,11 @@ class ArchitectPulseButton(
         setPadding(0, 0, 0, 0)
         alpha = 0.78f
         contentDescription =
-            "Architect pulse: capture a privacy-redacted local visual observation"
+            "Architect pulse: tap to capture locally; touch and hold to share the latest privacy-redacted observation"
         setOnClickListener { onPulse() }
+        setOnLongClickListener {
+            onShare()
+            true
+        }
     }
 }

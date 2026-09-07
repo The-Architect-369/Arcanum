@@ -84,7 +84,7 @@ Architect Observer is deterministic local tooling, not a language model and not 
 
 - capture the Android root render as a privacy-redacted raster frame;
 - capture a semantic view tree from the same local UI state;
-- record viewport, runtime bridge, application-launch, trigger, and privacy metadata;
+- record viewport, runtime bridge, application-launch, trigger, privacy, and factual visual-layout metadata;
 - retain the latest observation in app-private storage;
 - report factual capture success or failure to the participant.
 
@@ -95,7 +95,7 @@ It MUST NOT:
 - transmit the observation automatically;
 - enumerate secrets or private key material;
 - persist raw Hope reflection content;
-- interpret reflection content, identity, geometry, or time as authority or human meaning;
+- interpret reflection content, identity, geometry, layout, or time as authority or human meaning;
 - execute repository, protocol, governance, treasury, or economic actions.
 
 The W04 native files are stored under:
@@ -113,6 +113,8 @@ The local observation manifest identifies:
 scope = local
 authorityEffect = none
 transport = none
+exportCapability = human_selected_android_share_sheet
+automaticExport = false
 networkRequired = false
 modelDependency = false
 privacyPolicy = private-local-redacted-v1
@@ -120,9 +122,44 @@ privacyPolicy = private-local-redacted-v1
 
 An initial pulse MAY be captured after the first laid-out render. A Human-triggered pulse MUST be available so the participant can deliberately refresh the latest observation at the moment they want the Architect surface to inspect.
 
+## Human-mediated observation bridge
+
+The next bounded workflow capability is a deliberate Human export of the already-redacted local observation.
+
+Touch-and-hold on the native Architect control MAY capture a fresh `human_share` pulse and open the Android system share sheet. The native host MUST NOT preselect a recipient, perform a background upload, infer consent from a prior action, or gain `android.permission.INTERNET` merely to support this bridge.
+
+Only these two bounded files may be offered by the native host:
+
+```text
+latest.png
+latest.json
+```
+
+They are exposed through a read-only, non-exported Android content provider with temporary URI read grants to the Human-selected target application. The provider MUST reject arbitrary paths and write operations.
+
+A target application selected by the Human may independently use its own network permissions. That external action is a Human-mediated release boundary; it does not make network access, provider availability, or model inference a dependency of Seed Node Alpha.
+
+The purpose of this bridge is to streamline physical embodiment iteration: the Human may send one fresh redacted pulse directly to a chosen analysis surface without manually taking a screenshot or browsing the app-private filesystem.
+
+## Visual diagnostics
+
+Architect observation schema `0.2` adds deterministic visual diagnostics version `0.1` alongside the raster and semantic tree.
+
+The diagnostics MAY report factual candidates such as:
+
+- viewport density, scaled density, font scale, and orientation;
+- visible, text, and clickable view counts;
+- clickable targets smaller than the 48dp diagnostic threshold;
+- visible views whose measured bounds extend outside the captured root viewport;
+- intersecting visible `TextView` bounds as text-overlap candidates.
+
+These findings are diagnostic candidates, not aesthetic verdicts. A reported overlap may be intentional, a small target may be contextually acceptable, and no diagnostic count creates authority or meaning. Human review and raster/semantic context remain required.
+
+The diagnostics MUST NOT inspect or restore private Hope text that has been redacted by the observation privacy boundary.
+
 ## Future ArchitectGPT inference boundary
 
-W04 creates the observation contract and local diagnostic presence; it does not silently embed a remote or on-device model.
+W04 creates the observation contract, Human-mediated bridge, and local diagnostic presence; it does not silently embed a remote or on-device model.
 
 A later ArchitectGPT inference adapter may consume the redacted raster and semantic observation only after a separate capability/privacy/consent review defines at least:
 
@@ -144,8 +181,9 @@ Seed Node Alpha render + factual local state
   ↓
 Architect Observer / Pulse
   ├─ privacy-redacted raster
-  └─ semantic + runtime observation
-  ↓ explicit future capability/consent boundary
+  ├─ semantic + runtime observation
+  └─ factual visual diagnostics
+  ↓ explicit Human release / future capability-consent boundary
 ArchitectGPT inference
   ↓
 analysis / diagnosis / proposal
@@ -161,19 +199,22 @@ Physical CE-W03 evidence showed that the canonical wireframe naturally invites d
 
 CE-W04 should therefore permit bounded viewpoint interaction while preserving canonical geometry. Drag/orbit, zoom, resting-orientation recovery, and reduced-motion behavior may change the participant's **view** of the structure; they MUST NOT mutate canonical coordinates or runtime truth.
 
-This interaction is a visual-embodiment requirement to be implemented and physically reviewed in a separate W04 visual tranche after the Observer/Pulse foundation is green.
+This interaction is a visual-embodiment requirement to be implemented and physically reviewed in a separate W04 visual tranche after the Observer/Bridge foundation is green.
 
-## W04 Observer falsification gates
+## W04 Observer / Bridge falsification gates
 
-The Architect Observer tranche fails if any of these statements is false:
+The Architect Observer / Bridge tranche fails if any of these statements is false:
 
 1. The Android application still builds and launches with no `android.permission.INTERNET` declaration.
 2. A local pulse persists both a raster frame and semantic manifest under the bounded Architect observation namespace.
 3. Participant-authored Hope reflection text is absent from the persisted raster and semantic manifest.
-4. The persisted manifest visibly states local scope, no authority effect, no transport, no network requirement, and no model dependency.
+4. The persisted manifest visibly states local scope, no authority effect, no automatic transport, no network requirement, and no model dependency.
 5. Capture failure is surfaced as a technical failure and does not fabricate a successful observation.
 6. The observer does not alter Hope, Tempus, geometry, identity, capability, receipt, or protocol state merely by observing it.
 7. The Human Architect can trigger a fresh pulse on the physical device and inspect the resulting experience.
+8. Human-mediated sharing exposes only the bounded redacted image and manifest through read-only temporary access.
+9. No recipient is selected and no outbound transfer occurs until the Human explicitly acts through the Android share sheet.
+10. Visual diagnostics remain factual candidate measurements and do not manufacture authority or reveal redacted reflection content.
 
 ## Promotion gate
 
@@ -185,6 +226,7 @@ Promotion to canonical `main` still requires:
 - inherited CE-W03 regression evidence;
 - Android build/install evidence;
 - privacy-redaction evidence;
+- Human-mediated bridge evidence on the first device;
 - reconciled G/E/A + Tempus behavior;
 - Human Architect physical review;
 - explicit Human Architect approval to merge/promote.

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Fail-closed repository checks for the CE-W04 Architect Observer tranche."""
+"""Fail-closed repository checks for the CE-W04 Architect Observer + Bridge tranche."""
 
 from __future__ import annotations
 
@@ -37,8 +37,14 @@ require(ceiling.get("modelDependency") is False, "W04 must not require a model p
 manifest = (ROOT / "apps/android/app/src/main/AndroidManifest.xml").read_text(encoding="utf-8")
 require(
     "android.permission.INTERNET" not in manifest,
-    "Android manifest must not gain INTERNET permission in the local Observer tranche",
+    "Android manifest must not gain INTERNET permission in the local Architect tranche",
 )
+for required_phrase in (
+    "ArchitectObservationProvider",
+    'android:exported="false"',
+    'android:grantUriPermissions="true"',
+):
+    require(required_phrase in manifest, f"Android manifest missing bounded provider control: {required_phrase!r}")
 
 contract = (ROOT / "docs/specs/app/ce-w04-seed-node-alpha.md").read_text(encoding="utf-8")
 for required_phrase in (
@@ -47,18 +53,24 @@ for required_phrase in (
     "Architect Observer / Pulse",
     "private-local-redacted-v1",
     "transport = none",
+    "human_selected_android_share_sheet",
+    "automaticExport = false",
     "networkRequired = false",
     "modelDependency = false",
+    "Visual diagnostics",
     "A geometry-free equivalent MUST preserve every essential control",
 ):
     require(required_phrase in contract, f"implementation contract missing: {required_phrase!r}")
 
 architect_dir = ROOT / "apps/android/app/src/main/java/org/arcanum/nativehost/architect"
 required_android_files = {
+    "ArchitectObservationBridge.kt",
     "ArchitectObservationContract.kt",
     "ArchitectObservationPrivacy.kt",
+    "ArchitectObservationProvider.kt",
     "ArchitectObserver.kt",
     "ArchitectPulseButton.kt",
+    "ArchitectVisualDiagnostics.kt",
 }
 require(architect_dir.is_dir(), "native Architect package is missing")
 require(
@@ -87,8 +99,40 @@ for required_phrase in (
     "rawUnredactedFramePersisted\", false",
     "privateReflectionContentIncluded\", false",
     "ArchitectObservationPrivacy::shouldMaskPixels",
+    "ArchitectVisualDiagnostics.inspect",
+    "exportCapability",
+    "automaticExport",
 ):
     require(required_phrase in observer, f"observer implementation missing: {required_phrase!r}")
+
+bridge = (architect_dir / "ArchitectObservationBridge.kt").read_text(encoding="utf-8")
+for required_phrase in (
+    "Intent.ACTION_SEND_MULTIPLE",
+    "Intent.FLAG_GRANT_READ_URI_PERMISSION",
+    "Intent.createChooser",
+    "ArchitectObservationProvider.uriFor",
+):
+    require(required_phrase in bridge, f"Human-mediated share bridge missing: {required_phrase!r}")
+
+provider = (architect_dir / "ArchitectObservationProvider.kt").read_text(encoding="utf-8")
+for required_phrase in (
+    "MODE_READ_ONLY",
+    "ALLOWED_FILES",
+    "latest.png",
+    "latest.json",
+    "target.parentFile != root",
+    "Architect observation provider is read-only",
+):
+    require(required_phrase in provider, f"bounded observation provider missing: {required_phrase!r}")
+
+visual_diagnostics = (architect_dir / "ArchitectVisualDiagnostics.kt").read_text(encoding="utf-8")
+for required_phrase in (
+    "MIN_TOUCH_TARGET_DP = 48.0",
+    "smallTouchTargetCount",
+    "clippedVisibleViewCount",
+    "textOverlapCandidateCount",
+):
+    require(required_phrase in visual_diagnostics, f"visual diagnostics missing: {required_phrase!r}")
 
 hope = (
     ROOT / "apps/android/app/src/main/java/org/arcanum/nativehost/hope/HopeReflectionPanel.kt"
@@ -103,12 +147,15 @@ main_activity = (
 ).read_text(encoding="utf-8")
 for required_phrase in (
     "ArchitectObserver",
+    "ArchitectObservationBridge",
     "ArchitectPulseButton",
     'trigger = "human_pulse"',
+    'trigger = "human_share"',
     'trigger = "initial_render"',
     'trigger = "window_focus"',
+    "hold A to share",
 ):
-    require(required_phrase in main_activity, f"MainActivity missing Observer hook: {required_phrase!r}")
+    require(required_phrase in main_activity, f"MainActivity missing Architect hook: {required_phrase!r}")
 
 unit_test = (
     ROOT
@@ -117,5 +164,5 @@ unit_test = (
 require(unit_test.is_file(), "Architect observation contract unit test is missing")
 
 print(
-    "PASS CE-W04 Architect Observer: local-only, privacy-redacted, model-independent observation boundary present"
+    "PASS CE-W04 Architect Observer + Bridge: local-only capture, privacy-redacted Human export, factual visual diagnostics, no model/network dependency"
 )

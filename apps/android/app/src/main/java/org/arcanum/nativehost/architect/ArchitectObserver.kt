@@ -45,6 +45,8 @@ class ArchitectObserver(
         val privateViews = mutableListOf<View>()
         val semanticTree = observeView(root, root, "root", privateViews)
         val viewsToMask = privateViews.filter(ArchitectObservationPrivacy::shouldMaskPixels)
+        val density = context.resources.displayMetrics.density
+        val visualDiagnostics = ArchitectVisualDiagnostics.inspect(root, density)
         val bitmap = Bitmap.createBitmap(root.width, root.height, Bitmap.Config.ARGB_8888)
 
         try {
@@ -76,6 +78,8 @@ class ArchitectObserver(
                         "capabilityBoundary",
                         JSONObject()
                             .put("transport", ArchitectObservationContract.TRANSPORT)
+                            .put("exportCapability", ArchitectObservationContract.EXPORT_CAPABILITY)
+                            .put("automaticExport", ArchitectObservationContract.AUTO_EXPORT)
                             .put("networkRequired", ArchitectObservationContract.NETWORK_REQUIRED)
                             .put("modelDependency", ArchitectObservationContract.MODEL_DEPENDENCY),
                     ).put(
@@ -91,7 +95,9 @@ class ArchitectObserver(
                         JSONObject()
                             .put("widthPx", root.width)
                             .put("heightPx", root.height)
-                            .put("density", context.resources.displayMetrics.density)
+                            .put("density", density)
+                            .put("scaledDensity", context.resources.displayMetrics.scaledDensity)
+                            .put("fontScale", context.resources.configuration.fontScale.toDouble())
                             .put("orientation", context.resources.configuration.orientation),
                     ).put(
                         "runtime",
@@ -105,7 +111,8 @@ class ArchitectObserver(
                             .put("format", "png")
                             .put("sha256", imageSha256)
                             .put("privacyRedacted", true),
-                    ).put("viewTree", semanticTree)
+                    ).put("visualDiagnostics", visualDiagnostics)
+                    .put("viewTree", semanticTree)
 
             persistText(manifest.toString(2), manifestFile)
             return ArchitectObservationResult(

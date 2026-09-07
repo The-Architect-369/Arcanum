@@ -9,6 +9,8 @@ import android.widget.Toast
 import org.arcanum.nativehost.application.ArcanumLaunchPanel
 import org.arcanum.nativehost.application.NativeApplicationLaunch
 import org.arcanum.nativehost.application.NativeApplicationRegistry
+import org.arcanum.nativehost.architect.ArchitectObservationBridge
+import org.arcanum.nativehost.architect.ArchitectObservationResult
 import org.arcanum.nativehost.architect.ArchitectObserver
 import org.arcanum.nativehost.architect.ArchitectPulseButton
 import org.arcanum.nativehost.geometry.ArcnetRendererView
@@ -18,6 +20,7 @@ import org.arcanum.nativehost.tempus.TempusLifecyclePanel
 
 class MainActivity : Activity() {
     private lateinit var architectObserver: ArchitectObserver
+    private lateinit var architectBridge: ArchitectObservationBridge
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,6 +48,7 @@ class MainActivity : Activity() {
                 runtimeBridgeLabel = bridgeLabel,
                 applicationState = applicationState,
             )
+        architectBridge = ArchitectObservationBridge(this)
 
         setContentView(ArcnetRendererView(this, bridgeLabel))
         addContentView(
@@ -72,10 +76,16 @@ class MainActivity : Activity() {
             ),
         )
         addContentView(
-            ArchitectPulseButton(this) {
-                captureArchitectPulse(trigger = "human_pulse", announce = true)
-            },
-            FrameLayout.LayoutParams(dp(44), dp(44), Gravity.TOP or Gravity.END).apply {
+            ArchitectPulseButton(
+                context = this,
+                onPulse = {
+                    captureArchitectPulse(trigger = "human_pulse", announce = true)
+                },
+                onShare = {
+                    shareArchitectPulse()
+                },
+            ),
+            FrameLayout.LayoutParams(dp(48), dp(48), Gravity.TOP or Gravity.END).apply {
                 topMargin = dp(12)
                 marginEnd = dp(12)
             },
@@ -98,7 +108,7 @@ class MainActivity : Activity() {
     private fun captureArchitectPulse(
         trigger: String,
         announce: Boolean,
-    ) {
+    ): ArchitectObservationResult? {
         val result =
             runCatching {
                 architectObserver.capture(
@@ -106,25 +116,51 @@ class MainActivity : Activity() {
                     trigger = trigger,
                 )
             }
-        if (!announce) {
+        if (announce) {
+            result.fold(
+                onSuccess = { observation ->
+                    Toast.makeText(
+                        this,
+                        "Architect pulse saved locally · ${observation.redactedViewCount} private region(s) protected · hold A to share",
+                        Toast.LENGTH_LONG,
+                    ).show()
+                },
+                onFailure = { failure ->
+                    Toast.makeText(
+                        this,
+                        "Architect pulse unavailable · ${failure.message ?: failure::class.java.simpleName}",
+                        Toast.LENGTH_SHORT,
+                    ).show()
+                },
+            )
+        }
+        return result.getOrNull()
+    }
+
+    private fun shareArchitectPulse() {
+        val observation =
+            captureArchitectPulse(
+                trigger = "human_share",
+                announce = false,
+            )
+        if (observation == null) {
+            Toast.makeText(
+                this,
+                "Architect share unavailable · fresh local pulse could not be captured",
+                Toast.LENGTH_SHORT,
+            ).show()
             return
         }
-        result.fold(
-            onSuccess = { observation ->
-                Toast.makeText(
-                    this,
-                    "Architect pulse captured locally · ${observation.redactedViewCount} private region(s) protected",
-                    Toast.LENGTH_SHORT,
-                ).show()
-            },
-            onFailure = { failure ->
-                Toast.makeText(
-                    this,
-                    "Architect pulse unavailable · ${failure.message ?: failure::class.java.simpleName}",
-                    Toast.LENGTH_SHORT,
-                ).show()
-            },
-        )
+
+        runCatching {
+            architectBridge.share(observation)
+        }.onFailure { failure ->
+            Toast.makeText(
+                this,
+                "Architect share unavailable · ${failure.message ?: failure::class.java.simpleName}",
+                Toast.LENGTH_SHORT,
+            ).show()
+        }
     }
 
     private fun dp(value: Int): Int =
