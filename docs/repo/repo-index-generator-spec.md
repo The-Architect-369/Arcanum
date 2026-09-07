@@ -2,7 +2,7 @@
 title: "Repo Index Generator Spec"
 status: canonical
 visibility: public
-last_updated: 2026-08-26
+last_updated: 2026-09-06
 description: "Deterministic generator contract for docs/repo/repo-index.json (Git-tracked structural snapshot)."
 ---
 
@@ -35,28 +35,37 @@ The output file does not index itself. This exclusion is required to avoid self-
    Humans can read the JSON and tools can parse it without reconstructing implicit generator state.
 
 5. **Fail-closed**  
-   If source state cannot be resolved, a tracked non-index change is present, an unsupported Git object is encountered, or exact verification fails, structural certification fails.
+   If source state cannot be resolved, a tracked non-index change is present, an unsupported Git object is encountered, a merge introduces substantive combined state with no single parent carrying the exact promoted non-index tree, or exact verification fails, structural certification fails.
 
 ---
 
 ## Indexed source commit
 
-The generator resolves the latest commit reachable from `HEAD` that changed a tracked path other than:
+The generator resolves the indexed source commit from `HEAD` by comparing exact Git trees while excluding only:
 
 ```text
 docs/repo/repo-index.json
 ```
 
-That commit is the **indexed source commit**.
+Resolution repeatedly peels a commit when its complete tracked non-index tree is byte-identical to one of its parents.
 
-This rule intentionally allows a later commit that changes only `docs/repo/repo-index.json` to carry the generated snapshot without changing the source state that the snapshot describes.
+This makes two promotion-only commit shapes transparent to the structural snapshot:
+
+- an index-only companion commit whose parent already carries the exact substantive source tree;
+- a normal merge promotion whose source/index parent already carries the exact promoted non-index tree.
+
+If more than one parent is structurally equivalent, parent order is preserved and first-parent ancestry is preferred. If a merge commit's non-index tree matches **no** parent, that merge combines substantive state from multiple parents and has no single pre-merge source commit that can truthfully back the existing companion artifact. Generation MUST fail closed and require the source tranche to be refreshed from latest canonical `main` before a new companion is generated and promoted.
+
+The first commit reached that cannot be peeled by this rule is the **indexed source commit**.
 
 Therefore:
 
-- a substantive repository commit advances the indexed source commit;
-- an index-only refresh commit does not;
-- regeneration after an index-only refresh must reproduce the same bytes;
-- the canonical workflow is substantive commit → generate index → verify exact determinism → commit the index-only refresh.
+- a substantive source commit advances the indexed source commit;
+- an index-only companion does not;
+- a normal no-conflict merge promotion does not;
+- regeneration on the exact indexed head and on the resulting canonical merge head must reproduce the same bytes;
+- a divergent merge that synthesizes new combined state is rejected instead of being assigned misleading provenance;
+- the canonical workflow is latest canonical `main` → substantive source commit(s) → generate deterministic index companion → verify exact indexed head → normal merge → verify canonical `main`.
 
 The short `commit` field is the first nine hexadecimal characters of the indexed source commit's full SHA. The generator obtains the full SHA first and then slices exactly nine characters; it does not rely on Git's variable-width abbreviation behavior.
 
@@ -72,7 +81,7 @@ It is the indexed source commit's committer timestamp normalized to UTC in RFC 3
 YYYY-MM-DDTHH:MM:SSZ
 ```
 
-This makes repeated generation from the same indexed source commit byte-stable.
+This makes repeated generation from the same indexed source commit byte-stable across index-only companions and normal merge promotion.
 
 Operational logs may separately record when a human or CI job actually ran the generator; that runtime timestamp does not belong in the deterministic structural artifact.
 
@@ -121,10 +130,10 @@ There is no undefined "below threshold" empty-file category. Empty means exactly
 
 ```json
 {
-  "generated_at": "2026-08-26T00:00:00Z",
+  "generated_at": "2026-09-06T00:00:00Z",
   "repo": "The-Architect-369/Arcanum",
   "commit": "abc123def",
-  "generator_version": "1.4",
+  "generator_version": "1.5",
   "files": []
 }
 ```
@@ -153,7 +162,9 @@ It must:
 6. restore the original stored file before exit;
 7. report source commit, generator version, and entry count on success.
 
-The verifier uses only the Python standard library plus Git/Bash already required by repository tooling.
+`scripts/test-repo-index-merge-stability.sh` is the promotion regression proof. It constructs a disposable Git repository and proves substantive source → generated companion → normal merge → regeneration remains byte-identical and still names the original substantive source commit.
+
+The verifier and regression proof use only the Python standard library plus Git/Bash already required by repository tooling.
 
 Canonical local command:
 
@@ -169,23 +180,31 @@ After substantive repository changes are committed:
 
 ```bash
 bash scripts/repo-index.sh
-pnpm verify:repo-index
+python3 scripts/verify-repo-index.py
 git add docs/repo/repo-index.json
 git commit -m "chore(repo): refresh deterministic repo index"
 pnpm verify:repo-index
 ```
 
-A clean final verification proves that the index-only commit did not change the indexed source state and that regeneration remains byte-identical.
+A clean final verification proves that the index-only commit did not change the indexed source state, the normal-merge promotion invariant is covered by regression, and regeneration remains byte-identical.
 
 `bash scripts/verify-sync.sh` remains part of whole-repository certification. This exact verifier is the controlling check for byte-level repo-index determinism and freshness while the broader sync verifier continues to cover governance/orchestration integrity.
 
 ---
 
-## Construction Era repair note
+## Construction Era repair notes
+
+### CE-W01 — generator v1.4
 
 CE-W01 audit found two defects in the previous contract/tooling pair:
 
 1. generator v1.2/v1.3 used current wall-clock time for `generated_at`, contradicting the canonical requirement that identical source state produce identical output;
 2. the canonical spec declared `file | directory` while the implementation indexed Git-tracked files and symlinks, and Git does not track standalone directories.
 
-Research generator v1.3 correctly moved commit abbreviations toward deterministic full-SHA slicing, but it retained the wall-clock and entry-model contradictions. Version 1.4 adopts the fixed-SHA behavior while repairing the source-state, timestamp, self-reference, and entry-type contract explicitly rather than promoting v1.3 wholesale.
+Research generator v1.3 correctly moved commit abbreviations toward deterministic full-SHA slicing, but it retained the wall-clock and entry-model contradictions. Version 1.4 adopted the fixed-SHA behavior while repairing the source-state, timestamp, self-reference, and entry-type contract explicitly rather than promoting v1.3 wholesale.
+
+### CE-W03.R1 — generator v1.5
+
+CE-W03 canonical-main certification exposed a promotion defect: the v1.4 "latest substantive commit" lookup could reinterpret a normal merge commit as new source state even when the exact generated companion already carried the promoted tree. This made the pre-merge indexed head green while post-merge canonical `main` regenerated different provenance metadata.
+
+Version 1.5 repairs the invariant by structural parent equivalence rather than commit chronology. Index-only companions and normal merge promotions are peeled when a parent already carries the exact non-index tree; divergent substantive merge synthesis fails closed. The merge-stability regression is part of `pnpm verify:repo-index` so future promotion changes cannot silently reintroduce the defect.
