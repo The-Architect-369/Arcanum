@@ -131,7 +131,7 @@ jobs:
       - name: Upload exact-head W04 bridge APK
         uses: actions/upload-artifact@v4
         with:
-          name: arcanum-ce-w04-architect-bridge-${{ github.sha }}
+          name: arcanum-ce-w04-architect-bridge-${{ github.event.pull_request.head.sha || github.sha }}
           path: apps/android/app/build/outputs/apk/debug/app-debug.apk
           if-no-files-found: error
           retention-days: 14
