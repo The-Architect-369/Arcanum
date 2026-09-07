@@ -105,7 +105,7 @@ files/architect/observation/latest.png
 files/architect/observation/latest.json
 ```
 
-Retention is `latest-only` for this tranche. The raster persisted to `latest.png` MUST have participant-authored Hope reflection text masked before storage. The semantic tree MUST replace the same private text with a fixed redaction marker. An unredacted frame may exist transiently in process memory while Android draws the current root view, but MUST NOT be written to durable storage.
+Retention is `latest-only` for this tranche. The persisted observation privacy policy is identified as `private-local-redacted-v1`. The raster persisted to `latest.png` MUST have participant-authored Hope reflection text masked before storage. The semantic tree MUST replace the same private text with a fixed redaction marker. An unredacted frame may exist transiently in process memory while Android draws the current root view, but MUST NOT be written to durable storage.
 
 The local observation manifest identifies:
 
@@ -115,6 +115,7 @@ authorityEffect = none
 transport = none
 networkRequired = false
 modelDependency = false
+privacyPolicy = private-local-redacted-v1
 ```
 
 An initial pulse MAY be captured after the first laid-out render. A Human-triggered pulse MUST be available so the participant can deliberately refresh the latest observation at the moment they want the Architect surface to inspect.
