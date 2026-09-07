@@ -1,0 +1,28 @@
+name: Repo Index Promotion Invariant
+
+on:
+  push:
+    branches:
+      - main
+      - "stage/ce-w03-*"
+      - "work/ce-w03-*"
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify-merge-stability:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout exact verification source
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+
+      - name: Prove repository-index normal-merge stability
+        run: bash scripts/test-repo-index-merge-stability.sh
