@@ -11,6 +11,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import java.time.Instant
 import java.util.UUID
+import org.arcanum.nativehost.architect.ArchitectObservationPrivacy
 import org.arcanum.nativehost.tempus.TempusLifecycleBridge
 import org.json.JSONObject
 
@@ -25,6 +26,7 @@ class HopeReflectionPanel(
             inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_FLAG_MULTI_LINE
             minLines = 2
             maxLines = 5
+            ArchitectObservationPrivacy.markPrivateText(this)
         }
     private val status =
         TextView(context).apply {
@@ -35,6 +37,7 @@ class HopeReflectionPanel(
         TextView(context).apply {
             setTextColor(Color.LTGRAY)
             textSize = 13.0f
+            ArchitectObservationPrivacy.markPrivateText(this)
         }
     private val receipt =
         TextView(context).apply {
