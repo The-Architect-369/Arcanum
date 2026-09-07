@@ -17,6 +17,7 @@ import datetime as dt
 import json
 import subprocess
 import sys
+from functools import lru_cache
 from pathlib import Path, PurePosixPath
 
 out = Path(sys.argv[1])
@@ -64,24 +65,84 @@ if dirty.strip():
     print(dirty.rstrip(), file=sys.stderr)
     raise SystemExit(1)
 
-# The index describes the latest substantive commit rather than an index-only
-# refresh commit. This breaks the self-reference loop: committing only the
-# canonical output does not change the indexed source state.
-source_commit = safe_run_text(
-    [
-        "git",
-        "log",
-        "-1",
-        "--full-history",
-        "--format=%H",
-        "--",
-        ".",
-        f":(exclude){out_rel}",
-    ]
-)
-if source_commit == "unknown":
-    print("❌ unable to resolve indexed source commit", file=sys.stderr)
-    raise SystemExit(1)
+
+@lru_cache(maxsize=None)
+def non_index_tree(commit: str) -> tuple[bytes, ...]:
+    """Return the exact tracked tree records excluding the canonical output."""
+    raw = run_bytes(
+        ["git", "ls-tree", "-r", "-z", "--full-tree", commit]
+    )
+    records: list[bytes] = []
+    for record in raw.split(b"\0"):
+        if not record:
+            continue
+        _, path_bytes = record.split(b"\t", 1)
+        rel = path_bytes.decode("utf-8", errors="surrogateescape")
+        if rel != out_rel:
+            records.append(record)
+    return tuple(records)
+
+
+def parents_of(commit: str) -> list[str]:
+    value = run_text(["git", "show", "-s", "--format=%P", commit])
+    return value.split() if value else []
+
+
+def resolve_indexed_source_commit() -> str:
+    """Resolve the substantive source while peeling index-only/synthetic promotion commits.
+
+    A commit is transparent to the structural snapshot when its full tracked tree,
+    excluding docs/repo/repo-index.json, is byte-identical to one of its parents.
+    This intentionally peels both index-only companion commits and normal no-conflict
+    merge promotions whose source/index parent already carries the promoted tree.
+
+    A merge commit whose non-index tree matches no parent combines substantive state
+    from multiple parents. That state has no single pre-merge source commit, so the
+    deterministic companion contract cannot represent it safely and generation fails
+    closed instead of silently assigning misleading provenance.
+    """
+    current = run_text(["git", "rev-parse", "HEAD"])
+    seen: set[str] = set()
+
+    while True:
+        if current in seen:
+            print("❌ repo index source resolution encountered a commit cycle", file=sys.stderr)
+            raise SystemExit(1)
+        seen.add(current)
+
+        parents = parents_of(current)
+        if not parents:
+            return current
+
+        current_tree = non_index_tree(current)
+        matching_parents = [
+            parent for parent in parents if non_index_tree(parent) == current_tree
+        ]
+
+        if matching_parents:
+            # Parent order is meaningful. Prefer first-parent ancestry when multiple
+            # parents are structurally equivalent; otherwise follow the unique parent
+            # that already carries the exact non-index tree.
+            current = matching_parents[0]
+            continue
+
+        if len(parents) > 1:
+            print(
+                "❌ repo index cannot resolve a single indexed source commit: "
+                f"merge {current[:9]} introduces a substantive combined non-index tree",
+                file=sys.stderr,
+            )
+            print(
+                "Rebase or refresh the source tranche from latest canonical main, "
+                "then regenerate its index companion before normal merge promotion.",
+                file=sys.stderr,
+            )
+            raise SystemExit(1)
+
+        return current
+
+
+source_commit = resolve_indexed_source_commit()
 
 source_epoch_text = safe_run_text(
     ["git", "show", "-s", "--format=%ct", source_commit]
@@ -186,7 +247,7 @@ data = {
     "generated_at": generated_at,
     "repo": repo_name,
     "commit": source_commit[:9],
-    "generator_version": "1.4",
+    "generator_version": "1.5",
     "files": entries,
 }
 
