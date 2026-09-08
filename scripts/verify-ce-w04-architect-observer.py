@@ -57,7 +57,11 @@ for required_phrase in (
     "automaticExport = false",
     "networkRequired = false",
     "modelDependency = false",
-    "Visual diagnostics",
+    "capture-ID-bound frozen export",
+    "observation.zip",
+    "10-minute temporary URI grant",
+    "installed APK SHA-256",
+    "system-UI overlap candidates",
     "A geometry-free equivalent MUST preserve every essential control",
 ):
     require(required_phrase in contract, f"implementation contract missing: {required_phrase!r}")
@@ -96,12 +100,17 @@ for required_phrase in (
     "architect/observation",
     "latest.png",
     "latest.json",
+    "captureId",
+    "sourceCommit",
+    "installedApkSha256",
     "rawUnredactedFramePersisted\", false",
     "privateReflectionContentIncluded\", false",
+    "semanticAuxiliaryTextRedacted\", true",
     "ArchitectObservationPrivacy::shouldMaskPixels",
     "ArchitectVisualDiagnostics.inspect",
     "exportCapability",
-    "automaticExport",
+    "immutableExport",
+    "exportGrantTtlSeconds",
 ):
     require(required_phrase in observer, f"observer implementation missing: {required_phrase!r}")
 
@@ -111,8 +120,13 @@ for required_phrase in (
     "Intent.FLAG_GRANT_READ_URI_PERMISSION",
     "Intent.createChooser",
     "ArchitectObservationProvider.uriFor",
+    "ArchitectFrozenObservationExport",
+    "observation.captureId",
+    "createIntegrityBundle",
+    "EXPORT_GRANT_TTL_SECONDS",
+    "revokeUriPermission",
 ):
-    require(required_phrase in bridge, f"Human-mediated share bridge missing: {required_phrase!r}")
+    require(required_phrase in bridge, f"Human-mediated frozen share bridge missing: {required_phrase!r}")
 
 provider = (architect_dir / "ArchitectObservationProvider.kt").read_text(encoding="utf-8")
 for required_phrase in (
@@ -120,16 +134,22 @@ for required_phrase in (
     "ALLOWED_FILES",
     "latest.png",
     "latest.json",
-    "target.parentFile != root",
+    "EXPORT_BUNDLE_FILE",
+    "pathSegments.size != 2",
+    "captureDirectory.parentFile != root",
+    "Only capture-bound frozen Architect exports may be shared",
     "Architect observation provider is read-only",
 ):
-    require(required_phrase in provider, f"bounded observation provider missing: {required_phrase!r}")
+    require(required_phrase in provider, f"bounded frozen observation provider missing: {required_phrase!r}")
 
 visual_diagnostics = (architect_dir / "ArchitectVisualDiagnostics.kt").read_text(encoding="utf-8")
 for required_phrase in (
     "MIN_TOUCH_TARGET_DP = 48.0",
     "smallTouchTargetCount",
     "clippedVisibleViewCount",
+    "systemUiOverlapCandidateCount",
+    "systemUiInsetsPx",
+    "safeContentBoundsPx",
     "textOverlapCandidateCount",
 ):
     require(required_phrase in visual_diagnostics, f"visual diagnostics missing: {required_phrase!r}")
@@ -154,8 +174,29 @@ for required_phrase in (
     'trigger = "initial_render"',
     'trigger = "window_focus"',
     "hold A to share",
+    "LinearLayout.HORIZONTAL",
+    "setOnApplyWindowInsetsListener",
+    "systemWindowInsetBottom",
+    "window.navigationBarColor = Color.BLACK",
 ):
-    require(required_phrase in main_activity, f"MainActivity missing Architect hook: {required_phrase!r}")
+    require(required_phrase in main_activity, f"MainActivity missing Architect/inset-safe hook: {required_phrase!r}")
+
+build_gradle = (ROOT / "apps/android/app/build.gradle.kts").read_text(encoding="utf-8")
+for required_phrase in (
+    "ARCANUM_SOURCE_COMMIT",
+    "arcanumSourceCommit",
+    "buildConfig = true",
+    "versionCode = 2",
+):
+    require(required_phrase in build_gradle, f"Android build provenance missing: {required_phrase!r}")
+
+workflow = (
+    ROOT / ".github/workflows/verify-ce-w04-architect-observer.yml"
+).read_text(encoding="utf-8")
+require(
+    '-ParcanumSourceCommit="$SOURCE_HEAD"' in workflow,
+    "exact-head Android build must inject the checked-out source commit",
+)
 
 unit_test = (
     ROOT
@@ -164,5 +205,5 @@ unit_test = (
 require(unit_test.is_file(), "Architect observation contract unit test is missing")
 
 print(
-    "PASS CE-W04 Architect Observer + Bridge: local-only capture, privacy-redacted Human export, factual visual diagnostics, no model/network dependency"
+    "PASS CE-W04 Architect Observer + Bridge: capture-bound frozen Human export, build provenance, inset-aware diagnostics, privacy redaction, no model/network dependency"
 )

@@ -22,6 +22,19 @@ object ArchitectVisualDiagnostics {
         val clickable = visible.filter { it.clickable }
         val text = visible.filter { it.textView }
 
+        val insets = root.rootWindowInsets
+        val insetLeft = insets?.systemWindowInsetLeft ?: 0
+        val insetTop = insets?.systemWindowInsetTop ?: 0
+        val insetRight = insets?.systemWindowInsetRight ?: 0
+        val insetBottom = insets?.systemWindowInsetBottom ?: 0
+        val safeContentBounds =
+            Rect(
+                insetLeft,
+                insetTop,
+                (root.width - insetRight).coerceAtLeast(insetLeft),
+                (root.height - insetBottom).coerceAtLeast(insetTop),
+            )
+
         val smallTouchTargets =
             clickable.filter { node ->
                 node.bounds.width() / safeDensity < MIN_TOUCH_TARGET_DP ||
@@ -34,6 +47,31 @@ object ArchitectVisualDiagnostics {
                     node.bounds.right > root.width ||
                     node.bounds.bottom > root.height
             }
+        val systemUiOverlapCandidates =
+            clickable.mapNotNull { node ->
+                val totalArea = node.bounds.width().coerceAtLeast(0) * node.bounds.height().coerceAtLeast(0)
+                if (totalArea <= 0) {
+                    return@mapNotNull null
+                }
+                val safeIntersection = Rect(node.bounds)
+                val safeArea =
+                    if (safeIntersection.intersect(safeContentBounds) && !safeIntersection.isEmpty) {
+                        safeIntersection.width() * safeIntersection.height()
+                    } else {
+                        0
+                    }
+                val obscuredArea = (totalArea - safeArea).coerceAtLeast(0)
+                if (obscuredArea == 0) {
+                    return@mapNotNull null
+                }
+                JSONObject()
+                    .put("path", node.path)
+                    .put("class", node.className)
+                    .put("boundsPx", boundsJson(node.bounds))
+                    .put("systemUiOverlapAreaPx", obscuredArea)
+                    .put("unobscuredFraction", safeArea.toDouble() / totalArea.toDouble())
+            }.take(MAX_REPORTED_ITEMS)
+
         val overlapCandidates = mutableListOf<JSONObject>()
         for (leftIndex in text.indices) {
             for (rightIndex in leftIndex + 1 until text.size) {
@@ -69,7 +107,16 @@ object ArchitectVisualDiagnostics {
             .put("clickableViewCount", clickable.size)
             .put("smallTouchTargetCount", smallTouchTargets.size)
             .put("clippedVisibleViewCount", clippedViews.size)
+            .put("systemUiOverlapCandidateCount", systemUiOverlapCandidates.size)
             .put("textOverlapCandidateCount", overlapCandidates.size)
+            .put(
+                "systemUiInsetsPx",
+                JSONObject()
+                    .put("left", insetLeft)
+                    .put("top", insetTop)
+                    .put("right", insetRight)
+                    .put("bottom", insetBottom),
+            ).put("safeContentBoundsPx", boundsJson(safeContentBounds))
             .put(
                 "smallTouchTargets",
                 JSONArray().apply {
@@ -96,7 +143,8 @@ object ArchitectVisualDiagnostics {
                         )
                     }
                 },
-            ).put("textOverlapCandidates", JSONArray(overlapCandidates))
+            ).put("systemUiOverlapCandidates", JSONArray(systemUiOverlapCandidates))
+            .put("textOverlapCandidates", JSONArray(overlapCandidates))
     }
 
     private fun collect(

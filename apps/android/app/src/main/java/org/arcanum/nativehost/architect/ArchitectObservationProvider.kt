@@ -18,6 +18,7 @@ class ArchitectObservationProvider : ContentProvider() {
         when (resolveName(uri)) {
             IMAGE_FILE_NAME -> "image/png"
             MANIFEST_FILE_NAME -> "application/json"
+            ArchitectObservationContract.EXPORT_BUNDLE_FILE -> "application/zip"
             else -> throw FileNotFoundException("Unsupported Architect observation file")
         }
 
@@ -42,12 +43,13 @@ class ArchitectObservationProvider : ContentProvider() {
         sortOrder: String?,
     ): Cursor {
         val file = resolveFile(uri)
+        val captureId = resolveCaptureId(uri)
         val columns = projection ?: arrayOf(OpenableColumns.DISPLAY_NAME, OpenableColumns.SIZE)
         val cursor = MatrixCursor(columns)
         val row = cursor.newRow()
         columns.forEach { column ->
             when (column) {
-                OpenableColumns.DISPLAY_NAME -> row.add(file.name)
+                OpenableColumns.DISPLAY_NAME -> row.add(displayName(captureId, file.name))
                 OpenableColumns.SIZE -> row.add(file.length())
                 else -> row.add(null)
             }
@@ -79,28 +81,65 @@ class ArchitectObservationProvider : ContentProvider() {
         if (uri.scheme != "content" || uri.authority != expectedAuthority) {
             throw FileNotFoundException("Unsupported Architect observation URI")
         }
+
+        val captureId = resolveCaptureId(uri)
         val name = resolveName(uri)
-        val root = File(providerContext.filesDir, OBSERVATION_DIRECTORY).canonicalFile
-        val target = File(root, name).canonicalFile
-        if (target.parentFile != root || !target.isFile) {
-            throw FileNotFoundException("Architect observation is unavailable")
+        val root =
+            File(providerContext.filesDir, "$OBSERVATION_DIRECTORY/$EXPORT_DIRECTORY").canonicalFile
+        val captureDirectory = File(root, captureId).canonicalFile
+        val target = File(captureDirectory, name).canonicalFile
+        if (
+            captureDirectory.parentFile != root ||
+            target.parentFile != captureDirectory ||
+            !target.isFile
+        ) {
+            throw FileNotFoundException("Architect frozen observation is unavailable")
         }
         return target
     }
 
-    private fun resolveName(uri: Uri): String {
-        if (uri.pathSegments.size != 1) {
+    private fun resolveCaptureId(uri: Uri): String {
+        if (uri.pathSegments.size != 2) {
             throw FileNotFoundException("Unsupported Architect observation path")
         }
-        return uri.lastPathSegment?.takeIf(ALLOWED_FILES::contains)
+        val captureId = uri.pathSegments[0]
+        if (!CAPTURE_ID.matches(captureId)) {
+            throw FileNotFoundException("Unsupported Architect capture identifier")
+        }
+        return captureId
+    }
+
+    private fun resolveName(uri: Uri): String {
+        if (uri.pathSegments.size != 2) {
+            throw FileNotFoundException("Unsupported Architect observation path")
+        }
+        return uri.pathSegments[1].takeIf(ALLOWED_FILES::contains)
             ?: throw FileNotFoundException("Unsupported Architect observation file")
     }
 
+    private fun displayName(
+        captureId: String,
+        fileName: String,
+    ): String =
+        when (fileName) {
+            IMAGE_FILE_NAME -> "architect-pulse-$captureId.png"
+            MANIFEST_FILE_NAME -> "architect-pulse-$captureId.json"
+            ArchitectObservationContract.EXPORT_BUNDLE_FILE -> "architect-pulse-$captureId.zip"
+            else -> fileName
+        }
+
     companion object {
         private const val OBSERVATION_DIRECTORY = "architect/observation"
+        private const val EXPORT_DIRECTORY = "export"
         private const val IMAGE_FILE_NAME = "latest.png"
         private const val MANIFEST_FILE_NAME = "latest.json"
-        private val ALLOWED_FILES = setOf(IMAGE_FILE_NAME, MANIFEST_FILE_NAME)
+        private val CAPTURE_ID = Regex("^[A-Za-z0-9-]{8,64}$")
+        private val ALLOWED_FILES =
+            setOf(
+                IMAGE_FILE_NAME,
+                MANIFEST_FILE_NAME,
+                ArchitectObservationContract.EXPORT_BUNDLE_FILE,
+            )
 
         fun authority(context: Context): String =
             "${context.packageName}.architect.observation"
@@ -109,13 +148,25 @@ class ArchitectObservationProvider : ContentProvider() {
             context: Context,
             file: File,
         ): Uri {
-            require(file.name in ALLOWED_FILES) {
+            val root =
+                File(context.filesDir, "$OBSERVATION_DIRECTORY/$EXPORT_DIRECTORY").canonicalFile
+            val canonicalFile = file.canonicalFile
+            val captureDirectory = canonicalFile.parentFile
+            require(canonicalFile.name in ALLOWED_FILES) {
                 "Only bounded Architect observation files may be shared"
+            }
+            require(captureDirectory?.parentFile == root) {
+                "Only capture-bound frozen Architect exports may be shared"
+            }
+            val captureId = captureDirectory.name
+            require(CAPTURE_ID.matches(captureId)) {
+                "Invalid Architect capture identifier"
             }
             return Uri.Builder()
                 .scheme("content")
                 .authority(authority(context))
-                .appendPath(file.name)
+                .appendPath(captureId)
+                .appendPath(canonicalFile.name)
                 .build()
         }
     }

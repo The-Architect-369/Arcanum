@@ -6,6 +6,7 @@ import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.Rect
+import android.os.Build
 import android.os.Looper
 import android.view.View
 import android.view.ViewGroup
@@ -15,10 +16,13 @@ import java.io.File
 import java.io.FileOutputStream
 import java.security.MessageDigest
 import java.time.Instant
+import java.util.UUID
+import org.arcanum.nativehost.BuildConfig
 import org.json.JSONArray
 import org.json.JSONObject
 
 data class ArchitectObservationResult(
+    val captureId: String,
     val manifestFile: File,
     val imageFile: File,
     val redactedViewCount: Int,
@@ -30,6 +34,8 @@ class ArchitectObserver(
     private val runtimeBridgeLabel: String,
     private val applicationState: String,
 ) {
+    private val buildProvenance: JSONObject by lazy(::observeBuildProvenance)
+
     fun capture(
         root: View,
         trigger: String,
@@ -41,6 +47,7 @@ class ArchitectObserver(
             "Architect observation requires a laid-out root view"
         }
 
+        val captureId = UUID.randomUUID().toString()
         val capturedAt = Instant.now().toString()
         val privateViews = mutableListOf<View>()
         val semanticTree = observeView(root, root, "root", privateViews)
@@ -69,6 +76,7 @@ class ArchitectObserver(
                 JSONObject()
                     .put("schemaVersion", ArchitectObservationContract.SCHEMA_VERSION)
                     .put("observationType", ArchitectObservationContract.OBSERVATION_TYPE)
+                    .put("captureId", captureId)
                     .put("scope", ArchitectObservationContract.SCOPE)
                     .put("authorityEffect", ArchitectObservationContract.AUTHORITY_EFFECT)
                     .put("capturedAt", capturedAt)
@@ -80,7 +88,12 @@ class ArchitectObserver(
                             .put("transport", ArchitectObservationContract.TRANSPORT)
                             .put("exportCapability", ArchitectObservationContract.EXPORT_CAPABILITY)
                             .put("automaticExport", ArchitectObservationContract.AUTO_EXPORT)
-                            .put("networkRequired", ArchitectObservationContract.NETWORK_REQUIRED)
+                            .put("immutableExport", ArchitectObservationContract.IMMUTABLE_EXPORT)
+                            .put("exportRetention", ArchitectObservationContract.EXPORT_RETENTION)
+                            .put(
+                                "exportGrantTtlSeconds",
+                                ArchitectObservationContract.EXPORT_GRANT_TTL_SECONDS,
+                            ).put("networkRequired", ArchitectObservationContract.NETWORK_REQUIRED)
                             .put("modelDependency", ArchitectObservationContract.MODEL_DEPENDENCY),
                     ).put(
                         "privacy",
@@ -88,6 +101,7 @@ class ArchitectObserver(
                             .put("policy", "private-local-redacted-v1")
                             .put("privateReflectionContentIncluded", false)
                             .put("semanticPrivateTextRedacted", true)
+                            .put("semanticAuxiliaryTextRedacted", true)
                             .put("rawUnredactedFramePersisted", false)
                             .put("redactedViewCount", viewsToMask.size),
                     ).put(
@@ -104,18 +118,28 @@ class ArchitectObserver(
                         JSONObject()
                             .put("bridge", runtimeBridgeLabel)
                             .put("applicationState", applicationState),
-                    ).put(
+                    ).put("build", JSONObject(buildProvenance.toString()))
+                    .put(
                         "image",
                         JSONObject()
                             .put("file", IMAGE_FILE_NAME)
                             .put("format", "png")
+                            .put("widthPx", root.width)
+                            .put("heightPx", root.height)
                             .put("sha256", imageSha256)
                             .put("privacyRedacted", true),
+                    ).put(
+                        "exportIntegrity",
+                        JSONObject()
+                            .put("captureIdBound", true)
+                            .put("bundleFile", ArchitectObservationContract.EXPORT_BUNDLE_FILE)
+                            .put("bundleContains", JSONArray(listOf(IMAGE_FILE_NAME, MANIFEST_FILE_NAME))),
                     ).put("visualDiagnostics", visualDiagnostics)
                     .put("viewTree", semanticTree)
 
             persistText(manifest.toString(2), manifestFile)
             return ArchitectObservationResult(
+                captureId = captureId,
                 manifestFile = manifestFile,
                 imageFile = imageFile,
                 redactedViewCount = viewsToMask.size,
@@ -126,13 +150,32 @@ class ArchitectObserver(
         }
     }
 
+    private fun observeBuildProvenance(): JSONObject {
+        val packageInfo = context.packageManager.getPackageInfo(context.packageName, 0)
+        val versionCode =
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+                packageInfo.longVersionCode
+            } else {
+                @Suppress("DEPRECATION")
+                packageInfo.versionCode.toLong()
+            }
+        val sourceApk = File(context.applicationInfo.sourceDir)
+        return JSONObject()
+            .put("packageName", context.packageName)
+            .put("versionName", packageInfo.versionName ?: "unknown")
+            .put("versionCode", versionCode)
+            .put("sourceCommit", BuildConfig.ARCANUM_SOURCE_COMMIT)
+            .put("installedApkSha256", sha256(sourceApk))
+    }
+
     private fun observeView(
         root: View,
         view: View,
         path: String,
         privateViews: MutableList<View>,
     ): JSONObject {
-        if (ArchitectObservationPrivacy.isPrivateText(view)) {
+        val privateText = ArchitectObservationPrivacy.isPrivateText(view)
+        if (privateText) {
             privateViews += view
         }
 
@@ -159,14 +202,20 @@ class ArchitectObserver(
         if (resourceName != null) {
             node.put("resourceName", resourceName)
         }
-        view.contentDescription?.toString()?.takeIf(String::isNotBlank)?.let {
-            node.put("contentDescription", it)
+        view.contentDescription?.toString()?.takeIf(String::isNotBlank)?.let { description ->
+            node.put(
+                "contentDescription",
+                if (privateText) ArchitectObservationContract.REDACTED_TEXT else description,
+            )
         }
 
         if (view is TextView) {
             node.put("text", ArchitectObservationPrivacy.textForObservation(view))
             view.hint?.toString()?.takeIf(String::isNotBlank)?.let { hint ->
-                node.put("hint", hint)
+                node.put(
+                    "hint",
+                    if (privateText) ArchitectObservationContract.REDACTED_TEXT else hint,
+                )
             }
             node.put("textSizePx", view.textSize.toDouble())
             if (view is EditText) {

@@ -1,10 +1,14 @@
 package org.arcanum.nativehost
 
 import android.app.Activity
+import android.graphics.Color
 import android.os.Bundle
 import android.view.Gravity
+import android.view.View
 import android.view.ViewGroup
+import android.view.WindowInsets
 import android.widget.FrameLayout
+import android.widget.LinearLayout
 import android.widget.Toast
 import org.arcanum.nativehost.application.ArcanumLaunchPanel
 import org.arcanum.nativehost.application.NativeApplicationLaunch
@@ -24,6 +28,9 @@ class MainActivity : Activity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        window.statusBarColor = Color.BLACK
+        window.navigationBarColor = Color.BLACK
 
         val bridgeStatus = runCatching { NativeRuntimeBridge.status() }
         val bridgeLabel =
@@ -51,31 +58,22 @@ class MainActivity : Activity() {
         architectBridge = ArchitectObservationBridge(this)
 
         setContentView(ArcnetRendererView(this, bridgeLabel))
-        addContentView(
+
+        val topBar =
+            LinearLayout(this).apply {
+                orientation = LinearLayout.HORIZONTAL
+                gravity = Gravity.CENTER_VERTICAL
+                setBackgroundColor(Color.argb(242, 0, 0, 0))
+            }
+        topBar.addView(
             ArcanumLaunchPanel(this, appLaunch),
-            FrameLayout.LayoutParams(
-                ViewGroup.LayoutParams.MATCH_PARENT,
+            LinearLayout.LayoutParams(
+                0,
                 ViewGroup.LayoutParams.WRAP_CONTENT,
-                Gravity.TOP,
+                1.0f,
             ),
         )
-        addContentView(
-            HopeReflectionPanel(this),
-            FrameLayout.LayoutParams(
-                ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.WRAP_CONTENT,
-                Gravity.CENTER,
-            ),
-        )
-        addContentView(
-            TempusLifecyclePanel(this),
-            FrameLayout.LayoutParams(
-                ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.WRAP_CONTENT,
-                Gravity.BOTTOM,
-            ),
-        )
-        addContentView(
+        topBar.addView(
             ArchitectPulseButton(
                 context = this,
                 onPulse = {
@@ -85,10 +83,43 @@ class MainActivity : Activity() {
                     shareArchitectPulse()
                 },
             ),
-            FrameLayout.LayoutParams(dp(48), dp(48), Gravity.TOP or Gravity.END).apply {
-                topMargin = dp(12)
+            LinearLayout.LayoutParams(dp(48), dp(48)).apply {
                 marginEnd = dp(12)
             },
+        )
+        val topBarParams =
+            FrameLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT,
+                Gravity.TOP,
+            )
+        addContentView(topBar, topBarParams)
+
+        val hopePanel = HopeReflectionPanel(this)
+        val hopeParams =
+            FrameLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT,
+                Gravity.CENTER,
+            )
+        addContentView(hopePanel, hopeParams)
+
+        val tempusPanel = TempusLifecyclePanel(this)
+        val tempusParams =
+            FrameLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT,
+                Gravity.BOTTOM,
+            )
+        addContentView(tempusPanel, tempusParams)
+
+        installInsetSafeLayout(
+            topBar = topBar,
+            topBarParams = topBarParams,
+            hopePanel = hopePanel,
+            hopeParams = hopeParams,
+            tempusPanel = tempusPanel,
+            tempusParams = tempusParams,
         )
 
         window.decorView.post {
@@ -103,6 +134,74 @@ class MainActivity : Activity() {
                 captureArchitectPulse(trigger = "window_focus", announce = false)
             }
         }
+    }
+
+    private fun installInsetSafeLayout(
+        topBar: View,
+        topBarParams: FrameLayout.LayoutParams,
+        hopePanel: View,
+        hopeParams: FrameLayout.LayoutParams,
+        tempusPanel: View,
+        tempusParams: FrameLayout.LayoutParams,
+    ) {
+        val contentRoot = findViewById<View>(android.R.id.content)
+        contentRoot.setOnApplyWindowInsetsListener { _, insets ->
+            applySafeInsets(
+                insets = insets,
+                topBar = topBar,
+                topBarParams = topBarParams,
+                hopePanel = hopePanel,
+                hopeParams = hopeParams,
+                tempusPanel = tempusPanel,
+                tempusParams = tempusParams,
+            )
+            insets
+        }
+        contentRoot.requestApplyInsets()
+        contentRoot.post {
+            contentRoot.rootWindowInsets?.let { insets ->
+                applySafeInsets(
+                    insets = insets,
+                    topBar = topBar,
+                    topBarParams = topBarParams,
+                    hopePanel = hopePanel,
+                    hopeParams = hopeParams,
+                    tempusPanel = tempusPanel,
+                    tempusParams = tempusParams,
+                )
+            }
+        }
+    }
+
+    private fun applySafeInsets(
+        insets: WindowInsets,
+        topBar: View,
+        topBarParams: FrameLayout.LayoutParams,
+        hopePanel: View,
+        hopeParams: FrameLayout.LayoutParams,
+        tempusPanel: View,
+        tempusParams: FrameLayout.LayoutParams,
+    ) {
+        val left = insets.systemWindowInsetLeft
+        val top = insets.systemWindowInsetTop
+        val right = insets.systemWindowInsetRight
+        val bottom = insets.systemWindowInsetBottom
+
+        topBarParams.leftMargin = left
+        topBarParams.topMargin = top
+        topBarParams.rightMargin = right
+        topBar.layoutParams = topBarParams
+
+        hopeParams.leftMargin = left
+        hopeParams.topMargin = top
+        hopeParams.rightMargin = right
+        hopeParams.bottomMargin = bottom
+        hopePanel.layoutParams = hopeParams
+
+        tempusParams.leftMargin = left
+        tempusParams.rightMargin = right
+        tempusParams.bottomMargin = bottom
+        tempusPanel.layoutParams = tempusParams
     }
 
     private fun captureArchitectPulse(

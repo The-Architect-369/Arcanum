@@ -114,7 +114,13 @@ jobs:
           gradle-version: "8.9"
 
       - name: Unit test and assemble Seed Node Alpha bridge candidate
-        run: gradle -p apps/android testDebugUnitTest assembleDebug --stacktrace
+        shell: bash
+        run: |
+          set -euo pipefail
+          SOURCE_HEAD="$(git rev-parse HEAD)"
+          gradle -p apps/android \
+            -ParcanumSourceCommit="$SOURCE_HEAD" \
+            testDebugUnitTest assembleDebug --stacktrace
 
       - name: Verify dual-ABI native packaging
         shell: bash
@@ -127,6 +133,7 @@ jobs:
             unzip -l "$APK" | grep -q "lib/$abi/libarcanum_android_tempus_lifecycle_jni.so"
             unzip -l "$APK" | grep -q "lib/$abi/libarcanum_android_hope_jni.so"
           done
+          sha256sum "$APK"
 
       - name: Upload exact-head W04 bridge APK
         uses: actions/upload-artifact@v4

@@ -5,6 +5,9 @@ plugins {
     id("org.jetbrains.kotlin.android")
 }
 
+val arcanumSourceCommit =
+    providers.gradleProperty("arcanumSourceCommit").orElse("development-unbound")
+
 android {
     namespace = "org.arcanum.nativehost"
     compileSdk = 35
@@ -13,8 +16,17 @@ android {
         applicationId = "org.arcanum.nativehost"
         minSdk = 26
         targetSdk = 35
-        versionCode = 1
-        versionName = "0.1.0"
+        versionCode = 2
+        versionName = "0.1.1-cew04"
+        buildConfigField(
+            "String",
+            "ARCANUM_SOURCE_COMMIT",
+            "\"${arcanumSourceCommit.get()}\"",
+        )
+    }
+
+    buildFeatures {
+        buildConfig = true
     }
 
     compileOptions {
