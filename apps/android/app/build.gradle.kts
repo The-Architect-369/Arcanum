@@ -8,6 +8,18 @@ plugins {
 val arcanumSourceCommit =
     providers.gradleProperty("arcanumSourceCommit").orElse("development-unbound")
 
+val arcanumDevKeystorePath = providers.gradleProperty("arcanumDevKeystorePath")
+val arcanumDevStorePassword = providers.gradleProperty("arcanumDevStorePassword")
+val arcanumDevKeyAlias = providers.gradleProperty("arcanumDevKeyAlias")
+val arcanumDevKeyPassword = providers.gradleProperty("arcanumDevKeyPassword")
+val arcanumDevSigningConfigured =
+    listOf(
+        arcanumDevKeystorePath,
+        arcanumDevStorePassword,
+        arcanumDevKeyAlias,
+        arcanumDevKeyPassword,
+    ).all { it.isPresent }
+
 android {
     namespace = "org.arcanum.nativehost"
     compileSdk = 35
@@ -27,6 +39,25 @@ android {
 
     buildFeatures {
         buildConfig = true
+    }
+
+    signingConfigs {
+        if (arcanumDevSigningConfigured) {
+            create("arcanumDev") {
+                storeFile = file(arcanumDevKeystorePath.get())
+                storePassword = arcanumDevStorePassword.get()
+                keyAlias = arcanumDevKeyAlias.get()
+                keyPassword = arcanumDevKeyPassword.get()
+            }
+        }
+    }
+
+    buildTypes {
+        getByName("debug") {
+            if (arcanumDevSigningConfigured) {
+                signingConfig = signingConfigs.getByName("arcanumDev")
+            }
+        }
     }
 
     compileOptions {

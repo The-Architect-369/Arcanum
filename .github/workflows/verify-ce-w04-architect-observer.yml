@@ -113,13 +113,51 @@ jobs:
         with:
           gradle-version: "8.9"
 
+      - name: Restore persistent private development signer when configured
+        id: dev_signing
+        shell: bash
+        env:
+          ARCANUM_DEV_KEYSTORE_B64: ${{ secrets.ARCANUM_DEV_KEYSTORE_B64 }}
+          ARCANUM_DEV_STORE_PASSWORD: ${{ secrets.ARCANUM_DEV_STORE_PASSWORD }}
+          ARCANUM_DEV_KEY_ALIAS: ${{ secrets.ARCANUM_DEV_KEY_ALIAS }}
+          ARCANUM_DEV_KEY_PASSWORD: ${{ secrets.ARCANUM_DEV_KEY_PASSWORD }}
+        run: |
+          set -euo pipefail
+          if [[ -n "${ARCANUM_DEV_KEYSTORE_B64:-}" && \
+                -n "${ARCANUM_DEV_STORE_PASSWORD:-}" && \
+                -n "${ARCANUM_DEV_KEY_ALIAS:-}" && \
+                -n "${ARCANUM_DEV_KEY_PASSWORD:-}" ]]; then
+            KEYSTORE="$RUNNER_TEMP/arcanum-dev.jks"
+            printf '%s' "$ARCANUM_DEV_KEYSTORE_B64" | base64 --decode > "$KEYSTORE"
+            chmod 600 "$KEYSTORE"
+            echo "configured=true" >> "$GITHUB_OUTPUT"
+            echo "keystore=$KEYSTORE" >> "$GITHUB_OUTPUT"
+          else
+            echo "configured=false" >> "$GITHUB_OUTPUT"
+            echo "Persistent private development signing is not configured; using the runner debug signer for this disposable candidate."
+          fi
+
       - name: Unit test and assemble Seed Node Alpha bridge candidate
         shell: bash
+        env:
+          ARCANUM_DEV_STORE_PASSWORD: ${{ secrets.ARCANUM_DEV_STORE_PASSWORD }}
+          ARCANUM_DEV_KEY_ALIAS: ${{ secrets.ARCANUM_DEV_KEY_ALIAS }}
+          ARCANUM_DEV_KEY_PASSWORD: ${{ secrets.ARCANUM_DEV_KEY_PASSWORD }}
         run: |
           set -euo pipefail
           SOURCE_HEAD="$(git rev-parse HEAD)"
+          SIGNING_ARGS=()
+          if [[ "${{ steps.dev_signing.outputs.configured }}" == "true" ]]; then
+            SIGNING_ARGS+=(
+              "-ParcanumDevKeystorePath=${{ steps.dev_signing.outputs.keystore }}"
+              "-ParcanumDevStorePassword=$ARCANUM_DEV_STORE_PASSWORD"
+              "-ParcanumDevKeyAlias=$ARCANUM_DEV_KEY_ALIAS"
+              "-ParcanumDevKeyPassword=$ARCANUM_DEV_KEY_PASSWORD"
+            )
+          fi
           gradle -p apps/android \
             -ParcanumSourceCommit="$SOURCE_HEAD" \
+            "${SIGNING_ARGS[@]}" \
             testDebugUnitTest assembleDebug --stacktrace
 
       - name: Verify dual-ABI native packaging
