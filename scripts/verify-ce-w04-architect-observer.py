@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import json
+import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -186,9 +187,16 @@ for required_phrase in (
     "ARCANUM_SOURCE_COMMIT",
     "arcanumSourceCommit",
     "buildConfig = true",
-    "versionCode = 2",
 ):
     require(required_phrase in build_gradle, f"Android build provenance missing: {required_phrase!r}")
+
+version_code_match = re.search(r"\bversionCode\s*=\s*(\d+)\b", build_gradle)
+require(version_code_match is not None, "Android build provenance missing: versionCode")
+version_code = int(version_code_match.group(1))
+require(
+    version_code >= 3,
+    f"CE-W04 persistent-signer update lineage requires versionCode >= 3; found {version_code}",
+)
 
 workflow = (
     ROOT / ".github/workflows/verify-ce-w04-architect-observer.yml"
