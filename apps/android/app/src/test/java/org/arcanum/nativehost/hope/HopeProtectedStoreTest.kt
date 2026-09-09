@@ -3,6 +3,7 @@ package org.arcanum.nativehost.hope
 import java.io.File
 import javax.crypto.spec.SecretKeySpec
 import org.junit.Assert.assertArrayEquals
+import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Assert.fail
 import org.junit.Rule
@@ -37,6 +38,20 @@ class HopeProtectedStoreTest {
 
         assertArrayEquals(plaintext, store.recoverExact())
         assertTrue(storageFile().isFile)
+    }
+
+    @Test
+    fun encryptionUsesFreshProviderGeneratedIv() {
+        val store = HopeProtectedStore(temporaryFolder.root, provider, contract)
+        val plaintext = "private reflection".toByteArray()
+
+        store.persistExact(plaintext)
+        val firstIv = readIv(storageFile().readBytes())
+        store.persistExact(plaintext)
+        val secondIv = readIv(storageFile().readBytes())
+
+        assertFalse(firstIv.contentEquals(secondIv))
+        assertArrayEquals(plaintext, store.recoverExact())
     }
 
     @Test
@@ -77,6 +92,11 @@ class HopeProtectedStoreTest {
             fail("truncated Hope state must fail closed")
         } catch (_: HopeStateCorruptException) {
         }
+    }
+
+    private fun readIv(envelope: ByteArray): ByteArray {
+        val ivLength = envelope[9].toInt() and 0xff
+        return envelope.copyOfRange(14, 14 + ivLength)
     }
 
     private fun storageFile(): File = File(temporaryFolder.root, contract.storageRelativePath)

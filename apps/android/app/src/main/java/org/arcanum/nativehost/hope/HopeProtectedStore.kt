@@ -8,7 +8,6 @@ import java.nio.charset.StandardCharsets
 import java.nio.file.Files
 import java.nio.file.StandardCopyOption
 import java.security.GeneralSecurityException
-import java.security.SecureRandom
 import javax.crypto.AEADBadTagException
 import javax.crypto.Cipher
 import javax.crypto.SecretKey
@@ -54,26 +53,39 @@ class HopeProtectedStore(
         }
 
         val key = keyProvider.getOrCreate()
-        val iv = ByteArray(IV_LENGTH).also { bytes -> SecureRandom().nextBytes(bytes) }
-        val ciphertext =
+        val encrypted =
             try {
                 Cipher.getInstance(CIPHER).run {
-                    init(Cipher.ENCRYPT_MODE, key, GCMParameterSpec(TAG_BITS, iv))
+                    // AndroidKeyStore keys created with randomized encryption required must
+                    // generate their own encryption IV. Supplying a caller-generated IV here
+                    // is rejected by the platform. The returned IV is serialized into the
+                    // existing v0.1 envelope and is still supplied explicitly for decryption.
+                    init(Cipher.ENCRYPT_MODE, key)
+                    val generatedIv = iv?.copyOf()
+                        ?: throw HopeStatePersistenceException("Hope encryption IV unavailable")
+                    if (generatedIv.size != IV_LENGTH) {
+                        throw HopeStatePersistenceException("Hope encryption IV length is invalid")
+                    }
                     updateAAD(aad())
-                    doFinal(plaintext)
+                    EncryptedPayload(
+                        iv = generatedIv,
+                        ciphertext = doFinal(plaintext),
+                    )
                 }
+            } catch (error: HopeStatePersistenceException) {
+                throw error
             } catch (error: GeneralSecurityException) {
                 throw HopeStatePersistenceException("Hope encryption failed", error)
             }
 
         val envelope =
-            ByteBuffer.allocate(HEADER_LENGTH + iv.size + ciphertext.size)
+            ByteBuffer.allocate(HEADER_LENGTH + encrypted.iv.size + encrypted.ciphertext.size)
                 .put(MAGIC)
                 .put(VERSION.toByte())
-                .put(iv.size.toByte())
-                .putInt(ciphertext.size)
-                .put(iv)
-                .put(ciphertext)
+                .put(encrypted.iv.size.toByte())
+                .putInt(encrypted.ciphertext.size)
+                .put(encrypted.iv)
+                .put(encrypted.ciphertext)
                 .array()
 
         val tempFile = File(parent, "${targetFile.name}.tmp")
@@ -149,6 +161,11 @@ class HopeProtectedStore(
     private fun aad(): ByteArray =
         "namespace=${contract.namespace}|record=${contract.recordVersion}|path=${contract.storageRelativePath}"
             .toByteArray(StandardCharsets.UTF_8)
+
+    private data class EncryptedPayload(
+        val iv: ByteArray,
+        val ciphertext: ByteArray,
+    )
 
     companion object {
         private val MAGIC = "ARCHOPE1".toByteArray(StandardCharsets.US_ASCII)
