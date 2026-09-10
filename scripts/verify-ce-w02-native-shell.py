@@ -105,7 +105,6 @@ def verify() -> None:
 
     required_projection_fragments = [
         "profile.model.rotation.apply(q)",
-        "forward.cross(profile.camera.upReference).normalized()",
         "w = -view.z",
         "viewport.width / viewport.height",
         "clipHomogeneousSegment",
@@ -120,6 +119,16 @@ def verify() -> None:
     ]
     for fragment in required_projection_fragments:
         require(fragment in projection_engine, f"F33 projection fragment: {fragment}")
+    require(
+        (
+            "forward.cross(profile.camera.upReference).normalized()" in projection_engine
+            or (
+                "forward.cross(camera.upReference).normalized()" in projection_engine
+                and "camera.target - camera.eye" in projection_engine
+            )
+        ),
+        "F33 camera basis derives right axis from active camera up reference",
+    )
 
     legacy_runtime_viewport = "width = width.toDouble()" in renderer and "height = height.toDouble()" in renderer
     bounded_runtime_viewport = (
