@@ -57,8 +57,11 @@ class MainActivity : Activity() {
             )
         architectBridge = ArchitectObservationBridge(this)
 
-        val renderer = ArcnetRendererView(this, bridgeLabel)
-        setContentView(renderer)
+        // Preserve inherited CE-W02/03 host mounting exactly; A05 derives its bounded
+        // presentation scene from the mounted renderer without changing canonical geometry.
+        setContentView(ArcnetRendererView(this, bridgeLabel))
+        val renderer =
+            (findViewById<ViewGroup>(android.R.id.content).getChildAt(0) as ArcnetRendererView)
 
         val topBar =
             LinearLayout(this).apply {

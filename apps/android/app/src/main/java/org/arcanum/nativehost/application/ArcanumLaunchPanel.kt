@@ -27,9 +27,9 @@ class ArcanumLaunchPanel(
                 contentDescription =
                     when (launch) {
                         is NativeApplicationLaunch.Ready ->
-                            "Hope is available locally and privately. Authority effect none."
+                            "Arcanum · Hope · local/private · authorityEffect=none"
                         is NativeApplicationLaunch.Blocked ->
-                            "Hope is unavailable and fail-closed. Authority effect none."
+                            "Arcanum · Hope unavailable · fail-closed · authorityEffect=none"
                     }
             },
         )
