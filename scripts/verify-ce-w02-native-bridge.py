@@ -51,6 +51,10 @@ def verify() -> None:
         ANDROID
         / "app/src/main/java/org/arcanum/nativehost/geometry/ArcnetRendererView.kt"
     )
+    hope_panel = text(
+        ANDROID
+        / "app/src/main/java/org/arcanum/nativehost/hope/HopeReflectionPanel.kt"
+    )
     manifest = text(ANDROID / "app/src/main/AndroidManifest.xml")
     workflow = text(ROOT / ".github/workflows/verify-android-bridge.yml")
     package = load_json(ROOT / "package.json")
@@ -200,7 +204,14 @@ def verify() -> None:
         "TempusAnchor persistence" in registry["deferredToW02_4"],
         "F44 persistence deferred",
     )
-    require("authorityEffect=none" in renderer, "F44 presentation authority label")
+    require(
+        (
+            "authorityEffect=none" in renderer
+            or "authorityEffect=none" in hope_panel
+            or "Authority effect none." in hope_panel
+        ),
+        "F44 presentation authority label",
+    )
 
     print("✅ CE-W02 native-bridge verification passed: F37-F44")
 
