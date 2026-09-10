@@ -66,31 +66,41 @@ A04 remains an implementation/evidence arc and does not promote CE-W04 or `main`
 
 ### CE-W04-A05 — Hope-first static embodiment and SceneViewportPolicy
 
+Established the protected Hope-first static scene, hard participant-control exclusion via `SceneViewportPolicy`, visually subordinate outer ARCnet geometry, compact Hope/Tempus participant surfaces, versionCode 5 provenance, and a physically audited v4 → v5 continuity path.
+
+The A05 observation confirmed exact build/source provenance, signer continuity, independent F25 projection arithmetic, and a bounded scene reconstruction while preserving the distinction between Human-reported installation continuity and machine-observed state.
+
+A05 deliberately did not add orbit, animation, inertia, star-tetrahedron activation, or screen recording.
+
+### CE-W04-A06 — Viewer-only orbit + bounded motion foundation
+
 Current arc.
 
-Objectives:
+First-tranche objectives:
 
-1. establish a protected Human-facing scene center before orbit or animation;
-2. add pure `SceneViewportPolicy` presentation bounds around occupied participant UI bands;
-3. keep canonical geometry coordinates/topology/reference vectors immutable;
-4. visually prioritize the inner Hope octahedron while subordinating outer ARCnet geometry;
-5. collapse private reflection editing by default and require deliberate Human opening;
-6. compact participant-facing Tempus presentation while keeping full local provenance available to the Architect observation/accessibility surfaces;
-7. advance Android build provenance to `versionCode = 5`, `CE-W04-A05`;
-8. preserve protected Hope continuity across v4 → v5 without uninstall or data clear;
-9. keep the Architect observer screenshot/JSON/ZIP path intact for a post-A05 visual audit.
+1. establish pure `ViewerOrbitState` presentation state;
+2. establish pure `ViewerOrbitReducer` actions for drag, zoom, and exact reset;
+3. hard-bound pitch and zoom while deterministically normalizing yaw;
+4. preserve the A05 neutral state exactly;
+5. prove reducer operations cannot mutate canonical geometry coordinates;
+6. advance Android provenance to `versionCode = 6`, `0.1.5-cew04-a06`, `CE-W04-A06`;
+7. keep Hope, Tempus, identity, receipts, capability, governance, protocol, network, and model state outside viewer reducer authority.
 
-A05 deliberately does **not** add orbit, animation, inertia, star-tetrahedron activation, or screen recording. Motion observation belongs in a later motion arc after there is motion worth auditing.
+This first A06 tranche does not yet attach Android touch listeners, inertia, animation timing, or motion recording. Those require the pure reducer/invariant layer to become green first.
 
-## Next intended arc
+## Next intended tranche
 
-Subject to A05 physical/visual closure, the next implementation arc is expected to separate orbit mathematics from interaction attachment, for example:
+Within A06, after pure reducer verification:
 
 ```text
-CE-W04-A06 — viewer-only orbit reducer and invariant tests
+viewer transform integration
+→ SceneViewport-bounded gesture attachment
+→ geometry-free equivalent controls
+→ physical v6 motion test
+→ optional Human-triggered bounded motion evidence
 ```
 
-A subsequent arc may attach bounded gestures/motion and, if justified, extend the Architect observer with a short Human-triggered redacted visual clip.
+A subsequent Arc may refine animation grammar or motion observation if the first physical motion audit exposes defects that should not enlarge A06.
 
 ## Promotion discipline
 
