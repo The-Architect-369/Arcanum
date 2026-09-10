@@ -7,6 +7,7 @@ data class SceneViewport(
     val y0: Double,
     val width: Double,
     val height: Double,
+    val constrainedByControls: Boolean,
 ) {
     fun asProjectionViewport(): ViewportSpec = ViewportSpec(x0, y0, width, height)
 }
@@ -26,23 +27,20 @@ object SceneViewportPolicy {
         val x0 = horizontal.toDouble()
         val usableWidth = max(1, widthPx - horizontal * 2).toDouble()
 
-        val top = topOccupiedPx.coerceAtLeast(0).coerceAtMost(heightPx)
-        val bottom = bottomOccupiedPx.coerceAtLeast(0).coerceAtMost(heightPx - top)
-        val available = heightPx - top - bottom
+        val top = topOccupiedPx.coerceAtLeast(0).coerceAtMost(heightPx - 1)
+        val bottom = bottomOccupiedPx.coerceAtLeast(0).coerceAtMost(heightPx - top - 1)
+        val available = max(1, heightPx - top - bottom)
         val requestedMinimum = minimumHeightPx.coerceAtLeast(1).coerceAtMost(heightPx)
 
-        val sceneHeight =
-            if (available >= requestedMinimum) {
-                available
-            } else {
-                max(1, heightPx - top)
-            }
-
+        // Occupied participant surfaces are a hard exclusion boundary. When the
+        // remaining scene is smaller than the preferred minimum, report the
+        // constraint instead of drawing canonical geometry behind controls.
         return SceneViewport(
             x0 = x0,
             y0 = top.toDouble(),
             width = usableWidth,
-            height = sceneHeight.toDouble(),
+            height = available.toDouble(),
+            constrainedByControls = available < requestedMinimum,
         )
     }
 }

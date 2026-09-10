@@ -165,6 +165,7 @@ class ArchitectObserver(
             .put("versionName", packageInfo.versionName ?: "unknown")
             .put("versionCode", versionCode)
             .put("sourceCommit", BuildConfig.ARCANUM_SOURCE_COMMIT)
+            .put("implementationArc", BuildConfig.ARCANUM_IMPLEMENTATION_ARC)
             .put("installedApkSha256", sha256(sourceApk))
     }
 

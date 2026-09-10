@@ -56,6 +56,8 @@ def verify() -> None:
     contracts = read(APP / "app" / "src" / "main" / "java" / "org" / "arcanum" / "nativehost" / "geometry" / "CanonicalContracts.kt")
     projection_engine = read(APP / "app" / "src" / "main" / "java" / "org" / "arcanum" / "nativehost" / "geometry" / "ProjectionEngine.kt")
     renderer = read(APP / "app" / "src" / "main" / "java" / "org" / "arcanum" / "nativehost" / "geometry" / "ArcnetRendererView.kt")
+    viewport_policy_path = APP / "app" / "src" / "main" / "java" / "org" / "arcanum" / "nativehost" / "geometry" / "SceneViewportPolicy.kt"
+    viewport_policy = read(viewport_policy_path) if viewport_policy_path.is_file() else ""
     main_activity = read(APP / "app" / "src" / "main" / "java" / "org" / "arcanum" / "nativehost" / "MainActivity.kt")
     tests = read(APP / "app" / "src" / "test" / "java" / "org" / "arcanum" / "nativehost" / "geometry" / "ProjectionContractTest.kt")
     workflow = read(ROOT / ".github" / "workflows" / "verify-android-native.yml")
@@ -118,7 +120,21 @@ def verify() -> None:
     ]
     for fragment in required_projection_fragments:
         require(fragment in projection_engine, f"F33 projection fragment: {fragment}")
-    require("width = width.toDouble()" in renderer and "height = height.toDouble()" in renderer, "F33 Android View owns runtime viewport dimensions")
+
+    legacy_runtime_viewport = "width = width.toDouble()" in renderer and "height = height.toDouble()" in renderer
+    bounded_runtime_viewport = (
+        viewport_policy_path.is_file()
+        and "SceneViewportPolicy.resolve(" in renderer
+        and "widthPx = width" in renderer
+        and "heightPx = height" in renderer
+        and "scene.asProjectionViewport()" in renderer
+        and "widthPx: Int" in viewport_policy
+        and "heightPx: Int" in viewport_policy
+    )
+    require(
+        legacy_runtime_viewport or bounded_runtime_viewport,
+        "F33 Android View owns runtime viewport dimensions directly or through bounded SceneViewportPolicy",
+    )
     require(registry["rendering"]["sourceCoordinatesMutable"] is False and registry["rendering"]["fixedVerticalFov"] is True and registry["rendering"]["homogeneousSegmentClippingBeforeDivide"] is True, "F33 registry projection boundary")
 
     require(source["authorityEffect"] == "none", "F34 source authorityEffect")
