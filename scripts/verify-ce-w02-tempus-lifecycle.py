@@ -151,8 +151,24 @@ def verify() -> None:
     require("setContentView(ArcnetRendererView(this, bridgeLabel))" in main_activity, "F51 canonical geometry still constructed independently")
     require("addContentView(" in main_activity and "TempusLifecyclePanel(this)" in main_activity, "F51 separate lifecycle panel")
     require("Button(context)" in lifecycle_panel and "TextView(context)" in lifecycle_panel, "F51 standard Android controls")
-    require('text = "Capture local Tempus"' in lifecycle_panel, "F51 explicit lifecycle action")
-    require("authorityEffect=none" in lifecycle_contract and "authorityEffect=none" in lifecycle_panel, "F51 visible authority firewall")
+    require(
+        (
+            'text = "Capture local Tempus"' in lifecycle_panel
+            or (
+                'text = "Capture Tempus"' in lifecycle_panel
+                and "Capture and persist a local Tempus system-clock anchor" in lifecycle_panel
+            )
+        ),
+        "F51 explicit lifecycle action",
+    )
+    require(
+        "authorityEffect=none" in lifecycle_contract
+        and (
+            "authorityEffect=none" in lifecycle_panel
+            or "Authority effect none." in lifecycle_panel
+        ),
+        "F51 visible authority firewall",
+    )
     require(registry["presentation"]["geometryGatesLifecycle"] is False, "F51 geometry does not gate lifecycle")
     require(registry["authorityEffect"] == "none", "F51 registry authority effect")
     for capability, enabled in registry["capabilityCeiling"].items():
