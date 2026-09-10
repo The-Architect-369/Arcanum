@@ -40,6 +40,7 @@ class ArcnetRendererView(
 
     private var topOccupiedPx: Int = dp(96)
     private var bottomOccupiedPx: Int = dp(280)
+    private var viewerOrbitState: ViewerOrbitState = ViewerOrbitReducer.neutral
 
     private val contractsResult: Result<CanonicalContracts> by lazy {
         runCatching {
@@ -65,7 +66,7 @@ class ArcnetRendererView(
     init {
         contentDescription =
             "Hope is centered in a bounded ARCnet scene. Outer ARCnet geometry is visually subordinate. " +
-                "This view is presentation-only and has authorityEffect none. $runtimeBridgeLabel"
+                "Viewer transform is presentation-only and has authorityEffect none. $runtimeBridgeLabel"
         importantForAccessibility = IMPORTANT_FOR_ACCESSIBILITY_YES
     }
 
@@ -77,6 +78,14 @@ class ArcnetRendererView(
         bottomOccupiedPx = nextBottom
         invalidate()
     }
+
+    fun setViewerOrbitState(state: ViewerOrbitState) {
+        if (state == viewerOrbitState) return
+        viewerOrbitState = state
+        invalidate()
+    }
+
+    fun getViewerOrbitState(): ViewerOrbitState = viewerOrbitState
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
@@ -106,20 +115,21 @@ class ArcnetRendererView(
             )
         val viewport = scene.asProjectionViewport()
         val engine = ProjectionEngine(contracts.profile)
+        val viewerOrbit = viewerOrbitState
 
         val restoreCount = canvas.save()
         canvas.clipRect(RectF(scene.x0.toFloat(), scene.y0.toFloat(), (scene.x0 + scene.width).toFloat(), (scene.y0 + scene.height).toFloat()))
 
         contracts.groups.firstOrNull { it.id == "outerCube" }?.let { group ->
-            drawCanonicalEdges(canvas, engine, viewport, group, outerLinePaint)
-            drawPoints(canvas, engine, viewport, group, outerPointPaint, 3.0f)
+            drawCanonicalEdges(canvas, engine, viewport, viewerOrbit, group, outerLinePaint)
+            drawPoints(canvas, engine, viewport, viewerOrbit, group, outerPointPaint, 3.0f)
         }
         contracts.groups.firstOrNull { it.id == "innerOctahedron" }?.let { group ->
-            drawCanonicalEdges(canvas, engine, viewport, group, innerLinePaint)
-            drawPoints(canvas, engine, viewport, group, innerPointPaint, 4.5f)
+            drawCanonicalEdges(canvas, engine, viewport, viewerOrbit, group, innerLinePaint)
+            drawPoints(canvas, engine, viewport, viewerOrbit, group, innerPointPaint, 4.5f)
         }
 
-        engine.project(contracts.origin.q, viewport)?.let { projected ->
+        engine.project(contracts.origin.q, viewport, viewerOrbit)?.let { projected ->
             seedOverlay.mapToScreen(projected.screenX, projected.screenY, viewport.width, viewport.height).forEach { circle ->
                 canvas.drawCircle(circle.centerX.toFloat(), circle.centerY.toFloat(), circle.radius.toFloat(), seedPaint)
             }
@@ -128,21 +138,36 @@ class ArcnetRendererView(
         canvas.restoreToCount(restoreCount)
     }
 
-    private fun drawCanonicalEdges(canvas: Canvas, engine: ProjectionEngine, viewport: ViewportSpec, group: GeometryGroup, paint: Paint) {
+    private fun drawCanonicalEdges(
+        canvas: Canvas,
+        engine: ProjectionEngine,
+        viewport: ViewportSpec,
+        viewerOrbit: ViewerOrbitState,
+        group: GeometryGroup,
+        paint: Paint,
+    ) {
         for (firstIndex in group.points.indices) {
             for (secondIndex in firstIndex + 1 until group.points.size) {
                 val first = group.points[firstIndex]
                 val second = group.points[secondIndex]
                 if (!sameLength((first.q - second.q).norm(), group.edgeLength)) continue
-                val segment = engine.clipSegment(first.q, second.q, viewport) ?: continue
+                val segment = engine.clipSegment(first.q, second.q, viewport, viewerOrbit) ?: continue
                 canvas.drawLine(segment.firstX.toFloat(), segment.firstY.toFloat(), segment.secondX.toFloat(), segment.secondY.toFloat(), paint)
             }
         }
     }
 
-    private fun drawPoints(canvas: Canvas, engine: ProjectionEngine, viewport: ViewportSpec, group: GeometryGroup, paint: Paint, radius: Float) {
+    private fun drawPoints(
+        canvas: Canvas,
+        engine: ProjectionEngine,
+        viewport: ViewportSpec,
+        viewerOrbit: ViewerOrbitState,
+        group: GeometryGroup,
+        paint: Paint,
+        radius: Float,
+    ) {
         group.points.forEach { point ->
-            engine.project(point.q, viewport)?.let { projected ->
+            engine.project(point.q, viewport, viewerOrbit)?.let { projected ->
                 canvas.drawCircle(projected.screenX.toFloat(), projected.screenY.toFloat(), radius, paint)
             }
         }
