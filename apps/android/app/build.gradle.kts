@@ -28,8 +28,8 @@ android {
         applicationId = "org.arcanum.nativehost"
         minSdk = 26
         targetSdk = 35
-        versionCode = 4
-        versionName = "0.1.3-cew04-a04"
+        versionCode = 5
+        versionName = "0.1.4-cew04-a05"
         buildConfigField(
             "String",
             "ARCANUM_SOURCE_COMMIT",
@@ -38,7 +38,7 @@ android {
         buildConfigField(
             "String",
             "ARCANUM_IMPLEMENTATION_ARC",
-            "\"CE-W04-A04\"",
+            "\"CE-W04-A05\"",
         )
     }
 

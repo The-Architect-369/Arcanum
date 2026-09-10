@@ -57,13 +57,14 @@ class MainActivity : Activity() {
             )
         architectBridge = ArchitectObservationBridge(this)
 
-        setContentView(ArcnetRendererView(this, bridgeLabel))
+        val renderer = ArcnetRendererView(this, bridgeLabel)
+        setContentView(renderer)
 
         val topBar =
             LinearLayout(this).apply {
                 orientation = LinearLayout.HORIZONTAL
                 gravity = Gravity.CENTER_VERTICAL
-                setBackgroundColor(Color.argb(242, 0, 0, 0))
+                setBackgroundColor(Color.argb(236, 0, 0, 0))
             }
         topBar.addView(
             ArcanumLaunchPanel(this, appLaunch),
@@ -95,15 +96,6 @@ class MainActivity : Activity() {
             )
         addContentView(topBar, topBarParams)
 
-        val hopePanel = HopeReflectionPanel(this)
-        val hopeParams =
-            FrameLayout.LayoutParams(
-                ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.WRAP_CONTENT,
-                Gravity.CENTER,
-            )
-        addContentView(hopePanel, hopeParams)
-
         val tempusPanel = TempusLifecyclePanel(this)
         val tempusParams =
             FrameLayout.LayoutParams(
@@ -113,7 +105,20 @@ class MainActivity : Activity() {
             )
         addContentView(tempusPanel, tempusParams)
 
+        val hopePanel = HopeReflectionPanel(this)
+        val hopeParams =
+            FrameLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT,
+                Gravity.BOTTOM,
+            ).apply {
+                leftMargin = dp(12)
+                rightMargin = dp(12)
+            }
+        addContentView(hopePanel, hopeParams)
+
         installInsetSafeLayout(
+            renderer = renderer,
             topBar = topBar,
             topBarParams = topBarParams,
             hopePanel = hopePanel,
@@ -137,6 +142,7 @@ class MainActivity : Activity() {
     }
 
     private fun installInsetSafeLayout(
+        renderer: ArcnetRendererView,
         topBar: View,
         topBarParams: FrameLayout.LayoutParams,
         hopePanel: View,
@@ -145,9 +151,35 @@ class MainActivity : Activity() {
         tempusParams: FrameLayout.LayoutParams,
     ) {
         val contentRoot = findViewById<View>(android.R.id.content)
-        contentRoot.setOnApplyWindowInsetsListener { _, insets ->
+        var lastInsets: WindowInsets? = null
+
+        fun update() {
+            val insets = lastInsets ?: contentRoot.rootWindowInsets ?: return
             applySafeInsets(
                 insets = insets,
+                renderer = renderer,
+                topBar = topBar,
+                topBarParams = topBarParams,
+                hopePanel = hopePanel,
+                hopeParams = hopeParams,
+                tempusPanel = tempusPanel,
+                tempusParams = tempusParams,
+            )
+        }
+
+        val layoutListener =
+            View.OnLayoutChangeListener { _, _, _, _, _, _, _, _, _ ->
+                contentRoot.post { update() }
+            }
+        topBar.addOnLayoutChangeListener(layoutListener)
+        hopePanel.addOnLayoutChangeListener(layoutListener)
+        tempusPanel.addOnLayoutChangeListener(layoutListener)
+
+        contentRoot.setOnApplyWindowInsetsListener { _, insets ->
+            lastInsets = insets
+            applySafeInsets(
+                insets = insets,
+                renderer = renderer,
                 topBar = topBar,
                 topBarParams = topBarParams,
                 hopePanel = hopePanel,
@@ -158,23 +190,12 @@ class MainActivity : Activity() {
             insets
         }
         contentRoot.requestApplyInsets()
-        contentRoot.post {
-            contentRoot.rootWindowInsets?.let { insets ->
-                applySafeInsets(
-                    insets = insets,
-                    topBar = topBar,
-                    topBarParams = topBarParams,
-                    hopePanel = hopePanel,
-                    hopeParams = hopeParams,
-                    tempusPanel = tempusPanel,
-                    tempusParams = tempusParams,
-                )
-            }
-        }
+        contentRoot.post { update() }
     }
 
     private fun applySafeInsets(
         insets: WindowInsets,
+        renderer: ArcnetRendererView,
         topBar: View,
         topBarParams: FrameLayout.LayoutParams,
         hopePanel: View,
@@ -192,16 +213,20 @@ class MainActivity : Activity() {
         topBarParams.rightMargin = right
         topBar.layoutParams = topBarParams
 
-        hopeParams.leftMargin = left
-        hopeParams.topMargin = top
-        hopeParams.rightMargin = right
-        hopeParams.bottomMargin = bottom
-        hopePanel.layoutParams = hopeParams
-
         tempusParams.leftMargin = left
         tempusParams.rightMargin = right
         tempusParams.bottomMargin = bottom
         tempusPanel.layoutParams = tempusParams
+
+        hopeParams.leftMargin = left + dp(12)
+        hopeParams.rightMargin = right + dp(12)
+        hopeParams.bottomMargin = bottom + tempusPanel.measuredHeight + dp(12)
+        hopePanel.layoutParams = hopeParams
+
+        renderer.setOccupiedBands(
+            topPx = top + topBar.measuredHeight + dp(12),
+            bottomPx = bottom + tempusPanel.measuredHeight + hopePanel.measuredHeight + dp(36),
+        )
     }
 
     private fun captureArchitectPulse(

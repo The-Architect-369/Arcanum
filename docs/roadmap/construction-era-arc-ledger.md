@@ -5,7 +5,7 @@ visibility: public
 phase: "Pre-Genesis"
 era: "Construction Era"
 wave: "CE-W04"
-last_updated: 2026-09-09
+last_updated: 2026-09-10
 maintainer: The-Architect-369
 authority: "Human Architect naming/continuity convention; evidence and promotion remain governed by existing wave contracts"
 ---
@@ -23,15 +23,6 @@ CE-WNN-ANN
 ```
 
 where `WNN` is the Construction Era wave and `ANN` is the sequential implementation arc within that wave.
-
-Examples:
-
-```text
-CE-W04-A01
-CE-W04-A02
-CE-W04-A03
-CE-W04-A04
-```
 
 This convention does not numerologically predetermine how many arcs a wave contains. A wave closes only when its evidence contract closes.
 
@@ -67,29 +58,39 @@ Established Human-triggered local observation, privacy-redacted frozen export, v
 
 Established the persistent private development signing path, migrated the physical node into that signing lineage, repaired AndroidKeyStore/provider-generated AES-GCM IV handling, and physically demonstrated recovered Hope state on v3.
 
-### CE-W04-A04 — Repository-index closure and v4 continuity candidate
+### CE-W04-A04 — Repository-index closure and v4 continuity proof
+
+Closed the stale deterministic repository index, produced Android v4 with the same persistent development signer, and physically demonstrated a clean in-place update without uninstall/data clear with protected Hope reflection recovery preserved.
+
+A04 remains an implementation/evidence arc and does not promote CE-W04 or `main`.
+
+### CE-W04-A05 — Hope-first static embodiment and SceneViewportPolicy
 
 Current arc.
 
 Objectives:
 
-1. restore deterministic `docs/repo/repo-index.json` synchronization as a separate generated companion commit;
-2. produce Android `versionCode = 4` with the same persistent development signer;
-3. make no Hope storage-envelope, key-alias, identity, geometry, protocol, governance, or network-semantic change;
-4. prove v3-created benign Hope state survives an in-place v3 → v4 update without uninstall or data clear;
-5. complete remaining adaptive-layout evidence before enabling physical Visual Orbit interaction.
+1. establish a protected Human-facing scene center before orbit or animation;
+2. add pure `SceneViewportPolicy` presentation bounds around occupied participant UI bands;
+3. keep canonical geometry coordinates/topology/reference vectors immutable;
+4. visually prioritize the inner Hope octahedron while subordinating outer ARCnet geometry;
+5. collapse private reflection editing by default and require deliberate Human opening;
+6. compact participant-facing Tempus presentation while keeping full local provenance available to the Architect observation/accessibility surfaces;
+7. advance Android build provenance to `versionCode = 5`, `CE-W04-A05`;
+8. preserve protected Hope continuity across v4 → v5 without uninstall or data clear;
+9. keep the Architect observer screenshot/JSON/ZIP path intact for a post-A05 visual audit.
 
-The v4 candidate carries build provenance identifier `CE-W04-A04`.
+A05 deliberately does **not** add orbit, animation, inertia, star-tetrahedron activation, or screen recording. Motion observation belongs in a later motion arc after there is motion worth auditing.
 
 ## Next intended arc
 
-Subject to A04 evidence closure, the next implementation arc is expected to be:
+Subject to A05 physical/visual closure, the next implementation arc is expected to separate orbit mathematics from interaction attachment, for example:
 
 ```text
-CE-W04-A05 — Hope-first static embodiment and SceneViewportPolicy
+CE-W04-A06 — viewer-only orbit reducer and invariant tests
 ```
 
-A05 should establish the protected Hope center and adaptive scene composition before viewer-orbit gestures are enabled. The exact scope remains evidence-gated and may be revised by the Human Architect.
+A subsequent arc may attach bounded gestures/motion and, if justified, extend the Architect observer with a short Human-triggered redacted visual clip.
 
 ## Promotion discipline
 

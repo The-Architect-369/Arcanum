@@ -4,6 +4,7 @@ import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
+import android.graphics.RectF
 import android.view.View
 import kotlin.math.abs
 
@@ -11,31 +12,48 @@ class ArcnetRendererView(
     context: Context,
     private val runtimeBridgeLabel: String,
 ) : View(context) {
-    private val linePaint =
+    private val outerLinePaint =
         Paint(Paint.ANTI_ALIAS_FLAG).apply {
             color = Color.WHITE
             style = Paint.Style.STROKE
-            strokeWidth = 2.0f
+            strokeWidth = 1.25f
+            alpha = 58
+        }
+
+    private val innerLinePaint =
+        Paint(Paint.ANTI_ALIAS_FLAG).apply {
+            color = Color.WHITE
+            style = Paint.Style.STROKE
+            strokeWidth = 2.25f
+            alpha = 228
         }
 
     private val seedPaint =
         Paint(Paint.ANTI_ALIAS_FLAG).apply {
-            color = Color.LTGRAY
+            color = Color.WHITE
             style = Paint.Style.STROKE
-            strokeWidth = 1.5f
-            alpha = 150
+            strokeWidth = 1.25f
+            alpha = 74
         }
 
-    private val pointPaint =
+    private val outerPointPaint =
         Paint(Paint.ANTI_ALIAS_FLAG).apply {
             color = Color.WHITE
             style = Paint.Style.FILL
+            alpha = 76
         }
 
-    private val labelPaint =
+    private val innerPointPaint =
         Paint(Paint.ANTI_ALIAS_FLAG).apply {
-            color = Color.LTGRAY
-            textSize = 28.0f
+            color = Color.WHITE
+            style = Paint.Style.FILL
+            alpha = 238
+        }
+
+    private val centerPaint =
+        Paint(Paint.ANTI_ALIAS_FLAG).apply {
+            color = Color.WHITE
+            style = Paint.Style.FILL
         }
 
     private val errorPaint =
@@ -43,6 +61,9 @@ class ArcnetRendererView(
             color = Color.RED
             textSize = 28.0f
         }
+
+    private var topOccupiedPx: Int = dp(96)
+    private var bottomOccupiedPx: Int = dp(280)
 
     private val contractsResult: Result<CanonicalContracts> by lazy {
         runCatching {
@@ -66,6 +87,27 @@ class ArcnetRendererView(
         }
     }
 
+    init {
+        contentDescription =
+            "Hope is centered in a bounded ARCnet scene. Outer ARCnet geometry is visually subordinate. " +
+                "This view is presentation-only and has authorityEffect none. $runtimeBridgeLabel"
+        importantForAccessibility = IMPORTANT_FOR_ACCESSIBILITY_YES
+    }
+
+    fun setOccupiedBands(
+        topPx: Int,
+        bottomPx: Int,
+    ) {
+        val nextTop = topPx.coerceAtLeast(0)
+        val nextBottom = bottomPx.coerceAtLeast(0)
+        if (nextTop == topOccupiedPx && nextBottom == bottomOccupiedPx) {
+            return
+        }
+        topOccupiedPx = nextTop
+        bottomOccupiedPx = nextBottom
+        invalidate()
+    }
+
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
         canvas.drawColor(Color.BLACK)
@@ -86,31 +128,37 @@ class ArcnetRendererView(
             return
         }
 
-        val viewport =
-            ViewportSpec(
-                x0 = 0.0,
-                y0 = 0.0,
-                width = width.toDouble(),
-                height = height.toDouble(),
+        val scene =
+            SceneViewportPolicy.resolve(
+                widthPx = width,
+                heightPx = height,
+                topOccupiedPx = topOccupiedPx,
+                bottomOccupiedPx = bottomOccupiedPx,
+                horizontalInsetPx = dp(16),
+                minimumHeightPx = dp(300),
             )
+        val viewport = scene.asProjectionViewport()
         val engine = ProjectionEngine(contracts.profile)
 
-        contracts.groups.forEach { group ->
-            drawCanonicalEdges(canvas, engine, viewport, group)
+        val restoreCount = canvas.save()
+        canvas.clipRect(
+            RectF(
+                scene.x0.toFloat(),
+                scene.y0.toFloat(),
+                (scene.x0 + scene.width).toFloat(),
+                (scene.y0 + scene.height).toFloat(),
+            ),
+        )
+
+        contracts.groups.firstOrNull { it.id == "outerCube" }?.let { group ->
+            drawCanonicalEdges(canvas, engine, viewport, group, outerLinePaint)
+            drawPoints(canvas, engine, viewport, group, outerPointPaint, 3.0f)
         }
 
-        contracts.groups
-            .flatMap { it.points }
-            .forEach { point ->
-                engine.project(point.q, viewport)?.let { projected ->
-                    canvas.drawCircle(
-                        projected.screenX.toFloat(),
-                        projected.screenY.toFloat(),
-                        5.0f,
-                        pointPaint,
-                    )
-                }
-            }
+        contracts.groups.firstOrNull { it.id == "innerOctahedron" }?.let { group ->
+            drawCanonicalEdges(canvas, engine, viewport, group, innerLinePaint)
+            drawPoints(canvas, engine, viewport, group, innerPointPaint, 4.5f)
+        }
 
         engine.project(contracts.origin.q, viewport)?.let { projected ->
             seedOverlay
@@ -126,24 +174,12 @@ class ArcnetRendererView(
             canvas.drawCircle(
                 projected.screenX.toFloat(),
                 projected.screenY.toFloat(),
-                8.0f,
-                pointPaint,
+                7.0f,
+                centerPaint,
             )
         }
 
-        canvas.drawText(
-            "ARCnet · canonical projection · authorityEffect=none",
-            24.0f,
-            40.0f,
-            labelPaint,
-        )
-        canvas.drawText(runtimeBridgeLabel, 24.0f, 76.0f, labelPaint)
-        canvas.drawText(
-            "Hope Seed · symbolic presentation overlay · authorityEffect=none",
-            24.0f,
-            112.0f,
-            labelPaint,
-        )
+        canvas.restoreToCount(restoreCount)
     }
 
     private fun drawCanonicalEdges(
@@ -151,6 +187,7 @@ class ArcnetRendererView(
         engine: ProjectionEngine,
         viewport: ViewportSpec,
         group: GeometryGroup,
+        paint: Paint,
     ) {
         for (firstIndex in group.points.indices) {
             for (secondIndex in firstIndex + 1 until group.points.size) {
@@ -165,7 +202,27 @@ class ArcnetRendererView(
                     segment.firstY.toFloat(),
                     segment.secondX.toFloat(),
                     segment.secondY.toFloat(),
-                    linePaint,
+                    paint,
+                )
+            }
+        }
+    }
+
+    private fun drawPoints(
+        canvas: Canvas,
+        engine: ProjectionEngine,
+        viewport: ViewportSpec,
+        group: GeometryGroup,
+        paint: Paint,
+        radius: Float,
+    ) {
+        group.points.forEach { point ->
+            engine.project(point.q, viewport)?.let { projected ->
+                canvas.drawCircle(
+                    projected.screenX.toFloat(),
+                    projected.screenY.toFloat(),
+                    radius,
+                    paint,
                 )
             }
         }
@@ -188,4 +245,7 @@ class ArcnetRendererView(
         observed: Double,
         expected: Double,
     ): Boolean = abs(observed - expected) <= 1e-9 * maxOf(1.0, abs(observed), abs(expected))
+
+    private fun dp(value: Int): Int =
+        (value * resources.displayMetrics.density).toInt()
 }
