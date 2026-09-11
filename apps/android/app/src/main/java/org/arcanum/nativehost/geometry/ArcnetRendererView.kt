@@ -5,7 +5,12 @@ import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.RectF
+import android.os.Bundle
+import android.view.GestureDetector
+import android.view.MotionEvent
+import android.view.ScaleGestureDetector
 import android.view.View
+import android.view.accessibility.AccessibilityNodeInfo
 import kotlin.math.abs
 
 class ArcnetRendererView(
@@ -41,6 +46,51 @@ class ArcnetRendererView(
     private var topOccupiedPx: Int = dp(96)
     private var bottomOccupiedPx: Int = dp(280)
     private var viewerOrbitState: ViewerOrbitState = ViewerOrbitReducer.neutral
+    private var gestureAccepted = false
+
+    private val gestureDetector =
+        GestureDetector(
+            context,
+            object : GestureDetector.SimpleOnGestureListener() {
+                override fun onDown(e: MotionEvent): Boolean = true
+
+                override fun onScroll(
+                    e1: MotionEvent?,
+                    e2: MotionEvent,
+                    distanceX: Float,
+                    distanceY: Float,
+                ): Boolean {
+                    if (!gestureAccepted) return false
+                    dispatchViewerAction(
+                        ViewerOrbitGesturePolicy.dragAction(
+                            distanceX = distanceX.toDouble(),
+                            distanceY = distanceY.toDouble(),
+                        ),
+                    )
+                    return true
+                }
+
+                override fun onDoubleTap(e: MotionEvent): Boolean {
+                    if (!gestureAccepted) return false
+                    dispatchViewerAction(ViewerOrbitAction.Reset)
+                    return true
+                }
+            },
+        )
+
+    private val scaleGestureDetector =
+        ScaleGestureDetector(
+            context,
+            object : ScaleGestureDetector.SimpleOnScaleGestureListener() {
+                override fun onScale(detector: ScaleGestureDetector): Boolean {
+                    if (!gestureAccepted) return false
+                    dispatchViewerAction(
+                        ViewerOrbitGesturePolicy.zoomAction(detector.scaleFactor.toDouble()),
+                    )
+                    return true
+                }
+            },
+        )
 
     private val contractsResult: Result<CanonicalContracts> by lazy {
         runCatching {
@@ -66,8 +116,10 @@ class ArcnetRendererView(
     init {
         contentDescription =
             "Hope is centered in a bounded ARCnet scene. Outer ARCnet geometry is visually subordinate. " +
-                "Viewer transform is presentation-only and has authorityEffect none. $runtimeBridgeLabel"
+                "Viewer transform is presentation-only and has authorityEffect none. " +
+                "Drag to orbit, pinch to zoom, double tap to reset. $runtimeBridgeLabel"
         importantForAccessibility = IMPORTANT_FOR_ACCESSIBILITY_YES
+        isFocusable = true
     }
 
     fun setOccupiedBands(topPx: Int, bottomPx: Int) {
@@ -87,6 +139,50 @@ class ArcnetRendererView(
 
     fun getViewerOrbitState(): ViewerOrbitState = viewerOrbitState
 
+    override fun onTouchEvent(event: MotionEvent): Boolean {
+        when (event.actionMasked) {
+            MotionEvent.ACTION_DOWN -> {
+                gestureAccepted = isInsideInteractiveScene(event.x, event.y)
+                if (!gestureAccepted) return false
+            }
+            MotionEvent.ACTION_CANCEL,
+            MotionEvent.ACTION_UP,
+            -> if (!gestureAccepted) return false
+        }
+
+        if (!gestureAccepted) return false
+        scaleGestureDetector.onTouchEvent(event)
+        gestureDetector.onTouchEvent(event)
+
+        if (event.actionMasked == MotionEvent.ACTION_CANCEL || event.actionMasked == MotionEvent.ACTION_UP) {
+            gestureAccepted = false
+        }
+        return true
+    }
+
+    override fun onInitializeAccessibilityNodeInfo(info: AccessibilityNodeInfo) {
+        super.onInitializeAccessibilityNodeInfo(info)
+        info.addAction(AccessibilityNodeInfo.AccessibilityAction(ACTION_ORBIT_LEFT, "Rotate view left"))
+        info.addAction(AccessibilityNodeInfo.AccessibilityAction(ACTION_ORBIT_RIGHT, "Rotate view right"))
+        info.addAction(AccessibilityNodeInfo.AccessibilityAction(ACTION_ORBIT_UP, "Rotate view up"))
+        info.addAction(AccessibilityNodeInfo.AccessibilityAction(ACTION_ORBIT_DOWN, "Rotate view down"))
+        info.addAction(AccessibilityNodeInfo.AccessibilityAction(ACTION_ZOOM_IN, "Zoom view in"))
+        info.addAction(AccessibilityNodeInfo.AccessibilityAction(ACTION_ZOOM_OUT, "Zoom view out"))
+        info.addAction(AccessibilityNodeInfo.AccessibilityAction(ACTION_RESET_VIEW, "Reset view"))
+    }
+
+    override fun performAccessibilityAction(action: Int, arguments: Bundle?): Boolean =
+        when (action) {
+            ACTION_ORBIT_LEFT -> dispatchAccessibilityAction(ViewerOrbitAction.Drag(-ACCESSIBILITY_ROTATION_STEP, 0.0))
+            ACTION_ORBIT_RIGHT -> dispatchAccessibilityAction(ViewerOrbitAction.Drag(ACCESSIBILITY_ROTATION_STEP, 0.0))
+            ACTION_ORBIT_UP -> dispatchAccessibilityAction(ViewerOrbitAction.Drag(0.0, ACCESSIBILITY_ROTATION_STEP))
+            ACTION_ORBIT_DOWN -> dispatchAccessibilityAction(ViewerOrbitAction.Drag(0.0, -ACCESSIBILITY_ROTATION_STEP))
+            ACTION_ZOOM_IN -> dispatchAccessibilityAction(ViewerOrbitAction.ZoomBy(ACCESSIBILITY_ZOOM_FACTOR))
+            ACTION_ZOOM_OUT -> dispatchAccessibilityAction(ViewerOrbitAction.ZoomBy(1.0 / ACCESSIBILITY_ZOOM_FACTOR))
+            ACTION_RESET_VIEW -> dispatchAccessibilityAction(ViewerOrbitAction.Reset)
+            else -> super.performAccessibilityAction(action, arguments)
+        }
+
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
         canvas.drawColor(Color.BLACK)
@@ -95,24 +191,7 @@ class ArcnetRendererView(
         val seedOverlay = seedOverlayResult.getOrElse { failure -> drawFailClosed(canvas, failure); return }
         if (width <= 0 || height <= 0) return
 
-        // Preserve the inherited runtime viewport ownership invariant. A05 derives a smaller
-        // presentation viewport from this physical View; canonical geometry remains unchanged.
-        val runtimeViewport =
-            ViewportSpec(
-                x0 = 0.0,
-                y0 = 0.0,
-                width = width.toDouble(),
-                height = height.toDouble(),
-            )
-        val scene =
-            SceneViewportPolicy.resolve(
-                widthPx = runtimeViewport.width.toInt(),
-                heightPx = runtimeViewport.height.toInt(),
-                topOccupiedPx = topOccupiedPx,
-                bottomOccupiedPx = bottomOccupiedPx,
-                horizontalInsetPx = dp(16),
-                minimumHeightPx = dp(300),
-            )
+        val scene = resolveSceneViewport()
         val viewport = scene.asProjectionViewport()
         val engine = ProjectionEngine(contracts.profile)
         val viewerOrbit = viewerOrbitState
@@ -136,6 +215,49 @@ class ArcnetRendererView(
             canvas.drawCircle(projected.screenX.toFloat(), projected.screenY.toFloat(), 7.0f, centerPaint)
         }
         canvas.restoreToCount(restoreCount)
+    }
+
+    private fun resolveSceneViewport(): SceneViewport {
+        val runtimeViewport =
+            ViewportSpec(
+                x0 = 0.0,
+                y0 = 0.0,
+                width = width.toDouble(),
+                height = height.toDouble(),
+            )
+        return SceneViewportPolicy.resolve(
+            widthPx = runtimeViewport.width.toInt(),
+            heightPx = runtimeViewport.height.toInt(),
+            topOccupiedPx = topOccupiedPx,
+            bottomOccupiedPx = bottomOccupiedPx,
+            horizontalInsetPx = dp(16),
+            minimumHeightPx = dp(300),
+        )
+    }
+
+    private fun isInsideInteractiveScene(x: Float, y: Float): Boolean {
+        if (width <= 0 || height <= 0) return false
+        return ViewerOrbitGesturePolicy.acceptsScenePoint(
+            scene = resolveSceneViewport(),
+            x = x.toDouble(),
+            y = y.toDouble(),
+        )
+    }
+
+    private fun dispatchViewerAction(action: ViewerOrbitAction) {
+        setViewerOrbitState(ViewerOrbitReducer.reduce(viewerOrbitState, action))
+    }
+
+    private fun dispatchAccessibilityAction(action: ViewerOrbitAction): Boolean {
+        dispatchViewerAction(action)
+        announceForAccessibility(
+            when (action) {
+                ViewerOrbitAction.Reset -> "View reset"
+                is ViewerOrbitAction.Drag -> "View rotated"
+                is ViewerOrbitAction.ZoomBy -> "View zoom changed"
+            },
+        )
+        return true
     }
 
     private fun drawCanonicalEdges(
@@ -182,4 +304,16 @@ class ArcnetRendererView(
         abs(observed - expected) <= 1e-9 * maxOf(1.0, abs(observed), abs(expected))
 
     private fun dp(value: Int): Int = (value * resources.displayMetrics.density).toInt()
+
+    companion object {
+        private const val ACCESSIBILITY_ROTATION_STEP = 15.0
+        private const val ACCESSIBILITY_ZOOM_FACTOR = 1.15
+        private const val ACTION_ORBIT_LEFT = 0x02010001
+        private const val ACTION_ORBIT_RIGHT = 0x02010002
+        private const val ACTION_ORBIT_UP = 0x02010003
+        private const val ACTION_ORBIT_DOWN = 0x02010004
+        private const val ACTION_ZOOM_IN = 0x02010005
+        private const val ACTION_ZOOM_OUT = 0x02010006
+        private const val ACTION_RESET_VIEW = 0x02010007
+    }
 }

@@ -49,7 +49,25 @@ The transform:
 - is consumed by both point projection and homogeneous segment clipping;
 - is stored ephemerally by `ArcnetRendererView` and triggers only redraw invalidation.
 
-A06.2 does not yet attach Android gestures or animation. Its purpose is to establish a verified mathematical/render boundary before Human motion input is admitted.
+A06.2 does not attach Android gestures or animation. Its purpose is to establish a verified mathematical/render boundary before Human motion input is admitted.
+
+## Third tranche — A06.3 bounded Human gesture attachment
+
+A06.3 admits Human input only inside the resolved `SceneViewportPolicy` scene and maps that input into the already-bounded reducer.
+
+The gesture surface is limited to:
+
+- one-finger drag mapped deterministically to yaw/pitch deltas;
+- pinch mapped to positive bounded viewer zoom factors;
+- double-tap mapped to exact `ViewerOrbitAction.Reset`;
+- no gesture acceptance when the initial touch begins outside the current scene viewport;
+- no gesture authority over top-bar, Hope, Tempus, or other participant-control regions.
+
+`ViewerOrbitGesturePolicy` owns only deterministic gesture-to-action mapping and scene-point acceptance. It does not own canonical geometry, projection constants, Hope state, Tempus state, identity, receipts, capabilities, persistence, networking, or model calls.
+
+For geometry-free access, the renderer exposes explicit accessibility actions for rotate left/right/up/down, zoom in/out, and exact reset. These actions dispatch through the same `ViewerOrbitReducer`; they do not create a second motion authority path.
+
+A06.3 remains motion-minimal: there is no inertia, fling continuation, cinematic easing, autonomous animation, or persisted camera state.
 
 ## Bounds
 
@@ -64,11 +82,19 @@ neutral: yaw=0, pitch=0, zoom=1
 
 These are implementation bounds, not canonical geometry constants.
 
+The initial drag mapping is presentation-only:
+
+```text
+0.18 degrees per input pixel
+```
+
+Accessibility rotation uses fixed 15-degree reducer actions, while accessibility zoom uses multiplicative 1.15 steps. All resulting state remains subject to the same reducer bounds.
+
 ## Triple-spine contract
 
 ### G — Geometry & Mathematics
 
-Canonical source coordinates, topology, projection reference vectors, and pinned assets are immutable under viewer interaction. A viewer reducer or camera transform cannot own or rewrite any `GeometryPoint.q`, canonical registry, model transform, or source asset.
+Canonical source coordinates, topology, projection reference vectors, and pinned assets are immutable under viewer interaction. A viewer reducer, camera transform, gesture adapter, or accessibility action cannot own or rewrite any `GeometryPoint.q`, canonical registry, model transform, or source asset.
 
 The required invariant is:
 
@@ -88,29 +114,30 @@ ProjectionEngine.project(q, viewport, ViewerOrbitState.NEUTRAL)
 
 ### E — Embodiment & Visual Experience
 
-A05 remains the exact neutral orientation. A06.2 permits deterministic non-neutral camera/view projections but no Human gesture path yet. Future gesture attachment must be confined to the `SceneViewportPolicy` scene and excluded from participant controls. Reset must return exactly to neutral rather than approximately to a visually similar state.
+A05 remains the exact neutral orientation. A06 permits deterministic non-neutral camera/view projections and bounded Human manipulation only inside the scene. Participant controls remain gesture-excluded by the same viewport boundary that excludes geometry drawing. Reset returns exactly to neutral rather than approximately to a visually similar state.
+
+The first physical A06 test should validate response, bounds, reset, participant-control exclusion, and accessibility-equivalent actions before any inertia or animation polish is introduced.
 
 ### A — Architecture & Technology
 
 Viewer state is presentation-only and has `authorityEffect=none`. It may not write Hope protected storage, Tempus persistence, identity state, receipts, capabilities, governance records, protocol state, or network/model state.
 
-`ArcnetRendererView.setViewerOrbitState(...)` is an in-memory rendering input only. It performs no persistence, authority, network, protocol, or storage operation.
+`ArcnetRendererView.setViewerOrbitState(...)` remains an in-memory rendering input only. Touch and accessibility adapters dispatch only `ViewerOrbitAction` values into the reducer and trigger redraw invalidation.
 
-## Explicit exclusions for A06.1–A06.2
+## Explicit exclusions for A06.1–A06.3
 
-These tranches do not yet add:
+These tranches do not add:
 
-- Android touch listeners;
-- drag/pinch gesture attachment;
-- inertia;
-- animation timing;
+- inertia or fling continuation;
+- cinematic easing or autonomous animation timing;
 - screen/video recording;
 - star-tetrahedron activation;
 - geometry mutation;
 - camera persistence across process restart;
-- network or model calls.
+- network or model calls;
+- Hope, Tempus, identity, receipt, governance, capability, or protocol mutation.
 
-Those may be introduced only after the reducer, projection integration, and inherited invariants are green.
+Those may be introduced only after the bounded reducer, projection integration, gesture exclusion, accessibility actions, and inherited invariants are green.
 
 ## Acceptance criteria
 
@@ -125,11 +152,17 @@ Those may be introduced only after the reducer, projection integration, and inhe
 9. Viewer zoom changes camera distance rather than canonical model scale.
 10. Segment clipping uses the same viewer camera transform as point projection.
 11. `ArcnetRendererView` keeps viewer state ephemeral and redraw-only.
-12. Existing CE-W01–A05 geometry, Hope, Tempus, authority, privacy, observer, and repository-index verification remains green.
-13. Build provenance remains `versionCode = 6`, `versionName = 0.1.5-cew04-a06`, `ARCANUM_IMPLEMENTATION_ARC = CE-W04-A06` for this Arc.
+12. Gesture mapping is deterministic and finite-input checked.
+13. A gesture can begin only inside the resolved scene viewport.
+14. One-finger drag dispatches reducer yaw/pitch actions; pinch dispatches reducer zoom; double-tap dispatches exact reset.
+15. Participant-control regions remain outside the accepted gesture surface.
+16. Accessibility actions provide rotate, zoom, and exact reset through the same reducer path.
+17. No inertia, animation, persistence, network/model, Hope, Tempus, identity, receipt, governance, capability, or protocol mutation is introduced.
+18. Existing CE-W01–A05 geometry, Hope, Tempus, authority, privacy, observer, and repository-index verification remains green.
+19. Build provenance remains `versionCode = 6`, `versionName = 0.1.5-cew04-a06`, `ARCANUM_IMPLEMENTATION_ARC = CE-W04-A06` for this Arc.
 
 ## Next tranche
 
-After A06.2 is verified, A06 may attach bounded Android gesture input under `SceneViewportPolicy`: one-finger drag for yaw/pitch, pinch for zoom, and exact reset, with participant-control exclusion and geometry-free equivalent controls. Motion evidence remains Human-triggered and local-first.
+After A06.3 is verified and physically exercised, A06 may add bounded motion refinement and Human-triggered short motion evidence. Inertia or cinematic animation remains a separate decision and must not be inferred from gesture support alone.
 
 No A06 work promotes `main` or closes CE-W04 by itself.
