@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-09-10T08:01:52Z",
+  "generated_at": "2026-09-10T21:05:14Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "19b746817",
+  "commit": "a92f85e76",
   "generator_version": "1.5",
   "files": [
     {
@@ -7126,11 +7126,11 @@
     {
       "path": "scripts/verify-ce-w02-native-shell.py",
       "type": "file",
-      "size_bytes": 10377,
-      "last_modified_commit": "9aaf7d65d",
+      "size_bytes": 10707,
+      "last_modified_commit": "a92f85e76",
       "is_empty": false,
       "extension": ".py",
-      "lines": 182
+      "lines": 191
     },
     {
       "path": "scripts/verify-ce-w02-projection.py",
