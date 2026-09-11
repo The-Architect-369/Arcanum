@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-09-10T21:05:14Z",
+  "generated_at": "2026-09-11T01:57:33Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "a92f85e76",
+  "commit": "9c5f7d2b8",
   "generator_version": "1.5",
   "files": [
     {
@@ -295,11 +295,11 @@
     {
       "path": "apps/android/app/src/main/java/org/arcanum/nativehost/geometry/ArcnetRendererView.kt",
       "type": "file",
-      "size_bytes": 7773,
-      "last_modified_commit": "19b746817",
+      "size_bytes": 13584,
+      "last_modified_commit": "9c5f7d2b8",
       "is_empty": false,
       "extension": ".kt",
-      "lines": 185
+      "lines": 319
     },
     {
       "path": "apps/android/app/src/main/java/org/arcanum/nativehost/geometry/CanonicalContracts.kt",
@@ -336,6 +336,15 @@
       "is_empty": false,
       "extension": ".kt",
       "lines": 46
+    },
+    {
+      "path": "apps/android/app/src/main/java/org/arcanum/nativehost/geometry/ViewerOrbitGesturePolicy.kt",
+      "type": "file",
+      "size_bytes": 1101,
+      "last_modified_commit": "9c5f7d2b8",
+      "is_empty": false,
+      "extension": ".kt",
+      "lines": 37
     },
     {
       "path": "apps/android/app/src/main/java/org/arcanum/nativehost/geometry/ViewerOrbitState.kt",
@@ -489,6 +498,15 @@
       "is_empty": false,
       "extension": ".kt",
       "lines": 63
+    },
+    {
+      "path": "apps/android/app/src/test/java/org/arcanum/nativehost/geometry/ViewerOrbitGesturePolicyTest.kt",
+      "type": "file",
+      "size_bytes": 1264,
+      "last_modified_commit": "9c5f7d2b8",
+      "is_empty": false,
+      "extension": ".kt",
+      "lines": 38
     },
     {
       "path": "apps/android/app/src/test/java/org/arcanum/nativehost/geometry/ViewerOrbitStateTest.kt",
@@ -4093,11 +4111,11 @@
     {
       "path": "docs/specs/app/ce-w04-a06-viewer-orbit.md",
       "type": "file",
-      "size_bytes": 5606,
-      "last_modified_commit": "19b746817",
+      "size_bytes": 8046,
+      "last_modified_commit": "9c5f7d2b8",
       "is_empty": false,
       "extension": ".md",
-      "lines": 135
+      "lines": 168
     },
     {
       "path": "docs/specs/app/ce-w04-seed-node-alpha.md",
