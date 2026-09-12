@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-09-12T04:34:48Z",
+  "generated_at": "2026-09-12T04:57:32Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "8b03e6445",
+  "commit": "ecec03a27",
   "generator_version": "1.5",
   "files": [
     {
@@ -187,20 +187,20 @@
     {
       "path": "apps/android/app/build.gradle.kts",
       "type": "file",
-      "size_bytes": 2589,
-      "last_modified_commit": "f09228a56",
+      "size_bytes": 2423,
+      "last_modified_commit": "ecec03a27",
       "is_empty": false,
       "extension": ".kts",
-      "lines": 92
+      "lines": 90
     },
     {
       "path": "apps/android/app/src/main/AndroidManifest.xml",
       "type": "file",
-      "size_bytes": 902,
-      "last_modified_commit": "2ed01af5e",
+      "size_bytes": 1051,
+      "last_modified_commit": "ecec03a27",
       "is_empty": false,
       "extension": ".xml",
-      "lines": 22
+      "lines": 25
     },
     {
       "path": "apps/android/app/src/main/java/org/arcanum/nativehost/MainActivity.kt",
@@ -228,6 +228,15 @@
       "is_empty": false,
       "extension": ".kt",
       "lines": 58
+    },
+    {
+      "path": "apps/android/app/src/main/java/org/arcanum/nativehost/architect/ArchitectBrokerClient.kt",
+      "type": "file",
+      "size_bytes": 4529,
+      "last_modified_commit": "ecec03a27",
+      "is_empty": false,
+      "extension": ".kt",
+      "lines": 116
     },
     {
       "path": "apps/android/app/src/main/java/org/arcanum/nativehost/architect/ArchitectObservationBridge.kt",
@@ -286,11 +295,11 @@
     {
       "path": "apps/android/app/src/main/java/org/arcanum/nativehost/architect/ArchitectShellPanel.kt",
       "type": "file",
-      "size_bytes": 2211,
-      "last_modified_commit": "f09228a56",
+      "size_bytes": 5465,
+      "last_modified_commit": "ecec03a27",
       "is_empty": false,
       "extension": ".kt",
-      "lines": 68
+      "lines": 151
     },
     {
       "path": "apps/android/app/src/main/java/org/arcanum/nativehost/architect/ArchitectVisualDiagnostics.kt",
@@ -453,6 +462,15 @@
       "is_empty": false,
       "extension": ".kt",
       "lines": 115
+    },
+    {
+      "path": "apps/android/app/src/main/res/xml/architect_loopback_network_security.xml",
+      "type": "file",
+      "size_bytes": 342,
+      "last_modified_commit": "ecec03a27",
+      "is_empty": false,
+      "extension": ".xml",
+      "lines": 8
     },
     {
       "path": "apps/android/app/src/test/java/org/arcanum/nativehost/application/NativeApplicationRegistryTest.kt",
@@ -3967,11 +3985,11 @@
     {
       "path": "docs/roadmap/construction-era-arc-ledger.md",
       "type": "file",
-      "size_bytes": 5773,
-      "last_modified_commit": "c543d6d93",
+      "size_bytes": 5790,
+      "last_modified_commit": "ecec03a27",
       "is_empty": false,
       "extension": ".md",
-      "lines": 119
+      "lines": 100
     },
     {
       "path": "docs/roadmap/construction-era-roadmap.md",
@@ -4134,6 +4152,15 @@
       "is_empty": false,
       "extension": ".md",
       "lines": 77
+    },
+    {
+      "path": "docs/specs/app/ce-w04-a08-native-architect-broker.md",
+      "type": "file",
+      "size_bytes": 5399,
+      "last_modified_commit": "ecec03a27",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 100
     },
     {
       "path": "docs/specs/app/ce-w04-seed-node-alpha.md",
@@ -7061,6 +7088,15 @@
       "lines": 207
     },
     {
+      "path": "scripts/mobile/arcanum-broker.sh",
+      "type": "file",
+      "size_bytes": 895,
+      "last_modified_commit": "ecec03a27",
+      "is_empty": false,
+      "extension": ".sh",
+      "lines": 28
+    },
+    {
       "path": "scripts/mobile/termux-bootstrap.sh",
       "type": "file",
       "size_bytes": 2467,
@@ -7216,11 +7252,11 @@
     {
       "path": "scripts/verify-ce-w04-architect-observer.py",
       "type": "file",
-      "size_bytes": 7898,
-      "last_modified_commit": "d2591f6c2",
+      "size_bytes": 8909,
+      "last_modified_commit": "ecec03a27",
       "is_empty": false,
       "extension": ".py",
-      "lines": 217
+      "lines": 128
     },
     {
       "path": "scripts/verify-repo-index.py",
