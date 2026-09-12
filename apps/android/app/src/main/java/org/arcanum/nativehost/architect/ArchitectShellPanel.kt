@@ -85,7 +85,7 @@ class ArchitectShellPanel(context: Context) : LinearLayout(context) {
             TextView(context).apply {
                 text =
                     "Broker idle.\n" +
-                        "This surface cannot execute arbitrary shell commands, mutate the repository, or contact a model provider."
+                        "This surface cannot execute arbitrary shell commands, cannot mutate the repository, or contact a model provider."
                 setTextColor(Color.LTGRAY)
                 textSize = 13f
                 setPadding(0, dp(14), 0, 0)
