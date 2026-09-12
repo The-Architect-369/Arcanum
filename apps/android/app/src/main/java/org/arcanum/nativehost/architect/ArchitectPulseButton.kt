@@ -141,13 +141,22 @@ class ArchitectPulseButton(
 
     private inline fun <reified T : View> Activity.findViews(): List<T> {
         val result = mutableListOf<T>()
-        fun walk(view: View) {
-            if (view is T) result += view
+
+        val pending = ArrayDeque<View>()
+        pending.add(findViewById(android.R.id.content))
+
+        while (pending.isNotEmpty()) {
+            val view = pending.removeFirst()
+            if (view is T) {
+                result += view
+            }
             if (view is ViewGroup) {
-                for (index in 0 until view.childCount) walk(view.getChildAt(index))
+                for (index in 0 until view.childCount) {
+                    pending.addLast(view.getChildAt(index))
+                }
             }
         }
-        walk(findViewById(android.R.id.content))
+
         return result
     }
 
