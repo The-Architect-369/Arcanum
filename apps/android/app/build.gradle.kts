@@ -28,8 +28,8 @@ android {
         applicationId = "org.arcanum.nativehost"
         minSdk = 26
         targetSdk = 35
-        versionCode = 7
-        versionName = "0.1.6-cew04-a07"
+        versionCode = 8
+        versionName = "0.1.7-cew04-a08"
         buildConfigField(
             "String",
             "ARCANUM_SOURCE_COMMIT",
@@ -38,7 +38,7 @@ android {
         buildConfigField(
             "String",
             "ARCANUM_IMPLEMENTATION_ARC",
-            "\"CE-W04-A07\"",
+            "\"CE-W04-A08\"",
         )
     }
 
@@ -74,8 +74,6 @@ android {
         jvmTarget = "17"
     }
 
-    // Canonical geometry/projection registries remain source-owned at repo root.
-    // Android consumes them directly as build assets; no copied expected geometry.
     sourceSets["main"].assets.srcDir(file("../../../docs/specs/geometry"))
 }
 
