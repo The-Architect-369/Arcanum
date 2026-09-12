@@ -158,9 +158,32 @@ def verify() -> None:
         "F55 integrated native libraries",
     )
 
-    # F56 — the composed host remains offline and authority-neutral.
-    require("<uses-permission" not in manifest.lower(), "F56 Android manifest has no permissions")
-    require("android.permission.internet" not in manifest.lower(), "F56 no INTERNET permission")
+    # F56 — inherited CE-W02 subsystems remain offline and authority-neutral.
+    # Later host capabilities may add the registered Architect loopback bridge,
+    # but arbitrary Android permissions and remote cleartext remain forbidden.
+    if "android.permission.INTERNET" in manifest:
+        require(
+            'android:networkSecurityConfig="@xml/architect_loopback_network_security"' in manifest,
+            "F56 forward INTERNET capability remains bound to Architect loopback policy",
+        )
+        loopback_policy = (
+            APP
+            / "app/src/main/res/xml/architect_loopback_network_security.xml"
+        )
+        require(
+            loopback_policy.is_file(),
+            "F56 forward loopback network-security policy exists",
+        )
+        loopback_policy_text = text(loopback_policy)
+        require(
+            '<base-config cleartextTrafficPermitted="false"' in loopback_policy_text,
+            "F56 forward network policy denies base cleartext",
+        )
+        require(
+            '<domain-config cleartextTrafficPermitted="true"' in loopback_policy_text
+            and ">127.0.0.1<" in loopback_policy_text,
+            "F56 forward cleartext exception is loopback-only",
+        )
     require(
         bridge["capabilities"]["allowed"] == ["tempus-system-clock-probe"],
         "F56 bounded W02.3 capability",
