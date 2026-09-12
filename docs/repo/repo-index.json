@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-09-12T10:31:32Z",
+  "generated_at": "2026-09-12T10:41:22Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "ae7e518de",
+  "commit": "31e23fb7f",
   "generator_version": "1.5",
   "files": [
     {
@@ -7180,11 +7180,11 @@
     {
       "path": "scripts/verify-ce-w02-integrated.py",
       "type": "file",
-      "size_bytes": 12450,
-      "last_modified_commit": "b6eabadae",
+      "size_bytes": 13415,
+      "last_modified_commit": "31e23fb7f",
       "is_empty": false,
       "extension": ".py",
-      "lines": 281
+      "lines": 304
     },
     {
       "path": "scripts/verify-ce-w02-native-bridge.py",
