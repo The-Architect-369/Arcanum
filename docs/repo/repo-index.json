@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-09-12T10:11:11Z",
+  "generated_at": "2026-09-12T10:31:32Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "877131bf4",
+  "commit": "ae7e518de",
   "generator_version": "1.5",
   "files": [
     {
@@ -7189,11 +7189,11 @@
     {
       "path": "scripts/verify-ce-w02-native-bridge.py",
       "type": "file",
-      "size_bytes": 9536,
-      "last_modified_commit": "d2b36d90c",
+      "size_bytes": 10444,
+      "last_modified_commit": "ae7e518de",
       "is_empty": false,
       "extension": ".py",
-      "lines": 220
+      "lines": 242
     },
     {
       "path": "scripts/verify-ce-w02-native-shell.py",
@@ -7217,7 +7217,7 @@
       "path": "scripts/verify-ce-w02-tempus-lifecycle.py",
       "type": "file",
       "size_bytes": 11005,
-      "last_modified_commit": "877131bf4",
+      "last_modified_commit": "ae7e518de",
       "is_empty": false,
       "extension": ".py",
       "lines": 223
