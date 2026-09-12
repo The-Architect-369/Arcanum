@@ -10,15 +10,16 @@ import android.widget.LinearLayout
 import android.widget.TextView
 
 /**
- * Native Architect destination for CE-W04-A08.
+ * Native Architect destination for CE-W04-A09.
  *
- * A08 attaches the first Human-approved operational capability: a read-only
- * repository inspection through the fixed-command local Termux broker.
+ * A09 expands the Architect from one read-only inspection into a small fixed
+ * Human-approved action registry. Every execution remains loopback-only,
+ * registered, receipt-bearing, and non-shell-text.
  */
 class ArchitectShellPanel(context: Context) : LinearLayout(context) {
     private val brokerClient = ArchitectBrokerClient()
     private val brokerStatus: TextView
-    private val inspectButton: Button
+    private val actionButton: Button
 
     init {
         orientation = VERTICAL
@@ -56,7 +57,7 @@ class ArchitectShellPanel(context: Context) : LinearLayout(context) {
             TextView(context).apply {
                 text =
                     "Human-approved local operations · authorityEffect=none\n" +
-                        "A08 permits one registered read-only action through the loopback Termux broker."
+                        "A09 exposes a fixed bounded action registry through the loopback Termux broker."
                 setTextColor(Color.GRAY)
                 textSize = 14f
                 setPadding(0, dp(14), 0, dp(14))
@@ -67,13 +68,13 @@ class ArchitectShellPanel(context: Context) : LinearLayout(context) {
             ),
         )
 
-        inspectButton =
+        actionButton =
             Button(context).apply {
-                text = "Inspect local repository"
-                setOnClickListener { requestRepositoryInspection() }
+                text = "Choose local action"
+                setOnClickListener { chooseAction() }
             }
         addView(
-            inspectButton,
+            actionButton,
             LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT,
@@ -99,52 +100,75 @@ class ArchitectShellPanel(context: Context) : LinearLayout(context) {
         )
     }
 
-    private fun requestRepositoryInspection() {
+    private fun chooseAction() {
+        val actions = ArchitectBrokerClient.Action.entries
         AlertDialog.Builder(context)
-            .setTitle("Approve local inspection?")
-            .setMessage(
-                "Run the registered read-only git_status action through the Termux broker on 127.0.0.1? " +
-                    "This action produces a broker receipt and cannot mutate the repository.",
-            )
+            .setTitle("Architect local actions")
+            .setItems(actions.map { it.label }.toTypedArray()) { _, which ->
+                requestApproval(actions[which])
+            }
             .setNegativeButton("Cancel", null)
-            .setPositiveButton("Run") { _, _ -> executeRepositoryInspection() }
             .show()
     }
 
-    private fun executeRepositoryInspection() {
-        inspectButton.isEnabled = false
-        brokerStatus.text = "Connecting to local Termux broker…"
+    private fun requestApproval(action: ArchitectBrokerClient.Action) {
+        AlertDialog.Builder(context)
+            .setTitle("Approve ${action.label.lowercase()}?")
+            .setMessage(
+                "${action.description}\n\n" +
+                    "Registered action: ${action.commandId}\n" +
+                    "Risk class: ${action.expectedRisk}\n" +
+                    "Transport: 127.0.0.1 only\n\n" +
+                    "This action produces a broker receipt and does not accept arbitrary shell text.",
+            )
+            .setNegativeButton("Cancel", null)
+            .setPositiveButton("Run") { _, _ -> executeAction(action) }
+            .show()
+    }
+
+    private fun executeAction(action: ArchitectBrokerClient.Action) {
+        actionButton.isEnabled = false
+        brokerStatus.text = "Running ${action.label.lowercase()} through local Termux broker…"
 
         Thread {
-            val result = brokerClient.inspectRepository()
+            val result = brokerClient.execute(action)
             post {
-                inspectButton.isEnabled = true
+                actionButton.isEnabled = true
                 brokerStatus.text =
                     result.fold(
-                        onSuccess = { inspection ->
-                            buildString {
-                                appendLine("Local repository inspection passed")
-                                appendLine("branch=${inspection.branch ?: "unknown"}")
-                                appendLine("commit=${inspection.commit ?: "unknown"}")
-                                appendLine("working tree:")
-                                appendLine(inspection.workingTree)
-                                inspection.receiptId?.let { appendLine("receipt=$it") }
-                                inspection.resultSha256?.let { append("resultSha256=$it") }
-                            }.trim()
-                        },
+                        onSuccess = { execution -> formatExecution(execution) },
                         onFailure = { error ->
-                            "Local broker unavailable or inspection failed.\n" +
+                            "Local broker unavailable or Architect action failed.\n" +
                                 "Start the repo-owned Termux broker, then try again.\n" +
                                 "${error.message ?: error::class.java.simpleName}"
                         },
                     )
             }
         }.apply {
-            name = "arcanum-architect-broker-inspection"
+            name = "arcanum-architect-broker-${action.commandId}"
             isDaemon = true
             start()
         }
     }
+
+    private fun formatExecution(execution: ArchitectBrokerClient.ExecutionResult): String =
+        buildString {
+            appendLine("Architect action passed · ${execution.action.label}")
+            appendLine("branch=${execution.branch ?: "unknown"}")
+            appendLine("commit=${execution.commit ?: "unknown"}")
+            if (execution.stdout.isBlank()) {
+                appendLine("result=(no output)")
+            } else {
+                appendLine("result:")
+                appendLine(execution.stdout.trimEnd())
+            }
+            if (execution.stderr.isNotBlank()) {
+                appendLine("stderr:")
+                appendLine(execution.stderr.trimEnd())
+            }
+            execution.receiptId?.let { appendLine("receipt=$it") }
+            execution.resultSha256?.let { append("resultSha256=$it") }
+        }.trim()
 
     private fun dp(value: Int): Int =
         (value * resources.displayMetrics.density).toInt()

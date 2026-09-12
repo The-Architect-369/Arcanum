@@ -24,14 +24,14 @@ require(ceiling.get("protocolSubmission") is False, "W04 must not submit protoco
 require(ceiling.get("modelDependency") is False, "W04 must not require a model provider")
 
 manifest = (ROOT / "apps/android/app/src/main/AndroidManifest.xml").read_text(encoding="utf-8")
-require("android.permission.INTERNET" in manifest, "A08 native loopback broker bridge requires Android INTERNET permission")
-require("architect_loopback_network_security" in manifest, "A08 must bind cleartext policy to the loopback network-security config")
+require("android.permission.INTERNET" in manifest, "A09 native loopback broker bridge requires Android INTERNET permission")
+require("architect_loopback_network_security" in manifest, "A09 must bind cleartext policy to the loopback network-security config")
 for required_phrase in ("ArchitectObservationProvider", 'android:exported="false"', 'android:grantUriPermissions="true"'):
     require(required_phrase in manifest, f"Android manifest missing bounded provider control: {required_phrase!r}")
 
 network_security = (ROOT / "apps/android/app/src/main/res/xml/architect_loopback_network_security.xml").read_text(encoding="utf-8")
 for required_phrase in ('<base-config cleartextTrafficPermitted="false"', '<domain-config cleartextTrafficPermitted="true"', '>127.0.0.1<'):
-    require(required_phrase in network_security, f"A08 loopback network policy missing: {required_phrase!r}")
+    require(required_phrase in network_security, f"A09 loopback network policy missing: {required_phrase!r}")
 
 contract = (ROOT / "docs/specs/app/ce-w04-seed-node-alpha.md").read_text(encoding="utf-8")
 for required_phrase in (
@@ -42,6 +42,15 @@ for required_phrase in (
     "A geometry-free equivalent MUST preserve every essential control",
 ):
     require(required_phrase in contract, f"implementation contract missing: {required_phrase!r}")
+
+a09_contract = (ROOT / "docs/specs/app/ce-w04-a09-bounded-action-registry.md").read_text(encoding="utf-8")
+for required_phrase in (
+    "Human chooses one native allowlisted action", "native client verifies broker risk class matches its own allowlist",
+    "git_status", "git_branch", "git_head", "git_log_10", "git_diff_names", "git_diff_stat", "verify_sync",
+    "current Git repository", "ARCANUM_REPO_DIR advanced override", "$HOME/Arcanum", "fail closed",
+    "No free-form shell text", "authorityEffect=none", "Repository mutation",
+):
+    require(required_phrase in a09_contract, f"A09 bounded action contract missing: {required_phrase!r}")
 
 architect_dir = ROOT / "apps/android/app/src/main/java/org/arcanum/nativehost/architect"
 required_android_files = {
@@ -56,19 +65,40 @@ for forbidden in ("OkHttp", "Retrofit", "java.net.Socket", "openai.com", "api.op
 
 broker_client = (architect_dir / "ArchitectBrokerClient.kt").read_text(encoding="utf-8")
 for required_phrase in (
-    'LOOPBACK_BASE_URL = "http://127.0.0.1:8765"', 'COMMAND_GIT_STATUS = "git_status"',
+    'LOOPBACK_BASE_URL = "http://127.0.0.1:8765"',
+    '"git_status"', '"git_branch"', '"git_head"', '"git_log_10"', '"git_diff_names"', '"git_diff_stat"', '"verify_sync"',
     'approvedByHumanArchitect", true', 'receiptType") == "architect_execution_receipt"',
-    'url.host == LOOPBACK_HOST', 'instanceFollowRedirects = false',
+    'registered.optString("risk") == action.expectedRisk', 'url.host == LOOPBACK_HOST', 'instanceFollowRedirects = false',
 ):
-    require(required_phrase in broker_client, f"A08 bounded native broker client missing: {required_phrase!r}")
-require("https://" not in broker_client, "A08 native broker client must not contain a remote HTTPS endpoint")
+    require(required_phrase in broker_client, f"A09 bounded native broker client missing: {required_phrase!r}")
+require("https://" not in broker_client, "A09 native broker client must not contain a remote HTTPS endpoint")
+require("web_typecheck" not in broker_client, "A09 Android allowlist must not expose web_typecheck")
 
 shell_panel = (architect_dir / "ArchitectShellPanel.kt").read_text(encoding="utf-8")
 for required_phrase in (
-    "Inspect local repository", "Approve local inspection?", "git_status", "ArchitectBrokerClient()",
-    "authorityEffect=none", "cannot execute arbitrary shell commands", "cannot mutate the repository",
+    "Choose local action", "Architect local actions", "Registered action:", "Risk class:", "Transport: 127.0.0.1 only",
+    "ArchitectBrokerClient.Action.entries", "requestApproval", "authorityEffect=none",
+    "cannot execute arbitrary shell commands", "cannot mutate the repository",
 ):
-    require(required_phrase in shell_panel, f"A08 Architect shell action missing: {required_phrase!r}")
+    require(required_phrase in shell_panel, f"A09 Architect action surface missing: {required_phrase!r}")
+
+mobile_broker = (ROOT / "scripts/mobile/arcanum-broker.sh").read_text(encoding="utf-8")
+current_repo_index = mobile_broker.find('if git rev-parse --show-toplevel')
+env_index = mobile_broker.find('elif [[ -n "${ARCANUM_REPO_DIR:-}" ]]')
+home_index = mobile_broker.find('elif [[ -d "$HOME/Arcanum/.git" ]]')
+require(current_repo_index >= 0 and env_index > current_repo_index and home_index > env_index, "A09 broker launcher repository precedence must be current Git -> env override -> $HOME/Arcanum")
+for required_phrase in (
+    'git -C "$REPO_DIR" rev-parse --show-toplevel',
+    'fail "resolved path is not the Git repository root: $REPO_DIR"',
+    '--host 127.0.0.1',
+):
+    require(required_phrase in mobile_broker, f"A09 broker launcher hardening missing: {required_phrase!r}")
+
+broker = (ROOT / "scripts/architect/termux-broker.py").read_text(encoding="utf-8")
+for command_id in ("git_status", "git_branch", "git_head", "git_log_10", "git_diff_names", "git_diff_stat", "verify_sync"):
+    require(f'"{command_id}"' in broker, f"A09 broker registry missing command: {command_id}")
+for forbidden in ("shell=True", "git push", "git commit", "git merge", "git reset --hard"):
+    require(forbidden not in broker, f"A09 broker mutation/shell ceiling violated: {forbidden!r}")
 
 observer = (architect_dir / "ArchitectObserver.kt").read_text(encoding="utf-8")
 for required_phrase in (
@@ -114,15 +144,15 @@ for required_phrase in (
     require(required_phrase in main_activity, f"MainActivity missing Architect/inset-safe hook: {required_phrase!r}")
 
 build_gradle = (ROOT / "apps/android/app/build.gradle.kts").read_text(encoding="utf-8")
-for required_phrase in ("ARCANUM_SOURCE_COMMIT", "arcanumSourceCommit", "buildConfig = true", "CE-W04-A08"):
+for required_phrase in ("ARCANUM_SOURCE_COMMIT", "arcanumSourceCommit", "buildConfig = true", "CE-W04-A09"):
     require(required_phrase in build_gradle, f"Android build provenance missing: {required_phrase!r}")
 version_code_match = re.search(r"\bversionCode\s*=\s*(\d+)\b", build_gradle)
 require(version_code_match is not None, "Android build provenance missing: versionCode")
-require(int(version_code_match.group(1)) >= 8, "A08 requires monotonic Android versionCode >= 8")
+require(int(version_code_match.group(1)) >= 9, "A09 requires monotonic Android versionCode >= 9")
 
 workflow = (ROOT / ".github/workflows/verify-ce-w04-architect-observer.yml").read_text(encoding="utf-8")
 require('-ParcanumSourceCommit="$SOURCE_HEAD"' in workflow, "exact-head Android build must inject the checked-out source commit")
 unit_test = ROOT / "apps/android/app/src/test/java/org/arcanum/nativehost/architect/ArchitectObservationContractTest.kt"
 require(unit_test.is_file(), "Architect observation contract unit test is missing")
 
-print("PASS CE-W04 Architect Observer + Bridge: A08 loopback-only Human-approved read-only broker action, frozen observation export, provenance, and inherited privacy controls")
+print("PASS CE-W04 Architect Observer + Bridge: A09 Human-approved bounded action registry, repository-target continuity, loopback transport, frozen observation export, provenance, and inherited privacy controls")

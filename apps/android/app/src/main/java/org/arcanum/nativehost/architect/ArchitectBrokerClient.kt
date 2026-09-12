@@ -8,23 +8,75 @@ import java.net.URL
 import java.time.Instant
 
 /**
- * Native read-only bridge to the local Termux Architect broker.
+ * Native bridge to the local Termux Architect broker.
  *
- * The endpoint is compile-time pinned to loopback. The caller may request only
- * registered broker command IDs; A08 exposes git_status only.
+ * The endpoint is compile-time pinned to loopback. The native client exposes a
+ * fixed allowlist of registered broker action IDs and never accepts shell text.
  */
 class ArchitectBrokerClient(
     private val baseUrl: String = LOOPBACK_BASE_URL,
 ) {
-    data class RepositoryInspection(
+    enum class Action(
+        val commandId: String,
+        val label: String,
+        val description: String,
+        val expectedRisk: String,
+    ) {
+        GIT_STATUS(
+            "git_status",
+            "Repository status",
+            "Show concise working-tree and index state.",
+            "read_only",
+        ),
+        GIT_BRANCH(
+            "git_branch",
+            "Current branch",
+            "Show the checked-out Git branch.",
+            "read_only",
+        ),
+        GIT_HEAD(
+            "git_head",
+            "Current commit",
+            "Show the exact checked-out commit SHA.",
+            "read_only",
+        ),
+        GIT_LOG_10(
+            "git_log_10",
+            "Recent commits",
+            "Show the ten most recent commits in compact form.",
+            "read_only",
+        ),
+        GIT_DIFF_NAMES(
+            "git_diff_names",
+            "Changed filenames",
+            "Show filenames changed in the unstaged working tree.",
+            "read_only",
+        ),
+        GIT_DIFF_STAT(
+            "git_diff_stat",
+            "Diff statistics",
+            "Show a summary of unstaged repository differences.",
+            "read_only",
+        ),
+        VERIFY_SYNC(
+            "verify_sync",
+            "Verify synchronization",
+            "Run the canonical repository synchronization verifier.",
+            "verification",
+        ),
+    }
+
+    data class ExecutionResult(
+        val action: Action,
         val branch: String?,
         val commit: String?,
-        val workingTree: String,
+        val stdout: String,
+        val stderr: String,
         val receiptId: String?,
         val resultSha256: String?,
     )
 
-    fun inspectRepository(): Result<RepositoryInspection> = runCatching {
+    fun execute(action: Action): Result<ExecutionResult> = runCatching {
         require(baseUrl == LOOPBACK_BASE_URL) { "Architect broker endpoint must remain compile-time loopback" }
 
         val health = request("GET", "/health", null)
@@ -35,10 +87,22 @@ class ArchitectBrokerClient(
             "Local Architect broker is not ready"
         }
 
+        val commands = health.optJSONArray("commands")
+        require(commands != null) { "Broker did not publish its registered action set" }
+        val registered =
+            (0 until commands.length())
+                .asSequence()
+                .mapNotNull { commands.optJSONObject(it) }
+                .firstOrNull { it.optString("id") == action.commandId }
+        require(registered != null) { "Selected Architect action is not registered by the local broker" }
+        require(registered.optString("risk") == action.expectedRisk) {
+            "Broker action risk does not match the native allowlist"
+        }
+
         val requestBody =
             JSONObject()
                 .put("schemaVersion", SCHEMA_VERSION)
-                .put("commandId", COMMAND_GIT_STATUS)
+                .put("commandId", action.commandId)
                 .put("approvedByHumanArchitect", true)
                 .put("requestedAt", Instant.now().toString())
 
@@ -48,13 +112,15 @@ class ArchitectBrokerClient(
         }
         require(receipt.optString("status") == "pass") {
             val stderr = receipt.optString("stderr").take(MAX_PRESENTATION_CHARS)
-            "Registered repository inspection failed${if (stderr.isBlank()) "" else ": $stderr"}"
+            "Registered Architect action failed${if (stderr.isBlank()) "" else ": $stderr"}"
         }
 
-        RepositoryInspection(
-            branch = health.optString("branch").ifBlank { null },
-            commit = health.optString("commit").ifBlank { null },
-            workingTree = receipt.optString("stdout").ifBlank { "working tree clean" }.take(MAX_PRESENTATION_CHARS),
+        ExecutionResult(
+            action = action,
+            branch = receipt.optString("branch").ifBlank { health.optString("branch").ifBlank { null } },
+            commit = receipt.optString("commitAfter").ifBlank { health.optString("commit").ifBlank { null } },
+            stdout = receipt.optString("stdout").take(MAX_PRESENTATION_CHARS),
+            stderr = receipt.optString("stderr").take(MAX_PRESENTATION_CHARS),
             receiptId = receipt.optString("receiptId").ifBlank { null },
             resultSha256 = receipt.optString("resultSha256").ifBlank { null },
         )
@@ -108,9 +174,8 @@ class ArchitectBrokerClient(
         const val LOOPBACK_PORT = 8765
         const val LOOPBACK_BASE_URL = "http://127.0.0.1:8765"
         const val SCHEMA_VERSION = "1.0"
-        const val COMMAND_GIT_STATUS = "git_status"
         private const val CONNECT_TIMEOUT_MS = 1500
-        private const val READ_TIMEOUT_MS = 5000
+        private const val READ_TIMEOUT_MS = 130000
         private const val MAX_PRESENTATION_CHARS = 4000
     }
 }

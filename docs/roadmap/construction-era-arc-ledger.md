@@ -62,9 +62,7 @@ Established the monochrome Arcanum crest as the persistent highest-layer native 
 
 ### CE-W04-A08 — Native Architect read-only broker bridge
 
-Current implementation arc.
-
-A08 attaches the first bounded operational capability to the native Architect destination:
+Established the first bounded operational capability on the native Architect destination:
 
 ```text
 Human tap
@@ -75,13 +73,23 @@ Human tap
 → native factual presentation
 ```
 
-A08 intentionally introduces only read-only repository inspection. It does not accept shell text, mutate Git state, start the broker silently, contact a model provider, merge/promote branches, or convert technical evidence into authority.
+A08 intentionally introduced only read-only repository inspection. It did not accept shell text, mutate Git state, start the broker silently, contact a model provider, merge/promote branches, or convert technical evidence into authority.
 
-Android TCP loopback requires `android.permission.INTERNET`; this arc therefore distinguishes **local loopback transport availability** from **network dependency**. The CE-W04 integrated proof remains operable without network availability, protocol submission, provider access, or the broker itself. The native broker endpoint is pinned to `127.0.0.1:8765`, and cleartext is denied by default outside the loopback network-security exception.
+Physical validation confirmed the installed Android Architect could reach the loopback Termux broker, execute the registered action, return a receipt, and report the exact active `stage/ce-w04-architect-observer` branch and installed-source commit after repository-target continuity was corrected.
+
+### CE-W04-A09 — Architect bounded action registry and repository continuity
+
+Current implementation arc.
+
+A09 expands the native Architect from one hard-coded inspection into a compact Human-selected action registry while preserving A08's fixed-command and loopback-only boundary. The Android allowlist exposes repository status, branch, exact HEAD, recent commits, changed filenames, diff statistics, and canonical synchronization verification. Each action requires explicit Human approval and broker risk-class agreement before execution.
+
+A09 also hardens the Termux launcher against stale shell environment targeting: when launched from inside a Git checkout, the current repository takes precedence over `ARCANUM_REPO_DIR`, with the canonical `$HOME/Arcanum` checkout as fallback. The resolved path must be the Git repository root before broker startup.
+
+Repository mutation, free-form shell input, patch application, Git push/merge, artifact installation, remote model dependency, and autonomous promotion remain outside A09.
 
 ## Next intended tranche
 
-After physical A08 validation, the Architect Evolution / Iteration Plane may add a small fixed registry of additional Human-approved operations such as exact-head verification and CI inspection. Repository mutation remains out of scope until a distinct proposal/patch/review contract is implemented and physically audited.
+After physical A09 validation, the Architect Evolution / Iteration Plane may add a proposal-oriented change workflow that can generate a bounded patch or implementation plan without immediately applying it. Any repository mutation path must remain a distinct Human-reviewed capability with explicit file/diff scope, precondition checks, receipts, and rollback/abort semantics.
 
 ## Promotion discipline
 
