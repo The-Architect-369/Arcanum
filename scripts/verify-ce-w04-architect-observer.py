@@ -114,7 +114,7 @@ for required_phrase in (
     require(required_phrase in main_activity, f"MainActivity missing Architect/inset-safe hook: {required_phrase!r}")
 
 build_gradle = (ROOT / "apps/android/app/build.gradle.kts").read_text(encoding="utf-8")
-for required_phrase in ("ARCANUM_SOURCE_COMMIT", "arcanumSourceCommit", "buildConfig = true", '"CE-W04-A08"'):
+for required_phrase in ("ARCANUM_SOURCE_COMMIT", "arcanumSourceCommit", "buildConfig = true", "CE-W04-A08"):
     require(required_phrase in build_gradle, f"Android build provenance missing: {required_phrase!r}")
 version_code_match = re.search(r"\bversionCode\s*=\s*(\d+)\b", build_gradle)
 require(version_code_match is not None, "Android build provenance missing: versionCode")

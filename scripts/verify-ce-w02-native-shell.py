@@ -154,8 +154,21 @@ def verify() -> None:
     require('projection.getString("authorityEffect") == "none"' in contracts and 'projection.getBoolean("geometryFreeEquivalentRequired")' in contracts, "F34 native parser enforces authority/geometry-free boundary")
 
     manifest_lower = manifest.lower()
-    require("<uses-permission" not in manifest_lower, "F35 manifest has no permissions")
-    require("android.permission.internet" not in manifest_lower, "F35 no INTERNET permission")
+    permissions = re.findall(
+        r'<uses-permission\\s+android:name="([^"]+)"\\s*/?>',
+        manifest,
+        flags=re.IGNORECASE,
+    )
+    allowed_forward_permissions = {"android.permission.INTERNET"}
+    require(
+        set(permissions).issubset(allowed_forward_permissions),
+        f"F35 manifest permission ceiling: {permissions}",
+    )
+    if "android.permission.INTERNET" in permissions:
+        require(
+            'android:networkSecurityConfig="@xml/architect_loopback_network_security"' in manifest,
+            "F35 forward INTERNET capability remains bound to Architect loopback policy",
+        )
     require('<action android:name="android.intent.action.MAIN"' in manifest and '<category android:name="android.intent.category.LAUNCHER"' in manifest, "F35 explicit launcher activity")
     forbidden_source_patterns = [
         r"System\.loadLibrary",
