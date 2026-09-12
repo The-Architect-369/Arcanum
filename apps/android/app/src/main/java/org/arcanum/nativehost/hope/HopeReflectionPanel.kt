@@ -4,6 +4,7 @@ import android.content.Context
 import android.graphics.Color
 import android.text.InputType
 import android.view.Gravity
+import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
@@ -11,6 +12,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import java.time.Instant
 import java.util.UUID
+import org.arcanum.nativehost.architect.ArchitectObservationPrivacy
 import org.arcanum.nativehost.tempus.TempusLifecycleBridge
 import org.json.JSONObject
 
@@ -25,63 +27,92 @@ class HopeReflectionPanel(
             inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_FLAG_MULTI_LINE
             minLines = 2
             maxLines = 5
+            ArchitectObservationPrivacy.markPrivateText(this)
         }
     private val status =
         TextView(context).apply {
-            setTextColor(Color.WHITE)
-            textSize = 14.0f
+            setTextColor(Color.LTGRAY)
+            textSize = 12.0f
         }
     private val recalled =
         TextView(context).apply {
-            setTextColor(Color.LTGRAY)
+            setTextColor(Color.WHITE)
             textSize = 13.0f
+            visibility = View.GONE
+            ArchitectObservationPrivacy.markPrivateText(this)
         }
     private val receipt =
         TextView(context).apply {
             setTextColor(Color.GRAY)
-            textSize = 11.0f
+            textSize = 10.0f
+            visibility = View.GONE
+        }
+    private val editor =
+        LinearLayout(context).apply {
+            orientation = VERTICAL
+            visibility = View.GONE
         }
 
     init {
         orientation = VERTICAL
         gravity = Gravity.CENTER_HORIZONTAL
-        setPadding(32, 24, 32, 24)
+        setPadding(dp(18), dp(14), dp(18), dp(14))
+        setBackgroundColor(Color.argb(238, 0, 0, 0))
 
         addView(
             TextView(context).apply {
                 setTextColor(Color.WHITE)
-                textSize = 18.0f
+                textSize = 16.0f
                 text = "Hope · local reflection"
+                contentDescription = "Hope local reflection. Private on this device. Advisory only. Authority effect none."
             },
         )
-        addView(
-            TextView(context).apply {
-                setTextColor(Color.LTGRAY)
-                textSize = 12.0f
-                text = "Private on this device · advisory only · authorityEffect=none"
+        addView(status, LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT))
+
+        val actionRow =
+            LinearLayout(context).apply {
+                orientation = HORIZONTAL
+                gravity = Gravity.CENTER
+            }
+
+        actionRow.addView(
+            Button(context).apply {
+                text = "Reflect"
+                contentDescription = "Open private local reflection editor"
+                setOnClickListener {
+                    recalled.visibility = View.GONE
+                    editor.visibility = if (editor.visibility == View.VISIBLE) View.GONE else View.VISIBLE
+                }
             },
+            LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1.0f),
         )
-        addView(
+        actionRow.addView(
+            Button(context).apply {
+                text = "Recall"
+                contentDescription = "Recall the protected local Hope reflection"
+                setOnClickListener { recallReflection(showPrivate = true) }
+            },
+            LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1.0f),
+        )
+        addView(actionRow, LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT))
+
+        editor.addView(
             input,
             LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT),
         )
-        addView(
+        editor.addView(
             Button(context).apply {
-                text = "Reflect locally"
+                text = "Hold locally"
+                contentDescription = "Persist this private reflection locally"
                 setOnClickListener { captureReflection() }
             },
+            LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT),
         )
-        addView(
-            Button(context).apply {
-                text = "Recall local reflection"
-                setOnClickListener { recallReflection() }
-            },
-        )
-        addView(status)
-        addView(recalled)
-        addView(receipt)
+        addView(editor, LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT))
+        addView(recalled, LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT))
+        addView(receipt, LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT))
 
-        recallReflection()
+        recallReflection(showPrivate = false)
     }
 
     private fun captureReflection() {
@@ -128,25 +159,28 @@ class HopeReflectionPanel(
             HopeLocalStateCodec.decode(recoveredBytes)
         }.onSuccess { state ->
             input.text.clear()
-            renderState(state, CURATED_PRESENCE)
+            editor.visibility = View.GONE
+            renderState(state, CURATED_PRESENCE, showPrivate = false)
         }.onFailure { failure ->
             renderFailure(failure)
         }
     }
 
-    private fun recallReflection() {
+    private fun recallReflection(showPrivate: Boolean) {
         runCatching {
             val contract = HopeRuntimeBridge.contract()
             val store = HopeProtectedStore(context.filesDir, AndroidHopeKeyManager(), contract)
             HopeLocalStateCodec.decode(store.recoverExact())
         }.onSuccess { state ->
-            renderState(state, "Your local reflection was recovered.")
+            renderState(state, "Your local reflection is available.", showPrivate)
         }.onFailure { failure ->
             when (failure) {
                 is HopeStateMissingException -> {
-                    status.text = "No local reflection has been recorded yet."
+                    status.text = "No local reflection yet."
                     recalled.text = ""
+                    recalled.visibility = View.GONE
                     receipt.text = ""
+                    receipt.visibility = View.GONE
                 }
                 else -> renderFailure(failure)
             }
@@ -156,12 +190,17 @@ class HopeReflectionPanel(
     private fun renderState(
         state: HopeLocalState,
         message: String,
+        showPrivate: Boolean,
     ) {
         val reflection = JSONObject(state.reflectionJson)
         status.text = message
         recalled.text = "Recalled: ${reflection.getString("userText")}"
+        recalled.visibility = if (showPrivate) View.VISIBLE else View.GONE
         receipt.text =
             "local receipt · scope=${state.receipt.scope} · unsigned · sha256=${state.receipt.contentDigestSha256.take(16)}…"
+        receipt.visibility = View.GONE
+        contentDescription =
+            "$message Local receipt scope ${state.receipt.scope}. Private content is hidden until explicitly recalled."
     }
 
     private fun renderFailure(failure: Throwable) {
@@ -169,11 +208,16 @@ class HopeReflectionPanel(
             when (failure) {
                 is HopeStateCorruptException ->
                     "Protected Hope state could not be authenticated. No state was reset."
-                else -> "Hope local reflection unavailable · fail-closed · authorityEffect=none"
+                else -> "Hope local reflection unavailable · fail-closed"
             }
         recalled.text = ""
+        recalled.visibility = View.GONE
         receipt.text = ""
+        receipt.visibility = View.GONE
     }
+
+    private fun dp(value: Int): Int =
+        (value * resources.displayMetrics.density).toInt()
 
     companion object {
         const val CURATED_PRESENCE: String = "Your reflection is held locally."

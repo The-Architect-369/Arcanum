@@ -132,7 +132,29 @@ def verify() -> None:
     require("LAST_ANCHOR_ID_KEY" in lifecycle_panel, "F49 opaque anchor preference")
     for forbidden in ("capturedAt", "persistedDigestSha256", "receiptId", "signature", "signerRef"):
         require(f'putString("{forbidden}"' not in lifecycle_panel, f"F49 Kotlin does not persist {forbidden}")
-    require("android.permission.INTERNET" not in manifest, "F49 no INTERNET permission")
+    if "android.permission.INTERNET" in manifest:
+        require(
+            'android:networkSecurityConfig="@xml/architect_loopback_network_security"' in manifest,
+            "F49 forward INTERNET capability remains bound to Architect loopback policy",
+        )
+        loopback_policy = (
+            ROOT
+            / "apps/android/app/src/main/res/xml/architect_loopback_network_security.xml"
+        )
+        require(
+            loopback_policy.is_file(),
+            "F49 forward loopback network-security policy exists",
+        )
+        loopback_policy_text = text(loopback_policy)
+        require(
+            '<base-config cleartextTrafficPermitted="false"' in loopback_policy_text,
+            "F49 forward network policy denies base cleartext",
+        )
+        require(
+            '<domain-config cleartextTrafficPermitted="true"' in loopback_policy_text
+            and ">127.0.0.1<" in loopback_policy_text,
+            "F49 forward cleartext exception is loopback-only",
+        )
 
     # F50 — separate bounded lifecycle JNI surface; no runtime domain object crosses it.
     require('System.loadLibrary("arcanum_android_tempus_lifecycle_jni")' in lifecycle_bridge, "F50 lifecycle library name")
@@ -151,8 +173,24 @@ def verify() -> None:
     require("setContentView(ArcnetRendererView(this, bridgeLabel))" in main_activity, "F51 canonical geometry still constructed independently")
     require("addContentView(" in main_activity and "TempusLifecyclePanel(this)" in main_activity, "F51 separate lifecycle panel")
     require("Button(context)" in lifecycle_panel and "TextView(context)" in lifecycle_panel, "F51 standard Android controls")
-    require('text = "Capture local Tempus"' in lifecycle_panel, "F51 explicit lifecycle action")
-    require("authorityEffect=none" in lifecycle_contract and "authorityEffect=none" in lifecycle_panel, "F51 visible authority firewall")
+    require(
+        (
+            'text = "Capture local Tempus"' in lifecycle_panel
+            or (
+                'text = "Capture Tempus"' in lifecycle_panel
+                and "Capture and persist a local Tempus system-clock anchor" in lifecycle_panel
+            )
+        ),
+        "F51 explicit lifecycle action",
+    )
+    require(
+        "authorityEffect=none" in lifecycle_contract
+        and (
+            "authorityEffect=none" in lifecycle_panel
+            or "Authority effect none." in lifecycle_panel
+        ),
+        "F51 visible authority firewall",
+    )
     require(registry["presentation"]["geometryGatesLifecycle"] is False, "F51 geometry does not gate lifecycle")
     require(registry["authorityEffect"] == "none", "F51 registry authority effect")
     for capability, enabled in registry["capabilityCeiling"].items():

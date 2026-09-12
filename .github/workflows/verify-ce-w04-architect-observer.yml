@@ -1,0 +1,182 @@
+name: CE-W04 Architect Observer + Bridge
+
+on:
+  push:
+    branches:
+      - "stage/ce-w04-*"
+      - "work/ce-w04-*"
+    paths:
+      - "apps/android/**"
+      - "docs/specs/app/arcanum-native-registration.v0.1.json"
+      - "docs/specs/app/ce-w04-seed-node-alpha.md"
+      - "scripts/verify-ce-w04-architect-observer.py"
+      - ".github/workflows/verify-ce-w04-architect-observer.yml"
+  pull_request:
+    branches:
+      - main
+    paths:
+      - "apps/android/**"
+      - "docs/specs/app/arcanum-native-registration.v0.1.json"
+      - "docs/specs/app/ce-w04-seed-node-alpha.md"
+      - "scripts/verify-ce-w04-architect-observer.py"
+      - ".github/workflows/verify-ce-w04-architect-observer.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify-architect-observer:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 50
+    steps:
+      - name: Checkout exact W04 source
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+
+      - name: Verify exact-source branch relationship
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch origin main:refs/remotes/origin/main --force
+          BASE="$(git merge-base HEAD refs/remotes/origin/main)"
+          echo "CE-W04 source base=$BASE head=$(git rev-parse HEAD)"
+          git diff --check "$BASE" HEAD
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - uses: android-actions/setup-android@v3
+
+      - name: Install Android SDK and NDK
+        shell: bash
+        run: |
+          yes | sdkmanager --licenses >/dev/null || true
+          sdkmanager \
+            "platforms;android-35" \
+            "build-tools;35.0.0" \
+            "ndk;27.2.12479018"
+          echo "ANDROID_NDK_HOME=$ANDROID_SDK_ROOT/ndk/27.2.12479018" >> "$GITHUB_ENV"
+          echo "ANDROID_NDK_ROOT=$ANDROID_SDK_ROOT/ndk/27.2.12479018" >> "$GITHUB_ENV"
+
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: "1.98.1"
+          targets: aarch64-linux-android,x86_64-linux-android
+
+      - name: Install cargo-ndk
+        run: cargo install cargo-ndk --version 4.1.2 --locked
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+
+      - name: Activate pnpm 9.10.0
+        shell: bash
+        run: |
+          corepack enable
+          corepack prepare pnpm@9.10.0 --activate
+
+      - name: Install frozen workspace
+        run: pnpm install --frozen-lockfile
+
+      - name: Verify CE-W04 Architect Observer + Bridge contract
+        run: python3 scripts/verify-ce-w04-architect-observer.py
+
+      - name: Verify inherited CE-W03 closure and doctrine
+        shell: bash
+        run: |
+          pnpm verify:ce-w03:closure
+          bash scripts/doctrine-guard.sh
+
+      - name: Cross-compile inherited native libraries
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf "$GITHUB_WORKSPACE/apps/android/app/src/main/jniLibs"
+          for crate in arcanum-android-jni arcanum-android-tempus-lifecycle-jni arcanum-android-hope-jni; do
+            (
+              cd "$GITHUB_WORKSPACE/runtime/$crate"
+              cargo ndk \
+                -t arm64-v8a \
+                -t x86_64 \
+                -o "$GITHUB_WORKSPACE/apps/android/app/src/main/jniLibs" \
+                build --release
+            )
+          done
+
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: "8.9"
+
+      - name: Restore persistent private development signer when configured
+        id: dev_signing
+        shell: bash
+        env:
+          ARCANUM_DEV_KEYSTORE_B64: ${{ secrets.ARCANUM_DEV_KEYSTORE_B64 }}
+          ARCANUM_DEV_STORE_PASSWORD: ${{ secrets.ARCANUM_DEV_STORE_PASSWORD }}
+          ARCANUM_DEV_KEY_ALIAS: ${{ secrets.ARCANUM_DEV_KEY_ALIAS }}
+          ARCANUM_DEV_KEY_PASSWORD: ${{ secrets.ARCANUM_DEV_KEY_PASSWORD }}
+        run: |
+          set -euo pipefail
+          if [[ -n "${ARCANUM_DEV_KEYSTORE_B64:-}" && \
+                -n "${ARCANUM_DEV_STORE_PASSWORD:-}" && \
+                -n "${ARCANUM_DEV_KEY_ALIAS:-}" && \
+                -n "${ARCANUM_DEV_KEY_PASSWORD:-}" ]]; then
+            KEYSTORE="$RUNNER_TEMP/arcanum-dev.jks"
+            printf '%s' "$ARCANUM_DEV_KEYSTORE_B64" | base64 --decode > "$KEYSTORE"
+            chmod 600 "$KEYSTORE"
+            echo "configured=true" >> "$GITHUB_OUTPUT"
+            echo "keystore=$KEYSTORE" >> "$GITHUB_OUTPUT"
+          else
+            echo "configured=false" >> "$GITHUB_OUTPUT"
+            echo "Persistent private development signing is not configured; using the runner debug signer for this disposable candidate."
+          fi
+
+      - name: Unit test and assemble Seed Node Alpha bridge candidate
+        shell: bash
+        env:
+          ARCANUM_DEV_STORE_PASSWORD: ${{ secrets.ARCANUM_DEV_STORE_PASSWORD }}
+          ARCANUM_DEV_KEY_ALIAS: ${{ secrets.ARCANUM_DEV_KEY_ALIAS }}
+          ARCANUM_DEV_KEY_PASSWORD: ${{ secrets.ARCANUM_DEV_KEY_PASSWORD }}
+        run: |
+          set -euo pipefail
+          SOURCE_HEAD="$(git rev-parse HEAD)"
+          SIGNING_ARGS=()
+          if [[ "${{ steps.dev_signing.outputs.configured }}" == "true" ]]; then
+            SIGNING_ARGS+=(
+              "-ParcanumDevKeystorePath=${{ steps.dev_signing.outputs.keystore }}"
+              "-ParcanumDevStorePassword=$ARCANUM_DEV_STORE_PASSWORD"
+              "-ParcanumDevKeyAlias=$ARCANUM_DEV_KEY_ALIAS"
+              "-ParcanumDevKeyPassword=$ARCANUM_DEV_KEY_PASSWORD"
+            )
+          fi
+          gradle -p apps/android \
+            -ParcanumSourceCommit="$SOURCE_HEAD" \
+            "${SIGNING_ARGS[@]}" \
+            testDebugUnitTest assembleDebug --stacktrace
+
+      - name: Verify dual-ABI native packaging
+        shell: bash
+        run: |
+          set -euo pipefail
+          APK="apps/android/app/build/outputs/apk/debug/app-debug.apk"
+          test -f "$APK"
+          for abi in arm64-v8a x86_64; do
+            unzip -l "$APK" | grep -q "lib/$abi/libarcanum_android_jni.so"
+            unzip -l "$APK" | grep -q "lib/$abi/libarcanum_android_tempus_lifecycle_jni.so"
+            unzip -l "$APK" | grep -q "lib/$abi/libarcanum_android_hope_jni.so"
+          done
+          sha256sum "$APK"
+
+      - name: Upload exact-head W04 bridge APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: arcanum-ce-w04-architect-bridge-${{ github.event.pull_request.head.sha || github.sha }}
+          path: apps/android/app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: error
+          retention-days: 14

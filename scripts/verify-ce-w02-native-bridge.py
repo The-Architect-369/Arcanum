@@ -51,6 +51,10 @@ def verify() -> None:
         ANDROID
         / "app/src/main/java/org/arcanum/nativehost/geometry/ArcnetRendererView.kt"
     )
+    hope_panel = text(
+        ANDROID
+        / "app/src/main/java/org/arcanum/nativehost/hope/HopeReflectionPanel.kt"
+    )
     manifest = text(ANDROID / "app/src/main/AndroidManifest.xml")
     workflow = text(ROOT / ".github/workflows/verify-android-bridge.yml")
     package = load_json(ROOT / "package.json")
@@ -157,7 +161,29 @@ def verify() -> None:
     require(native_bridge.count("external fun") == 3, "F41 exactly three Kotlin native methods")
     for method in registry["abi"]["exportedMethods"]:
         require(f"fun {method}" in native_bridge, f"F41 Kotlin method {method}")
-    require("android.permission.INTERNET" not in manifest, "F41 no INTERNET permission")
+    if "android.permission.INTERNET" in manifest:
+        require(
+            'android:networkSecurityConfig="@xml/architect_loopback_network_security"' in manifest,
+            "F41 forward INTERNET capability remains bound to Architect loopback policy",
+        )
+        loopback_policy = (
+            ANDROID
+            / "app/src/main/res/xml/architect_loopback_network_security.xml"
+        )
+        require(
+            loopback_policy.is_file(),
+            "F41 forward loopback network-security policy exists",
+        )
+        loopback_policy_text = text(loopback_policy)
+        require(
+            '<base-config cleartextTrafficPermitted="false"' in loopback_policy_text,
+            "F41 forward network policy denies base cleartext",
+        )
+        require(
+            '<domain-config cleartextTrafficPermitted="true"' in loopback_policy_text
+            and ">127.0.0.1<" in loopback_policy_text,
+            "F41 forward cleartext exception is loopback-only",
+        )
 
     # F42 — bridge availability is presentation-only and cannot gate geometry.
     require("runCatching { NativeRuntimeBridge.status() }" in main_activity, "F42 bridge failure bounded")
@@ -200,7 +226,14 @@ def verify() -> None:
         "TempusAnchor persistence" in registry["deferredToW02_4"],
         "F44 persistence deferred",
     )
-    require("authorityEffect=none" in renderer, "F44 presentation authority label")
+    require(
+        (
+            "authorityEffect=none" in renderer
+            or "authorityEffect=none" in hope_panel
+            or "Authority effect none." in hope_panel
+        ),
+        "F44 presentation authority label",
+    )
 
     print("✅ CE-W02 native-bridge verification passed: F37-F44")
 

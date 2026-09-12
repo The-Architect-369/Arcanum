@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-09-07T02:03:27Z",
+  "generated_at": "2026-09-12T11:41:20Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "e03e2c3f9",
+  "commit": "b7e6de8f1",
   "generator_version": "1.5",
   "files": [
     {
@@ -95,6 +95,15 @@
       "lines": 25
     },
     {
+      "path": ".github/workflows/verify-ce-w04-architect-observer.yml",
+      "type": "file",
+      "size_bytes": 6654,
+      "last_modified_commit": "bb3225547",
+      "is_empty": false,
+      "extension": ".yml",
+      "lines": 182
+    },
+    {
       "path": ".github/workflows/verify-repo-index-promotion.yml",
       "type": "file",
       "size_bytes": 606,
@@ -178,38 +187,38 @@
     {
       "path": "apps/android/app/build.gradle.kts",
       "type": "file",
-      "size_bytes": 1073,
-      "last_modified_commit": "11dee4ad6",
+      "size_bytes": 2423,
+      "last_modified_commit": "96e0829a7",
       "is_empty": false,
       "extension": ".kts",
-      "lines": 44
+      "lines": 90
     },
     {
       "path": "apps/android/app/src/main/AndroidManifest.xml",
       "type": "file",
-      "size_bytes": 657,
-      "last_modified_commit": "11dee4ad6",
+      "size_bytes": 1051,
+      "last_modified_commit": "ecec03a27",
       "is_empty": false,
       "extension": ".xml",
-      "lines": 17
+      "lines": 25
     },
     {
       "path": "apps/android/app/src/main/java/org/arcanum/nativehost/MainActivity.kt",
       "type": "file",
-      "size_bytes": 2155,
-      "last_modified_commit": "7382f5cbc",
+      "size_bytes": 10506,
+      "last_modified_commit": "e55992d88",
       "is_empty": false,
       "extension": ".kt",
-      "lines": 58
+      "lines": 295
     },
     {
       "path": "apps/android/app/src/main/java/org/arcanum/nativehost/application/ArcanumLaunchPanel.kt",
       "type": "file",
-      "size_bytes": 985,
-      "last_modified_commit": "dd0f55cbc",
+      "size_bytes": 1226,
+      "last_modified_commit": "e55992d88",
       "is_empty": false,
       "extension": ".kt",
-      "lines": 32
+      "lines": 37
     },
     {
       "path": "apps/android/app/src/main/java/org/arcanum/nativehost/application/NativeApplicationRegistry.kt",
@@ -221,13 +230,94 @@
       "lines": 58
     },
     {
-      "path": "apps/android/app/src/main/java/org/arcanum/nativehost/geometry/ArcnetRendererView.kt",
+      "path": "apps/android/app/src/main/java/org/arcanum/nativehost/architect/ArchitectBrokerClient.kt",
       "type": "file",
-      "size_bytes": 5898,
-      "last_modified_commit": "7aa98b892",
+      "size_bytes": 6708,
+      "last_modified_commit": "96e0829a7",
       "is_empty": false,
       "extension": ".kt",
-      "lines": 191
+      "lines": 181
+    },
+    {
+      "path": "apps/android/app/src/main/java/org/arcanum/nativehost/architect/ArchitectObservationBridge.kt",
+      "type": "file",
+      "size_bytes": 7355,
+      "last_modified_commit": "aea42543b",
+      "is_empty": false,
+      "extension": ".kt",
+      "lines": 205
+    },
+    {
+      "path": "apps/android/app/src/main/java/org/arcanum/nativehost/architect/ArchitectObservationContract.kt",
+      "type": "file",
+      "size_bytes": 1024,
+      "last_modified_commit": "aea42543b",
+      "is_empty": false,
+      "extension": ".kt",
+      "lines": 21
+    },
+    {
+      "path": "apps/android/app/src/main/java/org/arcanum/nativehost/architect/ArchitectObservationPrivacy.kt",
+      "type": "file",
+      "size_bytes": 970,
+      "last_modified_commit": "29bdc4218",
+      "is_empty": false,
+      "extension": ".kt",
+      "lines": 34
+    },
+    {
+      "path": "apps/android/app/src/main/java/org/arcanum/nativehost/architect/ArchitectObservationProvider.kt",
+      "type": "file",
+      "size_bytes": 6383,
+      "last_modified_commit": "aea42543b",
+      "is_empty": false,
+      "extension": ".kt",
+      "lines": 173
+    },
+    {
+      "path": "apps/android/app/src/main/java/org/arcanum/nativehost/architect/ArchitectObserver.kt",
+      "type": "file",
+      "size_bytes": 14253,
+      "last_modified_commit": "9aaf7d65d",
+      "is_empty": false,
+      "extension": ".kt",
+      "lines": 363
+    },
+    {
+      "path": "apps/android/app/src/main/java/org/arcanum/nativehost/architect/ArchitectPulseButton.kt",
+      "type": "file",
+      "size_bytes": 5747,
+      "last_modified_commit": "8b03e6445",
+      "is_empty": false,
+      "extension": ".kt",
+      "lines": 170
+    },
+    {
+      "path": "apps/android/app/src/main/java/org/arcanum/nativehost/architect/ArchitectShellPanel.kt",
+      "type": "file",
+      "size_bytes": 6329,
+      "last_modified_commit": "b7e6de8f1",
+      "is_empty": false,
+      "extension": ".kt",
+      "lines": 175
+    },
+    {
+      "path": "apps/android/app/src/main/java/org/arcanum/nativehost/architect/ArchitectVisualDiagnostics.kt",
+      "type": "file",
+      "size_bytes": 8323,
+      "last_modified_commit": "aea42543b",
+      "is_empty": false,
+      "extension": ".kt",
+      "lines": 211
+    },
+    {
+      "path": "apps/android/app/src/main/java/org/arcanum/nativehost/geometry/ArcnetRendererView.kt",
+      "type": "file",
+      "size_bytes": 13584,
+      "last_modified_commit": "9c5f7d2b8",
+      "is_empty": false,
+      "extension": ".kt",
+      "lines": 319
     },
     {
       "path": "apps/android/app/src/main/java/org/arcanum/nativehost/geometry/CanonicalContracts.kt",
@@ -250,11 +340,38 @@
     {
       "path": "apps/android/app/src/main/java/org/arcanum/nativehost/geometry/ProjectionEngine.kt",
       "type": "file",
-      "size_bytes": 5732,
-      "last_modified_commit": "11dee4ad6",
+      "size_bytes": 7866,
+      "last_modified_commit": "19b746817",
       "is_empty": false,
       "extension": ".kt",
-      "lines": 178
+      "lines": 231
+    },
+    {
+      "path": "apps/android/app/src/main/java/org/arcanum/nativehost/geometry/SceneViewportPolicy.kt",
+      "type": "file",
+      "size_bytes": 1622,
+      "last_modified_commit": "9aaf7d65d",
+      "is_empty": false,
+      "extension": ".kt",
+      "lines": 46
+    },
+    {
+      "path": "apps/android/app/src/main/java/org/arcanum/nativehost/geometry/ViewerOrbitGesturePolicy.kt",
+      "type": "file",
+      "size_bytes": 1101,
+      "last_modified_commit": "9c5f7d2b8",
+      "is_empty": false,
+      "extension": ".kt",
+      "lines": 37
+    },
+    {
+      "path": "apps/android/app/src/main/java/org/arcanum/nativehost/geometry/ViewerOrbitState.kt",
+      "type": "file",
+      "size_bytes": 2070,
+      "last_modified_commit": "c543d6d93",
+      "is_empty": false,
+      "extension": ".kt",
+      "lines": 66
     },
     {
       "path": "apps/android/app/src/main/java/org/arcanum/nativehost/hope/AndroidHopeKeyManager.kt",
@@ -277,20 +394,20 @@
     {
       "path": "apps/android/app/src/main/java/org/arcanum/nativehost/hope/HopeProtectedStore.kt",
       "type": "file",
-      "size_bytes": 6408,
-      "last_modified_commit": "723639630",
+      "size_bytes": 7332,
+      "last_modified_commit": "43d65e4ad",
       "is_empty": false,
       "extension": ".kt",
-      "lines": 162
+      "lines": 179
     },
     {
       "path": "apps/android/app/src/main/java/org/arcanum/nativehost/hope/HopeReflectionPanel.kt",
       "type": "file",
-      "size_bytes": 6238,
-      "last_modified_commit": "7382f5cbc",
+      "size_bytes": 8755,
+      "last_modified_commit": "eace1f3bd",
       "is_empty": false,
       "extension": ".kt",
-      "lines": 181
+      "lines": 225
     },
     {
       "path": "apps/android/app/src/main/java/org/arcanum/nativehost/hope/HopeRuntimeBridge.kt",
@@ -340,11 +457,20 @@
     {
       "path": "apps/android/app/src/main/java/org/arcanum/nativehost/tempus/TempusLifecyclePanel.kt",
       "type": "file",
-      "size_bytes": 4007,
-      "last_modified_commit": "a525268d3",
+      "size_bytes": 3979,
+      "last_modified_commit": "eace1f3bd",
       "is_empty": false,
       "extension": ".kt",
-      "lines": 110
+      "lines": 115
+    },
+    {
+      "path": "apps/android/app/src/main/res/xml/architect_loopback_network_security.xml",
+      "type": "file",
+      "size_bytes": 342,
+      "last_modified_commit": "ecec03a27",
+      "is_empty": false,
+      "extension": ".xml",
+      "lines": 8
     },
     {
       "path": "apps/android/app/src/test/java/org/arcanum/nativehost/application/NativeApplicationRegistryTest.kt",
@@ -354,6 +480,15 @@
       "is_empty": false,
       "extension": ".kt",
       "lines": 60
+    },
+    {
+      "path": "apps/android/app/src/test/java/org/arcanum/nativehost/architect/ArchitectObservationContractTest.kt",
+      "type": "file",
+      "size_bytes": 1947,
+      "last_modified_commit": "aea42543b",
+      "is_empty": false,
+      "extension": ".kt",
+      "lines": 52
     },
     {
       "path": "apps/android/app/src/test/java/org/arcanum/nativehost/geometry/HopeSeedOverlayTest.kt",
@@ -374,6 +509,42 @@
       "lines": 40
     },
     {
+      "path": "apps/android/app/src/test/java/org/arcanum/nativehost/geometry/ProjectionEngineViewerOrbitTest.kt",
+      "type": "file",
+      "size_bytes": 4821,
+      "last_modified_commit": "19b746817",
+      "is_empty": false,
+      "extension": ".kt",
+      "lines": 125
+    },
+    {
+      "path": "apps/android/app/src/test/java/org/arcanum/nativehost/geometry/SceneViewportPolicyTest.kt",
+      "type": "file",
+      "size_bytes": 1950,
+      "last_modified_commit": "9aaf7d65d",
+      "is_empty": false,
+      "extension": ".kt",
+      "lines": 63
+    },
+    {
+      "path": "apps/android/app/src/test/java/org/arcanum/nativehost/geometry/ViewerOrbitGesturePolicyTest.kt",
+      "type": "file",
+      "size_bytes": 1277,
+      "last_modified_commit": "d572a508a",
+      "is_empty": false,
+      "extension": ".kt",
+      "lines": 38
+    },
+    {
+      "path": "apps/android/app/src/test/java/org/arcanum/nativehost/geometry/ViewerOrbitStateTest.kt",
+      "type": "file",
+      "size_bytes": 2932,
+      "last_modified_commit": "c543d6d93",
+      "is_empty": false,
+      "extension": ".kt",
+      "lines": 80
+    },
+    {
       "path": "apps/android/app/src/test/java/org/arcanum/nativehost/hope/HopeLocalStateCodecTest.kt",
       "type": "file",
       "size_bytes": 2619,
@@ -385,11 +556,11 @@
     {
       "path": "apps/android/app/src/test/java/org/arcanum/nativehost/hope/HopeProtectedStoreTest.kt",
       "type": "file",
-      "size_bytes": 2741,
-      "last_modified_commit": "723639630",
+      "size_bytes": 3459,
+      "last_modified_commit": "43d65e4ad",
       "is_empty": false,
       "extension": ".kt",
-      "lines": 83
+      "lines": 103
     },
     {
       "path": "apps/android/app/src/test/java/org/arcanum/nativehost/runtime/BridgeContractTest.kt",
@@ -3812,6 +3983,15 @@
       "lines": 144
     },
     {
+      "path": "docs/roadmap/construction-era-arc-ledger.md",
+      "type": "file",
+      "size_bytes": 6705,
+      "last_modified_commit": "96e0829a7",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 108
+    },
+    {
       "path": "docs/roadmap/construction-era-roadmap.md",
       "type": "file",
       "size_bytes": 12322,
@@ -3868,8 +4048,8 @@
     {
       "path": "docs/specs/app/arcanum-native-registration.v0.1.json",
       "type": "file",
-      "size_bytes": 993,
-      "last_modified_commit": "dd0f55cbc",
+      "size_bytes": 994,
+      "last_modified_commit": "29bdc4218",
       "is_empty": false,
       "extension": ".json",
       "lines": 42
@@ -3945,6 +4125,60 @@
       "is_empty": false,
       "extension": ".json",
       "lines": 78
+    },
+    {
+      "path": "docs/specs/app/ce-w04-a05-static-embodiment.md",
+      "type": "file",
+      "size_bytes": 4540,
+      "last_modified_commit": "eace1f3bd",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 88
+    },
+    {
+      "path": "docs/specs/app/ce-w04-a06-viewer-orbit.md",
+      "type": "file",
+      "size_bytes": 8046,
+      "last_modified_commit": "9c5f7d2b8",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 168
+    },
+    {
+      "path": "docs/specs/app/ce-w04-a07-persistent-arcanum-shell.md",
+      "type": "file",
+      "size_bytes": 3486,
+      "last_modified_commit": "f09228a56",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 77
+    },
+    {
+      "path": "docs/specs/app/ce-w04-a08-native-architect-broker.md",
+      "type": "file",
+      "size_bytes": 5399,
+      "last_modified_commit": "ecec03a27",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 100
+    },
+    {
+      "path": "docs/specs/app/ce-w04-a09-bounded-action-registry.md",
+      "type": "file",
+      "size_bytes": 4575,
+      "last_modified_commit": "96e0829a7",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 123
+    },
+    {
+      "path": "docs/specs/app/ce-w04-seed-node-alpha.md",
+      "type": "file",
+      "size_bytes": 17200,
+      "last_modified_commit": "aea42543b",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 290
     },
     {
       "path": "docs/specs/app/developer-access-policy.md",
@@ -6863,6 +7097,15 @@
       "lines": 207
     },
     {
+      "path": "scripts/mobile/arcanum-broker.sh",
+      "type": "file",
+      "size_bytes": 1378,
+      "last_modified_commit": "96e0829a7",
+      "is_empty": false,
+      "extension": ".sh",
+      "lines": 37
+    },
+    {
       "path": "scripts/mobile/termux-bootstrap.sh",
       "type": "file",
       "size_bytes": 2467,
@@ -6946,29 +7189,29 @@
     {
       "path": "scripts/verify-ce-w02-integrated.py",
       "type": "file",
-      "size_bytes": 12450,
-      "last_modified_commit": "b6eabadae",
+      "size_bytes": 13415,
+      "last_modified_commit": "31e23fb7f",
       "is_empty": false,
       "extension": ".py",
-      "lines": 281
+      "lines": 304
     },
     {
       "path": "scripts/verify-ce-w02-native-bridge.py",
       "type": "file",
-      "size_bytes": 9257,
-      "last_modified_commit": "73d154968",
+      "size_bytes": 10444,
+      "last_modified_commit": "ae7e518de",
       "is_empty": false,
       "extension": ".py",
-      "lines": 209
+      "lines": 242
     },
     {
       "path": "scripts/verify-ce-w02-native-shell.py",
       "type": "file",
-      "size_bytes": 9625,
-      "last_modified_commit": "fca5cefde",
+      "size_bytes": 11146,
+      "last_modified_commit": "f58b97659",
       "is_empty": false,
       "extension": ".py",
-      "lines": 166
+      "lines": 204
     },
     {
       "path": "scripts/verify-ce-w02-projection.py",
@@ -6982,11 +7225,11 @@
     {
       "path": "scripts/verify-ce-w02-tempus-lifecycle.py",
       "type": "file",
-      "size_bytes": 9738,
-      "last_modified_commit": "a525268d3",
+      "size_bytes": 11005,
+      "last_modified_commit": "ae7e518de",
       "is_empty": false,
       "extension": ".py",
-      "lines": 185
+      "lines": 223
     },
     {
       "path": "scripts/verify-ce-w03-closure.py",
@@ -7000,11 +7243,11 @@
     {
       "path": "scripts/verify-ce-w03-reflection.py",
       "type": "file",
-      "size_bytes": 7635,
-      "last_modified_commit": "7382f5cbc",
+      "size_bytes": 7864,
+      "last_modified_commit": "d2b36d90c",
       "is_empty": false,
       "extension": ".py",
-      "lines": 94
+      "lines": 104
     },
     {
       "path": "scripts/verify-ce-w03.py",
@@ -7014,6 +7257,15 @@
       "is_empty": false,
       "extension": ".py",
       "lines": 203
+    },
+    {
+      "path": "scripts/verify-ce-w04-architect-observer.py",
+      "type": "file",
+      "size_bytes": 11193,
+      "last_modified_commit": "96e0829a7",
+      "is_empty": false,
+      "extension": ".py",
+      "lines": 158
     },
     {
       "path": "scripts/verify-repo-index.py",

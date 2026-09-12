@@ -12,14 +12,19 @@ class ArcanumLaunchPanel(
 ) : LinearLayout(context) {
     init {
         orientation = VERTICAL
-        gravity = Gravity.CENTER_HORIZONTAL
-        setPadding(24, 24, 24, 24)
+        gravity = Gravity.CENTER_VERTICAL
+        setPadding(20, 12, 12, 12)
 
         addView(
             TextView(context).apply {
                 setTextColor(Color.WHITE)
-                textSize = 14.0f
+                textSize = 17.0f
                 text =
+                    when (launch) {
+                        is NativeApplicationLaunch.Ready -> "Hope"
+                        is NativeApplicationLaunch.Blocked -> "Hope unavailable"
+                    }
+                contentDescription =
                     when (launch) {
                         is NativeApplicationLaunch.Ready ->
                             "Arcanum · Hope · local/private · authorityEffect=none"

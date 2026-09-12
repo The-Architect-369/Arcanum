@@ -5,6 +5,21 @@ plugins {
     id("org.jetbrains.kotlin.android")
 }
 
+val arcanumSourceCommit =
+    providers.gradleProperty("arcanumSourceCommit").orElse("development-unbound")
+
+val arcanumDevKeystorePath = providers.gradleProperty("arcanumDevKeystorePath")
+val arcanumDevStorePassword = providers.gradleProperty("arcanumDevStorePassword")
+val arcanumDevKeyAlias = providers.gradleProperty("arcanumDevKeyAlias")
+val arcanumDevKeyPassword = providers.gradleProperty("arcanumDevKeyPassword")
+val arcanumDevSigningConfigured =
+    listOf(
+        arcanumDevKeystorePath,
+        arcanumDevStorePassword,
+        arcanumDevKeyAlias,
+        arcanumDevKeyPassword,
+    ).all { it.isPresent }
+
 android {
     namespace = "org.arcanum.nativehost"
     compileSdk = 35
@@ -13,8 +28,41 @@ android {
         applicationId = "org.arcanum.nativehost"
         minSdk = 26
         targetSdk = 35
-        versionCode = 1
-        versionName = "0.1.0"
+        versionCode = 9
+        versionName = "0.1.8-cew04-a09"
+        buildConfigField(
+            "String",
+            "ARCANUM_SOURCE_COMMIT",
+            "\"${arcanumSourceCommit.get()}\"",
+        )
+        buildConfigField(
+            "String",
+            "ARCANUM_IMPLEMENTATION_ARC",
+            "\"CE-W04-A09\"",
+        )
+    }
+
+    buildFeatures {
+        buildConfig = true
+    }
+
+    signingConfigs {
+        if (arcanumDevSigningConfigured) {
+            create("arcanumDev") {
+                storeFile = file(arcanumDevKeystorePath.get())
+                storePassword = arcanumDevStorePassword.get()
+                keyAlias = arcanumDevKeyAlias.get()
+                keyPassword = arcanumDevKeyPassword.get()
+            }
+        }
+    }
+
+    buildTypes {
+        getByName("debug") {
+            if (arcanumDevSigningConfigured) {
+                signingConfig = signingConfigs.getByName("arcanumDev")
+            }
+        }
     }
 
     compileOptions {
@@ -26,8 +74,6 @@ android {
         jvmTarget = "17"
     }
 
-    // Canonical geometry/projection registries remain source-owned at repo root.
-    // Android consumes them directly as build assets; no copied expected geometry.
     sourceSets["main"].assets.srcDir(file("../../../docs/specs/geometry"))
 }
 

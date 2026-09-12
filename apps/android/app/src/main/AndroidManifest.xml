@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="false"
         android:label="ARCnet Native Host"
+        android:networkSecurityConfig="@xml/architect_loopback_network_security"
         android:supportsRtl="true"
         android:theme="@android:style/Theme.Material.NoActionBar">
+        <provider
+            android:name=".architect.ArchitectObservationProvider"
+            android:authorities="${applicationId}.architect.observation"
+            android:exported="false"
+            android:grantUriPermissions="true" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
