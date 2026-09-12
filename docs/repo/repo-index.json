@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-09-12T10:41:22Z",
+  "generated_at": "2026-09-12T11:41:20Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "31e23fb7f",
+  "commit": "b7e6de8f1",
   "generator_version": "1.5",
   "files": [
     {
@@ -188,7 +188,7 @@
       "path": "apps/android/app/build.gradle.kts",
       "type": "file",
       "size_bytes": 2423,
-      "last_modified_commit": "ecec03a27",
+      "last_modified_commit": "96e0829a7",
       "is_empty": false,
       "extension": ".kts",
       "lines": 90
@@ -232,11 +232,11 @@
     {
       "path": "apps/android/app/src/main/java/org/arcanum/nativehost/architect/ArchitectBrokerClient.kt",
       "type": "file",
-      "size_bytes": 4529,
-      "last_modified_commit": "ecec03a27",
+      "size_bytes": 6708,
+      "last_modified_commit": "96e0829a7",
       "is_empty": false,
       "extension": ".kt",
-      "lines": 116
+      "lines": 181
     },
     {
       "path": "apps/android/app/src/main/java/org/arcanum/nativehost/architect/ArchitectObservationBridge.kt",
@@ -295,11 +295,11 @@
     {
       "path": "apps/android/app/src/main/java/org/arcanum/nativehost/architect/ArchitectShellPanel.kt",
       "type": "file",
-      "size_bytes": 5465,
-      "last_modified_commit": "ecec03a27",
+      "size_bytes": 6329,
+      "last_modified_commit": "b7e6de8f1",
       "is_empty": false,
       "extension": ".kt",
-      "lines": 151
+      "lines": 175
     },
     {
       "path": "apps/android/app/src/main/java/org/arcanum/nativehost/architect/ArchitectVisualDiagnostics.kt",
@@ -3985,11 +3985,11 @@
     {
       "path": "docs/roadmap/construction-era-arc-ledger.md",
       "type": "file",
-      "size_bytes": 5790,
-      "last_modified_commit": "ecec03a27",
+      "size_bytes": 6705,
+      "last_modified_commit": "96e0829a7",
       "is_empty": false,
       "extension": ".md",
-      "lines": 100
+      "lines": 108
     },
     {
       "path": "docs/roadmap/construction-era-roadmap.md",
@@ -4161,6 +4161,15 @@
       "is_empty": false,
       "extension": ".md",
       "lines": 100
+    },
+    {
+      "path": "docs/specs/app/ce-w04-a09-bounded-action-registry.md",
+      "type": "file",
+      "size_bytes": 4575,
+      "last_modified_commit": "96e0829a7",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 123
     },
     {
       "path": "docs/specs/app/ce-w04-seed-node-alpha.md",
@@ -7090,11 +7099,11 @@
     {
       "path": "scripts/mobile/arcanum-broker.sh",
       "type": "file",
-      "size_bytes": 895,
-      "last_modified_commit": "ecec03a27",
+      "size_bytes": 1378,
+      "last_modified_commit": "96e0829a7",
       "is_empty": false,
       "extension": ".sh",
-      "lines": 28
+      "lines": 37
     },
     {
       "path": "scripts/mobile/termux-bootstrap.sh",
@@ -7252,11 +7261,11 @@
     {
       "path": "scripts/verify-ce-w04-architect-observer.py",
       "type": "file",
-      "size_bytes": 8907,
-      "last_modified_commit": "f58b97659",
+      "size_bytes": 11193,
+      "last_modified_commit": "96e0829a7",
       "is_empty": false,
       "extension": ".py",
-      "lines": 128
+      "lines": 158
     },
     {
       "path": "scripts/verify-repo-index.py",
