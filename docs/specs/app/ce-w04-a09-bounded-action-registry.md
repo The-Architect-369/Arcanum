@@ -5,8 +5,8 @@ visibility: public
 phase: "Pre-Genesis"
 era: "Construction Era"
 wave: "CE-W04"
-implementation_arc: "CE-W04-A09"
-last_updated: 2026-09-12
+implementation_arc: "CE-W04-A09.1"
+last_updated: 2026-09-13
 ---
 
 # CE-W04-A09 — Architect bounded action registry
@@ -47,6 +47,19 @@ A09 exposes only these broker action identifiers:
 - `verify_sync` — repository verification action; may run scripts but may not intentionally mutate repository state.
 
 `web_typecheck` remains broker-registered for development compatibility but is not exposed by the A09 Android allowlist.
+
+## A09.1 mobile verification execution envelope
+
+Physical A09 testing proved that the canonical `verify_sync` action can legitimately exceed the original 120-second mobile execution window while still completing successfully when run directly in Termux. A09.1 repairs only that execution envelope; it does not widen the command surface or authority boundary.
+
+The frozen A09.1 timeout relationship is:
+
+- `verify_sync` uses a **300-second broker timeout**.
+- the Android loopback client uses a **310-second native read timeout** so the broker remains the primary execution deadline and can return a structured timeout receipt before the HTTP client abandons the request.
+- all other fixed command identifiers retain their existing registered timeouts.
+- timeout expansion MUST NOT permit arbitrary command text, repository mutation, remote endpoints, silent execution, or autonomous approval.
+
+The broker continues to publish each command's `timeoutSeconds` as factual action metadata.
 
 ## Repository targeting continuity
 
@@ -108,15 +121,15 @@ For A09 actions, pass requires command exit code zero and unchanged repository H
 
 ## Physical validation target
 
-A09 physical validation should demonstrate from the installed Seed Node Alpha app, with the Termux broker running against the active checkout:
+A09.1 physical validation should demonstrate from the installed Seed Node Alpha app, with the Termux broker running against the active checkout:
 
 1. Architect action chooser opens.
-2. Human selects at least `Current branch`, `Current commit`, and `Verify synchronization`.
-3. Each invocation presents an explicit approval dialog.
-4. Returned branch and commit match the active Termux checkout.
-5. `Verify synchronization` returns a receipt-backed pass or truthful failure.
+2. Human selects `Verify synchronization` and explicitly approves it.
+3. The action is allowed to run beyond 120 seconds without either broker or native-client timeout.
+4. The returned execution receipt reports `status=pass` and the canonical verifier reaches its successful terminal output.
+5. Returned branch and commit match the active Termux checkout.
 6. Hope capture/recall and geometry interaction remain functional.
-7. No repository mutation occurs as a side effect of any A09 action.
+7. No repository mutation occurs as a side effect of any A09.1 action.
 
 ## Deferred capability
 

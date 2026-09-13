@@ -175,7 +175,7 @@ class ArchitectBrokerClient(
         const val LOOPBACK_BASE_URL = "http://127.0.0.1:8765"
         const val SCHEMA_VERSION = "1.0"
         private const val CONNECT_TIMEOUT_MS = 1500
-        private const val READ_TIMEOUT_MS = 130000
+        private const val READ_TIMEOUT_MS = 310000
         private const val MAX_PRESENTATION_CHARS = 4000
     }
 }

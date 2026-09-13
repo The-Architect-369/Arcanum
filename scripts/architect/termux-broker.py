@@ -30,6 +30,7 @@ MAX_REQUEST_BYTES = 16 * 1024
 MAX_STREAM_BYTES = 256 * 1024
 DEFAULT_HOST = "127.0.0.1"
 DEFAULT_PORT = 8765
+VERIFY_SYNC_TIMEOUT_SECONDS = 300
 DEFAULT_ORIGINS = (
     "http://localhost:3000",
     "http://127.0.0.1:3000",
@@ -113,7 +114,7 @@ COMMANDS: dict[str, Command] = {
             "Run the canonical repository synchronization verifier.",
             "verification",
             ("bash", "scripts/verify-sync.sh"),
-            120,
+            VERIFY_SYNC_TIMEOUT_SECONDS,
         ),
         Command(
             "web_typecheck",

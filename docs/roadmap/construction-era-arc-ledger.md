@@ -5,7 +5,7 @@ visibility: public
 phase: "Pre-Genesis"
 era: "Construction Era"
 wave: "CE-W04"
-last_updated: 2026-09-12
+last_updated: 2026-09-13
 maintainer: The-Architect-369
 authority: "Human Architect naming/continuity convention; evidence and promotion remain governed by existing wave contracts"
 ---
@@ -79,17 +79,23 @@ Physical validation confirmed the installed Android Architect could reach the lo
 
 ### CE-W04-A09 — Architect bounded action registry and repository continuity
 
-Current implementation arc.
-
 A09 expands the native Architect from one hard-coded inspection into a compact Human-selected action registry while preserving A08's fixed-command and loopback-only boundary. The Android allowlist exposes repository status, branch, exact HEAD, recent commits, changed filenames, diff statistics, and canonical synchronization verification. Each action requires explicit Human approval and broker risk-class agreement before execution.
 
 A09 also hardens the Termux launcher against stale shell environment targeting: when launched from inside a Git checkout, the current repository takes precedence over `ARCANUM_REPO_DIR`, with the canonical `$HOME/Arcanum` checkout as fallback. The resolved path must be the Git repository root before broker startup.
 
 Repository mutation, free-form shell input, patch application, Git push/merge, artifact installation, remote model dependency, and autonomous promotion remain outside A09.
 
+#### CE-W04-A09.1 — Mobile verification execution-envelope repair
+
+Current repair tranche.
+
+Physical A09 testing proved that `verify_sync` itself was healthy and completed 15/15 when run directly in Termux, while the native invocation failed at the broker's original 120-second deadline. A09.1 therefore changes only the bounded execution envelope: `verify_sync` receives a 300-second broker timeout and the Android loopback client receives a 310-second read timeout so the broker remains the primary deadline and can return a structured receipt.
+
+A09.1 also advances Android provenance to versionCode 10 / `CE-W04-A09.1` for a physically distinguishable in-place update. The command registry, loopback-only transport, Human approval requirement, repository non-mutation ceiling, no-model ceiling, and `authorityEffect=none` remain unchanged.
+
 ## Next intended tranche
 
-After physical A09 validation, the Architect Evolution / Iteration Plane may add a proposal-oriented change workflow that can generate a bounded patch or implementation plan without immediately applying it. Any repository mutation path must remain a distinct Human-reviewed capability with explicit file/diff scope, precondition checks, receipts, and rollback/abort semantics.
+After physical A09.1 validation, the Architect Evolution / Iteration Plane may add a proposal-oriented change workflow that can generate a bounded patch or implementation plan without immediately applying it. Any repository mutation path must remain a distinct Human-reviewed capability with explicit file/diff scope, precondition checks, receipts, and rollback/abort semantics.
 
 ## Promotion discipline
 

@@ -49,6 +49,7 @@ for required_phrase in (
     "git_status", "git_branch", "git_head", "git_log_10", "git_diff_names", "git_diff_stat", "verify_sync",
     "current Git repository", "ARCANUM_REPO_DIR advanced override", "$HOME/Arcanum", "fail closed",
     "No free-form shell text", "authorityEffect=none", "Repository mutation",
+    "A09.1 mobile verification execution envelope", "300-second broker timeout", "310-second native read timeout",
 ):
     require(required_phrase in a09_contract, f"A09 bounded action contract missing: {required_phrase!r}")
 
@@ -69,6 +70,7 @@ for required_phrase in (
     '"git_status"', '"git_branch"', '"git_head"', '"git_log_10"', '"git_diff_names"', '"git_diff_stat"', '"verify_sync"',
     'approvedByHumanArchitect", true', 'receiptType") == "architect_execution_receipt"',
     'registered.optString("risk") == action.expectedRisk', 'url.host == LOOPBACK_HOST', 'instanceFollowRedirects = false',
+    'READ_TIMEOUT_MS = 310000',
 ):
     require(required_phrase in broker_client, f"A09 bounded native broker client missing: {required_phrase!r}")
 require("https://" not in broker_client, "A09 native broker client must not contain a remote HTTPS endpoint")
@@ -97,6 +99,11 @@ for required_phrase in (
 broker = (ROOT / "scripts/architect/termux-broker.py").read_text(encoding="utf-8")
 for command_id in ("git_status", "git_branch", "git_head", "git_log_10", "git_diff_names", "git_diff_stat", "verify_sync"):
     require(f'"{command_id}"' in broker, f"A09 broker registry missing command: {command_id}")
+for required_phrase in (
+    "VERIFY_SYNC_TIMEOUT_SECONDS = 300",
+    '("bash", "scripts/verify-sync.sh"),\n            VERIFY_SYNC_TIMEOUT_SECONDS,',
+):
+    require(required_phrase in broker, f"A09.1 verification execution envelope missing: {required_phrase!r}")
 for forbidden in ("shell=True", "git push", "git commit", "git merge", "git reset --hard"):
     require(forbidden not in broker, f"A09 broker mutation/shell ceiling violated: {forbidden!r}")
 
@@ -144,15 +151,15 @@ for required_phrase in (
     require(required_phrase in main_activity, f"MainActivity missing Architect/inset-safe hook: {required_phrase!r}")
 
 build_gradle = (ROOT / "apps/android/app/build.gradle.kts").read_text(encoding="utf-8")
-for required_phrase in ("ARCANUM_SOURCE_COMMIT", "arcanumSourceCommit", "buildConfig = true", "CE-W04-A09"):
+for required_phrase in ("ARCANUM_SOURCE_COMMIT", "arcanumSourceCommit", "buildConfig = true", "CE-W04-A09.1"):
     require(required_phrase in build_gradle, f"Android build provenance missing: {required_phrase!r}")
 version_code_match = re.search(r"\bversionCode\s*=\s*(\d+)\b", build_gradle)
 require(version_code_match is not None, "Android build provenance missing: versionCode")
-require(int(version_code_match.group(1)) >= 9, "A09 requires monotonic Android versionCode >= 9")
+require(int(version_code_match.group(1)) >= 10, "A09.1 requires monotonic Android versionCode >= 10")
 
 workflow = (ROOT / ".github/workflows/verify-ce-w04-architect-observer.yml").read_text(encoding="utf-8")
 require('-ParcanumSourceCommit="$SOURCE_HEAD"' in workflow, "exact-head Android build must inject the checked-out source commit")
 unit_test = ROOT / "apps/android/app/src/test/java/org/arcanum/nativehost/architect/ArchitectObservationContractTest.kt"
 require(unit_test.is_file(), "Architect observation contract unit test is missing")
 
-print("PASS CE-W04 Architect Observer + Bridge: A09 Human-approved bounded action registry, repository-target continuity, loopback transport, frozen observation export, provenance, and inherited privacy controls")
+print("PASS CE-W04 Architect Observer + Bridge: A09.1 mobile verification execution-envelope repair, bounded action registry, repository-target continuity, loopback transport, frozen observation export, provenance, and inherited privacy controls")
