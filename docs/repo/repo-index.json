@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-09-12T11:41:20Z",
+  "generated_at": "2026-09-13T05:26:59Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "b7e6de8f1",
+  "commit": "5c0251e77",
   "generator_version": "1.5",
   "files": [
     {
@@ -187,8 +187,8 @@
     {
       "path": "apps/android/app/build.gradle.kts",
       "type": "file",
-      "size_bytes": 2423,
-      "last_modified_commit": "96e0829a7",
+      "size_bytes": 2428,
+      "last_modified_commit": "5c0251e77",
       "is_empty": false,
       "extension": ".kts",
       "lines": 90
@@ -233,7 +233,7 @@
       "path": "apps/android/app/src/main/java/org/arcanum/nativehost/architect/ArchitectBrokerClient.kt",
       "type": "file",
       "size_bytes": 6708,
-      "last_modified_commit": "96e0829a7",
+      "last_modified_commit": "5c0251e77",
       "is_empty": false,
       "extension": ".kt",
       "lines": 181
@@ -3985,11 +3985,11 @@
     {
       "path": "docs/roadmap/construction-era-arc-ledger.md",
       "type": "file",
-      "size_bytes": 6705,
-      "last_modified_commit": "96e0829a7",
+      "size_bytes": 7524,
+      "last_modified_commit": "5c0251e77",
       "is_empty": false,
       "extension": ".md",
-      "lines": 108
+      "lines": 114
     },
     {
       "path": "docs/roadmap/construction-era-roadmap.md",
@@ -4165,11 +4165,11 @@
     {
       "path": "docs/specs/app/ce-w04-a09-bounded-action-registry.md",
       "type": "file",
-      "size_bytes": 4575,
-      "last_modified_commit": "96e0829a7",
+      "size_bytes": 5632,
+      "last_modified_commit": "5c0251e77",
       "is_empty": false,
       "extension": ".md",
-      "lines": 123
+      "lines": 136
     },
     {
       "path": "docs/specs/app/ce-w04-seed-node-alpha.md",
@@ -6982,11 +6982,11 @@
     {
       "path": "scripts/architect/termux-broker.py",
       "type": "file",
-      "size_bytes": 16231,
-      "last_modified_commit": "02f9574cd",
+      "size_bytes": 16288,
+      "last_modified_commit": "5c0251e77",
       "is_empty": false,
       "extension": ".py",
-      "lines": 460
+      "lines": 461
     },
     {
       "path": "scripts/architect/test-architect-runtime.sh",
@@ -7261,11 +7261,11 @@
     {
       "path": "scripts/verify-ce-w04-architect-observer.py",
       "type": "file",
-      "size_bytes": 11193,
-      "last_modified_commit": "96e0829a7",
+      "size_bytes": 11644,
+      "last_modified_commit": "5c0251e77",
       "is_empty": false,
       "extension": ".py",
-      "lines": 158
+      "lines": 165
     },
     {
       "path": "scripts/verify-repo-index.py",
