@@ -143,7 +143,7 @@ class ArchitectPulseButton(
                 content.addView(created, params)
                 architectPanel = created
             }
-        panel.visibility = VISIBLE
+        panel.onPresented()
     }
 
     private inline fun <reified T : View> Activity.findViews(): List<T> {

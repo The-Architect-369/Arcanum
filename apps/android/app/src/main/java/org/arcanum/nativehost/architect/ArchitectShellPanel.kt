@@ -55,7 +55,7 @@ class ArchitectShellPanel(context: Context) : LinearLayout(context) {
                 setTextColor(Color.WHITE)
                 textSize = 28f
             },
-            LayoutParams(
+            LinearLayout.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT,
             ),
@@ -95,7 +95,7 @@ class ArchitectShellPanel(context: Context) : LinearLayout(context) {
 
         content.addView(
             brokerStatus,
-            LayoutParams(
+            LinearLayout.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT,
             ),
@@ -109,7 +109,7 @@ class ArchitectShellPanel(context: Context) : LinearLayout(context) {
 
         content.addView(
             probeButton,
-            LayoutParams(
+            LinearLayout.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT,
             ),
@@ -123,7 +123,7 @@ class ArchitectShellPanel(context: Context) : LinearLayout(context) {
 
         content.addView(
             actionButton,
-            LayoutParams(
+            LinearLayout.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT,
             ).apply {
@@ -142,7 +142,7 @@ class ArchitectShellPanel(context: Context) : LinearLayout(context) {
 
         content.addView(
             executionSummary,
-            LayoutParams(
+            LinearLayout.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT,
             ),
@@ -159,7 +159,7 @@ class ArchitectShellPanel(context: Context) : LinearLayout(context) {
 
         content.addView(
             executionProvenance,
-            LayoutParams(
+            LinearLayout.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT,
             ),
@@ -174,7 +174,7 @@ class ArchitectShellPanel(context: Context) : LinearLayout(context) {
 
         content.addView(
             rawOutputButton,
-            LayoutParams(
+            LinearLayout.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT,
             ).apply {
@@ -194,7 +194,7 @@ class ArchitectShellPanel(context: Context) : LinearLayout(context) {
 
         content.addView(
             rawOutput,
-            LayoutParams(
+            LinearLayout.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT,
             ),
@@ -221,7 +221,7 @@ class ArchitectShellPanel(context: Context) : LinearLayout(context) {
 
         addView(
             scroll,
-            LayoutParams(
+            LinearLayout.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.MATCH_PARENT,
             ),
