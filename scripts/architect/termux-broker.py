@@ -173,6 +173,25 @@ def validate_repository(path_value: str) -> Path:
     return repository
 
 
+def validate_host_tmpdir() -> Path:
+    tmpdir_value = os.environ.get("TMPDIR")
+    if not tmpdir_value:
+        raise ValueError("Broker host TMPDIR is not configured")
+
+    tmpdir = Path(tmpdir_value).expanduser()
+    if not tmpdir.is_absolute():
+        raise ValueError("Broker host TMPDIR must be an absolute path")
+    try:
+        tmpdir = tmpdir.resolve(strict=True)
+    except OSError as error:
+        raise ValueError("Broker host TMPDIR does not exist") from error
+    if not tmpdir.is_dir():
+        raise ValueError("Broker host TMPDIR is not a directory")
+    if not os.access(tmpdir, os.W_OK):
+        raise ValueError("Broker host TMPDIR is not writable")
+    return tmpdir
+
+
 class Broker:
     def __init__(self, repository: Path, allowed_origins: set[str]) -> None:
         self.repository = repository
@@ -217,9 +236,15 @@ class Broker:
         started_at = utc_now()
         monotonic_start = time.monotonic()
 
+        try:
+            tmpdir = validate_host_tmpdir()
+        except ValueError as error:
+            return self.error("execution_environment_unavailable", str(error)), 500
+
         env = {
             "PATH": os.environ.get("PATH", ""),
             "HOME": os.environ.get("HOME", str(Path.home())),
+            "TMPDIR": str(tmpdir),
             "LANG": os.environ.get("LANG", "C.UTF-8"),
             "LC_ALL": os.environ.get("LC_ALL", "C.UTF-8"),
             "CI": "1",

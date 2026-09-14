@@ -5,7 +5,7 @@ visibility: public
 phase: "Pre-Genesis"
 era: "Construction Era"
 wave: "CE-W04"
-implementation_arc: "CE-W04-A09.1"
+implementation_arc: "CE-W04-A09.2"
 last_updated: 2026-09-13
 ---
 
@@ -60,6 +60,23 @@ The frozen A09.1 timeout relationship is:
 - timeout expansion MUST NOT permit arbitrary command text, repository mutation, remote endpoints, silent execution, or autonomous approval.
 
 The broker continues to publish each command's `timeoutSeconds` as factual action metadata.
+
+## A09.2 Termux-native temporary execution envelope
+
+Physical A09.1 testing proved that the repaired timeout envelope remained open long enough for `verify_sync` to complete, but the broker's deliberately reduced child-process environment omitted Termux `TMPDIR`. Repository verification therefore reached the deterministic repo-index merge-stability fixture and failed when `mktemp -d` fell back to Android-inaccessible `/tmp`.
+
+A09.2 repairs only this host execution-envelope mismatch.
+
+The frozen A09.2 temporary-directory contract is:
+
+- registered broker actions inherit `TMPDIR` only from the broker host process environment.
+- the Android execution request cannot provide or override environment variables.
+- host `TMPDIR` MUST be present, absolute, resolvable to an existing directory, and writable before any registered command executes.
+- invalid or absent host `TMPDIR` MUST fail closed with `execution_environment_unavailable`.
+- the broker MUST NOT create a fallback temporary directory or silently substitute `/tmp`.
+- repository verification scripts remain environment-neutral; A09.2 does not add Android/Termux branches to `verify-sync.sh` or repo-index tests.
+- `PATH`, `HOME`, `LANG`, `LC_ALL`, `CI`, and validated host `TMPDIR` form the bounded child-process environment.
+- no request-controlled environment injection, shell interpolation, arbitrary command text, repository mutation, remote endpoint, model dependency, or autonomous approval is introduced.
 
 ## Repository targeting continuity
 
@@ -121,15 +138,16 @@ For A09 actions, pass requires command exit code zero and unchanged repository H
 
 ## Physical validation target
 
-A09.1 physical validation should demonstrate from the installed Seed Node Alpha app, with the Termux broker running against the active checkout:
+A09.2 physical validation should demonstrate from the installed Seed Node Alpha app, with the Termux broker running against the active checkout:
 
 1. Architect action chooser opens.
 2. Human selects `Verify synchronization` and explicitly approves it.
-3. The action is allowed to run beyond 120 seconds without either broker or native-client timeout.
-4. The returned execution receipt reports `status=pass` and the canonical verifier reaches its successful terminal output.
-5. Returned branch and commit match the active Termux checkout.
-6. Hope capture/recall and geometry interaction remain functional.
-7. No repository mutation occurs as a side effect of any A09.1 action.
+3. The action runs inside the 300-second broker / 310-second native timeout envelope.
+4. The broker child process receives the broker-host Termux `TMPDIR`, and repo-index merge-stability temporary workspaces no longer fall back to `/tmp`.
+5. The returned execution receipt reports `status=pass` and the canonical verifier reaches `verify-sync passed: 15/15 checks.`
+6. Returned branch and commit match the active Termux checkout.
+7. Hope capture/recall and geometry interaction remain functional.
+8. No repository mutation occurs as a side effect of any A09.2 action.
 
 ## Deferred capability
 

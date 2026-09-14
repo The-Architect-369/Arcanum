@@ -10,11 +10,10 @@ import android.widget.LinearLayout
 import android.widget.TextView
 
 /**
- * Native Architect destination for CE-W04-A09.
+ * Native Architect destination for CE-W04-A09.2.
  *
- * A09 expands the Architect from one read-only inspection into a small fixed
- * Human-approved action registry. Every execution remains loopback-only,
- * registered, receipt-bearing, and non-shell-text.
+ * A09 exposes the fixed Human-approved action registry. A09.2 preserves the
+ * Termux-native temporary execution envelope without widening authority.
  */
 class ArchitectShellPanel(context: Context) : LinearLayout(context) {
     private val brokerClient = ArchitectBrokerClient()
@@ -57,7 +56,7 @@ class ArchitectShellPanel(context: Context) : LinearLayout(context) {
             TextView(context).apply {
                 text =
                     "Human-approved local operations · authorityEffect=none\n" +
-                        "A09 exposes a fixed bounded action registry through the loopback Termux broker."
+                        "A09.2 preserves the fixed bounded action registry and Termux-native execution envelope."
                 setTextColor(Color.GRAY)
                 textSize = 14f
                 setPadding(0, dp(14), 0, dp(14))

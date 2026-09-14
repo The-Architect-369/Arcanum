@@ -87,15 +87,25 @@ Repository mutation, free-form shell input, patch application, Git push/merge, a
 
 #### CE-W04-A09.1 — Mobile verification execution-envelope repair
 
+Physical A09 testing proved that `verify_sync` itself was healthy and completed 15/15 when run directly in Termux, while the native invocation failed at the broker's original 120-second deadline. A09.1 therefore changed only the bounded execution envelope: `verify_sync` receives a 300-second broker timeout and the Android loopback client receives a 310-second read timeout so the broker remains the primary deadline and can return a structured receipt.
+
+A09.1 also advanced Android provenance to versionCode 10 / `CE-W04-A09.1` for a physically distinguishable in-place update. The command registry, loopback-only transport, Human approval requirement, repository non-mutation ceiling, no-model ceiling, and `authorityEffect=none` remained unchanged.
+
+Physical A09.1 retesting proved the timeout repair worked: the broker remained alive for the full approximately 132-second verification run and returned HTTP 200 without the prior client-side broken pipe. That run then exposed a second, narrower execution-envelope mismatch: the reduced broker child environment omitted Termux `TMPDIR`, causing `mktemp -d` inside repo-index merge-stability verification to fall back to inaccessible `/tmp`.
+
+#### CE-W04-A09.2 — Termux-native temporary execution envelope
+
 Current repair tranche.
 
-Physical A09 testing proved that `verify_sync` itself was healthy and completed 15/15 when run directly in Termux, while the native invocation failed at the broker's original 120-second deadline. A09.1 therefore changes only the bounded execution envelope: `verify_sync` receives a 300-second broker timeout and the Android loopback client receives a 310-second read timeout so the broker remains the primary deadline and can return a structured receipt.
+A09.2 preserves Termux host `TMPDIR` inside the broker's bounded child-process environment. Before any registered command executes, the broker validates that host `TMPDIR` is present, absolute, resolves to an existing directory, and is writable. Missing or invalid temporary storage fails closed as `execution_environment_unavailable`; the broker does not create a fallback directory or accept environment values from Android request data.
 
-A09.1 also advances Android provenance to versionCode 10 / `CE-W04-A09.1` for a physically distinguishable in-place update. The command registry, loopback-only transport, Human approval requirement, repository non-mutation ceiling, no-model ceiling, and `authorityEffect=none` remain unchanged.
+The canonical verification scripts remain environment-neutral. No Android/Termux condition is added to `verify-sync.sh` or repo-index merge-stability logic. Android provenance advances to versionCode 11 / `CE-W04-A09.2` so the repaired runtime can be physically distinguished during in-place validation.
+
+The fixed command registry, 300/310-second verification timeout relation, loopback-only transport, Human approval requirement, repository non-mutation ceiling, no-model ceiling, and `authorityEffect=none` remain unchanged.
 
 ## Next intended tranche
 
-After physical A09.1 validation, the Architect Evolution / Iteration Plane may add a proposal-oriented change workflow that can generate a bounded patch or implementation plan without immediately applying it. Any repository mutation path must remain a distinct Human-reviewed capability with explicit file/diff scope, precondition checks, receipts, and rollback/abort semantics.
+After physical A09.2 validation, the Architect Evolution / Iteration Plane may add a proposal-oriented change workflow that can generate a bounded patch or implementation plan without immediately applying it. Any repository mutation path must remain a distinct Human-reviewed capability with explicit file/diff scope, precondition checks, receipts, and rollback/abort semantics.
 
 ## Promotion discipline
 

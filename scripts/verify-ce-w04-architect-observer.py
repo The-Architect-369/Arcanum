@@ -50,6 +50,9 @@ for required_phrase in (
     "current Git repository", "ARCANUM_REPO_DIR advanced override", "$HOME/Arcanum", "fail closed",
     "No free-form shell text", "authorityEffect=none", "Repository mutation",
     "A09.1 mobile verification execution envelope", "300-second broker timeout", "310-second native read timeout",
+    "A09.2 Termux-native temporary execution envelope", "execution_environment_unavailable",
+    "broker host process environment", "request cannot provide or override environment variables",
+    "present, absolute, resolvable to an existing directory, and writable", "MUST NOT create a fallback temporary directory",
 ):
     require(required_phrase in a09_contract, f"A09 bounded action contract missing: {required_phrase!r}")
 
@@ -81,6 +84,7 @@ for required_phrase in (
     "Choose local action", "Architect local actions", "Registered action:", "Risk class:", "Transport: 127.0.0.1 only",
     "ArchitectBrokerClient.Action.entries", "requestApproval", "authorityEffect=none",
     "cannot execute arbitrary shell commands", "cannot mutate the repository",
+    "A09.2 preserves the fixed bounded action registry and Termux-native execution envelope.",
 ):
     require(required_phrase in shell_panel, f"A09 Architect action surface missing: {required_phrase!r}")
 
@@ -104,6 +108,19 @@ for required_phrase in (
     '("bash", "scripts/verify-sync.sh"),\n            VERIFY_SYNC_TIMEOUT_SECONDS,',
 ):
     require(required_phrase in broker, f"A09.1 verification execution envelope missing: {required_phrase!r}")
+for required_phrase in (
+    'tmpdir_value = os.environ.get("TMPDIR")',
+    'if not tmpdir_value:',
+    'if not tmpdir.is_absolute():',
+    'tmpdir.resolve(strict=True)',
+    'if not tmpdir.is_dir():',
+    'if not os.access(tmpdir, os.W_OK):',
+    '"execution_environment_unavailable"',
+    '"TMPDIR": str(tmpdir)',
+):
+    require(required_phrase in broker, f"A09.2 Termux execution envelope missing: {required_phrase!r}")
+require('request["TMPDIR"]' not in broker, "A09.2 request data must not control TMPDIR")
+require('request.get("TMPDIR")' not in broker, "A09.2 request data must not control TMPDIR")
 for forbidden in ("shell=True", "git push", "git commit", "git merge", "git reset --hard"):
     require(forbidden not in broker, f"A09 broker mutation/shell ceiling violated: {forbidden!r}")
 
@@ -151,15 +168,15 @@ for required_phrase in (
     require(required_phrase in main_activity, f"MainActivity missing Architect/inset-safe hook: {required_phrase!r}")
 
 build_gradle = (ROOT / "apps/android/app/build.gradle.kts").read_text(encoding="utf-8")
-for required_phrase in ("ARCANUM_SOURCE_COMMIT", "arcanumSourceCommit", "buildConfig = true", "CE-W04-A09.1"):
+for required_phrase in ("ARCANUM_SOURCE_COMMIT", "arcanumSourceCommit", "buildConfig = true", "CE-W04-A09.2"):
     require(required_phrase in build_gradle, f"Android build provenance missing: {required_phrase!r}")
 version_code_match = re.search(r"\bversionCode\s*=\s*(\d+)\b", build_gradle)
 require(version_code_match is not None, "Android build provenance missing: versionCode")
-require(int(version_code_match.group(1)) >= 10, "A09.1 requires monotonic Android versionCode >= 10")
+require(int(version_code_match.group(1)) >= 11, "A09.2 requires monotonic Android versionCode >= 11")
 
 workflow = (ROOT / ".github/workflows/verify-ce-w04-architect-observer.yml").read_text(encoding="utf-8")
 require('-ParcanumSourceCommit="$SOURCE_HEAD"' in workflow, "exact-head Android build must inject the checked-out source commit")
 unit_test = ROOT / "apps/android/app/src/test/java/org/arcanum/nativehost/architect/ArchitectObservationContractTest.kt"
 require(unit_test.is_file(), "Architect observation contract unit test is missing")
 
-print("PASS CE-W04 Architect Observer + Bridge: A09.1 mobile verification execution-envelope repair, bounded action registry, repository-target continuity, loopback transport, frozen observation export, provenance, and inherited privacy controls")
+print("PASS CE-W04 Architect Observer + Bridge: A09.2 Termux-native temporary execution-envelope repair, bounded action registry, repository-target continuity, loopback transport, frozen observation export, provenance, and inherited privacy controls")
