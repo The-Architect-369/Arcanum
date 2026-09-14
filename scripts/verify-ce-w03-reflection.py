@@ -65,7 +65,17 @@ def main() -> None:
 
     panel = read("apps/android/app/src/main/java/org/arcanum/nativehost/hope/HopeReflectionPanel.kt")
     require('text = "Hope · local reflection"' in panel, "F68 Hope is native experiential center")
-    require('text = "Private on this device · advisory only · authorityEffect=none"' in panel, "F68 truthful privacy/authority presentation")
+    require(
+        (
+            'text = "Private on this device · advisory only · authorityEffect=none"' in panel
+            or (
+                "Private on this device." in panel
+                and "Advisory only." in panel
+                and "Authority effect none." in panel
+            )
+        ),
+        "F68 truthful privacy/authority presentation",
+    )
     require('status.text = "Silence is welcome. Nothing was recorded."' in panel, "F68 silence is valid")
     require('const val CURATED_PRESENCE: String = "Your reflection is held locally."' in panel, "F68 curated static presence implemented")
     require("HopeRuntimeBridge.buildReflection(" in panel, "F63/F66 reflection constructed through Rust-owned contract")

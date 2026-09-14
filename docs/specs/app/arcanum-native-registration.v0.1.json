@@ -37,6 +37,6 @@
   "ceW04Reserved": [
     "provisional_local_identity",
     "receipt_signing",
-    "networked_seed_node_alpha_proof"
+    "integrated_seed_node_alpha_proof"
   ]
 }

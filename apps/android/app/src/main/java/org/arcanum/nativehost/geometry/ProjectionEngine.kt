@@ -1,8 +1,10 @@
 package org.arcanum.nativehost.geometry
 
 import kotlin.math.PI
+import kotlin.math.cos
 import kotlin.math.max
 import kotlin.math.min
+import kotlin.math.sin
 import kotlin.math.tan
 
 data class Vec4(
@@ -35,9 +37,11 @@ class ProjectionEngine(
     fun project(
         q: Vec3,
         viewport: ViewportSpec = profile.referenceViewport,
+        viewerOrbit: ViewerOrbitState = ViewerOrbitReducer.neutral,
     ): ProjectedPoint? {
+        val camera = cameraFor(viewerOrbit)
         val world = model(q)
-        val view = view(world)
+        val view = view(world, camera)
         val clip = perspectiveClip(view, viewport)
         if (!insideClip(clip)) {
             return null
@@ -54,9 +58,11 @@ class ProjectionEngine(
         firstQ: Vec3,
         secondQ: Vec3,
         viewport: ViewportSpec = profile.referenceViewport,
+        viewerOrbit: ViewerOrbitState = ViewerOrbitReducer.neutral,
     ): ProjectedSegment? {
-        val firstClip = perspectiveClip(view(model(firstQ)), viewport)
-        val secondClip = perspectiveClip(view(model(secondQ)), viewport)
+        val camera = cameraFor(viewerOrbit)
+        val firstClip = perspectiveClip(view(model(firstQ), camera), viewport)
+        val secondClip = perspectiveClip(view(model(secondQ), camera), viewport)
         val clipped = clipHomogeneousSegment(firstClip, secondClip) ?: return null
         val first = screenFromClip(clipped.first, viewport)
         val second = screenFromClip(clipped.second, viewport)
@@ -66,17 +72,64 @@ class ProjectionEngine(
     private fun model(q: Vec3): Vec3 =
         profile.model.translation + profile.model.rotation.apply(q) * profile.model.scale
 
-    private fun cameraBasis(): Triple<Vec3, Vec3, Vec3> {
-        val forward = (profile.camera.target - profile.camera.eye).normalized()
-        val right = forward.cross(profile.camera.upReference).normalized()
+    private fun cameraFor(viewerOrbit: ViewerOrbitState): CameraSpec {
+        if (viewerOrbit == ViewerOrbitReducer.neutral) {
+            return profile.camera
+        }
+        require(viewerOrbit.yawDegrees.isFinite()) { "viewer yaw must be finite" }
+        require(viewerOrbit.pitchDegrees.isFinite()) { "viewer pitch must be finite" }
+        require(viewerOrbit.zoom.isFinite() && viewerOrbit.zoom > 0.0) {
+            "viewer zoom must be finite and positive"
+        }
+
+        val base = profile.camera
+        val upAxis = base.upReference.normalized()
+        val baseOffset = base.eye - base.target
+        require(baseOffset.norm() > 0.0) { "viewer orbit requires non-degenerate camera distance" }
+
+        val yawedOffset = rotateAroundAxis(baseOffset, upAxis, viewerOrbit.yawDegrees)
+        val forwardAfterYaw = (yawedOffset * -1.0).normalized()
+        val rightAxis = forwardAfterYaw.cross(upAxis).normalized()
+        val pitchedOffset = rotateAroundAxis(yawedOffset, rightAxis, viewerOrbit.pitchDegrees)
+        val pitchedUp = rotateAroundAxis(upAxis, rightAxis, viewerOrbit.pitchDegrees).normalized()
+        val zoomedOffset = pitchedOffset * (1.0 / viewerOrbit.zoom)
+
+        return CameraSpec(
+            eye = base.target + zoomedOffset,
+            target = base.target,
+            upReference = pitchedUp,
+        )
+    }
+
+    private fun rotateAroundAxis(
+        value: Vec3,
+        axis: Vec3,
+        degrees: Double,
+    ): Vec3 {
+        if (degrees == 0.0) return value
+        val radians = degrees * PI / 180.0
+        val unitAxis = axis.normalized()
+        val cosine = cos(radians)
+        val sine = sin(radians)
+        return value * cosine +
+            unitAxis.cross(value) * sine +
+            unitAxis * (unitAxis.dot(value) * (1.0 - cosine))
+    }
+
+    private fun cameraBasis(camera: CameraSpec): Triple<Vec3, Vec3, Vec3> {
+        val forward = (camera.target - camera.eye).normalized()
+        val right = forward.cross(camera.upReference).normalized()
         val up = right.cross(forward)
         require(up.norm() > 0.0) { "degenerate camera up basis" }
         return Triple(right, up, forward)
     }
 
-    private fun view(world: Vec3): Vec3 {
-        val (right, up, forward) = cameraBasis()
-        val relative = world - profile.camera.eye
+    private fun view(
+        world: Vec3,
+        camera: CameraSpec,
+    ): Vec3 {
+        val (right, up, forward) = cameraBasis(camera)
+        val relative = world - camera.eye
         return Vec3(
             right.dot(relative),
             up.dot(relative),
