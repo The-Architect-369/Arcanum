@@ -5,7 +5,7 @@ visibility: public
 phase: "Pre-Genesis"
 era: "Construction Era"
 wave: "CE-W04"
-last_updated: 2026-09-13
+last_updated: 2026-09-14
 maintainer: The-Architect-369
 authority: "Human Architect naming/continuity convention; evidence and promotion remain governed by existing wave contracts"
 ---
@@ -103,9 +103,19 @@ The canonical verification scripts remain environment-neutral. No Android/Termux
 
 The fixed command registry, 300/310-second verification timeout relation, loopback-only transport, Human approval requirement, repository non-mutation ceiling, no-model ceiling, and `authorityEffect=none` remain unchanged.
 
+### CE-W04-A10 — Architect Local Development Console
+
+A10 begins after physical A09.2 validation proved the bounded native Architect execution spine end-to-end on Seed Node Alpha.
+
+A10 does not widen repository authority. Instead it turns the existing action surface into a usable local development console with factual broker readiness, active branch/commit context, compact execution summaries, execution receipts and hashes, and Human-controlled expandable raw output.
+
+The console is mounted beneath the persistent Arcanum shell and uses a vertically scrollable presentation region so long verification output cannot dominate or escape the safe native interface.
+
+The A09.2 fixed command registry, explicit per-action Human approval, loopback-only transport, Termux-native temporary execution envelope, repository non-mutation ceiling, no-model ceiling, and `authorityEffect=none` remain unchanged.
+
 ## Next intended tranche
 
-After physical A09.2 validation, the Architect Evolution / Iteration Plane may add a proposal-oriented change workflow that can generate a bounded patch or implementation plan without immediately applying it. Any repository mutation path must remain a distinct Human-reviewed capability with explicit file/diff scope, precondition checks, receipts, and rollback/abort semantics.
+After physical A10 validation, the Architect Evolution / Iteration Plane may introduce a proposal-oriented implementation workflow: the Architect may construct a bounded change proposal or patch candidate for Human review without applying it. Repository mutation remains deferred until a later Arc defines explicit file scope, preconditions, diff review, Human approval, receipts, and abort/rollback semantics.
 
 ## Promotion discipline
 

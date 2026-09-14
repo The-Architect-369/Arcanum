@@ -4,30 +4,52 @@ import android.app.AlertDialog
 import android.content.Context
 import android.graphics.Color
 import android.view.Gravity
+import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.LinearLayout
+import android.widget.ScrollView
 import android.widget.TextView
 
 /**
- * Native Architect destination for CE-W04-A09.2.
+ * Native Architect local development console for CE-W04-A10.
  *
- * A09 exposes the fixed Human-approved action registry. A09.2 preserves the
- * Termux-native temporary execution envelope without widening authority.
+ * A10 improves presentation and observability over the certified A09.2 execution
+ * spine. It does not widen the registered command set, repository authority,
+ * model authority, or loopback-only transport boundary.
  */
 class ArchitectShellPanel(context: Context) : LinearLayout(context) {
     private val brokerClient = ArchitectBrokerClient()
-    private val brokerStatus: TextView
+
+    private val probeButton: Button
     private val actionButton: Button
+    private val brokerStatus: TextView
+    private val executionSummary: TextView
+    private val executionProvenance: TextView
+    private val rawOutputButton: Button
+    private val rawOutput: TextView
+
+    private var rawOutputVisible = false
 
     init {
         orientation = VERTICAL
-        gravity = Gravity.START
-        setPadding(dp(20), dp(18), dp(20), dp(18))
-        setBackgroundColor(Color.argb(232, 8, 8, 8))
+        setBackgroundColor(Color.argb(244, 8, 8, 8))
         visibility = GONE
 
-        addView(
+        val scroll =
+            ScrollView(context).apply {
+                isFillViewport = true
+                overScrollMode = OVER_SCROLL_IF_CONTENT_SCROLLS
+            }
+
+        val content =
+            LinearLayout(context).apply {
+                orientation = VERTICAL
+                gravity = Gravity.START
+                setPadding(dp(20), dp(18), dp(20), dp(28))
+            }
+
+        content.addView(
             TextView(context).apply {
                 text = "Architect"
                 setTextColor(Color.WHITE)
@@ -39,28 +61,54 @@ class ArchitectShellPanel(context: Context) : LinearLayout(context) {
             ),
         )
 
-        addView(
+        content.addView(
             TextView(context).apply {
-                text = "Seed Node Alpha · local Architect surface"
+                text = "Seed Node Alpha · local development console"
                 setTextColor(Color.LTGRAY)
                 textSize = 16f
                 setPadding(0, dp(8), 0, 0)
             },
+        )
+
+        content.addView(
+            TextView(context).apply {
+                text =
+                    "Human-approved local operations · authorityEffect=none\n" +
+                        "A10 presents broker state, compact execution summaries, receipts, " +
+                        "and opt-in raw output without widening A09.2 command authority."
+                setTextColor(Color.GRAY)
+                textSize = 14f
+                setPadding(0, dp(14), 0, dp(14))
+            },
+        )
+
+        brokerStatus =
+            TextView(context).apply {
+                text =
+                    "Broker status · not checked\n" +
+                        "Transport remains compile-time loopback 127.0.0.1:8765."
+                setTextColor(Color.LTGRAY)
+                textSize = 13f
+                setTextIsSelectable(true)
+                setPadding(0, 0, 0, dp(10))
+            }
+
+        content.addView(
+            brokerStatus,
             LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT,
             ),
         )
 
-        addView(
-            TextView(context).apply {
-                text =
-                    "Human-approved local operations · authorityEffect=none\n" +
-                        "A09.2 preserves the fixed bounded action registry and Termux-native execution envelope."
-                setTextColor(Color.GRAY)
-                textSize = 14f
-                setPadding(0, dp(14), 0, dp(14))
-            },
+        probeButton =
+            Button(context).apply {
+                text = "Check local broker"
+                setOnClickListener { probeBroker() }
+            }
+
+        content.addView(
+            probeButton,
             LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT,
@@ -72,35 +120,157 @@ class ArchitectShellPanel(context: Context) : LinearLayout(context) {
                 text = "Choose local action"
                 setOnClickListener { chooseAction() }
             }
-        addView(
+
+        content.addView(
             actionButton,
             LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT,
-            ),
+            ).apply {
+                topMargin = dp(8)
+            },
         )
 
-        brokerStatus =
+        executionSummary =
             TextView(context).apply {
-                text =
-                    "Broker idle.\n" +
-                        "This surface cannot execute arbitrary shell commands, cannot mutate the repository, or contact a model provider."
-                setTextColor(Color.LTGRAY)
-                textSize = 13f
-                setPadding(0, dp(14), 0, 0)
+                text = "No Architect action has run in this console session."
+                setTextColor(Color.WHITE)
+                textSize = 15f
                 setTextIsSelectable(true)
+                setPadding(0, dp(18), 0, dp(6))
             }
-        addView(
-            brokerStatus,
+
+        content.addView(
+            executionSummary,
             LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT,
             ),
         )
+
+        executionProvenance =
+            TextView(context).apply {
+                text =
+                    "Execution provenance appears here after a Human-approved registered action."
+                setTextColor(Color.LTGRAY)
+                textSize = 12f
+                setTextIsSelectable(true)
+            }
+
+        content.addView(
+            executionProvenance,
+            LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT,
+            ),
+        )
+
+        rawOutputButton =
+            Button(context).apply {
+                text = "Show raw output"
+                visibility = GONE
+                setOnClickListener { toggleRawOutput() }
+            }
+
+        content.addView(
+            rawOutputButton,
+            LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT,
+            ).apply {
+                topMargin = dp(12)
+            },
+        )
+
+        rawOutput =
+            TextView(context).apply {
+                text = ""
+                visibility = GONE
+                setTextColor(Color.LTGRAY)
+                textSize = 12f
+                setTextIsSelectable(true)
+                setPadding(0, dp(10), 0, dp(10))
+            }
+
+        content.addView(
+            rawOutput,
+            LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT,
+            ),
+        )
+
+        content.addView(
+            TextView(context).apply {
+                text =
+                    "Capability ceiling · no arbitrary shell · no repository mutation · " +
+                        "no autonomous approval · no model provider"
+                setTextColor(Color.GRAY)
+                textSize = 11f
+                setPadding(0, dp(18), 0, 0)
+            },
+        )
+
+        scroll.addView(
+            content,
+            ScrollView.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT,
+            ),
+        )
+
+        addView(
+            scroll,
+            LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.MATCH_PARENT,
+            ),
+        )
+    }
+
+    fun onPresented() {
+        visibility = VISIBLE
+        probeBroker()
+    }
+
+    private fun probeBroker() {
+        probeButton.isEnabled = false
+        brokerStatus.text =
+            "Broker status · checking 127.0.0.1:8765…"
+
+        Thread {
+            val result = brokerClient.probe()
+
+            post {
+                probeButton.isEnabled = true
+
+                brokerStatus.text =
+                    result.fold(
+                        onSuccess = { status ->
+                            buildString {
+                                appendLine("Broker ready · local loopback")
+                                appendLine("branch=${status.branch ?: "unknown"}")
+                                appendLine("commit=${compactSha(status.commit)}")
+                                append("${status.registeredActionCount} registered broker action(s)")
+                            }
+                        },
+                        onFailure = { error ->
+                            "Broker unavailable · ${
+                                error.message ?: error::class.java.simpleName
+                            }\nStart the repo-owned Termux broker, then check again."
+                        },
+                    )
+            }
+        }.apply {
+            name = "arcanum-architect-broker-probe"
+            isDaemon = true
+            start()
+        }
     }
 
     private fun chooseAction() {
         val actions = ArchitectBrokerClient.Action.entries
+
         AlertDialog.Builder(context)
             .setTitle("Architect local actions")
             .setItems(actions.map { it.label }.toTypedArray()) { _, which ->
@@ -121,27 +291,40 @@ class ArchitectShellPanel(context: Context) : LinearLayout(context) {
                     "This action produces a broker receipt and does not accept arbitrary shell text.",
             )
             .setNegativeButton("Cancel", null)
-            .setPositiveButton("Run") { _, _ -> executeAction(action) }
+            .setPositiveButton("Run") { _, _ ->
+                executeAction(action)
+            }
             .show()
     }
 
     private fun executeAction(action: ArchitectBrokerClient.Action) {
         actionButton.isEnabled = false
-        brokerStatus.text = "Running ${action.label.lowercase()} through local Termux broker…"
+        probeButton.isEnabled = false
+
+        executionSummary.text =
+            "Running · ${action.label}"
+        executionProvenance.text =
+            "Awaiting bounded execution receipt…"
+
+        rawOutputVisible = false
+        rawOutput.visibility = GONE
+        rawOutputButton.visibility = GONE
 
         Thread {
             val result = brokerClient.execute(action)
+
             post {
                 actionButton.isEnabled = true
-                brokerStatus.text =
-                    result.fold(
-                        onSuccess = { execution -> formatExecution(execution) },
-                        onFailure = { error ->
-                            "Local broker unavailable or Architect action failed.\n" +
-                                "Start the repo-owned Termux broker, then try again.\n" +
-                                "${error.message ?: error::class.java.simpleName}"
-                        },
-                    )
+                probeButton.isEnabled = true
+
+                result.fold(
+                    onSuccess = { execution ->
+                        presentExecution(execution)
+                    },
+                    onFailure = { error ->
+                        presentExecutionFailure(action, error)
+                    },
+                )
             }
         }.apply {
             name = "arcanum-architect-broker-${action.commandId}"
@@ -150,24 +333,97 @@ class ArchitectShellPanel(context: Context) : LinearLayout(context) {
         }
     }
 
-    private fun formatExecution(execution: ArchitectBrokerClient.ExecutionResult): String =
-        buildString {
-            appendLine("Architect action passed · ${execution.action.label}")
-            appendLine("branch=${execution.branch ?: "unknown"}")
-            appendLine("commit=${execution.commit ?: "unknown"}")
-            if (execution.stdout.isBlank()) {
-                appendLine("result=(no output)")
+    private fun presentExecution(
+        execution: ArchitectBrokerClient.ExecutionResult,
+    ) {
+        executionSummary.text =
+            buildString {
+                appendLine("PASS · ${execution.action.label}")
+                append("exit=${execution.exitCode}")
+
+                execution.durationMs?.let { duration ->
+                    append(" · ${duration.toLong()}ms")
+                }
+
+                if (execution.stdoutTruncated || execution.stderrTruncated) {
+                    append(" · output bounded")
+                }
+            }
+
+        executionProvenance.text =
+            buildString {
+                appendLine("branch=${execution.branch ?: "unknown"}")
+                appendLine("commit=${compactSha(execution.commit)}")
+                appendLine("receipt=${execution.receiptId ?: "unavailable"}")
+                appendLine("requestSha256=${execution.requestSha256 ?: "unavailable"}")
+                append("resultSha256=${execution.resultSha256 ?: "unavailable"}")
+            }
+
+        rawOutput.text =
+            formatRawExecution(execution)
+
+        rawOutputButton.visibility = View.VISIBLE
+        rawOutputButton.text = "Show raw output"
+    }
+
+    private fun presentExecutionFailure(
+        action: ArchitectBrokerClient.Action,
+        error: Throwable,
+    ) {
+        executionSummary.text =
+            "FAIL · ${action.label}"
+
+        executionProvenance.text =
+            "Registered Architect action failed.\n" +
+                "Start or inspect the repo-owned Termux broker, then try again.\n" +
+                (error.message ?: error::class.java.simpleName)
+
+        rawOutput.text = ""
+        rawOutput.visibility = GONE
+        rawOutputButton.visibility = GONE
+        rawOutputVisible = false
+    }
+
+    private fun toggleRawOutput() {
+        rawOutputVisible = !rawOutputVisible
+        rawOutput.visibility =
+            if (rawOutputVisible) View.VISIBLE else View.GONE
+
+        rawOutputButton.text =
+            if (rawOutputVisible) {
+                "Hide raw output"
             } else {
-                appendLine("result:")
+                "Show raw output"
+            }
+    }
+
+    private fun formatRawExecution(
+        execution: ArchitectBrokerClient.ExecutionResult,
+    ): String =
+        buildString {
+            appendLine("action=${execution.action.commandId}")
+            appendLine("startedAt=${execution.startedAt ?: "unknown"}")
+            appendLine("completedAt=${execution.completedAt ?: "unknown"}")
+
+            if (execution.stdout.isBlank()) {
+                appendLine()
+                appendLine("stdout:")
+                appendLine("(no output)")
+            } else {
+                appendLine()
+                appendLine("stdout:")
                 appendLine(execution.stdout.trimEnd())
             }
+
             if (execution.stderr.isNotBlank()) {
+                appendLine()
                 appendLine("stderr:")
                 appendLine(execution.stderr.trimEnd())
             }
-            execution.receiptId?.let { appendLine("receipt=$it") }
-            execution.resultSha256?.let { append("resultSha256=$it") }
         }.trim()
+
+    private fun compactSha(value: String?): String =
+        value?.take(12) ?: "unknown"
 
     private fun dp(value: Int): Int =
         (value * resources.displayMetrics.density).toInt()

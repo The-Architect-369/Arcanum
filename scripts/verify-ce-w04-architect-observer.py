@@ -43,6 +43,23 @@ for required_phrase in (
 ):
     require(required_phrase in contract, f"implementation contract missing: {required_phrase!r}")
 
+a10_contract = (ROOT / "docs/specs/app/ce-w04-a10-architect-local-development-console.md").read_text(encoding="utf-8")
+for required_phrase in (
+    "Architect Local Development Console",
+    "no free-form shell text",
+    "no repository mutation",
+    "Broker state",
+    "Compact result summary",
+    "Execution provenance",
+    "Show raw output",
+    "GET /health",
+    "persistent Arcanum shell control remains the highest native navigation layer",
+    "vertically scrollable",
+    "authorityEffect=none",
+    "Repository HEAD remains unchanged",
+):
+    require(required_phrase in a10_contract, f"A10 local development console contract missing: {required_phrase!r}")
+
 a09_contract = (ROOT / "docs/specs/app/ce-w04-a09-bounded-action-registry.md").read_text(encoding="utf-8")
 for required_phrase in (
     "Human chooses one native allowlisted action", "native client verifies broker risk class matches its own allowlist",
@@ -74,6 +91,11 @@ for required_phrase in (
     'approvedByHumanArchitect", true', 'receiptType") == "architect_execution_receipt"',
     'registered.optString("risk") == action.expectedRisk', 'url.host == LOOPBACK_HOST', 'instanceFollowRedirects = false',
     'READ_TIMEOUT_MS = 310000',
+    'fun probe(): Result<BrokerStatus>',
+    'registeredActionCount',
+    'requestSha256',
+    'stdoutTruncated',
+    'stderrTruncated',
 ):
     require(required_phrase in broker_client, f"A09 bounded native broker client missing: {required_phrase!r}")
 require("https://" not in broker_client, "A09 native broker client must not contain a remote HTTPS endpoint")
@@ -81,12 +103,27 @@ require("web_typecheck" not in broker_client, "A09 Android allowlist must not ex
 
 shell_panel = (architect_dir / "ArchitectShellPanel.kt").read_text(encoding="utf-8")
 for required_phrase in (
-    "Choose local action", "Architect local actions", "Registered action:", "Risk class:", "Transport: 127.0.0.1 only",
-    "ArchitectBrokerClient.Action.entries", "requestApproval", "authorityEffect=none",
-    "cannot execute arbitrary shell commands", "cannot mutate the repository",
-    "A09.2 preserves the fixed bounded action registry and Termux-native execution envelope.",
+    "Seed Node Alpha · local development console",
+    "Choose local action",
+    "Check local broker",
+    "Architect local actions",
+    "Registered action:",
+    "Risk class:",
+    "Transport: 127.0.0.1 only",
+    "ArchitectBrokerClient.Action.entries",
+    "requestApproval",
+    "authorityEffect=none",
+    "Show raw output",
+    "Execution provenance appears here",
+    "no arbitrary shell",
+    "no repository mutation",
+    "no autonomous approval",
+    "no model provider",
+    "onPresented",
+    "probeBroker",
+    "ScrollView",
 ):
-    require(required_phrase in shell_panel, f"A09 Architect action surface missing: {required_phrase!r}")
+    require(required_phrase in shell_panel, f"A10 Architect console surface missing: {required_phrase!r}")
 
 mobile_broker = (ROOT / "scripts/mobile/arcanum-broker.sh").read_text(encoding="utf-8")
 current_repo_index = mobile_broker.find('if git rev-parse --show-toplevel')
@@ -159,6 +196,17 @@ for required_phrase in (
 hope = (ROOT / "apps/android/app/src/main/java/org/arcanum/nativehost/hope/HopeReflectionPanel.kt").read_text(encoding="utf-8")
 require(hope.count("ArchitectObservationPrivacy.markPrivateText(this)") >= 2, "Hope input and recalled reflection must both be explicitly marked private")
 
+pulse_button = (architect_dir / "ArchitectPulseButton.kt").read_text(encoding="utf-8")
+for required_phrase in (
+    "panel.onPresented()",
+    "ViewGroup.LayoutParams.MATCH_PARENT",
+    "rootWindowInsets",
+    "systemWindowInsetTop",
+    "systemWindowInsetBottom",
+    "topMargin = topInset + dp(56f).toInt()",
+):
+    require(required_phrase in pulse_button, f"A10 Architect console mounting missing: {required_phrase!r}")
+
 main_activity = (ROOT / "apps/android/app/src/main/java/org/arcanum/nativehost/MainActivity.kt").read_text(encoding="utf-8")
 for required_phrase in (
     "ArchitectObserver", "ArchitectObservationBridge", "ArchitectPulseButton", 'trigger = "human_pulse"',
@@ -168,15 +216,15 @@ for required_phrase in (
     require(required_phrase in main_activity, f"MainActivity missing Architect/inset-safe hook: {required_phrase!r}")
 
 build_gradle = (ROOT / "apps/android/app/build.gradle.kts").read_text(encoding="utf-8")
-for required_phrase in ("ARCANUM_SOURCE_COMMIT", "arcanumSourceCommit", "buildConfig = true", "CE-W04-A09.2"):
+for required_phrase in ("ARCANUM_SOURCE_COMMIT", "arcanumSourceCommit", "buildConfig = true", "CE-W04-A10"):
     require(required_phrase in build_gradle, f"Android build provenance missing: {required_phrase!r}")
 version_code_match = re.search(r"\bversionCode\s*=\s*(\d+)\b", build_gradle)
 require(version_code_match is not None, "Android build provenance missing: versionCode")
-require(int(version_code_match.group(1)) >= 11, "A09.2 requires monotonic Android versionCode >= 11")
+require(int(version_code_match.group(1)) >= 12, "A10 requires monotonic Android versionCode >= 12")
 
 workflow = (ROOT / ".github/workflows/verify-ce-w04-architect-observer.yml").read_text(encoding="utf-8")
 require('-ParcanumSourceCommit="$SOURCE_HEAD"' in workflow, "exact-head Android build must inject the checked-out source commit")
 unit_test = ROOT / "apps/android/app/src/test/java/org/arcanum/nativehost/architect/ArchitectObservationContractTest.kt"
 require(unit_test.is_file(), "Architect observation contract unit test is missing")
 
-print("PASS CE-W04 Architect Observer + Bridge: A09.2 Termux-native temporary execution-envelope repair, bounded action registry, repository-target continuity, loopback transport, frozen observation export, provenance, and inherited privacy controls")
+print("PASS CE-W04 Architect Observer + Bridge: A10 local development console, compact execution summaries, broker-state visibility, expandable raw output, A09.2 bounded execution continuity, provenance, and inherited privacy controls")

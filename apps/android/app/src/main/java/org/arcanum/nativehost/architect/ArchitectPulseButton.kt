@@ -124,15 +124,22 @@ class ArchitectPulseButton(
         val panel =
             architectPanel ?: ArchitectShellPanel(activity).also { created ->
                 val content = activity.findViewById<FrameLayout>(android.R.id.content)
+                val insets = activity.window.decorView.rootWindowInsets
+                val topInset = insets?.systemWindowInsetTop ?: 0
+                val bottomInset = insets?.systemWindowInsetBottom ?: 0
+
                 val params =
                     FrameLayout.LayoutParams(
                         ViewGroup.LayoutParams.MATCH_PARENT,
-                        ViewGroup.LayoutParams.WRAP_CONTENT,
-                        Gravity.CENTER,
+                        ViewGroup.LayoutParams.MATCH_PARENT,
+                        Gravity.TOP,
                     ).apply {
                         leftMargin = dp(20f).toInt()
                         rightMargin = dp(20f).toInt()
+                        topMargin = topInset + dp(56f).toInt()
+                        bottomMargin = bottomInset
                     }
+
                 content.addView(created, params)
                 architectPanel = created
             }
