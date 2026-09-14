@@ -38,7 +38,7 @@ android {
         buildConfigField(
             "String",
             "ARCANUM_IMPLEMENTATION_ARC",
-            "\"CE-W04-A09.2\"",
+            "\"CE-W04-A10\"",
         )
     }
 
