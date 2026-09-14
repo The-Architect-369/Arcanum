@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-09-13T05:26:59Z",
+  "generated_at": "2026-09-14T03:28:12Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "5c0251e77",
+  "commit": "2ef4393f0",
   "generator_version": "1.5",
   "files": [
     {
@@ -187,8 +187,8 @@
     {
       "path": "apps/android/app/build.gradle.kts",
       "type": "file",
-      "size_bytes": 2428,
-      "last_modified_commit": "5c0251e77",
+      "size_bytes": 2429,
+      "last_modified_commit": "2ef4393f0",
       "is_empty": false,
       "extension": ".kts",
       "lines": 90
@@ -295,11 +295,11 @@
     {
       "path": "apps/android/app/src/main/java/org/arcanum/nativehost/architect/ArchitectShellPanel.kt",
       "type": "file",
-      "size_bytes": 6329,
-      "last_modified_commit": "b7e6de8f1",
+      "size_bytes": 6287,
+      "last_modified_commit": "2ef4393f0",
       "is_empty": false,
       "extension": ".kt",
-      "lines": 175
+      "lines": 174
     },
     {
       "path": "apps/android/app/src/main/java/org/arcanum/nativehost/architect/ArchitectVisualDiagnostics.kt",
@@ -3985,11 +3985,11 @@
     {
       "path": "docs/roadmap/construction-era-arc-ledger.md",
       "type": "file",
-      "size_bytes": 7524,
-      "last_modified_commit": "5c0251e77",
+      "size_bytes": 9004,
+      "last_modified_commit": "2ef4393f0",
       "is_empty": false,
       "extension": ".md",
-      "lines": 114
+      "lines": 124
     },
     {
       "path": "docs/roadmap/construction-era-roadmap.md",
@@ -4165,11 +4165,11 @@
     {
       "path": "docs/specs/app/ce-w04-a09-bounded-action-registry.md",
       "type": "file",
-      "size_bytes": 5632,
-      "last_modified_commit": "5c0251e77",
+      "size_bytes": 7254,
+      "last_modified_commit": "2ef4393f0",
       "is_empty": false,
       "extension": ".md",
-      "lines": 136
+      "lines": 154
     },
     {
       "path": "docs/specs/app/ce-w04-seed-node-alpha.md",
@@ -6982,11 +6982,11 @@
     {
       "path": "scripts/architect/termux-broker.py",
       "type": "file",
-      "size_bytes": 16288,
-      "last_modified_commit": "5c0251e77",
+      "size_bytes": 17194,
+      "last_modified_commit": "2ef4393f0",
       "is_empty": false,
       "extension": ".py",
-      "lines": 461
+      "lines": 486
     },
     {
       "path": "scripts/architect/test-architect-runtime.sh",
@@ -7261,11 +7261,11 @@
     {
       "path": "scripts/verify-ce-w04-architect-observer.py",
       "type": "file",
-      "size_bytes": 11644,
-      "last_modified_commit": "5c0251e77",
+      "size_bytes": 12666,
+      "last_modified_commit": "2ef4393f0",
       "is_empty": false,
       "extension": ".py",
-      "lines": 165
+      "lines": 182
     },
     {
       "path": "scripts/verify-repo-index.py",
