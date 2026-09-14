@@ -3,11 +3,13 @@ set -euo pipefail
 
 REPO_ROOT="$(git rev-parse --show-toplevel)"
 PORT="${ARCANUM_BROKER_TEST_PORT:-18765}"
-WORK_TMP="${TMPDIR:-${PREFIX:-/tmp}/tmp}/arcanum-termux-broker-test"
+HOST_TMPDIR="${TMPDIR:-${PREFIX:-/tmp}/tmp}"
+WORK_TMP="$HOST_TMPDIR/arcanum-termux-broker-test"
 LOG_FILE="$WORK_TMP/broker.log"
 PID_FILE="$WORK_TMP/broker.pid"
 
-mkdir -p "$WORK_TMP"
+mkdir -p "$HOST_TMPDIR" "$WORK_TMP"
+export TMPDIR="$HOST_TMPDIR"
 rm -f "$LOG_FILE" "$PID_FILE"
 
 cleanup() {
