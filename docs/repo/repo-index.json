@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-09-14T04:06:37Z",
+  "generated_at": "2026-09-14T05:18:35Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "920aba540",
+  "commit": "e321ca47b",
   "generator_version": "1.5",
   "files": [
     {
@@ -187,8 +187,8 @@
     {
       "path": "apps/android/app/build.gradle.kts",
       "type": "file",
-      "size_bytes": 2429,
-      "last_modified_commit": "2ef4393f0",
+      "size_bytes": 2427,
+      "last_modified_commit": "e321ca47b",
       "is_empty": false,
       "extension": ".kts",
       "lines": 90
@@ -232,11 +232,11 @@
     {
       "path": "apps/android/app/src/main/java/org/arcanum/nativehost/architect/ArchitectBrokerClient.kt",
       "type": "file",
-      "size_bytes": 6708,
-      "last_modified_commit": "5c0251e77",
+      "size_bytes": 9498,
+      "last_modified_commit": "e321ca47b",
       "is_empty": false,
       "extension": ".kt",
-      "lines": 181
+      "lines": 281
     },
     {
       "path": "apps/android/app/src/main/java/org/arcanum/nativehost/architect/ArchitectObservationBridge.kt",
@@ -286,20 +286,20 @@
     {
       "path": "apps/android/app/src/main/java/org/arcanum/nativehost/architect/ArchitectPulseButton.kt",
       "type": "file",
-      "size_bytes": 5747,
-      "last_modified_commit": "8b03e6445",
+      "size_bytes": 6068,
+      "last_modified_commit": "e321ca47b",
       "is_empty": false,
       "extension": ".kt",
-      "lines": 170
+      "lines": 177
     },
     {
       "path": "apps/android/app/src/main/java/org/arcanum/nativehost/architect/ArchitectShellPanel.kt",
       "type": "file",
-      "size_bytes": 6287,
-      "last_modified_commit": "2ef4393f0",
+      "size_bytes": 13745,
+      "last_modified_commit": "e321ca47b",
       "is_empty": false,
       "extension": ".kt",
-      "lines": 174
+      "lines": 430
     },
     {
       "path": "apps/android/app/src/main/java/org/arcanum/nativehost/architect/ArchitectVisualDiagnostics.kt",
@@ -3985,11 +3985,11 @@
     {
       "path": "docs/roadmap/construction-era-arc-ledger.md",
       "type": "file",
-      "size_bytes": 9004,
-      "last_modified_commit": "2ef4393f0",
+      "size_bytes": 9942,
+      "last_modified_commit": "e321ca47b",
       "is_empty": false,
       "extension": ".md",
-      "lines": 124
+      "lines": 134
     },
     {
       "path": "docs/roadmap/construction-era-roadmap.md",
@@ -4170,6 +4170,15 @@
       "is_empty": false,
       "extension": ".md",
       "lines": 154
+    },
+    {
+      "path": "docs/specs/app/ce-w04-a10-architect-local-development-console.md",
+      "type": "file",
+      "size_bytes": 4278,
+      "last_modified_commit": "e321ca47b",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 138
     },
     {
       "path": "docs/specs/app/ce-w04-seed-node-alpha.md",
@@ -7261,11 +7270,11 @@
     {
       "path": "scripts/verify-ce-w04-architect-observer.py",
       "type": "file",
-      "size_bytes": 12666,
-      "last_modified_commit": "2ef4393f0",
+      "size_bytes": 14039,
+      "last_modified_commit": "e321ca47b",
       "is_empty": false,
       "extension": ".py",
-      "lines": 182
+      "lines": 230
     },
     {
       "path": "scripts/verify-repo-index.py",
