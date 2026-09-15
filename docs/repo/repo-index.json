@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-09-15T03:12:20Z",
+  "generated_at": "2026-09-15T05:24:10Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "fc02d1aa1",
+  "commit": "25b6a0eeb",
   "generator_version": "1.5",
   "files": [
     {
@@ -4192,11 +4192,11 @@
     {
       "path": "docs/specs/app/ce-w04-a11-verified-architect-session.md",
       "type": "file",
-      "size_bytes": 6785,
-      "last_modified_commit": "823c0a5b6",
+      "size_bytes": 7247,
+      "last_modified_commit": "25b6a0eeb",
       "is_empty": false,
       "extension": ".md",
-      "lines": 216
+      "lines": 223
     },
     {
       "path": "docs/specs/app/ce-w04-seed-node-alpha.md",
@@ -7009,11 +7009,11 @@
     {
       "path": "scripts/architect/termux-broker.py",
       "type": "file",
-      "size_bytes": 28265,
-      "last_modified_commit": "823c0a5b6",
+      "size_bytes": 28429,
+      "last_modified_commit": "a052ac36f",
       "is_empty": false,
       "extension": ".py",
-      "lines": 590
+      "lines": 596
     },
     {
       "path": "scripts/architect/test-architect-runtime.sh",
@@ -7288,11 +7288,11 @@
     {
       "path": "scripts/verify-ce-w04-a11.py",
       "type": "file",
-      "size_bytes": 5450,
-      "last_modified_commit": "823c0a5b6",
+      "size_bytes": 6205,
+      "last_modified_commit": "6093b7545",
       "is_empty": false,
       "extension": ".py",
-      "lines": 143
+      "lines": 158
     },
     {
       "path": "scripts/verify-ce-w04-architect-observer.py",
