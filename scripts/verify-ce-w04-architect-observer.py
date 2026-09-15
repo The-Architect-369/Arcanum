@@ -77,7 +77,7 @@ architect_dir = ROOT / "apps/android/app/src/main/java/org/arcanum/nativehost/ar
 required_android_files = {
     "ArchitectObservationBridge.kt", "ArchitectObservationContract.kt", "ArchitectObservationPrivacy.kt",
     "ArchitectObservationProvider.kt", "ArchitectObserver.kt", "ArchitectPulseButton.kt",
-    "ArchitectVisualDiagnostics.kt", "ArchitectShellPanel.kt", "ArchitectBrokerClient.kt",
+    "ArchitectVisualDiagnostics.kt", "ArchitectShellPanel.kt", "ArchitectBrokerClient.kt", "ArchitectPairingStore.kt",
 }
 require(required_android_files.issubset({path.name for path in architect_dir.glob("*.kt")}), "native Architect package is incomplete")
 architect_source = "\n".join(path.read_text(encoding="utf-8") for path in sorted(architect_dir.glob("*.kt")))
@@ -88,7 +88,7 @@ broker_client = (architect_dir / "ArchitectBrokerClient.kt").read_text(encoding=
 for required_phrase in (
     'LOOPBACK_BASE_URL = "http://127.0.0.1:8765"',
     '"git_status"', '"git_branch"', '"git_head"', '"git_log_10"', '"git_diff_names"', '"git_diff_stat"', '"verify_sync"',
-    'approvedByHumanArchitect", true', 'receiptType") == "architect_execution_receipt"',
+    'const val SCHEMA_VERSION = "1.1"', 'HumanApproval', '"approval"', 'receiptType") == "architect_execution_receipt"',
     'registered.optString("risk") == action.expectedRisk', 'url.host == LOOPBACK_HOST', 'instanceFollowRedirects = false',
     'READ_TIMEOUT_MS = 310000',
     'fun probe(): Result<BrokerStatus>',
@@ -96,10 +96,13 @@ for required_phrase in (
     'requestSha256',
     'stdoutTruncated',
     'stderrTruncated',
+    'requestAuthMaterial',
+    'responseAuthMaterial',
+    'Broker response authentication failed',
 ):
-    require(required_phrase in broker_client, f"A09 bounded native broker client missing: {required_phrase!r}")
-require("https://" not in broker_client, "A09 native broker client must not contain a remote HTTPS endpoint")
-require("web_typecheck" not in broker_client, "A09 Android allowlist must not expose web_typecheck")
+    require(required_phrase in broker_client, f"A11 bounded native broker client missing: {required_phrase!r}")
+require("https://" not in broker_client, "A11 native broker client must not contain a remote HTTPS endpoint")
+require("web_typecheck" not in broker_client, "A11 Android allowlist must not expose web_typecheck")
 
 shell_panel = (architect_dir / "ArchitectShellPanel.kt").read_text(encoding="utf-8")
 for required_phrase in (
@@ -123,7 +126,7 @@ for required_phrase in (
     "probeBroker",
     "ScrollView",
 ):
-    require(required_phrase in shell_panel, f"A10 Architect console surface missing: {required_phrase!r}")
+    require(required_phrase in shell_panel, f"A10/A11 Architect console surface missing: {required_phrase!r}")
 
 mobile_broker = (ROOT / "scripts/mobile/arcanum-broker.sh").read_text(encoding="utf-8")
 current_repo_index = mobile_broker.find('if git rev-parse --show-toplevel')
@@ -135,16 +138,16 @@ for required_phrase in (
     'fail "resolved path is not the Git repository root: $REPO_DIR"',
     '--host 127.0.0.1',
 ):
-    require(required_phrase in mobile_broker, f"A09 broker launcher hardening missing: {required_phrase!r}")
+    require(required_phrase in mobile_broker, f"A09/A11 broker launcher hardening missing: {required_phrase!r}")
 
 broker = (ROOT / "scripts/architect/termux-broker.py").read_text(encoding="utf-8")
 for command_id in ("git_status", "git_branch", "git_head", "git_log_10", "git_diff_names", "git_diff_stat", "verify_sync"):
-    require(f'"{command_id}"' in broker, f"A09 broker registry missing command: {command_id}")
+    require(f'"{command_id}"' in broker, f"A09/A11 broker registry missing command: {command_id}")
 for required_phrase in (
     "VERIFY_SYNC_TIMEOUT_SECONDS = 300",
-    '("bash", "scripts/verify-sync.sh"),\n            VERIFY_SYNC_TIMEOUT_SECONDS,',
+    '("bash", "scripts/verify-sync.sh"), VERIFY_SYNC_TIMEOUT_SECONDS)',
 ):
-    require(required_phrase in broker, f"A09.1 verification execution envelope missing: {required_phrase!r}")
+    require(required_phrase in broker, f"A09.1/A11 verification execution envelope missing: {required_phrase!r}")
 for required_phrase in (
     'tmpdir_value = os.environ.get("TMPDIR")',
     'if not tmpdir_value:',
@@ -155,11 +158,11 @@ for required_phrase in (
     '"execution_environment_unavailable"',
     '"TMPDIR": str(tmpdir)',
 ):
-    require(required_phrase in broker, f"A09.2 Termux execution envelope missing: {required_phrase!r}")
-require('request["TMPDIR"]' not in broker, "A09.2 request data must not control TMPDIR")
-require('request.get("TMPDIR")' not in broker, "A09.2 request data must not control TMPDIR")
+    require(required_phrase in broker, f"A09.2/A11 Termux execution envelope missing: {required_phrase!r}")
+require('request["TMPDIR"]' not in broker, "A09.2/A11 request data must not control TMPDIR")
+require('request.get("TMPDIR")' not in broker, "A09.2/A11 request data must not control TMPDIR")
 for forbidden in ("shell=True", "git push", "git commit", "git merge", "git reset --hard"):
-    require(forbidden not in broker, f"A09 broker mutation/shell ceiling violated: {forbidden!r}")
+    require(forbidden not in broker, f"A11 broker mutation/shell ceiling violated: {forbidden!r}")
 
 observer = (architect_dir / "ArchitectObserver.kt").read_text(encoding="utf-8")
 for required_phrase in (
@@ -216,15 +219,15 @@ for required_phrase in (
     require(required_phrase in main_activity, f"MainActivity missing Architect/inset-safe hook: {required_phrase!r}")
 
 build_gradle = (ROOT / "apps/android/app/build.gradle.kts").read_text(encoding="utf-8")
-for required_phrase in ("ARCANUM_SOURCE_COMMIT", "arcanumSourceCommit", "buildConfig = true", "CE-W04-A10"):
+for required_phrase in ("ARCANUM_SOURCE_COMMIT", "arcanumSourceCommit", "buildConfig = true", "CE-W04-A11"):
     require(required_phrase in build_gradle, f"Android build provenance missing: {required_phrase!r}")
 version_code_match = re.search(r"\bversionCode\s*=\s*(\d+)\b", build_gradle)
 require(version_code_match is not None, "Android build provenance missing: versionCode")
-require(int(version_code_match.group(1)) >= 12, "A10 requires monotonic Android versionCode >= 12")
+require(int(version_code_match.group(1)) >= 13, "A11 requires monotonic Android versionCode >= 13")
 
 workflow = (ROOT / ".github/workflows/verify-ce-w04-architect-observer.yml").read_text(encoding="utf-8")
 require('-ParcanumSourceCommit="$SOURCE_HEAD"' in workflow, "exact-head Android build must inject the checked-out source commit")
 unit_test = ROOT / "apps/android/app/src/test/java/org/arcanum/nativehost/architect/ArchitectObservationContractTest.kt"
 require(unit_test.is_file(), "Architect observation contract unit test is missing")
 
-print("PASS CE-W04 Architect Observer + Bridge: A10 local development console, compact execution summaries, broker-state visibility, expandable raw output, A09.2 bounded execution continuity, provenance, and inherited privacy controls")
+print("PASS CE-W04 Architect Observer + Bridge: A11 authenticated runtime session, inherited A10 console, A09 fixed action ceiling, provenance, and observation privacy controls")
