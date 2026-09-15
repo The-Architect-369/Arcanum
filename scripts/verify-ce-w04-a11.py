@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import re
+import runpy
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -34,7 +35,8 @@ for phrase in (
 ):
     require(phrase in spec, f"A11 contract missing: {phrase!r}")
 
-broker = (ROOT / "scripts/architect/termux-broker.py").read_text(encoding="utf-8")
+broker_path = ROOT / "scripts/architect/termux-broker.py"
+broker = broker_path.read_text(encoding="utf-8")
 for phrase in (
     'SCHEMA_VERSION = "1.1"',
     'CLIENT_ID = "org.arcanum.nativehost"',
@@ -53,10 +55,23 @@ for phrase in (
     '"broker_busy"',
     '"stdoutSha256"',
     '"stderrSha256"',
+    "canonical_result_json",
     "--secret-file",
     "validate_secret_file",
 ):
     require(phrase in broker, f"A11 broker boundary missing: {phrase!r}")
+require(
+    broker.count("sha256(canonical_result_json(receipt_without_hash))") == 2,
+    "A11 session and execution receipts must share the canonical result-digest encoder",
+)
+broker_runtime = runpy.run_path(str(broker_path))
+canonical_result_json = broker_runtime.get("canonical_result_json")
+require(callable(canonical_result_json), "A11 canonical result-digest encoder is not callable")
+canonical_vector = canonical_result_json({"repository": "/data/data/com.termux/files/home/Arcanum"})
+require(
+    canonical_vector == b'{"repository":"\\/data\\/data\\/com.termux\\/files\\/home\\/Arcanum"}',
+    "A11 result digest canonicalization must match Android org.json solidus escaping",
+)
 for forbidden in ("shell=True", "git push", "git commit", "git merge", "git reset --hard"):
     require(forbidden not in broker, f"A11 broker mutation/shell ceiling violated: {forbidden!r}")
 
