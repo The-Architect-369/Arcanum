@@ -6,7 +6,7 @@ phase: "Pre-Genesis"
 era: "Construction Era"
 wave: "CE-W04"
 implementation_arc: "CE-W04-A11"
-last_updated: 2026-09-14
+last_updated: 2026-09-15
 ---
 
 # CE-W04-A11 — Verified Architect Runtime Session
@@ -186,6 +186,13 @@ The Android client MUST independently verify:
 - receipt result SHA-256;
 - stdout SHA-256;
 - stderr SHA-256.
+
+For `resultSha256`, the broker and native verifier use the same compact canonical
+JSON representation: object keys are lexicographically sorted, insignificant
+whitespace is absent, UTF-8 is retained, and JSON string solidus characters `/`
+are escaped as `\/` to match the Android `org.json` encoder used by the native
+verifier. This secondary canonical digest is independent of the exact-byte
+response-body SHA-256 and HMAC and MUST NOT replace either of them.
 
 Raw output means the broker-bounded output returned in the authenticated receipt.
 Android MUST NOT silently apply a second 4,000-character truncation while
