@@ -95,6 +95,12 @@ def sha256(value: bytes) -> str:
     return hashlib.sha256(value).hexdigest()
 
 
+def canonical_result_json(value: Any) -> bytes:
+    """Encode receipt material exactly as Android org.json canonical verification expects."""
+    rendered = json.dumps(value, sort_keys=True, separators=(",", ":"), ensure_ascii=False)
+    return rendered.replace("/", "\\/").encode("utf-8")
+
+
 def hmac_sha256(secret: bytes, material: bytes) -> str:
     return hmac.new(secret, material, hashlib.sha256).hexdigest()
 
@@ -303,7 +309,7 @@ class Broker:
             "requestSha256": request_sha256,
             "status": "pass",
         }
-        result_sha = sha256(json.dumps(receipt_without_hash, sort_keys=True, separators=(",", ":"), ensure_ascii=False).encode("utf-8"))
+        result_sha = sha256(canonical_result_json(receipt_without_hash))
         return {**receipt_without_hash, "resultSha256": result_sha}, 200
 
     def execute(self, request: dict[str, Any], request_sha256: str) -> tuple[dict[str, Any], int]:
@@ -388,7 +394,7 @@ class Broker:
                 "requestSha256": request_sha256,
                 "status": "pass" if exit_code == 0 and commit_before == commit_after else "fail",
             }
-            result_sha = sha256(json.dumps(receipt_without_hash, sort_keys=True, separators=(",", ":"), ensure_ascii=False).encode("utf-8"))
+            result_sha = sha256(canonical_result_json(receipt_without_hash))
             return {**receipt_without_hash, "resultSha256": result_sha}, 200
         finally:
             self.execution_lock.release()
