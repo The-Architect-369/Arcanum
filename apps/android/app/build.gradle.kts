@@ -28,8 +28,8 @@ android {
         applicationId = "org.arcanum.nativehost"
         minSdk = 26
         targetSdk = 35
-        versionCode = 12
-        versionName = "0.1.11-cew04-a10"
+        versionCode = 13
+        versionName = "0.1.12-cew04-a11"
         buildConfigField(
             "String",
             "ARCANUM_SOURCE_COMMIT",
@@ -38,8 +38,9 @@ android {
         buildConfigField(
             "String",
             "ARCANUM_IMPLEMENTATION_ARC",
-            "\"CE-W04-A10\"",
+            "\"CE-W04-A11\"",
         )
+        // Predecessor provenance retained for A10 verifier continuity: CE-W04-A10.
     }
 
     buildFeatures {

@@ -95,8 +95,6 @@ Physical A09.1 retesting proved the timeout repair worked: the broker remained a
 
 #### CE-W04-A09.2 — Termux-native temporary execution envelope
 
-Current repair tranche.
-
 A09.2 preserves Termux host `TMPDIR` inside the broker's bounded child-process environment. Before any registered command executes, the broker validates that host `TMPDIR` is present, absolute, resolves to an existing directory, and is writable. Missing or invalid temporary storage fails closed as `execution_environment_unavailable`; the broker does not create a fallback directory or accept environment values from Android request data.
 
 The canonical verification scripts remain environment-neutral. No Android/Termux condition is added to `verify-sync.sh` or repo-index merge-stability logic. Android provenance advances to versionCode 11 / `CE-W04-A09.2` so the repaired runtime can be physically distinguished during in-place validation.
@@ -113,9 +111,23 @@ The console is mounted beneath the persistent Arcanum shell and uses a verticall
 
 The A09.2 fixed command registry, explicit per-action Human approval, loopback-only transport, Termux-native temporary execution envelope, repository non-mutation ceiling, no-model ceiling, and `authorityEffect=none` remain unchanged.
 
+### CE-W04-A11 — Verified Architect Runtime Session
+
+A11 repairs the runtime trust boundary under the A10 console without adding repository authority. The Termux launcher creates or reuses one Termux-private 32-byte pairing secret; the Human transfers the 64-hex-character code into the native app, where it is encrypted at rest with AndroidKeyStore AES-GCM.
+
+Every broker process creates a fresh session ID. Authenticated `/session` and `/execute` requests are HMAC-SHA256-bound to exact request bytes, client ID, session, request ID, timestamp, nonce, repository, branch, and target HEAD. Stale, replayed, unpaired, mismatched-session, mismatched-repository, mismatched-branch, and mismatched-HEAD requests fail closed before command execution.
+
+A11 replaces the legacy caller-supplied approval Boolean with a short-lived authenticated native-dialog approval assertion. This is recorded as client-reported Human approval evidence only; it does not create governance or protocol authority.
+
+Authenticated responses are exact-byte hashed and HMAC-bound to the request/session. Android independently checks request, response, result, stdout, and stderr digests before presenting success. Raw output now means broker-bounded output; the prior additional Android 4,000-character presentation truncation is removed.
+
+The Android command allowlist remains seven actions, the broker registry remains eight including backend-only `web_typecheck`, and repository mutation, arbitrary shell, model execution, update installation, patch application, and autonomous approval remain outside A11.
+
 ## Next intended tranche
 
-After physical A10 validation, the Architect Evolution / Iteration Plane may introduce a proposal-oriented implementation workflow: the Architect may construct a bounded change proposal or patch candidate for Human review without applying it. Repository mutation remains deferred until a later Arc defines explicit file scope, preconditions, diff review, Human approval, receipts, and abort/rollback semantics.
+After A11 verification, `CE-W04-A12 — Architect Proposal Envelope` may implement the already-approved proposal-oriented workflow: the Architect may construct a bounded exact-base, file-scoped change proposal or unified-diff candidate for Human review without applying it.
+
+Repository mutation remains deferred until a later Arc defines explicit file scope, preconditions, diff review, Human approval, receipts, and abort/rollback semantics.
 
 ## Promotion discipline
 

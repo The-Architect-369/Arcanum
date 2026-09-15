@@ -3,25 +3,29 @@ package org.arcanum.nativehost.architect
 import android.app.AlertDialog
 import android.content.Context
 import android.graphics.Color
+import android.text.InputType
 import android.view.Gravity
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.EditText
 import android.widget.FrameLayout
 import android.widget.LinearLayout
 import android.widget.ScrollView
 import android.widget.TextView
 
 /**
- * Native Architect local development console for CE-W04-A10.
+ * Native Architect local development console for CE-W04-A11.
  *
- * A10 improves presentation and observability over the certified A09.2 execution
- * spine. It does not widen the registered command set, repository authority,
- * model authority, or loopback-only transport boundary.
+ * A11 keeps the A09/A10 command ceiling intact while adding an authenticated,
+ * Human-mediated native-client session boundary to the local Termux broker.
  */
 class ArchitectShellPanel(context: Context) : LinearLayout(context) {
-    private val brokerClient = ArchitectBrokerClient()
+    private val brokerClient = ArchitectBrokerClient(context.applicationContext)
 
+    private val pairingStatus: TextView
+    private val pairingButton: Button
+    private val clearPairingButton: Button
     private val probeButton: Button
     private val actionButton: Button
     private val brokerStatus: TextView
@@ -64,7 +68,7 @@ class ArchitectShellPanel(context: Context) : LinearLayout(context) {
 
         content.addView(
             TextView(context).apply {
-                text = "Seed Node Alpha · local development console"
+                text = "Seed Node Alpha · local development console\nVerified A11 runtime session"
                 setTextColor(Color.LTGRAY)
                 textSize = 16f
                 setPadding(0, dp(8), 0, 0)
@@ -75,11 +79,48 @@ class ArchitectShellPanel(context: Context) : LinearLayout(context) {
             TextView(context).apply {
                 text =
                     "Human-approved local operations · authorityEffect=none\n" +
-                        "A10 presents broker state, compact execution summaries, receipts, " +
-                        "and opt-in raw output without widening A09.2 command authority."
+                        "A11 authenticates exact-byte requests and responses to one broker " +
+                        "session, repository, branch, and target HEAD without widening the " +
+                        "registered action set."
                 setTextColor(Color.GRAY)
                 textSize = 14f
                 setPadding(0, dp(14), 0, dp(14))
+            },
+        )
+
+        pairingStatus =
+            TextView(context).apply {
+                setTextColor(Color.LTGRAY)
+                textSize = 13f
+                setTextIsSelectable(true)
+                setPadding(0, 0, 0, dp(8))
+            }
+        content.addView(pairingStatus)
+
+        pairingButton =
+            Button(context).apply {
+                setOnClickListener { requestPairingCode() }
+            }
+        content.addView(
+            pairingButton,
+            LinearLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT,
+            ),
+        )
+
+        clearPairingButton =
+            Button(context).apply {
+                text = "Clear local pairing"
+                setOnClickListener { requestClearPairing() }
+            }
+        content.addView(
+            clearPairingButton,
+            LinearLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT,
+            ).apply {
+                topMargin = dp(6)
             },
         )
 
@@ -91,7 +132,7 @@ class ArchitectShellPanel(context: Context) : LinearLayout(context) {
                 setTextColor(Color.LTGRAY)
                 textSize = 13f
                 setTextIsSelectable(true)
-                setPadding(0, 0, 0, dp(10))
+                setPadding(0, dp(14), 0, dp(10))
             }
 
         content.addView(
@@ -152,7 +193,7 @@ class ArchitectShellPanel(context: Context) : LinearLayout(context) {
         executionProvenance =
             TextView(context).apply {
                 text =
-                    "Execution provenance appears here after a Human-approved registered action."
+                    "Execution provenance appears here after a Human-approved authenticated registered action."
                 setTextColor(Color.LTGRAY)
                 textSize = 12f
                 setTextIsSelectable(true)
@@ -168,7 +209,7 @@ class ArchitectShellPanel(context: Context) : LinearLayout(context) {
 
         rawOutputButton =
             Button(context).apply {
-                text = "Show raw output"
+                text = "Show raw output · broker-bounded"
                 visibility = GONE
                 setOnClickListener { toggleRawOutput() }
             }
@@ -227,38 +268,120 @@ class ArchitectShellPanel(context: Context) : LinearLayout(context) {
                 ViewGroup.LayoutParams.MATCH_PARENT,
             ),
         )
+
+        refreshPairingState()
     }
 
     fun onPresented() {
         visibility = VISIBLE
+        refreshPairingState()
         probeBroker()
+    }
+
+    private fun refreshPairingState() {
+        val paired = brokerClient.hasPairing()
+        pairingStatus.text =
+            if (paired) {
+                "Native pairing · stored in app-private AndroidKeyStore-protected storage"
+            } else {
+                "Native pairing · required before authenticated Architect actions"
+            }
+        pairingButton.text =
+            if (paired) {
+                "Replace local pairing"
+            } else {
+                "Pair local broker"
+            }
+        clearPairingButton.visibility =
+            if (paired) View.VISIBLE else View.GONE
+    }
+
+    private fun requestPairingCode() {
+        val input =
+            EditText(context).apply {
+                hint = "64-character pairing code"
+                inputType =
+                    InputType.TYPE_CLASS_TEXT or
+                    InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
+                isSingleLine = true
+                setSelectAllOnFocus(true)
+            }
+
+        AlertDialog.Builder(context)
+            .setTitle("Pair local Architect broker")
+            .setMessage(
+                "Start scripts/mobile/arcanum-broker.sh in Termux. " +
+                    "Enter the 64-hex-character pairing code generated there. " +
+                    "The decoded secret is encrypted at rest with AndroidKeyStore.",
+            )
+            .setView(input)
+            .setNegativeButton("Cancel", null)
+            .setPositiveButton("Pair") { _, _ ->
+                runCatching {
+                    brokerClient.pair(input.text.toString())
+                }.fold(
+                    onSuccess = {
+                        refreshPairingState()
+                        probeBroker()
+                    },
+                    onFailure = { error ->
+                        brokerStatus.text =
+                            "Pairing rejected · ${error.message ?: error::class.java.simpleName}"
+                    },
+                )
+            }
+            .show()
+    }
+
+    private fun requestClearPairing() {
+        AlertDialog.Builder(context)
+            .setTitle("Clear local Architect pairing?")
+            .setMessage(
+                "This removes only the native app's local pairing material. " +
+                    "It does not modify the repository or Termux broker secret.",
+            )
+            .setNegativeButton("Cancel", null)
+            .setPositiveButton("Clear") { _, _ ->
+                brokerClient.clearPairing()
+                refreshPairingState()
+                brokerStatus.text = "Native pairing cleared."
+            }
+            .show()
     }
 
     private fun probeBroker() {
         probeButton.isEnabled = false
         brokerStatus.text =
-            "Broker status · checking 127.0.0.1:8765…"
+            "Broker status · checking authenticated session at 127.0.0.1:8765…"
 
         Thread {
             val result = brokerClient.probe()
 
             post {
                 probeButton.isEnabled = true
+                refreshPairingState()
 
                 brokerStatus.text =
                     result.fold(
                         onSuccess = { status ->
                             buildString {
-                                appendLine("Broker ready · local loopback")
+                                appendLine(
+                                    if (status.authenticated) {
+                                        "Broker ready · authenticated A11 session"
+                                    } else {
+                                        "Broker ready · pairing required"
+                                    },
+                                )
                                 appendLine("branch=${status.branch ?: "unknown"}")
                                 appendLine("commit=${compactSha(status.commit)}")
+                                appendLine("session=${compactId(status.sessionId)}")
                                 append("${status.registeredActionCount} registered broker action(s)")
                             }
                         },
                         onFailure = { error ->
-                            "Broker unavailable · ${
+                            "Broker unavailable or authentication rejected · ${
                                 error.message ?: error::class.java.simpleName
-                            }\nStart the repo-owned Termux broker, then check again."
+                            }\nStart/inspect the repo-owned Termux broker, pairing, and active branch."
                         },
                     )
             }
@@ -270,6 +393,11 @@ class ArchitectShellPanel(context: Context) : LinearLayout(context) {
     }
 
     private fun chooseAction() {
+        if (!brokerClient.hasPairing()) {
+            requestPairingCode()
+            return
+        }
+
         val actions = ArchitectBrokerClient.Action.entries
 
         AlertDialog.Builder(context)
@@ -288,31 +416,39 @@ class ArchitectShellPanel(context: Context) : LinearLayout(context) {
                 "${action.description}\n\n" +
                     "Registered action: ${action.commandId}\n" +
                     "Risk class: ${action.expectedRisk}\n" +
-                    "Transport: 127.0.0.1 only\n\n" +
-                    "This action produces a broker receipt and does not accept arbitrary shell text.",
+                    "Transport: 127.0.0.1 only\n" +
+                    "Session: authenticated HMAC-SHA256\n\n" +
+                    "This native dialog creates one signed approval assertion for this " +
+                    "request. It does not grant arbitrary shell or repository mutation.",
             )
             .setNegativeButton("Cancel", null)
             .setPositiveButton("Run") { _, _ ->
-                executeAction(action)
+                executeAction(
+                    action,
+                    ArchitectBrokerClient.HumanApproval.now(),
+                )
             }
             .show()
     }
 
-    private fun executeAction(action: ArchitectBrokerClient.Action) {
+    private fun executeAction(
+        action: ArchitectBrokerClient.Action,
+        approval: ArchitectBrokerClient.HumanApproval,
+    ) {
         actionButton.isEnabled = false
         probeButton.isEnabled = false
 
         executionSummary.text =
             "Running · ${action.label}"
         executionProvenance.text =
-            "Awaiting bounded execution receipt…"
+            "Awaiting authenticated bounded execution receipt…"
 
         rawOutputVisible = false
         rawOutput.visibility = GONE
         rawOutputButton.visibility = GONE
 
         Thread {
-            val result = brokerClient.execute(action)
+            val result = brokerClient.execute(action, approval)
 
             post {
                 actionButton.isEnabled = true
@@ -334,20 +470,14 @@ class ArchitectShellPanel(context: Context) : LinearLayout(context) {
         }
     }
 
-    private fun presentExecution(
-        execution: ArchitectBrokerClient.ExecutionResult,
-    ) {
+    private fun presentExecution(execution: ArchitectBrokerClient.ExecutionResult) {
         executionSummary.text =
             buildString {
                 appendLine("PASS · ${execution.action.label}")
                 append("exit=${execution.exitCode}")
-
-                execution.durationMs?.let { duration ->
-                    append(" · ${duration.toLong()}ms")
-                }
-
+                execution.durationMs?.let { duration -> append(" · ${duration.toLong()}ms") }
                 if (execution.stdoutTruncated || execution.stderrTruncated) {
-                    append(" · output bounded")
+                    append(" · broker output bounded")
                 }
             }
 
@@ -355,30 +485,26 @@ class ArchitectShellPanel(context: Context) : LinearLayout(context) {
             buildString {
                 appendLine("branch=${execution.branch ?: "unknown"}")
                 appendLine("commit=${compactSha(execution.commit)}")
+                appendLine("session=${compactId(execution.sessionId)}")
+                appendLine("request=${execution.requestId ?: "unavailable"}")
+                appendLine("approval=${execution.approvalId ?: "unavailable"}")
                 appendLine("receipt=${execution.receiptId ?: "unavailable"}")
                 appendLine("requestSha256=${execution.requestSha256 ?: "unavailable"}")
-                append("resultSha256=${execution.resultSha256 ?: "unavailable"}")
+                appendLine("resultSha256=${execution.resultSha256 ?: "unavailable"}")
+                append("responseSha256=${execution.responseSha256}")
             }
 
-        rawOutput.text =
-            formatRawExecution(execution)
-
+        rawOutput.text = formatRawExecution(execution)
         rawOutputButton.visibility = View.VISIBLE
-        rawOutputButton.text = "Show raw output"
+        rawOutputButton.text = "Show raw output · broker-bounded"
     }
 
-    private fun presentExecutionFailure(
-        action: ArchitectBrokerClient.Action,
-        error: Throwable,
-    ) {
-        executionSummary.text =
-            "FAIL · ${action.label}"
-
+    private fun presentExecutionFailure(action: ArchitectBrokerClient.Action, error: Throwable) {
+        executionSummary.text = "FAIL · ${action.label}"
         executionProvenance.text =
-            "Registered Architect action failed.\n" +
-                "Start or inspect the repo-owned Termux broker, then try again.\n" +
+            "Authenticated Architect request was rejected or failed.\n" +
+                "Inspect pairing, broker session, repository/HEAD binding, and receipt details.\n" +
                 (error.message ?: error::class.java.simpleName)
-
         rawOutput.text = ""
         rawOutput.visibility = GONE
         rawOutputButton.visibility = GONE
@@ -387,25 +513,20 @@ class ArchitectShellPanel(context: Context) : LinearLayout(context) {
 
     private fun toggleRawOutput() {
         rawOutputVisible = !rawOutputVisible
-        rawOutput.visibility =
-            if (rawOutputVisible) View.VISIBLE else View.GONE
-
+        rawOutput.visibility = if (rawOutputVisible) View.VISIBLE else View.GONE
         rawOutputButton.text =
             if (rawOutputVisible) {
-                "Hide raw output"
+                "Hide raw output · broker-bounded"
             } else {
-                "Show raw output"
+                "Show raw output · broker-bounded"
             }
     }
 
-    private fun formatRawExecution(
-        execution: ArchitectBrokerClient.ExecutionResult,
-    ): String =
+    private fun formatRawExecution(execution: ArchitectBrokerClient.ExecutionResult): String =
         buildString {
             appendLine("action=${execution.action.commandId}")
             appendLine("startedAt=${execution.startedAt ?: "unknown"}")
             appendLine("completedAt=${execution.completedAt ?: "unknown"}")
-
             if (execution.stdout.isBlank()) {
                 appendLine()
                 appendLine("stdout:")
@@ -415,17 +536,18 @@ class ArchitectShellPanel(context: Context) : LinearLayout(context) {
                 appendLine("stdout:")
                 appendLine(execution.stdout.trimEnd())
             }
-
             if (execution.stderr.isNotBlank()) {
                 appendLine()
                 appendLine("stderr:")
                 appendLine(execution.stderr.trimEnd())
             }
+            if (execution.stdoutTruncated || execution.stderrTruncated) {
+                appendLine()
+                appendLine("Broker bounded one or more streams at its configured 256 KiB ceiling.")
+            }
         }.trim()
 
-    private fun compactSha(value: String?): String =
-        value?.take(12) ?: "unknown"
-
-    private fun dp(value: Int): Int =
-        (value * resources.displayMetrics.density).toInt()
+    private fun compactSha(value: String?): String = value?.take(12) ?: "unknown"
+    private fun compactId(value: String?): String = value?.take(12) ?: "unknown"
+    private fun dp(value: Int): Int = (value * resources.displayMetrics.density).toInt()
 }
