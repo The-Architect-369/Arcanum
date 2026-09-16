@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-09-15T05:24:10Z",
+  "generated_at": "2026-09-16T08:58:07Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "25b6a0eeb",
+  "commit": "30235f70c",
   "generator_version": "1.5",
   "files": [
     {
@@ -232,11 +232,11 @@
     {
       "path": "apps/android/app/src/main/java/org/arcanum/nativehost/architect/ArchitectBrokerClient.kt",
       "type": "file",
-      "size_bytes": 21791,
-      "last_modified_commit": "823c0a5b6",
+      "size_bytes": 29778,
+      "last_modified_commit": "30235f70c",
       "is_empty": false,
       "extension": ".kt",
-      "lines": 459
+      "lines": 635
     },
     {
       "path": "apps/android/app/src/main/java/org/arcanum/nativehost/architect/ArchitectObservationBridge.kt",
@@ -304,11 +304,11 @@
     {
       "path": "apps/android/app/src/main/java/org/arcanum/nativehost/architect/ArchitectShellPanel.kt",
       "type": "file",
-      "size_bytes": 19450,
-      "last_modified_commit": "823c0a5b6",
+      "size_bytes": 27318,
+      "last_modified_commit": "30235f70c",
       "is_empty": false,
       "extension": ".kt",
-      "lines": 553
+      "lines": 745
     },
     {
       "path": "apps/android/app/src/main/java/org/arcanum/nativehost/architect/ArchitectVisualDiagnostics.kt",
@@ -3614,6 +3614,15 @@
       "lines": 35
     },
     {
+      "path": "docs/governance/architectgpt/architect-proposal-envelope.schema.json",
+      "type": "file",
+      "size_bytes": 1780,
+      "last_modified_commit": "30235f70c",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 76
+    },
+    {
       "path": "docs/governance/architectgpt/ast-integrity.schema.json",
       "type": "file",
       "size_bytes": 1697,
@@ -4197,6 +4206,15 @@
       "is_empty": false,
       "extension": ".md",
       "lines": 223
+    },
+    {
+      "path": "docs/specs/app/ce-w04-a12-architect-proposal-envelope.md",
+      "type": "file",
+      "size_bytes": 9235,
+      "last_modified_commit": "30235f70c",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 224
     },
     {
       "path": "docs/specs/app/ce-w04-seed-node-alpha.md",
@@ -6971,6 +6989,15 @@
       "lines": 392
     },
     {
+      "path": "scripts/architect/proposal_envelope.py",
+      "type": "file",
+      "size_bytes": 28669,
+      "last_modified_commit": "30235f70c",
+      "is_empty": false,
+      "extension": ".py",
+      "lines": 637
+    },
+    {
       "path": "scripts/architect/provider-health.py",
       "type": "file",
       "size_bytes": 5063,
@@ -7009,11 +7036,11 @@
     {
       "path": "scripts/architect/termux-broker.py",
       "type": "file",
-      "size_bytes": 28429,
-      "last_modified_commit": "a052ac36f",
+      "size_bytes": 32898,
+      "last_modified_commit": "30235f70c",
       "is_empty": false,
       "extension": ".py",
-      "lines": 596
+      "lines": 693
     },
     {
       "path": "scripts/architect/test-architect-runtime.sh",
@@ -7059,6 +7086,15 @@
       "is_empty": false,
       "extension": ".sh",
       "lines": 336
+    },
+    {
+      "path": "scripts/architect/test-proposal-envelope.sh",
+      "type": "file",
+      "size_bytes": 9678,
+      "last_modified_commit": "30235f70c",
+      "is_empty": false,
+      "extension": ".sh",
+      "lines": 296
     },
     {
       "path": "scripts/architect/test-provider-health.sh",
@@ -7295,6 +7331,15 @@
       "lines": 158
     },
     {
+      "path": "scripts/verify-ce-w04-a12.py",
+      "type": "file",
+      "size_bytes": 6853,
+      "last_modified_commit": "30235f70c",
+      "is_empty": false,
+      "extension": ".py",
+      "lines": 214
+    },
+    {
       "path": "scripts/verify-ce-w04-architect-observer.py",
       "type": "file",
       "size_bytes": 14156,
@@ -7315,11 +7360,11 @@
     {
       "path": "scripts/verify-sync.sh",
       "type": "file",
-      "size_bytes": 10984,
-      "last_modified_commit": "b6661a06d",
+      "size_bytes": 11222,
+      "last_modified_commit": "30235f70c",
       "is_empty": false,
       "extension": ".sh",
-      "lines": 257
+      "lines": 261
     },
     {
       "path": "tsconfig.json",
