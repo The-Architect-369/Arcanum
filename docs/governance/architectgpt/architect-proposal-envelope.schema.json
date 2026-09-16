@@ -1,0 +1,76 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://arcanum.local/schemas/architect-proposal-envelope.schema.json",
+  "title": "CE-W04-A12 Architect Proposal Envelope",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "envelopeType",
+    "repository",
+    "baseCommit",
+    "permittedPaths",
+    "touchedPaths",
+    "diffFormat",
+    "unifiedDiff",
+    "diffSha256",
+    "proposalSha256"
+  ],
+  "properties": {
+    "schemaVersion": {"const": "1.0"},
+    "envelopeType": {"const": "architect_proposal"},
+    "repository": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200
+    },
+    "baseCommit": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$"
+    },
+    "permittedPaths": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 32,
+      "uniqueItems": true,
+      "items": {"$ref": "#/$defs/path"}
+    },
+    "touchedPaths": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 32,
+      "uniqueItems": true,
+      "items": {"$ref": "#/$defs/path"}
+    },
+    "diffFormat": {"const": "arcanum-unified-text-diff-v1"},
+    "unifiedDiff": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 196608
+    },
+    "diffSha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "proposalSha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    }
+  },
+  "$defs": {
+    "path": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 240,
+      "not": {
+        "anyOf": [
+          {"pattern": "^/"},
+          {"pattern": "\\\\"},
+          {"pattern": "(^|/)\\.\\.?(/|$)"},
+          {"pattern": "(^|/)\\.git(/|$)"},
+          {"const": "docs/repo/repo-index.json"}
+        ]
+      }
+    }
+  }
+}

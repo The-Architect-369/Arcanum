@@ -235,11 +235,15 @@ ok "timeline and impact-graph fixtures passed"
 
 step 13 "Local Architect Runtime and Termux broker"
 python3 -m py_compile scripts/architect/termux-broker.py
+jq empty docs/governance/architectgpt/architect-proposal-envelope.schema.json
 bash -n scripts/architect/test-termux-broker.sh
 bash -n scripts/architect/test-architect-runtime.sh
+bash -n scripts/architect/test-proposal-envelope.sh
+python3 scripts/verify-ce-w04-a12.py
 bash scripts/architect/test-termux-broker.sh
 bash scripts/architect/test-architect-runtime.sh
-ok "local Workbench/runtime boundary and advisory agent roster passed"
+bash scripts/architect/test-proposal-envelope.sh
+ok "local Workbench/runtime boundary, A12 proposal review, and advisory agent roster passed"
 
 step 14 "Production smoke verifier"
 jq empty docs/governance/architectgpt/production-smoke.schema.json

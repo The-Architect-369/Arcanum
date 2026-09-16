@@ -53,6 +53,44 @@ class ArchitectBrokerClient(
         }
     }
 
+    data class ProposalScope(
+        val scopeId: String,
+        val confirmedAt: String,
+        val permittedPaths: List<String>,
+        val surface: String = "native_dialog",
+    ) {
+        companion object {
+            fun now(permittedPaths: List<String>): ProposalScope {
+                val canonical = permittedPaths.distinct().sorted()
+                require(canonical.size == permittedPaths.size && canonical.isNotEmpty()) {
+                    "Proposal review scope must contain unique permitted paths"
+                }
+                return ProposalScope(
+                    scopeId = UUID.randomUUID().toString(),
+                    confirmedAt = Instant.now().toString(),
+                    permittedPaths = canonical,
+                )
+            }
+        }
+    }
+
+    data class ProposalReviewResult(
+        val baseCommit: String,
+        val headBefore: String,
+        val headAfter: String,
+        val permittedPaths: List<String>,
+        val touchedPaths: List<String>,
+        val diffSha256: String,
+        val proposalSha256: String,
+        val scopeId: String?,
+        val receiptId: String?,
+        val requestId: String?,
+        val sessionId: String?,
+        val requestSha256: String?,
+        val resultSha256: String?,
+        val responseSha256: String,
+    )
+
     data class BrokerStatus(
         val branch: String?,
         val commit: String?,
@@ -240,6 +278,132 @@ class ArchitectBrokerClient(
         }
     }
 
+    fun reviewProposal(
+        proposal: JSONObject,
+        scope: ProposalScope,
+    ): Result<ProposalReviewResult> = runCatching {
+        require(scope.surface == "native_dialog") {
+            "Architect proposal scope must originate from the native dialog"
+        }
+        require(scope.permittedPaths.isNotEmpty()) {
+            "Architect proposal review scope must not be empty"
+        }
+        require(scope.permittedPaths == scope.permittedPaths.sorted()) {
+            "Architect proposal review scope must be sorted"
+        }
+        require(scope.permittedPaths.distinct().size == scope.permittedPaths.size) {
+            "Architect proposal review scope must be unique"
+        }
+        require(proposal.optString("schemaVersion") == PROPOSAL_SCHEMA_VERSION) {
+            "Unexpected Architect proposal schema version"
+        }
+        require(proposal.optString("envelopeType") == "architect_proposal") {
+            "Unexpected Architect proposal envelope type"
+        }
+        require(jsonStringList(proposal.optJSONArray("permittedPaths")) == scope.permittedPaths) {
+            "Proposal envelope scope differs from the Human-confirmed review scope"
+        }
+
+        val health = fetchHealth()
+        val expectedHead = requireNotNull(health.commit) {
+            "Broker health did not publish an exact HEAD"
+        }
+        require(proposal.optString("baseCommit") == expectedHead) {
+            "Proposal baseCommit is stale relative to the authenticated broker HEAD"
+        }
+        val secret = pairingStore.loadSecret()
+            ?: error("Architect broker is not paired with this native app")
+
+        try {
+            val request = newBoundRequest(health)
+            val permittedPathsJson = JSONArray()
+            scope.permittedPaths.forEach { permittedPathsJson.put(it) }
+            request.body
+                .put(
+                    "scopeAssertion",
+                    JSONObject()
+                        .put("scopeId", scope.scopeId)
+                        .put("confirmedAt", scope.confirmedAt)
+                        .put("surface", scope.surface)
+                        .put("permittedPaths", permittedPathsJson),
+                )
+                .put("proposal", proposal)
+
+            val authenticated =
+                postAuthenticated(
+                    path = PROPOSAL_PATH,
+                    body = request.body,
+                    secret = secret,
+                    clientId = CLIENT_ID,
+                    sessionId = request.sessionId,
+                    requestId = request.requestId,
+                    requestedAt = request.requestedAt,
+                    nonce = request.nonce,
+                )
+            val receipt = authenticated.json
+            require(receipt.optString("receiptType") == "architect_proposal_review_receipt") {
+                "Broker did not return an Architect proposal review receipt"
+            }
+            require(receipt.optString("status") == "pass") {
+                "Architect proposal review did not pass"
+            }
+            require(receipt.optString("verification") == "valid_candidate") {
+                "Broker did not verify a valid proposal candidate"
+            }
+            require(receipt.optString("authorityEffect") == "none") {
+                "Proposal review unexpectedly reported authority effect"
+            }
+            require(!receipt.optBoolean("applied", true)) {
+                "Proposal review unexpectedly reported an applied candidate"
+            }
+            require(receipt.optString("sessionId") == request.sessionId) {
+                "Proposal receipt is bound to a different broker session"
+            }
+            require(receipt.optString("requestId") == request.requestId) {
+                "Proposal receipt is bound to a different request"
+            }
+            require(receipt.optString("requestSha256") == authenticated.requestSha256) {
+                "Proposal receipt request digest does not match exact sent bytes"
+            }
+            require(receipt.optString("baseCommit") == expectedHead) {
+                "Proposal receipt base differs from authenticated broker HEAD"
+            }
+            require(receipt.optString("headBefore") == expectedHead && receipt.optString("headAfter") == expectedHead) {
+                "Repository HEAD drifted during proposal review"
+            }
+            val returnedScope = jsonStringList(receipt.optJSONArray("permittedPaths"))
+            require(returnedScope == scope.permittedPaths) {
+                "Proposal receipt permitted scope differs from the native confirmation"
+            }
+            require(receipt.optString("diffSha256") == proposal.optString("diffSha256")) {
+                "Proposal receipt diff digest differs from the reviewed envelope"
+            }
+            require(receipt.optString("proposalSha256") == proposal.optString("proposalSha256")) {
+                "Proposal receipt proposal digest differs from the reviewed envelope"
+            }
+            verifyResultDigest(receipt)
+
+            ProposalReviewResult(
+                baseCommit = receipt.getString("baseCommit"),
+                headBefore = receipt.getString("headBefore"),
+                headAfter = receipt.getString("headAfter"),
+                permittedPaths = returnedScope,
+                touchedPaths = jsonStringList(receipt.optJSONArray("touchedPaths")),
+                diffSha256 = receipt.getString("diffSha256"),
+                proposalSha256 = receipt.getString("proposalSha256"),
+                scopeId = receipt.optJSONObject("scopeAssertion")?.optString("scopeId")?.ifBlank { null },
+                receiptId = receipt.optString("receiptId").ifBlank { null },
+                requestId = receipt.optString("requestId").ifBlank { null },
+                sessionId = receipt.optString("sessionId").ifBlank { null },
+                requestSha256 = receipt.optString("requestSha256").ifBlank { null },
+                resultSha256 = receipt.optString("resultSha256").ifBlank { null },
+                responseSha256 = authenticated.responseSha256,
+            )
+        } finally {
+            secret.fill(0)
+        }
+    }
+
     private fun fetchHealth(): Health {
         val response = requestUnsigned("GET", "/health")
         val json = response.json
@@ -405,6 +569,16 @@ class ArchitectBrokerClient(
             else -> JSONObject.quote(value.toString())
         }
 
+
+    private fun jsonStringList(array: JSONArray?): List<String> {
+        val value = requireNotNull(array) { "Broker JSON array is missing" }
+        return (0 until value.length()).map { index ->
+            val item = value.get(index)
+            require(item is String) { "Broker JSON array contains a non-string item" }
+            item
+        }
+    }
+
     private fun requestAuthMaterial(path: String, clientId: String, sessionId: String, requestId: String, requestedAt: String, nonce: String, bodySha256: String): ByteArray =
         listOf("ARCANUM-A11-REQUEST", "POST", path, clientId, sessionId, requestId, requestedAt, nonce, bodySha256).joinToString("\n").toByteArray(Charsets.UTF_8)
 
@@ -444,6 +618,8 @@ class ArchitectBrokerClient(
         const val LOOPBACK_PORT = 8765
         const val LOOPBACK_BASE_URL = "http://127.0.0.1:8765"
         const val SCHEMA_VERSION = "1.1"
+        const val PROPOSAL_SCHEMA_VERSION = "1.0"
+        private const val PROPOSAL_PATH = "/proposal/review"
         private const val SERVICE_NAME = "arcanum-termux-broker"
         private const val CLIENT_ID = "org.arcanum.nativehost"
         private const val AUTH_ALGORITHM = "HMAC-SHA256"

@@ -28,17 +28,33 @@ from pathlib import Path
 from typing import Any
 from urllib.parse import urlparse
 
+sys.dont_write_bytecode = True
+ARCHITECT_SCRIPT_DIR = Path(__file__).resolve().parent
+if str(ARCHITECT_SCRIPT_DIR) not in sys.path:
+    sys.path.insert(0, str(ARCHITECT_SCRIPT_DIR))
+
+from proposal_envelope import (
+    EnvelopeError,
+    PROPOSAL_SCHEMA_VERSION,
+    strict_json_loads,
+    validate_path_list,
+    verify_proposal_envelope,
+)
+
 SCHEMA_VERSION = "1.1"
 SERVICE_NAME = "arcanum-termux-broker"
 CLIENT_ID = "org.arcanum.nativehost"
 AUTH_ALGORITHM = "HMAC-SHA256"
 MAX_REQUEST_BYTES = 16 * 1024
+MAX_PROPOSAL_REQUEST_BYTES = 256 * 1024
 MAX_STREAM_BYTES = 256 * 1024
 DEFAULT_HOST = "127.0.0.1"
 DEFAULT_PORT = 8765
 VERIFY_SYNC_TIMEOUT_SECONDS = 300
 REQUEST_FRESHNESS_SECONDS = 120
 REPLAY_RETENTION_SECONDS = 300
+PROPOSAL_REVIEW_PATH = "/proposal/review"
+A12_REPOSITORY_ID = "The-Architect-369/Arcanum"
 DEFAULT_ORIGINS = (
     "http://localhost:3000",
     "http://127.0.0.1:3000",
@@ -312,6 +328,83 @@ class Broker:
         result_sha = sha256(canonical_result_json(receipt_without_hash))
         return {**receipt_without_hash, "resultSha256": result_sha}, 200
 
+    def review_proposal(self, request: dict[str, Any], request_sha256: str) -> tuple[dict[str, Any], int]:
+        required_keys = {
+            "schemaVersion",
+            "clientId",
+            "sessionId",
+            "requestId",
+            "nonce",
+            "requestedAt",
+            "repository",
+            "targetBranch",
+            "targetHead",
+            "scopeAssertion",
+            "proposal",
+        }
+        if set(request) != required_keys:
+            return self.error("invalid_request", "Proposal review fields do not match the A12 contract"), 400
+        scope = request["scopeAssertion"]
+        if not isinstance(scope, dict) or set(scope) != {"scopeId", "confirmedAt", "surface", "permittedPaths"}:
+            return self.error("invalid_scope_assertion"), 400
+        if scope.get("surface") != "native_dialog":
+            return self.error("invalid_scope_surface"), 403
+        scope_id = scope.get("scopeId")
+        if not isinstance(scope_id, str) or not scope_id or len(scope_id) > 128:
+            return self.error("invalid_scope_id"), 400
+        try:
+            confirmed_at = parse_requested_at(scope.get("confirmedAt"))
+        except ValueError:
+            return self.error("invalid_scope_time"), 400
+        if abs((datetime.now(timezone.utc) - confirmed_at).total_seconds()) > REQUEST_FRESHNESS_SECONDS:
+            return self.error("stale_scope_assertion"), 409
+        try:
+            trusted_paths = validate_path_list(scope.get("permittedPaths"), label="scopeAssertion.permittedPaths")
+            result = verify_proposal_envelope(
+                self.repository,
+                expected_repository_id=A12_REPOSITORY_ID,
+                expected_base=request["targetHead"],
+                trusted_permitted_paths=trusted_paths,
+                envelope=request["proposal"],
+            )
+        except EnvelopeError as error:
+            if error.code in {"scope_mismatch", "out_of_scope", "denied_path"}:
+                status = HTTPStatus.FORBIDDEN
+            elif error.code in {"stale_base", "head_changed", "repository_mismatch", "base_not_found"}:
+                status = HTTPStatus.CONFLICT
+            else:
+                status = HTTPStatus.BAD_REQUEST
+            return self.error(error.code, error.detail), status
+        receipt_without_hash = {
+            "schemaVersion": SCHEMA_VERSION,
+            "proposalSchemaVersion": PROPOSAL_SCHEMA_VERSION,
+            "receiptType": "architect_proposal_review_receipt",
+            "receiptId": f"architect-proposal-review-{uuid.uuid4()}",
+            "clientId": CLIENT_ID,
+            "sessionId": self.session_id,
+            "requestId": request["requestId"],
+            "scopeAssertion": scope,
+            "repository": str(self.repository),
+            "canonicalRepository": result["repository"],
+            "branch": request["targetBranch"],
+            "baseCommit": result["baseCommit"],
+            "headBefore": result["headBefore"],
+            "headAfter": result["headAfter"],
+            "permittedPaths": result["permittedPaths"],
+            "touchedPaths": result["touchedPaths"],
+            "diffSha256": result["diffSha256"],
+            "proposalSha256": result["proposalSha256"],
+            "postimageSha256": result["postimageSha256"],
+            "verification": "valid_candidate",
+            "authorityEffect": "none",
+            "applied": False,
+            "verifiedAt": utc_now(),
+            "requestSha256": request_sha256,
+            "status": "pass",
+        }
+        result_sha = sha256(canonical_result_json(dict(receipt_without_hash)))
+        return {**receipt_without_hash, "resultSha256": result_sha}, 200
+
     def execute(self, request: dict[str, Any], request_sha256: str) -> tuple[dict[str, Any], int]:
         required_keys = {"schemaVersion", "clientId", "sessionId", "requestId", "nonce", "commandId", "requestedAt", "repository", "targetBranch", "targetHead", "approval"}
         if set(request) != required_keys:
@@ -483,7 +576,8 @@ class BrokerRequestHandler(BaseHTTPRequestHandler):
         if self.reject_origin():
             return
         path = urlparse(self.path).path
-        if path not in {"/session", "/execute"}:
+        is_proposal_review = path == PROPOSAL_REVIEW_PATH
+        if not is_proposal_review and path not in {"/session", "/execute"}:
             self.send_json(Broker.error("not_found"), HTTPStatus.NOT_FOUND)
             return
         client_id = self.headers.get(HEADER_CLIENT_ID, "")
@@ -503,14 +597,15 @@ class BrokerRequestHandler(BaseHTTPRequestHandler):
         except ValueError:
             reject(Broker.error("invalid_content_length"), HTTPStatus.BAD_REQUEST)
             return
-        if content_length <= 0 or content_length > MAX_REQUEST_BYTES:
+        max_request_bytes = MAX_PROPOSAL_REQUEST_BYTES if is_proposal_review else MAX_REQUEST_BYTES
+        if content_length <= 0 or content_length > max_request_bytes:
             reject(Broker.error("invalid_request_size"), HTTPStatus.REQUEST_ENTITY_TOO_LARGE)
             return
         body_bytes = self.rfile.read(content_length)
         try:
-            payload = json.loads(body_bytes)
-        except (json.JSONDecodeError, UnicodeDecodeError):
-            reject(Broker.error("invalid_json"), HTTPStatus.BAD_REQUEST)
+            payload = strict_json_loads(body_bytes)
+        except EnvelopeError as error:
+            reject(Broker.error(error.code, error.detail), HTTPStatus.BAD_REQUEST)
             return
         if not isinstance(payload, dict):
             reject(Broker.error("json_object_required"), HTTPStatus.BAD_REQUEST)
@@ -519,7 +614,9 @@ class BrokerRequestHandler(BaseHTTPRequestHandler):
         if auth_error is not None:
             reject(auth_error, auth_status)
             return
-        if path == "/session":
+        if path == PROPOSAL_REVIEW_PATH:
+            response, status = self.broker.review_proposal(payload, request_sha256)
+        elif path == "/session":
             response, status = self.broker.verify_session(payload, request_sha256)
         else:
             response, status = self.broker.execute(payload, request_sha256)

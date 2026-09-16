@@ -13,6 +13,7 @@ import android.widget.FrameLayout
 import android.widget.LinearLayout
 import android.widget.ScrollView
 import android.widget.TextView
+import org.json.JSONObject
 
 /**
  * Native Architect local development console for CE-W04-A11.
@@ -28,6 +29,7 @@ class ArchitectShellPanel(context: Context) : LinearLayout(context) {
     private val clearPairingButton: Button
     private val probeButton: Button
     private val actionButton: Button
+    private val proposalButton: Button
     private val brokerStatus: TextView
     private val executionSummary: TextView
     private val executionProvenance: TextView
@@ -35,6 +37,7 @@ class ArchitectShellPanel(context: Context) : LinearLayout(context) {
     private val rawOutput: TextView
 
     private var rawOutputVisible = false
+    private var rawOutputLabel = "raw output · broker-bounded"
 
     init {
         orientation = VERTICAL
@@ -165,6 +168,22 @@ class ArchitectShellPanel(context: Context) : LinearLayout(context) {
 
         content.addView(
             actionButton,
+            LinearLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT,
+            ).apply {
+                topMargin = dp(8)
+            },
+        )
+
+        proposalButton =
+            Button(context).apply {
+                text = "Review proposal envelope"
+                setOnClickListener { requestProposalEnvelope() }
+            }
+
+        content.addView(
+            proposalButton,
             LinearLayout.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT,
@@ -409,6 +428,176 @@ class ArchitectShellPanel(context: Context) : LinearLayout(context) {
             .show()
     }
 
+    private fun requestProposalEnvelope() {
+        if (!brokerClient.hasPairing()) {
+            requestPairingCode()
+            return
+        }
+
+        val input =
+            EditText(context).apply {
+                hint = "Paste CE-W04-A12 proposal envelope JSON"
+                inputType =
+                    InputType.TYPE_CLASS_TEXT or
+                    InputType.TYPE_TEXT_FLAG_MULTI_LINE
+                gravity = Gravity.TOP
+                minLines = 10
+                setHorizontallyScrolling(false)
+            }
+
+        AlertDialog.Builder(context)
+            .setTitle("Review proposal envelope")
+            .setMessage(
+                "Paste one deterministic CE-W04-A12 proposal envelope. " +
+                    "The next native dialog will show the exact permitted paths for Human scope confirmation. " +
+                    "Review never applies the candidate.",
+            )
+            .setView(input)
+            .setNegativeButton("Cancel", null)
+            .setPositiveButton("Continue") { _, _ ->
+                runCatching {
+                    val proposal = JSONObject(input.text.toString())
+                    require(proposal.optString("schemaVersion") == "1.0") {
+                        "Proposal schemaVersion must be 1.0"
+                    }
+                    require(proposal.optString("envelopeType") == "architect_proposal") {
+                        "Envelope type must be architect_proposal"
+                    }
+                    val permittedArray =
+                        proposal.optJSONArray("permittedPaths")
+                            ?: error("Proposal permittedPaths are missing")
+                    val permitted =
+                        (0 until permittedArray.length()).map { index ->
+                            permittedArray.getString(index)
+                        }
+                    require(permitted.isNotEmpty()) {
+                        "Proposal permittedPaths must not be empty"
+                    }
+                    confirmProposalScope(proposal, permitted)
+                }.onFailure { error ->
+                    executionSummary.text = "REJECTED · proposal envelope"
+                    executionProvenance.text =
+                        error.message ?: error::class.java.simpleName
+                }
+            }
+            .show()
+    }
+
+    private fun confirmProposalScope(
+        proposal: JSONObject,
+        permittedPaths: List<String>,
+    ) {
+        val touchedArray = proposal.optJSONArray("touchedPaths")
+        val touched =
+            if (touchedArray == null) {
+                emptyList()
+            } else {
+                (0 until touchedArray.length()).map { index -> touchedArray.optString(index) }
+            }
+
+        AlertDialog.Builder(context)
+            .setTitle("Confirm proposal review scope?")
+            .setMessage(
+                buildString {
+                    appendLine("Base: ${compactSha(proposal.optString("baseCommit"))}")
+                    appendLine()
+                    appendLine("Permitted review scope:")
+                    permittedPaths.forEach { appendLine("• $it") }
+                    appendLine()
+                    appendLine("Candidate touches:")
+                    if (touched.isEmpty()) {
+                        appendLine("(none declared)")
+                    } else {
+                        touched.forEach { appendLine("• $it") }
+                    }
+                    appendLine()
+                    append(
+                        "This confirms only the exact file scope for read-only verification. " +
+                            "It does not approve or apply the proposal, create a commit, push, merge, or deploy.",
+                    )
+                },
+            )
+            .setNegativeButton("Cancel", null)
+            .setPositiveButton("Verify candidate") { _, _ ->
+                reviewProposal(
+                    proposal,
+                    ArchitectBrokerClient.ProposalScope.now(permittedPaths),
+                )
+            }
+            .show()
+    }
+
+    private fun reviewProposal(
+        proposal: JSONObject,
+        scope: ArchitectBrokerClient.ProposalScope,
+    ) {
+        proposalButton.isEnabled = false
+        actionButton.isEnabled = false
+        probeButton.isEnabled = false
+        executionSummary.text = "Reviewing proposal candidate · no apply path"
+        executionProvenance.text =
+            "Awaiting authenticated exact-base verification receipt…"
+        rawOutputVisible = false
+        rawOutput.visibility = GONE
+        rawOutputButton.visibility = GONE
+
+        Thread {
+            val result = brokerClient.reviewProposal(proposal, scope)
+
+            post {
+                proposalButton.isEnabled = true
+                actionButton.isEnabled = true
+                probeButton.isEnabled = true
+                result.fold(
+                    onSuccess = { review ->
+                        presentProposalReview(proposal, review)
+                    },
+                    onFailure = { error ->
+                        executionSummary.text = "REJECTED · proposal candidate"
+                        executionProvenance.text =
+                            "Authenticated A12 review failed closed. No candidate was applied.\n" +
+                                (error.message ?: error::class.java.simpleName)
+                        rawOutput.text = ""
+                        rawOutput.visibility = GONE
+                        rawOutputButton.visibility = GONE
+                        rawOutputVisible = false
+                    },
+                )
+            }
+        }.apply {
+            name = "arcanum-architect-proposal-review"
+            isDaemon = true
+            start()
+        }
+    }
+
+    private fun presentProposalReview(
+        proposal: JSONObject,
+        review: ArchitectBrokerClient.ProposalReviewResult,
+    ) {
+        executionSummary.text = "Verified candidate · not approved · not applied"
+        executionProvenance.text =
+            buildString {
+                appendLine("base=${compactSha(review.baseCommit)}")
+                appendLine("headBefore=${compactSha(review.headBefore)}")
+                appendLine("headAfter=${compactSha(review.headAfter)}")
+                appendLine("scope=${review.scopeId ?: "unavailable"}")
+                appendLine("touched=${review.touchedPaths.joinToString(", ")}")
+                appendLine("request=${review.requestId ?: "unavailable"}")
+                appendLine("receipt=${review.receiptId ?: "unavailable"}")
+                appendLine("diffSha256=${review.diffSha256}")
+                appendLine("proposalSha256=${review.proposalSha256}")
+                appendLine("resultSha256=${review.resultSha256 ?: "unavailable"}")
+                appendLine("responseSha256=${review.responseSha256}")
+                append("authorityEffect=none · applied=false")
+            }
+
+        rawOutput.text = proposal.optString("unifiedDiff")
+        rawOutputLabel = "proposal diff · read-only"
+        rawOutputButton.visibility = View.VISIBLE
+        rawOutputButton.text = "Show $rawOutputLabel"
+    }
+
     private fun requestApproval(action: ArchitectBrokerClient.Action) {
         AlertDialog.Builder(context)
             .setTitle("Approve ${action.label.lowercase()}?")
@@ -436,6 +625,7 @@ class ArchitectShellPanel(context: Context) : LinearLayout(context) {
         approval: ArchitectBrokerClient.HumanApproval,
     ) {
         actionButton.isEnabled = false
+        proposalButton.isEnabled = false
         probeButton.isEnabled = false
 
         executionSummary.text =
@@ -452,6 +642,7 @@ class ArchitectShellPanel(context: Context) : LinearLayout(context) {
 
             post {
                 actionButton.isEnabled = true
+                proposalButton.isEnabled = true
                 probeButton.isEnabled = true
 
                 result.fold(
@@ -495,8 +686,9 @@ class ArchitectShellPanel(context: Context) : LinearLayout(context) {
             }
 
         rawOutput.text = formatRawExecution(execution)
+        rawOutputLabel = "raw output · broker-bounded"
         rawOutputButton.visibility = View.VISIBLE
-        rawOutputButton.text = "Show raw output · broker-bounded"
+        rawOutputButton.text = "Show $rawOutputLabel"
     }
 
     private fun presentExecutionFailure(action: ArchitectBrokerClient.Action, error: Throwable) {
@@ -516,9 +708,9 @@ class ArchitectShellPanel(context: Context) : LinearLayout(context) {
         rawOutput.visibility = if (rawOutputVisible) View.VISIBLE else View.GONE
         rawOutputButton.text =
             if (rawOutputVisible) {
-                "Hide raw output · broker-bounded"
+                "Hide $rawOutputLabel"
             } else {
-                "Show raw output · broker-bounded"
+                "Show $rawOutputLabel"
             }
     }
 
