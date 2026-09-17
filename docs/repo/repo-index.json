@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-09-17T08:09:40Z",
+  "generated_at": "2026-09-17T11:09:19Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "92642c44d",
+  "commit": "d730950f3",
   "generator_version": "1.5",
   "files": [
     {
@@ -188,7 +188,7 @@
       "path": "apps/android/app/build.gradle.kts",
       "type": "file",
       "size_bytes": 2429,
-      "last_modified_commit": "92642c44d",
+      "last_modified_commit": "d730950f3",
       "is_empty": false,
       "extension": ".kts",
       "lines": 90
@@ -304,11 +304,11 @@
     {
       "path": "apps/android/app/src/main/java/org/arcanum/nativehost/architect/ArchitectShellPanel.kt",
       "type": "file",
-      "size_bytes": 45445,
-      "last_modified_commit": "92642c44d",
+      "size_bytes": 49595,
+      "last_modified_commit": "d730950f3",
       "is_empty": false,
       "extension": ".kt",
-      "lines": 1086
+      "lines": 1186
     },
     {
       "path": "apps/android/app/src/main/java/org/arcanum/nativehost/architect/ArchitectVisualDiagnostics.kt",
@@ -3895,11 +3895,11 @@
     {
       "path": "docs/mobile/termux-verification.md",
       "type": "file",
-      "size_bytes": 6703,
-      "last_modified_commit": "92642c44d",
+      "size_bytes": 8257,
+      "last_modified_commit": "d730950f3",
       "is_empty": false,
       "extension": ".md",
-      "lines": 171
+      "lines": 205
     },
     {
       "path": "docs/modules/hope/g1-hope-seal.md",
@@ -4021,11 +4021,11 @@
     {
       "path": "docs/roadmap/construction-era-arc-ledger.md",
       "type": "file",
-      "size_bytes": 14897,
-      "last_modified_commit": "92642c44d",
+      "size_bytes": 16155,
+      "last_modified_commit": "d730950f3",
       "is_empty": false,
       "extension": ".md",
-      "lines": 205
+      "lines": 229
     },
     {
       "path": "docs/roadmap/construction-era-roadmap.md",
@@ -4260,6 +4260,15 @@
       "is_empty": false,
       "extension": ".md",
       "lines": 142
+    },
+    {
+      "path": "docs/specs/app/ce-w04-a13-5-arc-closure.md",
+      "type": "file",
+      "size_bytes": 5894,
+      "last_modified_commit": "d730950f3",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 153
     },
     {
       "path": "docs/specs/app/ce-w04-a13-native-mobile-operator-bridge.md",
@@ -7459,11 +7468,11 @@
     {
       "path": "scripts/verify-ce-w04-a13.py",
       "type": "file",
-      "size_bytes": 18537,
-      "last_modified_commit": "92642c44d",
+      "size_bytes": 19991,
+      "last_modified_commit": "d730950f3",
       "is_empty": false,
       "extension": ".py",
-      "lines": 569
+      "lines": 613
     },
     {
       "path": "scripts/verify-ce-w04-architect-observer.py",
@@ -7486,8 +7495,8 @@
     {
       "path": "scripts/verify-sync.sh",
       "type": "file",
-      "size_bytes": 11801,
-      "last_modified_commit": "92642c44d",
+      "size_bytes": 11798,
+      "last_modified_commit": "d730950f3",
       "is_empty": false,
       "extension": ".sh",
       "lines": 273
