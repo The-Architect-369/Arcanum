@@ -99,6 +99,40 @@ No shell command is copied for routine workspace verification, and A13.4 does no
 the broker, approve a broker action, apply a proposal, stage, commit, push, merge, or
 deploy.
 
+## A13.5 native operator handoff and Arc closure
+
+A13.5 adds no Termux operation and no broker action. The native operator registry remains
+exactly five fixed IDs: `probe_workspace`, `pair_native_client`, `start_broker`,
+`stop_broker`, and `verify_workspace`.
+
+When Architect is opened, the app reads only its own installed Android package metadata and
+APK bytes. It shows the compiled implementation arc, Android version, exact
+`ARCANUM_SOURCE_COMMIT`, and SHA-256 of the installed APK. The APK path comes only from
+Android `applicationInfo.sourceDir`; it cannot be supplied by Android UI, Termux, a broker
+response, or proposal content.
+
+The exact-head CI workflow injects the checked-out Git SHA into `ARCANUM_SOURCE_COMMIT`.
+The physical A13.5 handoff therefore lets the Human compare the installed source and APK
+digest directly with the certified remote artifact without searching for an artifact
+filename or copying a digest through Termux.
+
+The normal mobile path remains:
+
+```text
+Connect local workspace
+→ Verify local workspace
+→ Pair native client when needed
+→ Start local broker
+→ Check authenticated broker
+→ Choose one registered action or review one proposal envelope
+→ Stop local broker
+```
+
+These effects are not chained automatically. After one-time Termux setup and installation
+of the certified APK, routine operation requires no copied shell command, no copied pairing
+secret, and no manual artifact search. A13.5 adds no repository mutation, self-update,
+model-provider, deployment, or autonomous approval authority.
+
 ## Bootstrap
 
 ```bash

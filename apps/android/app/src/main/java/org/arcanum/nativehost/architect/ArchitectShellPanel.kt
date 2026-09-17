@@ -13,18 +13,23 @@ import android.widget.FrameLayout
 import android.widget.LinearLayout
 import android.widget.ScrollView
 import android.widget.TextView
+import org.arcanum.nativehost.BuildConfig
 import org.json.JSONObject
+import java.io.File
+import java.security.MessageDigest
 
 /**
- * Native Architect local development console for CE-W04-A11.
+ * Native Architect local development console through CE-W04-A13.5.
  *
- * A11 keeps the A09/A10 command ceiling intact while adding an authenticated,
- * Human-mediated native-client session boundary to the local Termux broker.
+ * A13.5 closes the native mobile operator UX and installed-artifact handoff without
+ * adding a Termux operation, broker action, repository mutation path, or autonomous effect.
  */
 class ArchitectShellPanel(context: Context) : LinearLayout(context) {
-    private val brokerClient = ArchitectBrokerClient(context.applicationContext)
+    private val appContext = context.applicationContext
+    private val brokerClient = ArchitectBrokerClient(appContext)
     private val operatorBridge = TermuxOperatorBridge(context.applicationContext)
 
+    private val handoffStatus: TextView
     private val workspaceStatus: TextView
     private val workspaceButton: Button
     private val verificationStatus: TextView
@@ -78,7 +83,10 @@ class ArchitectShellPanel(context: Context) : LinearLayout(context) {
 
         content.addView(
             TextView(context).apply {
-                text = "Seed Node Alpha · local development console\nVerified A11 runtime session"
+                text =
+                    "Seed Node Alpha · local development console\n" +
+                        "CE-W04-A13.5 native operator handoff\n" +
+                        "Verified A11 runtime session"
                 setTextColor(Color.LTGRAY)
                 textSize = 16f
                 setPadding(0, dp(8), 0, 0)
@@ -97,6 +105,20 @@ class ArchitectShellPanel(context: Context) : LinearLayout(context) {
                 setPadding(0, dp(14), 0, dp(14))
             },
         )
+
+        handoffStatus =
+            TextView(context).apply {
+                text =
+                    "A13.5 artifact handoff · awaiting installed application receipt\n" +
+                        "arc=${BuildConfig.ARCANUM_IMPLEMENTATION_ARC} · " +
+                        "version=${BuildConfig.VERSION_NAME} (${BuildConfig.VERSION_CODE})\n" +
+                        "authorityEffect=none · repositoryMutation=false"
+                setTextColor(Color.LTGRAY)
+                textSize = 13f
+                setTextIsSelectable(true)
+                setPadding(0, 0, 0, dp(14))
+            }
+        content.addView(handoffStatus)
 
         workspaceStatus =
             TextView(context).apply {
@@ -379,7 +401,66 @@ class ArchitectShellPanel(context: Context) : LinearLayout(context) {
     fun onPresented() {
         visibility = VISIBLE
         refreshPairingState()
+        refreshArtifactHandoff()
         probeBroker()
+    }
+
+    private fun refreshArtifactHandoff() {
+        handoffStatus.text =
+            "A13.5 artifact handoff · inspecting installed application…\n" +
+                "authorityEffect=none · repositoryMutation=false"
+
+        Thread {
+            val receipt =
+                runCatching {
+                    require(BuildConfig.ARCANUM_IMPLEMENTATION_ARC == "CE-W04-A13.5") {
+                        "installed implementation arc is not CE-W04-A13.5"
+                    }
+                    require(BuildConfig.VERSION_NAME == "0.1.13-cew04-a13-5") {
+                        "installed versionName is not the A13.5 closure build"
+                    }
+                    require(BuildConfig.VERSION_CODE == 18) {
+                        "installed versionCode is not 18"
+                    }
+
+                    val source = BuildConfig.ARCANUM_SOURCE_COMMIT
+                    require(Regex("^[0-9a-f]{40}$").matches(source)) {
+                        "installed source commit is not exact-head bound"
+                    }
+
+                    val installedApk = File(appContext.applicationInfo.sourceDir)
+                    require(installedApk.isFile) {
+                        "installed APK path is unavailable"
+                    }
+                    val installedApkSha256 = sha256File(installedApk)
+
+                    buildString {
+                        appendLine("A13.5 artifact handoff · PASS")
+                        appendLine("arc=${BuildConfig.ARCANUM_IMPLEMENTATION_ARC}")
+                        appendLine("version=${BuildConfig.VERSION_NAME} (${BuildConfig.VERSION_CODE})")
+                        appendLine("source=$source")
+                        appendLine("installedApkSha256=$installedApkSha256")
+                        appendLine("operatorRegistry=5 fixed native operations")
+                        append("authorityEffect=none · repositoryMutation=false")
+                    }
+                }
+
+            post {
+                handoffStatus.text =
+                    receipt.fold(
+                        onSuccess = { it },
+                        onFailure = { error ->
+                            "A13.5 artifact handoff · FAIL\n" +
+                                (error.message ?: error::class.java.simpleName) +
+                                "\nauthorityEffect=none · repositoryMutation=false"
+                        },
+                    )
+            }
+        }.apply {
+            name = "arcanum-a13-5-artifact-handoff"
+            isDaemon = true
+            start()
+        }
     }
 
     private fun requestWorkspaceProbe() {
@@ -1079,6 +1160,25 @@ class ArchitectShellPanel(context: Context) : LinearLayout(context) {
                 appendLine("Broker bounded one or more streams at its configured 256 KiB ceiling.")
             }
         }.trim()
+
+    private fun sha256File(file: File): String {
+        val digest = MessageDigest.getInstance("SHA-256")
+        file.inputStream().use { input ->
+            val buffer = ByteArray(64 * 1024)
+            while (true) {
+                val count = input.read(buffer)
+                if (count < 0) {
+                    break
+                }
+                if (count > 0) {
+                    digest.update(buffer, 0, count)
+                }
+            }
+        }
+        return digest.digest().joinToString("") { byte ->
+            "%02x".format(byte.toInt() and 0xff)
+        }
+    }
 
     private fun compactSha(value: String?): String = value?.take(12) ?: "unknown"
     private fun compactId(value: String?): String = value?.take(12) ?: "unknown"

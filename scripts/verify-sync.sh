@@ -255,7 +255,7 @@ bash scripts/architect/test-proposal-envelope.sh
 bash scripts/mobile/test-arcanum-operator.sh
 bash scripts/mobile/test-arcanum-broker-lifecycle.sh
 python3 scripts/mobile/test-arcanum-workspace-verify.py
-ok "local Workbench/runtime boundary, A12 proposal review, A13.4 native workspace verification, and advisory agent roster passed"
+ok "local Workbench/runtime boundary, A12 proposal review, A13.5 native UX/artifact handoff, and advisory agent roster passed"
 
 step 14 "Production smoke verifier"
 jq empty docs/governance/architectgpt/production-smoke.schema.json

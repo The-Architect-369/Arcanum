@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Fail-closed static checks for CE-W04-A13.4 native workspace verification."""
+"""Fail-closed static checks for CE-W04-A13.5 native operator UX and Arc closure."""
 
 from __future__ import annotations
 
@@ -18,6 +18,7 @@ A12_HEAD = "66a6479d9df921540d117820ed0d9b66eb59ba7e"
 A13_1_HEAD = "5f8552eff460d61aa720105b6c8c23321e311809"
 A13_2_HEAD = "608c6bd1a8283ef20e07160c2d32ac15ec24b41a"
 A13_3_HEAD = "e06143883fb67c7185e98d65845153d6444c1b05"
+A13_4_HEAD = "a48d73bb489cd10281e32be87d156802ab0029c1"
 ANDROID_NS = "{http://schemas.android.com/apk/res/android}"
 
 REQUIRED = (
@@ -25,6 +26,7 @@ REQUIRED = (
     "docs/specs/app/ce-w04-a13-2-zero-copy-pairing.md",
     "docs/specs/app/ce-w04-a13-3-broker-lifecycle.md",
     "docs/specs/app/ce-w04-a13-4-native-workspace-verification.md",
+    "docs/specs/app/ce-w04-a13-5-arc-closure.md",
     "apps/android/app/src/main/java/org/arcanum/nativehost/architect/TermuxOperatorBridge.kt",
     "apps/android/app/src/main/java/org/arcanum/nativehost/architect/TermuxOperatorResultService.kt",
     "apps/android/app/src/main/java/org/arcanum/nativehost/architect/ArchitectPairingStore.kt",
@@ -43,7 +45,7 @@ REQUIRED = (
 
 
 def fail(message: str) -> None:
-    raise SystemExit(f"FAIL CE-W04-A13.4: {message}")
+    raise SystemExit(f"FAIL CE-W04-A13.5: {message}")
 
 
 def text(path: str) -> str:
@@ -67,7 +69,7 @@ def forbid(source: str, needle: str, label: str) -> None:
 
 
 for path in REQUIRED:
-    require((ROOT / path).is_file(), f"missing required A13.3 path: {path}")
+    require((ROOT / path).is_file(), f"missing required A13.5 path: {path}")
 
 subprocess.run(
     ("git", "merge-base", "--is-ancestor", A13_1_HEAD, "HEAD"),
@@ -87,6 +89,14 @@ subprocess.run(
 
 subprocess.run(
     ("git", "merge-base", "--is-ancestor", A13_3_HEAD, "HEAD"),
+    cwd=ROOT,
+    env={**os.environ, "GIT_OPTIONAL_LOCKS": "0"},
+    shell=False,
+    check=True,
+)
+
+subprocess.run(
+    ("git", "merge-base", "--is-ancestor", A13_4_HEAD, "HEAD"),
     cwd=ROOT,
     env={**os.environ, "GIT_OPTIONAL_LOCKS": "0"},
     shell=False,
@@ -172,6 +182,23 @@ for phrase in (
     "versionCode = 17",
 ):
     require_phrase(a13_4_spec, phrase, "A13.4 spec")
+
+a13_5_spec = text("docs/specs/app/ce-w04-a13-5-arc-closure.md")
+for phrase in (
+    "CE-W04-A13.5",
+    A13_4_HEAD,
+    "No A13.5 Termux operation is added",
+    "operator registry remains exactly five",
+    "applicationInfo.sourceDir",
+    'MessageDigest.getInstance("SHA-256")',
+    "installedApkSha256",
+    "no copied shell command",
+    "no copied pairing secret",
+    "no manual artifact search",
+    "versionCode = 18",
+    "CE-W04-A13 only",
+):
+    require_phrase(a13_5_spec, phrase, "A13.5 spec")
 
 manifest_path = ROOT / "apps/android/app/src/main/AndroidManifest.xml"
 manifest = ET.parse(manifest_path).getroot()
@@ -424,6 +451,16 @@ for phrase in (
     "authenticated Human approval for each registered action",
     "An unowned process on port 8765 is never ",
     "signaled. This does not mutate the repository",
+    "CE-W04-A13.5 native operator handoff",
+    "A13.5 artifact handoff · PASS",
+    "BuildConfig.ARCANUM_IMPLEMENTATION_ARC",
+    "BuildConfig.ARCANUM_SOURCE_COMMIT",
+    "BuildConfig.VERSION_NAME",
+    "BuildConfig.VERSION_CODE",
+    "File(appContext.applicationInfo.sourceDir)",
+    'MessageDigest.getInstance("SHA-256")',
+    "installedApkSha256=",
+    "operatorRegistry=5 fixed native operations",
 ):
     require_phrase(panel, phrase, "Architect shell panel")
 for forbidden_text in (
@@ -445,12 +482,12 @@ for phrase in (
     require_phrase(pairing_store, phrase, "ArchitectPairingStore")
 
 build = text("apps/android/app/build.gradle.kts")
-require_phrase(build, 'versionName = "0.1.13-cew04-a13-4"', "Android build")
-require_phrase(build, '"\\"CE-W04-A13.4\\""', "Android build")
+require_phrase(build, 'versionName = "0.1.13-cew04-a13-5"', "Android build")
+require_phrase(build, '"\\"CE-W04-A13.5\\""', "Android build")
 version_code = re.search(r"\bversionCode\s*=\s*(\d+)\b", build)
 require(
-    version_code is not None and int(version_code.group(1)) == 17,
-    "A13.4 Android versionCode must be exactly 17",
+    version_code is not None and int(version_code.group(1)) == 18,
+    "A13.5 Android versionCode must be exactly 18",
 )
 
 bootstrap = text("scripts/mobile/termux-bootstrap.sh")
@@ -485,6 +522,12 @@ for phrase in (
     "verify_workspace",
     "architect-workspace-verification.log",
     "No broker session or pairing is required",
+    "A13.5 native operator handoff and Arc closure",
+    "applicationInfo.sourceDir",
+    "ARCANUM_SOURCE_COMMIT",
+    "no copied shell command",
+    "no copied pairing secret",
+    "no manual artifact search",
 ):
     require_phrase(mobile_doc_normalized, phrase, "Termux verification doc")
 
@@ -555,6 +598,7 @@ for phrase in (
     "bash scripts/mobile/test-arcanum-operator.sh",
     "bash scripts/mobile/test-arcanum-broker-lifecycle.sh",
     "python3 scripts/mobile/test-arcanum-workspace-verify.py",
+    "A13.5 native UX/artifact handoff",
 ):
     require_phrase(sync, phrase, "verify-sync")
 forbid(
@@ -564,6 +608,6 @@ forbid(
 )
 
 print(
-    "PASS CE-W04-A13.4 frozen A12 regression, certified A13.3 ancestry, "
-    "fixed native workspace verification, repository-state attestation, and unchanged authority ceiling"
+    "PASS CE-W04-A13.5 frozen A12 regression, certified A13.4 ancestry, "
+    "five-operation native registry freeze, installed-artifact handoff, and unchanged authority ceiling"
 )

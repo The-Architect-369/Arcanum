@@ -183,10 +183,34 @@ mutate Git, apply proposals, install artifacts, contact a model provider, or cre
 autonomous approval. Successful verification reports `authorityEffect=none` and
 `repositoryMutation=false`.
 
-## Next intended tranche
+### CE-W04-A13.5 — Native operator UX and Arc closure
 
-After A13.4 physical validation, A13.5 may close the remaining native UX and certified
-artifact/application handoff without widening repository authority.
+A13.5 begins from the physically certified A13.4 indexed head
+`a48d73bb489cd10281e32be87d156802ab0029c1`.
+
+It adds no Termux operation and no A11 broker action. The native operator registry remains
+exactly `probe_workspace`, `pair_native_client`, `start_broker`, `stop_broker`, and
+`verify_workspace`.
+
+A13.5 closes the remaining Human-facing handoff by surfacing the compiled implementation
+arc, Android version, exact source commit, and SHA-256 of the installed APK directly inside
+Architect. The APK path comes only from Android's own application metadata; no caller may
+select a package path or expected digest.
+
+The established A13 sequence remains individually Human-mediated. A13.5 does not chain
+workspace verification, pairing, broker start/stop, registered actions, or proposal review,
+and it adds no repository mutation, arbitrary shell, model-provider, self-update,
+deployment, or autonomous approval authority.
+
+## CE-W04-A13 closure condition
+
+After exact-head CI/artifact certification and physical Seed Node Alpha validation of the
+A13.5 installed-artifact receipt plus the inherited native operator path, CE-W04-A13 is
+closed. No A13.6 is implied. Any later capability expansion requires a separately named Arc
+and its own evidence contract.
+
+A13 closure does not by itself close CE-W04, promote `main`, grant Genesis authority, or
+authorize production deployment.
 
 ## Promotion discipline
 
