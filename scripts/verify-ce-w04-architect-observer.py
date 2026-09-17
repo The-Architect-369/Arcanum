@@ -219,11 +219,39 @@ for required_phrase in (
     require(required_phrase in main_activity, f"MainActivity missing Architect/inset-safe hook: {required_phrase!r}")
 
 build_gradle = (ROOT / "apps/android/app/build.gradle.kts").read_text(encoding="utf-8")
-for required_phrase in ("ARCANUM_SOURCE_COMMIT", "arcanumSourceCommit", "buildConfig = true", "CE-W04-A11"):
-    require(required_phrase in build_gradle, f"Android build provenance missing: {required_phrase!r}")
+for required_phrase in (
+    "ARCANUM_SOURCE_COMMIT",
+    "arcanumSourceCommit",
+    "buildConfig = true",
+    "ARCANUM_IMPLEMENTATION_ARC",
+):
+    require(
+        required_phrase in build_gradle,
+        f"Android build provenance missing: {required_phrase!r}",
+    )
+
+implementation_arc_match = re.search(
+    r"ARCANUM_IMPLEMENTATION_ARC[\s\S]{0,128}?CE-W04-A(\d+)(?:\.(\d+))?",
+    build_gradle,
+)
+require(
+    implementation_arc_match is not None,
+    "Android build provenance missing parseable CE-W04 implementation arc",
+)
+
+implementation_arc_major = int(implementation_arc_match.group(1))
+implementation_arc_minor = int(implementation_arc_match.group(2) or "0")
+require(
+    (implementation_arc_major, implementation_arc_minor) >= (11, 0),
+    "Android implementation arc must not regress below CE-W04-A11",
+)
+
 version_code_match = re.search(r"\bversionCode\s*=\s*(\d+)\b", build_gradle)
 require(version_code_match is not None, "Android build provenance missing: versionCode")
-require(int(version_code_match.group(1)) >= 13, "A11 requires monotonic Android versionCode >= 13")
+require(
+    int(version_code_match.group(1)) >= 13,
+    "Android versionCode must remain monotonic from A11 baseline >= 13",
+)
 
 workflow = (ROOT / ".github/workflows/verify-ce-w04-architect-observer.yml").read_text(encoding="utf-8")
 require('-ParcanumSourceCommit="$SOURCE_HEAD"' in workflow, "exact-head Android build must inject the checked-out source commit")

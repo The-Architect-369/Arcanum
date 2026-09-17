@@ -26,6 +26,7 @@ REQUIRED = (
     "scripts/mobile/test-arcanum-operator.sh",
     "scripts/architect/test-termux-broker.sh",
     "scripts/architect/test-proposal-envelope.sh",
+    "scripts/verify-ce-w04-architect-observer.py",
     "scripts/verify-ce-w04-a13.py",
 )
 
@@ -284,6 +285,25 @@ forbid(
     proposal_test,
     "python3 scripts/verify-ce-w04-a12.py",
     "A12 proposal integration live predecessor invocation",
+)
+
+observer_verifier = text("scripts/verify-ce-w04-architect-observer.py")
+for phrase in (
+    "ARCANUM_IMPLEMENTATION_ARC",
+    "implementation_arc_match = re.search(",
+    "Android implementation arc must not regress below CE-W04-A11",
+    "Android versionCode must remain monotonic from A11 baseline >= 13",
+):
+    require_phrase(
+        observer_verifier,
+        phrase,
+        "CE-W04 successor-aware observer verifier",
+    )
+
+forbid(
+    observer_verifier,
+    'for required_phrase in ("ARCANUM_SOURCE_COMMIT", "arcanumSourceCommit", "buildConfig = true", "CE-W04-A11"):',
+    "CE-W04 observer verifier stale A11 provenance pin",
 )
 
 sync = text("scripts/verify-sync.sh")
