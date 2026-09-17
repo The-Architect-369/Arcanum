@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-09-17T03:36:44Z",
+  "generated_at": "2026-09-17T03:43:10Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "378b69629",
+  "commit": "2bf8eea6f",
   "generator_version": "1.5",
   "files": [
     {
@@ -7117,11 +7117,11 @@
     {
       "path": "scripts/architect/test-proposal-envelope.sh",
       "type": "file",
-      "size_bytes": 9678,
-      "last_modified_commit": "30235f70c",
+      "size_bytes": 9982,
+      "last_modified_commit": "2bf8eea6f",
       "is_empty": false,
       "extension": ".sh",
-      "lines": 296
+      "lines": 306
     },
     {
       "path": "scripts/architect/test-provider-health.sh",
@@ -7144,11 +7144,11 @@
     {
       "path": "scripts/architect/test-termux-broker.sh",
       "type": "file",
-      "size_bytes": 8795,
-      "last_modified_commit": "823c0a5b6",
+      "size_bytes": 9117,
+      "last_modified_commit": "2bf8eea6f",
       "is_empty": false,
       "extension": ".sh",
-      "lines": 237
+      "lines": 248
     },
     {
       "path": "scripts/architect/validate-continuity-index.py",
@@ -7396,11 +7396,11 @@
     {
       "path": "scripts/verify-ce-w04-a13.py",
       "type": "file",
-      "size_bytes": 8270,
-      "last_modified_commit": "378b69629",
+      "size_bytes": 9456,
+      "last_modified_commit": "2bf8eea6f",
       "is_empty": false,
       "extension": ".py",
-      "lines": 268
+      "lines": 306
     },
     {
       "path": "scripts/verify-ce-w04-architect-observer.py",
