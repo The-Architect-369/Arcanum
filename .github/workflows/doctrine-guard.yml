@@ -20,6 +20,12 @@ jobs:
           fetch-depth: 0
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
 
+      - name: Attach exact checkout to branch identity
+        shell: bash
+        run: |
+          branch="${GITHUB_HEAD_REF:-$GITHUB_REF_NAME}"
+          git checkout -B "$branch" "${{ github.event.pull_request.head.sha || github.sha }}"
+
       - name: Install system dependencies
         run: |
           sudo apt-get update -qq
