@@ -10,6 +10,38 @@ Termux is a portable local verification surface for Arcanum. It is not a branch 
 
 The normal checkout begins from `main`. When an explicitly authorized disposable work branch is under review, the same verifier may run on that branch by naming the expected branch.
 
+## Canonical mobile workspace
+
+CE-W04-A13.1 standardizes the phone checkout at:
+
+```text
+$HOME/Arcanum
+```
+
+The older `$HOME/work/Arcanum` location is treated as a legacy checkout. The A13.1 native
+workspace probe reports it when present so duplicate/stale workspace state is visible to
+the Human Architect.
+
+## A13.1 native operator setup
+
+A13.1 adds one Human-confirmed read-only Android → Termux operation: `probe_workspace`.
+One-time setup still requires Termux's own external-app policy and Android permission:
+
+```bash
+cd "$HOME/Arcanum"
+bash scripts/mobile/arcanum-operator-setup.sh
+```
+
+The setup script writes only `allow-external-apps=true` in
+`$HOME/.termux/termux.properties` and reloads Termux settings when supported. It cannot
+grant Android permission to itself.
+
+Then grant **ARCnet Native Host → Additional permissions → Run commands in Termux
+environment** in Android Settings.
+
+After those one-time gates, the A13.1 workspace probe is launched from the native
+Architect surface; no shell command is copied for routine probing.
+
 ## Bootstrap
 
 ```bash

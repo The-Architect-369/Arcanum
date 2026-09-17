@@ -35,8 +35,8 @@ log "Enabling Corepack and repository-pinned pnpm"
 corepack enable
 corepack prepare pnpm@9.10.0 --activate
 
-WORKSPACE_ROOT="${ARCANUM_WORKSPACE_ROOT:-$HOME/work}"
-REPO_DIR="${ARCANUM_REPO_DIR:-$WORKSPACE_ROOT/Arcanum}"
+WORKSPACE_ROOT="${ARCANUM_WORKSPACE_ROOT:-$HOME}"
+REPO_DIR="${ARCANUM_REPO_DIR:-$HOME/Arcanum}"
 ENV_FILE="$HOME/.config/arcanum/repo.env"
 mkdir -p "$WORKSPACE_ROOT" "$HOME/.config/arcanum"
 

@@ -23,7 +23,10 @@ import org.json.JSONObject
  */
 class ArchitectShellPanel(context: Context) : LinearLayout(context) {
     private val brokerClient = ArchitectBrokerClient(context.applicationContext)
+    private val operatorBridge = TermuxOperatorBridge(context.applicationContext)
 
+    private val workspaceStatus: TextView
+    private val workspaceButton: Button
     private val pairingStatus: TextView
     private val pairingButton: Button
     private val clearPairingButton: Button
@@ -91,12 +94,37 @@ class ArchitectShellPanel(context: Context) : LinearLayout(context) {
             },
         )
 
+        workspaceStatus =
+            TextView(context).apply {
+                text =
+                    "A13.1 workspace · not checked\n" +
+                        "Human-confirmed probe only · authorityEffect=none"
+                setTextColor(Color.LTGRAY)
+                textSize = 13f
+                setTextIsSelectable(true)
+                setPadding(0, 0, 0, dp(8))
+            }
+        content.addView(workspaceStatus)
+
+        workspaceButton =
+            Button(context).apply {
+                text = "Connect local workspace"
+                setOnClickListener { requestWorkspaceProbe() }
+            }
+        content.addView(
+            workspaceButton,
+            LinearLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT,
+            ),
+        )
+
         pairingStatus =
             TextView(context).apply {
                 setTextColor(Color.LTGRAY)
                 textSize = 13f
                 setTextIsSelectable(true)
-                setPadding(0, 0, 0, dp(8))
+                setPadding(0, dp(14), 0, dp(8))
             }
         content.addView(pairingStatus)
 
@@ -295,6 +323,59 @@ class ArchitectShellPanel(context: Context) : LinearLayout(context) {
         visibility = VISIBLE
         refreshPairingState()
         probeBroker()
+    }
+
+    private fun requestWorkspaceProbe() {
+        AlertDialog.Builder(context)
+            .setTitle("Run read-only workspace probe?")
+            .setMessage(
+                "A13.1 will ask Termux to run one fixed repository-owned probe at " +
+                    "~/Arcanum/scripts/mobile/arcanum-operator.sh. " +
+                    "It reads repository identity, branch, HEAD, cleanliness, and legacy checkout presence. " +
+                    "It cannot apply changes, commit, push, merge, or run arbitrary shell text.",
+            )
+            .setNegativeButton("Cancel", null)
+            .setPositiveButton("Probe") { _, _ ->
+                workspaceButton.isEnabled = false
+                workspaceStatus.text = "A13.1 workspace · probing canonical ~/Arcanum…"
+
+                operatorBridge.probeWorkspace { result ->
+                    post {
+                        workspaceButton.isEnabled = true
+                        workspaceStatus.text =
+                            result.fold(
+                                onSuccess = { probe ->
+                                    buildString {
+                                        appendLine("A13.1 workspace · connected")
+                                        appendLine("repository=${probe.repositoryId}")
+                                        appendLine("branch=${probe.branch}")
+                                        appendLine("commit=${compactSha(probe.head)}")
+                                        appendLine(
+                                            "workingTree=${if (probe.clean) "clean" else "local changes present"}",
+                                        )
+                                        if (probe.legacyWorkspacePresent) {
+                                            appendLine(
+                                                "Legacy checkout detected · " +
+                                                    "${probe.legacyWorkspacePath ?: "~/work/Arcanum"}",
+                                            )
+                                            appendLine(
+                                                "legacyBranch=${probe.legacyWorkspaceBranch ?: "unknown"} · " +
+                                                    "legacyHead=${compactSha(probe.legacyWorkspaceHead)}",
+                                            )
+                                        }
+                                        append("authorityEffect=none · repositoryMutation=false")
+                                    }
+                                },
+                                onFailure = { error ->
+                                    "A13.1 workspace probe unavailable · ${error.message ?: error::class.java.simpleName}\n" +
+                                        "One-time setup may be required: run scripts/mobile/arcanum-operator-setup.sh " +
+                                        "in Termux and grant Arcanum the 'Run commands in Termux environment' permission."
+                                },
+                            )
+                    }
+                }
+            }
+            .show()
     }
 
     private fun refreshPairingState() {

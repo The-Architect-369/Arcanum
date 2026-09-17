@@ -123,11 +123,21 @@ Authenticated responses are exact-byte hashed and HMAC-bound to the request/sess
 
 The Android command allowlist remains seven actions, the broker registry remains eight including backend-only `web_typecheck`, and repository mutation, arbitrary shell, model execution, update installation, patch application, and autonomous approval remain outside A11.
 
+### CE-W04-A12 — Architect Proposal Envelope
+
+A12 established deterministic exact-base proposal generation and authenticated native proposal review without repository mutation. Candidate scope is externally Human-confirmed, every successful review reports `authorityEffect=none` and `applied=false`, and A12 cannot apply, stage, commit, push, merge, deploy, or approve its own proposal.
+
+The certified A12 indexed implementation head is `66a6479d9df921540d117820ed0d9b66eb59ba7e`.
+
+### CE-W04-A13.1 — Native Mobile Operator Transport Foundation
+
+A13.1 begins the mobile workflow repair from the exact certified A12 head. It adds one Human-confirmed Android → Termux operation, `probe_workspace`, through a fixed Termux service, fixed repo-owned dispatcher path, fixed working directory, one compile-time operation ID, and an app-private one-shot result receiver.
+
+A13.1 remains read-only with respect to repository state. Pairing automation, broker lifecycle, proposal application, artifact installation, Git writes, arbitrary shell, autonomous approval, and model-provider invocation remain outside this tranche.
+
 ## Next intended tranche
 
-After A11 verification, `CE-W04-A12 — Architect Proposal Envelope` may implement the already-approved proposal-oriented workflow: the Architect may construct a bounded exact-base, file-scoped change proposal or unified-diff candidate for Human review without applying it.
-
-Repository mutation remains deferred until a later Arc defines explicit file scope, preconditions, diff review, Human approval, receipts, and abort/rollback semantics.
+After A13.1 transport and physical Seed Node Alpha validation, A13 may continue with zero-copy pairing and Human-triggered broker lifecycle while preserving the fixed-operation ceiling.
 
 ## Promotion discipline
 
