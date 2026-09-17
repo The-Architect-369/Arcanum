@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-09-17T03:54:46Z",
+  "generated_at": "2026-09-17T05:31:19Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "dc3f00bd8",
+  "commit": "fc979b9d7",
   "generator_version": "1.5",
   "files": [
     {
@@ -188,7 +188,7 @@
       "path": "apps/android/app/build.gradle.kts",
       "type": "file",
       "size_bytes": 2429,
-      "last_modified_commit": "378b69629",
+      "last_modified_commit": "fc979b9d7",
       "is_empty": false,
       "extension": ".kts",
       "lines": 90
@@ -304,11 +304,11 @@
     {
       "path": "apps/android/app/src/main/java/org/arcanum/nativehost/architect/ArchitectShellPanel.kt",
       "type": "file",
-      "size_bytes": 31468,
-      "last_modified_commit": "378b69629",
+      "size_bytes": 33874,
+      "last_modified_commit": "fc979b9d7",
       "is_empty": false,
       "extension": ".kt",
-      "lines": 826
+      "lines": 858
     },
     {
       "path": "apps/android/app/src/main/java/org/arcanum/nativehost/architect/ArchitectVisualDiagnostics.kt",
@@ -322,11 +322,11 @@
     {
       "path": "apps/android/app/src/main/java/org/arcanum/nativehost/architect/TermuxOperatorBridge.kt",
       "type": "file",
-      "size_bytes": 9323,
-      "last_modified_commit": "378b69629",
+      "size_bytes": 15853,
+      "last_modified_commit": "fc979b9d7",
       "is_empty": false,
       "extension": ".kt",
-      "lines": 234
+      "lines": 391
     },
     {
       "path": "apps/android/app/src/main/java/org/arcanum/nativehost/architect/TermuxOperatorResultService.kt",
@@ -3895,11 +3895,11 @@
     {
       "path": "docs/mobile/termux-verification.md",
       "type": "file",
-      "size_bytes": 3647,
-      "last_modified_commit": "378b69629",
+      "size_bytes": 4263,
+      "last_modified_commit": "fc979b9d7",
       "is_empty": false,
       "extension": ".md",
-      "lines": 114
+      "lines": 126
     },
     {
       "path": "docs/modules/hope/g1-hope-seal.md",
@@ -4021,11 +4021,11 @@
     {
       "path": "docs/roadmap/construction-era-arc-ledger.md",
       "type": "file",
-      "size_bytes": 12399,
-      "last_modified_commit": "378b69629",
+      "size_bytes": 13225,
+      "last_modified_commit": "fc979b9d7",
       "is_empty": false,
       "extension": ".md",
-      "lines": 156
+      "lines": 174
     },
     {
       "path": "docs/roadmap/construction-era-roadmap.md",
@@ -4233,6 +4233,15 @@
       "is_empty": false,
       "extension": ".md",
       "lines": 224
+    },
+    {
+      "path": "docs/specs/app/ce-w04-a13-2-zero-copy-pairing.md",
+      "type": "file",
+      "size_bytes": 4678,
+      "last_modified_commit": "fc979b9d7",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 134
     },
     {
       "path": "docs/specs/app/ce-w04-a13-native-mobile-operator-bridge.md",
@@ -7207,11 +7216,11 @@
     {
       "path": "scripts/mobile/arcanum-operator.sh",
       "type": "file",
-      "size_bytes": 3557,
-      "last_modified_commit": "378b69629",
+      "size_bytes": 6736,
+      "last_modified_commit": "fc979b9d7",
       "is_empty": false,
       "extension": ".sh",
-      "lines": 144
+      "lines": 262
     },
     {
       "path": "scripts/mobile/termux-bootstrap.sh",
@@ -7234,11 +7243,11 @@
     {
       "path": "scripts/mobile/test-arcanum-operator.sh",
       "type": "file",
-      "size_bytes": 3175,
-      "last_modified_commit": "378b69629",
+      "size_bytes": 5564,
+      "last_modified_commit": "fc979b9d7",
       "is_empty": false,
       "extension": ".sh",
-      "lines": 90
+      "lines": 155
     },
     {
       "path": "scripts/node/local-reset.sh",
@@ -7396,11 +7405,11 @@
     {
       "path": "scripts/verify-ce-w04-a13.py",
       "type": "file",
-      "size_bytes": 10147,
-      "last_modified_commit": "dc3f00bd8",
+      "size_bytes": 12487,
+      "last_modified_commit": "fc979b9d7",
       "is_empty": false,
       "extension": ".py",
-      "lines": 326
+      "lines": 389
     },
     {
       "path": "scripts/verify-ce-w04-architect-observer.py",
@@ -7423,8 +7432,8 @@
     {
       "path": "scripts/verify-sync.sh",
       "type": "file",
-      "size_bytes": 11474,
-      "last_modified_commit": "378b69629",
+      "size_bytes": 11470,
+      "last_modified_commit": "fc979b9d7",
       "is_empty": false,
       "extension": ".sh",
       "lines": 265
