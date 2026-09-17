@@ -45,6 +45,11 @@ class TermuxOperatorBridge(
             label = "Stop local broker",
             description = "Stop only the broker process proven to be owned by the A13.3 lifecycle state.",
         ),
+        VERIFY_WORKSPACE(
+            wireId = "verify_workspace",
+            label = "Verify local workspace",
+            description = "Run only the canonical read-only repository verify-sync contract and attest unchanged Git state.",
+        ),
     }
 
     data class WorkspaceProbe(
@@ -82,6 +87,25 @@ class TermuxOperatorBridge(
         val lifecycleStatePath: String,
         val logPath: String,
         val runtimeEffect: String,
+    )
+
+    data class WorkspaceVerificationResult(
+        val repositoryId: String,
+        val workspacePath: String,
+        val status: String,
+        val reason: String?,
+        val branch: String?,
+        val head: String?,
+        val cleanBefore: Boolean,
+        val cleanAfter: Boolean,
+        val verifyExitCode: Int?,
+        val passedChecks: Int?,
+        val totalChecks: Int,
+        val durationMs: Long,
+        val logPath: String,
+        val logSha256: String?,
+        val runtimeEffect: String,
+        val repositoryMutation: Boolean,
     )
 
     fun probeWorkspace(callback: (Result<WorkspaceProbe>) -> Unit) {
@@ -225,6 +249,72 @@ class TermuxOperatorBridge(
 
     fun stopBroker(callback: (Result<BrokerLifecycleResult>) -> Unit) {
         runBrokerLifecycle(Operation.STOP_BROKER, callback)
+    }
+
+    fun verifyWorkspace(callback: (Result<WorkspaceVerificationResult>) -> Unit) {
+        val operation = Operation.VERIFY_WORKSPACE
+
+        val readiness = runCatching { requireTermuxBridgeReady() }
+        if (readiness.isFailure) {
+            callback(Result.failure(requireNotNull(readiness.exceptionOrNull())))
+            return
+        }
+
+        val nonce = UUID.randomUUID().toString()
+        val executionId =
+            TermuxOperatorResultService.register(
+                operationId = operation.wireId,
+                nonce = nonce,
+            ) { raw ->
+                callback(raw.mapCatching { parseWorkspaceVerification(it) })
+            }
+
+        val resultIntent =
+            Intent(appContext, TermuxOperatorResultService::class.java)
+                .putExtra(TermuxOperatorResultService.EXTRA_EXECUTION_ID, executionId)
+                .putExtra(TermuxOperatorResultService.EXTRA_OPERATION_ID, operation.wireId)
+                .putExtra(TermuxOperatorResultService.EXTRA_NONCE, nonce)
+
+        val pendingFlags =
+            PendingIntent.FLAG_ONE_SHOT or
+                PendingIntent.FLAG_UPDATE_CURRENT or
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+                    PendingIntent.FLAG_MUTABLE
+                } else {
+                    0
+                }
+
+        val pendingResult =
+            PendingIntent.getService(
+                appContext,
+                executionId,
+                resultIntent,
+                pendingFlags,
+            )
+
+        val commandIntent =
+            Intent()
+                .setClassName(TERMUX_PACKAGE, TERMUX_RUN_COMMAND_SERVICE)
+                .setAction(TERMUX_RUN_COMMAND_ACTION)
+                .putExtra(TERMUX_EXTRA_COMMAND_PATH, OPERATOR_PATH)
+                .putExtra(TERMUX_EXTRA_ARGUMENTS, arrayOf(operation.wireId))
+                .putExtra(TERMUX_EXTRA_WORKDIR, WORKSPACE_PATH)
+                .putExtra(TERMUX_EXTRA_BACKGROUND, true)
+                .putExtra(TERMUX_EXTRA_COMMAND_LABEL, operation.label)
+                .putExtra(TERMUX_EXTRA_COMMAND_DESCRIPTION, operation.description)
+                .putExtra(TERMUX_EXTRA_PENDING_INTENT, pendingResult)
+
+        runCatching {
+            require(appContext.packageManager.resolveService(commandIntent, 0) != null) {
+                "Termux RunCommandService is unavailable"
+            }
+            requireNotNull(appContext.startService(commandIntent)) {
+                "Android did not start the Termux command service"
+            }
+        }.onFailure { error ->
+            TermuxOperatorResultService.cancel(executionId)
+            callback(Result.failure(error))
+        }
     }
 
     private fun runBrokerLifecycle(
@@ -593,6 +683,133 @@ class TermuxOperatorBridge(
         )
     }
 
+    private fun parseWorkspaceVerification(
+        raw: TermuxOperatorResultService.CommandResult,
+    ): WorkspaceVerificationResult {
+        require(raw.termuxErrorCode == Activity.RESULT_OK) {
+            "Termux rejected the verification request: ${raw.termuxErrorMessage.ifBlank { "unknown error" }}"
+        }
+        require(raw.exitCode == 0) {
+            "Workspace verification operator exited with code ${raw.exitCode}: ${raw.stderr}"
+        }
+        require(!raw.stdoutTruncated && !raw.stderrTruncated) {
+            "Workspace verification operator output was truncated"
+        }
+        require(raw.stderr.isBlank()) {
+            "Workspace verification operator returned stderr: ${raw.stderr}"
+        }
+
+        val text = raw.stdout.trim()
+        require(text.startsWith("{") && text.endsWith("}") && text.count { it == '\n' } == 0) {
+            "Workspace verification operator did not return exactly one JSON document"
+        }
+
+        val json = JSONObject(text)
+        require(json.length() == EXPECTED_VERIFICATION_RESULT_FIELDS) {
+            "Workspace verification operator returned an unexpected result shape"
+        }
+        require(json.getString("schemaVersion") == "1.0") {
+            "Workspace verification schema is unsupported"
+        }
+        require(json.getString("operationId") == Operation.VERIFY_WORKSPACE.wireId) {
+            "Workspace verification result is bound to a different operation"
+        }
+        require(json.getString("authorityEffect") == "none") {
+            "Workspace verification reported an authority effect"
+        }
+        require(json.getString("repositoryId") == CANONICAL_REPOSITORY_ID) {
+            "Workspace verification reported a different repository identity"
+        }
+        require(json.getString("workspacePath") == WORKSPACE_PATH) {
+            "Workspace verification reported a different canonical workspace"
+        }
+        require(json.getString("logPath") == WORKSPACE_VERIFICATION_LOG_PATH) {
+            "Workspace verification reported an unexpected log path"
+        }
+
+        val status = json.getString("status")
+        require(status == "pass" || status == "fail") {
+            "Workspace verification returned an invalid status"
+        }
+        val reason = json.optNullableString("reason")
+        val branch = json.optNullableString("branch")
+        val head = json.optNullableString("head")
+        if (head != null) {
+            require(HEAD_PATTERN.matches(head)) {
+                "Workspace verification returned an invalid HEAD"
+            }
+        }
+
+        val cleanBefore = json.getBoolean("cleanBefore")
+        val cleanAfter = json.getBoolean("cleanAfter")
+        val repositoryMutation = json.getBoolean("repositoryMutation")
+        val runtimeEffect = json.getString("runtimeEffect")
+        require(runtimeEffect == "none" || runtimeEffect == "verification_log_written") {
+            "Workspace verification returned an invalid runtime effect"
+        }
+
+        val verifyExitCode = json.optNullableInt("verifyExitCode")
+        val passedChecks = json.optNullableInt("passedChecks")
+        val totalChecks = json.getInt("totalChecks")
+        require(totalChecks == VERIFY_SYNC_TOTAL_CHECKS) {
+            "Workspace verification reported an unexpected check count"
+        }
+        val durationMs = json.getLong("durationMs")
+        require(durationMs >= 0L) {
+            "Workspace verification returned an invalid duration"
+        }
+        val logSha256 = json.optNullableString("logSha256")
+        if (logSha256 != null) {
+            require(SHA256_PATTERN.matches(logSha256)) {
+                "Workspace verification returned an invalid log digest"
+            }
+        }
+
+        if (status == "pass") {
+            require(reason == null) { "Passing workspace verification returned a failure reason" }
+            require(!repositoryMutation) { "Passing workspace verification reported repository mutation" }
+            require(cleanBefore && cleanAfter) { "Passing workspace verification was not clean before and after" }
+            require(!branch.isNullOrBlank()) { "Passing workspace verification returned an empty branch" }
+            require(head != null && HEAD_PATTERN.matches(head)) {
+                "Passing workspace verification returned an invalid HEAD"
+            }
+            require(verifyExitCode == 0) { "Passing workspace verification returned a non-zero exit" }
+            require(passedChecks == totalChecks) { "Passing workspace verification did not pass all checks" }
+            require(runtimeEffect == "verification_log_written") {
+                "Passing workspace verification did not bind its private log"
+            }
+            require(logSha256 != null) { "Passing workspace verification is missing its log digest" }
+        } else {
+            require(!reason.isNullOrBlank()) { "Failed workspace verification is missing a reason" }
+        }
+
+        return WorkspaceVerificationResult(
+            repositoryId = json.getString("repositoryId"),
+            workspacePath = json.getString("workspacePath"),
+            status = status,
+            reason = reason,
+            branch = branch,
+            head = head,
+            cleanBefore = cleanBefore,
+            cleanAfter = cleanAfter,
+            verifyExitCode = verifyExitCode,
+            passedChecks = passedChecks,
+            totalChecks = totalChecks,
+            durationMs = durationMs,
+            logPath = json.getString("logPath"),
+            logSha256 = logSha256,
+            runtimeEffect = runtimeEffect,
+            repositoryMutation = repositoryMutation,
+        )
+    }
+
+    private fun JSONObject.optNullableInt(key: String): Int? {
+        if (!has(key) || isNull(key)) {
+            return null
+        }
+        return getInt(key)
+    }
+
     private fun JSONObject.optNullableString(key: String): String? {
         if (!has(key) || isNull(key)) {
             return null
@@ -624,13 +841,18 @@ class TermuxOperatorBridge(
             "/data/data/com.termux/files/home/.config/arcanum/architect-broker.lifecycle.json"
         private const val BROKER_LOG_PATH =
             "/data/data/com.termux/files/home/.config/arcanum/architect-broker.log"
+        private const val WORKSPACE_VERIFICATION_LOG_PATH =
+            "/data/data/com.termux/files/home/.config/arcanum/architect-workspace-verification.log"
         private const val BROKER_PORT = 8765
         private const val CANONICAL_REPOSITORY_ID = "The-Architect-369/Arcanum"
+        private const val VERIFY_SYNC_TOTAL_CHECKS = 15
         private const val EXPECTED_RESULT_FIELDS = 13
         private const val EXPECTED_PAIRING_RESULT_FIELDS = 13
         private const val EXPECTED_LIFECYCLE_RESULT_FIELDS = 17
+        private const val EXPECTED_VERIFICATION_RESULT_FIELDS = 19
 
         private val HEAD_PATTERN = Regex("^[0-9a-f]{40}$")
         private val PAIRING_CODE_PATTERN = Regex("^[0-9a-f]{64}$")
+        private val SHA256_PATTERN = Regex("^[0-9a-f]{64}$")
     }
 }

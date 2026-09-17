@@ -152,4 +152,8 @@ if bash "$OPERATOR" pair_native_client unexpected >/dev/null 2>&1; then
   fail "extra pairing arguments were accepted"
 fi
 
-echo "PASS CE-W04-A13.2 workspace probe, zero-copy pairing, secure secret reuse, scope rejection, and repository immutability"
+if bash "$OPERATOR" verify_workspace unexpected >/dev/null 2>&1; then
+  fail "extra verification arguments were accepted"
+fi
+
+echo "PASS CE-W04-A13.4 fixed operator registry, workspace probe, zero-copy pairing, scope rejection, and repository immutability"

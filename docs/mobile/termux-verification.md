@@ -78,6 +78,27 @@ action still requires its own authenticated native Human approval.
 No shell command is copied for routine broker start or stop, and neither operation mutates
 the repository.
 
+## A13.4 native workspace verification
+
+A13.4 adds `verify_workspace` to the fixed native operator registry. After explicit Human
+confirmation, Termux requires a clean canonical `$HOME/Arcanum` checkout and runs only
+the repository-owned `scripts/verify-sync.sh`. No broker session or pairing is required.
+
+Combined verifier output is written to
+`$HOME/.config/arcanum/architect-workspace-verification.log`, outside the repository, with
+mode `0600`. Android receives only a compact structured result containing branch, HEAD,
+check count, exit code, duration, clean-before/clean-after facts, and the SHA-256 of that
+private log.
+
+After verification, the helper rechecks origin, branch, HEAD, and worktree cleanliness.
+Any state drift fails closed as `repository_state_changed`. A successful result therefore
+binds `15/15` canonical checks to the same clean branch/HEAD observed before execution,
+with `authorityEffect=none` and `repositoryMutation=false`.
+
+No shell command is copied for routine workspace verification, and A13.4 does not start
+the broker, approve a broker action, apply a proposal, stage, commit, push, merge, or
+deploy.
+
 ## Bootstrap
 
 ```bash

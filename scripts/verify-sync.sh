@@ -237,6 +237,8 @@ step 13 "Local Architect Runtime and Termux operator bridge"
 python3 -m py_compile \
   scripts/architect/termux-broker.py \
   scripts/mobile/arcanum-broker-lifecycle.py \
+  scripts/mobile/arcanum-workspace-verify.py \
+  scripts/mobile/test-arcanum-workspace-verify.py \
   scripts/verify-ce-w04-a13.py
 jq empty docs/governance/architectgpt/architect-proposal-envelope.schema.json
 bash -n scripts/architect/test-termux-broker.sh
@@ -252,7 +254,8 @@ bash scripts/architect/test-architect-runtime.sh
 bash scripts/architect/test-proposal-envelope.sh
 bash scripts/mobile/test-arcanum-operator.sh
 bash scripts/mobile/test-arcanum-broker-lifecycle.sh
-ok "local Workbench/runtime boundary, A12 proposal review, A13.3 Human-triggered broker lifecycle, and advisory agent roster passed"
+python3 scripts/mobile/test-arcanum-workspace-verify.py
+ok "local Workbench/runtime boundary, A12 proposal review, A13.4 native workspace verification, and advisory agent roster passed"
 
 step 14 "Production smoke verifier"
 jq empty docs/governance/architectgpt/production-smoke.schema.json

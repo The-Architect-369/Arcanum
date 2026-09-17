@@ -167,10 +167,26 @@ A13.3 does not auto-start the broker, widen the A11 broker command registry, app
 broker action, mutate Git, apply proposals, install artifacts, contact a model provider, or
 create autonomous approval. Repository authority remains unchanged.
 
+### CE-W04-A13.4 — Native workspace verification
+
+A13.4 begins from the physically certified A13.3 indexed head
+`e06143883fb67c7185e98d65845153d6444c1b05`.
+
+It adds only `verify_workspace` to the fixed native → Termux operator registry. After one
+explicit Human confirmation, Termux requires the clean canonical `$HOME/Arcanum`
+checkout, runs only repository-owned `scripts/verify-sync.sh`, writes one private `0600`
+verification log outside the repository, and then revalidates origin, branch, HEAD, and
+worktree cleanliness before reporting the result.
+
+A13.4 does not require the A11 broker or pairing, widen the A11 broker action registry,
+mutate Git, apply proposals, install artifacts, contact a model provider, or create
+autonomous approval. Successful verification reports `authorityEffect=none` and
+`repositoryMutation=false`.
+
 ## Next intended tranche
 
-After A13.3 physical validation, A13.4 may add native workspace verification through the
-same fixed-operation transport while preserving the Human approval and authority ceilings.
+After A13.4 physical validation, A13.5 may close the remaining native UX and certified
+artifact/application handoff without widening repository authority.
 
 ## Promotion discipline
 

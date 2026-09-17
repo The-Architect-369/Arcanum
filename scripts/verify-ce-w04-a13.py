@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Fail-closed static checks for CE-W04-A13.3 Human-triggered broker lifecycle."""
+"""Fail-closed static checks for CE-W04-A13.4 native workspace verification."""
 
 from __future__ import annotations
 
@@ -17,20 +17,24 @@ ROOT = Path(__file__).resolve().parents[1]
 A12_HEAD = "66a6479d9df921540d117820ed0d9b66eb59ba7e"
 A13_1_HEAD = "5f8552eff460d61aa720105b6c8c23321e311809"
 A13_2_HEAD = "608c6bd1a8283ef20e07160c2d32ac15ec24b41a"
+A13_3_HEAD = "e06143883fb67c7185e98d65845153d6444c1b05"
 ANDROID_NS = "{http://schemas.android.com/apk/res/android}"
 
 REQUIRED = (
     "docs/specs/app/ce-w04-a13-native-mobile-operator-bridge.md",
     "docs/specs/app/ce-w04-a13-2-zero-copy-pairing.md",
     "docs/specs/app/ce-w04-a13-3-broker-lifecycle.md",
+    "docs/specs/app/ce-w04-a13-4-native-workspace-verification.md",
     "apps/android/app/src/main/java/org/arcanum/nativehost/architect/TermuxOperatorBridge.kt",
     "apps/android/app/src/main/java/org/arcanum/nativehost/architect/TermuxOperatorResultService.kt",
     "apps/android/app/src/main/java/org/arcanum/nativehost/architect/ArchitectPairingStore.kt",
     "scripts/mobile/arcanum-operator.sh",
     "scripts/mobile/arcanum-operator-setup.sh",
     "scripts/mobile/arcanum-broker-lifecycle.py",
+    "scripts/mobile/arcanum-workspace-verify.py",
     "scripts/mobile/test-arcanum-operator.sh",
     "scripts/mobile/test-arcanum-broker-lifecycle.sh",
+    "scripts/mobile/test-arcanum-workspace-verify.py",
     "scripts/architect/test-termux-broker.sh",
     "scripts/architect/test-proposal-envelope.sh",
     "scripts/verify-ce-w04-architect-observer.py",
@@ -39,7 +43,7 @@ REQUIRED = (
 
 
 def fail(message: str) -> None:
-    raise SystemExit(f"FAIL CE-W04-A13.3: {message}")
+    raise SystemExit(f"FAIL CE-W04-A13.4: {message}")
 
 
 def text(path: str) -> str:
@@ -75,6 +79,14 @@ subprocess.run(
 
 subprocess.run(
     ("git", "merge-base", "--is-ancestor", A13_2_HEAD, "HEAD"),
+    cwd=ROOT,
+    env={**os.environ, "GIT_OPTIONAL_LOCKS": "0"},
+    shell=False,
+    check=True,
+)
+
+subprocess.run(
+    ("git", "merge-base", "--is-ancestor", A13_3_HEAD, "HEAD"),
     cwd=ROOT,
     env={**os.environ, "GIT_OPTIONAL_LOCKS": "0"},
     shell=False,
@@ -148,6 +160,19 @@ for phrase in (
 ):
     require_phrase(a13_3_spec, phrase, "A13.3 spec")
 
+a13_4_spec = text("docs/specs/app/ce-w04-a13-4-native-workspace-verification.md")
+for phrase in (
+    "CE-W04-A13.4",
+    A13_3_HEAD,
+    "verify_workspace",
+    "scripts/verify-sync.sh",
+    "architect-workspace-verification.log",
+    "repositoryMutation=false",
+    'authorityEffect="none"',
+    "versionCode = 17",
+):
+    require_phrase(a13_4_spec, phrase, "A13.4 spec")
+
 manifest_path = ROOT / "apps/android/app/src/main/AndroidManifest.xml"
 manifest = ET.parse(manifest_path).getroot()
 permissions = {
@@ -201,6 +226,11 @@ for phrase in (
     'fun stopBroker(',
     'runBrokerLifecycle(',
     'parseBrokerLifecycle(',
+    'VERIFY_WORKSPACE(',
+    'wireId = "verify_workspace"',
+    'fun verifyWorkspace(',
+    'parseWorkspaceVerification(',
+    '"/data/data/com.termux/files/home/.config/arcanum/architect-workspace-verification.log"',
     '"com.termux.app.RunCommandService"',
     '"com.termux.RUN_COMMAND"',
     '"com.termux.RUN_COMMAND_PATH"',
@@ -219,8 +249,9 @@ require(
     bridge.count("PROBE_WORKSPACE(") == 1
     and bridge.count("PAIR_NATIVE_CLIENT(") == 1
     and bridge.count("START_BROKER(") == 1
-    and bridge.count("STOP_BROKER(") == 1,
-    "A13.3 native operator registry must contain exactly probe, pair, start, and stop",
+    and bridge.count("STOP_BROKER(") == 1
+    and bridge.count("VERIFY_WORKSPACE(") == 1,
+    "A13.4 native operator registry must contain exactly probe, pair, start, stop, and verify",
 )
 for forbidden_text in (
     "RUN_COMMAND_STDIN",
@@ -251,10 +282,12 @@ for phrase in (
     'export GIT_OPTIONAL_LOCKS=0',
     'CANONICAL_REPO="$HOME/Arcanum"',
     'LEGACY_REPO="$HOME/work/Arcanum"',
-    "probe_workspace | pair_native_client | start_broker | stop_broker)",
+    "probe_workspace | pair_native_client | start_broker | stop_broker | verify_workspace)",
     'PAIRING_SECRET_FILE="$PAIRING_SECRET_DIR/architect-broker.secret"',
     'LIFECYCLE_HELPER="$SCRIPT_DIR/arcanum-broker-lifecycle.py"',
+    'VERIFY_HELPER="$SCRIPT_DIR/arcanum-workspace-verify.py"',
     'exec python3 -S "$LIFECYCLE_HELPER" "$OPERATION_ID"',
+    'exec python3 -S "$VERIFY_HELPER" "$OPERATION_ID"',
     "secrets.token_hex(32)",
     "os.O_EXCL",
     "os.fchmod(fd, 0o600)",
@@ -325,6 +358,43 @@ for forbidden_text in (
 ):
     forbid(lifecycle, forbidden_text, "A13.3 lifecycle helper")
 
+workspace_verify = text("scripts/mobile/arcanum-workspace-verify.py")
+for phrase in (
+    'VERIFY_SCRIPT = WORKSPACE / "scripts" / "verify-sync.sh"',
+    'VERIFICATION_LOG = CONFIG_DIR / "architect-workspace-verification.log"',
+    "VERIFICATION_TIMEOUT_SECONDS = 420",
+    "subprocess.Popen(",
+    "shell=False",
+    "start_new_session=True",
+    "os.killpg(process.pid, signal.SIGTERM)",
+    'env["GIT_OPTIONAL_LOCKS"] = "0"',
+    '"operationId": "verify_workspace"',
+    '"authorityEffect": "none"',
+    '"repositoryMutation": False',
+    '"runtimeEffect": "none"',
+    'VerificationError("working_tree_not_clean")',
+    'VerificationError("repository_state_changed")',
+):
+    require_phrase(workspace_verify, phrase, "A13.4 workspace verifier")
+for forbidden_text in (
+    "shell=True",
+    "os.system(",
+    "eval(",
+    "git push",
+    "git commit",
+    "git add",
+    "git reset",
+    "git clean",
+    "git checkout",
+    "git switch",
+    "git merge",
+    "git rebase",
+    "git apply",
+    "git fetch",
+    "git pull",
+):
+    forbid(workspace_verify, forbidden_text, "A13.4 workspace verifier")
+
 panel = text(
     "apps/android/app/src/main/java/org/arcanum/nativehost/architect/ArchitectShellPanel.kt"
 )
@@ -344,6 +414,12 @@ for phrase in (
     "Stop local broker?",
     "operatorBridge.startBroker",
     "operatorBridge.stopBroker",
+    "Verify local workspace",
+    "Run canonical workspace verification?",
+    "operatorBridge.verifyWorkspace",
+    "A13.4 workspace verification",
+    "does not require ",
+    "the broker or pairing",
     "A11 still requires separate ",
     "authenticated Human approval for each registered action",
     "An unowned process on port 8765 is never ",
@@ -369,12 +445,12 @@ for phrase in (
     require_phrase(pairing_store, phrase, "ArchitectPairingStore")
 
 build = text("apps/android/app/build.gradle.kts")
-require_phrase(build, 'versionName = "0.1.13-cew04-a13-3"', "Android build")
-require_phrase(build, '"\\"CE-W04-A13.3\\""', "Android build")
+require_phrase(build, 'versionName = "0.1.13-cew04-a13-4"', "Android build")
+require_phrase(build, '"\\"CE-W04-A13.4\\""', "Android build")
 version_code = re.search(r"\bversionCode\s*=\s*(\d+)\b", build)
 require(
-    version_code is not None and int(version_code.group(1)) == 16,
-    "A13.3 Android versionCode must be exactly 16",
+    version_code is not None and int(version_code.group(1)) == 17,
+    "A13.4 Android versionCode must be exactly 17",
 )
 
 bootstrap = text("scripts/mobile/termux-bootstrap.sh")
@@ -405,6 +481,10 @@ for phrase in (
     "stop_broker",
     "architect-broker.lifecycle.json",
     "An unknown listener on port `8765` fails closed",
+    "A13.4 native workspace verification",
+    "verify_workspace",
+    "architect-workspace-verification.log",
+    "No broker session or pairing is required",
 ):
     require_phrase(mobile_doc_normalized, phrase, "Termux verification doc")
 
@@ -469,8 +549,12 @@ for phrase in (
     "bash -n scripts/mobile/arcanum-operator.sh",
     "bash -n scripts/mobile/test-arcanum-operator.sh",
     "bash -n scripts/mobile/test-arcanum-broker-lifecycle.sh",
+    "python3 -m py_compile \\",
+    "scripts/mobile/arcanum-workspace-verify.py",
+    "scripts/mobile/test-arcanum-workspace-verify.py",
     "bash scripts/mobile/test-arcanum-operator.sh",
     "bash scripts/mobile/test-arcanum-broker-lifecycle.sh",
+    "python3 scripts/mobile/test-arcanum-workspace-verify.py",
 ):
     require_phrase(sync, phrase, "verify-sync")
 forbid(
@@ -480,6 +564,6 @@ forbid(
 )
 
 print(
-    "PASS CE-W04-A13.3 frozen A12 regression, certified A13.2 ancestry, "
-    "Human-triggered owned broker lifecycle, and unchanged repository authority ceiling"
+    "PASS CE-W04-A13.4 frozen A12 regression, certified A13.3 ancestry, "
+    "fixed native workspace verification, repository-state attestation, and unchanged authority ceiling"
 )

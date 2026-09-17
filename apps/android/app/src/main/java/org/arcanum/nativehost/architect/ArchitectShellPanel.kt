@@ -27,6 +27,8 @@ class ArchitectShellPanel(context: Context) : LinearLayout(context) {
 
     private val workspaceStatus: TextView
     private val workspaceButton: Button
+    private val verificationStatus: TextView
+    private val verifyWorkspaceButton: Button
     private val pairingStatus: TextView
     private val pairingButton: Button
     private val clearPairingButton: Button
@@ -115,6 +117,31 @@ class ArchitectShellPanel(context: Context) : LinearLayout(context) {
             }
         content.addView(
             workspaceButton,
+            LinearLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT,
+            ),
+        )
+
+        verificationStatus =
+            TextView(context).apply {
+                text =
+                    "A13.4 workspace verification · not run\n" +
+                        "Human-confirmed canonical verify-sync only · authorityEffect=none"
+                setTextColor(Color.LTGRAY)
+                textSize = 13f
+                setTextIsSelectable(true)
+                setPadding(0, dp(14), 0, dp(8))
+            }
+        content.addView(verificationStatus)
+
+        verifyWorkspaceButton =
+            Button(context).apply {
+                text = "Verify local workspace"
+                setOnClickListener { requestWorkspaceVerification() }
+            }
+        content.addView(
+            verifyWorkspaceButton,
             LinearLayout.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT,
@@ -400,6 +427,72 @@ class ArchitectShellPanel(context: Context) : LinearLayout(context) {
                                     "A13.1 workspace probe unavailable · ${error.message ?: error::class.java.simpleName}\n" +
                                         "One-time setup may be required: run scripts/mobile/arcanum-operator-setup.sh " +
                                         "in Termux and grant Arcanum the 'Run commands in Termux environment' permission."
+                                },
+                            )
+                    }
+                }
+            }
+            .show()
+    }
+
+    private fun requestWorkspaceVerification() {
+        AlertDialog.Builder(context)
+            .setTitle("Run canonical workspace verification?")
+            .setMessage(
+                "A13.4 will ask Termux to run only the fixed verify_workspace operation. " +
+                    "It requires a clean canonical ~/Arcanum checkout, runs only repository-owned " +
+                    "scripts/verify-sync.sh, writes one private 0600 log outside the repository, " +
+                    "then revalidates origin, branch, HEAD, and cleanliness. It does not require " +
+                    "the broker or pairing and cannot stage, commit, push, merge, apply a proposal, " +
+                    "or run caller-supplied shell text.",
+            )
+            .setNegativeButton("Cancel", null)
+            .setPositiveButton("Verify workspace") { _, _ ->
+                verifyWorkspaceButton.isEnabled = false
+                verificationStatus.text =
+                    "A13.4 workspace verification · running canonical verify-sync…"
+
+                operatorBridge.verifyWorkspace { result ->
+                    post {
+                        verifyWorkspaceButton.isEnabled = true
+                        verificationStatus.text =
+                            result.fold(
+                                onSuccess = { verification ->
+                                    buildString {
+                                        appendLine(
+                                            "A13.4 workspace verification · " +
+                                                verification.status.uppercase(),
+                                        )
+                                        appendLine("repository=${verification.repositoryId}")
+                                        appendLine("branch=${verification.branch ?: "unknown"}")
+                                        appendLine("commit=${compactSha(verification.head)}")
+                                        appendLine(
+                                            "checks=${verification.passedChecks ?: 0}/" +
+                                                "${verification.totalChecks} · " +
+                                                "exit=${verification.verifyExitCode ?: "not-run"} · " +
+                                                "${verification.durationMs}ms",
+                                        )
+                                        appendLine(
+                                            "cleanBefore=${verification.cleanBefore} · " +
+                                                "cleanAfter=${verification.cleanAfter}",
+                                        )
+                                        appendLine(
+                                            "logSha256=${compactSha(verification.logSha256)} · " +
+                                                verification.logPath,
+                                        )
+                                        verification.reason?.let { reason ->
+                                            appendLine("reason=$reason")
+                                        }
+                                        appendLine("runtimeEffect=${verification.runtimeEffect}")
+                                        append(
+                                            "authorityEffect=none · " +
+                                                "repositoryMutation=${verification.repositoryMutation}",
+                                        )
+                                    }
+                                },
+                                onFailure = { error ->
+                                    "A13.4 workspace verification unavailable · " +
+                                        (error.message ?: error::class.java.simpleName)
                                 },
                             )
                     }
