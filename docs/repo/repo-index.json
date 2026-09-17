@@ -1,17 +1,17 @@
 {
-  "generated_at": "2026-09-17T15:59:20Z",
+  "generated_at": "2026-09-17T16:02:54Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "f137d5bec",
+  "commit": "0fdc6c121",
   "generator_version": "1.5",
   "files": [
     {
       "path": ".github/workflows/architect-verification.yml",
       "type": "file",
-      "size_bytes": 2312,
-      "last_modified_commit": "f137d5bec",
+      "size_bytes": 2553,
+      "last_modified_commit": "0fdc6c121",
       "is_empty": false,
       "extension": ".yml",
-      "lines": 83
+      "lines": 89
     },
     {
       "path": ".github/workflows/ce-w03-index-companion.yml",
@@ -25,11 +25,11 @@
     {
       "path": ".github/workflows/doctrine-guard.yml",
       "type": "file",
-      "size_bytes": 1324,
-      "last_modified_commit": "f137d5bec",
+      "size_bytes": 1565,
+      "last_modified_commit": "0fdc6c121",
       "is_empty": false,
       "extension": ".yml",
-      "lines": 58
+      "lines": 64
     },
     {
       "path": ".github/workflows/verify-android-bridge.yml",
@@ -70,11 +70,11 @@
     {
       "path": ".github/workflows/verify-ce-w03-integrated.yml",
       "type": "file",
-      "size_bytes": 8249,
-      "last_modified_commit": "f137d5bec",
+      "size_bytes": 8490,
+      "last_modified_commit": "0fdc6c121",
       "is_empty": false,
       "extension": ".yml",
-      "lines": 207
+      "lines": 213
     },
     {
       "path": ".github/workflows/verify-ce-w03-native-hope.yml",
@@ -115,11 +115,11 @@
     {
       "path": ".github/workflows/verify-sync.yml",
       "type": "file",
-      "size_bytes": 1074,
-      "last_modified_commit": "f137d5bec",
+      "size_bytes": 1315,
+      "last_modified_commit": "0fdc6c121",
       "is_empty": false,
       "extension": ".yml",
-      "lines": 46
+      "lines": 52
     },
     {
       "path": ".gitignore",
