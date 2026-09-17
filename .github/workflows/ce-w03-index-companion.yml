@@ -3,7 +3,7 @@ name: CE-W03 deterministic repo-index companion
 on:
   push:
     branches:
-      - "work/ce-w03-*"
+      - main
 
 permissions:
   contents: write
