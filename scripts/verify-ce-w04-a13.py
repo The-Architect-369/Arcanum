@@ -24,6 +24,8 @@ REQUIRED = (
     "scripts/mobile/arcanum-operator.sh",
     "scripts/mobile/arcanum-operator-setup.sh",
     "scripts/mobile/test-arcanum-operator.sh",
+    "scripts/architect/test-termux-broker.sh",
+    "scripts/architect/test-proposal-envelope.sh",
     "scripts/verify-ce-w04-a13.py",
 )
 
@@ -247,6 +249,42 @@ for phrase in (
     "$HOME/Arcanum",
 ):
     require_phrase(mobile_doc_normalized, phrase, "Termux verification doc")
+
+broker_test = text("scripts/architect/test-termux-broker.sh")
+for phrase in (
+    'A11_CERTIFIED_HEAD="5db926762d249314083ac9dbe549fd91ec613c22"',
+    'git -C "$REPO_ROOT" archive --format=tar "$A11_CERTIFIED_HEAD"',
+    'python3 "$A11_VERIFY_ROOT/scripts/verify-ce-w04-a11.py"',
+):
+    require_phrase(
+        broker_test,
+        phrase,
+        "A11 broker integration predecessor isolation",
+    )
+
+forbid(
+    broker_test,
+    'python3 "$REPO_ROOT/scripts/verify-ce-w04-a11.py"',
+    "A11 broker integration live predecessor invocation",
+)
+
+proposal_test = text("scripts/architect/test-proposal-envelope.sh")
+for phrase in (
+    'A12_CERTIFIED_HEAD="66a6479d9df921540d117820ed0d9b66eb59ba7e"',
+    'git -C "$ROOT" archive --format=tar "$A12_CERTIFIED_HEAD"',
+    'python3 "$A12_VERIFY_ROOT/scripts/verify-ce-w04-a12.py"',
+):
+    require_phrase(
+        proposal_test,
+        phrase,
+        "A12 proposal integration predecessor isolation",
+    )
+
+forbid(
+    proposal_test,
+    "python3 scripts/verify-ce-w04-a12.py",
+    "A12 proposal integration live predecessor invocation",
+)
 
 sync = text("scripts/verify-sync.sh")
 for phrase in (

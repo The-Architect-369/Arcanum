@@ -9,9 +9,20 @@ LOG_FILE="$WORK_TMP/broker.log"
 PID_FILE="$WORK_TMP/broker.pid"
 SECRET_FILE="$WORK_TMP/pairing.secret"
 
-python3 "$REPO_ROOT/scripts/verify-ce-w04-a11.py"
+A11_CERTIFIED_HEAD="5db926762d249314083ac9dbe549fd91ec613c22"
+A11_VERIFY_ROOT="$WORK_TMP/a11-certified"
 
 mkdir -p "$HOST_TMPDIR" "$WORK_TMP"
+rm -rf "$A11_VERIFY_ROOT"
+mkdir -p "$A11_VERIFY_ROOT"
+
+git -C "$REPO_ROOT" archive --format=tar "$A11_CERTIFIED_HEAD" |
+  tar -xf - -C "$A11_VERIFY_ROOT"
+
+PYTHONDONTWRITEBYTECODE=1 \
+  python3 "$A11_VERIFY_ROOT/scripts/verify-ce-w04-a11.py"
+
+rm -rf "$A11_VERIFY_ROOT"
 export TMPDIR="$HOST_TMPDIR"
 rm -f "$LOG_FILE" "$PID_FILE" "$SECRET_FILE"
 umask 077

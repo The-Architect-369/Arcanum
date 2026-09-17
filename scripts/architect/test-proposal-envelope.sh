@@ -7,9 +7,9 @@ ROOT="$(git rev-parse --show-toplevel 2>/dev/null || true)"
 [[ -n "$ROOT" ]] || { echo "FAIL A12 test must run inside a git repository" >&2; exit 1; }
 cd "$ROOT"
 
-python3 scripts/verify-ce-w04-a12.py
-
+A12_CERTIFIED_HEAD="66a6479d9df921540d117820ed0d9b66eb59ba7e"
 TMP_ROOT="$(mktemp -d)"
+A12_VERIFY_ROOT="$TMP_ROOT/a12-certified"
 BROKER_PID=""
 cleanup() {
   if [[ -n "$BROKER_PID" ]]; then
@@ -19,6 +19,16 @@ cleanup() {
   rm -rf "$TMP_ROOT"
 }
 trap cleanup EXIT
+
+mkdir -p "$A12_VERIFY_ROOT"
+
+git -C "$ROOT" archive --format=tar "$A12_CERTIFIED_HEAD" |
+  tar -xf - -C "$A12_VERIFY_ROOT"
+
+PYTHONDONTWRITEBYTECODE=1 \
+  python3 "$A12_VERIFY_ROOT/scripts/verify-ce-w04-a12.py"
+
+rm -rf "$A12_VERIFY_ROOT"
 
 snapshot_repository() {
   python3 -B - "$ROOT" <<'PY'
