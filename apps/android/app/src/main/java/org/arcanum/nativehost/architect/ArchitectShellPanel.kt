@@ -30,6 +30,8 @@ class ArchitectShellPanel(context: Context) : LinearLayout(context) {
     private val pairingStatus: TextView
     private val pairingButton: Button
     private val clearPairingButton: Button
+    private val startBrokerButton: Button
+    private val stopBrokerButton: Button
     private val probeButton: Button
     private val actionButton: Button
     private val proposalButton: Button
@@ -172,6 +174,34 @@ class ArchitectShellPanel(context: Context) : LinearLayout(context) {
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT,
             ),
+        )
+
+        startBrokerButton =
+            Button(context).apply {
+                text = "Start local broker"
+                setOnClickListener { requestBrokerStart() }
+            }
+        content.addView(
+            startBrokerButton,
+            LinearLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT,
+            ),
+        )
+
+        stopBrokerButton =
+            Button(context).apply {
+                text = "Stop local broker"
+                setOnClickListener { requestBrokerStop() }
+            }
+        content.addView(
+            stopBrokerButton,
+            LinearLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT,
+            ).apply {
+                topMargin = dp(6)
+            },
         )
 
         probeButton =
@@ -444,7 +474,7 @@ class ArchitectShellPanel(context: Context) : LinearLayout(context) {
                                             }
                                         brokerStatus.text =
                                             "Native pairing transferred securely. " +
-                                                "Broker lifecycle remains separate; A13.2 does not start it."
+                                                "Broker start/stop requires a separate explicit A13.3 Human confirmation."
                                     },
                                     onFailure = { error ->
                                         pairingStatus.text =
@@ -477,6 +507,111 @@ class ArchitectShellPanel(context: Context) : LinearLayout(context) {
                 brokerClient.clearPairing()
                 refreshPairingState()
                 brokerStatus.text = "Native pairing cleared."
+            }
+            .show()
+    }
+
+    private fun requestBrokerStart() {
+        if (!brokerClient.hasPairing()) {
+            brokerStatus.text =
+                "A13.3 broker start requires native pairing first. Pairing will not auto-start the broker."
+            requestNativePairing()
+            return
+        }
+
+        AlertDialog.Builder(context)
+            .setTitle("Start local broker?")
+            .setMessage(
+                "A13.3 will ask Termux to run only the fixed start_broker operation. " +
+                    "It validates the canonical workspace and private pairing secret, then starts only " +
+                    "~/Arcanum/scripts/architect/termux-broker.py on fixed loopback 127.0.0.1:8765. " +
+                    "Starting the broker does not approve any broker action; A11 still requires separate " +
+                    "authenticated Human approval for each registered action. No repository mutation or " +
+                    "arbitrary shell authority is granted.",
+            )
+            .setNegativeButton("Cancel", null)
+            .setPositiveButton("Start broker") { _, _ ->
+                startBrokerButton.isEnabled = false
+                stopBrokerButton.isEnabled = false
+                probeButton.isEnabled = false
+                brokerStatus.text = "A13.3 broker lifecycle · starting owned local broker…"
+
+                operatorBridge.startBroker { result ->
+                    post {
+                        startBrokerButton.isEnabled = true
+                        stopBrokerButton.isEnabled = true
+                        probeButton.isEnabled = true
+                        brokerStatus.text =
+                            result.fold(
+                                onSuccess = { lifecycle ->
+                                    buildString {
+                                        appendLine("A13.3 broker lifecycle · ${lifecycle.brokerState}")
+                                        appendLine("branch=${lifecycle.branch}")
+                                        appendLine("commit=${compactSha(lifecycle.head)}")
+                                        appendLine(
+                                            "session=${compactId(lifecycle.brokerSessionId)} · " +
+                                                "pid=${lifecycle.brokerPid ?: "none"} · " +
+                                                "port=${lifecycle.brokerPort}",
+                                        )
+                                        appendLine("runtimeEffect=${lifecycle.runtimeEffect}")
+                                        append("authorityEffect=none · repositoryMutation=false")
+                                    }
+                                },
+                                onFailure = { error ->
+                                    "A13.3 broker start failed closed · " +
+                                        (error.message ?: error::class.java.simpleName)
+                                },
+                            )
+                    }
+                }
+            }
+            .show()
+    }
+
+    private fun requestBrokerStop() {
+        AlertDialog.Builder(context)
+            .setTitle("Stop local broker?")
+            .setMessage(
+                "A13.3 will ask Termux to run only the fixed stop_broker operation. " +
+                    "It may signal only the process whose PID, /proc start time, and exact broker argv " +
+                    "match the private A13.3 lifecycle state. An unowned process on port 8765 is never " +
+                    "signaled. This does not mutate the repository or clear native pairing.",
+            )
+            .setNegativeButton("Cancel", null)
+            .setPositiveButton("Stop broker") { _, _ ->
+                startBrokerButton.isEnabled = false
+                stopBrokerButton.isEnabled = false
+                probeButton.isEnabled = false
+                brokerStatus.text = "A13.3 broker lifecycle · stopping owned local broker…"
+
+                operatorBridge.stopBroker { result ->
+                    post {
+                        startBrokerButton.isEnabled = true
+                        stopBrokerButton.isEnabled = true
+                        probeButton.isEnabled = true
+                        brokerStatus.text =
+                            result.fold(
+                                onSuccess = { lifecycle ->
+                                    buildString {
+                                        appendLine("A13.3 broker lifecycle · ${lifecycle.brokerState}")
+                                        appendLine("branch=${lifecycle.branch}")
+                                        appendLine("commit=${compactSha(lifecycle.head)}")
+                                        appendLine(
+                                            "session=${compactId(lifecycle.brokerSessionId)} · " +
+                                                "pid=${lifecycle.brokerPid ?: "none"} · " +
+                                                "port=${lifecycle.brokerPort}",
+                                        )
+                                        appendLine("runtimeEffect=${lifecycle.runtimeEffect}")
+                                        append("authorityEffect=none · repositoryMutation=false")
+                                    }
+                                },
+                                onFailure = { error ->
+                                    "A13.3 broker stop failed closed · " +
+                                        (error.message ?: error::class.java.simpleName)
+                                },
+                            )
+                    }
+                }
             }
             .show()
     }

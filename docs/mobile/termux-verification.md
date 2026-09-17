@@ -54,6 +54,30 @@ AndroidKeyStore-backed pairing store.
 No 64-character secret is copied or displayed. Pairing does not start the broker and does
 not mutate the repository. Broker start/stop remains outside A13.2.
 
+## A13.3 Human-triggered broker lifecycle
+
+A13.3 adds `start_broker` and `stop_broker` to the same fixed native operator path.
+Each operation requires its own explicit native Human confirmation. App launch, pairing,
+workspace probing, and broker probing do not start or stop the broker automatically.
+
+Start validates the canonical workspace, the private `0600` pairing secret, the fixed
+repo-owned broker script, Termux `TMPDIR`, loopback host `127.0.0.1`, and port `8765`.
+The broker is launched with an internally constructed argv list and `shell=False`, then
+A13.3 waits for a matching authenticated-service `/health` response before reporting
+success.
+
+Lifecycle ownership metadata is stored privately at
+`$HOME/.config/arcanum/architect-broker.lifecycle.json`; broker output is written to
+`$HOME/.config/arcanum/architect-broker.log`. Both are mode `0600`.
+
+Stop may signal only the PID whose `/proc` start ticks and exact broker argv match the
+recorded lifecycle state. An unknown listener on port `8765` fails closed and is never
+signaled. Starting the broker does not approve any A11 broker action; every registered
+action still requires its own authenticated native Human approval.
+
+No shell command is copied for routine broker start or stop, and neither operation mutates
+the repository.
+
 ## Bootstrap
 
 ```bash

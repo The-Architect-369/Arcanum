@@ -35,6 +35,16 @@ class TermuxOperatorBridge(
             label = "Pair native client",
             description = "Create or reuse the canonical local broker secret and transfer it only to the native app.",
         ),
+        START_BROKER(
+            wireId = "start_broker",
+            label = "Start local broker",
+            description = "Start only the canonical repo-owned Architect broker on fixed loopback 127.0.0.1:8765.",
+        ),
+        STOP_BROKER(
+            wireId = "stop_broker",
+            label = "Stop local broker",
+            description = "Stop only the broker process proven to be owned by the A13.3 lifecycle state.",
+        ),
     }
 
     data class WorkspaceProbe(
@@ -58,6 +68,20 @@ class TermuxOperatorBridge(
         val pairingSecretPath: String,
         val secretCreated: Boolean,
         val pairingCode: String,
+    )
+
+    data class BrokerLifecycleResult(
+        val repositoryId: String,
+        val workspacePath: String,
+        val branch: String,
+        val head: String,
+        val brokerState: String,
+        val brokerPid: Long?,
+        val brokerPort: Int,
+        val brokerSessionId: String?,
+        val lifecycleStatePath: String,
+        val logPath: String,
+        val runtimeEffect: String,
     )
 
     fun probeWorkspace(callback: (Result<WorkspaceProbe>) -> Unit) {
@@ -145,6 +169,88 @@ class TermuxOperatorBridge(
                 nonce = nonce,
             ) { raw ->
                 callback(raw.mapCatching { parsePairingMaterial(it) })
+            }
+
+        val resultIntent =
+            Intent(appContext, TermuxOperatorResultService::class.java)
+                .putExtra(TermuxOperatorResultService.EXTRA_EXECUTION_ID, executionId)
+                .putExtra(TermuxOperatorResultService.EXTRA_OPERATION_ID, operation.wireId)
+                .putExtra(TermuxOperatorResultService.EXTRA_NONCE, nonce)
+
+        val pendingFlags =
+            PendingIntent.FLAG_ONE_SHOT or
+                PendingIntent.FLAG_UPDATE_CURRENT or
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+                    PendingIntent.FLAG_MUTABLE
+                } else {
+                    0
+                }
+
+        val pendingResult =
+            PendingIntent.getService(
+                appContext,
+                executionId,
+                resultIntent,
+                pendingFlags,
+            )
+
+        val commandIntent =
+            Intent()
+                .setClassName(TERMUX_PACKAGE, TERMUX_RUN_COMMAND_SERVICE)
+                .setAction(TERMUX_RUN_COMMAND_ACTION)
+                .putExtra(TERMUX_EXTRA_COMMAND_PATH, OPERATOR_PATH)
+                .putExtra(TERMUX_EXTRA_ARGUMENTS, arrayOf(operation.wireId))
+                .putExtra(TERMUX_EXTRA_WORKDIR, WORKSPACE_PATH)
+                .putExtra(TERMUX_EXTRA_BACKGROUND, true)
+                .putExtra(TERMUX_EXTRA_COMMAND_LABEL, operation.label)
+                .putExtra(TERMUX_EXTRA_COMMAND_DESCRIPTION, operation.description)
+                .putExtra(TERMUX_EXTRA_PENDING_INTENT, pendingResult)
+
+        runCatching {
+            require(appContext.packageManager.resolveService(commandIntent, 0) != null) {
+                "Termux RunCommandService is unavailable"
+            }
+            requireNotNull(appContext.startService(commandIntent)) {
+                "Android did not start the Termux command service"
+            }
+        }.onFailure { error ->
+            TermuxOperatorResultService.cancel(executionId)
+            callback(Result.failure(error))
+        }
+    }
+
+    fun startBroker(callback: (Result<BrokerLifecycleResult>) -> Unit) {
+        runBrokerLifecycle(Operation.START_BROKER, callback)
+    }
+
+    fun stopBroker(callback: (Result<BrokerLifecycleResult>) -> Unit) {
+        runBrokerLifecycle(Operation.STOP_BROKER, callback)
+    }
+
+    private fun runBrokerLifecycle(
+        operation: Operation,
+        callback: (Result<BrokerLifecycleResult>) -> Unit,
+    ) {
+        require(
+            operation == Operation.START_BROKER ||
+                operation == Operation.STOP_BROKER,
+        ) {
+            "Lifecycle bridge accepts only start_broker or stop_broker"
+        }
+
+        val readiness = runCatching { requireTermuxBridgeReady() }
+        if (readiness.isFailure) {
+            callback(Result.failure(requireNotNull(readiness.exceptionOrNull())))
+            return
+        }
+
+        val nonce = UUID.randomUUID().toString()
+        val executionId =
+            TermuxOperatorResultService.register(
+                operationId = operation.wireId,
+                nonce = nonce,
+            ) { raw ->
+                callback(raw.mapCatching { parseBrokerLifecycle(it, operation) })
             }
 
         val resultIntent =
@@ -354,6 +460,139 @@ class TermuxOperatorBridge(
         )
     }
 
+    private fun parseBrokerLifecycle(
+        raw: TermuxOperatorResultService.CommandResult,
+        expectedOperation: Operation,
+    ): BrokerLifecycleResult {
+        require(raw.termuxErrorCode == Activity.RESULT_OK) {
+            "Termux rejected the lifecycle request: ${raw.termuxErrorMessage.ifBlank { "unknown error" }}"
+        }
+        require(raw.exitCode == 0) {
+            "Lifecycle operator exited with code ${raw.exitCode}: ${raw.stderr}"
+        }
+        require(!raw.stdoutTruncated && !raw.stderrTruncated) {
+            "Lifecycle operator output was truncated"
+        }
+        require(raw.stderr.isBlank()) {
+            "Lifecycle operator returned stderr: ${raw.stderr}"
+        }
+
+        val text = raw.stdout.trim()
+        require(text.startsWith("{") && text.endsWith("}") && text.count { it == '\n' } == 0) {
+            "Lifecycle operator did not return exactly one JSON document"
+        }
+
+        val json = JSONObject(text)
+        require(json.length() == EXPECTED_LIFECYCLE_RESULT_FIELDS) {
+            "Lifecycle operator returned an unexpected result shape"
+        }
+        require(json.getString("schemaVersion") == "1.0") {
+            "Lifecycle operator schema is unsupported"
+        }
+        require(
+            expectedOperation == Operation.START_BROKER ||
+                expectedOperation == Operation.STOP_BROKER,
+        ) {
+            "Unexpected lifecycle operation"
+        }
+        require(json.getString("operationId") == expectedOperation.wireId) {
+            "Lifecycle result is bound to a different operation"
+        }
+        require(json.getString("authorityEffect") == "none") {
+            "Lifecycle operator reported an authority effect"
+        }
+        require(!json.getBoolean("repositoryMutation")) {
+            "Lifecycle operator reported repository mutation"
+        }
+        require(json.getString("repositoryId") == CANONICAL_REPOSITORY_ID) {
+            "Lifecycle operator reported a different repository identity"
+        }
+        require(json.getString("workspacePath") == WORKSPACE_PATH) {
+            "Lifecycle operator reported a different canonical workspace"
+        }
+        require(json.getInt("brokerPort") == BROKER_PORT) {
+            "Lifecycle operator reported a different broker port"
+        }
+        require(json.getString("lifecycleStatePath") == BROKER_LIFECYCLE_STATE_PATH) {
+            "Lifecycle operator reported an unexpected state path"
+        }
+        require(json.getString("logPath") == BROKER_LOG_PATH) {
+            "Lifecycle operator reported an unexpected log path"
+        }
+        require(json.getString("status") == "pass") {
+            "Broker lifecycle failed closed: ${json.optString("reason", "unknown")}"
+        }
+
+        val branch = json.getString("branch")
+        require(branch.isNotBlank()) {
+            "Lifecycle operator returned an empty branch"
+        }
+        val head = json.getString("head")
+        require(HEAD_PATTERN.matches(head)) {
+            "Lifecycle operator returned an invalid HEAD"
+        }
+
+        val brokerState = json.getString("brokerState")
+        val allowedStates =
+            if (expectedOperation == Operation.START_BROKER) {
+                setOf("started", "already_running")
+            } else {
+                setOf("stopped", "already_stopped")
+            }
+        require(brokerState in allowedStates) {
+            "Lifecycle operator returned an invalid broker state"
+        }
+
+        val expectedRuntimeEffect =
+            when (brokerState) {
+                "started" -> "broker_started"
+                "stopped" -> "broker_stopped"
+                else -> "none"
+            }
+        val runtimeEffect = json.getString("runtimeEffect")
+        require(runtimeEffect == expectedRuntimeEffect) {
+            "Lifecycle runtime effect does not match the broker state"
+        }
+
+        val brokerPid =
+            if (json.isNull("brokerPid")) {
+                null
+            } else {
+                json.getLong("brokerPid").also {
+                    require(it > 1L) { "Lifecycle operator returned an invalid broker PID" }
+                }
+            }
+        val brokerSessionId = json.optNullableString("brokerSessionId")
+
+        if (expectedOperation == Operation.START_BROKER) {
+            require(brokerPid != null) {
+                "Started broker result is missing the owned PID"
+            }
+            require(!brokerSessionId.isNullOrBlank()) {
+                "Started broker result is missing the session ID"
+            }
+        }
+        if (brokerState == "stopped") {
+            require(brokerPid != null && !brokerSessionId.isNullOrBlank()) {
+                "Stopped broker result is missing the prior owned identity"
+            }
+        }
+
+        return BrokerLifecycleResult(
+            repositoryId = json.getString("repositoryId"),
+            workspacePath = json.getString("workspacePath"),
+            branch = branch,
+            head = head,
+            brokerState = brokerState,
+            brokerPid = brokerPid,
+            brokerPort = json.getInt("brokerPort"),
+            brokerSessionId = brokerSessionId,
+            lifecycleStatePath = json.getString("lifecycleStatePath"),
+            logPath = json.getString("logPath"),
+            runtimeEffect = runtimeEffect,
+        )
+    }
+
     private fun JSONObject.optNullableString(key: String): String? {
         if (!has(key) || isNull(key)) {
             return null
@@ -381,9 +620,15 @@ class TermuxOperatorBridge(
             "/data/data/com.termux/files/home/Arcanum/scripts/mobile/arcanum-operator.sh"
         private const val PAIRING_SECRET_PATH =
             "/data/data/com.termux/files/home/.config/arcanum/architect-broker.secret"
+        private const val BROKER_LIFECYCLE_STATE_PATH =
+            "/data/data/com.termux/files/home/.config/arcanum/architect-broker.lifecycle.json"
+        private const val BROKER_LOG_PATH =
+            "/data/data/com.termux/files/home/.config/arcanum/architect-broker.log"
+        private const val BROKER_PORT = 8765
         private const val CANONICAL_REPOSITORY_ID = "The-Architect-369/Arcanum"
         private const val EXPECTED_RESULT_FIELDS = 13
         private const val EXPECTED_PAIRING_RESULT_FIELDS = 13
+        private const val EXPECTED_LIFECYCLE_RESULT_FIELDS = 17
 
         private val HEAD_PATTERN = Regex("^[0-9a-f]{40}$")
         private val PAIRING_CODE_PATTERN = Regex("^[0-9a-f]{64}$")

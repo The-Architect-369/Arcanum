@@ -151,11 +151,26 @@ A13.2 does not start or stop the broker, widen the broker command registry, muta
 apply proposals, install artifacts, contact a model provider, or create autonomous
 approval.
 
+### CE-W04-A13.3 — Human-triggered broker lifecycle
+
+A13.3 begins from the physically certified A13.2 indexed head
+`608c6bd1a8283ef20e07160c2d32ac15ec24b41a`.
+
+It adds only `start_broker` and `stop_broker` to the fixed native → Termux operator
+registry. Each lifecycle effect requires its own explicit Human confirmation. Start
+launches only the canonical repo-owned A11 broker on fixed loopback `127.0.0.1:8765`,
+waits for a matching health response, and records private non-secret lifecycle metadata.
+Stop may signal only the process whose PID, `/proc` start ticks, and exact fixed argv match
+that recorded ownership state.
+
+A13.3 does not auto-start the broker, widen the A11 broker command registry, approve any
+broker action, mutate Git, apply proposals, install artifacts, contact a model provider, or
+create autonomous approval. Repository authority remains unchanged.
+
 ## Next intended tranche
 
-After A13.2 physical validation, A13.3 may add explicit Human-triggered broker start/stop
-through the same fixed-operation transport while preserving the existing action and
-repository-authority ceilings.
+After A13.3 physical validation, A13.4 may add native workspace verification through the
+same fixed-operation transport while preserving the Human approval and authority ceilings.
 
 ## Promotion discipline
 

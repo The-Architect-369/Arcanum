@@ -8,6 +8,8 @@ CANONICAL_REPO="$HOME/Arcanum"
 LEGACY_REPO="$HOME/work/Arcanum"
 PAIRING_SECRET_DIR="$HOME/.config/arcanum"
 PAIRING_SECRET_FILE="$PAIRING_SECRET_DIR/architect-broker.secret"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P)"
+LIFECYCLE_HELPER="$SCRIPT_DIR/arcanum-broker-lifecycle.py"
 
 usage_error() {
   printf '[arcanum-operator] ERROR: exactly one registered operation ID is required\n' >&2
@@ -18,7 +20,7 @@ usage_error() {
 OPERATION_ID="$1"
 
 case "$OPERATION_ID" in
-  probe_workspace | pair_native_client)
+  probe_workspace | pair_native_client | start_broker | stop_broker)
     ;;
   *)
     printf '[arcanum-operator] ERROR: unregistered operation: %s\n' "$OPERATION_ID" >&2
@@ -77,6 +79,10 @@ if [[ -d "$CANONICAL_REPO/.git" ]] &&
       REASON=""
     fi
   fi
+fi
+
+if [[ "$OPERATION_ID" == "start_broker" || "$OPERATION_ID" == "stop_broker" ]]; then
+  exec python3 -S "$LIFECYCLE_HELPER" "$OPERATION_ID"
 fi
 
 if [[ "$OPERATION_ID" == "pair_native_client" ]]; then

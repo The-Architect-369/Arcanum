@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Fail-closed static checks for CE-W04-A13.2 zero-copy native pairing."""
+"""Fail-closed static checks for CE-W04-A13.3 Human-triggered broker lifecycle."""
 
 from __future__ import annotations
 
@@ -16,17 +16,21 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 A12_HEAD = "66a6479d9df921540d117820ed0d9b66eb59ba7e"
 A13_1_HEAD = "5f8552eff460d61aa720105b6c8c23321e311809"
+A13_2_HEAD = "608c6bd1a8283ef20e07160c2d32ac15ec24b41a"
 ANDROID_NS = "{http://schemas.android.com/apk/res/android}"
 
 REQUIRED = (
     "docs/specs/app/ce-w04-a13-native-mobile-operator-bridge.md",
     "docs/specs/app/ce-w04-a13-2-zero-copy-pairing.md",
+    "docs/specs/app/ce-w04-a13-3-broker-lifecycle.md",
     "apps/android/app/src/main/java/org/arcanum/nativehost/architect/TermuxOperatorBridge.kt",
     "apps/android/app/src/main/java/org/arcanum/nativehost/architect/TermuxOperatorResultService.kt",
     "apps/android/app/src/main/java/org/arcanum/nativehost/architect/ArchitectPairingStore.kt",
     "scripts/mobile/arcanum-operator.sh",
     "scripts/mobile/arcanum-operator-setup.sh",
+    "scripts/mobile/arcanum-broker-lifecycle.py",
     "scripts/mobile/test-arcanum-operator.sh",
+    "scripts/mobile/test-arcanum-broker-lifecycle.sh",
     "scripts/architect/test-termux-broker.sh",
     "scripts/architect/test-proposal-envelope.sh",
     "scripts/verify-ce-w04-architect-observer.py",
@@ -35,7 +39,7 @@ REQUIRED = (
 
 
 def fail(message: str) -> None:
-    raise SystemExit(f"FAIL CE-W04-A13.2: {message}")
+    raise SystemExit(f"FAIL CE-W04-A13.3: {message}")
 
 
 def text(path: str) -> str:
@@ -59,10 +63,18 @@ def forbid(source: str, needle: str, label: str) -> None:
 
 
 for path in REQUIRED:
-    require((ROOT / path).is_file(), f"missing required A13.2 path: {path}")
+    require((ROOT / path).is_file(), f"missing required A13.3 path: {path}")
 
 subprocess.run(
     ("git", "merge-base", "--is-ancestor", A13_1_HEAD, "HEAD"),
+    cwd=ROOT,
+    env={**os.environ, "GIT_OPTIONAL_LOCKS": "0"},
+    shell=False,
+    check=True,
+)
+
+subprocess.run(
+    ("git", "merge-base", "--is-ancestor", A13_2_HEAD, "HEAD"),
     cwd=ROOT,
     env={**os.environ, "GIT_OPTIONAL_LOCKS": "0"},
     shell=False,
@@ -122,6 +134,20 @@ for phrase in (
 ):
     require_phrase(a13_2_spec, phrase, "A13.2 spec")
 
+a13_3_spec = text("docs/specs/app/ce-w04-a13-3-broker-lifecycle.md")
+for phrase in (
+    "CE-W04-A13.3",
+    A13_2_HEAD,
+    "start_broker",
+    "stop_broker",
+    "127.0.0.1:8765",
+    "PID + `/proc` start-time + exact-argv ownership binding",
+    'repositoryMutation=false',
+    'authorityEffect="none"',
+    "versionCode = 16",
+):
+    require_phrase(a13_3_spec, phrase, "A13.3 spec")
+
 manifest_path = ROOT / "apps/android/app/src/main/AndroidManifest.xml"
 manifest = ET.parse(manifest_path).getroot()
 permissions = {
@@ -167,6 +193,14 @@ for phrase in (
     'parsePairingMaterial(',
     '"/data/data/com.termux/files/home/.config/arcanum/architect-broker.secret"',
     'PAIRING_CODE_PATTERN.matches(pairingCode)',
+    'START_BROKER(',
+    'wireId = "start_broker"',
+    'STOP_BROKER(',
+    'wireId = "stop_broker"',
+    'fun startBroker(',
+    'fun stopBroker(',
+    'runBrokerLifecycle(',
+    'parseBrokerLifecycle(',
     '"com.termux.app.RunCommandService"',
     '"com.termux.RUN_COMMAND"',
     '"com.termux.RUN_COMMAND_PATH"',
@@ -183,8 +217,10 @@ for phrase in (
     require_phrase(bridge, phrase, "TermuxOperatorBridge")
 require(
     bridge.count("PROBE_WORKSPACE(") == 1
-    and bridge.count("PAIR_NATIVE_CLIENT(") == 1,
-    "A13.2 native operator registry must contain exactly probe_workspace and pair_native_client",
+    and bridge.count("PAIR_NATIVE_CLIENT(") == 1
+    and bridge.count("START_BROKER(") == 1
+    and bridge.count("STOP_BROKER(") == 1,
+    "A13.3 native operator registry must contain exactly probe, pair, start, and stop",
 )
 for forbidden_text in (
     "RUN_COMMAND_STDIN",
@@ -215,8 +251,10 @@ for phrase in (
     'export GIT_OPTIONAL_LOCKS=0',
     'CANONICAL_REPO="$HOME/Arcanum"',
     'LEGACY_REPO="$HOME/work/Arcanum"',
-    "probe_workspace | pair_native_client)",
+    "probe_workspace | pair_native_client | start_broker | stop_broker)",
     'PAIRING_SECRET_FILE="$PAIRING_SECRET_DIR/architect-broker.secret"',
+    'LIFECYCLE_HELPER="$SCRIPT_DIR/arcanum-broker-lifecycle.py"',
+    'exec python3 -S "$LIFECYCLE_HELPER" "$OPERATION_ID"',
     "secrets.token_hex(32)",
     "os.O_EXCL",
     "os.fchmod(fd, 0o600)",
@@ -246,6 +284,47 @@ for forbidden_text in (
 ):
     forbid(operator, forbidden_text, "A13.1 operator")
 
+lifecycle = text("scripts/mobile/arcanum-broker-lifecycle.py")
+for phrase in (
+    'BROKER_HOST = "127.0.0.1"',
+    "BROKER_PORT = 8765",
+    'LIFECYCLE_STATE = CONFIG_DIR / "architect-broker.lifecycle.json"',
+    'BROKER_LOG = CONFIG_DIR / "architect-broker.log"',
+    'BROKER_SCRIPT = WORKSPACE / "scripts" / "architect" / "termux-broker.py"',
+    'sys.argv[1] not in {"start_broker", "stop_broker"}',
+    "subprocess.Popen(",
+    "shell=False",
+    "start_new_session=True",
+    "os.kill(pid, signal.SIGTERM)",
+    "os.kill(pid, signal.SIGKILL)",
+    'process_start_ticks(pid) != state["procStartTicks"]',
+    'process_cmdline(pid) != state["argv"]',
+    'LifecycleError("broker_port_unavailable")',
+    'LifecycleError("unowned_broker_detected")',
+    '"repositoryMutation": False',
+    '"authorityEffect": "none"',
+    '"runtimeEffect": runtime_effect',
+):
+    require_phrase(lifecycle, phrase, "A13.3 lifecycle helper")
+for forbidden_text in (
+    "shell=True",
+    "os.system(",
+    "eval(",
+    "git push",
+    "git commit",
+    "git add",
+    "git reset",
+    "git clean",
+    "git checkout",
+    "git switch",
+    "git merge",
+    "git rebase",
+    "git apply",
+    "git fetch",
+    "git pull",
+):
+    forbid(lifecycle, forbidden_text, "A13.3 lifecycle helper")
+
 panel = text(
     "apps/android/app/src/main/java/org/arcanum/nativehost/architect/ArchitectShellPanel.kt"
 )
@@ -259,6 +338,16 @@ for phrase in (
     "operatorBridge.pairNativeClient",
     "brokerClient.pair(pairing.pairingCode)",
     "The pairing code is never displayed or copied by the Human",
+    "Start local broker",
+    "Stop local broker",
+    "Start local broker?",
+    "Stop local broker?",
+    "operatorBridge.startBroker",
+    "operatorBridge.stopBroker",
+    "A11 still requires separate ",
+    "authenticated Human approval for each registered action",
+    "An unowned process on port 8765 is never ",
+    "signaled. This does not mutate the repository",
 ):
     require_phrase(panel, phrase, "Architect shell panel")
 for forbidden_text in (
@@ -280,12 +369,12 @@ for phrase in (
     require_phrase(pairing_store, phrase, "ArchitectPairingStore")
 
 build = text("apps/android/app/build.gradle.kts")
-require_phrase(build, 'versionName = "0.1.13-cew04-a13-2"', "Android build")
-require_phrase(build, '"\\"CE-W04-A13.2\\""', "Android build")
+require_phrase(build, 'versionName = "0.1.13-cew04-a13-3"', "Android build")
+require_phrase(build, '"\\"CE-W04-A13.3\\""', "Android build")
 version_code = re.search(r"\bversionCode\s*=\s*(\d+)\b", build)
 require(
-    version_code is not None and int(version_code.group(1)) == 15,
-    "A13.2 Android versionCode must be exactly 15",
+    version_code is not None and int(version_code.group(1)) == 16,
+    "A13.3 Android versionCode must be exactly 16",
 )
 
 bootstrap = text("scripts/mobile/termux-bootstrap.sh")
@@ -311,6 +400,11 @@ for phrase in (
     "pair_native_client",
     "No 64-character secret is copied or displayed",
     "Broker start/stop remains outside A13.2",
+    "A13.3 Human-triggered broker lifecycle",
+    "start_broker",
+    "stop_broker",
+    "architect-broker.lifecycle.json",
+    "An unknown listener on port `8765` fails closed",
 ):
     require_phrase(mobile_doc_normalized, phrase, "Termux verification doc")
 
@@ -374,7 +468,9 @@ for phrase in (
     "python3 scripts/verify-ce-w04-a13.py",
     "bash -n scripts/mobile/arcanum-operator.sh",
     "bash -n scripts/mobile/test-arcanum-operator.sh",
+    "bash -n scripts/mobile/test-arcanum-broker-lifecycle.sh",
     "bash scripts/mobile/test-arcanum-operator.sh",
+    "bash scripts/mobile/test-arcanum-broker-lifecycle.sh",
 ):
     require_phrase(sync, phrase, "verify-sync")
 forbid(
@@ -384,6 +480,6 @@ forbid(
 )
 
 print(
-    "PASS CE-W04-A13.2 frozen A12 regression, certified A13.1 ancestry, "
-    "fixed zero-copy pairing, AndroidKeyStore handoff, and repository authority ceiling"
+    "PASS CE-W04-A13.3 frozen A12 regression, certified A13.2 ancestry, "
+    "Human-triggered owned broker lifecycle, and unchanged repository authority ceiling"
 )

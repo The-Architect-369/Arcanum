@@ -234,7 +234,10 @@ bash scripts/architect/test-impact-graph.sh
 ok "timeline and impact-graph fixtures passed"
 
 step 13 "Local Architect Runtime and Termux operator bridge"
-python3 -m py_compile scripts/architect/termux-broker.py scripts/verify-ce-w04-a13.py
+python3 -m py_compile \
+  scripts/architect/termux-broker.py \
+  scripts/mobile/arcanum-broker-lifecycle.py \
+  scripts/verify-ce-w04-a13.py
 jq empty docs/governance/architectgpt/architect-proposal-envelope.schema.json
 bash -n scripts/architect/test-termux-broker.sh
 bash -n scripts/architect/test-architect-runtime.sh
@@ -242,12 +245,14 @@ bash -n scripts/architect/test-proposal-envelope.sh
 bash -n scripts/mobile/arcanum-operator.sh
 bash -n scripts/mobile/arcanum-operator-setup.sh
 bash -n scripts/mobile/test-arcanum-operator.sh
+bash -n scripts/mobile/test-arcanum-broker-lifecycle.sh
 python3 scripts/verify-ce-w04-a13.py
 bash scripts/architect/test-termux-broker.sh
 bash scripts/architect/test-architect-runtime.sh
 bash scripts/architect/test-proposal-envelope.sh
 bash scripts/mobile/test-arcanum-operator.sh
-ok "local Workbench/runtime boundary, A12 proposal review, A13.2 zero-copy pairing, and advisory agent roster passed"
+bash scripts/mobile/test-arcanum-broker-lifecycle.sh
+ok "local Workbench/runtime boundary, A12 proposal review, A13.3 Human-triggered broker lifecycle, and advisory agent roster passed"
 
 step 14 "Production smoke verifier"
 jq empty docs/governance/architectgpt/production-smoke.schema.json
