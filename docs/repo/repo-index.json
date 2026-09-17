@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-09-17T06:12:55Z",
+  "generated_at": "2026-09-17T08:09:40Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "cf3fd633a",
+  "commit": "92642c44d",
   "generator_version": "1.5",
   "files": [
     {
@@ -188,7 +188,7 @@
       "path": "apps/android/app/build.gradle.kts",
       "type": "file",
       "size_bytes": 2429,
-      "last_modified_commit": "cf3fd633a",
+      "last_modified_commit": "92642c44d",
       "is_empty": false,
       "extension": ".kts",
       "lines": 90
@@ -304,11 +304,11 @@
     {
       "path": "apps/android/app/src/main/java/org/arcanum/nativehost/architect/ArchitectShellPanel.kt",
       "type": "file",
-      "size_bytes": 40520,
-      "last_modified_commit": "cf3fd633a",
+      "size_bytes": 45445,
+      "last_modified_commit": "92642c44d",
       "is_empty": false,
       "extension": ".kt",
-      "lines": 993
+      "lines": 1086
     },
     {
       "path": "apps/android/app/src/main/java/org/arcanum/nativehost/architect/ArchitectVisualDiagnostics.kt",
@@ -322,11 +322,11 @@
     {
       "path": "apps/android/app/src/main/java/org/arcanum/nativehost/architect/TermuxOperatorBridge.kt",
       "type": "file",
-      "size_bytes": 25618,
-      "last_modified_commit": "cf3fd633a",
+      "size_bytes": 35290,
+      "last_modified_commit": "92642c44d",
       "is_empty": false,
       "extension": ".kt",
-      "lines": 636
+      "lines": 858
     },
     {
       "path": "apps/android/app/src/main/java/org/arcanum/nativehost/architect/TermuxOperatorResultService.kt",
@@ -3895,11 +3895,11 @@
     {
       "path": "docs/mobile/termux-verification.md",
       "type": "file",
-      "size_bytes": 5564,
-      "last_modified_commit": "cf3fd633a",
+      "size_bytes": 6703,
+      "last_modified_commit": "92642c44d",
       "is_empty": false,
       "extension": ".md",
-      "lines": 150
+      "lines": 171
     },
     {
       "path": "docs/modules/hope/g1-hope-seal.md",
@@ -4021,11 +4021,11 @@
     {
       "path": "docs/roadmap/construction-era-arc-ledger.md",
       "type": "file",
-      "size_bytes": 14081,
-      "last_modified_commit": "cf3fd633a",
+      "size_bytes": 14897,
+      "last_modified_commit": "92642c44d",
       "is_empty": false,
       "extension": ".md",
-      "lines": 189
+      "lines": 205
     },
     {
       "path": "docs/roadmap/construction-era-roadmap.md",
@@ -4251,6 +4251,15 @@
       "is_empty": false,
       "extension": ".md",
       "lines": 163
+    },
+    {
+      "path": "docs/specs/app/ce-w04-a13-4-native-workspace-verification.md",
+      "type": "file",
+      "size_bytes": 4794,
+      "last_modified_commit": "92642c44d",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 142
     },
     {
       "path": "docs/specs/app/ce-w04-a13-native-mobile-operator-bridge.md",
@@ -7234,11 +7243,20 @@
     {
       "path": "scripts/mobile/arcanum-operator.sh",
       "type": "file",
-      "size_bytes": 7029,
-      "last_modified_commit": "cf3fd633a",
+      "size_bytes": 7212,
+      "last_modified_commit": "92642c44d",
       "is_empty": false,
       "extension": ".sh",
-      "lines": 268
+      "lines": 273
+    },
+    {
+      "path": "scripts/mobile/arcanum-workspace-verify.py",
+      "type": "file",
+      "size_bytes": 10102,
+      "last_modified_commit": "92642c44d",
+      "is_empty": false,
+      "extension": ".py",
+      "lines": 322
     },
     {
       "path": "scripts/mobile/termux-bootstrap.sh",
@@ -7270,11 +7288,20 @@
     {
       "path": "scripts/mobile/test-arcanum-operator.sh",
       "type": "file",
-      "size_bytes": 5564,
-      "last_modified_commit": "fc979b9d7",
+      "size_bytes": 5694,
+      "last_modified_commit": "92642c44d",
       "is_empty": false,
       "extension": ".sh",
-      "lines": 155
+      "lines": 159
+    },
+    {
+      "path": "scripts/mobile/test-arcanum-workspace-verify.py",
+      "type": "file",
+      "size_bytes": 5686,
+      "last_modified_commit": "92642c44d",
+      "is_empty": false,
+      "extension": ".py",
+      "lines": 161
     },
     {
       "path": "scripts/node/local-reset.sh",
@@ -7432,11 +7459,11 @@
     {
       "path": "scripts/verify-ce-w04-a13.py",
       "type": "file",
-      "size_bytes": 15661,
-      "last_modified_commit": "cf3fd633a",
+      "size_bytes": 18537,
+      "last_modified_commit": "92642c44d",
       "is_empty": false,
       "extension": ".py",
-      "lines": 485
+      "lines": 569
     },
     {
       "path": "scripts/verify-ce-w04-architect-observer.py",
@@ -7459,11 +7486,11 @@
     {
       "path": "scripts/verify-sync.sh",
       "type": "file",
-      "size_bytes": 11649,
-      "last_modified_commit": "cf3fd633a",
+      "size_bytes": 11801,
+      "last_modified_commit": "92642c44d",
       "is_empty": false,
       "extension": ".sh",
-      "lines": 270
+      "lines": 273
     },
     {
       "path": "tsconfig.json",
