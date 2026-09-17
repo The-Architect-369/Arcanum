@@ -247,7 +247,7 @@ bash scripts/architect/test-termux-broker.sh
 bash scripts/architect/test-architect-runtime.sh
 bash scripts/architect/test-proposal-envelope.sh
 bash scripts/mobile/test-arcanum-operator.sh
-ok "local Workbench/runtime boundary, A12 proposal review, A13.1 fixed Termux operator, and advisory agent roster passed"
+ok "local Workbench/runtime boundary, A12 proposal review, A13.2 zero-copy pairing, and advisory agent roster passed"
 
 step 14 "Production smoke verifier"
 jq empty docs/governance/architectgpt/production-smoke.schema.json

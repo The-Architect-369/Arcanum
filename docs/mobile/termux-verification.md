@@ -42,6 +42,18 @@ environment** in Android Settings.
 After those one-time gates, the A13.1 workspace probe is launched from the native
 Architect surface; no shell command is copied for routine probing.
 
+## A13.2 zero-copy native pairing
+
+A13.2 adds `pair_native_client` through the same fixed Android → Termux operator path.
+The Human taps **Pair native client** (or **Replace native pairing**) and confirms the
+native dialog. Termux creates or reuses
+`$HOME/.config/arcanum/architect-broker.secret`, returns the credential only through the
+app-private one-shot result channel, and Android stores it with the inherited
+AndroidKeyStore-backed pairing store.
+
+No 64-character secret is copied or displayed. Pairing does not start the broker and does
+not mutate the repository. Broker start/stop remains outside A13.2.
+
 ## Bootstrap
 
 ```bash

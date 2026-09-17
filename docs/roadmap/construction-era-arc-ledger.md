@@ -5,7 +5,7 @@ visibility: public
 phase: "Pre-Genesis"
 era: "Construction Era"
 wave: "CE-W04"
-last_updated: 2026-09-14
+last_updated: 2026-09-17
 maintainer: The-Architect-369
 authority: "Human Architect naming/continuity convention; evidence and promotion remain governed by existing wave contracts"
 ---
@@ -135,9 +135,27 @@ A13.1 begins the mobile workflow repair from the exact certified A12 head. It ad
 
 A13.1 remains read-only with respect to repository state. Pairing automation, broker lifecycle, proposal application, artifact installation, Git writes, arbitrary shell, autonomous approval, and model-provider invocation remain outside this tranche.
 
+### CE-W04-A13.2 — Zero-copy native pairing
+
+A13.2 begins from the physically certified A13.1 indexed head
+`5f8552eff460d61aa720105b6c8c23321e311809`.
+
+It adds only `pair_native_client` to the fixed native → Termux operator registry. After
+explicit Human confirmation, Termux creates or reuses the canonical private broker secret
+and returns it through the app-private one-shot result channel. Android validates the
+repository, branch, HEAD, secret path, and exact credential shape before storing it through
+the inherited AndroidKeyStore-backed A11 pairing store. The pairing code is never rendered
+or manually entered.
+
+A13.2 does not start or stop the broker, widen the broker command registry, mutate Git,
+apply proposals, install artifacts, contact a model provider, or create autonomous
+approval.
+
 ## Next intended tranche
 
-After A13.1 transport and physical Seed Node Alpha validation, A13 may continue with zero-copy pairing and Human-triggered broker lifecycle while preserving the fixed-operation ceiling.
+After A13.2 physical validation, A13.3 may add explicit Human-triggered broker start/stop
+through the same fixed-operation transport while preserving the existing action and
+repository-authority ceilings.
 
 ## Promotion discipline
 

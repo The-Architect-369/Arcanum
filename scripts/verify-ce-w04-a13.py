@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Fail-closed static checks for CE-W04-A13.1 Native Mobile Operator Transport."""
+"""Fail-closed static checks for CE-W04-A13.2 zero-copy native pairing."""
 
 from __future__ import annotations
 
@@ -15,12 +15,15 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 A12_HEAD = "66a6479d9df921540d117820ed0d9b66eb59ba7e"
+A13_1_HEAD = "5f8552eff460d61aa720105b6c8c23321e311809"
 ANDROID_NS = "{http://schemas.android.com/apk/res/android}"
 
 REQUIRED = (
     "docs/specs/app/ce-w04-a13-native-mobile-operator-bridge.md",
+    "docs/specs/app/ce-w04-a13-2-zero-copy-pairing.md",
     "apps/android/app/src/main/java/org/arcanum/nativehost/architect/TermuxOperatorBridge.kt",
     "apps/android/app/src/main/java/org/arcanum/nativehost/architect/TermuxOperatorResultService.kt",
+    "apps/android/app/src/main/java/org/arcanum/nativehost/architect/ArchitectPairingStore.kt",
     "scripts/mobile/arcanum-operator.sh",
     "scripts/mobile/arcanum-operator-setup.sh",
     "scripts/mobile/test-arcanum-operator.sh",
@@ -32,7 +35,7 @@ REQUIRED = (
 
 
 def fail(message: str) -> None:
-    raise SystemExit(f"FAIL CE-W04-A13.1: {message}")
+    raise SystemExit(f"FAIL CE-W04-A13.2: {message}")
 
 
 def text(path: str) -> str:
@@ -56,7 +59,15 @@ def forbid(source: str, needle: str, label: str) -> None:
 
 
 for path in REQUIRED:
-    require((ROOT / path).is_file(), f"missing required A13.1 path: {path}")
+    require((ROOT / path).is_file(), f"missing required A13.2 path: {path}")
+
+subprocess.run(
+    ("git", "merge-base", "--is-ancestor", A13_1_HEAD, "HEAD"),
+    cwd=ROOT,
+    env={**os.environ, "GIT_OPTIONAL_LOCKS": "0"},
+    shell=False,
+    check=True,
+)
 
 archive = subprocess.run(
     ("git", "archive", "--format=tar", A12_HEAD),
@@ -99,6 +110,18 @@ for phrase in (
 ):
     require_phrase(spec, phrase, "A13.1 spec")
 
+a13_2_spec = text("docs/specs/app/ce-w04-a13-2-zero-copy-pairing.md")
+for phrase in (
+    "CE-W04-A13.2",
+    A13_1_HEAD,
+    "pair_native_client",
+    "The pairing code is never displayed in the native UI",
+    'repositoryMutation=false',
+    'authorityEffect=none',
+    "versionCode = 15",
+):
+    require_phrase(a13_2_spec, phrase, "A13.2 spec")
+
 manifest_path = ROOT / "apps/android/app/src/main/AndroidManifest.xml"
 manifest = ET.parse(manifest_path).getroot()
 permissions = {
@@ -138,6 +161,12 @@ bridge = text(
 for phrase in (
     'PROBE_WORKSPACE(',
     'wireId = "probe_workspace"',
+    'PAIR_NATIVE_CLIENT(',
+    'wireId = "pair_native_client"',
+    'fun pairNativeClient(',
+    'parsePairingMaterial(',
+    '"/data/data/com.termux/files/home/.config/arcanum/architect-broker.secret"',
+    'PAIRING_CODE_PATTERN.matches(pairingCode)',
     '"com.termux.app.RunCommandService"',
     '"com.termux.RUN_COMMAND"',
     '"com.termux.RUN_COMMAND_PATH"',
@@ -153,8 +182,9 @@ for phrase in (
 ):
     require_phrase(bridge, phrase, "TermuxOperatorBridge")
 require(
-    bridge.count("PROBE_WORKSPACE(") == 1,
-    "A13.1 native operator registry must contain exactly one operation",
+    bridge.count("PROBE_WORKSPACE(") == 1
+    and bridge.count("PAIR_NATIVE_CLIENT(") == 1,
+    "A13.2 native operator registry must contain exactly probe_workspace and pair_native_client",
 )
 for forbidden_text in (
     "RUN_COMMAND_STDIN",
@@ -185,7 +215,14 @@ for phrase in (
     'export GIT_OPTIONAL_LOCKS=0',
     'CANONICAL_REPO="$HOME/Arcanum"',
     'LEGACY_REPO="$HOME/work/Arcanum"',
-    "probe_workspace)",
+    "probe_workspace | pair_native_client)",
+    'PAIRING_SECRET_FILE="$PAIRING_SECRET_DIR/architect-broker.secret"',
+    "secrets.token_hex(32)",
+    "os.O_EXCL",
+    "os.fchmod(fd, 0o600)",
+    '"operationId": "pair_native_client"',
+    '"secretCreated": secret_created',
+    '"pairingCode": pairing_code',
     "repositoryMutation",
     '"authorityEffect": "none"',
 ):
@@ -217,16 +254,38 @@ for phrase in (
     "Run read-only workspace probe?",
     "A13.1 workspace",
     "Legacy checkout detected",
+    "Pair native client from Termux?",
+    "Replace native pairing from Termux?",
+    "operatorBridge.pairNativeClient",
+    "brokerClient.pair(pairing.pairingCode)",
+    "The pairing code is never displayed or copied by the Human",
 ):
     require_phrase(panel, phrase, "Architect shell panel")
+for forbidden_text in (
+    'hint = "64-character pairing code"',
+    "Enter the 64-hex-character pairing code generated there.",
+    "requestPairingCode()",
+):
+    forbid(panel, forbidden_text, "Architect shell panel")
+
+pairing_store = text(
+    "apps/android/app/src/main/java/org/arcanum/nativehost/architect/ArchitectPairingStore.kt"
+)
+for phrase in (
+    'KEYSTORE_PROVIDER = "AndroidKeyStore"',
+    'CIPHER_TRANSFORMATION = "AES/GCM/NoPadding"',
+    "secret.fill(0)",
+    'Regex("^[0-9a-f]{64}$")',
+):
+    require_phrase(pairing_store, phrase, "ArchitectPairingStore")
 
 build = text("apps/android/app/build.gradle.kts")
-require_phrase(build, 'versionName = "0.1.13-cew04-a13-1"', "Android build")
-require_phrase(build, '"\\"CE-W04-A13.1\\""', "Android build")
+require_phrase(build, 'versionName = "0.1.13-cew04-a13-2"', "Android build")
+require_phrase(build, '"\\"CE-W04-A13.2\\""', "Android build")
 version_code = re.search(r"\bversionCode\s*=\s*(\d+)\b", build)
 require(
-    version_code is not None and int(version_code.group(1)) == 14,
-    "A13.1 Android versionCode must be exactly 14",
+    version_code is not None and int(version_code.group(1)) == 15,
+    "A13.2 Android versionCode must be exactly 15",
 )
 
 bootstrap = text("scripts/mobile/termux-bootstrap.sh")
@@ -248,6 +307,10 @@ for phrase in (
     "allow-external-apps=true",
     "Run commands in Termux environment",
     "$HOME/Arcanum",
+    "A13.2 zero-copy native pairing",
+    "pair_native_client",
+    "No 64-character secret is copied or displayed",
+    "Broker start/stop remains outside A13.2",
 ):
     require_phrase(mobile_doc_normalized, phrase, "Termux verification doc")
 
@@ -321,6 +384,6 @@ forbid(
 )
 
 print(
-    "PASS CE-W04-A13.1 frozen A12 regression, fixed Termux operator transport, "
-    "workspace-probe ceiling, and successor provenance"
+    "PASS CE-W04-A13.2 frozen A12 regression, certified A13.1 ancestry, "
+    "fixed zero-copy pairing, AndroidKeyStore handoff, and repository authority ceiling"
 )

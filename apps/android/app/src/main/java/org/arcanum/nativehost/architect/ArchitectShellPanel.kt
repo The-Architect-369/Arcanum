@@ -130,7 +130,7 @@ class ArchitectShellPanel(context: Context) : LinearLayout(context) {
 
         pairingButton =
             Button(context).apply {
-                setOnClickListener { requestPairingCode() }
+                setOnClickListener { requestNativePairing() }
             }
         content.addView(
             pairingButton,
@@ -382,53 +382,85 @@ class ArchitectShellPanel(context: Context) : LinearLayout(context) {
         val paired = brokerClient.hasPairing()
         pairingStatus.text =
             if (paired) {
-                "Native pairing · stored in app-private AndroidKeyStore-protected storage"
+                "A13.2 native pairing · stored in app-private AndroidKeyStore-protected storage"
             } else {
-                "Native pairing · required before authenticated Architect actions"
+                "A13.2 native pairing · not established"
             }
         pairingButton.text =
             if (paired) {
-                "Replace local pairing"
+                "Replace native pairing"
             } else {
-                "Pair local broker"
+                "Pair native client"
             }
         clearPairingButton.visibility =
             if (paired) View.VISIBLE else View.GONE
     }
 
-    private fun requestPairingCode() {
-        val input =
-            EditText(context).apply {
-                hint = "64-character pairing code"
-                inputType =
-                    InputType.TYPE_CLASS_TEXT or
-                    InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
-                isSingleLine = true
-                setSelectAllOnFocus(true)
-            }
+    private fun requestNativePairing() {
+        val replacing = brokerClient.hasPairing()
 
         AlertDialog.Builder(context)
-            .setTitle("Pair local Architect broker")
-            .setMessage(
-                "Start scripts/mobile/arcanum-broker.sh in Termux. " +
-                    "Enter the 64-hex-character pairing code generated there. " +
-                    "The decoded secret is encrypted at rest with AndroidKeyStore.",
+            .setTitle(
+                if (replacing) {
+                    "Replace native pairing from Termux?"
+                } else {
+                    "Pair native client from Termux?"
+                },
             )
-            .setView(input)
+            .setMessage(
+                "A13.2 will ask Termux to run the fixed pair_native_client operation. " +
+                    "Termux may create or reuse only ~/.config/arcanum/architect-broker.secret, " +
+                    "then return that pairing material through the app-private one-shot result channel. " +
+                    "The pairing code is never displayed or copied by the Human and is encrypted at rest " +
+                    "with AndroidKeyStore. This does not start the broker, mutate the repository, " +
+                    "or grant arbitrary shell authority.",
+            )
             .setNegativeButton("Cancel", null)
-            .setPositiveButton("Pair") { _, _ ->
-                runCatching {
-                    brokerClient.pair(input.text.toString())
-                }.fold(
-                    onSuccess = {
-                        refreshPairingState()
-                        probeBroker()
-                    },
-                    onFailure = { error ->
-                        brokerStatus.text =
-                            "Pairing rejected · ${error.message ?: error::class.java.simpleName}"
-                    },
-                )
+            .setPositiveButton(if (replacing) "Replace pairing" else "Pair") { _, _ ->
+                pairingButton.isEnabled = false
+                pairingStatus.text = "A13.2 native pairing · requesting fixed Termux operation…"
+
+                operatorBridge.pairNativeClient { result ->
+                    post {
+                        pairingButton.isEnabled = true
+                        result.fold(
+                            onSuccess = { pairing ->
+                                runCatching {
+                                    brokerClient.pair(pairing.pairingCode)
+                                }.fold(
+                                    onSuccess = {
+                                        refreshPairingState()
+                                        pairingStatus.text =
+                                            buildString {
+                                                appendLine("A13.2 native pairing · connected")
+                                                appendLine("repository=${pairing.repositoryId}")
+                                                appendLine("branch=${pairing.branch}")
+                                                appendLine("commit=${compactSha(pairing.head)}")
+                                                appendLine(
+                                                    "secret=${if (pairing.secretCreated) "created" else "reused"} · " +
+                                                        pairing.pairingSecretPath,
+                                                )
+                                                append("authorityEffect=none · repositoryMutation=false")
+                                            }
+                                        brokerStatus.text =
+                                            "Native pairing transferred securely. " +
+                                                "Broker lifecycle remains separate; A13.2 does not start it."
+                                    },
+                                    onFailure = { error ->
+                                        pairingStatus.text =
+                                            "A13.2 pairing storage rejected · " +
+                                                (error.message ?: error::class.java.simpleName)
+                                    },
+                                )
+                            },
+                            onFailure = { error ->
+                                pairingStatus.text =
+                                    "A13.2 native pairing unavailable · " +
+                                        (error.message ?: error::class.java.simpleName)
+                            },
+                        )
+                    }
+                }
             }
             .show()
     }
@@ -494,7 +526,7 @@ class ArchitectShellPanel(context: Context) : LinearLayout(context) {
 
     private fun chooseAction() {
         if (!brokerClient.hasPairing()) {
-            requestPairingCode()
+            requestNativePairing()
             return
         }
 
@@ -511,7 +543,7 @@ class ArchitectShellPanel(context: Context) : LinearLayout(context) {
 
     private fun requestProposalEnvelope() {
         if (!brokerClient.hasPairing()) {
-            requestPairingCode()
+            requestNativePairing()
             return
         }
 
