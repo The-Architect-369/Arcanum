@@ -2,7 +2,8 @@
 set -euo pipefail
 
 ROOT="$(git rev-parse --show-toplevel)"
-OPERATOR="$ROOT/scripts/mobile/arcanum-operator.sh"
+OPERATOR_SOURCE="$ROOT/scripts/mobile/arcanum-operator.sh"
+LIFECYCLE_SOURCE="$ROOT/scripts/mobile/arcanum-broker-lifecycle.py"
 BROKER_SOURCE="$ROOT/scripts/architect/termux-broker.py"
 PROPOSAL_SOURCE="$ROOT/scripts/architect/proposal_envelope.py"
 
@@ -14,10 +15,14 @@ fail() {
 command -v jq >/dev/null 2>&1 || fail "jq is required"
 command -v git >/dev/null 2>&1 || fail "git is required"
 command -v python3 >/dev/null 2>&1 || fail "python3 is required"
+command -v cmp >/dev/null 2>&1 || fail "cmp is required"
 
 TMP="$(mktemp -d)"
 BROKER_PID=""
 DUMMY_PID=""
+FIXTURE_HOME="$TMP/home"
+FIXTURE_SCRIPTS="$TMP/operator"
+OPERATOR="$FIXTURE_SCRIPTS/arcanum-operator.sh"
 
 cleanup() {
   set +e
@@ -25,21 +30,48 @@ cleanup() {
     kill "$DUMMY_PID" >/dev/null 2>&1 || true
     wait "$DUMMY_PID" >/dev/null 2>&1 || true
   fi
-  local state="$HOME/.config/arcanum/architect-broker.lifecycle.json"
-  if [[ -f "$state" ]]; then
-    local pid
-    pid="$(jq -r '.pid // empty' "$state" 2>/dev/null || true)"
-    if [[ "$pid" =~ ^[0-9]+$ ]]; then
-      kill "$pid" >/dev/null 2>&1 || true
-    fi
+  # Never read the caller's lifecycle state or signal an unverified PID.
+  # The fixture helper checks start ticks and argv before stopping its own broker.
+  local state="$FIXTURE_HOME/.config/arcanum/architect-broker.lifecycle.json"
+  if [[ -f "$state" && -f "$FIXTURE_SCRIPTS/arcanum-broker-lifecycle.py" ]]; then
+    HOME="$FIXTURE_HOME" bash "$OPERATOR" stop_broker >/dev/null 2>&1 || true
   fi
   rm -rf "$TMP"
 }
 trap cleanup EXIT
+trap 'exit 130' INT
+trap 'exit 143' TERM
 
-export HOME="$TMP/home"
+export HOME="$FIXTURE_HOME"
 export TMPDIR="$TMP/tmp"
-mkdir -p "$HOME/Arcanum/scripts/architect" "$TMPDIR"
+mkdir -p "$HOME/Arcanum/scripts/architect" "$TMPDIR" "$FIXTURE_SCRIPTS"
+
+# ARC-53: exercise the real operator against a fixture-local helper copy.
+# Production source remains byte-for-byte unchanged and fixed to loopback 8765.
+cp "$OPERATOR_SOURCE" "$OPERATOR"
+prepare_fixture_port() {
+  python3 -S - "$LIFECYCLE_SOURCE" "$FIXTURE_SCRIPTS/arcanum-broker-lifecycle.py" <<'PYPORT'
+from pathlib import Path
+import socket
+import sys
+
+source = Path(sys.argv[1]).read_bytes()
+marker = b"\nBROKER_PORT = 8765\n"
+if source.count(marker) != 1:
+    raise SystemExit("FAIL ARC-53: production port declaration changed; review fixture adaptation")
+
+# Never probe or claim the production port. The OS selects an ephemeral port;
+# a bounded retry below handles a competitor claiming it before helper startup.
+with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as reservation:
+    reservation.bind(("127.0.0.1", 0))
+    port = reservation.getsockname()[1]
+    if not 1024 <= port <= 65535 or port == 8765:
+        raise SystemExit("FAIL ARC-53: unsafe fixture port")
+    adapted = source.replace(marker, f"\nBROKER_PORT = {port}\n".encode("ascii"), 1)
+    Path(sys.argv[2]).write_bytes(adapted)
+print(port)
+PYPORT
+}
 
 cp "$BROKER_SOURCE" "$HOME/Arcanum/scripts/architect/termux-broker.py"
 cp "$PROPOSAL_SOURCE" "$HOME/Arcanum/scripts/architect/proposal_envelope.py"
@@ -63,7 +95,17 @@ PAIR_CODE="$(jq -r '.pairingCode' <<<"$PAIR_JSON")"
 STATE="$HOME/.config/arcanum/architect-broker.lifecycle.json"
 LOG="$HOME/.config/arcanum/architect-broker.log"
 
-START_JSON="$(bash "$OPERATOR" start_broker)"
+# Retry only an explicitly unowned port collision before a broker was started.
+# Other lifecycle failures remain failures; no test is skipped or made green.
+for attempt in 1 2 3 4 5; do
+  FIXTURE_PORT="$(prepare_fixture_port)"
+  START_JSON="$(bash "$OPERATOR" start_broker)"
+  if ! jq -e '.status == "fail" and .reason == "broker_port_unavailable"' \
+    <<<"$START_JSON" >/dev/null; then
+    break
+  fi
+  [[ ! -e "$STATE" ]] || fail "port collision unexpectedly created lifecycle state"
+done
 jq -e '
   .schemaVersion == "1.0"
   and .operationId == "start_broker"
@@ -77,12 +119,15 @@ jq -e '
   and (.head | test("^[0-9a-f]{40}$"))
   and .brokerState == "started"
   and (.brokerPid | type == "number" and . > 1)
-  and .brokerPort == 8765
+  and .brokerPort == $port
   and (.brokerSessionId | type == "string" and length > 0)
   and .lifecycleStatePath == ($home + "/.config/arcanum/architect-broker.lifecycle.json")
   and .logPath == ($home + "/.config/arcanum/architect-broker.log")
-' --arg home "$HOME" <<<"$START_JSON" >/dev/null ||
+' --arg home "$HOME" --argjson port "$FIXTURE_PORT" <<<"$START_JSON" >/dev/null || {
+  # Do not print pairing material, environment, or unrestricted subprocess output.
+  jq '{operationId,status,reason,brokerState,brokerPort}' <<<"$START_JSON" >&2 || true
   fail "start_broker fixture rejected"
+}
 
 BROKER_PID="$(jq -r '.brokerPid' <<<"$START_JSON")"
 SESSION_ID="$(jq -r '.brokerSessionId' <<<"$START_JSON")"
@@ -152,25 +197,29 @@ jq -e '
 printf '%s\n' "$PAIR_CODE" > "$SECRET"
 chmod 600 "$SECRET"
 
-python3 -m http.server 8765 --bind 127.0.0.1 \
+python3 -m http.server "$FIXTURE_PORT" --bind 127.0.0.1 \
   >"$TMP/dummy-http.log" 2>&1 &
 DUMMY_PID="$!"
 
-python3 -S - <<'PY'
+python3 -S - "$FIXTURE_PORT" <<'PY'
 import socket
+import sys
 import time
+port = int(sys.argv[1])
 deadline = time.monotonic() + 5.0
 while time.monotonic() < deadline:
     sock = socket.socket()
     sock.settimeout(0.1)
     try:
-        if sock.connect_ex(("127.0.0.1", 8765)) == 0:
+        if sock.connect_ex(("127.0.0.1", port)) == 0:
             raise SystemExit(0)
     finally:
         sock.close()
     time.sleep(0.05)
 raise SystemExit("dummy listener did not become ready")
 PY
+
+kill -0 "$DUMMY_PID" 2>/dev/null || fail "fixture dummy listener exited before assertions"
 
 UNOWNED_START_JSON="$(bash "$OPERATOR" start_broker)"
 jq -e '
@@ -201,4 +250,6 @@ if bash "$OPERATOR" stop_broker unexpected >/dev/null 2>&1; then
   fail "extra stop arguments were accepted"
 fi
 
+cmp -s "$OPERATOR_SOURCE" "$OPERATOR" || fail "fixture operator differs from production source"
+printf 'PASS ARC-53 lifecycle fixture isolation on loopback port %s; production 8765 untouched\n' "$FIXTURE_PORT"
 echo "PASS CE-W04-A13.3 explicit owned broker start/stop, idempotence, unowned-process rejection, and repository immutability"
