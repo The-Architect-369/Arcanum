@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate provider observations against the Architect GPT 4.0 manifest."""
+"""Validate provider observations against the Architect GPT 4.1 manifest."""
 
 from __future__ import annotations
 

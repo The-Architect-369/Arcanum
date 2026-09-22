@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "registry_type": "architect_agent_registry",
   "phase": "Pre-Genesis",
-  "architect_gpt_version": "4.0",
+  "architect_gpt_version": "4.1",
   "default_policy": "deny",
   "invocation_authority": "advisory_only",
   "permission_order": [
@@ -168,7 +168,7 @@
     "registry_entries_are_advisory_lenses_not_autonomous_authorities",
     "requested_permission_must_not_exceed_agent_ceiling",
     "registered_tools_describe_permitted_analysis_surfaces_not_implicit_provider_access",
-    "repository_local_agent_invocation_and_execution_engines_are_retired_in_architect_gpt_4_0",
+    "repository_local_agent_invocation_and_execution_engines_remain_retired_in_architect_gpt_4_1",
     "external_writes_require_separate_explicit_human_authorization",
     "human_architect_retains_all_action_authority"
   ]
