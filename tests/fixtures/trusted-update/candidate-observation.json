@@ -1,0 +1,1 @@
+{"abis":["arm64-v8a","x86_64"],"applicationId":"org.arcanum.nativehost","artifactSha256":"1111111111111111111111111111111111111111111111111111111111111111","artifactSizeBytes":1048576,"minSdk":26,"publisherSignerSha256":"2222222222222222222222222222222222222222222222222222222222222222","targetSdk":35,"versionCode":19,"versionName":"0.1.14-cew04-a14-1"}
