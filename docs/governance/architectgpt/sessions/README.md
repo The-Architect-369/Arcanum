@@ -11,5 +11,10 @@ This directory contains only `ARC-CONT-EPOCH-2` session records.
   `1212f02b61ab0895a84700b9371847a6c5ebe47f`; they are intentionally not copied
   into the active working tree.
 
-The directory may contain zero active records. That is the canonical birth state of
-the post-baseline continuity epoch.
+The directory may contain zero active records. That was the canonical birth state
+of the post-baseline continuity epoch, but an empty active ledger must not be read as
+proof that no later external continuity exists. If external originals indicate later
+stable IDs while intervening records are unretrieved or unreconciled, preserve the
+gap, do not allocate a potentially colliding ID, and use an unnumbered dated
+`CONTINUITY-EVENT` in the controlling log when material repository continuity must
+be preserved before sequence reconciliation.

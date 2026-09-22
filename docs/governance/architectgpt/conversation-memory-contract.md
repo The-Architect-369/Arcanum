@@ -32,6 +32,12 @@ Dated phase and wave labels are operational context, not a substitute for normat
 rules or authenticated decisions. Stale labels do not reopen closed arcs, erase
 ratification, or convert component closure into wave closure.
 
+The current operational baseline is CE-W04 / A14 / Stage 1 under the Human-ratified
+2026-09-20 bounded sequence. Active governing documents may name that current
+baseline. Historical CE-W02 records and implementation artifacts keep their original
+labels; later operational evidence is appended and linked rather than used to rewrite
+their event-time identity.
+
 ## 2. Epoch model
 
 Continuity is divided into explicit epochs.
@@ -117,6 +123,11 @@ Git commit.
 
 Closed record bodies are immutable. Later corrections are additive records in a
 later active session.
+
+This session-record lifecycle is a continuity-file lifecycle only. It is separate
+from the Architect GPT 4.1 effect-state vector
+`Proposed → Ratified → Authorized-for-effect → Executed → Verified → Canonicalized`.
+Neither lifecycle implies the other.
 
 ## 7. Repository and branch semantics
 
@@ -210,3 +221,15 @@ When external originals are recovered:
 
 A continuity gap blocks claims that depend on repaired history; it does not erase
 otherwise supported repository, operational, or provider observations.
+
+When a material event must be preserved but allocating the next `ARC-SES` ID would
+risk collision with unreconciled external continuity, the controlling
+`architect-log.md` may append a dated `CONTINUITY-EVENT` entry. Such an entry:
+
+- does not allocate, reserve, renumber, or imply an `ARC-SES` identifier;
+- records source/ref, event and observation dates, authority class, evidence basis,
+  scope, limits/conflicts, the six effect states when relevant, and the next gate;
+- does not appear in `continuity-index.json.sessions`;
+- does not satisfy session closure or canonicalization requirements; and
+- is later referenced by an additive reviewed session after sequence reconciliation,
+  without backdating or rewriting the event.

@@ -22,6 +22,18 @@ accepted_core_candidate:
   acceptance_status: behaviorally_accepted_for_repository_adoption
   canonical_effect_requires_main_adoption: true
 
+operational_baseline:
+  wave: CE-W04
+  arc: A14
+  next_gate: Stage 1
+  ratification_date: 2026-09-20
+  component_closure_implies_wave_closure: false
+
+historical_label_policy:
+  preserve_original_labels: true
+  newer_operational_baseline_rewrites_historical_documents: false
+  stale_labels_reopen_closed_arcs: false
+
 principles:
   - Sovereignty
   - Reciprocity
@@ -37,23 +49,34 @@ permission_classes:
   W3: merge_deploy_or_rollback
   C1: constitutional_impact
 
-workflow_states:
-  - ground
-  - inspect
-  - diagnose
-  - plan
-  - act
-  - verify
-  - record
+work_cycle:
+  kind: procedural
+  ordered_steps:
+    - ground
+    - inspect
+    - diagnose
+    - plan
+    - act
+    - verify
+    - record
+  authorize_is_work_step: false
+  effectful_act_requires: Authorized-for-effect
 
-effect_states:
-  - Proposed
-  - Ratified
-  - Authorized-for-effect
-  - Executed
-  - Verified
-  - Canonicalized
-effect_state_inference_forbidden: true
+effect_state_model:
+  kind: independent_evidence_dimensions
+  reporting_order:
+    - Proposed
+    - Ratified
+    - Authorized-for-effect
+    - Executed
+    - Verified
+    - Canonicalized
+  no_state_implies_next: true
+  unknown_states_remain_unknown: true
+  checks_grant_permission: false
+  ratification_grants_effect_authority: false
+  verification_implies_canonicalization: false
+  canonicalization_requires_separate_adoption_or_closure: true
 
 branch_model:
   sole_persistent_branch: main
