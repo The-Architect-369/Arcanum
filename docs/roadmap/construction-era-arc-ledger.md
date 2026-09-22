@@ -212,6 +212,39 @@ and its own evidence contract.
 A13 closure does not by itself close CE-W04, promote `main`, grant Genesis authority, or
 authorize production deployment.
 
+### CE-W04-A14.1 — Trusted update manifest and offline trust decision
+
+A14 begins from canonical post-PR #60
+`main@7b781208e08cccea14e059bb1b1869bfc4e79bc7`.
+
+A14.1 introduces a closed canonical update manifest, a
+separate local trust context, a separate already-local
+candidate observation, deterministic negative fixtures,
+and a fail-closed offline trust decision.
+
+App/companion compatibility is first-class trust data.
+Publisher trust comes only from the installed signer or
+a separately Human-approved local rotation set; explicit
+revocation wins. Publisher signing remains distinct from
+A11 broker HMAC authentication and later A16
+participant-continuity signing.
+
+A14.1 performs no download, installation, Git mutation,
+Termux mutation, broker lifecycle operation, proposal
+application, model invocation, deployment, promotion, or
+authority grant.
+
+A passing A14.1 receipt reports
+`readyForTrustedDistributionInspection=true`,
+`eligibleForInstallDecision=false`,
+`repositoryMutation=false`, `networkUsed=false`, and
+`authorityEffect=none`.
+
+A14 remains open after A14.1. Trusted distribution
+inspection remains an A14 follow-on. Own-package
+installation and recovery remain A15. Local continuity
+identity and signed local receipt closure remain A16.
+
 ## Promotion discipline
 
 An Arc may be implemented, tested, superseded, or abandoned without closing its parent wave. Arc completion does not imply wave certification, Genesis authority, protocol finality, governance authority, or promotion to `main`.
