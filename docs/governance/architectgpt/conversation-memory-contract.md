@@ -3,11 +3,11 @@ title: "Architect Conversation-Memory Contract"
 version: "2.0"
 status: canonical
 visibility: public
-last_updated: 2026-09-04
+last_updated: 2026-09-22
 domain: "Continuity & Memory"
 phase: "Pre-Genesis"
 era: "Construction Era"
-wave: "CE-W02"
+wave: "CE-W04"
 authority: "Human Architect"
 repository: "The-Architect-369/Arcanum"
 continuity_epoch: "ARC-CONT-EPOCH-2"
@@ -27,6 +27,16 @@ Human Architect's ratification authority.
 
 Silence, inference, model confidence, provider state, Notion state, and historical
 precedent do not ratify canon.
+
+Dated phase and wave labels are operational context, not a substitute for normative
+rules or authenticated decisions. Stale labels do not reopen closed arcs, erase
+ratification, or convert component closure into wave closure.
+
+The current operational baseline is CE-W04 / A14 / Stage 1 under the Human-ratified
+2026-09-20 bounded sequence. Active governing documents may name that current
+baseline. Historical CE-W02 records and implementation artifacts keep their original
+labels; later operational evidence is appended and linked rather than used to rewrite
+their event-time identity.
 
 ## 2. Epoch model
 
@@ -114,6 +124,11 @@ Git commit.
 Closed record bodies are immutable. Later corrections are additive records in a
 later active session.
 
+This session-record lifecycle is a continuity-file lifecycle only. It is separate
+from the Architect GPT 4.1 effect-state vector
+`Proposed → Ratified → Authorized-for-effect → Executed → Verified → Canonicalized`.
+Neither lifecycle implies the other.
+
 ## 7. Repository and branch semantics
 
 `main` is the sole persistent canonical branch.
@@ -137,6 +152,14 @@ Only `PUBLIC` and `PUBLIC-REDACTED` continuity may enter the public repository.
 `DEVICE-PRIVATE` and `DO-NOT-EXPORT` fail closed.
 
 Verification fields contain concise evidence, not raw stdout/stderr.
+
+Private Hope/Journey interior and derivatives are excluded from Architect continuity,
+development memory, exports, and provider context by default. Any disclosure requires
+selected items, destination/context preview, minimization, and consent. Permission to
+disclose does not itself authorize additional Architect-controlled retention. Provider
+retention claims must be grounded in actual provider evidence or policy; uncertainty
+remains explicit. Whole private stores are never ingested merely for convenience, and
+hashes, indexes, and summaries may themselves be sensitive.
 
 ## 9. GitHub and provider boundaries
 
@@ -174,3 +197,39 @@ Notion, issue prose, or inference.
 
 This is the defining boundary of the post-baseline continuity model: current truth
 stays compact; historical truth stays exact and recoverable.
+
+## 12. External continuity reconciliation
+
+Current durable records are rehydration evidence, not automatic current verification.
+The active continuity index is derived and non-authoritative; an empty `sessions`
+array is an index gap, not proof that no external continuity exists.
+
+When external originals are recovered:
+
+- preserve stable `ARC-SES-N` identifiers, dates, provenance, authority class, and
+  closure-time uncertainty;
+- compare the index epoch, controlling log, active ledger, and external originals
+  before proposing placement;
+- flag collisions and gaps rather than inventing, renumbering, or inferring
+  intervening sessions;
+- require original records, dates, authority, provenance, destination/schema, and
+  applicable repository-write authorization before repair;
+- append any authorized reconciliation with its own observation/adoption date rather
+  than backdating or rewriting the original event;
+- do not treat Notion, Drive, Site, or other external session evidence as already
+  canonicalized in GitHub.
+
+A continuity gap blocks claims that depend on repaired history; it does not erase
+otherwise supported repository, operational, or provider observations.
+
+When a material event must be preserved but allocating the next `ARC-SES` ID would
+risk collision with unreconciled external continuity, the controlling
+`architect-log.md` may append a dated `CONTINUITY-EVENT` entry. Such an entry:
+
+- does not allocate, reserve, renumber, or imply an `ARC-SES` identifier;
+- records source/ref, event and observation dates, authority class, evidence basis,
+  scope, limits/conflicts, the six effect states when relevant, and the next gate;
+- does not appear in `continuity-index.json.sessions`;
+- does not satisfy session closure or canonicalization requirements; and
+- is later referenced by an additive reviewed session after sequence reconciliation,
+  without backdating or rewriting the event.

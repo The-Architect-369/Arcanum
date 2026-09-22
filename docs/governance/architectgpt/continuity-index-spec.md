@@ -68,7 +68,10 @@ The v2 top level contains:
 `predecessor_epoch` is a compact summary only. Exact historical paths and blob
 identities remain in the epoch seal.
 
-`sessions` contains only active-epoch session projections.
+`sessions` contains only active-epoch session projections. Unnumbered
+`CONTINUITY-EVENT` entries in the controlling log are intentionally excluded: they
+preserve material chronology when stable session numbering cannot yet be allocated
+safely, but they are not session records and confer no ID, closure, or canonicalization.
 
 ## Active session projection
 

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Architect GPT 4.0 repository integrity verification.
+# Architect GPT 4.1 repository integrity verification.
 # Read-only: validates the checked-out tree and never edits source, stages files,
 # commits, pushes, merges, deploys, or rewrites refs.
 set -euo pipefail
@@ -23,28 +23,28 @@ step 1 "Deterministic repository index"
 pnpm verify:repo-index
 ok "repo index matches its exact source commit"
 
-step 2 "Architect GPT 4.0 core contract"
+step 2 "Architect GPT 4.1 core contract"
 SPEC="docs/governance/architectgpt/architect-gpt.md"
 MANIFEST="docs/governance/architectgpt/architect-gpt-manifest.yaml"
 AGENT_REGISTRY="docs/governance/architectgpt/agent-registry.yaml"
 for path in "$SPEC" "$MANIFEST" "$AGENT_REGISTRY"; do require_file "$path"; done
 
-grep -Eq '^version: "4\.0"$' "$MANIFEST"
+grep -Eq '^version: "4\.1"$' "$MANIFEST"
 grep -Eq '^canonical_branch: main$' "$MANIFEST"
 grep -Eq '^default_write_branch: null$' "$MANIFEST"
 grep -Fq 'sole_persistent_branch: main' "$MANIFEST"
 grep -Fq 'implicit_integration_branch: forbidden' "$MANIFEST"
-grep -Fq 'version: "4.0"' "$SPEC"
+grep -Fq 'version: "4.1"' "$SPEC"
 grep -Fq 'sole persistent canonical branch' "$SPEC"
 jq -e '
   .schema_version == "1.0"
   and .registry_type == "architect_agent_registry"
-  and .architect_gpt_version == "4.0"
+  and .architect_gpt_version == "4.1"
   and .invocation_authority == "advisory_only"
   and (.agents | length) == 6
   and ([.agents[].permission_ceiling] | all(. == "R1"))
 ' "$AGENT_REGISTRY" >/dev/null
-ok "Architect GPT 4.0 contract, main-only branch model, and advisory agent registry are coherent"
+ok "Architect GPT 4.1 contract, main-only branch model, and advisory agent registry are coherent"
 
 step 3 "Manifest active-file map"
 python3 - "$MANIFEST" <<'PY'

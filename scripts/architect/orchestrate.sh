@@ -13,7 +13,7 @@ mkdir -p "$REPORT_ROOT"
 
 usage() {
   cat <<'EOF'
-Architect GPT 4.0 orchestration control
+Architect GPT 4.1 orchestration control
 
 Usage:
   bash scripts/architect/orchestrate.sh preflight
@@ -60,7 +60,7 @@ validate_logs() {
 
 preflight() {
   local fail=0 warn=0
-  printf '== Architect GPT 4.0 preflight ==\n'
+  printf '== Architect GPT 4.1 preflight ==\n'
   printf 'Root: %s\n' "$ROOT"
   printf 'Branch: %s\n' "$(branch_name)"
   printf 'Commit: %s\n\n' "$(git -C "$ROOT" rev-parse --short HEAD 2>/dev/null || echo unknown)"

@@ -2,12 +2,12 @@
 title: "Architect Per-Session Record Schema"
 status: canonical
 visibility: public
-last_updated: 2026-09-04
+last_updated: 2026-09-22
 version: "2.0"
 domain: "Continuity & Memory"
 phase: "Pre-Genesis"
 era: "Construction Era"
-wave: "CE-W02"
+wave: "CE-W04"
 authority: "Human Architect"
 contract: docs/governance/architectgpt/conversation-memory-contract.md
 machine_schema: docs/governance/architectgpt/session-record.schema.json

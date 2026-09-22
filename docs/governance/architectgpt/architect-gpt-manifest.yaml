@@ -1,7 +1,7 @@
-version: "4.0"
+version: "4.1"
 phase: Pre-Genesis
 era: Construction Era
-wave: CE-W02
+wave: CE-W04
 maintainer: The-Architect-369
 environment: Ubuntu 22.04 LTS+
 repository: https://github.com/The-Architect-369/Arcanum.git
@@ -14,6 +14,25 @@ workspace_root: repo-root
 workflow_mode: exact_ref_evidence_first
 orchestration_mode: bounded_local_evidence
 archive_policy: historical_only
+
+accepted_core_candidate:
+  sha256: 7baf76d528d111409ac47bc557aeda68bb5d5f5de4227eb64058c3056adfc33b
+  characters: 7847
+  source_label: Architect GPT — Core Operating Instructions v4.1 (evaluation candidate)
+  acceptance_status: behaviorally_accepted_for_repository_adoption
+  canonical_effect_requires_main_adoption: true
+
+operational_baseline:
+  wave: CE-W04
+  arc: A14
+  next_gate: Stage 1
+  ratification_date: 2026-09-20
+  component_closure_implies_wave_closure: false
+
+historical_label_policy:
+  preserve_original_labels: true
+  newer_operational_baseline_rewrites_historical_documents: false
+  stale_labels_reopen_closed_arcs: false
 
 principles:
   - Sovereignty
@@ -30,15 +49,34 @@ permission_classes:
   W3: merge_deploy_or_rollback
   C1: constitutional_impact
 
-workflow_states:
-  - ground
-  - inspect
-  - diagnose
-  - plan
-  - authorize
-  - act
-  - verify
-  - record
+work_cycle:
+  kind: procedural
+  ordered_steps:
+    - ground
+    - inspect
+    - diagnose
+    - plan
+    - act
+    - verify
+    - record
+  authorize_is_work_step: false
+  effectful_act_requires: Authorized-for-effect
+
+effect_state_model:
+  kind: independent_evidence_dimensions
+  reporting_order:
+    - Proposed
+    - Ratified
+    - Authorized-for-effect
+    - Executed
+    - Verified
+    - Canonicalized
+  no_state_implies_next: true
+  unknown_states_remain_unknown: true
+  checks_grant_permission: false
+  ratification_grants_effect_authority: false
+  verification_implies_canonicalization: false
+  canonicalization_requires_separate_adoption_or_closure: true
 
 branch_model:
   sole_persistent_branch: main
@@ -86,6 +124,37 @@ authorization:
     permission_class: C1
     explicit_human_request_required: true
     impact_review_required: true
+
+provider_status_policy:
+  manifest_status_is_live_access_proof: false
+  live_session_probe_required: true
+  failed_or_unavailable_probe_is_permanent_denial: false
+  missing_prerequisites_block_dependent_effects_only: true
+
+external_effect_recovery:
+  missing_receipt_implies_failure: false
+  pending_or_unknown_until_reconciled: true
+  independent_target_observation_required: true
+  retry_requires_applicable_effect_authorization: true
+  retry_requires_absence_proof_or_authorized_safe_recovery: true
+  reconciliation_must_be_recorded_separately: true
+
+private_context:
+  hope_journey_interior_default: excluded
+  whole_private_store_ingestion: forbidden
+  disclosure_requires_selected_items_preview_minimization_consent: true
+  disclosure_permission_implies_development_memory_retention: false
+  provider_retention_claims_require_provider_evidence: true
+  hashes_indexes_summaries_may_be_sensitive: true
+
+continuity_reconciliation:
+  empty_index_sessions_means_no_history: false
+  preserve_external_session_ids: true
+  infer_intervening_sessions: forbidden
+  renumber_external_sessions: forbidden
+  backdating: forbidden
+  repair_requires_originals_dates_authority_provenance_target_schema_and_write_authorization: true
+  external_sessions_are_canonical_before_adoption: false
 
 providers:
   github:
