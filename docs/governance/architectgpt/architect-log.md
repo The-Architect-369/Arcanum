@@ -59,7 +59,7 @@ active log.
 - Authority class: Human-authorized repository preparation; candidate-only on disposable work ref
 - Scope: Architect GPT v4.1 contract/manifest/continuity coherence; no merge, deploy, install, trust-root, or constitutional effect
 - Accepted candidate fingerprint: `7baf76d528d111409ac47bc557aeda68bb5d5f5de4227eb64058c3056adfc33b`, 7,847 characters
-- Evaluation basis: controlled behavioral acceptance for the supplied v4.1 candidate; repository exact-head verification remains incomplete until deterministic repo-index companion and repository checks are run
+- Evaluation basis: supplied acceptance specification calibration reported golden 5/5 accepted, prohibited 21/21 rejected, malformed/extra 10/10 rejected, and retry truth table 6/6 passed; controlled A–E behavior in this conversation matched the specified outcomes. Limitation: the acceptance authoring did not itself include isolated GPT runs, and repository exact-head verification remains incomplete until the deterministic repo-index companion and repository checks are run
 - Operational baseline: CE-W04 / A14 / Stage 1 under the Human-ratified 2026-09-20 bounded sequence
 - Historical-label rule: CE-W02 evidence remains historical at its original coordinates; newer CE-W04 operational evidence does not rewrite prior records
 - Continuity limit: external `ARC-SES-23` evidence has been observed outside the GitHub ledger while `ARC-SES-11` through `ARC-SES-22` are not reconciled here; no session ID is allocated by this event
