@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-09-25T12:46:55Z",
+  "generated_at": "2026-09-25T14:01:55Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "b8f719178",
+  "commit": "e646a4a47",
   "generator_version": "1.5",
   "files": [
     {
@@ -7378,20 +7378,20 @@
     {
       "path": "scripts/update/test_trusted_update_preflight.py",
       "type": "file",
-      "size_bytes": 13935,
-      "last_modified_commit": "b8f719178",
+      "size_bytes": 18835,
+      "last_modified_commit": "e646a4a47",
       "is_empty": false,
       "extension": ".py",
-      "lines": 511
+      "lines": 655
     },
     {
       "path": "scripts/update/trusted_update_preflight.py",
       "type": "file",
-      "size_bytes": 15152,
-      "last_modified_commit": "b8f719178",
+      "size_bytes": 15547,
+      "last_modified_commit": "e646a4a47",
       "is_empty": false,
       "extension": ".py",
-      "lines": 669
+      "lines": 687
     },
     {
       "path": "scripts/vercel-setup-web.sh",
