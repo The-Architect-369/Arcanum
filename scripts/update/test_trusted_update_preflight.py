@@ -6,6 +6,8 @@ import copy
 import importlib.util
 import io
 import json
+import subprocess
+import sys
 import tempfile
 import unittest
 from pathlib import Path
@@ -505,6 +507,148 @@ class TrustedUpdatePreflightTests(unittest.TestCase):
                     path.stream.read_sizes,
                     [limit + 1],
                 )
+
+
+    def test_22_overlong_version_name_rejected(self):
+        manifest = load("valid.json")
+        observation = load("candidate-observation.json")
+        manifest["package"]["versionName"] = "v" * 256
+        observation["versionName"] = "v" * 256
+        self.assertEqual(
+            inspect_values(
+                manifest=manifest,
+                observation=observation,
+            )["decision"],
+            "pass",
+        )
+
+        manifest["package"]["versionName"] = "v" * 257
+        observation["versionName"] = "v" * 257
+
+        with self.assertRaisesRegex(
+            preflight.PreflightError,
+            "versionName exceeds 256 characters",
+        ):
+            inspect_values(
+                manifest=manifest,
+                observation=observation,
+            )
+
+    def test_23_overlong_abi_rejected(self):
+        manifest = load("valid.json")
+        trust = load("trust-context.json")
+        observation = load("candidate-observation.json")
+        long_abi = "a" * 257
+        manifest["compatibility"]["abis"] = [long_abi]
+        trust["deviceAbis"] = [long_abi]
+        observation["abis"] = [long_abi]
+
+        with self.assertRaisesRegex(
+            preflight.PreflightError,
+            "abis\\[\\] exceeds 256 characters",
+        ):
+            inspect_values(
+                manifest=manifest,
+                trust=trust,
+                observation=observation,
+            )
+
+    def test_24_overlong_data_contract_rejected(self):
+        manifest = load("valid.json")
+        manifest["compatibility"]["dataContracts"] = [
+            "a" * 257,
+            *manifest["compatibility"]["dataContracts"],
+        ]
+
+        with self.assertRaisesRegex(
+            preflight.PreflightError,
+            "dataContracts\\[\\] exceeds 256 characters",
+        ):
+            inspect_values(manifest=manifest)
+
+    def test_25_malformed_inputs_have_reject_receipts(self):
+        valid = fixture("valid.json").read_bytes()
+        trust = fixture("trust-context.json").read_bytes()
+        observation = fixture(
+            "candidate-observation.json"
+        ).read_bytes()
+
+        cases = (
+            (
+                "manifest overflow",
+                "manifest",
+                b'{"schemaVersion":1e999}',
+            ),
+            (
+                "manifest surrogate",
+                "manifest",
+                b'{"schemaVersion":"\\ud800"}',
+            ),
+            (
+                "manifest huge integer",
+                "manifest",
+                b'{"schemaVersion":' + b"9" * 5000 + b"}",
+            ),
+            (
+                "manifest nesting",
+                "manifest",
+                b"[" * 1100 + b"0" + b"]" * 1100,
+            ),
+            (
+                "trust overflow",
+                "trust",
+                b'{"deviceAndroidApi":1e999}',
+            ),
+            (
+                "observation surrogate",
+                "observation",
+                b'{"applicationId":"\\ud800"}',
+            ),
+        )
+
+        for label, field, malformed in cases:
+            with self.subTest(label=label):
+                with tempfile.TemporaryDirectory() as td:
+                    paths = {
+                        "manifest": Path(td) / "manifest.json",
+                        "trust": Path(td) / "trust.json",
+                        "observation": Path(td) / "observation.json",
+                    }
+                    for name, raw in (
+                        ("manifest", valid),
+                        ("trust", trust),
+                        ("observation", observation),
+                    ):
+                        paths[name].write_bytes(
+                            malformed if name == field else raw
+                        )
+
+                    result = subprocess.run(
+                        (
+                            sys.executable,
+                            str(
+                                ROOT
+                                / "scripts/update/"
+                                "trusted_update_preflight.py"
+                            ),
+                            "--manifest",
+                            str(paths["manifest"]),
+                            "--trust-context",
+                            str(paths["trust"]),
+                            "--observation",
+                            str(paths["observation"]),
+                        ),
+                        cwd=ROOT,
+                        capture_output=True,
+                        text=True,
+                        check=False,
+                    )
+
+                    self.assertEqual(result.returncode, 1)
+                    self.assertEqual(result.stderr, "")
+                    receipt = json.loads(result.stdout)
+                    self.assertEqual(receipt["decision"], "reject")
+                    self.assertIn("reason", receipt)
 
 
 if __name__ == "__main__":

@@ -90,12 +90,15 @@ def load_json(path: Path, *, manifest: bool = False) -> Any:
                 f"forbidden JSON constant: {token}"
             ),
         )
+        canonical = canonical_bytes(value)
     except PreflightError:
         raise
     except json.JSONDecodeError as exc:
         reject(f"{path.name} malformed JSON: {exc.msg}")
+    except (ValueError, OverflowError, RecursionError):
+        reject(f"{path.name} malformed JSON")
 
-    if raw != canonical_bytes(value):
+    if raw != canonical:
         reject(f"{path.name} is not canonical JSON")
 
     return value
@@ -123,9 +126,16 @@ def closed_object(
     return value
 
 
-def nonempty_string(value: Any, label: str) -> str:
+def nonempty_string(
+    value: Any,
+    label: str,
+    *,
+    maximum: int | None = None,
+) -> str:
     if not isinstance(value, str) or not value:
         reject(f"{label} must be a non-empty string")
+    if maximum is not None and len(value) > maximum:
+        reject(f"{label} exceeds {maximum} characters")
     return value
 
 
@@ -165,7 +175,11 @@ def sorted_unique_strings(
         reject(f"{label} must not be empty")
 
     items = [
-        nonempty_string(item, f"{label}[]")
+        nonempty_string(
+            item,
+            f"{label}[]",
+            maximum=256,
+        )
         for item in value
     ]
 
@@ -205,7 +219,11 @@ def parse_manifest(value: Any) -> dict[str, Any]:
         reject("wrong package identity")
 
     positive_int(package["versionCode"], "versionCode")
-    nonempty_string(package["versionName"], "versionName")
+    nonempty_string(
+        package["versionName"],
+        "versionName",
+        maximum=256,
+    )
 
     artifact = closed_object(
         root["artifact"],
