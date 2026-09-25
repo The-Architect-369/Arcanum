@@ -239,8 +239,12 @@ python3 -m py_compile \
   scripts/mobile/arcanum-broker-lifecycle.py \
   scripts/mobile/arcanum-workspace-verify.py \
   scripts/mobile/test-arcanum-workspace-verify.py \
-  scripts/verify-ce-w04-a13.py
+  scripts/update/trusted_update_preflight.py \
+  scripts/update/test_trusted_update_preflight.py \
+  scripts/verify-ce-w04-a13.py \
+  scripts/verify-ce-w04-a14.py
 jq empty docs/governance/architectgpt/architect-proposal-envelope.schema.json
+jq empty docs/specs/app/trusted-update-manifest.schema.json
 bash -n scripts/architect/test-termux-broker.sh
 bash -n scripts/architect/test-architect-runtime.sh
 bash -n scripts/architect/test-proposal-envelope.sh
@@ -249,13 +253,14 @@ bash -n scripts/mobile/arcanum-operator-setup.sh
 bash -n scripts/mobile/test-arcanum-operator.sh
 bash -n scripts/mobile/test-arcanum-broker-lifecycle.sh
 python3 scripts/verify-ce-w04-a13.py
+python3 scripts/verify-ce-w04-a14.py
 bash scripts/architect/test-termux-broker.sh
 bash scripts/architect/test-architect-runtime.sh
 bash scripts/architect/test-proposal-envelope.sh
 bash scripts/mobile/test-arcanum-operator.sh
 bash scripts/mobile/test-arcanum-broker-lifecycle.sh
 python3 scripts/mobile/test-arcanum-workspace-verify.py
-ok "local Workbench/runtime boundary, A12 proposal review, A13.5 native UX/artifact handoff, and advisory agent roster passed"
+ok "local Workbench/runtime boundary, A12 proposal review, A13.5 native UX/artifact handoff, and advisory agent roster passed; A14.1 offline trusted-update preflight passed"
 
 step 14 "Production smoke verifier"
 jq empty docs/governance/architectgpt/production-smoke.schema.json

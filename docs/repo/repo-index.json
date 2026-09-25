@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-09-22T13:31:06Z",
+  "generated_at": "2026-09-25T14:01:55Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "220f5ac6d",
+  "commit": "e646a4a47",
   "generator_version": "1.5",
   "files": [
     {
@@ -4021,11 +4021,11 @@
     {
       "path": "docs/roadmap/construction-era-arc-ledger.md",
       "type": "file",
-      "size_bytes": 16155,
-      "last_modified_commit": "d730950f3",
+      "size_bytes": 17415,
+      "last_modified_commit": "e4d921bdb",
       "is_empty": false,
       "extension": ".md",
-      "lines": 229
+      "lines": 262
     },
     {
       "path": "docs/roadmap/construction-era-roadmap.md",
@@ -4280,6 +4280,15 @@
       "lines": 166
     },
     {
+      "path": "docs/specs/app/ce-w04-a14-trusted-update-preflight.md",
+      "type": "file",
+      "size_bytes": 3188,
+      "last_modified_commit": "e4d921bdb",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 128
+    },
+    {
       "path": "docs/specs/app/ce-w04-seed-node-alpha.md",
       "type": "file",
       "size_bytes": 17200,
@@ -4368,6 +4377,15 @@
       "is_empty": false,
       "extension": ".md",
       "lines": 47
+    },
+    {
+      "path": "docs/specs/app/trusted-update-manifest.schema.json",
+      "type": "file",
+      "size_bytes": 4241,
+      "last_modified_commit": "e4d921bdb",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 182
     },
     {
       "path": "docs/specs/app/vitae-authority-integration.md",
@@ -7358,6 +7376,24 @@
       "lines": 66
     },
     {
+      "path": "scripts/update/test_trusted_update_preflight.py",
+      "type": "file",
+      "size_bytes": 18835,
+      "last_modified_commit": "e646a4a47",
+      "is_empty": false,
+      "extension": ".py",
+      "lines": 655
+    },
+    {
+      "path": "scripts/update/trusted_update_preflight.py",
+      "type": "file",
+      "size_bytes": 15547,
+      "last_modified_commit": "e646a4a47",
+      "is_empty": false,
+      "extension": ".py",
+      "lines": 687
+    },
+    {
       "path": "scripts/vercel-setup-web.sh",
       "type": "file",
       "size_bytes": 728,
@@ -7475,6 +7511,15 @@
       "lines": 613
     },
     {
+      "path": "scripts/verify-ce-w04-a14.py",
+      "type": "file",
+      "size_bytes": 7879,
+      "last_modified_commit": "e4d921bdb",
+      "is_empty": false,
+      "extension": ".py",
+      "lines": 391
+    },
+    {
       "path": "scripts/verify-ce-w04-architect-observer.py",
       "type": "file",
       "size_bytes": 14793,
@@ -7495,11 +7540,110 @@
     {
       "path": "scripts/verify-sync.sh",
       "type": "file",
-      "size_bytes": 11798,
-      "last_modified_commit": "0dfcbc839",
+      "size_bytes": 12074,
+      "last_modified_commit": "e4d921bdb",
       "is_empty": false,
       "extension": ".sh",
-      "lines": 273
+      "lines": 278
+    },
+    {
+      "path": "tests/fixtures/trusted-update/candidate-observation.json",
+      "type": "file",
+      "size_bytes": 354,
+      "last_modified_commit": "e4d921bdb",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 1
+    },
+    {
+      "path": "tests/fixtures/trusted-update/downgrade-observation.json",
+      "type": "file",
+      "size_bytes": 354,
+      "last_modified_commit": "e4d921bdb",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 1
+    },
+    {
+      "path": "tests/fixtures/trusted-update/downgrade.json",
+      "type": "file",
+      "size_bytes": 941,
+      "last_modified_commit": "e4d921bdb",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 1
+    },
+    {
+      "path": "tests/fixtures/trusted-update/runtime-incompatible.json",
+      "type": "file",
+      "size_bytes": 941,
+      "last_modified_commit": "e4d921bdb",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 1
+    },
+    {
+      "path": "tests/fixtures/trusted-update/trust-context.json",
+      "type": "file",
+      "size_bytes": 398,
+      "last_modified_commit": "e4d921bdb",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 1
+    },
+    {
+      "path": "tests/fixtures/trusted-update/unknown-field.json",
+      "type": "file",
+      "size_bytes": 989,
+      "last_modified_commit": "e4d921bdb",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 1
+    },
+    {
+      "path": "tests/fixtures/trusted-update/untrusted-signer-observation.json",
+      "type": "file",
+      "size_bytes": 354,
+      "last_modified_commit": "e4d921bdb",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 1
+    },
+    {
+      "path": "tests/fixtures/trusted-update/untrusted-signer.json",
+      "type": "file",
+      "size_bytes": 941,
+      "last_modified_commit": "e4d921bdb",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 1
+    },
+    {
+      "path": "tests/fixtures/trusted-update/valid.json",
+      "type": "file",
+      "size_bytes": 941,
+      "last_modified_commit": "e4d921bdb",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 1
+    },
+    {
+      "path": "tests/fixtures/trusted-update/wrong-digest-observation.json",
+      "type": "file",
+      "size_bytes": 354,
+      "last_modified_commit": "e4d921bdb",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 1
+    },
+    {
+      "path": "tests/fixtures/trusted-update/wrong-package.json",
+      "type": "file",
+      "size_bytes": 936,
+      "last_modified_commit": "e4d921bdb",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 1
     },
     {
       "path": "tsconfig.json",
