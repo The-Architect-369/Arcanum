@@ -10,6 +10,7 @@ from pathlib import Path
 from typing import Any
 
 MAX_MANIFEST_BYTES = 16 * 1024
+MAX_AUXILIARY_INPUT_BYTES = 16 * 1024
 MAX_APK_BYTES = 256 * 1024 * 1024
 
 SCHEMA_VERSION = "1.0"
@@ -62,10 +63,19 @@ def canonical_bytes(value: Any) -> bytes:
 
 
 def load_json(path: Path, *, manifest: bool = False) -> Any:
-    raw = path.read_bytes()
+    limit = (
+        MAX_MANIFEST_BYTES
+        if manifest
+        else MAX_AUXILIARY_INPUT_BYTES
+    )
 
-    if manifest and len(raw) > MAX_MANIFEST_BYTES:
-        reject("manifest exceeds 16 KiB")
+    with path.open("rb") as source:
+        raw = source.read(limit + 1)
+
+    if len(raw) > limit:
+        if manifest:
+            reject("manifest exceeds 16 KiB")
+        reject(f"{path.name} exceeds 16 KiB")
 
     try:
         text = raw.decode("utf-8", errors="strict")

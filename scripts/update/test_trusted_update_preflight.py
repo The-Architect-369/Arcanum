@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import copy
 import importlib.util
+import io
 import json
 import tempfile
 import unittest
@@ -411,6 +412,98 @@ class TrustedUpdatePreflightTests(unittest.TestCase):
                     fixture(
                         "candidate-observation.json"
                     ),
+                )
+
+
+    def test_19_oversized_trust_context_rejected(self):
+        with tempfile.TemporaryDirectory() as td:
+            path = Path(td) / "trust.json"
+            path.write_bytes(
+                b" " * (
+                    preflight.MAX_AUXILIARY_INPUT_BYTES
+                    + 1
+                )
+            )
+
+            with self.assertRaisesRegex(
+                preflight.PreflightError,
+                "trust.json exceeds 16 KiB",
+            ):
+                preflight.inspect(
+                    fixture("valid.json"),
+                    path,
+                    fixture("candidate-observation.json"),
+                )
+
+    def test_20_oversized_observation_rejected(self):
+        with tempfile.TemporaryDirectory() as td:
+            path = Path(td) / "observation.json"
+            path.write_bytes(
+                b" " * (
+                    preflight.MAX_AUXILIARY_INPUT_BYTES
+                    + 1
+                )
+            )
+
+            with self.assertRaisesRegex(
+                preflight.PreflightError,
+                "observation.json exceeds 16 KiB",
+            ):
+                preflight.inspect(
+                    fixture("valid.json"),
+                    fixture("trust-context.json"),
+                    path,
+                )
+
+    def test_21_reads_stop_after_limit_plus_one(self):
+        class GuardedStream(io.BytesIO):
+            def __init__(self, data, limit):
+                super().__init__(data)
+                self.limit = limit
+                self.read_sizes = []
+
+            def read(self, size=-1):
+                self.read_sizes.append(size)
+                if size < 0 or size > self.limit + 1:
+                    raise AssertionError("unbounded input read")
+                return super().read(size)
+
+        class GuardedPath:
+            name = "oversized.json"
+
+            def __init__(self, limit):
+                self.stream = GuardedStream(
+                    b" " * (limit + 100),
+                    limit,
+                )
+
+            def open(self, mode):
+                self.assert_mode(mode)
+                return self.stream
+
+            @staticmethod
+            def assert_mode(mode):
+                if mode != "rb":
+                    raise AssertionError("input is not read as bytes")
+
+        for manifest, limit in (
+            (True, preflight.MAX_MANIFEST_BYTES),
+            (False, preflight.MAX_AUXILIARY_INPUT_BYTES),
+        ):
+            with self.subTest(manifest=manifest):
+                path = GuardedPath(limit)
+
+                with self.assertRaises(
+                    preflight.PreflightError
+                ):
+                    preflight.load_json(
+                        path,
+                        manifest=manifest,
+                    )
+
+                self.assertEqual(
+                    path.stream.read_sizes,
+                    [limit + 1],
                 )
 
 
