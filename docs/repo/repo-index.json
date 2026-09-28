@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-09-25T14:01:55Z",
+  "generated_at": "2026-09-27T10:18:57Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "e646a4a47",
+  "commit": "4b5ef4dcd",
   "generator_version": "1.5",
   "files": [
     {
@@ -633,6 +633,42 @@
       "is_empty": false,
       "extension": ".kts",
       "lines": 20
+    },
+    {
+      "path": "apps/public-site/README.md",
+      "type": "file",
+      "size_bytes": 1099,
+      "last_modified_commit": "588f6ebad",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 9
+    },
+    {
+      "path": "apps/public-site/index.html",
+      "type": "file",
+      "size_bytes": 5661,
+      "last_modified_commit": "4b5ef4dcd",
+      "is_empty": false,
+      "extension": ".html",
+      "lines": 43
+    },
+    {
+      "path": "apps/public-site/logo-arcanum.svg",
+      "type": "file",
+      "size_bytes": 1655,
+      "last_modified_commit": "588f6ebad",
+      "is_empty": false,
+      "extension": ".svg",
+      "lines": 41
+    },
+    {
+      "path": "apps/public-site/styles.css",
+      "type": "file",
+      "size_bytes": 4339,
+      "last_modified_commit": "27d3a24fe",
+      "is_empty": false,
+      "extension": ".css",
+      "lines": 3
     },
     {
       "path": "apps/web/.gitignore",
