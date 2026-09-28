@@ -1,16 +1,15 @@
 import "../globals.css";
 import "./styles/motion.css";
 import "./styles/utilities.css";
-import ClientLayout from "./client-layout";
 import type { Metadata } from "next";
 
 const title = "Arcanum";
 const description =
-  "Decentralized identity. Cosmic timing. Community-owned network.";
+  "Explore Arcanum's public work and follow verified Android releases when available.";
 const ogImage = "/favicon.ico";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://thearcanum.net"),
+  metadataBase: new URL("https://arcanum-umber.vercel.app"),
   title: { default: title, template: `%s • ${title}` },
   description,
   applicationName: "Arcanum",
@@ -42,5 +41,5 @@ export default function MarketingLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <ClientLayout>{children}</ClientLayout>;
+  return children;
 }

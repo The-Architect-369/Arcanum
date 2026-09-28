@@ -27,10 +27,10 @@ export default function Header({ brand = "Arcanum" }: { brand?: string }) {
   const handleHomeClick = useCallback(
     (e: React.MouseEvent<HTMLAnchorElement>) => {
       e.preventDefault();
-      const isHome = pathname === "/";
+      const isHome = pathname === "/alpha";
       const hero = document.getElementById("hero");
       if (isHome && hero) hero.scrollIntoView({ behavior: "smooth" });
-      else router.push("/#hero");
+      else router.push("/alpha#hero");
     },
     [pathname, router]
   );
@@ -38,10 +38,10 @@ export default function Header({ brand = "Arcanum" }: { brand?: string }) {
   const handleActivateClick = useCallback(
     (e: React.MouseEvent<HTMLAnchorElement>) => {
       e.preventDefault();
-      const isHome = pathname === "/";
+      const isHome = pathname === "/alpha";
       const activate = document.getElementById("activate");
       if (isHome && activate) activate.scrollIntoView({ behavior: "smooth" });
-      else router.push("/#activate");
+      else router.push("/alpha#activate");
     },
     [pathname, router]
   );
@@ -56,7 +56,7 @@ export default function Header({ brand = "Arcanum" }: { brand?: string }) {
   return (
     <header className="sticky top-0 z-50 backdrop-blur-md bg-black/30 border-b border-white/10">
       <div className="mx-auto flex h-14 w-full max-w-screen-xl items-center justify-between px-4 relative">
-        <Link href="/#hero" onClick={handleHomeClick} aria-label="Home" className="cursor-pointer" prefetch={false}>
+        <Link href="/alpha#hero" onClick={handleHomeClick} aria-label="Alpha home" className="cursor-pointer" prefetch={false}>
           <div className="flex items-center gap-2 select-none">
             <div className="relative h-7 w-7 overflow-hidden rounded-md ring-1 ring-white/10 bg-white/5">
               <Image src="/logo-arcanum.svg" alt={`${brand} logo`} fill priority sizes="28px" className="p-1 object-contain" />
@@ -95,7 +95,7 @@ export default function Header({ brand = "Arcanum" }: { brand?: string }) {
           </div>
 
           <Link
-            href="/#activate"
+            href="/alpha#activate"
             onClick={handleActivateClick}
             className="inline-flex h-9 items-center rounded-xl px-3 text-xs font-medium bg-gradient-to-r from-[#a78bfa]/20 to-[#93c5fd]/20 ring-1 ring-white/10 hover:bg-white/10 transition-all duration-300"
             aria-label="Activate Account"
