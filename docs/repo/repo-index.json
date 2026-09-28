@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-09-27T10:18:57Z",
+  "generated_at": "2026-09-28T03:08:13Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "4b5ef4dcd",
+  "commit": "e0607fa81",
   "generator_version": "1.5",
   "files": [
     {
@@ -725,15 +725,6 @@
       "lines": 94
     },
     {
-      "path": "apps/web/middleware.ts",
-      "type": "file",
-      "size_bytes": 1106,
-      "last_modified_commit": "616d0b0d5",
-      "is_empty": false,
-      "extension": ".ts",
-      "lines": 44
-    },
-    {
       "path": "apps/web/next.config.mjs",
       "type": "file",
       "size_bytes": 153,
@@ -1391,6 +1382,15 @@
       "lines": 7
     },
     {
+      "path": "apps/web/src/app/(marketing)/alpha/page.tsx",
+      "type": "file",
+      "size_bytes": 1332,
+      "last_modified_commit": "e00ad2ff5",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 44
+    },
+    {
       "path": "apps/web/src/app/(marketing)/client-layout.tsx",
       "type": "file",
       "size_bytes": 984,
@@ -1402,20 +1402,29 @@
     {
       "path": "apps/web/src/app/(marketing)/layout.tsx",
       "type": "file",
-      "size_bytes": 1049,
-      "last_modified_commit": "781e2a017",
+      "size_bytes": 1003,
+      "last_modified_commit": "e00ad2ff5",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 46
+      "lines": 45
     },
     {
       "path": "apps/web/src/app/(marketing)/page.tsx",
       "type": "file",
-      "size_bytes": 1258,
-      "last_modified_commit": "af981eff6",
+      "size_bytes": 5570,
+      "last_modified_commit": "e00ad2ff5",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 43
+      "lines": 73
+    },
+    {
+      "path": "apps/web/src/app/(marketing)/public-home.css",
+      "type": "file",
+      "size_bytes": 5707,
+      "last_modified_commit": "e00ad2ff5",
+      "is_empty": false,
+      "extension": ".css",
+      "lines": 78
     },
     {
       "path": "apps/web/src/app/(marketing)/styles/globals.css",
@@ -1753,8 +1762,8 @@
     {
       "path": "apps/web/src/components/ui/Header.tsx",
       "type": "file",
-      "size_bytes": 4343,
-      "last_modified_commit": "79887cc9d",
+      "size_bytes": 4373,
+      "last_modified_commit": "e00ad2ff5",
       "is_empty": false,
       "extension": ".tsx",
       "lines": 110
@@ -2568,6 +2577,15 @@
       "is_empty": false,
       "extension": ".ts",
       "lines": 217
+    },
+    {
+      "path": "apps/web/src/middleware.ts",
+      "type": "file",
+      "size_bytes": 1358,
+      "last_modified_commit": "e0607fa81",
+      "is_empty": false,
+      "extension": ".ts",
+      "lines": 52
     },
     {
       "path": "apps/web/src/state/useAccount.ts",

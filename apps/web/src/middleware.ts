@@ -8,6 +8,12 @@ export function middleware(req: NextRequest) {
 
   const { pathname, searchParams } = req.nextUrl;
 
+  // The public download home is available on desktop and mobile. Existing
+  // alpha routes retain their current device gate until separately reviewed.
+  if (pathname === "/") {
+    return NextResponse.next();
+  }
+
   // Allow Next internals + assets
   const allowList = [
     "/mobile-only",
@@ -15,6 +21,8 @@ export function middleware(req: NextRequest) {
     "/manifest.json",
     "/icons",
     "/favicon.ico",
+    "/logo-arcanum.svg",
+    "/sw.js",
   ];
 
   if (allowList.some((p) => pathname.startsWith(p))) {

@@ -1,0 +1,78 @@
+/* The public home shares a deployment with the transitional alpha app.
+   Keep these rules within its own root so alpha screens retain their layout. */
+html:has(.public-home), body:has(.public-home) {
+  height: auto;
+  min-height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.public-home {
+  --public-bg: #07111f;
+  --public-surface: #0c1b2d;
+  --public-line: #294057;
+  --public-ink: #edf5fa;
+  --public-muted: #b1c4d5;
+  --public-bright: #6de4e8;
+  --public-gold: #ecc98a;
+  min-height: 100dvh;
+  background: radial-gradient(ellipse 65% 52% at 83% 5%, #17344d 0, transparent 67%), var(--public-bg);
+  color: var(--public-ink);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.6;
+}
+
+.public-home *, .public-home *::before, .public-home *::after { box-sizing: border-box; }
+.public-home a { color: inherit; }
+.public-home a:focus-visible { outline: 2px solid var(--public-bright); outline-offset: 4px; }
+.public-shell { width: min(1160px, calc(100% - 48px)); margin-inline: auto; }
+.public-skip { position: absolute; left: 10px; top: -80px; background: var(--public-bright); color: var(--public-bg) !important; padding: 8px 14px; z-index: 100; }
+.public-skip:focus { top: 10px; }
+
+.public-header { border-bottom: 1px solid #ffffff1a; }
+.public-nav { min-height: 82px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+.public-brand { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; letter-spacing: .23em; font-weight: 700; font-size: 16px; }
+.public-brand img { border-radius: 50%; }
+.public-nav nav { display: flex; flex-wrap: wrap; gap: 12px 30px; }
+.public-nav nav a { font-size: 14px; color: var(--public-muted); text-decoration: none; }
+.public-nav nav a:hover, .public-text-link:hover, .public-card-action a:hover, .public-footer a:hover { color: var(--public-bright); }
+
+.public-hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(350px, .83fr); gap: clamp(32px, 5vw, 100px); align-items: center; padding-block: clamp(64px, 10vw, 146px) 112px; }
+.public-eyebrow, .public-label { font-size: 12px; font-weight: 750; letter-spacing: .19em; color: var(--public-bright); text-transform: uppercase; }
+.public-hero h1 { font-size: clamp(44px, 5.3vw, 76px); font-weight: 600; letter-spacing: -.065em; line-height: 1.08; margin: 20px 0 26px; max-width: 760px; }
+.public-hero h1 em { font-style: normal; color: var(--public-bright); }
+.public-intro { font-size: clamp(17px, 1.8vw, 20px); max-width: 570px; color: var(--public-muted); margin-bottom: 30px; }
+.public-text-link { font-size: 15px; font-weight: 650; text-decoration: none; border-bottom: 1px solid #6de4e879; padding-bottom: 5px; }
+
+.public-release-card { background: linear-gradient(155deg, #142c43, var(--public-surface) 48%); border: 1px solid #39536a; box-shadow: 0 30px 90px #0005; position: relative; }
+.public-release-card::before { content: ""; position: absolute; top: -1px; left: 25px; width: 78px; height: 2px; background: var(--public-bright); }
+.public-card-top { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; border-bottom: 1px solid var(--public-line); padding: 20px 26px; }
+.public-status { color: var(--public-gold); border: 1px solid #ecc98a5c; background: #ecc98a0d; padding: 5px 10px; font-size: 13px; white-space: nowrap; }
+.public-card-body { padding: 31px 28px 19px; }
+.public-card-kicker { color: var(--public-bright); font-size: 14px; margin: 0; }
+.public-card-body h2 { font-size: clamp(28px, 3vw, 39px); line-height: 1.2; letter-spacing: -.04em; margin: 7px 0 19px; }
+.public-card-body p:last-child { color: var(--public-muted); font-size: 16px; margin: 0; max-width: 46ch; }
+.public-card-action { padding: 18px 28px 30px; display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+.public-unavailable { display: inline-block; background: #b5c9d526; border: 1px solid #b5c9d550; color: #c2d1db; font-weight: 650; font-size: 14px; padding: 13px 17px; }
+.public-card-action a { font-size: 14px; text-decoration: none; }
+.public-card-foot { border-top: 1px solid var(--public-line); padding: 14px 28px; font-size: 13px; color: var(--public-muted); }
+
+.public-below { border-top: 1px solid var(--public-line); display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 7vw, 100px); padding-block: 66px 100px; }
+.public-story h2 { font-size: clamp(27px, 3vw, 38px); letter-spacing: -.04em; line-height: 1.17; margin: 15px 0; }
+.public-story p:not(.public-eyebrow) { font-size: 16px; color: var(--public-muted); max-width: 54ch; margin-bottom: 25px; }
+.public-resource-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; }
+.public-resource-list li { border-bottom: 1px solid var(--public-line); padding-bottom: 12px; }
+.public-resource-list a { text-decoration: none; }
+.public-resource-list a:hover { color: var(--public-bright); }
+.public-resource-list span { font-size: 12px; color: var(--public-gold); margin-left: 8px; }
+.public-footer { border-top: 1px solid var(--public-line); background: #05101c; }
+.public-footer-inner { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding-block: 28px; color: var(--public-muted); font-size: 14px; }
+.public-footer a { text-decoration: none; }
+
+@media (max-width: 800px) {
+  .public-hero { grid-template-columns: 1fr; padding-block: 62px 75px; }
+  .public-below { grid-template-columns: 1fr; padding-block: 56px 75px; }
+  .public-nav { align-items: flex-start; flex-direction: column; padding-block: 18px; gap: 16px; }
+  .public-nav nav { gap: 10px 22px; }
+  .public-shell { width: min(100% - 36px, 650px); }
+}
