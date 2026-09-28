@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-09-28T02:59:10Z",
+  "generated_at": "2026-09-28T03:08:13Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "e00ad2ff5",
+  "commit": "e0607fa81",
   "generator_version": "1.5",
   "files": [
     {
@@ -723,15 +723,6 @@
       "is_empty": false,
       "extension": ".mjs",
       "lines": 94
-    },
-    {
-      "path": "apps/web/middleware.ts",
-      "type": "file",
-      "size_bytes": 1322,
-      "last_modified_commit": "e00ad2ff5",
-      "is_empty": false,
-      "extension": ".ts",
-      "lines": 50
     },
     {
       "path": "apps/web/next.config.mjs",
@@ -2586,6 +2577,15 @@
       "is_empty": false,
       "extension": ".ts",
       "lines": 217
+    },
+    {
+      "path": "apps/web/src/middleware.ts",
+      "type": "file",
+      "size_bytes": 1358,
+      "last_modified_commit": "e0607fa81",
+      "is_empty": false,
+      "extension": ".ts",
+      "lines": 52
     },
     {
       "path": "apps/web/src/state/useAccount.ts",
