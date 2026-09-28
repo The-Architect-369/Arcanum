@@ -76,3 +76,26 @@ Effect-state observation for this repository adoption candidate:
 Next gate: generate the deterministic repository-index companion from the final source
 commit, run exact-head verification, then obtain the separately applicable authorization
 before any canonical adoption to `main`.
+
+## CONTINUITY-EVENT — 2026-09-28 — Public Arcanum website v2 candidate
+
+- Authority: Human-directed supporting public-site refinement and APK-publication pause.
+- Baseline: `main@77b59d6a2d0f46f17e6334f2f954472b8dc8b66e`.
+- Work ref: `work/public-home-v2-20260928`.
+- Work record: [ARC-55](https://app.notion.com/p/3e92bb4420b88151a37debeeb772891c).
+- Scope: fuller public introduction, dedicated TEMPUS/HOPE/Vitae/ARCnet/MANA pages,
+  persistent navigation, principles/source readings, journal and machine-readable
+  editorial log; tests, source/index commits, push and PR preview.
+- Source audit and resumption guide: [Public site v2](../../architecture/public-site-v2.md).
+- Canon impact: none; editorial pillars do not replace canonical modules or amend doctrine.
+- APK state: publication paused; A14.1 remains integrated, A14 open, A15 blocked.
+- Effect limit: branch publication and PR preview are distinct from main merge and its
+  automatic production deployment. No APK, device, private Journey, preserved draft,
+  stash, or Great Journey project change is part of this candidate.
+- Verification: final exact-head receipts belong to the PR/CI and ARC-55 handoff.
+  This source event does not pre-assert completion of checks or production adoption.
+- Continuity: no ARC-SES identifier allocated; external session sequence remains
+  unreconciled with this active repository ledger.
+
+Next gate: verify the source/index pair, publish the reviewable PR and preview,
+then review the public experience before any separately authorized main merge.
