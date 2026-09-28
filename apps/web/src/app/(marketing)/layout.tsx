@@ -1,15 +1,15 @@
 import "../globals.css";
 import "./styles/motion.css";
 import "./styles/utilities.css";
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 
 const title = "Arcanum";
 const description =
-  "Explore Arcanum's public work and follow verified Android releases when available.";
+  "Discover Arcanum: reflection with HOPE, rhythm with TEMPUS, learning with Vitae, and the developing ARCnet network and MANA economy.";
 const ogImage = "/favicon.ico";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://arcanum-umber.vercel.app"),
+  metadataBase: new URL("https://the-arcanum.net"),
   title: { default: title, template: `%s • ${title}` },
   description,
   applicationName: "Arcanum",
@@ -34,6 +34,13 @@ export const metadata: Metadata = {
     description,
     images: [ogImage],
   },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  userScalable: true,
 };
 
 export default function MarketingLayout({

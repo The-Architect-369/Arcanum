@@ -1,73 +1,162 @@
-import Image from "next/image";
-import "./public-home.css";
-
-const repository = "https://github.com/The-Architect-369/Arcanum";
-
+import type { Metadata } from "next";
+import Link from "next/link";
+import {
+  PublicShell,
+  PillarCards,
+  TempusFigure,
+} from "@/components/public/PublicShell";
+export const metadata: Metadata = {
+  title: "Arcanum — A space for becoming",
+  alternates: { canonical: "/" },
+};
 export default function HomePage() {
   return (
-    <div className="public-home">
-      <a className="public-skip" href="#public-main">Skip to content</a>
-      <header className="public-header">
-        <div className="public-shell public-nav">
-          <a className="public-brand" href="/" aria-label="Arcanum home">
-            <Image src="/logo-arcanum.svg" alt="" width={38} height={38} priority />
-            <span>ARCANUM</span>
-          </a>
-          <nav aria-label="Main navigation">
-            <a href="#download">Download</a>
-            <a href="#verify">Updates &amp; verification</a>
-            <a href="#project">The project</a>
-            <a href="#resources">Documents</a>
-            <a href={repository} rel="noopener noreferrer">GitHub ↗</a>
-          </nav>
-        </div>
-      </header>
-      <main id="public-main">
-        <div className="public-shell public-hero">
-          <div className="public-hero-copy">
-            <p className="public-eyebrow">ARCnet / Pre-Genesis</p>
-            <h1>A network taking shape.<br /><em>An open path inside.</em></h1>
-            <p className="public-intro">Arcanum is the developing application ecosystem for ARCnet, a network designed around human agency, learning, reflection, and meaningful action. Explore its public work and follow each release as it becomes ready to use.</p>
-            <a className="public-text-link" href="#project">Explore the project ↗</a>
+    <PublicShell>
+      <section
+        className="public-shell public-hero"
+        aria-labelledby="home-title"
+      >
+        <div className="public-hero-copy">
+          <p className="public-eyebrow">
+            <span className="public-dot" /> Arcanum / Pre-Genesis
+          </p>
+          <h1 id="home-title">
+            A space for
+            <br />
+            <em>becoming.</em>
+          </h1>
+          <p className="public-intro">
+            A life has more depth than a profile. Arcanum is being built for
+            reflection, learning, and meaningful participation—with your agency
+            at its center.
+          </p>
+          <div className="public-actions">
+            <Link className="public-button" href="/about">
+              Discover the vision <span aria-hidden="true">↗</span>
+            </Link>
+            <Link className="public-text-link" href="/explore">
+              Explore the pillars →
+            </Link>
           </div>
-          <section className="public-release-card" id="download" aria-labelledby="release-title">
-            <div className="public-card-top"><span className="public-label">ANDROID NATIVE HOST</span><span className="public-status">Release pending</span></div>
-            <div className="public-card-body">
-              <p className="public-card-kicker">The next verified build</p>
-              <h2 id="release-title">Download Arcanum</h2>
-              <p>No public APK has been approved and verified for distribution yet. When one is ready, this page will provide the signed APK, its exact version, SHA-256 checksum, signer fingerprint, and source revision together.</p>
-            </div>
-            <div className="public-card-action"><span className="public-unavailable" aria-label="Download unavailable">Download not yet available</span><a href={repository} rel="noopener noreferrer">Inspect the source ↗</a></div>
-            <div className="public-card-foot">No placeholder installer. No unverified “latest” link.</div>
-          </section>
+          <p className="public-hero-note">
+            An application taking shape. A network called ARCnet.
+            <br />
+            An open invitation to understand both.
+          </p>
         </div>
-        <div className="public-shell public-below">
-          <section id="project" className="public-story" aria-labelledby="project-title">
-            <p className="public-eyebrow">01 / THE PROJECT</p>
-            <h2 id="project-title">Built for the human journey.</h2>
-            <p>Arcanum is the application experience; ARCnet is its developing network infrastructure. The project explores Hope for reflection, Tempus for time, and Vitae for learning. The source and documents describe both implemented work and proposals, each under its recorded status.</p>
-            <a className="public-text-link" href={repository} rel="noopener noreferrer">Read the repository ↗</a>
-          </section>
-          <section id="verify" className="public-story" aria-labelledby="verify-title">
-            <p className="public-eyebrow">02 / UPDATES &amp; RELEASE INTEGRITY</p>
-            <h2 id="verify-title">A release you can inspect.</h2>
-            <p>The machine-readable update route and the public download package are the next release priorities. The proposed channel at <code>updates.the-arcanum.net</code> remains separate from this human-facing page and is not live. Before a download appears here, the exact signed APK and immutable manifest must agree on version, artifact digest, signer, source revision, and provenance; both must be reachable directly without sign-in or redirects.</p>
-            <a className="public-text-link" href="#download">See download status ↑</a>
-          </section>
-          <section id="resources" className="public-story" aria-labelledby="resources-title">
-            <p className="public-eyebrow">03 / PUBLIC DOCUMENTS</p>
-            <h2 id="resources-title">Follow the recorded work.</h2>
-            <p>The public repository is the source for these documents. Edits become visible on GitHub through its review and merge process; this page links to their current versions and does not reproduce them automatically.</p>
-            <ul className="public-resource-list">
-              <li><a href={`${repository}/blob/main/docs/index.md`} rel="noopener noreferrer">Documentation index ↗</a></li>
-              <li><a href={`${repository}/blob/main/docs/roadmap/canonical-roadmap.md`} rel="noopener noreferrer">Roadmap ↗</a></li>
-              <li><a href={`${repository}/blob/main/docs/whitepaper/executive-summary.md`} rel="noopener noreferrer">Executive summary <span>Draft</span> ↗</a></li>
-              <li><a href={`${repository}/blob/main/docs/changelog.md`} rel="noopener noreferrer">Changelog <span>Draft</span> ↗</a></li>
-            </ul>
-          </section>
+        <TempusFigure />
+      </section>
+      <div className="public-foundation-strip">
+        <div className="public-shell">
+          <span>Human sovereignty</span>
+          <span>Participation by choice</span>
+          <span>Meaning without measurement</span>
         </div>
-      </main>
-      <footer className="public-footer"><div className="public-shell public-footer-inner"><span>© Arcanum · An open work in progress</span><a href={repository} rel="noopener noreferrer">Source on GitHub ↗</a></div></footer>
-    </div>
+      </div>
+      <section
+        className="public-shell public-section"
+        aria-labelledby="pillars-title"
+      >
+        <div className="public-section-heading">
+          <div>
+            <p className="public-eyebrow">01 / The structure</p>
+            <h2 id="pillars-title">
+              Distinct roles.
+              <br />
+              <em>One human journey.</em>
+            </h2>
+          </div>
+          <p>
+            Five ways into the project. Each has a purpose, and each has limits
+            that protect the person at the center. These are introductions to
+            the system’s design as it develops.
+          </p>
+        </div>
+        <PillarCards />
+      </section>
+      <section className="public-tempus-feature" aria-labelledby="tempus-title">
+        <div className="public-shell public-feature-grid">
+          <div>
+            <p className="public-eyebrow">02 / TEMPUS</p>
+            <h2 id="tempus-title">
+              Give your moments
+              <br />
+              <em>room to mean.</em>
+            </h2>
+            <p className="public-intro">
+              The world moves in cycles. Your life moves at its own pace. TEMPUS
+              brings time, place, and chosen practice into view—without turning
+              them into a demand.
+            </p>
+            <Link className="public-text-link" href="/explore/tempus">
+              Step inside TEMPUS →
+            </Link>
+          </div>
+          <div className="public-context-list">
+            <article>
+              <span>01</span>
+              <div>
+                <h3>Time</h3>
+                <p>Cycles, seasons, and moments of return.</p>
+              </div>
+            </article>
+            <article>
+              <span>02</span>
+              <div>
+                <h3>Place</h3>
+                <p>The context and point of view of an observation.</p>
+              </div>
+            </article>
+            <article>
+              <span>03</span>
+              <div>
+                <h3>Meaning</h3>
+                <p>The interpretation you choose to bring.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+      <section
+        className="public-shell public-section public-two-col"
+        aria-labelledby="network-title"
+      >
+        <div>
+          <p className="public-eyebrow">03 / Beyond the application</p>
+          <h2 id="network-title">
+            Arcanum is the experience.
+            <br />
+            <em>ARCnet is the foundation.</em>
+          </h2>
+        </div>
+        <div>
+          <p className="public-intro">
+            Reflection and learning belong to lived experience. Identity
+            continuity, factual receipts, and governed exchange need another
+            kind of infrastructure. ARCnet is being developed to hold that
+            distinction.
+          </p>
+          <Link className="public-text-link" href="/explore/arcnet">
+            Understand the network →
+          </Link>
+        </div>
+      </section>
+      <section
+        className="public-shell public-download-banner"
+        aria-labelledby="download-title"
+      >
+        <div>
+          <p className="public-eyebrow">The next chapter / Android</p>
+          <h2 id="download-title">Enter when it’s ready.</h2>
+          <p>
+            The public Android release is pending. We’re refining this
+            introduction before returning to verified APK publication.
+          </p>
+        </div>
+        <Link className="public-button public-button-outline" href="/download">
+          Release status <span aria-hidden="true">↗</span>
+        </Link>
+      </section>
+    </PublicShell>
   );
 }
