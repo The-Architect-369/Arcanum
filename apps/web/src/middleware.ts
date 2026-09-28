@@ -21,6 +21,8 @@ export function middleware(req: NextRequest) {
     "/manifest.json",
     "/icons",
     "/favicon.ico",
+    "/logo-arcanum.svg",
+    "/sw.js",
   ];
 
   if (allowList.some((p) => pathname.startsWith(p))) {
