@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-09-30T09:49:39Z",
+  "generated_at": "2026-09-30T11:24:36Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "f322cd6d3",
+  "commit": "7744e8ea3",
   "generator_version": "1.5",
   "files": [
     {
@@ -727,11 +727,11 @@
     {
       "path": "apps/web/next.config.mjs",
       "type": "file",
-      "size_bytes": 153,
-      "last_modified_commit": "f2063ca4c",
+      "size_bytes": 314,
+      "last_modified_commit": "7744e8ea3",
       "is_empty": false,
       "extension": ".mjs",
-      "lines": 4
+      "lines": 12
     },
     {
       "path": "apps/web/node/docker/Dockerfile",
@@ -921,6 +921,33 @@
       "is_empty": false,
       "extension": ".js",
       "lines": 84
+    },
+    {
+      "path": "apps/web/public/updates/a14-2/SHA256SUMS",
+      "type": "file",
+      "size_bytes": 179,
+      "last_modified_commit": "7744e8ea3",
+      "is_empty": false,
+      "extension": "",
+      "lines": 2
+    },
+    {
+      "path": "apps/web/public/updates/a14-2/arcanum-ce-w04-a14-2-d2e30b2.apk",
+      "type": "file",
+      "size_bytes": 4369747,
+      "last_modified_commit": "7744e8ea3",
+      "is_empty": false,
+      "extension": ".apk",
+      "lines": 0
+    },
+    {
+      "path": "apps/web/public/updates/a14-2/manifest.json",
+      "type": "file",
+      "size_bytes": 941,
+      "last_modified_commit": "7744e8ea3",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 1
     },
     {
       "path": "apps/web/public/vercel.svg",
@@ -2689,11 +2716,11 @@
     {
       "path": "apps/web/src/middleware.ts",
       "type": "file",
-      "size_bytes": 1386,
-      "last_modified_commit": "165b06b7b",
+      "size_bytes": 1691,
+      "last_modified_commit": "7744e8ea3",
       "is_empty": false,
       "extension": ".ts",
-      "lines": 53
+      "lines": 63
     },
     {
       "path": "apps/web/src/state/useAccount.ts",
