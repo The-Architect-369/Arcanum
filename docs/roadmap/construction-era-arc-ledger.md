@@ -255,6 +255,11 @@ remain separate A14 closure evidence. A passing inspection is review readiness,
 not installation permission. See
 `docs/specs/app/ce-w04-a14-2-distribution-inspection.md`.
 
+The advancing Android candidate identity is versionCode `19`, versionName
+`0.1.14-cew04-a14-2`, and implementation arc `CE-W04-A14.2`. A13.5's certified
+versionCode `18` remains pinned to its source history. The A14.2 candidate requires
+its own exact-head signed APK evidence before live distribution inspection.
+
 ## Promotion discipline
 
 An Arc may be implemented, tested, superseded, or abandoned without closing its parent wave. Arc completion does not imply wave certification, Genesis authority, protocol finality, governance authority, or promotion to `main`.

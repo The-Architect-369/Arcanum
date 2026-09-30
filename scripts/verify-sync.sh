@@ -244,7 +244,8 @@ python3 -m py_compile \
   scripts/update/trusted_distribution_inspection.py \
   scripts/update/test_trusted_distribution_inspection.py \
   scripts/verify-ce-w04-a13.py \
-  scripts/verify-ce-w04-a14.py
+  scripts/verify-ce-w04-a14.py \
+  scripts/verify-ce-w04-a14-2-candidate.py
 jq empty docs/governance/architectgpt/architect-proposal-envelope.schema.json
 jq empty docs/specs/app/trusted-update-manifest.schema.json
 bash -n scripts/architect/test-termux-broker.sh
@@ -256,6 +257,7 @@ bash -n scripts/mobile/test-arcanum-operator.sh
 bash -n scripts/mobile/test-arcanum-broker-lifecycle.sh
 python3 scripts/verify-ce-w04-a13.py
 python3 scripts/verify-ce-w04-a14.py
+python3 scripts/verify-ce-w04-a14-2-candidate.py
 python3 -B -m unittest scripts/update/test_trusted_distribution_inspection.py
 bash scripts/architect/test-termux-broker.sh
 bash scripts/architect/test-architect-runtime.sh
