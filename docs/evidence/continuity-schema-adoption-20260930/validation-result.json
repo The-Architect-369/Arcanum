@@ -1,0 +1,7 @@
+{
+  "schemaValid": true,
+  "positiveCases": 3,
+  "negativeCustodyCases": 5,
+  "fixtures": "synthetic",
+  "runtimeEffects": false
+}

@@ -78,3 +78,21 @@ historical stash. Great Journey remains an independent project.
 
 For continuity, begin with ARC-55, this document, the PR's exact head/base/checks,
 and the current main/deployment. Reconcile evidence before further source edits.
+
+## 2026-09-30 distribution reconciliation
+
+The Human Architect subsequently authorized A14.2 build and publication. PR69
+merged the candidate identity and PR70 published the independently inspected
+version19 APK. The earlier paused-publication instruction above records the
+2026-09-28 website scope; it is superseded for this authorized download-page
+correction. The download page now offers the exact inspected development
+candidate with its checksum, signer, source/build and update-manifest links.
+The existing PWA manifest remains separate. Production release readiness, A15
+installation/recovery, and chain-live compatibility remain gated.
+
+Audience-tone source located on Atman: `Documents/Codex/2026-08-01-new-realtime-voice-chat/arcanum-hero-copy-and-voice-draft.md`. The Human Architect requested adoption of its “Look up” direction in this session. It remains editorial guidance, not doctrine or proof of implemented features. Home hero, shared tagline, vision introduction and download invitation use active, concrete language and preserve voluntary participation. Consequential download facts and status boundaries stay explicit.
+
+The website source tranche was reconciled with merged PR71's conditional A14
+milestone before canonical adoption. The public invitation and APK availability
+do not remove the A15 installation/recovery or chain-integration gates recorded
+there. The reconciliation receives a fresh deterministic source/index companion.

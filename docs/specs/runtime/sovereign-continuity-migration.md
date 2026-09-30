@@ -246,3 +246,11 @@ Once the schema is accepted and the applicable runtime gate is open, the first i
 6. no providers, model calls, network sync, public publishing, or chain effects.
 
 That slice proves the sovereign substrate before external complexity is introduced.
+
+## 2026-09-30 adoption reconciliation
+
+PR66 is adopted as a reviewed specification baseline under the Human Architect’s
+explicit direction. See [schema and migration review](../../evidence/continuity-schema-adoption-20260930/review.md).
+Stage0 review does not authorize stages1–8 effects. Future imports and runtime
+activation require their own grants and exact evidence. The current A14 milestone
+is conditional on A15; public APK availability does not waive these dependencies.

@@ -6,7 +6,7 @@ import {
   TempusFigure,
 } from "@/components/public/PublicShell";
 export const metadata: Metadata = {
-  title: "Arcanum — A space for becoming",
+  title: "Arcanum — A Human Journey",
   alternates: { canonical: "/" },
 };
 export default function HomePage() {
@@ -21,27 +21,28 @@ export default function HomePage() {
             <span className="public-dot" /> Arcanum / Pre-Genesis
           </p>
           <h1 id="home-title">
-            A space for
+            Look up.
             <br />
-            <em>becoming.</em>
+            <em>A Human Journey.</em>
           </h1>
           <p className="public-intro">
-            A life has more depth than a profile. Arcanum is being built for
-            reflection, learning, and meaningful participation—with your agency
-            at its center.
+            The universe is vast, and your life is happening inside it. Follow
+            the sky. Take a different route. Test what you think you know.
+            Arcanum is being built for discovery, reflection, and practice. It
+            opens a door. You decide whether to walk through.
           </p>
           <div className="public-actions">
             <Link className="public-button" href="/about">
-              Discover the vision <span aria-hidden="true">↗</span>
+              Explore the journey <span aria-hidden="true">↗</span>
             </Link>
             <Link className="public-text-link" href="/explore">
               Explore the pillars →
             </Link>
           </div>
           <p className="public-hero-note">
-            An application taking shape. A network called ARCnet.
+            Notice the world. Find your own words.
             <br />
-            An open invitation to understand both.
+            An application taking shape, with ARCnet beneath it.
           </p>
         </div>
         <TempusFigure />
@@ -147,14 +148,15 @@ export default function HomePage() {
       >
         <div>
           <p className="public-eyebrow">The next chapter / Android</p>
-          <h2 id="download-title">Enter when it’s ready.</h2>
+          <h2 id="download-title">Take the next step.</h2>
           <p>
-            The public Android release is pending. We’re refining this
-            introduction before returning to verified APK publication.
+            The verified Android development candidate is ready to inspect. See
+            its version, signing identity, and download details before choosing
+            whether to install.
           </p>
         </div>
         <Link className="public-button public-button-outline" href="/download">
-          Release status <span aria-hidden="true">↗</span>
+          Get Arcanum <span aria-hidden="true">↗</span>
         </Link>
       </section>
     </PublicShell>
