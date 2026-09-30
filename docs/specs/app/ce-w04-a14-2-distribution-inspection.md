@@ -17,6 +17,14 @@ reuses the A14.1 offline trust decision, hashes the bytes actually retrieved, an
 independently verifies the downloaded APK signature with Android `apksigner`.
 This is inspection evidence, not installation or publication authorization.
 
+The advancing Android candidate uses versionCode `19`, versionName
+`0.1.14-cew04-a14-2`, and implementation arc `CE-W04-A14.2`. The installed A13.5
+predecessor is versionCode `18`; its downloaded and installed APK bytes were
+observed on Seed Node Alpha on 2026-09-30 with SHA-256
+`a583c444f1111566a8c567f82134c1006b8c4c905d40ebe1ef03584b59d989a0`,
+matching the exact `2dc2b3954778f9d13b1e501888dbebe5c3e76ebc` CI artifact.
+This is a dated predecessor observation, not a claim that A14.2 has been built.
+
 ## Candidate and distribution coordinates
 
 The Human-reviewed distribution candidate must identify an exact manifest URL and

@@ -109,7 +109,7 @@ class ArchitectShellPanel(context: Context) : LinearLayout(context) {
         handoffStatus =
             TextView(context).apply {
                 text =
-                    "A13.5 artifact handoff · awaiting installed application receipt\n" +
+                    "Artifact handoff · awaiting installed application receipt\n" +
                         "arc=${BuildConfig.ARCANUM_IMPLEMENTATION_ARC} · " +
                         "version=${BuildConfig.VERSION_NAME} (${BuildConfig.VERSION_CODE})\n" +
                         "authorityEffect=none · repositoryMutation=false"
@@ -407,21 +407,34 @@ class ArchitectShellPanel(context: Context) : LinearLayout(context) {
 
     private fun refreshArtifactHandoff() {
         handoffStatus.text =
-            "A13.5 artifact handoff · inspecting installed application…\n" +
+            "Artifact handoff · inspecting installed application…\n" +
                 "authorityEffect=none · repositoryMutation=false"
 
         Thread {
             val receipt =
                 runCatching {
-                    require(BuildConfig.ARCANUM_IMPLEMENTATION_ARC == "CE-W04-A13.5") {
-                        "installed implementation arc is not CE-W04-A13.5"
-                    }
-                    require(BuildConfig.VERSION_NAME == "0.1.13-cew04-a13-5") {
-                        "installed versionName is not the A13.5 closure build"
-                    }
-                    require(BuildConfig.VERSION_CODE == 18) {
-                        "installed versionCode is not 18"
-                    }
+                    val handoffLabel =
+                        when (BuildConfig.ARCANUM_IMPLEMENTATION_ARC) {
+                            "CE-W04-A13.5" -> {
+                                require(BuildConfig.VERSION_NAME == "0.1.13-cew04-a13-5") {
+                                    "installed versionName is not the A13.5 closure build"
+                                }
+                                require(BuildConfig.VERSION_CODE == 18) {
+                                    "installed versionCode is not 18"
+                                }
+                                "A13.5 artifact handoff"
+                            }
+                            "CE-W04-A14.2" -> {
+                                require(BuildConfig.VERSION_NAME == "0.1.14-cew04-a14-2") {
+                                    "installed versionName is not the A14.2 candidate build"
+                                }
+                                require(BuildConfig.VERSION_CODE == 19) {
+                                    "installed versionCode is not 19"
+                                }
+                                "A14.2 artifact handoff"
+                            }
+                            else -> error("unsupported installed implementation arc")
+                        }
 
                     val source = BuildConfig.ARCANUM_SOURCE_COMMIT
                     require(Regex("^[0-9a-f]{40}$").matches(source)) {
@@ -435,7 +448,7 @@ class ArchitectShellPanel(context: Context) : LinearLayout(context) {
                     val installedApkSha256 = sha256File(installedApk)
 
                     buildString {
-                        appendLine("A13.5 artifact handoff · PASS")
+                        appendLine("$handoffLabel · PASS")
                         appendLine("arc=${BuildConfig.ARCANUM_IMPLEMENTATION_ARC}")
                         appendLine("version=${BuildConfig.VERSION_NAME} (${BuildConfig.VERSION_CODE})")
                         appendLine("source=$source")
@@ -450,14 +463,14 @@ class ArchitectShellPanel(context: Context) : LinearLayout(context) {
                     receipt.fold(
                         onSuccess = { it },
                         onFailure = { error ->
-                            "A13.5 artifact handoff · FAIL\n" +
+                            "Artifact handoff · FAIL\n" +
                                 (error.message ?: error::class.java.simpleName) +
                                 "\nauthorityEffect=none · repositoryMutation=false"
                         },
                     )
             }
         }.apply {
-            name = "arcanum-a13-5-artifact-handoff"
+            name = "arcanum-artifact-handoff"
             isDaemon = true
             start()
         }
