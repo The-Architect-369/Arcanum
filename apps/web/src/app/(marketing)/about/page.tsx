@@ -14,13 +14,13 @@ export default function AboutPage() {
     <PublicShell>
       <PageIntro
         eyebrow="The vision / Arcanum & ARCnet"
-        title="Technology with room for a whole person."
+        title="A wider world. Your own way through."
       >
         <p>
-          We are building an environment where reflection, learning,
-          relationships, and useful contribution can belong together. Its
-          starting point is simple: a person remains the source of meaning in
-          their own life.
+          Look up. There are places to notice, questions to follow, and
+          practices to try. Arcanum is being built to give discovery,
+          reflection, and learning a place in everyday life. What you make of
+          that journey remains yours.
         </p>
       </PageIntro>
       <div className="public-shell public-article-grid">
@@ -28,10 +28,9 @@ export default function AboutPage() {
           <section>
             <h2>What the Arcanum stands for</h2>
             <p>
-              Arcanum describes a coherent system of becoming: the ongoing work
-              of learning, practicing, reflecting, and taking responsibility.
-              Its application is intended to give that work a place without
-              reducing a life to engagement metrics.
+              Follow a question. Try a practice. Return to a moment and see what
+              has changed. Arcanum brings learning and reflection into the same
+              journey, with room to keep your experience private.
             </p>
             <p>
               Human sovereignty, reciprocity, harmony, and provenance shape the
@@ -45,8 +44,8 @@ export default function AboutPage() {
               Arcanum is the application experience. ARCnet is the developing
               network for continuity, factual witnessing, and governed exchange
               beneath it. The public website is the threshold: a place to
-              understand the project and, when a verified release is ready, find
-              the application.
+              understand the project and inspect its verified Android
+              development candidate.
             </p>
           </section>
           <section>

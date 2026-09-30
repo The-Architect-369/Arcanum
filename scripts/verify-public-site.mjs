@@ -51,11 +51,16 @@ for (const [device, ua] of Object.entries(agents)) {
       );
     }
     if (path === "/download") {
-      assert.match(html, /Release pending/);
-      assert.doesNotMatch(
+      assert.match(html, /Verified development candidate/);
+      assert.ok(
+        html.includes(
+          'href="https://updates.the-arcanum.net/updates/a14-2/arcanum-ce-w04-a14-2-d2e30b2.apk"',
+        ),
+        "Exact verified APK link",
+      );
+      assert.match(
         html,
-        /href="[^"]*\.apk(?:["?#])/i,
-        "No unverified APK link",
+        /33b42f0449dd04c0f76424ca9c79590366c95e0e84ee4c44b528c6d5b472be96/,
       );
     }
     checks++;
@@ -67,7 +72,7 @@ assert.match(logResponse.headers.get("content-type"), /application\/json/);
 assert.match(logResponse.headers.get("cache-control"), /max-age=0/);
 const log = await logResponse.json();
 assert.equal(log.schema, "arcanum.public-site-log/v1");
-assert.equal(log.apkPublication, "paused");
+assert.equal(log.apkPublication, "verified-development-candidate");
 assert.equal(log.authorityEffect, "none");
 assert.match(log.scope, /not a TempusAnchor/);
 assert.equal(
@@ -90,5 +95,5 @@ for (const path of ["/app", "/alpha"]) {
   checks++;
 }
 console.log(
-  `PASS public site: ${checks} route/log/gate cases, both device classes; no APK offered.`,
+  `PASS public site: ${checks} route/log/gate cases, both device classes; verified development APK offered.`,
 );

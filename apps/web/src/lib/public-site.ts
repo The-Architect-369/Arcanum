@@ -53,7 +53,7 @@ export const pillars = [
     number: "02",
     title: "Room to hear yourself.",
     intro:
-      "HOPE is Arcanum’s reflective interface: a place to pause, ask a question, and find your own words. Its role is to support clarity while respecting your ability to choose.",
+      "Pause. Follow a question. Find your own words. HOPE is Arcanum’s reflective interface, designed to support clarity while leaving the direction of your journey with you.",
     summary:
       "A reflective presence that invites clarity and leaves the decisions with you.",
     sections: [
@@ -99,7 +99,7 @@ export const pillars = [
     number: "03",
     title: "Let growth become something you can carry.",
     intro:
-      "Vitae is Arcanum’s recognition layer of becoming. It connects learning and practice with responsibility, recognizing capacity after it has become durable.",
+      "Choose something to learn. Put it into practice. Return and see what has become steady. Vitae connects that work with responsibility and recognition of durable capacity.",
     summary:
       "Learning, practice, and recognition of sustained capacity, without ranking people.",
     sections: [
@@ -137,7 +137,7 @@ export const pillars = [
     number: "04",
     title: "A network that can witness without defining you.",
     intro:
-      "ARCnet is the developing network infrastructure beneath Arcanum. Its design connects identity continuity, factual receipts, value exchange, and governed execution through explicit boundaries.",
+      "Explore what people can build together. ARCnet is the developing network beneath Arcanum, designed to connect identity continuity, factual receipts, value exchange, and governed execution through explicit boundaries.",
     summary:
       "The developing network for identity continuity, factual receipts, and governed exchange.",
     sections: [
@@ -182,7 +182,7 @@ export const pillars = [
     number: "05",
     title: "Value in service of meaningful work.",
     intro:
-      "MANA is designed as ARCnet’s shared primitive for utility and transferable value. Its purpose is to support useful services, creation, contribution, and durable infrastructure within constitutional limits.",
+      "Bring useful work into the world. MANA is designed as ARCnet’s shared primitive for utility and transferable value, supporting services, creation, contribution, and durable infrastructure within constitutional limits.",
     summary:
       "A designed economy for useful services and contribution, with human dignity outside the balance sheet.",
     sections: [
@@ -225,14 +225,22 @@ export const siteLog = {
   schema: "arcanum.public-site-log/v1",
   kind: "editorial-publication-log",
   siteVersion: "2.0",
-  recordedOn: "2026-09-28",
+  recordedOn: "2026-09-30",
   sourceRepository: repository,
   editorialBase,
   authorityEffect: "none",
-  apkPublication: "paused",
+  apkPublication: "verified-development-candidate",
   scope:
     "Public website editorial history; not a TempusAnchor, protocol receipt, or APK update manifest.",
   entries: [
+    {
+      id: "a14-2-download",
+      date: "2026-09-30",
+      title: "Verified Android development candidate",
+      detail:
+        "The download page links the inspected A14.2 APK with checksum, signer and exact build provenance. A15 recovery and chain integration remain gated.",
+      state: "included-in-this-build",
+    },
     {
       id: "public-site-v2",
       date: "2026-09-28",

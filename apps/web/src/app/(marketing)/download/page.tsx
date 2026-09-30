@@ -8,34 +8,63 @@ export const metadata: Metadata = {
 export default function DownloadPage() {
   return (
     <PublicShell>
-      <PageIntro
-        eyebrow="Get Arcanum / Android"
-        title="A considered first step."
-      >
+      <PageIntro eyebrow="Get Arcanum / Android" title="Take the next step.">
         <p>
-          Android is the first native host for Arcanum. The public package will
-          arrive here with the information you need to identify and verify it.
+          Android is the first native host for Arcanum. The verified A14.2
+          development candidate is available for download and inspection.
         </p>
       </PageIntro>
       <section className="public-shell public-release-layout">
         <div className="public-release-card">
-          <span className="public-status">Release pending</span>
+          <span className="public-status">Verified development candidate</span>
           <h2>Download Arcanum</h2>
           <p>
-            APK publication is paused while we refine the public website. No
-            public APK has been approved and verified for distribution here.
+            A14.2 · version 0.1.14-cew04-a14-2 (19). Android 8 or later, ARM64
+            or x86_64. This development candidate has passed distribution
+            inspection; production release and chain integration remain gated.
           </p>
-          <span className="public-unavailable">Download not yet available</span>
+          <a
+            className="public-button"
+            href="https://updates.the-arcanum.net/updates/a14-2/arcanum-ce-w04-a14-2-d2e30b2.apk"
+          >
+            Download Android APK
+          </a>
           <p className="public-caption">
-            There is no installer behind this label.
+            Installation requires your Android confirmation.
           </p>
         </div>
         <div className="public-prose">
-          <h2>What will accompany a release</h2>
+          <h2>Verify this download</h2>
           <ul>
-            <li>The exact Android version and signed APK.</li>
-            <li>A SHA-256 checksum and signer fingerprint.</li>
-            <li>The source revision and build provenance.</li>
+            <li>Package: org.arcanum.nativehost · version 19.</li>
+            <li>
+              APK SHA-256:{" "}
+              <code style={{ overflowWrap: "anywhere" }}>
+                33b42f0449dd04c0f76424ca9c79590366c95e0e84ee4c44b528c6d5b472be96
+              </code>
+            </li>
+            <li>
+              Signer SHA-256:{" "}
+              <code style={{ overflowWrap: "anywhere" }}>
+                9841fbeda4d7d0c63b1663360fb0415218a08f063b5629317274076dfbb6b844
+              </code>
+            </li>
+            <li>
+              <a href="https://github.com/The-Architect-369/Arcanum/actions/runs/36700153842">
+                Signed build and source provenance
+              </a>{" "}
+              · source d2e30b275234.
+            </li>
+            <li>
+              <a href="https://updates.the-arcanum.net/updates/a14-2/manifest.json">
+                Update manifest
+              </a>{" "}
+              and{" "}
+              <a href="https://updates.the-arcanum.net/updates/a14-2/SHA256SUMS">
+                checksums
+              </a>
+              .
+            </li>
             <li>
               Compatibility information and clear verification instructions.
             </li>
@@ -46,10 +75,10 @@ export default function DownloadPage() {
           </p>
           <h3>A separate update channel</h3>
           <p>
-            The proposed machine update channel at{" "}
-            <code>updates.the-arcanum.net</code> is not established by this
-            website. It still requires its own distribution and artifact
-            verification gates. The public site log records editorial changes
+            The update channel at <code>updates.the-arcanum.net</code> serves
+            the inspected APK and update manifest directly over HTTPS. A15
+            installation and recovery evidence and chain-live compatibility
+            remain separate gates. The public site log records editorial changes
             only.
           </p>
           <a className="public-text-link" href={repository}>
