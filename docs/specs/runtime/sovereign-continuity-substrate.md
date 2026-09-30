@@ -384,3 +384,19 @@ A later implementation should not be considered complete until it can demonstrat
 10. rebuildable indexes and projections;
 11. selected object transfer between two participant-controlled nodes without whole-store cloning;
 12. no automatic chain publication or settlement.
+
+## 2026-09-30 specification adoption review
+
+The Human Architect authorized review, refresh and canonical adoption of this
+specification through PR66. This adopts a specification baseline and does not
+ratify new doctrine, replace the existing continuity ledger, activate A17, bulk
+import providers, or close the conditional A14/A15 gates.
+
+The schema rejects contradictory custody declarations: snapshot/full-content
+materialization requires an explicit retention grant reference; no-export objects
+cannot replicate; private-local objects require encryption and no replication;
+public replication requires public disclosure. Schema validity cannot authenticate
+a grant reference, enforce storage encryption or prove authorization. The future
+runtime must verify grants, revocation, scope, namespace privacy and actual
+effects independently. Retained metadata can itself be sensitive and remains
+subject to the controlling privacy/retention contract.

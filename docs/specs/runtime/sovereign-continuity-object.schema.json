@@ -1241,6 +1241,140 @@
           }
         }
       }
+    },
+    {
+      "if": {
+        "properties": {
+          "custody": {
+            "properties": {
+              "retention_authorized": {
+                "const": true
+              }
+            }
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "custody": {
+            "properties": {
+              "retention_authority_ref": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "custody": {
+            "properties": {
+              "materialization": {
+                "enum": [
+                  "snapshot",
+                  "full-content"
+                ]
+              }
+            }
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "custody": {
+            "properties": {
+              "retention_authorized": {
+                "const": true
+              },
+              "retention_authority_ref": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "custody": {
+            "properties": {
+              "do_not_export": {
+                "const": true
+              }
+            }
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "custody": {
+            "properties": {
+              "replication": {
+                "const": "none"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "custody": {
+            "properties": {
+              "disclosure": {
+                "const": "private-local"
+              }
+            }
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "custody": {
+            "properties": {
+              "replication": {
+                "const": "none"
+              },
+              "encryption_required": {
+                "const": true
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "custody": {
+            "properties": {
+              "replication": {
+                "const": "public"
+              }
+            }
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "custody": {
+            "properties": {
+              "disclosure": {
+                "const": "public"
+              },
+              "do_not_export": {
+                "const": false
+              }
+            }
+          }
+        }
+      }
     }
   ]
 }
