@@ -5,7 +5,7 @@ visibility: public
 phase: "Pre-Genesis"
 era: "Construction Era"
 wave: "CE-W04"
-last_updated: 2026-09-17
+last_updated: 2026-09-30
 maintainer: The-Architect-369
 authority: "Human Architect naming/continuity convention; evidence and promotion remain governed by existing wave contracts"
 ---
@@ -244,6 +244,35 @@ A14 remains open after A14.1. Trusted distribution
 inspection remains an A14 follow-on. Own-package
 installation and recovery remain A15. Local continuity
 identity and signed local receipt closure remain A16.
+
+### CE-W04-A14.2 — Trusted distribution inspection candidate
+
+A14.2 specifies a direct HTTPS manifest/APK inspection at the proposed fixed
+update origin. The inspector reuses A14.1, hashes retrieved bytes, and requires
+independent APK signature verification. Simulated tests establish the verifier's
+behavior; a live origin, signed artifact, build provenance, and exact-head checks
+remain separate A14 closure evidence. A passing inspection is review readiness,
+not installation permission. See
+`docs/specs/app/ce-w04-a14-2-distribution-inspection.md`.
+
+The advancing Android candidate identity is versionCode `19`, versionName
+`0.1.14-cew04-a14-2`, and implementation arc `CE-W04-A14.2`. A13.5's certified
+versionCode `18` remains pinned to its source history. The A14.2 candidate requires
+its own exact-head signed APK evidence before live distribution inspection.
+
+### CE-W04-A14 — Conditional closure and A15 handoff
+
+Reviewed on 2026-09-30: A14.1 offline trust and A14.2 live direct-HTTPS
+inspection are evidence-complete for the signed version19 candidate. Exact APK
+build/source, checksum, signer, production publication and installed phone bytes
+were reconciled. Distribution evidence is complete; final A14 closure is
+conditional on A15 installation/recovery evidence. Release readiness remains
+blocked, chain-live compatibility is unestablished, and CE-W04 remains open.
+
+See [closure review and recorded receipt](../evidence/ce-w04-a14-2-20260930/review.md).
+Historical statements that A14 remained open after A14.1 describe that stage's
+boundary. No A14.3–A14.5 stages are inferred. Review readiness and the manually
+observed installation do not implement A15 or grant additional authority.
 
 ## Promotion discipline
 

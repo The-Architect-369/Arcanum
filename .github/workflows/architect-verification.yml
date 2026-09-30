@@ -69,6 +69,17 @@ jobs:
         id: build
         run: pnpm build
 
+      - name: Verify public pages against the production server
+        run: |
+          pnpm -C apps/web start > /tmp/arcanum-public-site.log 2>&1 &
+          site_pid=$!
+          trap 'kill "$site_pid" 2>/dev/null || true' EXIT
+          for attempt in $(seq 1 30); do
+            if curl -fsS http://127.0.0.1:3000/ > /dev/null; then break; fi
+            sleep 1
+          done
+          node scripts/verify-public-site.mjs http://127.0.0.1:3000
+
       - name: Generate exact-head Architect attestation
         env:
           ARCANUM_WAVE: ${{ inputs.wave || 'unspecified' }}

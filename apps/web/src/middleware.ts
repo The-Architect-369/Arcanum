@@ -1,4 +1,5 @@
 import { NextResponse, type NextRequest } from "next/server";
+import { isPublicSitePath } from "@/lib/public-routes";
 
 export function middleware(req: NextRequest) {
   // ✅ Dev bypass: allow everything on localhost/dev so you can build on desktop
@@ -8,9 +9,19 @@ export function middleware(req: NextRequest) {
 
   const { pathname, searchParams } = req.nextUrl;
 
-  // The public download home is available on desktop and mobile. Existing
+  // The public editorial pages are available on desktop and mobile. Existing
   // alpha routes retain their current device gate until separately reviewed.
-  if (pathname === "/") {
+  if (isPublicSitePath(pathname)) {
+    return NextResponse.next();
+  }
+
+  // Exact signed update files must return directly on desktop and mobile.
+  const updateFiles = [
+    "/updates/a14-2/manifest.json",
+    "/updates/a14-2/arcanum-ce-w04-a14-2-d2e30b2.apk",
+    "/updates/a14-2/SHA256SUMS",
+  ];
+  if (updateFiles.includes(pathname)) {
     return NextResponse.next();
   }
 

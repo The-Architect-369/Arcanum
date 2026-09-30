@@ -1,17 +1,17 @@
 {
-  "generated_at": "2026-09-28T03:08:13Z",
+  "generated_at": "2026-09-30T11:36:59Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "e0607fa81",
+  "commit": "f483dc909",
   "generator_version": "1.5",
   "files": [
     {
       "path": ".github/workflows/architect-verification.yml",
       "type": "file",
-      "size_bytes": 2553,
-      "last_modified_commit": "0fdc6c121",
+      "size_bytes": 3005,
+      "last_modified_commit": "165b06b7b",
       "is_empty": false,
       "extension": ".yml",
-      "lines": 89
+      "lines": 100
     },
     {
       "path": ".github/workflows/ce-w03-index-companion.yml",
@@ -188,7 +188,7 @@
       "path": "apps/android/app/build.gradle.kts",
       "type": "file",
       "size_bytes": 2429,
-      "last_modified_commit": "d730950f3",
+      "last_modified_commit": "f322cd6d3",
       "is_empty": false,
       "extension": ".kts",
       "lines": 90
@@ -304,11 +304,11 @@
     {
       "path": "apps/android/app/src/main/java/org/arcanum/nativehost/architect/ArchitectShellPanel.kt",
       "type": "file",
-      "size_bytes": 49595,
-      "last_modified_commit": "d730950f3",
+      "size_bytes": 50339,
+      "last_modified_commit": "f322cd6d3",
       "is_empty": false,
       "extension": ".kt",
-      "lines": 1186
+      "lines": 1199
     },
     {
       "path": "apps/android/app/src/main/java/org/arcanum/nativehost/architect/ArchitectVisualDiagnostics.kt",
@@ -727,11 +727,11 @@
     {
       "path": "apps/web/next.config.mjs",
       "type": "file",
-      "size_bytes": 153,
-      "last_modified_commit": "f2063ca4c",
+      "size_bytes": 314,
+      "last_modified_commit": "7744e8ea3",
       "is_empty": false,
       "extension": ".mjs",
-      "lines": 4
+      "lines": 12
     },
     {
       "path": "apps/web/node/docker/Dockerfile",
@@ -916,11 +916,38 @@
     {
       "path": "apps/web/public/sw.js",
       "type": "file",
-      "size_bytes": 1913,
-      "last_modified_commit": "5193017da",
+      "size_bytes": 2114,
+      "last_modified_commit": "165b06b7b",
       "is_empty": false,
       "extension": ".js",
-      "lines": 78
+      "lines": 84
+    },
+    {
+      "path": "apps/web/public/updates/a14-2/SHA256SUMS",
+      "type": "file",
+      "size_bytes": 179,
+      "last_modified_commit": "7744e8ea3",
+      "is_empty": false,
+      "extension": "",
+      "lines": 2
+    },
+    {
+      "path": "apps/web/public/updates/a14-2/arcanum-ce-w04-a14-2-d2e30b2.apk",
+      "type": "file",
+      "size_bytes": 4369747,
+      "last_modified_commit": "7744e8ea3",
+      "is_empty": false,
+      "extension": ".apk",
+      "lines": 0
+    },
+    {
+      "path": "apps/web/public/updates/a14-2/manifest.json",
+      "type": "file",
+      "size_bytes": 941,
+      "last_modified_commit": "7744e8ea3",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 1
     },
     {
       "path": "apps/web/public/vercel.svg",
@@ -1382,6 +1409,15 @@
       "lines": 7
     },
     {
+      "path": "apps/web/src/app/(marketing)/about/page.tsx",
+      "type": "file",
+      "size_bytes": 4430,
+      "last_modified_commit": "165b06b7b",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 113
+    },
+    {
       "path": "apps/web/src/app/(marketing)/alpha/page.tsx",
       "type": "file",
       "size_bytes": 1332,
@@ -1400,31 +1436,67 @@
       "lines": 31
     },
     {
-      "path": "apps/web/src/app/(marketing)/layout.tsx",
+      "path": "apps/web/src/app/(marketing)/download/page.tsx",
       "type": "file",
-      "size_bytes": 1003,
-      "last_modified_commit": "e00ad2ff5",
+      "size_bytes": 2383,
+      "last_modified_commit": "165b06b7b",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 45
+      "lines": 62
+    },
+    {
+      "path": "apps/web/src/app/(marketing)/explore/[slug]/page.tsx",
+      "type": "file",
+      "size_bytes": 2151,
+      "last_modified_commit": "165b06b7b",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 67
+    },
+    {
+      "path": "apps/web/src/app/(marketing)/explore/page.tsx",
+      "type": "file",
+      "size_bytes": 1637,
+      "last_modified_commit": "165b06b7b",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 49
+    },
+    {
+      "path": "apps/web/src/app/(marketing)/layout.tsx",
+      "type": "file",
+      "size_bytes": 1179,
+      "last_modified_commit": "165b06b7b",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 52
     },
     {
       "path": "apps/web/src/app/(marketing)/page.tsx",
       "type": "file",
-      "size_bytes": 5570,
-      "last_modified_commit": "e00ad2ff5",
+      "size_bytes": 5523,
+      "last_modified_commit": "165b06b7b",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 73
+      "lines": 162
+    },
+    {
+      "path": "apps/web/src/app/(marketing)/principles/page.tsx",
+      "type": "file",
+      "size_bytes": 3798,
+      "last_modified_commit": "165b06b7b",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 103
     },
     {
       "path": "apps/web/src/app/(marketing)/public-home.css",
       "type": "file",
-      "size_bytes": 5707,
-      "last_modified_commit": "e00ad2ff5",
+      "size_bytes": 14552,
+      "last_modified_commit": "165b06b7b",
       "is_empty": false,
       "extension": ".css",
-      "lines": 78
+      "lines": 727
     },
     {
       "path": "apps/web/src/app/(marketing)/styles/globals.css",
@@ -1452,6 +1524,15 @@
       "is_empty": false,
       "extension": ".css",
       "lines": 53
+    },
+    {
+      "path": "apps/web/src/app/(marketing)/updates/page.tsx",
+      "type": "file",
+      "size_bytes": 2053,
+      "last_modified_commit": "165b06b7b",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 58
     },
     {
       "path": "apps/web/src/app/activate/page.tsx",
@@ -1501,11 +1582,11 @@
     {
       "path": "apps/web/src/app/layout.tsx",
       "type": "file",
-      "size_bytes": 1460,
-      "last_modified_commit": "ae76057ff",
+      "size_bytes": 1375,
+      "last_modified_commit": "165b06b7b",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 61
+      "lines": 59
     },
     {
       "path": "apps/web/src/app/middleware.ts",
@@ -1524,6 +1605,24 @@
       "is_empty": false,
       "extension": ".tsx",
       "lines": 125
+    },
+    {
+      "path": "apps/web/src/app/site-log.json/route.ts",
+      "type": "file",
+      "size_bytes": 291,
+      "last_modified_commit": "165b06b7b",
+      "is_empty": false,
+      "extension": ".ts",
+      "lines": 8
+    },
+    {
+      "path": "apps/web/src/components/AppRuntime.tsx",
+      "type": "file",
+      "size_bytes": 563,
+      "last_modified_commit": "165b06b7b",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 20
     },
     {
       "path": "apps/web/src/components/ConnectWallet.tsx",
@@ -1632,6 +1731,24 @@
       "is_empty": false,
       "extension": ".tsx",
       "lines": 53
+    },
+    {
+      "path": "apps/web/src/components/public/PublicNav.tsx",
+      "type": "file",
+      "size_bytes": 2207,
+      "last_modified_commit": "165b06b7b",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 78
+    },
+    {
+      "path": "apps/web/src/components/public/PublicShell.tsx",
+      "type": "file",
+      "size_bytes": 5608,
+      "last_modified_commit": "165b06b7b",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 190
     },
     {
       "path": "apps/web/src/components/shared/CTAActivate.tsx",
@@ -2489,6 +2606,24 @@
       "lines": 17
     },
     {
+      "path": "apps/web/src/lib/public-routes.ts",
+      "type": "file",
+      "size_bytes": 322,
+      "last_modified_commit": "165b06b7b",
+      "is_empty": false,
+      "extension": ".ts",
+      "lines": 16
+    },
+    {
+      "path": "apps/web/src/lib/public-site.ts",
+      "type": "file",
+      "size_bytes": 12835,
+      "last_modified_commit": "165b06b7b",
+      "is_empty": false,
+      "extension": ".ts",
+      "lines": 255
+    },
+    {
       "path": "apps/web/src/lib/rooms/index.ts",
       "type": "file",
       "size_bytes": 32,
@@ -2581,11 +2716,11 @@
     {
       "path": "apps/web/src/middleware.ts",
       "type": "file",
-      "size_bytes": 1358,
-      "last_modified_commit": "e0607fa81",
+      "size_bytes": 1691,
+      "last_modified_commit": "7744e8ea3",
       "is_empty": false,
       "extension": ".ts",
-      "lines": 52
+      "lines": 63
     },
     {
       "path": "apps/web/src/state/useAccount.ts",
@@ -3479,6 +3614,15 @@
       "lines": 524
     },
     {
+      "path": "docs/architecture/public-site-v2.md",
+      "type": "file",
+      "size_bytes": 5921,
+      "last_modified_commit": "165b06b7b",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 80
+    },
+    {
       "path": "docs/archive/README.md",
       "type": "file",
       "size_bytes": 1972,
@@ -3650,6 +3794,69 @@
       "lines": 890
     },
     {
+      "path": "docs/evidence/ce-w04-a14-2-20260930/a13-5-predecessor-trust.json",
+      "type": "file",
+      "size_bytes": 422,
+      "last_modified_commit": "f483dc909",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 1
+    },
+    {
+      "path": "docs/evidence/ce-w04-a14-2-20260930/a14-2-candidate-observation.json",
+      "type": "file",
+      "size_bytes": 354,
+      "last_modified_commit": "6792b03c7",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 1
+    },
+    {
+      "path": "docs/evidence/ce-w04-a14-2-20260930/inspection-observed-device-receipt.json",
+      "type": "file",
+      "size_bytes": 822,
+      "last_modified_commit": "f483dc909",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 1
+    },
+    {
+      "path": "docs/evidence/ce-w04-a14-2-20260930/inspection-receipt.json",
+      "type": "file",
+      "size_bytes": 822,
+      "last_modified_commit": "6792b03c7",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 1
+    },
+    {
+      "path": "docs/evidence/ce-w04-a14-2-20260930/manifest.json",
+      "type": "file",
+      "size_bytes": 941,
+      "last_modified_commit": "6792b03c7",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 1
+    },
+    {
+      "path": "docs/evidence/ce-w04-a14-2-20260930/milestone-gates.json",
+      "type": "file",
+      "size_bytes": 688,
+      "last_modified_commit": "f483dc909",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 22
+    },
+    {
+      "path": "docs/evidence/ce-w04-a14-2-20260930/review.md",
+      "type": "file",
+      "size_bytes": 5998,
+      "last_modified_commit": "f483dc909",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 44
+    },
+    {
       "path": "docs/governance/architectgpt/agent-registry.yaml",
       "type": "file",
       "size_bytes": 4790,
@@ -3679,11 +3886,11 @@
     {
       "path": "docs/governance/architectgpt/architect-log.md",
       "type": "file",
-      "size_bytes": 4727,
-      "last_modified_commit": "220f5ac6d",
+      "size_bytes": 6281,
+      "last_modified_commit": "165b06b7b",
       "is_empty": false,
       "extension": ".md",
-      "lines": 78
+      "lines": 101
     },
     {
       "path": "docs/governance/architectgpt/architect-proposal-envelope.schema.json",
@@ -4075,11 +4282,11 @@
     {
       "path": "docs/roadmap/construction-era-arc-ledger.md",
       "type": "file",
-      "size_bytes": 17415,
-      "last_modified_commit": "e4d921bdb",
+      "size_bytes": 19125,
+      "last_modified_commit": "f483dc909",
       "is_empty": false,
       "extension": ".md",
-      "lines": 262
+      "lines": 291
     },
     {
       "path": "docs/roadmap/construction-era-roadmap.md",
@@ -4332,6 +4539,15 @@
       "is_empty": false,
       "extension": ".md",
       "lines": 166
+    },
+    {
+      "path": "docs/specs/app/ce-w04-a14-2-distribution-inspection.md",
+      "type": "file",
+      "size_bytes": 3787,
+      "last_modified_commit": "6792b03c7",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 72
     },
     {
       "path": "docs/specs/app/ce-w04-a14-trusted-update-preflight.md",
@@ -7430,6 +7646,15 @@
       "lines": 66
     },
     {
+      "path": "scripts/update/test_trusted_distribution_inspection.py",
+      "type": "file",
+      "size_bytes": 5645,
+      "last_modified_commit": "fc13a929a",
+      "is_empty": false,
+      "extension": ".py",
+      "lines": 140
+    },
+    {
       "path": "scripts/update/test_trusted_update_preflight.py",
       "type": "file",
       "size_bytes": 18835,
@@ -7437,6 +7662,15 @@
       "is_empty": false,
       "extension": ".py",
       "lines": 655
+    },
+    {
+      "path": "scripts/update/trusted_distribution_inspection.py",
+      "type": "file",
+      "size_bytes": 6183,
+      "last_modified_commit": "fc13a929a",
+      "is_empty": false,
+      "extension": ".py",
+      "lines": 170
     },
     {
       "path": "scripts/update/trusted_update_preflight.py",
@@ -7558,11 +7792,20 @@
     {
       "path": "scripts/verify-ce-w04-a13.py",
       "type": "file",
-      "size_bytes": 19991,
-      "last_modified_commit": "d730950f3",
+      "size_bytes": 20664,
+      "last_modified_commit": "f322cd6d3",
       "is_empty": false,
       "extension": ".py",
-      "lines": 613
+      "lines": 632
+    },
+    {
+      "path": "scripts/verify-ce-w04-a14-2-candidate.py",
+      "type": "file",
+      "size_bytes": 3013,
+      "last_modified_commit": "f322cd6d3",
+      "is_empty": false,
+      "extension": ".py",
+      "lines": 82
     },
     {
       "path": "scripts/verify-ce-w04-a14.py",
@@ -7583,6 +7826,15 @@
       "lines": 261
     },
     {
+      "path": "scripts/verify-public-site.mjs",
+      "type": "file",
+      "size_bytes": 2870,
+      "last_modified_commit": "165b06b7b",
+      "is_empty": false,
+      "extension": ".mjs",
+      "lines": 94
+    },
+    {
       "path": "scripts/verify-repo-index.py",
       "type": "file",
       "size_bytes": 2384,
@@ -7594,11 +7846,11 @@
     {
       "path": "scripts/verify-sync.sh",
       "type": "file",
-      "size_bytes": 12074,
-      "last_modified_commit": "e4d921bdb",
+      "size_bytes": 12356,
+      "last_modified_commit": "f322cd6d3",
       "is_empty": false,
       "extension": ".sh",
-      "lines": 278
+      "lines": 283
     },
     {
       "path": "tests/fixtures/trusted-update/candidate-observation.json",

@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "1.0",
+  "milestone": "CE-W04-A14-to-A15",
+  "distributionEvidence": "pass",
+  "deviceApiObserved": 36,
+  "deviceAbisObserved": [
+    "arm64-v8a",
+    "armeabi",
+    "armeabi-v7a"
+  ],
+  "a14Closure": "conditional-on-A15",
+  "readyForA15Review": true,
+  "releaseReadiness": false,
+  "chainLiveCompatibilityEstablished": false,
+  "unresolvedGates": [
+    "A15 own-package installation contract and decision evidence",
+    "A15 failure and recovery evidence with local data preservation",
+    "app/companion compatibility verification at exact revisions",
+    "chain-live integration contract and its independently verified evidence"
+  ],
+  "authorityEffect": "none"
+}

@@ -19,6 +19,7 @@ A13_1_HEAD = "5f8552eff460d61aa720105b6c8c23321e311809"
 A13_2_HEAD = "608c6bd1a8283ef20e07160c2d32ac15ec24b41a"
 A13_3_HEAD = "e06143883fb67c7185e98d65845153d6444c1b05"
 A13_4_HEAD = "a48d73bb489cd10281e32be87d156802ab0029c1"
+A13_5_HEAD = "2dc2b3954778f9d13b1e501888dbebe5c3e76ebc"
 ANDROID_NS = "{http://schemas.android.com/apk/res/android}"
 
 REQUIRED = (
@@ -452,7 +453,8 @@ for phrase in (
     "An unowned process on port 8765 is never ",
     "signaled. This does not mutate the repository",
     "CE-W04-A13.5 native operator handoff",
-    "A13.5 artifact handoff · PASS",
+    "A13.5 artifact handoff",
+    "$handoffLabel · PASS",
     "BuildConfig.ARCANUM_IMPLEMENTATION_ARC",
     "BuildConfig.ARCANUM_SOURCE_COMMIT",
     "BuildConfig.VERSION_NAME",
@@ -481,13 +483,30 @@ for phrase in (
 ):
     require_phrase(pairing_store, phrase, "ArchitectPairingStore")
 
+subprocess.run(
+    ("git", "merge-base", "--is-ancestor", A13_5_HEAD, "HEAD"),
+    cwd=ROOT,
+    env={**os.environ, "GIT_OPTIONAL_LOCKS": "0"},
+    shell=False,
+    check=True,
+)
+historical_build = subprocess.check_output(
+    ("git", "show", f"{A13_5_HEAD}:apps/android/app/build.gradle.kts"),
+    cwd=ROOT,
+    text=True,
+)
+require_phrase(historical_build, 'versionName = "0.1.13-cew04-a13-5"', "certified A13.5 build")
+require_phrase(historical_build, '"\\"CE-W04-A13.5\\""', "certified A13.5 build")
+historical_code = re.search(r"\bversionCode\s*=\s*(\d+)\b", historical_build)
+require(
+    historical_code is not None and int(historical_code.group(1)) == 18,
+    "certified A13.5 Android versionCode must be exactly 18",
+)
 build = text("apps/android/app/build.gradle.kts")
-require_phrase(build, 'versionName = "0.1.13-cew04-a13-5"', "Android build")
-require_phrase(build, '"\\"CE-W04-A13.5\\""', "Android build")
 version_code = re.search(r"\bversionCode\s*=\s*(\d+)\b", build)
 require(
-    version_code is not None and int(version_code.group(1)) == 18,
-    "A13.5 Android versionCode must be exactly 18",
+    version_code is not None and int(version_code.group(1)) >= 18,
+    "successor Android versionCode regressed below A13.5",
 )
 
 bootstrap = text("scripts/mobile/termux-bootstrap.sh")
