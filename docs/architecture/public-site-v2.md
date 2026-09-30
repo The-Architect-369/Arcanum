@@ -91,3 +91,8 @@ The existing PWA manifest remains separate. Production release readiness, A15
 installation/recovery, and chain-live compatibility remain gated.
 
 Audience-tone source located on Atman: `Documents/Codex/2026-08-01-new-realtime-voice-chat/arcanum-hero-copy-and-voice-draft.md`. The Human Architect requested adoption of its “Look up” direction in this session. It remains editorial guidance, not doctrine or proof of implemented features. Home hero, shared tagline, vision introduction and download invitation use active, concrete language and preserve voluntary participation. Consequential download facts and status boundaries stay explicit.
+
+The website source tranche was reconciled with merged PR71's conditional A14
+milestone before canonical adoption. The public invitation and APK availability
+do not remove the A15 installation/recovery or chain-integration gates recorded
+there. The reconciliation receives a fresh deterministic source/index companion.
