@@ -11,3 +11,5 @@ Validation: JSON Schema Draft2020-12 checked with jsonschema4.10.3 and format ch
 Repository index and normal merge stability passed on the refreshed source. Local verify-sync in this checkout stopped at TypeScript AST fixtures because Node dependencies were absent; that local run is not a pass. Applicable GitHub CI must pass at the final PR head before adoption. The existing managed website worktree passed its own15/15 verification. No private stores were read or imported.
 
 PR66 retains its original source history and is reconciled with the merged website/milestone baseline. This record adopts design/specification into main, not new doctrine or implemented runtime continuity. A14 remains conditional on A15, and chain-live compatibility is unestablished.
+
+The final schema source is reconciled with main abfc3115bb5ea0ab2af7a54268b36409b2bf1825. Index conflicts from combining the independently reviewed source tranches are resolved by deterministic regeneration from a fresh non-merge source commit; intermediate merge/index attempts confer no verification status. Final exact-head CI is controlling for adoption.
