@@ -1,8 +1,8 @@
 # CE-W04-A14 closure review — 2026-09-30
 
-Status: bounded distribution evidence reviewed; A15 handoff ready.
+Status: distribution evidence reviewed; A14 closure conditional on A15. Release and chain-live readiness remain blocked.
 
-The Human Architect authorized PR69 merge and signed APK build, installation assistance, PR70 distribution publication, and this closure review. This record closes the A14 inspection/distribution scope; it grants no doctrine or governance authority and does not close CE-W04.
+The Human Architect authorized PR69 merge and signed APK build, installation assistance, PR70 distribution publication, and this closure review. This record completes the A14 inspection/distribution evidence; final A14 closure remains conditional on the A15 installation/recovery gate. It grants no doctrine or governance authority and does not close CE-W04.
 
 ## Artifact and provenance
 
@@ -19,7 +19,7 @@ The Human Architect authorized PR69 merge and signed APK build, installation ass
 
 `inspection-receipt.json` records a passing A14.2 inspection of the exact HTTPS manifest and APK URLs under `/updates/a14-2/`. Direct200, identity encoding, zero-age caching, canonical closed manifest, exact size/digest and independently verified single signer passed. Manifest SHA256: `2e8963cb8c98ca09bf4ebbf7334879ef398258c76bcff703f3c9cc544e3320de`.
 
-Local trust input is the observed A13.5 version18 predecessor with its persistent signer, not a claim that the phone currently remains on version18. Device/API and compatibility values in that input are explicit preflight assumptions. Candidate metadata and bytes were independently inspected. Current installed A14.2 is separately observed; no upgrade eligibility from current version19 to the same artifact is inferred.
+Local trust input is the observed A13.5 version18 predecessor with its persistent signer, not a claim that the phone currently remains on version18. A subsequent read-only phone check observed Android API36 and device ABIs arm64-v8a, armeabi-v7a and armeabi. The updated local trust input records those values; inspection-observed-device-receipt.json preserves the subsequent passing inspection. The original receipt remains recorded. Companion/data compatibility declarations still require exact-revision runtime evidence; APK metadata alone does not establish their behavior. Candidate metadata and bytes were independently inspected. Current installed A14.2 is separately observed; no upgrade eligibility from current version19 to the same artifact is inferred.
 
 Receipt: `readyForA15Review=true`, `eligibleForInstallDecision=false`, `installPerformed=false`, `repositoryMutation=false`, `authorityEffect=none`. These fields describe the inspection invocation. The user separately completed Android's installation prompt earlier; inspector did not install it.
 
@@ -35,4 +35,10 @@ No A14.3–A14.5 stage is invented. Development signer provenance is preserved; 
 
 ## A15 jumping-off milestone
 
-A14 distribution scope is evidence-complete. A15 starts from the exact published version19 APK, independently authenticated signer, recorded A13.5 predecessor and observed installed A14.2 baseline. Own-package installation decisions, recovery behavior, failure handling, data preservation and their negative evidence remain A15 work. A15 has not been implemented or closed by these observations. Any future external effect requires its own applicable authorization.
+A14 distribution evidence is complete; final A14 closure is conditional on A15. A15 starts from the exact published version19 APK, independently authenticated signer, recorded A13.5 predecessor and observed installed A14.2 baseline. Own-package installation decisions, recovery behavior, failure handling, data preservation and their negative evidence remain A15 work. A15 has not been implemented or closed by these observations. Any future external effect requires its own applicable authorization.
+
+## Stricter milestone gates requested by the Human Architect
+
+`milestone-gates.json` makes release readiness false and chain-live compatibility unestablished. A15 must supply a reviewed own-package installation contract, bounded decision/effect receipts, negative cases, failure/recovery behavior and local data preservation evidence. The installed manual update is an observed baseline, not fulfillment of those gates. App/companion integration must name exact revisions and independently verify compatibility. Chain-live readiness needs a separately defined integration contract and evidence; no existing receipt guarantees seamless future chain integration. These are dependency gates, not invented A14 sub-stages or newly implemented capabilities.
+
+Publication main8d900ca is newer than the observed phone companion revision d2e30b2. That difference is recorded; do not infer companion alignment from matching APK source. This documentation change requires its own exact-head checks before canonical adoption.

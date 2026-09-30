@@ -260,13 +260,14 @@ The advancing Android candidate identity is versionCode `19`, versionName
 versionCode `18` remains pinned to its source history. The A14.2 candidate requires
 its own exact-head signed APK evidence before live distribution inspection.
 
-### CE-W04-A14 — Distribution scope closure and A15 handoff
+### CE-W04-A14 — Conditional closure and A15 handoff
 
 Reviewed on 2026-09-30: A14.1 offline trust and A14.2 live direct-HTTPS
 inspection are evidence-complete for the signed version19 candidate. Exact APK
 build/source, checksum, signer, production publication and installed phone bytes
-were reconciled. The bounded A14 distribution scope is closed; CE-W04 remains
-open and A15 installation/recovery work remains unimplemented.
+were reconciled. Distribution evidence is complete; final A14 closure is
+conditional on A15 installation/recovery evidence. Release readiness remains
+blocked, chain-live compatibility is unestablished, and CE-W04 remains open.
 
 See [closure review and recorded receipt](../evidence/ce-w04-a14-2-20260930/review.md).
 Historical statements that A14 remained open after A14.1 describe that stage's
