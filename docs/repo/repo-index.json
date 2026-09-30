@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-09-30T15:11:52Z",
+  "generated_at": "2026-09-30T15:19:46Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "e9b567b3e",
+  "commit": "e464e5c3a",
   "generator_version": "1.5",
   "files": [
     {
@@ -3857,6 +3857,33 @@
       "lines": 44
     },
     {
+      "path": "docs/evidence/continuity-schema-adoption-20260930/review.md",
+      "type": "file",
+      "size_bytes": 2662,
+      "last_modified_commit": "e464e5c3a",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 15
+    },
+    {
+      "path": "docs/evidence/continuity-schema-adoption-20260930/synthetic-event.json",
+      "type": "file",
+      "size_bytes": 1879,
+      "last_modified_commit": "33b107ec9",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 79
+    },
+    {
+      "path": "docs/evidence/continuity-schema-adoption-20260930/validation-result.json",
+      "type": "file",
+      "size_bytes": 131,
+      "last_modified_commit": "33b107ec9",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 7
+    },
+    {
       "path": "docs/governance/architectgpt/agent-registry.yaml",
       "type": "file",
       "size_bytes": 4790,
@@ -5196,6 +5223,33 @@
       "is_empty": false,
       "extension": ".md",
       "lines": 625
+    },
+    {
+      "path": "docs/specs/runtime/sovereign-continuity-migration.md",
+      "type": "file",
+      "size_bytes": 9291,
+      "last_modified_commit": "33b107ec9",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 256
+    },
+    {
+      "path": "docs/specs/runtime/sovereign-continuity-object.schema.json",
+      "type": "file",
+      "size_bytes": 32654,
+      "last_modified_commit": "1af0d3726",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 1380
+    },
+    {
+      "path": "docs/specs/runtime/sovereign-continuity-substrate.md",
+      "type": "file",
+      "size_bytes": 17616,
+      "last_modified_commit": "1af0d3726",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 402
     },
     {
       "path": "docs/specs/tempus/tempus-anchor.md",
