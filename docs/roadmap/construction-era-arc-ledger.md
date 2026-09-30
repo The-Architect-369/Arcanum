@@ -5,7 +5,7 @@ visibility: public
 phase: "Pre-Genesis"
 era: "Construction Era"
 wave: "CE-W04"
-last_updated: 2026-09-17
+last_updated: 2026-09-30
 maintainer: The-Architect-369
 authority: "Human Architect naming/continuity convention; evidence and promotion remain governed by existing wave contracts"
 ---
@@ -259,6 +259,19 @@ The advancing Android candidate identity is versionCode `19`, versionName
 `0.1.14-cew04-a14-2`, and implementation arc `CE-W04-A14.2`. A13.5's certified
 versionCode `18` remains pinned to its source history. The A14.2 candidate requires
 its own exact-head signed APK evidence before live distribution inspection.
+
+### CE-W04-A14 — Distribution scope closure and A15 handoff
+
+Reviewed on 2026-09-30: A14.1 offline trust and A14.2 live direct-HTTPS
+inspection are evidence-complete for the signed version19 candidate. Exact APK
+build/source, checksum, signer, production publication and installed phone bytes
+were reconciled. The bounded A14 distribution scope is closed; CE-W04 remains
+open and A15 installation/recovery work remains unimplemented.
+
+See [closure review and recorded receipt](../evidence/ce-w04-a14-2-20260930/review.md).
+Historical statements that A14 remained open after A14.1 describe that stage's
+boundary. No A14.3–A14.5 stages are inferred. Review readiness and the manually
+observed installation do not implement A15 or grant additional authority.
 
 ## Promotion discipline
 
