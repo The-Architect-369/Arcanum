@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-09-28T12:42:47Z",
+  "generated_at": "2026-09-30T07:02:01Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "165b06b7b",
+  "commit": "fc13a929a",
   "generator_version": "1.5",
   "files": [
     {
@@ -4192,11 +4192,11 @@
     {
       "path": "docs/roadmap/construction-era-arc-ledger.md",
       "type": "file",
-      "size_bytes": 17415,
-      "last_modified_commit": "e4d921bdb",
+      "size_bytes": 17971,
+      "last_modified_commit": "fc13a929a",
       "is_empty": false,
       "extension": ".md",
-      "lines": 262
+      "lines": 272
     },
     {
       "path": "docs/roadmap/construction-era-roadmap.md",
@@ -4449,6 +4449,15 @@
       "is_empty": false,
       "extension": ".md",
       "lines": 166
+    },
+    {
+      "path": "docs/specs/app/ce-w04-a14-2-distribution-inspection.md",
+      "type": "file",
+      "size_bytes": 2810,
+      "last_modified_commit": "fc13a929a",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 55
     },
     {
       "path": "docs/specs/app/ce-w04-a14-trusted-update-preflight.md",
@@ -7547,6 +7556,15 @@
       "lines": 66
     },
     {
+      "path": "scripts/update/test_trusted_distribution_inspection.py",
+      "type": "file",
+      "size_bytes": 5645,
+      "last_modified_commit": "fc13a929a",
+      "is_empty": false,
+      "extension": ".py",
+      "lines": 140
+    },
+    {
       "path": "scripts/update/test_trusted_update_preflight.py",
       "type": "file",
       "size_bytes": 18835,
@@ -7554,6 +7572,15 @@
       "is_empty": false,
       "extension": ".py",
       "lines": 655
+    },
+    {
+      "path": "scripts/update/trusted_distribution_inspection.py",
+      "type": "file",
+      "size_bytes": 6183,
+      "last_modified_commit": "fc13a929a",
+      "is_empty": false,
+      "extension": ".py",
+      "lines": 170
     },
     {
       "path": "scripts/update/trusted_update_preflight.py",
