@@ -61,3 +61,12 @@ local trust context, and exact-head CI before proposing A14 closure. If the
 origin or signed artifact is absent, record the gate as pending. APK publication,
 DNS changes, installation and recovery require their own authorization; A15 owns
 installation and recovery. No A14.3–A14.5 stages are inferred from this file.
+
+## Dated closure evidence
+
+On 2026-09-30, the signed candidate was built, published and inspected live.
+The [closure review](../../evidence/ce-w04-a14-2-20260930/review.md) records
+artifact/source/publication coordinates, predecessor trust basis, independent
+signer verification, observed installed bytes and the A15 handoff. Earlier
+candidate/absent-origin descriptions above establish the contract and historical
+gate; the dated record supplies the subsequent evidence.

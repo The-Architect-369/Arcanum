@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-09-30T11:24:36Z",
+  "generated_at": "2026-09-30T11:36:59Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "7744e8ea3",
+  "commit": "f483dc909",
   "generator_version": "1.5",
   "files": [
     {
@@ -3794,6 +3794,69 @@
       "lines": 890
     },
     {
+      "path": "docs/evidence/ce-w04-a14-2-20260930/a13-5-predecessor-trust.json",
+      "type": "file",
+      "size_bytes": 422,
+      "last_modified_commit": "f483dc909",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 1
+    },
+    {
+      "path": "docs/evidence/ce-w04-a14-2-20260930/a14-2-candidate-observation.json",
+      "type": "file",
+      "size_bytes": 354,
+      "last_modified_commit": "6792b03c7",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 1
+    },
+    {
+      "path": "docs/evidence/ce-w04-a14-2-20260930/inspection-observed-device-receipt.json",
+      "type": "file",
+      "size_bytes": 822,
+      "last_modified_commit": "f483dc909",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 1
+    },
+    {
+      "path": "docs/evidence/ce-w04-a14-2-20260930/inspection-receipt.json",
+      "type": "file",
+      "size_bytes": 822,
+      "last_modified_commit": "6792b03c7",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 1
+    },
+    {
+      "path": "docs/evidence/ce-w04-a14-2-20260930/manifest.json",
+      "type": "file",
+      "size_bytes": 941,
+      "last_modified_commit": "6792b03c7",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 1
+    },
+    {
+      "path": "docs/evidence/ce-w04-a14-2-20260930/milestone-gates.json",
+      "type": "file",
+      "size_bytes": 688,
+      "last_modified_commit": "f483dc909",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 22
+    },
+    {
+      "path": "docs/evidence/ce-w04-a14-2-20260930/review.md",
+      "type": "file",
+      "size_bytes": 5998,
+      "last_modified_commit": "f483dc909",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 44
+    },
+    {
       "path": "docs/governance/architectgpt/agent-registry.yaml",
       "type": "file",
       "size_bytes": 4790,
@@ -4219,11 +4282,11 @@
     {
       "path": "docs/roadmap/construction-era-arc-ledger.md",
       "type": "file",
-      "size_bytes": 18285,
-      "last_modified_commit": "f322cd6d3",
+      "size_bytes": 19125,
+      "last_modified_commit": "f483dc909",
       "is_empty": false,
       "extension": ".md",
-      "lines": 277
+      "lines": 291
     },
     {
       "path": "docs/roadmap/construction-era-roadmap.md",
@@ -4480,11 +4543,11 @@
     {
       "path": "docs/specs/app/ce-w04-a14-2-distribution-inspection.md",
       "type": "file",
-      "size_bytes": 3314,
-      "last_modified_commit": "f322cd6d3",
+      "size_bytes": 3787,
+      "last_modified_commit": "6792b03c7",
       "is_empty": false,
       "extension": ".md",
-      "lines": 63
+      "lines": 72
     },
     {
       "path": "docs/specs/app/ce-w04-a14-trusted-update-preflight.md",
