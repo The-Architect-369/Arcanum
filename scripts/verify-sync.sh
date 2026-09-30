@@ -241,6 +241,8 @@ python3 -m py_compile \
   scripts/mobile/test-arcanum-workspace-verify.py \
   scripts/update/trusted_update_preflight.py \
   scripts/update/test_trusted_update_preflight.py \
+  scripts/update/trusted_distribution_inspection.py \
+  scripts/update/test_trusted_distribution_inspection.py \
   scripts/verify-ce-w04-a13.py \
   scripts/verify-ce-w04-a14.py
 jq empty docs/governance/architectgpt/architect-proposal-envelope.schema.json
@@ -254,13 +256,14 @@ bash -n scripts/mobile/test-arcanum-operator.sh
 bash -n scripts/mobile/test-arcanum-broker-lifecycle.sh
 python3 scripts/verify-ce-w04-a13.py
 python3 scripts/verify-ce-w04-a14.py
+python3 -B -m unittest scripts/update/test_trusted_distribution_inspection.py
 bash scripts/architect/test-termux-broker.sh
 bash scripts/architect/test-architect-runtime.sh
 bash scripts/architect/test-proposal-envelope.sh
 bash scripts/mobile/test-arcanum-operator.sh
 bash scripts/mobile/test-arcanum-broker-lifecycle.sh
 python3 scripts/mobile/test-arcanum-workspace-verify.py
-ok "local Workbench/runtime boundary, A12 proposal review, A13.5 native UX/artifact handoff, and advisory agent roster passed; A14.1 offline trusted-update preflight passed"
+ok "local Workbench/runtime boundary, A12 proposal review, A13.5 native UX/artifact handoff, and advisory agent roster passed; A14.1 and A14.2 inspection fixtures passed"
 
 step 14 "Production smoke verifier"
 jq empty docs/governance/architectgpt/production-smoke.schema.json
