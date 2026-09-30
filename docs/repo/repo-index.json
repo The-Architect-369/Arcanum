@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-09-30T07:10:11Z",
+  "generated_at": "2026-09-30T09:49:39Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "f3d5606bf",
+  "commit": "f322cd6d3",
   "generator_version": "1.5",
   "files": [
     {
@@ -188,7 +188,7 @@
       "path": "apps/android/app/build.gradle.kts",
       "type": "file",
       "size_bytes": 2429,
-      "last_modified_commit": "d730950f3",
+      "last_modified_commit": "f322cd6d3",
       "is_empty": false,
       "extension": ".kts",
       "lines": 90
@@ -304,11 +304,11 @@
     {
       "path": "apps/android/app/src/main/java/org/arcanum/nativehost/architect/ArchitectShellPanel.kt",
       "type": "file",
-      "size_bytes": 49595,
-      "last_modified_commit": "d730950f3",
+      "size_bytes": 50339,
+      "last_modified_commit": "f322cd6d3",
       "is_empty": false,
       "extension": ".kt",
-      "lines": 1186
+      "lines": 1199
     },
     {
       "path": "apps/android/app/src/main/java/org/arcanum/nativehost/architect/ArchitectVisualDiagnostics.kt",
@@ -4192,11 +4192,11 @@
     {
       "path": "docs/roadmap/construction-era-arc-ledger.md",
       "type": "file",
-      "size_bytes": 17971,
-      "last_modified_commit": "fc13a929a",
+      "size_bytes": 18285,
+      "last_modified_commit": "f322cd6d3",
       "is_empty": false,
       "extension": ".md",
-      "lines": 272
+      "lines": 277
     },
     {
       "path": "docs/roadmap/construction-era-roadmap.md",
@@ -4453,11 +4453,11 @@
     {
       "path": "docs/specs/app/ce-w04-a14-2-distribution-inspection.md",
       "type": "file",
-      "size_bytes": 2810,
-      "last_modified_commit": "fc13a929a",
+      "size_bytes": 3314,
+      "last_modified_commit": "f322cd6d3",
       "is_empty": false,
       "extension": ".md",
-      "lines": 55
+      "lines": 63
     },
     {
       "path": "docs/specs/app/ce-w04-a14-trusted-update-preflight.md",
@@ -7702,11 +7702,20 @@
     {
       "path": "scripts/verify-ce-w04-a13.py",
       "type": "file",
-      "size_bytes": 19991,
-      "last_modified_commit": "d730950f3",
+      "size_bytes": 20664,
+      "last_modified_commit": "f322cd6d3",
       "is_empty": false,
       "extension": ".py",
-      "lines": 613
+      "lines": 632
+    },
+    {
+      "path": "scripts/verify-ce-w04-a14-2-candidate.py",
+      "type": "file",
+      "size_bytes": 3013,
+      "last_modified_commit": "f322cd6d3",
+      "is_empty": false,
+      "extension": ".py",
+      "lines": 82
     },
     {
       "path": "scripts/verify-ce-w04-a14.py",
@@ -7747,11 +7756,11 @@
     {
       "path": "scripts/verify-sync.sh",
       "type": "file",
-      "size_bytes": 12262,
-      "last_modified_commit": "f3d5606bf",
+      "size_bytes": 12356,
+      "last_modified_commit": "f322cd6d3",
       "is_empty": false,
       "extension": ".sh",
-      "lines": 281
+      "lines": 283
     },
     {
       "path": "tests/fixtures/trusted-update/candidate-observation.json",
