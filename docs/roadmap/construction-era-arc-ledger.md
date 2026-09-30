@@ -245,6 +245,16 @@ inspection remains an A14 follow-on. Own-package
 installation and recovery remain A15. Local continuity
 identity and signed local receipt closure remain A16.
 
+### CE-W04-A14.2 — Trusted distribution inspection candidate
+
+A14.2 specifies a direct HTTPS manifest/APK inspection at the proposed fixed
+update origin. The inspector reuses A14.1, hashes retrieved bytes, and requires
+independent APK signature verification. Simulated tests establish the verifier's
+behavior; a live origin, signed artifact, build provenance, and exact-head checks
+remain separate A14 closure evidence. A passing inspection is review readiness,
+not installation permission. See
+`docs/specs/app/ce-w04-a14-2-distribution-inspection.md`.
+
 ## Promotion discipline
 
 An Arc may be implemented, tested, superseded, or abandoned without closing its parent wave. Arc completion does not imply wave certification, Genesis authority, protocol finality, governance authority, or promotion to `main`.
