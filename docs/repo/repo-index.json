@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-09-30T11:24:36Z",
+  "generated_at": "2026-09-30T15:07:03Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "7744e8ea3",
+  "commit": "a39710b0c",
   "generator_version": "1.5",
   "files": [
     {
@@ -1411,11 +1411,11 @@
     {
       "path": "apps/web/src/app/(marketing)/about/page.tsx",
       "type": "file",
-      "size_bytes": 4430,
-      "last_modified_commit": "165b06b7b",
+      "size_bytes": 4372,
+      "last_modified_commit": "a39710b0c",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 113
+      "lines": 112
     },
     {
       "path": "apps/web/src/app/(marketing)/alpha/page.tsx",
@@ -1438,11 +1438,11 @@
     {
       "path": "apps/web/src/app/(marketing)/download/page.tsx",
       "type": "file",
-      "size_bytes": 2383,
-      "last_modified_commit": "165b06b7b",
+      "size_bytes": 3515,
+      "last_modified_commit": "a39710b0c",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 62
+      "lines": 91
     },
     {
       "path": "apps/web/src/app/(marketing)/explore/[slug]/page.tsx",
@@ -1456,8 +1456,8 @@
     {
       "path": "apps/web/src/app/(marketing)/explore/page.tsx",
       "type": "file",
-      "size_bytes": 1637,
-      "last_modified_commit": "165b06b7b",
+      "size_bytes": 1669,
+      "last_modified_commit": "a39710b0c",
       "is_empty": false,
       "extension": ".tsx",
       "lines": 49
@@ -1474,11 +1474,11 @@
     {
       "path": "apps/web/src/app/(marketing)/page.tsx",
       "type": "file",
-      "size_bytes": 5523,
-      "last_modified_commit": "165b06b7b",
+      "size_bytes": 5670,
+      "last_modified_commit": "a39710b0c",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 162
+      "lines": 164
     },
     {
       "path": "apps/web/src/app/(marketing)/principles/page.tsx",
@@ -1744,8 +1744,8 @@
     {
       "path": "apps/web/src/components/public/PublicShell.tsx",
       "type": "file",
-      "size_bytes": 5608,
-      "last_modified_commit": "165b06b7b",
+      "size_bytes": 5603,
+      "last_modified_commit": "a39710b0c",
       "is_empty": false,
       "extension": ".tsx",
       "lines": 190
@@ -2617,11 +2617,11 @@
     {
       "path": "apps/web/src/lib/public-site.ts",
       "type": "file",
-      "size_bytes": 12835,
-      "last_modified_commit": "165b06b7b",
+      "size_bytes": 13240,
+      "last_modified_commit": "a39710b0c",
       "is_empty": false,
       "extension": ".ts",
-      "lines": 255
+      "lines": 263
     },
     {
       "path": "apps/web/src/lib/rooms/index.ts",
@@ -3616,11 +3616,11 @@
     {
       "path": "docs/architecture/public-site-v2.md",
       "type": "file",
-      "size_bytes": 5921,
-      "last_modified_commit": "165b06b7b",
+      "size_bytes": 7068,
+      "last_modified_commit": "a39710b0c",
       "is_empty": false,
       "extension": ".md",
-      "lines": 80
+      "lines": 93
     },
     {
       "path": "docs/archive/README.md",
@@ -7765,11 +7765,11 @@
     {
       "path": "scripts/verify-public-site.mjs",
       "type": "file",
-      "size_bytes": 2870,
-      "last_modified_commit": "165b06b7b",
+      "size_bytes": 3118,
+      "last_modified_commit": "a39710b0c",
       "is_empty": false,
       "extension": ".mjs",
-      "lines": 94
+      "lines": 99
     },
     {
       "path": "scripts/verify-repo-index.py",
