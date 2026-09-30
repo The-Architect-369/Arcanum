@@ -16,10 +16,10 @@ export default function ExplorePage() {
         title="Find your way into Arcanum."
       >
         <p>
-          Start with the part that speaks to you: rhythm, reflection, learning,
-          shared infrastructure, or meaningful exchange. These five
-          introductions describe complementary roles, not a new constitutional
-          hierarchy.
+          Look up, then follow what draws your attention: the rhythm of a day, a
+          question worth keeping, a practice to learn, or something to build
+          together. These five introductions offer different ways into the
+          journey. Choose your starting point.
         </p>
       </PageIntro>
       <section

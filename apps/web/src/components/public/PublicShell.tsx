@@ -19,7 +19,7 @@ export function PublicShell({ children }: { children: React.ReactNode }) {
               ARCANUM
             </Link>
             <p>
-              A space for becoming.
+              A Human Journey.
               <br />A network taking shape.
             </p>
             <span className="public-eyebrow">Pre-Genesis · Public website</span>
