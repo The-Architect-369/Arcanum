@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-10-01T18:16:43Z",
+  "generated_at": "2026-10-01T18:40:59Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "fb8fb8733",
+  "commit": "cf5c4e413",
   "generator_version": "1.5",
   "files": [
     {
@@ -4262,6 +4262,15 @@
       "lines": 1
     },
     {
+      "path": "docs/evidence/ce-w04-a15-verification-20261001/a15-a16-handoff.md",
+      "type": "file",
+      "size_bytes": 9021,
+      "last_modified_commit": "cf5c4e413",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 137
+    },
+    {
       "path": "docs/evidence/ce-w04-a15-verification-20261001/decisions.md",
       "type": "file",
       "size_bytes": 8331,
@@ -4278,6 +4287,15 @@
       "is_empty": false,
       "extension": ".json",
       "lines": 62
+    },
+    {
+      "path": "docs/evidence/ce-w04-a15-verification-20261001/live-inspection-receipt.json",
+      "type": "file",
+      "size_bytes": 882,
+      "last_modified_commit": "cf5c4e413",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 1
     },
     {
       "path": "docs/evidence/ce-w04-a15-verification-20261001/publication-review.md",
