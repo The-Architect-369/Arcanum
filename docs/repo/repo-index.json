@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-10-01T07:20:14Z",
+  "generated_at": "2026-10-01T07:47:17Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "5eee42334",
+  "commit": "82622a3c4",
   "generator_version": "1.5",
   "files": [
     {
@@ -187,8 +187,8 @@
     {
       "path": "apps/android/app/build.gradle.kts",
       "type": "file",
-      "size_bytes": 2493,
-      "last_modified_commit": "3fca8f74f",
+      "size_bytes": 2500,
+      "last_modified_commit": "82622a3c4",
       "is_empty": false,
       "extension": ".kts",
       "lines": 91
@@ -304,11 +304,11 @@
     {
       "path": "apps/android/app/src/main/java/org/arcanum/nativehost/architect/ArchitectShellPanel.kt",
       "type": "file",
-      "size_bytes": 51059,
-      "last_modified_commit": "3fca8f74f",
+      "size_bytes": 51136,
+      "last_modified_commit": "82622a3c4",
       "is_empty": false,
       "extension": ".kt",
-      "lines": 1210
+      "lines": 1211
     },
     {
       "path": "apps/android/app/src/main/java/org/arcanum/nativehost/architect/ArchitectVisualDiagnostics.kt",
@@ -500,10 +500,19 @@
       "lines": 158
     },
     {
+      "path": "apps/android/app/src/main/java/org/arcanum/nativehost/update/OwnPackageInstallFailure.kt",
+      "type": "file",
+      "size_bytes": 815,
+      "last_modified_commit": "82622a3c4",
+      "is_empty": false,
+      "extension": ".kt",
+      "lines": 19
+    },
+    {
       "path": "apps/android/app/src/main/java/org/arcanum/nativehost/update/OwnPackageInstaller.kt",
       "type": "file",
-      "size_bytes": 12408,
-      "last_modified_commit": "3fca8f74f",
+      "size_bytes": 12436,
+      "last_modified_commit": "82622a3c4",
       "is_empty": false,
       "extension": ".kt",
       "lines": 197
@@ -660,6 +669,15 @@
       "is_empty": false,
       "extension": ".kt",
       "lines": 34
+    },
+    {
+      "path": "apps/android/app/src/test/java/org/arcanum/nativehost/update/OwnPackageInstallFailureTest.kt",
+      "type": "file",
+      "size_bytes": 2111,
+      "last_modified_commit": "82622a3c4",
+      "is_empty": false,
+      "extension": ".kt",
+      "lines": 43
     },
     {
       "path": "apps/android/app/src/test/java/org/arcanum/nativehost/update/OwnPackagePendingConfirmationTest.kt",
@@ -4786,11 +4804,11 @@
     {
       "path": "docs/specs/app/ce-w04-a15-own-package-installation.md",
       "type": "file",
-      "size_bytes": 10986,
-      "last_modified_commit": "3fca8f74f",
+      "size_bytes": 14029,
+      "last_modified_commit": "82622a3c4",
       "is_empty": false,
       "extension": ".md",
-      "lines": 183
+      "lines": 230
     },
     {
       "path": "docs/specs/app/ce-w04-seed-node-alpha.md",
