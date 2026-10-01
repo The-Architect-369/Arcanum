@@ -29,6 +29,9 @@ export function middleware(req: NextRequest) {
     "/updates/a15-recovery-verification/manifest.json",
     "/updates/a15-recovery-verification/arcanum-ce-w04-a15-recovery-verify-cdecd42.apk",
     "/updates/a15-recovery-verification/SHA256SUMS",
+    "/updates/a15-settlement/manifest.json",
+    "/updates/a15-settlement/arcanum-ce-w04-a15-settlement-61013ca.apk",
+    "/updates/a15-settlement/SHA256SUMS",
   ];
   if (updateFiles.includes(pathname)) {
     return NextResponse.next();

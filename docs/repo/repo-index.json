@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-10-01T09:02:02Z",
+  "generated_at": "2026-10-01T09:47:19Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "ed4d5c1b5",
+  "commit": "03bb164af",
   "generator_version": "1.5",
   "files": [
     {
@@ -835,11 +835,11 @@
     {
       "path": "apps/web/next.config.mjs",
       "type": "file",
-      "size_bytes": 712,
-      "last_modified_commit": "7dd08776b",
+      "size_bytes": 841,
+      "last_modified_commit": "03bb164af",
       "is_empty": false,
       "extension": ".mjs",
-      "lines": 21
+      "lines": 24
     },
     {
       "path": "apps/web/node/docker/Dockerfile",
@@ -1107,6 +1107,33 @@
       "type": "file",
       "size_bytes": 948,
       "last_modified_commit": "5eee42334",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 1
+    },
+    {
+      "path": "apps/web/public/updates/a15-settlement/SHA256SUMS",
+      "type": "file",
+      "size_bytes": 108,
+      "last_modified_commit": "03bb164af",
+      "is_empty": false,
+      "extension": "",
+      "lines": 1
+    },
+    {
+      "path": "apps/web/public/updates/a15-settlement/arcanum-ce-w04-a15-settlement-61013ca.apk",
+      "type": "file",
+      "size_bytes": 4632061,
+      "last_modified_commit": "03bb164af",
+      "is_empty": false,
+      "extension": ".apk",
+      "lines": 0
+    },
+    {
+      "path": "apps/web/public/updates/a15-settlement/manifest.json",
+      "type": "file",
+      "size_bytes": 950,
+      "last_modified_commit": "03bb164af",
       "is_empty": false,
       "extension": ".json",
       "lines": 1
@@ -2905,11 +2932,11 @@
     {
       "path": "apps/web/src/middleware.ts",
       "type": "file",
-      "size_bytes": 2203,
-      "last_modified_commit": "7dd08776b",
+      "size_bytes": 2363,
+      "last_modified_commit": "03bb164af",
       "is_empty": false,
       "extension": ".ts",
-      "lines": 72
+      "lines": 75
     },
     {
       "path": "apps/web/src/state/useAccount.ts",
@@ -4158,6 +4185,51 @@
       "type": "file",
       "size_bytes": 368,
       "last_modified_commit": "7dd08776b",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 1
+    },
+    {
+      "path": "docs/evidence/ce-w04-a15-settlement-20261001/direct-serving.json",
+      "type": "file",
+      "size_bytes": 1568,
+      "last_modified_commit": "03bb164af",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 50
+    },
+    {
+      "path": "docs/evidence/ce-w04-a15-settlement-20261001/review.md",
+      "type": "file",
+      "size_bytes": 976,
+      "last_modified_commit": "03bb164af",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 7
+    },
+    {
+      "path": "docs/evidence/ce-w04-a15-settlement-20261001/version22-predecessor-trust.json",
+      "type": "file",
+      "size_bytes": 422,
+      "last_modified_commit": "03bb164af",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 1
+    },
+    {
+      "path": "docs/evidence/ce-w04-a15-settlement-20261001/version24-artifact-verification.json",
+      "type": "file",
+      "size_bytes": 648,
+      "last_modified_commit": "03bb164af",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 20
+    },
+    {
+      "path": "docs/evidence/ce-w04-a15-settlement-20261001/version24-candidate-observation.json",
+      "type": "file",
+      "size_bytes": 363,
+      "last_modified_commit": "03bb164af",
       "is_empty": false,
       "extension": ".json",
       "lines": 1

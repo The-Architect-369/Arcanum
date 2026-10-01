@@ -15,6 +15,9 @@ const nextConfig = {
     }, {
       source: "/updates/a15-recovery-verification/:file",
       headers: [{ key: "Cache-Control", value: "no-store, max-age=0" }],
+    }, {
+      source: "/updates/a15-settlement/:file",
+      headers: [{ key: "Cache-Control", value: "no-store, max-age=0" }],
     }];
   },
 };

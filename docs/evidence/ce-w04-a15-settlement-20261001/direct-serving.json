@@ -1,0 +1,50 @@
+[
+  {
+    "file": "arcanum-ce-w04-a15-settlement-61013ca.apk",
+    "agent": "Mozilla/5.0 (X11; Linux x86_64)",
+    "status": 200,
+    "direct": true,
+    "cacheControl": "no-store, max-age=0",
+    "sha256": "23fce1ae36dc6a3a2a54f6067631092c23cfe1ab6be20245e02f8e406340927e"
+  },
+  {
+    "file": "SHA256SUMS",
+    "agent": "Mozilla/5.0 (X11; Linux x86_64)",
+    "status": 200,
+    "direct": true,
+    "cacheControl": "no-store, max-age=0",
+    "sha256": "5b7d25a41752294a9887164d10beee2d29639d41bb1ea4b8ef050f5f0ba7dfcd"
+  },
+  {
+    "file": "manifest.json",
+    "agent": "Mozilla/5.0 (X11; Linux x86_64)",
+    "status": 200,
+    "direct": true,
+    "cacheControl": "no-store, max-age=0",
+    "sha256": "5b5d4539e13e18138dc33ddf16357e92faaa1048c3e138bcc66d4a1667ab53ba"
+  },
+  {
+    "file": "arcanum-ce-w04-a15-settlement-61013ca.apk",
+    "agent": "Mozilla/5.0 (Linux; Android 15) Mobile",
+    "status": 200,
+    "direct": true,
+    "cacheControl": "no-store, max-age=0",
+    "sha256": "23fce1ae36dc6a3a2a54f6067631092c23cfe1ab6be20245e02f8e406340927e"
+  },
+  {
+    "file": "SHA256SUMS",
+    "agent": "Mozilla/5.0 (Linux; Android 15) Mobile",
+    "status": 200,
+    "direct": true,
+    "cacheControl": "no-store, max-age=0",
+    "sha256": "5b7d25a41752294a9887164d10beee2d29639d41bb1ea4b8ef050f5f0ba7dfcd"
+  },
+  {
+    "file": "manifest.json",
+    "agent": "Mozilla/5.0 (Linux; Android 15) Mobile",
+    "status": 200,
+    "direct": true,
+    "cacheControl": "no-store, max-age=0",
+    "sha256": "5b5d4539e13e18138dc33ddf16357e92faaa1048c3e138bcc66d4a1667ab53ba"
+  }
+]
