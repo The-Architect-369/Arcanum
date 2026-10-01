@@ -1,0 +1,62 @@
+{
+  "stage": "local-production-build",
+  "webBuild": "pass",
+  "responses": [
+    {
+      "userAgent": "Mozilla/5.0 Desktop",
+      "path": "/updates/a15-settlement-verification/manifest.json",
+      "status": 200,
+      "directResponse": true,
+      "cacheControl": "no-store, max-age=0",
+      "sha256": "cc229b86049d64157595bbfc3915212b9d036352682abbebea6160a9938703ec",
+      "sizeBytes": 957
+    },
+    {
+      "userAgent": "Mozilla/5.0 Desktop",
+      "path": "/updates/a15-settlement-verification/arcanum-ce-w04-a15-settlement-verify-7058cbe.apk",
+      "status": 200,
+      "directResponse": true,
+      "cacheControl": "no-store, max-age=0",
+      "sha256": "fc2b6b237f388b97449c958b41d991c666bdc5cdb1929ca1de72d6787982082f",
+      "sizeBytes": 4632073
+    },
+    {
+      "userAgent": "Mozilla/5.0 Desktop",
+      "path": "/updates/a15-settlement-verification/SHA256SUMS",
+      "status": 200,
+      "directResponse": true,
+      "cacheControl": "no-store, max-age=0",
+      "sha256": "c3c6a5a89efb45262554afe8ffe41f83371ef6f3c5193f8c33eaa11cf48c7dce",
+      "sizeBytes": 195
+    },
+    {
+      "userAgent": "Mozilla/5.0 (Linux; Android 16) Mobile",
+      "path": "/updates/a15-settlement-verification/manifest.json",
+      "status": 200,
+      "directResponse": true,
+      "cacheControl": "no-store, max-age=0",
+      "sha256": "cc229b86049d64157595bbfc3915212b9d036352682abbebea6160a9938703ec",
+      "sizeBytes": 957
+    },
+    {
+      "userAgent": "Mozilla/5.0 (Linux; Android 16) Mobile",
+      "path": "/updates/a15-settlement-verification/arcanum-ce-w04-a15-settlement-verify-7058cbe.apk",
+      "status": 200,
+      "directResponse": true,
+      "cacheControl": "no-store, max-age=0",
+      "sha256": "fc2b6b237f388b97449c958b41d991c666bdc5cdb1929ca1de72d6787982082f",
+      "sizeBytes": 4632073
+    },
+    {
+      "userAgent": "Mozilla/5.0 (Linux; Android 16) Mobile",
+      "path": "/updates/a15-settlement-verification/SHA256SUMS",
+      "status": 200,
+      "directResponse": true,
+      "cacheControl": "no-store, max-age=0",
+      "sha256": "c3c6a5a89efb45262554afe8ffe41f83371ef6f3c5193f8c33eaa11cf48c7dce",
+      "sizeBytes": 195
+    }
+  ],
+  "publicDistribution": "not-published",
+  "liveHttpsInspection": "pending"
+}
