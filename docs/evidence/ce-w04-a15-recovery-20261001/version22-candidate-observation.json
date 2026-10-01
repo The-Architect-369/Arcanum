@@ -1,0 +1,1 @@
+{"abis":["arm64-v8a","x86_64"],"applicationId":"org.arcanum.nativehost","artifactSha256":"d5635af40241e526342a25c01bbb342cfae56ee9b3252a89aaac45cb094c1c10","artifactSizeBytes":4632065,"minSdk":26,"publisherSignerSha256":"9841fbeda4d7d0c63b1663360fb0415218a08f063b5629317274076dfbb6b844","targetSdk":35,"versionCode":22,"versionName":"0.1.15-cew04-a15-recovery"}
