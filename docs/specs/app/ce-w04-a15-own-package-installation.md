@@ -139,3 +139,23 @@ publication and phone session evidence must be recorded before claiming the
 positive path. Publication/main merge remains a separate review/effect gate;
 no source change declares those effects complete. The exact version20 artifact
 and its historical evidence remain preserved.
+
+## 2026-10-01 pending-session recovery finding
+
+User-supplied screenshots2313 through2323 show version21 staging, the Android
+permission gate, Android confirmation, a cancelled callback with no remaining
+session, and explicit settlement to no active attempt. Screenshots2325/2327
+show a second attempt retained after reopening, with sessionPresent=true and
+callbackState=AWAITING_USER. Screenshot2329 then reports an Android app crash
+while testing the pending-session opening action; screenshot2331 retains the
+same operation and pending state. The crash exception was not available from
+the Termux crash-buffer probe. Independent installed APK hashing still matched
+the exact version20 bootstrap afterward.
+
+Inspection found the session-details activity launch was posted outside the
+worker's exception boundary. The correction catches the launch on the UI thread
+and reports a blocked result without changing or repeating the original attempt.
+This correction compiles locally; it is not yet deployed or device-tested.
+Session details do not establish that Android can resume its confirmation UI.
+Pending-session opening and the successful advancing update remain unverified;
+A15 stays open. Preserve the journal and reconcile before any new submission.
