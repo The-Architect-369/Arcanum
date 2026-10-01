@@ -125,6 +125,7 @@ class OwnPackageInstaller(private val context: Context) {
         }
         File(root, "candidate.apk").delete()
         File(root, "candidate.partial").delete()
+        confirmations.clear()
         "Owned sessions absent; attempt archived; no automatic retry"
     }
 
@@ -138,18 +139,22 @@ class OwnPackageInstaller(private val context: Context) {
                 @Suppress("DEPRECATION")
                 val confirmation = intent.getParcelableExtra<Intent>(Intent.EXTRA_INTENT)
                 requireNotNull(confirmation) { "Missing Android confirmation intent" }
+                confirmations.retain(attempt.operationId, attempt.sessionId, Intent(confirmation))
                 confirmation
             }
             PackageInstaller.STATUS_SUCCESS -> {
+                confirmations.clear()
                 val observed = distribution.installedIdentity()
                 val matches = OwnPackageUpdatePolicy.reconcile(attempt.prior, attempt.target, observed) == OwnPackageUpdatePolicy.Recovery.TARGET_OBSERVED
                 write(attempt.copy(state = if (matches) AttemptState.VERIFIED else AttemptState.UNKNOWN, observation = if (matches) "Android success callback and target bytes independently verified" else "Success callback conflicts with installed bytes"))
                 null
             }
             PackageInstaller.STATUS_FAILURE_ABORTED -> {
+                confirmations.clear()
                 write(attempt.copy(state = AttemptState.CANCELLED, observation = "Android reported aborted installation; reconcile before another attempt")); null
             }
             else -> {
+                confirmations.clear()
                 val status = intent.getIntExtra(PackageInstaller.EXTRA_STATUS, Int.MIN_VALUE)
                 val state = if (status in 1..8) AttemptState.FAILED else AttemptState.UNKNOWN
                 write(attempt.copy(state = state, observation = "Android reported status=$status; reconcile before another attempt")); null
@@ -159,12 +164,15 @@ class OwnPackageInstaller(private val context: Context) {
 
     fun resumeConfirmation(): Intent = synchronized(lock) {
         val attempt = requireNotNull(read())
-        require(attempt.state == AttemptState.AWAITING_USER || attempt.state == AttemptState.UNKNOWN)
-        requireNotNull(requireNotNull(installer.getSessionInfo(attempt.sessionId)).createDetailsIntent()) { "Android session details unavailable" }
+        require(attempt.state == AttemptState.AWAITING_USER) { "Original attempt is not awaiting Android confirmation; refresh and reconcile" }
+        require(installer.mySessions.any { it.sessionId == attempt.sessionId }) { "Original Android session absent; refresh and settle the attempt" }
+        require(distribution.installedIdentity() == attempt.prior) { "Installed identity changed; refresh and reconcile" }
+        Intent(confirmations.existing(attempt.operationId, attempt.sessionId))
     }
 
     companion object {
         private val lock = Any()
+        private val confirmations = OwnPackagePendingConfirmation<Intent>()
         val worker = Executors.newSingleThreadExecutor()
         private fun json(value: Identity) = JSONObject().put("applicationId", value.applicationId).put("versionCode", value.versionCode).put("apkSha256", value.apkSha256).put("signerSha256", value.signerSha256)
         private fun identity(value: JSONObject) = Identity(value.getString("applicationId"), value.getLong("versionCode"), value.getString("apkSha256"), value.getString("signerSha256"))
@@ -179,7 +187,7 @@ class OwnPackageInstallReceiver : BroadcastReceiver() {
                 val confirmation = OwnPackageInstaller(context).callback(intent)
                 if (confirmation != null) {
                     try { context.startActivity(confirmation.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)) }
-                    catch (_: Exception) { /* Retain awaiting-user state; UI can open session details. */ }
+                    catch (_: Exception) { /* Retain the original confirmation for an explicit UI action. */ }
                 }
             } catch (_: Exception) {
                 // Preserve journal state on callback failure. A fresh reconciliation is required.

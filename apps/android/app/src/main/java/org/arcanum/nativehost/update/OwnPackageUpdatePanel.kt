@@ -61,7 +61,7 @@ class OwnPackageUpdatePanel(context: Context) : LinearLayout(context) {
             var details: Intent? = null
             work(afterSuccess = { context.startActivity(requireNotNull(details)) }) {
                 details = installer.resumeConfirmation()
-                "Opened existing Android session details; no new submission"
+                "Opened original Android confirmation; no new submission"
             }
         }
         button("Cancel sessions and settle attempt") {

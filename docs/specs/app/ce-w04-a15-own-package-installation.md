@@ -114,7 +114,12 @@ Android user action follows the platform
 API31+ explicitly uses `USER_ACTION_REQUIRED`; older supported Android uses the
 confirmation behavior of `REQUEST_INSTALL_PACKAGES`. Android may decline a
 background confirmation launch. The journal remains awaiting-user and the panel
-can open the existing session details; it never submits a replacement session.
+can reopen the original Android confirmation intent while that process-local
+capability remains available. It never submits a replacement session. A process
+restart loses that capability: the app retains the journal, observes the original
+session and installed identity, and blocks reopening until the Human explicitly
+cancels and settles the attempt. Session details are not a substitute for Android
+installation confirmation.
 
 
 ## Dated bootstrap evidence and advancing test candidate
@@ -159,3 +164,20 @@ This correction compiles locally; it is not yet deployed or device-tested.
 Session details do not establish that Android can resume its confirmation UI.
 Pending-session opening and the successful advancing update remain unverified;
 A15 stays open. Preserve the journal and reconcile before any new submission.
+
+The recovery correction uses versionCode22, versionName
+`0.1.15-cew04-a15-recovery`. The original confirmation is retained only in process
+memory and bound to both operation ID and session ID. Resumption requires
+AWAITING_USER, presence of the original owned session and unchanged predecessor
+bytes. Terminal callbacks and explicit settlement clear the capability. No intent
+is serialized into the journal. Both preparation errors and UI-thread activity
+launch errors surface as blocked results. Pure tests cover ownership mismatch,
+lost process memory, settlement revocation and replacement by a later attempt;
+device confirmation/recovery tests remain required. Version21's published bytes
+and manifest remain unchanged. A fixed source build is not merge, publication or
+installation authorization.
+
+Android's [session-details API contract](https://developer.android.com/reference/android/content/pm/PackageInstaller.SessionInfo#createDetailsIntent())
+warns that a matching activity may not exist. This supports guarding the launch;
+it does not establish the exact exception on this phone, whose crash log was
+unavailable.
