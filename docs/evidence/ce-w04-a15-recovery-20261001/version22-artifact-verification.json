@@ -1,0 +1,21 @@
+{
+  "stage": "CE-W04-A15-recovery-candidate",
+  "sourceCommit": "8daaa135ad7997a154a9108d5e1b39ff2f114193",
+  "versionCode": 22,
+  "versionName": "0.1.15-cew04-a15-recovery",
+  "apkSha256": "d5635af40241e526342a25c01bbb342cfae56ee9b3252a89aaac45cb094c1c10",
+  "apkSizeBytes": 4632065,
+  "abis": [
+    "arm64-v8a",
+    "x86_64"
+  ],
+  "buildRunId": 36828985464,
+  "artifactId": 11146019465,
+  "compiledSourceObserved": true,
+  "apkSignatureVerified": true,
+  "publisherSignerSha256": "9841fbeda4d7d0c63b1663360fb0415218a08f063b5629317274076dfbb6b844",
+  "publication": "prepared-not-live",
+  "installPerformed": false,
+  "authorityEffect": "none",
+  "promotionCommit": "27207f2c2fa9ff48478fa1d49a37db6b6a175544"
+}
