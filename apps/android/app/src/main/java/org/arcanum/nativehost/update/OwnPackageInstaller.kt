@@ -109,7 +109,9 @@ class OwnPackageInstaller(private val context: Context) {
         val attempt = read()
         val sessions = installer.mySessions
         sessions.forEach { installer.abandonSession(it.sessionId) }
-        require(installer.mySessions.isEmpty()) { "Session absence not established" }
+        require(OwnPackageSessionAbsence.await({ installer.mySessions.isEmpty() })) {
+            "Session removal still pending; attempt retained. Refresh before explicit settlement"
+        }
         if (attempt != null) {
             val observed = distribution.installedIdentity()
             val recovery = OwnPackageUpdatePolicy.reconcile(attempt.prior, attempt.target, observed)
@@ -126,7 +128,8 @@ class OwnPackageInstaller(private val context: Context) {
         File(root, "candidate.apk").delete()
         File(root, "candidate.partial").delete()
         confirmations.clear()
-        "Owned sessions absent; attempt archived; no automatic retry"
+        if (attempt == null) "Owned sessions absent; no installation attempt; no automatic retry"
+        else "Owned sessions absent; attempt archived; no automatic retry"
     }
 
     fun callback(intent: Intent): Intent? = synchronized(lock) {
