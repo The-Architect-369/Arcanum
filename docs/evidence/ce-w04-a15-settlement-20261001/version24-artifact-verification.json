@@ -1,0 +1,20 @@
+{
+  "stage": "CE-W04-A15-settlement-candidate",
+  "sourceCommit": "61013ca69ee57f56cf4898c2d93b24a75f41b535",
+  "versionCode": 24,
+  "versionName": "0.1.15-cew04-a15-settlement",
+  "apkSha256": "23fce1ae36dc6a3a2a54f6067631092c23cfe1ab6be20245e02f8e406340927e",
+  "apkSizeBytes": 4632061,
+  "abis": [
+    "arm64-v8a",
+    "x86_64"
+  ],
+  "buildRunId": 36840153762,
+  "compiledSourceObserved": true,
+  "apkSignatureVerified": true,
+  "publisherSignerSha256": "9841fbeda4d7d0c63b1663360fb0415218a08f063b5629317274076dfbb6b844",
+  "publication": "not-published",
+  "installPerformed": false,
+  "authorityEffect": "none",
+  "artifactId": 11151287051
+}
