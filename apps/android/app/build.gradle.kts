@@ -28,8 +28,8 @@ android {
         applicationId = "org.arcanum.nativehost"
         minSdk = 26
         targetSdk = 35
-        versionCode = 19
-        versionName = "0.1.14-cew04-a14-2"
+        versionCode = 21
+        versionName = "0.1.15-cew04-a15-verify"
         buildConfigField(
             "String",
             "ARCANUM_SOURCE_COMMIT",
@@ -38,7 +38,7 @@ android {
         buildConfigField(
             "String",
             "ARCANUM_IMPLEMENTATION_ARC",
-            "\"CE-W04-A14.2\"",
+            "\"CE-W04-A15\"",
         )
     }
 
@@ -85,6 +85,7 @@ tasks.withType<Test>().configureEach {
 }
 
 dependencies {
+    implementation("com.android.tools.build:apksig:8.7.3")
     testImplementation("junit:junit:4.13.2")
     testImplementation("org.json:json:20240303")
 }

@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-09-30T15:19:46Z",
+  "generated_at": "2026-10-01T06:33:57Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "e464e5c3a",
+  "commit": "1875e0d01",
   "generator_version": "1.5",
   "files": [
     {
@@ -187,20 +187,20 @@
     {
       "path": "apps/android/app/build.gradle.kts",
       "type": "file",
-      "size_bytes": 2429,
-      "last_modified_commit": "f322cd6d3",
+      "size_bytes": 2491,
+      "last_modified_commit": "1875e0d01",
       "is_empty": false,
       "extension": ".kts",
-      "lines": 90
+      "lines": 91
     },
     {
       "path": "apps/android/app/src/main/AndroidManifest.xml",
       "type": "file",
-      "size_bytes": 1323,
-      "last_modified_commit": "378b69629",
+      "size_bytes": 1525,
+      "last_modified_commit": "5e7e65281",
       "is_empty": false,
       "extension": ".xml",
-      "lines": 33
+      "lines": 37
     },
     {
       "path": "apps/android/app/src/main/java/org/arcanum/nativehost/MainActivity.kt",
@@ -304,11 +304,11 @@
     {
       "path": "apps/android/app/src/main/java/org/arcanum/nativehost/architect/ArchitectShellPanel.kt",
       "type": "file",
-      "size_bytes": 50339,
-      "last_modified_commit": "f322cd6d3",
+      "size_bytes": 50989,
+      "last_modified_commit": "1875e0d01",
       "is_empty": false,
       "extension": ".kt",
-      "lines": 1199
+      "lines": 1209
     },
     {
       "path": "apps/android/app/src/main/java/org/arcanum/nativehost/architect/ArchitectVisualDiagnostics.kt",
@@ -491,6 +491,42 @@
       "lines": 115
     },
     {
+      "path": "apps/android/app/src/main/java/org/arcanum/nativehost/update/OwnPackageDistribution.kt",
+      "type": "file",
+      "size_bytes": 10509,
+      "last_modified_commit": "5e7e65281",
+      "is_empty": false,
+      "extension": ".kt",
+      "lines": 158
+    },
+    {
+      "path": "apps/android/app/src/main/java/org/arcanum/nativehost/update/OwnPackageInstaller.kt",
+      "type": "file",
+      "size_bytes": 11840,
+      "last_modified_commit": "5e7e65281",
+      "is_empty": false,
+      "extension": ".kt",
+      "lines": 189
+    },
+    {
+      "path": "apps/android/app/src/main/java/org/arcanum/nativehost/update/OwnPackageUpdatePanel.kt",
+      "type": "file",
+      "size_bytes": 5920,
+      "last_modified_commit": "5e7e65281",
+      "is_empty": false,
+      "extension": ".kt",
+      "lines": 88
+    },
+    {
+      "path": "apps/android/app/src/main/java/org/arcanum/nativehost/update/OwnPackageUpdatePolicy.kt",
+      "type": "file",
+      "size_bytes": 3021,
+      "last_modified_commit": "5e7e65281",
+      "is_empty": false,
+      "extension": ".kt",
+      "lines": 71
+    },
+    {
       "path": "apps/android/app/src/main/res/xml/architect_loopback_network_security.xml",
       "type": "file",
       "size_bytes": 342,
@@ -606,6 +642,24 @@
       "is_empty": false,
       "extension": ".kt",
       "lines": 43
+    },
+    {
+      "path": "apps/android/app/src/test/java/org/arcanum/nativehost/update/OwnPackageDistributionTest.kt",
+      "type": "file",
+      "size_bytes": 1773,
+      "last_modified_commit": "5e7e65281",
+      "is_empty": false,
+      "extension": ".kt",
+      "lines": 34
+    },
+    {
+      "path": "apps/android/app/src/test/java/org/arcanum/nativehost/update/OwnPackageUpdatePolicyTest.kt",
+      "type": "file",
+      "size_bytes": 3132,
+      "last_modified_commit": "5e7e65281",
+      "is_empty": false,
+      "extension": ".kt",
+      "lines": 55
     },
     {
       "path": "apps/android/build.gradle.kts",
@@ -4586,6 +4640,15 @@
       "lines": 128
     },
     {
+      "path": "docs/specs/app/ce-w04-a15-own-package-installation.md",
+      "type": "file",
+      "size_bytes": 8253,
+      "last_modified_commit": "1875e0d01",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 141
+    },
+    {
       "path": "docs/specs/app/ce-w04-seed-node-alpha.md",
       "type": "file",
       "size_bytes": 17200,
@@ -7855,11 +7918,11 @@
     {
       "path": "scripts/verify-ce-w04-a14-2-candidate.py",
       "type": "file",
-      "size_bytes": 3013,
-      "last_modified_commit": "f322cd6d3",
+      "size_bytes": 3479,
+      "last_modified_commit": "5e7e65281",
       "is_empty": false,
       "extension": ".py",
-      "lines": 82
+      "lines": 90
     },
     {
       "path": "scripts/verify-ce-w04-a14.py",
