@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-10-01T06:18:07Z",
+  "generated_at": "2026-10-01T06:33:57Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "5e7e65281",
+  "commit": "1875e0d01",
   "generator_version": "1.5",
   "files": [
     {
@@ -187,8 +187,8 @@
     {
       "path": "apps/android/app/build.gradle.kts",
       "type": "file",
-      "size_bytes": 2484,
-      "last_modified_commit": "5e7e65281",
+      "size_bytes": 2491,
+      "last_modified_commit": "1875e0d01",
       "is_empty": false,
       "extension": ".kts",
       "lines": 91
@@ -304,11 +304,11 @@
     {
       "path": "apps/android/app/src/main/java/org/arcanum/nativehost/architect/ArchitectShellPanel.kt",
       "type": "file",
-      "size_bytes": 50726,
-      "last_modified_commit": "5e7e65281",
+      "size_bytes": 50989,
+      "last_modified_commit": "1875e0d01",
       "is_empty": false,
       "extension": ".kt",
-      "lines": 1205
+      "lines": 1209
     },
     {
       "path": "apps/android/app/src/main/java/org/arcanum/nativehost/architect/ArchitectVisualDiagnostics.kt",
@@ -4642,11 +4642,11 @@
     {
       "path": "docs/specs/app/ce-w04-a15-own-package-installation.md",
       "type": "file",
-      "size_bytes": 6787,
-      "last_modified_commit": "5e7e65281",
+      "size_bytes": 8253,
+      "last_modified_commit": "1875e0d01",
       "is_empty": false,
       "extension": ".md",
-      "lines": 117
+      "lines": 141
     },
     {
       "path": "docs/specs/app/ce-w04-seed-node-alpha.md",
