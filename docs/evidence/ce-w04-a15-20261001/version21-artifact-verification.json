@@ -1,0 +1,21 @@
+{
+  "stage": "CE-W04-A15-advancing-candidate",
+  "sourceCommit": "58b420afde2038e1d718e2163c1bfa35c5a36369",
+  "versionCode": 21,
+  "versionName": "0.1.15-cew04-a15-verify",
+  "apkSha256": "ddd5dae5e8b1b217e02a9aeb9c587de1738b0918b525b5759261f27191ac345f",
+  "apkSizeBytes": 4632057,
+  "abis": [
+    "arm64-v8a",
+    "x86_64"
+  ],
+  "buildRunId": 36825506714,
+  "artifactId": 11144409891,
+  "compiledSourceObserved": true,
+  "publication": "prepared-not-deployed",
+  "promotionEvidence": "pending-Human-authorized-main-adoption",
+  "installPerformed": false,
+  "apkSignatureVerified": true,
+  "publisherSignerSha256": "9841fbeda4d7d0c63b1663360fb0415218a08f063b5629317274076dfbb6b844",
+  "promotionCommit": "52c7f4a4204617c80be5eb57995571329596b1d2"
+}

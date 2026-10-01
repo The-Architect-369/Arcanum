@@ -6,6 +6,9 @@ const nextConfig = {
     return [{
       source: "/updates/a14-2/:file",
       headers: [{ key: "Cache-Control", value: "no-store, max-age=0" }],
+    }, {
+      source: "/updates/a15-verification/:file",
+      headers: [{ key: "Cache-Control", value: "no-store, max-age=0" }],
     }];
   },
 };

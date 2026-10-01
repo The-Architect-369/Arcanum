@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-10-01T06:33:57Z",
+  "generated_at": "2026-10-01T06:43:55Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "1875e0d01",
+  "commit": "6d761cde3",
   "generator_version": "1.5",
   "files": [
     {
@@ -781,11 +781,11 @@
     {
       "path": "apps/web/next.config.mjs",
       "type": "file",
-      "size_bytes": 314,
-      "last_modified_commit": "7744e8ea3",
+      "size_bytes": 445,
+      "last_modified_commit": "6d761cde3",
       "is_empty": false,
       "extension": ".mjs",
-      "lines": 12
+      "lines": 15
     },
     {
       "path": "apps/web/node/docker/Dockerfile",
@@ -999,6 +999,33 @@
       "type": "file",
       "size_bytes": 941,
       "last_modified_commit": "7744e8ea3",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 1
+    },
+    {
+      "path": "apps/web/public/updates/a15-verification/SHA256SUMS",
+      "type": "file",
+      "size_bytes": 184,
+      "last_modified_commit": "6d761cde3",
+      "is_empty": false,
+      "extension": "",
+      "lines": 2
+    },
+    {
+      "path": "apps/web/public/updates/a15-verification/arcanum-ce-w04-a15-verify-58b420a.apk",
+      "type": "file",
+      "size_bytes": 4632057,
+      "last_modified_commit": "6d761cde3",
+      "is_empty": false,
+      "extension": ".apk",
+      "lines": 0
+    },
+    {
+      "path": "apps/web/public/updates/a15-verification/manifest.json",
+      "type": "file",
+      "size_bytes": 946,
+      "last_modified_commit": "6d761cde3",
       "is_empty": false,
       "extension": ".json",
       "lines": 1
@@ -2770,11 +2797,11 @@
     {
       "path": "apps/web/src/middleware.ts",
       "type": "file",
-      "size_bytes": 1691,
-      "last_modified_commit": "7744e8ea3",
+      "size_bytes": 1853,
+      "last_modified_commit": "6d761cde3",
       "is_empty": false,
       "extension": ".ts",
-      "lines": 63
+      "lines": 66
     },
     {
       "path": "apps/web/src/state/useAccount.ts",
@@ -3909,6 +3936,42 @@
       "is_empty": false,
       "extension": ".md",
       "lines": 44
+    },
+    {
+      "path": "docs/evidence/ce-w04-a15-20261001/review.md",
+      "type": "file",
+      "size_bytes": 2498,
+      "last_modified_commit": "6d761cde3",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 38
+    },
+    {
+      "path": "docs/evidence/ce-w04-a15-20261001/version20-predecessor-trust.json",
+      "type": "file",
+      "size_bytes": 422,
+      "last_modified_commit": "6d761cde3",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 1
+    },
+    {
+      "path": "docs/evidence/ce-w04-a15-20261001/version21-artifact-verification.json",
+      "type": "file",
+      "size_bytes": 752,
+      "last_modified_commit": "6d761cde3",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 21
+    },
+    {
+      "path": "docs/evidence/ce-w04-a15-20261001/version21-candidate-observation.json",
+      "type": "file",
+      "size_bytes": 359,
+      "last_modified_commit": "6d761cde3",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 1
     },
     {
       "path": "docs/evidence/continuity-schema-adoption-20260930/review.md",

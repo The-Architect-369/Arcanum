@@ -20,6 +20,9 @@ export function middleware(req: NextRequest) {
     "/updates/a14-2/manifest.json",
     "/updates/a14-2/arcanum-ce-w04-a14-2-d2e30b2.apk",
     "/updates/a14-2/SHA256SUMS",
+    "/updates/a15-verification/manifest.json",
+    "/updates/a15-verification/arcanum-ce-w04-a15-verify-58b420a.apk",
+    "/updates/a15-verification/SHA256SUMS",
   ];
   if (updateFiles.includes(pathname)) {
     return NextResponse.next();
