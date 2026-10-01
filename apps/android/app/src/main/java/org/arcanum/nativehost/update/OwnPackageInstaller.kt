@@ -151,12 +151,12 @@ class OwnPackageInstaller(private val context: Context) {
             }
             PackageInstaller.STATUS_FAILURE_ABORTED -> {
                 confirmations.clear()
-                write(attempt.copy(state = AttemptState.CANCELLED, observation = "Android reported aborted installation; reconcile before another attempt")); null
+                write(attempt.copy(state = OwnPackageInstallFailure.stateFor(PackageInstaller.STATUS_FAILURE_ABORTED), observation = "Android reported aborted installation; reconcile before another attempt")); null
             }
             else -> {
                 confirmations.clear()
                 val status = intent.getIntExtra(PackageInstaller.EXTRA_STATUS, Int.MIN_VALUE)
-                val state = if (status in 1..8) AttemptState.FAILED else AttemptState.UNKNOWN
+                val state = OwnPackageInstallFailure.stateFor(status)
                 write(attempt.copy(state = state, observation = "Android reported status=$status; reconcile before another attempt")); null
             }
         }
