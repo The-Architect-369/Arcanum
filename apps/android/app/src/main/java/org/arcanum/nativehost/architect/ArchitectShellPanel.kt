@@ -119,6 +119,7 @@ class ArchitectShellPanel(context: Context) : LinearLayout(context) {
                 setPadding(0, 0, 0, dp(14))
             }
         content.addView(handoffStatus)
+        content.addView(org.arcanum.nativehost.update.OwnPackageUpdatePanel(context))
 
         workspaceStatus =
             TextView(context).apply {
@@ -432,6 +433,11 @@ class ArchitectShellPanel(context: Context) : LinearLayout(context) {
                                     "installed versionCode is not 19"
                                 }
                                 "A14.2 artifact handoff"
+                            }
+                            "CE-W04-A15" -> {
+                                require(BuildConfig.VERSION_NAME == "0.1.15-cew04-a15")
+                                require(BuildConfig.VERSION_CODE == 20)
+                                "A15 candidate artifact handoff"
                             }
                             else -> error("unsupported installed implementation arc")
                         }

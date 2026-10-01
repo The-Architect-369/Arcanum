@@ -29,7 +29,15 @@ subprocess.run(
     check=True,
 )
 
-build = (ROOT / "apps/android/app/build.gradle.kts").read_text()
+# Preserve the certified A14.2 identity while successors advance independently.
+A14_2_HEAD = "d2e30b275234c820708cdcc0b025a38be9a5fe61"
+build = subprocess.check_output(
+    ("git", "show", f"{A14_2_HEAD}:apps/android/app/build.gradle.kts"),
+    cwd=ROOT, text=True,
+)
+current_build = (ROOT / "apps/android/app/build.gradle.kts").read_text()
+current_code = re.search(r"\bversionCode\s*=\s*(\d+)\b", current_build)
+require(current_code is not None and int(current_code.group(1)) >= 19, "successor versionCode regressed below A14.2")
 panel = (
     ROOT
     / "apps/android/app/src/main/java/org/arcanum/nativehost/architect/ArchitectShellPanel.kt"
