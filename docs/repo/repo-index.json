@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-10-01T09:47:19Z",
+  "generated_at": "2026-10-01T18:05:17Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "03bb164af",
+  "commit": "f48e2a8d6",
   "generator_version": "1.5",
   "files": [
     {
@@ -187,8 +187,8 @@
     {
       "path": "apps/android/app/build.gradle.kts",
       "type": "file",
-      "size_bytes": 2495,
-      "last_modified_commit": "ed4d5c1b5",
+      "size_bytes": 2502,
+      "last_modified_commit": "f48e2a8d6",
       "is_empty": false,
       "extension": ".kts",
       "lines": 91
@@ -304,11 +304,11 @@
     {
       "path": "apps/android/app/src/main/java/org/arcanum/nativehost/architect/ArchitectShellPanel.kt",
       "type": "file",
-      "size_bytes": 51208,
-      "last_modified_commit": "ed4d5c1b5",
+      "size_bytes": 51287,
+      "last_modified_commit": "f48e2a8d6",
       "is_empty": false,
       "extension": ".kt",
-      "lines": 1212
+      "lines": 1213
     },
     {
       "path": "apps/android/app/src/main/java/org/arcanum/nativehost/architect/ArchitectVisualDiagnostics.kt",
@@ -4235,6 +4235,15 @@
       "lines": 1
     },
     {
+      "path": "docs/evidence/ce-w04-a15-verification-20261001/decisions.md",
+      "type": "file",
+      "size_bytes": 8331,
+      "last_modified_commit": "f48e2a8d6",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 121
+    },
+    {
       "path": "docs/evidence/continuity-schema-adoption-20260930/review.md",
       "type": "file",
       "size_bytes": 2662,
@@ -4966,11 +4975,11 @@
     {
       "path": "docs/specs/app/ce-w04-a15-own-package-installation.md",
       "type": "file",
-      "size_bytes": 16466,
-      "last_modified_commit": "ed4d5c1b5",
+      "size_bytes": 18557,
+      "last_modified_commit": "f48e2a8d6",
       "is_empty": false,
       "extension": ".md",
-      "lines": 267
+      "lines": 300
     },
     {
       "path": "docs/specs/app/ce-w04-seed-node-alpha.md",
