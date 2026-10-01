@@ -228,3 +228,40 @@ verified version23 bundle is live:
    coverage, including the limits of unit versus device observations, before
    preparing a separately authorized closure record. A15 remains open until that
    review accepts all required evidence.
+
+## 2026-10-01 delayed session removal observed on the phone
+
+Version22 successfully reopened the original version23 Android confirmation
+without a replacement submission (screenshots2346/2348), then cancellation
+reconciled the same operation and absent session (2350). After the Human-directed
+process-stop sequence, operation `01472c2b-8121-4350-9683-34ed958a9a3d` remained
+journaled with AWAITING_USER and sessionPresent=true (2354/2356); reopening was
+blocked because the process-local original confirmation was unavailable (2358).
+Explicit settlement produced No installation attempt (2360).
+
+The Human reported needing two settlement actions. An empty-attempt check
+(2362/2364/2366) and a cancelled-session check (2376/2378/2380) did not reproduce
+the active-session timing issue. For original operation
+`f4bf85d8-37db-43df-b422-963609831d8f`, screenshot2384 shows AWAITING_USER and
+sessionPresent=true. The first confirmed settlement returned Session absence
+not established (2386). Refresh then observed the same operation with CANCELLED
+and sessionPresent=false (2388). A second explicit settlement and refresh showed
+No installation attempt (2390). These observations establish removal completing
+after the immediate absence check, while the journal was retained.
+
+VersionCode24 / `0.1.15-cew04-a15-settlement` is the corrective candidate. Following
+one explicit abandonment of the captured owned sessions, its worker observes
+session absence for up to two seconds using a monotonic clock. It never repeats
+abandonment or installation submission. If absence cannot be established, or
+observation/wait fails, the journal remains and the result directs reconciliation
+and explicit settlement. Archival still requires absent owned sessions and an
+expected independently observed installed identity. Empty-attempt settlement
+no longer claims to have archived a nonexistent attempt. Tests cover immediate
+and delayed absence, the deadline, persistent presence, failed observation and
+interruption. These are unit observations; corrected active-session settlement
+still requires phone evidence on the installed corrective build.
+
+Keep version22 installed during preparation. Version23's published files remain
+unchanged. Merge, publication and installation keep their separate Human gates.
+A15 remains open, including final update/data-preservation and failure-evidence
+review. No participant private contents were read or exported.
