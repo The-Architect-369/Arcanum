@@ -1,0 +1,50 @@
+[
+  {
+    "file": "SHA256SUMS",
+    "agent": "Mozilla/5.0 (X11; Linux x86_64)",
+    "status": 200,
+    "direct": true,
+    "cacheControl": "no-store, max-age=0",
+    "sha256": "eb15c80d79cbbe597fc2f8aff62370330f5261e0ea1319cfe0519250ec56d659"
+  },
+  {
+    "file": "manifest.json",
+    "agent": "Mozilla/5.0 (X11; Linux x86_64)",
+    "status": 200,
+    "direct": true,
+    "cacheControl": "no-store, max-age=0",
+    "sha256": "8ba6c5f9a86a580055fc9d2d9e44ae6665c13a7a11da6ff97794eeaffe2ec80d"
+  },
+  {
+    "file": "arcanum-ce-w04-a15-recovery-verify-cdecd42.apk",
+    "agent": "Mozilla/5.0 (X11; Linux x86_64)",
+    "status": 200,
+    "direct": true,
+    "cacheControl": "no-store, max-age=0",
+    "sha256": "b149599ad24487efaefdb4bf2a6e1e50a60567751a3086bb14ca7d380faaf2b4"
+  },
+  {
+    "file": "SHA256SUMS",
+    "agent": "Mozilla/5.0 (Linux; Android 15) Mobile",
+    "status": 200,
+    "direct": true,
+    "cacheControl": "no-store, max-age=0",
+    "sha256": "eb15c80d79cbbe597fc2f8aff62370330f5261e0ea1319cfe0519250ec56d659"
+  },
+  {
+    "file": "manifest.json",
+    "agent": "Mozilla/5.0 (Linux; Android 15) Mobile",
+    "status": 200,
+    "direct": true,
+    "cacheControl": "no-store, max-age=0",
+    "sha256": "8ba6c5f9a86a580055fc9d2d9e44ae6665c13a7a11da6ff97794eeaffe2ec80d"
+  },
+  {
+    "file": "arcanum-ce-w04-a15-recovery-verify-cdecd42.apk",
+    "agent": "Mozilla/5.0 (Linux; Android 15) Mobile",
+    "status": 200,
+    "direct": true,
+    "cacheControl": "no-store, max-age=0",
+    "sha256": "b149599ad24487efaefdb4bf2a6e1e50a60567751a3086bb14ca7d380faaf2b4"
+  }
+]
