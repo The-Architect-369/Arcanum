@@ -265,3 +265,36 @@ Keep version22 installed during preparation. Version23's published files remain
 unchanged. Merge, publication and installation keep their separate Human gates.
 A15 remains open, including final update/data-preservation and failure-evidence
 review. No participant private contents were read or exported.
+
+## 2026-10-01 installed settlement correction and final verification target
+
+PR79 and PR80 are merged. Screenshots2394/2396 show installed version24
+`0.1.15-cew04-a15-settlement`, handoff PASS, APK source
+`61013ca69ee57f56cf4898c2d93b24a75f41b535` and installed APK SHA-256
+`23fce1ae36dc6a3a2a54f6067631092c23cfe1ab6be20245e02f8e406340927e`.
+Operation `35526ca5-edbc-4bb4-bec3-ee0c63609941` reports TARGET_OBSERVED,
+sessionPresent=false and callbackState=VERIFIED. The Human reported geometry,
+Hope reflection and Tempus still working. These observations establish the
+installed baseline and reported preservation; they do not establish corrected
+active-session settlement running in version24.
+
+The Human authorized preparing versionCode25,
+`0.1.15-cew04-a15-settlement-verify`, and subsequently authorized merging the
+candidate after all verification checks pass. This candidate advances the test
+identity and handoff mapping without changing the version24 updater. Controlled
+publication retains its applicable authorization and evidence gate. Keep the
+version24 verified receipt intact until joint testing begins.
+
+After verified publication, the joint sequence is: preserve and explicitly
+settle the existing receipt; stage/request version25 and leave Android confirmation
+pending; observe the original active session; confirm settlement once and capture
+its result before refresh; verify No installation attempt without a second
+settlement; stage a fresh attempt and explicitly update; verify exact handoff and
+original-operation receipt; repeat Human preservation checks; preserve/settle
+that receipt and verify same-version NOT_ADVANCING rejection. A timeout or failed
+observation is retained evidence, not a pass. Review interrupted-staging and
+failed-install evidence with unit/device limits before Human closure review.
+
+Chain-live compatibility is outside A15 and is not a closure gate. The dated
+[development decision and evidence record](../../evidence/ce-w04-a15-verification-20261001/decisions.md)
+preserves the implementation paths, roadblocks and remaining evidence gaps.

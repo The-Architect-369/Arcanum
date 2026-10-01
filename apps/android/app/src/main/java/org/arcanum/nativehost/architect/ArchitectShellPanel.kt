@@ -441,6 +441,7 @@ class ArchitectShellPanel(context: Context) : LinearLayout(context) {
                                     22 -> "0.1.15-cew04-a15-recovery"
                                     23 -> "0.1.15-cew04-a15-recovery-verify"
                                     24 -> "0.1.15-cew04-a15-settlement"
+                                    25 -> "0.1.15-cew04-a15-settlement-verify"
                                     else -> error("unsupported A15 candidate version")
                                 }
                                 require(BuildConfig.VERSION_NAME == expectedVersion)
