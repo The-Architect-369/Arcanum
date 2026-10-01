@@ -1,0 +1,1 @@
+{"abis":["arm64-v8a","x86_64"],"applicationId":"org.arcanum.nativehost","artifactSha256":"fc2b6b237f388b97449c958b41d991c666bdc5cdb1929ca1de72d6787982082f","artifactSizeBytes":4632073,"minSdk":26,"publisherSignerSha256":"9841fbeda4d7d0c63b1663360fb0415218a08f063b5629317274076dfbb6b844","targetSdk":35,"versionCode":25,"versionName":"0.1.15-cew04-a15-settlement-verify"}

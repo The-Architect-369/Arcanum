@@ -1,0 +1,33 @@
+{
+  "stage": "CE-W04-A15-settlement-verification-candidate",
+  "sourceCommit": "7058cbeeb5c7844fa5c5439ea6d0b421536b880f",
+  "versionCode": 25,
+  "versionName": "0.1.15-cew04-a15-settlement-verify",
+  "apkSha256": "fc2b6b237f388b97449c958b41d991c666bdc5cdb1929ca1de72d6787982082f",
+  "apkSizeBytes": 4632073,
+  "abis": [
+    "arm64-v8a",
+    "x86_64"
+  ],
+  "nativeLibraries": {
+    "arm64-v8a": [
+      "lib/arm64-v8a/libarcanum_android_hope_jni.so",
+      "lib/arm64-v8a/libarcanum_android_jni.so",
+      "lib/arm64-v8a/libarcanum_android_tempus_lifecycle_jni.so"
+    ],
+    "x86_64": [
+      "lib/x86_64/libarcanum_android_hope_jni.so",
+      "lib/x86_64/libarcanum_android_jni.so",
+      "lib/x86_64/libarcanum_android_tempus_lifecycle_jni.so"
+    ]
+  },
+  "compiledSourceObserved": true,
+  "compiledSourceEvidence": "exact head ASCII in classes DEX; GitHub exact-head checkout/build must be reconciled separately",
+  "apkSignatureVerified": true,
+  "publisherSignerSha256": "9841fbeda4d7d0c63b1663360fb0415218a08f063b5629317274076dfbb6b844",
+  "publication": "not-published",
+  "installPerformed": false,
+  "authorityEffect": "none",
+  "buildRunId": 36904286200,
+  "artifactId": 11182942916
+}
