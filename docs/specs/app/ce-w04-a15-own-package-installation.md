@@ -181,3 +181,50 @@ Android's [session-details API contract](https://developer.android.com/reference
 warns that a matching activity may not exist. This supports guarding the launch;
 it does not establish the exact exception on this phone, whose crash log was
 unavailable.
+
+## 2026-10-01 installed baseline and corrected recovery verification
+
+PR75's recovery implementation and PR76's controlled version22 publication are
+merged. The exact signed APK source is
+`8daaa135ad7997a154a9108d5e1b39ff2f114193`, promotion commit
+`27207f2c2fa9ff48478fa1d49a37db6b6a175544`, publication commit
+`7dad151d221fb092c1a0642373fbfdbb6dd30c3b`. Live A14.2 inspection passed for
+the version22 manifest and APK. Supplied screenshots2337/2339 show version22
+handoff PASS and operation `abfbb86d-9375-4723-919d-005687a18b10` with
+TARGET_OBSERVED, sessionPresent=false and callbackState=VERIFIED. A later
+read-only Termux observation independently confirmed the installed base APK's
+SHA-256 `d5635af40241e526342a25c01bbb342cfae56ee9b3252a89aaac45cb094c1c10`.
+The Human reported geometry, Hope reflection recall and Tempus still working;
+no participant interior was read or exported. These dated execution observations
+supplement the historical preparation records; they do not close A15.
+
+The next verification candidate is versionCode23, versionName
+`0.1.15-cew04-a15-recovery-verify`. Keep version22 installed to test its corrected
+updater. The production failure classifier is extracted without changing its
+documented mappings; targeted unit tests cover the known Android failure codes,
+cancellation as a separate outcome, unknown/missing status, and the requirement
+to reconcile before another submission. Unit-injected status evidence is not an
+observed device failure callback. Publication and installation retain their own
+Human authorization gates.
+
+After the existing verified attempt is explicitly settled and a separately
+verified version23 bundle is live:
+
+1. Stage version23 and request it. At Android confirmation, press Home and reopen
+   Architect without stopping the process. Refresh and retain the same operation
+   ID and pending session; open the original confirmation, then cancel and record
+   callback/session reconciliation. Settle explicitly.
+2. Stage and request again. Leave confirmation pending, then use Android app
+   settings to stop the app process without clearing data. Reopen and refresh the
+   retained journal. Opening confirmation must be blocked when the original
+   session or process-local capability is unavailable; no replacement session
+   may be submitted. Record whether Android retained or removed the session.
+   Record the original operation and session observation, then settle explicitly.
+3. Stage a fresh advancing inspection and perform the Human-confirmed Android
+   update. Verify version23 source/hash/signer and the original operation receipt,
+   and repeat local preservation checks without disclosing private content.
+4. Inspect the same installed version23 candidate after settlement: expect
+   NOT_ADVANCING and no new attempt. Review interrupted-staging and failed-install
+   coverage, including the limits of unit versus device observations, before
+   preparing a separately authorized closure record. A15 remains open until that
+   review accepts all required evidence.
