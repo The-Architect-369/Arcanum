@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-10-01T06:43:55Z",
+  "generated_at": "2026-10-01T07:07:30Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "6d761cde3",
+  "commit": "c97c48f8d",
   "generator_version": "1.5",
   "files": [
     {
@@ -511,11 +511,11 @@
     {
       "path": "apps/android/app/src/main/java/org/arcanum/nativehost/update/OwnPackageUpdatePanel.kt",
       "type": "file",
-      "size_bytes": 5920,
-      "last_modified_commit": "5e7e65281",
+      "size_bytes": 6335,
+      "last_modified_commit": "c97c48f8d",
       "is_empty": false,
       "extension": ".kt",
-      "lines": 88
+      "lines": 95
     },
     {
       "path": "apps/android/app/src/main/java/org/arcanum/nativehost/update/OwnPackageUpdatePolicy.kt",
@@ -4705,11 +4705,11 @@
     {
       "path": "docs/specs/app/ce-w04-a15-own-package-installation.md",
       "type": "file",
-      "size_bytes": 8253,
-      "last_modified_commit": "1875e0d01",
+      "size_bytes": 9511,
+      "last_modified_commit": "c97c48f8d",
       "is_empty": false,
       "extension": ".md",
-      "lines": 141
+      "lines": 161
     },
     {
       "path": "docs/specs/app/ce-w04-seed-node-alpha.md",
