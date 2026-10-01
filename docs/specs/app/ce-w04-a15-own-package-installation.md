@@ -115,3 +115,27 @@ API31+ explicitly uses `USER_ACTION_REQUIRED`; older supported Android uses the
 confirmation behavior of `REQUEST_INSTALL_PACKAGES`. Android may decline a
 background confirmation launch. The journal remains awaiting-user and the panel
 can open the existing session details; it never submits a replacement session.
+
+
+## Dated bootstrap evidence and advancing test candidate
+
+On 2026-10-01, the version20 bootstrap built at
+`effa97cac76a1c142efe42248bd4a9d4f0ff515b` passed its exact-head CI. Its APK
+SHA-256 is `e6b6f0a8c5e5c57f6e41e14c642cf1bfb0ecc0837d4f73a1ea89c7802cf29860`.
+Independent signer verification matched the A14.2 development signer; the phone
+copy and subsequently installed base APK matched those exact bytes. Screenshot
+2299 showed the artifact handoff PASS; screenshot2303 showed the historical
+version19 inspection rejected as NOT_ADVANCING with installPerformed=false.
+Screenshot2309 showed an HTTPS example.com URL blocked, and screenshot2311
+showed controlled URLs restored with version19 still rejected. These screenshots
+are user-supplied visual evidence, not a direct observation of network traffic.
+The Human also reported the no-stage request gate, no-attempt receipt and local
+Hope reflection recall. Private reflection contents were not requested or read.
+
+The advancing test candidate is versionCode21, versionName
+`0.1.15-cew04-a15-verify`, arc `CE-W04-A15`. This advances identity solely to
+exercise the installed version20 updater. Its build/signature/hash, controlled
+publication and phone session evidence must be recorded before claiming the
+positive path. Publication/main merge remains a separate review/effect gate;
+no source change declares those effects complete. The exact version20 artifact
+and its historical evidence remain preserved.

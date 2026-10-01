@@ -435,8 +435,12 @@ class ArchitectShellPanel(context: Context) : LinearLayout(context) {
                                 "A14.2 artifact handoff"
                             }
                             "CE-W04-A15" -> {
-                                require(BuildConfig.VERSION_NAME == "0.1.15-cew04-a15")
-                                require(BuildConfig.VERSION_CODE == 20)
+                                val expectedVersion = when (BuildConfig.VERSION_CODE) {
+                                    20 -> "0.1.15-cew04-a15"
+                                    21 -> "0.1.15-cew04-a15-verify"
+                                    else -> error("unsupported A15 candidate version")
+                                }
+                                require(BuildConfig.VERSION_NAME == expectedVersion)
                                 "A15 candidate artifact handoff"
                             }
                             else -> error("unsupported installed implementation arc")
