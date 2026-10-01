@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-10-01T07:47:17Z",
+  "generated_at": "2026-10-01T08:18:16Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "82622a3c4",
+  "commit": "7dd08776b",
   "generator_version": "1.5",
   "files": [
     {
@@ -817,11 +817,11 @@
     {
       "path": "apps/web/next.config.mjs",
       "type": "file",
-      "size_bytes": 572,
-      "last_modified_commit": "5eee42334",
+      "size_bytes": 712,
+      "last_modified_commit": "7dd08776b",
       "is_empty": false,
       "extension": ".mjs",
-      "lines": 18
+      "lines": 21
     },
     {
       "path": "apps/web/node/docker/Dockerfile",
@@ -1035,6 +1035,33 @@
       "type": "file",
       "size_bytes": 941,
       "last_modified_commit": "7744e8ea3",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 1
+    },
+    {
+      "path": "apps/web/public/updates/a15-recovery-verification/SHA256SUMS",
+      "type": "file",
+      "size_bytes": 113,
+      "last_modified_commit": "7dd08776b",
+      "is_empty": false,
+      "extension": "",
+      "lines": 1
+    },
+    {
+      "path": "apps/web/public/updates/a15-recovery-verification/arcanum-ce-w04-a15-recovery-verify-cdecd42.apk",
+      "type": "file",
+      "size_bytes": 4632069,
+      "last_modified_commit": "7dd08776b",
+      "is_empty": false,
+      "extension": ".apk",
+      "lines": 0
+    },
+    {
+      "path": "apps/web/public/updates/a15-recovery-verification/manifest.json",
+      "type": "file",
+      "size_bytes": 955,
+      "last_modified_commit": "7dd08776b",
       "is_empty": false,
       "extension": ".json",
       "lines": 1
@@ -2860,11 +2887,11 @@
     {
       "path": "apps/web/src/middleware.ts",
       "type": "file",
-      "size_bytes": 2005,
-      "last_modified_commit": "5eee42334",
+      "size_bytes": 2203,
+      "last_modified_commit": "7dd08776b",
       "is_empty": false,
       "extension": ".ts",
-      "lines": 69
+      "lines": 72
     },
     {
       "path": "apps/web/src/state/useAccount.ts",
@@ -4068,6 +4095,51 @@
       "type": "file",
       "size_bytes": 361,
       "last_modified_commit": "5eee42334",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 1
+    },
+    {
+      "path": "docs/evidence/ce-w04-a15-recovery-verification-20261001/direct-serving.json",
+      "type": "file",
+      "size_bytes": 1578,
+      "last_modified_commit": "7dd08776b",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 50
+    },
+    {
+      "path": "docs/evidence/ce-w04-a15-recovery-verification-20261001/review.md",
+      "type": "file",
+      "size_bytes": 1104,
+      "last_modified_commit": "7dd08776b",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 7
+    },
+    {
+      "path": "docs/evidence/ce-w04-a15-recovery-verification-20261001/version22-predecessor-trust.json",
+      "type": "file",
+      "size_bytes": 422,
+      "last_modified_commit": "7dd08776b",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 1
+    },
+    {
+      "path": "docs/evidence/ce-w04-a15-recovery-verification-20261001/version23-artifact-verification.json",
+      "type": "file",
+      "size_bytes": 664,
+      "last_modified_commit": "7dd08776b",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 20
+    },
+    {
+      "path": "docs/evidence/ce-w04-a15-recovery-verification-20261001/version23-candidate-observation.json",
+      "type": "file",
+      "size_bytes": 368,
+      "last_modified_commit": "7dd08776b",
       "is_empty": false,
       "extension": ".json",
       "lines": 1
