@@ -438,6 +438,7 @@ class ArchitectShellPanel(context: Context) : LinearLayout(context) {
                                 val expectedVersion = when (BuildConfig.VERSION_CODE) {
                                     20 -> "0.1.15-cew04-a15"
                                     21 -> "0.1.15-cew04-a15-verify"
+                                    22 -> "0.1.15-cew04-a15-recovery"
                                     else -> error("unsupported A15 candidate version")
                                 }
                                 require(BuildConfig.VERSION_NAME == expectedVersion)

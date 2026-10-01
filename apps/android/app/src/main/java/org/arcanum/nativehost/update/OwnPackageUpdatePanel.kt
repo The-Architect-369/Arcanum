@@ -58,7 +58,11 @@ class OwnPackageUpdatePanel(context: Context) : LinearLayout(context) {
         }
         button("Refresh installation receipt") { work { installer.reconcile() } }
         button("Open pending Android session") {
-            work { val intent = installer.resumeConfirmation(); post { context.startActivity(intent) }; "Opening existing Android session; no new submission" }
+            var details: Intent? = null
+            work(afterSuccess = { context.startActivity(requireNotNull(details)) }) {
+                details = installer.resumeConfirmation()
+                "Opened original Android confirmation; no new submission"
+            }
         }
         button("Cancel sessions and settle attempt") {
             AlertDialog.Builder(context).setTitle("Settle this update attempt?")
@@ -72,14 +76,17 @@ class OwnPackageUpdatePanel(context: Context) : LinearLayout(context) {
         controls.add(button); addView(button)
     }
 
-    private fun work(action: () -> String) {
+    private fun work(afterSuccess: (() -> Unit)? = null, action: () -> String) {
         controls.forEach { it.isEnabled = false }
         manifest.isEnabled = false; apk.isEnabled = false
         status.text = "Working · no automatic retry"
         OwnPackageInstaller.worker.execute {
-            val result = runCatching(action).getOrElse { "Blocked · ${it.message.orEmpty().take(160)}\nRefresh and reconcile before retrying" }
+            val result = runCatching(action)
             post {
-                status.text = result
+                // Activity launches must be caught on the UI thread where they execute.
+                // Posting them from the worker without this guard bypasses its error handling.
+                status.text = result.mapCatching { message -> afterSuccess?.invoke(); message }
+                    .getOrElse { "Blocked · ${it.message.orEmpty().take(160)}\nRefresh and reconcile before retrying" }
                 controls.forEach { it.isEnabled = true }
                 manifest.isEnabled = true; apk.isEnabled = true
             }
