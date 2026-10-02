@@ -50,6 +50,7 @@ jobs:
           cargo fmt --manifest-path runtime/arcanum-android-continuity-jni/Cargo.toml --check
           cargo clippy --manifest-path runtime/arcanum-android-continuity-jni/Cargo.toml --all-targets --locked --offline -- -D warnings
           rustup toolchain install 1.82.0 --profile minimal
+          cargo +1.82.0 fetch --manifest-path runtime/arcanum-android-continuity-jni/Cargo.toml --locked
           cargo +1.82.0 check --manifest-path runtime/arcanum-android-continuity-jni/Cargo.toml --locked --offline
       - name: Build all four native libraries for both ABIs
         run: |

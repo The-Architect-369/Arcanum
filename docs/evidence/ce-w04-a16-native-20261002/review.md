@@ -95,3 +95,15 @@ The native host and instrumentation use the same resolved root. This avoids
 treating a platform app-storage path alias as participant metadata corruption;
 physical compatibility remains subject to actual device execution. Follow-up
 source/index commits and a fresh sequential sync check retain exact-head lineage.
+
+At correction/index head `f9532c9ed39de973f11d6b5d6e084e4faa500244`, all 15
+local sync gates passed, the tree was clean and compiled Kotlin JNI descriptors
+matched the intended exports. The remote A16 receipt/custody and inherited native
+unit build passed. The first new native CI run
+[37011373903](https://github.com/The-Architect-369/Arcanum/actions/runs/37011373903)
+passed stable JNI formatting/Clippy but failed its Rust 1.82 offline resolution
+because the newer Cargo fetch did not populate an index usable by the older tool.
+No Android qualification artifact was produced by that failed run. The workflow
+now explicitly performs a locked fetch with Rust 1.82 before its offline check,
+matching the successful local MSRV procedure. Later exact-head outcomes remain
+separate observations in the PR.
