@@ -25,7 +25,7 @@ class ContinuityDeviceQualificationTest {
         check(BuildConfig.ARCANUM_SOURCE_COMMIT.matches(Regex("[0-9a-f]{40}"))) { "Qualification APK must bind its actual source" }
         check(BuildConfig.ARCANUM_IMPLEMENTATION_ARC == "CE-W04-A16")
         manager = ContinuityCredentialManager(AndroidContinuityCredentialStorage(context), AndroidContinuityKeyProvider())
-        native = ContinuityNativeBridge.port(File(context.noBackupFilesDir, "continuity-synthetic.v1"))
+        native = ContinuityNativeBridge.port(File(context.noBackupFilesDir.canonicalFile, "continuity-synthetic.v1"))
         controller = ContinuityOperationController(manager, native, ContinuityOperationJournal(AndroidContinuityCredentialStorage(context, ContinuityStorageSlot.OPERATIONS)))
     }
     private fun decision(label: String) = ContinuityDecision("qualification-$label-${UUID.randomUUID()}", System.currentTimeMillis())

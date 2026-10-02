@@ -93,15 +93,17 @@ class AndroidContinuityKeyProvider : ContinuityKeyProvider {
 /** One bounded app-private registry slot; partial writes stay blocked and preserved. No backup import. */
 enum class ContinuityStorageSlot(val directory: String) { CREDENTIALS("identity/continuity.v1"), OPERATIONS("continuity-ui.v1") }
 class AndroidContinuityCredentialStorage(context: Context, slot: ContinuityStorageSlot = ContinuityStorageSlot.CREDENTIALS) : ContinuityCredentialStorage {
-    private val root = File(context.noBackupFilesDir, slot.directory)
+    // Resolve the platform-owned root once; reject aliases below that trusted root.
+    private val privateRoot = context.noBackupFilesDir.canonicalFile
+    private val root = File(privateRoot, slot.directory)
     private val registry get() = File(root, "registry.bin")
     private val partial get() = File(root, "registry.bin.partial")
     init {
-        check(root.mkdirs() || root.isDirectory)
         check(root.canonicalFile == root.absoluteFile) { "Credential namespace must not be a symlink" }
+        check(root.mkdirs() || root.isDirectory)
         syncDirectory(root)
         syncDirectory(root.parentFile!!)
-        syncDirectory(context.noBackupFilesDir)
+        syncDirectory(privateRoot)
     }
     override fun <T> locked(action: () -> T): T {
         check(root.canonicalFile == root.absoluteFile)

@@ -66,7 +66,7 @@ class ContinuityPanel(private val host: Context) {
         dialog.show(); active = true
         work {
             val keyManager = ContinuityCredentialManager(AndroidContinuityCredentialStorage(host), AndroidContinuityKeyProvider())
-            val port = ContinuityNativeBridge.port(File(host.noBackupFilesDir, "continuity-synthetic.v1"))
+            val port = ContinuityNativeBridge.port(File(host.noBackupFilesDir.canonicalFile, "continuity-synthetic.v1"))
             manager = keyManager
             controller = ContinuityOperationController(keyManager, port, ContinuityOperationJournal(AndroidContinuityCredentialStorage(host, ContinuityStorageSlot.OPERATIONS)))
             refreshState()

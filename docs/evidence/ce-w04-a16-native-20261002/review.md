@@ -79,3 +79,19 @@ Commit the source and deterministic index companion, verify all sync gates, obta
 exact-head native CI artifacts, then qualify on a connected, explicitly selected
 physical device under the installation/test effect grant. Canonical main and
 A16/CE-W04 closure remain unchanged pending Human authority and missing evidence.
+
+## Additive host verification correction
+
+Integration source `86cbbdbcc88fa1d97e65b63b642ae3ffb3487a91` and deterministic
+index companion `f98afbfe1fa034622322a3691e977fc70503b745` remain independent
+commits. The first full sync check passed gates 1–12, then the inherited A13.5
+static verifier rejected a provider-expression versionCode because it recognizes
+literal defaults. The correction retains explicit baseline 26 and a bounded
+qualification override for 26/27; it does not weaken the inherited check.
+
+The Android adapter now resolves the platform-owned no-backup root once, then
+continues to reject symlinks below that trusted root before creating directories.
+The native host and instrumentation use the same resolved root. This avoids
+treating a platform app-storage path alias as participant metadata corruption;
+physical compatibility remains subject to actual device execution. Follow-up
+source/index commits and a fresh sequential sync check retain exact-head lineage.

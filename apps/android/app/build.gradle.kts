@@ -29,7 +29,10 @@ android {
         applicationId = "org.arcanum.nativehost"
         minSdk = 26
         targetSdk = 35
-        versionCode = providers.gradleProperty("arcanumQualificationVersionCode").map { it.toInt().also { code -> require(code == 26 || code == 27) } }.orElse(26).get()
+        versionCode = 26
+        providers.gradleProperty("arcanumQualificationVersionCode").orNull?.let { value ->
+            versionCode = value.toInt().also { require(it == 26 || it == 27) }
+        }
         versionName = "0.1.16-cew04-a16"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         buildConfigField(
