@@ -1,4 +1,4 @@
-name: CE-W04 A16 Receipt Foundation
+name: CE-W04 A16 Receipts and Custody
 
 on:
   push:
@@ -8,6 +8,7 @@ on:
       - "docs/specs/runtime/ce-w04-a16-*"
       - "docs/specs/runtime/fixtures/a16-v1/**"
       - "apps/android/app/src/test/java/org/arcanum/nativehost/continuity/**"
+      - "apps/android/app/src/main/java/org/arcanum/nativehost/continuity/**"
       - ".github/workflows/verify-ce-w04-a16-receipts.yml"
   pull_request:
     paths:
@@ -16,6 +17,7 @@ on:
       - "docs/specs/runtime/ce-w04-a16-*"
       - "docs/specs/runtime/fixtures/a16-v1/**"
       - "apps/android/app/src/test/java/org/arcanum/nativehost/continuity/**"
+      - "apps/android/app/src/main/java/org/arcanum/nativehost/continuity/**"
       - ".github/workflows/verify-ce-w04-a16-receipts.yml"
 
 permissions:
@@ -58,12 +60,14 @@ jobs:
       - uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: "8.9"
-      - name: Independent JVM wire and JCA verification vectors
+      - name: Independent JVM vectors and credential lifecycle faults
         shell: bash
         run: |
           test_project="$RUNNER_TEMP/a16-vector-project"
           mkdir -p "$test_project"
-          cp apps/android/app/src/test/java/org/arcanum/nativehost/continuity/ContinuityReceiptVectorTest.kt "$test_project/ContinuityReceiptVectorTest.kt"
+          cp apps/android/app/src/test/java/org/arcanum/nativehost/continuity/*Test.kt "$test_project/"
+          cp apps/android/app/src/main/java/org/arcanum/nativehost/continuity/ContinuityCredentialManager.kt "$test_project/"
+          cp apps/android/app/src/main/java/org/arcanum/nativehost/continuity/ContinuitySigningRequest.kt "$test_project/"
           cat > "$test_project/settings.gradle.kts" <<'SETTINGS'
           rootProject.name = "a16-public-vector-qualification"
           SETTINGS

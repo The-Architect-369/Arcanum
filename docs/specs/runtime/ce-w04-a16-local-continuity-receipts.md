@@ -188,3 +188,12 @@ Remaining acceptance is explicit:
 - [KeyGenParameterSpec](https://developer.android.com/reference/android/security/keystore/KeyGenParameterSpec)
 - [RustCrypto P-256](https://github.com/RustCrypto/elliptic-curves/tree/p256/v0.13.2/p256)
 - [A15 handoff and attribution](../../evidence/ce-w04-a15-verification-20261001/a15-a16-handoff.md)
+
+## Dated continuation — 2026-10-02
+
+The subsequent Human-authorized [transaction recovery and Android custody
+slice](ce-w04-a16-transaction-and-custody.md) extends this foundation on the same
+disposable candidate branch. Its separate specification and evidence record the
+new behavior and qualification. The first slice's dated evidence remains historical;
+no native device provisioning, installation, canonical promotion or A16 closure is
+claimed by this continuation.

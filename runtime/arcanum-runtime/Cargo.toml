@@ -9,6 +9,7 @@ publish = false
 path = "src/lib.rs"
 
 [dependencies]
+fs2 = "=0.4.3"
 p256 = { version = "=0.13.2", default-features = false, features = ["ecdsa", "std"] }
 sha2 = { version = "=0.10.9", default-features = false, features = ["std"] }
 
