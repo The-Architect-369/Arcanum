@@ -74,6 +74,7 @@ jobs:
       - name: Build bound isolated qualification pair and instrumentation APK
         run: |
           set -euo pipefail
+          trap 'printf "Artifact validation failed at shell line %s\n" "$LINENO"' ERR
           mkdir -p "$RUNNER_TEMP/a16-qualification"
           source_head="$(git rev-parse HEAD)"
           gradle -p apps/android testDebugUnitTest assembleQualification assembleQualificationAndroidTest -ParcanumSourceCommit="$source_head" -ParcanumQualificationVersionCode=26 --stacktrace
@@ -97,11 +98,13 @@ jobs:
             grep -q "^package: name='org.arcanum.nativehost.a16qualification' versionCode='$version'" "arcanum-a16-qualification-$version.apk.package.txt"
             for abi in arm64-v8a x86_64; do
               for library in arcanum_android_jni arcanum_android_tempus_lifecycle_jni arcanum_android_hope_jni arcanum_android_continuity_jni; do
-                unzip -l "arcanum-a16-qualification-$version.apk" | grep -q "lib/$abi/lib$library.so"
+                unzip -l "arcanum-a16-qualification-$version.apk" | grep "lib/$abi/lib$library.so" >/dev/null
               done
             done
           done
-          grep -q "^instrumentation: name='androidx.test.runner.AndroidJUnitRunner' targetPackage='org.arcanum.nativehost.a16qualification'" arcanum-a16-qualification-tests.apk.package.txt
+          "$ANDROID_SDK_ROOT/build-tools/35.0.0/aapt" dump xmltree arcanum-a16-qualification-tests.apk AndroidManifest.xml > arcanum-a16-qualification-tests.apk.manifest.txt
+          grep -q 'android:name.*"androidx.test.runner.AndroidJUnitRunner"' arcanum-a16-qualification-tests.apk.manifest.txt
+          grep -q 'android:targetPackage.*"org.arcanum.nativehost.a16qualification"' arcanum-a16-qualification-tests.apk.manifest.txt
       - uses: actions/upload-artifact@v4
         with:
           name: a16-isolated-qualification-${{ github.event.pull_request.head.sha || github.sha }}

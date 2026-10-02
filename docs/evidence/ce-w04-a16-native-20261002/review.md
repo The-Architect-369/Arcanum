@@ -114,3 +114,14 @@ the target context class loader, avoiding proof based solely on inlined test APK
 constants. Seed asserts and records actual baseline version 26; update recovery
 requires 27. These assertions still await physical execution and do not turn
 build compilation into device qualification.
+
+At source/index head `0ae750c7dbfa318511225b1facbbe3166109fee9`, all 15 local
+sync gates passed. The next native
+[CI run 37011826692](https://github.com/The-Architect-369/Arcanum/actions/runs/37011826692)
+passed stable/MSRV JNI checks, both-ABI four-library builds, closed exports,
+Android unit tests and all three APK assemblies. The subsequent artifact
+validation shell step failed without a failing-line diagnostic; its exact failed
+predicate remains unobserved. No qualification artifact was uploaded. The
+workflow now reads instrumentation fields from AAPT's parsed manifest and consumes
+full ZIP listings under pipefail, while preserving signer/package/version/library
+requirements. A failing-line diagnostic is included for further qualification.
