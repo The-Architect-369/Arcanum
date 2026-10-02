@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-10-02T04:01:12Z",
+  "generated_at": "2026-10-02T11:38:02Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "749f473e2",
+  "commit": "4cd597306",
   "generator_version": "1.5",
   "files": [
     {
@@ -43,11 +43,11 @@
     {
       "path": ".github/workflows/verify-android-native.yml",
       "type": "file",
-      "size_bytes": 1738,
-      "last_modified_commit": "9e524b985",
+      "size_bytes": 1834,
+      "last_modified_commit": "4cd597306",
       "is_empty": false,
       "extension": ".yml",
-      "lines": 55
+      "lines": 57
     },
     {
       "path": ".github/workflows/verify-android-tempus-lifecycle.yml",
@@ -61,8 +61,8 @@
     {
       "path": ".github/workflows/verify-ce-w02-integrated.yml",
       "type": "file",
-      "size_bytes": 7629,
-      "last_modified_commit": "9e524b985",
+      "size_bytes": 7692,
+      "last_modified_commit": "4cd597306",
       "is_empty": false,
       "extension": ".yml",
       "lines": 207
@@ -70,8 +70,8 @@
     {
       "path": ".github/workflows/verify-ce-w03-integrated.yml",
       "type": "file",
-      "size_bytes": 8490,
-      "last_modified_commit": "0fdc6c121",
+      "size_bytes": 8553,
+      "last_modified_commit": "4cd597306",
       "is_empty": false,
       "extension": ".yml",
       "lines": 213
@@ -93,6 +93,15 @@
       "is_empty": false,
       "extension": ".yml",
       "lines": 25
+    },
+    {
+      "path": ".github/workflows/verify-ce-w04-a16-receipts.yml",
+      "type": "file",
+      "size_bytes": 3357,
+      "last_modified_commit": "4cd597306",
+      "is_empty": false,
+      "extension": ".yml",
+      "lines": 78
     },
     {
       "path": ".github/workflows/verify-ce-w04-architect-observer.yml",
@@ -579,6 +588,15 @@
       "is_empty": false,
       "extension": ".kt",
       "lines": 52
+    },
+    {
+      "path": "apps/android/app/src/test/java/org/arcanum/nativehost/continuity/ContinuityReceiptVectorTest.kt",
+      "type": "file",
+      "size_bytes": 6171,
+      "last_modified_commit": "4cd597306",
+      "is_empty": false,
+      "extension": ".kt",
+      "lines": 129
     },
     {
       "path": "apps/android/app/src/test/java/org/arcanum/nativehost/geometry/HopeSeedOverlayTest.kt",
@@ -4415,6 +4433,15 @@
       "lines": 1
     },
     {
+      "path": "docs/evidence/ce-w04-a16-foundation-20261002/review.md",
+      "type": "file",
+      "size_bytes": 4665,
+      "last_modified_commit": "4cd597306",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 74
+    },
+    {
       "path": "docs/evidence/continuity-schema-adoption-20260930/review.md",
       "type": "file",
       "size_bytes": 2662,
@@ -5781,6 +5808,195 @@
       "is_empty": false,
       "extension": ".json",
       "lines": 107
+    },
+    {
+      "path": "docs/specs/runtime/ce-w04-a16-local-continuity-receipt-v1.schema.json",
+      "type": "file",
+      "size_bytes": 6635,
+      "last_modified_commit": "4cd597306",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 291
+    },
+    {
+      "path": "docs/specs/runtime/ce-w04-a16-local-continuity-receipts.md",
+      "type": "file",
+      "size_bytes": 12488,
+      "last_modified_commit": "4cd597306",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 190
+    },
+    {
+      "path": "docs/specs/runtime/fixtures/a16-v1/README.md",
+      "type": "file",
+      "size_bytes": 1891,
+      "last_modified_commit": "4cd597306",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 29
+    },
+    {
+      "path": "docs/specs/runtime/fixtures/a16-v1/human-adoption.message.hex",
+      "type": "file",
+      "size_bytes": 757,
+      "last_modified_commit": "4cd597306",
+      "is_empty": false,
+      "extension": ".hex",
+      "lines": 1
+    },
+    {
+      "path": "docs/specs/runtime/fixtures/a16-v1/human-adoption.object.hex",
+      "type": "file",
+      "size_bytes": 65,
+      "last_modified_commit": "4cd597306",
+      "is_empty": false,
+      "extension": ".hex",
+      "lines": 1
+    },
+    {
+      "path": "docs/specs/runtime/fixtures/a16-v1/human-adoption.projection.json",
+      "type": "file",
+      "size_bytes": 1061,
+      "last_modified_commit": "4cd597306",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 36
+    },
+    {
+      "path": "docs/specs/runtime/fixtures/a16-v1/human-adoption.public-key.hex",
+      "type": "file",
+      "size_bytes": 131,
+      "last_modified_commit": "4cd597306",
+      "is_empty": false,
+      "extension": ".hex",
+      "lines": 1
+    },
+    {
+      "path": "docs/specs/runtime/fixtures/a16-v1/human-adoption.signature.hex",
+      "type": "file",
+      "size_bytes": 145,
+      "last_modified_commit": "4cd597306",
+      "is_empty": false,
+      "extension": ".hex",
+      "lines": 1
+    },
+    {
+      "path": "docs/specs/runtime/fixtures/a16-v1/human-adoption.wrapper.hex",
+      "type": "file",
+      "size_bytes": 1047,
+      "last_modified_commit": "4cd597306",
+      "is_empty": false,
+      "extension": ".hex",
+      "lines": 1
+    },
+    {
+      "path": "docs/specs/runtime/fixtures/a16-v1/recording-minimal.message.hex",
+      "type": "file",
+      "size_bytes": 499,
+      "last_modified_commit": "4cd597306",
+      "is_empty": false,
+      "extension": ".hex",
+      "lines": 1
+    },
+    {
+      "path": "docs/specs/runtime/fixtures/a16-v1/recording-minimal.object.hex",
+      "type": "file",
+      "size_bytes": 65,
+      "last_modified_commit": "4cd597306",
+      "is_empty": false,
+      "extension": ".hex",
+      "lines": 1
+    },
+    {
+      "path": "docs/specs/runtime/fixtures/a16-v1/recording-minimal.projection.json",
+      "type": "file",
+      "size_bytes": 826,
+      "last_modified_commit": "4cd597306",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 26
+    },
+    {
+      "path": "docs/specs/runtime/fixtures/a16-v1/recording-minimal.public-key.hex",
+      "type": "file",
+      "size_bytes": 131,
+      "last_modified_commit": "4cd597306",
+      "is_empty": false,
+      "extension": ".hex",
+      "lines": 1
+    },
+    {
+      "path": "docs/specs/runtime/fixtures/a16-v1/recording-minimal.signature.hex",
+      "type": "file",
+      "size_bytes": 145,
+      "last_modified_commit": "4cd597306",
+      "is_empty": false,
+      "extension": ".hex",
+      "lines": 1
+    },
+    {
+      "path": "docs/specs/runtime/fixtures/a16-v1/recording-minimal.wrapper.hex",
+      "type": "file",
+      "size_bytes": 787,
+      "last_modified_commit": "4cd597306",
+      "is_empty": false,
+      "extension": ".hex",
+      "lines": 1
+    },
+    {
+      "path": "docs/specs/runtime/fixtures/a16-v1/recording-rich.message.hex",
+      "type": "file",
+      "size_bytes": 827,
+      "last_modified_commit": "4cd597306",
+      "is_empty": false,
+      "extension": ".hex",
+      "lines": 1
+    },
+    {
+      "path": "docs/specs/runtime/fixtures/a16-v1/recording-rich.object.hex",
+      "type": "file",
+      "size_bytes": 65,
+      "last_modified_commit": "4cd597306",
+      "is_empty": false,
+      "extension": ".hex",
+      "lines": 1
+    },
+    {
+      "path": "docs/specs/runtime/fixtures/a16-v1/recording-rich.projection.json",
+      "type": "file",
+      "size_bytes": 1211,
+      "last_modified_commit": "4cd597306",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 42
+    },
+    {
+      "path": "docs/specs/runtime/fixtures/a16-v1/recording-rich.public-key.hex",
+      "type": "file",
+      "size_bytes": 131,
+      "last_modified_commit": "4cd597306",
+      "is_empty": false,
+      "extension": ".hex",
+      "lines": 1
+    },
+    {
+      "path": "docs/specs/runtime/fixtures/a16-v1/recording-rich.signature.hex",
+      "type": "file",
+      "size_bytes": 143,
+      "last_modified_commit": "4cd597306",
+      "is_empty": false,
+      "extension": ".hex",
+      "lines": 1
+    },
+    {
+      "path": "docs/specs/runtime/fixtures/a16-v1/recording-rich.wrapper.hex",
+      "type": "file",
+      "size_bytes": 1115,
+      "last_modified_commit": "4cd597306",
+      "is_empty": false,
+      "extension": ".hex",
+      "lines": 1
     },
     {
       "path": "docs/specs/runtime/local-runtime-boundary.md",
@@ -7675,11 +7891,11 @@
     {
       "path": "runtime/arcanum-android-bridge/Cargo.lock",
       "type": "file",
-      "size_bytes": 261,
-      "last_modified_commit": "4b2e26a4f",
+      "size_bytes": 7706,
+      "last_modified_commit": "4cd597306",
       "is_empty": false,
       "extension": ".lock",
-      "lines": 14
+      "lines": 320
     },
     {
       "path": "runtime/arcanum-android-bridge/Cargo.toml",
@@ -7720,11 +7936,11 @@
     {
       "path": "runtime/arcanum-android-jni/Cargo.lock",
       "type": "file",
-      "size_bytes": 367,
-      "last_modified_commit": "fca5cefde",
+      "size_bytes": 7812,
+      "last_modified_commit": "4cd597306",
       "is_empty": false,
       "extension": ".lock",
-      "lines": 21
+      "lines": 327
     },
     {
       "path": "runtime/arcanum-android-jni/Cargo.toml",
@@ -7765,11 +7981,11 @@
     {
       "path": "runtime/arcanum-android-tempus-lifecycle/Cargo.lock",
       "type": "file",
-      "size_bytes": 271,
-      "last_modified_commit": "a525268d3",
+      "size_bytes": 7716,
+      "last_modified_commit": "4cd597306",
       "is_empty": false,
       "extension": ".lock",
-      "lines": 14
+      "lines": 320
     },
     {
       "path": "runtime/arcanum-android-tempus-lifecycle/Cargo.toml",
@@ -7810,29 +8026,38 @@
     {
       "path": "runtime/arcanum-runtime/Cargo.lock",
       "type": "file",
-      "size_bytes": 159,
-      "last_modified_commit": "b6c939242",
+      "size_bytes": 7618,
+      "last_modified_commit": "4cd597306",
       "is_empty": false,
       "extension": ".lock",
-      "lines": 7
+      "lines": 314
     },
     {
       "path": "runtime/arcanum-runtime/Cargo.toml",
       "type": "file",
-      "size_bytes": 151,
-      "last_modified_commit": "b6c939242",
+      "size_bytes": 395,
+      "last_modified_commit": "4cd597306",
       "is_empty": false,
       "extension": ".toml",
-      "lines": 11
+      "lines": 16
+    },
+    {
+      "path": "runtime/arcanum-runtime/src/continuity_receipt.rs",
+      "type": "file",
+      "size_bytes": 17147,
+      "last_modified_commit": "4cd597306",
+      "is_empty": false,
+      "extension": ".rs",
+      "lines": 513
     },
     {
       "path": "runtime/arcanum-runtime/src/lib.rs",
       "type": "file",
-      "size_bytes": 149,
-      "last_modified_commit": "4b2e26a4f",
+      "size_bytes": 177,
+      "last_modified_commit": "4cd597306",
       "is_empty": false,
       "extension": ".rs",
-      "lines": 7
+      "lines": 8
     },
     {
       "path": "runtime/arcanum-runtime/src/persistence.rs",
@@ -7860,6 +8085,15 @@
       "is_empty": false,
       "extension": ".rs",
       "lines": 699
+    },
+    {
+      "path": "runtime/arcanum-runtime/tests/continuity_receipt.rs",
+      "type": "file",
+      "size_bytes": 15259,
+      "last_modified_commit": "4cd597306",
+      "is_empty": false,
+      "extension": ".rs",
+      "lines": 426
     },
     {
       "path": "runtime/arcanum-runtime/tests/tempus_clock.rs",
@@ -8436,6 +8670,15 @@
       "is_empty": false,
       "extension": ".py",
       "lines": 391
+    },
+    {
+      "path": "scripts/verify-ce-w04-a16-schema.py",
+      "type": "file",
+      "size_bytes": 1535,
+      "last_modified_commit": "4cd597306",
+      "is_empty": false,
+      "extension": ".py",
+      "lines": 31
     },
     {
       "path": "scripts/verify-ce-w04-architect-observer.py",
