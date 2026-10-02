@@ -1,0 +1,68 @@
+{
+  "recordType": "A15-joint-phone-verification",
+  "evidenceClasses": [
+    "supplied-phone-screenshot",
+    "human-functional-report"
+  ],
+  "eventDate": "not-inferred-from-phone-clock",
+  "settlement": {
+    "installedVersionCode": 24,
+    "targetVersionCode": 25,
+    "operationId": "a3a9e76e-ebed-478f-9b9f-e945dad02409",
+    "pendingScreenshot": "2652.jpg",
+    "pendingState": "AWAITING_USER",
+    "pendingSessionPresent": true,
+    "singleSettlementResultScreenshot": "2654.jpg",
+    "singleSettlementResult": "Owned sessions absent; attempt archived; no automatic retry",
+    "singleRefreshScreenshot": "2656.jpg",
+    "singleRefreshResult": "No installation attempt",
+    "scope": "one guided active-session settlement sequence; not proof of all scheduling conditions"
+  },
+  "installation": {
+    "stagingScreenshot": "2658.jpg",
+    "candidateVersionCode": 25,
+    "stagedDecision": "READY_FOR_USER_CONFIRMATION",
+    "stagedInstallPerformed": false,
+    "operationId": "1ddb41b0-db96-47a7-b942-86ed98d6e0fd",
+    "submittedScreenshot": "2660.jpg",
+    "pendingReceiptScreenshot": "2662.jpg",
+    "pendingState": "AWAITING_USER",
+    "pendingSessionPresent": true,
+    "installedHandoffScreenshot": "2664.jpg",
+    "installedHandoff": "PASS",
+    "installedVersionCode": 25,
+    "versionName": "0.1.15-cew04-a15-settlement-verify",
+    "apkSourceCommit": "7058cbeeb5c7844fa5c5439ea6d0b421536b880f",
+    "installedApkSha256": "fc2b6b237f388b97449c958b41d991c666bdc5cdb1929ca1de72d6787982082f",
+    "receiptScreenshot": "2666.jpg",
+    "receiptObservation": "TARGET_OBSERVED",
+    "callbackState": "VERIFIED",
+    "sessionPresent": false,
+    "authorityEffect": "none",
+    "settledReceiptScreenshot": "2668.jpg",
+    "settledReceiptResult": "No installation attempt"
+  },
+  "preservation": {
+    "reportSource": "Human Architect message accompanying2666.jpg",
+    "verbatimReport": "Hope, Tempus, and geometry all work still.",
+    "privateContentsRead": false,
+    "scope": "Human-reported functional preservation; no private-content inspection"
+  },
+  "remaining": [
+    "Human review of combined phone, unit and isolated host evidence",
+    "Human A15 closure adoption and authorization for next A16 implementation"
+  ],
+  "a15Closure": "OPEN",
+  "a16Implementation": "NOT_STARTED",
+  "chainLiveCompatibility": "outside-A15",
+  "sameVersionRejection": {
+    "inspectionScreenshot": "2670.jpg",
+    "installedVersionCode": 25,
+    "candidateVersionCode": 25,
+    "decision": "NOT_ADVANCING",
+    "installPerformed": false,
+    "receiptScreenshot": "2672.jpg",
+    "receiptResult": "No installation attempt"
+  },
+  "recordObservationDate": "2026-10-02"
+}

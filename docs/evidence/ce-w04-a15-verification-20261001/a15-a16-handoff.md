@@ -135,3 +135,20 @@ the known implementation paths. Dated updates preserve earlier state rather than
 rewrite it. Notion/Drive mirrors carry this informational record and the current
 next gate; their existence does not ratify canon. Merged branch history is retained
 in verified archive refs/bundles before branch deletion.
+
+## 2026-10-02 — Subsequent final verification for closure review
+
+The guided phone sequence is now complete: active-session settlement on24
+against25 succeeded with one confirmed action and one refresh (2652/2654/2656).
+The fresh original operation1ddb41b0-db96-47a7-b942-86ed98d6e0fd installed25
+with handoff PASS and TARGET_OBSERVED/VERIFIED/session absent (2664/2666).
+The Human reported Hope, Tempus and geometry still working. Explicit settlement
+showed no attempt (2668); same-version NOT_ADVANCING/installPerformed=false
+(2670) was followed by no installation attempt (2672).
+
+Fifteen isolated production-path fault cases now strengthen interrupted-staging
+and callback/journal evidence. Their host-adapter and device-observation limits
+are explicit in [the closure review proposal](closure-review.md). That proposal
+and the completed [phone observations](final-phone-observations.json) replace
+earlier pending next-step descriptions for current review without rewriting the
+historical preparation. A15 still awaits Human adoption; A16 has not started.
