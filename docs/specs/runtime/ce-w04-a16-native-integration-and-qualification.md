@@ -61,7 +61,10 @@ AndroidKeyStore namespace are separate from `org.arcanum.nativehost`. CI checks
 package/version, instrumentation target, both ABIs, all four libraries and equal
 verified signer certificate digests. It supplies actual source-head, APK hashes,
 package metadata and public signer observations. A development-unbound APK is
-refused by device tests. The CI debug signer is for this isolated candidate only;
+refused by device tests. Instrumentation inspects the installed target's build
+record through its class loader as well as its own constants. Seed requires and
+records installed version 26; update recovery requires 27. The CI debug signer is
+for this isolated candidate only;
 the artifact expires and is not a publisher or participant signing identity.
 Other inherited CI APKs do not include the fourth library and cannot qualify A16.
 

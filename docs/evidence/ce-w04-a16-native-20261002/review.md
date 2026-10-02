@@ -107,3 +107,10 @@ No Android qualification artifact was produced by that failed run. The workflow
 now explicitly performs a locked fetch with Rust 1.82 before its offline check,
 matching the successful local MSRV procedure. Later exact-head outcomes remain
 separate observations in the PR.
+
+The prepared instrumentation preflight was additionally tightened before device
+execution: it reads source/arc fields from the installed target's BuildConfig via
+the target context class loader, avoiding proof based solely on inlined test APK
+constants. Seed asserts and records actual baseline version 26; update recovery
+requires 27. These assertions still await physical execution and do not turn
+build compilation into device qualification.

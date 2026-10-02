@@ -24,6 +24,10 @@ class ContinuityDeviceQualificationTest {
         check(context.packageName == "org.arcanum.nativehost.a16qualification") { "Physical tests require the isolated qualification package" }
         check(BuildConfig.ARCANUM_SOURCE_COMMIT.matches(Regex("[0-9a-f]{40}"))) { "Qualification APK must bind its actual source" }
         check(BuildConfig.ARCANUM_IMPLEMENTATION_ARC == "CE-W04-A16")
+        // Constants in the test APK can be inlined: inspect the installed target too.
+        val installedBuild = context.classLoader.loadClass("org.arcanum.nativehost.BuildConfig")
+        assertEquals(BuildConfig.ARCANUM_SOURCE_COMMIT, installedBuild.getField("ARCANUM_SOURCE_COMMIT").get(null))
+        assertEquals("CE-W04-A16", installedBuild.getField("ARCANUM_IMPLEMENTATION_ARC").get(null))
         manager = ContinuityCredentialManager(AndroidContinuityCredentialStorage(context), AndroidContinuityKeyProvider())
         native = ContinuityNativeBridge.port(File(context.noBackupFilesDir.canonicalFile, "continuity-synthetic.v1"))
         controller = ContinuityOperationController(manager, native, ContinuityOperationJournal(AndroidContinuityCredentialStorage(context, ContinuityStorageSlot.OPERATIONS)))
@@ -32,6 +36,9 @@ class ContinuityDeviceQualificationTest {
     private fun saved(): JSONObject { check(baseline.isFile); return JSONObject(baseline.readText()) }
     private fun wrapperHash(operation: String) = continuityDigest(native.recover(operation).originalWrapper ?: error("Original receipt missing")).continuityHex()
     @Test fun seed() {
+        @Suppress("DEPRECATION")
+        val installedVersion = context.packageManager.getPackageInfo(context.packageName, 0).versionCode
+        assertEquals(26, installedVersion)
         check(!baseline.exists()) { "Original seed may already exist; reconcile, do not repeat" }
         assertEquals(ContinuityCredentialPhase.NOT_PROVISIONED, manager.recover().phase)
         assertEquals(ContinuityFlowPhase.NO_SAMPLE, controller.recover().phase)
@@ -44,6 +51,7 @@ class ContinuityDeviceQualificationTest {
         assertEquals(ContinuityOperationPhase.COMMITTED, receipt.phase)
         val operation = state.intent!!.operationId
         val bytes = JSONObject().put("source", BuildConfig.ARCANUM_SOURCE_COMMIT)
+            .put("initialVersion", installedVersion)
             .put("generation", credential.generation).put("fingerprint", credential.fingerprint)
             .put("operation", operation).put("wrapperDigest", wrapperHash(operation))
             .put("securityLevel", credential.securityLevel.name).toString().toByteArray()
@@ -52,6 +60,7 @@ class ContinuityDeviceQualificationTest {
     }
     @Test fun recoverAfterRestart() {
         val original = saved()
+        assertEquals(26, original.getInt("initialVersion"))
         assertEquals(original.getString("source"), BuildConfig.ARCANUM_SOURCE_COMMIT)
         val credential = manager.recover()
         assertEquals(ContinuityCredentialPhase.READY, credential.phase)
