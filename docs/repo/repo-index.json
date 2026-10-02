@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-10-02T11:38:02Z",
+  "generated_at": "2026-10-02T12:28:21Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "4cd597306",
+  "commit": "842e24945",
   "generator_version": "1.5",
   "files": [
     {
@@ -97,11 +97,11 @@
     {
       "path": ".github/workflows/verify-ce-w04-a16-receipts.yml",
       "type": "file",
-      "size_bytes": 3357,
-      "last_modified_commit": "4cd597306",
+      "size_bytes": 3718,
+      "last_modified_commit": "842e24945",
       "is_empty": false,
       "extension": ".yml",
-      "lines": 78
+      "lines": 82
     },
     {
       "path": ".github/workflows/verify-ce-w04-architect-observer.yml",
@@ -347,6 +347,33 @@
       "lines": 162
     },
     {
+      "path": "apps/android/app/src/main/java/org/arcanum/nativehost/continuity/AndroidContinuityCustody.kt",
+      "type": "file",
+      "size_bytes": 7618,
+      "last_modified_commit": "842e24945",
+      "is_empty": false,
+      "extension": ".kt",
+      "lines": 141
+    },
+    {
+      "path": "apps/android/app/src/main/java/org/arcanum/nativehost/continuity/ContinuityCredentialManager.kt",
+      "type": "file",
+      "size_bytes": 19491,
+      "last_modified_commit": "842e24945",
+      "is_empty": false,
+      "extension": ".kt",
+      "lines": 321
+    },
+    {
+      "path": "apps/android/app/src/main/java/org/arcanum/nativehost/continuity/ContinuitySigningRequest.kt",
+      "type": "file",
+      "size_bytes": 5003,
+      "last_modified_commit": "842e24945",
+      "is_empty": false,
+      "extension": ".kt",
+      "lines": 113
+    },
+    {
       "path": "apps/android/app/src/main/java/org/arcanum/nativehost/geometry/ArcnetRendererView.kt",
       "type": "file",
       "size_bytes": 13584,
@@ -588,6 +615,15 @@
       "is_empty": false,
       "extension": ".kt",
       "lines": 52
+    },
+    {
+      "path": "apps/android/app/src/test/java/org/arcanum/nativehost/continuity/ContinuityCredentialManagerTest.kt",
+      "type": "file",
+      "size_bytes": 15020,
+      "last_modified_commit": "842e24945",
+      "is_empty": false,
+      "extension": ".kt",
+      "lines": 252
     },
     {
       "path": "apps/android/app/src/test/java/org/arcanum/nativehost/continuity/ContinuityReceiptVectorTest.kt",
@@ -4433,6 +4469,15 @@
       "lines": 1
     },
     {
+      "path": "docs/evidence/ce-w04-a16-custody-20261002/review.md",
+      "type": "file",
+      "size_bytes": 6358,
+      "last_modified_commit": "842e24945",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 98
+    },
+    {
       "path": "docs/evidence/ce-w04-a16-foundation-20261002/review.md",
       "type": "file",
       "size_bytes": 4665,
@@ -5821,11 +5866,20 @@
     {
       "path": "docs/specs/runtime/ce-w04-a16-local-continuity-receipts.md",
       "type": "file",
-      "size_bytes": 12488,
-      "last_modified_commit": "4cd597306",
+      "size_bytes": 12961,
+      "last_modified_commit": "842e24945",
       "is_empty": false,
       "extension": ".md",
-      "lines": 190
+      "lines": 199
+    },
+    {
+      "path": "docs/specs/runtime/ce-w04-a16-transaction-and-custody.md",
+      "type": "file",
+      "size_bytes": 11108,
+      "last_modified_commit": "842e24945",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 168
     },
     {
       "path": "docs/specs/runtime/fixtures/a16-v1/README.md",
@@ -7891,11 +7945,11 @@
     {
       "path": "runtime/arcanum-android-bridge/Cargo.lock",
       "type": "file",
-      "size_bytes": 7706,
-      "last_modified_commit": "4cd597306",
+      "size_bytes": 8635,
+      "last_modified_commit": "842e24945",
       "is_empty": false,
       "extension": ".lock",
-      "lines": 320
+      "lines": 353
     },
     {
       "path": "runtime/arcanum-android-bridge/Cargo.toml",
@@ -7936,11 +7990,11 @@
     {
       "path": "runtime/arcanum-android-jni/Cargo.lock",
       "type": "file",
-      "size_bytes": 7812,
-      "last_modified_commit": "4cd597306",
+      "size_bytes": 8741,
+      "last_modified_commit": "842e24945",
       "is_empty": false,
       "extension": ".lock",
-      "lines": 327
+      "lines": 360
     },
     {
       "path": "runtime/arcanum-android-jni/Cargo.toml",
@@ -7981,11 +8035,11 @@
     {
       "path": "runtime/arcanum-android-tempus-lifecycle/Cargo.lock",
       "type": "file",
-      "size_bytes": 7716,
-      "last_modified_commit": "4cd597306",
+      "size_bytes": 8645,
+      "last_modified_commit": "842e24945",
       "is_empty": false,
       "extension": ".lock",
-      "lines": 320
+      "lines": 353
     },
     {
       "path": "runtime/arcanum-android-tempus-lifecycle/Cargo.toml",
@@ -8026,20 +8080,20 @@
     {
       "path": "runtime/arcanum-runtime/Cargo.lock",
       "type": "file",
-      "size_bytes": 7618,
-      "last_modified_commit": "4cd597306",
+      "size_bytes": 8547,
+      "last_modified_commit": "842e24945",
       "is_empty": false,
       "extension": ".lock",
-      "lines": 314
+      "lines": 347
     },
     {
       "path": "runtime/arcanum-runtime/Cargo.toml",
       "type": "file",
-      "size_bytes": 395,
-      "last_modified_commit": "4cd597306",
+      "size_bytes": 410,
+      "last_modified_commit": "842e24945",
       "is_empty": false,
       "extension": ".toml",
-      "lines": 16
+      "lines": 17
     },
     {
       "path": "runtime/arcanum-runtime/src/continuity_receipt.rs",
@@ -8051,13 +8105,22 @@
       "lines": 513
     },
     {
-      "path": "runtime/arcanum-runtime/src/lib.rs",
+      "path": "runtime/arcanum-runtime/src/continuity_store.rs",
       "type": "file",
-      "size_bytes": 177,
-      "last_modified_commit": "4cd597306",
+      "size_bytes": 24079,
+      "last_modified_commit": "842e24945",
       "is_empty": false,
       "extension": ".rs",
-      "lines": 8
+      "lines": 625
+    },
+    {
+      "path": "runtime/arcanum-runtime/src/lib.rs",
+      "type": "file",
+      "size_bytes": 203,
+      "last_modified_commit": "842e24945",
+      "is_empty": false,
+      "extension": ".rs",
+      "lines": 9
     },
     {
       "path": "runtime/arcanum-runtime/src/persistence.rs",
@@ -8094,6 +8157,15 @@
       "is_empty": false,
       "extension": ".rs",
       "lines": 426
+    },
+    {
+      "path": "runtime/arcanum-runtime/tests/continuity_recovery.rs",
+      "type": "file",
+      "size_bytes": 10918,
+      "last_modified_commit": "842e24945",
+      "is_empty": false,
+      "extension": ".rs",
+      "lines": 325
     },
     {
       "path": "runtime/arcanum-runtime/tests/tempus_clock.rs",
