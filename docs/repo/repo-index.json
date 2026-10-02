@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-10-02T13:10:47Z",
+  "generated_at": "2026-10-02T13:15:08Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "d632559d2",
+  "commit": "b2200e0cc",
   "generator_version": "1.5",
   "files": [
     {
@@ -97,11 +97,11 @@
     {
       "path": ".github/workflows/verify-ce-w04-a16-native.yml",
       "type": "file",
-      "size_bytes": 6300,
-      "last_modified_commit": "86cbbdbcc",
+      "size_bytes": 6405,
+      "last_modified_commit": "b2200e0cc",
       "is_empty": false,
       "extension": ".yml",
-      "lines": 109
+      "lines": 110
     },
     {
       "path": ".github/workflows/verify-ce-w04-a16-receipts.yml",
@@ -4543,11 +4543,11 @@
     {
       "path": "docs/evidence/ce-w04-a16-native-20261002/review.md",
       "type": "file",
-      "size_bytes": 6178,
-      "last_modified_commit": "d632559d2",
+      "size_bytes": 6983,
+      "last_modified_commit": "b2200e0cc",
       "is_empty": false,
       "extension": ".md",
-      "lines": 97
+      "lines": 109
     },
     {
       "path": "docs/evidence/continuity-schema-adoption-20260930/review.md",
