@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-10-02T13:15:08Z",
+  "generated_at": "2026-10-02T13:17:29Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "b2200e0cc",
+  "commit": "e0796328e",
   "generator_version": "1.5",
   "files": [
     {
@@ -214,11 +214,11 @@
     {
       "path": "apps/android/app/src/androidTest/java/org/arcanum/nativehost/continuity/ContinuityDeviceQualificationTest.kt",
       "type": "file",
-      "size_bytes": 7150,
-      "last_modified_commit": "d632559d2",
+      "size_bytes": 7844,
+      "last_modified_commit": "e0796328e",
       "is_empty": false,
       "extension": ".kt",
-      "lines": 110
+      "lines": 119
     },
     {
       "path": "apps/android/app/src/main/AndroidManifest.xml",
@@ -4543,11 +4543,11 @@
     {
       "path": "docs/evidence/ce-w04-a16-native-20261002/review.md",
       "type": "file",
-      "size_bytes": 6983,
-      "last_modified_commit": "b2200e0cc",
+      "size_bytes": 7429,
+      "last_modified_commit": "e0796328e",
       "is_empty": false,
       "extension": ".md",
-      "lines": 109
+      "lines": 116
     },
     {
       "path": "docs/evidence/continuity-schema-adoption-20260930/review.md",
@@ -5938,11 +5938,11 @@
     {
       "path": "docs/specs/runtime/ce-w04-a16-native-integration-and-qualification.md",
       "type": "file",
-      "size_bytes": 8572,
-      "last_modified_commit": "86cbbdbcc",
+      "size_bytes": 8765,
+      "last_modified_commit": "e0796328e",
       "is_empty": false,
       "extension": ".md",
-      "lines": 116
+      "lines": 119
     },
     {
       "path": "docs/specs/runtime/ce-w04-a16-transaction-and-custody.md",
