@@ -32,6 +32,12 @@ class ContinuityCredentialManagerTest {
         var failCreateBefore = false
         var failCreateAfter = false
         var badSignature = false
+        var namespaceUnavailable = false
+        override fun namespaceState(): ContinuityNamespaceState = when {
+            namespaceUnavailable -> ContinuityNamespaceState.UNAVAILABLE
+            pairs.keys.any { it.startsWith("org.arcanum.nativehost.continuity.signing.v1.") } -> ContinuityNamespaceState.PRESENT
+            else -> ContinuityNamespaceState.EMPTY
+        }
         override fun observe(alias: String): KeyObservation {
             overrides[alias]?.let { return it }
             val key = pairs[alias]?.public as? ECPublicKey ?: return KeyObservation.Missing
@@ -247,6 +253,22 @@ class ContinuityCredentialManagerTest {
         assertEquals(ContinuityCredentialPhase.UNAVAILABLE, f.manager().recover().phase)
         rejected { f.manager().sign(message, ContinuitySigningDecision("fixture-operation", continuityDigest(message).continuityHex(), record.generation)) }
         assertEquals(1, f.keys.signs)
+    }
+
+    @Test fun lostRegistryAndInitialKeyCannotHideRetainedLaterGenerationOrUnknownNamespace() {
+        val f = Fixture(); val old = f.provision()
+        f.manager().replace(ContinuityDecision("replace", 1100), old.generation)
+        f.storage.bytes = null
+        f.keys.pairs.remove(old.alias)
+        assertEquals(ContinuityCredentialPhase.ORPHANED_KEY, f.manager().recover().phase)
+        rejected { f.provision() }
+        assertEquals(2, f.keys.creates)
+        assertEquals(1, f.keys.pairs.size)
+        val unavailable = Fixture()
+        unavailable.keys.namespaceUnavailable = true
+        assertEquals(ContinuityCredentialPhase.UNAVAILABLE, unavailable.manager().recover().phase)
+        rejected { unavailable.provision() }
+        assertEquals(0, unavailable.keys.creates)
     }
 
 }

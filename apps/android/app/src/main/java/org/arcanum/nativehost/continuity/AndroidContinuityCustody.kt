@@ -21,6 +21,14 @@ import java.security.spec.ECGenParameterSpec
 /** Separate signing purpose/alias. Never reuses publisher, encryption, or broker keys. */
 class AndroidContinuityKeyProvider : ContinuityKeyProvider {
     private fun store(): KeyStore = KeyStore.getInstance("AndroidKeyStore").also { it.load(null) }
+    override fun namespaceState(): ContinuityNamespaceState = try {
+        val aliases = store().aliases()
+        var present = false
+        while (aliases.hasMoreElements()) {
+            if (aliases.nextElement().startsWith("org.arcanum.nativehost.continuity.signing.v1.")) present = true
+        }
+        if (present) ContinuityNamespaceState.PRESENT else ContinuityNamespaceState.EMPTY
+    } catch (_: Exception) { ContinuityNamespaceState.UNAVAILABLE }
     override fun observe(alias: String): KeyObservation = try {
         requireContinuityAlias(alias)
         val store = store()

@@ -20,7 +20,9 @@ interface ContinuityCredentialStorage {
     fun writeAtomically(bytes: ByteArray)
     fun <T> locked(action: () -> T): T
 }
+enum class ContinuityNamespaceState { EMPTY, PRESENT, UNAVAILABLE }
 interface ContinuityKeyProvider {
+    fun namespaceState(): ContinuityNamespaceState
     fun observe(alias: String): KeyObservation
     fun create(alias: String)
     fun sign(alias: String, message: ByteArray): ByteArray
@@ -189,7 +191,11 @@ class ContinuityCredentialManager(
     private fun state(ledger: Ledger?): ContinuityCredentialState {
         if (ledger == null) {
             val phase = when (keys.observe(INITIAL_ALIAS)) {
-                KeyObservation.Missing -> ContinuityCredentialPhase.NOT_PROVISIONED
+                KeyObservation.Missing -> when (keys.namespaceState()) {
+                    ContinuityNamespaceState.EMPTY -> ContinuityCredentialPhase.NOT_PROVISIONED
+                    ContinuityNamespaceState.PRESENT -> ContinuityCredentialPhase.ORPHANED_KEY
+                    ContinuityNamespaceState.UNAVAILABLE -> ContinuityCredentialPhase.UNAVAILABLE
+                }
                 KeyObservation.Unavailable -> ContinuityCredentialPhase.UNAVAILABLE
                 else -> ContinuityCredentialPhase.ORPHANED_KEY
             }

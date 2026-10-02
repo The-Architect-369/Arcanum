@@ -102,7 +102,10 @@ made. Hardware/user-auth qualification remains future device evidence.
 
 The initial alias is fixed, while its generation uses 16 random bytes. A retained
 initial key with missing metadata is reported as orphaned, blocking silent fresh
-provisioning. Replacement selects a fresh alias/generation, retains every old key
+provisioning. If the initial key is also absent, a read-only observation of the
+dedicated continuity alias namespace must establish that it is empty. A retained
+later-generation key is orphaned; an unavailable namespace is unknown and blocks
+provisioning. Other key purposes are neither returned nor interpreted. Replacement selects a fresh alias/generation, retains every old key
 and record, and records `previousGeneration` as an explicit discontinuity. It is
 not uninterrupted continuity or a migration of private signing material. Complete
 erasure of both registry and all platform keys is indistinguishable from a new

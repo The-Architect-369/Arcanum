@@ -96,3 +96,29 @@ Native UI/consent integration, Rust/JNI wiring, applicable private-content custo
 policy, and separately authorized physical restart/update/key-loss qualification
 remain next gates. No app version/capability is advanced for these unwired APIs.
 A16 and CE-W04 remain open. Canonical adoption retains the Human Architect gate.
+
+## Additive namespace-loss hardening — 2026-10-02
+
+Source `842e2494572bf0c296621f922ff7a581a2789173` and index companion
+`31ec3015c304ac67bee84aa243df3e83a165306b` were committed without rewriting the
+foundation. Their deterministic index/merge-stability checks and all 15 sync
+gates passed. An initial overlapping index-verification attempt captured the
+previous snapshot and failed; a sequential regeneration/check passed and left
+no source or index drift.
+
+Subsequent inspection identified a narrower loss case: registry metadata and the
+initial key may both be absent while a retained replacement key still exists.
+This must not be treated as fresh unprovisioned state. The candidate now requires
+an observed empty dedicated continuity alias namespace as well as initial-key
+absence before provisioning. A retained later-generation alias is orphaned;
+unavailable namespace observation remains unknown and blocks key generation.
+Only the continuity namespace presence result is returned; unrelated key purposes
+are not interpreted, exported or logged.
+
+Full native production/test compilation and JUnit rerun passed with this change:
+78 tests, now including 11 custody cases and 2 independent vector cases. The new
+case covers both retained-later-key orphan detection and unknown namespace state,
+with no additional creation. All previous host-versus-device limits still apply.
+The extended standalone CI job therefore runs 13 vector/custody cases. The
+follow-up source and deterministic index companion retain independent exact-head
+verification; final coordinates and remote results are recorded in PR #84.
