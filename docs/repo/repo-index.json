@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-10-01T18:40:59Z",
+  "generated_at": "2026-10-02T04:01:12Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "cf5c4e413",
+  "commit": "749f473e2",
   "generator_version": "1.5",
   "files": [
     {
@@ -4264,11 +4264,20 @@
     {
       "path": "docs/evidence/ce-w04-a15-verification-20261001/a15-a16-handoff.md",
       "type": "file",
-      "size_bytes": 9021,
-      "last_modified_commit": "cf5c4e413",
+      "size_bytes": 10084,
+      "last_modified_commit": "749f473e2",
       "is_empty": false,
       "extension": ".md",
-      "lines": 137
+      "lines": 154
+    },
+    {
+      "path": "docs/evidence/ce-w04-a15-verification-20261001/closure-review.md",
+      "type": "file",
+      "size_bytes": 5586,
+      "last_modified_commit": "749f473e2",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 58
     },
     {
       "path": "docs/evidence/ce-w04-a15-verification-20261001/decisions.md",
@@ -4287,6 +4296,78 @@
       "is_empty": false,
       "extension": ".json",
       "lines": 62
+    },
+    {
+      "path": "docs/evidence/ce-w04-a15-verification-20261001/final-phone-observations.json",
+      "type": "file",
+      "size_bytes": 2667,
+      "last_modified_commit": "749f473e2",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 68
+    },
+    {
+      "path": "docs/evidence/ce-w04-a15-verification-20261001/host-fault-fixtures/run.py",
+      "type": "file",
+      "size_bytes": 4161,
+      "last_modified_commit": "749f473e2",
+      "is_empty": false,
+      "extension": ".py",
+      "lines": 86
+    },
+    {
+      "path": "docs/evidence/ce-w04-a15-verification-20261001/host-fault-fixtures/src/ProductionFaultPaths.java",
+      "type": "file",
+      "size_bytes": 7307,
+      "last_modified_commit": "749f473e2",
+      "is_empty": false,
+      "extension": ".java",
+      "lines": 84
+    },
+    {
+      "path": "docs/evidence/ce-w04-a15-verification-20261001/host-fault-fixtures/src/android/content/Context.java",
+      "type": "file",
+      "size_bytes": 455,
+      "last_modified_commit": "749f473e2",
+      "is_empty": false,
+      "extension": ".java",
+      "lines": 10
+    },
+    {
+      "path": "docs/evidence/ce-w04-a15-verification-20261001/host-fault-fixtures/src/android/content/Intent.java",
+      "type": "file",
+      "size_bytes": 933,
+      "last_modified_commit": "749f473e2",
+      "is_empty": false,
+      "extension": ".java",
+      "lines": 17
+    },
+    {
+      "path": "docs/evidence/ce-w04-a15-verification-20261001/host-fault-fixtures/src/android/os/Build.java",
+      "type": "file",
+      "size_bytes": 269,
+      "last_modified_commit": "749f473e2",
+      "is_empty": false,
+      "extension": ".java",
+      "lines": 6
+    },
+    {
+      "path": "docs/evidence/ce-w04-a15-verification-20261001/host-fault-fixtures/src/android/util/AtomicFile.java",
+      "type": "file",
+      "size_bytes": 982,
+      "last_modified_commit": "749f473e2",
+      "is_empty": false,
+      "extension": ".java",
+      "lines": 16
+    },
+    {
+      "path": "docs/evidence/ce-w04-a15-verification-20261001/host-fault-results.json",
+      "type": "file",
+      "size_bytes": 2463,
+      "last_modified_commit": "749f473e2",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 37
     },
     {
       "path": "docs/evidence/ce-w04-a15-verification-20261001/live-inspection-receipt.json",
@@ -5065,11 +5146,11 @@
     {
       "path": "docs/specs/app/ce-w04-a15-own-package-installation.md",
       "type": "file",
-      "size_bytes": 18557,
-      "last_modified_commit": "f48e2a8d6",
+      "size_bytes": 19747,
+      "last_modified_commit": "749f473e2",
       "is_empty": false,
       "extension": ".md",
-      "lines": 300
+      "lines": 319
     },
     {
       "path": "docs/specs/app/ce-w04-seed-node-alpha.md",
