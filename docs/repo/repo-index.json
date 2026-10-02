@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-10-02T12:28:21Z",
+  "generated_at": "2026-10-02T12:35:13Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "842e24945",
+  "commit": "05cf4c67e",
   "generator_version": "1.5",
   "files": [
     {
@@ -349,20 +349,20 @@
     {
       "path": "apps/android/app/src/main/java/org/arcanum/nativehost/continuity/AndroidContinuityCustody.kt",
       "type": "file",
-      "size_bytes": 7618,
-      "last_modified_commit": "842e24945",
+      "size_bytes": 8080,
+      "last_modified_commit": "05cf4c67e",
       "is_empty": false,
       "extension": ".kt",
-      "lines": 141
+      "lines": 149
     },
     {
       "path": "apps/android/app/src/main/java/org/arcanum/nativehost/continuity/ContinuityCredentialManager.kt",
       "type": "file",
-      "size_bytes": 19491,
-      "last_modified_commit": "842e24945",
+      "size_bytes": 19906,
+      "last_modified_commit": "05cf4c67e",
       "is_empty": false,
       "extension": ".kt",
-      "lines": 321
+      "lines": 327
     },
     {
       "path": "apps/android/app/src/main/java/org/arcanum/nativehost/continuity/ContinuitySigningRequest.kt",
@@ -619,11 +619,11 @@
     {
       "path": "apps/android/app/src/test/java/org/arcanum/nativehost/continuity/ContinuityCredentialManagerTest.kt",
       "type": "file",
-      "size_bytes": 15020,
-      "last_modified_commit": "842e24945",
+      "size_bytes": 16193,
+      "last_modified_commit": "05cf4c67e",
       "is_empty": false,
       "extension": ".kt",
-      "lines": 252
+      "lines": 274
     },
     {
       "path": "apps/android/app/src/test/java/org/arcanum/nativehost/continuity/ContinuityReceiptVectorTest.kt",
@@ -4471,11 +4471,11 @@
     {
       "path": "docs/evidence/ce-w04-a16-custody-20261002/review.md",
       "type": "file",
-      "size_bytes": 6358,
-      "last_modified_commit": "842e24945",
+      "size_bytes": 7973,
+      "last_modified_commit": "05cf4c67e",
       "is_empty": false,
       "extension": ".md",
-      "lines": 98
+      "lines": 124
     },
     {
       "path": "docs/evidence/ce-w04-a16-foundation-20261002/review.md",
@@ -5875,11 +5875,11 @@
     {
       "path": "docs/specs/runtime/ce-w04-a16-transaction-and-custody.md",
       "type": "file",
-      "size_bytes": 11108,
-      "last_modified_commit": "842e24945",
+      "size_bytes": 11407,
+      "last_modified_commit": "05cf4c67e",
       "is_empty": false,
       "extension": ".md",
-      "lines": 168
+      "lines": 171
     },
     {
       "path": "docs/specs/runtime/fixtures/a16-v1/README.md",
