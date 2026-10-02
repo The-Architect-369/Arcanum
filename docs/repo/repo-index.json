@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-10-02T13:07:57Z",
+  "generated_at": "2026-10-02T13:10:47Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "86cbbdbcc",
+  "commit": "d632559d2",
   "generator_version": "1.5",
   "files": [
     {
@@ -205,17 +205,17 @@
     {
       "path": "apps/android/app/build.gradle.kts",
       "type": "file",
-      "size_bytes": 3147,
-      "last_modified_commit": "86cbbdbcc",
+      "size_bytes": 3183,
+      "last_modified_commit": "d632559d2",
       "is_empty": false,
       "extension": ".kts",
-      "lines": 102
+      "lines": 105
     },
     {
       "path": "apps/android/app/src/androidTest/java/org/arcanum/nativehost/continuity/ContinuityDeviceQualificationTest.kt",
       "type": "file",
-      "size_bytes": 7136,
-      "last_modified_commit": "86cbbdbcc",
+      "size_bytes": 7150,
+      "last_modified_commit": "d632559d2",
       "is_empty": false,
       "extension": ".kt",
       "lines": 110
@@ -367,11 +367,11 @@
     {
       "path": "apps/android/app/src/main/java/org/arcanum/nativehost/continuity/AndroidContinuityCustody.kt",
       "type": "file",
-      "size_bytes": 8265,
-      "last_modified_commit": "86cbbdbcc",
+      "size_bytes": 8393,
+      "last_modified_commit": "d632559d2",
       "is_empty": false,
       "extension": ".kt",
-      "lines": 150
+      "lines": 152
     },
     {
       "path": "apps/android/app/src/main/java/org/arcanum/nativehost/continuity/ContinuityCredentialManager.kt",
@@ -403,8 +403,8 @@
     {
       "path": "apps/android/app/src/main/java/org/arcanum/nativehost/continuity/ContinuityPanel.kt",
       "type": "file",
-      "size_bytes": 8580,
-      "last_modified_commit": "86cbbdbcc",
+      "size_bytes": 8594,
+      "last_modified_commit": "d632559d2",
       "is_empty": false,
       "extension": ".kt",
       "lines": 120
@@ -4543,11 +4543,11 @@
     {
       "path": "docs/evidence/ce-w04-a16-native-20261002/review.md",
       "type": "file",
-      "size_bytes": 5190,
-      "last_modified_commit": "86cbbdbcc",
+      "size_bytes": 6178,
+      "last_modified_commit": "d632559d2",
       "is_empty": false,
       "extension": ".md",
-      "lines": 81
+      "lines": 97
     },
     {
       "path": "docs/evidence/continuity-schema-adoption-20260930/review.md",
