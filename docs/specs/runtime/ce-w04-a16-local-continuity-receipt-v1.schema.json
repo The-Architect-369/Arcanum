@@ -1,0 +1,291 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://the-arcanum.net/schemas/ce-w04-a16-local-continuity-receipt-v1.schema.json",
+  "title": "A16 v1 public receipt display projection",
+  "description": "Display only. Byte strings use lowercase hex. Strict CBOR, UTF-8 byte limits, source ordering, DER, point validation and cryptographic verification are enforced by Rust, not this projection. Projection is not signed input or an export grant.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "signedMessage",
+    "publicKeySec1Hex",
+    "signatureDerHex"
+  ],
+  "properties": {
+    "signedMessage": {
+      "type": "array",
+      "minItems": 20,
+      "maxItems": 20,
+      "prefixItems": [
+        {
+          "const": "org.arcanum.continuity.receipt"
+        },
+        {
+          "const": 1
+        },
+        {
+          "enum": [
+            "local-recording",
+            "human-adoption"
+          ]
+        },
+        {
+          "const": "local-only"
+        },
+        {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 2048
+        },
+        {
+          "const": "sha256"
+        },
+        {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        {
+          "type": "string",
+          "pattern": "^[0-9a-f]{32}$"
+        },
+        {
+          "const": "ecdsa-p256-sha256-der"
+        },
+        {
+          "anyOf": [
+            {
+              "type": "array",
+              "prefixItems": [
+                {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 2048
+                },
+                {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 2048
+                }
+              ],
+              "minItems": 2,
+              "maxItems": 2,
+              "items": false
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        {
+          "type": "array",
+          "maxItems": 16,
+          "uniqueItems": true,
+          "items": {
+            "type": "array",
+            "prefixItems": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 2048
+              },
+              {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 2048
+              },
+              {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 2048
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "pattern": "^[0-9a-f]{64}$"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            ],
+            "minItems": 4,
+            "maxItems": 4,
+            "items": false
+          }
+        },
+        {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": -9223372036854775808,
+              "maximum": 9223372036854775807
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": -9223372036854775808,
+              "maximum": 9223372036854775807
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        {
+          "type": "integer",
+          "minimum": -9223372036854775808,
+          "maximum": 9223372036854775807
+        },
+        {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": -9223372036854775808,
+              "maximum": 9223372036854775807
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 2048
+        }
+      ],
+      "items": false,
+      "allOf": [
+        {
+          "if": {
+            "prefixItems": [
+              {},
+              {},
+              {
+                "const": "local-recording"
+              }
+            ]
+          },
+          "then": {
+            "prefixItems": [
+              {},
+              {},
+              {},
+              {},
+              {},
+              {},
+              {},
+              {},
+              {},
+              {},
+              {},
+              {},
+              {},
+              {},
+              {},
+              {},
+              {},
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        {
+          "if": {
+            "prefixItems": [
+              {},
+              {},
+              {
+                "const": "human-adoption"
+              }
+            ]
+          },
+          "then": {
+            "prefixItems": [
+              {},
+              {},
+              {},
+              {},
+              {},
+              {},
+              {},
+              {},
+              {},
+              {},
+              {},
+              {},
+              {},
+              {
+                "contains": {
+                  "type": "array",
+                  "prefixItems": [
+                    {
+                      "const": "human-adoption-evidence"
+                    }
+                  ]
+                },
+                "minContains": 1
+              },
+              {},
+              {},
+              {},
+              {
+                "type": "integer",
+                "minimum": -9223372036854775808,
+                "maximum": 9223372036854775807
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "publicKeySec1Hex": {
+      "type": "string",
+      "pattern": "^04[0-9a-f]{128}$"
+    },
+    "signatureDerHex": {
+      "type": "string",
+      "pattern": "^(?:[0-9a-f]{2}){8,72}$"
+    }
+  }
+}

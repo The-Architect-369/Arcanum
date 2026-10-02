@@ -9,3 +9,8 @@ publish = false
 path = "src/lib.rs"
 
 [dependencies]
+p256 = { version = "=0.13.2", default-features = false, features = ["ecdsa", "std"] }
+sha2 = { version = "=0.10.9", default-features = false, features = ["std"] }
+
+[dev-dependencies]
+rand_core = { version = "=0.6.4", features = ["getrandom"] }

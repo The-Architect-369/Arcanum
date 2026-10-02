@@ -1,0 +1,78 @@
+name: CE-W04 A16 Receipt Foundation
+
+on:
+  push:
+    paths:
+      - "runtime/arcanum-runtime/**"
+      - "scripts/verify-ce-w04-a16-schema.py"
+      - "docs/specs/runtime/ce-w04-a16-*"
+      - "docs/specs/runtime/fixtures/a16-v1/**"
+      - "apps/android/app/src/test/java/org/arcanum/nativehost/continuity/**"
+      - ".github/workflows/verify-ce-w04-a16-receipts.yml"
+  pull_request:
+    paths:
+      - "runtime/arcanum-runtime/**"
+      - "scripts/verify-ce-w04-a16-schema.py"
+      - "docs/specs/runtime/ce-w04-a16-*"
+      - "docs/specs/runtime/fixtures/a16-v1/**"
+      - "apps/android/app/src/test/java/org/arcanum/nativehost/continuity/**"
+      - ".github/workflows/verify-ce-w04-a16-receipts.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  receipt-public-verification:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - name: Receipt display schema and synthetic projections
+        run: |
+          python -m pip install jsonschema==4.23.0
+          python scripts/verify-ce-w04-a16-schema.py
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt, clippy
+      - name: Locked dependency fetch
+        run: cargo fetch --manifest-path runtime/arcanum-runtime/Cargo.toml --locked
+      - name: Receipt format, verification and inherited runtime tests
+        run: |
+          cargo fmt --manifest-path runtime/arcanum-runtime/Cargo.toml --all -- --check
+          cargo clippy --manifest-path runtime/arcanum-runtime/Cargo.toml --all-targets --all-features --locked --offline -- -D warnings
+          cargo test --manifest-path runtime/arcanum-runtime/Cargo.toml --locked --offline
+      - name: Verify declared minimum Rust version
+        run: |
+          rustup toolchain install 1.78.0 --profile minimal
+          cargo +1.78.0 fetch --manifest-path runtime/arcanum-runtime/Cargo.toml --locked
+          cargo +1.78.0 test --manifest-path runtime/arcanum-runtime/Cargo.toml --locked --offline
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: "8.9"
+      - name: Independent JVM wire and JCA verification vectors
+        shell: bash
+        run: |
+          test_project="$RUNNER_TEMP/a16-vector-project"
+          mkdir -p "$test_project"
+          cp apps/android/app/src/test/java/org/arcanum/nativehost/continuity/ContinuityReceiptVectorTest.kt "$test_project/ContinuityReceiptVectorTest.kt"
+          cat > "$test_project/settings.gradle.kts" <<'SETTINGS'
+          rootProject.name = "a16-public-vector-qualification"
+          SETTINGS
+          cat > "$test_project/build.gradle.kts" <<'BUILD'
+          plugins { kotlin("jvm") version "2.0.21" }
+          repositories { mavenCentral() }
+          dependencies { testImplementation("junit:junit:4.13.2") }
+          kotlin { jvmToolchain(17) }
+          kotlin.sourceSets.getByName("test").kotlin.setSrcDirs(listOf("."))
+          tasks.test { systemProperty("arcanum.repoRoot", System.getenv("GITHUB_WORKSPACE")) }
+          BUILD
+          gradle -p "$test_project" test --stacktrace

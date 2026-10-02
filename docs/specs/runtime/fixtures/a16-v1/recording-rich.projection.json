@@ -1,0 +1,42 @@
+{
+  "signedMessage": [
+    "org.arcanum.continuity.receipt",
+    1,
+    "local-recording",
+    "local-only",
+    "fixture-rich",
+    "fixture-object-rich",
+    "synthetic.bytes.v1",
+    "sha256",
+    "676659e20f7deb648b2d66e521dd8b350d86d1de7d3be84405fde0e10e365d7a",
+    "d34951a05705d968a4a69f7aa8dd4315ab67e7cd8ccddc721dc91e6a530db02a",
+    "000102030405060708090a0b0c0d0e0f",
+    "ecdsa-p256-sha256-der",
+    [
+      "assistant",
+      "fixture-codex"
+    ],
+    [
+      [
+        "source",
+        "fixture:source",
+        null,
+        null
+      ],
+      [
+        "machine",
+        "fixture:measurement",
+        "v1",
+        "6c5a6990038d66c5ecddf6c983345ed18acc416e188ff1476e3cd7201699aaed"
+      ]
+    ],
+    -9223372036854775808,
+    9223372036854775807,
+    -24,
+    null,
+    "445911915bbba3e63bdb2cc34c5e47c81b18317e5f44a478387a82643aac1bee",
+    "runtime-é-é"
+  ],
+  "publicKeySec1Hex": "04ea46ed65b559355a08ab493e5e39e43d7a82db40a1b962ce3f80d09baa6cf27192df39a4ca77e9f8692f639afb165c9074a339f3aa0e73d4cbd2b26113d3a838",
+  "signatureDerHex": "3045022100899e9035fb2fa98e1f30bd50b6c0a3c3e6fc34320c97f92ddb87ce7e92dda163022022ee9e6ee3c4d0bd417bb6270a421c2afa17c85e4cbdd77629a6bba14ec22f82"
+}

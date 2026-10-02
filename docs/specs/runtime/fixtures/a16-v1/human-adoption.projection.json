@@ -1,0 +1,36 @@
+{
+  "signedMessage": [
+    "org.arcanum.continuity.receipt",
+    1,
+    "human-adoption",
+    "local-only",
+    "fixture-adoption",
+    "fixture-object",
+    "synthetic.bytes.v1",
+    "sha256",
+    "676659e20f7deb648b2d66e521dd8b350d86d1de7d3be84405fde0e10e365d7a",
+    "d34951a05705d968a4a69f7aa8dd4315ab67e7cd8ccddc721dc91e6a530db02a",
+    "000102030405060708090a0b0c0d0e0f",
+    "ecdsa-p256-sha256-der",
+    [
+      "assistant",
+      "fixture-original-producer"
+    ],
+    [
+      [
+        "human-adoption-evidence",
+        "fixture:explicit-adoption",
+        null,
+        "9c71abb5f068aa88e3cde2ba80356296da2c2ac8e93d544ee2ff6fff5f9cec50"
+      ]
+    ],
+    123,
+    456,
+    789,
+    788,
+    null,
+    "a16-fixture-v1"
+  ],
+  "publicKeySec1Hex": "04ea46ed65b559355a08ab493e5e39e43d7a82db40a1b962ce3f80d09baa6cf27192df39a4ca77e9f8692f639afb165c9074a339f3aa0e73d4cbd2b26113d3a838",
+  "signatureDerHex": "30460221008677516c09ecfeeb7ecd7e1e300e8b27bf8b52b768271608b1328ae06eee2498022100d1ecff9a06298f442362747fb6790c3c79c154588f698e0e2c05731c23f82d77"
+}

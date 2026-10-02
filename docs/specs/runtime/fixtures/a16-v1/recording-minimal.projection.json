@@ -1,0 +1,26 @@
+{
+  "signedMessage": [
+    "org.arcanum.continuity.receipt",
+    1,
+    "local-recording",
+    "local-only",
+    "fixture-operation",
+    "fixture-object",
+    "synthetic.bytes.v1",
+    "sha256",
+    "676659e20f7deb648b2d66e521dd8b350d86d1de7d3be84405fde0e10e365d7a",
+    "d34951a05705d968a4a69f7aa8dd4315ab67e7cd8ccddc721dc91e6a530db02a",
+    "000102030405060708090a0b0c0d0e0f",
+    "ecdsa-p256-sha256-der",
+    null,
+    [],
+    null,
+    null,
+    0,
+    null,
+    null,
+    "a16-fixture-v1"
+  ],
+  "publicKeySec1Hex": "04ea46ed65b559355a08ab493e5e39e43d7a82db40a1b962ce3f80d09baa6cf27192df39a4ca77e9f8692f639afb165c9074a339f3aa0e73d4cbd2b26113d3a838",
+  "signatureDerHex": "3046022100b7fe937d2d29462b2e6fbeb8e00d465d6d3a0a8e2508e476a1d3b5ff4539d818022100bf8622dc5fb4787ff1e1628de4245bec4ab3fb2765773a3d87054a881eb9c705"
+}
