@@ -91,8 +91,9 @@ class AndroidContinuityKeyProvider : ContinuityKeyProvider {
 }
 
 /** One bounded app-private registry slot; partial writes stay blocked and preserved. No backup import. */
-class AndroidContinuityCredentialStorage(context: Context) : ContinuityCredentialStorage {
-    private val root = File(context.noBackupFilesDir, "identity/continuity.v1")
+enum class ContinuityStorageSlot(val directory: String) { CREDENTIALS("identity/continuity.v1"), OPERATIONS("continuity-ui.v1") }
+class AndroidContinuityCredentialStorage(context: Context, slot: ContinuityStorageSlot = ContinuityStorageSlot.CREDENTIALS) : ContinuityCredentialStorage {
+    private val root = File(context.noBackupFilesDir, slot.directory)
     private val registry get() = File(root, "registry.bin")
     private val partial get() = File(root, "registry.bin.partial")
     init {

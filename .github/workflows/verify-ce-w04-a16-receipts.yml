@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - "runtime/arcanum-runtime/**"
+      - "runtime/arcanum-android-continuity-jni/**"
       - "scripts/verify-ce-w04-a16-schema.py"
       - "docs/specs/runtime/ce-w04-a16-*"
       - "docs/specs/runtime/fixtures/a16-v1/**"
@@ -13,6 +14,7 @@ on:
   pull_request:
     paths:
       - "runtime/arcanum-runtime/**"
+      - "runtime/arcanum-android-continuity-jni/**"
       - "scripts/verify-ce-w04-a16-schema.py"
       - "docs/specs/runtime/ce-w04-a16-*"
       - "docs/specs/runtime/fixtures/a16-v1/**"
@@ -68,6 +70,7 @@ jobs:
           cp apps/android/app/src/test/java/org/arcanum/nativehost/continuity/*Test.kt "$test_project/"
           cp apps/android/app/src/main/java/org/arcanum/nativehost/continuity/ContinuityCredentialManager.kt "$test_project/"
           cp apps/android/app/src/main/java/org/arcanum/nativehost/continuity/ContinuitySigningRequest.kt "$test_project/"
+          cp apps/android/app/src/main/java/org/arcanum/nativehost/continuity/ContinuityOperationController.kt "$test_project/"
           cat > "$test_project/settings.gradle.kts" <<'SETTINGS'
           rootProject.name = "a16-public-vector-qualification"
           SETTINGS

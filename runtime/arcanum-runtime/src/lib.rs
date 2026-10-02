@@ -2,6 +2,7 @@
 
 pub const ARCANUM_RUNTIME_VERSION: &str = env!("CARGO_PKG_VERSION");
 
+pub mod continuity_native;
 pub mod continuity_receipt;
 pub mod continuity_store;
 pub mod persistence;
