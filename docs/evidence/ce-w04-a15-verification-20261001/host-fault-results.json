@@ -1,0 +1,37 @@
+{
+  "evidenceClass": "isolated-host-production-path-fixture",
+  "decision": "pass",
+  "casesPassed": 15,
+  "productionSources": {
+    "apps/android/app/src/main/java/org/arcanum/nativehost/update/OwnPackageDistribution.kt": "f2fabbfd4c53a611a00172bf71710c715c5505c648ffee26f623ab093b12df66",
+    "apps/android/app/src/main/java/org/arcanum/nativehost/update/OwnPackageInstallFailure.kt": "b8c16a55b5192605597ee98bd97640d4756e76168f8dbf5828fe26518bb09636",
+    "apps/android/app/src/main/java/org/arcanum/nativehost/update/OwnPackageInstaller.kt": "6830aa208cf7e0c1e2163ffa4ab1815e3d039e510d52b4ffe942d6e64f385300",
+    "apps/android/app/src/main/java/org/arcanum/nativehost/update/OwnPackagePendingConfirmation.kt": "c76314a5b340c1e399ac6f135255993c9bd25354e1b16552384112559bcdaf1d",
+    "apps/android/app/src/main/java/org/arcanum/nativehost/update/OwnPackageSessionAbsence.kt": "ff14ebea6b652f9cfe455749a9bd06778dbf1398c211d91406f4d1835b4dc341",
+    "apps/android/app/src/main/java/org/arcanum/nativehost/update/OwnPackageUpdatePolicy.kt": "2eaadaec7dd0f7f5dfea419854058be52906f59d170a35c64a6a1c22973846d0"
+  },
+  "fixtureSources": {
+    "src/ProductionFaultPaths.java": "b7f479f75964ef9e270cc2874a7e04dba86544ba1815f34d0cb618adb95f9242",
+    "src/android/content/Context.java": "7644527fb07269d48397b4aa71e50c95bfcc068909deaef345ad0776e26236eb",
+    "src/android/content/Intent.java": "6cbcf3e763d35ba28ab2cda96f927a112c2311fcf04d2348487840fc2edc86b4",
+    "src/android/os/Build.java": "1ec5229fc76fbb98d566a4e6935b096d63116630f51da74dc5217e9cdaab4e17",
+    "src/android/util/AtomicFile.java": "62469880d2cf9aa325dc63bfeb0027a0b65647b0d5ddd7c471fbe16a9f30dbcc"
+  },
+  "cases": [
+    "truncated manifest",
+    "truncated APK",
+    "thread interruption",
+    "orphan partial cleanup",
+    "seven known failure statuses persist FAILED",
+    "aborted persists CANCELLED",
+    "missing/unexpected status persists UNKNOWN",
+    "mismatched session ignored",
+    "all callback journals block resubmission"
+  ],
+  "deviceActions": false,
+  "realNetworkRequests": false,
+  "androidFrameworkDurabilityCertified": false,
+  "physicalFailedInstallObserved": false,
+  "limits": "Host Context/Intent/Build/AtomicFile adapters; genuine production staging/callback/serialization/eligibility code, not real Android service delivery or AtomicFile crash semantics.",
+  "output": "PASS 15 isolated production-path fault cases; no Android device actions or real network requests"
+}

@@ -2,7 +2,7 @@
 title: "CE-W04-A15 — Own-package installation and recovery"
 status: implementation-candidate
 visibility: public
-last_updated: 2026-10-01
+last_updated: 2026-10-02
 phase: Pre-Genesis
 era: Construction Era
 wave: CE-W04
@@ -298,3 +298,22 @@ failed-install evidence with unit/device limits before Human closure review.
 Chain-live compatibility is outside A15 and is not a closure gate. The dated
 [development decision and evidence record](../../evidence/ce-w04-a15-verification-20261001/decisions.md)
 preserves the implementation paths, roadblocks and remaining evidence gaps.
+
+## 2026-10-02 — Final verification evidence for Human closure review
+
+The version24→25 joint sequence observed corrected active-session settlement
+after one action/refresh (2652/2654/2656), verified25 installed handoff (2664)
+and the original operation1ddb41b0-db96-47a7-b942-86ed98d6e0fd with
+TARGET_OBSERVED/VERIFIED/session absent (2666). The Human reported Hope,
+Tempus and geometry still working. Explicit settlement and same-version
+NOT_ADVANCING rejection left no installation attempt (2668/2670/2672).
+
+Fifteen isolated production-path host fixtures exercise interrupted transfer
+cleanup, orphan partials, failure/cancellation/unknown callback persistence,
+session matching and blocking submission while a journal remains. These are
+not physical failed-install or phone-download interruption observations and do
+not certify Android framework AtomicFile crash behavior. The
+[closure review proposal](../../evidence/ce-w04-a15-verification-20261001/closure-review.md)
+retains those limits and the Human attribution/receipt boundaries for A16/A17.
+A15 remains REVIEW-PENDING until Human closure adoption; A16 implementation
+has not been authorized or started by this preparation.
