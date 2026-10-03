@@ -2,6 +2,8 @@ use arcanum_runtime::continuity_receipt::sha256;
 use arcanum_runtime::development_memory::*;
 use std::{fs, path::PathBuf};
 
+static FIXTURE_SEQUENCE: std::sync::atomic::AtomicU64 = std::sync::atomic::AtomicU64::new(0);
+
 const TIME: &str = "2026-10-03T13:00:00Z";
 fn record(id: &str) -> PublicQuestion {
     PublicQuestion {
@@ -59,8 +61,9 @@ struct Fixture {
 impl Fixture {
     fn new() -> Self {
         let root = std::env::temp_dir().join(format!(
-            "a17-{}-{}",
+            "a17-{}-{}-{}",
             std::process::id(),
+            FIXTURE_SEQUENCE.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             std::time::SystemTime::now()
                 .duration_since(std::time::UNIX_EPOCH)
                 .unwrap()

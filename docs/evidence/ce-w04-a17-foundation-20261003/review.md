@@ -56,3 +56,13 @@ A16 remains closed. CE-W04 and A17 remain open. Next: review this candidate, the
 implement protected retention/deletion and selected-context contracts, followed by
 native integration and physical acceptance. No device or external private store was
 read, installed or ingested during this tranche. No canonical session IDs allocated.
+
+## Additive CI fixture correction
+
+The first indexed candidate's inherited CE-W02 PR job (run 37125572003) failed
+while creating an A17 test directory: parallel fixtures observed an identical clock
+value and therefore collided before invoking storage. Other A17 checks passed, but
+that does not waive the failure. Test roots now include a monotonic process-local
+counter as well as PID/time. The correction changes test isolation only; runtime,
+profile bytes and permissions are unchanged. The original source/index pair remains
+preserved. The corrected head must rerun its applicable checks before review.
