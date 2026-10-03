@@ -182,3 +182,22 @@ final documentation-head verification is separate. Canonical main remains
 `bfa1ea659937f1fec4216680de81f989bd9961d4`. PR85 remains draft and A17 remains
 In Progress pending applicable Human review/closure. No merge, production update,
 external context send, private Hope access or ARC-SES allocation occurred.
+
+### CONTINUITY-EVENT — 2026-10-03 — A17 Human closure direction
+
+- Human direction after the verified physical report: “lets proceed and close A17”.
+- Repository: `The-Architect-369/Arcanum`; canonical predecessor
+  `bfa1ea659937f1fec4216680de81f989bd9961d4`; PR85 reviewed head
+  `09ce304a0d8d37a447f16657845a016c1845a668`.
+- [Bounded closure and retained limits](../../evidence/ce-w04-a17-native-20261003/closure-review.md).
+- Proposed: A17 bounded closure. Ratified: Human acceptance of the reported bounded
+  outcome; no doctrine amendment. Authorized-for-effect: PR85 adoption/closure and
+  existing work-record reconciliation. Executed: implementation and isolated physical
+  sequence already recorded. Verified: eight physical invocations, native UI flow,
+  95 host tests and 18 reported final review statuses at the reviewed head; closure-doc
+  head checks remain a pre-merge gate. Canonicalized: pending actual PR adoption at
+  record preparation; the later PR merge record and work mirror hold the closing SHA.
+- A17 closure does not close CE-W04, install a production APK, qualify the legacy
+  artifact-handoff path, activate provider delivery, or implement broader continuity
+  mappings. A18 remains a separately scoped next gate.
+- No ARC-SES identifier allocated across unreconciled external sequence gaps.
