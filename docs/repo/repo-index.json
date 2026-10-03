@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-10-03T12:49:06Z",
+  "generated_at": "2026-10-03T14:53:51Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "2e3f8b8f9",
+  "commit": "d6ea8d4db",
   "generator_version": "1.5",
   "files": [
     {
@@ -97,8 +97,8 @@
     {
       "path": ".github/workflows/verify-ce-w04-a16-native.yml",
       "type": "file",
-      "size_bytes": 6743,
-      "last_modified_commit": "996479381",
+      "size_bytes": 6803,
+      "last_modified_commit": "48033edeb",
       "is_empty": false,
       "extension": ".yml",
       "lines": 113
@@ -111,6 +111,24 @@
       "is_empty": false,
       "extension": ".yml",
       "lines": 85
+    },
+    {
+      "path": ".github/workflows/verify-ce-w04-a17-memory.yml",
+      "type": "file",
+      "size_bytes": 2042,
+      "last_modified_commit": "97baadeed",
+      "is_empty": false,
+      "extension": ".yml",
+      "lines": 49
+    },
+    {
+      "path": ".github/workflows/verify-ce-w04-a17-native.yml",
+      "type": "file",
+      "size_bytes": 6793,
+      "last_modified_commit": "48033edeb",
+      "is_empty": false,
+      "extension": ".yml",
+      "lines": 113
     },
     {
       "path": ".github/workflows/verify-ce-w04-architect-observer.yml",
@@ -205,11 +223,11 @@
     {
       "path": "apps/android/app/build.gradle.kts",
       "type": "file",
-      "size_bytes": 3183,
-      "last_modified_commit": "d632559d2",
+      "size_bytes": 3505,
+      "last_modified_commit": "48033edeb",
       "is_empty": false,
       "extension": ".kts",
-      "lines": 105
+      "lines": 108
     },
     {
       "path": "apps/android/app/src/androidTest/java/org/arcanum/nativehost/continuity/ContinuityDeviceQualificationTest.kt",
@@ -219,6 +237,15 @@
       "is_empty": false,
       "extension": ".kt",
       "lines": 119
+    },
+    {
+      "path": "apps/android/app/src/androidTest/java/org/arcanum/nativehost/memory/MemoryDeviceQualificationTest.kt",
+      "type": "file",
+      "size_bytes": 8670,
+      "last_modified_commit": "48033edeb",
+      "is_empty": false,
+      "extension": ".kt",
+      "lines": 114
     },
     {
       "path": "apps/android/app/src/main/AndroidManifest.xml",
@@ -331,11 +358,11 @@
     {
       "path": "apps/android/app/src/main/java/org/arcanum/nativehost/architect/ArchitectShellPanel.kt",
       "type": "file",
-      "size_bytes": 51287,
-      "last_modified_commit": "f48e2a8d6",
+      "size_bytes": 51490,
+      "last_modified_commit": "48033edeb",
       "is_empty": false,
       "extension": ".kt",
-      "lines": 1213
+      "lines": 1217
     },
     {
       "path": "apps/android/app/src/main/java/org/arcanum/nativehost/architect/ArchitectVisualDiagnostics.kt",
@@ -525,6 +552,42 @@
       "is_empty": false,
       "extension": ".kt",
       "lines": 89
+    },
+    {
+      "path": "apps/android/app/src/main/java/org/arcanum/nativehost/memory/AndroidDevelopmentMemory.kt",
+      "type": "file",
+      "size_bytes": 1797,
+      "last_modified_commit": "48033edeb",
+      "is_empty": false,
+      "extension": ".kt",
+      "lines": 37
+    },
+    {
+      "path": "apps/android/app/src/main/java/org/arcanum/nativehost/memory/DevelopmentMemoryContract.kt",
+      "type": "file",
+      "size_bytes": 7366,
+      "last_modified_commit": "48033edeb",
+      "is_empty": false,
+      "extension": ".kt",
+      "lines": 104
+    },
+    {
+      "path": "apps/android/app/src/main/java/org/arcanum/nativehost/memory/DevelopmentMemoryPanel.kt",
+      "type": "file",
+      "size_bytes": 9776,
+      "last_modified_commit": "48033edeb",
+      "is_empty": false,
+      "extension": ".kt",
+      "lines": 119
+    },
+    {
+      "path": "apps/android/app/src/main/java/org/arcanum/nativehost/memory/DevelopmentMemoryStore.kt",
+      "type": "file",
+      "size_bytes": 9262,
+      "last_modified_commit": "48033edeb",
+      "is_empty": false,
+      "extension": ".kt",
+      "lines": 156
     },
     {
       "path": "apps/android/app/src/main/java/org/arcanum/nativehost/runtime/BridgeContract.kt",
@@ -759,6 +822,15 @@
       "is_empty": false,
       "extension": ".kt",
       "lines": 103
+    },
+    {
+      "path": "apps/android/app/src/test/java/org/arcanum/nativehost/memory/DevelopmentMemoryStoreTest.kt",
+      "type": "file",
+      "size_bytes": 6972,
+      "last_modified_commit": "48033edeb",
+      "is_empty": false,
+      "extension": ".kt",
+      "lines": 99
     },
     {
       "path": "apps/android/app/src/test/java/org/arcanum/nativehost/runtime/BridgeContractTest.kt",
@@ -4568,6 +4640,51 @@
       "lines": 127
     },
     {
+      "path": "docs/evidence/ce-w04-a17-foundation-20261003/review.md",
+      "type": "file",
+      "size_bytes": 4253,
+      "last_modified_commit": "5c7202873",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 68
+    },
+    {
+      "path": "docs/evidence/ce-w04-a17-native-20261003/closure-review.md",
+      "type": "file",
+      "size_bytes": 3636,
+      "last_modified_commit": "d6ea8d4db",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 55
+    },
+    {
+      "path": "docs/evidence/ce-w04-a17-native-20261003/physical-results.json",
+      "type": "file",
+      "size_bytes": 5361,
+      "last_modified_commit": "5e9b536f6",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 130
+    },
+    {
+      "path": "docs/evidence/ce-w04-a17-native-20261003/physical-review.md",
+      "type": "file",
+      "size_bytes": 6225,
+      "last_modified_commit": "5e9b536f6",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 84
+    },
+    {
+      "path": "docs/evidence/ce-w04-a17-native-20261003/review.md",
+      "type": "file",
+      "size_bytes": 2236,
+      "last_modified_commit": "2955314b6",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 33
+    },
+    {
       "path": "docs/evidence/continuity-schema-adoption-20260930/review.md",
       "type": "file",
       "size_bytes": 2662,
@@ -4624,11 +4741,11 @@
     {
       "path": "docs/governance/architectgpt/architect-log.md",
       "type": "file",
-      "size_bytes": 7861,
-      "last_modified_commit": "2e3f8b8f9",
+      "size_bytes": 13565,
+      "last_modified_commit": "d6ea8d4db",
       "is_empty": false,
       "extension": ".md",
-      "lines": 124
+      "lines": 203
     },
     {
       "path": "docs/governance/architectgpt/architect-proposal-envelope.schema.json",
@@ -5972,6 +6089,24 @@
       "lines": 171
     },
     {
+      "path": "docs/specs/runtime/ce-w04-a17-local-foundation.md",
+      "type": "file",
+      "size_bytes": 10378,
+      "last_modified_commit": "97baadeed",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 170
+    },
+    {
+      "path": "docs/specs/runtime/ce-w04-a17-native-memory.md",
+      "type": "file",
+      "size_bytes": 7897,
+      "last_modified_commit": "48033edeb",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 130
+    },
+    {
       "path": "docs/specs/runtime/fixtures/a16-v1/README.md",
       "type": "file",
       "size_bytes": 1891,
@@ -6140,6 +6275,33 @@
       "last_modified_commit": "4cd597306",
       "is_empty": false,
       "extension": ".hex",
+      "lines": 1
+    },
+    {
+      "path": "docs/specs/runtime/fixtures/a17-v1/question.hex",
+      "type": "file",
+      "size_bytes": 537,
+      "last_modified_commit": "97baadeed",
+      "is_empty": false,
+      "extension": ".hex",
+      "lines": 1
+    },
+    {
+      "path": "docs/specs/runtime/fixtures/a17-v1/question.json",
+      "type": "file",
+      "size_bytes": 1933,
+      "last_modified_commit": "97baadeed",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 79
+    },
+    {
+      "path": "docs/specs/runtime/fixtures/a17-v1/question.sha256",
+      "type": "file",
+      "size_bytes": 65,
+      "last_modified_commit": "97baadeed",
+      "is_empty": false,
+      "extension": ".sha256",
       "lines": 1
     },
     {
@@ -8240,13 +8402,22 @@
       "lines": 625
     },
     {
-      "path": "runtime/arcanum-runtime/src/lib.rs",
+      "path": "runtime/arcanum-runtime/src/development_memory.rs",
       "type": "file",
-      "size_bytes": 230,
-      "last_modified_commit": "86cbbdbcc",
+      "size_bytes": 29126,
+      "last_modified_commit": "97baadeed",
       "is_empty": false,
       "extension": ".rs",
-      "lines": 10
+      "lines": 898
+    },
+    {
+      "path": "runtime/arcanum-runtime/src/lib.rs",
+      "type": "file",
+      "size_bytes": 258,
+      "last_modified_commit": "97baadeed",
+      "is_empty": false,
+      "extension": ".rs",
+      "lines": 11
     },
     {
       "path": "runtime/arcanum-runtime/src/persistence.rs",
@@ -8301,6 +8472,15 @@
       "is_empty": false,
       "extension": ".rs",
       "lines": 325
+    },
+    {
+      "path": "runtime/arcanum-runtime/tests/development_memory.rs",
+      "type": "file",
+      "size_bytes": 13544,
+      "last_modified_commit": "5c7202873",
+      "is_empty": false,
+      "extension": ".rs",
+      "lines": 406
     },
     {
       "path": "runtime/arcanum-runtime/tests/tempus_clock.rs",
@@ -8888,13 +9068,22 @@
       "lines": 31
     },
     {
-      "path": "scripts/verify-ce-w04-architect-observer.py",
+      "path": "scripts/verify-ce-w04-a17-profile.py",
       "type": "file",
-      "size_bytes": 14793,
-      "last_modified_commit": "dc3f00bd8",
+      "size_bytes": 2521,
+      "last_modified_commit": "97baadeed",
       "is_empty": false,
       "extension": ".py",
-      "lines": 261
+      "lines": 58
+    },
+    {
+      "path": "scripts/verify-ce-w04-architect-observer.py",
+      "type": "file",
+      "size_bytes": 15428,
+      "last_modified_commit": "2955314b6",
+      "is_empty": false,
+      "extension": ".py",
+      "lines": 272
     },
     {
       "path": "scripts/verify-public-site.mjs",

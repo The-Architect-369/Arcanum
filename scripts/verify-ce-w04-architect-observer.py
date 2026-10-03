@@ -230,9 +230,20 @@ for required_phrase in (
         f"Android build provenance missing: {required_phrase!r}",
     )
 
+# The isolated A16/A17 lanes share sources but carry different qualified arc labels.
+# Resolve only the explicit closed selector; an arbitrary interpolated label is invalid.
+provenance_gradle = build_gradle
+if "CE-W04-$qualificationArc" in build_gradle:
+    require(
+        'providers.gradleProperty("arcanumQualificationArc").orElse("A17").get()' in build_gradle
+        and 'require(qualificationArc in listOf("A16", "A17"))' in build_gradle,
+        "Android qualification arc must be the closed A16/A17 selector with A17 default",
+    )
+    provenance_gradle = build_gradle.replace("CE-W04-$qualificationArc", "CE-W04-A17")
+
 implementation_arc_match = re.search(
     r"ARCANUM_IMPLEMENTATION_ARC[\s\S]{0,128}?CE-W04-A(\d+)(?:\.(\d+))?",
-    build_gradle,
+    provenance_gradle,
 )
 require(
     implementation_arc_match is not None,
