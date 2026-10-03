@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-10-02T13:21:19Z",
+  "generated_at": "2026-10-03T12:49:06Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "996479381",
+  "commit": "2e3f8b8f9",
   "generator_version": "1.5",
   "files": [
     {
@@ -4532,6 +4532,24 @@
       "lines": 124
     },
     {
+      "path": "docs/evidence/ce-w04-a16-device-20261003/qualification.json",
+      "type": "file",
+      "size_bytes": 8132,
+      "last_modified_commit": "2e3f8b8f9",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 190
+    },
+    {
+      "path": "docs/evidence/ce-w04-a16-device-20261003/review.md",
+      "type": "file",
+      "size_bytes": 7181,
+      "last_modified_commit": "2e3f8b8f9",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 93
+    },
+    {
       "path": "docs/evidence/ce-w04-a16-foundation-20261002/review.md",
       "type": "file",
       "size_bytes": 4665,
@@ -4606,11 +4624,11 @@
     {
       "path": "docs/governance/architectgpt/architect-log.md",
       "type": "file",
-      "size_bytes": 6281,
-      "last_modified_commit": "165b06b7b",
+      "size_bytes": 7861,
+      "last_modified_commit": "2e3f8b8f9",
       "is_empty": false,
       "extension": ".md",
-      "lines": 101
+      "lines": 124
     },
     {
       "path": "docs/governance/architectgpt/architect-proposal-envelope.schema.json",
@@ -5002,11 +5020,11 @@
     {
       "path": "docs/roadmap/construction-era-arc-ledger.md",
       "type": "file",
-      "size_bytes": 19125,
-      "last_modified_commit": "f483dc909",
+      "size_bytes": 20103,
+      "last_modified_commit": "2e3f8b8f9",
       "is_empty": false,
       "extension": ".md",
-      "lines": 291
+      "lines": 307
     },
     {
       "path": "docs/roadmap/construction-era-roadmap.md",
