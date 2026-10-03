@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-10-03T16:33:42Z",
+  "generated_at": "2026-10-03T16:35:36Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "a25ae6a02",
+  "commit": "130a58168",
   "generator_version": "1.5",
   "files": [
     {
@@ -467,7 +467,7 @@
       "path": "apps/android/app/src/main/java/org/arcanum/nativehost/conversation/ConversationClient.kt",
       "type": "file",
       "size_bytes": 2935,
-      "last_modified_commit": "63fb07ffa",
+      "last_modified_commit": "130a58168",
       "is_empty": false,
       "extension": ".kt",
       "lines": 60
@@ -494,7 +494,7 @@
       "path": "apps/android/app/src/main/java/org/arcanum/nativehost/conversation/ConversationPanel.kt",
       "type": "file",
       "size_bytes": 9142,
-      "last_modified_commit": "63fb07ffa",
+      "last_modified_commit": "130a58168",
       "is_empty": false,
       "extension": ".kt",
       "lines": 135
@@ -4759,11 +4759,11 @@
     {
       "path": "docs/evidence/ce-w04-a18-local-20261003/review.md",
       "type": "file",
-      "size_bytes": 4045,
-      "last_modified_commit": "a25ae6a02",
+      "size_bytes": 4666,
+      "last_modified_commit": "130a58168",
       "is_empty": false,
       "extension": ".md",
-      "lines": 59
+      "lines": 69
     },
     {
       "path": "docs/evidence/continuity-schema-adoption-20260930/review.md",
@@ -6191,7 +6191,7 @@
       "path": "docs/specs/runtime/ce-w04-a18-local-conversation.md",
       "type": "file",
       "size_bytes": 9265,
-      "last_modified_commit": "63fb07ffa",
+      "last_modified_commit": "130a58168",
       "is_empty": false,
       "extension": ".md",
       "lines": 144
@@ -8837,7 +8837,7 @@
       "path": "scripts/conversation/gateway.py",
       "type": "file",
       "size_bytes": 14433,
-      "last_modified_commit": "a25ae6a02",
+      "last_modified_commit": "130a58168",
       "is_empty": false,
       "extension": ".py",
       "lines": 281
