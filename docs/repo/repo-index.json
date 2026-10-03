@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-10-03T13:58:36Z",
+  "generated_at": "2026-10-03T14:06:03Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "2955314b6",
+  "commit": "5e9b536f6",
   "generator_version": "1.5",
   "files": [
     {
@@ -4649,6 +4649,24 @@
       "lines": 68
     },
     {
+      "path": "docs/evidence/ce-w04-a17-native-20261003/physical-results.json",
+      "type": "file",
+      "size_bytes": 5361,
+      "last_modified_commit": "5e9b536f6",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 130
+    },
+    {
+      "path": "docs/evidence/ce-w04-a17-native-20261003/physical-review.md",
+      "type": "file",
+      "size_bytes": 6225,
+      "last_modified_commit": "5e9b536f6",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 84
+    },
+    {
       "path": "docs/evidence/ce-w04-a17-native-20261003/review.md",
       "type": "file",
       "size_bytes": 2236,
@@ -4714,11 +4732,11 @@
     {
       "path": "docs/governance/architectgpt/architect-log.md",
       "type": "file",
-      "size_bytes": 10720,
-      "last_modified_commit": "48033edeb",
+      "size_bytes": 12235,
+      "last_modified_commit": "5e9b536f6",
       "is_empty": false,
       "extension": ".md",
-      "lines": 162
+      "lines": 184
     },
     {
       "path": "docs/governance/architectgpt/architect-proposal-envelope.schema.json",
