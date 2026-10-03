@@ -100,7 +100,7 @@ class ConversationPanel(private val host: Context) {
                 val last = journal.latest()
                 root.post { if (active) latest = last }
                 val reply = c.send(draft)
-                root.post { if (active) answer.text = "Architect · advisory response\n${reply.text}" + if (reply.truncated) "\n\nOutput budget reached." else "" }
+                root.post { if (active) answer.text = "Architect · ${draft.profile.provider} / ${draft.profile.model} · advisory response\n${reply.text}" + if (reply.truncated) "\n\nOutput budget reached." else "" }
                 "Response received. No action was executed. The transcript clears when this surface closes."
             }
         }
