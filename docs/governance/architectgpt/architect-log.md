@@ -201,3 +201,22 @@ external context send, private Hope access or ARC-SES allocation occurred.
   artifact-handoff path, activate provider delivery, or implement broader continuity
   mappings. A18 remains a separately scoped next gate.
 - No ARC-SES identifier allocated across unreconciled external sequence gaps.
+
+### CONTINUITY-EVENT — 2026-10-03 — A18 local-first conversation implementation
+
+- Human direction: proceed with A18; prefer a local home-computer model, with an
+  optional OpenAI route through the same private gateway later.
+- Source/observation: current task, 2026-10-03, Codex. Repository
+  `The-Architect-369/Arcanum`; canonical base `27b0d814c6a64bdbdf1dd12e8b1db53449d8223c`;
+  disposable work branch `work/a18-conversation-foundation-20261003`.
+- Scope: [local conversation contract](../../specs/runtime/ce-w04-a18-local-conversation.md)
+  and [candidate evidence](../../evidence/ce-w04-a18-local-20261003/review.md).
+  A17 remains closed. English text advice with explicitly selected context, no tools.
+- Proposed: local-first A18 tranche. Ratified: existing bounded A18 scope, no doctrine
+  change. Authorized-for-effect: implementation and local runtime qualification.
+  Executed: source preparation and local public-fixture requests. Verified: host
+  protocol tests; initial model answer quality failed and is being corrected.
+  Canonicalized: no. No A18 merge, install, closure or cloud activation inferred.
+- Next gate: exact source/index/CI, usable local response, then separately authorized
+  isolated phone installation and physical sequence. Retained cloud/security gates
+  remain unmet. No ARC-SES identifier allocated across unreconciled sequence gaps.

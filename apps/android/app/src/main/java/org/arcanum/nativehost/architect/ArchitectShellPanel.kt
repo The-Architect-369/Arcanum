@@ -122,6 +122,10 @@ class ArchitectShellPanel(context: Context) : LinearLayout(context) {
             text = "Development memory"
             setOnClickListener { org.arcanum.nativehost.memory.DevelopmentMemoryPanel(context).show() }
         })
+        content.addView(Button(context).apply {
+            text = "Architect conversation"
+            setOnClickListener { org.arcanum.nativehost.conversation.ConversationPanel(context).show() }
+        })
         content.addView(handoffStatus)
         content.addView(org.arcanum.nativehost.update.OwnPackageUpdatePanel(context))
 
