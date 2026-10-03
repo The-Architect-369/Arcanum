@@ -60,7 +60,7 @@ Model text is rendered in a plain TextView with no automatic action or link hand
 # Local transport and credentials
 
 `scripts/conversation/gateway.py` uses Python's standard library and binds only
-`127.0.0.1:18765`. All API routes require a random 256-bit bearer credential generated
+`127.0.0.1:18766`. All API routes require a random 256-bit bearer credential generated
 in an operator-owned mode-0700 state directory; the credential file is mode 0600.
 Browser Origin requests are rejected; no CORS is enabled. There is no LAN/public bind
 option, redirect following, environment proxy, arbitrary provider URL, or cloud retry.
@@ -70,7 +70,7 @@ Use the explicit Instruct tag; the generic 4B tag selects a thinking-only varian
 Ollama is reached only at `127.0.0.1:11434`; run it with `OLLAMA_NO_CLOUD=1`.
 Both loopback services trust the host OS and local administrator.
 
-Android uses the existing loopback cleartext exception and fixed port 18765 through
+Android uses the existing loopback cleartext exception and fixed port 18766 through
 an explicitly configured development tunnel. For the initial physical sequence,
 use ADB reverse on the already paired wireless ADB transport after verifying that
 Windows ADB can reach the WSL gateway. Wireless ADB reachability does not itself prove

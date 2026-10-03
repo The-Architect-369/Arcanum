@@ -32,7 +32,7 @@ class ConversationPanel(private val host: Context) {
     @Volatile private var client: ConversationClient? = null
 
     fun show() {
-        root.addView(TextView(host).apply { text = "Architect · Conversation\nAsk about selected development evidence or explore an idea. Each request is reviewed separately. Answers are advisory text. Prior answers are not automatically sent or saved.\nConnection: this device's loopback port 18765, through the development tunnel to your home computer." })
+        root.addView(TextView(host).apply { text = "Architect · Conversation\nAsk about selected development evidence or explore an idea. Each request is reviewed separately. Answers are advisory text. Prior answers are not automatically sent or saved.\nConnection: this device's loopback port 18766, through the development tunnel to your home computer." })
         listOf(token, question, answer, status).forEach { privateView(it) }
         root.addView(token); root.addView(status)
         action("Connect and refresh selection") {

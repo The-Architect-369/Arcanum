@@ -57,3 +57,13 @@ A follow-up error-path correction maps malformed upstream HTTP into the same
 unknown-outcome response without reflecting provider bytes. An eleventh gateway
 test covers it. Successful model-response parsing now requires an explicit
 `stop` or `length` finish reason. Android source is unchanged by this correction.
+
+The first clean-head sync reached the broker fixture and failed because its existing
+test service also uses port 18765. A18 now uses dedicated loopback port 18766;
+the legacy fixture is unchanged. This failure is retained pending the rerun.
+
+After port isolation, all 102 Android host tests and 11 gateway tests passed again.
+A fresh public fixture through port 18766 completed in 1.22 seconds, without
+truncation, and reconciled its original receipt as `response_observed`. Windows
+loopback again received HTTP 401 without credentials. This is observed local
+transport/model behavior, not Android device qualification.

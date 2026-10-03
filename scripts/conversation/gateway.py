@@ -261,7 +261,7 @@ def main():
     parser.add_argument('--state-dir', type=Path, required=True)
     parser.add_argument('--model', default='qwen3:4b-instruct-2507-q4_K_M')
     parser.add_argument('--digest', required=True)
-    parser.add_argument('--port', type=int, default=18765)
+    parser.add_argument('--port', type=int, default=18766)
     args = parser.parse_args()
     os.umask(0o077)
     gateway = Gateway(args.state_dir, args.model, args.digest)

@@ -19,7 +19,7 @@ class ConversationClient(private val token: String) {
     }
     private fun request(path: String, body: String?, timeout: Int): JSONObject {
         check(!stopped.get())
-        val conn = URL("http://127.0.0.1:18765$path").openConnection(java.net.Proxy.NO_PROXY) as HttpURLConnection
+        val conn = URL("http://127.0.0.1:18766$path").openConnection(java.net.Proxy.NO_PROXY) as HttpURLConnection
         connection = conn
         val expired = AtomicBoolean(false)
         val timer = java.util.Timer(true)
