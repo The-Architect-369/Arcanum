@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-10-03T14:06:03Z",
+  "generated_at": "2026-10-03T14:53:51Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "5e9b536f6",
+  "commit": "d6ea8d4db",
   "generator_version": "1.5",
   "files": [
     {
@@ -4649,6 +4649,15 @@
       "lines": 68
     },
     {
+      "path": "docs/evidence/ce-w04-a17-native-20261003/closure-review.md",
+      "type": "file",
+      "size_bytes": 3636,
+      "last_modified_commit": "d6ea8d4db",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 55
+    },
+    {
       "path": "docs/evidence/ce-w04-a17-native-20261003/physical-results.json",
       "type": "file",
       "size_bytes": 5361,
@@ -4732,11 +4741,11 @@
     {
       "path": "docs/governance/architectgpt/architect-log.md",
       "type": "file",
-      "size_bytes": 12235,
-      "last_modified_commit": "5e9b536f6",
+      "size_bytes": 13565,
+      "last_modified_commit": "d6ea8d4db",
       "is_empty": false,
       "extension": ".md",
-      "lines": 184
+      "lines": 203
     },
     {
       "path": "docs/governance/architectgpt/architect-proposal-envelope.schema.json",
