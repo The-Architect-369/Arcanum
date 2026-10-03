@@ -14,7 +14,7 @@ Observed host verification before source commit:
 - All Android production and host test sources compiled with Kotlin 2.0.21, Java 21
   and the installed Android API 36 stubs. 102 JUnit tests passed (95 inherited, seven
   A18 tests). This is not an APK build or API-35 instrumentation execution.
-- Ten gateway tests passed, including HTTP authentication/origin rejection, unknown
+- Eleven gateway tests passed, including HTTP authentication/origin rejection, unknown
   outcome handling, restart replay refusal, exact schema/budget and tool-response
   rejection. Offline fixtures do not prove model answer quality.
 - Observer provenance verification and CE-W01 specification checks passed.
@@ -52,3 +52,8 @@ Windows loopback received the expected HTTP 401 from the gateway without a crede
 establishing host reachability and rejection of an unauthenticated request. The
 local Instruct model reported 100% GPU placement with an 8192-token context.
 These observations do not prove a phone tunnel or production remote access.
+
+A follow-up error-path correction maps malformed upstream HTTP into the same
+unknown-outcome response without reflecting provider bytes. An eleventh gateway
+test covers it. Successful model-response parsing now requires an explicit
+`stop` or `length` finish reason. Android source is unchanged by this correction.

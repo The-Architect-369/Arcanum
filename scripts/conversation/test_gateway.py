@@ -61,6 +61,16 @@ class GatewayTests(unittest.TestCase):
         self.gateway.provider = lambda *a, **k: dict(models=[dict(name='qwen3:4b', digest='b'*64)])
         with self.assertRaises(Rejected):
             self.gateway.chat(encode(self.request()))
+    def test_malformed_provider_http_preserves_unknown(self):
+        def malformed(*args, **kwargs):
+            raise http.client.BadStatusLine('untrusted provider bytes')
+        self.gateway.provider = malformed
+        request = self.request()
+        with self.assertRaises(Rejected) as error:
+            self.gateway.chat(encode(request))
+        self.assertEqual(error.exception.code, 'outcome_unknown')
+        self.assertEqual(self.gateway.status(request['requestId'])['state'], 'unknown')
+
     def test_profile_unknown_keys_authority_budget_rejected_before_dispatch(self):
         for field, value in [('profileId','changed'), ('tools',[]), ('authorityEffect','execute'), ('prompt','x'*6001), ('generation',True)]:
             with self.subTest(field=field):

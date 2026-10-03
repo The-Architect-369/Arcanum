@@ -172,7 +172,7 @@ class Gateway:
                 keep_alive='5m', messages=[dict(role='system', content=SYSTEM), dict(role='user', content=user_content)],
                 options=dict(num_ctx=8192, num_predict=512)), timeout=60)
             message = result.get('message', {})
-            require(result.get('done') is True and result.get('model') == self.profile['model'] and
+            require(result.get('done') is True and result.get('done_reason') in ('stop', 'length') and result.get('model') == self.profile['model'] and
                     message.get('role') == 'assistant' and not message.get('tool_calls') and not message.get('images'),
                     'invalid_provider_response', 502)
             bounded_text(message.get('content'), 16 * 1024)
@@ -180,7 +180,7 @@ class Gateway:
                 db.execute('UPDATE requests SET state=? WHERE id=?', ('response_observed', body['requestId']))
             return dict(schema=SCHEMA, requestId=body['requestId'], profileId=self.profile['profileId'],
                         text=message['content'], authorityEffect='none', truncated=result.get('done_reason') == 'length')
-        except (OSError, ValueError, KeyError, TypeError, Rejected) as error:
+        except (OSError, ValueError, KeyError, TypeError, http.client.HTTPException, Rejected) as error:
             # Never store provider text/errors or promote interrupted work to known absence.
             if dispatched:
                 raise Rejected(502, 'outcome_unknown') from error
@@ -242,7 +242,7 @@ class Handler(BaseHTTPRequestHandler):
             self.reply(200, result)
         except Rejected as error:
             self.reply(error.status, dict(error=error.code))
-        except (OSError, ValueError, KeyError, TypeError, sqlite3.Error):
+        except (OSError, ValueError, KeyError, TypeError, http.client.HTTPException, sqlite3.Error):
             self.reply(503, dict(error='unavailable_or_unknown'))
     def reply(self, status, body):
         raw = encode(body)
