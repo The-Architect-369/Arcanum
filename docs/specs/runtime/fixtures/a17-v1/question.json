@@ -1,0 +1,79 @@
+{
+  "schema": "arcanum.node.continuity-object/v1",
+  "record_type": "continuity-object",
+  "object_id": "synthetic:one",
+  "subject_id": "synthetic:question:1",
+  "object_type": "question",
+  "claim_class": "proposal",
+  "namespace": "architect/continuity",
+  "version": 1,
+  "temporal": {
+    "occurred_at": null,
+    "observed_at": "2026-10-03T13:00:00Z",
+    "recorded_at": "2026-10-03T13:00:00Z",
+    "effective_from": null,
+    "effective_until": null,
+    "sequence": {
+      "era": null,
+      "wave": null,
+      "arc_id": null,
+      "ordinal": null
+    },
+    "tempus_anchor_ref": null
+  },
+  "custody": {
+    "retention_authorized": true,
+    "retention_authority_ref": "test-only:selected-public-fixture",
+    "disclosure": "public",
+    "replication": "none",
+    "materialization": "snapshot",
+    "encryption_required": false,
+    "do_not_export": true
+  },
+  "provenance": [
+    {
+      "source_kind": "local",
+      "source_ref": "synthetic:fixture",
+      "source_revision": null,
+      "captured_at": "2026-10-03T13:00:00Z",
+      "content_digest_sha256": null,
+      "evidence_class": "observation"
+    }
+  ],
+  "relationships": [],
+  "authority": {
+    "authority_class": "none",
+    "authority_refs": [],
+    "effect_state": {
+      "proposed": {
+        "state": "unknown",
+        "evidence_refs": []
+      },
+      "ratified": {
+        "state": "unknown",
+        "evidence_refs": []
+      },
+      "authorized_for_effect": {
+        "state": "unknown",
+        "evidence_refs": []
+      },
+      "executed": {
+        "state": "unknown",
+        "evidence_refs": []
+      },
+      "verified": {
+        "state": "unknown",
+        "evidence_refs": []
+      },
+      "canonicalized": {
+        "state": "unknown",
+        "evidence_refs": []
+      }
+    }
+  },
+  "payload": {
+    "record_id": "synthetic:question:1",
+    "statement": "Which synthetic option should be reviewed?",
+    "status": "open"
+  }
+}

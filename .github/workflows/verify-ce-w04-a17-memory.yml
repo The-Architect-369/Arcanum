@@ -1,0 +1,49 @@
+name: CE-W04 A17 Local Memory Foundation
+on:
+  push:
+    paths:
+      - 'runtime/arcanum-runtime/**'
+      - 'docs/specs/runtime/ce-w04-a17-*'
+      - 'docs/specs/runtime/sovereign-continuity-object.schema.json'
+      - 'docs/specs/runtime/fixtures/a17-v1/**'
+      - 'scripts/verify-ce-w04-a17-profile.py'
+      - '.github/workflows/verify-ce-w04-a17-memory.yml'
+  pull_request:
+    paths:
+      - 'runtime/arcanum-runtime/**'
+      - 'docs/specs/runtime/ce-w04-a17-*'
+      - 'docs/specs/runtime/sovereign-continuity-object.schema.json'
+      - 'docs/specs/runtime/fixtures/a17-v1/**'
+      - 'scripts/verify-ce-w04-a17-profile.py'
+      - '.github/workflows/verify-ce-w04-a17-memory.yml'
+permissions:
+  contents: read
+jobs:
+  a17-local-foundation:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Independent profile/schema vector
+        run: |
+          python -m pip install jsonschema==4.23.0
+          python scripts/verify-ce-w04-a17-profile.py
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt, clippy
+      - name: Locked runtime and recovery checks
+        run: |
+          cargo fetch --manifest-path runtime/arcanum-runtime/Cargo.toml --locked
+          cargo fmt --manifest-path runtime/arcanum-runtime/Cargo.toml --all -- --check
+          cargo clippy --manifest-path runtime/arcanum-runtime/Cargo.toml --all-targets --all-features --locked --offline -- -D warnings
+          cargo test --manifest-path runtime/arcanum-runtime/Cargo.toml --locked --offline
+      - name: Declared minimum Rust
+        run: |
+          rustup toolchain install 1.78.0 --profile minimal
+          cargo +1.78.0 fetch --manifest-path runtime/arcanum-runtime/Cargo.toml --locked
+          cargo +1.78.0 test --manifest-path runtime/arcanum-runtime/Cargo.toml --locked --offline

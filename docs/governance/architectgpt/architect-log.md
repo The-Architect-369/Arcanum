@@ -122,3 +122,24 @@ then review the public experience before any separately authorized main merge.
   process restart rather than reboot/power-loss, no private-store export or migration.
 - Next gate: final candidate verification/canonical adoption, then separately scope
   A17. CE-W04 remains open. No ARC-SES identifier allocated across unresolved gaps.
+
+## CONTINUITY-EVENT — 2026-10-03 — A17 local foundation begins
+
+- Source/authority: Human instruction “With A16 closed let's keep this momentum and begin work on A17”.
+- Event and observation date: 2026-10-03; producer: Codex.
+- Repository/base: `The-Architect-369/Arcanum`, `main@bfa1ea659937f1fec4216680de81f989bd9961d4`;
+  work ref `work/a17-continuity-foundation-20261003`.
+- A16 closure through PR #84 satisfies A17's scheduling dependency. The retrieved
+  A17 Work Registry/September baseline and adopted sovereign migration plan define
+  the bounded first slice; their older “blocked” label does not reopen A16.
+- [Contract](../../specs/runtime/ce-w04-a17-local-foundation.md) and
+  [host evidence](../../evidence/ce-w04-a17-foundation-20261003/review.md).
+- Proposed: restricted public-question storage profile. Ratified: existing sequence
+  and specification baseline, not this new candidate. Authorized-for-effect: bounded
+  repository implementation. Executed: local module/fixtures/tests/docs. Verified:
+  host stable/MSRV tests and independent vector; final indexed-head checks pending.
+  Canonicalized: no; main unchanged at preparation.
+- Limits: public synthetic host qualification only; no private custody, deletion,
+  export/context, native integration, device installation or A17 closure.
+- Next gate: exact-head candidate review, then protected retention/deletion and
+  selected-context contracts. CE-W04 remains open. No ARC-SES allocation across gaps.
