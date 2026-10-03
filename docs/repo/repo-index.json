@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-10-03T16:31:46Z",
+  "generated_at": "2026-10-03T16:33:42Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "63fb07ffa",
+  "commit": "a25ae6a02",
   "generator_version": "1.5",
   "files": [
     {
@@ -4759,11 +4759,11 @@
     {
       "path": "docs/evidence/ce-w04-a18-local-20261003/review.md",
       "type": "file",
-      "size_bytes": 3727,
-      "last_modified_commit": "63fb07ffa",
+      "size_bytes": 4045,
+      "last_modified_commit": "a25ae6a02",
       "is_empty": false,
       "extension": ".md",
-      "lines": 54
+      "lines": 59
     },
     {
       "path": "docs/evidence/continuity-schema-adoption-20260930/review.md",
@@ -8836,8 +8836,8 @@
     {
       "path": "scripts/conversation/gateway.py",
       "type": "file",
-      "size_bytes": 14327,
-      "last_modified_commit": "63fb07ffa",
+      "size_bytes": 14433,
+      "last_modified_commit": "a25ae6a02",
       "is_empty": false,
       "extension": ".py",
       "lines": 281
@@ -8845,11 +8845,11 @@
     {
       "path": "scripts/conversation/test_gateway.py",
       "type": "file",
-      "size_bytes": 6123,
-      "last_modified_commit": "63fb07ffa",
+      "size_bytes": 6625,
+      "last_modified_commit": "a25ae6a02",
       "is_empty": false,
       "extension": ".py",
-      "lines": 117
+      "lines": 127
     },
     {
       "path": "scripts/doctrine-guard.sh",
