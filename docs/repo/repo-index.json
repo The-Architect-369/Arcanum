@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-10-03T13:52:14Z",
+  "generated_at": "2026-10-03T13:58:36Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "48033edeb",
+  "commit": "2955314b6",
   "generator_version": "1.5",
   "files": [
     {
@@ -4651,11 +4651,11 @@
     {
       "path": "docs/evidence/ce-w04-a17-native-20261003/review.md",
       "type": "file",
-      "size_bytes": 1901,
-      "last_modified_commit": "48033edeb",
+      "size_bytes": 2236,
+      "last_modified_commit": "2955314b6",
       "is_empty": false,
       "extension": ".md",
-      "lines": 28
+      "lines": 33
     },
     {
       "path": "docs/evidence/continuity-schema-adoption-20260930/review.md",
@@ -9052,11 +9052,11 @@
     {
       "path": "scripts/verify-ce-w04-architect-observer.py",
       "type": "file",
-      "size_bytes": 14793,
-      "last_modified_commit": "dc3f00bd8",
+      "size_bytes": 15428,
+      "last_modified_commit": "2955314b6",
       "is_empty": false,
       "extension": ".py",
-      "lines": 261
+      "lines": 272
     },
     {
       "path": "scripts/verify-public-site.mjs",
