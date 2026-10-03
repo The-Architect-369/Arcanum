@@ -20,6 +20,9 @@ val arcanumDevSigningConfigured =
         arcanumDevKeyPassword,
     ).all { it.isPresent }
 
+val qualificationArc = providers.gradleProperty("arcanumQualificationArc").orElse("A17").get()
+require(qualificationArc in listOf("A16", "A17"))
+
 android {
     namespace = "org.arcanum.nativehost"
     compileSdk = 35
@@ -29,11 +32,11 @@ android {
         applicationId = "org.arcanum.nativehost"
         minSdk = 26
         targetSdk = 35
-        versionCode = 26
+        versionCode = 28
         providers.gradleProperty("arcanumQualificationVersionCode").orNull?.let { value ->
-            versionCode = value.toInt().also { require(it == 26 || it == 27) }
+            versionCode = value.toInt().also { require(it in if (qualificationArc == "A16") listOf(26, 27) else listOf(28, 29)) }
         }
-        versionName = "0.1.16-cew04-a16"
+        versionName = if (qualificationArc == "A16") "0.1.16-cew04-a16" else "0.1.17-cew04-a17"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         buildConfigField(
             "String",
@@ -43,7 +46,7 @@ android {
         buildConfigField(
             "String",
             "ARCANUM_IMPLEMENTATION_ARC",
-            "\"CE-W04-A16\"",
+            "\"CE-W04-$qualificationArc\"",
         )
     }
 
@@ -65,7 +68,7 @@ android {
     buildTypes {
         create("qualification") {
             initWith(getByName("debug"))
-            applicationIdSuffix = ".a16qualification"
+            applicationIdSuffix = if (qualificationArc == "A16") ".a16qualification" else ".a17qualification"
             versionNameSuffix = "-qualification"
             isDebuggable = true
             signingConfig = signingConfigs.getByName("debug")

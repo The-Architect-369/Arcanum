@@ -143,3 +143,20 @@ then review the public experience before any separately authorized main merge.
   export/context, native integration, device installation or A17 closure.
 - Next gate: exact-head candidate review, then protected retention/deletion and
   selected-context contracts. CE-W04 remains open. No ARC-SES allocation across gaps.
+
+## CONTINUITY-EVENT — 2026-10-03 — A17 native custody and authorized phone qualification
+
+- Human direction: “Let's continue with a17 implementation until it's ready to install and test on the phone then let's perform that test.”
+- Source: current task, observation date 2026-10-03; producer Codex.
+- Repository/ref: The-Architect-369/Arcanum; canonical main `bfa1ea659937f1fec4216680de81f989bd9961d4`;
+  PR85 candidate starting at `52cd404dfe92cc47e0b3da6d4c44b27b654a92d3`.
+- Surface: nativehost/memory protected host store/UI, isolated A17 version28/29 build
+  and ordered synthetic physical qualification. A16/production installations preserved.
+- [Contract](../../specs/runtime/ce-w04-a17-native-memory.md); [candidate evidence](../../evidence/ce-w04-a17-native-20261003/review.md).
+- Proposed: protected native A17 tranche. Ratified: existing A17 scope, no doctrine
+  change. Authorized-for-effect: implementation and bounded isolated installation/test
+  under this instruction. Executed: source preparation; phone execution pending at
+  this event. Verified: host compilation/tests in progress; exact APK/device results
+  remain separate. Canonicalized: no merge or A17 closure inferred.
+- Next gate: verify source/index/CI and exact artifacts, then execute authorized
+  isolated phone sequence and record actual results. No ARC-SES identifiers allocated.

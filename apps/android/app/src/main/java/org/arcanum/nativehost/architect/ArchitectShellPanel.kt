@@ -118,6 +118,10 @@ class ArchitectShellPanel(context: Context) : LinearLayout(context) {
                 setTextIsSelectable(true)
                 setPadding(0, 0, 0, dp(14))
             }
+        content.addView(Button(context).apply {
+            text = "Development memory"
+            setOnClickListener { org.arcanum.nativehost.memory.DevelopmentMemoryPanel(context).show() }
+        })
         content.addView(handoffStatus)
         content.addView(org.arcanum.nativehost.update.OwnPackageUpdatePanel(context))
 
