@@ -99,3 +99,26 @@ before any canonical adoption to `main`.
 
 Next gate: verify the source/index pair, publish the reviewable PR and preview,
 then review the public experience before any separately authorized main merge.
+
+
+## CONTINUITY-EVENT — 2026-10-03 — A16 physical qualification and closure direction
+
+- Event/observation date: 2026-10-03; producer: Codex, direct ADB and local checks.
+- Human execution direction: “Run a 16 test sequence”. Closure direction after the
+  result: “proceed with isolated test and lets close A16”.
+- Repository: `The-Architect-369/Arcanum`; canonical base `ad7c75039a6701145e3051ca151ae003f4ca542d`;
+  work branch `work/a16-receipt-foundation-20261002`; PR #84.
+- Physically tested APK source: `18172fad5061cf01c989b066587be7e44f5bff3b`;
+  CI run `37012528420`, artifact `11228568670`.
+- Evidence: [bounded A16 closure](../../evidence/ce-w04-a16-device-20261003/review.md).
+- Proposed: bounded A16 implementation/closure. Ratified: existing A16 scope;
+  no doctrine amendment. Authorized-for-effect: Human-directed isolated execution
+  and closure. Executed: seven physical tests, UI checks and additional cancellation.
+  Verified: physical results and synthetic signature/receipt integrity; final
+  evidence/index-head checks remain a pre-adoption gate. Canonicalized: pending
+  actual PR adoption at this record's preparation; PR and provider mirror record
+  the later closing SHA without backdating this event.
+- Limits: missing fresh PNG, unverified adoption actor, provider-reported security,
+  process restart rather than reboot/power-loss, no private-store export or migration.
+- Next gate: final candidate verification/canonical adoption, then separately scope
+  A17. CE-W04 remains open. No ARC-SES identifier allocated across unresolved gaps.

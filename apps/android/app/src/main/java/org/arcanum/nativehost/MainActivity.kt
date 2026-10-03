@@ -7,6 +7,7 @@ import android.view.Gravity
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowInsets
+import android.widget.Button
 import android.widget.FrameLayout
 import android.widget.LinearLayout
 import android.widget.Toast
@@ -17,6 +18,7 @@ import org.arcanum.nativehost.architect.ArchitectObservationBridge
 import org.arcanum.nativehost.architect.ArchitectObservationResult
 import org.arcanum.nativehost.architect.ArchitectObserver
 import org.arcanum.nativehost.architect.ArchitectPulseButton
+import org.arcanum.nativehost.continuity.ContinuityPanel
 import org.arcanum.nativehost.geometry.ArcnetRendererView
 import org.arcanum.nativehost.hope.HopeReflectionPanel
 import org.arcanum.nativehost.runtime.NativeRuntimeBridge
@@ -77,6 +79,7 @@ class MainActivity : Activity() {
                 1.0f,
             ),
         )
+        topBar.addView(Button(this).apply { text = "Continuity"; contentDescription = "Open local continuity controls"; setOnClickListener { ContinuityPanel(this@MainActivity).show() } })
         topBar.addView(
             ArchitectPulseButton(
                 context = this,

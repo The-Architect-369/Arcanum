@@ -1,0 +1,190 @@
+{
+  "recordType": "a16-physical-qualification",
+  "visibility": "PUBLIC-REDACTED",
+  "eventDate": "2026-10-03",
+  "producer": "Codex; direct ADB observations and local verification",
+  "authorization": {
+    "execution": "Run a 16 test sequence",
+    "closure": "proceed with isolated test and lets close A16",
+    "scope": "isolated qualification package and bounded A16 closure; production package remains version 25"
+  },
+  "sourceCommit": "18172fad5061cf01c989b066587be7e44f5bff3b",
+  "ciRun": 37012528420,
+  "artifactId": 11228568670,
+  "device": {
+    "model": "SM-S176V",
+    "android": "16",
+    "api": 36,
+    "abi": "arm64-v8a",
+    "physical": true
+  },
+  "package": "org.arcanum.nativehost.a16qualification",
+  "versions": {
+    "baseline": 26,
+    "compatibleUpdate": 27,
+    "productionUnchanged": 25
+  },
+  "signerCertificateSha256": "b3d4562c49baab27619774ca90918364912b1f429fc68bb9b8dc4886c2d2d358",
+  "apkSha256": {
+    "arcanum-a16-qualification-26.apk": "51760c25ef3163c6e209c66cd9fafb3815300f4d4f41202aef6b90eaaa6ee8e8",
+    "arcanum-a16-qualification-27.apk": "659f3361bf45ac1622cec6213a3b85ec08d6d9f1ee95ab64d439d116c01f601b",
+    "arcanum-a16-qualification-tests.apk": "cdf458d400db4e321a0c03caed84ddbe2ee2e327bff72441af25e38d0a14dfd2"
+  },
+  "tests": [
+    {
+      "method": "seed",
+      "observedAt": "2026-10-03T12:32:24.870870+00:00",
+      "passed": true,
+      "assertionResult": "OK (1 test)"
+    },
+    {
+      "method": "recoverAfterRestart",
+      "observedAt": "2026-10-03T12:32:54.936170+00:00",
+      "passed": true,
+      "assertionResult": "OK (1 test)"
+    },
+    {
+      "method": "recoverAfterCompatibleUpdate",
+      "observedAt": "2026-10-03T12:33:21.506125+00:00",
+      "passed": true,
+      "assertionResult": "OK (1 test)"
+    },
+    {
+      "method": "rejectTamperedReceipt",
+      "observedAt": "2026-10-03T12:33:31.709399+00:00",
+      "passed": true,
+      "assertionResult": "OK (1 test)"
+    },
+    {
+      "method": "loseQualificationKey",
+      "observedAt": "2026-10-03T12:33:48.811036+00:00",
+      "passed": true,
+      "assertionResult": "OK (1 test)"
+    },
+    {
+      "method": "replaceMissingQualificationKey",
+      "observedAt": "2026-10-03T12:33:59.083681+00:00",
+      "passed": true,
+      "assertionResult": "OK (1 test)"
+    },
+    {
+      "method": "rotateReadyQualificationKey",
+      "observedAt": "2026-10-03T12:34:09.118214+00:00",
+      "passed": true,
+      "assertionResult": "OK (1 test)"
+    }
+  ],
+  "stateComparisons": {
+    "restart_preserves_all_displayed_state": true,
+    "update_preserves_all_displayed_state": true,
+    "tamper_preserves_all_displayed_state": true,
+    "missing_key_disables_record_and_adopt": true,
+    "replacement_and_rotation_preserve_original_receipt": true,
+    "distinct_credential_generations": true,
+    "distinct_credential_fingerprints": true,
+    "adoption_uses_current_generation_and_new_operation": true,
+    "refresh_navigation_and_scroll_preserve_adoption": true
+  },
+  "cancellationCheck": {
+    "observedAt": "2026-10-03T12:45:20.413535+00:00",
+    "action": "open Record public sample confirmation, Cancel, inspect state and original/adoption receipt digests",
+    "passed": true,
+    "stateUnchanged": true,
+    "receiptDigestsUnchanged": true,
+    "noSigningConfirmationSent": true
+  },
+  "keySecurityObservation": "TRUSTED_ENVIRONMENT; provider-reported, not independent attestation",
+  "receiptVerification": {
+    "originalBytesUnchanged": true,
+    "originalAndAdoptionSignaturesValid": true,
+    "objectDigestsMatch": true,
+    "publicKeyFingerprintsMatch": true,
+    "originalProducerPreserved": "public-synthetic-fixture / a16-native-qualification-v1",
+    "occurredAndObservedTimes": "unknown",
+    "adoptionUsesActualLaterConfirmationTime": true,
+    "confirmingActor": "unverified; adoption completed before agent Confirm lookup, and no repeat was attempted"
+  },
+  "screenshots": [
+    {
+      "checkpoint": "02-seed",
+      "capturedAt": "2026-10-03T12:32:47.837082+00:00",
+      "sha256": "057a9336a93fea4de2ebb4f9f97fa3514d728e8cd71534a3b82f1becb0d6eb30",
+      "review": "original PNG verified; retained locally, not embedded in public repository"
+    },
+    {
+      "checkpoint": "03-restart",
+      "capturedAt": "2026-10-03T12:33:05.457375+00:00",
+      "sha256": "77febea4380ba04dbb127cf15a999b45936e149ff39d3e16138f54744a6f7ee1",
+      "review": "original PNG verified; retained locally, not embedded in public repository"
+    },
+    {
+      "checkpoint": "04-update",
+      "capturedAt": "2026-10-03T12:33:30.399384+00:00",
+      "sha256": "77febea4380ba04dbb127cf15a999b45936e149ff39d3e16138f54744a6f7ee1",
+      "review": "original PNG verified; retained locally, not embedded in public repository"
+    },
+    {
+      "checkpoint": "05-tamper",
+      "capturedAt": "2026-10-03T12:33:42.331749+00:00",
+      "sha256": "77febea4380ba04dbb127cf15a999b45936e149ff39d3e16138f54744a6f7ee1",
+      "review": "original PNG verified; retained locally, not embedded in public repository"
+    },
+    {
+      "checkpoint": "06-key-loss",
+      "capturedAt": "2026-10-03T12:33:57.530154+00:00",
+      "sha256": "dd0e201aa09a0a176039ce58e9bb449c4883cafae5cf620acf71d9d40b5aacc0",
+      "review": "original PNG verified; retained locally, not embedded in public repository"
+    },
+    {
+      "checkpoint": "07-replace",
+      "capturedAt": "2026-10-03T12:34:07.734336+00:00",
+      "sha256": "0969fbca5852ec6f1a05b8bb9b67e3d9e3122c2753b257b70d7bb3f4eff3087b",
+      "review": "original PNG verified; retained locally, not embedded in public repository"
+    },
+    {
+      "checkpoint": "08-rotate",
+      "capturedAt": "2026-10-03T12:34:19.714158+00:00",
+      "sha256": "92e33a265f6696eddf7efc2be4753a98de2255ca334e4e020c9ca62326d1c97d",
+      "review": "original PNG verified; retained locally, not embedded in public repository"
+    },
+    {
+      "checkpoint": "09-adopt-observed",
+      "capturedAt": "2026-10-03T12:35:33.121098+00:00",
+      "sha256": "aaae3b1c5d14572d638facb9b0d656f11ed379c23350951b74a24fb52812d429",
+      "review": "original PNG verified; retained locally, not embedded in public repository"
+    },
+    {
+      "checkpoint": "10-scrolled-refresh",
+      "capturedAt": "2026-10-03T12:35:43.760414+00:00",
+      "sha256": "aaae3b1c5d14572d638facb9b0d656f11ed379c23350951b74a24fb52812d429",
+      "review": "original PNG verified; retained locally, not embedded in public repository"
+    },
+    {
+      "checkpoint": "11-navigation-return",
+      "capturedAt": "2026-10-03T12:36:54.272873+00:00",
+      "sha256": "21a29d53e2a756056fb44c8e8be3cb7241b019fb96dbecacfde0f18124d2e878",
+      "review": "original PNG verified; retained locally, not embedded in public repository"
+    },
+    {
+      "checkpoint": "12-scroll-recheck",
+      "capturedAt": "2026-10-03T12:37:01.909676+00:00",
+      "sha256": "992ea939318e72edf7f923b32500b276000b3e50dd96d312f924a766c7722d95",
+      "review": "original PNG verified; retained locally, not embedded in public repository"
+    },
+    {
+      "checkpoint": "13-cancel-record",
+      "capturedAt": "2026-10-03T12:45:20.407713+00:00",
+      "sha256": "4737a37162e82eab06cbbdaf493463cf138d2ab217ff439004b6e1b20097c8fb",
+      "review": "original PNG verified; retained locally, not embedded in public repository"
+    }
+  ],
+  "freshScreenshot": "missing; fresh UI observed, provisioning cancelled, seed asserted untouched NOT_PROVISIONED/NO_SAMPLE state",
+  "limits": [
+    "Process restart is not device reboot or power-loss proof.",
+    "Provider-reported TRUSTED_ENVIRONMENT is not StrongBox, biometric or independent hardware attestation.",
+    "No private Hope/Journey content or keys exported. Only selected isolated public synthetic receipt bytes were verified.",
+    "No missing-JNI APK, backup/restore, TalkBack or changed-font-scale physical qualification. Host failure evidence remains separate.",
+    "Device serial, local paths, test credential identifiers, raw UI trees and notification-bearing PNGs excluded from public evidence.",
+    "No production APK installation, whole-W04 closure, or A17 runtime activation."
+  ]
+}

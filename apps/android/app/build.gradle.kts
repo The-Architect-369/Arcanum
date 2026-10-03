@@ -23,13 +23,18 @@ val arcanumDevSigningConfigured =
 android {
     namespace = "org.arcanum.nativehost"
     compileSdk = 35
+    testBuildType = "qualification"
 
     defaultConfig {
         applicationId = "org.arcanum.nativehost"
         minSdk = 26
         targetSdk = 35
-        versionCode = 25
-        versionName = "0.1.15-cew04-a15-settlement-verify"
+        versionCode = 26
+        providers.gradleProperty("arcanumQualificationVersionCode").orNull?.let { value ->
+            versionCode = value.toInt().also { require(it == 26 || it == 27) }
+        }
+        versionName = "0.1.16-cew04-a16"
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         buildConfigField(
             "String",
             "ARCANUM_SOURCE_COMMIT",
@@ -38,7 +43,7 @@ android {
         buildConfigField(
             "String",
             "ARCANUM_IMPLEMENTATION_ARC",
-            "\"CE-W04-A15\"",
+            "\"CE-W04-A16\"",
         )
     }
 
@@ -58,6 +63,13 @@ android {
     }
 
     buildTypes {
+        create("qualification") {
+            initWith(getByName("debug"))
+            applicationIdSuffix = ".a16qualification"
+            versionNameSuffix = "-qualification"
+            isDebuggable = true
+            signingConfig = signingConfigs.getByName("debug")
+        }
         getByName("debug") {
             if (arcanumDevSigningConfigured) {
                 signingConfig = signingConfigs.getByName("arcanumDev")
@@ -86,6 +98,8 @@ tasks.withType<Test>().configureEach {
 
 dependencies {
     implementation("com.android.tools.build:apksig:8.7.3")
+    androidTestImplementation("androidx.test:runner:1.6.2")
+    androidTestImplementation("androidx.test.ext:junit:1.2.1")
     testImplementation("junit:junit:4.13.2")
     testImplementation("org.json:json:20240303")
 }

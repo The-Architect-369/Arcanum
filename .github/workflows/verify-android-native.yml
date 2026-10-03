@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - "apps/android/**"
+      - "docs/specs/runtime/fixtures/a16-v1/**"
       - "docs/specs/app/android-geometric-host*"
       - "docs/specs/geometry/arcnet-coordinate-frame.v0.1.json"
       - "docs/specs/geometry/arcnet-screen-projection.v0.1.json"
@@ -14,6 +15,7 @@ on:
   pull_request:
     paths:
       - "apps/android/**"
+      - "docs/specs/runtime/fixtures/a16-v1/**"
       - "docs/specs/app/android-geometric-host*"
       - "docs/specs/geometry/arcnet-coordinate-frame.v0.1.json"
       - "docs/specs/geometry/arcnet-screen-projection.v0.1.json"

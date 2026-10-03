@@ -5,7 +5,7 @@ visibility: public
 phase: "Pre-Genesis"
 era: "Construction Era"
 wave: "CE-W04"
-last_updated: 2026-09-30
+last_updated: 2026-10-03
 maintainer: The-Architect-369
 authority: "Human Architect naming/continuity convention; evidence and promotion remain governed by existing wave contracts"
 ---
@@ -289,3 +289,19 @@ substantive Arc source commit(s)
 → Human review
 → promotion only when the governing wave contract permits
 ```
+
+
+### CE-W04-A16 — Local continuity and signed local receipt closure
+
+On 2026-10-03 the Human requested A16 closure after the isolated physical sequence.
+The [bounded acceptance record](../evidence/ce-w04-a16-device-20261003/review.md)
+and [machine evidence](../evidence/ce-w04-a16-device-20261003/qualification.json)
+cover seven physical tests, native UI/JNI integration, original receipt preservation,
+truthful key loss, replacement/rotation and synthetic adoption. Canonical closure is
+effective upon verified adoption through PR #84; the PR retains the actual closing
+head and final checks. This evidence-only tranche does not change the tested APK
+source. Missing initial PNG and unverified adoption actor remain explicit.
+
+A16 satisfies its bounded local-continuity obligation. CE-W04 remains open; A17
+selected development memory is the next separately scoped implementation surface.
+The production phone stays on version 25; isolated qualification ends on version 27.
