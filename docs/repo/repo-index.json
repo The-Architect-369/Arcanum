@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-10-03T14:53:51Z",
+  "generated_at": "2026-10-03T16:31:46Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "d6ea8d4db",
+  "commit": "63fb07ffa",
   "generator_version": "1.5",
   "files": [
     {
@@ -131,6 +131,15 @@
       "lines": 113
     },
     {
+      "path": ".github/workflows/verify-ce-w04-a18-conversation.yml",
+      "type": "file",
+      "size_bytes": 6994,
+      "last_modified_commit": "63fb07ffa",
+      "is_empty": false,
+      "extension": ".yml",
+      "lines": 117
+    },
+    {
       "path": ".github/workflows/verify-ce-w04-architect-observer.yml",
       "type": "file",
       "size_bytes": 6691,
@@ -223,8 +232,8 @@
     {
       "path": "apps/android/app/build.gradle.kts",
       "type": "file",
-      "size_bytes": 3505,
-      "last_modified_commit": "48033edeb",
+      "size_bytes": 3558,
+      "last_modified_commit": "63fb07ffa",
       "is_empty": false,
       "extension": ".kts",
       "lines": 108
@@ -237,6 +246,15 @@
       "is_empty": false,
       "extension": ".kt",
       "lines": 119
+    },
+    {
+      "path": "apps/android/app/src/androidTest/java/org/arcanum/nativehost/conversation/ConversationDeviceQualificationTest.kt",
+      "type": "file",
+      "size_bytes": 4626,
+      "last_modified_commit": "63fb07ffa",
+      "is_empty": false,
+      "extension": ".kt",
+      "lines": 71
     },
     {
       "path": "apps/android/app/src/androidTest/java/org/arcanum/nativehost/memory/MemoryDeviceQualificationTest.kt",
@@ -358,11 +376,11 @@
     {
       "path": "apps/android/app/src/main/java/org/arcanum/nativehost/architect/ArchitectShellPanel.kt",
       "type": "file",
-      "size_bytes": 51490,
-      "last_modified_commit": "48033edeb",
+      "size_bytes": 51698,
+      "last_modified_commit": "63fb07ffa",
       "is_empty": false,
       "extension": ".kt",
-      "lines": 1217
+      "lines": 1221
     },
     {
       "path": "apps/android/app/src/main/java/org/arcanum/nativehost/architect/ArchitectVisualDiagnostics.kt",
@@ -444,6 +462,42 @@
       "is_empty": false,
       "extension": ".kt",
       "lines": 113
+    },
+    {
+      "path": "apps/android/app/src/main/java/org/arcanum/nativehost/conversation/ConversationClient.kt",
+      "type": "file",
+      "size_bytes": 2935,
+      "last_modified_commit": "63fb07ffa",
+      "is_empty": false,
+      "extension": ".kt",
+      "lines": 60
+    },
+    {
+      "path": "apps/android/app/src/main/java/org/arcanum/nativehost/conversation/ConversationContract.kt",
+      "type": "file",
+      "size_bytes": 4472,
+      "last_modified_commit": "63fb07ffa",
+      "is_empty": false,
+      "extension": ".kt",
+      "lines": 66
+    },
+    {
+      "path": "apps/android/app/src/main/java/org/arcanum/nativehost/conversation/ConversationJournal.kt",
+      "type": "file",
+      "size_bytes": 3392,
+      "last_modified_commit": "63fb07ffa",
+      "is_empty": false,
+      "extension": ".kt",
+      "lines": 63
+    },
+    {
+      "path": "apps/android/app/src/main/java/org/arcanum/nativehost/conversation/ConversationPanel.kt",
+      "type": "file",
+      "size_bytes": 9142,
+      "last_modified_commit": "63fb07ffa",
+      "is_empty": false,
+      "extension": ".kt",
+      "lines": 135
     },
     {
       "path": "apps/android/app/src/main/java/org/arcanum/nativehost/geometry/ArcnetRendererView.kt",
@@ -750,6 +804,24 @@
       "is_empty": false,
       "extension": ".kt",
       "lines": 129
+    },
+    {
+      "path": "apps/android/app/src/test/java/org/arcanum/nativehost/conversation/ConversationContractTest.kt",
+      "type": "file",
+      "size_bytes": 3386,
+      "last_modified_commit": "63fb07ffa",
+      "is_empty": false,
+      "extension": ".kt",
+      "lines": 50
+    },
+    {
+      "path": "apps/android/app/src/test/java/org/arcanum/nativehost/conversation/ConversationJournalTest.kt",
+      "type": "file",
+      "size_bytes": 2461,
+      "last_modified_commit": "63fb07ffa",
+      "is_empty": false,
+      "extension": ".kt",
+      "lines": 45
     },
     {
       "path": "apps/android/app/src/test/java/org/arcanum/nativehost/geometry/HopeSeedOverlayTest.kt",
@@ -4685,6 +4757,15 @@
       "lines": 33
     },
     {
+      "path": "docs/evidence/ce-w04-a18-local-20261003/review.md",
+      "type": "file",
+      "size_bytes": 3727,
+      "last_modified_commit": "63fb07ffa",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 54
+    },
+    {
       "path": "docs/evidence/continuity-schema-adoption-20260930/review.md",
       "type": "file",
       "size_bytes": 2662,
@@ -4741,11 +4822,11 @@
     {
       "path": "docs/governance/architectgpt/architect-log.md",
       "type": "file",
-      "size_bytes": 13565,
-      "last_modified_commit": "d6ea8d4db",
+      "size_bytes": 14942,
+      "last_modified_commit": "63fb07ffa",
       "is_empty": false,
       "extension": ".md",
-      "lines": 203
+      "lines": 222
     },
     {
       "path": "docs/governance/architectgpt/architect-proposal-envelope.schema.json",
@@ -6105,6 +6186,15 @@
       "is_empty": false,
       "extension": ".md",
       "lines": 130
+    },
+    {
+      "path": "docs/specs/runtime/ce-w04-a18-local-conversation.md",
+      "type": "file",
+      "size_bytes": 9265,
+      "last_modified_commit": "63fb07ffa",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 144
     },
     {
       "path": "docs/specs/runtime/fixtures/a16-v1/README.md",
@@ -8744,6 +8834,24 @@
       "lines": 281
     },
     {
+      "path": "scripts/conversation/gateway.py",
+      "type": "file",
+      "size_bytes": 14327,
+      "last_modified_commit": "63fb07ffa",
+      "is_empty": false,
+      "extension": ".py",
+      "lines": 281
+    },
+    {
+      "path": "scripts/conversation/test_gateway.py",
+      "type": "file",
+      "size_bytes": 6123,
+      "last_modified_commit": "63fb07ffa",
+      "is_empty": false,
+      "extension": ".py",
+      "lines": 117
+    },
+    {
       "path": "scripts/doctrine-guard.sh",
       "type": "file",
       "size_bytes": 6818,
@@ -9079,8 +9187,8 @@
     {
       "path": "scripts/verify-ce-w04-architect-observer.py",
       "type": "file",
-      "size_bytes": 15428,
-      "last_modified_commit": "2955314b6",
+      "size_bytes": 15443,
+      "last_modified_commit": "63fb07ffa",
       "is_empty": false,
       "extension": ".py",
       "lines": 272
