@@ -26,3 +26,8 @@ later additive device report. This pre-device entry does not claim installation,
 physical passes or closure. Limits include secret-pattern incompleteness, host-trusted
 classification, no malicious filesystem rollback resistance, no secure flash erasure,
 and no platform-independent key recovery. Private dialogs deliberately block screenshots.
+
+CI provenance-check correction: the initial observer check expected a literal arc
+label and rejected the new closed A16/A17 qualification selector. The verifier now
+requires the exact allowed selector/default before resolving the label. Native APK
+code and behavior are unchanged by this correction; the initial failure is preserved.
