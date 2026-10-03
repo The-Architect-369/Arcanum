@@ -1,0 +1,130 @@
+{
+  "source": "8ac960494c55fa61e74601aa69043f2dd94d7546",
+  "artifacts": [
+    {
+      "name": "arcanum-a17-qualification-28.apk",
+      "sha256": "0eda54026ddfecdda65534f67724cd7d830d928c445a0879f1902605221e3ccb",
+      "certificateSha256": "8762d9eef74b8d79b9b6f2461d9bd51b7837ddb4869b50f3ce6d41487ba7a650",
+      "package": "org.arcanum.nativehost.a17qualification",
+      "version": "28"
+    },
+    {
+      "name": "arcanum-a17-qualification-29.apk",
+      "sha256": "b71a5fd90acbfe4bfd7e120b6db858e7f978cacd829dac33def3796978ab08e8",
+      "certificateSha256": "8762d9eef74b8d79b9b6f2461d9bd51b7837ddb4869b50f3ce6d41487ba7a650",
+      "package": "org.arcanum.nativehost.a17qualification",
+      "version": "29"
+    },
+    {
+      "name": "arcanum-a17-qualification-tests.apk",
+      "sha256": "b8a23b05a54828b8382bfea28c6d30629feeeba9b2b4167aeb3b035fd7aa0330",
+      "certificateSha256": "8762d9eef74b8d79b9b6f2461d9bd51b7837ddb4869b50f3ce6d41487ba7a650",
+      "package": "org.arcanum.nativehost.a17qualification.test",
+      "version": ""
+    }
+  ],
+  "producer": "Codex",
+  "recordedAt": "2026-10-03T14:05:25.770292+00:00",
+  "ciRun": "https://github.com/The-Architect-369/Arcanum/actions/runs/37127686969",
+  "device": {
+    "model": "Samsung SM-S176V",
+    "android": 16,
+    "api": 36,
+    "abi": "arm64-v8a",
+    "keyInfoSecurityLevel": 1,
+    "interpretation": "Android provider reports trusted execution environment; not independent attestation"
+  },
+  "tests": [
+    {
+      "checkpoint": "05-seed.instrumentation",
+      "method": "seed",
+      "passed": true,
+      "observedAt": "2026-10-03T13:59:56.310423+00:00",
+      "localJournalSha256": "4506eb294a33a2db35fd12f106a190ef7ea928f132c8bb3130fd3479867a4fd1"
+    },
+    {
+      "checkpoint": "06-restart-history.instrumentation",
+      "method": "recoverAfterRestart",
+      "passed": true,
+      "observedAt": "2026-10-03T14:00:14.777549+00:00",
+      "localJournalSha256": "16fc86a9f831331d2ef7a8f183eea07d3e77136ee45891a80f468965d1ad4156"
+    },
+    {
+      "checkpoint": "07-selection-privacy.instrumentation",
+      "method": "selectedContextAndPrivacy",
+      "passed": true,
+      "observedAt": "2026-10-03T14:00:15.720149+00:00",
+      "localJournalSha256": "24e2e1935b80b54d035cb7a163038ab2fe91df514e05bdd704ba6e905239b426"
+    },
+    {
+      "checkpoint": "08-delete.instrumentation",
+      "method": "deleteSelectedRecord",
+      "passed": true,
+      "observedAt": "2026-10-03T14:00:16.711872+00:00",
+      "localJournalSha256": "1af1634a6e9fe0b0d5b71cb525f3b4cde3c21eb85e4dc92c10c63097764740b1"
+    },
+    {
+      "checkpoint": "09-restart-after-delete.instrumentation",
+      "method": "recoverAfterRestart",
+      "passed": true,
+      "observedAt": "2026-10-03T14:00:17.823484+00:00",
+      "localJournalSha256": "7f3e3049850dd82d3c492a93576f4276280223d78570ed3ce8ab446e1b01cc5b"
+    },
+    {
+      "checkpoint": "10-compatible-update.instrumentation",
+      "method": "recoverAfterCompatibleUpdate",
+      "passed": true,
+      "observedAt": "2026-10-03T14:00:42.613688+00:00",
+      "localJournalSha256": "b24f8e83cf4814a0367f2fd8f2d366c7430b780b9cae78a0478362eb389c57e4"
+    },
+    {
+      "checkpoint": "11-fault-recovery.instrumentation",
+      "method": "interruptionAndMissingKey",
+      "passed": true,
+      "observedAt": "2026-10-03T14:00:44.443853+00:00",
+      "localJournalSha256": "79d500d9176ab9cc8fb9c87ede786f0b71a49aeecd38c973add2429f9c6982b2"
+    },
+    {
+      "checkpoint": "22-final-restart.instrumentation",
+      "method": "recoverAfterRestart",
+      "passed": true,
+      "observedAt": "2026-10-03T14:04:06.336314+00:00",
+      "localJournalSha256": "696a5666eb040dcdc5a5463735ebc438a511b266fe16fd0adc4b5ba1ff10ec40"
+    }
+  ],
+  "uiStateChecks": {
+    "04-cancelled-setup": "State: NOT_INITIALIZED",
+    "12-after-update": "Records: 2 \u00b7 Deleted IDs: 1\nGeneration: 4",
+    "13-cancelled-editor": "Records: 2 \u00b7 Deleted IDs: 1\nGeneration: 4",
+    "16-ui-saved": "Records: 3 \u00b7 Deleted IDs: 1\nGeneration: 5",
+    "20-cancelled-delete": "Records: 3 \u00b7 Deleted IDs: 1\nGeneration: 5",
+    "21-ui-deleted": "Records: 2 \u00b7 Deleted IDs: 2\nGeneration: 6"
+  },
+  "selectedPreview": {
+    "recordCount": 1,
+    "destination": "local-preview",
+    "authorityEffect": "none"
+  },
+  "productionAndA16PackageBaselinesUnchanged": true,
+  "sourceChangesAfterTestedApk": "Verifier, repository index and evidence only; no Android or runtime source difference at c942144e1",
+  "visualChecks": [
+    {
+      "checkpoint": "01-architect-entry",
+      "sha256": "ae53df3fe46ac13a6982abdecc73c393b6d30c88c7935af71ee801cf72bb6e95",
+      "observation": "Development memory entry visible inside Architect; inherited artifact handoff rejects unsupported qualification arc",
+      "rawImage": "local ignored evidence only"
+    },
+    {
+      "checkpoint": "02-fresh-memory",
+      "sha256": "4c6345ce1bcb9bd792ee0879bdba3a9856f05c2b4fec3815df9b40b7347eab2f",
+      "observation": "Secure memory dialog pixels concealed in screenshot",
+      "rawImage": "local ignored evidence only"
+    },
+    {
+      "checkpoint": "18-local-context",
+      "sha256": "256cdd2d12dbae99802bd5334a739a8f8001c669bf640b943f11e38f907ca196",
+      "observation": "Selected context pixels concealed in screenshot",
+      "rawImage": "local ignored evidence only"
+    }
+  ]
+}

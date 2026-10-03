@@ -160,3 +160,25 @@ then review the public experience before any separately authorized main merge.
   remain separate. Canonicalized: no merge or A17 closure inferred.
 - Next gate: verify source/index/CI and exact artifacts, then execute authorized
   isolated phone sequence and record actual results. No ARC-SES identifiers allocated.
+
+### CONTINUITY-EVENT — 2026-10-03 — A17 isolated native qualification observed
+
+Human direction: continue A17 to phone readiness, install, and perform the test.
+The protected native candidate at `8ac960494c55fa61e74601aa69043f2dd94d7546`
+was built by CI run37127686969 and independently checked for source/package/signer/
+SHA-256/native-library identity. The separate A17 qualification package installed
+version28, then updated to same-signer version29 on the connected Samsung Android16
+phone. All eight individually journaled physical test invocations passed; native
+consent/cancel/save/selected-preview/delete flows also passed. Protected screenshots
+conceal private dialog pixels. Only public synthetic fixtures were retained/deleted.
+Production version25 and A16 qualification version27 package baselines are unchanged.
+
+The observed results, exact APK hashes and limits are in
+`docs/evidence/ce-w04-a17-native-20261003/physical-review.md` and
+`physical-results.json`. The initial observer provenance-parser failure is preserved;
+its correction/index `2955314b6` / `c942144e1` changes verification/evidence only,
+not tested app/runtime bytes. All18 reported checks/statuses passed at c942144e1;
+final documentation-head verification is separate. Canonical main remains
+`bfa1ea659937f1fec4216680de81f989bd9961d4`. PR85 remains draft and A17 remains
+In Progress pending applicable Human review/closure. No merge, production update,
+external context send, private Hope access or ARC-SES allocation occurred.
