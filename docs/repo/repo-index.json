@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-10-04T21:03:59Z",
+  "generated_at": "2026-10-04T21:20:40Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "85d520cce",
+  "commit": "efa2576bf",
   "generator_version": "1.5",
   "files": [
     {
@@ -1969,8 +1969,8 @@
     {
       "path": "apps/web/src/app/(marketing)/download/page.tsx",
       "type": "file",
-      "size_bytes": 2589,
-      "last_modified_commit": "6b80d7a1e",
+      "size_bytes": 2661,
+      "last_modified_commit": "efa2576bf",
       "is_empty": false,
       "extension": ".tsx",
       "lines": 36
@@ -2275,11 +2275,11 @@
     {
       "path": "apps/web/src/components/public/PublicShell.tsx",
       "type": "file",
-      "size_bytes": 5603,
-      "last_modified_commit": "a39710b0c",
+      "size_bytes": 5660,
+      "last_modified_commit": "efa2576bf",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 190
+      "lines": 191
     },
     {
       "path": "apps/web/src/components/shared/CTAActivate.tsx",
@@ -3148,11 +3148,11 @@
     {
       "path": "apps/web/src/lib/public-site.ts",
       "type": "file",
-      "size_bytes": 13240,
-      "last_modified_commit": "a39710b0c",
+      "size_bytes": 13687,
+      "last_modified_commit": "efa2576bf",
       "is_empty": false,
       "extension": ".ts",
-      "lines": 263
+      "lines": 271
     },
     {
       "path": "apps/web/src/lib/rooms/index.ts",
@@ -4795,11 +4795,11 @@
     {
       "path": "docs/evidence/ce-w04-a18-local-20261003/review.md",
       "type": "file",
-      "size_bytes": 10868,
-      "last_modified_commit": "3ded1f6fc",
+      "size_bytes": 17328,
+      "last_modified_commit": "efa2576bf",
       "is_empty": false,
       "extension": ".md",
-      "lines": 158
+      "lines": 251
     },
     {
       "path": "docs/evidence/continuity-schema-adoption-20260930/review.md",
@@ -4858,11 +4858,11 @@
     {
       "path": "docs/governance/architectgpt/architect-log.md",
       "type": "file",
-      "size_bytes": 18977,
-      "last_modified_commit": "6b80d7a1e",
+      "size_bytes": 20575,
+      "last_modified_commit": "efa2576bf",
       "is_empty": false,
       "extension": ".md",
-      "lines": 282
+      "lines": 304
     },
     {
       "path": "docs/governance/architectgpt/architect-proposal-envelope.schema.json",
