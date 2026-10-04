@@ -29,10 +29,12 @@ class ConversationAcceptanceTest {
     private val i get() = InstrumentationRegistry.getInstrumentation()
     private val c get() = i.targetContext
     private val args get() = InstrumentationRegistry.getArguments()
-    private val root get() = File(c.noBackupFilesDir, "a18-acceptance")
+    private val fixture: String get() = args.getString("fixture", "primary").also { require(it in listOf("primary", "quality-recheck")) }
+    private val suffix get() = if (fixture == "primary") "" else "-$fixture"
+    private val root get() = File(c.noBackupFilesDir, "a18-acceptance$suffix")
     private fun client() = ConversationClient(File(root, "pairing-key").readText().trim())
-    private fun store() = DevelopmentMemoryStore(File(root, "memory"), AndroidMemoryKeyProvider("org.arcanum.a18.acceptance.memory"), ::syncMemoryDirectory)
-    private fun journal() = ConversationJournal(File(root, "journal"), AndroidMemoryKeyProvider("org.arcanum.a18.acceptance.journal"), ::syncMemoryDirectory)
+    private fun store() = DevelopmentMemoryStore(File(root, "memory"), AndroidMemoryKeyProvider("org.arcanum.a18.acceptance.memory$suffix"), ::syncMemoryDirectory)
+    private fun journal() = ConversationJournal(File(root, "journal"), AndroidMemoryKeyProvider("org.arcanum.a18.acceptance.journal$suffix"), ::syncMemoryDirectory)
     @Before fun bind() {
         check(c.packageName == "org.arcanum.nativehost")
         check(args.getString("acceptanceSource") == BuildConfig.ARCANUM_SOURCE_COMMIT)
@@ -77,7 +79,7 @@ class ConversationAcceptanceTest {
         val v = s.initialize(UUID.randomUUID().toString(), System.currentTimeMillis())
         val now = System.currentTimeMillis()
         val record = DevelopmentRecord(UUID.randomUUID().toString(), MemoryKind.EVIDENCE,
-            "Observed qualification result: original version 32 conversation UI test passed in 1.972 seconds, including FLAG_SECURE. Human separately confirmed Recall preserved their reflection. These do not establish A18 closure.",
+            "Observed qualification result: original version 32 conversation UI test passed in 1.972 seconds, including FLAG_SECURE. Human separately confirmed Recall preserved their reflection. At that source, reviewed outcome retention, offline/timeout/provider-error tests and Human acceptance remained pending. These two observations do not establish A18 closure.",
             "repo:docs/evidence/ce-w04-a18-local-20261003/review.md", "558e070526120cdc54f9f30299e78ba37ca17583", EvidenceClass.REPORT, ExecutionClaim.UNKNOWN, null, now, UUID.randomUUID().toString())
         s.retain(record, v.generation, record.retentionDecision, now)
         val d = open()
