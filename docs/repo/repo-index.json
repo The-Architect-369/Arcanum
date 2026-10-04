@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-10-03T16:37:16Z",
+  "generated_at": "2026-10-04T20:22:22Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "73bf8b85d",
+  "commit": "9cfb6824e",
   "generator_version": "1.5",
   "files": [
     {
@@ -133,11 +133,11 @@
     {
       "path": ".github/workflows/verify-ce-w04-a18-conversation.yml",
       "type": "file",
-      "size_bytes": 6994,
-      "last_modified_commit": "63fb07ffa",
+      "size_bytes": 9805,
+      "last_modified_commit": "9cfb6824e",
       "is_empty": false,
       "extension": ".yml",
-      "lines": 117
+      "lines": 158
     },
     {
       "path": ".github/workflows/verify-ce-w04-architect-observer.yml",
@@ -232,11 +232,11 @@
     {
       "path": "apps/android/app/build.gradle.kts",
       "type": "file",
-      "size_bytes": 3558,
-      "last_modified_commit": "63fb07ffa",
+      "size_bytes": 3698,
+      "last_modified_commit": "9cfb6824e",
       "is_empty": false,
       "extension": ".kts",
-      "lines": 108
+      "lines": 110
     },
     {
       "path": "apps/android/app/src/androidTest/java/org/arcanum/nativehost/continuity/ContinuityDeviceQualificationTest.kt",
@@ -250,11 +250,11 @@
     {
       "path": "apps/android/app/src/androidTest/java/org/arcanum/nativehost/conversation/ConversationDeviceQualificationTest.kt",
       "type": "file",
-      "size_bytes": 4626,
-      "last_modified_commit": "63fb07ffa",
+      "size_bytes": 6631,
+      "last_modified_commit": "9cfb6824e",
       "is_empty": false,
       "extension": ".kt",
-      "lines": 71
+      "lines": 111
     },
     {
       "path": "apps/android/app/src/androidTest/java/org/arcanum/nativehost/memory/MemoryDeviceQualificationTest.kt",
@@ -493,11 +493,11 @@
     {
       "path": "apps/android/app/src/main/java/org/arcanum/nativehost/conversation/ConversationPanel.kt",
       "type": "file",
-      "size_bytes": 9196,
-      "last_modified_commit": "73bf8b85d",
+      "size_bytes": 9231,
+      "last_modified_commit": "9cfb6824e",
       "is_empty": false,
       "extension": ".kt",
-      "lines": 135
+      "lines": 136
     },
     {
       "path": "apps/android/app/src/main/java/org/arcanum/nativehost/geometry/ArcnetRendererView.kt",
@@ -4759,11 +4759,11 @@
     {
       "path": "docs/evidence/ce-w04-a18-local-20261003/review.md",
       "type": "file",
-      "size_bytes": 4666,
-      "last_modified_commit": "130a58168",
+      "size_bytes": 7027,
+      "last_modified_commit": "9cfb6824e",
       "is_empty": false,
       "extension": ".md",
-      "lines": 69
+      "lines": 103
     },
     {
       "path": "docs/evidence/continuity-schema-adoption-20260930/review.md",
@@ -4822,11 +4822,11 @@
     {
       "path": "docs/governance/architectgpt/architect-log.md",
       "type": "file",
-      "size_bytes": 14942,
-      "last_modified_commit": "63fb07ffa",
+      "size_bytes": 16617,
+      "last_modified_commit": "9cfb6824e",
       "is_empty": false,
       "extension": ".md",
-      "lines": 222
+      "lines": 247
     },
     {
       "path": "docs/governance/architectgpt/architect-proposal-envelope.schema.json",
@@ -6190,11 +6190,11 @@
     {
       "path": "docs/specs/runtime/ce-w04-a18-local-conversation.md",
       "type": "file",
-      "size_bytes": 9265,
-      "last_modified_commit": "130a58168",
+      "size_bytes": 11223,
+      "last_modified_commit": "9cfb6824e",
       "is_empty": false,
       "extension": ".md",
-      "lines": 144
+      "lines": 173
     },
     {
       "path": "docs/specs/runtime/fixtures/a16-v1/README.md",
