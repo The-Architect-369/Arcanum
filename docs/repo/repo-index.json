@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-10-04T20:22:22Z",
+  "generated_at": "2026-10-04T20:33:31Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "9cfb6824e",
+  "commit": "3ded1f6fc",
   "generator_version": "1.5",
   "files": [
     {
@@ -4759,11 +4759,11 @@
     {
       "path": "docs/evidence/ce-w04-a18-local-20261003/review.md",
       "type": "file",
-      "size_bytes": 7027,
-      "last_modified_commit": "9cfb6824e",
+      "size_bytes": 10868,
+      "last_modified_commit": "3ded1f6fc",
       "is_empty": false,
       "extension": ".md",
-      "lines": 103
+      "lines": 158
     },
     {
       "path": "docs/evidence/continuity-schema-adoption-20260930/review.md",
@@ -4822,11 +4822,11 @@
     {
       "path": "docs/governance/architectgpt/architect-log.md",
       "type": "file",
-      "size_bytes": 16617,
-      "last_modified_commit": "9cfb6824e",
+      "size_bytes": 18060,
+      "last_modified_commit": "3ded1f6fc",
       "is_empty": false,
       "extension": ".md",
-      "lines": 247
+      "lines": 268
     },
     {
       "path": "docs/governance/architectgpt/architect-proposal-envelope.schema.json",
