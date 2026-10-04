@@ -74,14 +74,28 @@ class ConversationAcceptanceTest {
     @Test fun liveReviewedOutcomeLoop() {
         check(args.getString("mode") == "live")
         val marker = File(root, "live-ui-started")
-        check(marker.createNewFile()) { "Reconcile previous live operation; do not repeat" }
-        val s = store(); check(s.inspect().phase == MemoryPhase.NOT_INITIALIZED)
-        val v = s.initialize(UUID.randomUUID().toString(), System.currentTimeMillis())
+        val resumingUnsent = marker.exists()
+        if (resumingUnsent) {
+            check(args.getString("resumeUnsent") == "true")
+            // Production writes and authenticates a journal intent before every send.
+            // An existing/partial intent blocks this recovery, never permits a replay.
+            check(journal().latest() == null && !File(root, "public-response.txt").exists())
+        } else check(marker.createNewFile())
+        val s = store()
+        val v = if (resumingUnsent) {
+            val inspected = s.inspect(); check(inspected.phase == MemoryPhase.READY)
+            requireNotNull(inspected.vault).also { check(it.records.size == 1 && it.audit.count { row -> row.action == "retain" } == 1) }
+        } else {
+            check(s.inspect().phase == MemoryPhase.NOT_INITIALIZED)
+            s.initialize(UUID.randomUUID().toString(), System.currentTimeMillis())
+        }
         val now = System.currentTimeMillis()
-        val record = DevelopmentRecord(UUID.randomUUID().toString(), MemoryKind.EVIDENCE,
+        val prepared = DevelopmentRecord(UUID.randomUUID().toString(), MemoryKind.EVIDENCE,
             "Observed qualification result: original version 32 conversation UI test passed in 1.972 seconds, including FLAG_SECURE. Human separately confirmed Recall preserved their reflection. At that source, reviewed outcome retention, offline/timeout/provider-error tests and Human acceptance remained pending. These two observations do not establish A18 closure.",
             "repo:docs/evidence/ce-w04-a18-local-20261003/review.md", "558e070526120cdc54f9f30299e78ba37ca17583", EvidenceClass.REPORT, ExecutionClaim.UNKNOWN, null, now, UUID.randomUUID().toString())
-        s.retain(record, v.generation, record.retentionDecision, now)
+        val record = if (resumingUnsent) v.records.single().also {
+            check(it.text == prepared.text && it.source == prepared.source && it.sourceRevision == prepared.sourceRevision)
+        } else prepared.also { s.retain(it, v.generation, it.retentionDecision, now) }
         val d = open()
         try {
             main {
@@ -94,7 +108,10 @@ class ConversationAcceptanceTest {
                 dialogViews(d).filterIsInstance<EditText>().single { it.hint.toString().contains("Ask Architect") }.setText("Explain what this actual verification result establishes, what remains unverified, and propose one clearer workspace verification card. English, three short sentences.")
                 button(d, "Review request").performClick()
                 val review = topDialog()
-                assertTrue(dialogViews(review).filterIsInstance<TextView>().any { it.text.contains(record.text) && it.text.contains(record.sourceRevision!!) })
+                val disclosure = dialogViews(review).filterIsInstance<TextView>().single { it.text.contains("Exact request:\n") }.text.toString()
+                val disclosed = org.json.JSONObject(disclosure.substringAfter("Exact request:\n")).getJSONArray("records").getJSONObject(0)
+                assertEquals(record.text, disclosed.getString("text"))
+                assertEquals(record.sourceRevision, disclosed.getString("sourceRevision"))
                 review.getButton(AlertDialog.BUTTON_NEGATIVE).performClick()
             }
             assertNull(journal().latest())
