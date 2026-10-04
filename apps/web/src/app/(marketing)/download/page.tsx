@@ -18,7 +18,7 @@ export default function DownloadPage() {
         </div>
         <div className="public-prose">
           <h2>Updates that preserve your place</h2>
-          <p>The website and the app use the same approved release listing. In Architect, open Arcanum updates and choose “Check for approved update.” Review the download before confirming installation. A newer development build will not be downgraded.</p>
+          <p>Compatible app builds use the same approved release listing as this website. If Architect → Arcanum updates offers “Check for approved update,” use it to review the download before confirming installation. Otherwise, use this page to update your existing app. A newer development build will not be downgraded.</p>
           <p>Local reflection features remain available offline. Architect conversations require a separately configured private home gateway and local model; downloading the app does not connect an AI provider.</p>
           <h2>Verify this release</h2>
           <ul>

@@ -156,3 +156,96 @@ conversation still requires session pairing through its key field; polished pair
 is not implemented. Reviewed response retention into A17, the remaining physical
 error paths, and Human A18 acceptance remain open. No public portal promotion,
 artifact-handoff qualification, canonical merge or A18 closure occurred.
+
+## October 4 reviewed retention and final original-package qualification
+
+The Human conditionally authorized A18 publication after its remaining acceptances,
+including repair of the website/app update path. The qualified APK source is
+`75cad68cb3733a44b5b13bcea153f2f77dfa7bda`, index companion to source commit
+`85d520cce`. Later evidence and website-editorial commits do not change that APK
+identity. Canonical main at this observation remains
+`27b0d814c6a64bdbdf1dd12e8b1db53449d8223c`; PR86 remains a candidate.
+
+The [final signed workflow](https://github.com/The-Architect-369/Arcanum/actions/runs/37234578326)
+passed. At the exact APK head, all 22 returned check-run records concluded success,
+and the separate Vercel status passed. The local full baseline passed on the earlier
+acceptance implementation; after the gateway instruction correction its 11 gateway
+tests passed, and 105 Android host tests passed. Final-head CI and deterministic
+index checks provide separate exact-coordinate evidence. An earlier index check
+overlapped index-commit generation and failed; restoring only the generated index
+and running verification sequentially resolved that verification race. An earlier
+public-site check still assumed version 19; it was corrected to verify the served
+release listing against the download page. These failures are retained, not relabeled.
+
+Both original-package artifacts contain both ABIs and all four JNI libraries, carry
+the existing publisher signer, and independently match their source/version metadata:
+
+| Version | APK SHA-256 | Bytes | Physical status |
+| --- | --- | ---: | --- |
+| 33 | `3b05ccf7e19b59ee75b1bcb43e8a70aac47667b11dfa143a37d2d60857d8d1e2` | 6458013 | Installed in place; sequence below |
+| 34 | `7113e51f1b12e3c8d40848e1219537b4d757790222629cceb4522375540467f4` | 6458013 | Verified artifact; advancing in-app update pending |
+
+The original package retained its storage directory and first-install identity through
+the updates. No uninstall or data clear was used. The previous Human confirmation of
+Hope Recall belongs to version 32; no new private reflection observation is inferred.
+
+Final version 33 instrumentation on the Samsung Android 16 phone used separate test
+custody/key aliases and public historical verification evidence. It did not select
+the production A17 or Hope stores. The following actual invocations passed:
+
+| Sequence | Evidence |
+| --- | --- |
+| Selected evidence → review/cancel → review/send → answer → retention review/cancel → confirmed save | 8.758 seconds; attributed INFERENCE / NOT_APPLICABLE record |
+| Process restart → saved record inspection → deletion | 0.144 seconds; deletion tombstone retained |
+| Stale selection before dispatch | 0.408 seconds; original request not recorded at gateway |
+| Gateway offline | 0.128 seconds; local memory remains READY |
+| Provider error | 0.820 seconds; unknown outcome reconciles, duplicate rejected |
+| Cancellation after dispatch | 1.415 seconds; unknown outcome reconciles, duplicate rejected |
+| Hostile response text | 0.823 seconds; plain response, no execution capability |
+| Timeout | Original phone TestRunner PID 27728 finished with one test and zero failures at 17:16:43 device time |
+| Original-package secure conversation UI | 1.859 seconds; resumed activity, FLAG_SECURE, dismiss |
+
+The timeout shell result was lost. Its initial pending receipt is preserved; a later
+read of the original process's TestRunner log establishes completion independently.
+The original request ID also matched the gateway journal as unknown. The inference
+was not repeated. The four deterministic fixture cases produced exactly four provider
+calls, three unknown states and one response-observed state. No duplicate redispatch
+occurred. The temporary fixture server was stopped, its phone credential removed,
+and all four normal home services were observed active. An unauthenticated request
+to the restored normal gateway returned HTTP 401.
+
+Response quality required a correction. At source `b89f12c4bf659ef3fdf2044219ea0c3958a9cad8`,
+the UI/save sequence passed but the model proposed UI wording that incorrectly made
+two partial observations sufficient for closure. That answer failed agent review.
+The fixed instruction now explicitly forbids inventing acceptance criteria or turning
+partial evidence into closure. At source `fb97fcf70fd6b425ab46eb2701fdb803971e527d`,
+a separate recheck stopped before Send because the test compared raw JSON with an
+unescaped substring. Parsing the JSON fixed the assertion. Recovery was permitted
+only after confirming no request journal/response, one exact public fixture record,
+and the explicit unsent-recovery argument; no submitted inference was replayed.
+
+The final live answer preserves the historical record's uncertainty. Its proposed
+card reads: “UI test passed and recall preserved; outcome retention, error handling,
+and human acceptance remain pending—A18 closure is not established.” This describes
+the selected older evidence, not the current acceptance results. Agent review passed;
+the required Human response-quality review remains pending. One corrected fixture
+is not broad model-reasoning certification.
+
+The revised local website passed 25 public-site checks, including desktop/mobile
+routes and direct release responses. Browser console errors were absent. Local
+desktop/mobile screenshots were captured separately from the phone. No new protected
+phone pixels were captured in this sequence; earlier version 31 screenshot evidence
+and the final version 33 FLAG_SECURE assertion retain their distinct scopes.
+
+Local raw receipts are retained under ignored `.local/a18/final-device/`,
+`.local/a18/final-fixture/`, `.local/a18/final-artifacts/`, and `.local/a18/website-check/`.
+Earlier `.local/a18/acceptance-device/` and quality-run failures remain available.
+No credentials or private reflection data are included in this record.
+
+Pending: Human answer-quality acceptance; canonical adoption; immutable release
+hosting and served-byte verification; shared descriptor promotion; version 33→34
+through the app's Android-confirmed installer; final receipt reconciliation and public
+site verification. Publication is authorized conditionally, not yet executed. A18
+and CE-W04 are not marked closed. Manual session pairing, OpenAI activation, USB-free
+ADB after reboot, and full home-host reboot/long-idle qualification remain outside
+the demonstrated result.

@@ -280,3 +280,25 @@ at `27b0d814c6a64bdbdf1dd12e8b1db53449d8223c`. The inspected Notion A18 work rec
 retains the selected-evidence, separate-retention and physical-failure acceptance
 requirements. CE-W04/CE-W05 and cloud activation stay outside this grant. Results,
 source/index lineage and publication evidence will be appended after execution.
+
+## CONTINUITY-EVENT — 2026-10-04 — Final A18 retention and failure-path evidence
+
+- Authority: the existing Human grant for completion and conditional publication;
+  no additional effect authority inferred from passing checks.
+- Qualified APK source: `75cad68cb3733a44b5b13bcea153f2f77dfa7bda`; canonical main
+  remains `27b0d814c6a64bdbdf1dd12e8b1db53449d8223c`. Original version 33 installed
+  in place; signed advancing version 34 prepared, not installed or published.
+- Verified: real public-evidence review/send/answer and separately confirmed A17
+  retention; restart/deletion; stale selection; offline/provider error/cancellation/
+  timeout/hostile-response handling; secure conversation UI. Timeout runner receipt
+  was lost and separately reconciled from the original TestRunner log, not replayed.
+- Exactly four deterministic provider calls, no duplicate inference. Normal services
+  restored and temporary phone credential removed. Production Hope content was not
+  inspected. An earlier model answer failed quality review; the corrected answer
+  preserves uncertainty and awaits Human review.
+- Evidence: [dated final qualification](../../evidence/ce-w04-a18-local-20261003/review.md).
+  Exact-source CI passed. Shared release discovery is implemented and locally checked;
+  public promotion and advancing in-app installation are still unperformed.
+- Next gate: Human response-quality acceptance, then authorized canonical adoption,
+  immutable hosting, descriptor promotion and actual installer/receipt verification.
+  No A18/CE-W04 closure or new ARC-SES identifier is asserted.

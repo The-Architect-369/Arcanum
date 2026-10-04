@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { repository, pillars, source } from "@/lib/public-site";
+import { repository, pillars, source, siteLog } from "@/lib/public-site";
 import PublicNav from "./PublicNav";
 import "@/app/(marketing)/public-home.css";
 export function PublicShell({ children }: { children: React.ReactNode }) {
@@ -44,7 +44,8 @@ export function PublicShell({ children }: { children: React.ReactNode }) {
         <div className="public-shell public-footer-bottom">
           <span>Meaning remains yours.</span>
           <span>
-            Website v2 · <time dateTime="2026-09-28">28 September 2026</time>
+            Website v{siteLog.siteVersion} ·{" "}
+            <time dateTime={siteLog.recordedOn}>{siteLog.recordedOn}</time>
           </span>
         </div>
       </footer>
