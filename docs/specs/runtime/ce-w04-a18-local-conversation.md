@@ -115,8 +115,9 @@ not that the phone received it or that any proposed action happened. `not_record
 is a point-in-time observation, not absence proof for an in-flight dispatch.
 There is no automatic retry, provider fallback or response replay.
 
-Conversation text remains in session memory and clears on Close; no transcript
-saving, clipboard export or A17 auto-retention is attached. UI dialogs use FLAG_SECURE
+Conversation text remains in session memory and clears on Close. A separately
+reviewed selected outcome can be saved into A17; no automatic retention or clipboard
+export is attached. UI dialogs use FLAG_SECURE
 and Architect observation redaction. Protected screenshots cannot prove their private
 text. Accessibility/keyboard/OS behavior remains a platform boundary.
 
@@ -171,3 +172,35 @@ October 4 proposal reconciliation: explicit reviewed response retention into A17
 remains unimplemented; the present surface retains no transcript. It is not silently
 claimed as a passed acceptance item. See the dated device observations below in the
 evidence record; A18 closure remains open.
+
+
+# October 4 approved acceptance and publication follow-up
+
+Human direction now authorizes completing A18 acceptance and publishing once the
+acceptance gates pass. Version 33 adds separate outcome review, a second exact-text
+confirmation and encrypted A17 retention. Records are attributed INFERENCE notes
+with NOT_APPLICABLE execution claims, request/model/response provenance and stable
+request identity. Duplicate or deleted outcomes cannot be silently recreated; stale
+memory generation blocks the save. The user can edit/select up to A17's existing
+4096-byte text limit; no silent truncation or automatic memory setup occurs. Pending
+writes use A17's existing reconciliation surface. Closing the conversation dismisses
+its review dialogs and clears session content. Selected context and model output
+still have no tools or execution authority.
+
+The website and updater read a shared closed release descriptor. A Human-initiated
+check discovers the approved manifest/APK pair; it never installs. Staging verifies
+independent APK identity, signer, compatibility and exact bytes before Android's
+confirmation. Discovery is not a trust root. The descriptor initially retains the
+already published version 25 artifact; an accepted A18 artifact is promoted only
+with its immutable files, exact source and actual canonical promotion reference.
+Older clients need the website or a separately authorized bootstrap update to gain
+discovery. No silent/background installer is introduced.
+
+Physical acceptance uses explicit exact-source instrumentation and separate
+`a18-acceptance` test custody/key aliases within the original package. The original
+Hope and production development-memory stores are never fixture inputs. The live UI
+sequence selects public actual verification evidence, reviews/cancels/sends, receives,
+reviews/cancels/saves, then checks restart and deletion. Deterministic gateway fixtures
+qualify offline, provider-error, timeout, post-dispatch cancellation and hostile-text
+handling separately from the genuine local-model request. Fixture provider routing
+exists only in the dedicated test script, not the distributed or managed gateway.

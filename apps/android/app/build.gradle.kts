@@ -34,7 +34,7 @@ android {
         applicationId = "org.arcanum.nativehost"
         minSdk = 26
         targetSdk = 35
-        versionCode = 32
+        versionCode = 33
         providers.gradleProperty("arcanumQualificationVersionCode").orNull?.let { value ->
             versionCode = value.toInt().also { require(it in when (qualificationArc) { "A16" -> listOf(26, 27); "A17" -> listOf(28, 29); else -> listOf(30, 31, 32, 33) }) }
         }

@@ -134,7 +134,7 @@ jobs:
           source_head="$(git rev-parse HEAD)"
           gradle -p apps/android assembleDebug assembleDebugAndroidTest -ParcanumQualificationArc=A18 -ParcanumTestBuildType=debug -ParcanumSourceCommit="$source_head" --stacktrace
           mkdir -p "$RUNNER_TEMP/a18-original-update"
-          cp apps/android/app/build/outputs/apk/debug/app-debug.apk "$RUNNER_TEMP/a18-original-update/arcanum-a18-update-32.apk"
+          cp apps/android/app/build/outputs/apk/debug/app-debug.apk "$RUNNER_TEMP/a18-original-update/arcanum-a18-update-33.apk"
           cp apps/android/app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk "$RUNNER_TEMP/a18-original-update/arcanum-a18-original-ui-tests.apk"
           cd "$RUNNER_TEMP/a18-original-update"
           printf '%s\n' "$source_head" > source-commit.txt
@@ -142,11 +142,11 @@ jobs:
             "$ANDROID_SDK_ROOT/build-tools/35.0.0/apksigner" verify --print-certs "$apk" > "$apk.signer.txt"
             grep -q '^Signer #1 certificate SHA-256 digest: 9841fbeda4d7d0c63b1663360fb0415218a08f063b5629317274076dfbb6b844$' "$apk.signer.txt"
           done
-          "$ANDROID_SDK_ROOT/build-tools/35.0.0/aapt" dump badging arcanum-a18-update-32.apk > package.txt
-          grep -q "^package: name='org.arcanum.nativehost' versionCode='32'" package.txt
+          "$ANDROID_SDK_ROOT/build-tools/35.0.0/aapt" dump badging arcanum-a18-update-33.apk > package.txt
+          grep -q "^package: name='org.arcanum.nativehost' versionCode='33'" package.txt
           for abi in arm64-v8a x86_64; do
             for library in arcanum_android_jni arcanum_android_tempus_lifecycle_jni arcanum_android_hope_jni arcanum_android_continuity_jni; do
-              unzip -l arcanum-a18-update-32.apk | grep "lib/$abi/lib$library.so" >/dev/null
+              unzip -l arcanum-a18-update-33.apk | grep "lib/$abi/lib$library.so" >/dev/null
             done
           done
           sha256sum *.apk > sha256sums.txt

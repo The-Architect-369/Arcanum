@@ -1,4 +1,5 @@
 import { NextResponse, type NextRequest } from "next/server";
+import release from "../public/updates/release.json";
 import { isPublicSitePath } from "@/lib/public-routes";
 
 export function middleware(req: NextRequest) {
@@ -17,6 +18,10 @@ export function middleware(req: NextRequest) {
 
   // Exact signed update files must return directly on desktop and mobile.
   const updateFiles = [
+    "/updates/release.json",
+    new URL(release.manifestUrl).pathname,
+    new URL(release.apkUrl).pathname,
+    new URL(release.manifestUrl).pathname.replace("manifest.json", "SHA256SUMS"),
     "/updates/a14-2/manifest.json",
     "/updates/a14-2/arcanum-ce-w04-a14-2-d2e30b2.apk",
     "/updates/a14-2/SHA256SUMS",

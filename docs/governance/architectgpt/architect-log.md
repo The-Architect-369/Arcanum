@@ -266,3 +266,17 @@ physical UI verification; record actual startup-recovery outcomes separately.
   Earlier failures and isolated-source results remain distinct. Reviewed A17 retention,
   remaining error-path qualification and A18 acceptance stay open. No canonicalization,
   public promotion, closure, or new ARC-SES identifier is asserted.
+
+
+## CONTINUITY-EVENT — 2026-10-04 — Conditional A18 publication authorization
+
+The Human explicitly approved A18 publication once the remaining acceptances pass,
+and requested completion of those acceptances and website/app update alignment.
+Authorized targets: bounded A18 outcome retention and acceptance, existing draft PR86,
+original-package advancing update, and the website's approved distribution channel.
+The conditional grant covers the required canonical adoption and publication after
+verification; it is not evidence that either effect has happened. Main was re-resolved
+at `27b0d814c6a64bdbdf1dd12e8b1db53449d8223c`. The inspected Notion A18 work record
+retains the selected-evidence, separate-retention and physical-failure acceptance
+requirements. CE-W04/CE-W05 and cloud activation stay outside this grant. Results,
+source/index lineage and publication evidence will be appended after execution.

@@ -18,6 +18,17 @@ import org.arcanum.nativehost.update.OwnPackageUpdatePolicy.Inspection
 class OwnPackageDistribution(private val context: Context) {
     data class Staged(val file: File, val inspection: Inspection, val manifestSha256: String)
 
+    data class Release(val manifestUrl: String, val apkUrl: String, val versionCode: Long, val sha256: String)
+
+    fun approvedRelease(): Release {
+        val directory = File(context.filesDir, "own-package-update").apply { mkdirs() }
+        val file = File(directory, "release.partial")
+        try {
+            retrieve(checkedUrl(RELEASE_URL), file, 16 * 1024L)
+            return parseRelease(file.readBytes())
+        } finally { file.delete() }
+    }
+
     fun inspectAndStage(manifestUrl: String, apkUrl: String): Staged {
         val manifestUri = checkedUrl(manifestUrl)
         val apkUri = checkedUrl(apkUrl)
@@ -49,7 +60,8 @@ class OwnPackageDistribution(private val context: Context) {
             require(positiveLong(compatibility, "minSdk") <= Build.VERSION.SDK_INT)
             val abiList = strings(compatibility.getJSONArray("abis"))
             require(abiList == abiList.sorted() && abiList.any { it in Build.SUPPORTED_ABIS })
-            require(strings(compatibility.getJSONArray("dataContracts")) == listOf("hope.reflection.v0.1", "tempus-anchor/0.1.0"))
+            val contracts = strings(compatibility.getJSONArray("dataContracts"))
+            require(contracts == contracts.sorted() && contracts.containsAll(listOf("hope.reflection.v0.1", "tempus-anchor/0.1.0")) && contracts.all { it in SUPPORTED_DATA_CONTRACTS })
             val companion = compatibility.getJSONObject("companion")
             closed(companion, "brokerContract", "operatorContract", "nativeOperations")
             require(companion.getString("brokerContract") == "arcanum-termux-broker/1.1" && companion.getString("operatorContract") == "ce-w04-a13.5/five-op-v1")
@@ -127,6 +139,18 @@ class OwnPackageDistribution(private val context: Context) {
     }
 
     companion object {
+        val SUPPORTED_DATA_CONTRACTS = setOf("hope.reflection.v0.1", "tempus-anchor/0.1.0", "arcanum.architect.private-memory/v1", "org.arcanum.architect.conversation-journal/v1", "arcanum-continuity-custody-v1", "arcanum-continuity-ui-v1")
+        const val RELEASE_URL = "https://updates.the-arcanum.net/updates/release.json"
+        fun parseRelease(raw: ByteArray): Release {
+            val j = manifestFromBytes(raw)
+            closed(j, "schemaVersion", "manifestUrl", "apkUrl", "versionCode", "versionName", "sourceCommit", "sha256", "signerSha256")
+            require(j.getString("schemaVersion") == "1.0" && j.getString("signerSha256") == TRUSTED_SIGNER)
+            val manifest = checkedUrl(j.getString("manifestUrl")); val apk = checkedUrl(j.getString("apkUrl"))
+            require(manifest.path.endsWith("/manifest.json") && apk.path.endsWith(".apk") && manifest.path.substringBeforeLast('/') == apk.path.substringBeforeLast('/'))
+            require(Regex("[0-9a-f]{40}").matches(j.getString("sourceCommit")) && Regex("[0-9a-f]{64}").matches(j.getString("sha256")))
+            require(j.getString("versionName").length in 1..128)
+            return Release(manifest.toString(), apk.toString(), positiveLong(j, "versionCode"), j.getString("sha256"))
+        }
         const val TRUSTED_SIGNER = "9841fbeda4d7d0c63b1663360fb0415218a08f063b5629317274076dfbb6b844"
         const val MAX_APK_BYTES = 256 * 1024 * 1024L
         fun checkedUrl(value: String): URI = URI(value).also {

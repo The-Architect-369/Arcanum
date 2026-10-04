@@ -259,6 +259,7 @@ python3 scripts/verify-ce-w04-a13.py
 python3 scripts/verify-ce-w04-a14.py
 python3 scripts/verify-ce-w04-a14-2-candidate.py
 python3 -B -m unittest scripts/update/test_trusted_distribution_inspection.py
+python3 -B scripts/update/verify_release.py
 bash scripts/architect/test-termux-broker.sh
 bash scripts/architect/test-architect-runtime.sh
 bash scripts/architect/test-proposal-envelope.sh

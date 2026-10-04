@@ -4,6 +4,12 @@ const nextConfig = {
   output: "standalone",
   async headers() {
     return [{
+      source: "/updates/release.json",
+      headers: [{ key: "Cache-Control", value: "no-store, max-age=0" }],
+    }, {
+      source: "/updates/a18/:file",
+      headers: [{ key: "Cache-Control", value: "no-store, max-age=0" }],
+    }, {
       source: "/updates/a14-2/:file",
       headers: [{ key: "Cache-Control", value: "no-store, max-age=0" }],
     }, {
