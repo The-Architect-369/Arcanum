@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-10-04T20:33:31Z",
+  "generated_at": "2026-10-04T20:44:49Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "3ded1f6fc",
+  "commit": "6b80d7a1e",
   "generator_version": "1.5",
   "files": [
     {
@@ -134,7 +134,7 @@
       "path": ".github/workflows/verify-ce-w04-a18-conversation.yml",
       "type": "file",
       "size_bytes": 9805,
-      "last_modified_commit": "9cfb6824e",
+      "last_modified_commit": "6b80d7a1e",
       "is_empty": false,
       "extension": ".yml",
       "lines": 158
@@ -233,7 +233,7 @@
       "path": "apps/android/app/build.gradle.kts",
       "type": "file",
       "size_bytes": 3698,
-      "last_modified_commit": "9cfb6824e",
+      "last_modified_commit": "6b80d7a1e",
       "is_empty": false,
       "extension": ".kts",
       "lines": 110
@@ -246,6 +246,15 @@
       "is_empty": false,
       "extension": ".kt",
       "lines": 119
+    },
+    {
+      "path": "apps/android/app/src/androidTest/java/org/arcanum/nativehost/conversation/ConversationAcceptanceTest.kt",
+      "type": "file",
+      "size_bytes": 10825,
+      "last_modified_commit": "6b80d7a1e",
+      "is_empty": false,
+      "extension": ".kt",
+      "lines": 160
     },
     {
       "path": "apps/android/app/src/androidTest/java/org/arcanum/nativehost/conversation/ConversationDeviceQualificationTest.kt",
@@ -376,11 +385,11 @@
     {
       "path": "apps/android/app/src/main/java/org/arcanum/nativehost/architect/ArchitectShellPanel.kt",
       "type": "file",
-      "size_bytes": 51698,
-      "last_modified_commit": "63fb07ffa",
+      "size_bytes": 52060,
+      "last_modified_commit": "6b80d7a1e",
       "is_empty": false,
       "extension": ".kt",
-      "lines": 1221
+      "lines": 1226
     },
     {
       "path": "apps/android/app/src/main/java/org/arcanum/nativehost/architect/ArchitectVisualDiagnostics.kt",
@@ -493,11 +502,20 @@
     {
       "path": "apps/android/app/src/main/java/org/arcanum/nativehost/conversation/ConversationPanel.kt",
       "type": "file",
-      "size_bytes": 9231,
-      "last_modified_commit": "9cfb6824e",
+      "size_bytes": 13621,
+      "last_modified_commit": "6b80d7a1e",
       "is_empty": false,
       "extension": ".kt",
-      "lines": 136
+      "lines": 193
+    },
+    {
+      "path": "apps/android/app/src/main/java/org/arcanum/nativehost/conversation/ConversationRetention.kt",
+      "type": "file",
+      "size_bytes": 1443,
+      "last_modified_commit": "6b80d7a1e",
+      "is_empty": false,
+      "extension": ".kt",
+      "lines": 23
     },
     {
       "path": "apps/android/app/src/main/java/org/arcanum/nativehost/geometry/ArcnetRendererView.kt",
@@ -691,11 +709,11 @@
     {
       "path": "apps/android/app/src/main/java/org/arcanum/nativehost/update/OwnPackageDistribution.kt",
       "type": "file",
-      "size_bytes": 10509,
-      "last_modified_commit": "5e7e65281",
+      "size_bytes": 12384,
+      "last_modified_commit": "6b80d7a1e",
       "is_empty": false,
       "extension": ".kt",
-      "lines": 158
+      "lines": 182
     },
     {
       "path": "apps/android/app/src/main/java/org/arcanum/nativehost/update/OwnPackageInstallFailure.kt",
@@ -736,11 +754,11 @@
     {
       "path": "apps/android/app/src/main/java/org/arcanum/nativehost/update/OwnPackageUpdatePanel.kt",
       "type": "file",
-      "size_bytes": 6332,
-      "last_modified_commit": "3fca8f74f",
+      "size_bytes": 7738,
+      "last_modified_commit": "6b80d7a1e",
       "is_empty": false,
       "extension": ".kt",
-      "lines": 95
+      "lines": 114
     },
     {
       "path": "apps/android/app/src/main/java/org/arcanum/nativehost/update/OwnPackageUpdatePolicy.kt",
@@ -822,6 +840,15 @@
       "is_empty": false,
       "extension": ".kt",
       "lines": 45
+    },
+    {
+      "path": "apps/android/app/src/test/java/org/arcanum/nativehost/conversation/ConversationRetentionTest.kt",
+      "type": "file",
+      "size_bytes": 2802,
+      "last_modified_commit": "6b80d7a1e",
+      "is_empty": false,
+      "extension": ".kt",
+      "lines": 47
     },
     {
       "path": "apps/android/app/src/test/java/org/arcanum/nativehost/geometry/HopeSeedOverlayTest.kt",
@@ -925,11 +952,11 @@
     {
       "path": "apps/android/app/src/test/java/org/arcanum/nativehost/update/OwnPackageDistributionTest.kt",
       "type": "file",
-      "size_bytes": 1773,
-      "last_modified_commit": "5e7e65281",
+      "size_bytes": 2633,
+      "last_modified_commit": "6b80d7a1e",
       "is_empty": false,
       "extension": ".kt",
-      "lines": 34
+      "lines": 47
     },
     {
       "path": "apps/android/app/src/test/java/org/arcanum/nativehost/update/OwnPackageInstallFailureTest.kt",
@@ -1087,11 +1114,11 @@
     {
       "path": "apps/web/next.config.mjs",
       "type": "file",
-      "size_bytes": 983,
-      "last_modified_commit": "fb8fb8733",
+      "size_bytes": 1222,
+      "last_modified_commit": "6b80d7a1e",
       "is_empty": false,
       "extension": ".mjs",
-      "lines": 27
+      "lines": 33
     },
     {
       "path": "apps/web/node/docker/Dockerfile",
@@ -1440,6 +1467,15 @@
       "type": "file",
       "size_bytes": 946,
       "last_modified_commit": "6d761cde3",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 1
+    },
+    {
+      "path": "apps/web/public/updates/release.json",
+      "type": "file",
+      "size_bytes": 533,
+      "last_modified_commit": "6b80d7a1e",
       "is_empty": false,
       "extension": ".json",
       "lines": 1
@@ -1933,11 +1969,11 @@
     {
       "path": "apps/web/src/app/(marketing)/download/page.tsx",
       "type": "file",
-      "size_bytes": 3515,
-      "last_modified_commit": "a39710b0c",
+      "size_bytes": 2589,
+      "last_modified_commit": "6b80d7a1e",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 91
+      "lines": 36
     },
     {
       "path": "apps/web/src/app/(marketing)/explore/[slug]/page.tsx",
@@ -3211,11 +3247,11 @@
     {
       "path": "apps/web/src/middleware.ts",
       "type": "file",
-      "size_bytes": 2569,
-      "last_modified_commit": "fb8fb8733",
+      "size_bytes": 2815,
+      "last_modified_commit": "6b80d7a1e",
       "is_empty": false,
       "extension": ".ts",
-      "lines": 78
+      "lines": 83
     },
     {
       "path": "apps/web/src/state/useAccount.ts",
@@ -4822,11 +4858,11 @@
     {
       "path": "docs/governance/architectgpt/architect-log.md",
       "type": "file",
-      "size_bytes": 18060,
-      "last_modified_commit": "3ded1f6fc",
+      "size_bytes": 18977,
+      "last_modified_commit": "6b80d7a1e",
       "is_empty": false,
       "extension": ".md",
-      "lines": 268
+      "lines": 282
     },
     {
       "path": "docs/governance/architectgpt/architect-proposal-envelope.schema.json",
@@ -6190,11 +6226,11 @@
     {
       "path": "docs/specs/runtime/ce-w04-a18-local-conversation.md",
       "type": "file",
-      "size_bytes": 11223,
-      "last_modified_commit": "9cfb6824e",
+      "size_bytes": 13421,
+      "last_modified_commit": "6b80d7a1e",
       "is_empty": false,
       "extension": ".md",
-      "lines": 173
+      "lines": 206
     },
     {
       "path": "docs/specs/runtime/fixtures/a16-v1/README.md",
@@ -8834,10 +8870,19 @@
       "lines": 281
     },
     {
+      "path": "scripts/conversation/device_fixture.py",
+      "type": "file",
+      "size_bytes": 1644,
+      "last_modified_commit": "6b80d7a1e",
+      "is_empty": false,
+      "extension": ".py",
+      "lines": 34
+    },
+    {
       "path": "scripts/conversation/gateway.py",
       "type": "file",
-      "size_bytes": 14433,
-      "last_modified_commit": "130a58168",
+      "size_bytes": 14485,
+      "last_modified_commit": "6b80d7a1e",
       "is_empty": false,
       "extension": ".py",
       "lines": 281
@@ -9032,6 +9077,15 @@
       "lines": 687
     },
     {
+      "path": "scripts/update/verify_release.py",
+      "type": "file",
+      "size_bytes": 1826,
+      "last_modified_commit": "6b80d7a1e",
+      "is_empty": false,
+      "extension": ".py",
+      "lines": 36
+    },
+    {
       "path": "scripts/vercel-setup-web.sh",
       "type": "file",
       "size_bytes": 728,
@@ -9214,11 +9268,11 @@
     {
       "path": "scripts/verify-sync.sh",
       "type": "file",
-      "size_bytes": 12356,
-      "last_modified_commit": "f322cd6d3",
+      "size_bytes": 12400,
+      "last_modified_commit": "6b80d7a1e",
       "is_empty": false,
       "extension": ".sh",
-      "lines": 283
+      "lines": 284
     },
     {
       "path": "tests/fixtures/trusted-update/candidate-observation.json",
