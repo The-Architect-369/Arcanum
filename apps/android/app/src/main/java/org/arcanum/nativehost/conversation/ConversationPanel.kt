@@ -31,7 +31,7 @@ class ConversationPanel(private val host: Context) {
     private var busy = false
     @Volatile private var client: ConversationClient? = null
 
-    fun show() {
+    fun show(): AlertDialog {
         root.addView(TextView(host).apply { text = "Architect · Conversation\nAsk about selected development evidence or explore an idea. Each request is reviewed separately. Answers are advisory text. Prior answers are not automatically sent or saved.\nConnection: this device's loopback port 18766, through the development tunnel to your home computer." })
         listOf(token, question, answer, status).forEach { privateView(it) }
         root.addView(token); root.addView(status)
@@ -63,6 +63,7 @@ class ConversationPanel(private val host: Context) {
         }
         dialog.show(); dialog.window?.addFlags(WindowManager.LayoutParams.FLAG_SECURE); active = true
         status.text = "Disconnected. Local Arcanum features remain available without this connection."
+        return dialog
     }
     private fun render() {
         evidence.removeAllViews(); selected.clear()

@@ -14,26 +14,66 @@ import java.io.File
 import java.io.FileOutputStream
 import java.util.UUID
 import android.content.Intent
+import android.app.Activity
+import androidx.test.runner.lifecycle.ActivityLifecycleCallback
+import androidx.test.runner.lifecycle.ActivityLifecycleMonitorRegistry
+import androidx.test.runner.lifecycle.Stage
+import java.util.concurrent.CountDownLatch
+import java.util.concurrent.TimeUnit
+import java.util.concurrent.atomic.AtomicReference
+import org.junit.Rule
+import org.junit.rules.TestName
 
 /** Explicitly invoked methods only; all disclosed content is public synthetic evidence. */
 @RunWith(AndroidJUnit4::class)
 class ConversationDeviceQualificationTest {
+    @get:Rule val testName = TestName()
     private val instrumentation get() = InstrumentationRegistry.getInstrumentation()
     private val context get() = instrumentation.targetContext
     private val marker get() = File(context.noBackupFilesDir, "a18-live-request.json")
     private fun journal() = ConversationJournal(File(context.noBackupFilesDir, "a18-test-journal"), AndroidMemoryKeyProvider("org.arcanum.a18.test-journal"), ::syncMemoryDirectory)
     private fun client() = ConversationClient(File(context.noBackupFilesDir, "a18-qualification-key").readText().trim())
     @Before fun bindIsolatedTarget() {
-        check(context.packageName == "org.arcanum.nativehost.a18qualification")
+        // Only the UI smoke check may run against the original package. Never allow
+        // synthetic memory writes or model sends there, even via a whole-class run.
+        check(context.packageName == "org.arcanum.nativehost.a18qualification" ||
+            (context.packageName == "org.arcanum.nativehost" &&
+                testName.methodName == "showConversationUi" &&
+                InstrumentationRegistry.getArguments().getString("originalUiSource") == BuildConfig.ARCANUM_SOURCE_COMMIT))
         check(BuildConfig.ARCANUM_SOURCE_COMMIT.matches(Regex("[0-9a-f]{40}")))
         val installed = context.classLoader.loadClass("org.arcanum.nativehost.BuildConfig")
         assertEquals(BuildConfig.ARCANUM_SOURCE_COMMIT, installed.getField("ARCANUM_SOURCE_COMMIT").get(null))
         assertEquals("CE-W04-A18", installed.getField("ARCANUM_IMPLEMENTATION_ARC").get(null))
     }
     @Test fun showConversationUi() {
-        val activity = instrumentation.startActivitySync(Intent(context, MainActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
-        instrumentation.runOnMainSync { ConversationPanel(activity).show() }
-        instrumentation.waitForIdleSync()
+        val resumed = CountDownLatch(1)
+        val launched = AtomicReference<Activity>()
+        val monitor = ActivityLifecycleMonitorRegistry.getInstance()
+        val callback = ActivityLifecycleCallback { activity, stage ->
+            if (activity is MainActivity && stage == Stage.RESUMED) {
+                launched.set(activity)
+                resumed.countDown()
+            }
+        }
+        try {
+            instrumentation.runOnMainSync {
+                monitor.addLifecycleCallback(callback)
+                context.startActivity(Intent(context, MainActivity::class.java)
+                    .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP))
+            }
+            assertTrue("MainActivity did not resume within 10 seconds", resumed.await(10, TimeUnit.SECONDS))
+            instrumentation.runOnMainSync {
+                val activity = requireNotNull(launched.get())
+                assertFalse(activity.isFinishing)
+                val dialog = ConversationPanel(activity).show()
+                assertTrue(dialog.isShowing)
+                assertTrue(dialog.window!!.attributes.flags and android.view.WindowManager.LayoutParams.FLAG_SECURE != 0)
+                dialog.dismiss()
+                assertFalse(dialog.isShowing)
+            }
+        } finally {
+            instrumentation.runOnMainSync { monitor.removeLifecycleCallback(callback) }
+        }
     }
     @Test fun selectedPublicEvidenceThroughHomeGateway() {
         check(!marker.exists()) { "Original operation may exist; reconcile rather than repeating." }

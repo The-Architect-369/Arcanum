@@ -26,15 +26,17 @@ require(qualificationArc in listOf("A16", "A17", "A18"))
 android {
     namespace = "org.arcanum.nativehost"
     compileSdk = 35
-    testBuildType = "qualification"
+    testBuildType = providers.gradleProperty("arcanumTestBuildType").orElse("qualification").get().also {
+        require(it in listOf("qualification", "debug"))
+    }
 
     defaultConfig {
         applicationId = "org.arcanum.nativehost"
         minSdk = 26
         targetSdk = 35
-        versionCode = 30
+        versionCode = 32
         providers.gradleProperty("arcanumQualificationVersionCode").orNull?.let { value ->
-            versionCode = value.toInt().also { require(it in when (qualificationArc) { "A16" -> listOf(26, 27); "A17" -> listOf(28, 29); else -> listOf(30, 31) }) }
+            versionCode = value.toInt().also { require(it in when (qualificationArc) { "A16" -> listOf(26, 27); "A17" -> listOf(28, 29); else -> listOf(30, 31, 32, 33) }) }
         }
         versionName = when (qualificationArc) { "A16" -> "0.1.16-cew04-a16"; "A17" -> "0.1.17-cew04-a17"; else -> "0.1.18-cew04-a18" }
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"

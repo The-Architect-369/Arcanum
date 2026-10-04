@@ -220,3 +220,28 @@ external context send, private Hope access or ARC-SES allocation occurred.
 - Next gate: exact source/index/CI, usable local response, then separately authorized
   isolated phone installation and physical sequence. Retained cloud/security gates
   remain unmet. No ARC-SES identifier allocated across unreconciled sequence gaps.
+
+
+## CONTINUITY-EVENT — 2026-10-04 — A18 device evidence and original-package update candidate
+
+- Authority: Human-authorized isolated device testing, private cellular development,
+  then startup recovery, UI-test repair and an in-place original-app update.
+- Repository/work ref: `The-Architect-369/Arcanum`,
+  `work/a18-conversation-foundation-20261003`; canonical base remains
+  `27b0d814c6a64bdbdf1dd12e8b1db53449d8223c`.
+- Observed candidate: `5effe98f5ace3e06e578210a645def8bae454f52`, isolated versions
+  30/31. Public-fixture inference, cancellation-before-send and original receipt
+  recovery after restart/update passed. Cellular VPN/SSH/ADB worked with Wi-Fi off
+  and USB absent. Initial reboot persistence failed and was manually recovered.
+- UI limitation: framework launch synchronization timed out twice; normal navigation
+  and protected conversation screenshot were independently observed. The bounded
+  lifecycle test correction requires a fresh build and physical verification.
+- Current change: build original package version 32 with its independently matched
+  persistent publisher signer, preserving existing app custody; no uninstall, data
+  clear, private reflection export, portal publication, main merge or A18 closure.
+- Evidence: [A18 candidate and dated follow-up](../../evidence/ce-w04-a18-local-20261003/review.md).
+- Discussion reconciliation: reviewed A17 response retention remains a proposal gap;
+  current conversation text remains session-only. No new ARC-SES ID allocated.
+
+Next gate: exact-source signed build, original-package update compatibility and
+physical UI verification; record actual startup-recovery outcomes separately.

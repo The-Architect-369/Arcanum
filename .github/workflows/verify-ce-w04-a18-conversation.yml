@@ -115,3 +115,44 @@ jobs:
           path: ${{ runner.temp }}/a18-qualification/
           if-no-files-found: error
           retention-days: 14
+      - name: Build original-package update with the existing publisher signer
+        env:
+          ARCANUM_DEV_KEYSTORE_B64: ${{ secrets.ARCANUM_DEV_KEYSTORE_B64 }}
+          ORG_GRADLE_PROJECT_arcanumDevStorePassword: ${{ secrets.ARCANUM_DEV_STORE_PASSWORD }}
+          ORG_GRADLE_PROJECT_arcanumDevKeyAlias: ${{ secrets.ARCANUM_DEV_KEY_ALIAS }}
+          ORG_GRADLE_PROJECT_arcanumDevKeyPassword: ${{ secrets.ARCANUM_DEV_KEY_PASSWORD }}
+        run: |
+          set -euo pipefail
+          umask 077
+          test -n "$ARCANUM_DEV_KEYSTORE_B64"
+          test -n "$ORG_GRADLE_PROJECT_arcanumDevStorePassword"
+          test -n "$ORG_GRADLE_PROJECT_arcanumDevKeyAlias"
+          test -n "$ORG_GRADLE_PROJECT_arcanumDevKeyPassword"
+          export ORG_GRADLE_PROJECT_arcanumDevKeystorePath="$RUNNER_TEMP/a18-publisher.jks"
+          trap 'rm -f "$ORG_GRADLE_PROJECT_arcanumDevKeystorePath"' EXIT
+          printf '%s' "$ARCANUM_DEV_KEYSTORE_B64" | base64 --decode > "$ORG_GRADLE_PROJECT_arcanumDevKeystorePath"
+          source_head="$(git rev-parse HEAD)"
+          gradle -p apps/android assembleDebug assembleDebugAndroidTest -ParcanumQualificationArc=A18 -ParcanumTestBuildType=debug -ParcanumSourceCommit="$source_head" --stacktrace
+          mkdir -p "$RUNNER_TEMP/a18-original-update"
+          cp apps/android/app/build/outputs/apk/debug/app-debug.apk "$RUNNER_TEMP/a18-original-update/arcanum-a18-update-32.apk"
+          cp apps/android/app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk "$RUNNER_TEMP/a18-original-update/arcanum-a18-original-ui-tests.apk"
+          cd "$RUNNER_TEMP/a18-original-update"
+          printf '%s\n' "$source_head" > source-commit.txt
+          for apk in *.apk; do
+            "$ANDROID_SDK_ROOT/build-tools/35.0.0/apksigner" verify --print-certs "$apk" > "$apk.signer.txt"
+            grep -q '^Signer #1 certificate SHA-256 digest: 9841fbeda4d7d0c63b1663360fb0415218a08f063b5629317274076dfbb6b844$' "$apk.signer.txt"
+          done
+          "$ANDROID_SDK_ROOT/build-tools/35.0.0/aapt" dump badging arcanum-a18-update-32.apk > package.txt
+          grep -q "^package: name='org.arcanum.nativehost' versionCode='32'" package.txt
+          for abi in arm64-v8a x86_64; do
+            for library in arcanum_android_jni arcanum_android_tempus_lifecycle_jni arcanum_android_hope_jni arcanum_android_continuity_jni; do
+              unzip -l arcanum-a18-update-32.apk | grep "lib/$abi/lib$library.so" >/dev/null
+            done
+          done
+          sha256sum *.apk > sha256sums.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: a18-original-update-${{ github.event.pull_request.head.sha || github.sha }}
+          path: ${{ runner.temp }}/a18-original-update/
+          if-no-files-found: error
+          retention-days: 14

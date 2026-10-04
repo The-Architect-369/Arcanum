@@ -142,3 +142,32 @@ an original request after restart and compatible update; verify receipt disclosu
 protected screenshots, and unchanged production/A16/A17 packages. The native fixture
 response and phone observations need human quality review. Multiturn context selection
 and polished pairing remain explicit follow-on product work, not hidden auto-capture.
+
+# October 4 original-package update and UI qualification
+
+The Human requested an in-place update of `org.arcanum.nativehost`, preserving its
+local reflection custody, after qualification exposed confusing duplicate app labels.
+Version 32 is an original-package candidate, distinct from the isolated 30/31 pair.
+The A18 CI lane builds all four native libraries and requires the existing publisher
+signer (SHA-256 `9841fbeda4d7d0c63b1663360fb0415218a08f063b5629317274076dfbb6b844`).
+Missing signing configuration or a different certificate fails this candidate build;
+there is no disposable-signer fallback for the original update. Building artifacts
+does not publish them or advance the public portal. Installation uses Android's
+same-package update path without uninstalling or clearing data. The existing
+artifact-handoff allowlist is not expanded or claimed qualified by this work.
+
+The UI device check now waits at most ten seconds for the actual resumed activity,
+opens the conversation, verifies its secure window flag, and dismisses it. It does
+not depend on the framework `startActivitySync` wait that timed out twice on the
+observed Android 16 phone while ordinary navigation worked. This is a test-harness
+correction, not a claim that the platform-level cause has been established.
+`arcanumTestBuildType=debug` builds the separately signed original-package test APK.
+Only `showConversationUi` may target the original app, and it additionally requires
+an `originalUiSource` argument equal to its exact build source. Other synthetic
+memory/model tests continue to reject the original package. No test reads, prints,
+or exports personal reflection content.
+
+October 4 proposal reconciliation: explicit reviewed response retention into A17
+remains unimplemented; the present surface retains no transcript. It is not silently
+claimed as a passed acceptance item. See the dated device observations below in the
+evidence record; A18 closure remains open.

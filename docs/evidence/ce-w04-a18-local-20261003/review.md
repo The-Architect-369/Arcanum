@@ -53,6 +53,40 @@ establishing host reachability and rejection of an unauthenticated request. The
 local Instruct model reported 100% GPU placement with an 8192-token context.
 These observations do not prove a phone tunnel or production remote access.
 
+## October 4 device observation and bounded follow-up
+
+The Human separately authorized A18 installation/testing and private cellular remote
+development. At source `5effe98f5ace3e06e578210a645def8bae454f52`, isolated version 30
+was installed and updated to 31. The installed bytes matched the exact CI APK hashes.
+Cancellation before send, one public-fixture response through the home-local model,
+and reconciliation of the original operation after restart and update passed. The
+live fixture took 6.643 seconds. It disclosed only the synthetic public test record.
+Production 25, A16 qualification 27 and A17 qualification 29 package metadata remained
+unchanged. The temporary qualification credential was removed.
+
+A personal-profile private VPN plus the existing trusted Termux SSH key carried ADB
+and the loopback gateway. Fresh SSH and ADB responses were verified with Wi-Fi off,
+cellular as Android's active default transport, and later with USB absent. Wi-Fi was
+restored after the test. A reboot confirmed that USB returned but the VPN process,
+Termux SSH and TCP ADB did not start automatically in the initial configuration.
+Manual recovery succeeded. These observations do not certify reboot persistence,
+long-idle reliability, production pairing, or public network exposure.
+
+`showConversationUi` failed twice at the framework's 45-second `startActivitySync`
+wait. The captured main thread was in `MessageQueue.nativePollOnce`, while the test
+launch worker waited in `Instrumentation.startActivitySync`. Normal cold launch
+succeeded in 2688 ms and later 714 ms. Observed navigation reached the Architect
+conversation panel; its screenshot blacked out application content as intended.
+Those observations do not turn the failed instrumentation tests into passes.
+
+The Human then authorized startup recovery, the UI harness correction, and a compatible
+original-package update. The installed original APK's independently verified signer
+matches the existing publisher certificate. Hope Android storage and Hope JNI sources
+are unchanged from installed-source `7058cbeeb5c7844fa5c5439ea6d0b421536b880f`.
+The follow-up introduces bounded lifecycle-based UI verification and a strictly signed
+version 32 build. Its build/install/physical results must be recorded after execution.
+No private reflection contents or derived memory were inspected or exported.
+
 A follow-up error-path correction maps malformed upstream HTTP into the same
 unknown-outcome response without reflecting provider bytes. An eleventh gateway
 test covers it. Successful model-response parsing now requires an explicit
