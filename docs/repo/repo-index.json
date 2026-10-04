@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-10-04T20:47:23Z",
+  "generated_at": "2026-10-04T20:55:29Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "53b8c5160",
+  "commit": "d280db490",
   "generator_version": "1.5",
   "files": [
     {
@@ -250,11 +250,11 @@
     {
       "path": "apps/android/app/src/androidTest/java/org/arcanum/nativehost/conversation/ConversationAcceptanceTest.kt",
       "type": "file",
-      "size_bytes": 11444,
-      "last_modified_commit": "53b8c5160",
+      "size_bytes": 11817,
+      "last_modified_commit": "d280db490",
       "is_empty": false,
       "extension": ".kt",
-      "lines": 168
+      "lines": 170
     },
     {
       "path": "apps/android/app/src/androidTest/java/org/arcanum/nativehost/conversation/ConversationDeviceQualificationTest.kt",
@@ -8881,11 +8881,11 @@
     {
       "path": "scripts/conversation/gateway.py",
       "type": "file",
-      "size_bytes": 14485,
-      "last_modified_commit": "6b80d7a1e",
+      "size_bytes": 14759,
+      "last_modified_commit": "d280db490",
       "is_empty": false,
       "extension": ".py",
-      "lines": 281
+      "lines": 283
     },
     {
       "path": "scripts/conversation/test_gateway.py",
@@ -9250,11 +9250,11 @@
     {
       "path": "scripts/verify-public-site.mjs",
       "type": "file",
-      "size_bytes": 3118,
-      "last_modified_commit": "a39710b0c",
+      "size_bytes": 3568,
+      "last_modified_commit": "d280db490",
       "is_empty": false,
       "extension": ".mjs",
-      "lines": 99
+      "lines": 98
     },
     {
       "path": "scripts/verify-repo-index.py",
