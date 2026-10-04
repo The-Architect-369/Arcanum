@@ -245,3 +245,24 @@ external context send, private Hope access or ARC-SES allocation occurred.
 
 Next gate: exact-source signed build, original-package update compatibility and
 physical UI verification; record actual startup-recovery outcomes separately.
+
+
+## CONTINUITY-EVENT — 2026-10-04 — Original A18 update and reboot recovery verified
+
+- Authority: continued Human authorization for startup recovery, bounded UI repair,
+  and signed in-place original-package update; subsequent direct Human confirmation
+  that the existing Hope reflection remains available.
+- Build source: `36810d663e2fe4de4fb6d68a8fbf1c33225ac933`; canonical main remains
+  `27b0d814c6a64bdbdf1dd12e8b1db53449d8223c`. This later evidence commit does not
+  change the installed APK's source identity.
+- Executed/verified: original package 25 to 32 update with matched publisher signature
+  and installed-byte hash; unchanged UID, first-install timestamp and storage-directory
+  inode; bounded conversation UI test passed in 1.972 seconds, including FLAG_SECURE.
+  No private reflection contents were inspected or exported.
+- Reboot observation: always-on personal VPN and Termux:Boot SSH started after unlock;
+  fresh trusted SSH passed. TCP ADB still required USB re-enablement. Four home user
+  services are active; complete host boot and long-idle operation remain untested.
+- Evidence and limits: [dated verification](../../evidence/ce-w04-a18-local-20261003/review.md).
+  Earlier failures and isolated-source results remain distinct. Reviewed A17 retention,
+  remaining error-path qualification and A18 acceptance stay open. No canonicalization,
+  public promotion, closure, or new ARC-SES identifier is asserted.

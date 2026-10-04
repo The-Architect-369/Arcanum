@@ -101,3 +101,58 @@ A fresh public fixture through port 18766 completed in 1.22 seconds, without
 truncation, and reconciled its original receipt as `response_observed`. Windows
 loopback again received HTTP 401 without credentials. This is observed local
 transport/model behavior, not Android device qualification.
+
+
+## October 4 verified original update and startup recovery
+
+Observed build source: `36810d663e2fe4de4fb6d68a8fbf1c33225ac933`, following source
+commit `9cfb6824e` and its deterministic index companion. The
+[signed A18 workflow](https://github.com/The-Architect-369/Arcanum/actions/runs/37231855362)
+passed. All 22 check-run records returned for this exact head had conclusion success;
+the separate Vercel status also reported success. The local full repository baseline
+passed, including frozen install, CE-W01, index, sync, lint, typecheck, build and diff
+checks. The first install attempt failed on Corepack's unwritable system-bin shim;
+a temporary writable shim directory resolved that environment issue on the retry.
+The 102 Android host tests passed. These are distinct from physical observations.
+
+The original `org.arcanum.nativehost` was updated from version 25 to 32 using
+`adb install -r` over the private tunnel. Independent verification covered package,
+version, source string, SHA-256, signature, both ABIs' four native libraries, and the
+instrumentation target. The installed public APK was read back and matched SHA-256
+`9931c527704e06712a2242b18b7452b5a0f78a87d5ca8a7fab42e6883d406de4` and publisher signer
+`9841fbeda4d7d0c63b1663360fb0415218a08f063b5629317274076dfbb6b844`.
+UID, first-install timestamp and app data-directory inode stayed unchanged. The Human
+then confirmed that the existing Hope reflection remained available through Recall.
+That is a Human report, independently supported by update metadata; no reflection
+content, content hash, summary or export was obtained by the agent.
+
+The matching original-package UI harness ran only `showConversationUi`, bound to the
+exact source above. It passed in 1.972 seconds: activity resumed, conversation opened,
+FLAG_SECURE was set, and the dialog dismissed. The previous 45-second failures remain
+recorded. This verifies the corrected smoke test; it does not certify the full manual
+review/send flow or requalify provider-error/timeout cases on version 32. Earlier
+protected-screenshot pixels and live inference belong to isolated version 31/source
+`5effe98f5ace3e06e578210a645def8bae454f52` and are not relabeled as version 32 evidence.
+
+F-Droid Termux:Boot 0.8.1 matched the installed Termux signing certificate; the
+nonmatching GitHub build was not installed. The authorized boot script starts SSH
+and takes a Termux wake lock. Tailscale was configured always-on in the personal
+profile. A second real reboot, followed by Human unlock without opening either app,
+verified automatic VPN startup and subsequently automatic SSH startup. The initial
+post-unlock SSH probe was negative; later boot-job/process evidence and a fresh
+strict-host-key SSH connection passed. Recovery is delayed, not instantaneous.
+
+TCP ADB still reset on reboot. USB re-enabled authenticated TCP ADB, after which the
+managed private SSH tunnel worked again. This is VPN/SSH recovery after unlock, not
+USB-free ADB reboot persistence. Home VPN, SSH tunnel, local model and gateway were
+moved into enabled restarting user services; all four were observed active. A complete
+Windows/WSL host reboot and long-idle/battery behavior remain unqualified. The wake
+lock is a development-access setting with battery cost, not a consumer default.
+
+Local raw receipts remain in ignored `.local/a18/device-20261004/`,
+`.local/a18/update32-artifacts/` and `.local/a18/transport/`; no credentials or private
+reflection content are included in this repository record. The original app's
+conversation still requires session pairing through its key field; polished pairing
+is not implemented. Reviewed response retention into A17, the remaining physical
+error paths, and Human A18 acceptance remain open. No public portal promotion,
+artifact-handoff qualification, canonical merge or A18 closure occurred.
