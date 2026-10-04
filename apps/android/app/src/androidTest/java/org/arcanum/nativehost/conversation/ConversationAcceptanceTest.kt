@@ -130,6 +130,14 @@ class ConversationAcceptanceTest {
         s.delete(listOf(id), v.generation, UUID.randomUUID().toString(), System.currentTimeMillis())
         val after = store().inspect().vault!!; assertTrue(id in after.deleted); assertFalse(after.records.any { it.id == id })
     }
+    @Test fun staleSelectionIsBlockedBeforeDispatch() {
+        val s = store(); val v = s.inspect().vault!!; val selected = v.records.first()
+        val profile = client().profile()
+        val draft = ConversationDraft.prepare(profile, "Explain this selected record", v, listOf(selected.id))
+        val modified = v.copy(generation = v.generation + 1, records = v.records.filterNot { it.id == selected.id }, deleted = v.deleted + selected.id)
+        assertTrue(runCatching { draft.verifyFresh(modified, profile) }.isFailure)
+        assertEquals("not_recorded", client().status(draft.id).getString("state"))
+    }
     @Test fun offlineKeepsLocalMemoryAvailable() {
         check(args.getString("mode") == "offline")
         assertTrue(runCatching { client().profile() }.isFailure)

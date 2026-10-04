@@ -457,7 +457,7 @@ class ArchitectShellPanel(context: Context) : LinearLayout(context) {
                             }
                             "CE-W04-A18" -> {
                                 require(appContext.packageName == "org.arcanum.nativehost")
-                                require(BuildConfig.VERSION_CODE == 33 && BuildConfig.VERSION_NAME == "0.1.18-cew04-a18")
+                                require(BuildConfig.VERSION_CODE in listOf(33, 34) && BuildConfig.VERSION_NAME == "0.1.18-cew04-a18")
                                 "A18 original-package artifact handoff"
                             }
                             else -> error("unsupported installed implementation arc")
