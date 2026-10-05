@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-10-04T21:20:40Z",
+  "generated_at": "2026-10-05T14:12:31Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "efa2576bf",
+  "commit": "26d03071c",
   "generator_version": "1.5",
   "files": [
     {
@@ -1467,6 +1467,33 @@
       "type": "file",
       "size_bytes": 946,
       "last_modified_commit": "6d761cde3",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 1
+    },
+    {
+      "path": "apps/web/public/updates/a18/SHA256SUMS",
+      "type": "file",
+      "size_bytes": 97,
+      "last_modified_commit": "26d03071c",
+      "is_empty": false,
+      "extension": "",
+      "lines": 1
+    },
+    {
+      "path": "apps/web/public/updates/a18/arcanum-ce-w04-a18-75cad68.apk",
+      "type": "file",
+      "size_bytes": 6458013,
+      "last_modified_commit": "26d03071c",
+      "is_empty": false,
+      "extension": ".apk",
+      "lines": 0
+    },
+    {
+      "path": "apps/web/public/updates/a18/manifest.json",
+      "type": "file",
+      "size_bytes": 1084,
+      "last_modified_commit": "26d03071c",
       "is_empty": false,
       "extension": ".json",
       "lines": 1
@@ -3247,11 +3274,11 @@
     {
       "path": "apps/web/src/middleware.ts",
       "type": "file",
-      "size_bytes": 2815,
-      "last_modified_commit": "6b80d7a1e",
+      "size_bytes": 2931,
+      "last_modified_commit": "26d03071c",
       "is_empty": false,
       "extension": ".ts",
-      "lines": 83
+      "lines": 86
     },
     {
       "path": "apps/web/src/state/useAccount.ts",
@@ -4795,11 +4822,11 @@
     {
       "path": "docs/evidence/ce-w04-a18-local-20261003/review.md",
       "type": "file",
-      "size_bytes": 17328,
-      "last_modified_commit": "efa2576bf",
+      "size_bytes": 19736,
+      "last_modified_commit": "26d03071c",
       "is_empty": false,
       "extension": ".md",
-      "lines": 251
+      "lines": 286
     },
     {
       "path": "docs/evidence/continuity-schema-adoption-20260930/review.md",
@@ -4858,11 +4885,11 @@
     {
       "path": "docs/governance/architectgpt/architect-log.md",
       "type": "file",
-      "size_bytes": 20575,
-      "last_modified_commit": "efa2576bf",
+      "size_bytes": 21589,
+      "last_modified_commit": "26d03071c",
       "is_empty": false,
       "extension": ".md",
-      "lines": 304
+      "lines": 319
     },
     {
       "path": "docs/governance/architectgpt/architect-proposal-envelope.schema.json",

@@ -302,3 +302,18 @@ source/index lineage and publication evidence will be appended after execution.
 - Next gate: Human response-quality acceptance, then authorized canonical adoption,
   immutable hosting, descriptor promotion and actual installer/receipt verification.
   No A18/CE-W04 closure or new ARC-SES identifier is asserted.
+
+## CONTINUITY-EVENT — 2026-10-05 — A18 quality accepted and PR86 adopted
+
+- Human decision: "I approve A18 answer-quality advisory review behavior."
+  The bounded quality gate is satisfied. Prior conditional publication/adoption
+  authority remains applicable; final release and receiver evidence are separate.
+- Fresh recovery: original version 33 installed bytes match the qualified artifact;
+  no active own-package installer attempt. USB and trusted VPN/SSH/ADB respond;
+  original timeout and completion evidence recovered without redispatch.
+- Candidate `93194ca092535847cbfee1b352494894ba747291` verified, then adopted by
+  normal PR86 merge `f48229ef7668060ac6a36aeb9cabd9e6e722631c`. Qualified APK source
+  remains `75cad68cb3733a44b5b13bcea153f2f77dfa7bda`.
+- Next gate: immutable version 34 hosting, served-byte verification, approved listing
+  promotion and actual advancing in-app installation/receipt reconciliation.
+  A18 and CE-W04 remain open. No private Hope data or new ARC-SES allocation.

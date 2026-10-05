@@ -249,3 +249,38 @@ site verification. Publication is authorized conditionally, not yet executed. A1
 and CE-W04 are not marked closed. Manual session pairing, OpenAI activation, USB-free
 ADB after reboot, and full home-host reboot/long-idle qualification remain outside
 the demonstrated result.
+
+## October 5 Human acceptance, recovery and canonical adoption
+
+The Human explicitly approved the A18 answer-quality advisory behavior in the
+existing implementation task. This satisfies the bounded response-quality gate;
+it does not establish general model reliability. The decision was saved and read
+back in the [A18 work record](https://app.notion.com/p/3df2bb4420b881c6a0f8d03bd52dc445).
+The existing conditional publication grant covers the necessary canonical adoption
+and release after verification; it was not replaced with a new blanket grant.
+
+After the Human restored the workspace and connected USB, fresh observations on
+October 5 confirmed version 33's installed APK SHA-256
+`3b05ccf7e19b59ee75b1bcb43e8a70aac47667b11dfa143a37d2d60857d8d1e2` and no active
+own-package installer attempt. USB, strict-host-key SSH over the personal VPN, and
+the private ADB tunnel responded. All four home user services were active. The
+original timeout request `1bd3ef36-7848-477f-ab8c-be03c7b9f7bb`, unknown gateway state,
+and separate original TestRunner completion log were recovered without replay.
+No personal reflection contents were read. Local receipts are retained under
+`.local/a18/recovery-20261005/` and the earlier source-bound directories.
+
+Candidate head `93194ca092535847cbfee1b352494894ba747291` passed the deterministic
+index check and all 17 rows returned by `gh pr checks 86`, including Vercel statuses.
+That row count is not a claim about a different check-run or workflow count.
+The previously interrupted final editorial index and sync commands had completed
+successfully, including sync 15/15. Its changes after the qualified APK source are
+website/editorial evidence only. The preserved version 34 artifact hash was rechecked.
+
+[PR86](https://github.com/The-Architect-369/Arcanum/pull/86) was adopted by normal
+merge at `f48229ef7668060ac6a36aeb9cabd9e6e722631c` on October 5, 14:11:19 UTC.
+This is the canonical promotion reference for the unchanged qualified version 34
+artifact, whose build source remains `75cad68cb3733a44b5b13bcea153f2f77dfa7bda`.
+The immutable `/updates/a18/` publication candidate binds these separate identities.
+The shared approved-release listing remains version 25 during initial hosting.
+Hosted bytes, the actual advancing app-installer update, descriptor promotion and
+final release reconciliation remain pending; this entry does not close A18 or CE-W04.
