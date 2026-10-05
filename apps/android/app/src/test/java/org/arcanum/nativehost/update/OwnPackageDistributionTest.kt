@@ -5,6 +5,19 @@ import org.junit.Assert.assertThrows
 import org.junit.Test
 
 class OwnPackageDistributionTest {
+    @Test fun sharedReleaseBindsControlledCoordinatesAndRejectsTampering() {
+        val file = java.io.File(System.getProperty("arcanum.repoRoot"), "apps/web/public/updates/release.json")
+        val raw = file.readBytes()
+        val good = OwnPackageDistribution.parseRelease(raw)
+        assertEquals("updates.the-arcanum.net", java.net.URI(good.apkUrl).host)
+        for (bad in listOf(
+            raw.toString(Charsets.UTF_8).replace("updates.the-arcanum.net", "other.example"),
+            raw.toString(Charsets.UTF_8).replace(OwnPackageDistribution.TRUSTED_SIGNER, "0".repeat(64)),
+            raw.toString(Charsets.UTF_8).replace("\"schemaVersion\":\"1.0\"", "\"schemaVersion\":\"2.0\""),
+            raw.toString(Charsets.UTF_8) + "\n"
+        )) assertThrows(Exception::class.java) { OwnPackageDistribution.parseRelease(bad.toByteArray()) }
+    }
+
     @Test fun controlledDirectUrlIsAccepted() {
         assertEquals("updates.the-arcanum.net", OwnPackageDistribution.checkedUrl("https://updates.the-arcanum.net/updates/a15/manifest.json").host)
     }

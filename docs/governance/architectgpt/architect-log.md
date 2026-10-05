@@ -201,3 +201,104 @@ external context send, private Hope access or ARC-SES allocation occurred.
   artifact-handoff path, activate provider delivery, or implement broader continuity
   mappings. A18 remains a separately scoped next gate.
 - No ARC-SES identifier allocated across unreconciled external sequence gaps.
+
+### CONTINUITY-EVENT — 2026-10-03 — A18 local-first conversation implementation
+
+- Human direction: proceed with A18; prefer a local home-computer model, with an
+  optional OpenAI route through the same private gateway later.
+- Source/observation: current task, 2026-10-03, Codex. Repository
+  `The-Architect-369/Arcanum`; canonical base `27b0d814c6a64bdbdf1dd12e8b1db53449d8223c`;
+  disposable work branch `work/a18-conversation-foundation-20261003`.
+- Scope: [local conversation contract](../../specs/runtime/ce-w04-a18-local-conversation.md)
+  and [candidate evidence](../../evidence/ce-w04-a18-local-20261003/review.md).
+  A17 remains closed. English text advice with explicitly selected context, no tools.
+- Proposed: local-first A18 tranche. Ratified: existing bounded A18 scope, no doctrine
+  change. Authorized-for-effect: implementation and local runtime qualification.
+  Executed: source preparation and local public-fixture requests. Verified: host
+  protocol tests; initial model answer quality failed and is being corrected.
+  Canonicalized: no. No A18 merge, install, closure or cloud activation inferred.
+- Next gate: exact source/index/CI, usable local response, then separately authorized
+  isolated phone installation and physical sequence. Retained cloud/security gates
+  remain unmet. No ARC-SES identifier allocated across unreconciled sequence gaps.
+
+
+## CONTINUITY-EVENT — 2026-10-04 — A18 device evidence and original-package update candidate
+
+- Authority: Human-authorized isolated device testing, private cellular development,
+  then startup recovery, UI-test repair and an in-place original-app update.
+- Repository/work ref: `The-Architect-369/Arcanum`,
+  `work/a18-conversation-foundation-20261003`; canonical base remains
+  `27b0d814c6a64bdbdf1dd12e8b1db53449d8223c`.
+- Observed candidate: `5effe98f5ace3e06e578210a645def8bae454f52`, isolated versions
+  30/31. Public-fixture inference, cancellation-before-send and original receipt
+  recovery after restart/update passed. Cellular VPN/SSH/ADB worked with Wi-Fi off
+  and USB absent. Initial reboot persistence failed and was manually recovered.
+- UI limitation: framework launch synchronization timed out twice; normal navigation
+  and protected conversation screenshot were independently observed. The bounded
+  lifecycle test correction requires a fresh build and physical verification.
+- Current change: build original package version 32 with its independently matched
+  persistent publisher signer, preserving existing app custody; no uninstall, data
+  clear, private reflection export, portal publication, main merge or A18 closure.
+- Evidence: [A18 candidate and dated follow-up](../../evidence/ce-w04-a18-local-20261003/review.md).
+- Discussion reconciliation: reviewed A17 response retention remains a proposal gap;
+  current conversation text remains session-only. No new ARC-SES ID allocated.
+
+Next gate: exact-source signed build, original-package update compatibility and
+physical UI verification; record actual startup-recovery outcomes separately.
+
+
+## CONTINUITY-EVENT — 2026-10-04 — Original A18 update and reboot recovery verified
+
+- Authority: continued Human authorization for startup recovery, bounded UI repair,
+  and signed in-place original-package update; subsequent direct Human confirmation
+  that the existing Hope reflection remains available.
+- Build source: `36810d663e2fe4de4fb6d68a8fbf1c33225ac933`; canonical main remains
+  `27b0d814c6a64bdbdf1dd12e8b1db53449d8223c`. This later evidence commit does not
+  change the installed APK's source identity.
+- Executed/verified: original package 25 to 32 update with matched publisher signature
+  and installed-byte hash; unchanged UID, first-install timestamp and storage-directory
+  inode; bounded conversation UI test passed in 1.972 seconds, including FLAG_SECURE.
+  No private reflection contents were inspected or exported.
+- Reboot observation: always-on personal VPN and Termux:Boot SSH started after unlock;
+  fresh trusted SSH passed. TCP ADB still required USB re-enablement. Four home user
+  services are active; complete host boot and long-idle operation remain untested.
+- Evidence and limits: [dated verification](../../evidence/ce-w04-a18-local-20261003/review.md).
+  Earlier failures and isolated-source results remain distinct. Reviewed A17 retention,
+  remaining error-path qualification and A18 acceptance stay open. No canonicalization,
+  public promotion, closure, or new ARC-SES identifier is asserted.
+
+
+## CONTINUITY-EVENT — 2026-10-04 — Conditional A18 publication authorization
+
+The Human explicitly approved A18 publication once the remaining acceptances pass,
+and requested completion of those acceptances and website/app update alignment.
+Authorized targets: bounded A18 outcome retention and acceptance, existing draft PR86,
+original-package advancing update, and the website's approved distribution channel.
+The conditional grant covers the required canonical adoption and publication after
+verification; it is not evidence that either effect has happened. Main was re-resolved
+at `27b0d814c6a64bdbdf1dd12e8b1db53449d8223c`. The inspected Notion A18 work record
+retains the selected-evidence, separate-retention and physical-failure acceptance
+requirements. CE-W04/CE-W05 and cloud activation stay outside this grant. Results,
+source/index lineage and publication evidence will be appended after execution.
+
+## CONTINUITY-EVENT — 2026-10-04 — Final A18 retention and failure-path evidence
+
+- Authority: the existing Human grant for completion and conditional publication;
+  no additional effect authority inferred from passing checks.
+- Qualified APK source: `75cad68cb3733a44b5b13bcea153f2f77dfa7bda`; canonical main
+  remains `27b0d814c6a64bdbdf1dd12e8b1db53449d8223c`. Original version 33 installed
+  in place; signed advancing version 34 prepared, not installed or published.
+- Verified: real public-evidence review/send/answer and separately confirmed A17
+  retention; restart/deletion; stale selection; offline/provider error/cancellation/
+  timeout/hostile-response handling; secure conversation UI. Timeout runner receipt
+  was lost and separately reconciled from the original TestRunner log, not replayed.
+- Exactly four deterministic provider calls, no duplicate inference. Normal services
+  restored and temporary phone credential removed. Production Hope content was not
+  inspected. An earlier model answer failed quality review; the corrected answer
+  preserves uncertainty and awaits Human review.
+- Evidence: [dated final qualification](../../evidence/ce-w04-a18-local-20261003/review.md).
+  Exact-source CI passed. Shared release discovery is implemented and locally checked;
+  public promotion and advancing in-app installation are still unperformed.
+- Next gate: Human response-quality acceptance, then authorized canonical adoption,
+  immutable hosting, descriptor promotion and actual installer/receipt verification.
+  No A18/CE-W04 closure or new ARC-SES identifier is asserted.

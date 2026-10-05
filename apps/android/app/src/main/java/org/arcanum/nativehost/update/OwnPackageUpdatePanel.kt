@@ -15,17 +15,33 @@ import android.widget.TextView
 class OwnPackageUpdatePanel(context: Context) : LinearLayout(context) {
     private val appContext = context.applicationContext
     private val installer = OwnPackageInstaller(appContext)
+    private var approved: OwnPackageDistribution.Release? = null
     private var staged: OwnPackageDistribution.Staged? = null
     private val controls = mutableListOf<Button>()
-    private val status = TextView(context).apply { setTextColor(Color.LTGRAY); setTextIsSelectable(true); text = "A15 update candidate · no action run" }
-    private val manifest = EditText(context).apply { setTextColor(Color.WHITE); setSingleLine(); setText("https://updates.the-arcanum.net/updates/a14-2/manifest.json") }
-    private val apk = EditText(context).apply { setTextColor(Color.WHITE); setSingleLine(); setText("https://updates.the-arcanum.net/updates/a14-2/arcanum-ce-w04-a14-2-d2e30b2.apk") }
+    private val status = TextView(context).apply { setTextColor(Color.LTGRAY); setTextIsSelectable(true); text = "Check the approved release before downloading an update" }
+    private val manifest = EditText(context).apply { setTextColor(Color.WHITE); setSingleLine(); hint = "Approved manifest URL" }
+    private val apk = EditText(context).apply { setTextColor(Color.WHITE); setSingleLine(); hint = "Approved APK URL" }
 
     init {
         orientation = VERTICAL
-        addView(TextView(context).apply { text = "Own-package update · A15 candidate"; setTextColor(Color.WHITE); textSize = 18f })
-        addView(TextView(context).apply { text = "Inspect an exact update, review its identity, then confirm with Android. Existing version19 is a historical inspection target; it cannot advance a newer installation."; setTextColor(Color.GRAY) })
+        addView(TextView(context).apply { text = "Arcanum updates"; setTextColor(Color.WHITE); textSize = 18f })
+        addView(TextView(context).apply { text = "Check the shared release listing, verify the download, then confirm with Android. Your existing app is updated in place. Checking never installs anything."; setTextColor(Color.GRAY) })
         addView(manifest); addView(apk); addView(status)
+        button("Check for approved update") {
+            work {
+                val distribution = OwnPackageDistribution(appContext)
+                val release = distribution.approvedRelease()
+                val installed = distribution.installedIdentity()
+                approved = release; staged = null
+                post { manifest.setText(release.manifestUrl); apk.setText(release.apkUrl) }
+                when {
+                    release.versionCode > installed.versionCode -> "Update available: version ${release.versionCode}. Inspect it before requesting installation."
+                    release.versionCode == installed.versionCode && release.sha256 == installed.apkSha256 -> "You have the approved version ${installed.versionCode}."
+                    release.versionCode == installed.versionCode -> "Same version with different bytes. No update offered; reconcile the release identity."
+                    else -> "Installed version ${installed.versionCode} is newer than approved version ${release.versionCode}. No downgrade offered."
+                }
+            }
+        }
         button("Inspect and stage update") {
             val manifestUrl = manifest.text.toString()
             val apkUrl = apk.text.toString()
@@ -37,6 +53,9 @@ class OwnPackageUpdatePanel(context: Context) : LinearLayout(context) {
                         staged = null
                         val distribution = OwnPackageDistribution(appContext)
                         val candidate = distribution.inspectAndStage(manifestUrl, apkUrl)
+                        approved?.let { release ->
+                            require(manifestUrl == release.manifestUrl && apkUrl == release.apkUrl && candidate.inspection.identity.versionCode == release.versionCode && candidate.inspection.identity.apkSha256 == release.sha256) { "Release changed. Check and review it again." }
+                        }
                         val prior = distribution.installedIdentity()
                         val decision = OwnPackageUpdatePolicy.decide(prior, candidate.inspection, distribution.inspectApk(candidate.file), System.currentTimeMillis(), OwnPackageUpdatePolicy.AttemptState.NONE)
                         if (decision == OwnPackageUpdatePolicy.Decision.READY_FOR_USER_CONFIRMATION) staged = candidate

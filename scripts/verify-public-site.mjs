@@ -51,17 +51,16 @@ for (const [device, ua] of Object.entries(agents)) {
       );
     }
     if (path === "/download") {
-      assert.match(html, /Verified development candidate/);
-      assert.ok(
-        html.includes(
-          'href="https://updates.the-arcanum.net/updates/a14-2/arcanum-ce-w04-a14-2-d2e30b2.apk"',
-        ),
-        "Exact verified APK link",
-      );
-      assert.match(
-        html,
-        /33b42f0449dd04c0f76424ca9c79590366c95e0e84ee4c44b528c6d5b472be96/,
-      );
+      const listing = await fetch(new URL("/updates/release.json", origin), { redirect: "manual" });
+      assert.equal(listing.status, 200, "Release listing is directly public");
+      assert.match(listing.headers.get("cache-control"), /no-store/);
+      assert.match(listing.headers.get("cache-control"), /max-age=0/);
+      const release = await listing.json();
+      assert.match(html, /Approved development release/);
+      assert.ok(html.includes(`href="${release.apkUrl}"`), "Page APK agrees with approved listing");
+      assert.ok(html.includes(release.sha256), "Page hash agrees with approved listing");
+      assert.ok(html.includes(release.signerSha256), "Page signer agrees with approved listing");
+      assert.ok(html.includes(`href="${release.manifestUrl}"`), "Page manifest agrees with approved listing");
     }
     checks++;
   }

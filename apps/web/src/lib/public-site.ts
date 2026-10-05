@@ -224,8 +224,8 @@ export const pillars = [
 export const siteLog = {
   schema: "arcanum.public-site-log/v1",
   kind: "editorial-publication-log",
-  siteVersion: "2.0",
-  recordedOn: "2026-09-30",
+  siteVersion: "2.1",
+  recordedOn: "2026-10-04",
   sourceRepository: repository,
   editorialBase,
   authorityEffect: "none",
@@ -233,6 +233,14 @@ export const siteLog = {
   scope:
     "Public website editorial history; not a TempusAnchor, protocol receipt, or APK update manifest.",
   entries: [
+    {
+      id: "shared-release-discovery",
+      date: "2026-10-04",
+      title: "One approved release listing",
+      detail:
+        "The website and compatible Android clients read the same reviewed release listing. Checking for an update does not install it; Android confirmation is still required. The listing stays on the previously published artifact until a new release passes acceptance.",
+      state: "included-in-this-build",
+    },
     {
       id: "a14-2-download",
       date: "2026-09-30",
