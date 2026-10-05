@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-10-05T14:12:31Z",
+  "generated_at": "2026-10-05T14:28:48Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "26d03071c",
+  "commit": "7e92dfa66",
   "generator_version": "1.5",
   "files": [
     {
@@ -1501,8 +1501,8 @@
     {
       "path": "apps/web/public/updates/release.json",
       "type": "file",
-      "size_bytes": 533,
-      "last_modified_commit": "6b80d7a1e",
+      "size_bytes": 449,
+      "last_modified_commit": "7e92dfa66",
       "is_empty": false,
       "extension": ".json",
       "lines": 1
@@ -3175,11 +3175,11 @@
     {
       "path": "apps/web/src/lib/public-site.ts",
       "type": "file",
-      "size_bytes": 13687,
-      "last_modified_commit": "efa2576bf",
+      "size_bytes": 14189,
+      "last_modified_commit": "7e92dfa66",
       "is_empty": false,
       "extension": ".ts",
-      "lines": 271
+      "lines": 279
     },
     {
       "path": "apps/web/src/lib/rooms/index.ts",
@@ -4822,11 +4822,11 @@
     {
       "path": "docs/evidence/ce-w04-a18-local-20261003/review.md",
       "type": "file",
-      "size_bytes": 19736,
-      "last_modified_commit": "26d03071c",
+      "size_bytes": 22764,
+      "last_modified_commit": "7e92dfa66",
       "is_empty": false,
       "extension": ".md",
-      "lines": 286
+      "lines": 332
     },
     {
       "path": "docs/evidence/continuity-schema-adoption-20260930/review.md",
@@ -4885,11 +4885,11 @@
     {
       "path": "docs/governance/architectgpt/architect-log.md",
       "type": "file",
-      "size_bytes": 21589,
-      "last_modified_commit": "26d03071c",
+      "size_bytes": 22686,
+      "last_modified_commit": "7e92dfa66",
       "is_empty": false,
       "extension": ".md",
-      "lines": 319
+      "lines": 335
     },
     {
       "path": "docs/governance/architectgpt/architect-proposal-envelope.schema.json",
