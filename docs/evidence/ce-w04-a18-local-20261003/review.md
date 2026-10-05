@@ -330,3 +330,21 @@ Local raw receipts and the protected image remain in `.local/a18/recovery-202610
 The next release change promotes the shared descriptor to these verified version 34
 bytes. Final deployed descriptor/site readback and the phone's already-current result
 remain separate checks after promotion. This entry alone does not close CE-W04.
+
+
+## October 5 final publication reconciliation
+
+PR88 promoted the approved release descriptor at main merge
+`646e41500bc9443033aee0510c0614e1856f9a2d`. Production deployment
+`dpl_RvgQht7V7tyPFSUgFWejXcFxLc6Y` reported READY for that exact merge. Four descriptor
+reads, six immutable-byte/header checks and 25 public-site cases passed. Desktop and
+mobile browser images were visually reviewed; browser errors were empty. The phone
+reported "You have the approved version 34", and its screenshot was verified.
+The exact-source version 34 conversation UI test passed in 1.416 seconds.
+
+After restart, the existing installer operation reported TARGET_OBSERVED,
+sessionPresent=false and callbackState=VERIFIED. Explicit settlement archived that
+same receipt and removed the active attempt; no new submission occurred. The Human
+confirmed Hope Recall still returns the existing reflection, without disclosing it.
+See the [bounded closure](closure-review.md) for accepted scope, evidence coordinates,
+limits and the separate canonical closure gate. CE-W04 remains open.
