@@ -19,6 +19,9 @@ export function middleware(req: NextRequest) {
   // Exact signed update files must return directly on desktop and mobile.
   const updateFiles = [
     "/updates/release.json",
+    "/updates/a18/manifest.json",
+    "/updates/a18/arcanum-ce-w04-a18-75cad68.apk",
+    "/updates/a18/SHA256SUMS",
     new URL(release.manifestUrl).pathname,
     new URL(release.apkUrl).pathname,
     new URL(release.manifestUrl).pathname.replace("manifest.json", "SHA256SUMS"),
