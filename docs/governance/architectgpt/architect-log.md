@@ -317,3 +317,19 @@ source/index lineage and publication evidence will be appended after execution.
 - Next gate: immutable version 34 hosting, served-byte verification, approved listing
   promotion and actual advancing in-app installation/receipt reconciliation.
   A18 and CE-W04 remain open. No private Hope data or new ARC-SES allocation.
+
+
+## CONTINUITY-EVENT — 2026-10-05 — A18 hosted and original app updated
+
+- Immutable hosting adopted through PR87 merge `c552cb5c30580bdbb1366f66e4be95713511961c`;
+  production READY, six direct byte/header comparisons and 25 site checks passed.
+- Actual app-originated version 33→34 update used one Android session. The Human
+  completed the Play Protect choice without scanning; no Google scan is asserted.
+- Original operation `c29fa916-1de3-471c-ba37-ee4b3df74f50` records VERIFIED, with
+  success callback and independent installed APK hash matching the qualified target.
+  No uninstall, data clearing, ADB installation or repeat submission occurred.
+- Qualified source and canonical adoption identities remain separate from hosting
+  and installed state; see the [dated evidence](../../evidence/ce-w04-a18-local-20261003/review.md).
+- Next: promote and independently verify the shared version 34 release descriptor,
+  then reconcile A18 closure. CE-W04, cloud activation and A19/A20 implementation
+  are not closed or authorized by this event. No new ARC-SES identifier is allocated.

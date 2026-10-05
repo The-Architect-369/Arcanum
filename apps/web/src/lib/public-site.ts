@@ -224,8 +224,8 @@ export const pillars = [
 export const siteLog = {
   schema: "arcanum.public-site-log/v1",
   kind: "editorial-publication-log",
-  siteVersion: "2.1",
-  recordedOn: "2026-10-04",
+  siteVersion: "2.2",
+  recordedOn: "2026-10-05",
   sourceRepository: repository,
   editorialBase,
   authorityEffect: "none",
@@ -233,6 +233,14 @@ export const siteLog = {
   scope:
     "Public website editorial history; not a TempusAnchor, protocol receipt, or APK update manifest.",
   entries: [
+    {
+      id: "a18-reviewed-conversation-release",
+      date: "2026-10-05",
+      title: "Architect conversation and reviewed memory",
+      detail:
+        "The approved Android development release is version 34. Architect supports a reviewed request to a configured home-local model and a separate choice to save an answer into development memory. The original app updates in place through Android confirmation; local-model setup is still required.",
+      state: "included-in-this-build",
+    },
     {
       id: "shared-release-discovery",
       date: "2026-10-04",

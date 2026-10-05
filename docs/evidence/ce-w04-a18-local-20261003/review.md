@@ -284,3 +284,49 @@ The immutable `/updates/a18/` publication candidate binds these separate identit
 The shared approved-release listing remains version 25 during initial hosting.
 Hosted bytes, the actual advancing app-installer update, descriptor promotion and
 final release reconciliation remain pending; this entry does not close A18 or CE-W04.
+
+
+## October 5 immutable hosting and actual advancing installer verification
+
+[PR87](https://github.com/The-Architect-369/Arcanum/pull/87), candidate
+`1e0ad4d897dd01d2db4486bd172afbd83dbdf92b`, passed all ten returned PR check rows
+and was normally merged at `c552cb5c30580bdbb1366f66e4be95713511961c` at 14:20:17 UTC.
+Vercel production deployment `dpl_7baXEiyLq41gBRXW7TUgUodhpnwj` reported READY for
+that merge. Six direct HTTP checks independently matched the immutable manifest,
+APK and checksums for desktop and Android, with no redirects and no-store/max-age=0
+headers. All 25 public-site route/log/gate cases passed. Hosted version 34 remains
+build source `75cad68cb3733a44b5b13bcea153f2f77dfa7bda`; its manifest's canonical
+adoption reference remains PR86 merge `f48229ef7668060ac6a36aeb9cabd9e6e722631c`.
+
+Before the update, discovery correctly reported installed version 33 newer than
+approved version 25 and offered no downgrade. A fresh updater view inspected the
+immutable version 34 URLs and returned READY_FOR_USER_CONFIRMATION, the expected
+APK hash and publisher, and manifest SHA-256
+`873b6c764137b756422752bb1cfbffe6208b55524f0feef76d40b89662f5566a`.
+A single app-originated submission created operation
+`c29fa916-1de3-471c-ba37-ee4b3df74f50`, Android session `983697440`.
+Android's Update confirmation reached a Play Protect scan choice. The interim
+package read still showed version 33; its target assertion failed while the same
+session awaited the Human. No retry was made. The Human then reported choosing
+installation without scanning. This does not claim a Google scan or security verdict.
+
+At 14:27:00 UTC, independent installed-byte readback showed original package
+`org.arcanum.nativehost` version 34, SHA-256
+`7113e51f1b12e3c8d40848e1219537b4d757790222629cceb4522375540467f4`.
+Android names the original app as installer, its original first-install date is
+unchanged, and the same operation journal records VERIFIED: Android success callback
+plus independently verified target bytes. The publisher remains
+`9841fbeda4d7d0c63b1663360fb0415218a08f063b5629317274076dfbb6b844`.
+No ADB installation, uninstall, data clearing, private reflection read or repeated
+submission was used for this advancing update. The Human used Hope Recall after
+version 34 and confirmed: "Yes, my reflection is available." Its contents remain private.
+
+The blank version 33 conversation window was independently checked with FLAG_SECURE
+(`0x1802002`, including bit `0x2000`), and the captured image showed black app content.
+A first observer checked a literal flag label that dumpsys did not emit; correcting
+the numeric flag interpretation resolved that observer error before capture.
+Local raw receipts and the protected image remain in `.local/a18/recovery-20261005/`.
+
+The next release change promotes the shared descriptor to these verified version 34
+bytes. Final deployed descriptor/site readback and the phone's already-current result
+remain separate checks after promotion. This entry alone does not close CE-W04.
