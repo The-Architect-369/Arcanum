@@ -333,3 +333,20 @@ source/index lineage and publication evidence will be appended after execution.
 - Next: promote and independently verify the shared version 34 release descriptor,
   then reconcile A18 closure. CE-W04, cloud activation and A19/A20 implementation
   are not closed or authorized by this event. No new ARC-SES identifier is allocated.
+
+
+## CONTINUITY-EVENT — 2026-10-05 — A18 release verified and bounded closure
+
+- PR88 release promotion: `646e41500bc9443033aee0510c0614e1856f9a2d`;
+  production `dpl_RvgQht7V7tyPFSUgFWejXcFxLc6Y` READY at that exact source.
+- Both public domains/device classes serve the reviewed version 34 listing; immutable
+  bytes, all 25 website cases and desktop/mobile visual checks passed. The phone
+  reports the installed version is approved; its confirmation image was reviewed.
+- Original update receipt reconciled and archived without replay. Post-update
+  conversation UI passed; the Human confirmed existing Hope Recall content survives.
+- [Bounded closure](../../evidence/ce-w04-a18-local-20261003/closure-review.md) takes
+  canonical effect upon this record's verified adoption. Historical pending entries
+  remain preserved; no new ARC-SES identifier is invented.
+- Next implementation arc remains A19 under its own scope. A19/A20 read-only research
+  grants, geometry direction, native source corpus, Equinox and responsible Vitae
+  remain distinct from implementation permission. CE-W04 stays open.
