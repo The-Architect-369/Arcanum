@@ -154,3 +154,25 @@ Recovery: regenerate disposable views from the reviewed seed. Close an unaccepte
 candidate; after adoption use an additive revert if needed. Never rewrite certified
 history. Future provider projections and startup integration require separate
 bounded work; no current provider dashboard is changed by this implementation.
+
+
+## October 7 operational baseline follow-on
+
+At 09:02Z, the earlier projection candidate has been adopted through PR90 at main
+`f839027a3c82197d0087e0a530126f67b884618a`. The Human then requested merge, cleanup,
+archival and capability verification across Ubuntu, Termux, GitHub, Notion and Drive.
+This bounded follow-on records environment observations and their limitations; it
+adds no A19 implementation, private Hope model access or Agent C dispatch authority.
+The earlier candidate gate above remains its original historical grant.
+
+Fresh Notion readback confirms the dashboard supersession notice, the historical
+handoff notice and A19 Ready state. The older A18 predecessor block is cleared;
+September 20 acceptance criteria remain intact. Old profile observations retain
+their original bytes through pinned PR90 provenance and are superseded only for
+canonical base, implementation gate and source conflicts. No closed event is edited.
+
+See the [dated operational report](../../evidence/operational-baseline-20261007/review.md)
+and [capability register](operational-capabilities.md) for actual tests, archival
+receipts and retained exceptions. This is a new reviewed observation, not a live
+provider refresh performed by the generator. The observed main above is the starting
+baseline for this follow-on, not a claim about every future main head.

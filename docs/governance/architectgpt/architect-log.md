@@ -352,3 +352,19 @@ source/index lineage and publication evidence will be appended after execution.
 - Next implementation arc remains A19 under its own scope. A19/A20 read-only research
   grants, geometry direction, native source corpus, Equinox and responsible Vitae
   remain distinct from implementation permission. CE-W04 stays open.
+
+
+## CONTINUITY-EVENT — 2026-10-07 — Projection adopted and environment baseline reconciled
+
+- Human-reviewed current-state candidate adopted through PR90 normal merge
+  `f839027a3c82197d0087e0a530126f67b884618a`; certified source/index lineage retained.
+- Human requested environment baseline, cleanup, archival and a capability register.
+  Ubuntu and Termux access, cellular SSH/network ADB, installed APK identity,
+  configured local inference and provider edits were tested within stated limits.
+- Superseded handoffs and installers archived with preservation checks; unique work,
+  active runtime dependencies, historical stash and an older managed checkout retained.
+- [Operational report](../../evidence/operational-baseline-20261007/review.md) records
+  passing and failing probes separately, including the empty advisory-alias answer.
+- Notion A19 is Ready after stale predecessor reconciliation. A18 remains closed,
+  CE-W04 open; A19/A20 baselines and proposed extensions remain distinct.
+  No Agent C launch, Hope disclosure, new install or ARC-SES allocation.

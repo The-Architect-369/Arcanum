@@ -211,6 +211,9 @@ step 9 "Provider health"
 jq empty docs/governance/architectgpt/provider-health.schema.json
 python3 -m py_compile scripts/architect/provider-health.py
 bash scripts/architect/test-provider-health.sh
+python3 scripts/architect/generate-operational-capabilities.py --check
+python3 scripts/architect/test-operational-capabilities.py
+bash -n scripts/dev/with-local-toolchain.sh
 ok "provider-health evidence is manifest-bound and drift-sensitive"
 
 step 10 "TypeScript AST integrity"

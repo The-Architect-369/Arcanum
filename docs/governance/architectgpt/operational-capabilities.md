@@ -1,0 +1,34 @@
+# Operational capabilities
+
+Snapshot: **2026-10-07T09:02:00Z**. Observed starting main: `f839027a3c82197d0087e0a530126f67b884618a`.
+
+This register answers what was tested and where it stopped. It is a reviewed,
+dated observation set, not live health, an action registry or a permission grant.
+A passed result applies only to its stated probe. Untested is not a failure.
+Refresh required evidence before relying on a connection or changing state.
+No private Hope data is included. Prior results remain in dated evidence and Git.
+
+Use alongside the [current-state view](current-state.md), which explains project
+status, source precedence and proposed extensions. See the
+[baseline and archive report](../../evidence/operational-baseline-20261007/review.md)
+for environment setup, retained exceptions and preservation evidence.
+
+| Surface / capability | Result | What was observed | Limits | Before relying on it | Observation / evidence |
+| --- | --- | --- | --- | --- | --- |
+| Ubuntu local model / advisory-alias-probe | failed | A separate direct advisory-alias probe completed but returned an empty answer. | Different model alias and request settings from the passing configured gateway. Cause not isolated; do not treat this as a general model outage. | Use the configured application path; diagnose the separate alias only if it is needed. | 2026-10-07 / [record](../../../docs/evidence/operational-baseline-20261007/review.md) |
+| Agent C / agent-c-readiness | untested | Destination, reachability, Memory-off and schedules remain unverified. | Existing research grants do not prove current readiness. No launch performed. | Resolve the exact private agent and verify settings before an individually authorized bounded question. | 2026-10-07 / [record](../../../docs/evidence/operational-baseline-20261007/review.md) |
+| Termux / Android / cellular-transport | passed | Private SSH and explicitly selected network ADB returned sentinels with Wi-Fi disabled and LTE reported; Wi-Fi restored. | USB remained attached as a fallback. Reboot, detached USB and long-idle recovery were not retested. | Read current transport state and probe the intended SSH/network-ADB path; preserve a recovery route for network changes. | 2026-10-07 / [record](../../../docs/evidence/operational-baseline-20261007/review.md) |
+| Ubuntu / phone tunnel / configured-local-gateway | passed | Authenticated configured gateway returned BASELINE&#95;OK and recorded response&#95;observed. | Host-to-gateway test; a fresh on-device UI round trip was not exercised. No Hope/private context and no zero-retention certification. | Confirm the authorized local profile and use public synthetic input for a narrowly scoped liveness probe. | 2026-10-07 / [record](../../../docs/evidence/operational-baseline-20261007/review.md) |
+| Google Drive / drive-archival | passed | Two named handoffs archived with stable IDs, original visibility and parent readback. | No global Drive cleanup or sharing changes. | Read metadata and exact parents; preserve private/shared custody when selecting a destination. | 2026-10-07 / [record](../../../docs/evidence/operational-baseline-20261007/review.md) |
+| GitHub / github-collaboration | passed | Authenticated Git/PR workflow completed PR90 with exact-head green checks and normal merge. | Saved checks apply only to the tested head; no future merge permission is created. | Resolve current main, branch, authorization and exact-head check results. | 2026-10-07 / [record](../../../docs/evidence/operational-baseline-20261007/review.md) |
+| Hope / hope-model-access | untested | Private Hope model access is a proposed extension, outside the current A19 baseline. | No implementation or permission is inferred from local inference success. | Obtain the bounded Human scope decision and preserve participant custody before implementation. | 2026-10-07 / [record](../../../docs/evidence/operational-baseline-20261007/review.md) |
+| Android / native-install-identity | passed | Installed version 34 APK digest matches the qualified A18 artifact. | No reinstall or fresh functional UI acceptance in this run. | Compare installed identity to the qualified release before proposing any update; reconcile existing receipts first. | 2026-10-07 / [record](../../../docs/evidence/operational-baseline-20261007/review.md) |
+| Notion / notion-reconciliation | passed | Targeted dashboard/handoff edits and A19 Ready reconciliation succeeded and were read back. | Source provider remains non-canonical; historical content is preserved. Research/extension approval is not implementation completion. | Fetch the exact page and current schema before a bounded edit; preserve history and native references. | 2026-10-07 / [record](../../../docs/evidence/operational-baseline-20261007/review.md) |
+| Ubuntu / Android / recovery-after-reboot | untested | No reboot or long-idle recovery test was performed in this baseline. | Earlier evidence is historical and does not become a new test. | Plan a bounded recovery test with a working independent recovery path. | 2026-10-07 / [record](../../../docs/evidence/operational-baseline-20261007/review.md) |
+| Termux / termux-checkout | passed | Canonical main at the observed PR90 merge; frozen install, 15 sync gates, lint and typecheck passed. | No Android production web build or on-phone Rust suite in this run. | Use the canonical checkout; fetch and confirm clean fast-forward eligibility before sync. | 2026-10-07 / [record](../../../docs/evidence/operational-baseline-20261007/review.md) |
+| Ubuntu / ubuntu-execution | passed | Workspace commands and Rust tests work; Node 24.21.0, pnpm 9.10.0 and ADB are selected by the explicit local-toolchain wrapper. | System Node remains 22; nonlogin PATH alone is insufficient. Local ignored toolchain must exist or equivalent Node 24 must be provided. | Resolve the intended checkout/ref and run the wrapper version checks. | 2026-10-07 / [record](../../../docs/evidence/operational-baseline-20261007/review.md) |
+
+Source: `operational-capabilities.json`. Regenerate with
+`python3 scripts/architect/generate-operational-capabilities.py`; `--check` compares
+without writing. Generation performs no network reads or capability tests, and
+cannot certify the truth or consent behind a manually reviewed observation.
