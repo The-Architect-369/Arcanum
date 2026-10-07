@@ -8,6 +8,7 @@ const links = [
   ["/explore", "Explore"],
   ["/principles", "Principles"],
   ["/updates", "Journal"],
+  ["/journeys", "Journeys"],
   ["/download", "Get Arcanum"],
 ];
 export default function PublicNav() {
@@ -18,7 +19,7 @@ export default function PublicNav() {
       <div className="public-shell public-nav">
         <Link
           className="public-brand"
-          href="/"
+          href="https://the-arcanum.net/"
           onClick={() => setOpen(false)}
           aria-label="Arcanum home"
         >

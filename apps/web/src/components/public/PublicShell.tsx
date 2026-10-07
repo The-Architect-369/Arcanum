@@ -15,9 +15,9 @@ export function PublicShell({ children }: { children: React.ReactNode }) {
       <footer className="public-footer">
         <div className="public-shell public-footer-grid">
           <div>
-            <Link href="/" className="public-wordmark">
+            <a href="https://the-arcanum.net/" className="public-wordmark">
               ARCANUM
-            </Link>
+            </a>
             <p>
               A Human Journey.
               <br />A network taking shape.
@@ -39,6 +39,11 @@ export function PublicShell({ children }: { children: React.ReactNode }) {
             <a href="/site-log.json">Machine-readable site log ↗</a>
             <a href={repository}>Repository ↗</a>
             <Link href="/download">Android release status</Link>
+            <a href="https://updates.the-arcanum.net/">Updates channel ↗</a>
+            <a href="https://journeys.the-arcanum.net/">The Great Journey ↗</a>
+            <a href="https://architect.the-arcanum.net/">
+              Development dashboard ↗
+            </a>
           </div>
         </div>
         <div className="public-shell public-footer-bottom">
