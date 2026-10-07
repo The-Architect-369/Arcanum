@@ -234,6 +234,11 @@ export function setManaBalance(value: number) {
   setState({ mana: value });
 }
 
+// The transitional web counter cannot debit an observed chain balance.
+export function canUseLocalSpendPreview() {
+  return !state.chainAddress && !state.lastSyncedAt && state.settlementStatus === "unbound";
+}
+
 export function spendMana(
   amount: number,
   options: {
@@ -243,6 +248,8 @@ export function spendMana(
     recipient?: string;
   } = {}
 ) {
+  if (!canUseLocalSpendPreview()) return false;
+
   const intentResult = createWalletSpendIntent({
     amount,
     denom: options.denom,
@@ -253,20 +260,21 @@ export function spendMana(
 
   if (!intentResult.ok) return false;
 
-  const walletContext = createWalletContext(state, { denom: intentResult.intent.denom });
+  const walletContext = createWalletContext(state);
   const guard = validateSpendIntentAgainstWallet(walletContext, intentResult.intent);
   if (!guard.ok) return false;
 
   setState({ mana: state.mana - guard.amount });
   void addReceipt({
     kind: "wallet_spend",
-    title: "Local MANA spend confirmed",
-    summary: `${guard.amount} ${intentResult.intent.denom} · ${intentResult.intent.purpose}`,
+    title: "Local utility preview recorded",
+    summary: `${guard.amount} ${intentResult.intent.denom} preview units · ${intentResult.intent.purpose}. No MANA transaction was submitted.`,
     amount: guard.amount,
-    status: "confirmed",
+    status: "info",
     metadata: {
       intent: intentResult.intent,
       source: "local_scaffold",
+      settlement: "not_submitted",
       meaning: null,
     },
   });
@@ -274,8 +282,9 @@ export function spendMana(
 }
 
 export function creditMana(amount: number) {
-  const safeAmount = Math.max(0, Math.floor(Number.isFinite(amount) ? amount : 0));
-  if (safeAmount <= 0) return state.mana;
+  if (!canUseLocalSpendPreview()) return state.mana;
+  const safeAmount = amount;
+  if (!Number.isSafeInteger(safeAmount) || safeAmount <= 0 || !Number.isSafeInteger(state.mana + safeAmount)) return state.mana;
   setState({ mana: state.mana + safeAmount });
   return state.mana;
 }

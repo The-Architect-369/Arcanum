@@ -9,7 +9,7 @@ import { listPublicRooms, createGroup } from '@/lib/matrix';
 import { useAccount } from '@/state/useAccount';
 import CTAActivate from '@/components/shared/CTAActivate';
 import { COST, canCreateGrp } from '@/lib/gates';
-import { trySpendMana } from '@/lib/economy';
+import { trySpendMana } from '@/lib/economy/economy';
 
 const ORDER = ['/text/contacts', '/text/messages', '/text/groups'] as const;
 
@@ -48,7 +48,7 @@ export default function TextGroupsPage() {
     }
     if (!name.trim()) return setMsg('Enter a group name.');
 
-    if (!trySpendMana(COST.CREATE_GROUP)) return setMsg('Could not deduct MANA.');
+    if (!trySpendMana(COST.CREATE_GROUP, 'Group creation preview')) return setMsg('Local utility preview unavailable; no MANA payment was made.');
     try {
       const roomId = await createGroup({ name: name.trim() });
       setMsg(`Group created: ${roomId}. (Invites & private join coming next)`);

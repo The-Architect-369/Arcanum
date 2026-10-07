@@ -2,7 +2,7 @@
 title: "Vitae"
 status: canonical
 visibility: public
-last_updated: 2026-09-04
+last_updated: 2026-10-07
 description: "Vitae is Arcanum’s recognition layer for becoming: authority, constitution, curriculum, and mastery paths."
 ---
 
@@ -27,7 +27,7 @@ Status is determined per file, not by folder placement or by legacy body languag
 
 ## Start here
 
-- **Authority (core framing):** `authority.md`
+- **Authority (core framing):** [Vitae authority](../doctrine/authority.md)
 - **Vitae Constitution and design sources (mixed status; read each file's frontmatter):** `constitution/`
 - **Curriculum (grades, content, mastery paths):** `curriculum/`
 
@@ -35,7 +35,7 @@ Status is determined per file, not by folder placement or by legacy body languag
 
 ## Authority
 
-- `authority.md` — the authority model of Vitae: recognition follows stabilization; silence is valid; responsibility without worth.
+- [Vitae authority](../doctrine/authority.md) — recognition follows stabilization; silence is valid; responsibility without worth.
 
 ---
 
@@ -60,9 +60,11 @@ This folder contains constitutional, design, audit, and template material with *
 
 Folder: `curriculum/`
 
-**Curriculum entrypoints:**
-- `curriculum/overview.md`
-- `curriculum/index.md`
+Use the curriculum map below. The previously listed `curriculum/overview.md` and
+`curriculum/index.md` do not exist in the current tree. The
+[participant journey proposal](../architecture/participant-journey-proposal.md)
+records the October 7 metadata inventory, selected reconciliation and open decisions;
+it grants no curriculum or runtime authority.
 
 ---
 
@@ -91,7 +93,8 @@ Folder: `curriculum/elementary-school/`
   - `content/` (class → chapter → kernel sets)
   - `implement/` (constraint bundles, mappings, invariants, state machine)
 
-> In the tree snapshot, Grade I content explicitly shows **class-01 to class-10**, with early classes expanded into **chapter-01 … chapter-07** kernel sets (e.g., “moon-in-…”, “mars-in-…”, etc.).:contentReference[oaicite:2]{index=2}
+> The October 7 tree has 24 Markdown content files under Classes 01–03. The earlier
+> navigation claim that Classes 01–10 were present is not supported by this tree.
 
 **Grade II — The Seeker**
 - `elementary-school/grade-ii-the-seeker/`
@@ -191,4 +194,4 @@ Individual specialization folders (each structured as `canon/` + `implement/`):
 ## Related docs (outside Vitae)
 
 - Vitae module spec (implementation-facing): `../specs/modules/vitae.md`
-- Canonical module definition (system-wide): `../governance/constitution/canonical-modules.md`
+- Canonical module definition (system-wide): [Canonical modules](../architecture/canonical-modules.md)

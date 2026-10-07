@@ -1,7 +1,7 @@
 {
-  "as_of": "2026-10-07T09:02:00Z",
+  "as_of": "2026-10-07T09:57:13Z",
   "authority": "derived-non-authoritative",
-  "base_ref": "f839027a3c82197d0087e0a530126f67b884618a",
+  "base_ref": "a07cebf7e0941a52be8961c349522488cf87b9a3",
   "coverage": "bounded-seed-only",
   "fields": {
     "a19_baseline": {
@@ -30,30 +30,35 @@
     },
     "agent_c_state": {
       "all_claim_ids": [
-        "coherence:agent_c_state"
+        "coherence:agent_c_state",
+        "coherence:agent_c_state:20261007-connection-check"
       ],
       "coverage": "covered",
       "selected_object_ids": [
-        "coherence:agent_c_state"
+        "coherence:agent_c_state:20261007-connection-check"
       ],
       "status": "supported",
-      "superseded_object_ids": [],
-      "value": "Bounded WS-RQ-009 research was recovered as approved_active; existing Agent C destination, reachability, Memory-off setting and schedules remain unverified. No run was launched in the reconciliation."
+      "superseded_object_ids": [
+        "coherence:agent_c_state"
+      ],
+      "value": "Existing WS-AGENT-C is Research Observatory. Fresh Notion readback confirms WS-RQ-003 approved_active for the unchanged geometry-versus-conventional view question; no repeat approval is needed. WS-RQ-009 separately covers an Equinox source study. Human requested a remote research/build/result-review loop. Browser inspection failed before discovery with a local-file-URI tool error; exact destination, reachability, Memory-off and schedules remain unverified. No agent run, prototype or participant study occurred."
     },
     "canonical_base": {
       "all_claim_ids": [
         "coherence:canonical_base",
+        "coherence:canonical_base:20261007-architecture-review",
         "coherence:canonical_base:20261007-baseline"
       ],
       "coverage": "covered",
       "selected_object_ids": [
-        "coherence:canonical_base:20261007-baseline"
+        "coherence:canonical_base:20261007-architecture-review"
       ],
       "status": "supported",
       "superseded_object_ids": [
-        "coherence:canonical_base"
+        "coherence:canonical_base",
+        "coherence:canonical_base:20261007-baseline"
       ],
-      "value": "The-Architect-369/Arcanum main@f839027a3c82197d0087e0a530126f67b884618a (observed starting base; PR90 adopted the reviewed current-state view)."
+      "value": "The-Architect-369/Arcanum main@a07cebf7e0941a52be8961c349522488cf87b9a3 (observed canonical baseline). PR92 is a separate architecture/projection review candidate, not a merged baseline."
     },
     "completed_arc": {
       "all_claim_ids": [
@@ -133,17 +138,21 @@
     "implementation_gate": {
       "all_claim_ids": [
         "coherence:implementation_gate",
-        "coherence:implementation_gate:20261007-baseline"
+        "coherence:implementation_gate:20261007-architecture-review",
+        "coherence:implementation_gate:20261007-baseline",
+        "coherence:implementation_gate:20261007-research-loop"
       ],
       "coverage": "covered",
       "selected_object_ids": [
-        "coherence:implementation_gate:20261007-baseline"
+        "coherence:implementation_gate:20261007-research-loop"
       ],
       "status": "supported",
       "superseded_object_ids": [
-        "coherence:implementation_gate"
+        "coherence:implementation_gate",
+        "coherence:implementation_gate:20261007-architecture-review",
+        "coherence:implementation_gate:20261007-baseline"
       ],
-      "value": "PR90 projection adopted. Human requested bounded environment baseline, archival, capability verification and registry reconciliation across Ubuntu, Termux, GitHub, Notion and Drive. A19 implementation, extension ratification, Agent C dispatch and new release effects remain separate."
+      "value": "Human authorized automated evidence-grounded question preparation and execution of already approved questions for Human review, with refresh during active work and daily. Thread heartbeat arcanum-research-review-loop is ACTIVE for 9 a.m. daily (America/New_York intended). WS-RQ-003 approval stands; verify Agent C connection/settings and reconcile run history before dispatch. New questions remain pending review. No research run, simulation result, policy activation, merge or deployment is established."
     },
     "next_arc": {
       "all_claim_ids": [
@@ -159,15 +168,18 @@
     },
     "outstanding_human_decisions": {
       "all_claim_ids": [
-        "coherence:outstanding_human_decisions"
+        "coherence:outstanding_human_decisions",
+        "coherence:outstanding_human_decisions:20261007-architecture-review"
       ],
       "coverage": "covered",
       "selected_object_ids": [
-        "coherence:outstanding_human_decisions"
+        "coherence:outstanding_human_decisions:20261007-architecture-review"
       ],
       "status": "supported",
-      "superseded_object_ids": [],
-      "value": "Decide whether Hope linked-addition/archival/model access and broader spatial-semantic behavior amend A19/A20 or follow separately. No fresh approval is needed for the already approved projection candidate."
+      "superseded_object_ids": [
+        "coherence:outstanding_human_decisions"
+      ],
+      "value": "Resolve economic mechanisms and candidate parameters through simulation/risk review/ratification; scoped appointment/signing, group trials, peer/community adoption and appeal rules; Grade X/post-Grade-X threshold, recognition evidence and specialization catalog; geometry hypotheses, comparators and acceptance criteria with Agent C readiness unverified; factual Tempus chronology, policy epochs and optional community narrative. Retain the earlier decision whether Hope/model and broader spatial-semantic extensions amend A19/A20 or follow separately. Open private creation, consenting trials and broader reviewed Adept responsibility are recorded Human directions, not remaining preference questions. Incorporate the requested bounded remote Agent C research/build/result-review loop; verify connection and round-trip behavior before claiming it works."
     },
     "source_conflicts": {
       "all_claim_ids": [
@@ -870,6 +882,99 @@
     },
     {
       "authority": {
+        "authority_class": "operational-record",
+        "authority_refs": [
+          "docs/governance/architectgpt/current-state-profile.md"
+        ],
+        "effect_state": {
+          "authorized_for_effect": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "canonicalized": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "executed": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "proposed": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "ratified": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "verified": {
+            "evidence_refs": [],
+            "state": "unknown"
+          }
+        }
+      },
+      "claim_class": "report",
+      "custody": {
+        "disclosure": "public-candidate",
+        "do_not_export": false,
+        "encryption_required": false,
+        "materialization": "metadata-only",
+        "replication": "none",
+        "retention_authority_ref": "docs/governance/architectgpt/current-state-profile.md",
+        "retention_authorized": true
+      },
+      "namespace": "architect.public-coherence",
+      "object_id": "coherence:agent_c_state:20261007-connection-check",
+      "object_type": "evidence",
+      "payload": {
+        "evidence_id": "coherence:agent_c_state:20261007-connection-check",
+        "limitations": [
+          "Provider records were read; agent settings and the actual remote launch/return path were not verified.",
+          "A tool connection failure does not establish agent unavailability."
+        ],
+        "summary": "Existing WS-AGENT-C is Research Observatory. Fresh Notion readback confirms WS-RQ-003 approved_active for the unchanged geometry-versus-conventional view question; no repeat approval is needed. WS-RQ-009 separately covers an Equinox source study. Human requested a remote research/build/result-review loop. Browser inspection failed before discovery with a local-file-URI tool error; exact destination, reachability, Memory-off and schedules remain unverified. No agent run, prototype or participant study occurred.",
+        "supports": [
+          "agent_c_state"
+        ]
+      },
+      "provenance": [
+        {
+          "captured_at": "2026-10-07T09:51:09Z",
+          "content_digest_sha256": "8f207c6ad4cc64b958c704db3694994547f65ce13f34e648b0ee79e43e644adb",
+          "evidence_class": "report",
+          "source_kind": "local",
+          "source_ref": "docs/governance/architectgpt/current-state-profile.md#october-7-pre-a19-architecture-and-decision-reconciliation",
+          "source_revision": "59e77fee875cd6fa870fa388cbf5ca55280e4ff9"
+        }
+      ],
+      "record_type": "continuity-object",
+      "relationships": [
+        {
+          "basis_ref": "docs/governance/architectgpt/current-state-profile.md#october-7-pre-a19-architecture-and-decision-reconciliation",
+          "target_object_id": "coherence:agent_c_state",
+          "type": "supersedes"
+        }
+      ],
+      "schema": "arcanum.node.continuity-object/v1",
+      "subject_id": "state:agent_c_state",
+      "temporal": {
+        "effective_from": null,
+        "effective_until": null,
+        "observed_at": "2026-10-07T09:51:09Z",
+        "occurred_at": null,
+        "recorded_at": "2026-10-07T09:51:09Z",
+        "sequence": {
+          "arc_id": null,
+          "era": "Construction Era",
+          "ordinal": null,
+          "wave": "CE-W04"
+        },
+        "tempus_anchor_ref": null
+      },
+      "version": 1
+    },
+    {
+      "authority": {
         "authority_class": "derived",
         "authority_refs": [
           "docs/governance/architectgpt/current-state-profile.md"
@@ -957,6 +1062,99 @@
     },
     {
       "authority": {
+        "authority_class": "operational-record",
+        "authority_refs": [
+          "docs/governance/architectgpt/current-state-profile.md"
+        ],
+        "effect_state": {
+          "authorized_for_effect": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "canonicalized": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "executed": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "proposed": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "ratified": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "verified": {
+            "evidence_refs": [],
+            "state": "unknown"
+          }
+        }
+      },
+      "claim_class": "report",
+      "custody": {
+        "disclosure": "public-candidate",
+        "do_not_export": false,
+        "encryption_required": false,
+        "materialization": "metadata-only",
+        "replication": "none",
+        "retention_authority_ref": "docs/governance/architectgpt/current-state-profile.md",
+        "retention_authorized": true
+      },
+      "namespace": "architect.public-coherence",
+      "object_id": "coherence:canonical_base:20261007-architecture-review",
+      "object_type": "evidence",
+      "payload": {
+        "evidence_id": "coherence:canonical_base:20261007-architecture-review",
+        "limitations": [
+          "Dated current-chat report; source profile records provenance and exact-head verification limits.",
+          "Human review of a plan does not ratify numerical policy or prove simulation, agent readiness or merge."
+        ],
+        "summary": "The-Architect-369/Arcanum main@a07cebf7e0941a52be8961c349522488cf87b9a3 (observed canonical baseline). PR92 is a separate architecture/projection review candidate, not a merged baseline.",
+        "supports": [
+          "canonical_base"
+        ]
+      },
+      "provenance": [
+        {
+          "captured_at": "2026-10-07T09:46:50Z",
+          "content_digest_sha256": "8f207c6ad4cc64b958c704db3694994547f65ce13f34e648b0ee79e43e644adb",
+          "evidence_class": "report",
+          "source_kind": "local",
+          "source_ref": "docs/governance/architectgpt/current-state-profile.md#october-7-pre-a19-architecture-and-decision-reconciliation",
+          "source_revision": "59e77fee875cd6fa870fa388cbf5ca55280e4ff9"
+        }
+      ],
+      "record_type": "continuity-object",
+      "relationships": [
+        {
+          "basis_ref": "docs/governance/architectgpt/current-state-profile.md#october-7-pre-a19-architecture-and-decision-reconciliation",
+          "target_object_id": "coherence:canonical_base:20261007-baseline",
+          "type": "supersedes"
+        }
+      ],
+      "schema": "arcanum.node.continuity-object/v1",
+      "subject_id": "state:canonical_base",
+      "temporal": {
+        "effective_from": null,
+        "effective_until": null,
+        "observed_at": "2026-10-07T09:46:50Z",
+        "occurred_at": null,
+        "recorded_at": "2026-10-07T09:46:50Z",
+        "sequence": {
+          "arc_id": null,
+          "era": "Construction Era",
+          "ordinal": null,
+          "wave": "CE-W04"
+        },
+        "tempus_anchor_ref": null
+      },
+      "version": 1
+    },
+    {
+      "authority": {
         "authority_class": "derived",
         "authority_refs": [
           "docs/governance/architectgpt/current-state-profile.md"
@@ -1019,7 +1217,7 @@
           "evidence_class": "report",
           "source_kind": "local",
           "source_ref": "docs/governance/architectgpt/current-state-profile.md#october-7-operational-baseline-follow-on",
-          "source_revision": null
+          "source_revision": "7b204e6f52051f498c474b6694c6d7e9c33cbc52"
         }
       ],
       "record_type": "continuity-object",
@@ -1716,6 +1914,99 @@
         "retention_authorized": true
       },
       "namespace": "architect.public-coherence",
+      "object_id": "coherence:implementation_gate:20261007-architecture-review",
+      "object_type": "evidence",
+      "payload": {
+        "evidence_id": "coherence:implementation_gate:20261007-architecture-review",
+        "limitations": [
+          "Dated current-chat report; source profile records provenance and exact-head verification limits.",
+          "Human review of a plan does not ratify numerical policy or prove simulation, agent readiness or merge."
+        ],
+        "summary": "Human reviewed the architecture/journey/validation plan favorably and requested the outstanding decisions in the derived current-state view and Notion. Complete that bounded reconciliation candidate; A19 remains next after this planning. No new merge, deployment, permission/economic activation or Agent C run is established.",
+        "supports": [
+          "implementation_gate"
+        ]
+      },
+      "provenance": [
+        {
+          "captured_at": "2026-10-07T09:46:50Z",
+          "content_digest_sha256": "8f207c6ad4cc64b958c704db3694994547f65ce13f34e648b0ee79e43e644adb",
+          "evidence_class": "report",
+          "source_kind": "local",
+          "source_ref": "docs/governance/architectgpt/current-state-profile.md#october-7-pre-a19-architecture-and-decision-reconciliation",
+          "source_revision": "59e77fee875cd6fa870fa388cbf5ca55280e4ff9"
+        }
+      ],
+      "record_type": "continuity-object",
+      "relationships": [
+        {
+          "basis_ref": "docs/governance/architectgpt/current-state-profile.md#october-7-pre-a19-architecture-and-decision-reconciliation",
+          "target_object_id": "coherence:implementation_gate:20261007-baseline",
+          "type": "supersedes"
+        }
+      ],
+      "schema": "arcanum.node.continuity-object/v1",
+      "subject_id": "state:implementation_gate",
+      "temporal": {
+        "effective_from": null,
+        "effective_until": null,
+        "observed_at": "2026-10-07T09:46:50Z",
+        "occurred_at": null,
+        "recorded_at": "2026-10-07T09:46:50Z",
+        "sequence": {
+          "arc_id": null,
+          "era": "Construction Era",
+          "ordinal": null,
+          "wave": "CE-W04"
+        },
+        "tempus_anchor_ref": null
+      },
+      "version": 1
+    },
+    {
+      "authority": {
+        "authority_class": "human-decision",
+        "authority_refs": [
+          "docs/governance/architectgpt/current-state-profile.md"
+        ],
+        "effect_state": {
+          "authorized_for_effect": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "canonicalized": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "executed": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "proposed": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "ratified": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "verified": {
+            "evidence_refs": [],
+            "state": "unknown"
+          }
+        }
+      },
+      "claim_class": "report",
+      "custody": {
+        "disclosure": "public-candidate",
+        "do_not_export": false,
+        "encryption_required": false,
+        "materialization": "metadata-only",
+        "replication": "none",
+        "retention_authority_ref": "docs/governance/architectgpt/current-state-profile.md",
+        "retention_authorized": true
+      },
+      "namespace": "architect.public-coherence",
       "object_id": "coherence:implementation_gate:20261007-baseline",
       "object_type": "evidence",
       "payload": {
@@ -1736,7 +2027,7 @@
           "evidence_class": "report",
           "source_kind": "local",
           "source_ref": "docs/governance/architectgpt/current-state-profile.md#october-7-operational-baseline-follow-on",
-          "source_revision": null
+          "source_revision": "7b204e6f52051f498c474b6694c6d7e9c33cbc52"
         }
       ],
       "record_type": "continuity-object",
@@ -1755,6 +2046,99 @@
         "observed_at": "2026-10-07T09:02:00Z",
         "occurred_at": null,
         "recorded_at": "2026-10-07T09:02:00Z",
+        "sequence": {
+          "arc_id": null,
+          "era": "Construction Era",
+          "ordinal": null,
+          "wave": "CE-W04"
+        },
+        "tempus_anchor_ref": null
+      },
+      "version": 1
+    },
+    {
+      "authority": {
+        "authority_class": "human-decision",
+        "authority_refs": [
+          "docs/governance/architectgpt/current-state-profile.md"
+        ],
+        "effect_state": {
+          "authorized_for_effect": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "canonicalized": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "executed": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "proposed": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "ratified": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "verified": {
+            "evidence_refs": [],
+            "state": "unknown"
+          }
+        }
+      },
+      "claim_class": "report",
+      "custody": {
+        "disclosure": "public-candidate",
+        "do_not_export": false,
+        "encryption_required": false,
+        "materialization": "metadata-only",
+        "replication": "none",
+        "retention_authority_ref": "docs/governance/architectgpt/current-state-profile.md",
+        "retention_authorized": true
+      },
+      "namespace": "architect.public-coherence",
+      "object_id": "coherence:implementation_gate:20261007-research-loop",
+      "object_type": "evidence",
+      "payload": {
+        "evidence_id": "coherence:implementation_gate:20261007-research-loop",
+        "limitations": [
+          "Creation of a daily review check is not proof of its first execution or Agent C connectivity.",
+          "Question-level scope, budget, private output and one-run limits remain controlling; no automatic child-question approval."
+        ],
+        "summary": "Human authorized automated evidence-grounded question preparation and execution of already approved questions for Human review, with refresh during active work and daily. Thread heartbeat arcanum-research-review-loop is ACTIVE for 9 a.m. daily (America/New_York intended). WS-RQ-003 approval stands; verify Agent C connection/settings and reconcile run history before dispatch. New questions remain pending review. No research run, simulation result, policy activation, merge or deployment is established.",
+        "supports": [
+          "implementation_gate"
+        ]
+      },
+      "provenance": [
+        {
+          "captured_at": "2026-10-07T09:57:13Z",
+          "content_digest_sha256": "2db66fc72150ad7cde58b2593fffb674c8764b400e845e52bf27a313b7681f6c",
+          "evidence_class": "report",
+          "source_kind": "local",
+          "source_ref": "docs/governance/architectgpt/current-state-profile.md#october-7-automated-research-coordination-grant",
+          "source_revision": null
+        }
+      ],
+      "record_type": "continuity-object",
+      "relationships": [
+        {
+          "basis_ref": "docs/governance/architectgpt/current-state-profile.md#october-7-automated-research-coordination-grant",
+          "target_object_id": "coherence:implementation_gate:20261007-architecture-review",
+          "type": "supersedes"
+        }
+      ],
+      "schema": "arcanum.node.continuity-object/v1",
+      "subject_id": "state:implementation_gate",
+      "temporal": {
+        "effective_from": null,
+        "effective_until": null,
+        "observed_at": "2026-10-07T09:57:13Z",
+        "occurred_at": null,
+        "recorded_at": "2026-10-07T09:57:13Z",
         "sequence": {
           "arc_id": null,
           "era": "Construction Era",
@@ -1941,6 +2325,99 @@
     },
     {
       "authority": {
+        "authority_class": "human-decision",
+        "authority_refs": [
+          "docs/governance/architectgpt/current-state-profile.md"
+        ],
+        "effect_state": {
+          "authorized_for_effect": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "canonicalized": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "executed": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "proposed": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "ratified": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "verified": {
+            "evidence_refs": [],
+            "state": "unknown"
+          }
+        }
+      },
+      "claim_class": "report",
+      "custody": {
+        "disclosure": "public-candidate",
+        "do_not_export": false,
+        "encryption_required": false,
+        "materialization": "metadata-only",
+        "replication": "none",
+        "retention_authority_ref": "docs/governance/architectgpt/current-state-profile.md",
+        "retention_authorized": true
+      },
+      "namespace": "architect.public-coherence",
+      "object_id": "coherence:outstanding_human_decisions:20261007-architecture-review",
+      "object_type": "evidence",
+      "payload": {
+        "evidence_id": "coherence:outstanding_human_decisions:20261007-architecture-review",
+        "limitations": [
+          "Dated current-chat report; source profile records provenance and exact-head verification limits.",
+          "Human review of a plan does not ratify numerical policy or prove simulation, agent readiness or merge."
+        ],
+        "summary": "Resolve economic mechanisms and candidate parameters through simulation/risk review/ratification; scoped appointment/signing, group trials, peer/community adoption and appeal rules; Grade X/post-Grade-X threshold, recognition evidence and specialization catalog; geometry hypotheses, comparators and acceptance criteria with Agent C readiness unverified; factual Tempus chronology, policy epochs and optional community narrative. Retain the earlier decision whether Hope/model and broader spatial-semantic extensions amend A19/A20 or follow separately. Open private creation, consenting trials and broader reviewed Adept responsibility are recorded Human directions, not remaining preference questions. Incorporate the requested bounded remote Agent C research/build/result-review loop; verify connection and round-trip behavior before claiming it works.",
+        "supports": [
+          "outstanding_human_decisions"
+        ]
+      },
+      "provenance": [
+        {
+          "captured_at": "2026-10-07T09:46:50Z",
+          "content_digest_sha256": "8f207c6ad4cc64b958c704db3694994547f65ce13f34e648b0ee79e43e644adb",
+          "evidence_class": "report",
+          "source_kind": "local",
+          "source_ref": "docs/governance/architectgpt/current-state-profile.md#october-7-pre-a19-architecture-and-decision-reconciliation",
+          "source_revision": "59e77fee875cd6fa870fa388cbf5ca55280e4ff9"
+        }
+      ],
+      "record_type": "continuity-object",
+      "relationships": [
+        {
+          "basis_ref": "docs/governance/architectgpt/current-state-profile.md#october-7-pre-a19-architecture-and-decision-reconciliation",
+          "target_object_id": "coherence:outstanding_human_decisions",
+          "type": "supersedes"
+        }
+      ],
+      "schema": "arcanum.node.continuity-object/v1",
+      "subject_id": "state:outstanding_human_decisions",
+      "temporal": {
+        "effective_from": null,
+        "effective_until": null,
+        "observed_at": "2026-10-07T09:46:50Z",
+        "occurred_at": null,
+        "recorded_at": "2026-10-07T09:46:50Z",
+        "sequence": {
+          "arc_id": null,
+          "era": "Construction Era",
+          "ordinal": null,
+          "wave": "CE-W04"
+        },
+        "tempus_anchor_ref": null
+      },
+      "version": 1
+    },
+    {
+      "authority": {
         "authority_class": "derived",
         "authority_refs": [
           "docs/governance/architectgpt/current-state-profile.md"
@@ -2098,7 +2575,7 @@
           "evidence_class": "report",
           "source_kind": "local",
           "source_ref": "docs/governance/architectgpt/current-state-profile.md#october-7-operational-baseline-follow-on",
-          "source_revision": null
+          "source_revision": "7b204e6f52051f498c474b6694c6d7e9c33cbc52"
         }
       ],
       "record_type": "continuity-object",

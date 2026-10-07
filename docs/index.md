@@ -2,7 +2,7 @@
 title: "Docs Index"
 status: canonical
 visibility: public
-last_updated: 2026-09-04
+last_updated: 2026-10-07
 description: "Navigation index for the current Arcanum/ARCnet documentation surface."
 ---
 
@@ -17,14 +17,20 @@ This is the navigation hub for the current `docs/` tree.
 
 ## Start here
 
-1. **Current encoded baseline:** `repo/arcanum-baseline.md`
-2. **System overview:** `architecture/arcanum-system-overview.md`
-3. **Current roadmap:** `roadmap/canonical-roadmap.md`
-4. **Construction detail:** `roadmap/construction-era-roadmap.md`
-5. **Economic Constitution:** `economics/economic-constitution.md`
-6. **Governance:** `governance/governance-specification.md`
-7. **Repository interface/index:** `repo/repo-interface.md`, `repo/repo-index.json`
-8. **Architect operating contract:** `governance/architectgpt/architect-gpt.md`
+1. **Authority and technical ownership:** [Architecture map](architecture/authority-and-implementation-map.md)
+2. **Current project evidence:** [Derived current state](governance/architectgpt/current-state.md)
+3. **Tested environment access:** [Operational capabilities](governance/architectgpt/operational-capabilities.md)
+4. **Dated foundation through CE-W03:** [Construction baseline](repo/arcanum-baseline.md)
+5. **Accepted native direction:** [Native decisions](architecture/arcnet-native-decisions.md)
+6. **Economic authority:** [Economic Constitution](economics/economic-constitution.md)
+7. **Governance mechanics:** [Governance Specification](governance/governance-specification.md)
+8. **Planned sequence:** [Roadmap](roadmap/canonical-roadmap.md), [Construction detail](roadmap/construction-era-roadmap.md)
+9. **Repository and assisted-work rules:** [Repository interface](repo/repo-interface.md), [Architect contract](governance/architectgpt/architect-gpt.md)
+10. **Proposed participant experience:** [Journey and contribution review](architecture/participant-journey-proposal.md), [Simulation and chronology plan](architecture/simulation-and-chronology-plan.md) — drafts, not activated policy.
+11. **Research workflow:** [Evidence-grounded review queue](architecture/research-review-queue.md) — existing approvals, new questions for review and daily coordination status.
+
+The [older system overview](architecture/arcanum-system-overview.md) remains conceptual
+provenance. Its original scope does not establish the latest implementation state.
 
 ## Canonical folders
 

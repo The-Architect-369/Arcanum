@@ -2,7 +2,7 @@
 title: "Docs"
 status: canonical
 visibility: public
-last_updated: 2026-08-14
+last_updated: 2026-10-07
 description: "Documentation root for Arcanum: doctrine, architecture, governance, modules, repo discipline, and Vitae."
 ---
 
@@ -17,7 +17,7 @@ This folder is the **canonical documentation surface** for Arcanum and ARCnet.
 If you’re new, start here:
 
 - `docs/index.md` (navigation hub)
-- `docs/architecture/arcanum-system-overview.md` (system map)
+- [Authority and implementation map](architecture/authority-and-implementation-map.md) (existing rules, local node ownership and current evidence)
 - `docs/whitepaper/executive-summary.md` (institutional overview)
 
 ---
@@ -31,6 +31,10 @@ This repo intentionally separates **meaning**, **mechanics**, and **execution**.
 
 ### Doctrine
 `docs/doctrine/` holds constitutional principles: layer boundaries, identity, time, neutrality, and authority constraints.
+
+### Economics
+`docs/economics/economic-constitution.md` controls economic law under system Doctrine.
+Governance, Treasury, summaries and implementation retain their bounded subordinate roles.
 
 ### Governance
 `docs/governance/` holds operational governance mechanics **and** the public/internal interface charters (HOPE Guardian + ArchitectGPT).
@@ -72,3 +76,4 @@ Generate/update the structural repo index:
 
 ```bash
 bash scripts/repo-index.sh
+```

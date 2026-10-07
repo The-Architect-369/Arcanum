@@ -14,7 +14,7 @@ import { getJSONHelia, getBlobHelia, putFileHelia, putJSONHelia } from '@/lib/in
 import { getNexusState, recordNexusProposal, createNexusContext, type NexusState } from '@/lib/nexus/context';
 import { captureTempusContext } from '@/lib/tempus/context';
 import { COST, canCreateChan, canPost } from '@/lib/gates';
-import { trySpendMana } from '@/lib/economy';
+import { canUseLocalSpendPreview, trySpendMana } from '@/lib/economy/economy';
 import { useAccount, type AccountSnapshot } from '@/state/useAccount';
 
 export type NexusFamilyId = 'current' | 'post' | 'channel';
@@ -288,6 +288,7 @@ export function NexusModuleScreen({ family }: { family: NexusFamilyId }) {
     setMessage(null);
     if (!acc?.trusted) return setMessage('Activate your ACC to publish.');
     if (!canPost({ trusted: !!acc.trusted, mana: Number(acc.mana ?? 0) })) return setMessage(`Need ${COST.POST} MANA to post.`);
+    if (COST.POST > 0 && !canUseLocalSpendPreview()) return setMessage('MANA payments are not available in this web preview.');
     if (!roomId) return setMessage('Cannot resolve target room. Check alias or ID.');
     if (!body.trim() && media.length === 0) return setMessage('Write something or attach media.');
     setBusy(true);
@@ -302,7 +303,7 @@ export function NexusModuleScreen({ family }: { family: NexusFamilyId }) {
         media: attachments && attachments.length ? attachments : undefined,
       };
       const { cid } = await putJSONHelia(post);
-      if (!trySpendMana(COST.POST)) throw new Error('Could not deduct MANA.');
+      if (!trySpendMana(COST.POST, 'Nexus post preview')) throw new Error('Local utility preview unavailable; no MANA payment was made.');
       await sendArcanumPost(roomId, cid, post.body.slice(0, 120));
       setBody('');
       setMedia([]);
@@ -320,7 +321,7 @@ export function NexusModuleScreen({ family }: { family: NexusFamilyId }) {
     if (!acc.trusted) return setMessage('Activate your ACC to create a channel.');
     if (!canCreateChan({ trusted: acc.trusted, mana: acc.mana })) return setMessage(`Need ${COST.CREATE_CHANNEL} MANA to create.`);
     if (!channelName.trim()) return setMessage('Enter a channel name.');
-    if (!trySpendMana(COST.CREATE_CHANNEL)) return setMessage('Could not deduct MANA.');
+    if (!trySpendMana(COST.CREATE_CHANNEL, 'Nexus channel preview')) return setMessage('Local utility preview unavailable; no MANA payment was made.');
     try {
       const createdRoomId = await createChannel({ name: channelName.trim(), joinCost: Number(channelPrice) || 0 });
       setMessage(`Channel created: ${createdRoomId}. Upkeep is ${COST.MAINTAIN_CHANNEL} MANA/month.`);

@@ -176,3 +176,107 @@ and [capability register](operational-capabilities.md) for actual tests, archiva
 receipts and retained exceptions. This is a new reviewed observation, not a live
 provider refresh performed by the generator. The observed main above is the starting
 baseline for this follow-on, not a claim about every future main head.
+
+## October 7 pre-A19 architecture and decision reconciliation
+
+The Human requested the architecture/canon/governance/economy audit and bounded
+fixes, then reviewed the resulting plan favorably and explicitly requested that
+outstanding decisions be carried into this derived view and Notion. This section
+records that current-chat direction; exact speech timestamps are not asserted.
+No constitutional ratification, monetary parameters, A19/A20 implementation,
+Agent C dispatch, merge, deployment or installation is established by this review.
+
+Observed canonical main remains `a07cebf7e0941a52be8961c349522488cf87b9a3`.
+The review candidate is [PR92](https://github.com/The-Architect-369/Arcanum/pull/92),
+whose initial source/index head `7b204e6f52051f498c474b6694c6d7e9c33cbc52` passed
+the local frozen install, eight wallet-boundary tests, 15 synchronization gates,
+lint, typecheck and Node 24 build. Those results apply to that exact candidate;
+subsequent projection updates require their own verification.
+
+Recorded Human direction: a self-contained phone experience; open private creation
+across domains; consenting small-group trials before Adept; broader reviewed
+architect responsibility at Adept; architect peer review and community review
+before common adoption; and simulations before adopting monetary numbers or
+stronger geometric/network claims. Notion remains a present working surface;
+eventual removal as a required expense is a future direction, not authorization
+to cancel, delete or migrate it now.
+
+The Human also requested an integrated remote Agent C research/build loop: launch
+bounded approved questions, continue independent building, retrieve actual findings,
+review their implications and propose the next questions. The manual-cohort record
+identifies the existing WS-AGENT-C as Research Observatory:
+[acceptance source](https://app.notion.com/p/3e32bb4420b881a7b3b9d085e5042f06).
+A fresh read of [WS-RQ-009](https://app.notion.com/p/3e42bb4420b881e6a633ecabfd01468e)
+confirms its approved scope is one Equinox source study, not geometry research.
+The Human pointed back to WS-RQ-003; fresh readback of its
+[registry row](https://app.notion.com/p/3e42bb4420b88119b83ae44c3e78f083) confirms
+`approved_active` since September 24 for the bounded geometry-versus-conventional
+view question. That existing approval stands and needs no repetition. It covers
+research/method review, not a deployed prototype, recruited participants or proof
+that a study occurred. The row's old next-decision wording still requesting
+approval is stale relative to its explicit authorization body and activation state.
+Browser discovery failed at the tool entry point with a local-file-URI error before
+the agent could be inspected. Destination and settings remain unverified; no launch
+or recurring schedule occurred. The validation plan records adapter/round-trip
+acceptance requirements; the requested workflow is not yet a verified capability.
+
+Outstanding decisions now include the earlier Hope and spatial extensions and:
+
+- economic mechanisms and candidate numbers: Genesis allocation/distribution,
+  reserve release, funded rewards, fee/sink/burn routing, issuance ceilings and
+  emergency policy, with simulation, risk review and ratification before activation;
+- domain-specific review/appointment/signing scopes, consenting-group trial limits,
+  community and architect review decision rules, suspension, appeal and recovery;
+- Grade X versus the post-Grade-X Adept threshold, consented recognition evidence,
+  specialization catalog reconciliation and curriculum readiness;
+- geometry hypothesis, comparator/workload and empirical acceptance criteria,
+  with Agent C's exact destination, reachability, Memory-off and schedules still
+  unverified; a research grant does not prove readiness or a completed simulation;
+- Tempus factual chronology, authorized policy/era schedules and an optional
+  community sacred narrative as separate linked views, including the definitions
+  of future epochs and node/network activation states;
+- whether the proposed Hope/model and spatial-semantic extensions amend A19/A20
+  or follow separately; existing A19 deletion remains baseline, not a new extension.
+
+The [journey proposal](../../architecture/participant-journey-proposal.md) and
+[simulation/chronology plan](../../architecture/simulation-and-chronology-plan.md)
+contain the source comparisons and proposed next gates. They record proposals and
+Human product direction, not an activated permission matrix or simulated outcomes.
+A18 stays closed; CE-W04 stays open; A19 remains the next bounded implementation
+arc. The Human has prioritized this reconciliation/research planning before its
+opening; no wholesale platform redesign is added to A19 acceptance.
+
+This report supersedes the earlier implementation-gate and outstanding-decision
+summaries for present planning, retaining their original source bytes and dated
+claims. Existing unpinned baseline sources are pinned to the pre-update candidate
+commit before appending this section. It neither renumbers sessions nor rewrites
+the sealed continuity record. The accompanying Notion update is an operational
+projection with explicit candidate links, not proof of canonical repository merge.
+
+## October 7 automated research coordination grant
+
+After the review above, the Human explicitly authorized more automated preparation
+of evidence-grounded questions and running already approved questions for Human
+review. They selected both refresh during active work and daily. This updates the
+earlier manual-only coordination posture within that scope; it does not approve
+all new questions, unlimited repeated runs or automatic implementation of findings.
+
+The app confirmed creation of thread heartbeat `arcanum-research-review-loop` as
+ACTIVE, with a daily 9 a.m. schedule (America/New_York intended local timezone).
+Its prompt refreshes the queue, preserves question-level budgets and private
+output, reconciles prior runs, and permits approved dispatch only after Agent C
+readiness verification. This records successful scheduling, not a completed daily
+run or a working Agent C adapter. The connection failure and unknown settings
+remain; no research run or simulation result is claimed.
+
+The [research review queue](../../architecture/research-review-queue.md) prepares
+WS-RQ-003 for its unchanged bounded run, preserves WS-RQ-009 separately, and adds
+four pending-review questions grounded in the inspected economic accounting,
+topology, scoped-adoption and Tempus-replay evidence. These local proposal labels
+do not allocate new WS-RQ IDs or mark new questions approved.
+
+Notion WS-RQ-003's stale next-decision wording was corrected and read back while
+preserving the September 24 approval body and `approved_active` state. The
+Understanding Dashboard is the authorized operational mirror for this update.
+No Notion subscription cancellation, main merge, deployment or new policy is
+authorized or established by scheduling this review loop.
