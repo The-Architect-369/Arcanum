@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-10-07T09:57:51Z",
+  "generated_at": "2026-10-07T11:27:40Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "4f7683c61",
+  "commit": "cb793030b",
   "generator_version": "1.5",
   "files": [
     {
@@ -1114,11 +1114,11 @@
     {
       "path": "apps/web/next.config.mjs",
       "type": "file",
-      "size_bytes": 1222,
-      "last_modified_commit": "6b80d7a1e",
+      "size_bytes": 1864,
+      "last_modified_commit": "cb793030b",
       "is_empty": false,
       "extension": ".mjs",
-      "lines": 33
+      "lines": 63
     },
     {
       "path": "apps/web/node/docker/Dockerfile",
@@ -1985,6 +1985,15 @@
       "lines": 44
     },
     {
+      "path": "apps/web/src/app/(marketing)/architect/page.tsx",
+      "type": "file",
+      "size_bytes": 5686,
+      "last_modified_commit": "cb793030b",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 157
+    },
+    {
       "path": "apps/web/src/app/(marketing)/client-layout.tsx",
       "type": "file",
       "size_bytes": 984,
@@ -2019,6 +2028,15 @@
       "is_empty": false,
       "extension": ".tsx",
       "lines": 49
+    },
+    {
+      "path": "apps/web/src/app/(marketing)/journeys/page.tsx",
+      "type": "file",
+      "size_bytes": 4343,
+      "last_modified_commit": "cb793030b",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 121
     },
     {
       "path": "apps/web/src/app/(marketing)/layout.tsx",
@@ -2293,20 +2311,20 @@
     {
       "path": "apps/web/src/components/public/PublicNav.tsx",
       "type": "file",
-      "size_bytes": 2207,
-      "last_modified_commit": "165b06b7b",
+      "size_bytes": 2259,
+      "last_modified_commit": "cb793030b",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 78
+      "lines": 79
     },
     {
       "path": "apps/web/src/components/public/PublicShell.tsx",
       "type": "file",
-      "size_bytes": 5660,
-      "last_modified_commit": "efa2576bf",
+      "size_bytes": 5953,
+      "last_modified_commit": "cb793030b",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 191
+      "lines": 196
     },
     {
       "path": "apps/web/src/components/shared/CTAActivate.tsx",
@@ -3166,11 +3184,11 @@
     {
       "path": "apps/web/src/lib/public-routes.ts",
       "type": "file",
-      "size_bytes": 322,
-      "last_modified_commit": "165b06b7b",
+      "size_bytes": 353,
+      "last_modified_commit": "cb793030b",
       "is_empty": false,
       "extension": ".ts",
-      "lines": 16
+      "lines": 18
     },
     {
       "path": "apps/web/src/lib/public-site.ts",
@@ -4197,6 +4215,15 @@
       "is_empty": false,
       "extension": ".md",
       "lines": 98
+    },
+    {
+      "path": "docs/architecture/public-web-lanes.md",
+      "type": "file",
+      "size_bytes": 5265,
+      "last_modified_commit": "cb793030b",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 91
     },
     {
       "path": "docs/architecture/research-review-queue.md",
@@ -9466,11 +9493,11 @@
     {
       "path": "scripts/verify-public-site.mjs",
       "type": "file",
-      "size_bytes": 3568,
-      "last_modified_commit": "d280db490",
+      "size_bytes": 7050,
+      "last_modified_commit": "cb793030b",
       "is_empty": false,
       "extension": ".mjs",
-      "lines": 98
+      "lines": 214
     },
     {
       "path": "scripts/verify-repo-index.py",
