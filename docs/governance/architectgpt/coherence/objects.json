@@ -1,6 +1,6 @@
 {
-  "as_of": "2026-10-07T08:28:23Z",
-  "base_ref": "052bdc42a8aba8e246719cf9493c0df11a612e92",
+  "as_of": "2026-10-07T09:02:00Z",
+  "base_ref": "f839027a3c82197d0087e0a530126f67b884618a",
   "objects": [
     {
       "authority": {
@@ -66,7 +66,7 @@
           "evidence_class": "report",
           "source_kind": "local",
           "source_ref": "docs/governance/architectgpt/current-state-profile.md#source-identity-and-preserved-history",
-          "source_revision": null
+          "source_revision": "f839027a3c82197d0087e0a530126f67b884618a"
         }
       ],
       "record_type": "continuity-object",
@@ -422,7 +422,7 @@
           "evidence_class": "report",
           "source_kind": "local",
           "source_ref": "docs/governance/architectgpt/current-state-profile.md#recovered-planning-report",
-          "source_revision": null
+          "source_revision": "f839027a3c82197d0087e0a530126f67b884618a"
         }
       ],
       "record_type": "continuity-object",
@@ -509,7 +509,7 @@
           "evidence_class": "report",
           "source_kind": "local",
           "source_ref": "docs/governance/architectgpt/current-state-profile.md#recovered-planning-report",
-          "source_revision": null
+          "source_revision": "f839027a3c82197d0087e0a530126f67b884618a"
         }
       ],
       "record_type": "continuity-object",
@@ -776,7 +776,7 @@
           "evidence_class": "report",
           "source_kind": "local",
           "source_ref": "docs/governance/architectgpt/current-state-profile.md#recovered-planning-report",
-          "source_revision": null
+          "source_revision": "f839027a3c82197d0087e0a530126f67b884618a"
         },
         {
           "captured_at": "2026-10-07T08:13:22Z",
@@ -871,7 +871,7 @@
           "evidence_class": "report",
           "source_kind": "local",
           "source_ref": "docs/governance/architectgpt/current-state-profile.md",
-          "source_revision": null
+          "source_revision": "f839027a3c82197d0087e0a530126f67b884618a"
         }
       ],
       "record_type": "continuity-object",
@@ -958,7 +958,7 @@
           "evidence_class": "report",
           "source_kind": "local",
           "source_ref": "docs/governance/architectgpt/current-state-profile.md#proposed-extensions-and-unresolved-decisions",
-          "source_revision": null
+          "source_revision": "f839027a3c82197d0087e0a530126f67b884618a"
         }
       ],
       "record_type": "continuity-object",
@@ -1045,7 +1045,7 @@
           "evidence_class": "report",
           "source_kind": "local",
           "source_ref": "docs/governance/architectgpt/current-state-profile.md#recovered-planning-report",
-          "source_revision": null
+          "source_revision": "f839027a3c82197d0087e0a530126f67b884618a"
         }
       ],
       "record_type": "continuity-object",
@@ -1138,7 +1138,7 @@
           "evidence_class": "report",
           "source_kind": "local",
           "source_ref": "docs/governance/architectgpt/current-state-profile.md#proposed-extensions-and-unresolved-decisions",
-          "source_revision": null
+          "source_revision": "f839027a3c82197d0087e0a530126f67b884618a"
         }
       ],
       "record_type": "continuity-object",
@@ -1225,7 +1225,7 @@
           "evidence_class": "report",
           "source_kind": "local",
           "source_ref": "docs/governance/architectgpt/current-state-profile.md#recovered-planning-report",
-          "source_revision": null
+          "source_revision": "f839027a3c82197d0087e0a530126f67b884618a"
         }
       ],
       "record_type": "continuity-object",
@@ -1318,7 +1318,7 @@
           "evidence_class": "report",
           "source_kind": "local",
           "source_ref": "docs/governance/architectgpt/current-state-profile.md#proposed-extensions-and-unresolved-decisions",
-          "source_revision": null
+          "source_revision": "f839027a3c82197d0087e0a530126f67b884618a"
         }
       ],
       "record_type": "continuity-object",
@@ -1405,7 +1405,7 @@
           "evidence_class": "report",
           "source_kind": "local",
           "source_ref": "docs/governance/architectgpt/current-state-profile.md#recovered-planning-report",
-          "source_revision": null
+          "source_revision": "f839027a3c82197d0087e0a530126f67b884618a"
         }
       ],
       "record_type": "continuity-object",
@@ -1601,7 +1601,7 @@
           "evidence_class": "report",
           "source_kind": "local",
           "source_ref": "docs/governance/architectgpt/current-state-profile.md",
-          "source_revision": null
+          "source_revision": "f839027a3c82197d0087e0a530126f67b884618a"
         }
       ],
       "record_type": "continuity-object",
@@ -1703,7 +1703,7 @@
           "evidence_class": "report",
           "source_kind": "local",
           "source_ref": "docs/governance/architectgpt/current-state-profile.md",
-          "source_revision": null
+          "source_revision": "f839027a3c82197d0087e0a530126f67b884618a"
         }
       ],
       "record_type": "continuity-object",
@@ -1803,6 +1803,285 @@
         "observed_at": "2026-10-07T08:13:22Z",
         "occurred_at": null,
         "recorded_at": "2026-10-07T08:28:23Z",
+        "sequence": {
+          "arc_id": null,
+          "era": "Construction Era",
+          "ordinal": null,
+          "wave": "CE-W04"
+        },
+        "tempus_anchor_ref": null
+      },
+      "version": 1
+    },
+    {
+      "authority": {
+        "authority_class": "derived",
+        "authority_refs": [
+          "docs/governance/architectgpt/current-state-profile.md"
+        ],
+        "effect_state": {
+          "authorized_for_effect": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "canonicalized": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "executed": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "proposed": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "ratified": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "verified": {
+            "evidence_refs": [],
+            "state": "unknown"
+          }
+        }
+      },
+      "claim_class": "report",
+      "custody": {
+        "disclosure": "public-candidate",
+        "do_not_export": false,
+        "encryption_required": false,
+        "materialization": "metadata-only",
+        "replication": "none",
+        "retention_authority_ref": "docs/governance/architectgpt/current-state-profile.md",
+        "retention_authorized": true
+      },
+      "namespace": "architect.public-coherence",
+      "object_id": "coherence:canonical_base:20261007-baseline",
+      "object_type": "evidence",
+      "payload": {
+        "evidence_id": "coherence:canonical_base:20261007-baseline",
+        "limitations": [
+          "Dated bounded observation; regeneration does not refresh sources.",
+          "Observed main is the task starting base; later integration must be independently resolved."
+        ],
+        "summary": "The-Architect-369/Arcanum main@f839027a3c82197d0087e0a530126f67b884618a (observed starting base; PR90 adopted the reviewed current-state view).",
+        "supports": [
+          "canonical_base"
+        ]
+      },
+      "provenance": [
+        {
+          "captured_at": "2026-10-07T09:02:00Z",
+          "content_digest_sha256": "f349f84752669d4c5f0a115e14593faa1a4e73a2926e48491a1663da9dc88f29",
+          "evidence_class": "report",
+          "source_kind": "local",
+          "source_ref": "docs/governance/architectgpt/current-state-profile.md#october-7-operational-baseline-follow-on",
+          "source_revision": null
+        }
+      ],
+      "record_type": "continuity-object",
+      "relationships": [
+        {
+          "basis_ref": "docs/governance/architectgpt/current-state-profile.md#october-7-operational-baseline-follow-on",
+          "target_object_id": "coherence:canonical_base",
+          "type": "supersedes"
+        }
+      ],
+      "schema": "arcanum.node.continuity-object/v1",
+      "subject_id": "state:canonical_base",
+      "temporal": {
+        "effective_from": null,
+        "effective_until": null,
+        "observed_at": "2026-10-07T09:02:00Z",
+        "occurred_at": null,
+        "recorded_at": "2026-10-07T09:02:00Z",
+        "sequence": {
+          "arc_id": null,
+          "era": "Construction Era",
+          "ordinal": null,
+          "wave": "CE-W04"
+        },
+        "tempus_anchor_ref": null
+      },
+      "version": 1
+    },
+    {
+      "authority": {
+        "authority_class": "human-decision",
+        "authority_refs": [
+          "docs/governance/architectgpt/current-state-profile.md"
+        ],
+        "effect_state": {
+          "authorized_for_effect": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "canonicalized": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "executed": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "proposed": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "ratified": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "verified": {
+            "evidence_refs": [],
+            "state": "unknown"
+          }
+        }
+      },
+      "claim_class": "report",
+      "custody": {
+        "disclosure": "public-candidate",
+        "do_not_export": false,
+        "encryption_required": false,
+        "materialization": "metadata-only",
+        "replication": "none",
+        "retention_authority_ref": "docs/governance/architectgpt/current-state-profile.md",
+        "retention_authorized": true
+      },
+      "namespace": "architect.public-coherence",
+      "object_id": "coherence:implementation_gate:20261007-baseline",
+      "object_type": "evidence",
+      "payload": {
+        "evidence_id": "coherence:implementation_gate:20261007-baseline",
+        "limitations": [
+          "Dated bounded observation; regeneration does not refresh sources.",
+          "Observed main is the task starting base; later integration must be independently resolved."
+        ],
+        "summary": "PR90 projection adopted. Human requested bounded environment baseline, archival, capability verification and registry reconciliation across Ubuntu, Termux, GitHub, Notion and Drive. A19 implementation, extension ratification, Agent C dispatch and new release effects remain separate.",
+        "supports": [
+          "implementation_gate"
+        ]
+      },
+      "provenance": [
+        {
+          "captured_at": "2026-10-07T09:02:00Z",
+          "content_digest_sha256": "f349f84752669d4c5f0a115e14593faa1a4e73a2926e48491a1663da9dc88f29",
+          "evidence_class": "report",
+          "source_kind": "local",
+          "source_ref": "docs/governance/architectgpt/current-state-profile.md#october-7-operational-baseline-follow-on",
+          "source_revision": null
+        }
+      ],
+      "record_type": "continuity-object",
+      "relationships": [
+        {
+          "basis_ref": "docs/governance/architectgpt/current-state-profile.md#october-7-operational-baseline-follow-on",
+          "target_object_id": "coherence:implementation_gate",
+          "type": "supersedes"
+        }
+      ],
+      "schema": "arcanum.node.continuity-object/v1",
+      "subject_id": "state:implementation_gate",
+      "temporal": {
+        "effective_from": null,
+        "effective_until": null,
+        "observed_at": "2026-10-07T09:02:00Z",
+        "occurred_at": null,
+        "recorded_at": "2026-10-07T09:02:00Z",
+        "sequence": {
+          "arc_id": null,
+          "era": "Construction Era",
+          "ordinal": null,
+          "wave": "CE-W04"
+        },
+        "tempus_anchor_ref": null
+      },
+      "version": 1
+    },
+    {
+      "authority": {
+        "authority_class": "derived",
+        "authority_refs": [
+          "docs/governance/architectgpt/current-state-profile.md"
+        ],
+        "effect_state": {
+          "authorized_for_effect": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "canonicalized": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "executed": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "proposed": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "ratified": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "verified": {
+            "evidence_refs": [],
+            "state": "unknown"
+          }
+        }
+      },
+      "claim_class": "report",
+      "custody": {
+        "disclosure": "public-candidate",
+        "do_not_export": false,
+        "encryption_required": false,
+        "materialization": "metadata-only",
+        "replication": "none",
+        "retention_authority_ref": "docs/governance/architectgpt/current-state-profile.md",
+        "retention_authorized": true
+      },
+      "namespace": "architect.public-coherence",
+      "object_id": "coherence:source_conflicts:20261007-baseline",
+      "object_type": "evidence",
+      "payload": {
+        "evidence_id": "coherence:source_conflicts:20261007-baseline",
+        "limitations": [
+          "Dated bounded observation; regeneration does not refresh sources.",
+          "Observed main is the task starting base; later integration must be independently resolved."
+        ],
+        "summary": "PR90 corrected repository present-state pointers. October 7 Notion readback confirms dashboard/handoff supersession notices and A19 Ready, clearing the old A18 predecessor block. Earlier snapshots remain historical; no A18 reopening or extension ratification is inferred.",
+        "supports": [
+          "source_conflicts"
+        ]
+      },
+      "provenance": [
+        {
+          "captured_at": "2026-10-07T09:02:00Z",
+          "content_digest_sha256": "f349f84752669d4c5f0a115e14593faa1a4e73a2926e48491a1663da9dc88f29",
+          "evidence_class": "report",
+          "source_kind": "local",
+          "source_ref": "docs/governance/architectgpt/current-state-profile.md#october-7-operational-baseline-follow-on",
+          "source_revision": null
+        }
+      ],
+      "record_type": "continuity-object",
+      "relationships": [
+        {
+          "basis_ref": "docs/governance/architectgpt/current-state-profile.md#october-7-operational-baseline-follow-on",
+          "target_object_id": "coherence:source_conflicts",
+          "type": "supersedes"
+        }
+      ],
+      "schema": "arcanum.node.continuity-object/v1",
+      "subject_id": "state:source_conflicts",
+      "temporal": {
+        "effective_from": null,
+        "effective_until": null,
+        "observed_at": "2026-10-07T09:02:00Z",
+        "occurred_at": null,
+        "recorded_at": "2026-10-07T09:02:00Z",
         "sequence": {
           "arc_id": null,
           "era": "Construction Era",

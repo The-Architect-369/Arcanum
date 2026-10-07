@@ -39,6 +39,14 @@ current_state_projection:
   refresh_requires_reviewed_sources: true
   provider_refresh_on_generation: false
 
+operational_capabilities:
+  source: docs/governance/architectgpt/operational-capabilities.json
+  readable: docs/governance/architectgpt/operational-capabilities.md
+  authority: observation_only
+  grants_permissions: false
+  live_probes_on_generation: false
+  retest_required_before_reliance: true
+
 historical_label_policy:
   preserve_original_labels: true
   newer_operational_baseline_rewrites_historical_documents: false
@@ -190,7 +198,7 @@ providers:
     permission_classes: [R1, W1]
     rule: ratified_results_must_return_to_repository_canon
   notion:
-    status: unverified
+    status: connected_observed
     authority: working_knowledge
     canonicality: non_canonical
     permission_classes: [R1, W1]
@@ -367,6 +375,11 @@ session_continuity_control:
     fail_closed_validation_preserved: true
 
 files:
+  operational_capabilities_source: docs/governance/architectgpt/operational-capabilities.json
+  operational_capabilities_readable: docs/governance/architectgpt/operational-capabilities.md
+  operational_capabilities_generator: scripts/architect/generate-operational-capabilities.py
+  operational_baseline_evidence: docs/evidence/operational-baseline-20261007/review.md
+  local_toolchain_wrapper: scripts/dev/with-local-toolchain.sh
   current_state_profile: docs/governance/architectgpt/current-state-profile.md
   coherence_objects: docs/governance/architectgpt/coherence/objects.json
   current_state_schema: docs/governance/architectgpt/current-state.schema.json

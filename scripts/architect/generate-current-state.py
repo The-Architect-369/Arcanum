@@ -271,7 +271,9 @@ def render(result):
     intro = [f"As of {result['as_of']}; observed canonical base `{result['base_ref']}`.",
              'Derived, non-authoritative, bounded seed. Regeneration is not a fresh provider read.',
              'See [profile and source limits](current-state-profile.md). Historical records remain intact.', '']
-    view = ['# Derived current state', ''] + intro
+    view = ['# Derived current state', ''] + intro + [
+        'For tested access paths and their limits, use the companion',
+        '[operational capabilities](operational-capabilities.md). Neither view grants authority.', '']
     for field, entry in result['fields'].items():
         view += [f"## {field.replace('_', ' ').capitalize()}", '',
                  f"Status: **{entry['status']}**; coverage: {entry['coverage']}.", '',

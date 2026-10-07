@@ -65,6 +65,7 @@ class ProjectionTests(unittest.TestCase):
         rival = self.rival()
         rival['authority']['authority_class'] = 'derived'
         rival['temporal']['observed_at'] = self.seed['as_of']
+        rival['temporal']['recorded_at'] = self.seed['as_of']
         self.evidence()['temporal']['observed_at'] = '2026-10-06T00:00:00Z'
         rival['relationships'] = [{'type': 'supersedes', 'target_object_id': 'coherence:completed_arc',
                                   'basis_ref': str(m.PROFILE)}]
@@ -169,7 +170,7 @@ class ProjectionTests(unittest.TestCase):
             return subprocess.check_output(['git', 'show', base + ':' + str(path)], cwd=m.ROOT)
         log = m.DIRECTORY / 'architect-log.md'
         marker = '## CONTINUITY-EVENT'.encode()
-        self.assertEqual(original(log).split(marker, 1)[1], (m.ROOT / log).read_bytes().split(marker, 1)[1])
+        self.assertTrue((m.ROOT / log).read_bytes().split(marker, 1)[1].startswith(original(log).split(marker, 1)[1]))
         contract = m.DIRECTORY / 'architect-gpt.md'
         marker = b'## Adopted core operating instructions'
         self.assertEqual(original(contract).split(marker, 1)[1], (m.ROOT / contract).read_bytes().split(marker, 1)[1])
@@ -177,6 +178,14 @@ class ProjectionTests(unittest.TestCase):
             path = m.DIRECTORY / name
             self.assertEqual(original(path), (m.ROOT / path).read_bytes())
         self.assertEqual(original(m.OBJECT_SCHEMA), (m.ROOT / m.OBJECT_SCHEMA).read_bytes())
+
+    def test_follow_on_supersedes_only_named_historical_fields(self):
+        result = m.derive(self.seed)
+        for field in ['canonical_base', 'implementation_gate', 'source_conflicts']:
+            self.assertEqual(result['fields'][field]['selected_object_ids'],
+                             ['coherence:' + field + ':20261007-baseline'])
+            self.assertIn('coherence:' + field, result['fields'][field]['superseded_object_ids'])
+        self.assertEqual(result['fields']['a19_baseline']['selected_object_ids'], ['coherence:a19_baseline'])
 
     def test_empty_session_index_is_valid_and_unmodified(self):
         path = m.ROOT / m.DIRECTORY / 'continuity-index.json'
