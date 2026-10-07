@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-10-07T08:13:22Z",
+  "as_of": "2026-10-07T08:28:23Z",
   "base_ref": "052bdc42a8aba8e246719cf9493c0df11a612e92",
   "objects": [
     {
@@ -61,8 +61,8 @@
       },
       "provenance": [
         {
-          "captured_at": "2026-10-07T08:13:22Z",
-          "content_digest_sha256": "259564e4192cf53feb6dd64d87de08cf1a9879499d706927a84e56d15f34f7d4",
+          "captured_at": "2026-10-07T08:28:23Z",
+          "content_digest_sha256": "870ac483889bee7fd555062dc8aa3d946d382783ed63de02b3697fb553a3dcae",
           "evidence_class": "report",
           "source_kind": "local",
           "source_ref": "docs/governance/architectgpt/current-state-profile.md#source-identity-and-preserved-history",
@@ -78,7 +78,7 @@
         "effective_until": null,
         "observed_at": "2026-10-07T08:13:22Z",
         "occurred_at": null,
-        "recorded_at": "2026-10-07T08:13:22Z",
+        "recorded_at": "2026-10-07T08:28:23Z",
         "sequence": {
           "arc_id": null,
           "era": "Construction Era",
@@ -164,7 +164,7 @@
         "effective_until": null,
         "observed_at": "2026-10-07T08:13:22Z",
         "occurred_at": null,
-        "recorded_at": "2026-10-07T08:13:22Z",
+        "recorded_at": "2026-10-07T08:28:23Z",
         "sequence": {
           "arc_id": null,
           "era": "Construction Era",
@@ -250,7 +250,7 @@
         "effective_until": null,
         "observed_at": "2026-10-07T08:13:22Z",
         "occurred_at": null,
-        "recorded_at": "2026-10-07T08:13:22Z",
+        "recorded_at": "2026-10-07T08:28:23Z",
         "sequence": {
           "arc_id": null,
           "era": "Construction Era",
@@ -347,7 +347,7 @@
         "effective_until": null,
         "observed_at": "2026-10-07T08:13:22Z",
         "occurred_at": null,
-        "recorded_at": "2026-10-07T08:13:22Z",
+        "recorded_at": "2026-10-07T08:28:23Z",
         "sequence": {
           "arc_id": null,
           "era": "Construction Era",
@@ -417,8 +417,8 @@
       },
       "provenance": [
         {
-          "captured_at": "2026-10-07T08:13:22Z",
-          "content_digest_sha256": "259564e4192cf53feb6dd64d87de08cf1a9879499d706927a84e56d15f34f7d4",
+          "captured_at": "2026-10-07T08:28:23Z",
+          "content_digest_sha256": "870ac483889bee7fd555062dc8aa3d946d382783ed63de02b3697fb553a3dcae",
           "evidence_class": "report",
           "source_kind": "local",
           "source_ref": "docs/governance/architectgpt/current-state-profile.md#recovered-planning-report",
@@ -434,7 +434,7 @@
         "effective_until": null,
         "observed_at": "2026-10-07T08:13:22Z",
         "occurred_at": null,
-        "recorded_at": "2026-10-07T08:13:22Z",
+        "recorded_at": "2026-10-07T08:28:23Z",
         "sequence": {
           "arc_id": null,
           "era": "Construction Era",
@@ -504,8 +504,8 @@
       },
       "provenance": [
         {
-          "captured_at": "2026-10-07T08:13:22Z",
-          "content_digest_sha256": "259564e4192cf53feb6dd64d87de08cf1a9879499d706927a84e56d15f34f7d4",
+          "captured_at": "2026-10-07T08:28:23Z",
+          "content_digest_sha256": "870ac483889bee7fd555062dc8aa3d946d382783ed63de02b3697fb553a3dcae",
           "evidence_class": "report",
           "source_kind": "local",
           "source_ref": "docs/governance/architectgpt/current-state-profile.md#recovered-planning-report",
@@ -521,7 +521,7 @@
         "effective_until": null,
         "observed_at": "2026-10-07T08:13:22Z",
         "occurred_at": null,
-        "recorded_at": "2026-10-07T08:13:22Z",
+        "recorded_at": "2026-10-07T08:28:23Z",
         "sequence": {
           "arc_id": null,
           "era": "Construction Era",
@@ -607,7 +607,7 @@
         "effective_until": null,
         "observed_at": "2026-10-07T08:13:22Z",
         "occurred_at": null,
-        "recorded_at": "2026-10-07T08:13:22Z",
+        "recorded_at": "2026-10-07T08:28:23Z",
         "sequence": {
           "arc_id": null,
           "era": "Construction Era",
@@ -701,7 +701,7 @@
         "effective_until": null,
         "observed_at": "2026-10-07T08:13:22Z",
         "occurred_at": null,
-        "recorded_at": "2026-10-07T08:13:22Z",
+        "recorded_at": "2026-10-07T08:28:23Z",
         "sequence": {
           "arc_id": null,
           "era": "Construction Era",
@@ -771,8 +771,8 @@
       },
       "provenance": [
         {
-          "captured_at": "2026-10-07T08:13:22Z",
-          "content_digest_sha256": "259564e4192cf53feb6dd64d87de08cf1a9879499d706927a84e56d15f34f7d4",
+          "captured_at": "2026-10-07T08:28:23Z",
+          "content_digest_sha256": "870ac483889bee7fd555062dc8aa3d946d382783ed63de02b3697fb553a3dcae",
           "evidence_class": "report",
           "source_kind": "local",
           "source_ref": "docs/governance/architectgpt/current-state-profile.md#recovered-planning-report",
@@ -796,7 +796,7 @@
         "effective_until": null,
         "observed_at": "2026-10-07T08:13:22Z",
         "occurred_at": null,
-        "recorded_at": "2026-10-07T08:13:22Z",
+        "recorded_at": "2026-10-07T08:28:23Z",
         "sequence": {
           "arc_id": null,
           "era": "Construction Era",
@@ -866,8 +866,8 @@
       },
       "provenance": [
         {
-          "captured_at": "2026-10-07T08:13:22Z",
-          "content_digest_sha256": "259564e4192cf53feb6dd64d87de08cf1a9879499d706927a84e56d15f34f7d4",
+          "captured_at": "2026-10-07T08:28:23Z",
+          "content_digest_sha256": "870ac483889bee7fd555062dc8aa3d946d382783ed63de02b3697fb553a3dcae",
           "evidence_class": "report",
           "source_kind": "local",
           "source_ref": "docs/governance/architectgpt/current-state-profile.md",
@@ -883,7 +883,7 @@
         "effective_until": null,
         "observed_at": "2026-10-07T08:13:22Z",
         "occurred_at": null,
-        "recorded_at": "2026-10-07T08:13:22Z",
+        "recorded_at": "2026-10-07T08:28:23Z",
         "sequence": {
           "arc_id": null,
           "era": "Construction Era",
@@ -953,8 +953,8 @@
       },
       "provenance": [
         {
-          "captured_at": "2026-10-07T08:13:22Z",
-          "content_digest_sha256": "259564e4192cf53feb6dd64d87de08cf1a9879499d706927a84e56d15f34f7d4",
+          "captured_at": "2026-10-07T08:28:23Z",
+          "content_digest_sha256": "870ac483889bee7fd555062dc8aa3d946d382783ed63de02b3697fb553a3dcae",
           "evidence_class": "report",
           "source_kind": "local",
           "source_ref": "docs/governance/architectgpt/current-state-profile.md#proposed-extensions-and-unresolved-decisions",
@@ -970,7 +970,7 @@
         "effective_until": null,
         "observed_at": "2026-10-07T08:13:22Z",
         "occurred_at": null,
-        "recorded_at": "2026-10-07T08:13:22Z",
+        "recorded_at": "2026-10-07T08:28:23Z",
         "sequence": {
           "arc_id": null,
           "era": "Construction Era",
@@ -1040,8 +1040,8 @@
       },
       "provenance": [
         {
-          "captured_at": "2026-10-07T08:13:22Z",
-          "content_digest_sha256": "259564e4192cf53feb6dd64d87de08cf1a9879499d706927a84e56d15f34f7d4",
+          "captured_at": "2026-10-07T08:28:23Z",
+          "content_digest_sha256": "870ac483889bee7fd555062dc8aa3d946d382783ed63de02b3697fb553a3dcae",
           "evidence_class": "report",
           "source_kind": "local",
           "source_ref": "docs/governance/architectgpt/current-state-profile.md#recovered-planning-report",
@@ -1063,7 +1063,7 @@
         "effective_until": null,
         "observed_at": "2026-10-07T08:13:22Z",
         "occurred_at": null,
-        "recorded_at": "2026-10-07T08:13:22Z",
+        "recorded_at": "2026-10-07T08:28:23Z",
         "sequence": {
           "arc_id": null,
           "era": "Construction Era",
@@ -1133,8 +1133,8 @@
       },
       "provenance": [
         {
-          "captured_at": "2026-10-07T08:13:22Z",
-          "content_digest_sha256": "259564e4192cf53feb6dd64d87de08cf1a9879499d706927a84e56d15f34f7d4",
+          "captured_at": "2026-10-07T08:28:23Z",
+          "content_digest_sha256": "870ac483889bee7fd555062dc8aa3d946d382783ed63de02b3697fb553a3dcae",
           "evidence_class": "report",
           "source_kind": "local",
           "source_ref": "docs/governance/architectgpt/current-state-profile.md#proposed-extensions-and-unresolved-decisions",
@@ -1150,7 +1150,7 @@
         "effective_until": null,
         "observed_at": "2026-10-07T08:13:22Z",
         "occurred_at": null,
-        "recorded_at": "2026-10-07T08:13:22Z",
+        "recorded_at": "2026-10-07T08:28:23Z",
         "sequence": {
           "arc_id": null,
           "era": "Construction Era",
@@ -1220,8 +1220,8 @@
       },
       "provenance": [
         {
-          "captured_at": "2026-10-07T08:13:22Z",
-          "content_digest_sha256": "259564e4192cf53feb6dd64d87de08cf1a9879499d706927a84e56d15f34f7d4",
+          "captured_at": "2026-10-07T08:28:23Z",
+          "content_digest_sha256": "870ac483889bee7fd555062dc8aa3d946d382783ed63de02b3697fb553a3dcae",
           "evidence_class": "report",
           "source_kind": "local",
           "source_ref": "docs/governance/architectgpt/current-state-profile.md#recovered-planning-report",
@@ -1243,7 +1243,7 @@
         "effective_until": null,
         "observed_at": "2026-10-07T08:13:22Z",
         "occurred_at": null,
-        "recorded_at": "2026-10-07T08:13:22Z",
+        "recorded_at": "2026-10-07T08:28:23Z",
         "sequence": {
           "arc_id": null,
           "era": "Construction Era",
@@ -1313,8 +1313,8 @@
       },
       "provenance": [
         {
-          "captured_at": "2026-10-07T08:13:22Z",
-          "content_digest_sha256": "259564e4192cf53feb6dd64d87de08cf1a9879499d706927a84e56d15f34f7d4",
+          "captured_at": "2026-10-07T08:28:23Z",
+          "content_digest_sha256": "870ac483889bee7fd555062dc8aa3d946d382783ed63de02b3697fb553a3dcae",
           "evidence_class": "report",
           "source_kind": "local",
           "source_ref": "docs/governance/architectgpt/current-state-profile.md#proposed-extensions-and-unresolved-decisions",
@@ -1330,7 +1330,7 @@
         "effective_until": null,
         "observed_at": "2026-10-07T08:13:22Z",
         "occurred_at": null,
-        "recorded_at": "2026-10-07T08:13:22Z",
+        "recorded_at": "2026-10-07T08:28:23Z",
         "sequence": {
           "arc_id": null,
           "era": "Construction Era",
@@ -1400,8 +1400,8 @@
       },
       "provenance": [
         {
-          "captured_at": "2026-10-07T08:13:22Z",
-          "content_digest_sha256": "259564e4192cf53feb6dd64d87de08cf1a9879499d706927a84e56d15f34f7d4",
+          "captured_at": "2026-10-07T08:28:23Z",
+          "content_digest_sha256": "870ac483889bee7fd555062dc8aa3d946d382783ed63de02b3697fb553a3dcae",
           "evidence_class": "report",
           "source_kind": "local",
           "source_ref": "docs/governance/architectgpt/current-state-profile.md#recovered-planning-report",
@@ -1417,7 +1417,7 @@
         "effective_until": null,
         "observed_at": "2026-10-07T08:13:22Z",
         "occurred_at": null,
-        "recorded_at": "2026-10-07T08:13:22Z",
+        "recorded_at": "2026-10-07T08:28:23Z",
         "sequence": {
           "arc_id": null,
           "era": "Construction Era",
@@ -1517,7 +1517,7 @@
         "effective_until": null,
         "observed_at": "2026-10-07T08:13:22Z",
         "occurred_at": null,
-        "recorded_at": "2026-10-07T08:13:22Z",
+        "recorded_at": "2026-10-07T08:28:23Z",
         "sequence": {
           "arc_id": null,
           "era": "Construction Era",
@@ -1596,8 +1596,8 @@
       },
       "provenance": [
         {
-          "captured_at": "2026-10-07T08:13:22Z",
-          "content_digest_sha256": "259564e4192cf53feb6dd64d87de08cf1a9879499d706927a84e56d15f34f7d4",
+          "captured_at": "2026-10-07T08:28:23Z",
+          "content_digest_sha256": "870ac483889bee7fd555062dc8aa3d946d382783ed63de02b3697fb553a3dcae",
           "evidence_class": "report",
           "source_kind": "local",
           "source_ref": "docs/governance/architectgpt/current-state-profile.md",
@@ -1619,7 +1619,7 @@
         "effective_until": null,
         "observed_at": "2026-10-07T08:13:22Z",
         "occurred_at": null,
-        "recorded_at": "2026-10-07T08:13:22Z",
+        "recorded_at": "2026-10-07T08:28:23Z",
         "sequence": {
           "arc_id": null,
           "era": "Construction Era",
@@ -1698,8 +1698,8 @@
       },
       "provenance": [
         {
-          "captured_at": "2026-10-07T08:13:22Z",
-          "content_digest_sha256": "259564e4192cf53feb6dd64d87de08cf1a9879499d706927a84e56d15f34f7d4",
+          "captured_at": "2026-10-07T08:28:23Z",
+          "content_digest_sha256": "870ac483889bee7fd555062dc8aa3d946d382783ed63de02b3697fb553a3dcae",
           "evidence_class": "report",
           "source_kind": "local",
           "source_ref": "docs/governance/architectgpt/current-state-profile.md",
@@ -1715,7 +1715,7 @@
         "effective_until": null,
         "observed_at": "2026-10-07T08:13:22Z",
         "occurred_at": null,
-        "recorded_at": "2026-10-07T08:13:22Z",
+        "recorded_at": "2026-10-07T08:28:23Z",
         "sequence": {
           "arc_id": null,
           "era": "Construction Era",
@@ -1802,7 +1802,7 @@
         "effective_until": null,
         "observed_at": "2026-10-07T08:13:22Z",
         "occurred_at": null,
-        "recorded_at": "2026-10-07T08:13:22Z",
+        "recorded_at": "2026-10-07T08:28:23Z",
         "sequence": {
           "arc_id": null,
           "era": "Construction Era",

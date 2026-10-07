@@ -141,7 +141,9 @@ and does not claim to implement all of Draft 2020-12.
 The output schema is `current-state.schema.json`. UTF-8/LF output and sorted object
 IDs/keys are deterministic. The seed's explicit `as_of` is the snapshot time, not
 wall-clock generation time. Event, observation and recording times remain distinct;
-unknown event times stay null. No output contains its own commit SHA or a volatile
+unknown event times stay null. Recording cannot precede observation. Timed activation
+windows are outside this bounded profile and are rejected rather than ignored.
+No output contains its own commit SHA or a volatile
 current-HEAD query. Source object IDs and exact provenance accompany each field.
 
 `coherence-chronicle.md` is a mechanical transition trace of the A18 pending/closure

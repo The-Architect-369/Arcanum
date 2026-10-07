@@ -37,6 +37,17 @@ class ProjectionTests(unittest.TestCase):
         outputs = m.render(m.derive(self.seed))
         self.assertIn(b'completed_arc: superseded', outputs['coherence-chronicle.md'])
 
+    def test_temporal_boundaries(self):
+        for changes in [{'recorded_at': '2026-10-01T00:00:00Z'},
+                        {'effective_from': '2026-10-01T00:00:00Z'},
+                        {'effective_until': '2026-10-06T00:00:00Z'},
+                        {'occurred_at': '2099-01-01T00:00:00Z'}]:
+            with self.subTest(changes=changes):
+                seed = copy.deepcopy(self.seed)
+                seed['objects'][0]['temporal'].update(changes)
+                with self.assertRaises(ValueError):
+                    m.derive(seed)
+
     def test_valid_seed_and_proposals(self):
         result = m.derive(self.seed)
         self.assertEqual(result['coverage'], 'bounded-seed-only')

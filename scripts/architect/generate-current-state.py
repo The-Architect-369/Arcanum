@@ -157,6 +157,14 @@ def validate_input(data, root):
         require(obj['authority']['authority_class'] != 'doctrine', 'doctrine not projected here')
         for name in ['observed_at', 'recorded_at']:
             require(timestamp(obj['temporal'][name]) <= as_of, 'observation after snapshot')
+        temporal = obj['temporal']
+        require(timestamp(temporal['observed_at']) <= timestamp(temporal['recorded_at']),
+                'recording precedes observation')
+        require(temporal['effective_from'] is None and temporal['effective_until'] is None,
+                'timed activation outside bounded seed profile')
+        if temporal['occurred_at'] is not None:
+            require(timestamp(temporal['occurred_at']) <= timestamp(temporal['observed_at']),
+                    'future event cannot be recorded as observed')
         if obj['object_type'] == 'evidence':
             fields = obj['payload']['supports']
             require(fields and set(fields) <= set(POLICIES) and len(set(fields)) == len(fields),
