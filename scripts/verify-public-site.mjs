@@ -55,7 +55,7 @@ function requestHost(path, host, userAgent) {
 for (const ua of Object.values(agents)) {
   for (const [host, heading] of [
     ["the-arcanum.net", "A Human Journey."],
-    ["updates.the-arcanum.net", "Take Arcanum with you."],
+    ["updates.the-arcanum.net", "See what changed. Follow what comes next."],
     ["journeys.the-arcanum.net", "Go somewhere. Come back with a question."],
     ["architect.the-arcanum.net", "Follow the build."],
     ["architectXthe-arcanumYnet", "A Human Journey."],
@@ -122,6 +122,34 @@ for (const path of [
   checks++;
 }
 for (const [device, ua] of Object.entries(agents)) {
+  const artworkPath = "/art/hope-architect-v2.png";
+  const artwork = await requestHost(artworkPath, "the-arcanum.net", ua);
+  assert.equal(
+    artwork.status,
+    200,
+    `${device} public artwork bypasses the alpha gate`,
+  );
+  assert.deepEqual(
+    artwork.body,
+    await readFile(
+      new URL(`../apps/web/public${artworkPath}`, import.meta.url),
+    ),
+    "Approved artwork is served intact",
+  );
+  const optimizedArt = await fetch(
+    new URL(
+      `/_next/image?url=${encodeURIComponent(artworkPath)}&w=1200&q=75`,
+      origin,
+    ),
+    { headers: { "User-Agent": ua } },
+  );
+  assert.equal(
+    optimizedArt.status,
+    200,
+    `${device} responsive artwork can be optimized`,
+  );
+  assert.match(optimizedArt.headers.get("content-type"), /^image\//);
+  checks += 2;
   for (const path of routes) {
     const response = await fetch(new URL(path, origin), {
       headers: { "User-Agent": ua },

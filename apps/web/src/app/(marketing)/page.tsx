@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import {
   PublicShell,
   PillarCards,
@@ -45,7 +46,19 @@ export default function HomePage() {
             An application taking shape, with ARCnet beneath it.
           </p>
         </div>
-        <TempusFigure />
+        <figure className="public-artwork">
+          <div className="public-artwork-frame">
+            <Image
+              src="/art/hope-architect-v2.png"
+              alt="Architect and brunette Hope beside a geometric map, with an imagined blue-and-gold landscape and Earth beyond."
+              width={1672}
+              height={941}
+              sizes="(max-width: 800px) calc(100vw - 36px), (max-width: 1264px) calc(100vw - 64px), 1200px"
+              priority
+            />
+          </div>
+          <figcaption>Hope &amp; Architect · Concept illustration</figcaption>
+        </figure>
       </section>
       <div className="public-foundation-strip">
         <div className="public-shell">
@@ -94,6 +107,7 @@ export default function HomePage() {
             </Link>
           </div>
           <div className="public-context-list">
+            <TempusFigure />
             <article>
               <span>01</span>
               <div>

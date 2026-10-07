@@ -2,7 +2,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 const links = [
   ["/about", "The vision"],
   ["/explore", "Explore"],
@@ -14,8 +14,32 @@ const links = [
 export default function PublicNav() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const header = useRef<HTMLElement>(null);
+  const toggle = useRef<HTMLButtonElement>(null);
+  useEffect(() => {
+    if (!open) return;
+    const dismiss = (event: PointerEvent) => {
+      if (
+        event.target instanceof Node &&
+        !header.current?.contains(event.target)
+      ) {
+        setOpen(false);
+      }
+    };
+    document.addEventListener("pointerdown", dismiss);
+    return () => document.removeEventListener("pointerdown", dismiss);
+  }, [open]);
   return (
-    <header className="public-header">
+    <header
+      className="public-header"
+      ref={header}
+      onKeyDown={(event) => {
+        if (event.key === "Escape" && open) {
+          setOpen(false);
+          toggle.current?.focus();
+        }
+      }}
+    >
       <div className="public-shell public-nav">
         <Link
           className="public-brand"
@@ -35,26 +59,25 @@ export default function PublicNav() {
           </span>
         </Link>
         <button
+          ref={toggle}
+          type="button"
           className="public-menu-toggle"
           aria-expanded={open}
           aria-controls="public-navigation"
           onClick={() => setOpen(!open)}
         >
-          {open ? "Close" : "Menu"}
-          <span aria-hidden="true">{open ? " −" : " +"}</span>
+          <span>{open ? "Close" : "Menu"}</span>
+          <span className="public-menu-icon" aria-hidden="true">
+            <span />
+            <span />
+            <span />
+          </span>
         </button>
         <nav
           id="public-navigation"
           aria-label="Main navigation"
           className={open ? "is-open" : ""}
-          onKeyDown={(event) => {
-            if (event.key === "Escape") {
-              setOpen(false);
-              document
-                .querySelector<HTMLButtonElement>(".public-menu-toggle")
-                ?.focus();
-            }
-          }}
+          hidden={!open}
         >
           {links.map(([href, label]) => (
             <Link

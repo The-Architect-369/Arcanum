@@ -8,6 +8,7 @@ const publicRoutes = new Set([
   "/journeys",
   "/architect",
   "/site-log.json",
+  "/art/hope-architect-v2.png",
   ...["tempus", "hope", "vitae", "arcnet", "mana"].map(
     (slug) => `/explore/${slug}`,
   ),

@@ -31,6 +31,41 @@ export default function ArchitectPage() {
         </p>
       </PageIntro>
       <section
+        className="public-shell public-section public-two-col"
+        aria-labelledby="builder-invitation"
+      >
+        <div>
+          <p className="public-eyebrow">
+            A founder’s work / A shared invitation
+          </p>
+          <h2 id="builder-invitation">
+            Bring an idea.
+            <br />
+            <em>Become a builder.</em>
+          </h2>
+        </div>
+        <div>
+          <p className="public-intro">
+            The Architect names the founder’s role and a path others can grow
+            into. Learn the craft, explore an idea, and help build what comes
+            next.
+          </p>
+          <p>
+            Private experimentation and proposals can begin early. Broader
+            responsibility for shared systems grows through demonstrated work,
+            scoped permission, and review by peers and the community. The
+            contribution pathway is developing; this public dashboard does not
+            grant access.
+          </p>
+          <a
+            className="public-text-link"
+            href={record("docs/architecture/participant-journey-proposal.md")}
+          >
+            Explore the proposed builder pathway ↗
+          </a>
+        </div>
+      </section>
+      <section
         className="public-shell public-release-layout"
         aria-labelledby="development-status"
       >
@@ -87,6 +122,69 @@ export default function ArchitectPage() {
             recorded provider status remains current.
           </p>
         </div>
+      </section>
+      <section
+        className="public-shell public-journal"
+        aria-labelledby="capabilities-title"
+      >
+        <h2 id="capabilities-title">What has been demonstrated</h2>
+        <p>
+          Selected results from the October 7 capability registry. These
+          describe particular tests, not continuous service health.
+        </p>
+        <article>
+          <p className="public-label">Passed / Development</p>
+          <div>
+            <h3>Build and verify locally</h3>
+            <p>
+              Ubuntu workspace execution, Rust tests, and the selected Node
+              toolchain passed. The phone checkout passed installation,
+              repository checks, lint, and type checking; an on-phone production
+              web build was not established.
+            </p>
+          </div>
+        </article>
+        <article>
+          <p className="public-label">Passed / Local model</p>
+          <div>
+            <h3>A configured conversation path</h3>
+            <p>
+              The configured private gateway returned a synthetic test response.
+              A separate advisory-alias probe returned an empty answer, and a
+              fresh on-device conversation was not tested in that baseline.
+            </p>
+          </div>
+        </article>
+        <article>
+          <p className="public-label">Passed with limits / Transport</p>
+          <div>
+            <h3>Reach the phone over cellular</h3>
+            <p>
+              SSH and selected network ADB responded with Wi-Fi disabled. USB
+              remained attached as fallback; detached operation, reboot, and
+              long-idle recovery require separate checks.
+            </p>
+          </div>
+        </article>
+        <article>
+          <p className="public-label">Still ahead / Hope</p>
+          <div>
+            <h3>Collections and model access</h3>
+            <p>
+              A19 collection acceptance remains ahead. Private Hope model access
+              is a separate proposed extension, not a capability proven by the
+              gateway test.
+            </p>
+          </div>
+        </article>
+        <a
+          className="public-text-link"
+          href={record(
+            "docs/governance/architectgpt/operational-capabilities.md",
+          )}
+        >
+          Inspect every recorded capability and limit ↗
+        </a>
       </section>
       <section
         className="public-shell public-journal"

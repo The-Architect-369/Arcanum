@@ -17,7 +17,7 @@ change the approved Android release, or open A19.
 | Destination | Role | Candidate implementation |
 | --- | --- | --- |
 | `the-arcanum.net` | Main public introduction | Existing homepage; Vercel redirects `www` here with HTTP 308. |
-| `updates.the-arcanum.net` | Android release information | Only `/` rewrites to the existing `/download` page. The public journal stays at `/updates`. |
+| `updates.the-arcanum.net` | Releases and development history | Only `/` rewrites to `/updates`, which combines the current release, canonical change history links, and preserved website journal. Installation details stay at `/download`. |
 | `journeys.the-arcanum.net` | Great Journey entry point | Only `/` rewrites to `/journeys`, a reusable public shell and clearly marked pilot outline. |
 | `architect.the-arcanum.net` | Public development status | Only `/` rewrites to `/architect`, a dated view grounded in public repository sources. |
 
@@ -78,6 +78,19 @@ revocation and server-side authorization. Titles, grades and wallet connections
 must not independently confer execution authority. No privileged action endpoint
 is added by this candidate.
 
+The Human's follow-up clarified that Architect should show state, tested
+capabilities, direction and next work directly; the main website is the visual
+introduction; updates offers a deeper release/development record; Journeys carries
+Arcanum outward into experience. The candidate incorporates that division and
+retains explicit links between the four destinations. Capability summaries retain
+both passing results and their tested limits, including the failed advisory alias.
+
+The Human further described Architect as both the founder/builder and an inclusive
+path others may take. The public invitation supports early private creation and
+reviewed shared responsibility. Symbolic identity, artwork and recognition do not
+grant execution rights or establish a worth hierarchy. The founder is not presented
+as the only possible architect.
+
 ## Verification and recovery
 
 `scripts/verify-public-site.mjs` runs against the built production server. It checks
@@ -89,3 +102,49 @@ test definitions alone do not establish a pass.
 The app-level change is reversible by reverting its source commit and generating
 the repository index companion. No DNS changes are required to revert these
 landing pages. Merge and production adoption remain separately evidenced effects.
+
+## Main website visual refresh — 2026-10-07
+
+The Human subsequently requested time to consider the relationship between the
+four destinations, and selected the main public website for a visual refresh
+without changing its information. That narrows the immediate presentation work;
+it does not approve a new cross-site information architecture. Earlier candidate
+updates and Architect summaries remain separately reviewable in this branch.
+
+The approved Hope–Architect concept supplies the blue/gold palette. The shared
+public shell carries fine orbital decoration, clearer surfaces and a collapsible,
+vertically stacked navigation on desktop and mobile. The existing emblem is
+unchanged. The artwork is labeled as a concept; imagined scenery is not a factual
+astronomical scene, implemented interface, credential or authority claim.
+
+Selected asset: `apps/web/public/art/hope-architect-v2.png`, 1672 × 941 PNG.
+SHA-256: `c7d366d76508ca173f6b904fd6d31cf49cac7a53c3581d644b7eb5b7387ca8ae`.
+The built-in image-generation tool produced the illustration and a focused
+revision of Hope's face and brunette hair using Human-supplied references. The
+Human accepted the revised image in this conversation. The original photographs
+are not included in the repository. The edit preserved the approved composition,
+Architect, costume, landscape and blue/gold style; it introduced no text or logo.
+
+Motion is optional presentation: a short page entrance, subtle section arrival,
+and a reading-progress line. There is no forced scroll snapping, wheel handling,
+automatic advance, or content gate. Reduced-motion preference disables these
+animations. Browsers without scroll-timeline support retain ordinary scrolling;
+content remains visible without JavaScript. Menu links retain ordinary link
+semantics, Escape returns focus to the toggle, and selecting a link closes it.
+
+Verification compares headings and body text on the ten original public content
+pages before and after styling. Existing TEMPUS illustration content is retained
+lower on the homepage. The new concept caption is additional image context.
+Production route checks include the exact public image and its optimized response,
+so the older desktop alpha gate cannot silently block the artwork. Neither that
+asset exemption nor the menu grants access to gated application routes.
+
+Observed local verification on October 7: Windows Chrome headless, driven through
+Playwright against the Ubuntu production build, rendered the desktop (1440 px)
+and mobile (390 px) layouts. Ten pages retained identical heading/body text, with
+no horizontal overflow. Menu stacking, link navigation, outside-click dismissal,
+Escape/focus return and keyboard entry passed. The image loaded, the reading
+indicator reached the page end, reduced-motion disabled animation, and content
+remained visible with JavaScript disabled. No browser page errors were recorded.
+This replaces the earlier browser-tool startup limitation for this local review;
+it is not device certification or verification of a production deployment.

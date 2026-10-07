@@ -13,7 +13,7 @@ const nextConfig = {
         {
           source: "/",
           has: [{ type: "host", value: "updates\\.the-arcanum\\.net" }],
-          destination: "/download",
+          destination: "/updates",
         },
         {
           source: "/",
