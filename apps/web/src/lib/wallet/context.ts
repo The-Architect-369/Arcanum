@@ -152,12 +152,12 @@ export function createWalletSpendIntent(input: {
   id?: string;
   createdAt?: Date;
 }): WalletSpendGuardResult {
-  const amount = Math.max(0, Math.floor(Number.isFinite(input.amount) ? input.amount : 0));
+  const amount = input.amount;
   const purpose = input.purpose.trim();
   const denom = input.denom?.trim() || 'umana';
 
-  if (amount <= 0) {
-    return { ok: false, message: 'Spend amount must be greater than zero.' };
+  if (!Number.isSafeInteger(amount) || amount <= 0) {
+    return { ok: false, message: 'Spend amount must be a positive safe integer.' };
   }
 
   if (!purpose) {
@@ -197,12 +197,16 @@ export function validateSpendIntentAgainstWallet(
   context: WalletContext,
   intent: WalletSpendIntent
 ): WalletSpendGuardResult {
-  const amount = Math.max(0, Math.floor(Number(intent.amount)));
-  const manaBalance = context.balances.find((balance) => balance.denom === intent.denom) ?? context.balances[0];
-  const available = Math.max(0, Math.floor(Number(manaBalance?.amount ?? 0)));
+  const amount = Number(intent.amount);
+  const manaBalance = context.balances.find((balance) => balance.denom === intent.denom);
+  const available = Number(manaBalance?.amount);
 
-  if (!Number.isFinite(amount) || amount <= 0) {
-    return { ok: false, message: 'Spend amount must be greater than zero.' };
+  if (!/^[1-9]\d*$/.test(intent.amount) || !Number.isSafeInteger(amount) || amount <= 0) {
+    return { ok: false, message: 'Spend amount must be a positive safe integer.' };
+  }
+
+  if (!manaBalance || !/^(0|[1-9]\d*)$/.test(manaBalance.amount) || !Number.isSafeInteger(available)) {
+    return { ok: false, message: 'A valid balance in the requested denomination is required.' };
   }
 
   if (amount > available) {

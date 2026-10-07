@@ -273,6 +273,8 @@ bash scripts/mobile/test-arcanum-broker-lifecycle.sh
 python3 scripts/mobile/test-arcanum-workspace-verify.py
 ok "local Workbench/runtime boundary, A12 proposal review, A13.5 native UX/artifact handoff, and advisory agent roster passed; A14.1 and A14.2 inspection fixtures passed"
 
+node --test scripts/test-wallet-boundaries.cjs
+
 step 14 "Production smoke verifier"
 jq empty docs/governance/architectgpt/production-smoke.schema.json
 jq empty docs/governance/architectgpt/production-smoke-routes.json

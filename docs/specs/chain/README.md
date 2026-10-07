@@ -2,7 +2,7 @@
 title: "Chain Specs"
 status: canonical
 visibility: public
-last_updated: 2026-09-04
+last_updated: 2026-10-07
 description: "Implementation-facing specifications and artifact policy for ARCnet / Arcanum chain."
 ---
 
@@ -15,7 +15,9 @@ Canonical architectural constraints come from:
 - `docs/architecture/arcanum-chain.md`
 - `docs/architecture/app-chain-doctrine.md`
 - `docs/doctrine/layer-boundaries.md`
-- `docs/governance/economic-principles.md`
+- `docs/economics/economic-constitution.md` (controlling economic authority under Doctrine)
+- `docs/governance/governance-specification.md` (delegated governance mechanics)
+- `docs/governance/economic-principles.md` (subordinate summary and parameter registry)
 - `docs/governance/treasury-constitution.md`
 
 ## Artifact policy
