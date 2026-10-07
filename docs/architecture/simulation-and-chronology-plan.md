@@ -80,6 +80,56 @@ vectors? Which require new proof? Which are empirical network hypotheses? What
 workload and comparator could disprove an advantage? What is the smallest useful
 simulation that respects physical constraints and a phone's resource budget?
 
+### Requested research/build loop
+
+The Human subsequently requested remote invocation and result retrieval from this
+chat or the Atman/Arcanum environment, so research can run alongside independent
+building and produce the next bounded questions. This is a required workflow
+direction, not evidence of an established connection or an unattended schedule.
+
+Use the existing Research Observatory question registry and the existing Agent C
+identity. A proposed adapter should:
+
+1. Resolve a question's actual approval, scope, source limits, budget and private
+   output destination, and verify the agent's identity, Memory setting and triggers.
+2. Submit that exact bounded request and retain the returned run ID. If launch
+   times out, reconcile the original run before retrying; do not create duplicates.
+3. Let independent build tasks proceed while exposing queued/running/blocked states.
+   A build decision that depends on the findings waits for those findings.
+4. Retrieve the actual result and source capsule with coverage, contradictions,
+   limitations and proposed falsification tests. Agent text remains evidence, not
+   executable instructions or authority to change code, canon or permissions.
+5. Record reviewed conclusions in the authorized repository/Notion surfaces and
+   prepare the next question. An inactive child question cannot silently inherit
+   its parent's approval. Keep private research runs and participant interiors out
+   of public continuity; persist only specifically authorized selected material.
+
+Qualify the adapter with one synthetic question and result round trip, cancellation,
+disconnect/resume, duplicate-launch prevention and budget exhaustion. Only then
+claim remote triggering and return are verified. A recurring schedule, automatic
+question expansion or provider writes by Agent C requires its own defined scope;
+none is created by this plan.
+
+Connection observation on October 7: the source-linked
+[manual-cohort acceptance record](https://app.notion.com/p/3e32bb4420b881a7b3b9d085e5042f06)
+identifies WS-AGENT-C as Research Observatory. A fresh registry read confirms
+[WS-RQ-003](https://app.notion.com/p/3e42bb4420b88119b83ae44c3e78f083) is
+`approved_active`: compare geometric and conventional views of the same corpus for
+retrieval accuracy, time, orientation and accessibility. Preserve its September 24
+approval: one Human-invoked question, up to six searches, eight source/connector
+reads, eight findings and one retry; private review output. This authorizes bounded
+research and method review, not prototype deployment, participant recruitment,
+paid computation or an actual study. No new approval is needed for that unchanged
+question. A hardware/topology performance study is a distinct scope.
+
+The separate
+[WS-RQ-009 approval](https://app.notion.com/p/3e42bb4420b881e6a633ecabfd01468e)
+covers one bounded Equinox source study, not topology research. A fresh browser
+connection attempt failed at the tool entry point with
+`sandboxCwd is not a local file URI: file:///home/thearchitect/work/Arcanum`, before
+agent discovery or settings inspection. This is an observed tool connection
+failure, not evidence that Agent C itself is unavailable. No run was submitted.
+
 ## A shared timeline without merging authority layers
 
 Use [TempusAnchor](../specs/tempus/tempus-anchor.md) and the

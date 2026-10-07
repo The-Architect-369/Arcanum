@@ -180,12 +180,30 @@ class ProjectionTests(unittest.TestCase):
         self.assertEqual(original(m.OBJECT_SCHEMA), (m.ROOT / m.OBJECT_SCHEMA).read_bytes())
 
     def test_follow_on_supersedes_only_named_historical_fields(self):
-        result = m.derive(self.seed)
+        # Keep the earlier adoption checkpoint independently testable as new
+        # reviewed evidence is appended to the live seed.
+        baseline = copy.deepcopy(self.seed)
+        baseline['objects'] = [obj for obj in baseline['objects']
+                               if not obj['object_id'].endswith(':20261007-architecture-review')]
+        result = m.derive(baseline)
         for field in ['canonical_base', 'implementation_gate', 'source_conflicts']:
             self.assertEqual(result['fields'][field]['selected_object_ids'],
                              ['coherence:' + field + ':20261007-baseline'])
             self.assertIn('coherence:' + field, result['fields'][field]['superseded_object_ids'])
         self.assertEqual(result['fields']['a19_baseline']['selected_object_ids'], ['coherence:a19_baseline'])
+
+    def test_architecture_review_preserves_baselines_and_extends_decisions(self):
+        result = m.derive(self.seed)
+        for field in ['canonical_base', 'implementation_gate', 'outstanding_human_decisions']:
+            self.assertEqual(result['fields'][field]['selected_object_ids'],
+                             ['coherence:' + field + ':20261007-architecture-review'])
+            self.assertIn('coherence:' + field, result['fields'][field]['superseded_object_ids'])
+        for field in ['a19_baseline', 'a20_baseline']:
+            self.assertEqual(result['fields'][field]['selected_object_ids'], ['coherence:' + field])
+        self.assertEqual(result['fields']['agent_c_state']['selected_object_ids'],
+                         ['coherence:agent_c_state:20261007-connection-check'])
+        for field in ['hope_extensions', 'spatial_extensions']:
+            self.assertEqual(result['fields'][field]['status'], 'proposed')
 
     def test_empty_session_index_is_valid_and_unmodified(self):
         path = m.ROOT / m.DIRECTORY / 'continuity-index.json'
