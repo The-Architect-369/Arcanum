@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-10-07T09:05:56Z",
+  "generated_at": "2026-10-07T09:42:16Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "29cea02a6",
+  "commit": "d1c7bfe81",
   "generator_version": "1.5",
   "files": [
     {
@@ -1717,11 +1717,11 @@
     {
       "path": "apps/web/src/app/(app)/nexus/_components/NexusModuleScreen.tsx",
       "type": "file",
-      "size_bytes": 36823,
-      "last_modified_commit": "d4505e66b",
+      "size_bytes": 37107,
+      "last_modified_commit": "d1c7bfe81",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 830
+      "lines": 831
     },
     {
       "path": "apps/web/src/app/(app)/nexus/channel/page.tsx",
@@ -1852,8 +1852,8 @@
     {
       "path": "apps/web/src/app/(app)/text/groups/page.tsx",
       "type": "file",
-      "size_bytes": 3944,
-      "last_modified_commit": "48643a4b7",
+      "size_bytes": 4016,
+      "last_modified_commit": "d1c7bfe81",
       "is_empty": false,
       "extension": ".tsx",
       "lines": 111
@@ -2761,11 +2761,11 @@
     {
       "path": "apps/web/src/lib/economy/economy.ts",
       "type": "file",
-      "size_bytes": 608,
-      "last_modified_commit": "36669a616",
+      "size_bytes": 513,
+      "last_modified_commit": "d1c7bfe81",
       "is_empty": false,
       "extension": ".ts",
-      "lines": 23
+      "lines": 12
     },
     {
       "path": "apps/web/src/lib/economy/guards.ts",
@@ -3265,11 +3265,11 @@
     {
       "path": "apps/web/src/lib/wallet/context.ts",
       "type": "file",
-      "size_bytes": 6314,
-      "last_modified_commit": "ae6c96a43",
+      "size_bytes": 6468,
+      "last_modified_commit": "d1c7bfe81",
       "is_empty": false,
       "extension": ".ts",
-      "lines": 217
+      "lines": 221
     },
     {
       "path": "apps/web/src/middleware.ts",
@@ -3283,11 +3283,11 @@
     {
       "path": "apps/web/src/state/useAccount.ts",
       "type": "file",
-      "size_bytes": 13726,
-      "last_modified_commit": "69d176c81",
+      "size_bytes": 14118,
+      "last_modified_commit": "d1c7bfe81",
       "is_empty": false,
       "extension": ".ts",
-      "lines": 565
+      "lines": 574
     },
     {
       "path": "apps/web/src/state/useActiveTab.ts",
@@ -4111,11 +4111,11 @@
     {
       "path": "docs/README.md",
       "type": "file",
-      "size_bytes": 2808,
-      "last_modified_commit": "c6950e8ff",
+      "size_bytes": 3091,
+      "last_modified_commit": "d1c7bfe81",
       "is_empty": false,
       "extension": ".md",
-      "lines": 74
+      "lines": 79
     },
     {
       "path": "docs/architect/architect-log.md",
@@ -4163,6 +4163,15 @@
       "lines": 267
     },
     {
+      "path": "docs/architecture/authority-and-implementation-map.md",
+      "type": "file",
+      "size_bytes": 7085,
+      "last_modified_commit": "d1c7bfe81",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 96
+    },
+    {
       "path": "docs/architecture/canonical-modules.md",
       "type": "file",
       "size_bytes": 7639,
@@ -4172,6 +4181,15 @@
       "lines": 524
     },
     {
+      "path": "docs/architecture/participant-journey-proposal.md",
+      "type": "file",
+      "size_bytes": 15243,
+      "last_modified_commit": "d1c7bfe81",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 191
+    },
+    {
       "path": "docs/architecture/public-site-v2.md",
       "type": "file",
       "size_bytes": 7387,
@@ -4179,6 +4197,15 @@
       "is_empty": false,
       "extension": ".md",
       "lines": 98
+    },
+    {
+      "path": "docs/architecture/simulation-and-chronology-plan.md",
+      "type": "file",
+      "size_bytes": 9213,
+      "last_modified_commit": "d1c7bfe81",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 134
     },
     {
       "path": "docs/archive/README.md",
@@ -4874,6 +4901,15 @@
       "lines": 114
     },
     {
+      "path": "docs/evidence/pre-a19-architecture-audit-20261007/review.md",
+      "type": "file",
+      "size_bytes": 10351,
+      "last_modified_commit": "d1c7bfe81",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 122
+    },
+    {
       "path": "docs/governance/architectgpt/agent-registry.yaml",
       "type": "file",
       "size_bytes": 4790,
@@ -5227,11 +5263,11 @@
     {
       "path": "docs/index.md",
       "type": "file",
-      "size_bytes": 3056,
-      "last_modified_commit": "0412d2719",
+      "size_bytes": 3897,
+      "last_modified_commit": "d1c7bfe81",
       "is_empty": false,
       "extension": ".md",
-      "lines": 78
+      "lines": 83
     },
     {
       "path": "docs/manifesto/arcanum-manifesto.md",
@@ -5767,11 +5803,11 @@
     {
       "path": "docs/specs/chain/README.md",
       "type": "file",
-      "size_bytes": 1620,
-      "last_modified_commit": "b6661a06d",
+      "size_bytes": 1838,
+      "last_modified_commit": "d1c7bfe81",
       "is_empty": false,
       "extension": ".md",
-      "lines": 52
+      "lines": 54
     },
     {
       "path": "docs/specs/chain/authority-state-model.md",
@@ -8332,11 +8368,11 @@
     {
       "path": "docs/vitae/index.md",
       "type": "file",
-      "size_bytes": 6330,
-      "last_modified_commit": "eeb1fb89e",
+      "size_bytes": 6563,
+      "last_modified_commit": "d1c7bfe81",
       "is_empty": false,
       "extension": ".md",
-      "lines": 194
+      "lines": 197
     },
     {
       "path": "docs/vitae/overview.md",
@@ -9203,6 +9239,15 @@
       "lines": 66
     },
     {
+      "path": "scripts/test-wallet-boundaries.cjs",
+      "type": "file",
+      "size_bytes": 5523,
+      "last_modified_commit": "d1c7bfe81",
+      "is_empty": false,
+      "extension": ".cjs",
+      "lines": 106
+    },
+    {
       "path": "scripts/update/test_trusted_distribution_inspection.py",
       "type": "file",
       "size_bytes": 5645,
@@ -9430,11 +9475,11 @@
     {
       "path": "scripts/verify-sync.sh",
       "type": "file",
-      "size_bytes": 12682,
-      "last_modified_commit": "29cea02a6",
+      "size_bytes": 12730,
+      "last_modified_commit": "d1c7bfe81",
       "is_empty": false,
       "extension": ".sh",
-      "lines": 289
+      "lines": 291
     },
     {
       "path": "tests/fixtures/trusted-update/candidate-observation.json",
