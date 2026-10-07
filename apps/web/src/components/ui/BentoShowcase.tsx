@@ -5,6 +5,7 @@ import Image from "next/image";
 import { AnimatePresence, motion, useAnimation } from "framer-motion";
 import { cn } from "@/lib/cn";
 import { copy } from "@/content/narrative";
+import { cycleIndex } from "@/lib/ui/carousel";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 type Variant = "arcnet" | "mana" | "tempus";
@@ -53,8 +54,8 @@ export default function BentoShowcase({ variant, className }: { variant: Variant
     await controls.set({ x: 0 });
   };
 
-  const nextMobile = () => setMobileIndex((prev) => (prev + 1) % data.items.length);
-  const prevMobile = () => setMobileIndex((prev) => (prev - 1 + data.items.length) % data.items.length);
+  const nextMobile = () => setMobileIndex((prev) => cycleIndex(prev, 1, data.items.length));
+  const prevMobile = () => setMobileIndex((prev) => cycleIndex(prev, -1, data.items.length));
 
   const handleMobileDragEnd = (_: unknown, info: { offset: { x: number } }) => {
     if (info.offset.x > 50) prevMobile();
