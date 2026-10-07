@@ -5,6 +5,7 @@ import "@/app/(marketing)/public-home.css";
 export function PublicShell({ children }: { children: React.ReactNode }) {
   return (
     <div className="public-home">
+      <div className="public-reading-progress" aria-hidden="true" />
       <a className="public-skip" href="#public-main">
         Skip to content
       </a>
@@ -15,9 +16,9 @@ export function PublicShell({ children }: { children: React.ReactNode }) {
       <footer className="public-footer">
         <div className="public-shell public-footer-grid">
           <div>
-            <Link href="/" className="public-wordmark">
+            <a href="https://the-arcanum.net/" className="public-wordmark">
               ARCANUM
-            </Link>
+            </a>
             <p>
               A Human Journey.
               <br />A network taking shape.
@@ -39,6 +40,11 @@ export function PublicShell({ children }: { children: React.ReactNode }) {
             <a href="/site-log.json">Machine-readable site log ↗</a>
             <a href={repository}>Repository ↗</a>
             <Link href="/download">Android release status</Link>
+            <a href="https://updates.the-arcanum.net/">Updates channel ↗</a>
+            <a href="https://journeys.the-arcanum.net/">The Great Journey ↗</a>
+            <a href="https://architect.the-arcanum.net/">
+              Development dashboard ↗
+            </a>
           </div>
         </div>
         <div className="public-shell public-footer-bottom">
@@ -80,6 +86,30 @@ export function PillarCards() {
         >
           <span className="public-card-number">
             {p.number}
+            <span
+              className={`public-orbit-mark orbit-${p.slug}`}
+              aria-hidden="true"
+            >
+              <svg viewBox="0 0 80 80" fill="none" stroke="currentColor">
+                <circle cx="40" cy="40" r="29" />
+                <circle cx="40" cy="40" r="18" />
+                <ellipse
+                  cx="40"
+                  cy="40"
+                  rx="35"
+                  ry="12"
+                  transform="rotate(-35 40 40)"
+                />
+                <path d="M40 3v9M40 68v9M3 40h9M68 40h9" />
+                <circle
+                  cx="40"
+                  cy="40"
+                  r="3"
+                  fill="currentColor"
+                  stroke="none"
+                />
+              </svg>
+            </span>
             <span aria-hidden="true">↗</span>
           </span>
           <p className="public-label">{p.theme}</p>

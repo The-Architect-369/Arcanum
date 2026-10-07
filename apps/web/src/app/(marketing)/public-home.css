@@ -725,3 +725,387 @@ body:has(.public-home)::-webkit-scrollbar {
     animation: none !important;
   }
 }
+
+/* October 2026 visual refresh: shared public presentation, not application UI. */
+.public-home {
+  --public-bg: #080f21;
+  --public-ink: #f4efe5;
+  --public-muted: #b8c5d8;
+  --public-gold: #e8c78e;
+  --public-line: #9db9e62b;
+  background:
+    radial-gradient(ellipse 75% 700px at 85% 0, #21447c60, transparent 75%),
+    radial-gradient(ellipse 50% 900px at 0 45%, #123e5838, transparent 80%),
+    var(--public-bg);
+}
+.public-header {
+  background: #080f21ed;
+  border-bottom-color: #e8c78e26;
+}
+.public-nav {
+  position: relative;
+  min-height: 84px;
+}
+.public-brand img {
+  width: 42px;
+  height: 42px;
+}
+.public-menu-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  min-height: 46px;
+  padding: 10px 16px;
+  color: var(--public-gold);
+  background: #132340;
+  border: 1px solid #e8c78e55;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+}
+.public-menu-icon {
+  display: grid;
+  gap: 4px;
+  width: 19px;
+}
+.public-menu-icon > span {
+  display: block;
+  height: 1px;
+  background: currentColor;
+  transition:
+    transform 180ms ease,
+    opacity 180ms ease;
+}
+.public-menu-toggle[aria-expanded="true"] .public-menu-icon > span:first-child {
+  transform: translateY(5px) rotate(45deg);
+}
+.public-menu-toggle[aria-expanded="true"]
+  .public-menu-icon
+  > span:nth-child(2) {
+  opacity: 0;
+}
+.public-menu-toggle[aria-expanded="true"] .public-menu-icon > span:last-child {
+  transform: translateY(-5px) rotate(-45deg);
+}
+.public-nav nav {
+  display: none;
+}
+.public-nav nav.is-open {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0;
+  position: absolute;
+  right: 0;
+  top: calc(100% - 1px);
+  width: min(370px, 100%);
+  max-height: calc(100dvh - 100px);
+  overflow-y: auto;
+  padding: 16px 24px;
+  background: #0c1830;
+  border: 1px solid #e8c78e55;
+  box-shadow: 0 24px 60px #0007;
+}
+.public-nav nav a {
+  font-size: 16px;
+  padding: 15px 8px;
+  border-bottom: 1px solid var(--public-line);
+}
+.public-nav nav a:last-child {
+  margin-top: 14px;
+  padding: 13px 16px;
+}
+.public-nav nav a[aria-current] {
+  border-left: 2px solid var(--public-gold);
+  padding-left: 14px;
+}
+.public-hero {
+  grid-template-columns: 1fr;
+  gap: 42px;
+  padding-block: 66px 30px;
+}
+.public-hero-copy {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 64px;
+  align-items: start;
+}
+.public-hero-copy > .public-eyebrow {
+  grid-column: 1;
+  grid-row: 1;
+  margin-bottom: 24px;
+}
+.public-hero-copy h1 {
+  grid-column: 1;
+  grid-row: 2 / 5;
+  margin: 0;
+  font-size: clamp(52px, 6.6vw, 89px);
+}
+.public-hero-copy > .public-intro {
+  grid-column: 2;
+  grid-row: 1 / 3;
+  font-size: 18px;
+}
+.public-hero-copy > .public-actions {
+  grid-column: 2;
+  grid-row: 3;
+  margin-top: 24px;
+}
+.public-hero-copy > .public-hero-note {
+  grid-column: 2;
+  grid-row: 4;
+  margin-top: 22px !important;
+}
+.public-artwork {
+  margin: 0;
+  min-width: 0;
+}
+.public-artwork-frame {
+  overflow: hidden;
+  border: 1px solid #e8c78e70;
+  background: #142544;
+  box-shadow: 0 30px 80px #0004;
+}
+.public-artwork img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.public-artwork figcaption {
+  padding: 13px 0 0;
+  font-size: 10px;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--public-muted);
+  text-align: right;
+}
+.public-foundation-strip {
+  background: #14223b66;
+}
+.public-foundation-strip > div {
+  padding-block: 22px;
+}
+.public-pillar-card {
+  position: relative;
+  background: linear-gradient(140deg, #172c4d99, #0d183099);
+  border-color: #91b9df35;
+  transition:
+    transform 220ms ease,
+    border-color 220ms ease,
+    background 220ms ease;
+}
+.public-pillar-card:hover {
+  transform: translateY(-4px);
+  background: #1a2e4d;
+  border-color: #e8c78e9c;
+}
+.public-card-number {
+  align-items: center;
+  margin-bottom: 26px;
+}
+.public-orbit-mark {
+  display: inline-block;
+  width: 70px;
+  height: 70px;
+  opacity: 0.8;
+}
+.public-orbit-mark svg {
+  width: 100%;
+  height: 100%;
+  stroke-width: 0.8;
+}
+.orbit-hope {
+  color: #a5d8ec;
+}
+.orbit-vitae {
+  color: #add1b7;
+}
+.orbit-arcnet {
+  color: #b8b9ed;
+}
+.public-tempus-feature {
+  background:
+    radial-gradient(ellipse at 85% 40%, #244d7940, transparent 65%),
+    linear-gradient(135deg, #11213b, #0b1529);
+}
+.public-context-list .public-tempus-figure {
+  width: min(300px, 100%);
+  margin: 0 auto 26px;
+}
+.public-context-list article {
+  padding-block: 22px;
+}
+.public-download-banner {
+  background: linear-gradient(115deg, #193153, #101b30 70%);
+  border-color: #e8c78e65;
+  box-shadow: inset 4px 0 0 #e8c78e;
+}
+.public-button {
+  box-shadow: 0 6px 24px #0002;
+  transition:
+    background 180ms ease,
+    transform 180ms ease;
+}
+.public-button:hover {
+  transform: translateY(-2px);
+}
+.public-footer {
+  background: #060c1a;
+}
+.public-page-intro {
+  position: relative;
+  isolation: isolate;
+  padding-block: 84px 64px;
+}
+.public-page-intro::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  right: 0;
+  top: 45px;
+  width: min(32vw, 310px);
+  aspect-ratio: 1;
+  border: 1px solid #e8c78e29;
+  border-radius: 50%;
+  background: repeating-radial-gradient(
+    circle,
+    transparent 0 37px,
+    #9abedd14 38px 39px,
+    transparent 40px 60px
+  );
+  pointer-events: none;
+  opacity: 0.65;
+}
+.public-prose > section {
+  padding-bottom: 20px;
+  border-bottom: 1px solid #9db9e614;
+}
+.public-sources {
+  padding: 26px;
+  border: 1px solid var(--public-line);
+  background: #12213b80;
+}
+.public-release-card,
+.public-example {
+  background: linear-gradient(145deg, #19315380, #101b30);
+}
+.public-journal > article {
+  border-top-color: #e8c78e40;
+}
+.public-reading-progress {
+  display: none;
+}
+
+/* Content is visible by default; unsupported browsers keep ordinary scrolling. */
+@media (prefers-reduced-motion: no-preference) {
+  .public-home main {
+    animation: public-page-arrive 380ms ease-out both;
+  }
+  .public-nav nav.is-open {
+    animation: public-page-arrive 180ms ease-out both;
+  }
+  @supports (animation-timeline: view()) {
+    .public-home
+      :is(
+        .public-section-heading,
+        .public-pillar-card,
+        .public-download-banner
+      ) {
+      animation: public-section-arrive linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 75%;
+    }
+  }
+  @supports (animation-timeline: scroll(root)) {
+    .public-reading-progress {
+      display: block;
+      position: fixed;
+      z-index: 60;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: var(--public-gold);
+      transform-origin: left;
+      pointer-events: none;
+      animation: public-read-progress linear both;
+      animation-timeline: scroll(root);
+    }
+  }
+}
+@keyframes public-page-arrive {
+  from {
+    opacity: 0.75;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes public-section-arrive {
+  from {
+    opacity: 0.72;
+    translate: 0 18px;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+@keyframes public-read-progress {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+@media (max-width: 800px) {
+  .public-nav {
+    min-height: 76px;
+  }
+  .public-hero {
+    padding-block: 40px 26px;
+    gap: 28px;
+  }
+  .public-hero-copy {
+    display: block;
+  }
+  .public-hero-copy h1 {
+    margin-block: 20px 26px;
+    font-size: clamp(49px, 11vw, 78px);
+  }
+  .public-hero-copy > .public-intro {
+    font-size: 17px;
+  }
+  .public-hero-copy > .public-hero-note {
+    font-size: 11px;
+  }
+  .public-artwork figcaption {
+    font-size: 9px;
+    letter-spacing: 0.08em;
+  }
+  .public-page-intro {
+    padding-block: 48px 40px;
+  }
+  .public-page-intro::after {
+    top: 20px;
+    width: 155px;
+    opacity: 0.4;
+  }
+  .public-orbit-mark {
+    width: 56px;
+    height: 56px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .public-home *,
+  .public-home *::before,
+  .public-home *::after {
+    animation: none !important;
+    transition: none !important;
+    translate: none !important;
+  }
+}

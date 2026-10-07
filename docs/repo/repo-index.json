@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-10-07T09:57:51Z",
+  "generated_at": "2026-10-07T11:58:32Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "4f7683c61",
+  "commit": "94f797994",
   "generator_version": "1.5",
   "files": [
     {
@@ -1114,11 +1114,11 @@
     {
       "path": "apps/web/next.config.mjs",
       "type": "file",
-      "size_bytes": 1222,
-      "last_modified_commit": "6b80d7a1e",
+      "size_bytes": 1863,
+      "last_modified_commit": "94f797994",
       "is_empty": false,
       "extension": ".mjs",
-      "lines": 33
+      "lines": 63
     },
     {
       "path": "apps/web/node/docker/Dockerfile",
@@ -1173,6 +1173,15 @@
       "is_empty": false,
       "extension": ".mjs",
       "lines": 7
+    },
+    {
+      "path": "apps/web/public/art/hope-architect-v2.png",
+      "type": "file",
+      "size_bytes": 2878527,
+      "last_modified_commit": "94f797994",
+      "is_empty": false,
+      "extension": ".png",
+      "lines": 0
     },
     {
       "path": "apps/web/public/file.svg",
@@ -1985,6 +1994,15 @@
       "lines": 44
     },
     {
+      "path": "apps/web/src/app/(marketing)/architect/page.tsx",
+      "type": "file",
+      "size_bytes": 9334,
+      "last_modified_commit": "94f797994",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 255
+    },
+    {
       "path": "apps/web/src/app/(marketing)/client-layout.tsx",
       "type": "file",
       "size_bytes": 984,
@@ -2021,6 +2039,15 @@
       "lines": 49
     },
     {
+      "path": "apps/web/src/app/(marketing)/journeys/page.tsx",
+      "type": "file",
+      "size_bytes": 4343,
+      "last_modified_commit": "cb793030b",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 121
+    },
+    {
       "path": "apps/web/src/app/(marketing)/layout.tsx",
       "type": "file",
       "size_bytes": 1179,
@@ -2032,11 +2059,11 @@
     {
       "path": "apps/web/src/app/(marketing)/page.tsx",
       "type": "file",
-      "size_bytes": 5670,
-      "last_modified_commit": "a39710b0c",
+      "size_bytes": 6311,
+      "last_modified_commit": "94f797994",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 164
+      "lines": 178
     },
     {
       "path": "apps/web/src/app/(marketing)/principles/page.tsx",
@@ -2050,11 +2077,11 @@
     {
       "path": "apps/web/src/app/(marketing)/public-home.css",
       "type": "file",
-      "size_bytes": 14552,
-      "last_modified_commit": "165b06b7b",
+      "size_bytes": 22548,
+      "last_modified_commit": "94f797994",
       "is_empty": false,
       "extension": ".css",
-      "lines": 727
+      "lines": 1111
     },
     {
       "path": "apps/web/src/app/(marketing)/styles/globals.css",
@@ -2086,11 +2113,11 @@
     {
       "path": "apps/web/src/app/(marketing)/updates/page.tsx",
       "type": "file",
-      "size_bytes": 2053,
-      "last_modified_commit": "165b06b7b",
+      "size_bytes": 4258,
+      "last_modified_commit": "94f797994",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 58
+      "lines": 116
     },
     {
       "path": "apps/web/src/app/activate/page.tsx",
@@ -2293,20 +2320,20 @@
     {
       "path": "apps/web/src/components/public/PublicNav.tsx",
       "type": "file",
-      "size_bytes": 2207,
-      "last_modified_commit": "165b06b7b",
+      "size_bytes": 2846,
+      "last_modified_commit": "94f797994",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 78
+      "lines": 102
     },
     {
       "path": "apps/web/src/components/public/PublicShell.tsx",
       "type": "file",
-      "size_bytes": 5660,
-      "last_modified_commit": "efa2576bf",
+      "size_bytes": 6809,
+      "last_modified_commit": "94f797994",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 191
+      "lines": 221
     },
     {
       "path": "apps/web/src/components/shared/CTAActivate.tsx",
@@ -3166,11 +3193,11 @@
     {
       "path": "apps/web/src/lib/public-routes.ts",
       "type": "file",
-      "size_bytes": 322,
-      "last_modified_commit": "165b06b7b",
+      "size_bytes": 385,
+      "last_modified_commit": "94f797994",
       "is_empty": false,
       "extension": ".ts",
-      "lines": 16
+      "lines": 19
     },
     {
       "path": "apps/web/src/lib/public-site.ts",
@@ -4197,6 +4224,15 @@
       "is_empty": false,
       "extension": ".md",
       "lines": 98
+    },
+    {
+      "path": "docs/architecture/public-web-lanes.md",
+      "type": "file",
+      "size_bytes": 9249,
+      "last_modified_commit": "94f797994",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 150
     },
     {
       "path": "docs/architecture/research-review-queue.md",
@@ -9466,11 +9502,11 @@
     {
       "path": "scripts/verify-public-site.mjs",
       "type": "file",
-      "size_bytes": 3568,
-      "last_modified_commit": "d280db490",
+      "size_bytes": 7859,
+      "last_modified_commit": "94f797994",
       "is_empty": false,
       "extension": ".mjs",
-      "lines": 98
+      "lines": 242
     },
     {
       "path": "scripts/verify-repo-index.py",

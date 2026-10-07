@@ -5,7 +5,10 @@ const publicRoutes = new Set([
   "/principles",
   "/updates",
   "/download",
+  "/journeys",
+  "/architect",
   "/site-log.json",
+  "/art/hope-architect-v2.png",
   ...["tempus", "hope", "vitae", "arcnet", "mana"].map(
     (slug) => `/explore/${slug}`,
   ),

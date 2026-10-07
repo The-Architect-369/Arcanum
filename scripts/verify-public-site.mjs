@@ -1,6 +1,10 @@
 #!/usr/bin/env node
 // Run against `next start`, not the dev server: the production device gate matters.
 import assert from "node:assert/strict";
+import { createHash } from "node:crypto";
+import { readFile } from "node:fs/promises";
+import http from "node:http";
+import https from "node:https";
 
 const origin = process.argv[2] || "http://127.0.0.1:3000";
 const routes = [
@@ -10,6 +14,8 @@ const routes = [
   "/principles",
   "/updates",
   "/download",
+  "/journeys",
+  "/architect",
   ...["tempus", "hope", "vitae", "arcnet", "mana"].map(
     (slug) => `/explore/${slug}`,
   ),
@@ -19,7 +25,131 @@ const agents = {
   mobile: "Mozilla/5.0 (Linux; Android 14) Mobile",
 };
 let checks = 0;
+// Native fetch can override Host with the URL hostname. Use an HTTP request
+// here so this test actually exercises the production domain rules locally.
+function requestHost(path, host, userAgent) {
+  const url = new URL(path, origin);
+  return new Promise((resolve, reject) => {
+    const request = (url.protocol === "https:" ? https : http).get(
+      url,
+      {
+        headers: { Host: host, "User-Agent": userAgent },
+      },
+      (response) => {
+        const chunks = [];
+        response.on("data", (chunk) => chunks.push(chunk));
+        response.on("end", () =>
+          resolve({ status: response.statusCode, body: Buffer.concat(chunks) }),
+        );
+        response.on("error", reject);
+      },
+    );
+    request.setTimeout(15000, () =>
+      request.destroy(new Error("Host probe timed out")),
+    );
+    request.on("error", reject);
+  });
+}
+// Host routing is exercised against the production server, not a mock of
+// next.config. Similar names must not acquire another hostname's landing page.
+for (const ua of Object.values(agents)) {
+  for (const [host, heading] of [
+    ["the-arcanum.net", "A Human Journey."],
+    ["updates.the-arcanum.net", "See what changed. Follow what comes next."],
+    ["journeys.the-arcanum.net", "Go somewhere. Come back with a question."],
+    ["architect.the-arcanum.net", "Follow the build."],
+    ["architectXthe-arcanumYnet", "A Human Journey."],
+    ["journeysXthe-arcanumYnet", "A Human Journey."],
+    ["journeys.the-arcanum.net.example.org", "A Human Journey."],
+  ]) {
+    const response = await requestHost("/?from=verification", host, ua);
+    assert.equal(
+      response.status,
+      200,
+      `${host} landing remains directly available`,
+    );
+    const html = response.body.toString("utf8");
+    assert.ok(
+      html.match(/<h1[\s\S]*?<\/h1>/)?.[0].includes(heading),
+      `${host} has the intended landing`,
+    );
+    assert.ok(
+      html.includes('href="https://the-arcanum.net/"'),
+      "Every lane can return to Arcanum",
+    );
+    if (host === "architect.the-arcanum.net") {
+      assert.doesNotMatch(
+        html,
+        /app\.notion\.com|drive\.google\.com|docs\.google\.com|chatgpt\.com\/agents/,
+        "Public dashboard excludes private provider links",
+      );
+      assert.match(html, /That access system is not implemented here/);
+    }
+    checks++;
+  }
+}
+const approvedRelease = JSON.parse(
+  await readFile(
+    new URL("../apps/web/public/updates/release.json", import.meta.url),
+  ),
+);
+for (const path of [
+  "/updates/release.json",
+  new URL(approvedRelease.manifestUrl).pathname,
+  new URL(approvedRelease.apkUrl).pathname,
+]) {
+  const response = await requestHost(
+    path,
+    "updates.the-arcanum.net",
+    agents.desktop,
+  );
+  assert.equal(
+    response.status,
+    200,
+    `${path} has no redirect after hostname routing`,
+  );
+  const bytes = response.body;
+  const original = await readFile(
+    new URL(`../apps/web/public${path}`, import.meta.url),
+  );
+  assert.deepEqual(bytes, original, `${path} bytes remain unchanged`);
+  if (path.endsWith(".apk")) {
+    assert.equal(
+      createHash("sha256").update(bytes).digest("hex"),
+      approvedRelease.sha256,
+    );
+  }
+  checks++;
+}
 for (const [device, ua] of Object.entries(agents)) {
+  const artworkPath = "/art/hope-architect-v2.png";
+  const artwork = await requestHost(artworkPath, "the-arcanum.net", ua);
+  assert.equal(
+    artwork.status,
+    200,
+    `${device} public artwork bypasses the alpha gate`,
+  );
+  assert.deepEqual(
+    artwork.body,
+    await readFile(
+      new URL(`../apps/web/public${artworkPath}`, import.meta.url),
+    ),
+    "Approved artwork is served intact",
+  );
+  const optimizedArt = await fetch(
+    new URL(
+      `/_next/image?url=${encodeURIComponent(artworkPath)}&w=1200&q=75`,
+      origin,
+    ),
+    { headers: { "User-Agent": ua } },
+  );
+  assert.equal(
+    optimizedArt.status,
+    200,
+    `${device} responsive artwork can be optimized`,
+  );
+  assert.match(optimizedArt.headers.get("content-type"), /^image\//);
+  checks += 2;
   for (const path of routes) {
     const response = await fetch(new URL(path, origin), {
       headers: { "User-Agent": ua },
@@ -51,16 +181,30 @@ for (const [device, ua] of Object.entries(agents)) {
       );
     }
     if (path === "/download") {
-      const listing = await fetch(new URL("/updates/release.json", origin), { redirect: "manual" });
+      const listing = await fetch(new URL("/updates/release.json", origin), {
+        redirect: "manual",
+      });
       assert.equal(listing.status, 200, "Release listing is directly public");
       assert.match(listing.headers.get("cache-control"), /no-store/);
       assert.match(listing.headers.get("cache-control"), /max-age=0/);
       const release = await listing.json();
       assert.match(html, /Approved development release/);
-      assert.ok(html.includes(`href="${release.apkUrl}"`), "Page APK agrees with approved listing");
-      assert.ok(html.includes(release.sha256), "Page hash agrees with approved listing");
-      assert.ok(html.includes(release.signerSha256), "Page signer agrees with approved listing");
-      assert.ok(html.includes(`href="${release.manifestUrl}"`), "Page manifest agrees with approved listing");
+      assert.ok(
+        html.includes(`href="${release.apkUrl}"`),
+        "Page APK agrees with approved listing",
+      );
+      assert.ok(
+        html.includes(release.sha256),
+        "Page hash agrees with approved listing",
+      );
+      assert.ok(
+        html.includes(release.signerSha256),
+        "Page signer agrees with approved listing",
+      );
+      assert.ok(
+        html.includes(`href="${release.manifestUrl}"`),
+        "Page manifest agrees with approved listing",
+      );
     }
     checks++;
   }
