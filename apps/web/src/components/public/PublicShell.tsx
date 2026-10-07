@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { repository, pillars, source, siteLog } from "@/lib/public-site";
 import PublicNav from "./PublicNav";
+import PillarCarousel from "./PillarCarousel";
 import "@/app/(marketing)/public-home.css";
 export function PublicShell({ children }: { children: React.ReactNode }) {
   return (
@@ -75,52 +76,23 @@ export function PageIntro({
     </div>
   );
 }
-export function PillarCards() {
+export function PillarCards({ home = false }: { home?: boolean }) {
   return (
-    <div className="public-pillar-grid">
-      {pillars.map((p) => (
-        <Link
-          className={`public-pillar-card pillar-${p.slug}`}
-          href={`/explore/${p.slug}`}
-          key={p.slug}
-        >
-          <span className="public-card-number">
-            {p.number}
-            <span
-              className={`public-orbit-mark orbit-${p.slug}`}
-              aria-hidden="true"
-            >
-              <svg viewBox="0 0 80 80" fill="none" stroke="currentColor">
-                <circle cx="40" cy="40" r="29" />
-                <circle cx="40" cy="40" r="18" />
-                <ellipse
-                  cx="40"
-                  cy="40"
-                  rx="35"
-                  ry="12"
-                  transform="rotate(-35 40 40)"
-                />
-                <path d="M40 3v9M40 68v9M3 40h9M68 40h9" />
-                <circle
-                  cx="40"
-                  cy="40"
-                  r="3"
-                  fill="currentColor"
-                  stroke="none"
-                />
-              </svg>
-            </span>
-            <span aria-hidden="true">↗</span>
-          </span>
-          <p className="public-label">{p.theme}</p>
-          <h3>{p.name}</h3>
-          <p>{p.summary}</p>
-          <span className="public-card-link">
-            Explore {p.name} <span aria-hidden="true">→</span>
-          </span>
-        </Link>
-      ))}
-    </div>
+    <PillarCarousel
+      home={home}
+      items={pillars.map(
+        ({ slug, name, number, theme, summary, title, intro, status }) => ({
+          slug,
+          name,
+          number,
+          theme,
+          summary,
+          title,
+          intro,
+          status,
+        }),
+      )}
+    />
   );
 }
 export function SourceList({

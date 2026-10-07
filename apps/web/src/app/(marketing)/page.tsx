@@ -86,7 +86,7 @@ export default function HomePage() {
             the system’s design as it develops.
           </p>
         </div>
-        <PillarCards />
+        <PillarCards home />
       </section>
       <section className="public-tempus-feature" aria-labelledby="tempus-title">
         <div className="public-shell public-feature-grid">
