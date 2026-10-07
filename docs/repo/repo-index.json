@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-10-07T11:58:32Z",
+  "generated_at": "2026-10-07T12:40:47Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "94f797994",
+  "commit": "3ca0c7945",
   "generator_version": "1.5",
   "files": [
     {
@@ -2032,11 +2032,11 @@
     {
       "path": "apps/web/src/app/(marketing)/explore/page.tsx",
       "type": "file",
-      "size_bytes": 1669,
-      "last_modified_commit": "a39710b0c",
+      "size_bytes": 2143,
+      "last_modified_commit": "3ca0c7945",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 49
+      "lines": 59
     },
     {
       "path": "apps/web/src/app/(marketing)/journeys/page.tsx",
@@ -2059,8 +2059,8 @@
     {
       "path": "apps/web/src/app/(marketing)/page.tsx",
       "type": "file",
-      "size_bytes": 6311,
-      "last_modified_commit": "94f797994",
+      "size_bytes": 6316,
+      "last_modified_commit": "3ca0c7945",
       "is_empty": false,
       "extension": ".tsx",
       "lines": 178
@@ -2077,11 +2077,11 @@
     {
       "path": "apps/web/src/app/(marketing)/public-home.css",
       "type": "file",
-      "size_bytes": 22548,
-      "last_modified_commit": "94f797994",
+      "size_bytes": 30305,
+      "last_modified_commit": "3ca0c7945",
       "is_empty": false,
       "extension": ".css",
-      "lines": 1111
+      "lines": 1448
     },
     {
       "path": "apps/web/src/app/(marketing)/styles/globals.css",
@@ -2318,6 +2318,15 @@
       "lines": 53
     },
     {
+      "path": "apps/web/src/components/public/PillarCarousel.tsx",
+      "type": "file",
+      "size_bytes": 12581,
+      "last_modified_commit": "3ca0c7945",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 366
+    },
+    {
       "path": "apps/web/src/components/public/PublicNav.tsx",
       "type": "file",
       "size_bytes": 2846,
@@ -2329,11 +2338,11 @@
     {
       "path": "apps/web/src/components/public/PublicShell.tsx",
       "type": "file",
-      "size_bytes": 6809,
-      "last_modified_commit": "94f797994",
+      "size_bytes": 5786,
+      "last_modified_commit": "3ca0c7945",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 221
+      "lines": 193
     },
     {
       "path": "apps/web/src/components/shared/CTAActivate.tsx",
@@ -2437,11 +2446,11 @@
     {
       "path": "apps/web/src/components/ui/BentoShowcase.tsx",
       "type": "file",
-      "size_bytes": 8388,
-      "last_modified_commit": "0d6f0e25e",
+      "size_bytes": 8433,
+      "last_modified_commit": "3ca0c7945",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 205
+      "lines": 206
     },
     {
       "path": "apps/web/src/components/ui/ConstellationCanvas.tsx",
@@ -3279,6 +3288,15 @@
       "is_empty": false,
       "extension": ".ts",
       "lines": 71
+    },
+    {
+      "path": "apps/web/src/lib/ui/carousel.ts",
+      "type": "file",
+      "size_bytes": 449,
+      "last_modified_commit": "3ca0c7945",
+      "is_empty": false,
+      "extension": ".ts",
+      "lines": 10
     },
     {
       "path": "apps/web/src/lib/utils.ts",
@@ -4215,6 +4233,15 @@
       "is_empty": false,
       "extension": ".md",
       "lines": 191
+    },
+    {
+      "path": "docs/architecture/public-pillar-orbit-preview.md",
+      "type": "file",
+      "size_bytes": 5065,
+      "last_modified_commit": "3ca0c7945",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 88
     },
     {
       "path": "docs/architecture/public-site-v2.md",
