@@ -252,3 +252,31 @@ claims. Existing unpinned baseline sources are pinned to the pre-update candidat
 commit before appending this section. It neither renumbers sessions nor rewrites
 the sealed continuity record. The accompanying Notion update is an operational
 projection with explicit candidate links, not proof of canonical repository merge.
+
+## October 7 automated research coordination grant
+
+After the review above, the Human explicitly authorized more automated preparation
+of evidence-grounded questions and running already approved questions for Human
+review. They selected both refresh during active work and daily. This updates the
+earlier manual-only coordination posture within that scope; it does not approve
+all new questions, unlimited repeated runs or automatic implementation of findings.
+
+The app confirmed creation of thread heartbeat `arcanum-research-review-loop` as
+ACTIVE, with a daily 9 a.m. schedule (America/New_York intended local timezone).
+Its prompt refreshes the queue, preserves question-level budgets and private
+output, reconciles prior runs, and permits approved dispatch only after Agent C
+readiness verification. This records successful scheduling, not a completed daily
+run or a working Agent C adapter. The connection failure and unknown settings
+remain; no research run or simulation result is claimed.
+
+The [research review queue](../../architecture/research-review-queue.md) prepares
+WS-RQ-003 for its unchanged bounded run, preserves WS-RQ-009 separately, and adds
+four pending-review questions grounded in the inspected economic accounting,
+topology, scoped-adoption and Tempus-replay evidence. These local proposal labels
+do not allocate new WS-RQ IDs or mark new questions approved.
+
+Notion WS-RQ-003's stale next-decision wording was corrected and read back while
+preserving the September 24 approval body and `approved_active` state. The
+Understanding Dashboard is the authorized operational mirror for this update.
+No Notion subscription cancellation, main merge, deployment or new policy is
+authorized or established by scheduling this review loop.

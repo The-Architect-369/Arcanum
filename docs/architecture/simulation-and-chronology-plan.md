@@ -110,6 +110,12 @@ claim remote triggering and return are verified. A recurring schedule, automatic
 question expansion or provider writes by Agent C requires its own defined scope;
 none is created by this plan.
 
+Subsequent Human instruction authorized automated preparation and execution of
+already approved questions, and selected checks during active work and daily.
+The [research review queue](research-review-queue.md) records that later grant,
+prepared questions, and the coordinating thread's daily heartbeat. That check
+does not establish Agent C connectivity or broaden individual question grants.
+
 Connection observation on October 7: the source-linked
 [manual-cohort acceptance record](https://app.notion.com/p/3e32bb4420b881a7b3b9d085e5042f06)
 identifies WS-AGENT-C as Research Observatory. A fresh registry read confirms

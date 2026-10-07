@@ -184,7 +184,8 @@ class ProjectionTests(unittest.TestCase):
         # reviewed evidence is appended to the live seed.
         baseline = copy.deepcopy(self.seed)
         baseline['objects'] = [obj for obj in baseline['objects']
-                               if not obj['object_id'].endswith(':20261007-architecture-review')]
+                               if not obj['object_id'].endswith((':20261007-architecture-review',
+                                                               ':20261007-research-loop'))]
         result = m.derive(baseline)
         for field in ['canonical_base', 'implementation_gate', 'source_conflicts']:
             self.assertEqual(result['fields'][field]['selected_object_ids'],
@@ -193,7 +194,10 @@ class ProjectionTests(unittest.TestCase):
         self.assertEqual(result['fields']['a19_baseline']['selected_object_ids'], ['coherence:a19_baseline'])
 
     def test_architecture_review_preserves_baselines_and_extends_decisions(self):
-        result = m.derive(self.seed)
+        architecture = copy.deepcopy(self.seed)
+        architecture['objects'] = [obj for obj in architecture['objects']
+                                   if not obj['object_id'].endswith(':20261007-research-loop')]
+        result = m.derive(architecture)
         for field in ['canonical_base', 'implementation_gate', 'outstanding_human_decisions']:
             self.assertEqual(result['fields'][field]['selected_object_ids'],
                              ['coherence:' + field + ':20261007-architecture-review'])
@@ -204,6 +208,17 @@ class ProjectionTests(unittest.TestCase):
                          ['coherence:agent_c_state:20261007-connection-check'])
         for field in ['hope_extensions', 'spatial_extensions']:
             self.assertEqual(result['fields'][field]['status'], 'proposed')
+
+    def test_coordination_grant_changes_only_implementation_gate(self):
+        earlier = copy.deepcopy(self.seed)
+        earlier['objects'] = [obj for obj in earlier['objects']
+                              if not obj['object_id'].endswith(':20261007-research-loop')]
+        before, after = m.derive(earlier), m.derive(self.seed)
+        for field in m.POLICIES:
+            if field != 'implementation_gate':
+                self.assertEqual(before['fields'][field], after['fields'][field])
+        self.assertEqual(after['fields']['implementation_gate']['selected_object_ids'],
+                         ['coherence:implementation_gate:20261007-research-loop'])
 
     def test_empty_session_index_is_valid_and_unmodified(self):
         path = m.ROOT / m.DIRECTORY / 'continuity-index.json'
