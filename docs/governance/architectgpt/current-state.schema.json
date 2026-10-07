@@ -1,0 +1,953 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "Object contents independently validated against the adopted continuity-object schema.",
+  "properties": {
+    "as_of": {
+      "format": "date-time",
+      "type": "string"
+    },
+    "authority": {
+      "const": "derived-non-authoritative"
+    },
+    "base_ref": {
+      "pattern": "^[0-9a-f]{40}$",
+      "type": "string"
+    },
+    "coverage": {
+      "enum": [
+        "partial",
+        "bounded-seed-only"
+      ]
+    },
+    "fields": {
+      "additionalProperties": false,
+      "properties": {
+        "a19_baseline": {
+          "additionalProperties": false,
+          "properties": {
+            "all_claim_ids": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array",
+              "uniqueItems": true
+            },
+            "coverage": {
+              "enum": [
+                "covered",
+                "partial"
+              ]
+            },
+            "selected_object_ids": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array",
+              "uniqueItems": true
+            },
+            "status": {
+              "enum": [
+                "supported",
+                "proposed",
+                "conflict",
+                "unknown"
+              ]
+            },
+            "superseded_object_ids": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array",
+              "uniqueItems": true
+            },
+            "value": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "status",
+            "value",
+            "selected_object_ids",
+            "all_claim_ids",
+            "superseded_object_ids",
+            "coverage"
+          ],
+          "type": "object"
+        },
+        "a20_baseline": {
+          "additionalProperties": false,
+          "properties": {
+            "all_claim_ids": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array",
+              "uniqueItems": true
+            },
+            "coverage": {
+              "enum": [
+                "covered",
+                "partial"
+              ]
+            },
+            "selected_object_ids": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array",
+              "uniqueItems": true
+            },
+            "status": {
+              "enum": [
+                "supported",
+                "proposed",
+                "conflict",
+                "unknown"
+              ]
+            },
+            "superseded_object_ids": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array",
+              "uniqueItems": true
+            },
+            "value": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "status",
+            "value",
+            "selected_object_ids",
+            "all_claim_ids",
+            "superseded_object_ids",
+            "coverage"
+          ],
+          "type": "object"
+        },
+        "agent_c_state": {
+          "additionalProperties": false,
+          "properties": {
+            "all_claim_ids": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array",
+              "uniqueItems": true
+            },
+            "coverage": {
+              "enum": [
+                "covered",
+                "partial"
+              ]
+            },
+            "selected_object_ids": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array",
+              "uniqueItems": true
+            },
+            "status": {
+              "enum": [
+                "supported",
+                "proposed",
+                "conflict",
+                "unknown"
+              ]
+            },
+            "superseded_object_ids": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array",
+              "uniqueItems": true
+            },
+            "value": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "status",
+            "value",
+            "selected_object_ids",
+            "all_claim_ids",
+            "superseded_object_ids",
+            "coverage"
+          ],
+          "type": "object"
+        },
+        "canonical_base": {
+          "additionalProperties": false,
+          "properties": {
+            "all_claim_ids": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array",
+              "uniqueItems": true
+            },
+            "coverage": {
+              "enum": [
+                "covered",
+                "partial"
+              ]
+            },
+            "selected_object_ids": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array",
+              "uniqueItems": true
+            },
+            "status": {
+              "enum": [
+                "supported",
+                "proposed",
+                "conflict",
+                "unknown"
+              ]
+            },
+            "superseded_object_ids": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array",
+              "uniqueItems": true
+            },
+            "value": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "status",
+            "value",
+            "selected_object_ids",
+            "all_claim_ids",
+            "superseded_object_ids",
+            "coverage"
+          ],
+          "type": "object"
+        },
+        "completed_arc": {
+          "additionalProperties": false,
+          "properties": {
+            "all_claim_ids": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array",
+              "uniqueItems": true
+            },
+            "coverage": {
+              "enum": [
+                "covered",
+                "partial"
+              ]
+            },
+            "selected_object_ids": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array",
+              "uniqueItems": true
+            },
+            "status": {
+              "enum": [
+                "supported",
+                "proposed",
+                "conflict",
+                "unknown"
+              ]
+            },
+            "superseded_object_ids": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array",
+              "uniqueItems": true
+            },
+            "value": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "status",
+            "value",
+            "selected_object_ids",
+            "all_claim_ids",
+            "superseded_object_ids",
+            "coverage"
+          ],
+          "type": "object"
+        },
+        "continuity_epoch": {
+          "additionalProperties": false,
+          "properties": {
+            "all_claim_ids": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array",
+              "uniqueItems": true
+            },
+            "coverage": {
+              "enum": [
+                "covered",
+                "partial"
+              ]
+            },
+            "selected_object_ids": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array",
+              "uniqueItems": true
+            },
+            "status": {
+              "enum": [
+                "supported",
+                "proposed",
+                "conflict",
+                "unknown"
+              ]
+            },
+            "superseded_object_ids": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array",
+              "uniqueItems": true
+            },
+            "value": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "status",
+            "value",
+            "selected_object_ids",
+            "all_claim_ids",
+            "superseded_object_ids",
+            "coverage"
+          ],
+          "type": "object"
+        },
+        "continuity_gaps": {
+          "additionalProperties": false,
+          "properties": {
+            "all_claim_ids": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array",
+              "uniqueItems": true
+            },
+            "coverage": {
+              "enum": [
+                "covered",
+                "partial"
+              ]
+            },
+            "selected_object_ids": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array",
+              "uniqueItems": true
+            },
+            "status": {
+              "enum": [
+                "supported",
+                "proposed",
+                "conflict",
+                "unknown"
+              ]
+            },
+            "superseded_object_ids": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array",
+              "uniqueItems": true
+            },
+            "value": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "status",
+            "value",
+            "selected_object_ids",
+            "all_claim_ids",
+            "superseded_object_ids",
+            "coverage"
+          ],
+          "type": "object"
+        },
+        "era": {
+          "additionalProperties": false,
+          "properties": {
+            "all_claim_ids": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array",
+              "uniqueItems": true
+            },
+            "coverage": {
+              "enum": [
+                "covered",
+                "partial"
+              ]
+            },
+            "selected_object_ids": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array",
+              "uniqueItems": true
+            },
+            "status": {
+              "enum": [
+                "supported",
+                "proposed",
+                "conflict",
+                "unknown"
+              ]
+            },
+            "superseded_object_ids": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array",
+              "uniqueItems": true
+            },
+            "value": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "status",
+            "value",
+            "selected_object_ids",
+            "all_claim_ids",
+            "superseded_object_ids",
+            "coverage"
+          ],
+          "type": "object"
+        },
+        "following_arc": {
+          "additionalProperties": false,
+          "properties": {
+            "all_claim_ids": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array",
+              "uniqueItems": true
+            },
+            "coverage": {
+              "enum": [
+                "covered",
+                "partial"
+              ]
+            },
+            "selected_object_ids": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array",
+              "uniqueItems": true
+            },
+            "status": {
+              "enum": [
+                "supported",
+                "proposed",
+                "conflict",
+                "unknown"
+              ]
+            },
+            "superseded_object_ids": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array",
+              "uniqueItems": true
+            },
+            "value": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "status",
+            "value",
+            "selected_object_ids",
+            "all_claim_ids",
+            "superseded_object_ids",
+            "coverage"
+          ],
+          "type": "object"
+        },
+        "hope_extensions": {
+          "additionalProperties": false,
+          "properties": {
+            "all_claim_ids": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array",
+              "uniqueItems": true
+            },
+            "coverage": {
+              "enum": [
+                "covered",
+                "partial"
+              ]
+            },
+            "selected_object_ids": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array",
+              "uniqueItems": true
+            },
+            "status": {
+              "enum": [
+                "supported",
+                "proposed",
+                "conflict",
+                "unknown"
+              ]
+            },
+            "superseded_object_ids": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array",
+              "uniqueItems": true
+            },
+            "value": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "status",
+            "value",
+            "selected_object_ids",
+            "all_claim_ids",
+            "superseded_object_ids",
+            "coverage"
+          ],
+          "type": "object"
+        },
+        "implementation_gate": {
+          "additionalProperties": false,
+          "properties": {
+            "all_claim_ids": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array",
+              "uniqueItems": true
+            },
+            "coverage": {
+              "enum": [
+                "covered",
+                "partial"
+              ]
+            },
+            "selected_object_ids": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array",
+              "uniqueItems": true
+            },
+            "status": {
+              "enum": [
+                "supported",
+                "proposed",
+                "conflict",
+                "unknown"
+              ]
+            },
+            "superseded_object_ids": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array",
+              "uniqueItems": true
+            },
+            "value": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "status",
+            "value",
+            "selected_object_ids",
+            "all_claim_ids",
+            "superseded_object_ids",
+            "coverage"
+          ],
+          "type": "object"
+        },
+        "next_arc": {
+          "additionalProperties": false,
+          "properties": {
+            "all_claim_ids": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array",
+              "uniqueItems": true
+            },
+            "coverage": {
+              "enum": [
+                "covered",
+                "partial"
+              ]
+            },
+            "selected_object_ids": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array",
+              "uniqueItems": true
+            },
+            "status": {
+              "enum": [
+                "supported",
+                "proposed",
+                "conflict",
+                "unknown"
+              ]
+            },
+            "superseded_object_ids": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array",
+              "uniqueItems": true
+            },
+            "value": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "status",
+            "value",
+            "selected_object_ids",
+            "all_claim_ids",
+            "superseded_object_ids",
+            "coverage"
+          ],
+          "type": "object"
+        },
+        "outstanding_human_decisions": {
+          "additionalProperties": false,
+          "properties": {
+            "all_claim_ids": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array",
+              "uniqueItems": true
+            },
+            "coverage": {
+              "enum": [
+                "covered",
+                "partial"
+              ]
+            },
+            "selected_object_ids": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array",
+              "uniqueItems": true
+            },
+            "status": {
+              "enum": [
+                "supported",
+                "proposed",
+                "conflict",
+                "unknown"
+              ]
+            },
+            "superseded_object_ids": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array",
+              "uniqueItems": true
+            },
+            "value": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "status",
+            "value",
+            "selected_object_ids",
+            "all_claim_ids",
+            "superseded_object_ids",
+            "coverage"
+          ],
+          "type": "object"
+        },
+        "source_conflicts": {
+          "additionalProperties": false,
+          "properties": {
+            "all_claim_ids": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array",
+              "uniqueItems": true
+            },
+            "coverage": {
+              "enum": [
+                "covered",
+                "partial"
+              ]
+            },
+            "selected_object_ids": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array",
+              "uniqueItems": true
+            },
+            "status": {
+              "enum": [
+                "supported",
+                "proposed",
+                "conflict",
+                "unknown"
+              ]
+            },
+            "superseded_object_ids": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array",
+              "uniqueItems": true
+            },
+            "value": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "status",
+            "value",
+            "selected_object_ids",
+            "all_claim_ids",
+            "superseded_object_ids",
+            "coverage"
+          ],
+          "type": "object"
+        },
+        "spatial_extensions": {
+          "additionalProperties": false,
+          "properties": {
+            "all_claim_ids": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array",
+              "uniqueItems": true
+            },
+            "coverage": {
+              "enum": [
+                "covered",
+                "partial"
+              ]
+            },
+            "selected_object_ids": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array",
+              "uniqueItems": true
+            },
+            "status": {
+              "enum": [
+                "supported",
+                "proposed",
+                "conflict",
+                "unknown"
+              ]
+            },
+            "superseded_object_ids": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array",
+              "uniqueItems": true
+            },
+            "value": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "status",
+            "value",
+            "selected_object_ids",
+            "all_claim_ids",
+            "superseded_object_ids",
+            "coverage"
+          ],
+          "type": "object"
+        },
+        "wave": {
+          "additionalProperties": false,
+          "properties": {
+            "all_claim_ids": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array",
+              "uniqueItems": true
+            },
+            "coverage": {
+              "enum": [
+                "covered",
+                "partial"
+              ]
+            },
+            "selected_object_ids": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array",
+              "uniqueItems": true
+            },
+            "status": {
+              "enum": [
+                "supported",
+                "proposed",
+                "conflict",
+                "unknown"
+              ]
+            },
+            "superseded_object_ids": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array",
+              "uniqueItems": true
+            },
+            "value": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "status",
+            "value",
+            "selected_object_ids",
+            "all_claim_ids",
+            "superseded_object_ids",
+            "coverage"
+          ],
+          "type": "object"
+        }
+      },
+      "required": [
+        "canonical_base",
+        "era",
+        "wave",
+        "completed_arc",
+        "next_arc",
+        "following_arc",
+        "continuity_epoch",
+        "continuity_gaps",
+        "source_conflicts",
+        "implementation_gate",
+        "outstanding_human_decisions",
+        "a19_baseline",
+        "hope_extensions",
+        "a20_baseline",
+        "spatial_extensions",
+        "agent_c_state"
+      ],
+      "type": "object"
+    },
+    "objects": {
+      "items": {
+        "type": "object"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "schema": {
+      "const": "arcanum.architect.current-state/v1"
+    },
+    "source_problems": {
+      "type": "object"
+    }
+  },
+  "required": [
+    "schema",
+    "authority",
+    "base_ref",
+    "as_of",
+    "coverage",
+    "fields",
+    "source_problems",
+    "objects"
+  ],
+  "title": "Bounded derived current state",
+  "type": "object"
+}

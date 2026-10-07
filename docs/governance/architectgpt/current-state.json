@@ -1,0 +1,2018 @@
+{
+  "as_of": "2026-10-07T08:13:22Z",
+  "authority": "derived-non-authoritative",
+  "base_ref": "052bdc42a8aba8e246719cf9493c0df11a612e92",
+  "coverage": "bounded-seed-only",
+  "fields": {
+    "a19_baseline": {
+      "all_claim_ids": [
+        "coherence:a19_baseline"
+      ],
+      "coverage": "covered",
+      "selected_object_ids": [
+        "coherence:a19_baseline"
+      ],
+      "status": "supported",
+      "superseded_object_ids": [],
+      "value": "Encrypted individually addressable Hope collection, protected temporal index, truthful surviving-record migration, chronological recall, explicit deletion/retention/corruption/redaction and factual Tempus references. Collection and physical acceptance tests remain ahead."
+    },
+    "a20_baseline": {
+      "all_claim_ids": [
+        "coherence:a20_baseline"
+      ],
+      "coverage": "covered",
+      "selected_object_ids": [
+        "coherence:a20_baseline"
+      ],
+      "status": "supported",
+      "superseded_object_ids": [],
+      "value": "Optional geometry and accessible controls share semantic destinations, preserving Home/crest, Back, focus, escape, gestures and privacy. Geometry grants no authority or inferred Human meaning."
+    },
+    "agent_c_state": {
+      "all_claim_ids": [
+        "coherence:agent_c_state"
+      ],
+      "coverage": "covered",
+      "selected_object_ids": [
+        "coherence:agent_c_state"
+      ],
+      "status": "supported",
+      "superseded_object_ids": [],
+      "value": "Bounded WS-RQ-009 research was recovered as approved_active; existing Agent C destination, reachability, Memory-off setting and schedules remain unverified. No run was launched in the reconciliation."
+    },
+    "canonical_base": {
+      "all_claim_ids": [
+        "coherence:canonical_base"
+      ],
+      "coverage": "covered",
+      "selected_object_ids": [
+        "coherence:canonical_base"
+      ],
+      "status": "supported",
+      "superseded_object_ids": [],
+      "value": "The-Architect-369/Arcanum main@052bdc42a8aba8e246719cf9493c0df11a612e92 (observed base; PR89 A18 closure adoption)."
+    },
+    "completed_arc": {
+      "all_claim_ids": [
+        "coherence:a18-historical-pending",
+        "coherence:completed_arc"
+      ],
+      "coverage": "covered",
+      "selected_object_ids": [
+        "coherence:completed_arc"
+      ],
+      "status": "supported",
+      "superseded_object_ids": [
+        "coherence:a18-historical-pending"
+      ],
+      "value": "A18 is closed within its accepted local Architect conversation and version 34 release scope. Do not repeat completed publication or installation effects."
+    },
+    "continuity_epoch": {
+      "all_claim_ids": [
+        "coherence:continuity_epoch"
+      ],
+      "coverage": "covered",
+      "selected_object_ids": [
+        "coherence:continuity_epoch"
+      ],
+      "status": "supported",
+      "superseded_object_ids": [],
+      "value": "ARC-CONT-EPOCH-2 is active; sealed predecessor ARC-CONT-EPOCH-1 ends at ARC-SES-10; first active session number is 11."
+    },
+    "continuity_gaps": {
+      "all_claim_ids": [
+        "coherence:continuity_gaps"
+      ],
+      "coverage": "covered",
+      "selected_object_ids": [
+        "coherence:continuity_gaps"
+      ],
+      "status": "supported",
+      "superseded_object_ids": [],
+      "value": "The active session index is empty by design while external numbering remains unreconciled. Dated log events are excluded from that index; no missing sessions are reconstructed."
+    },
+    "era": {
+      "all_claim_ids": [
+        "coherence:era"
+      ],
+      "coverage": "covered",
+      "selected_object_ids": [
+        "coherence:era"
+      ],
+      "status": "supported",
+      "superseded_object_ids": [],
+      "value": "Construction Era."
+    },
+    "following_arc": {
+      "all_claim_ids": [
+        "coherence:following_arc"
+      ],
+      "coverage": "covered",
+      "selected_object_ids": [
+        "coherence:following_arc"
+      ],
+      "status": "supported",
+      "superseded_object_ids": [],
+      "value": "A20 / ARC-51 follows A19; completing it leads to CE-W04 review, not automatic wave closure."
+    },
+    "hope_extensions": {
+      "all_claim_ids": [
+        "coherence:hope_extensions"
+      ],
+      "coverage": "covered",
+      "selected_object_ids": [
+        "coherence:hope_extensions"
+      ],
+      "status": "proposed",
+      "superseded_object_ids": [],
+      "value": "Unchanged originals with linked later additions, archival and consent-based Hope model access are proposed. Participant-controlled deletion already belongs to A19; forced retention and automatic model access are not approved."
+    },
+    "implementation_gate": {
+      "all_claim_ids": [
+        "coherence:implementation_gate"
+      ],
+      "coverage": "covered",
+      "selected_object_ids": [
+        "coherence:implementation_gate"
+      ],
+      "status": "supported",
+      "superseded_object_ids": [],
+      "value": "Human approval covers this bounded repository projection candidate and verification. Stop before merge, deployment, provider updates or Agent C dispatch; A19 implementation retains its bounded contract."
+    },
+    "next_arc": {
+      "all_claim_ids": [
+        "coherence:next_arc"
+      ],
+      "coverage": "covered",
+      "selected_object_ids": [
+        "coherence:next_arc"
+      ],
+      "status": "supported",
+      "superseded_object_ids": [],
+      "value": "A19 / ARC-50 is next in the bounded sequence; A18 predecessor closure is satisfied. Its storage and physical acceptance work remains ahead."
+    },
+    "outstanding_human_decisions": {
+      "all_claim_ids": [
+        "coherence:outstanding_human_decisions"
+      ],
+      "coverage": "covered",
+      "selected_object_ids": [
+        "coherence:outstanding_human_decisions"
+      ],
+      "status": "supported",
+      "superseded_object_ids": [],
+      "value": "Decide whether Hope linked-addition/archival/model access and broader spatial-semantic behavior amend A19/A20 or follow separately. No fresh approval is needed for the already approved projection candidate."
+    },
+    "source_conflicts": {
+      "all_claim_ids": [
+        "coherence:source_conflicts"
+      ],
+      "coverage": "covered",
+      "selected_object_ids": [
+        "coherence:source_conflicts"
+      ],
+      "status": "supported",
+      "superseded_object_ids": [],
+      "value": "The old A14/Stage 1 present-state pointers lag the dated A18 closure evidence. Recovered dashboard and A19 predecessor labels also lag; their historical content remains valid at its original time."
+    },
+    "spatial_extensions": {
+      "all_claim_ids": [
+        "coherence:spatial_extensions"
+      ],
+      "coverage": "covered",
+      "selected_object_ids": [
+        "coherence:spatial_extensions"
+      ],
+      "status": "proposed",
+      "superseded_object_ids": [],
+      "value": "Multiple geometric lenses over stable objects and relationships, declared coordinate frames and explicit projection omissions/emphasis remain proposed spatial-semantic extensions."
+    },
+    "wave": {
+      "all_claim_ids": [
+        "coherence:wave"
+      ],
+      "coverage": "covered",
+      "selected_object_ids": [
+        "coherence:wave"
+      ],
+      "status": "supported",
+      "superseded_object_ids": [],
+      "value": "CE-W04 remains open; bounded A18 closure does not close the wave."
+    }
+  },
+  "objects": [
+    {
+      "authority": {
+        "authority_class": "canonical-repository",
+        "authority_refs": [
+          "docs/evidence/ce-w04-a18-local-20261003/closure-review.md"
+        ],
+        "effect_state": {
+          "authorized_for_effect": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "canonicalized": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "executed": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "proposed": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "ratified": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "verified": {
+            "evidence_refs": [],
+            "state": "unknown"
+          }
+        }
+      },
+      "claim_class": "report",
+      "custody": {
+        "disclosure": "public-candidate",
+        "do_not_export": false,
+        "encryption_required": false,
+        "materialization": "metadata-only",
+        "replication": "none",
+        "retention_authority_ref": "docs/governance/architectgpt/current-state-profile.md",
+        "retention_authorized": true
+      },
+      "namespace": "architect.public-coherence",
+      "object_id": "arc:A18",
+      "object_type": "arc",
+      "payload": {
+        "arc_id": "ARC-A18",
+        "closure_state": "closed",
+        "next_gate": "A19",
+        "non_scope": [
+          "Private Hope disclosure to Architect",
+          "Automatic wave closure",
+          "Unapproved extensions"
+        ],
+        "outcome": "Closed within recorded scope.",
+        "purpose": "A18 is closed within its accepted local Architect conversation and version 34 release scope. Do not repeat completed publication or installation effects.",
+        "scope": [
+          "A18 is closed within its accepted local Architect conversation and version 34 release scope. Do not repeat completed publication or installation effects."
+        ],
+        "start_state": "See pinned source; no state reconstructed.",
+        "title": "Bounded Architect conversation",
+        "unresolved_questions": []
+      },
+      "provenance": [
+        {
+          "captured_at": "2026-10-07T08:13:22Z",
+          "content_digest_sha256": "b96cca174f7c33e8cd0abbbf4436e40c52e8f9922723e2685be4565ceff0ceff",
+          "evidence_class": "observation",
+          "source_kind": "local",
+          "source_ref": "docs/evidence/ce-w04-a18-local-20261003/closure-review.md",
+          "source_revision": "052bdc42a8aba8e246719cf9493c0df11a612e92"
+        }
+      ],
+      "record_type": "continuity-object",
+      "relationships": [
+        {
+          "basis_ref": "docs/governance/architectgpt/current-state-profile.md#recovered-planning-report",
+          "target_object_id": "arc:A19",
+          "type": "precedes"
+        }
+      ],
+      "schema": "arcanum.node.continuity-object/v1",
+      "subject_id": "arc:A18",
+      "temporal": {
+        "effective_from": null,
+        "effective_until": null,
+        "observed_at": "2026-10-07T08:13:22Z",
+        "occurred_at": null,
+        "recorded_at": "2026-10-07T08:13:22Z",
+        "sequence": {
+          "arc_id": null,
+          "era": "Construction Era",
+          "ordinal": null,
+          "wave": "CE-W04"
+        },
+        "tempus_anchor_ref": null
+      },
+      "version": 1
+    },
+    {
+      "authority": {
+        "authority_class": "operational-record",
+        "authority_refs": [
+          "docs/governance/architectgpt/current-state-profile.md"
+        ],
+        "effect_state": {
+          "authorized_for_effect": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "canonicalized": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "executed": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "proposed": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "ratified": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "verified": {
+            "evidence_refs": [],
+            "state": "unknown"
+          }
+        }
+      },
+      "claim_class": "report",
+      "custody": {
+        "disclosure": "public-candidate",
+        "do_not_export": false,
+        "encryption_required": false,
+        "materialization": "metadata-only",
+        "replication": "none",
+        "retention_authority_ref": "docs/governance/architectgpt/current-state-profile.md",
+        "retention_authorized": true
+      },
+      "namespace": "architect.public-coherence",
+      "object_id": "arc:A19",
+      "object_type": "arc",
+      "payload": {
+        "arc_id": "ARC-50",
+        "closure_state": "open",
+        "next_gate": "A20",
+        "non_scope": [
+          "Private Hope disclosure to Architect",
+          "Automatic wave closure",
+          "Unapproved extensions"
+        ],
+        "outcome": "Planned baseline; completion not established.",
+        "purpose": "Encrypted individually addressable Hope collection, protected temporal index, truthful surviving-record migration, chronological recall, explicit deletion/retention/corruption/redaction and factual Tempus references. Collection and physical acceptance tests remain ahead.",
+        "scope": [
+          "Encrypted individually addressable Hope collection, protected temporal index, truthful surviving-record migration, chronological recall, explicit deletion/retention/corruption/redaction and factual Tempus references. Collection and physical acceptance tests remain ahead."
+        ],
+        "start_state": "See pinned source; no state reconstructed.",
+        "title": "Private Hope collection and temporal recall",
+        "unresolved_questions": [
+          "Acceptance evidence remains ahead."
+        ]
+      },
+      "provenance": [
+        {
+          "captured_at": "2026-10-07T08:13:22Z",
+          "content_digest_sha256": "259564e4192cf53feb6dd64d87de08cf1a9879499d706927a84e56d15f34f7d4",
+          "evidence_class": "report",
+          "source_kind": "local",
+          "source_ref": "docs/governance/architectgpt/current-state-profile.md",
+          "source_revision": null
+        }
+      ],
+      "record_type": "continuity-object",
+      "relationships": [
+        {
+          "basis_ref": "docs/governance/architectgpt/current-state-profile.md#recovered-planning-report",
+          "target_object_id": "arc:A20",
+          "type": "precedes"
+        }
+      ],
+      "schema": "arcanum.node.continuity-object/v1",
+      "subject_id": "arc:A19",
+      "temporal": {
+        "effective_from": null,
+        "effective_until": null,
+        "observed_at": "2026-10-07T08:13:22Z",
+        "occurred_at": null,
+        "recorded_at": "2026-10-07T08:13:22Z",
+        "sequence": {
+          "arc_id": null,
+          "era": "Construction Era",
+          "ordinal": null,
+          "wave": "CE-W04"
+        },
+        "tempus_anchor_ref": null
+      },
+      "version": 1
+    },
+    {
+      "authority": {
+        "authority_class": "operational-record",
+        "authority_refs": [
+          "docs/governance/architectgpt/current-state-profile.md"
+        ],
+        "effect_state": {
+          "authorized_for_effect": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "canonicalized": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "executed": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "proposed": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "ratified": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "verified": {
+            "evidence_refs": [],
+            "state": "unknown"
+          }
+        }
+      },
+      "claim_class": "report",
+      "custody": {
+        "disclosure": "public-candidate",
+        "do_not_export": false,
+        "encryption_required": false,
+        "materialization": "metadata-only",
+        "replication": "none",
+        "retention_authority_ref": "docs/governance/architectgpt/current-state-profile.md",
+        "retention_authorized": true
+      },
+      "namespace": "architect.public-coherence",
+      "object_id": "arc:A20",
+      "object_type": "arc",
+      "payload": {
+        "arc_id": "ARC-51",
+        "closure_state": "open",
+        "next_gate": "CE-W04 review",
+        "non_scope": [
+          "Private Hope disclosure to Architect",
+          "Automatic wave closure",
+          "Unapproved extensions"
+        ],
+        "outcome": "Planned baseline; completion not established.",
+        "purpose": "Optional geometry and accessible controls share semantic destinations, preserving Home/crest, Back, focus, escape, gestures and privacy. Geometry grants no authority or inferred Human meaning.",
+        "scope": [
+          "Optional geometry and accessible controls share semantic destinations, preserving Home/crest, Back, focus, escape, gestures and privacy. Geometry grants no authority or inferred Human meaning."
+        ],
+        "start_state": "See pinned source; no state reconstructed.",
+        "title": "Shared geometric and accessible navigation",
+        "unresolved_questions": [
+          "Acceptance evidence remains ahead."
+        ]
+      },
+      "provenance": [
+        {
+          "captured_at": "2026-10-07T08:13:22Z",
+          "content_digest_sha256": "259564e4192cf53feb6dd64d87de08cf1a9879499d706927a84e56d15f34f7d4",
+          "evidence_class": "report",
+          "source_kind": "local",
+          "source_ref": "docs/governance/architectgpt/current-state-profile.md",
+          "source_revision": null
+        }
+      ],
+      "record_type": "continuity-object",
+      "relationships": [],
+      "schema": "arcanum.node.continuity-object/v1",
+      "subject_id": "arc:A20",
+      "temporal": {
+        "effective_from": null,
+        "effective_until": null,
+        "observed_at": "2026-10-07T08:13:22Z",
+        "occurred_at": null,
+        "recorded_at": "2026-10-07T08:13:22Z",
+        "sequence": {
+          "arc_id": null,
+          "era": "Construction Era",
+          "ordinal": null,
+          "wave": "CE-W04"
+        },
+        "tempus_anchor_ref": null
+      },
+      "version": 1
+    },
+    {
+      "authority": {
+        "authority_class": "canonical-repository",
+        "authority_refs": [
+          "docs/evidence/ce-w04-a18-local-20261003/closure-review.md"
+        ],
+        "effect_state": {
+          "authorized_for_effect": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "canonicalized": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "executed": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "proposed": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "ratified": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "verified": {
+            "evidence_refs": [],
+            "state": "unknown"
+          }
+        }
+      },
+      "claim_class": "report",
+      "custody": {
+        "disclosure": "public-candidate",
+        "do_not_export": false,
+        "encryption_required": false,
+        "materialization": "metadata-only",
+        "replication": "none",
+        "retention_authority_ref": "docs/governance/architectgpt/current-state-profile.md",
+        "retention_authorized": true
+      },
+      "namespace": "architect.public-coherence",
+      "object_id": "coherence:a18-historical-pending",
+      "object_type": "evidence",
+      "payload": {
+        "evidence_id": "coherence:a18-historical-pending",
+        "limitations": [
+          "Historical pending observation, superseded only for bounded A18 completion by the later adopted closure; not current status.",
+          "Event date is known from the source heading; exact event time is unknown."
+        ],
+        "summary": "October 5 pre-release record: A18 remains open pending version 34 hosting, promotion and installation evidence.",
+        "supports": [
+          "completed_arc"
+        ]
+      },
+      "provenance": [
+        {
+          "captured_at": "2026-10-07T08:13:22Z",
+          "content_digest_sha256": "7ae19593ab9d817e19c1ac1af74c963d2d8649738bdda201b81f75c618a1881d",
+          "evidence_class": "observation",
+          "source_kind": "local",
+          "source_ref": "docs/governance/architectgpt/architect-log.md#continuity-event--2026-10-05--a18-quality-accepted-and-pr86-adopted",
+          "source_revision": "052bdc42a8aba8e246719cf9493c0df11a612e92"
+        }
+      ],
+      "record_type": "continuity-object",
+      "relationships": [],
+      "schema": "arcanum.node.continuity-object/v1",
+      "subject_id": "state:completed_arc",
+      "temporal": {
+        "effective_from": null,
+        "effective_until": null,
+        "observed_at": "2026-10-07T08:13:22Z",
+        "occurred_at": null,
+        "recorded_at": "2026-10-07T08:13:22Z",
+        "sequence": {
+          "arc_id": null,
+          "era": "Construction Era",
+          "ordinal": null,
+          "wave": "CE-W04"
+        },
+        "tempus_anchor_ref": null
+      },
+      "version": 1
+    },
+    {
+      "authority": {
+        "authority_class": "operational-record",
+        "authority_refs": [
+          "docs/governance/architectgpt/current-state-profile.md"
+        ],
+        "effect_state": {
+          "authorized_for_effect": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "canonicalized": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "executed": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "proposed": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "ratified": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "verified": {
+            "evidence_refs": [],
+            "state": "unknown"
+          }
+        }
+      },
+      "claim_class": "report",
+      "custody": {
+        "disclosure": "public-candidate",
+        "do_not_export": false,
+        "encryption_required": false,
+        "materialization": "metadata-only",
+        "replication": "none",
+        "retention_authority_ref": "docs/governance/architectgpt/current-state-profile.md",
+        "retention_authorized": true
+      },
+      "namespace": "architect.public-coherence",
+      "object_id": "coherence:a19_baseline",
+      "object_type": "evidence",
+      "payload": {
+        "evidence_id": "coherence:a19_baseline",
+        "limitations": [
+          "Finite reviewed seed; regeneration does not refresh evidence.",
+          "Selected reconciliation report; linked provider originals were not re-fetched by this implementation. Provider revision/time coverage remains limited."
+        ],
+        "summary": "Encrypted individually addressable Hope collection, protected temporal index, truthful surviving-record migration, chronological recall, explicit deletion/retention/corruption/redaction and factual Tempus references. Collection and physical acceptance tests remain ahead.",
+        "supports": [
+          "a19_baseline"
+        ]
+      },
+      "provenance": [
+        {
+          "captured_at": "2026-10-07T08:13:22Z",
+          "content_digest_sha256": "259564e4192cf53feb6dd64d87de08cf1a9879499d706927a84e56d15f34f7d4",
+          "evidence_class": "report",
+          "source_kind": "local",
+          "source_ref": "docs/governance/architectgpt/current-state-profile.md#recovered-planning-report",
+          "source_revision": null
+        }
+      ],
+      "record_type": "continuity-object",
+      "relationships": [
+        {
+          "basis_ref": "docs/governance/architectgpt/current-state-profile.md#recovered-planning-report",
+          "target_object_id": "arc:A19",
+          "type": "evidence_for"
+        }
+      ],
+      "schema": "arcanum.node.continuity-object/v1",
+      "subject_id": "state:a19_baseline",
+      "temporal": {
+        "effective_from": null,
+        "effective_until": null,
+        "observed_at": "2026-10-07T08:13:22Z",
+        "occurred_at": null,
+        "recorded_at": "2026-10-07T08:13:22Z",
+        "sequence": {
+          "arc_id": null,
+          "era": "Construction Era",
+          "ordinal": null,
+          "wave": "CE-W04"
+        },
+        "tempus_anchor_ref": null
+      },
+      "version": 1
+    },
+    {
+      "authority": {
+        "authority_class": "operational-record",
+        "authority_refs": [
+          "docs/governance/architectgpt/current-state-profile.md"
+        ],
+        "effect_state": {
+          "authorized_for_effect": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "canonicalized": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "executed": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "proposed": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "ratified": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "verified": {
+            "evidence_refs": [],
+            "state": "unknown"
+          }
+        }
+      },
+      "claim_class": "report",
+      "custody": {
+        "disclosure": "public-candidate",
+        "do_not_export": false,
+        "encryption_required": false,
+        "materialization": "metadata-only",
+        "replication": "none",
+        "retention_authority_ref": "docs/governance/architectgpt/current-state-profile.md",
+        "retention_authorized": true
+      },
+      "namespace": "architect.public-coherence",
+      "object_id": "coherence:a20_baseline",
+      "object_type": "evidence",
+      "payload": {
+        "evidence_id": "coherence:a20_baseline",
+        "limitations": [
+          "Finite reviewed seed; regeneration does not refresh evidence.",
+          "Selected reconciliation report; linked provider originals were not re-fetched by this implementation. Provider revision/time coverage remains limited."
+        ],
+        "summary": "Optional geometry and accessible controls share semantic destinations, preserving Home/crest, Back, focus, escape, gestures and privacy. Geometry grants no authority or inferred Human meaning.",
+        "supports": [
+          "a20_baseline"
+        ]
+      },
+      "provenance": [
+        {
+          "captured_at": "2026-10-07T08:13:22Z",
+          "content_digest_sha256": "259564e4192cf53feb6dd64d87de08cf1a9879499d706927a84e56d15f34f7d4",
+          "evidence_class": "report",
+          "source_kind": "local",
+          "source_ref": "docs/governance/architectgpt/current-state-profile.md#recovered-planning-report",
+          "source_revision": null
+        }
+      ],
+      "record_type": "continuity-object",
+      "relationships": [
+        {
+          "basis_ref": "docs/governance/architectgpt/current-state-profile.md#recovered-planning-report",
+          "target_object_id": "arc:A20",
+          "type": "evidence_for"
+        }
+      ],
+      "schema": "arcanum.node.continuity-object/v1",
+      "subject_id": "state:a20_baseline",
+      "temporal": {
+        "effective_from": null,
+        "effective_until": null,
+        "observed_at": "2026-10-07T08:13:22Z",
+        "occurred_at": null,
+        "recorded_at": "2026-10-07T08:13:22Z",
+        "sequence": {
+          "arc_id": null,
+          "era": "Construction Era",
+          "ordinal": null,
+          "wave": "CE-W04"
+        },
+        "tempus_anchor_ref": null
+      },
+      "version": 1
+    },
+    {
+      "authority": {
+        "authority_class": "operational-record",
+        "authority_refs": [
+          "docs/governance/architectgpt/current-state-profile.md"
+        ],
+        "effect_state": {
+          "authorized_for_effect": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "canonicalized": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "executed": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "proposed": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "ratified": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "verified": {
+            "evidence_refs": [],
+            "state": "unknown"
+          }
+        }
+      },
+      "claim_class": "report",
+      "custody": {
+        "disclosure": "public-candidate",
+        "do_not_export": false,
+        "encryption_required": false,
+        "materialization": "metadata-only",
+        "replication": "none",
+        "retention_authority_ref": "docs/governance/architectgpt/current-state-profile.md",
+        "retention_authorized": true
+      },
+      "namespace": "architect.public-coherence",
+      "object_id": "coherence:agent_c_state",
+      "object_type": "evidence",
+      "payload": {
+        "evidence_id": "coherence:agent_c_state",
+        "limitations": [
+          "Finite reviewed seed; regeneration does not refresh evidence.",
+          "Selected reconciliation report; linked provider originals were not re-fetched by this implementation. Provider revision/time coverage remains limited."
+        ],
+        "summary": "Bounded WS-RQ-009 research was recovered as approved_active; existing Agent C destination, reachability, Memory-off setting and schedules remain unverified. No run was launched in the reconciliation.",
+        "supports": [
+          "agent_c_state"
+        ]
+      },
+      "provenance": [
+        {
+          "captured_at": "2026-10-07T08:13:22Z",
+          "content_digest_sha256": "259564e4192cf53feb6dd64d87de08cf1a9879499d706927a84e56d15f34f7d4",
+          "evidence_class": "report",
+          "source_kind": "local",
+          "source_ref": "docs/governance/architectgpt/current-state-profile.md#recovered-planning-report",
+          "source_revision": null
+        }
+      ],
+      "record_type": "continuity-object",
+      "relationships": [],
+      "schema": "arcanum.node.continuity-object/v1",
+      "subject_id": "state:agent_c_state",
+      "temporal": {
+        "effective_from": null,
+        "effective_until": null,
+        "observed_at": "2026-10-07T08:13:22Z",
+        "occurred_at": null,
+        "recorded_at": "2026-10-07T08:13:22Z",
+        "sequence": {
+          "arc_id": null,
+          "era": "Construction Era",
+          "ordinal": null,
+          "wave": "CE-W04"
+        },
+        "tempus_anchor_ref": null
+      },
+      "version": 1
+    },
+    {
+      "authority": {
+        "authority_class": "derived",
+        "authority_refs": [
+          "docs/governance/architectgpt/current-state-profile.md"
+        ],
+        "effect_state": {
+          "authorized_for_effect": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "canonicalized": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "executed": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "proposed": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "ratified": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "verified": {
+            "evidence_refs": [],
+            "state": "unknown"
+          }
+        }
+      },
+      "claim_class": "report",
+      "custody": {
+        "disclosure": "public-candidate",
+        "do_not_export": false,
+        "encryption_required": false,
+        "materialization": "metadata-only",
+        "replication": "none",
+        "retention_authority_ref": "docs/governance/architectgpt/current-state-profile.md",
+        "retention_authorized": true
+      },
+      "namespace": "architect.public-coherence",
+      "object_id": "coherence:canonical_base",
+      "object_type": "evidence",
+      "payload": {
+        "evidence_id": "coherence:canonical_base",
+        "limitations": [
+          "Finite reviewed seed; regeneration does not refresh evidence.",
+          "Selected reconciliation report; linked provider originals were not re-fetched by this implementation. Provider revision/time coverage remains limited."
+        ],
+        "summary": "The-Architect-369/Arcanum main@052bdc42a8aba8e246719cf9493c0df11a612e92 (observed base; PR89 A18 closure adoption).",
+        "supports": [
+          "canonical_base"
+        ]
+      },
+      "provenance": [
+        {
+          "captured_at": "2026-10-07T08:13:22Z",
+          "content_digest_sha256": "259564e4192cf53feb6dd64d87de08cf1a9879499d706927a84e56d15f34f7d4",
+          "evidence_class": "report",
+          "source_kind": "local",
+          "source_ref": "docs/governance/architectgpt/current-state-profile.md#source-identity-and-preserved-history",
+          "source_revision": null
+        }
+      ],
+      "record_type": "continuity-object",
+      "relationships": [],
+      "schema": "arcanum.node.continuity-object/v1",
+      "subject_id": "state:canonical_base",
+      "temporal": {
+        "effective_from": null,
+        "effective_until": null,
+        "observed_at": "2026-10-07T08:13:22Z",
+        "occurred_at": null,
+        "recorded_at": "2026-10-07T08:13:22Z",
+        "sequence": {
+          "arc_id": null,
+          "era": "Construction Era",
+          "ordinal": null,
+          "wave": "CE-W04"
+        },
+        "tempus_anchor_ref": null
+      },
+      "version": 1
+    },
+    {
+      "authority": {
+        "authority_class": "canonical-repository",
+        "authority_refs": [
+          "docs/evidence/ce-w04-a18-local-20261003/closure-review.md"
+        ],
+        "effect_state": {
+          "authorized_for_effect": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "canonicalized": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "executed": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "proposed": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "ratified": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "verified": {
+            "evidence_refs": [],
+            "state": "unknown"
+          }
+        }
+      },
+      "claim_class": "report",
+      "custody": {
+        "disclosure": "public-candidate",
+        "do_not_export": false,
+        "encryption_required": false,
+        "materialization": "metadata-only",
+        "replication": "none",
+        "retention_authority_ref": "docs/governance/architectgpt/current-state-profile.md",
+        "retention_authorized": true
+      },
+      "namespace": "architect.public-coherence",
+      "object_id": "coherence:completed_arc",
+      "object_type": "evidence",
+      "payload": {
+        "evidence_id": "coherence:completed_arc",
+        "limitations": [
+          "Finite reviewed seed; regeneration does not refresh evidence."
+        ],
+        "summary": "A18 is closed within its accepted local Architect conversation and version 34 release scope. Do not repeat completed publication or installation effects.",
+        "supports": [
+          "completed_arc"
+        ]
+      },
+      "provenance": [
+        {
+          "captured_at": "2026-10-07T08:13:22Z",
+          "content_digest_sha256": "b96cca174f7c33e8cd0abbbf4436e40c52e8f9922723e2685be4565ceff0ceff",
+          "evidence_class": "observation",
+          "source_kind": "local",
+          "source_ref": "docs/evidence/ce-w04-a18-local-20261003/closure-review.md",
+          "source_revision": "052bdc42a8aba8e246719cf9493c0df11a612e92"
+        }
+      ],
+      "record_type": "continuity-object",
+      "relationships": [
+        {
+          "basis_ref": "docs/evidence/ce-w04-a18-local-20261003/closure-review.md",
+          "target_object_id": "arc:A18",
+          "type": "evidence_for"
+        },
+        {
+          "basis_ref": "docs/evidence/ce-w04-a18-local-20261003/closure-review.md",
+          "target_object_id": "coherence:a18-historical-pending",
+          "type": "supersedes"
+        }
+      ],
+      "schema": "arcanum.node.continuity-object/v1",
+      "subject_id": "state:completed_arc",
+      "temporal": {
+        "effective_from": null,
+        "effective_until": null,
+        "observed_at": "2026-10-07T08:13:22Z",
+        "occurred_at": null,
+        "recorded_at": "2026-10-07T08:13:22Z",
+        "sequence": {
+          "arc_id": null,
+          "era": "Construction Era",
+          "ordinal": null,
+          "wave": "CE-W04"
+        },
+        "tempus_anchor_ref": null
+      },
+      "version": 1
+    },
+    {
+      "authority": {
+        "authority_class": "canonical-repository",
+        "authority_refs": [
+          "docs/governance/architectgpt/continuity-index.json"
+        ],
+        "effect_state": {
+          "authorized_for_effect": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "canonicalized": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "executed": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "proposed": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "ratified": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "verified": {
+            "evidence_refs": [],
+            "state": "unknown"
+          }
+        }
+      },
+      "claim_class": "observation",
+      "custody": {
+        "disclosure": "public-candidate",
+        "do_not_export": false,
+        "encryption_required": false,
+        "materialization": "metadata-only",
+        "replication": "none",
+        "retention_authority_ref": "docs/governance/architectgpt/current-state-profile.md",
+        "retention_authorized": true
+      },
+      "namespace": "architect.public-coherence",
+      "object_id": "coherence:continuity_epoch",
+      "object_type": "evidence",
+      "payload": {
+        "evidence_id": "coherence:continuity_epoch",
+        "limitations": [
+          "Finite reviewed seed; regeneration does not refresh evidence."
+        ],
+        "summary": "ARC-CONT-EPOCH-2 is active; sealed predecessor ARC-CONT-EPOCH-1 ends at ARC-SES-10; first active session number is 11.",
+        "supports": [
+          "continuity_epoch"
+        ]
+      },
+      "provenance": [
+        {
+          "captured_at": "2026-10-07T08:13:22Z",
+          "content_digest_sha256": "7a9b48253bac418a7a8965d0cf18f24fbe38311237036e9e8f1bed34bef7925e",
+          "evidence_class": "observation",
+          "source_kind": "local",
+          "source_ref": "docs/governance/architectgpt/continuity-index.json",
+          "source_revision": "052bdc42a8aba8e246719cf9493c0df11a612e92"
+        }
+      ],
+      "record_type": "continuity-object",
+      "relationships": [],
+      "schema": "arcanum.node.continuity-object/v1",
+      "subject_id": "state:continuity_epoch",
+      "temporal": {
+        "effective_from": null,
+        "effective_until": null,
+        "observed_at": "2026-10-07T08:13:22Z",
+        "occurred_at": null,
+        "recorded_at": "2026-10-07T08:13:22Z",
+        "sequence": {
+          "arc_id": null,
+          "era": "Construction Era",
+          "ordinal": null,
+          "wave": "CE-W04"
+        },
+        "tempus_anchor_ref": null
+      },
+      "version": 1
+    },
+    {
+      "authority": {
+        "authority_class": "canonical-repository",
+        "authority_refs": [
+          "docs/governance/architectgpt/continuity-index.json"
+        ],
+        "effect_state": {
+          "authorized_for_effect": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "canonicalized": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "executed": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "proposed": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "ratified": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "verified": {
+            "evidence_refs": [],
+            "state": "unknown"
+          }
+        }
+      },
+      "claim_class": "report",
+      "custody": {
+        "disclosure": "public-candidate",
+        "do_not_export": false,
+        "encryption_required": false,
+        "materialization": "metadata-only",
+        "replication": "none",
+        "retention_authority_ref": "docs/governance/architectgpt/current-state-profile.md",
+        "retention_authorized": true
+      },
+      "namespace": "architect.public-coherence",
+      "object_id": "coherence:continuity_gaps",
+      "object_type": "evidence",
+      "payload": {
+        "evidence_id": "coherence:continuity_gaps",
+        "limitations": [
+          "Finite reviewed seed; regeneration does not refresh evidence."
+        ],
+        "summary": "The active session index is empty by design while external numbering remains unreconciled. Dated log events are excluded from that index; no missing sessions are reconstructed.",
+        "supports": [
+          "continuity_gaps"
+        ]
+      },
+      "provenance": [
+        {
+          "captured_at": "2026-10-07T08:13:22Z",
+          "content_digest_sha256": "7a9b48253bac418a7a8965d0cf18f24fbe38311237036e9e8f1bed34bef7925e",
+          "evidence_class": "observation",
+          "source_kind": "local",
+          "source_ref": "docs/governance/architectgpt/continuity-index.json",
+          "source_revision": "052bdc42a8aba8e246719cf9493c0df11a612e92"
+        },
+        {
+          "captured_at": "2026-10-07T08:13:22Z",
+          "content_digest_sha256": "7ae19593ab9d817e19c1ac1af74c963d2d8649738bdda201b81f75c618a1881d",
+          "evidence_class": "observation",
+          "source_kind": "local",
+          "source_ref": "docs/governance/architectgpt/architect-log.md",
+          "source_revision": "052bdc42a8aba8e246719cf9493c0df11a612e92"
+        }
+      ],
+      "record_type": "continuity-object",
+      "relationships": [],
+      "schema": "arcanum.node.continuity-object/v1",
+      "subject_id": "state:continuity_gaps",
+      "temporal": {
+        "effective_from": null,
+        "effective_until": null,
+        "observed_at": "2026-10-07T08:13:22Z",
+        "occurred_at": null,
+        "recorded_at": "2026-10-07T08:13:22Z",
+        "sequence": {
+          "arc_id": null,
+          "era": "Construction Era",
+          "ordinal": null,
+          "wave": "CE-W04"
+        },
+        "tempus_anchor_ref": null
+      },
+      "version": 1
+    },
+    {
+      "authority": {
+        "authority_class": "canonical-repository",
+        "authority_refs": [
+          "docs/governance/architectgpt/architect-gpt-manifest.yaml"
+        ],
+        "effect_state": {
+          "authorized_for_effect": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "canonicalized": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "executed": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "proposed": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "ratified": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "verified": {
+            "evidence_refs": [],
+            "state": "unknown"
+          }
+        }
+      },
+      "claim_class": "observation",
+      "custody": {
+        "disclosure": "public-candidate",
+        "do_not_export": false,
+        "encryption_required": false,
+        "materialization": "metadata-only",
+        "replication": "none",
+        "retention_authority_ref": "docs/governance/architectgpt/current-state-profile.md",
+        "retention_authorized": true
+      },
+      "namespace": "architect.public-coherence",
+      "object_id": "coherence:era",
+      "object_type": "evidence",
+      "payload": {
+        "evidence_id": "coherence:era",
+        "limitations": [
+          "Finite reviewed seed; regeneration does not refresh evidence."
+        ],
+        "summary": "Construction Era.",
+        "supports": [
+          "era"
+        ]
+      },
+      "provenance": [
+        {
+          "captured_at": "2026-10-07T08:13:22Z",
+          "content_digest_sha256": "7d3d5f28fc842714c0e69e04178f16b6ef1ffb6d10142b96a5f31f470e02eb13",
+          "evidence_class": "observation",
+          "source_kind": "local",
+          "source_ref": "docs/governance/architectgpt/architect-gpt-manifest.yaml",
+          "source_revision": "052bdc42a8aba8e246719cf9493c0df11a612e92"
+        }
+      ],
+      "record_type": "continuity-object",
+      "relationships": [],
+      "schema": "arcanum.node.continuity-object/v1",
+      "subject_id": "state:era",
+      "temporal": {
+        "effective_from": null,
+        "effective_until": null,
+        "observed_at": "2026-10-07T08:13:22Z",
+        "occurred_at": null,
+        "recorded_at": "2026-10-07T08:13:22Z",
+        "sequence": {
+          "arc_id": null,
+          "era": "Construction Era",
+          "ordinal": null,
+          "wave": "CE-W04"
+        },
+        "tempus_anchor_ref": null
+      },
+      "version": 1
+    },
+    {
+      "authority": {
+        "authority_class": "operational-record",
+        "authority_refs": [
+          "docs/governance/architectgpt/current-state-profile.md"
+        ],
+        "effect_state": {
+          "authorized_for_effect": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "canonicalized": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "executed": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "proposed": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "ratified": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "verified": {
+            "evidence_refs": [],
+            "state": "unknown"
+          }
+        }
+      },
+      "claim_class": "report",
+      "custody": {
+        "disclosure": "public-candidate",
+        "do_not_export": false,
+        "encryption_required": false,
+        "materialization": "metadata-only",
+        "replication": "none",
+        "retention_authority_ref": "docs/governance/architectgpt/current-state-profile.md",
+        "retention_authorized": true
+      },
+      "namespace": "architect.public-coherence",
+      "object_id": "coherence:following_arc",
+      "object_type": "evidence",
+      "payload": {
+        "evidence_id": "coherence:following_arc",
+        "limitations": [
+          "Finite reviewed seed; regeneration does not refresh evidence.",
+          "Selected reconciliation report; linked provider originals were not re-fetched by this implementation. Provider revision/time coverage remains limited."
+        ],
+        "summary": "A20 / ARC-51 follows A19; completing it leads to CE-W04 review, not automatic wave closure.",
+        "supports": [
+          "following_arc"
+        ]
+      },
+      "provenance": [
+        {
+          "captured_at": "2026-10-07T08:13:22Z",
+          "content_digest_sha256": "259564e4192cf53feb6dd64d87de08cf1a9879499d706927a84e56d15f34f7d4",
+          "evidence_class": "report",
+          "source_kind": "local",
+          "source_ref": "docs/governance/architectgpt/current-state-profile.md#recovered-planning-report",
+          "source_revision": null
+        }
+      ],
+      "record_type": "continuity-object",
+      "relationships": [],
+      "schema": "arcanum.node.continuity-object/v1",
+      "subject_id": "state:following_arc",
+      "temporal": {
+        "effective_from": null,
+        "effective_until": null,
+        "observed_at": "2026-10-07T08:13:22Z",
+        "occurred_at": null,
+        "recorded_at": "2026-10-07T08:13:22Z",
+        "sequence": {
+          "arc_id": null,
+          "era": "Construction Era",
+          "ordinal": null,
+          "wave": "CE-W04"
+        },
+        "tempus_anchor_ref": null
+      },
+      "version": 1
+    },
+    {
+      "authority": {
+        "authority_class": "derived",
+        "authority_refs": [
+          "docs/governance/architectgpt/current-state-profile.md"
+        ],
+        "effect_state": {
+          "authorized_for_effect": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "canonicalized": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "executed": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "proposed": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "ratified": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "verified": {
+            "evidence_refs": [],
+            "state": "unknown"
+          }
+        }
+      },
+      "claim_class": "proposal",
+      "custody": {
+        "disclosure": "public-candidate",
+        "do_not_export": false,
+        "encryption_required": false,
+        "materialization": "metadata-only",
+        "replication": "none",
+        "retention_authority_ref": "docs/governance/architectgpt/current-state-profile.md",
+        "retention_authorized": true
+      },
+      "namespace": "architect.public-coherence",
+      "object_id": "coherence:hope_extensions",
+      "object_type": "evidence",
+      "payload": {
+        "evidence_id": "coherence:hope_extensions",
+        "limitations": [
+          "Finite reviewed seed; regeneration does not refresh evidence.",
+          "Selected reconciliation report; linked provider originals were not re-fetched by this implementation. Provider revision/time coverage remains limited."
+        ],
+        "summary": "Unchanged originals with linked later additions, archival and consent-based Hope model access are proposed. Participant-controlled deletion already belongs to A19; forced retention and automatic model access are not approved.",
+        "supports": [
+          "hope_extensions"
+        ]
+      },
+      "provenance": [
+        {
+          "captured_at": "2026-10-07T08:13:22Z",
+          "content_digest_sha256": "259564e4192cf53feb6dd64d87de08cf1a9879499d706927a84e56d15f34f7d4",
+          "evidence_class": "report",
+          "source_kind": "local",
+          "source_ref": "docs/governance/architectgpt/current-state-profile.md#proposed-extensions-and-unresolved-decisions",
+          "source_revision": null
+        }
+      ],
+      "record_type": "continuity-object",
+      "relationships": [],
+      "schema": "arcanum.node.continuity-object/v1",
+      "subject_id": "state:hope_extensions",
+      "temporal": {
+        "effective_from": null,
+        "effective_until": null,
+        "observed_at": "2026-10-07T08:13:22Z",
+        "occurred_at": null,
+        "recorded_at": "2026-10-07T08:13:22Z",
+        "sequence": {
+          "arc_id": null,
+          "era": "Construction Era",
+          "ordinal": null,
+          "wave": "CE-W04"
+        },
+        "tempus_anchor_ref": null
+      },
+      "version": 1
+    },
+    {
+      "authority": {
+        "authority_class": "human-decision",
+        "authority_refs": [
+          "docs/governance/architectgpt/current-state-profile.md"
+        ],
+        "effect_state": {
+          "authorized_for_effect": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "canonicalized": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "executed": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "proposed": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "ratified": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "verified": {
+            "evidence_refs": [],
+            "state": "unknown"
+          }
+        }
+      },
+      "claim_class": "report",
+      "custody": {
+        "disclosure": "public-candidate",
+        "do_not_export": false,
+        "encryption_required": false,
+        "materialization": "metadata-only",
+        "replication": "none",
+        "retention_authority_ref": "docs/governance/architectgpt/current-state-profile.md",
+        "retention_authorized": true
+      },
+      "namespace": "architect.public-coherence",
+      "object_id": "coherence:implementation_gate",
+      "object_type": "evidence",
+      "payload": {
+        "evidence_id": "coherence:implementation_gate",
+        "limitations": [
+          "Finite reviewed seed; regeneration does not refresh evidence.",
+          "Selected reconciliation report; linked provider originals were not re-fetched by this implementation. Provider revision/time coverage remains limited."
+        ],
+        "summary": "Human approval covers this bounded repository projection candidate and verification. Stop before merge, deployment, provider updates or Agent C dispatch; A19 implementation retains its bounded contract.",
+        "supports": [
+          "implementation_gate"
+        ]
+      },
+      "provenance": [
+        {
+          "captured_at": "2026-10-07T08:13:22Z",
+          "content_digest_sha256": "259564e4192cf53feb6dd64d87de08cf1a9879499d706927a84e56d15f34f7d4",
+          "evidence_class": "report",
+          "source_kind": "local",
+          "source_ref": "docs/governance/architectgpt/current-state-profile.md",
+          "source_revision": null
+        }
+      ],
+      "record_type": "continuity-object",
+      "relationships": [],
+      "schema": "arcanum.node.continuity-object/v1",
+      "subject_id": "state:implementation_gate",
+      "temporal": {
+        "effective_from": null,
+        "effective_until": null,
+        "observed_at": "2026-10-07T08:13:22Z",
+        "occurred_at": null,
+        "recorded_at": "2026-10-07T08:13:22Z",
+        "sequence": {
+          "arc_id": null,
+          "era": "Construction Era",
+          "ordinal": null,
+          "wave": "CE-W04"
+        },
+        "tempus_anchor_ref": null
+      },
+      "version": 1
+    },
+    {
+      "authority": {
+        "authority_class": "operational-record",
+        "authority_refs": [
+          "docs/governance/architectgpt/current-state-profile.md"
+        ],
+        "effect_state": {
+          "authorized_for_effect": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "canonicalized": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "executed": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "proposed": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "ratified": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "verified": {
+            "evidence_refs": [],
+            "state": "unknown"
+          }
+        }
+      },
+      "claim_class": "report",
+      "custody": {
+        "disclosure": "public-candidate",
+        "do_not_export": false,
+        "encryption_required": false,
+        "materialization": "metadata-only",
+        "replication": "none",
+        "retention_authority_ref": "docs/governance/architectgpt/current-state-profile.md",
+        "retention_authorized": true
+      },
+      "namespace": "architect.public-coherence",
+      "object_id": "coherence:next_arc",
+      "object_type": "evidence",
+      "payload": {
+        "evidence_id": "coherence:next_arc",
+        "limitations": [
+          "Finite reviewed seed; regeneration does not refresh evidence.",
+          "Selected reconciliation report; linked provider originals were not re-fetched by this implementation. Provider revision/time coverage remains limited."
+        ],
+        "summary": "A19 / ARC-50 is next in the bounded sequence; A18 predecessor closure is satisfied. Its storage and physical acceptance work remains ahead.",
+        "supports": [
+          "next_arc"
+        ]
+      },
+      "provenance": [
+        {
+          "captured_at": "2026-10-07T08:13:22Z",
+          "content_digest_sha256": "259564e4192cf53feb6dd64d87de08cf1a9879499d706927a84e56d15f34f7d4",
+          "evidence_class": "report",
+          "source_kind": "local",
+          "source_ref": "docs/governance/architectgpt/current-state-profile.md#recovered-planning-report",
+          "source_revision": null
+        }
+      ],
+      "record_type": "continuity-object",
+      "relationships": [],
+      "schema": "arcanum.node.continuity-object/v1",
+      "subject_id": "state:next_arc",
+      "temporal": {
+        "effective_from": null,
+        "effective_until": null,
+        "observed_at": "2026-10-07T08:13:22Z",
+        "occurred_at": null,
+        "recorded_at": "2026-10-07T08:13:22Z",
+        "sequence": {
+          "arc_id": null,
+          "era": "Construction Era",
+          "ordinal": null,
+          "wave": "CE-W04"
+        },
+        "tempus_anchor_ref": null
+      },
+      "version": 1
+    },
+    {
+      "authority": {
+        "authority_class": "operational-record",
+        "authority_refs": [
+          "docs/governance/architectgpt/current-state-profile.md"
+        ],
+        "effect_state": {
+          "authorized_for_effect": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "canonicalized": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "executed": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "proposed": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "ratified": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "verified": {
+            "evidence_refs": [],
+            "state": "unknown"
+          }
+        }
+      },
+      "claim_class": "report",
+      "custody": {
+        "disclosure": "public-candidate",
+        "do_not_export": false,
+        "encryption_required": false,
+        "materialization": "metadata-only",
+        "replication": "none",
+        "retention_authority_ref": "docs/governance/architectgpt/current-state-profile.md",
+        "retention_authorized": true
+      },
+      "namespace": "architect.public-coherence",
+      "object_id": "coherence:outstanding_human_decisions",
+      "object_type": "evidence",
+      "payload": {
+        "evidence_id": "coherence:outstanding_human_decisions",
+        "limitations": [
+          "Finite reviewed seed; regeneration does not refresh evidence.",
+          "Selected reconciliation report; linked provider originals were not re-fetched by this implementation. Provider revision/time coverage remains limited."
+        ],
+        "summary": "Decide whether Hope linked-addition/archival/model access and broader spatial-semantic behavior amend A19/A20 or follow separately. No fresh approval is needed for the already approved projection candidate.",
+        "supports": [
+          "outstanding_human_decisions"
+        ]
+      },
+      "provenance": [
+        {
+          "captured_at": "2026-10-07T08:13:22Z",
+          "content_digest_sha256": "259564e4192cf53feb6dd64d87de08cf1a9879499d706927a84e56d15f34f7d4",
+          "evidence_class": "report",
+          "source_kind": "local",
+          "source_ref": "docs/governance/architectgpt/current-state-profile.md#proposed-extensions-and-unresolved-decisions",
+          "source_revision": null
+        }
+      ],
+      "record_type": "continuity-object",
+      "relationships": [],
+      "schema": "arcanum.node.continuity-object/v1",
+      "subject_id": "state:outstanding_human_decisions",
+      "temporal": {
+        "effective_from": null,
+        "effective_until": null,
+        "observed_at": "2026-10-07T08:13:22Z",
+        "occurred_at": null,
+        "recorded_at": "2026-10-07T08:13:22Z",
+        "sequence": {
+          "arc_id": null,
+          "era": "Construction Era",
+          "ordinal": null,
+          "wave": "CE-W04"
+        },
+        "tempus_anchor_ref": null
+      },
+      "version": 1
+    },
+    {
+      "authority": {
+        "authority_class": "derived",
+        "authority_refs": [
+          "docs/governance/architectgpt/current-state-profile.md"
+        ],
+        "effect_state": {
+          "authorized_for_effect": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "canonicalized": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "executed": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "proposed": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "ratified": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "verified": {
+            "evidence_refs": [],
+            "state": "unknown"
+          }
+        }
+      },
+      "claim_class": "report",
+      "custody": {
+        "disclosure": "public-candidate",
+        "do_not_export": false,
+        "encryption_required": false,
+        "materialization": "metadata-only",
+        "replication": "none",
+        "retention_authority_ref": "docs/governance/architectgpt/current-state-profile.md",
+        "retention_authorized": true
+      },
+      "namespace": "architect.public-coherence",
+      "object_id": "coherence:source_conflicts",
+      "object_type": "evidence",
+      "payload": {
+        "evidence_id": "coherence:source_conflicts",
+        "limitations": [
+          "Finite reviewed seed; regeneration does not refresh evidence.",
+          "Selected reconciliation report; linked provider originals were not re-fetched by this implementation. Provider revision/time coverage remains limited."
+        ],
+        "summary": "The old A14/Stage 1 present-state pointers lag the dated A18 closure evidence. Recovered dashboard and A19 predecessor labels also lag; their historical content remains valid at its original time.",
+        "supports": [
+          "source_conflicts"
+        ]
+      },
+      "provenance": [
+        {
+          "captured_at": "2026-10-07T08:13:22Z",
+          "content_digest_sha256": "259564e4192cf53feb6dd64d87de08cf1a9879499d706927a84e56d15f34f7d4",
+          "evidence_class": "report",
+          "source_kind": "local",
+          "source_ref": "docs/governance/architectgpt/current-state-profile.md#recovered-planning-report",
+          "source_revision": null
+        },
+        {
+          "captured_at": "2026-10-07T08:13:22Z",
+          "content_digest_sha256": "7ae19593ab9d817e19c1ac1af74c963d2d8649738bdda201b81f75c618a1881d",
+          "evidence_class": "observation",
+          "source_kind": "local",
+          "source_ref": "docs/governance/architectgpt/architect-log.md",
+          "source_revision": "052bdc42a8aba8e246719cf9493c0df11a612e92"
+        }
+      ],
+      "record_type": "continuity-object",
+      "relationships": [],
+      "schema": "arcanum.node.continuity-object/v1",
+      "subject_id": "state:source_conflicts",
+      "temporal": {
+        "effective_from": null,
+        "effective_until": null,
+        "observed_at": "2026-10-07T08:13:22Z",
+        "occurred_at": null,
+        "recorded_at": "2026-10-07T08:13:22Z",
+        "sequence": {
+          "arc_id": null,
+          "era": "Construction Era",
+          "ordinal": null,
+          "wave": "CE-W04"
+        },
+        "tempus_anchor_ref": null
+      },
+      "version": 1
+    },
+    {
+      "authority": {
+        "authority_class": "derived",
+        "authority_refs": [
+          "docs/governance/architectgpt/current-state-profile.md"
+        ],
+        "effect_state": {
+          "authorized_for_effect": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "canonicalized": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "executed": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "proposed": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "ratified": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "verified": {
+            "evidence_refs": [],
+            "state": "unknown"
+          }
+        }
+      },
+      "claim_class": "proposal",
+      "custody": {
+        "disclosure": "public-candidate",
+        "do_not_export": false,
+        "encryption_required": false,
+        "materialization": "metadata-only",
+        "replication": "none",
+        "retention_authority_ref": "docs/governance/architectgpt/current-state-profile.md",
+        "retention_authorized": true
+      },
+      "namespace": "architect.public-coherence",
+      "object_id": "coherence:spatial_extensions",
+      "object_type": "evidence",
+      "payload": {
+        "evidence_id": "coherence:spatial_extensions",
+        "limitations": [
+          "Finite reviewed seed; regeneration does not refresh evidence.",
+          "Selected reconciliation report; linked provider originals were not re-fetched by this implementation. Provider revision/time coverage remains limited."
+        ],
+        "summary": "Multiple geometric lenses over stable objects and relationships, declared coordinate frames and explicit projection omissions/emphasis remain proposed spatial-semantic extensions.",
+        "supports": [
+          "spatial_extensions"
+        ]
+      },
+      "provenance": [
+        {
+          "captured_at": "2026-10-07T08:13:22Z",
+          "content_digest_sha256": "259564e4192cf53feb6dd64d87de08cf1a9879499d706927a84e56d15f34f7d4",
+          "evidence_class": "report",
+          "source_kind": "local",
+          "source_ref": "docs/governance/architectgpt/current-state-profile.md#proposed-extensions-and-unresolved-decisions",
+          "source_revision": null
+        }
+      ],
+      "record_type": "continuity-object",
+      "relationships": [],
+      "schema": "arcanum.node.continuity-object/v1",
+      "subject_id": "state:spatial_extensions",
+      "temporal": {
+        "effective_from": null,
+        "effective_until": null,
+        "observed_at": "2026-10-07T08:13:22Z",
+        "occurred_at": null,
+        "recorded_at": "2026-10-07T08:13:22Z",
+        "sequence": {
+          "arc_id": null,
+          "era": "Construction Era",
+          "ordinal": null,
+          "wave": "CE-W04"
+        },
+        "tempus_anchor_ref": null
+      },
+      "version": 1
+    },
+    {
+      "authority": {
+        "authority_class": "canonical-repository",
+        "authority_refs": [
+          "docs/evidence/ce-w04-a18-local-20261003/closure-review.md"
+        ],
+        "effect_state": {
+          "authorized_for_effect": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "canonicalized": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "executed": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "proposed": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "ratified": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "verified": {
+            "evidence_refs": [],
+            "state": "unknown"
+          }
+        }
+      },
+      "claim_class": "report",
+      "custody": {
+        "disclosure": "public-candidate",
+        "do_not_export": false,
+        "encryption_required": false,
+        "materialization": "metadata-only",
+        "replication": "none",
+        "retention_authority_ref": "docs/governance/architectgpt/current-state-profile.md",
+        "retention_authorized": true
+      },
+      "namespace": "architect.public-coherence",
+      "object_id": "coherence:wave",
+      "object_type": "evidence",
+      "payload": {
+        "evidence_id": "coherence:wave",
+        "limitations": [
+          "Finite reviewed seed; regeneration does not refresh evidence."
+        ],
+        "summary": "CE-W04 remains open; bounded A18 closure does not close the wave.",
+        "supports": [
+          "wave"
+        ]
+      },
+      "provenance": [
+        {
+          "captured_at": "2026-10-07T08:13:22Z",
+          "content_digest_sha256": "b96cca174f7c33e8cd0abbbf4436e40c52e8f9922723e2685be4565ceff0ceff",
+          "evidence_class": "observation",
+          "source_kind": "local",
+          "source_ref": "docs/evidence/ce-w04-a18-local-20261003/closure-review.md#preserved-limits-and-next-gate",
+          "source_revision": "052bdc42a8aba8e246719cf9493c0df11a612e92"
+        }
+      ],
+      "record_type": "continuity-object",
+      "relationships": [],
+      "schema": "arcanum.node.continuity-object/v1",
+      "subject_id": "state:wave",
+      "temporal": {
+        "effective_from": null,
+        "effective_until": null,
+        "observed_at": "2026-10-07T08:13:22Z",
+        "occurred_at": null,
+        "recorded_at": "2026-10-07T08:13:22Z",
+        "sequence": {
+          "arc_id": null,
+          "era": "Construction Era",
+          "ordinal": null,
+          "wave": "CE-W04"
+        },
+        "tempus_anchor_ref": null
+      },
+      "version": 1
+    }
+  ],
+  "schema": "arcanum.architect.current-state/v1",
+  "source_problems": {}
+}

@@ -32,10 +32,11 @@ Dated phase and wave labels are operational context, not a substitute for normat
 rules or authenticated decisions. Stale labels do not reopen closed arcs, erase
 ratification, or convert component closure into wave closure.
 
-The current operational baseline is CE-W04 / A14 / Stage 1 under the Human-ratified
-2026-09-20 bounded sequence. Active governing documents may name that current
-baseline. Historical CE-W02 records and implementation artifacts keep their original
-labels; later operational evidence is appended and linked rather than used to rewrite
+The Human-ratified 2026-09-20 bounded sequence began at CE-W04 / A14 / Stage 1.
+That historical scheduling baseline does not describe every later execution state.
+The [derived current-state view](current-state.md) presents selected dated evidence
+under the [bounded profile](current-state-profile.md), without new authority.
+Historical CE-W02 records and implementation artifacts keep their original labels; later operational evidence is appended and linked rather than used to rewrite
 their event-time identity.
 
 ## 2. Epoch model
@@ -59,7 +60,7 @@ Git history or alter their provenance.
 
 ## 3. Active continuity surfaces
 
-The only active continuity surfaces are:
+The source ledger and epoch/index continuity surfaces are:
 
 - `docs/governance/architectgpt/conversation-memory-contract.md`
 - `docs/governance/architectgpt/architect-log.md`
@@ -74,6 +75,13 @@ The only active continuity surfaces are:
 - `scripts/architect/validate-session-records.py`
 - `scripts/architect/generate-continuity-index.py`
 - `scripts/architect/validate-continuity-index.py`
+
+The additional derived surfaces `current-state.json`, `current-state.md` and
+`coherence-chronicle.md` are generated from the reviewed `coherence/objects.json`
+seed under `current-state-profile.md`. They do not extend the session ledger,
+repair numbering or replace the epoch/index contract. Their schema and generator
+are `current-state.schema.json` and `scripts/architect/generate-current-state.py`;
+fixtures are `scripts/architect/test-current-state.py`.
 
 The active log and ledger contain only active-epoch records. Predecessor bodies are
 not copied forward.

@@ -23,11 +23,21 @@ accepted_core_candidate:
   canonical_effect_requires_main_adoption: true
 
 operational_baseline:
+  meaning: historical_scheduling_ratification
+  current_execution_state: docs/governance/architectgpt/current-state.json
   wave: CE-W04
   arc: A14
   next_gate: Stage 1
   ratification_date: 2026-09-20
   component_closure_implies_wave_closure: false
+
+current_state_projection:
+  profile: docs/governance/architectgpt/current-state-profile.md
+  seed: docs/governance/architectgpt/coherence/objects.json
+  generator: scripts/architect/generate-current-state.py
+  authority: derived_non_authoritative
+  refresh_requires_reviewed_sources: true
+  provider_refresh_on_generation: false
 
 historical_label_policy:
   preserve_original_labels: true
@@ -357,6 +367,14 @@ session_continuity_control:
     fail_closed_validation_preserved: true
 
 files:
+  current_state_profile: docs/governance/architectgpt/current-state-profile.md
+  coherence_objects: docs/governance/architectgpt/coherence/objects.json
+  current_state_schema: docs/governance/architectgpt/current-state.schema.json
+  current_state_json: docs/governance/architectgpt/current-state.json
+  current_state_readable: docs/governance/architectgpt/current-state.md
+  coherence_chronicle: docs/governance/architectgpt/coherence-chronicle.md
+  current_state_generator: scripts/architect/generate-current-state.py
+  current_state_fixtures: scripts/architect/test-current-state.py
   architect_gpt: docs/governance/architectgpt/architect-gpt.md
   architect_gpt_manifest: docs/governance/architectgpt/architect-gpt-manifest.yaml
   agent_registry: docs/governance/architectgpt/agent-registry.yaml
