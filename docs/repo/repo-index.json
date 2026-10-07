@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-10-07T09:51:34Z",
+  "generated_at": "2026-10-07T09:57:51Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "f736b02f4",
+  "commit": "4f7683c61",
   "generator_version": "1.5",
   "files": [
     {
@@ -4199,13 +4199,22 @@
       "lines": 98
     },
     {
-      "path": "docs/architecture/simulation-and-chronology-plan.md",
+      "path": "docs/architecture/research-review-queue.md",
       "type": "file",
-      "size_bytes": 12434,
-      "last_modified_commit": "f736b02f4",
+      "size_bytes": 9908,
+      "last_modified_commit": "4f7683c61",
       "is_empty": false,
       "extension": ".md",
-      "lines": 184
+      "lines": 160
+    },
+    {
+      "path": "docs/architecture/simulation-and-chronology-plan.md",
+      "type": "file",
+      "size_bytes": 12829,
+      "last_modified_commit": "4f7683c61",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 190
     },
     {
       "path": "docs/archive/README.md",
@@ -4975,20 +4984,20 @@
     {
       "path": "docs/governance/architectgpt/coherence-chronicle.md",
       "type": "file",
-      "size_bytes": 6320,
-      "last_modified_commit": "f736b02f4",
+      "size_bytes": 7607,
+      "last_modified_commit": "4f7683c61",
       "is_empty": false,
       "extension": ".md",
-      "lines": 103
+      "lines": 117
     },
     {
       "path": "docs/governance/architectgpt/coherence/objects.json",
       "type": "file",
-      "size_bytes": 86635,
-      "last_modified_commit": "f736b02f4",
+      "size_bytes": 90454,
+      "last_modified_commit": "4f7683c61",
       "is_empty": false,
       "extension": ".json",
-      "lines": 2469
+      "lines": 2562
     },
     {
       "path": "docs/governance/architectgpt/continuity-epoch.json",
@@ -5047,29 +5056,29 @@
     {
       "path": "docs/governance/architectgpt/current-state-profile.md",
       "type": "file",
-      "size_bytes": 16333,
-      "last_modified_commit": "f736b02f4",
+      "size_bytes": 18088,
+      "last_modified_commit": "4f7683c61",
       "is_empty": false,
       "extension": ".md",
-      "lines": 254
+      "lines": 282
     },
     {
       "path": "docs/governance/architectgpt/current-state.json",
       "type": "file",
-      "size_bytes": 96095,
-      "last_modified_commit": "f736b02f4",
+      "size_bytes": 100222,
+      "last_modified_commit": "4f7683c61",
       "is_empty": false,
       "extension": ".json",
-      "lines": 2688
+      "lines": 2783
     },
     {
       "path": "docs/governance/architectgpt/current-state.md",
       "type": "file",
-      "size_bytes": 17328,
-      "last_modified_commit": "f736b02f4",
+      "size_bytes": 18727,
+      "last_modified_commit": "4f7683c61",
       "is_empty": false,
       "extension": ".md",
-      "lines": 195
+      "lines": 199
     },
     {
       "path": "docs/governance/architectgpt/current-state.schema.json",
@@ -5263,11 +5272,11 @@
     {
       "path": "docs/index.md",
       "type": "file",
-      "size_bytes": 3897,
-      "last_modified_commit": "d1c7bfe81",
+      "size_bytes": 4076,
+      "last_modified_commit": "4f7683c61",
       "is_empty": false,
       "extension": ".md",
-      "lines": 83
+      "lines": 84
     },
     {
       "path": "docs/manifesto/arcanum-manifesto.md",
@@ -8962,11 +8971,11 @@
     {
       "path": "scripts/architect/test-current-state.py",
       "type": "file",
-      "size_bytes": 11295,
-      "last_modified_commit": "f736b02f4",
+      "size_bytes": 12275,
+      "last_modified_commit": "4f7683c61",
       "is_empty": false,
       "extension": ".py",
-      "lines": 219
+      "lines": 234
     },
     {
       "path": "scripts/architect/test-impact-graph.sh",
