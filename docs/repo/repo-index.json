@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-10-05T14:41:21Z",
+  "generated_at": "2026-10-07T08:25:21Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "8b4e6bbb6",
+  "commit": "9a1b36039",
   "generator_version": "1.5",
   "files": [
     {
@@ -4876,29 +4876,29 @@
     {
       "path": "docs/governance/architectgpt/architect-gpt-manifest.yaml",
       "type": "file",
-      "size_bytes": 15201,
-      "last_modified_commit": "babdecca6",
+      "size_bytes": 16237,
+      "last_modified_commit": "9a1b36039",
       "is_empty": false,
       "extension": ".yaml",
-      "lines": 402
+      "lines": 420
     },
     {
       "path": "docs/governance/architectgpt/architect-gpt.md",
       "type": "file",
-      "size_bytes": 10873,
-      "last_modified_commit": "babdecca6",
+      "size_bytes": 11028,
+      "last_modified_commit": "9a1b36039",
       "is_empty": false,
       "extension": ".md",
-      "lines": 117
+      "lines": 120
     },
     {
       "path": "docs/governance/architectgpt/architect-log.md",
       "type": "file",
-      "size_bytes": 23793,
-      "last_modified_commit": "8b4e6bbb6",
+      "size_bytes": 23929,
+      "last_modified_commit": "9a1b36039",
       "is_empty": false,
       "extension": ".md",
-      "lines": 352
+      "lines": 354
     },
     {
       "path": "docs/governance/architectgpt/architect-proposal-envelope.schema.json",
@@ -4926,6 +4926,24 @@
       "is_empty": false,
       "extension": ".json",
       "lines": 71
+    },
+    {
+      "path": "docs/governance/architectgpt/coherence-chronicle.md",
+      "type": "file",
+      "size_bytes": 4018,
+      "last_modified_commit": "9a1b36039",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 75
+    },
+    {
+      "path": "docs/governance/architectgpt/coherence/objects.json",
+      "type": "file",
+      "size_bytes": 61757,
+      "last_modified_commit": "9a1b36039",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 1818
     },
     {
       "path": "docs/governance/architectgpt/continuity-epoch.json",
@@ -4975,11 +4993,47 @@
     {
       "path": "docs/governance/architectgpt/conversation-memory-contract.md",
       "type": "file",
-      "size_bytes": 9821,
-      "last_modified_commit": "babdecca6",
+      "size_bytes": 10450,
+      "last_modified_commit": "9a1b36039",
       "is_empty": false,
       "extension": ".md",
-      "lines": 235
+      "lines": 243
+    },
+    {
+      "path": "docs/governance/architectgpt/current-state-profile.md",
+      "type": "file",
+      "size_bytes": 9586,
+      "last_modified_commit": "9a1b36039",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 154
+    },
+    {
+      "path": "docs/governance/architectgpt/current-state.json",
+      "type": "file",
+      "size_bytes": 69068,
+      "last_modified_commit": "9a1b36039",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 2018
+    },
+    {
+      "path": "docs/governance/architectgpt/current-state.md",
+      "type": "file",
+      "size_bytes": 10283,
+      "last_modified_commit": "9a1b36039",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 164
+    },
+    {
+      "path": "docs/governance/architectgpt/current-state.schema.json",
+      "type": "file",
+      "size_bytes": 23504,
+      "last_modified_commit": "9a1b36039",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 953
     },
     {
       "path": "docs/governance/architectgpt/execution-record.schema.json",
@@ -8717,6 +8771,15 @@
       "lines": 245
     },
     {
+      "path": "scripts/architect/generate-current-state.py",
+      "type": "file",
+      "size_bytes": 18192,
+      "last_modified_commit": "9a1b36039",
+      "is_empty": false,
+      "extension": ".py",
+      "lines": 341
+    },
+    {
       "path": "scripts/architect/impact-graph.py",
       "type": "file",
       "size_bytes": 11583,
@@ -8823,6 +8886,15 @@
       "is_empty": false,
       "extension": ".sh",
       "lines": 65
+    },
+    {
+      "path": "scripts/architect/test-current-state.py",
+      "type": "file",
+      "size_bytes": 8837,
+      "last_modified_commit": "9a1b36039",
+      "is_empty": false,
+      "extension": ".py",
+      "lines": 181
     },
     {
       "path": "scripts/architect/test-impact-graph.sh",
@@ -9304,11 +9376,11 @@
     {
       "path": "scripts/verify-sync.sh",
       "type": "file",
-      "size_bytes": 12400,
-      "last_modified_commit": "6b80d7a1e",
+      "size_bytes": 12508,
+      "last_modified_commit": "9a1b36039",
       "is_empty": false,
       "extension": ".sh",
-      "lines": 284
+      "lines": 286
     },
     {
       "path": "tests/fixtures/trusted-update/candidate-observation.json",
