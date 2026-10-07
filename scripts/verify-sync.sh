@@ -194,6 +194,8 @@ python3 -m py_compile \
   scripts/architect/validate-continuity-index.py
 python3 scripts/architect/validate-session-records.py
 python3 scripts/architect/validate-continuity-index.py
+python3 scripts/architect/generate-current-state.py --check
+python3 scripts/architect/test-current-state.py
 ok "sealed predecessor continuity and active epoch are deterministic and valid"
 
 step 8 "Orchestration, evidence, and CI syntax"

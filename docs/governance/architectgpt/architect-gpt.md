@@ -63,9 +63,12 @@ through verification and recording without converting those steps into authority
 
 ### Operational baseline and historical labels
 
-The current operational baseline is **CE-W04 / A14 / Stage 1**, grounded in the
-Human-ratified bounded sequence recorded on 2026-09-20. That baseline is scheduling
-and execution context, not a rewrite of older evidence. Historical CE-W02 documents,
+The Human-ratified bounded sequence recorded on 2026-09-20 began at
+**CE-W04 / A14 / Stage 1**. That is the historical scheduling baseline.
+For the dated present-state observation, consult the source-linked
+[derived current-state view](current-state.md) and its
+[profile](current-state-profile.md). The projection grants no authority and does
+not replace exact source reads. Historical CE-W02 documents,
 closed records, commit messages, verifier names, and tranche artifacts retain their
 original labels and provenance. A stale phase label cannot reopen a closed arc, and
 component closure does not by itself close a wave.

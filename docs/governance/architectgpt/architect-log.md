@@ -31,7 +31,9 @@ history, with exact blob identities recorded in the epoch seal.
 - Active session ledger: `docs/governance/architectgpt/sessions/`
 - Machine-readable continuity index: `docs/governance/architectgpt/continuity-index.json`
 - Historical session IDs `ARC-SES-1` through `ARC-SES-10` are permanently non-reusable.
-- Operational next gate: CE-W04 A14 Stage 1 under the Human-ratified 2026-09-20 bounded sequence.
+- Historical scheduling baseline: CE-W04 A14 Stage 1, ratified 2026-09-20.
+- Dated present-state view and next gate: [derived current state](current-state.md),
+  governed by the [bounded projection profile](current-state-profile.md).
 
 The CE-W04 label records the current operational baseline; it is not a wave-closure
 claim. Historical CE-W02 labels remain historical evidence and cannot reopen closed
