@@ -28,4 +28,3 @@ from the current execution view without being deleted or declared complete.
 
 Recovered production, scheduler and Agent C facts are attributed in the checkpoint;
 this pass makes no fresh device, agent or deployment qualification claim.
-
