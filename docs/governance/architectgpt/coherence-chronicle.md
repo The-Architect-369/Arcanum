@@ -1,6 +1,6 @@
 # Bounded coherence chronicle
 
-As of 2026-10-07T09:57:13Z; observed canonical base `a07cebf7e0941a52be8961c349522488cf87b9a3`.
+As of 2026-10-08T08:49:46Z; observed canonical base `395d8f9894c72abccb57c5663c9c127b28f1d6b7`.
 Derived, non-authoritative, bounded seed. Regeneration is not a fresh provider read.
 See [profile and source limits](current-state-profile.md). Historical records remain intact.
 
@@ -44,9 +44,23 @@ Classification: report; source authority: operational-record.
 
 [source](https://github.com/The-Architect-369/Arcanum/blob/f839027a3c82197d0087e0a530126f67b884618a/docs/governance/architectgpt/current-state-profile.md#recovered-planning-report)
 
-- next_arc: selected; field status supported.
+- next_arc: superseded; field status supported.
 - Limitation: Finite reviewed seed; regeneration does not refresh evidence.
 - Limitation: Selected reconciliation report; linked provider originals were not re-fetched by this implementation. Provider revision/time coverage remains limited.
+
+## coherence:next_arc:20261008-reconciliation
+
+CE-W04-A19 is Ready and next; Notion task ARC-50 tracks this arc. Implementation and physical acceptance remain ahead.
+
+Event: unknown; observed: 2026-10-08T08:49:46Z; recorded: 2026-10-08T08:49:46Z.
+Classification: report; source authority: operational-record.
+
+[source](current-state-profile.md#october-8-present-state-reconciliation)
+
+- next_arc: selected; field status supported.
+- Limitation: Finite reviewed seed; generation does not refresh providers.
+- Limitation: Deployment, scheduler and Agent C facts are attributed recovered reports; no new effect or live qualification inferred.
+- supersedes: `coherence:next_arc`.
 
 ## coherence:following_arc
 
@@ -57,9 +71,23 @@ Classification: report; source authority: operational-record.
 
 [source](https://github.com/The-Architect-369/Arcanum/blob/f839027a3c82197d0087e0a530126f67b884618a/docs/governance/architectgpt/current-state-profile.md#recovered-planning-report)
 
-- following_arc: selected; field status supported.
+- following_arc: superseded; field status supported.
 - Limitation: Finite reviewed seed; regeneration does not refresh evidence.
 - Limitation: Selected reconciliation report; linked provider originals were not re-fetched by this implementation. Provider revision/time coverage remains limited.
+
+## coherence:following_arc:20261008-reconciliation
+
+CE-W04-A20 is Blocked behind A19; Notion task ARC-51 tracks it. Completion leads to CE-W04 evidence review, not automatic closure.
+
+Event: unknown; observed: 2026-10-08T08:49:46Z; recorded: 2026-10-08T08:49:46Z.
+Classification: report; source authority: operational-record.
+
+[source](current-state-profile.md#october-8-present-state-reconciliation)
+
+- following_arc: selected; field status supported.
+- Limitation: Finite reviewed seed; generation does not refresh providers.
+- Limitation: Deployment, scheduler and Agent C facts are attributed recovered reports; no new effect or live qualification inferred.
+- supersedes: `coherence:following_arc`.
 
 ## coherence:implementation_gate
 
@@ -109,9 +137,26 @@ Human authorized automated evidence-grounded question preparation and execution 
 Event: unknown; observed: 2026-10-07T09:57:13Z; recorded: 2026-10-07T09:57:13Z.
 Classification: report; source authority: human-decision.
 
-[source](current-state-profile.md#october-7-automated-research-coordination-grant)
+[source](https://github.com/The-Architect-369/Arcanum/blob/395d8f9894c72abccb57c5663c9c127b28f1d6b7/docs/governance/architectgpt/current-state-profile.md#october-7-automated-research-coordination-grant)
 
-- implementation_gate: selected; field status supported.
+- implementation_gate: superseded; field status supported.
 - Limitation: Creation of a daily review check is not proof of its first execution or Agent C connectivity.
 - Limitation: Question-level scope, budget, private output and one-run limits remain controlling; no automatic child-question approval.
 - supersedes: `coherence:implementation_gate:20261007-architecture-review`.
+
+## coherence:implementation_gate:20261008-reconciliation
+
+Human-authorized bounded present-state/tracking reconciliation and conservative Notion repair; reviewable PR and deterministic index. Stop before merge/deploy, scheduler recreation, Agent C run or A19 implementation.
+
+Event: unknown; observed: 2026-10-08T08:49:46Z; recorded: 2026-10-08T08:49:46Z.
+Classification: report; source authority: human-decision.
+
+[source](current-state-profile.md#october-8-present-state-reconciliation)
+
+- implementation_gate: selected; field status supported.
+- Limitation: Finite reviewed seed; generation does not refresh providers.
+- Limitation: Deployment, scheduler and Agent C facts are attributed recovered reports; no new effect or live qualification inferred.
+- supersedes: `coherence:implementation_gate`.
+- supersedes: `coherence:implementation_gate:20261007-baseline`.
+- supersedes: `coherence:implementation_gate:20261007-architecture-review`.
+- supersedes: `coherence:implementation_gate:20261007-research-loop`.

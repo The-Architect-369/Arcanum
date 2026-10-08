@@ -368,3 +368,31 @@ source/index lineage and publication evidence will be appended after execution.
 - Notion A19 is Ready after stale predecessor reconciliation. A18 remains closed,
   CE-W04 open; A19/A20 baselines and proposed extensions remain distinct.
   No Agent C launch, Hope disclosure, new install or ARC-SES allocation.
+
+
+## CONTINUITY-EVENT — 2026-10-08 — Public publication and research drift reconciliation
+
+- Recorded/observed on October8; publication event date is October7, not backdated.
+- Fresh Git main: `395d8f9894c72abccb57c5663c9c127b28f1d6b7`; PR94 adoption and its source/index pair are established
+  by repository history. PR92/93 are also in this lineage.
+- Recovered cleanup audit reports production dpl_J8qGk4srFLKYAPb3YUPNDmDv45F6 READY
+  at that base and no active scheduler. October7 dashboard reports Agent C version10
+  with Memory-off/submission-history readiness evidence incomplete. No new provider
+  probe or agent run is implied. WS-RQ-003 remains approved without a result.
+- Basis/limits: [checkpoint](present-state-checkpoint-20261008.md); deployment and scheduler are attributed
+  reports. Next gate is tracking review, not recreation or research execution.
+
+## CONTINUITY-EVENT — 2026-10-08 — Approved bounded present-state tracking repair
+
+- Human authorization: explicit current request and approved cleanup conversation;
+  repository candidate/PR and conservative Notion rows, no merge/deployment.
+- Exact base: `395d8f9894c72abccb57c5663c9c127b28f1d6b7`; work branch docs/present-state-reconciliation-20261008.
+- Scope: arc ledger through A18 and A19 Ready/A20 Blocked, dated checkpoint,
+  deterministic current-state refresh and independent machine event chronology.
+- Proposed/Ratified: approved bounded tracking model, no doctrine amendment.
+  Authorized-for-effect: named repository candidate and Notion reconciliation.
+  Executed: candidate source preparation; verification belongs to actual check
+  results and PR evidence. Canonicalized: unmet, no merge authorized.
+- Earlier log entries remain byte-preserved. ARC-SES-11..22 gap and external
+  ARC-SES-23 stay unresolved; no session allocated. CE-W04 remains open.
+- Next gate: review source/index PR, then separately open bounded A19.

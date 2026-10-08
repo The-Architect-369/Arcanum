@@ -185,7 +185,7 @@ class ProjectionTests(unittest.TestCase):
         baseline = copy.deepcopy(self.seed)
         baseline['objects'] = [obj for obj in baseline['objects']
                                if not obj['object_id'].endswith((':20261007-architecture-review',
-                                                               ':20261007-research-loop'))]
+                                                               ':20261007-research-loop', ':20261008-reconciliation'))]
         result = m.derive(baseline)
         for field in ['canonical_base', 'implementation_gate', 'source_conflicts']:
             self.assertEqual(result['fields'][field]['selected_object_ids'],
@@ -196,7 +196,7 @@ class ProjectionTests(unittest.TestCase):
     def test_architecture_review_preserves_baselines_and_extends_decisions(self):
         architecture = copy.deepcopy(self.seed)
         architecture['objects'] = [obj for obj in architecture['objects']
-                                   if not obj['object_id'].endswith(':20261007-research-loop')]
+                                   if not obj['object_id'].endswith((':20261007-research-loop', ':20261008-reconciliation'))]
         result = m.derive(architecture)
         for field in ['canonical_base', 'implementation_gate', 'outstanding_human_decisions']:
             self.assertEqual(result['fields'][field]['selected_object_ids'],
@@ -212,8 +212,10 @@ class ProjectionTests(unittest.TestCase):
     def test_coordination_grant_changes_only_implementation_gate(self):
         earlier = copy.deepcopy(self.seed)
         earlier['objects'] = [obj for obj in earlier['objects']
-                              if not obj['object_id'].endswith(':20261007-research-loop')]
-        before, after = m.derive(earlier), m.derive(self.seed)
+                              if not obj['object_id'].endswith((':20261007-research-loop', ':20261008-reconciliation'))]
+        coordination = copy.deepcopy(self.seed)
+        coordination['objects'] = [o for o in coordination['objects'] if not o['object_id'].endswith(':20261008-reconciliation')]
+        before, after = m.derive(earlier), m.derive(coordination)
         for field in m.POLICIES:
             if field != 'implementation_gate':
                 self.assertEqual(before['fields'][field], after['fields'][field])

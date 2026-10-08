@@ -1,7 +1,7 @@
 {
   "schema": "arcanum.operational-observations/v1",
-  "as_of": "2026-10-08T08:54:33Z",
-  "observed_main": "395d8f9894c72abccb57c5663c9c127b28f1d6b7",
+  "as_of": "2026-10-07T09:02:00Z",
+  "observed_main": "f839027a3c82197d0087e0a530126f67b884618a",
   "authority": "observation-only",
   "capabilities": [
     {
@@ -153,16 +153,15 @@
       "id": "agent-c-readiness",
       "surface": "Agent C",
       "status": "untested",
-      "observed_on": "2026-10-08",
-      "summary": "Recovered October7 dashboard reports version10 and scoped addendum; effective published Memory-off and adequate production/Studio submission-history coverage remain incomplete. WS-RQ-003 is approved_active with no established result.",
+      "observed_on": "2026-10-07",
+      "summary": "Destination, reachability, Memory-off and schedules remain unverified.",
       "limitations": [
-        "Recovered report, not a fresh Agent C probe; no launch performed.",
-        "Current allowed sources and trigger state require pre-dispatch checks.",
-        "Before-state snapshot retained in docs/evidence/present-state-reconciliation-20261008/operational-capabilities-before.json."
+        "Existing research grants do not prove current readiness.",
+        "No launch performed."
       ],
       "before_use": "Resolve the exact private agent and verify settings before an individually authorized bounded question.",
       "evidence": [
-        "docs/governance/architectgpt/present-state-checkpoint-20261008.md"
+        "docs/evidence/operational-baseline-20261007/review.md"
       ]
     },
     {
@@ -177,21 +176,6 @@
       "before_use": "Obtain the bounded Human scope decision and preserve participant custody before implementation.",
       "evidence": [
         "docs/evidence/operational-baseline-20261007/review.md"
-      ]
-    },
-    {
-      "id": "scheduler-reconciliation",
-      "surface": "Research scheduler",
-      "status": "untested",
-      "observed_on": "2026-10-08",
-      "summary": "October8 cleanup audit reports no active automation, superseding the earlier ACTIVE daily-loop record for present scheduling.",
-      "limitations": [
-        "Attributed recovered audit; not a new scheduler probe.",
-        "No automation recreated or research run launched."
-      ],
-      "before_use": "Resolve actual scheduler state under a separately authorized scheduling task.",
-      "evidence": [
-        "docs/governance/architectgpt/present-state-checkpoint-20261008.md"
       ]
     }
   ]

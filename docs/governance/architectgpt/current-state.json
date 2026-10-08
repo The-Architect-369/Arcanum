@@ -1,7 +1,7 @@
 {
-  "as_of": "2026-10-07T09:57:13Z",
+  "as_of": "2026-10-08T08:49:46Z",
   "authority": "derived-non-authoritative",
-  "base_ref": "a07cebf7e0941a52be8961c349522488cf87b9a3",
+  "base_ref": "395d8f9894c72abccb57c5663c9c127b28f1d6b7",
   "coverage": "bounded-seed-only",
   "fields": {
     "a19_baseline": {
@@ -31,34 +31,38 @@
     "agent_c_state": {
       "all_claim_ids": [
         "coherence:agent_c_state",
-        "coherence:agent_c_state:20261007-connection-check"
+        "coherence:agent_c_state:20261007-connection-check",
+        "coherence:agent_c_state:20261008-reconciliation"
       ],
       "coverage": "covered",
       "selected_object_ids": [
-        "coherence:agent_c_state:20261007-connection-check"
+        "coherence:agent_c_state:20261008-reconciliation"
       ],
       "status": "supported",
       "superseded_object_ids": [
-        "coherence:agent_c_state"
+        "coherence:agent_c_state",
+        "coherence:agent_c_state:20261007-connection-check"
       ],
-      "value": "Existing WS-AGENT-C is Research Observatory. Fresh Notion readback confirms WS-RQ-003 approved_active for the unchanged geometry-versus-conventional view question; no repeat approval is needed. WS-RQ-009 separately covers an Equinox source study. Human requested a remote research/build/result-review loop. Browser inspection failed before discovery with a local-file-URI tool error; exact destination, reachability, Memory-off and schedules remain unverified. No agent run, prototype or participant study occurred."
+      "value": "October7 dashboard reports existing Agent C version10 and scoped addendum; effective published Memory-off and adequate production/Studio submission history remain unproved. WS-RQ-003 remains approved_active, no result established; source/trigger checks still required. No Agent C run here."
     },
     "canonical_base": {
       "all_claim_ids": [
         "coherence:canonical_base",
         "coherence:canonical_base:20261007-architecture-review",
-        "coherence:canonical_base:20261007-baseline"
+        "coherence:canonical_base:20261007-baseline",
+        "coherence:canonical_base:20261008-reconciliation"
       ],
       "coverage": "covered",
       "selected_object_ids": [
-        "coherence:canonical_base:20261007-architecture-review"
+        "coherence:canonical_base:20261008-reconciliation"
       ],
       "status": "supported",
       "superseded_object_ids": [
         "coherence:canonical_base",
+        "coherence:canonical_base:20261007-architecture-review",
         "coherence:canonical_base:20261007-baseline"
       ],
-      "value": "The-Architect-369/Arcanum main@a07cebf7e0941a52be8961c349522488cf87b9a3 (observed canonical baseline). PR92 is a separate architecture/projection review candidate, not a merged baseline."
+      "value": "The-Architect-369/Arcanum main@395d8f9894c72abccb57c5663c9c127b28f1d6b7, freshly fetched October8; PR92–94 adopted. Recovered production report: dpl_J8qGk4srFLKYAPb3YUPNDmDv45F6 READY at this exact base, not re-probed here."
     },
     "completed_arc": {
       "all_claim_ids": [
@@ -89,15 +93,18 @@
     },
     "continuity_gaps": {
       "all_claim_ids": [
-        "coherence:continuity_gaps"
+        "coherence:continuity_gaps",
+        "coherence:continuity_gaps:20261008-reconciliation"
       ],
       "coverage": "covered",
       "selected_object_ids": [
-        "coherence:continuity_gaps"
+        "coherence:continuity_gaps:20261008-reconciliation"
       ],
       "status": "supported",
-      "superseded_object_ids": [],
-      "value": "The active session index is empty by design while external numbering remains unreconciled. Dated log events are excluded from that index; no missing sessions are reconstructed."
+      "superseded_object_ids": [
+        "coherence:continuity_gaps"
+      ],
+      "value": "ARC-SES-11..22 remain unreconciled; external ARC-SES-23 is preserved without renumbering. sessions remains empty; independent append-only event chronology can continue without allocating sessions."
     },
     "era": {
       "all_claim_ids": [
@@ -113,15 +120,18 @@
     },
     "following_arc": {
       "all_claim_ids": [
-        "coherence:following_arc"
+        "coherence:following_arc",
+        "coherence:following_arc:20261008-reconciliation"
       ],
       "coverage": "covered",
       "selected_object_ids": [
-        "coherence:following_arc"
+        "coherence:following_arc:20261008-reconciliation"
       ],
       "status": "supported",
-      "superseded_object_ids": [],
-      "value": "A20 / ARC-51 follows A19; completing it leads to CE-W04 review, not automatic wave closure."
+      "superseded_object_ids": [
+        "coherence:following_arc"
+      ],
+      "value": "CE-W04-A20 is Blocked behind A19; Notion task ARC-51 tracks it. Completion leads to CE-W04 evidence review, not automatic closure."
     },
     "hope_extensions": {
       "all_claim_ids": [
@@ -140,31 +150,36 @@
         "coherence:implementation_gate",
         "coherence:implementation_gate:20261007-architecture-review",
         "coherence:implementation_gate:20261007-baseline",
-        "coherence:implementation_gate:20261007-research-loop"
+        "coherence:implementation_gate:20261007-research-loop",
+        "coherence:implementation_gate:20261008-reconciliation"
       ],
       "coverage": "covered",
       "selected_object_ids": [
-        "coherence:implementation_gate:20261007-research-loop"
+        "coherence:implementation_gate:20261008-reconciliation"
       ],
       "status": "supported",
       "superseded_object_ids": [
         "coherence:implementation_gate",
         "coherence:implementation_gate:20261007-architecture-review",
-        "coherence:implementation_gate:20261007-baseline"
+        "coherence:implementation_gate:20261007-baseline",
+        "coherence:implementation_gate:20261007-research-loop"
       ],
-      "value": "Human authorized automated evidence-grounded question preparation and execution of already approved questions for Human review, with refresh during active work and daily. Thread heartbeat arcanum-research-review-loop is ACTIVE for 9 a.m. daily (America/New_York intended). WS-RQ-003 approval stands; verify Agent C connection/settings and reconcile run history before dispatch. New questions remain pending review. No research run, simulation result, policy activation, merge or deployment is established."
+      "value": "Human-authorized bounded present-state/tracking reconciliation and conservative Notion repair; reviewable PR and deterministic index. Stop before merge/deploy, scheduler recreation, Agent C run or A19 implementation."
     },
     "next_arc": {
       "all_claim_ids": [
-        "coherence:next_arc"
+        "coherence:next_arc",
+        "coherence:next_arc:20261008-reconciliation"
       ],
       "coverage": "covered",
       "selected_object_ids": [
-        "coherence:next_arc"
+        "coherence:next_arc:20261008-reconciliation"
       ],
       "status": "supported",
-      "superseded_object_ids": [],
-      "value": "A19 / ARC-50 is next in the bounded sequence; A18 predecessor closure is satisfied. Its storage and physical acceptance work remains ahead."
+      "superseded_object_ids": [
+        "coherence:next_arc"
+      ],
+      "value": "CE-W04-A19 is Ready and next; Notion task ARC-50 tracks this arc. Implementation and physical acceptance remain ahead."
     },
     "outstanding_human_decisions": {
       "all_claim_ids": [
@@ -184,17 +199,19 @@
     "source_conflicts": {
       "all_claim_ids": [
         "coherence:source_conflicts",
-        "coherence:source_conflicts:20261007-baseline"
+        "coherence:source_conflicts:20261007-baseline",
+        "coherence:source_conflicts:20261008-reconciliation"
       ],
       "coverage": "covered",
       "selected_object_ids": [
-        "coherence:source_conflicts:20261007-baseline"
+        "coherence:source_conflicts:20261008-reconciliation"
       ],
       "status": "supported",
       "superseded_object_ids": [
-        "coherence:source_conflicts"
+        "coherence:source_conflicts",
+        "coherence:source_conflicts:20261007-baseline"
       ],
-      "value": "PR90 corrected repository present-state pointers. October 7 Notion readback confirms dashboard/handoff supersession notices and A19 Ready, clearing the old A18 predecessor block. Earlier snapshots remain historical; no A18 reopening or extension ratification is inferred."
+      "value": "Historical A14/Stage1 baseline and earlier active-loop statements remain dated evidence. October8 audit reports no active scheduler. Arc ledger is reconciled through A18; historical Notion backlog is classified separately from current execution."
     },
     "spatial_extensions": {
       "all_claim_ids": [
@@ -975,6 +992,104 @@
     },
     {
       "authority": {
+        "authority_class": "operational-record",
+        "authority_refs": [
+          "docs/governance/architectgpt/current-state-profile.md"
+        ],
+        "effect_state": {
+          "authorized_for_effect": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "canonicalized": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "executed": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "proposed": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "ratified": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "verified": {
+            "evidence_refs": [],
+            "state": "unknown"
+          }
+        }
+      },
+      "claim_class": "report",
+      "custody": {
+        "disclosure": "public-candidate",
+        "do_not_export": false,
+        "encryption_required": false,
+        "materialization": "metadata-only",
+        "replication": "none",
+        "retention_authority_ref": "docs/governance/architectgpt/current-state-profile.md",
+        "retention_authorized": true
+      },
+      "namespace": "architect.public-coherence",
+      "object_id": "coherence:agent_c_state:20261008-reconciliation",
+      "object_type": "evidence",
+      "payload": {
+        "evidence_id": "coherence:agent_c_state:20261008-reconciliation",
+        "limitations": [
+          "Finite reviewed seed; generation does not refresh providers.",
+          "Deployment, scheduler and Agent C facts are attributed recovered reports; no new effect or live qualification inferred."
+        ],
+        "summary": "October7 dashboard reports existing Agent C version10 and scoped addendum; effective published Memory-off and adequate production/Studio submission history remain unproved. WS-RQ-003 remains approved_active, no result established; source/trigger checks still required. No Agent C run here.",
+        "supports": [
+          "agent_c_state"
+        ]
+      },
+      "provenance": [
+        {
+          "captured_at": "2026-10-08T08:49:46Z",
+          "content_digest_sha256": "152b28ee1b5312a2caffa3683cb0399b8c01031bab8a8dcffea1c81d92d30788",
+          "evidence_class": "report",
+          "source_kind": "local",
+          "source_ref": "docs/governance/architectgpt/current-state-profile.md#october-8-present-state-reconciliation",
+          "source_revision": null
+        }
+      ],
+      "record_type": "continuity-object",
+      "relationships": [
+        {
+          "basis_ref": "docs/governance/architectgpt/current-state-profile.md#october-8-present-state-reconciliation",
+          "target_object_id": "coherence:agent_c_state",
+          "type": "supersedes"
+        },
+        {
+          "basis_ref": "docs/governance/architectgpt/current-state-profile.md#october-8-present-state-reconciliation",
+          "target_object_id": "coherence:agent_c_state:20261007-connection-check",
+          "type": "supersedes"
+        }
+      ],
+      "schema": "arcanum.node.continuity-object/v1",
+      "subject_id": "state:agent_c_state",
+      "temporal": {
+        "effective_from": null,
+        "effective_until": null,
+        "observed_at": "2026-10-08T08:49:46Z",
+        "occurred_at": null,
+        "recorded_at": "2026-10-08T08:49:46Z",
+        "sequence": {
+          "arc_id": null,
+          "era": "Construction Era",
+          "ordinal": null,
+          "wave": "CE-W04"
+        },
+        "tempus_anchor_ref": null
+      },
+      "version": 1
+    },
+    {
+      "authority": {
         "authority_class": "derived",
         "authority_refs": [
           "docs/governance/architectgpt/current-state-profile.md"
@@ -1236,6 +1351,109 @@
         "observed_at": "2026-10-07T09:02:00Z",
         "occurred_at": null,
         "recorded_at": "2026-10-07T09:02:00Z",
+        "sequence": {
+          "arc_id": null,
+          "era": "Construction Era",
+          "ordinal": null,
+          "wave": "CE-W04"
+        },
+        "tempus_anchor_ref": null
+      },
+      "version": 1
+    },
+    {
+      "authority": {
+        "authority_class": "canonical-repository",
+        "authority_refs": [
+          "docs/governance/architectgpt/current-state-profile.md"
+        ],
+        "effect_state": {
+          "authorized_for_effect": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "canonicalized": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "executed": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "proposed": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "ratified": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "verified": {
+            "evidence_refs": [],
+            "state": "unknown"
+          }
+        }
+      },
+      "claim_class": "report",
+      "custody": {
+        "disclosure": "public-candidate",
+        "do_not_export": false,
+        "encryption_required": false,
+        "materialization": "metadata-only",
+        "replication": "none",
+        "retention_authority_ref": "docs/governance/architectgpt/current-state-profile.md",
+        "retention_authorized": true
+      },
+      "namespace": "architect.public-coherence",
+      "object_id": "coherence:canonical_base:20261008-reconciliation",
+      "object_type": "evidence",
+      "payload": {
+        "evidence_id": "coherence:canonical_base:20261008-reconciliation",
+        "limitations": [
+          "Finite reviewed seed; generation does not refresh providers.",
+          "Deployment, scheduler and Agent C facts are attributed recovered reports; no new effect or live qualification inferred."
+        ],
+        "summary": "The-Architect-369/Arcanum main@395d8f9894c72abccb57c5663c9c127b28f1d6b7, freshly fetched October8; PR92–94 adopted. Recovered production report: dpl_J8qGk4srFLKYAPb3YUPNDmDv45F6 READY at this exact base, not re-probed here.",
+        "supports": [
+          "canonical_base"
+        ]
+      },
+      "provenance": [
+        {
+          "captured_at": "2026-10-08T08:49:46Z",
+          "content_digest_sha256": "152b28ee1b5312a2caffa3683cb0399b8c01031bab8a8dcffea1c81d92d30788",
+          "evidence_class": "report",
+          "source_kind": "local",
+          "source_ref": "docs/governance/architectgpt/current-state-profile.md#october-8-present-state-reconciliation",
+          "source_revision": null
+        }
+      ],
+      "record_type": "continuity-object",
+      "relationships": [
+        {
+          "basis_ref": "docs/governance/architectgpt/current-state-profile.md#october-8-present-state-reconciliation",
+          "target_object_id": "coherence:canonical_base",
+          "type": "supersedes"
+        },
+        {
+          "basis_ref": "docs/governance/architectgpt/current-state-profile.md#october-8-present-state-reconciliation",
+          "target_object_id": "coherence:canonical_base:20261007-baseline",
+          "type": "supersedes"
+        },
+        {
+          "basis_ref": "docs/governance/architectgpt/current-state-profile.md#october-8-present-state-reconciliation",
+          "target_object_id": "coherence:canonical_base:20261007-architecture-review",
+          "type": "supersedes"
+        }
+      ],
+      "schema": "arcanum.node.continuity-object/v1",
+      "subject_id": "state:canonical_base",
+      "temporal": {
+        "effective_from": null,
+        "effective_until": null,
+        "observed_at": "2026-10-08T08:49:46Z",
+        "occurred_at": null,
+        "recorded_at": "2026-10-08T08:49:46Z",
         "sequence": {
           "arc_id": null,
           "era": "Construction Era",
@@ -1527,6 +1745,99 @@
       "authority": {
         "authority_class": "canonical-repository",
         "authority_refs": [
+          "docs/governance/architectgpt/continuity-index.json"
+        ],
+        "effect_state": {
+          "authorized_for_effect": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "canonicalized": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "executed": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "proposed": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "ratified": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "verified": {
+            "evidence_refs": [],
+            "state": "unknown"
+          }
+        }
+      },
+      "claim_class": "report",
+      "custody": {
+        "disclosure": "public-candidate",
+        "do_not_export": false,
+        "encryption_required": false,
+        "materialization": "metadata-only",
+        "replication": "none",
+        "retention_authority_ref": "docs/governance/architectgpt/current-state-profile.md",
+        "retention_authorized": true
+      },
+      "namespace": "architect.public-coherence",
+      "object_id": "coherence:continuity_gaps:20261008-reconciliation",
+      "object_type": "evidence",
+      "payload": {
+        "evidence_id": "coherence:continuity_gaps:20261008-reconciliation",
+        "limitations": [
+          "Finite reviewed seed; generation does not refresh providers.",
+          "Deployment, scheduler and Agent C facts are attributed recovered reports; no new effect or live qualification inferred."
+        ],
+        "summary": "ARC-SES-11..22 remain unreconciled; external ARC-SES-23 is preserved without renumbering. sessions remains empty; independent append-only event chronology can continue without allocating sessions.",
+        "supports": [
+          "continuity_gaps"
+        ]
+      },
+      "provenance": [
+        {
+          "captured_at": "2026-10-08T08:49:46Z",
+          "content_digest_sha256": "152b28ee1b5312a2caffa3683cb0399b8c01031bab8a8dcffea1c81d92d30788",
+          "evidence_class": "report",
+          "source_kind": "local",
+          "source_ref": "docs/governance/architectgpt/current-state-profile.md#october-8-present-state-reconciliation",
+          "source_revision": null
+        }
+      ],
+      "record_type": "continuity-object",
+      "relationships": [
+        {
+          "basis_ref": "docs/governance/architectgpt/current-state-profile.md#october-8-present-state-reconciliation",
+          "target_object_id": "coherence:continuity_gaps",
+          "type": "supersedes"
+        }
+      ],
+      "schema": "arcanum.node.continuity-object/v1",
+      "subject_id": "state:continuity_gaps",
+      "temporal": {
+        "effective_from": null,
+        "effective_until": null,
+        "observed_at": "2026-10-08T08:49:46Z",
+        "occurred_at": null,
+        "recorded_at": "2026-10-08T08:49:46Z",
+        "sequence": {
+          "arc_id": null,
+          "era": "Construction Era",
+          "ordinal": null,
+          "wave": "CE-W04"
+        },
+        "tempus_anchor_ref": null
+      },
+      "version": 1
+    },
+    {
+      "authority": {
+        "authority_class": "canonical-repository",
+        "authority_refs": [
           "docs/governance/architectgpt/architect-gpt-manifest.yaml"
         ],
         "effect_state": {
@@ -1686,6 +1997,99 @@
         "observed_at": "2026-10-07T08:13:22Z",
         "occurred_at": null,
         "recorded_at": "2026-10-07T08:28:23Z",
+        "sequence": {
+          "arc_id": null,
+          "era": "Construction Era",
+          "ordinal": null,
+          "wave": "CE-W04"
+        },
+        "tempus_anchor_ref": null
+      },
+      "version": 1
+    },
+    {
+      "authority": {
+        "authority_class": "operational-record",
+        "authority_refs": [
+          "docs/governance/architectgpt/current-state-profile.md"
+        ],
+        "effect_state": {
+          "authorized_for_effect": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "canonicalized": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "executed": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "proposed": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "ratified": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "verified": {
+            "evidence_refs": [],
+            "state": "unknown"
+          }
+        }
+      },
+      "claim_class": "report",
+      "custody": {
+        "disclosure": "public-candidate",
+        "do_not_export": false,
+        "encryption_required": false,
+        "materialization": "metadata-only",
+        "replication": "none",
+        "retention_authority_ref": "docs/governance/architectgpt/current-state-profile.md",
+        "retention_authorized": true
+      },
+      "namespace": "architect.public-coherence",
+      "object_id": "coherence:following_arc:20261008-reconciliation",
+      "object_type": "evidence",
+      "payload": {
+        "evidence_id": "coherence:following_arc:20261008-reconciliation",
+        "limitations": [
+          "Finite reviewed seed; generation does not refresh providers.",
+          "Deployment, scheduler and Agent C facts are attributed recovered reports; no new effect or live qualification inferred."
+        ],
+        "summary": "CE-W04-A20 is Blocked behind A19; Notion task ARC-51 tracks it. Completion leads to CE-W04 evidence review, not automatic closure.",
+        "supports": [
+          "following_arc"
+        ]
+      },
+      "provenance": [
+        {
+          "captured_at": "2026-10-08T08:49:46Z",
+          "content_digest_sha256": "152b28ee1b5312a2caffa3683cb0399b8c01031bab8a8dcffea1c81d92d30788",
+          "evidence_class": "report",
+          "source_kind": "local",
+          "source_ref": "docs/governance/architectgpt/current-state-profile.md#october-8-present-state-reconciliation",
+          "source_revision": null
+        }
+      ],
+      "record_type": "continuity-object",
+      "relationships": [
+        {
+          "basis_ref": "docs/governance/architectgpt/current-state-profile.md#october-8-present-state-reconciliation",
+          "target_object_id": "coherence:following_arc",
+          "type": "supersedes"
+        }
+      ],
+      "schema": "arcanum.node.continuity-object/v1",
+      "subject_id": "state:following_arc",
+      "temporal": {
+        "effective_from": null,
+        "effective_until": null,
+        "observed_at": "2026-10-08T08:49:46Z",
+        "occurred_at": null,
+        "recorded_at": "2026-10-08T08:49:46Z",
         "sequence": {
           "arc_id": null,
           "era": "Construction Era",
@@ -2120,7 +2524,7 @@
           "evidence_class": "report",
           "source_kind": "local",
           "source_ref": "docs/governance/architectgpt/current-state-profile.md#october-7-automated-research-coordination-grant",
-          "source_revision": null
+          "source_revision": "395d8f9894c72abccb57c5663c9c127b28f1d6b7"
         }
       ],
       "record_type": "continuity-object",
@@ -2139,6 +2543,114 @@
         "observed_at": "2026-10-07T09:57:13Z",
         "occurred_at": null,
         "recorded_at": "2026-10-07T09:57:13Z",
+        "sequence": {
+          "arc_id": null,
+          "era": "Construction Era",
+          "ordinal": null,
+          "wave": "CE-W04"
+        },
+        "tempus_anchor_ref": null
+      },
+      "version": 1
+    },
+    {
+      "authority": {
+        "authority_class": "human-decision",
+        "authority_refs": [
+          "docs/governance/architectgpt/current-state-profile.md"
+        ],
+        "effect_state": {
+          "authorized_for_effect": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "canonicalized": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "executed": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "proposed": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "ratified": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "verified": {
+            "evidence_refs": [],
+            "state": "unknown"
+          }
+        }
+      },
+      "claim_class": "report",
+      "custody": {
+        "disclosure": "public-candidate",
+        "do_not_export": false,
+        "encryption_required": false,
+        "materialization": "metadata-only",
+        "replication": "none",
+        "retention_authority_ref": "docs/governance/architectgpt/current-state-profile.md",
+        "retention_authorized": true
+      },
+      "namespace": "architect.public-coherence",
+      "object_id": "coherence:implementation_gate:20261008-reconciliation",
+      "object_type": "evidence",
+      "payload": {
+        "evidence_id": "coherence:implementation_gate:20261008-reconciliation",
+        "limitations": [
+          "Finite reviewed seed; generation does not refresh providers.",
+          "Deployment, scheduler and Agent C facts are attributed recovered reports; no new effect or live qualification inferred."
+        ],
+        "summary": "Human-authorized bounded present-state/tracking reconciliation and conservative Notion repair; reviewable PR and deterministic index. Stop before merge/deploy, scheduler recreation, Agent C run or A19 implementation.",
+        "supports": [
+          "implementation_gate"
+        ]
+      },
+      "provenance": [
+        {
+          "captured_at": "2026-10-08T08:49:46Z",
+          "content_digest_sha256": "152b28ee1b5312a2caffa3683cb0399b8c01031bab8a8dcffea1c81d92d30788",
+          "evidence_class": "report",
+          "source_kind": "local",
+          "source_ref": "docs/governance/architectgpt/current-state-profile.md#october-8-present-state-reconciliation",
+          "source_revision": null
+        }
+      ],
+      "record_type": "continuity-object",
+      "relationships": [
+        {
+          "basis_ref": "docs/governance/architectgpt/current-state-profile.md#october-8-present-state-reconciliation",
+          "target_object_id": "coherence:implementation_gate",
+          "type": "supersedes"
+        },
+        {
+          "basis_ref": "docs/governance/architectgpt/current-state-profile.md#october-8-present-state-reconciliation",
+          "target_object_id": "coherence:implementation_gate:20261007-baseline",
+          "type": "supersedes"
+        },
+        {
+          "basis_ref": "docs/governance/architectgpt/current-state-profile.md#october-8-present-state-reconciliation",
+          "target_object_id": "coherence:implementation_gate:20261007-architecture-review",
+          "type": "supersedes"
+        },
+        {
+          "basis_ref": "docs/governance/architectgpt/current-state-profile.md#october-8-present-state-reconciliation",
+          "target_object_id": "coherence:implementation_gate:20261007-research-loop",
+          "type": "supersedes"
+        }
+      ],
+      "schema": "arcanum.node.continuity-object/v1",
+      "subject_id": "state:implementation_gate",
+      "temporal": {
+        "effective_from": null,
+        "effective_until": null,
+        "observed_at": "2026-10-08T08:49:46Z",
+        "occurred_at": null,
+        "recorded_at": "2026-10-08T08:49:46Z",
         "sequence": {
           "arc_id": null,
           "era": "Construction Era",
@@ -2226,6 +2738,99 @@
         "observed_at": "2026-10-07T08:13:22Z",
         "occurred_at": null,
         "recorded_at": "2026-10-07T08:28:23Z",
+        "sequence": {
+          "arc_id": null,
+          "era": "Construction Era",
+          "ordinal": null,
+          "wave": "CE-W04"
+        },
+        "tempus_anchor_ref": null
+      },
+      "version": 1
+    },
+    {
+      "authority": {
+        "authority_class": "operational-record",
+        "authority_refs": [
+          "docs/governance/architectgpt/current-state-profile.md"
+        ],
+        "effect_state": {
+          "authorized_for_effect": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "canonicalized": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "executed": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "proposed": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "ratified": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "verified": {
+            "evidence_refs": [],
+            "state": "unknown"
+          }
+        }
+      },
+      "claim_class": "report",
+      "custody": {
+        "disclosure": "public-candidate",
+        "do_not_export": false,
+        "encryption_required": false,
+        "materialization": "metadata-only",
+        "replication": "none",
+        "retention_authority_ref": "docs/governance/architectgpt/current-state-profile.md",
+        "retention_authorized": true
+      },
+      "namespace": "architect.public-coherence",
+      "object_id": "coherence:next_arc:20261008-reconciliation",
+      "object_type": "evidence",
+      "payload": {
+        "evidence_id": "coherence:next_arc:20261008-reconciliation",
+        "limitations": [
+          "Finite reviewed seed; generation does not refresh providers.",
+          "Deployment, scheduler and Agent C facts are attributed recovered reports; no new effect or live qualification inferred."
+        ],
+        "summary": "CE-W04-A19 is Ready and next; Notion task ARC-50 tracks this arc. Implementation and physical acceptance remain ahead.",
+        "supports": [
+          "next_arc"
+        ]
+      },
+      "provenance": [
+        {
+          "captured_at": "2026-10-08T08:49:46Z",
+          "content_digest_sha256": "152b28ee1b5312a2caffa3683cb0399b8c01031bab8a8dcffea1c81d92d30788",
+          "evidence_class": "report",
+          "source_kind": "local",
+          "source_ref": "docs/governance/architectgpt/current-state-profile.md#october-8-present-state-reconciliation",
+          "source_revision": null
+        }
+      ],
+      "record_type": "continuity-object",
+      "relationships": [
+        {
+          "basis_ref": "docs/governance/architectgpt/current-state-profile.md#october-8-present-state-reconciliation",
+          "target_object_id": "coherence:next_arc",
+          "type": "supersedes"
+        }
+      ],
+      "schema": "arcanum.node.continuity-object/v1",
+      "subject_id": "state:next_arc",
+      "temporal": {
+        "effective_from": null,
+        "effective_until": null,
+        "observed_at": "2026-10-08T08:49:46Z",
+        "occurred_at": null,
+        "recorded_at": "2026-10-08T08:49:46Z",
         "sequence": {
           "arc_id": null,
           "era": "Construction Era",
@@ -2594,6 +3199,104 @@
         "observed_at": "2026-10-07T09:02:00Z",
         "occurred_at": null,
         "recorded_at": "2026-10-07T09:02:00Z",
+        "sequence": {
+          "arc_id": null,
+          "era": "Construction Era",
+          "ordinal": null,
+          "wave": "CE-W04"
+        },
+        "tempus_anchor_ref": null
+      },
+      "version": 1
+    },
+    {
+      "authority": {
+        "authority_class": "canonical-repository",
+        "authority_refs": [
+          "docs/governance/architectgpt/current-state-profile.md"
+        ],
+        "effect_state": {
+          "authorized_for_effect": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "canonicalized": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "executed": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "proposed": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "ratified": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "verified": {
+            "evidence_refs": [],
+            "state": "unknown"
+          }
+        }
+      },
+      "claim_class": "report",
+      "custody": {
+        "disclosure": "public-candidate",
+        "do_not_export": false,
+        "encryption_required": false,
+        "materialization": "metadata-only",
+        "replication": "none",
+        "retention_authority_ref": "docs/governance/architectgpt/current-state-profile.md",
+        "retention_authorized": true
+      },
+      "namespace": "architect.public-coherence",
+      "object_id": "coherence:source_conflicts:20261008-reconciliation",
+      "object_type": "evidence",
+      "payload": {
+        "evidence_id": "coherence:source_conflicts:20261008-reconciliation",
+        "limitations": [
+          "Finite reviewed seed; generation does not refresh providers.",
+          "Deployment, scheduler and Agent C facts are attributed recovered reports; no new effect or live qualification inferred."
+        ],
+        "summary": "Historical A14/Stage1 baseline and earlier active-loop statements remain dated evidence. October8 audit reports no active scheduler. Arc ledger is reconciled through A18; historical Notion backlog is classified separately from current execution.",
+        "supports": [
+          "source_conflicts"
+        ]
+      },
+      "provenance": [
+        {
+          "captured_at": "2026-10-08T08:49:46Z",
+          "content_digest_sha256": "152b28ee1b5312a2caffa3683cb0399b8c01031bab8a8dcffea1c81d92d30788",
+          "evidence_class": "report",
+          "source_kind": "local",
+          "source_ref": "docs/governance/architectgpt/current-state-profile.md#october-8-present-state-reconciliation",
+          "source_revision": null
+        }
+      ],
+      "record_type": "continuity-object",
+      "relationships": [
+        {
+          "basis_ref": "docs/governance/architectgpt/current-state-profile.md#october-8-present-state-reconciliation",
+          "target_object_id": "coherence:source_conflicts",
+          "type": "supersedes"
+        },
+        {
+          "basis_ref": "docs/governance/architectgpt/current-state-profile.md#october-8-present-state-reconciliation",
+          "target_object_id": "coherence:source_conflicts:20261007-baseline",
+          "type": "supersedes"
+        }
+      ],
+      "schema": "arcanum.node.continuity-object/v1",
+      "subject_id": "state:source_conflicts",
+      "temporal": {
+        "effective_from": null,
+        "effective_until": null,
+        "observed_at": "2026-10-08T08:49:46Z",
+        "occurred_at": null,
+        "recorded_at": "2026-10-08T08:49:46Z",
         "sequence": {
           "arc_id": null,
           "era": "Construction Era",
