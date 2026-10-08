@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-10-08T08:57:22Z",
+  "generated_at": "2026-10-08T08:59:58Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "3df9ab097",
+  "commit": "74e1c3f26",
   "generator_version": "1.5",
   "files": [
     {
@@ -4993,11 +4993,11 @@
     {
       "path": "docs/evidence/present-state-reconciliation-20261008/provider-review.md",
       "type": "file",
-      "size_bytes": 1728,
-      "last_modified_commit": "3df9ab097",
+      "size_bytes": 1727,
+      "last_modified_commit": "74e1c3f26",
       "is_empty": false,
       "extension": ".md",
-      "lines": 31
+      "lines": 30
     },
     {
       "path": "docs/governance/architectgpt/agent-registry.yaml",
