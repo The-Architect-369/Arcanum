@@ -280,3 +280,22 @@ preserving the September 24 approval body and `approved_active` state. The
 Understanding Dashboard is the authorized operational mirror for this update.
 No Notion subscription cancellation, main merge, deployment or new policy is
 authorized or established by scheduling this review loop.
+
+
+## October 8 present-state reconciliation
+
+The Human approved and explicitly instructed the bounded repository/Notion tracking
+repair, with no merge/deploy, scheduler recreation, Agent C dispatch or A19 work.
+The [checkpoint](present-state-checkpoint-20261008.md) records the exact freshly
+resolved main395d8f9894c72abccb57c5663c9c127b28f1d6b7 and attributes recovered
+production/scheduler observations separately. A18 remains closed, CE-W04 open,
+A19 Ready (tracked by Notion ARC-50), A20 Blocked (tracked by ARC-51).
+The October7 dashboard reports version10 Agent C with readiness evidence still
+incomplete; WS-RQ-003 remains approved but no research result exists.
+The October8 audit reports no active scheduler, superseding the prior ACTIVE claim.
+No device/environment capability is freshly certified by this tracking refresh.
+
+The independent event projection indexes controlling-log entries without changing
+sessions or the ARC-SES-11..22/external ARC-SES-23 gap. All earlier profile sections
+and seed objects remain historical evidence. Task and arc identifiers are distinct.
+This profile remains the only unpinned, digest-bound reviewed source for generation.

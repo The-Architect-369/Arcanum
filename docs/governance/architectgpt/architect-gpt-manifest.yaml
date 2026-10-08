@@ -375,6 +375,11 @@ session_continuity_control:
     fail_closed_validation_preserved: true
 
 files:
+  continuity_events_source: docs/governance/architectgpt/continuity-events.jsonl
+  continuity_events_projection: docs/governance/architectgpt/continuity-events.json
+  continuity_events_spec: docs/governance/architectgpt/continuity-events-spec.md
+  continuity_events_generator: scripts/architect/generate-continuity-events.py
+  present_state_checkpoint: docs/governance/architectgpt/present-state-checkpoint-20261008.md
   operational_capabilities_source: docs/governance/architectgpt/operational-capabilities.json
   operational_capabilities_readable: docs/governance/architectgpt/operational-capabilities.md
   operational_capabilities_generator: scripts/architect/generate-operational-capabilities.py
