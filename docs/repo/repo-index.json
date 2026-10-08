@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-10-07T12:40:47Z",
+  "generated_at": "2026-10-08T08:57:22Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "3ca0c7945",
+  "commit": "3df9ab097",
   "generator_version": "1.5",
   "files": [
     {
@@ -4982,6 +4982,24 @@
       "lines": 122
     },
     {
+      "path": "docs/evidence/present-state-reconciliation-20261008/operational-capabilities-before.json",
+      "type": "file",
+      "size_bytes": 7420,
+      "last_modified_commit": "3df9ab097",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 182
+    },
+    {
+      "path": "docs/evidence/present-state-reconciliation-20261008/provider-review.md",
+      "type": "file",
+      "size_bytes": 1728,
+      "last_modified_commit": "3df9ab097",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 31
+    },
+    {
       "path": "docs/governance/architectgpt/agent-registry.yaml",
       "type": "file",
       "size_bytes": 4790,
@@ -4993,11 +5011,11 @@
     {
       "path": "docs/governance/architectgpt/architect-gpt-manifest.yaml",
       "type": "file",
-      "size_bytes": 16974,
-      "last_modified_commit": "29cea02a6",
+      "size_bytes": 17393,
+      "last_modified_commit": "3df9ab097",
       "is_empty": false,
       "extension": ".yaml",
-      "lines": 433
+      "lines": 438
     },
     {
       "path": "docs/governance/architectgpt/architect-gpt.md",
@@ -5011,11 +5029,11 @@
     {
       "path": "docs/governance/architectgpt/architect-log.md",
       "type": "file",
-      "size_bytes": 25006,
-      "last_modified_commit": "29cea02a6",
+      "size_bytes": 26925,
+      "last_modified_commit": "3df9ab097",
       "is_empty": false,
       "extension": ".md",
-      "lines": 370
+      "lines": 398
     },
     {
       "path": "docs/governance/architectgpt/architect-proposal-envelope.schema.json",
@@ -5047,20 +5065,20 @@
     {
       "path": "docs/governance/architectgpt/coherence-chronicle.md",
       "type": "file",
-      "size_bytes": 7607,
-      "last_modified_commit": "4f7683c61",
+      "size_bytes": 10129,
+      "last_modified_commit": "3df9ab097",
       "is_empty": false,
       "extension": ".md",
-      "lines": 117
+      "lines": 162
     },
     {
       "path": "docs/governance/architectgpt/coherence/objects.json",
       "type": "file",
-      "size_bytes": 90454,
-      "last_modified_commit": "4f7683c61",
+      "size_bytes": 115120,
+      "last_modified_commit": "3df9ab097",
       "is_empty": false,
       "extension": ".json",
-      "lines": 2562
+      "lines": 3248
     },
     {
       "path": "docs/governance/architectgpt/continuity-epoch.json",
@@ -5079,6 +5097,33 @@
       "is_empty": false,
       "extension": ".json",
       "lines": 142
+    },
+    {
+      "path": "docs/governance/architectgpt/continuity-events-spec.md",
+      "type": "file",
+      "size_bytes": 2496,
+      "last_modified_commit": "3df9ab097",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 43
+    },
+    {
+      "path": "docs/governance/architectgpt/continuity-events.json",
+      "type": "file",
+      "size_bytes": 16661,
+      "last_modified_commit": "3df9ab097",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 336
+    },
+    {
+      "path": "docs/governance/architectgpt/continuity-events.jsonl",
+      "type": "file",
+      "size_bytes": 14223,
+      "last_modified_commit": "3df9ab097",
+      "is_empty": false,
+      "extension": ".jsonl",
+      "lines": 18
     },
     {
       "path": "docs/governance/architectgpt/continuity-index-spec.md",
@@ -5110,38 +5155,38 @@
     {
       "path": "docs/governance/architectgpt/conversation-memory-contract.md",
       "type": "file",
-      "size_bytes": 10450,
-      "last_modified_commit": "9a1b36039",
+      "size_bytes": 11224,
+      "last_modified_commit": "3df9ab097",
       "is_empty": false,
       "extension": ".md",
-      "lines": 243
+      "lines": 256
     },
     {
       "path": "docs/governance/architectgpt/current-state-profile.md",
       "type": "file",
-      "size_bytes": 18088,
-      "last_modified_commit": "4f7683c61",
+      "size_bytes": 19259,
+      "last_modified_commit": "3df9ab097",
       "is_empty": false,
       "extension": ".md",
-      "lines": 282
+      "lines": 301
     },
     {
       "path": "docs/governance/architectgpt/current-state.json",
       "type": "file",
-      "size_bytes": 100222,
-      "last_modified_commit": "4f7683c61",
+      "size_bytes": 125279,
+      "last_modified_commit": "3df9ab097",
       "is_empty": false,
       "extension": ".json",
-      "lines": 2783
+      "lines": 3486
     },
     {
       "path": "docs/governance/architectgpt/current-state.md",
       "type": "file",
-      "size_bytes": 18727,
-      "last_modified_commit": "4f7683c61",
+      "size_bytes": 22858,
+      "last_modified_commit": "3df9ab097",
       "is_empty": false,
       "extension": ".md",
-      "lines": 199
+      "lines": 227
     },
     {
       "path": "docs/governance/architectgpt/current-state.schema.json",
@@ -5173,20 +5218,29 @@
     {
       "path": "docs/governance/architectgpt/operational-capabilities.json",
       "type": "file",
-      "size_bytes": 7420,
-      "last_modified_commit": "29cea02a6",
+      "size_bytes": 8453,
+      "last_modified_commit": "3df9ab097",
       "is_empty": false,
       "extension": ".json",
-      "lines": 182
+      "lines": 198
     },
     {
       "path": "docs/governance/architectgpt/operational-capabilities.md",
       "type": "file",
-      "size_bytes": 6300,
-      "last_modified_commit": "29cea02a6",
+      "size_bytes": 7138,
+      "last_modified_commit": "3df9ab097",
       "is_empty": false,
       "extension": ".md",
-      "lines": 34
+      "lines": 35
+    },
+    {
+      "path": "docs/governance/architectgpt/present-state-checkpoint-20261008.md",
+      "type": "file",
+      "size_bytes": 5665,
+      "last_modified_commit": "3df9ab097",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 100
     },
     {
       "path": "docs/governance/architectgpt/production-smoke-routes.json",
@@ -5479,11 +5533,11 @@
     {
       "path": "docs/roadmap/construction-era-arc-ledger.md",
       "type": "file",
-      "size_bytes": 20103,
-      "last_modified_commit": "2e3f8b8f9",
+      "size_bytes": 23058,
+      "last_modified_commit": "3df9ab097",
       "is_empty": false,
       "extension": ".md",
-      "lines": 307
+      "lines": 359
     },
     {
       "path": "docs/roadmap/construction-era-roadmap.md",
@@ -8897,6 +8951,15 @@
       "lines": 69
     },
     {
+      "path": "scripts/architect/generate-continuity-events.py",
+      "type": "file",
+      "size_bytes": 5076,
+      "last_modified_commit": "3df9ab097",
+      "is_empty": false,
+      "extension": ".py",
+      "lines": 99
+    },
+    {
       "path": "scripts/architect/generate-continuity-index.py",
       "type": "file",
       "size_bytes": 8484,
@@ -9032,13 +9095,22 @@
       "lines": 65
     },
     {
-      "path": "scripts/architect/test-current-state.py",
+      "path": "scripts/architect/test-continuity-events.py",
       "type": "file",
-      "size_bytes": 12275,
-      "last_modified_commit": "4f7683c61",
+      "size_bytes": 2649,
+      "last_modified_commit": "3df9ab097",
       "is_empty": false,
       "extension": ".py",
-      "lines": 234
+      "lines": 57
+    },
+    {
+      "path": "scripts/architect/test-current-state.py",
+      "type": "file",
+      "size_bytes": 12544,
+      "last_modified_commit": "3df9ab097",
+      "is_empty": false,
+      "extension": ".py",
+      "lines": 236
     },
     {
       "path": "scripts/architect/test-impact-graph.sh",
@@ -9547,11 +9619,11 @@
     {
       "path": "scripts/verify-sync.sh",
       "type": "file",
-      "size_bytes": 12730,
-      "last_modified_commit": "d1c7bfe81",
+      "size_bytes": 12846,
+      "last_modified_commit": "3df9ab097",
       "is_empty": false,
       "extension": ".sh",
-      "lines": 291
+      "lines": 293
     },
     {
       "path": "tests/fixtures/trusted-update/candidate-observation.json",
