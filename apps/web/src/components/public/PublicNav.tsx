@@ -4,12 +4,11 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 const links = [
-  ["/about", "The vision"],
-  ["/explore", "Explore"],
+  ["/explore", "Discover"],
   ["/principles", "Principles"],
-  ["/updates", "Journal"],
+  ["/updates", "Follow the Work"],
   ["/journeys", "Journeys"],
-  ["/download", "Get Arcanum"],
+  ["/download", "Get the Arcanum"],
 ];
 export default function PublicNav() {
   const pathname = usePathname();
@@ -55,7 +54,7 @@ export default function PublicNav() {
             priority
           />
           <span>
-            ARCANUM<small>A HUMAN JOURNEY</small>
+            ARCANUM<small>A HUMAN STORY</small>
           </span>
         </Link>
         <button
