@@ -1,6 +1,6 @@
 # Bounded coherence chronicle
 
-As of 2026-10-08T08:49:46Z; observed canonical base `395d8f9894c72abccb57c5663c9c127b28f1d6b7`.
+As of 2026-10-10T23:56:40Z; observed canonical base `912666882ab7f0fd33c3979e5eb9ead82fc2c3f4`.
 Derived, non-authoritative, bounded seed. Regeneration is not a fresh provider read.
 See [profile and source limits](current-state-profile.md). Historical records remain intact.
 
@@ -153,10 +153,28 @@ Classification: report; source authority: human-decision.
 
 [source](current-state-profile.md#october-8-present-state-reconciliation)
 
-- implementation_gate: selected; field status supported.
+- implementation_gate: superseded; field status supported.
 - Limitation: Finite reviewed seed; generation does not refresh providers.
 - Limitation: Deployment, scheduler and Agent C facts are attributed recovered reports; no new effect or live qualification inferred.
 - supersedes: `coherence:implementation_gate`.
 - supersedes: `coherence:implementation_gate:20261007-baseline`.
 - supersedes: `coherence:implementation_gate:20261007-architecture-review`.
 - supersedes: `coherence:implementation_gate:20261007-research-loop`.
+
+## coherence:implementation_gate:20261010-adoption-review
+
+Human authorized PR95 reconciliation, verification and normal merge on October10. Agency and canon decisions remain pending individual review. Standing sequence/research grants remain preserved, subject to exact targets and original prerequisites; no A19 implementation or Agent C dispatch in this task.
+
+Event: unknown; observed: 2026-10-10T23:56:40Z; recorded: 2026-10-10T23:56:40Z.
+Classification: report; source authority: human-decision.
+
+[source](current-state-profile.md#october-10-continuity-adoption-review)
+
+- implementation_gate: selected; field status supported.
+- Limitation: Finite reviewed evidence; regeneration is not a provider refresh.
+- Limitation: Adoption approval covers continuity only; pending decisions remain unapproved.
+- supersedes: `coherence:implementation_gate`.
+- supersedes: `coherence:implementation_gate:20261007-baseline`.
+- supersedes: `coherence:implementation_gate:20261007-architecture-review`.
+- supersedes: `coherence:implementation_gate:20261007-research-loop`.
+- supersedes: `coherence:implementation_gate:20261008-reconciliation`.

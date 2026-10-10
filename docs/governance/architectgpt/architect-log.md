@@ -396,3 +396,16 @@ source/index lineage and publication evidence will be appended after execution.
 - Earlier log entries remain byte-preserved. ARC-SES-11..22 gap and external
   ARC-SES-23 stay unresolved; no session allocated. CE-W04 remains open.
 - Next gate: review source/index PR, then separately open bounded A19.
+
+
+## CONTINUITY-EVENT — 2026-10-10 — Live baseline and continuity adoption review
+
+- Fresh main: 912666882ab7f0fd33c3979e5eb9ead82fc2c3f4; PR96 adopted v0.7.
+- Human directed PR95 reconciliation/finalization and subsequent individual decision review.
+- Authorized: bounded continuity correction, verification and normal merge; adoption
+  result remains pending actual merge receipt. No canon amendment or Agency execution.
+- A18 closed, CE-W04 open, A19 next and A20 dependent; native implementation unchanged.
+- Canon audit delivery complete within selective coverage; twelve decisions pending.
+  Agent C Memory/history evidence unresolved; standing grants preserved, no dispatch.
+- Historical records/session bytes preserved; no ARC-SES allocation.
+- Basis: current-state-profile.md October10 review and public v0.7 baseline record.

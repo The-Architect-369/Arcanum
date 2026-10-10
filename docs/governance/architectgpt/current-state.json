@@ -1,7 +1,7 @@
 {
-  "as_of": "2026-10-08T08:49:46Z",
+  "as_of": "2026-10-10T23:56:40Z",
   "authority": "derived-non-authoritative",
-  "base_ref": "395d8f9894c72abccb57c5663c9c127b28f1d6b7",
+  "base_ref": "912666882ab7f0fd33c3979e5eb9ead82fc2c3f4",
   "coverage": "bounded-seed-only",
   "fields": {
     "a19_baseline": {
@@ -50,19 +50,21 @@
         "coherence:canonical_base",
         "coherence:canonical_base:20261007-architecture-review",
         "coherence:canonical_base:20261007-baseline",
-        "coherence:canonical_base:20261008-reconciliation"
+        "coherence:canonical_base:20261008-reconciliation",
+        "coherence:canonical_base:20261010-adoption-review"
       ],
       "coverage": "covered",
       "selected_object_ids": [
-        "coherence:canonical_base:20261008-reconciliation"
+        "coherence:canonical_base:20261010-adoption-review"
       ],
       "status": "supported",
       "superseded_object_ids": [
         "coherence:canonical_base",
         "coherence:canonical_base:20261007-architecture-review",
-        "coherence:canonical_base:20261007-baseline"
+        "coherence:canonical_base:20261007-baseline",
+        "coherence:canonical_base:20261008-reconciliation"
       ],
-      "value": "The-Architect-369/Arcanum main@395d8f9894c72abccb57c5663c9c127b28f1d6b7, freshly fetched October8; PR92–94 adopted. Recovered production report: dpl_J8qGk4srFLKYAPb3YUPNDmDv45F6 READY at this exact base, not re-probed here."
+      "value": "The-Architect-369/Arcanum main@912666882ab7f0fd33c3979e5eb9ead82fc2c3f4 freshly resolved October10; PR96 adopted v0.7 public baseline. Physical Android acceptance not repeated; native A19/A20 unchanged."
     },
     "completed_arc": {
       "all_claim_ids": [
@@ -151,20 +153,22 @@
         "coherence:implementation_gate:20261007-architecture-review",
         "coherence:implementation_gate:20261007-baseline",
         "coherence:implementation_gate:20261007-research-loop",
-        "coherence:implementation_gate:20261008-reconciliation"
+        "coherence:implementation_gate:20261008-reconciliation",
+        "coherence:implementation_gate:20261010-adoption-review"
       ],
       "coverage": "covered",
       "selected_object_ids": [
-        "coherence:implementation_gate:20261008-reconciliation"
+        "coherence:implementation_gate:20261010-adoption-review"
       ],
       "status": "supported",
       "superseded_object_ids": [
         "coherence:implementation_gate",
         "coherence:implementation_gate:20261007-architecture-review",
         "coherence:implementation_gate:20261007-baseline",
-        "coherence:implementation_gate:20261007-research-loop"
+        "coherence:implementation_gate:20261007-research-loop",
+        "coherence:implementation_gate:20261008-reconciliation"
       ],
-      "value": "Human-authorized bounded present-state/tracking reconciliation and conservative Notion repair; reviewable PR and deterministic index. Stop before merge/deploy, scheduler recreation, Agent C run or A19 implementation."
+      "value": "Human authorized PR95 reconciliation, verification and normal merge on October10. Agency and canon decisions remain pending individual review. Standing sequence/research grants remain preserved, subject to exact targets and original prerequisites; no A19 implementation or Agent C dispatch in this task."
     },
     "next_arc": {
       "all_claim_ids": [
@@ -184,17 +188,19 @@
     "outstanding_human_decisions": {
       "all_claim_ids": [
         "coherence:outstanding_human_decisions",
-        "coherence:outstanding_human_decisions:20261007-architecture-review"
+        "coherence:outstanding_human_decisions:20261007-architecture-review",
+        "coherence:outstanding_human_decisions:20261010-adoption-review"
       ],
       "coverage": "covered",
       "selected_object_ids": [
-        "coherence:outstanding_human_decisions:20261007-architecture-review"
+        "coherence:outstanding_human_decisions:20261010-adoption-review"
       ],
       "status": "supported",
       "superseded_object_ids": [
-        "coherence:outstanding_human_decisions"
+        "coherence:outstanding_human_decisions",
+        "coherence:outstanding_human_decisions:20261007-architecture-review"
       ],
-      "value": "Resolve economic mechanisms and candidate parameters through simulation/risk review/ratification; scoped appointment/signing, group trials, peer/community adoption and appeal rules; Grade X/post-Grade-X threshold, recognition evidence and specialization catalog; geometry hypotheses, comparators and acceptance criteria with Agent C readiness unverified; factual Tempus chronology, policy epochs and optional community narrative. Retain the earlier decision whether Hope/model and broader spatial-semantic extensions amend A19/A20 or follow separately. Open private creation, consenting trials and broader reviewed Adept responsibility are recorded Human directions, not remaining preference questions. Incorporate the requested bounded remote Agent C research/build/result-review loop; verify connection and round-trip behavior before claiming it works."
+      "value": "Twelve selective canon-audit decisions and publication review remain pending; Agency executor identity, A19 exact target/acceptance and proposed extensions require bounded review. Economic numbers/mechanics require evidence and Human decisions. Agent C requires effective Memory-off and sufficient run-history evidence; new research scopes remain unapproved."
     },
     "source_conflicts": {
       "all_claim_ids": [
@@ -1050,7 +1056,7 @@
       "provenance": [
         {
           "captured_at": "2026-10-08T08:49:46Z",
-          "content_digest_sha256": "152b28ee1b5312a2caffa3683cb0399b8c01031bab8a8dcffea1c81d92d30788",
+          "content_digest_sha256": "b3dbc0ff2eb8ed23cecd40241417bdcd99319eac96cc5fcee2a8ba31370e9072",
           "evidence_class": "report",
           "source_kind": "local",
           "source_ref": "docs/governance/architectgpt/current-state-profile.md#october-8-present-state-reconciliation",
@@ -1421,7 +1427,7 @@
       "provenance": [
         {
           "captured_at": "2026-10-08T08:49:46Z",
-          "content_digest_sha256": "152b28ee1b5312a2caffa3683cb0399b8c01031bab8a8dcffea1c81d92d30788",
+          "content_digest_sha256": "b3dbc0ff2eb8ed23cecd40241417bdcd99319eac96cc5fcee2a8ba31370e9072",
           "evidence_class": "report",
           "source_kind": "local",
           "source_ref": "docs/governance/architectgpt/current-state-profile.md#october-8-present-state-reconciliation",
@@ -1454,6 +1460,114 @@
         "observed_at": "2026-10-08T08:49:46Z",
         "occurred_at": null,
         "recorded_at": "2026-10-08T08:49:46Z",
+        "sequence": {
+          "arc_id": null,
+          "era": "Construction Era",
+          "ordinal": null,
+          "wave": "CE-W04"
+        },
+        "tempus_anchor_ref": null
+      },
+      "version": 1
+    },
+    {
+      "authority": {
+        "authority_class": "canonical-repository",
+        "authority_refs": [
+          "docs/governance/architectgpt/current-state-profile.md"
+        ],
+        "effect_state": {
+          "authorized_for_effect": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "canonicalized": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "executed": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "proposed": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "ratified": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "verified": {
+            "evidence_refs": [],
+            "state": "unknown"
+          }
+        }
+      },
+      "claim_class": "report",
+      "custody": {
+        "disclosure": "public-candidate",
+        "do_not_export": false,
+        "encryption_required": false,
+        "materialization": "metadata-only",
+        "replication": "none",
+        "retention_authority_ref": "docs/governance/architectgpt/current-state-profile.md",
+        "retention_authorized": true
+      },
+      "namespace": "architect.public-coherence",
+      "object_id": "coherence:canonical_base:20261010-adoption-review",
+      "object_type": "evidence",
+      "payload": {
+        "evidence_id": "coherence:canonical_base:20261010-adoption-review",
+        "limitations": [
+          "Finite reviewed evidence; regeneration is not a provider refresh.",
+          "Adoption approval covers continuity only; pending decisions remain unapproved."
+        ],
+        "summary": "The-Architect-369/Arcanum main@912666882ab7f0fd33c3979e5eb9ead82fc2c3f4 freshly resolved October10; PR96 adopted v0.7 public baseline. Physical Android acceptance not repeated; native A19/A20 unchanged.",
+        "supports": [
+          "canonical_base"
+        ]
+      },
+      "provenance": [
+        {
+          "captured_at": "2026-10-10T23:56:40Z",
+          "content_digest_sha256": "b3dbc0ff2eb8ed23cecd40241417bdcd99319eac96cc5fcee2a8ba31370e9072",
+          "evidence_class": "report",
+          "source_kind": "local",
+          "source_ref": "docs/governance/architectgpt/current-state-profile.md#october-10-continuity-adoption-review",
+          "source_revision": null
+        }
+      ],
+      "record_type": "continuity-object",
+      "relationships": [
+        {
+          "basis_ref": "docs/governance/architectgpt/current-state-profile.md#october-10-continuity-adoption-review",
+          "target_object_id": "coherence:canonical_base",
+          "type": "supersedes"
+        },
+        {
+          "basis_ref": "docs/governance/architectgpt/current-state-profile.md#october-10-continuity-adoption-review",
+          "target_object_id": "coherence:canonical_base:20261007-baseline",
+          "type": "supersedes"
+        },
+        {
+          "basis_ref": "docs/governance/architectgpt/current-state-profile.md#october-10-continuity-adoption-review",
+          "target_object_id": "coherence:canonical_base:20261007-architecture-review",
+          "type": "supersedes"
+        },
+        {
+          "basis_ref": "docs/governance/architectgpt/current-state-profile.md#october-10-continuity-adoption-review",
+          "target_object_id": "coherence:canonical_base:20261008-reconciliation",
+          "type": "supersedes"
+        }
+      ],
+      "schema": "arcanum.node.continuity-object/v1",
+      "subject_id": "state:canonical_base",
+      "temporal": {
+        "effective_from": null,
+        "effective_until": null,
+        "observed_at": "2026-10-10T23:56:40Z",
+        "occurred_at": null,
+        "recorded_at": "2026-10-10T23:56:40Z",
         "sequence": {
           "arc_id": null,
           "era": "Construction Era",
@@ -1801,7 +1915,7 @@
       "provenance": [
         {
           "captured_at": "2026-10-08T08:49:46Z",
-          "content_digest_sha256": "152b28ee1b5312a2caffa3683cb0399b8c01031bab8a8dcffea1c81d92d30788",
+          "content_digest_sha256": "b3dbc0ff2eb8ed23cecd40241417bdcd99319eac96cc5fcee2a8ba31370e9072",
           "evidence_class": "report",
           "source_kind": "local",
           "source_ref": "docs/governance/architectgpt/current-state-profile.md#october-8-present-state-reconciliation",
@@ -2067,7 +2181,7 @@
       "provenance": [
         {
           "captured_at": "2026-10-08T08:49:46Z",
-          "content_digest_sha256": "152b28ee1b5312a2caffa3683cb0399b8c01031bab8a8dcffea1c81d92d30788",
+          "content_digest_sha256": "b3dbc0ff2eb8ed23cecd40241417bdcd99319eac96cc5fcee2a8ba31370e9072",
           "evidence_class": "report",
           "source_kind": "local",
           "source_ref": "docs/governance/architectgpt/current-state-profile.md#october-8-present-state-reconciliation",
@@ -2613,7 +2727,7 @@
       "provenance": [
         {
           "captured_at": "2026-10-08T08:49:46Z",
-          "content_digest_sha256": "152b28ee1b5312a2caffa3683cb0399b8c01031bab8a8dcffea1c81d92d30788",
+          "content_digest_sha256": "b3dbc0ff2eb8ed23cecd40241417bdcd99319eac96cc5fcee2a8ba31370e9072",
           "evidence_class": "report",
           "source_kind": "local",
           "source_ref": "docs/governance/architectgpt/current-state-profile.md#october-8-present-state-reconciliation",
@@ -2651,6 +2765,119 @@
         "observed_at": "2026-10-08T08:49:46Z",
         "occurred_at": null,
         "recorded_at": "2026-10-08T08:49:46Z",
+        "sequence": {
+          "arc_id": null,
+          "era": "Construction Era",
+          "ordinal": null,
+          "wave": "CE-W04"
+        },
+        "tempus_anchor_ref": null
+      },
+      "version": 1
+    },
+    {
+      "authority": {
+        "authority_class": "human-decision",
+        "authority_refs": [
+          "docs/governance/architectgpt/current-state-profile.md"
+        ],
+        "effect_state": {
+          "authorized_for_effect": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "canonicalized": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "executed": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "proposed": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "ratified": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "verified": {
+            "evidence_refs": [],
+            "state": "unknown"
+          }
+        }
+      },
+      "claim_class": "report",
+      "custody": {
+        "disclosure": "public-candidate",
+        "do_not_export": false,
+        "encryption_required": false,
+        "materialization": "metadata-only",
+        "replication": "none",
+        "retention_authority_ref": "docs/governance/architectgpt/current-state-profile.md",
+        "retention_authorized": true
+      },
+      "namespace": "architect.public-coherence",
+      "object_id": "coherence:implementation_gate:20261010-adoption-review",
+      "object_type": "evidence",
+      "payload": {
+        "evidence_id": "coherence:implementation_gate:20261010-adoption-review",
+        "limitations": [
+          "Finite reviewed evidence; regeneration is not a provider refresh.",
+          "Adoption approval covers continuity only; pending decisions remain unapproved."
+        ],
+        "summary": "Human authorized PR95 reconciliation, verification and normal merge on October10. Agency and canon decisions remain pending individual review. Standing sequence/research grants remain preserved, subject to exact targets and original prerequisites; no A19 implementation or Agent C dispatch in this task.",
+        "supports": [
+          "implementation_gate"
+        ]
+      },
+      "provenance": [
+        {
+          "captured_at": "2026-10-10T23:56:40Z",
+          "content_digest_sha256": "b3dbc0ff2eb8ed23cecd40241417bdcd99319eac96cc5fcee2a8ba31370e9072",
+          "evidence_class": "report",
+          "source_kind": "local",
+          "source_ref": "docs/governance/architectgpt/current-state-profile.md#october-10-continuity-adoption-review",
+          "source_revision": null
+        }
+      ],
+      "record_type": "continuity-object",
+      "relationships": [
+        {
+          "basis_ref": "docs/governance/architectgpt/current-state-profile.md#october-10-continuity-adoption-review",
+          "target_object_id": "coherence:implementation_gate",
+          "type": "supersedes"
+        },
+        {
+          "basis_ref": "docs/governance/architectgpt/current-state-profile.md#october-10-continuity-adoption-review",
+          "target_object_id": "coherence:implementation_gate:20261007-baseline",
+          "type": "supersedes"
+        },
+        {
+          "basis_ref": "docs/governance/architectgpt/current-state-profile.md#october-10-continuity-adoption-review",
+          "target_object_id": "coherence:implementation_gate:20261007-architecture-review",
+          "type": "supersedes"
+        },
+        {
+          "basis_ref": "docs/governance/architectgpt/current-state-profile.md#october-10-continuity-adoption-review",
+          "target_object_id": "coherence:implementation_gate:20261007-research-loop",
+          "type": "supersedes"
+        },
+        {
+          "basis_ref": "docs/governance/architectgpt/current-state-profile.md#october-10-continuity-adoption-review",
+          "target_object_id": "coherence:implementation_gate:20261008-reconciliation",
+          "type": "supersedes"
+        }
+      ],
+      "schema": "arcanum.node.continuity-object/v1",
+      "subject_id": "state:implementation_gate",
+      "temporal": {
+        "effective_from": null,
+        "effective_until": null,
+        "observed_at": "2026-10-10T23:56:40Z",
+        "occurred_at": null,
+        "recorded_at": "2026-10-10T23:56:40Z",
         "sequence": {
           "arc_id": null,
           "era": "Construction Era",
@@ -2808,7 +3035,7 @@
       "provenance": [
         {
           "captured_at": "2026-10-08T08:49:46Z",
-          "content_digest_sha256": "152b28ee1b5312a2caffa3683cb0399b8c01031bab8a8dcffea1c81d92d30788",
+          "content_digest_sha256": "b3dbc0ff2eb8ed23cecd40241417bdcd99319eac96cc5fcee2a8ba31370e9072",
           "evidence_class": "report",
           "source_kind": "local",
           "source_ref": "docs/governance/architectgpt/current-state-profile.md#october-8-present-state-reconciliation",
@@ -3011,6 +3238,104 @@
         "observed_at": "2026-10-07T09:46:50Z",
         "occurred_at": null,
         "recorded_at": "2026-10-07T09:46:50Z",
+        "sequence": {
+          "arc_id": null,
+          "era": "Construction Era",
+          "ordinal": null,
+          "wave": "CE-W04"
+        },
+        "tempus_anchor_ref": null
+      },
+      "version": 1
+    },
+    {
+      "authority": {
+        "authority_class": "human-decision",
+        "authority_refs": [
+          "docs/governance/architectgpt/current-state-profile.md"
+        ],
+        "effect_state": {
+          "authorized_for_effect": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "canonicalized": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "executed": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "proposed": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "ratified": {
+            "evidence_refs": [],
+            "state": "unknown"
+          },
+          "verified": {
+            "evidence_refs": [],
+            "state": "unknown"
+          }
+        }
+      },
+      "claim_class": "report",
+      "custody": {
+        "disclosure": "public-candidate",
+        "do_not_export": false,
+        "encryption_required": false,
+        "materialization": "metadata-only",
+        "replication": "none",
+        "retention_authority_ref": "docs/governance/architectgpt/current-state-profile.md",
+        "retention_authorized": true
+      },
+      "namespace": "architect.public-coherence",
+      "object_id": "coherence:outstanding_human_decisions:20261010-adoption-review",
+      "object_type": "evidence",
+      "payload": {
+        "evidence_id": "coherence:outstanding_human_decisions:20261010-adoption-review",
+        "limitations": [
+          "Finite reviewed evidence; regeneration is not a provider refresh.",
+          "Adoption approval covers continuity only; pending decisions remain unapproved."
+        ],
+        "summary": "Twelve selective canon-audit decisions and publication review remain pending; Agency executor identity, A19 exact target/acceptance and proposed extensions require bounded review. Economic numbers/mechanics require evidence and Human decisions. Agent C requires effective Memory-off and sufficient run-history evidence; new research scopes remain unapproved.",
+        "supports": [
+          "outstanding_human_decisions"
+        ]
+      },
+      "provenance": [
+        {
+          "captured_at": "2026-10-10T23:56:40Z",
+          "content_digest_sha256": "b3dbc0ff2eb8ed23cecd40241417bdcd99319eac96cc5fcee2a8ba31370e9072",
+          "evidence_class": "report",
+          "source_kind": "local",
+          "source_ref": "docs/governance/architectgpt/current-state-profile.md#october-10-continuity-adoption-review",
+          "source_revision": null
+        }
+      ],
+      "record_type": "continuity-object",
+      "relationships": [
+        {
+          "basis_ref": "docs/governance/architectgpt/current-state-profile.md#october-10-continuity-adoption-review",
+          "target_object_id": "coherence:outstanding_human_decisions",
+          "type": "supersedes"
+        },
+        {
+          "basis_ref": "docs/governance/architectgpt/current-state-profile.md#october-10-continuity-adoption-review",
+          "target_object_id": "coherence:outstanding_human_decisions:20261007-architecture-review",
+          "type": "supersedes"
+        }
+      ],
+      "schema": "arcanum.node.continuity-object/v1",
+      "subject_id": "state:outstanding_human_decisions",
+      "temporal": {
+        "effective_from": null,
+        "effective_until": null,
+        "observed_at": "2026-10-10T23:56:40Z",
+        "occurred_at": null,
+        "recorded_at": "2026-10-10T23:56:40Z",
         "sequence": {
           "arc_id": null,
           "era": "Construction Era",
@@ -3269,7 +3594,7 @@
       "provenance": [
         {
           "captured_at": "2026-10-08T08:49:46Z",
-          "content_digest_sha256": "152b28ee1b5312a2caffa3683cb0399b8c01031bab8a8dcffea1c81d92d30788",
+          "content_digest_sha256": "b3dbc0ff2eb8ed23cecd40241417bdcd99319eac96cc5fcee2a8ba31370e9072",
           "evidence_class": "report",
           "source_kind": "local",
           "source_ref": "docs/governance/architectgpt/current-state-profile.md#october-8-present-state-reconciliation",
