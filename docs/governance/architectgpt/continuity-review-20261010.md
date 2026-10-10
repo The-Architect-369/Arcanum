@@ -35,3 +35,12 @@ Phone setup, personal migration and physical acceptance remain separate device w
 
 Evidence: present-state profile October10 addendum, PR95, PR96 and the v0.7 public
 baseline record. Historical checkpoints retain their original dates and limitations.
+
+## Human sequencing correction during review
+
+The Human clarified that supporting workspaces and Agency/automation setup should
+be reviewed and finalized before resuming native implementation. Review first the
+concrete background workflow, exact executor/access, permitted actions, usage limits,
+output destinations and Human decision gates. Existing preparation heartbeat is not
+proof of an eligible research executor. Do not create a duplicate schedule or start
+A19 under this clarification. A19 target/acceptance review follows this setup review.
