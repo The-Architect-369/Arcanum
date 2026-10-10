@@ -88,15 +88,35 @@ const close = async (p, how = "button") => {
     ["T03"],
     async () => {
       await chapter(p, 2);
-      await p.evaluate(() => window.__arcanumPrototype.seek(3, 0.01));
-      await p.waitForTimeout(100);
-      const opacity = await p
-        .locator("#AX4-02 .chapter-copy")
-        .evaluate((e) => Number(getComputedStyle(e).opacity));
+      await p.waitForFunction(
+        () =>
+          Number(
+            getComputedStyle(document.querySelector("#AX4-02 .chapter-copy"))
+              .opacity,
+          ) === 1,
+      );
+      // Sample the actual CSS transition deterministically, without depending on
+      // how quickly a loaded CI machine schedules a 100 ms timer.
+      const opacity = await p.evaluate(() => {
+        const copy = document.querySelector("#AX4-02 .chapter-copy");
+        window.__arcanumPrototype.seek(3, 0.01);
+        getComputedStyle(copy).opacity;
+        const fade = copy
+          .getAnimations()
+          .find((a) => a.transitionProperty === "opacity");
+        if (!fade)
+          throw new Error("Scene change did not create an opacity transition");
+        fade.pause();
+        fade.currentTime = Number(fade.effect.getComputedTiming().duration) / 2;
+        return Number(getComputedStyle(copy).opacity);
+      });
       assert(opacity > 0 && opacity < 1);
       await p.locator("#menu-toggle").click();
       assert.equal(await p.locator("#menu").isVisible(), true);
       await p.keyboard.press("Escape");
+      await p
+        .locator("#AX4-02 .chapter-copy")
+        .evaluate((e) => e.getAnimations().forEach((a) => a.finish()));
     },
   );
   await test(
@@ -120,20 +140,16 @@ const close = async (p, how = "button") => {
       await p.locator("#card-arcnet").focus();
       await p.keyboard.press("ArrowRight");
       assert.equal((await state(p)).selected, "hope");
-      await p
-        .locator("#orbit")
-        .dispatchEvent("pointerdown", {
-          pointerId: 1,
-          clientX: 260,
-          clientY: 400,
-        });
-      await p
-        .locator("#orbit")
-        .dispatchEvent("pointerup", {
-          pointerId: 1,
-          clientX: 100,
-          clientY: 405,
-        });
+      await p.locator("#orbit").dispatchEvent("pointerdown", {
+        pointerId: 1,
+        clientX: 260,
+        clientY: 400,
+      });
+      await p.locator("#orbit").dispatchEvent("pointerup", {
+        pointerId: 1,
+        clientX: 100,
+        clientY: 405,
+      });
       assert.equal((await state(p)).selected, "tempus");
       assert.equal(await p.locator("[role=tablist]").count(), 0);
       await p.waitForTimeout(120);
