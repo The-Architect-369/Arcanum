@@ -41,7 +41,7 @@ export default function PublicNav() {
       }}
     >
       <div className="public-shell public-nav">
-        <Link
+        <a
           className="public-brand"
           href="https://the-arcanum.net/"
           onClick={() => setOpen(false)}
@@ -57,7 +57,7 @@ export default function PublicNav() {
           <span>
             ARCANUM<small>A HUMAN JOURNEY</small>
           </span>
-        </Link>
+        </a>
         <button
           ref={toggle}
           type="button"

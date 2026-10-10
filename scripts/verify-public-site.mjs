@@ -88,6 +88,30 @@ for (const ua of Object.values(agents)) {
     checks++;
   }
 }
+const baseline = JSON.parse(
+  await readFile(
+    new URL(
+      "../docs/specs/public-site/v07-baseline-receipt.json",
+      import.meta.url,
+    ),
+  ),
+);
+for (const ua of Object.values(agents)) {
+  for (const [name, sha] of Object.entries(baseline.publicFiles)) {
+    const response = await requestHost(
+      `/experience/v07/${name}`,
+      "the-arcanum.net",
+      ua,
+    );
+    assert.equal(response.status, 200, `${name} is publicly reachable`);
+    assert.equal(
+      createHash("sha256").update(response.body).digest("hex"),
+      sha,
+      `${name} matches the selected release artifact`,
+    );
+    checks++;
+  }
+}
 const approvedRelease = JSON.parse(
   await readFile(
     new URL("../apps/web/public/updates/release.json", import.meta.url),
@@ -173,7 +197,11 @@ for (const [device, ua] of Object.entries(agents)) {
       `${path} permits zoom`,
     );
     for (const link of html.matchAll(/href="(\/[^"?#]*)[^"]*"/g)) {
-      if (link[1].startsWith("/_next/") || /\.(svg|ico|json)$/.test(link[1]))
+      if (
+        link[1].startsWith("/_next/") ||
+        link[1].startsWith("/experience/v07/") ||
+        /\.(svg|ico|json)$/.test(link[1])
+      )
         continue;
       assert.ok(
         routes.includes(link[1]),

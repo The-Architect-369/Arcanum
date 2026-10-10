@@ -20,6 +20,8 @@ const nextConfig = {
           has: [{ type: "host", value: "journeys\\.the-arcanum\\.net" }],
           destination: "/journeys",
         },
+        // Preserve the reviewed standalone renderer without reinterpreting it in React.
+        { source: "/", destination: "/experience/v07/index.html" },
       ],
     };
   },
