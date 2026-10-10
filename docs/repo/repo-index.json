@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-10-08T08:59:58Z",
+  "generated_at": "2026-10-10T23:56:55Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "74e1c3f26",
+  "commit": "8e449401a",
   "generator_version": "1.5",
   "files": [
     {
@@ -1114,11 +1114,11 @@
     {
       "path": "apps/web/next.config.mjs",
       "type": "file",
-      "size_bytes": 1863,
-      "last_modified_commit": "94f797994",
+      "size_bytes": 2020,
+      "last_modified_commit": "ab7519b70",
       "is_empty": false,
       "extension": ".mjs",
-      "lines": 63
+      "lines": 65
     },
     {
       "path": "apps/web/node/docker/Dockerfile",
@@ -1182,6 +1182,33 @@
       "is_empty": false,
       "extension": ".png",
       "lines": 0
+    },
+    {
+      "path": "apps/web/public/experience/v07/app.51b8278c670a.js",
+      "type": "file",
+      "size_bytes": 31290,
+      "last_modified_commit": "ab7519b70",
+      "is_empty": false,
+      "extension": ".js",
+      "lines": 98
+    },
+    {
+      "path": "apps/web/public/experience/v07/index.html",
+      "type": "file",
+      "size_bytes": 37163,
+      "last_modified_commit": "ab7519b70",
+      "is_empty": false,
+      "extension": ".html",
+      "lines": 22
+    },
+    {
+      "path": "apps/web/public/experience/v07/style.c1b4a6732d75.css",
+      "type": "file",
+      "size_bytes": 14869,
+      "last_modified_commit": "ab7519b70",
+      "is_empty": false,
+      "extension": ".css",
+      "lines": 29
     },
     {
       "path": "apps/web/public/file.svg",
@@ -2329,8 +2356,8 @@
     {
       "path": "apps/web/src/components/public/PublicNav.tsx",
       "type": "file",
-      "size_bytes": 2846,
-      "last_modified_commit": "94f797994",
+      "size_bytes": 2840,
+      "last_modified_commit": "ab7519b70",
       "is_empty": false,
       "extension": ".tsx",
       "lines": 102
@@ -3202,20 +3229,20 @@
     {
       "path": "apps/web/src/lib/public-routes.ts",
       "type": "file",
-      "size_bytes": 385,
-      "last_modified_commit": "94f797994",
+      "size_bytes": 503,
+      "last_modified_commit": "ab7519b70",
       "is_empty": false,
       "extension": ".ts",
-      "lines": 19
+      "lines": 23
     },
     {
       "path": "apps/web/src/lib/public-site.ts",
       "type": "file",
-      "size_bytes": 14189,
-      "last_modified_commit": "7e92dfa66",
+      "size_bytes": 14773,
+      "last_modified_commit": "ab7519b70",
       "is_empty": false,
       "extension": ".ts",
-      "lines": 279
+      "lines": 287
     },
     {
       "path": "apps/web/src/lib/rooms/index.ts",
@@ -5029,11 +5056,11 @@
     {
       "path": "docs/governance/architectgpt/architect-log.md",
       "type": "file",
-      "size_bytes": 26925,
-      "last_modified_commit": "3df9ab097",
+      "size_bytes": 27764,
+      "last_modified_commit": "8e449401a",
       "is_empty": false,
       "extension": ".md",
-      "lines": 398
+      "lines": 411
     },
     {
       "path": "docs/governance/architectgpt/architect-proposal-envelope.schema.json",
@@ -5065,20 +5092,20 @@
     {
       "path": "docs/governance/architectgpt/coherence-chronicle.md",
       "type": "file",
-      "size_bytes": 10129,
-      "last_modified_commit": "3df9ab097",
+      "size_bytes": 11268,
+      "last_modified_commit": "8e449401a",
       "is_empty": false,
       "extension": ".md",
-      "lines": 162
+      "lines": 180
     },
     {
       "path": "docs/governance/architectgpt/coherence/objects.json",
       "type": "file",
-      "size_bytes": 115120,
-      "last_modified_commit": "3df9ab097",
+      "size_bytes": 127190,
+      "last_modified_commit": "8e449401a",
       "is_empty": false,
       "extension": ".json",
-      "lines": 3248
+      "lines": 3567
     },
     {
       "path": "docs/governance/architectgpt/continuity-epoch.json",
@@ -5110,20 +5137,20 @@
     {
       "path": "docs/governance/architectgpt/continuity-events.json",
       "type": "file",
-      "size_bytes": 16661,
-      "last_modified_commit": "3df9ab097",
+      "size_bytes": 17446,
+      "last_modified_commit": "8e449401a",
       "is_empty": false,
       "extension": ".json",
-      "lines": 336
+      "lines": 353
     },
     {
       "path": "docs/governance/architectgpt/continuity-events.jsonl",
       "type": "file",
-      "size_bytes": 14223,
-      "last_modified_commit": "3df9ab097",
+      "size_bytes": 14903,
+      "last_modified_commit": "8e449401a",
       "is_empty": false,
       "extension": ".jsonl",
-      "lines": 18
+      "lines": 19
     },
     {
       "path": "docs/governance/architectgpt/continuity-index-spec.md",
@@ -5164,29 +5191,29 @@
     {
       "path": "docs/governance/architectgpt/current-state-profile.md",
       "type": "file",
-      "size_bytes": 19259,
-      "last_modified_commit": "3df9ab097",
+      "size_bytes": 21226,
+      "last_modified_commit": "8e449401a",
       "is_empty": false,
       "extension": ".md",
-      "lines": 301
+      "lines": 331
     },
     {
       "path": "docs/governance/architectgpt/current-state.json",
       "type": "file",
-      "size_bytes": 125279,
-      "last_modified_commit": "3df9ab097",
+      "size_bytes": 137322,
+      "last_modified_commit": "8e449401a",
       "is_empty": false,
       "extension": ".json",
-      "lines": 3486
+      "lines": 3811
     },
     {
       "path": "docs/governance/architectgpt/current-state.md",
       "type": "file",
-      "size_bytes": 22858,
-      "last_modified_commit": "3df9ab097",
+      "size_bytes": 24735,
+      "last_modified_commit": "8e449401a",
       "is_empty": false,
       "extension": ".md",
-      "lines": 227
+      "lines": 239
     },
     {
       "path": "docs/governance/architectgpt/current-state.schema.json",
@@ -6375,6 +6402,24 @@
       "is_empty": false,
       "extension": ".md",
       "lines": 142
+    },
+    {
+      "path": "docs/specs/public-site/v07-baseline-receipt.json",
+      "type": "file",
+      "size_bytes": 1251,
+      "last_modified_commit": "ab7519b70",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 27
+    },
+    {
+      "path": "docs/specs/public-site/v07-public-baseline-2026-10-10.md",
+      "type": "file",
+      "size_bytes": 3891,
+      "last_modified_commit": "ab7519b70",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 29
     },
     {
       "path": "docs/specs/roadmap/pass-13-repository-integration-audit.md",
@@ -9106,8 +9151,8 @@
     {
       "path": "scripts/architect/test-current-state.py",
       "type": "file",
-      "size_bytes": 12544,
-      "last_modified_commit": "3df9ab097",
+      "size_bytes": 12662,
+      "last_modified_commit": "8e449401a",
       "is_empty": false,
       "extension": ".py",
       "lines": 236
@@ -9601,11 +9646,11 @@
     {
       "path": "scripts/verify-public-site.mjs",
       "type": "file",
-      "size_bytes": 7859,
-      "last_modified_commit": "94f797994",
+      "size_bytes": 8565,
+      "last_modified_commit": "ab7519b70",
       "is_empty": false,
       "extension": ".mjs",
-      "lines": 242
+      "lines": 270
     },
     {
       "path": "scripts/verify-repo-index.py",
@@ -9624,6 +9669,15 @@
       "is_empty": false,
       "extension": ".sh",
       "lines": 293
+    },
+    {
+      "path": "scripts/verify-v07-browser.cjs",
+      "type": "file",
+      "size_bytes": 21369,
+      "last_modified_commit": "30cf13014",
+      "is_empty": false,
+      "extension": ".cjs",
+      "lines": 649
     },
     {
       "path": "tests/fixtures/trusted-update/candidate-observation.json",
