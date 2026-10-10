@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-10-10T13:09:15Z",
+  "generated_at": "2026-10-10T13:19:56Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "ab7519b70",
+  "commit": "30cf13014",
   "generator_version": "1.5",
   "files": [
     {
@@ -9601,11 +9601,11 @@
     {
       "path": "scripts/verify-v07-browser.cjs",
       "type": "file",
-      "size_bytes": 20606,
-      "last_modified_commit": "ab7519b70",
+      "size_bytes": 21369,
+      "last_modified_commit": "30cf13014",
       "is_empty": false,
       "extension": ".cjs",
-      "lines": 633
+      "lines": 649
     },
     {
       "path": "tests/fixtures/trusted-update/candidate-observation.json",
