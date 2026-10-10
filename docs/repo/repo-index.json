@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-10-10T23:57:28Z",
+  "generated_at": "2026-10-10T23:59:22Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "48fdb7505",
+  "commit": "a809413c8",
   "generator_version": "1.5",
   "files": [
     {
@@ -5182,11 +5182,11 @@
     {
       "path": "docs/governance/architectgpt/continuity-review-20261010.md",
       "type": "file",
-      "size_bytes": 2287,
-      "last_modified_commit": "48fdb7505",
+      "size_bytes": 2838,
+      "last_modified_commit": "a809413c8",
       "is_empty": false,
       "extension": ".md",
-      "lines": 37
+      "lines": 46
     },
     {
       "path": "docs/governance/architectgpt/conversation-memory-contract.md",
