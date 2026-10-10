@@ -1,0 +1,27 @@
+{
+  "schema": "arcanum.public-v07-baseline/v1",
+  "recordedOn": "2026-10-10",
+  "canonicalBase": "395d8f9894c72abccb57c5663c9c127b28f1d6b7",
+  "originalV07StandaloneSha256": "7110e62f10c98a28071c1b4d532c006da2a2f4e2311773bd9ae9d97277d8daeb",
+  "source": "Human-selected preserved v0.7 with homepage-only navigation correction",
+  "authorityEffect": "none",
+  "productionPredecessor": {
+    "deployment": "dpl_J8qGk4srFLKYAPb3YUPNDmDv45F6",
+    "commit": "395d8f9894c72abccb57c5663c9c127b28f1d6b7"
+  },
+  "preserved": {
+    "svgByteIdentical": true,
+    "cssByteIdentical": true,
+    "animationLogicUnchanged": true
+  },
+  "publicFiles": {
+    "app.51b8278c670a.js": "51b8278c670a2d9bdcd63807855f110c4caeaca9be0f908391056c77f569d952",
+    "index.html": "a47f3668fa143f3fce4a53f9da23579db20e7b5c53a477d07e9e6f3eca0e91b9",
+    "style.c1b4a6732d75.css": "c1b4a6732d757f81bab0f109a70fd8c643db90cdcf85dc1dfd51b8fee6e96cfd"
+  },
+  "physicalAndroid": "not tested",
+  "editorialScope": "Home, five pillars, Agency, Follow the Work and Journeys may be refined later. Download does not require eight beats.",
+  "integrationCorrections": [
+    "Initialize after the browser load event to prevent native fragment scrolling from overriding the chosen scene."
+  ]
+}

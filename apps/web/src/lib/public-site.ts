@@ -224,8 +224,8 @@ export const pillars = [
 export const siteLog = {
   schema: "arcanum.public-site-log/v1",
   kind: "editorial-publication-log",
-  siteVersion: "2.2",
-  recordedOn: "2026-10-05",
+  siteVersion: "2.3",
+  recordedOn: "2026-10-10",
   sourceRepository: repository,
   editorialBase,
   authorityEffect: "none",
@@ -233,6 +233,14 @@ export const siteLog = {
   scope:
     "Public website editorial history; not a TempusAnchor, protocol receipt, or APK update manifest.",
   entries: [
+    {
+      id: "v07-living-light-baseline",
+      date: "2026-10-10",
+      title: "Follow the light through Arcanum",
+      detail:
+        "The selected v0.7 presentation joins seven continuous scenes with the Arcanum return to beginning. Menu choices move within the homepage; scene panels offer deliberate onward links. Home, the five pillars and the three lower narrative panels remain open to refinement. Download remains a release-review panel, not an eight-beat story. Android artifacts and feature availability are unchanged.",
+      state: "included-in-this-build",
+    },
     {
       id: "a18-reviewed-conversation-release",
       date: "2026-10-05",

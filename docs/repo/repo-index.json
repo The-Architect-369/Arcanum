@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-10-07T12:40:47Z",
+  "generated_at": "2026-10-10T13:19:56Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "3ca0c7945",
+  "commit": "30cf13014",
   "generator_version": "1.5",
   "files": [
     {
@@ -1114,11 +1114,11 @@
     {
       "path": "apps/web/next.config.mjs",
       "type": "file",
-      "size_bytes": 1863,
-      "last_modified_commit": "94f797994",
+      "size_bytes": 2020,
+      "last_modified_commit": "ab7519b70",
       "is_empty": false,
       "extension": ".mjs",
-      "lines": 63
+      "lines": 65
     },
     {
       "path": "apps/web/node/docker/Dockerfile",
@@ -1182,6 +1182,33 @@
       "is_empty": false,
       "extension": ".png",
       "lines": 0
+    },
+    {
+      "path": "apps/web/public/experience/v07/app.51b8278c670a.js",
+      "type": "file",
+      "size_bytes": 31290,
+      "last_modified_commit": "ab7519b70",
+      "is_empty": false,
+      "extension": ".js",
+      "lines": 98
+    },
+    {
+      "path": "apps/web/public/experience/v07/index.html",
+      "type": "file",
+      "size_bytes": 37163,
+      "last_modified_commit": "ab7519b70",
+      "is_empty": false,
+      "extension": ".html",
+      "lines": 22
+    },
+    {
+      "path": "apps/web/public/experience/v07/style.c1b4a6732d75.css",
+      "type": "file",
+      "size_bytes": 14869,
+      "last_modified_commit": "ab7519b70",
+      "is_empty": false,
+      "extension": ".css",
+      "lines": 29
     },
     {
       "path": "apps/web/public/file.svg",
@@ -2329,8 +2356,8 @@
     {
       "path": "apps/web/src/components/public/PublicNav.tsx",
       "type": "file",
-      "size_bytes": 2846,
-      "last_modified_commit": "94f797994",
+      "size_bytes": 2840,
+      "last_modified_commit": "ab7519b70",
       "is_empty": false,
       "extension": ".tsx",
       "lines": 102
@@ -3202,20 +3229,20 @@
     {
       "path": "apps/web/src/lib/public-routes.ts",
       "type": "file",
-      "size_bytes": 385,
-      "last_modified_commit": "94f797994",
+      "size_bytes": 503,
+      "last_modified_commit": "ab7519b70",
       "is_empty": false,
       "extension": ".ts",
-      "lines": 19
+      "lines": 23
     },
     {
       "path": "apps/web/src/lib/public-site.ts",
       "type": "file",
-      "size_bytes": 14189,
-      "last_modified_commit": "7e92dfa66",
+      "size_bytes": 14773,
+      "last_modified_commit": "ab7519b70",
       "is_empty": false,
       "extension": ".ts",
-      "lines": 279
+      "lines": 287
     },
     {
       "path": "apps/web/src/lib/rooms/index.ts",
@@ -6321,6 +6348,24 @@
       "is_empty": false,
       "extension": ".md",
       "lines": 142
+    },
+    {
+      "path": "docs/specs/public-site/v07-baseline-receipt.json",
+      "type": "file",
+      "size_bytes": 1251,
+      "last_modified_commit": "ab7519b70",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 27
+    },
+    {
+      "path": "docs/specs/public-site/v07-public-baseline-2026-10-10.md",
+      "type": "file",
+      "size_bytes": 3891,
+      "last_modified_commit": "ab7519b70",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 29
     },
     {
       "path": "docs/specs/roadmap/pass-13-repository-integration-audit.md",
@@ -9529,11 +9574,11 @@
     {
       "path": "scripts/verify-public-site.mjs",
       "type": "file",
-      "size_bytes": 7859,
-      "last_modified_commit": "94f797994",
+      "size_bytes": 8565,
+      "last_modified_commit": "ab7519b70",
       "is_empty": false,
       "extension": ".mjs",
-      "lines": 242
+      "lines": 270
     },
     {
       "path": "scripts/verify-repo-index.py",
@@ -9552,6 +9597,15 @@
       "is_empty": false,
       "extension": ".sh",
       "lines": 291
+    },
+    {
+      "path": "scripts/verify-v07-browser.cjs",
+      "type": "file",
+      "size_bytes": 21369,
+      "last_modified_commit": "30cf13014",
+      "is_empty": false,
+      "extension": ".cjs",
+      "lines": 649
     },
     {
       "path": "tests/fixtures/trusted-update/candidate-observation.json",
