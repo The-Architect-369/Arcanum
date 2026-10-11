@@ -38,7 +38,7 @@ Human coordination requires:
 
 - Persistent identity (continuity, not description)
 - Transparent rules (constitutional bounds)
-- Time-based progression (earned authority)
+- Time as factual context; separately reviewed responsibility
 - Utility-grounded economics (not extraction)
 - Sovereign infrastructure (durability under change)
 
@@ -85,7 +85,7 @@ Arcanum provides lived experience.
    Time is the primary gating mechanism. Payment cannot compress developmental progression.
 
 2) **Earned authority**  
-   Governance weight accumulates via identity continuity, participation consistency, and recognition thresholds.
+   Any approved governance-weighting model may consider bounded factual inputs. Age, activity, wealth, or recognition never automatically grants authority; responsibility requires a separate, reviewed, bounded grant.
 
 3) **Utility-first token design**  
    MANA is designed for access, permissions, and infrastructure usage—not compulsion.
@@ -105,7 +105,7 @@ Arcanum aims to introduce a sovereign coordination layer that:
 - Anchors identity
 - Aligns incentives
 - Grounds economics in utility
-- Binds authority to participation
+- Separates factual participation from reviewed authority grants
 - Enables interoperable Web3 expansion
 
 It transforms:

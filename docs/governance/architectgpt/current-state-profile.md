@@ -329,3 +329,14 @@ and spatial-semantic extensions remain separate proposals. No economic parameter
 new research scopes, private data access, device setup or Reading Library publication
 are adopted by this continuity update. Earlier checkpoints and contracts remain dated
 history. Session gaps remain unresolved; no session is allocated.
+
+
+## October 11 audit decisions and deferred readiness
+
+Observed main: `f3d8daad1dbc41c04ea9b77e39f92a606efaa85c`; PR95 is merged. The first twelve-item targeted audit has a Human decision or verified resolution for each item. Earlier pending-decision checkpoints retain their original dates and scopes.
+
+The Human approved the clarifications summarized in [decision-review-20261011.md](decision-review-20261011.md) and authorized preparing the separate document PR. This candidate does not establish its own merge, deployment, tool activation or economic mechanism. Standing sequence/research grants and their original prerequisites remain preserved; current document work neither revokes nor exercises them.
+
+Exact tool ordering, progression and unlock mapping are deferred while Vitae/gates are built. Suspension/restoration procedure is deferred pending capability/grant and procedural evidence; recognition remains permanent. Economic parameters await approved research and separate ratification. The Stability Guard milestone, optional participation primitive, reward programs and budgets, proposed extensions, Agency executor/readiness, and document-specific publication review remain pending as applicable. No Agent C dispatch or simulation is performed.
+
+Proposed readiness gates distinguish evidence sufficient for a Human decision, authorization for implementation, and verified separately authorized activation. They are recorded for review, not newly adopted tool or suspension rules. No A19/A20 queue change, session allocation, private participant content, website/video refinement, or whole-canon/publication certification. Audit closure here covers delivery and review; source canonicalization awaits actual adoption.

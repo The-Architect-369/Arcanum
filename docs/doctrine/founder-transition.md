@@ -150,7 +150,9 @@ If a Founder allocation exists, it must be:
 
 
 
-Example posture (legacy draft): “10% of purchased MANA routed to an Architect allocation address.”
+Historical example (unadopted legacy draft): “10% of purchased MANA routed to an Architect allocation address.”
+
+This example establishes no allocation or numeric entitlement. Contributor compensation follows actual work and separately approved transparent funding.
 
 
 
@@ -158,7 +160,7 @@ Example posture (legacy draft): “10% of purchased MANA routed to an Architect 
 
 
 
-If governance removes or revises this allocation in the future, it must do so transparently and without violating constitutional invariants.
+If an allocation is separately adopted in the future, any subsequent governance removal or revision must be transparent and preserve constitutional invariants. The historical example above is not an adopted allocation.
 
 
 

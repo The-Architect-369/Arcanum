@@ -1,6 +1,6 @@
 # Bounded coherence chronicle
 
-As of 2026-10-10T23:56:40Z; observed canonical base `912666882ab7f0fd33c3979e5eb9ead82fc2c3f4`.
+As of 2026-10-11T12:58:37Z; observed canonical base `f3d8daad1dbc41c04ea9b77e39f92a606efaa85c`.
 Derived, non-authoritative, bounded seed. Regeneration is not a fresh provider read.
 See [profile and source limits](current-state-profile.md). Historical records remain intact.
 
@@ -55,7 +55,7 @@ CE-W04-A19 is Ready and next; Notion task ARC-50 tracks this arc. Implementation
 Event: unknown; observed: 2026-10-08T08:49:46Z; recorded: 2026-10-08T08:49:46Z.
 Classification: report; source authority: operational-record.
 
-[source](current-state-profile.md#october-8-present-state-reconciliation)
+[source](https://github.com/The-Architect-369/Arcanum/blob/f3d8daad1dbc41c04ea9b77e39f92a606efaa85c/docs/governance/architectgpt/current-state-profile.md#october-8-present-state-reconciliation)
 
 - next_arc: selected; field status supported.
 - Limitation: Finite reviewed seed; generation does not refresh providers.
@@ -82,7 +82,7 @@ CE-W04-A20 is Blocked behind A19; Notion task ARC-51 tracks it. Completion leads
 Event: unknown; observed: 2026-10-08T08:49:46Z; recorded: 2026-10-08T08:49:46Z.
 Classification: report; source authority: operational-record.
 
-[source](current-state-profile.md#october-8-present-state-reconciliation)
+[source](https://github.com/The-Architect-369/Arcanum/blob/f3d8daad1dbc41c04ea9b77e39f92a606efaa85c/docs/governance/architectgpt/current-state-profile.md#october-8-present-state-reconciliation)
 
 - following_arc: selected; field status supported.
 - Limitation: Finite reviewed seed; generation does not refresh providers.
@@ -151,7 +151,7 @@ Human-authorized bounded present-state/tracking reconciliation and conservative 
 Event: unknown; observed: 2026-10-08T08:49:46Z; recorded: 2026-10-08T08:49:46Z.
 Classification: report; source authority: human-decision.
 
-[source](current-state-profile.md#october-8-present-state-reconciliation)
+[source](https://github.com/The-Architect-369/Arcanum/blob/f3d8daad1dbc41c04ea9b77e39f92a606efaa85c/docs/governance/architectgpt/current-state-profile.md#october-8-present-state-reconciliation)
 
 - implementation_gate: superseded; field status supported.
 - Limitation: Finite reviewed seed; generation does not refresh providers.
@@ -168,9 +168,9 @@ Human authorized PR95 reconciliation, verification and normal merge on October10
 Event: unknown; observed: 2026-10-10T23:56:40Z; recorded: 2026-10-10T23:56:40Z.
 Classification: report; source authority: human-decision.
 
-[source](current-state-profile.md#october-10-continuity-adoption-review)
+[source](https://github.com/The-Architect-369/Arcanum/blob/f3d8daad1dbc41c04ea9b77e39f92a606efaa85c/docs/governance/architectgpt/current-state-profile.md#october-10-continuity-adoption-review)
 
-- implementation_gate: selected; field status supported.
+- implementation_gate: superseded; field status supported.
 - Limitation: Finite reviewed evidence; regeneration is not a provider refresh.
 - Limitation: Adoption approval covers continuity only; pending decisions remain unapproved.
 - supersedes: `coherence:implementation_gate`.
@@ -178,3 +178,22 @@ Classification: report; source authority: human-decision.
 - supersedes: `coherence:implementation_gate:20261007-architecture-review`.
 - supersedes: `coherence:implementation_gate:20261007-research-loop`.
 - supersedes: `coherence:implementation_gate:20261008-reconciliation`.
+
+## coherence:implementation_gate:20261011-decision-review
+
+Human authorized the separate bounded decision/document PR and verification. A19/A20 sequence and standing grants remain preserved with original prerequisites; no native implementation, Agent C dispatch or economic activation in this task.
+
+Event: unknown; observed: 2026-10-11T12:58:37Z; recorded: 2026-10-11T12:58:37Z.
+Classification: report; source authority: human-decision.
+
+[source](current-state-profile.md#october-11-audit-decisions-and-deferred-readiness)
+
+- implementation_gate: selected; field status supported.
+- Limitation: Dated bounded Human review and repository observation; candidate source adoption remains pending.
+- Limitation: No provider readiness refresh, agent dispatch, numerical policy or tool activation.
+- supersedes: `coherence:implementation_gate`.
+- supersedes: `coherence:implementation_gate:20261007-baseline`.
+- supersedes: `coherence:implementation_gate:20261007-architecture-review`.
+- supersedes: `coherence:implementation_gate:20261007-research-loop`.
+- supersedes: `coherence:implementation_gate:20261008-reconciliation`.
+- supersedes: `coherence:implementation_gate:20261010-adoption-review`.

@@ -240,6 +240,8 @@ This allows the Architect to:
 
 \- the guard sunsets at v1.0 unless extended by community vote
 
+The relevant v1.0 milestone requires a separate reviewed decision and evidence. App, build, or tool version numbers do not automatically establish it. This clarification establishes no extension, sunset occurrence, or exercise of guard authority.
+
 
 
 Silent intervention is forbidden.

@@ -8,6 +8,8 @@ description: "Institutional overview of Arcanum (experience layer) and ARCnet (s
 
 # Executive Summary
 
+Reader scope: this draft describes architectural direction, not certification that every capability is delivered. The device-resident local runtime is distinct from ARCnet settlement. Consult the [authority and implementation map](../architecture/authority-and-implementation-map.md) for dated capability evidence and the separation of delivered capability, accepted direction, and proposals. Local persistence or runtime verification does not prove implemented public settlement.
+
 ## Introduction
 
 **Arcanum** is a human-centered coordination system designed to restore **agency, rhythm, and dignified participation** in digital life. It does so through modular practices (reflection, time windows, recognition, and social witness) without engagement-rank manipulation or extractive attention incentives.

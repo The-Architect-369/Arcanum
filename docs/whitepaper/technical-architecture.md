@@ -8,6 +8,8 @@ description: "ARCnet blockchain architecture and Arcanum application stack."
 
 # Technical Architecture
 
+Reader scope: this draft describes architectural direction, not certification that every capability is delivered. The device-resident local runtime is distinct from ARCnet settlement. Consult the [authority and implementation map](../architecture/authority-and-implementation-map.md) for dated capability evidence and the separation of delivered capability, accepted direction, and proposals. Local persistence or runtime verification does not prove implemented public settlement.
+
 ## I. Overview
 
 The Arcanum ecosystem consists of two primary layers:
