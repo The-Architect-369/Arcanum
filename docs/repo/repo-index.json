@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-10-10T23:59:22Z",
+  "generated_at": "2026-10-11T12:59:54Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "a809413c8",
+  "commit": "c614a3b51",
   "generator_version": "1.5",
   "files": [
     {
@@ -4408,29 +4408,29 @@
     {
       "path": "docs/doctrine/architect-role.md",
       "type": "file",
-      "size_bytes": 3357,
-      "last_modified_commit": "60bd5ee4f",
+      "size_bytes": 3605,
+      "last_modified_commit": "c614a3b51",
       "is_empty": false,
       "extension": ".md",
-      "lines": 286
+      "lines": 288
     },
     {
       "path": "docs/doctrine/authority.md",
       "type": "file",
-      "size_bytes": 3996,
-      "last_modified_commit": "60bd5ee4f",
+      "size_bytes": 3752,
+      "last_modified_commit": "c614a3b51",
       "is_empty": false,
       "extension": ".md",
-      "lines": 378
+      "lines": 228
     },
     {
       "path": "docs/doctrine/founder-transition.md",
       "type": "file",
-      "size_bytes": 4276,
-      "last_modified_commit": "60bd5ee4f",
+      "size_bytes": 4521,
+      "last_modified_commit": "c614a3b51",
       "is_empty": false,
       "extension": ".md",
-      "lines": 302
+      "lines": 304
     },
     {
       "path": "docs/doctrine/identity-model.md",
@@ -4444,8 +4444,8 @@
     {
       "path": "docs/doctrine/layer-boundaries.md",
       "type": "file",
-      "size_bytes": 4649,
-      "last_modified_commit": "60bd5ee4f",
+      "size_bytes": 4696,
+      "last_modified_commit": "c614a3b51",
       "is_empty": false,
       "extension": ".md",
       "lines": 370
@@ -5056,11 +5056,11 @@
     {
       "path": "docs/governance/architectgpt/architect-log.md",
       "type": "file",
-      "size_bytes": 27764,
-      "last_modified_commit": "8e449401a",
+      "size_bytes": 28671,
+      "last_modified_commit": "c614a3b51",
       "is_empty": false,
       "extension": ".md",
-      "lines": 411
+      "lines": 421
     },
     {
       "path": "docs/governance/architectgpt/architect-proposal-envelope.schema.json",
@@ -5092,20 +5092,20 @@
     {
       "path": "docs/governance/architectgpt/coherence-chronicle.md",
       "type": "file",
-      "size_bytes": 11268,
-      "last_modified_commit": "8e449401a",
+      "size_bytes": 12944,
+      "last_modified_commit": "c614a3b51",
       "is_empty": false,
       "extension": ".md",
-      "lines": 180
+      "lines": 199
     },
     {
       "path": "docs/governance/architectgpt/coherence/objects.json",
       "type": "file",
-      "size_bytes": 127190,
-      "last_modified_commit": "8e449401a",
+      "size_bytes": 140637,
+      "last_modified_commit": "c614a3b51",
       "is_empty": false,
       "extension": ".json",
-      "lines": 3567
+      "lines": 3901
     },
     {
       "path": "docs/governance/architectgpt/continuity-epoch.json",
@@ -5137,20 +5137,20 @@
     {
       "path": "docs/governance/architectgpt/continuity-events.json",
       "type": "file",
-      "size_bytes": 17446,
-      "last_modified_commit": "8e449401a",
+      "size_bytes": 18349,
+      "last_modified_commit": "c614a3b51",
       "is_empty": false,
       "extension": ".json",
-      "lines": 353
+      "lines": 371
     },
     {
       "path": "docs/governance/architectgpt/continuity-events.jsonl",
       "type": "file",
-      "size_bytes": 14903,
-      "last_modified_commit": "8e449401a",
+      "size_bytes": 15693,
+      "last_modified_commit": "c614a3b51",
       "is_empty": false,
       "extension": ".jsonl",
-      "lines": 19
+      "lines": 20
     },
     {
       "path": "docs/governance/architectgpt/continuity-index-spec.md",
@@ -5200,29 +5200,29 @@
     {
       "path": "docs/governance/architectgpt/current-state-profile.md",
       "type": "file",
-      "size_bytes": 21226,
-      "last_modified_commit": "8e449401a",
+      "size_bytes": 22961,
+      "last_modified_commit": "c614a3b51",
       "is_empty": false,
       "extension": ".md",
-      "lines": 331
+      "lines": 342
     },
     {
       "path": "docs/governance/architectgpt/current-state.json",
       "type": "file",
-      "size_bytes": 137322,
-      "last_modified_commit": "8e449401a",
+      "size_bytes": 151073,
+      "last_modified_commit": "c614a3b51",
       "is_empty": false,
       "extension": ".json",
-      "lines": 3811
+      "lines": 4151
     },
     {
       "path": "docs/governance/architectgpt/current-state.md",
       "type": "file",
-      "size_bytes": 24735,
-      "last_modified_commit": "8e449401a",
+      "size_bytes": 27861,
+      "last_modified_commit": "c614a3b51",
       "is_empty": false,
       "extension": ".md",
-      "lines": 239
+      "lines": 251
     },
     {
       "path": "docs/governance/architectgpt/current-state.schema.json",
@@ -5232,6 +5232,15 @@
       "is_empty": false,
       "extension": ".json",
       "lines": 953
+    },
+    {
+      "path": "docs/governance/architectgpt/decision-review-20261011.md",
+      "type": "file",
+      "size_bytes": 6493,
+      "last_modified_commit": "c614a3b51",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 51
     },
     {
       "path": "docs/governance/architectgpt/execution-record.schema.json",
@@ -5353,11 +5362,11 @@
     {
       "path": "docs/governance/governance-changelog.md",
       "type": "file",
-      "size_bytes": 1806,
-      "last_modified_commit": "1a9e78fde",
+      "size_bytes": 2521,
+      "last_modified_commit": "c614a3b51",
       "is_empty": false,
       "extension": ".md",
-      "lines": 51
+      "lines": 56
     },
     {
       "path": "docs/governance/governance-councils.md",
@@ -5371,29 +5380,29 @@
     {
       "path": "docs/governance/governance-lifecycle.md",
       "type": "file",
-      "size_bytes": 1196,
-      "last_modified_commit": "4a7461ebd",
+      "size_bytes": 2042,
+      "last_modified_commit": "c614a3b51",
       "is_empty": false,
       "extension": ".md",
-      "lines": 56
+      "lines": 58
     },
     {
       "path": "docs/governance/governance-permission-model.md",
       "type": "file",
-      "size_bytes": 16979,
-      "last_modified_commit": "fc62efd1e",
+      "size_bytes": 17814,
+      "last_modified_commit": "c614a3b51",
       "is_empty": false,
       "extension": ".md",
-      "lines": 511
+      "lines": 517
     },
     {
       "path": "docs/governance/governance-specification.md",
       "type": "file",
-      "size_bytes": 9734,
-      "last_modified_commit": "d3a378ab8",
+      "size_bytes": 10384,
+      "last_modified_commit": "c614a3b51",
       "is_empty": false,
       "extension": ".md",
-      "lines": 309
+      "lines": 311
     },
     {
       "path": "docs/governance/hopegpt/hope-guardian.md",
@@ -5416,11 +5425,11 @@
     {
       "path": "docs/governance/vitae-authority-map.md",
       "type": "file",
-      "size_bytes": 10429,
-      "last_modified_commit": "eeb1fb89e",
+      "size_bytes": 11013,
+      "last_modified_commit": "c614a3b51",
       "is_empty": false,
       "extension": ".md",
-      "lines": 342
+      "lines": 344
     },
     {
       "path": "docs/index.md",
@@ -6839,7 +6848,7 @@
       "path": "docs/tooling/doctrine-checksums/doctrine-checksums.yaml",
       "type": "file",
       "size_bytes": 1916,
-      "last_modified_commit": "10478fa42",
+      "last_modified_commit": "c614a3b51",
       "is_empty": false,
       "extension": ".yaml",
       "lines": 25
@@ -8566,11 +8575,11 @@
     {
       "path": "docs/whitepaper/executive-summary.md",
       "type": "file",
-      "size_bytes": 5041,
-      "last_modified_commit": "9aae3bedc",
+      "size_bytes": 5523,
+      "last_modified_commit": "c614a3b51",
       "is_empty": false,
       "extension": ".md",
-      "lines": 152
+      "lines": 154
     },
     {
       "path": "docs/whitepaper/glossary.md",
@@ -8593,8 +8602,8 @@
     {
       "path": "docs/whitepaper/problem-solution.md",
       "type": "file",
-      "size_bytes": 3580,
-      "last_modified_commit": "9aae3bedc",
+      "size_bytes": 3732,
+      "last_modified_commit": "c614a3b51",
       "is_empty": false,
       "extension": ".md",
       "lines": 126
@@ -8602,8 +8611,8 @@
     {
       "path": "docs/whitepaper/roadmap.md",
       "type": "file",
-      "size_bytes": 5050,
-      "last_modified_commit": "9aae3bedc",
+      "size_bytes": 5239,
+      "last_modified_commit": "c614a3b51",
       "is_empty": false,
       "extension": ".md",
       "lines": 177
@@ -8611,20 +8620,20 @@
     {
       "path": "docs/whitepaper/technical-architecture.md",
       "type": "file",
-      "size_bytes": 4508,
-      "last_modified_commit": "9aae3bedc",
+      "size_bytes": 4990,
+      "last_modified_commit": "c614a3b51",
       "is_empty": false,
       "extension": ".md",
-      "lines": 197
+      "lines": 199
     },
     {
       "path": "docs/whitepaper/tokenomics.md",
       "type": "file",
-      "size_bytes": 4374,
-      "last_modified_commit": "9aae3bedc",
+      "size_bytes": 5066,
+      "last_modified_commit": "c614a3b51",
       "is_empty": false,
       "extension": ".md",
-      "lines": 193
+      "lines": 195
     },
     {
       "path": "package.json",
@@ -9160,8 +9169,8 @@
     {
       "path": "scripts/architect/test-current-state.py",
       "type": "file",
-      "size_bytes": 12662,
-      "last_modified_commit": "8e449401a",
+      "size_bytes": 12778,
+      "last_modified_commit": "c614a3b51",
       "is_empty": false,
       "extension": ".py",
       "lines": 236
