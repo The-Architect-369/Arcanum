@@ -63,7 +63,7 @@ Vitae is economically sterile. MANA may not purchase recognition, accelerate rea
 
 ## Authority grammar
 
-Vitae recognition may grant **permission envelopes**, not superiority.
+Vitae recognition may support eligibility for a **permission envelope**. It does not automatically grant authority; entrusted responsibility requires a separate, reviewed, bounded grant.
 
 A permission envelope is a bounded system capability with:
 
@@ -72,6 +72,8 @@ A permission envelope is a bounded system capability with:
 3. a review path,
 4. a revocation or suspension procedure for operational safety,
 5. explicit doctrinal limits.
+
+A safety suspension of an operational capability does not erase or revoke Vitae recognition. Legitimate suspension authority, grounds, notice, review/appeal, duration, restoration, and privacy-preserving receipts remain deferred until the required capability and grant design is available. This clarification creates no new suspension power.
 
 Recognition does not make a person more worthy. It only indicates that a specific responsibility may be safely entrusted.
 
@@ -95,7 +97,7 @@ The following names are implementation-facing authority envelopes, not human val
 
 - submit binding governance proposals
 - approve treasury movement
-- modify protocol or app code
+- modify shared protocol or app code without the applicable authorization; independent private drafting and participant-owned experiments remain available
 - claim recognized stewardship
 
 ### V1 — Witness

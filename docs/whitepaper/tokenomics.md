@@ -8,6 +8,8 @@ description: "MANA utility design, issuance, sinks, governance weighting, and lo
 
 # Tokenomics
 
+Participation rewards require an authorized funding source, bounded eligibility and funding policy, and legible factual receipts under the [Economic Constitution §§5.1–5.2](../economics/economic-constitution.md#51-participation-and-milestone-rewards). Silence and non-use remain valid. Event eligibility, funding, transfer, and new issuance are separate; no reward amount or program is activated here.
+
 ## I. Overview
 
 **MANA** is the native utility token of ARCnet.
@@ -37,7 +39,7 @@ Authority cannot be purchased directly. Payment cannot accelerate time-based pro
 ### 3) Earned and purchased MANA
 Two acquisition paths exist:
 
-- **Earned MANA** — protocol-defined distribution for participation and cadence adherence  
+- **Earned MANA** — rewards for voluntary factual events under an explicitly approved bounded program; private thoughts, beliefs, emotional disclosures, human worth, and Vitae recognition are not economically graded
 - **Purchased MANA** — acquired through exchange  
 
 At protocol level, both are equivalent as assets. Governance authority remains multi-factor and cannot be reduced to capital alone.
@@ -111,7 +113,7 @@ Governance influence may include:
 - participation consistency
 - Vitae thresholds (recognition signals)
 
-MANA alone does not determine authority.
+Age, activity, wealth, or recognition never automatically grants authority. Responsibility requires a separate, reviewed, bounded grant; any factual weighting inputs remain subject to that distinction.
 
 ---
 

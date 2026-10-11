@@ -3,10 +3,10 @@ title: "Roadmap"
 status: canonical
 visibility: public
 last_updated: 2026-03-02
-description: "Single canonical roadmap for Arcanum: phased emergence with readiness gates and integrity requirements."
+description: "Canonical Genesis phase model for Arcanum: phased emergence with readiness gates and integrity requirements."
 ---
 
-# Roadmap (Canonical)
+# Genesis Phase Model (Canonical)
 
 This roadmap describes the emergence of a layered system (not a date-driven rollout). Arcanum advances phases only when readiness and integrity are true.
 
@@ -25,7 +25,7 @@ Each phase includes:
 - **Exit criteria** — proof of stability before advancing
 - **Doctrine gates** — required checks before phase advancement
 
-This file is the single roadmap. Other roadmap drafts are legacy references.
+This file is the Genesis phase model. The [Construction Era roadmap](../roadmap/construction-era-roadmap.md) describes the current construction work sequence. Their scopes are distinct; the phase readiness and doctrine gates here remain applicable.
 
 ---
 

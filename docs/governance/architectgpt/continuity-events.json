@@ -342,6 +342,24 @@
       "source_ref": "docs/governance/architectgpt/architect-log.md### CONTINUITY-EVENT — 2026-10-10 — Live baseline and continuity adoption review",
       "source_revision": null,
       "title": "Live baseline and continuity adoption review"
+    },
+    {
+      "arc_id": null,
+      "authority_class": "continuity-metadata-only",
+      "claim_class": "report",
+      "content_digest_sha256": "e21019adc7c37fd1ae78e9fd19a346cac1269bcdf5752c4f68fb24493b07fd5e",
+      "event_date": "2026-10-11",
+      "event_id": "ARC-EVT-20261011-0001",
+      "limits": [
+        "Bounded Human decision summary; candidate document corrections not merged; no exact speech timestamps inferred.",
+        "Readiness gates proposed; no tool ordering/unlocks, suspension procedure, numerical policy or dispatch activated."
+      ],
+      "observed_at": null,
+      "recorded_on": "2026-10-11",
+      "session_id": null,
+      "source_ref": "docs/governance/architectgpt/architect-log.md### CONTINUITY-EVENT — 2026-10-11 — Canon audit decisions and deferred readiness",
+      "source_revision": null,
+      "title": "Canon audit decisions and deferred readiness"
     }
   ],
   "known_gaps": [

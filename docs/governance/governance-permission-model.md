@@ -25,6 +25,12 @@ It bridges:
 
 This document does **not** grant authority by itself. It defines the grammar by which authority may be entrusted.
 
+## October 11 approved scope and deferred design
+
+Independent private creation and non-binding drafting are distinct from access to system Architect tools. Access to those tools requires the applicable Vitae-stage eligibility gate, gradual onboarding, and separately reviewed bounded permissions. Meeting a stage gate does not automatically grant a tool, shared release, repository, protocol, or Treasury effect.
+
+Exact tool ordering, progression, gates, and unlock mapping remain deferred while Vitae is being built. Existing grade/envelope associations are draft design evidence, not an approved access sequence. Basic dignity, belonging, participation, and independent tools in participant-owned workspaces remain outside this Architect-tool gate. See the [decision and readiness record](architectgpt/decision-review-20261011.md).
+
 ## Canonical dependencies
 
 This model is subordinate to:

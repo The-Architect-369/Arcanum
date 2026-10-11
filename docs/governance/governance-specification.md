@@ -80,7 +80,7 @@ Governance weight is multi-factorial and may derive from:
 - Vitae thresholds (recognition signals, not rank)
 - delegation relationships
 
-No single vector determines authority.
+No single vector determines authority. Age, activity, wealth, or recognition never automatically grants authority. Entrusted responsibility requires a separate, reviewed, bounded grant. The factual inputs above do not replace eligibility, review, appointment, or authorization for an effect.
 
 ---
 
@@ -160,7 +160,9 @@ Deposits may be partially or fully forfeited for spam or malicious proposals.
 Quorum = minimum participation required.  
 Threshold = required approval ratio.
 
-Initial recommended posture:
+Initial recommended posture (provisional):
+
+The percentages below remain recommendations pending research on participation, concentration of power, and emergency scenarios, followed by separate approval of exact rules. No operational threshold or unresolved monetary parameter is adopted by this clarification.
 
 - **Standard proposals:** 50% quorum, >50% approval
 - **Treasury proposals:** 50% quorum, >60% approval
@@ -304,6 +306,6 @@ All amendments must be logged in:
 
 ARCnet governance is constitutional before it is democratic.
 
-Authority is time-weighted, participation-weighted, and bounded by invariants.
+Any approved governance-weighting model remains bounded by invariants and separate reviewed authority grants; time, participation, wealth, and recognition do not automatically confer authority.
 
 The objective is durability.

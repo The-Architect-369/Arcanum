@@ -409,3 +409,13 @@ source/index lineage and publication evidence will be appended after execution.
   Agent C Memory/history evidence unresolved; standing grants preserved, no dispatch.
 - Historical records/session bytes preserved; no ARC-SES allocation.
 - Basis: current-state-profile.md October10 review and public v0.7 baseline record.
+
+
+## CONTINUITY-EVENT — 2026-10-11 — Canon audit decisions and deferred readiness
+
+- Observed canonical base: f3d8daad1dbc41c04ea9b77e39f92a606efaa85c; PR95 merged.
+- Human confirmed F01–F11 clarifications; F12 continuity state independently reconciled.
+- Human authorized a separate document PR; source corrections are a review candidate, not a merge receipt.
+- Tool ordering/unlocks and suspension/restoration procedure remain deferred. Proposed readiness gates are planning recommendations; economic parameters await research and later ratification.
+- Standing grants, source statuses, dated history, session gaps and A19/A20 sequence preserved. No research dispatch, simulation, tool activation, deployment or public Library certification.
+- Basis: decision-review-20261011.md and current-state-profile.md October11 reconciliation. Exact speech timestamps are not asserted; no ARC-SES allocation.

@@ -49,3 +49,8 @@ be declared operationally complete.
 
 Provider protection remains an overall smoke failure and is never interpreted
 as application-health success.
+
+
+## 2026-10-11 — Approved audit clarifications and deferred policy
+
+The Human approved the [bounded decision reconciliation](architectgpt/decision-review-20261011.md): separate reviewed authority grants, provisional governance percentages, open private creation versus Vitae-gated Architect tools, permanent recognition versus capability suspension, and voluntary factual-event rewards under constitutional funding limits. The document correction leaves exact tool ordering/unlocks, suspension/restoration, monetary parameters and the Guard milestone unresolved. It creates no operational permission, numerical rule or research dispatch. Source/index verification and separate adoption evidence remain required.

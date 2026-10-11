@@ -54,11 +54,11 @@ No implementation convenience, efficiency gain, or feature demand may violate th
 
 
 
-\## The Six Formal Layers
+\## Primary Layers and the Economy Subdomain
 
 
 
-Arcanum is composed of six formally recognized layers:
+Arcanum is composed of five primary layers plus the Economy subdomain of Protocol:
 
 
 
