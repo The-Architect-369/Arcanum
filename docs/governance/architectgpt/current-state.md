@@ -1,6 +1,6 @@
 # Derived current state
 
-As of 2026-10-07T09:57:13Z; observed canonical base `a07cebf7e0941a52be8961c349522488cf87b9a3`.
+As of 2026-10-10T23:56:40Z; observed canonical base `912666882ab7f0fd33c3979e5eb9ead82fc2c3f4`.
 Derived, non-authoritative, bounded seed. Regeneration is not a fresh provider read.
 See [profile and source limits](current-state-profile.md). Historical records remain intact.
 
@@ -11,19 +11,27 @@ For tested access paths and their limits, use the companion
 
 Status: **supported**; coverage: covered.
 
-The-Architect-369/Arcanum main@a07cebf7e0941a52be8961c349522488cf87b9a3 (observed canonical baseline). PR92 is a separate architecture/projection review candidate, not a merged baseline.
+The-Architect-369/Arcanum main@912666882ab7f0fd33c3979e5eb9ead82fc2c3f4 freshly resolved October10; PR96 adopted v0.7 public baseline. Physical Android acceptance not repeated; native A19/A20 unchanged.
 
 - `coherence:canonical_base` (report, derived): [source](https://github.com/The-Architect-369/Arcanum/blob/f839027a3c82197d0087e0a530126f67b884618a/docs/governance/architectgpt/current-state-profile.md#source-identity-and-preserved-history).
   The-Architect-369/Arcanum main@052bdc42a8aba8e246719cf9493c0df11a612e92 (observed base; PR89 A18 closure adoption).
   Limitation: Finite reviewed seed; regeneration does not refresh evidence.
   Limitation: Selected reconciliation report; linked provider originals were not re-fetched by this implementation. Provider revision/time coverage remains limited.
 - `coherence:canonical_base:20261007-architecture-review` (report, operational-record): [source](https://github.com/The-Architect-369/Arcanum/blob/59e77fee875cd6fa870fa388cbf5ca55280e4ff9/docs/governance/architectgpt/current-state-profile.md#october-7-pre-a19-architecture-and-decision-reconciliation).
+  The-Architect-369/Arcanum main@a07cebf7e0941a52be8961c349522488cf87b9a3 (observed canonical baseline). PR92 is a separate architecture/projection review candidate, not a merged baseline.
   Limitation: Dated current-chat report; source profile records provenance and exact-head verification limits.
   Limitation: Human review of a plan does not ratify numerical policy or prove simulation, agent readiness or merge.
 - `coherence:canonical_base:20261007-baseline` (report, derived): [source](https://github.com/The-Architect-369/Arcanum/blob/7b204e6f52051f498c474b6694c6d7e9c33cbc52/docs/governance/architectgpt/current-state-profile.md#october-7-operational-baseline-follow-on).
   The-Architect-369/Arcanum main@f839027a3c82197d0087e0a530126f67b884618a (observed starting base; PR90 adopted the reviewed current-state view).
   Limitation: Dated bounded observation; regeneration does not refresh sources.
   Limitation: Observed main is the task starting base; later integration must be independently resolved.
+- `coherence:canonical_base:20261008-reconciliation` (report, canonical-repository): [source](current-state-profile.md#october-8-present-state-reconciliation).
+  The-Architect-369/Arcanum main@395d8f9894c72abccb57c5663c9c127b28f1d6b7, freshly fetched October8; PR92–94 adopted. Recovered production report: dpl_J8qGk4srFLKYAPb3YUPNDmDv45F6 READY at this exact base, not re-probed here.
+  Limitation: Finite reviewed seed; generation does not refresh providers.
+  Limitation: Deployment, scheduler and Agent C facts are attributed recovered reports; no new effect or live qualification inferred.
+- `coherence:canonical_base:20261010-adoption-review` (report, canonical-repository): [source](current-state-profile.md#october-10-continuity-adoption-review).
+  Limitation: Finite reviewed evidence; regeneration is not a provider refresh.
+  Limitation: Adoption approval covers continuity only; pending decisions remain unapproved.
 
 ## Era
 
@@ -60,21 +68,29 @@ A18 is closed within its accepted local Architect conversation and version 34 re
 
 Status: **supported**; coverage: covered.
 
-A19 / ARC-50 is next in the bounded sequence; A18 predecessor closure is satisfied. Its storage and physical acceptance work remains ahead.
+CE-W04-A19 is Ready and next; Notion task ARC-50 tracks this arc. Implementation and physical acceptance remain ahead.
 
 - `coherence:next_arc` (report, operational-record): [source](https://github.com/The-Architect-369/Arcanum/blob/f839027a3c82197d0087e0a530126f67b884618a/docs/governance/architectgpt/current-state-profile.md#recovered-planning-report).
+  A19 / ARC-50 is next in the bounded sequence; A18 predecessor closure is satisfied. Its storage and physical acceptance work remains ahead.
   Limitation: Finite reviewed seed; regeneration does not refresh evidence.
   Limitation: Selected reconciliation report; linked provider originals were not re-fetched by this implementation. Provider revision/time coverage remains limited.
+- `coherence:next_arc:20261008-reconciliation` (report, operational-record): [source](current-state-profile.md#october-8-present-state-reconciliation).
+  Limitation: Finite reviewed seed; generation does not refresh providers.
+  Limitation: Deployment, scheduler and Agent C facts are attributed recovered reports; no new effect or live qualification inferred.
 
 ## Following arc
 
 Status: **supported**; coverage: covered.
 
-A20 / ARC-51 follows A19; completing it leads to CE-W04 review, not automatic wave closure.
+CE-W04-A20 is Blocked behind A19; Notion task ARC-51 tracks it. Completion leads to CE-W04 evidence review, not automatic closure.
 
 - `coherence:following_arc` (report, operational-record): [source](https://github.com/The-Architect-369/Arcanum/blob/f839027a3c82197d0087e0a530126f67b884618a/docs/governance/architectgpt/current-state-profile.md#recovered-planning-report).
+  A20 / ARC-51 follows A19; completing it leads to CE-W04 review, not automatic wave closure.
   Limitation: Finite reviewed seed; regeneration does not refresh evidence.
   Limitation: Selected reconciliation report; linked provider originals were not re-fetched by this implementation. Provider revision/time coverage remains limited.
+- `coherence:following_arc:20261008-reconciliation` (report, operational-record): [source](current-state-profile.md#october-8-present-state-reconciliation).
+  Limitation: Finite reviewed seed; generation does not refresh providers.
+  Limitation: Deployment, scheduler and Agent C facts are attributed recovered reports; no new effect or live qualification inferred.
 
 ## Continuity epoch
 
@@ -89,30 +105,38 @@ ARC-CONT-EPOCH-2 is active; sealed predecessor ARC-CONT-EPOCH-1 ends at ARC-SES-
 
 Status: **supported**; coverage: covered.
 
-The active session index is empty by design while external numbering remains unreconciled. Dated log events are excluded from that index; no missing sessions are reconstructed.
+ARC-SES-11..22 remain unreconciled; external ARC-SES-23 is preserved without renumbering. sessions remains empty; independent append-only event chronology can continue without allocating sessions.
 
 - `coherence:continuity_gaps` (report, canonical-repository): [source](https://github.com/The-Architect-369/Arcanum/blob/052bdc42a8aba8e246719cf9493c0df11a612e92/docs/governance/architectgpt/continuity-index.json), [source](https://github.com/The-Architect-369/Arcanum/blob/052bdc42a8aba8e246719cf9493c0df11a612e92/docs/governance/architectgpt/architect-log.md).
+  The active session index is empty by design while external numbering remains unreconciled. Dated log events are excluded from that index; no missing sessions are reconstructed.
   Limitation: Finite reviewed seed; regeneration does not refresh evidence.
+- `coherence:continuity_gaps:20261008-reconciliation` (report, canonical-repository): [source](current-state-profile.md#october-8-present-state-reconciliation).
+  Limitation: Finite reviewed seed; generation does not refresh providers.
+  Limitation: Deployment, scheduler and Agent C facts are attributed recovered reports; no new effect or live qualification inferred.
 
 ## Source conflicts
 
 Status: **supported**; coverage: covered.
 
-PR90 corrected repository present-state pointers. October 7 Notion readback confirms dashboard/handoff supersession notices and A19 Ready, clearing the old A18 predecessor block. Earlier snapshots remain historical; no A18 reopening or extension ratification is inferred.
+Historical A14/Stage1 baseline and earlier active-loop statements remain dated evidence. October8 audit reports no active scheduler. Arc ledger is reconciled through A18; historical Notion backlog is classified separately from current execution.
 
 - `coherence:source_conflicts` (report, derived): [source](https://github.com/The-Architect-369/Arcanum/blob/f839027a3c82197d0087e0a530126f67b884618a/docs/governance/architectgpt/current-state-profile.md#recovered-planning-report), [source](https://github.com/The-Architect-369/Arcanum/blob/052bdc42a8aba8e246719cf9493c0df11a612e92/docs/governance/architectgpt/architect-log.md).
   The old A14/Stage 1 present-state pointers lag the dated A18 closure evidence. Recovered dashboard and A19 predecessor labels also lag; their historical content remains valid at its original time.
   Limitation: Finite reviewed seed; regeneration does not refresh evidence.
   Limitation: Selected reconciliation report; linked provider originals were not re-fetched by this implementation. Provider revision/time coverage remains limited.
 - `coherence:source_conflicts:20261007-baseline` (report, derived): [source](https://github.com/The-Architect-369/Arcanum/blob/7b204e6f52051f498c474b6694c6d7e9c33cbc52/docs/governance/architectgpt/current-state-profile.md#october-7-operational-baseline-follow-on).
+  PR90 corrected repository present-state pointers. October 7 Notion readback confirms dashboard/handoff supersession notices and A19 Ready, clearing the old A18 predecessor block. Earlier snapshots remain historical; no A18 reopening or extension ratification is inferred.
   Limitation: Dated bounded observation; regeneration does not refresh sources.
   Limitation: Observed main is the task starting base; later integration must be independently resolved.
+- `coherence:source_conflicts:20261008-reconciliation` (report, canonical-repository): [source](current-state-profile.md#october-8-present-state-reconciliation).
+  Limitation: Finite reviewed seed; generation does not refresh providers.
+  Limitation: Deployment, scheduler and Agent C facts are attributed recovered reports; no new effect or live qualification inferred.
 
 ## Implementation gate
 
 Status: **supported**; coverage: covered.
 
-Human authorized automated evidence-grounded question preparation and execution of already approved questions for Human review, with refresh during active work and daily. Thread heartbeat arcanum-research-review-loop is ACTIVE for 9 a.m. daily (America/New_York intended). WS-RQ-003 approval stands; verify Agent C connection/settings and reconcile run history before dispatch. New questions remain pending review. No research run, simulation result, policy activation, merge or deployment is established.
+Human authorized PR95 reconciliation, verification and normal merge on October10. Agency and canon decisions remain pending individual review. Standing sequence/research grants remain preserved, subject to exact targets and original prerequisites; no A19 implementation or Agent C dispatch in this task.
 
 - `coherence:implementation_gate` (report, human-decision): [source](https://github.com/The-Architect-369/Arcanum/blob/f839027a3c82197d0087e0a530126f67b884618a/docs/governance/architectgpt/current-state-profile.md).
   Human approval covers this bounded repository projection candidate and verification. Stop before merge, deployment, provider updates or Agent C dispatch; A19 implementation retains its bounded contract.
@@ -126,23 +150,35 @@ Human authorized automated evidence-grounded question preparation and execution 
   PR90 projection adopted. Human requested bounded environment baseline, archival, capability verification and registry reconciliation across Ubuntu, Termux, GitHub, Notion and Drive. A19 implementation, extension ratification, Agent C dispatch and new release effects remain separate.
   Limitation: Dated bounded observation; regeneration does not refresh sources.
   Limitation: Observed main is the task starting base; later integration must be independently resolved.
-- `coherence:implementation_gate:20261007-research-loop` (report, human-decision): [source](current-state-profile.md#october-7-automated-research-coordination-grant).
+- `coherence:implementation_gate:20261007-research-loop` (report, human-decision): [source](https://github.com/The-Architect-369/Arcanum/blob/395d8f9894c72abccb57c5663c9c127b28f1d6b7/docs/governance/architectgpt/current-state-profile.md#october-7-automated-research-coordination-grant).
+  Human authorized automated evidence-grounded question preparation and execution of already approved questions for Human review, with refresh during active work and daily. Thread heartbeat arcanum-research-review-loop is ACTIVE for 9 a.m. daily (America/New_York intended). WS-RQ-003 approval stands; verify Agent C connection/settings and reconcile run history before dispatch. New questions remain pending review. No research run, simulation result, policy activation, merge or deployment is established.
   Limitation: Creation of a daily review check is not proof of its first execution or Agent C connectivity.
   Limitation: Question-level scope, budget, private output and one-run limits remain controlling; no automatic child-question approval.
+- `coherence:implementation_gate:20261008-reconciliation` (report, human-decision): [source](current-state-profile.md#october-8-present-state-reconciliation).
+  Human-authorized bounded present-state/tracking reconciliation and conservative Notion repair; reviewable PR and deterministic index. Stop before merge/deploy, scheduler recreation, Agent C run or A19 implementation.
+  Limitation: Finite reviewed seed; generation does not refresh providers.
+  Limitation: Deployment, scheduler and Agent C facts are attributed recovered reports; no new effect or live qualification inferred.
+- `coherence:implementation_gate:20261010-adoption-review` (report, human-decision): [source](current-state-profile.md#october-10-continuity-adoption-review).
+  Limitation: Finite reviewed evidence; regeneration is not a provider refresh.
+  Limitation: Adoption approval covers continuity only; pending decisions remain unapproved.
 
 ## Outstanding human decisions
 
 Status: **supported**; coverage: covered.
 
-Resolve economic mechanisms and candidate parameters through simulation/risk review/ratification; scoped appointment/signing, group trials, peer/community adoption and appeal rules; Grade X/post-Grade-X threshold, recognition evidence and specialization catalog; geometry hypotheses, comparators and acceptance criteria with Agent C readiness unverified; factual Tempus chronology, policy epochs and optional community narrative. Retain the earlier decision whether Hope/model and broader spatial-semantic extensions amend A19/A20 or follow separately. Open private creation, consenting trials and broader reviewed Adept responsibility are recorded Human directions, not remaining preference questions. Incorporate the requested bounded remote Agent C research/build/result-review loop; verify connection and round-trip behavior before claiming it works.
+Twelve selective canon-audit decisions and publication review remain pending; Agency executor identity, A19 exact target/acceptance and proposed extensions require bounded review. Economic numbers/mechanics require evidence and Human decisions. Agent C requires effective Memory-off and sufficient run-history evidence; new research scopes remain unapproved.
 
 - `coherence:outstanding_human_decisions` (report, operational-record): [source](https://github.com/The-Architect-369/Arcanum/blob/f839027a3c82197d0087e0a530126f67b884618a/docs/governance/architectgpt/current-state-profile.md#proposed-extensions-and-unresolved-decisions).
   Decide whether Hope linked-addition/archival/model access and broader spatial-semantic behavior amend A19/A20 or follow separately. No fresh approval is needed for the already approved projection candidate.
   Limitation: Finite reviewed seed; regeneration does not refresh evidence.
   Limitation: Selected reconciliation report; linked provider originals were not re-fetched by this implementation. Provider revision/time coverage remains limited.
 - `coherence:outstanding_human_decisions:20261007-architecture-review` (report, human-decision): [source](https://github.com/The-Architect-369/Arcanum/blob/59e77fee875cd6fa870fa388cbf5ca55280e4ff9/docs/governance/architectgpt/current-state-profile.md#october-7-pre-a19-architecture-and-decision-reconciliation).
+  Resolve economic mechanisms and candidate parameters through simulation/risk review/ratification; scoped appointment/signing, group trials, peer/community adoption and appeal rules; Grade X/post-Grade-X threshold, recognition evidence and specialization catalog; geometry hypotheses, comparators and acceptance criteria with Agent C readiness unverified; factual Tempus chronology, policy epochs and optional community narrative. Retain the earlier decision whether Hope/model and broader spatial-semantic extensions amend A19/A20 or follow separately. Open private creation, consenting trials and broader reviewed Adept responsibility are recorded Human directions, not remaining preference questions. Incorporate the requested bounded remote Agent C research/build/result-review loop; verify connection and round-trip behavior before claiming it works.
   Limitation: Dated current-chat report; source profile records provenance and exact-head verification limits.
   Limitation: Human review of a plan does not ratify numerical policy or prove simulation, agent readiness or merge.
+- `coherence:outstanding_human_decisions:20261010-adoption-review` (report, human-decision): [source](current-state-profile.md#october-10-continuity-adoption-review).
+  Limitation: Finite reviewed evidence; regeneration is not a provider refresh.
+  Limitation: Adoption approval covers continuity only; pending decisions remain unapproved.
 
 ## A19 baseline
 
@@ -188,12 +224,16 @@ Multiple geometric lenses over stable objects and relationships, declared coordi
 
 Status: **supported**; coverage: covered.
 
-Existing WS-AGENT-C is Research Observatory. Fresh Notion readback confirms WS-RQ-003 approved_active for the unchanged geometry-versus-conventional view question; no repeat approval is needed. WS-RQ-009 separately covers an Equinox source study. Human requested a remote research/build/result-review loop. Browser inspection failed before discovery with a local-file-URI tool error; exact destination, reachability, Memory-off and schedules remain unverified. No agent run, prototype or participant study occurred.
+October7 dashboard reports existing Agent C version10 and scoped addendum; effective published Memory-off and adequate production/Studio submission history remain unproved. WS-RQ-003 remains approved_active, no result established; source/trigger checks still required. No Agent C run here.
 
 - `coherence:agent_c_state` (report, operational-record): [source](https://github.com/The-Architect-369/Arcanum/blob/f839027a3c82197d0087e0a530126f67b884618a/docs/governance/architectgpt/current-state-profile.md#recovered-planning-report).
   Bounded WS-RQ-009 research was recovered as approved_active; existing Agent C destination, reachability, Memory-off setting and schedules remain unverified. No run was launched in the reconciliation.
   Limitation: Finite reviewed seed; regeneration does not refresh evidence.
   Limitation: Selected reconciliation report; linked provider originals were not re-fetched by this implementation. Provider revision/time coverage remains limited.
 - `coherence:agent_c_state:20261007-connection-check` (report, operational-record): [source](https://github.com/The-Architect-369/Arcanum/blob/59e77fee875cd6fa870fa388cbf5ca55280e4ff9/docs/governance/architectgpt/current-state-profile.md#october-7-pre-a19-architecture-and-decision-reconciliation).
+  Existing WS-AGENT-C is Research Observatory. Fresh Notion readback confirms WS-RQ-003 approved_active for the unchanged geometry-versus-conventional view question; no repeat approval is needed. WS-RQ-009 separately covers an Equinox source study. Human requested a remote research/build/result-review loop. Browser inspection failed before discovery with a local-file-URI tool error; exact destination, reachability, Memory-off and schedules remain unverified. No agent run, prototype or participant study occurred.
   Limitation: Provider records were read; agent settings and the actual remote launch/return path were not verified.
   Limitation: A tool connection failure does not establish agent unavailability.
+- `coherence:agent_c_state:20261008-reconciliation` (report, operational-record): [source](current-state-profile.md#october-8-present-state-reconciliation).
+  Limitation: Finite reviewed seed; generation does not refresh providers.
+  Limitation: Deployment, scheduler and Agent C facts are attributed recovered reports; no new effect or live qualification inferred.

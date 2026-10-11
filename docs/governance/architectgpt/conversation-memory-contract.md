@@ -241,3 +241,16 @@ risk collision with unreconciled external continuity, the controlling
 - does not satisfy session closure or canonicalization requirements; and
 - is later referenced by an additive reviewed session after sequence reconciliation,
   without backdating or rewriting the event.
+
+
+## 13. Independent event projection — October 8 tracking repair candidate
+
+The Human-approved bounded tracking repair introduces the
+[append-only event projection](continuity-events-spec.md) alongside the session index.
+Wave/Arc remains capability/dependency structure; ARC-SES remains conversation
+provenance; ARC-EVT records chronology independently. The controlling log remains
+append-only. The event stream does not allocate or close sessions, repair the
+ARC-SES-11..22/external ARC-SES-23 gap, or replace the sealed epoch contract.
+Its latest_checkpoint is a dated reviewed synthesis, not a new authority layer.
+Historical clauses and original IDs remain unchanged. This additive section takes
+canonical effect only after separately authorized repository adoption.

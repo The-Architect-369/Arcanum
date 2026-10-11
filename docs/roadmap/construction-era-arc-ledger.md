@@ -305,3 +305,55 @@ source. Missing initial PNG and unverified adoption actor remain explicit.
 A16 satisfies its bounded local-continuity obligation. CE-W04 remains open; A17
 selected development memory is the next separately scoped implementation surface.
 The production phone stays on version 25; isolated qualification ends on version 27.
+
+
+## Present-state ledger reconciliation — 2026-10-08
+
+This additive checkpoint preserves all stage-time statements above. Wave/Arc is
+capability/dependency structure, not the chronological clock. Notion ARC task IDs
+and ARC-SES conversation IDs are independent identifiers. Use the
+[checkpoint](../governance/architectgpt/present-state-checkpoint-20261008.md)
+and [event stream](../governance/architectgpt/continuity-events.json) for dated state.
+
+### CE-W04-A15 — Own-package installation and recovery
+
+Bounded installation/recovery acceptance was adopted through PR83 merge
+`ad7c75039a6701145e3051ca151ae003f4ca542d` (October2).
+The [closure review](../evidence/ce-w04-a15-verification-20261001/closure-review.md)
+preserves acceptance and limits; its REVIEW-PENDING label records preparation time.
+Later [A16 foundation](../evidence/ce-w04-a16-foundation-20261002/review.md)
+independently records A15 closed. A14's distribution-only conditional statement
+above remains historical; its A15 dependency is satisfied. No extra A14 stages or
+chain-live readiness are inferred. A16's closure above remains intact.
+
+### CE-W04-A17 — Selected development memory and protected native custody
+
+Closed within the [accepted bounded scope](../evidence/ce-w04-a17-native-20261003/closure-review.md),
+adopted through PR85 main`27b0d814c6a64bdbdf1dd12e8b1db53449d8223c`.
+Selected encrypted development records, explicit retention/deletion, recovery and
+context preview are established. Isolated version29 source remains
+`8ac960494c55fa61e74601aa69043f2dd94d7546`; closure did not qualify a production
+A17 update or grant provider delivery/private Hope access.
+
+### CE-W04-A18 — Local Architect conversation and version34 release
+
+Closed within the [accepted local conversation/release scope](../evidence/ce-w04-a18-local-20261003/closure-review.md),
+adopted through PR89 main`052bdc42a8aba8e246719cf9493c0df11a612e92`.
+Qualified APK source`75cad68cb3733a44b5b13bcea153f2f77dfa7bda` remains separate
+from PR86 implementation, PR87 hosting and PR88 descriptor promotion.
+Earlier pending reports retain their dates and limits. No completed effect is repeated.
+
+### CE-W04-A19 — Hope collection and temporal recall
+
+Ready; next bounded implementation arc. Notion task ARC-50 tracks A19, rather than
+being an alias in the arc-number sequence. Preserve encrypted records/metadata,
+truthful migration, chronology, explicit deletion/retention, corruption/redaction
+and factual Tempus references. Implementation has not begun in this reconciliation.
+
+### CE-W04-A20 — Geometry-bound navigation and integrated experience
+
+Blocked behind A19; Notion task ARC-51 tracks A20. Preserve the shared semantic
+navigation model and geometry-free equivalence, Home/Back/focus/escape and privacy.
+Public orbit publication is a design reference, not native A20 acceptance.
+Following gate: integrated CE-W04 evidence review. CE-W04 remains OPEN;
+CE-W05 remains separately gated.

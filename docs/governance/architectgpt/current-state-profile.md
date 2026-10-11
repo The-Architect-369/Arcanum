@@ -280,3 +280,52 @@ preserving the September 24 approval body and `approved_active` state. The
 Understanding Dashboard is the authorized operational mirror for this update.
 No Notion subscription cancellation, main merge, deployment or new policy is
 authorized or established by scheduling this review loop.
+
+
+## October 8 present-state reconciliation
+
+The Human approved and explicitly instructed the bounded repository/Notion tracking
+repair, with no merge/deploy, scheduler recreation, Agent C dispatch or A19 work.
+The [checkpoint](present-state-checkpoint-20261008.md) records the exact freshly
+resolved main395d8f9894c72abccb57c5663c9c127b28f1d6b7 and attributes recovered
+production/scheduler observations separately. A18 remains closed, CE-W04 open,
+A19 Ready (tracked by Notion ARC-50), A20 Blocked (tracked by ARC-51).
+The October7 dashboard reports version10 Agent C with readiness evidence still
+incomplete; WS-RQ-003 remains approved but no research result exists.
+The October8 audit reports no active scheduler, superseding the prior ACTIVE claim.
+No device/environment capability is freshly certified by this tracking refresh.
+
+The independent event projection indexes controlling-log entries without changing
+sessions or the ARC-SES-11..22/external ARC-SES-23 gap. All earlier profile sections
+and seed objects remain historical evidence. Task and arc identifiers are distinct.
+This profile remains the only unpinned, digest-bound reviewed source for generation.
+
+
+## October 10 continuity adoption review
+
+The Human explicitly directed reconciliation and finalization of PR95, followed by
+individual approval review in this chat. This authorizes the bounded continuity
+correction, verification and normal merge; it does not approve the pending Agency,
+canon, economics, A19 implementation or device-setup packets. Standing September20
+sequence and WS-RQ-003/009 grants remain preserved with their original prerequisites
+and limits; a current-task scope statement neither revokes nor exercises them.
+
+Fresh canonical base: `912666882ab7f0fd33c3979e5eb9ead82fc2c3f4`, PR96 adopted.
+The v0.7 website baseline is live; its repository receipt preserves original geometry,
+menu-to-scene navigation and panel-first onward links. Download has no required
+eight-beat narrative. Physical Android acceptance was not repeated. Website adoption
+does not implement native A19/A20. See [baseline](../../specs/public-site/v07-public-baseline-2026-10-10.md).
+
+Read-only chat/artifact review recovered the completed 66-file inventory and twelve
+selective canon-audit decision packets, not whole-body certification or publication
+approval. Agency desk preparation and the first October10 daily follow-up are reported
+complete, not an Agent C research run. Agent C effective Memory-off and adequate
+submission-history evidence remain unresolved; both question grants retain their
+separate scopes. No fresh provider settings probe is claimed by this review.
+
+Next gates: individually review canon/editorial and Agency decisions; bind unchanged
+A19 targets and acceptance under the applicable grant; A20 follows A19. Broader Hope
+and spatial-semantic extensions remain separate proposals. No economic parameters,
+new research scopes, private data access, device setup or Reading Library publication
+are adopted by this continuity update. Earlier checkpoints and contracts remain dated
+history. Session gaps remain unresolved; no session is allocated.

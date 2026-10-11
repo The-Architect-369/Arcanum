@@ -1,0 +1,182 @@
+{
+  "schema": "arcanum.operational-observations/v1",
+  "as_of": "2026-10-07T09:02:00Z",
+  "observed_main": "f839027a3c82197d0087e0a530126f67b884618a",
+  "authority": "observation-only",
+  "capabilities": [
+    {
+      "id": "ubuntu-execution",
+      "surface": "Ubuntu",
+      "status": "passed",
+      "observed_on": "2026-10-07",
+      "summary": "Workspace commands and Rust tests work; Node 24.21.0, pnpm 9.10.0 and ADB are selected by the explicit local-toolchain wrapper.",
+      "limitations": [
+        "System Node remains 22; nonlogin PATH alone is insufficient.",
+        "Local ignored toolchain must exist or equivalent Node 24 must be provided."
+      ],
+      "before_use": "Resolve the intended checkout/ref and run the wrapper version checks.",
+      "evidence": [
+        "docs/evidence/operational-baseline-20261007/review.md"
+      ]
+    },
+    {
+      "id": "termux-checkout",
+      "surface": "Termux",
+      "status": "passed",
+      "observed_on": "2026-10-07",
+      "summary": "Canonical main at the observed PR90 merge; frozen install, 15 sync gates, lint and typecheck passed.",
+      "limitations": [
+        "No Android production web build or on-phone Rust suite in this run."
+      ],
+      "before_use": "Use the canonical checkout; fetch and confirm clean fast-forward eligibility before sync.",
+      "evidence": [
+        "docs/evidence/operational-baseline-20261007/review.md"
+      ]
+    },
+    {
+      "id": "cellular-transport",
+      "surface": "Termux / Android",
+      "status": "passed",
+      "observed_on": "2026-10-07",
+      "summary": "Private SSH and explicitly selected network ADB returned sentinels with Wi-Fi disabled and LTE reported; Wi-Fi restored.",
+      "limitations": [
+        "USB remained attached as a fallback.",
+        "Reboot, detached USB and long-idle recovery were not retested."
+      ],
+      "before_use": "Read current transport state and probe the intended SSH/network-ADB path; preserve a recovery route for network changes.",
+      "evidence": [
+        "docs/evidence/operational-baseline-20261007/review.md"
+      ]
+    },
+    {
+      "id": "native-install-identity",
+      "surface": "Android",
+      "status": "passed",
+      "observed_on": "2026-10-07",
+      "summary": "Installed version 34 APK digest matches the qualified A18 artifact.",
+      "limitations": [
+        "No reinstall or fresh functional UI acceptance in this run."
+      ],
+      "before_use": "Compare installed identity to the qualified release before proposing any update; reconcile existing receipts first.",
+      "evidence": [
+        "docs/evidence/operational-baseline-20261007/review.md"
+      ]
+    },
+    {
+      "id": "configured-local-gateway",
+      "surface": "Ubuntu / phone tunnel",
+      "status": "passed",
+      "observed_on": "2026-10-07",
+      "summary": "Authenticated configured gateway returned BASELINE_OK and recorded response_observed.",
+      "limitations": [
+        "Host-to-gateway test; a fresh on-device UI round trip was not exercised.",
+        "No Hope/private context and no zero-retention certification."
+      ],
+      "before_use": "Confirm the authorized local profile and use public synthetic input for a narrowly scoped liveness probe.",
+      "evidence": [
+        "docs/evidence/operational-baseline-20261007/review.md"
+      ]
+    },
+    {
+      "id": "advisory-alias-probe",
+      "surface": "Ubuntu local model",
+      "status": "failed",
+      "observed_on": "2026-10-07",
+      "summary": "A separate direct advisory-alias probe completed but returned an empty answer.",
+      "limitations": [
+        "Different model alias and request settings from the passing configured gateway.",
+        "Cause not isolated; do not treat this as a general model outage."
+      ],
+      "before_use": "Use the configured application path; diagnose the separate alias only if it is needed.",
+      "evidence": [
+        "docs/evidence/operational-baseline-20261007/review.md"
+      ]
+    },
+    {
+      "id": "github-collaboration",
+      "surface": "GitHub",
+      "status": "passed",
+      "observed_on": "2026-10-07",
+      "summary": "Authenticated Git/PR workflow completed PR90 with exact-head green checks and normal merge.",
+      "limitations": [
+        "Saved checks apply only to the tested head; no future merge permission is created."
+      ],
+      "before_use": "Resolve current main, branch, authorization and exact-head check results.",
+      "evidence": [
+        "docs/evidence/operational-baseline-20261007/review.md"
+      ]
+    },
+    {
+      "id": "notion-reconciliation",
+      "surface": "Notion",
+      "status": "passed",
+      "observed_on": "2026-10-07",
+      "summary": "Targeted dashboard/handoff edits and A19 Ready reconciliation succeeded and were read back.",
+      "limitations": [
+        "Source provider remains non-canonical; historical content is preserved.",
+        "Research/extension approval is not implementation completion."
+      ],
+      "before_use": "Fetch the exact page and current schema before a bounded edit; preserve history and native references.",
+      "evidence": [
+        "docs/evidence/operational-baseline-20261007/review.md"
+      ]
+    },
+    {
+      "id": "drive-archival",
+      "surface": "Google Drive",
+      "status": "passed",
+      "observed_on": "2026-10-07",
+      "summary": "Two named handoffs archived with stable IDs, original visibility and parent readback.",
+      "limitations": [
+        "No global Drive cleanup or sharing changes."
+      ],
+      "before_use": "Read metadata and exact parents; preserve private/shared custody when selecting a destination.",
+      "evidence": [
+        "docs/evidence/operational-baseline-20261007/review.md"
+      ]
+    },
+    {
+      "id": "recovery-after-reboot",
+      "surface": "Ubuntu / Android",
+      "status": "untested",
+      "observed_on": "2026-10-07",
+      "summary": "No reboot or long-idle recovery test was performed in this baseline.",
+      "limitations": [
+        "Earlier evidence is historical and does not become a new test."
+      ],
+      "before_use": "Plan a bounded recovery test with a working independent recovery path.",
+      "evidence": [
+        "docs/evidence/operational-baseline-20261007/review.md"
+      ]
+    },
+    {
+      "id": "agent-c-readiness",
+      "surface": "Agent C",
+      "status": "untested",
+      "observed_on": "2026-10-07",
+      "summary": "Destination, reachability, Memory-off and schedules remain unverified.",
+      "limitations": [
+        "Existing research grants do not prove current readiness.",
+        "No launch performed."
+      ],
+      "before_use": "Resolve the exact private agent and verify settings before an individually authorized bounded question.",
+      "evidence": [
+        "docs/evidence/operational-baseline-20261007/review.md"
+      ]
+    },
+    {
+      "id": "hope-model-access",
+      "surface": "Hope",
+      "status": "untested",
+      "observed_on": "2026-10-07",
+      "summary": "Private Hope model access is a proposed extension, outside the current A19 baseline.",
+      "limitations": [
+        "No implementation or permission is inferred from local inference success."
+      ],
+      "before_use": "Obtain the bounded Human scope decision and preserve participant custody before implementation.",
+      "evidence": [
+        "docs/evidence/operational-baseline-20261007/review.md"
+      ]
+    }
+  ]
+}
