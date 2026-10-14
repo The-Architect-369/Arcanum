@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Private Hope collection snapshot shape v0.1",
+  "description": "Sensitive plaintext storage interchange, not diagnostics or public export. Structural schema only; semantic decoder invariants are specified in ce-w04-a19-hope-collection.md.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "nextSequence", "entries", "retiredIds"],
+  "properties": {
+    "version": {"const": "hope.collection.v0.1"},
+    "nextSequence": {"$ref": "#/$defs/counter"},
+    "entries": {"type": "array", "items": {"$ref": "#/$defs/entry"}},
+    "retiredIds": {"type": "array", "uniqueItems": true, "items": {"$ref": "#/$defs/id"}}
+  },
+  "$defs": {
+    "id": {"type": "string", "minLength": 1, "pattern": "\\S"},
+    "counter": {
+      "type": "string", "pattern": "^(0|[1-9][0-9]*)$", "maxLength": 20,
+      "description": "Canonical decimal u64. Decoder must also enforce the numeric upper bound 18446744073709551615."
+    },
+    "captureTime": {
+      "type": "string", "format": "date-time",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(\\.[0-9]{1,9})?(Z|[+-][0-9]{2}:[0-9]{2})$",
+      "not": {"pattern": "-00:00$"},
+      "description": "The runtime enforces its Gregorian date/time profile; format validation must be enabled by consumers."
+    },
+    "entry": {
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "createdAt", "sequence", "state", "reflectionJson"],
+      "properties": {
+        "id": {"$ref": "#/$defs/id"},
+        "createdAt": {"$ref": "#/$defs/captureTime"},
+        "sequence": {"$ref": "#/$defs/counter"},
+        "state": {"enum": ["active", "archived"]},
+        "reflectionJson": {
+          "type": "string", "minLength": 1, "contentMediaType": "application/json",
+          "description": "Exact canonical hope.reflection.v0.1 payload. Decoder must parse and validate it and compare its ID/time with the entry."
+        }
+      }
+    }
+  }
+}

@@ -1,5 +1,7 @@
 #![forbid(unsafe_code)]
 
+pub mod collection;
+
 use std::fmt;
 
 pub const HOPE_NAMESPACE: &str = "hope";
