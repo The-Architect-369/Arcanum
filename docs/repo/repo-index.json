@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-10-14T08:11:14Z",
+  "generated_at": "2026-10-14T08:52:01Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "64891d919",
+  "commit": "1530f6a60",
   "generator_version": "1.5",
   "files": [
     {
@@ -232,11 +232,11 @@
     {
       "path": "apps/android/app/build.gradle.kts",
       "type": "file",
-      "size_bytes": 3763,
-      "last_modified_commit": "81ddbb9c4",
+      "size_bytes": 4145,
+      "last_modified_commit": "739d8664b",
       "is_empty": false,
       "extension": ".kts",
-      "lines": 110
+      "lines": 114
     },
     {
       "path": "apps/android/app/src/androidTest/java/org/arcanum/nativehost/continuity/ContinuityDeviceQualificationTest.kt",
@@ -282,6 +282,15 @@
       "is_empty": false,
       "extension": ".kt",
       "lines": 26
+    },
+    {
+      "path": "apps/android/app/src/androidTest/java/org/arcanum/nativehost/hope/HopeBackupPhysicalAcceptanceTest.kt",
+      "type": "file",
+      "size_bytes": 3070,
+      "last_modified_commit": "739d8664b",
+      "is_empty": false,
+      "extension": ".kt",
+      "lines": 60
     },
     {
       "path": "apps/android/app/src/androidTest/java/org/arcanum/nativehost/hope/HopeCollectionAcceptanceTest.kt",
@@ -619,8 +628,8 @@
     {
       "path": "apps/android/app/src/main/java/org/arcanum/nativehost/hope/HopeBackupActivity.kt",
       "type": "file",
-      "size_bytes": 9522,
-      "last_modified_commit": "25f948ea9",
+      "size_bytes": 9630,
+      "last_modified_commit": "1530f6a60",
       "is_empty": false,
       "extension": ".kt",
       "lines": 166
@@ -642,6 +651,15 @@
       "is_empty": false,
       "extension": ".kt",
       "lines": 85
+    },
+    {
+      "path": "apps/android/app/src/main/java/org/arcanum/nativehost/hope/HopeBackupReadFailure.kt",
+      "type": "file",
+      "size_bytes": 972,
+      "last_modified_commit": "1530f6a60",
+      "is_empty": false,
+      "extension": ".kt",
+      "lines": 12
     },
     {
       "path": "apps/android/app/src/main/java/org/arcanum/nativehost/hope/HopeCollectionCodec.kt",
@@ -993,6 +1011,15 @@
       "is_empty": false,
       "extension": ".kt",
       "lines": 83
+    },
+    {
+      "path": "apps/android/app/src/test/java/org/arcanum/nativehost/hope/HopeBackupReadFailureTest.kt",
+      "type": "file",
+      "size_bytes": 1019,
+      "last_modified_commit": "1530f6a60",
+      "is_empty": false,
+      "extension": ".kt",
+      "lines": 24
     },
     {
       "path": "apps/android/app/src/test/java/org/arcanum/nativehost/hope/HopeLocalStateCodecTest.kt",

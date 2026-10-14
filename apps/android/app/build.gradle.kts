@@ -22,6 +22,10 @@ val arcanumDevSigningConfigured =
 
 val qualificationArc = providers.gradleProperty("arcanumQualificationArc").orElse("A18").get()
 require(qualificationArc in listOf("A16", "A17", "A18", "A19"))
+// Separate app custody for physical backup qualification; never reuse participant data.
+val backupQualification = providers.gradleProperty("arcanumBackupQualification").orElse("false").get()
+require(backupQualification in listOf("false", "true"))
+require(backupQualification != "true" || qualificationArc == "A19")
 
 android {
     namespace = "org.arcanum.nativehost"
@@ -70,7 +74,7 @@ android {
     buildTypes {
         create("qualification") {
             initWith(getByName("debug"))
-            applicationIdSuffix = ".${qualificationArc.lowercase()}qualification"
+            applicationIdSuffix = if (backupQualification == "true") ".a19backupqualification" else ".${qualificationArc.lowercase()}qualification"
             versionNameSuffix = "-qualification"
             isDebuggable = true
             signingConfig = signingConfigs.getByName("debug")
