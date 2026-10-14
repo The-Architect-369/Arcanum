@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Public synthetic Hope backup v1 conformance vectors",
+  "description": "Test-vector document only. Actual encrypted backup is the fixed binary layout in hope-portable-backup-v1.md; this schema is not a wire parser or cryptographic validator.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "warning",
+    "generator",
+    "vectors"
+  ],
+  "properties": {
+    "schema": {
+      "const": "hope.backup.vectors.v1"
+    },
+    "warning": {
+      "const": "PUBLIC SYNTHETIC TEST KEY; NEVER USE FOR REAL BACKUPS"
+    },
+    "generator": {
+      "type": "string"
+    },
+    "vectors": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 16,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "plaintextBase64",
+          "fileBase64",
+          "recoveryCode"
+        ],
+        "properties": {
+          "plaintextBase64": {
+            "type": "string",
+            "contentEncoding": "base64"
+          },
+          "fileBase64": {
+            "type": "string",
+            "contentEncoding": "base64"
+          },
+          "recoveryCode": {
+            "type": "string",
+            "pattern": "^HBP1:[A-Za-z0-9_-]{43}$"
+          }
+        }
+      }
+    }
+  }
+}

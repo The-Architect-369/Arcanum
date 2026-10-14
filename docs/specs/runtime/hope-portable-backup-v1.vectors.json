@@ -1,0 +1,12 @@
+{
+  "schema": "hope.backup.vectors.v1",
+  "warning": "PUBLIC SYNTHETIC TEST KEY; NEVER USE FOR REAL BACKUPS",
+  "generator": "Python cryptography AESGCM independent of JCA",
+  "vectors": [
+    {
+      "plaintextBase64": "ICBQdWJsaWMgc3ludGhldGljIGludGVyb3BlcmFiaWxpdHkgdmVjdG9yIPCfjL8KRXhhY3QgYnl0ZXMuCQ==",
+      "fileBase64": "SE9QRUJLUCEBAAECAwQFBgcICQoLAAAAPWcihm6niat4rTLu5cWBHRnqtaddng86DlcXgPd8C2neaGTX3Nmkcewb1l8dFwuXMqshAe4u9sGjS/JZNxGTRJD+X7nSsMV6y6arHMZK",
+      "recoveryCode": "HBP1:AAECAwQFBgcICQoLDA0ODxAREhMUFRYXGBkaGxwdHh8"
+    }
+  ]
+}
