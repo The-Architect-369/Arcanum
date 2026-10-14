@@ -1,0 +1,202 @@
+{
+  "schema": "arcanum.a19.closure-evidence/v1",
+  "recorded_at": "2026-10-14T09:32:53Z",
+  "basis": "minimized transcription of retained local synthetic qualification and merge receipts",
+  "qualified_application_head": "3b228eaa09712d59241f970777cef8ab6c947e20",
+  "core_merge": "421ba13329f16c98eb7d13b28e8a9506dd2814b4",
+  "device": {
+    "model": "SM-S918U",
+    "android_api": 36,
+    "package": "org.arcanum.nativehost.a19qualification",
+    "versions": [
+      35,
+      36
+    ]
+  },
+  "phases": [
+    {
+      "phase": "verifyDeleted",
+      "receipt": "deletion-restart-verify.json",
+      "passed": true,
+      "receipt_sha256": "975b42a3e685c1d74908cb76e7a8639bebef02218c2cc20931fe31fd967a8748"
+    },
+    {
+      "phase": "seedLegacy",
+      "receipt": "seedLegacy.json",
+      "passed": true,
+      "receipt_sha256": "2d1d50f1cb63dd99659ecf4cb1658b4285516483efeb1d2737e856e2738436a2"
+    },
+    {
+      "phase": "verifyRetained",
+      "receipt": "restart-verify.json",
+      "passed": true,
+      "receipt_sha256": "c2676bcad0e27014757d5465a8695382b3803cfa0e6eecd4b12983064a2b9671"
+    },
+    {
+      "phase": "recoveryAndInterruption",
+      "receipt": "recoveryAndInterruption.json",
+      "passed": true,
+      "receipt_sha256": "ca2954f0f5711ff722958cdf478982b9a0361c87796a8eb30da68893f46a5490"
+    },
+    {
+      "phase": "deleteAndRestore",
+      "receipt": "deleteAndRestore.json",
+      "passed": true,
+      "receipt_sha256": "c1977bcf9f921402092852517ce0ca5d8ba45aa2f3b921db2aa67a112bff81c4"
+    },
+    {
+      "phase": "verifyRetained",
+      "receipt": "update-verify.json",
+      "passed": true,
+      "receipt_sha256": "dac41f838c1c125d3bcbf6ec8b0841ca487ac282f66d9c8c1f001e4872b7bcf5"
+    },
+    {
+      "phase": "migrateAndSave",
+      "receipt": "migrateAndSave.json",
+      "passed": true,
+      "receipt_sha256": "2e4d23e272fb829f07f5968a8c2e0a03266ba32fd0c6a5250f87a446b5256240"
+    },
+    {
+      "phase": "uiControlsAndPrivacy",
+      "receipt": "uiControlsAndPrivacy.json",
+      "passed": true,
+      "receipt_sha256": "be9cb687b241910a0f553da9906eae568fb71c04ccbf15397ab9bd3815b4eb6f"
+    },
+    {
+      "phase": "verifyDeleted",
+      "receipt": "deletion-update-verify.json",
+      "passed": true,
+      "receipt_sha256": "677d08878103956e9e004be257e89473e2d861ebfaa13278c3560da24a359490"
+    }
+  ],
+  "android_unit_tests": {
+    "suites": 24,
+    "tests": 107,
+    "failures": 0,
+    "errors": 0
+  },
+  "artifacts": [
+    {
+      "artifact": "a19-35.apk",
+      "sha256": "43fbf6fd8b6b08c34c896a25b8050ef45c382b61769b179b99b72b8ec4c83289",
+      "signer": "12f39cdfb3cb1bf3c86850857acccb138d08c702ccf403eeeb8226436fde3908",
+      "package": "package: name='org.arcanum.nativehost.a19qualification' versionCode='35' versionName='0.1.19-cew04-a19-qualification' platformBuildVersionName='15' platformBuildVersionCode='35' compileSdkVersion='35' compileSdkVersionCodename='15'"
+    },
+    {
+      "artifact": "a19-36.apk",
+      "sha256": "24707e9ef5801be2897b77696b664f7e1c68884d2bbdad9bcf57e15ccfca432e",
+      "signer": "12f39cdfb3cb1bf3c86850857acccb138d08c702ccf403eeeb8226436fde3908",
+      "package": "package: name='org.arcanum.nativehost.a19qualification' versionCode='36' versionName='0.1.19-cew04-a19-qualification' platformBuildVersionName='15' platformBuildVersionCode='35' compileSdkVersion='35' compileSdkVersionCodename='15'"
+    },
+    {
+      "artifact": "a19-tests.apk",
+      "sha256": "4e93242b625e881631e8dbb9dc89fd3dba91509a7dab951f66fb4ea742d9dbe0",
+      "signer": "12f39cdfb3cb1bf3c86850857acccb138d08c702ccf403eeeb8226436fde3908",
+      "package": "package: name='org.arcanum.nativehost.a19qualification.test' versionCode='' versionName='' platformBuildVersionName='15' platformBuildVersionCode='35' compileSdkVersion='35' compileSdkVersionCodename='15'"
+    }
+  ],
+  "final_local_checks": [
+    {
+      "command": "pnpm install --frozen-lockfile",
+      "exit": 0,
+      "seconds": 1.96,
+      "log": "check-0.log"
+    },
+    {
+      "command": "pnpm verify:ce-w01",
+      "exit": 0,
+      "seconds": 0.75,
+      "log": "check-1.log"
+    },
+    {
+      "command": "pnpm verify:repo-index",
+      "exit": 0,
+      "seconds": 45.69,
+      "log": "check-2.log"
+    },
+    {
+      "command": "bash scripts/verify-sync.sh",
+      "exit": 0,
+      "seconds": 70.46,
+      "log": "check-3.log"
+    },
+    {
+      "command": "pnpm lint",
+      "exit": 0,
+      "seconds": 3.27,
+      "log": "check-4.log"
+    },
+    {
+      "command": "pnpm typecheck",
+      "exit": 0,
+      "seconds": 3.47,
+      "log": "check-5.log"
+    },
+    {
+      "command": "pnpm build",
+      "exit": 0,
+      "seconds": 33.7,
+      "log": "check-6.log"
+    },
+    {
+      "command": "git diff --check main...HEAD",
+      "exit": 0,
+      "seconds": 0.01,
+      "log": "check-7.log"
+    },
+    {
+      "command": "cargo fmt --manifest-path runtime/arcanum-runtime/Cargo.toml --all -- --check",
+      "exit": 0,
+      "seconds": 0.12,
+      "log": "check-8.log"
+    },
+    {
+      "command": "cargo clippy --manifest-path runtime/arcanum-runtime/Cargo.toml --all-targets --all-features --locked --offline -- -D warnings",
+      "exit": 0,
+      "seconds": 0.18,
+      "log": "check-9.log"
+    },
+    {
+      "command": "cargo test --manifest-path runtime/arcanum-runtime/Cargo.toml --locked --offline",
+      "exit": 0,
+      "seconds": 1.61,
+      "log": "check-10.log"
+    },
+    {
+      "command": "python3 scripts/verify-ce-w03-reflection.py",
+      "exit": 0,
+      "seconds": 0.03,
+      "log": "check-11.log"
+    },
+    {
+      "command": "python3 scripts/verify-ce-w04-architect-observer.py",
+      "exit": 0,
+      "seconds": 0.03,
+      "log": "check-12.log"
+    }
+  ],
+  "receipt_digests": [
+    {
+      "local_archive_relative_path": "device-migration/device-results.json",
+      "sha256": "a5f84ae319d8c3ff2ccc980095539d0b01c775e09deb0db367f100d8cc3b52b5"
+    },
+    {
+      "local_archive_relative_path": "device-migration/android-unit-summary.json",
+      "sha256": "fd30107360d69541a776f7ef757f27e24f7bc9bc613c383301481000820f4843"
+    },
+    {
+      "local_archive_relative_path": "apprentice-merge/receipt.json",
+      "sha256": "f7c4e601ffb53007b1cde161d6c2f5068cff9b7f52ce3eb3b4ca50491d53bca0"
+    },
+    {
+      "local_archive_relative_path": "apprentice-merge/premerge-ci.json",
+      "sha256": "e44ec650d63e9eb2959726a7961a8f89653214076a86b7084c414190bb1d3e29"
+    },
+    {
+      "local_archive_relative_path": "apprentice-merge/checks.json",
+      "sha256": "e25c97c09389508e3b3d59541df8d5bea6689760baf92de1611757eabd52b889"
+    }
+  ],
+  "portable_backup_manual_roundtrip": "not_passed_deferred",
+  "privacy": "synthetic-only summaries; no device serial, key, recovery code, or reflection content"
+}
