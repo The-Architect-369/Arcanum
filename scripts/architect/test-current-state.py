@@ -15,7 +15,29 @@ spec.loader.exec_module(m)
 
 class ProjectionTests(unittest.TestCase):
     def setUp(self):
-        self.seed = json.loads((m.ROOT / m.INPUT).read_text())
+        self.live_seed = json.loads((m.ROOT / m.INPUT).read_text())
+        # Existing selection/precedence fixtures exercise the pre-closure snapshot.
+        # The live A19 transition has its own assertions below.
+        self.seed = copy.deepcopy(self.live_seed)
+        self.seed['objects'] = [o for o in self.seed['objects']
+                                if not o['object_id'].endswith(':20261014-a19-closure')]
+
+    def test_a19_core_closure_preserves_backup_gap_and_history(self):
+        result = m.derive(self.live_seed)
+        self.assertEqual(result['coverage'], 'bounded-seed-only')
+        for field in ['canonical_base', 'completed_arc', 'next_arc', 'following_arc',
+                      'a19_baseline', 'implementation_gate']:
+            self.assertEqual(result['fields'][field]['selected_object_ids'],
+                             ['coherence:' + field + ':20261014-a19-closure'])
+        self.assertIn('not passed', result['fields']['completed_arc']['value'])
+        self.assertIn('PR101', result['fields']['implementation_gate']['value'])
+        self.assertIn('CE-W04 remains open', result['fields']['following_arc']['value'])
+        self.assertIn('No A20 execution', result['fields']['next_arc']['value'])
+        self.assertTrue({o['object_id'] for o in self.seed['objects']} <=
+                        {o['object_id'] for o in result['objects']})
+        for field in ['wave', 'continuity_epoch', 'continuity_gaps', 'a20_baseline',
+                      'hope_extensions', 'spatial_extensions', 'agent_c_state']:
+            self.assertEqual(result['fields'][field], m.derive(self.seed)['fields'][field])
 
     def evidence(self, field='completed_arc'):
         return next(o for o in self.seed['objects'] if o['object_id'] == 'coherence:' + field)

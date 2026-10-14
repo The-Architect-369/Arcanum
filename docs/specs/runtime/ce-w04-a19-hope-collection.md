@@ -64,3 +64,16 @@ Limits: 10,000 retained entries and 16 MiB encoded plaintext, including encrypte
 ## Isolated device qualification
 
 A19 qualification uses `org.arcanum.nativehost.a19qualification`, versions 35 and 36 signed by the same development certificate. Production package/version defaults are unchanged. The phased `HopeCollectionAcceptanceTest` operates only in that package and a dedicated synthetic subtree/key namespace. Seed, migration, restart verification, compatible update verification, active/archive deletion, and interruption/recovery tests are selected explicitly; setup phases refuse to overwrite existing fixtures. Do not run every phase indiscriminately or clear application data. Real personal-phone migration is separate from synthetic qualification.
+
+
+## October 14 closure reconciliation
+
+The first-tranche status and future-work language above describe their original
+implementation stages. A19 local collection, protected storage, migration and S23
+acceptance were subsequently completed and adopted in PR98. See the
+[bounded closure review](../../evidence/ce-w04-a19-closure-20261014/closure-review.md)
+for exact source lineage, recorded tests and retained limits. Canonical closure
+takes effect on adoption of that review. Portable backup is a separately approved
+follow-on: its format/controls are merged, while manual two-phone restore/recall
+remains not passed and deferred. This is no private-vault migration, A20 implementation
+or CE-W04 closure claim.

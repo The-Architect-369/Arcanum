@@ -357,3 +357,19 @@ navigation model and geometry-free equivalence, Home/Back/focus/escape and priva
 Public orbit publication is a design reference, not native A20 acceptance.
 Following gate: integrated CE-W04 evidence review. CE-W04 remains OPEN;
 CE-W05 remains separately gated.
+
+
+## October 14 A19 core closure reconciliation
+
+The October8 Ready/Blocked statements above remain historical. A19's accepted
+local collection, temporal recall, protected storage and migration are complete,
+Human-accepted on S23 and implemented on main through PR98. The
+[closure review](../evidence/ce-w04-a19-closure-20261014/closure-review.md) establishes
+bounded closure upon its adoption and preserves synthetic qualification limits.
+A20's A19 predecessor is satisfied; A20 still requires its own exact-scope review
+and acceptance. No navigation implementation or automatic wave closure is implied.
+
+Portable backup was a separately approved follow-on. PR99/100 are merged; manual
+two-phone restore/recall is not passed and deferred. PR101 remains separately open
+at this observation; this reconciliation does not waive its missing gate. Account
+linking/device transfer remains proposed. CE-W04 stays OPEN and CE-W05 separately gated.

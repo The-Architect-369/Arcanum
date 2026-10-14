@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-10-14T08:11:14Z",
+  "generated_at": "2026-10-14T09:35:20Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "64891d919",
+  "commit": "922a2f378",
   "generator_version": "1.5",
   "files": [
     {
@@ -5054,6 +5054,24 @@
       "lines": 350
     },
     {
+      "path": "docs/evidence/ce-w04-a19-closure-20261014/closure-review.md",
+      "type": "file",
+      "size_bytes": 6435,
+      "last_modified_commit": "922a2f378",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 94
+    },
+    {
+      "path": "docs/evidence/ce-w04-a19-closure-20261014/evidence-manifest.json",
+      "type": "file",
+      "size_bytes": 6760,
+      "last_modified_commit": "922a2f378",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 202
+    },
+    {
       "path": "docs/evidence/continuity-schema-adoption-20260930/review.md",
       "type": "file",
       "size_bytes": 2662,
@@ -5146,11 +5164,11 @@
     {
       "path": "docs/governance/architectgpt/architect-log.md",
       "type": "file",
-      "size_bytes": 28671,
-      "last_modified_commit": "c614a3b51",
+      "size_bytes": 29885,
+      "last_modified_commit": "922a2f378",
       "is_empty": false,
       "extension": ".md",
-      "lines": 421
+      "lines": 439
     },
     {
       "path": "docs/governance/architectgpt/architect-proposal-envelope.schema.json",
@@ -5182,20 +5200,20 @@
     {
       "path": "docs/governance/architectgpt/coherence-chronicle.md",
       "type": "file",
-      "size_bytes": 12944,
-      "last_modified_commit": "c614a3b51",
+      "size_bytes": 17256,
+      "last_modified_commit": "922a2f378",
       "is_empty": false,
       "extension": ".md",
-      "lines": 199
+      "lines": 268
     },
     {
       "path": "docs/governance/architectgpt/coherence/objects.json",
       "type": "file",
-      "size_bytes": 140637,
-      "last_modified_commit": "c614a3b51",
+      "size_bytes": 164845,
+      "last_modified_commit": "922a2f378",
       "is_empty": false,
       "extension": ".json",
-      "lines": 3901
+      "lines": 4535
     },
     {
       "path": "docs/governance/architectgpt/continuity-epoch.json",
@@ -5290,29 +5308,29 @@
     {
       "path": "docs/governance/architectgpt/current-state-profile.md",
       "type": "file",
-      "size_bytes": 22961,
-      "last_modified_commit": "c614a3b51",
+      "size_bytes": 25033,
+      "last_modified_commit": "922a2f378",
       "is_empty": false,
       "extension": ".md",
-      "lines": 342
+      "lines": 374
     },
     {
       "path": "docs/governance/architectgpt/current-state.json",
       "type": "file",
-      "size_bytes": 151073,
-      "last_modified_commit": "c614a3b51",
+      "size_bytes": 176227,
+      "last_modified_commit": "922a2f378",
       "is_empty": false,
       "extension": ".json",
-      "lines": 4151
+      "lines": 4798
     },
     {
       "path": "docs/governance/architectgpt/current-state.md",
       "type": "file",
-      "size_bytes": 27861,
-      "last_modified_commit": "c614a3b51",
+      "size_bytes": 32325,
+      "last_modified_commit": "922a2f378",
       "is_empty": false,
       "extension": ".md",
-      "lines": 251
+      "lines": 281
     },
     {
       "path": "docs/governance/architectgpt/current-state.schema.json",
@@ -5668,11 +5686,11 @@
     {
       "path": "docs/roadmap/construction-era-arc-ledger.md",
       "type": "file",
-      "size_bytes": 23058,
-      "last_modified_commit": "3df9ab097",
+      "size_bytes": 23999,
+      "last_modified_commit": "922a2f378",
       "is_empty": false,
       "extension": ".md",
-      "lines": 359
+      "lines": 375
     },
     {
       "path": "docs/roadmap/construction-era-roadmap.md",
@@ -6667,11 +6685,11 @@
     {
       "path": "docs/specs/runtime/ce-w04-a19-hope-collection.md",
       "type": "file",
-      "size_bytes": 11786,
-      "last_modified_commit": "81ddbb9c4",
+      "size_bytes": 12499,
+      "last_modified_commit": "922a2f378",
       "is_empty": false,
       "extension": ".md",
-      "lines": 66
+      "lines": 79
     },
     {
       "path": "docs/specs/runtime/ce-w04-a19-hope-collection.schema.json",
@@ -9349,11 +9367,11 @@
     {
       "path": "scripts/architect/test-current-state.py",
       "type": "file",
-      "size_bytes": 12778,
-      "last_modified_commit": "c614a3b51",
+      "size_bytes": 14349,
+      "last_modified_commit": "922a2f378",
       "is_empty": false,
       "extension": ".py",
-      "lines": 236
+      "lines": 258
     },
     {
       "path": "scripts/architect/test-impact-graph.sh",
