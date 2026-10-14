@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-10-14T06:25:45Z",
+  "generated_at": "2026-10-14T07:09:44Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "81ddbb9c4",
+  "commit": "0ae598740",
   "generator_version": "1.5",
   "files": [
     {
@@ -70,20 +70,20 @@
     {
       "path": ".github/workflows/verify-ce-w03-integrated.yml",
       "type": "file",
-      "size_bytes": 8553,
-      "last_modified_commit": "4cd597306",
+      "size_bytes": 8637,
+      "last_modified_commit": "0ae598740",
       "is_empty": false,
       "extension": ".yml",
-      "lines": 213
+      "lines": 214
     },
     {
       "path": ".github/workflows/verify-ce-w03-native-hope.yml",
       "type": "file",
-      "size_bytes": 5954,
-      "last_modified_commit": "723639630",
+      "size_bytes": 6075,
+      "last_modified_commit": "0ae598740",
       "is_empty": false,
       "extension": ".yml",
-      "lines": 142
+      "lines": 145
     },
     {
       "path": ".github/workflows/verify-ce-w03.yml",
@@ -9655,11 +9655,11 @@
     {
       "path": "scripts/verify-ce-w03-reflection.py",
       "type": "file",
-      "size_bytes": 7864,
-      "last_modified_commit": "d2b36d90c",
+      "size_bytes": 8159,
+      "last_modified_commit": "0ae598740",
       "is_empty": false,
       "extension": ".py",
-      "lines": 104
+      "lines": 106
     },
     {
       "path": "scripts/verify-ce-w03.py",
@@ -9736,8 +9736,8 @@
     {
       "path": "scripts/verify-ce-w04-architect-observer.py",
       "type": "file",
-      "size_bytes": 15443,
-      "last_modified_commit": "63fb07ffa",
+      "size_bytes": 15458,
+      "last_modified_commit": "0ae598740",
       "is_empty": false,
       "extension": ".py",
       "lines": 272
