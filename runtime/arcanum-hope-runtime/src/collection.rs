@@ -38,6 +38,8 @@ pub enum CollectionError {
     NotFound,
     StaleDeletion,
     CounterExhausted,
+    InvalidSnapshot,
+    UnsupportedVersion,
 }
 
 impl fmt::Display for CollectionError {
@@ -51,6 +53,8 @@ impl fmt::Display for CollectionError {
             Self::InvalidCapacity => "Hope collection capacity must be positive",
             Self::NotFound => "Hope entry unavailable in selected view",
             Self::StaleDeletion => "Hope deletion selection is no longer current",
+            Self::InvalidSnapshot => "Invalid Hope collection snapshot",
+            Self::UnsupportedVersion => "Unsupported Hope collection version",
             Self::CounterExhausted => "Hope collection counter exhausted",
         })
     }
@@ -386,6 +390,177 @@ fn parse_instant(text: &str) -> Result<InstantKey, CollectionError> {
         seconds: days * 86400 + hour * 3600 + minute * 60 + second - offset,
         nanos,
     })
+}
+
+// JSON is parsed only at this private persistence boundary. Decoder errors are redacted.
+impl HopeCollection {
+    pub fn save_exact_json(&mut self, raw: &str) -> Result<(), CollectionError> {
+        use crate::HopeTempusProvenance;
+        let v: serde_json::Value =
+            serde_json::from_str(raw).map_err(|_| CollectionError::InvalidSnapshot)?;
+        let text = |key| {
+            v.get(key)
+                .and_then(|x| x.as_str())
+                .ok_or(CollectionError::InvalidSnapshot)
+        };
+        let optional = |key| match v.get(key) {
+            None => Ok(None),
+            Some(x) => x.as_str().map(Some).ok_or(CollectionError::InvalidSnapshot),
+        };
+        let tempus = if let Some(context) = v.get("context") {
+            let t = context
+                .get("tempus")
+                .ok_or(CollectionError::InvalidSnapshot)?;
+            let field = |k| {
+                t.get(k)
+                    .and_then(|x| x.as_str())
+                    .ok_or(CollectionError::InvalidSnapshot)
+            };
+            Some(HopeTempusProvenance {
+                anchor_id: field("anchorId")?,
+                captured_at: field("capturedAt")?,
+                source_kind: field("sourceKind")?,
+            })
+        } else {
+            None
+        };
+        let input = HopeReflectionInput {
+            id: text("id")?,
+            created_at: text("createdAt")?,
+            prompt: optional("prompt")?,
+            user_text: text("userText")?,
+            hope_text: optional("hopeText")?,
+            tempus,
+        };
+        let expected = canonical_reflection(input).map_err(CollectionError::InvalidRecord)?;
+        let canonical: serde_json::Value =
+            serde_json::from_str(&expected).map_err(|_| CollectionError::InvalidSnapshot)?;
+        if v != canonical {
+            return Err(CollectionError::InvalidSnapshot);
+        }
+        self.save(input)?;
+        // Validate semantically, retain the exact historical bytes and receipt binding.
+        raw.clone_into(
+            &mut self
+                .entries
+                .get_mut(input.id)
+                .ok_or(CollectionError::InvalidSnapshot)?
+                .reflection_json,
+        );
+        Ok(())
+    }
+
+    pub fn from_private_snapshot(raw: &str, max_entries: usize) -> Result<Self, CollectionError> {
+        use serde_json::Value;
+        let v: Value = serde_json::from_str(raw).map_err(|_| CollectionError::InvalidSnapshot)?;
+        let bad = CollectionError::InvalidSnapshot;
+        if v.get("version").and_then(Value::as_str) != Some(COLLECTION_VERSION) {
+            return Err(CollectionError::UnsupportedVersion);
+        }
+        if v.as_object().ok_or(bad.clone())?.len() != 4 {
+            return Err(bad);
+        }
+        fn counter(v: &Value) -> Result<u64, CollectionError> {
+            let text = v.as_str().ok_or(CollectionError::InvalidSnapshot)?;
+            let n: u64 = text.parse().map_err(|_| CollectionError::InvalidSnapshot)?;
+            if n.to_string() != text {
+                return Err(CollectionError::InvalidSnapshot);
+            }
+            Ok(n)
+        }
+        let next = counter(&v["nextSequence"])?;
+        let mut result = Self::new(max_entries)?;
+        let mut sequences = BTreeSet::new();
+        for entry in v["entries"].as_array().ok_or(bad.clone())? {
+            if entry.as_object().ok_or(bad.clone())?.len() != 5 {
+                return Err(bad);
+            }
+            let raw = entry["reflectionJson"].as_str().ok_or(bad.clone())?;
+            result.save_exact_json(raw)?;
+            let id = entry["id"].as_str().ok_or(bad.clone())?;
+            let parsed: Value = serde_json::from_str(raw).map_err(|_| bad.clone())?;
+            if parsed["id"].as_str() != Some(id) {
+                return Err(bad);
+            }
+            let record = result.entries.get_mut(id).ok_or(bad.clone())?;
+            if record.created_at != entry["createdAt"].as_str().ok_or(bad.clone())? {
+                return Err(bad);
+            }
+            let sequence = counter(&entry["sequence"])?;
+            if sequence >= next || !sequences.insert(sequence) {
+                return Err(bad);
+            }
+            record.sequence = sequence;
+            record.state = match entry["state"].as_str() {
+                Some("active") => EntryState::Active,
+                Some("archived") => EntryState::Archived,
+                _ => return Err(bad),
+            };
+        }
+        for value in v["retiredIds"].as_array().ok_or(bad.clone())? {
+            let id = value.as_str().ok_or(bad.clone())?;
+            if id.trim().is_empty()
+                || result.entries.contains_key(id)
+                || !result.retired_ids.insert(id.to_owned())
+            {
+                return Err(bad);
+            }
+        }
+        result.next_sequence = next;
+        Ok(result)
+    }
+
+    /// Stateless JNI boundary. Host binds confirmed deletion to the committed revision.
+    pub fn private_command(
+        snapshot: &str,
+        operation: &str,
+        argument: &str,
+    ) -> Result<String, CollectionError> {
+        let mut collection = if operation == "new" {
+            if !snapshot.is_empty() || !argument.is_empty() {
+                return Err(CollectionError::InvalidSnapshot);
+            }
+            Self::new(10_000)?
+        } else {
+            Self::from_private_snapshot(snapshot, 10_000)?
+        };
+        match operation {
+            "new" | "validate" => (),
+            "save" => collection.save_exact_json(argument)?,
+            "archive" => {
+                collection.archive(argument)?;
+            }
+            "restore" => {
+                collection.restore(argument)?;
+            }
+            "delete-active" | "delete-archived" => {
+                let state = if operation == "delete-active" {
+                    EntryState::Active
+                } else {
+                    EntryState::Archived
+                };
+                let selection = collection.prepare_delete(argument, state)?;
+                collection.delete(selection, DeleteDecision::Confirm)?;
+            }
+            "browse" | "browse-archived" => {
+                let entries = if operation == "browse" {
+                    collection.browse()
+                } else {
+                    collection.browse_archived()
+                };
+                return Ok(format!(
+                    "[{}]",
+                    entries
+                        .iter()
+                        .map(|e| json_string(e.id()))
+                        .collect::<Vec<_>>()
+                        .join(",")
+                ));
+            }
+            _ => return Err(CollectionError::InvalidSnapshot),
+        }
+        Ok(collection.private_snapshot_json())
+    }
 }
 
 #[cfg(test)]

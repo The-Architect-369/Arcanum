@@ -330,3 +330,78 @@ fn schema_fixture_is_explicitly_synthetic() {
     // Only this synthetic fixture is emitted for external JSON/schema validation.
     println!("A19_SYNTHETIC_SNAPSHOT={snapshot}");
 }
+
+#[test]
+fn persistence_preserves_exact_json_receipts_order_and_tombstones() {
+    use arcanum_hope_runtime::collection::HopeCollection;
+    let mut state = HopeCollection::new(10).unwrap();
+    let raw =
+        arcanum_hope_runtime::canonical_reflection(arcanum_hope_runtime::HopeReflectionInput {
+            id: "synthetic-migration",
+            created_at: "2026-10-12T12:00:00Z",
+            prompt: None,
+            user_text: "synthetic exact text\n",
+            hope_text: None,
+            tempus: None,
+        })
+        .unwrap();
+    let historical = format!("  {raw}\n");
+    state.save_exact_json(&historical).unwrap();
+    state.archive("synthetic-migration").unwrap();
+    let mut reopened =
+        HopeCollection::from_private_snapshot(&state.private_snapshot_json(), 10).unwrap();
+    assert_eq!(reopened.browse_archived()[0].reflection_json(), historical);
+    let ticket = reopened
+        .prepare_delete(
+            "synthetic-migration",
+            arcanum_hope_runtime::collection::EntryState::Archived,
+        )
+        .unwrap();
+    reopened
+        .delete(
+            ticket,
+            arcanum_hope_runtime::collection::DeleteDecision::Confirm,
+        )
+        .unwrap();
+    let mut reopened =
+        HopeCollection::from_private_snapshot(&reopened.private_snapshot_json(), 10).unwrap();
+    assert!(reopened.save_exact_json(&historical).is_err());
+    assert!(reopened.browse().is_empty());
+    assert!(reopened.browse_archived().is_empty());
+}
+
+#[test]
+fn malformed_snapshot_bindings_versions_and_policy_are_rejected() {
+    use arcanum_hope_runtime::collection::HopeCollection;
+    let raw =
+        arcanum_hope_runtime::canonical_reflection(arcanum_hope_runtime::HopeReflectionInput {
+            id: "synthetic",
+            created_at: "2026-10-12T12:00:00Z",
+            prompt: None,
+            user_text: "synthetic",
+            hope_text: None,
+            tempus: None,
+        })
+        .unwrap();
+    let mut state = HopeCollection::new(10).unwrap();
+    state.save_exact_json(&raw).unwrap();
+    let snapshot = state.private_snapshot_json();
+    let source: serde_json::Value = serde_json::from_str(&snapshot).unwrap();
+    for field in ["id", "createdAt", "sequence", "state", "reflectionJson"] {
+        let mut v = source.clone();
+        v["entries"][0][field] = serde_json::json!("invalid");
+        assert!(HopeCollection::from_private_snapshot(&v.to_string(), 10).is_err());
+    }
+    for field in ["nextSequence", "version", "retiredIds", "entries"] {
+        let mut v = source.clone();
+        v[field] = serde_json::json!("invalid");
+        assert!(HopeCollection::from_private_snapshot(&v.to_string(), 10).is_err());
+    }
+    let mut v = source.clone();
+    v["retiredIds"] = serde_json::json!(["synthetic"]);
+    assert!(HopeCollection::from_private_snapshot(&v.to_string(), 10).is_err());
+    assert!(state
+        .save_exact_json(&raw.replace("advisory_only", "authority"))
+        .is_err());
+    assert_eq!(state.private_snapshot_json(), snapshot);
+}

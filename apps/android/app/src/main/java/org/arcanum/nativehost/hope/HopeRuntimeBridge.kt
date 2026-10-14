@@ -53,6 +53,11 @@ object HopeRuntimeBridge {
         System.loadLibrary("arcanum_android_hope_jni")
     }
 
+    private external fun nativeCollection(snapshot: String, operation: String, argument: String): String
+
+    fun collection(snapshot: String, operation: String, argument: String = ""): String =
+        nativeCollection(snapshot, operation, argument)
+
     private external fun nativeContract(): String
 
     private external fun nativeBuildReflection(

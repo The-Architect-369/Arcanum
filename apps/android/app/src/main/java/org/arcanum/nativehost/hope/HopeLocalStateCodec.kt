@@ -17,6 +17,8 @@ data class HopeLocalReceipt(
     val authorityEffect: String = "none",
     val privateBodyIncluded: Boolean = false,
 ) {
+    override fun toString(): String = "HopeLocalReceipt([private])"
+
     init {
         require(receiptId.isNotBlank())
         require(reflectionId.isNotBlank())
@@ -66,7 +68,7 @@ data class HopeLocalReceipt(
 data class HopeLocalState(
     val reflectionJson: String,
     val receipt: HopeLocalReceipt,
-)
+) { override fun toString(): String = "HopeLocalState([private])" }
 
 object HopeLocalStateCodec {
     private const val STATE_VERSION = 1

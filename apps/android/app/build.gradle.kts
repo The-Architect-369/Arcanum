@@ -21,7 +21,7 @@ val arcanumDevSigningConfigured =
     ).all { it.isPresent }
 
 val qualificationArc = providers.gradleProperty("arcanumQualificationArc").orElse("A18").get()
-require(qualificationArc in listOf("A16", "A17", "A18"))
+require(qualificationArc in listOf("A16", "A17", "A18", "A19"))
 
 android {
     namespace = "org.arcanum.nativehost"
@@ -36,9 +36,9 @@ android {
         targetSdk = 35
         versionCode = 33
         providers.gradleProperty("arcanumQualificationVersionCode").orNull?.let { value ->
-            versionCode = value.toInt().also { require(it in when (qualificationArc) { "A16" -> listOf(26, 27); "A17" -> listOf(28, 29); else -> listOf(30, 31, 32, 33, 34) }) }
+            versionCode = value.toInt().also { require(it in when (qualificationArc) { "A16" -> listOf(26, 27); "A17" -> listOf(28, 29); "A19" -> listOf(35, 36); else -> listOf(30, 31, 32, 33, 34) }) }
         }
-        versionName = when (qualificationArc) { "A16" -> "0.1.16-cew04-a16"; "A17" -> "0.1.17-cew04-a17"; else -> "0.1.18-cew04-a18" }
+        versionName = when (qualificationArc) { "A16" -> "0.1.16-cew04-a16"; "A17" -> "0.1.17-cew04-a17"; "A19" -> "0.1.19-cew04-a19"; else -> "0.1.18-cew04-a18" }
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         buildConfigField(
             "String",

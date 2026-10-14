@@ -5,6 +5,8 @@ import java.io.FileOutputStream
 import java.io.IOException
 import java.nio.ByteBuffer
 import java.nio.charset.StandardCharsets
+import java.nio.channels.FileChannel
+import java.nio.file.StandardOpenOption
 import java.nio.file.Files
 import java.nio.file.StandardCopyOption
 import java.security.GeneralSecurityException
@@ -14,10 +16,14 @@ import javax.crypto.SecretKey
 import javax.crypto.spec.GCMParameterSpec
 
 fun interface HopeSecretKeyProvider {
-    fun getOrCreate(): SecretKey
+    fun getExisting(): SecretKey?
+    fun getOrCreate(): SecretKey = getExisting() ?: throw HopeKeyUnavailableException()
 }
 
 open class HopeStoreException(message: String, cause: Throwable? = null) : Exception(message, cause)
+
+class HopeKeyUnavailableException : HopeStoreException("Hope key unavailable; existing data preserved")
+class HopeUnsupportedVersionException : HopeStoreException("Hope format version unsupported")
 
 class HopeStateMissingException(message: String) : HopeStoreException(message)
 
@@ -31,8 +37,10 @@ class HopeProtectedStore(
     private val rootDir: File,
     private val keyProvider: HopeSecretKeyProvider,
     private val contract: HopeRuntimeContract,
+    private val relativePath: String = contract.storageRelativePath,
 ) {
     init {
+        require(relativePath in listOf("hope/reflections.v0.1.enc", "hope/collection.v0.1.enc"))
         require(contract.namespace == "hope")
         require(contract.recordVersion == "hope.reflection.v0.1")
         require(contract.storageRelativePath == "hope/reflections.v0.1.enc")
@@ -43,7 +51,7 @@ class HopeProtectedStore(
     }
 
     private val targetFile: File
-        get() = File(rootDir, contract.storageRelativePath)
+        get() = File(rootDir, relativePath)
 
     fun persistExact(plaintext: ByteArray) {
         require(plaintext.isNotEmpty()) { "Hope protected state must not be empty" }
@@ -52,7 +60,7 @@ class HopeProtectedStore(
             throw HopeStatePersistenceException("Hope storage directory could not be created")
         }
 
-        val key = keyProvider.getOrCreate()
+        val key = if (targetFile.exists()) existingKey() else keyProvider.getOrCreate()
         val encrypted =
             try {
                 Cipher.getInstance(CIPHER).run {
@@ -101,6 +109,7 @@ class HopeProtectedStore(
                 StandardCopyOption.ATOMIC_MOVE,
                 StandardCopyOption.REPLACE_EXISTING,
             )
+            syncDirectory(parent)
         } catch (error: IOException) {
             throw HopeStatePersistenceException("Hope atomic persistence failed", error)
         } finally {
@@ -114,6 +123,7 @@ class HopeProtectedStore(
         if (!targetFile.isFile) {
             throw HopeStateMissingException("Hope protected state is missing")
         }
+        if (targetFile.length() > 17L * 1024 * 1024) throw HopeStateCorruptException("Hope envelope exceeds supported size")
         val envelope =
             try {
                 targetFile.readBytes()
@@ -131,7 +141,7 @@ class HopeProtectedStore(
         }
         val version = buffer.get().toInt() and 0xff
         if (version != VERSION) {
-            throw HopeStateCorruptException("Hope protected state version is unsupported")
+            throw HopeUnsupportedVersionException()
         }
         val ivLength = buffer.get().toInt() and 0xff
         if (ivLength != IV_LENGTH) {
@@ -144,7 +154,7 @@ class HopeProtectedStore(
 
         val iv = ByteArray(ivLength).also { bytes -> buffer.get(bytes) }
         val ciphertext = ByteArray(ciphertextLength).also { bytes -> buffer.get(bytes) }
-        val key = keyProvider.getOrCreate()
+        val key = existingKey()
         return try {
             Cipher.getInstance(CIPHER).run {
                 init(Cipher.DECRYPT_MODE, key, GCMParameterSpec(TAG_BITS, iv))
@@ -154,12 +164,16 @@ class HopeProtectedStore(
         } catch (error: AEADBadTagException) {
             throw HopeStateCorruptException("Hope protected state authentication failed", error)
         } catch (error: GeneralSecurityException) {
-            throw HopeStateCorruptException("Hope protected state decryption failed", error)
+            throw HopeKeyUnavailableException()
         }
     }
 
+    private fun existingKey(): SecretKey = try {
+        keyProvider.getExisting() ?: throw HopeKeyUnavailableException()
+    } catch (_: GeneralSecurityException) { throw HopeKeyUnavailableException() }
+
     private fun aad(): ByteArray =
-        "namespace=${contract.namespace}|record=${contract.recordVersion}|path=${contract.storageRelativePath}"
+        "namespace=${contract.namespace}|record=${contract.recordVersion}|path=$relativePath"
             .toByteArray(StandardCharsets.UTF_8)
 
     private data class EncryptedPayload(
@@ -176,4 +190,8 @@ class HopeProtectedStore(
         private const val HEADER_LENGTH = 8 + 1 + 1 + 4
         private const val CIPHER = "AES/GCM/NoPadding"
     }
+}
+
+internal fun syncDirectory(directory: File) {
+    FileChannel.open(directory.toPath(), StandardOpenOption.READ).use { it.force(true) }
 }

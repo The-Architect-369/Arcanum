@@ -9,16 +9,12 @@ import javax.crypto.SecretKey
 class AndroidHopeKeyManager(
     private val alias: String = DEFAULT_ALIAS,
 ) : HopeSecretKeyProvider {
-    override fun getOrCreate(): SecretKey {
-        val keyStore =
-            KeyStore.getInstance(KEYSTORE_PROVIDER).apply {
-                load(null)
-            }
-        val existing = keyStore.getKey(alias, null)
-        if (existing is SecretKey) {
-            return existing
-        }
+    override fun getExisting(): SecretKey? = try {
+        KeyStore.getInstance(KEYSTORE_PROVIDER).apply { load(null) }.getKey(alias, null) as? SecretKey
+    } catch (_: Exception) { throw HopeKeyUnavailableException() }
 
+    override fun getOrCreate(): SecretKey {
+        getExisting()?.let { return it }
         val generator = KeyGenerator.getInstance(KeyProperties.KEY_ALGORITHM_AES, KEYSTORE_PROVIDER)
         val specification =
             KeyGenParameterSpec.Builder(
