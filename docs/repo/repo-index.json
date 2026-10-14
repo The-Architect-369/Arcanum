@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-10-14T07:09:44Z",
+  "generated_at": "2026-10-14T07:31:45Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "0ae598740",
+  "commit": "fc6e336fb",
   "generator_version": "1.5",
   "files": [
     {
@@ -264,6 +264,15 @@
       "is_empty": false,
       "extension": ".kt",
       "lines": 111
+    },
+    {
+      "path": "apps/android/app/src/androidTest/java/org/arcanum/nativehost/hope/HopeBackupFormatAcceptanceTest.kt",
+      "type": "file",
+      "size_bytes": 1647,
+      "last_modified_commit": "fc6e336fb",
+      "is_empty": false,
+      "extension": ".kt",
+      "lines": 26
     },
     {
       "path": "apps/android/app/src/androidTest/java/org/arcanum/nativehost/hope/HopeCollectionAcceptanceTest.kt",
@@ -599,6 +608,15 @@
       "lines": 37
     },
     {
+      "path": "apps/android/app/src/main/java/org/arcanum/nativehost/hope/HopeBackupFormat.kt",
+      "type": "file",
+      "size_bytes": 3603,
+      "last_modified_commit": "fc6e336fb",
+      "is_empty": false,
+      "extension": ".kt",
+      "lines": 68
+    },
+    {
       "path": "apps/android/app/src/main/java/org/arcanum/nativehost/hope/HopeCollectionCodec.kt",
       "type": "file",
       "size_bytes": 3011,
@@ -930,6 +948,15 @@
       "is_empty": false,
       "extension": ".kt",
       "lines": 80
+    },
+    {
+      "path": "apps/android/app/src/test/java/org/arcanum/nativehost/hope/HopeBackupFormatTest.kt",
+      "type": "file",
+      "size_bytes": 4187,
+      "last_modified_commit": "fc6e336fb",
+      "is_empty": false,
+      "extension": ".kt",
+      "lines": 83
     },
     {
       "path": "apps/android/app/src/test/java/org/arcanum/nativehost/hope/HopeLocalStateCodecTest.kt",
@@ -6816,6 +6843,33 @@
       "is_empty": false,
       "extension": ".sha256",
       "lines": 1
+    },
+    {
+      "path": "docs/specs/runtime/hope-portable-backup-v1.md",
+      "type": "file",
+      "size_bytes": 5569,
+      "last_modified_commit": "fc6e336fb",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 95
+    },
+    {
+      "path": "docs/specs/runtime/hope-portable-backup-v1.schema.json",
+      "type": "file",
+      "size_bytes": 1351,
+      "last_modified_commit": "fc6e336fb",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 52
+    },
+    {
+      "path": "docs/specs/runtime/hope-portable-backup-v1.vectors.json",
+      "type": "file",
+      "size_bytes": 553,
+      "last_modified_commit": "fc6e336fb",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 12
     },
     {
       "path": "docs/specs/runtime/local-runtime-boundary.md",
