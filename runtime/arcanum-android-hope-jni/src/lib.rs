@@ -124,3 +124,30 @@ pub extern "system" fn Java_org_arcanum_nativehost_hope_HopeRuntimeBridge_native
         ),
     }
 }
+
+#[unsafe(no_mangle)]
+pub extern "system" fn Java_org_arcanum_nativehost_hope_HopeRuntimeBridge_nativeCollection(
+    mut env: JNIEnv<'_>,
+    _class: JClass<'_>,
+    snapshot: JString<'_>,
+    operation: JString<'_>,
+    argument: JString<'_>,
+) -> jstring {
+    let result = (|| {
+        let snapshot = read_string(&mut env, &snapshot).map_err(|_| "Hope input unavailable")?;
+        let operation = read_string(&mut env, &operation).map_err(|_| "Hope input unavailable")?;
+        let argument = read_string(&mut env, &argument).map_err(|_| "Hope input unavailable")?;
+        arcanum_hope_runtime::collection::HopeCollection::private_command(
+            &snapshot, &operation, &argument,
+        )
+        .map_err(|_| "Hope collection operation rejected")
+    })();
+    match result {
+        Ok(value) => return_string(&mut env, value),
+        Err(message) => throw_and_null(
+            &mut env,
+            "java/lang/IllegalArgumentException",
+            message.to_owned(),
+        ),
+    }
+}

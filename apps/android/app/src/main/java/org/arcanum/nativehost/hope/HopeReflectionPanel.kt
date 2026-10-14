@@ -1,5 +1,6 @@
 package org.arcanum.nativehost.hope
 
+import android.app.AlertDialog
 import android.content.Context
 import android.graphics.Color
 import android.text.InputType
@@ -10,6 +11,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.ScrollView
 import java.time.Instant
 import java.util.UUID
 import org.arcanum.nativehost.architect.ArchitectObservationPrivacy
@@ -53,6 +55,9 @@ class HopeReflectionPanel(
             visibility = View.GONE
         }
 
+    private val collectionViews = LinearLayout(context).apply { orientation = VERTICAL; visibility = View.GONE }
+    private fun collection() = HopeCollectionStore(context.filesDir, AndroidHopeKeyManager(), HopeRuntimeBridge.contract())
+
     init {
         orientation = VERTICAL
         gravity = Gravity.CENTER_HORIZONTAL
@@ -88,12 +93,17 @@ class HopeReflectionPanel(
         )
         actionRow.addView(
             Button(context).apply {
-                text = "Recall"
-                contentDescription = "Recall the protected local Hope reflection"
-                setOnClickListener { recallReflection(showPrivate = true) }
+                text = "Browse"
+                contentDescription = "Browse private saved reflections"
+                setOnClickListener { showCollection(false) }
             },
             LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1.0f),
         )
+        actionRow.addView(Button(context).apply {
+            text = "Archive"
+            contentDescription = "Open archived reflections"
+            setOnClickListener { showCollection(true) }
+        }, LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1.0f))
         addView(actionRow, LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT))
 
         editor.addView(
@@ -112,12 +122,13 @@ class HopeReflectionPanel(
         addView(recalled, LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT))
         addView(receipt, LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT))
 
+        addView(ScrollView(context).apply { addView(collectionViews) }, LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, dp(220)))
         recallReflection(showPrivate = false)
     }
 
     private fun captureReflection() {
-        val userText = input.text.toString().trim()
-        if (userText.isEmpty()) {
+        val userText = input.text.toString()
+        if (userText.isBlank()) {
             status.text = "Silence is welcome. Nothing was recorded."
             return
         }
@@ -149,14 +160,8 @@ class HopeReflectionPanel(
                     persistedAt = Instant.now().toString(),
                 )
             val state = HopeLocalState(reflectionJson, localReceipt)
-            val encoded = HopeLocalStateCodec.encode(state)
-            val store = HopeProtectedStore(context.filesDir, AndroidHopeKeyManager(), contract)
-            store.persistExact(encoded)
-            val recoveredBytes = store.recoverExact()
-            check(recoveredBytes.contentEquals(encoded)) {
-                "protected Hope state did not round-trip exactly"
-            }
-            HopeLocalStateCodec.decode(recoveredBytes)
+            collection().save(state)
+            state
         }.onSuccess { state ->
             input.text.clear()
             editor.visibility = View.GONE
@@ -168,23 +173,55 @@ class HopeReflectionPanel(
 
     private fun recallReflection(showPrivate: Boolean) {
         runCatching {
-            val contract = HopeRuntimeBridge.contract()
-            val store = HopeProtectedStore(context.filesDir, AndroidHopeKeyManager(), contract)
-            HopeLocalStateCodec.decode(store.recoverExact())
+            collection().browse().lastOrNull()
         }.onSuccess { state ->
-            renderState(state, "Your local reflection is available.", showPrivate)
+            if (state == null) { status.text = "No local reflection yet."; recalled.visibility = View.GONE }
+            else renderState(state, "Your local reflection is available.", showPrivate)
         }.onFailure { failure ->
-            when (failure) {
-                is HopeStateMissingException -> {
-                    status.text = "No local reflection yet."
-                    recalled.text = ""
-                    recalled.visibility = View.GONE
-                    receipt.text = ""
-                    receipt.visibility = View.GONE
-                }
-                else -> renderFailure(failure)
-            }
+            renderFailure(failure)
         }
+    }
+
+    private fun showCollection(archived: Boolean) {
+        editor.visibility = View.GONE
+        recalled.visibility = View.GONE
+        collectionViews.removeAllViews()
+        collectionViews.visibility = View.VISIBLE
+        collectionViews.addView(Button(context).apply {
+            text = "Back to Hope"
+            setOnClickListener { collectionViews.removeAllViews(); collectionViews.visibility = View.GONE; recalled.visibility = View.GONE }
+        })
+        runCatching { collection().browse(archived) }.onSuccess { records ->
+            status.text = if (archived) "Archived reflections · opened privately" else "Saved reflections · oldest first"
+            records.forEach { state ->
+                val json = JSONObject(state.reflectionJson)
+                val id = state.receipt.reflectionId
+                collectionViews.addView(Button(context).apply {
+                    text = json.getString("createdAt")
+                    ArchitectObservationPrivacy.markPrivateText(this)
+                    setOnClickListener {
+                        renderState(state, "Private reflection", true)
+                        val actions = arrayOf(if (archived) "Restore" else "Archive", "Delete", "Close")
+                        AlertDialog.Builder(context).setTitle("Reflection actions").setItems(actions) { _, which ->
+                            if (which == 0) {
+                                runCatching { if (archived) collection().restore(id) else collection().archive(id) }
+                                    .onSuccess { showCollection(archived) }.onFailure { renderFailure(it) }
+                            } else if (which == 1) {
+                                runCatching { collection().prepareDelete(id, archived) }.onSuccess { selection ->
+                                    AlertDialog.Builder(context).setTitle("Delete this reflection?")
+                                        .setMessage("This removes the saved reflection from this device. You can archive it instead.")
+                                        .setNegativeButton("Cancel", null)
+                                        .setPositiveButton("Delete") { _, _ ->
+                                            runCatching { collection().delete(selection, true) }
+                                                .onSuccess { showCollection(archived) }.onFailure { renderFailure(it) }
+                                        }.show()
+                                }.onFailure { renderFailure(it) }
+                            }
+                        }.show()
+                    }
+                })
+            }
+        }.onFailure { renderFailure(it) }
     }
 
     private fun renderState(
@@ -206,10 +243,15 @@ class HopeReflectionPanel(
     private fun renderFailure(failure: Throwable) {
         status.text =
             when (failure) {
+                is HopeKeyUnavailableException -> "Hope key unavailable. Existing data has been preserved."
+                is HopeUnsupportedVersionException -> "This Hope format needs a compatible app. Data has been preserved."
+                is HopeStateMissingException -> "Hope storage is missing. Existing data has not been replaced."
                 is HopeStateCorruptException ->
                     "Protected Hope state could not be authenticated. No state was reset."
                 else -> "Hope local reflection unavailable · fail-closed"
             }
+        collectionViews.removeAllViews()
+        collectionViews.visibility = View.GONE
         recalled.text = ""
         recalled.visibility = View.GONE
         receipt.text = ""

@@ -166,6 +166,7 @@ jobs:
               Java_org_arcanum_nativehost_tempus_TempusLifecycleBridge_nativeRecover
             assert_exact_java_symbols "$hope_so" \
               Java_org_arcanum_nativehost_hope_HopeRuntimeBridge_nativeBuildReflection \
+              Java_org_arcanum_nativehost_hope_HopeRuntimeBridge_nativeCollection \
               Java_org_arcanum_nativehost_hope_HopeRuntimeBridge_nativeContract
           done
 

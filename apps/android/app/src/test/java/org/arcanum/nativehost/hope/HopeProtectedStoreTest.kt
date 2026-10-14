@@ -94,6 +94,35 @@ class HopeProtectedStoreTest {
         }
     }
 
+    @Test
+    fun missingKeyNeverCreatesAReplacementOrChangesCiphertext() {
+        val store = HopeProtectedStore(temporaryFolder.root, provider, contract)
+        store.persistExact("synthetic".toByteArray())
+        val before = storageFile().readBytes()
+        var creations = 0
+        val absent = object : HopeSecretKeyProvider {
+            override fun getExisting(): javax.crypto.SecretKey? = null
+            override fun getOrCreate(): javax.crypto.SecretKey { creations++; return key }
+        }
+        val missing = HopeProtectedStore(temporaryFolder.root, absent, contract)
+        repeat(2) {
+            try { missing.recoverExact(); fail("missing key accepted") } catch (_: HopeKeyUnavailableException) {}
+            try { missing.persistExact("replacement".toByteArray()); fail("replacement accepted") } catch (_: HopeKeyUnavailableException) {}
+        }
+        org.junit.Assert.assertEquals(0, creations)
+        assertArrayEquals(before, storageFile().readBytes())
+    }
+
+    @Test
+    fun unsupportedVersionIsDistinctAndPreserved() {
+        val store = HopeProtectedStore(temporaryFolder.root, provider, contract)
+        store.persistExact("synthetic".toByteArray())
+        val before = storageFile().readBytes().also { it[8] = 99 }
+        storageFile().writeBytes(before)
+        try { store.recoverExact(); fail("unsupported version accepted") } catch (_: HopeUnsupportedVersionException) {}
+        assertArrayEquals(before, storageFile().readBytes())
+    }
+
     private fun readIv(envelope: ByteArray): ByteArray {
         val ivLength = envelope[9].toInt() and 0xff
         return envelope.copyOfRange(14, 14 + ivLength)

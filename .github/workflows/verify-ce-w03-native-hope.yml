@@ -36,6 +36,8 @@ jobs:
           java-version: "17"
 
       - uses: android-actions/setup-android@v3
+        with:
+          packages: ""
 
       - name: Install Android SDK and NDK
         shell: bash
@@ -119,6 +121,7 @@ jobs:
             hope_actual=$("$NM" -D --defined-only "$hope_so" | awk '{print $3}' | grep '^Java_org_arcanum_nativehost_hope_HopeRuntimeBridge_' | sort)
             hope_expected=$(printf '%s\n' \
               Java_org_arcanum_nativehost_hope_HopeRuntimeBridge_nativeBuildReflection \
+              Java_org_arcanum_nativehost_hope_HopeRuntimeBridge_nativeCollection \
               Java_org_arcanum_nativehost_hope_HopeRuntimeBridge_nativeContract | sort)
             test "$hope_actual" = "$hope_expected"
           done

@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-10-11T12:59:54Z",
+  "generated_at": "2026-10-14T07:09:44Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "c614a3b51",
+  "commit": "0ae598740",
   "generator_version": "1.5",
   "files": [
     {
@@ -70,20 +70,20 @@
     {
       "path": ".github/workflows/verify-ce-w03-integrated.yml",
       "type": "file",
-      "size_bytes": 8553,
-      "last_modified_commit": "4cd597306",
+      "size_bytes": 8637,
+      "last_modified_commit": "0ae598740",
       "is_empty": false,
       "extension": ".yml",
-      "lines": 213
+      "lines": 214
     },
     {
       "path": ".github/workflows/verify-ce-w03-native-hope.yml",
       "type": "file",
-      "size_bytes": 5954,
-      "last_modified_commit": "723639630",
+      "size_bytes": 6075,
+      "last_modified_commit": "0ae598740",
       "is_empty": false,
       "extension": ".yml",
-      "lines": 142
+      "lines": 145
     },
     {
       "path": ".github/workflows/verify-ce-w03.yml",
@@ -232,8 +232,8 @@
     {
       "path": "apps/android/app/build.gradle.kts",
       "type": "file",
-      "size_bytes": 3702,
-      "last_modified_commit": "53b8c5160",
+      "size_bytes": 3763,
+      "last_modified_commit": "81ddbb9c4",
       "is_empty": false,
       "extension": ".kts",
       "lines": 110
@@ -264,6 +264,15 @@
       "is_empty": false,
       "extension": ".kt",
       "lines": 111
+    },
+    {
+      "path": "apps/android/app/src/androidTest/java/org/arcanum/nativehost/hope/HopeCollectionAcceptanceTest.kt",
+      "type": "file",
+      "size_bytes": 9850,
+      "last_modified_commit": "81ddbb9c4",
+      "is_empty": false,
+      "extension": ".kt",
+      "lines": 170
     },
     {
       "path": "apps/android/app/src/androidTest/java/org/arcanum/nativehost/memory/MemoryDeviceQualificationTest.kt",
@@ -583,47 +592,65 @@
     {
       "path": "apps/android/app/src/main/java/org/arcanum/nativehost/hope/AndroidHopeKeyManager.kt",
       "type": "file",
-      "size_bytes": 1438,
-      "last_modified_commit": "723639630",
+      "size_bytes": 1449,
+      "last_modified_commit": "81ddbb9c4",
       "is_empty": false,
       "extension": ".kt",
-      "lines": 41
+      "lines": 37
+    },
+    {
+      "path": "apps/android/app/src/main/java/org/arcanum/nativehost/hope/HopeCollectionCodec.kt",
+      "type": "file",
+      "size_bytes": 3011,
+      "last_modified_commit": "81ddbb9c4",
+      "is_empty": false,
+      "extension": ".kt",
+      "lines": 59
+    },
+    {
+      "path": "apps/android/app/src/main/java/org/arcanum/nativehost/hope/HopeCollectionStore.kt",
+      "type": "file",
+      "size_bytes": 6712,
+      "last_modified_commit": "81ddbb9c4",
+      "is_empty": false,
+      "extension": ".kt",
+      "lines": 134
     },
     {
       "path": "apps/android/app/src/main/java/org/arcanum/nativehost/hope/HopeLocalStateCodec.kt",
       "type": "file",
-      "size_bytes": 5533,
-      "last_modified_commit": "7382f5cbc",
+      "size_bytes": 5668,
+      "last_modified_commit": "81ddbb9c4",
       "is_empty": false,
       "extension": ".kt",
-      "lines": 140
+      "lines": 142
     },
     {
       "path": "apps/android/app/src/main/java/org/arcanum/nativehost/hope/HopeProtectedStore.kt",
       "type": "file",
-      "size_bytes": 7332,
-      "last_modified_commit": "43d65e4ad",
+      "size_bytes": 8279,
+      "last_modified_commit": "81ddbb9c4",
       "is_empty": false,
       "extension": ".kt",
-      "lines": 179
+      "lines": 197
     },
     {
       "path": "apps/android/app/src/main/java/org/arcanum/nativehost/hope/HopeReflectionPanel.kt",
       "type": "file",
-      "size_bytes": 8755,
-      "last_modified_commit": "eace1f3bd",
+      "size_bytes": 11713,
+      "last_modified_commit": "81ddbb9c4",
       "is_empty": false,
       "extension": ".kt",
-      "lines": 225
+      "lines": 267
     },
     {
       "path": "apps/android/app/src/main/java/org/arcanum/nativehost/hope/HopeRuntimeBridge.kt",
       "type": "file",
-      "size_bytes": 2997,
-      "last_modified_commit": "723639630",
+      "size_bytes": 3249,
+      "last_modified_commit": "81ddbb9c4",
       "is_empty": false,
       "extension": ".kt",
-      "lines": 89
+      "lines": 94
     },
     {
       "path": "apps/android/app/src/main/java/org/arcanum/nativehost/memory/AndroidDevelopmentMemory.kt",
@@ -916,11 +943,11 @@
     {
       "path": "apps/android/app/src/test/java/org/arcanum/nativehost/hope/HopeProtectedStoreTest.kt",
       "type": "file",
-      "size_bytes": 3459,
-      "last_modified_commit": "43d65e4ad",
+      "size_bytes": 4952,
+      "last_modified_commit": "81ddbb9c4",
       "is_empty": false,
       "extension": ".kt",
-      "lines": 103
+      "lines": 132
     },
     {
       "path": "apps/android/app/src/test/java/org/arcanum/nativehost/memory/DevelopmentMemoryStoreTest.kt",
@@ -6575,6 +6602,24 @@
       "lines": 218
     },
     {
+      "path": "docs/specs/runtime/ce-w04-a19-hope-collection.md",
+      "type": "file",
+      "size_bytes": 11786,
+      "last_modified_commit": "81ddbb9c4",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 66
+    },
+    {
+      "path": "docs/specs/runtime/ce-w04-a19-hope-collection.schema.json",
+      "type": "file",
+      "size_bytes": 2017,
+      "last_modified_commit": "e1bfe489b",
+      "is_empty": false,
+      "extension": ".json",
+      "lines": 41
+    },
+    {
       "path": "docs/specs/runtime/fixtures/a16-v1/README.md",
       "type": "file",
       "size_bytes": 1891,
@@ -8717,6 +8762,15 @@
       "lines": 189
     },
     {
+      "path": "runtime/arcanum-android-hope-jni/Cargo.lock",
+      "type": "file",
+      "size_bytes": 8189,
+      "last_modified_commit": "81ddbb9c4",
+      "is_empty": false,
+      "extension": ".lock",
+      "lines": 310
+    },
+    {
       "path": "runtime/arcanum-android-hope-jni/Cargo.toml",
       "type": "file",
       "size_bytes": 334,
@@ -8728,11 +8782,11 @@
     {
       "path": "runtime/arcanum-android-hope-jni/src/lib.rs",
       "type": "file",
-      "size_bytes": 4394,
-      "last_modified_commit": "723639630",
+      "size_bytes": 5402,
+      "last_modified_commit": "81ddbb9c4",
       "is_empty": false,
       "extension": ".rs",
-      "lines": 126
+      "lines": 153
     },
     {
       "path": "runtime/arcanum-android-jni/Cargo.lock",
@@ -8807,22 +8861,49 @@
       "lines": 481
     },
     {
+      "path": "runtime/arcanum-hope-runtime/Cargo.lock",
+      "type": "file",
+      "size_bytes": 2405,
+      "last_modified_commit": "81ddbb9c4",
+      "is_empty": false,
+      "extension": ".lock",
+      "lines": 95
+    },
+    {
       "path": "runtime/arcanum-hope-runtime/Cargo.toml",
       "type": "file",
-      "size_bytes": 156,
-      "last_modified_commit": "723639630",
+      "size_bytes": 180,
+      "last_modified_commit": "81ddbb9c4",
       "is_empty": false,
       "extension": ".toml",
-      "lines": 11
+      "lines": 12
+    },
+    {
+      "path": "runtime/arcanum-hope-runtime/src/collection.rs",
+      "type": "file",
+      "size_bytes": 20249,
+      "last_modified_commit": "81ddbb9c4",
+      "is_empty": false,
+      "extension": ".rs",
+      "lines": 594
     },
     {
       "path": "runtime/arcanum-hope-runtime/src/lib.rs",
       "type": "file",
-      "size_bytes": 8276,
-      "last_modified_commit": "b8c82882a",
+      "size_bytes": 8297,
+      "last_modified_commit": "e1bfe489b",
       "is_empty": false,
       "extension": ".rs",
-      "lines": 225
+      "lines": 227
+    },
+    {
+      "path": "runtime/arcanum-hope-runtime/tests/collection.rs",
+      "type": "file",
+      "size_bytes": 14534,
+      "last_modified_commit": "81ddbb9c4",
+      "is_empty": false,
+      "extension": ".rs",
+      "lines": 407
     },
     {
       "path": "runtime/arcanum-runtime/Cargo.lock",
@@ -9574,11 +9655,11 @@
     {
       "path": "scripts/verify-ce-w03-reflection.py",
       "type": "file",
-      "size_bytes": 7864,
-      "last_modified_commit": "d2b36d90c",
+      "size_bytes": 8159,
+      "last_modified_commit": "0ae598740",
       "is_empty": false,
       "extension": ".py",
-      "lines": 104
+      "lines": 106
     },
     {
       "path": "scripts/verify-ce-w03.py",
@@ -9655,8 +9736,8 @@
     {
       "path": "scripts/verify-ce-w04-architect-observer.py",
       "type": "file",
-      "size_bytes": 15443,
-      "last_modified_commit": "63fb07ffa",
+      "size_bytes": 15458,
+      "last_modified_commit": "0ae598740",
       "is_empty": false,
       "extension": ".py",
       "lines": 272
