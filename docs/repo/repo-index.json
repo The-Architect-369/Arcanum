@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-10-14T07:31:45Z",
+  "generated_at": "2026-10-14T07:55:43Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "fc6e336fb",
+  "commit": "25f948ea9",
   "generator_version": "1.5",
   "files": [
     {
@@ -266,6 +266,15 @@
       "lines": 111
     },
     {
+      "path": "apps/android/app/src/androidTest/java/org/arcanum/nativehost/hope/HopeBackupControlsAcceptanceTest.kt",
+      "type": "file",
+      "size_bytes": 10206,
+      "last_modified_commit": "25f948ea9",
+      "is_empty": false,
+      "extension": ".kt",
+      "lines": 150
+    },
+    {
       "path": "apps/android/app/src/androidTest/java/org/arcanum/nativehost/hope/HopeBackupFormatAcceptanceTest.kt",
       "type": "file",
       "size_bytes": 1647,
@@ -295,11 +304,11 @@
     {
       "path": "apps/android/app/src/main/AndroidManifest.xml",
       "type": "file",
-      "size_bytes": 1525,
-      "last_modified_commit": "5e7e65281",
+      "size_bytes": 1611,
+      "last_modified_commit": "25f948ea9",
       "is_empty": false,
       "extension": ".xml",
-      "lines": 37
+      "lines": 38
     },
     {
       "path": "apps/android/app/src/main/java/org/arcanum/nativehost/MainActivity.kt",
@@ -608,6 +617,15 @@
       "lines": 37
     },
     {
+      "path": "apps/android/app/src/main/java/org/arcanum/nativehost/hope/HopeBackupActivity.kt",
+      "type": "file",
+      "size_bytes": 9522,
+      "last_modified_commit": "25f948ea9",
+      "is_empty": false,
+      "extension": ".kt",
+      "lines": 166
+    },
+    {
       "path": "apps/android/app/src/main/java/org/arcanum/nativehost/hope/HopeBackupFormat.kt",
       "type": "file",
       "size_bytes": 3603,
@@ -615,6 +633,15 @@
       "is_empty": false,
       "extension": ".kt",
       "lines": 68
+    },
+    {
+      "path": "apps/android/app/src/main/java/org/arcanum/nativehost/hope/HopeBackupPayload.kt",
+      "type": "file",
+      "size_bytes": 4275,
+      "last_modified_commit": "25f948ea9",
+      "is_empty": false,
+      "extension": ".kt",
+      "lines": 85
     },
     {
       "path": "apps/android/app/src/main/java/org/arcanum/nativehost/hope/HopeCollectionCodec.kt",
@@ -628,11 +655,11 @@
     {
       "path": "apps/android/app/src/main/java/org/arcanum/nativehost/hope/HopeCollectionStore.kt",
       "type": "file",
-      "size_bytes": 6712,
-      "last_modified_commit": "81ddbb9c4",
+      "size_bytes": 10671,
+      "last_modified_commit": "25f948ea9",
       "is_empty": false,
       "extension": ".kt",
-      "lines": 134
+      "lines": 209
     },
     {
       "path": "apps/android/app/src/main/java/org/arcanum/nativehost/hope/HopeLocalStateCodec.kt",
@@ -655,11 +682,11 @@
     {
       "path": "apps/android/app/src/main/java/org/arcanum/nativehost/hope/HopeReflectionPanel.kt",
       "type": "file",
-      "size_bytes": 11713,
-      "last_modified_commit": "81ddbb9c4",
+      "size_bytes": 11926,
+      "last_modified_commit": "25f948ea9",
       "is_empty": false,
       "extension": ".kt",
-      "lines": 267
+      "lines": 271
     },
     {
       "path": "apps/android/app/src/main/java/org/arcanum/nativehost/hope/HopeRuntimeBridge.kt",
@@ -948,6 +975,15 @@
       "is_empty": false,
       "extension": ".kt",
       "lines": 80
+    },
+    {
+      "path": "apps/android/app/src/test/java/org/arcanum/nativehost/hope/HopeBackupControlsTest.kt",
+      "type": "file",
+      "size_bytes": 8999,
+      "last_modified_commit": "25f948ea9",
+      "is_empty": false,
+      "extension": ".kt",
+      "lines": 126
     },
     {
       "path": "apps/android/app/src/test/java/org/arcanum/nativehost/hope/HopeBackupFormatTest.kt",
@@ -6843,6 +6879,15 @@
       "is_empty": false,
       "extension": ".sha256",
       "lines": 1
+    },
+    {
+      "path": "docs/specs/runtime/hope-portable-backup-controls.md",
+      "type": "file",
+      "size_bytes": 3844,
+      "last_modified_commit": "25f948ea9",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 62
     },
     {
       "path": "docs/specs/runtime/hope-portable-backup-v1.md",
