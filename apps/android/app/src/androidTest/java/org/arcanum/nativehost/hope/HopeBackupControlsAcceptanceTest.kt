@@ -98,7 +98,14 @@ class HopeBackupControlsAcceptanceTest {
         val result = android.app.Instrumentation.ActivityResult(android.app.Activity.RESULT_OK,
             android.content.Intent().setData(android.net.Uri.fromFile(file)))
         val activity = instrumentation.startActivitySync(android.content.Intent(context, HopeBackupActivity::class.java).addFlags(android.content.Intent.FLAG_ACTIVITY_NEW_TASK))
-        val monitor = instrumentation.addMonitor(android.content.IntentFilter(android.content.Intent.ACTION_OPEN_DOCUMENT), result, true)
+        val filter = android.content.IntentFilter(android.content.Intent.ACTION_OPEN_DOCUMENT).apply {
+            addCategory(android.content.Intent.CATEGORY_OPENABLE)
+            addDataType("application/octet-stream")
+        }
+        val selection = android.content.Intent(android.content.Intent.ACTION_OPEN_DOCUMENT)
+            .addCategory(android.content.Intent.CATEGORY_OPENABLE).setType("application/octet-stream")
+        assertTrue("Synthetic picker filter matches", filter.match(context.contentResolver, selection, true, "SyntheticBackup") >= 0)
+        val monitor = instrumentation.addMonitor(filter, result, true)
         fun views(view: android.view.View): List<android.view.View> = listOf(view) +
             if (view is android.view.ViewGroup) (0 until view.childCount).flatMap { views(view.getChildAt(it)) } else emptyList()
         fun click(label: String) = instrumentation.runOnMainSync {
@@ -115,7 +122,7 @@ class HopeBackupControlsAcceptanceTest {
             fail("Synthetic UI transition timed out")
         }
         try {
-            click("Select backup to restore"); awaitText("Validate backup")
+            click("Select backup to restore"); assertEquals("Synthetic picker intercepted", 1, monitor.hits); awaitText("Validate backup")
             instrumentation.runOnMainSync {
                 val code = views(activity.window.decorView).filterIsInstance<android.widget.EditText>().single()
                 assertFalse(code.isSaveEnabled)
