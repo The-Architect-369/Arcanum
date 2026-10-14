@@ -97,8 +97,8 @@ class HopeBackupControlsAcceptanceTest {
         val instrumentation = InstrumentationRegistry.getInstrumentation()
         val result = android.app.Instrumentation.ActivityResult(android.app.Activity.RESULT_OK,
             android.content.Intent().setData(android.net.Uri.fromFile(file)))
-        val monitor = instrumentation.addMonitor(android.content.IntentFilter(android.content.Intent.ACTION_OPEN_DOCUMENT), result, true)
         val activity = instrumentation.startActivitySync(android.content.Intent(context, HopeBackupActivity::class.java).addFlags(android.content.Intent.FLAG_ACTIVITY_NEW_TASK))
+        val monitor = instrumentation.addMonitor(android.content.IntentFilter(android.content.Intent.ACTION_OPEN_DOCUMENT), result, true)
         fun views(view: android.view.View): List<android.view.View> = listOf(view) +
             if (view is android.view.ViewGroup) (0 until view.childCount).flatMap { views(view.getChildAt(it)) } else emptyList()
         fun click(label: String) = instrumentation.runOnMainSync {
