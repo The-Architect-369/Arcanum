@@ -25,6 +25,7 @@
             android:authorities="${applicationId}.architect.observation"
             android:exported="false"
             android:grantUriPermissions="true" />
+        <activity android:name=".hope.HopeBackupActivity" android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true">

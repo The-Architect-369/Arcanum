@@ -105,6 +105,10 @@ class HopeReflectionPanel(
             setOnClickListener { showCollection(true) }
         }, LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1.0f))
         addView(actionRow, LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT))
+        addView(Button(context).apply {
+            text = "Backup and restore"
+            setOnClickListener { context.startActivity(android.content.Intent(context, HopeBackupActivity::class.java)) }
+        })
 
         editor.addView(
             input,

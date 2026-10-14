@@ -20,6 +20,7 @@ class HopeCollectionStore(
     private val directory = File(root, "hope")
     private val target = File(root, "hope/collection.v0.1.enc")
     private val marker = File(directory, "collection.initialized")
+    private val importPending = File(directory, "backup-import.pending")
     private val legacyFile = File(root, contract.storageRelativePath)
     private val protected = HopeProtectedStore(root, keys, contract, "hope/collection.v0.1.enc")
 
@@ -66,7 +67,81 @@ class HopeCollectionStore(
         commit(HopeCollectionState(snapshot, state.receipts - selection.id, UUID.randomUUID().toString()))
     }
 
+    /** Read a consistent snapshot without migrating, cleaning up, or changing the source. */
+    fun exportBackup(): HopeSealedBackup = locked {
+        if (importPending.exists() || !target.isFile || !marker.isFile) {
+            throw HopeStateMissingException("Open or recover the local collection before exporting")
+        }
+        val bytes = protected.recoverExact()
+        try {
+            HopeCollectionCodec.decode(bytes, command)
+            HopeBackupFormat.seal(bytes)
+        } finally { bytes.fill(0) }
+    }
+
+    /** Authentication and semantic validation happen before any destination key or file is created. */
+    fun previewBackup(encrypted: ByteArray, recoveryCode: String): HopeRestorePreview {
+        val bytes = HopeBackupFormat.open(encrypted, recoveryCode)
+        try {
+            HopeBackupPayload.validateJson(bytes)
+            val state = HopeCollectionCodec.decode(bytes, command)
+            HopeBackupPayload.validateJson(state.snapshot.toByteArray(Charsets.UTF_8))
+            val revised = HopeCollectionState(state.snapshot, state.receipts, UUID.randomUUID().toString())
+            val payload = HopeCollectionCodec.encode(revised)
+            require(payload.size <= MAX_BYTES)
+            return HopeRestorePreview(payload,
+                HopeCollectionCodec.entries(state, command(state.snapshot, "browse", "")).size,
+                HopeCollectionCodec.entries(state, command(state.snapshot, "browse-archived", "")).size)
+        } finally { bytes.fill(0) }
+    }
+
+    fun restoreBackup(preview: HopeRestorePreview, confirmed: Boolean) {
+        if (!confirmed) return
+        // Copy while the preview is alive; closing the UI cannot alter a committed operation.
+        val bytes = preview.copyPayload()
+        try {
+            HopeCollectionCodec.decode(bytes, command)
+            locked {
+                val files = directory.listFiles() ?: throw HopeStatePersistenceException("Hope directory unavailable")
+                if (files.any { it.name != "collection.lock" } || keys.getExisting() != null) {
+                    throw HopeRestoreRefusedException()
+                }
+                checkpoint("import-validated")
+                // This durable intent precedes key creation. Never mistake partial custody for a fresh vault.
+                FileOutputStream(importPending).use { it.write(HopeBackupPayload.digest(bytes)); it.fd.sync() }
+                syncDirectory(directory)
+                checkpoint("import-pending")
+                markInitialized()
+                keys.getOrCreate()
+                checkpoint("import-key-created")
+                protected.persistExact(bytes)
+                checkpoint("import-written")
+                finishImport()
+            }
+        } finally { bytes.fill(0) }
+    }
+
+    /** Explicit reconciliation only: validate an already written import; never rewrite or reset it. */
+    fun finishInterruptedRestore() = locked { finishImport() }
+
+    private fun finishImport() {
+        if (!importPending.isFile || importPending.length() != 32L) throw HopeStateMissingException("No verifiable pending restore")
+        val expected = importPending.readBytes()
+        val bytes = protected.recoverExact()
+        try {
+            if (!java.security.MessageDigest.isEqual(expected, HopeBackupPayload.digest(bytes))) {
+                throw HopeStateCorruptException("Pending restore does not match stored data")
+            }
+            HopeCollectionCodec.decode(bytes, command)
+            markInitialized()
+            checkpoint("import-verified")
+            if (!importPending.delete()) throw HopeStatePersistenceException("Restore finalization pending")
+            syncDirectory(directory)
+        } finally { bytes.fill(0) }
+    }
+
     private fun open(create: Boolean): HopeCollectionState? {
+        if (importPending.exists()) throw HopeStateMissingException("Interrupted restore requires explicit recovery; data preserved")
         if (target.exists()) {
             val state = HopeCollectionCodec.decode(protected.recoverExact(), command)
             markInitialized()
