@@ -111,7 +111,7 @@ class HopeBackupActivity : Activity() {
                 } finally { bytes.fill(0) }
             }) { home("Encrypted backup written and read back successfully. Keep the separately saved recovery code.") }
         } else {
-            work({ contentResolver.openInputStream(uri)?.use(HopeBackupPayload::readBounded) ?: throw HopeBackupFormatException() }) { bytes ->
+            work({ contentResolver.openInputStream(uri)?.use(HopeBackupPayload::readBounded) ?: throw HopeBackupFormatException() }, HopeBackupReadFailure::message) { bytes ->
                 clearPrivate(); selected = bytes; body.removeAllViews()
                 text("Enter the separately saved recovery code. Validation will not write to the vault.")
                 code = codeField()
@@ -137,7 +137,7 @@ class HopeBackupActivity : Activity() {
         }
     }
 
-    private fun <T> work(action: () -> T, success: (T) -> Unit) {
+    private fun <T> work(action: () -> T, readFailure: ((Throwable) -> String)? = null, success: (T) -> Unit) {
         if (busy) return
         busy = true; status.text = "Working…"
         worker.execute {
@@ -150,7 +150,7 @@ class HopeBackupActivity : Activity() {
                     return@runOnUiThread
                 }
                 result.fold(success, { error ->
-                    status.text = when (error) {
+                    status.text = readFailure?.invoke(error) ?: when (error) {
                         is HopeRestoreRefusedException -> "Restore refused: existing or unresolved vault state. Nothing was replaced."
                         is HopeKeyUnavailableException -> "Device key unavailable. Data preserved."
                         else -> "Operation could not be verified. Existing data is preserved. A partial export may remain at the chosen destination. For an interrupted restore, use Finish interrupted restore; never reset the vault."
