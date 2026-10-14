@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-10-14T07:55:43Z",
+  "generated_at": "2026-10-14T08:03:51Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "25f948ea9",
+  "commit": "cbb4fcf12",
   "generator_version": "1.5",
   "files": [
     {
@@ -269,7 +269,7 @@
       "path": "apps/android/app/src/androidTest/java/org/arcanum/nativehost/hope/HopeBackupControlsAcceptanceTest.kt",
       "type": "file",
       "size_bytes": 10206,
-      "last_modified_commit": "25f948ea9",
+      "last_modified_commit": "cbb4fcf12",
       "is_empty": false,
       "extension": ".kt",
       "lines": 150
