@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-10-14T08:11:14Z",
+  "generated_at": "2026-10-14T08:31:54Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "64891d919",
+  "commit": "739d8664b",
   "generator_version": "1.5",
   "files": [
     {
@@ -232,11 +232,11 @@
     {
       "path": "apps/android/app/build.gradle.kts",
       "type": "file",
-      "size_bytes": 3763,
-      "last_modified_commit": "81ddbb9c4",
+      "size_bytes": 4145,
+      "last_modified_commit": "739d8664b",
       "is_empty": false,
       "extension": ".kts",
-      "lines": 110
+      "lines": 114
     },
     {
       "path": "apps/android/app/src/androidTest/java/org/arcanum/nativehost/continuity/ContinuityDeviceQualificationTest.kt",
@@ -282,6 +282,15 @@
       "is_empty": false,
       "extension": ".kt",
       "lines": 26
+    },
+    {
+      "path": "apps/android/app/src/androidTest/java/org/arcanum/nativehost/hope/HopeBackupPhysicalAcceptanceTest.kt",
+      "type": "file",
+      "size_bytes": 3070,
+      "last_modified_commit": "739d8664b",
+      "is_empty": false,
+      "extension": ".kt",
+      "lines": 60
     },
     {
       "path": "apps/android/app/src/androidTest/java/org/arcanum/nativehost/hope/HopeCollectionAcceptanceTest.kt",
