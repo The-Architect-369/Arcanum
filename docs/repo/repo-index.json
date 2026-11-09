@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-11-09T08:19:25Z",
+  "generated_at": "2026-11-09T08:47:18Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "d7d891e2b",
+  "commit": "c59f55cf5",
   "generator_version": "1.5",
   "files": [
     {
@@ -1447,11 +1447,11 @@
     {
       "path": "apps/web/public/updates-sw.js",
       "type": "file",
-      "size_bytes": 4410,
-      "last_modified_commit": "806b56933",
+      "size_bytes": 4550,
+      "last_modified_commit": "c59f55cf5",
       "is_empty": false,
       "extension": ".js",
-      "lines": 134
+      "lines": 140
     },
     {
       "path": "apps/web/public/updates/a14-2/SHA256SUMS",
@@ -2293,29 +2293,29 @@
     {
       "path": "apps/web/src/app/(marketing)/updates/layout.tsx",
       "type": "file",
-      "size_bytes": 534,
-      "last_modified_commit": "2d85b3de3",
+      "size_bytes": 557,
+      "last_modified_commit": "c59f55cf5",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 21
+      "lines": 25
     },
     {
       "path": "apps/web/src/app/(marketing)/updates/page.tsx",
       "type": "file",
-      "size_bytes": 5546,
-      "last_modified_commit": "806b56933",
+      "size_bytes": 2063,
+      "last_modified_commit": "c59f55cf5",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 134
+      "lines": 57
     },
     {
       "path": "apps/web/src/app/(marketing)/updates/updates.css",
       "type": "file",
-      "size_bytes": 11322,
-      "last_modified_commit": "d7d891e2b",
+      "size_bytes": 15962,
+      "last_modified_commit": "c59f55cf5",
       "is_empty": false,
       "extension": ".css",
-      "lines": 552
+      "lines": 794
     },
     {
       "path": "apps/web/src/app/activate/page.tsx",
@@ -2411,7 +2411,7 @@
       "path": "apps/web/src/app/updates/manifest.webmanifest/route.ts",
       "type": "file",
       "size_bytes": 1189,
-      "last_modified_commit": "2d85b3de3",
+      "last_modified_commit": "c59f55cf5",
       "is_empty": false,
       "extension": ".ts",
       "lines": 45
@@ -2543,6 +2543,33 @@
       "lines": 53
     },
     {
+      "path": "apps/web/src/components/public/CurrentCards.tsx",
+      "type": "file",
+      "size_bytes": 1630,
+      "last_modified_commit": "c59f55cf5",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 59
+    },
+    {
+      "path": "apps/web/src/components/public/CurrentHeader.tsx",
+      "type": "file",
+      "size_bytes": 1111,
+      "last_modified_commit": "c59f55cf5",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 36
+    },
+    {
+      "path": "apps/web/src/components/public/CurrentPanel.tsx",
+      "type": "file",
+      "size_bytes": 2064,
+      "last_modified_commit": "c59f55cf5",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 76
+    },
+    {
       "path": "apps/web/src/components/public/PillarCarousel.tsx",
       "type": "file",
       "size_bytes": 12581,
@@ -2563,47 +2590,56 @@
     {
       "path": "apps/web/src/components/public/PublicShell.tsx",
       "type": "file",
-      "size_bytes": 6337,
-      "last_modified_commit": "806b56933",
+      "size_bytes": 6402,
+      "last_modified_commit": "c59f55cf5",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 216
+      "lines": 218
     },
     {
       "path": "apps/web/src/components/public/UpdateRows.tsx",
       "type": "file",
-      "size_bytes": 4570,
-      "last_modified_commit": "806b56933",
+      "size_bytes": 2645,
+      "last_modified_commit": "c59f55cf5",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 135
+      "lines": 78
     },
     {
       "path": "apps/web/src/components/public/UpdatesAvailable.tsx",
       "type": "file",
-      "size_bytes": 7319,
-      "last_modified_commit": "806b56933",
+      "size_bytes": 7581,
+      "last_modified_commit": "c59f55cf5",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 192
+      "lines": 171
     },
     {
       "path": "apps/web/src/components/public/UpdatesFeed.tsx",
       "type": "file",
-      "size_bytes": 5520,
-      "last_modified_commit": "806b56933",
+      "size_bytes": 6229,
+      "last_modified_commit": "c59f55cf5",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 169
+      "lines": 181
     },
     {
       "path": "apps/web/src/components/public/UpdatesInstall.tsx",
       "type": "file",
-      "size_bytes": 3009,
-      "last_modified_commit": "2d85b3de3",
+      "size_bytes": 3017,
+      "last_modified_commit": "c59f55cf5",
       "is_empty": false,
       "extension": ".tsx",
       "lines": 88
+    },
+    {
+      "path": "apps/web/src/components/public/UpdatesNext.tsx",
+      "type": "file",
+      "size_bytes": 6920,
+      "last_modified_commit": "c59f55cf5",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 169
     },
     {
       "path": "apps/web/src/components/public/UpdatesTray.tsx",
@@ -6721,11 +6757,11 @@
     {
       "path": "docs/specs/public-site/updates-visitor-experience.md",
       "type": "file",
-      "size_bytes": 4799,
-      "last_modified_commit": "806b56933",
+      "size_bytes": 7638,
+      "last_modified_commit": "c59f55cf5",
       "is_empty": false,
       "extension": ".md",
-      "lines": 40
+      "lines": 58
     },
     {
       "path": "docs/specs/public-site/v07-baseline-receipt.json",
@@ -10123,11 +10159,11 @@
     {
       "path": "scripts/verify-updates-access.mjs",
       "type": "file",
-      "size_bytes": 3911,
-      "last_modified_commit": "806b56933",
+      "size_bytes": 3964,
+      "last_modified_commit": "c59f55cf5",
       "is_empty": false,
       "extension": ".mjs",
-      "lines": 111
+      "lines": 112
     },
     {
       "path": "scripts/verify-v07-browser.cjs",
