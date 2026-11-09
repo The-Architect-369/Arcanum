@@ -1,62 +1,95 @@
 import Link from "next/link";
+import { Suspense } from "react";
+import { CurrentArrival, CurrentInstallProvider } from "./CurrentInstall";
+import CurrentHeader from "./CurrentHeader";
 import { repository, pillars, source, siteLog } from "@/lib/public-site";
 import PublicNav from "./PublicNav";
 import PillarCarousel from "./PillarCarousel";
 import "@/app/(marketing)/public-home.css";
-export function PublicShell({ children }: { children: React.ReactNode }) {
-  return (
-    <div className="public-home">
+export function PublicShell({
+  children,
+  showFooter = true,
+  className,
+  bottomNavigation,
+}: {
+  children: React.ReactNode;
+  showFooter?: boolean;
+  className?: string;
+  bottomNavigation?: React.ReactNode;
+}) {
+  const isCurrent = className?.split(" ").includes("updates-app");
+  const content = (
+    <div className={["public-home", className].filter(Boolean).join(" ")}>
       <div className="public-reading-progress" aria-hidden="true" />
       <a className="public-skip" href="#public-main">
         Skip to content
       </a>
-      <PublicNav />
+      {className?.split(" ").includes("updates-app") ? (
+        <Suspense>
+          <CurrentHeader />
+        </Suspense>
+      ) : (
+        <PublicNav />
+      )}
       <main id="public-main" tabIndex={-1}>
+        {isCurrent && <CurrentArrival />}
         {children}
       </main>
-      <footer className="public-footer">
-        <div className="public-shell public-footer-grid">
-          <div>
-            <a href="https://the-arcanum.net/" className="public-wordmark">
-              ARCANUM
-            </a>
-            <p>
-              A Human Journey.
-              <br />A network taking shape.
-            </p>
-            <span className="public-eyebrow">Pre-Genesis · Public website</span>
+      {bottomNavigation}
+      {showFooter && (
+        <footer className="public-footer">
+          <div className="public-shell public-footer-grid">
+            <div>
+              <a href="https://the-arcanum.net/" className="public-wordmark">
+                ARCANUM
+              </a>
+              <p>
+                A Human Journey.
+                <br />A network taking shape.
+              </p>
+              <span className="public-eyebrow">
+                Pre-Genesis · Public website
+              </span>
+            </div>
+            <div>
+              <p className="public-label">Explore the system</p>
+              {pillars.map((p) => (
+                <Link href={`/explore/${p.slug}`} key={p.slug}>
+                  {p.name}
+                </Link>
+              ))}
+            </div>
+            <div>
+              <p className="public-label">Follow the work</p>
+              <Link href="/principles">Principles &amp; source documents</Link>
+              <Link href="/updates">Public journal</Link>
+              <a href="/site-log.json">Machine-readable site log ↗</a>
+              <a href={repository}>Repository ↗</a>
+              <Link href="/download">Android release status</Link>
+              <a href="https://updates.the-arcanum.net/">Updates channel ↗</a>
+              <a href="https://journeys.the-arcanum.net/">
+                The Great Journey ↗
+              </a>
+              <a href="https://architect.the-arcanum.net/">
+                Development dashboard ↗
+              </a>
+            </div>
           </div>
-          <div>
-            <p className="public-label">Explore the system</p>
-            {pillars.map((p) => (
-              <Link href={`/explore/${p.slug}`} key={p.slug}>
-                {p.name}
-              </Link>
-            ))}
+          <div className="public-shell public-footer-bottom">
+            <span>Meaning remains yours.</span>
+            <span>
+              Website v{siteLog.siteVersion} ·{" "}
+              <time dateTime={siteLog.recordedOn}>{siteLog.recordedOn}</time>
+            </span>
           </div>
-          <div>
-            <p className="public-label">Follow the work</p>
-            <Link href="/principles">Principles &amp; source documents</Link>
-            <Link href="/updates">Public journal</Link>
-            <a href="/site-log.json">Machine-readable site log ↗</a>
-            <a href={repository}>Repository ↗</a>
-            <Link href="/download">Android release status</Link>
-            <a href="https://updates.the-arcanum.net/">Updates channel ↗</a>
-            <a href="https://journeys.the-arcanum.net/">The Great Journey ↗</a>
-            <a href="https://architect.the-arcanum.net/">
-              Development dashboard ↗
-            </a>
-          </div>
-        </div>
-        <div className="public-shell public-footer-bottom">
-          <span>Meaning remains yours.</span>
-          <span>
-            Website v{siteLog.siteVersion} ·{" "}
-            <time dateTime={siteLog.recordedOn}>{siteLog.recordedOn}</time>
-          </span>
-        </div>
-      </footer>
+        </footer>
+      )}
     </div>
+  );
+  return isCurrent ? (
+    <CurrentInstallProvider>{content}</CurrentInstallProvider>
+  ) : (
+    content
   );
 }
 export function PageIntro({

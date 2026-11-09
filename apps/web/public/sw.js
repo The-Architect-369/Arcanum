@@ -1,4 +1,4 @@
-const CACHE_NAME = "arcanum-shell-v1";
+const CACHE_NAME = "arcanum-shell-v2";
 const APP_SHELL = [
   "/",
   "/manifest.json",
@@ -45,7 +45,7 @@ self.addEventListener("fetch", (event) => {
   if (url.origin !== self.location.origin) return;
 
   // Editorial build provenance must never be served from the app shell cache.
-  if (url.pathname === "/site-log.json") {
+  if (url.pathname === "/site-log.json" || url.pathname.startsWith("/architect") || url.pathname.startsWith("/api/auth") || url.pathname.startsWith("/api/architect")) {
     event.respondWith(fetch(request, { cache: "no-store" }));
     return;
   }

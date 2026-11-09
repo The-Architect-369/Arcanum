@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-10-14T09:35:20Z",
+  "generated_at": "2026-11-09T12:39:39Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "922a2f378",
+  "commit": "c0140b102",
   "generator_version": "1.5",
   "files": [
     {
@@ -1148,13 +1148,22 @@
       "lines": 3
     },
     {
+      "path": "apps/web/.env.example",
+      "type": "file",
+      "size_bytes": 225,
+      "last_modified_commit": "d298dbeda",
+      "is_empty": false,
+      "extension": ".example",
+      "lines": 6
+    },
+    {
       "path": "apps/web/.gitignore",
       "type": "file",
-      "size_bytes": 480,
-      "last_modified_commit": "d32d6affc",
+      "size_bytes": 556,
+      "last_modified_commit": "d298dbeda",
       "is_empty": false,
       "extension": "",
-      "lines": 41
+      "lines": 44
     },
     {
       "path": "apps/web/README.md",
@@ -1204,11 +1213,11 @@
     {
       "path": "apps/web/next.config.mjs",
       "type": "file",
-      "size_bytes": 2020,
-      "last_modified_commit": "ab7519b70",
+      "size_bytes": 2575,
+      "last_modified_commit": "2d85b3de3",
       "is_empty": false,
       "extension": ".mjs",
-      "lines": 65
+      "lines": 83
     },
     {
       "path": "apps/web/node/docker/Dockerfile",
@@ -1249,11 +1258,11 @@
     {
       "path": "apps/web/package.json",
       "type": "file",
-      "size_bytes": 1934,
-      "last_modified_commit": "df2e686ca",
+      "size_bytes": 1968,
+      "last_modified_commit": "d298dbeda",
       "is_empty": false,
       "extension": ".json",
-      "lines": 65
+      "lines": 66
     },
     {
       "path": "apps/web/postcss.config.mjs",
@@ -1429,11 +1438,20 @@
     {
       "path": "apps/web/public/sw.js",
       "type": "file",
-      "size_bytes": 2114,
-      "last_modified_commit": "165b06b7b",
+      "size_bytes": 2240,
+      "last_modified_commit": "d298dbeda",
       "is_empty": false,
       "extension": ".js",
       "lines": 84
+    },
+    {
+      "path": "apps/web/public/updates-sw.js",
+      "type": "file",
+      "size_bytes": 4550,
+      "last_modified_commit": "5a7f2b283",
+      "is_empty": false,
+      "extension": ".js",
+      "lines": 140
     },
     {
       "path": "apps/web/public/updates/a14-2/SHA256SUMS",
@@ -1622,6 +1640,15 @@
       "last_modified_commit": "26d03071c",
       "is_empty": false,
       "extension": ".json",
+      "lines": 1
+    },
+    {
+      "path": "apps/web/public/updates/offline.html",
+      "type": "file",
+      "size_bytes": 821,
+      "last_modified_commit": "806b56933",
+      "is_empty": false,
+      "extension": ".html",
       "lines": 1
     },
     {
@@ -2111,13 +2138,31 @@
       "lines": 44
     },
     {
-      "path": "apps/web/src/app/(marketing)/architect/page.tsx",
+      "path": "apps/web/src/app/(marketing)/architect/login/page.tsx",
       "type": "file",
-      "size_bytes": 9334,
-      "last_modified_commit": "94f797994",
+      "size_bytes": 2260,
+      "last_modified_commit": "d298dbeda",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 255
+      "lines": 64
+    },
+    {
+      "path": "apps/web/src/app/(marketing)/architect/page.tsx",
+      "type": "file",
+      "size_bytes": 9464,
+      "last_modified_commit": "d298dbeda",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 256
+    },
+    {
+      "path": "apps/web/src/app/(marketing)/architect/review/page.tsx",
+      "type": "file",
+      "size_bytes": 2096,
+      "last_modified_commit": "d298dbeda",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 54
     },
     {
       "path": "apps/web/src/app/(marketing)/client-layout.tsx",
@@ -2228,13 +2273,49 @@
       "lines": 53
     },
     {
-      "path": "apps/web/src/app/(marketing)/updates/page.tsx",
+      "path": "apps/web/src/app/(marketing)/updates/[slug]/page.tsx",
       "type": "file",
-      "size_bytes": 4258,
-      "last_modified_commit": "94f797994",
+      "size_bytes": 1863,
+      "last_modified_commit": "806b56933",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 116
+      "lines": 61
+    },
+    {
+      "path": "apps/web/src/app/(marketing)/updates/archive/page.tsx",
+      "type": "file",
+      "size_bytes": 2143,
+      "last_modified_commit": "ff9bfb97d",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 64
+    },
+    {
+      "path": "apps/web/src/app/(marketing)/updates/layout.tsx",
+      "type": "file",
+      "size_bytes": 557,
+      "last_modified_commit": "c59f55cf5",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 25
+    },
+    {
+      "path": "apps/web/src/app/(marketing)/updates/page.tsx",
+      "type": "file",
+      "size_bytes": 2287,
+      "last_modified_commit": "5a7f2b283",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 67
+    },
+    {
+      "path": "apps/web/src/app/(marketing)/updates/updates.css",
+      "type": "file",
+      "size_bytes": 20410,
+      "last_modified_commit": "5a7f2b283",
+      "is_empty": false,
+      "extension": ".css",
+      "lines": 1004
     },
     {
       "path": "apps/web/src/app/activate/page.tsx",
@@ -2244,6 +2325,15 @@
       "is_empty": false,
       "extension": ".tsx",
       "lines": 17
+    },
+    {
+      "path": "apps/web/src/app/api/auth/[...nextauth]/route.ts",
+      "type": "file",
+      "size_bytes": 1633,
+      "last_modified_commit": "d298dbeda",
+      "is_empty": false,
+      "extension": ".ts",
+      "lines": 39
     },
     {
       "path": "apps/web/src/app/api/ipfs/route.ts",
@@ -2316,6 +2406,24 @@
       "is_empty": false,
       "extension": ".ts",
       "lines": 8
+    },
+    {
+      "path": "apps/web/src/app/updates/manifest.webmanifest/route.ts",
+      "type": "file",
+      "size_bytes": 1189,
+      "last_modified_commit": "c59f55cf5",
+      "is_empty": false,
+      "extension": ".ts",
+      "lines": 45
+    },
+    {
+      "path": "apps/web/src/auth.ts",
+      "type": "file",
+      "size_bytes": 2406,
+      "last_modified_commit": "d298dbeda",
+      "is_empty": false,
+      "extension": ".ts",
+      "lines": 75
     },
     {
       "path": "apps/web/src/components/AppRuntime.tsx",
@@ -2435,6 +2543,69 @@
       "lines": 53
     },
     {
+      "path": "apps/web/src/components/public/CurrentCards.tsx",
+      "type": "file",
+      "size_bytes": 1775,
+      "last_modified_commit": "5a7f2b283",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 62
+    },
+    {
+      "path": "apps/web/src/components/public/CurrentExperience.tsx",
+      "type": "file",
+      "size_bytes": 5193,
+      "last_modified_commit": "9a8434ffd",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 168
+    },
+    {
+      "path": "apps/web/src/components/public/CurrentHeader.tsx",
+      "type": "file",
+      "size_bytes": 2249,
+      "last_modified_commit": "5a7f2b283",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 71
+    },
+    {
+      "path": "apps/web/src/components/public/CurrentInstall.tsx",
+      "type": "file",
+      "size_bytes": 6308,
+      "last_modified_commit": "5a7f2b283",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 198
+    },
+    {
+      "path": "apps/web/src/components/public/CurrentPanel.tsx",
+      "type": "file",
+      "size_bytes": 2211,
+      "last_modified_commit": "0259a1532",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 81
+    },
+    {
+      "path": "apps/web/src/components/public/CurrentPlatformChooser.tsx",
+      "type": "file",
+      "size_bytes": 2918,
+      "last_modified_commit": "5a7f2b283",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 96
+    },
+    {
+      "path": "apps/web/src/components/public/CurrentTopicVisual.tsx",
+      "type": "file",
+      "size_bytes": 692,
+      "last_modified_commit": "5a7f2b283",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 21
+    },
+    {
       "path": "apps/web/src/components/public/PillarCarousel.tsx",
       "type": "file",
       "size_bytes": 12581,
@@ -2446,20 +2617,74 @@
     {
       "path": "apps/web/src/components/public/PublicNav.tsx",
       "type": "file",
-      "size_bytes": 2840,
-      "last_modified_commit": "ab7519b70",
+      "size_bytes": 2896,
+      "last_modified_commit": "806b56933",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 102
+      "lines": 106
     },
     {
       "path": "apps/web/src/components/public/PublicShell.tsx",
       "type": "file",
-      "size_bytes": 5786,
-      "last_modified_commit": "3ca0c7945",
+      "size_bytes": 6706,
+      "last_modified_commit": "5a7f2b283",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 193
+      "lines": 226
+    },
+    {
+      "path": "apps/web/src/components/public/UpdateRows.tsx",
+      "type": "file",
+      "size_bytes": 2809,
+      "last_modified_commit": "5a7f2b283",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 81
+    },
+    {
+      "path": "apps/web/src/components/public/UpdatesAvailable.tsx",
+      "type": "file",
+      "size_bytes": 5243,
+      "last_modified_commit": "5a7f2b283",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 125
+    },
+    {
+      "path": "apps/web/src/components/public/UpdatesFeed.tsx",
+      "type": "file",
+      "size_bytes": 6052,
+      "last_modified_commit": "5a7f2b283",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 177
+    },
+    {
+      "path": "apps/web/src/components/public/UpdatesInstall.tsx",
+      "type": "file",
+      "size_bytes": 1158,
+      "last_modified_commit": "5a7f2b283",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 32
+    },
+    {
+      "path": "apps/web/src/components/public/UpdatesNext.tsx",
+      "type": "file",
+      "size_bytes": 6833,
+      "last_modified_commit": "5a7f2b283",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 168
+    },
+    {
+      "path": "apps/web/src/components/public/UpdatesTray.tsx",
+      "type": "file",
+      "size_bytes": 2573,
+      "last_modified_commit": "5a7f2b283",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 84
     },
     {
       "path": "apps/web/src/components/shared/CTAActivate.tsx",
@@ -2802,6 +3027,15 @@
       "is_empty": false,
       "extension": ".ts",
       "lines": 16
+    },
+    {
+      "path": "apps/web/src/lib/architect-access.ts",
+      "type": "file",
+      "size_bytes": 1243,
+      "last_modified_commit": "d298dbeda",
+      "is_empty": false,
+      "extension": ".ts",
+      "lines": 45
     },
     {
       "path": "apps/web/src/lib/architect/execution.ts",
@@ -3319,11 +3553,11 @@
     {
       "path": "apps/web/src/lib/public-routes.ts",
       "type": "file",
-      "size_bytes": 503,
-      "last_modified_commit": "ab7519b70",
+      "size_bytes": 760,
+      "last_modified_commit": "2d85b3de3",
       "is_empty": false,
       "extension": ".ts",
-      "lines": 23
+      "lines": 29
     },
     {
       "path": "apps/web/src/lib/public-site.ts",
@@ -3414,6 +3648,24 @@
       "is_empty": false,
       "extension": ".ts",
       "lines": 10
+    },
+    {
+      "path": "apps/web/src/lib/update-filters.ts",
+      "type": "file",
+      "size_bytes": 964,
+      "last_modified_commit": "806b56933",
+      "is_empty": false,
+      "extension": ".ts",
+      "lines": 32
+    },
+    {
+      "path": "apps/web/src/lib/update-posts.ts",
+      "type": "file",
+      "size_bytes": 3267,
+      "last_modified_commit": "806b56933",
+      "is_empty": false,
+      "extension": ".ts",
+      "lines": 76
     },
     {
       "path": "apps/web/src/lib/utils.ts",
@@ -6530,6 +6782,33 @@
       "lines": 142
     },
     {
+      "path": "docs/specs/public-site/architect-google-access.md",
+      "type": "file",
+      "size_bytes": 8655,
+      "last_modified_commit": "2d85b3de3",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 51
+    },
+    {
+      "path": "docs/specs/public-site/current-publication-2026-11-09.md",
+      "type": "file",
+      "size_bytes": 2398,
+      "last_modified_commit": "c0140b102",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 11
+    },
+    {
+      "path": "docs/specs/public-site/updates-visitor-experience.md",
+      "type": "file",
+      "size_bytes": 11068,
+      "last_modified_commit": "5a7f2b283",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 74
+    },
+    {
       "path": "docs/specs/public-site/v07-baseline-receipt.json",
       "type": "file",
       "size_bytes": 1251,
@@ -8809,11 +9088,11 @@
     {
       "path": "pnpm-lock.yaml",
       "type": "file",
-      "size_bytes": 409375,
-      "last_modified_commit": "7b88a6214",
+      "size_bytes": 411825,
+      "last_modified_commit": "d298dbeda",
       "is_empty": false,
       "extension": ".yaml",
-      "lines": 12168
+      "lines": 12239
     },
     {
       "path": "pnpm-workspace.yaml",
@@ -9635,6 +9914,15 @@
       "lines": 265
     },
     {
+      "path": "scripts/test-architect-access.mjs",
+      "type": "file",
+      "size_bytes": 1933,
+      "last_modified_commit": "d298dbeda",
+      "is_empty": false,
+      "extension": ".mjs",
+      "lines": 58
+    },
+    {
       "path": "scripts/test-repo-index-merge-stability.sh",
       "type": "file",
       "size_bytes": 1935,
@@ -9642,6 +9930,24 @@
       "is_empty": false,
       "extension": ".sh",
       "lines": 66
+    },
+    {
+      "path": "scripts/test-update-filters.mjs",
+      "type": "file",
+      "size_bytes": 2064,
+      "last_modified_commit": "806b56933",
+      "is_empty": false,
+      "extension": ".mjs",
+      "lines": 86
+    },
+    {
+      "path": "scripts/test-updates-worker.mjs",
+      "type": "file",
+      "size_bytes": 3327,
+      "last_modified_commit": "2d85b3de3",
+      "is_empty": false,
+      "extension": ".mjs",
+      "lines": 114
     },
     {
       "path": "scripts/test-wallet-boundaries.cjs",
@@ -9705,6 +10011,15 @@
       "is_empty": false,
       "extension": ".sh",
       "lines": 32
+    },
+    {
+      "path": "scripts/verify-architect-sessions.mjs",
+      "type": "file",
+      "size_bytes": 4650,
+      "last_modified_commit": "d298dbeda",
+      "is_empty": false,
+      "extension": ".mjs",
+      "lines": 150
     },
     {
       "path": "scripts/verify-ce-w01-specs.py",
@@ -9862,11 +10177,11 @@
     {
       "path": "scripts/verify-public-site.mjs",
       "type": "file",
-      "size_bytes": 8565,
-      "last_modified_commit": "ab7519b70",
+      "size_bytes": 9819,
+      "last_modified_commit": "c0140b102",
       "is_empty": false,
       "extension": ".mjs",
-      "lines": 270
+      "lines": 307
     },
     {
       "path": "scripts/verify-repo-index.py",
@@ -9885,6 +10200,15 @@
       "is_empty": false,
       "extension": ".sh",
       "lines": 293
+    },
+    {
+      "path": "scripts/verify-updates-access.mjs",
+      "type": "file",
+      "size_bytes": 3964,
+      "last_modified_commit": "c59f55cf5",
+      "is_empty": false,
+      "extension": ".mjs",
+      "lines": 112
     },
     {
       "path": "scripts/verify-v07-browser.cjs",

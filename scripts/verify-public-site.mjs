@@ -13,6 +13,8 @@ const routes = [
   "/explore",
   "/principles",
   "/updates",
+  "/updates/archive",
+  "/architect/login",
   "/download",
   "/journeys",
   "/architect",
@@ -55,7 +57,7 @@ function requestHost(path, host, userAgent) {
 for (const ua of Object.values(agents)) {
   for (const [host, heading] of [
     ["the-arcanum.net", "A Human Journey."],
-    ["updates.the-arcanum.net", "See what changed. Follow what comes next."],
+    ["updates.the-arcanum.net", "Watch it take shape."],
     ["journeys.the-arcanum.net", "Go somewhere. Come back with a question."],
     ["architect.the-arcanum.net", "Follow the build."],
     ["architectXthe-arcanumYnet", "A Human Journey."],
@@ -73,10 +75,16 @@ for (const ua of Object.values(agents)) {
       html.match(/<h1[\s\S]*?<\/h1>/)?.[0].includes(heading),
       `${host} has the intended landing`,
     );
-    assert.ok(
-      html.includes('href="https://the-arcanum.net/"'),
-      "Every lane can return to Arcanum",
-    );
+    if (host === "updates.the-arcanum.net") {
+      assert.match(html, /class="current-lockup"/);
+      assert.match(html, /href="\/updates" aria-label="Arcanum Current/);
+      assert.doesNotMatch(html, /class="public-header"/);
+    } else {
+      assert.ok(
+        html.includes('href="https://the-arcanum.net/"'),
+        "Website lanes can return to Arcanum",
+      );
+    }
     if (host === "architect.the-arcanum.net") {
       assert.doesNotMatch(
         html,
@@ -200,13 +208,29 @@ for (const [device, ua] of Object.entries(agents)) {
       if (
         link[1].startsWith("/_next/") ||
         link[1].startsWith("/experience/v07/") ||
-        /\.(svg|ico|json)$/.test(link[1])
+        /\.(svg|ico|json)$/.test(link[1]) ||
+        link[1] === "/updates/manifest.webmanifest"
       )
         continue;
-      assert.ok(
-        routes.includes(link[1]),
-        `${path} links to a known public route: ${link[1]}`,
-      );
+      if (
+        !routes.includes(link[1]) &&
+        /^\/updates\/[a-z0-9-]+$/.test(link[1])
+      ) {
+        const detail = await fetch(new URL(link[1], origin), {
+          headers: { "User-Agent": ua },
+          redirect: "manual",
+        });
+        assert.equal(
+          detail.status,
+          200,
+          `${path} links to a directly public update: ${link[1]}`,
+        );
+      } else {
+        assert.ok(
+          routes.includes(link[1]),
+          `${path} links to a known public route: ${link[1]}`,
+        );
+      }
     }
     if (path === "/download") {
       const listing = await fetch(new URL("/updates/release.json", origin), {
@@ -237,6 +261,19 @@ for (const [device, ua] of Object.entries(agents)) {
     checks++;
   }
 }
+const currentManifestResponse = await fetch(
+  new URL("/updates/manifest.webmanifest", origin),
+);
+assert.equal(currentManifestResponse.status, 200);
+assert.match(
+  currentManifestResponse.headers.get("content-type"),
+  /application\/manifest\+json/,
+);
+const currentManifest = await currentManifestResponse.json();
+assert.match(currentManifest.name, /^Arcanum Current(?: Preview)?$/);
+assert.equal(currentManifest.id, "/updates");
+assert.equal(currentManifest.scope, "/updates");
+checks++;
 const logResponse = await fetch(new URL("/site-log.json", origin));
 assert.equal(logResponse.status, 200);
 assert.match(logResponse.headers.get("content-type"), /application\/json/);
