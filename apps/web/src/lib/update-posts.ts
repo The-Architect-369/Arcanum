@@ -4,6 +4,9 @@ export type UpdatePost = {
   date: string;
   title: string;
   detail: string;
+  summary?: string;
+  topic?: "arcanum" | "arcnet" | "website";
+  updateType?: "release" | "progress" | "website";
   category: "development" | "website";
   status: string;
   source?: string;
@@ -12,7 +15,11 @@ export const developmentPosts: UpdatePost[] = [
   {
     id: "a19-core-integrated",
     date: "2026-10-14",
-    title: "A19 core is integrated",
+    title: "A steadier home for reflections",
+    summary:
+      "Protected reflection collections are integrated, moving the work toward a more dependable everyday experience.",
+    topic: "arcanum",
+    updateType: "progress",
     category: "development",
     status: "Integrated · public download unchanged",
     detail:
@@ -22,7 +29,11 @@ export const developmentPosts: UpdatePost[] = [
   {
     id: "a18-public-release",
     date: "2026-10-05",
-    title: "A reviewed Android development release",
+    title: "A conversation you choose to keep",
+    summary:
+      "A reviewed Android release offers local-model conversations and a separate choice about what enters development memory.",
+    topic: "arcanum",
+    updateType: "release",
     category: "development",
     status: "Public Android · version 34",
     detail:
@@ -35,12 +46,30 @@ export const websitePosts: UpdatePost[] = siteLog.entries.map((entry) => ({
   date: entry.date,
   title: entry.title,
   detail: entry.detail,
+  summary: (
+    {
+      "v07-living-light-baseline":
+        "A continuous visual introduction connects the ideas behind Arcanum, with deliberate paths into deeper reading.",
+      "a18-reviewed-conversation-release":
+        "The website introduces reviewed conversations and explains what local-model setup requires.",
+      "shared-release-discovery":
+        "One reviewed listing keeps the website and compatible Android clients pointed at the same approved release.",
+      "a14-2-download":
+        "The download page added inspected build details so visitors could make an informed installation choice.",
+      "public-site-v2":
+        "Dedicated introductions and source readings give visitors more ways to explore at their own pace.",
+      "public-site-v1":
+        "The first public home established an invitation to explore the project and follow its development.",
+    } as Record<string, string>
+  )[entry.id],
+  topic: "website",
+  updateType: "website",
   category: "website",
   status:
     entry.state === "merged"
       ? "Recorded website integration"
       : "Dated website journal",
-  source: "pullRequest" in entry ? entry.pullRequest : undefined,
+  source: "pullRequest" in entry ? entry.pullRequest : "/site-log.json",
 }));
 export const allUpdatePosts = [...developmentPosts, ...websitePosts].sort(
   (a, b) => b.date.localeCompare(a.date),

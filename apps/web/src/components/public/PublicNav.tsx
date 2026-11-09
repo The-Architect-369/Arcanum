@@ -11,7 +11,11 @@ const links = [
   ["/journeys", "Journeys"],
   ["/download", "Get Arcanum"],
 ];
-export default function PublicNav() {
+export default function PublicNav({
+  subtitle = "A HUMAN JOURNEY",
+}: {
+  subtitle?: string;
+}) {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const header = useRef<HTMLElement>(null);
@@ -55,7 +59,7 @@ export default function PublicNav() {
             priority
           />
           <span>
-            ARCANUM<small>A HUMAN JOURNEY</small>
+            ARCANUM<small>{subtitle}</small>
           </span>
         </a>
         <button

@@ -20,7 +20,13 @@ export function PublicShell({
       <a className="public-skip" href="#public-main">
         Skip to content
       </a>
-      <PublicNav />
+      <PublicNav
+        subtitle={
+          className?.split(" ").includes("updates-app")
+            ? "Follow the developing ARCnet."
+            : undefined
+        }
+      />
       <main id="public-main" tabIndex={-1}>
         {children}
       </main>

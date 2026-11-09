@@ -27,7 +27,7 @@ function request(path, host = "updates.the-arcanum.net", extra = {}) {
   });
 }
 for (const ua of ["Mozilla/5.0 Desktop", "Mozilla/5.0 Android Mobile"]) {
-  for (const view of ["updates", "app", "ahead"]) {
+  for (const view of ["updates", "available", "next"]) {
     const r = await request(`/?view=${view}`, undefined, { "User-Agent": ua });
     assert.equal(r.status, 200);
     assert.doesNotMatch(
@@ -35,7 +35,7 @@ for (const ua of ["Mozilla/5.0 Desktop", "Mozilla/5.0 Android Mobile"]) {
       /<footer[ >]/,
       "Updates has no marketing footer",
     );
-    assert.match(r.body, /<h1>Arcanum Updates<\/h1>/);
+    assert.match(r.body, /<h1>Arcanum<\/h1>/);
     assert.match(
       r.body,
       new RegExp(`href="/updates\\?view=${view}" aria-current="page"`),
@@ -50,7 +50,7 @@ for (const ua of ["Mozilla/5.0 Desktop", "Mozilla/5.0 Android Mobile"]) {
     "User-Agent": ua,
   });
   assert.equal(r.status, 200);
-  assert.match(r.body, /A19 core is integrated/);
+  assert.match(r.body, /A steadier home for reflections/);
   checks++;
   const missing = await request("/updates/not-a-real-post", undefined, {
     "User-Agent": ua,

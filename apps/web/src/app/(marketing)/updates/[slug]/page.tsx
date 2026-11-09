@@ -44,6 +44,7 @@ export default async function UpdateDetail({
           <time dateTime={post.date}>{post.date}</time> · {post.status}
         </p>
         <h1>{post.title}</h1>
+        {post.summary && <p className="updates-panel-lead">{post.summary}</p>}
         <p>{post.detail}</p>
         {post.source && (
           <p>

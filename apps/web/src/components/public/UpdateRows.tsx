@@ -7,14 +7,31 @@ export default function UpdateRows({ posts }: { posts: UpdatePost[] }) {
   const opener = useRef<HTMLAnchorElement | null>(null);
   const closeButton = useRef<HTMLButtonElement>(null);
   const titleId = useId();
+  const historyEntry = useRef(false);
   useEffect(() => {
     if (!selected) return;
     if (typeof panel.current?.showModal !== "function") {
       window.location.assign(`/updates/${selected.id}`);
       return;
     }
+    try {
+      window.history.pushState(
+        { ...window.history.state, arcanumUpdatePanel: selected.id },
+        "",
+        window.location.href,
+      );
+      historyEntry.current = true;
+    } catch {
+      historyEntry.current = false;
+    }
+    const onBack = () => {
+      historyEntry.current = false;
+      panel.current?.close();
+    };
+    window.addEventListener("popstate", onBack);
     panel.current.showModal();
     closeButton.current?.focus();
+    return () => window.removeEventListener("popstate", onBack);
   }, [selected]);
   return (
     <>
@@ -41,8 +58,12 @@ export default function UpdateRows({ posts }: { posts: UpdatePost[] }) {
           >
             <time dateTime={post.date}>{post.date}</time>
             <div>
-              <span className="updates-meta">{post.status}</span>
               <h3>{post.title}</h3>
+              {post.summary && (
+                <p className="updates-card-meaning">{post.summary}</p>
+              )}
+              <span className="updates-status-pill">{post.status}</span>
+              <span className="updates-card-action">Open update →</span>
             </div>
             <span aria-hidden="true">↗</span>
           </a>
@@ -53,6 +74,13 @@ export default function UpdateRows({ posts }: { posts: UpdatePost[] }) {
         className="updates-post-panel"
         aria-labelledby={titleId}
         onClose={() => {
+          if (
+            historyEntry.current &&
+            window.history.state?.arcanumUpdatePanel === selected?.id
+          ) {
+            historyEntry.current = false;
+            window.history.back();
+          }
           setSelected(null);
           opener.current?.focus({ preventScroll: true });
         }}
@@ -82,11 +110,17 @@ export default function UpdateRows({ posts }: { posts: UpdatePost[] }) {
               {selected.status}
             </p>
             <h2 id={titleId}>{selected.title}</h2>
-            <p>{selected.detail}</p>
-            <div className="updates-post-panel-links">
+            {selected.summary && (
+              <p className="updates-panel-lead">{selected.summary}</p>
+            )}
+            <details className="updates-technical-record">
+              <summary>Details and source</summary>
+              <p>{selected.detail}</p>
               {selected.source && (
                 <a href={selected.source}>Inspect the source record ↗</a>
               )}
+            </details>
+            <div className="updates-post-panel-links">
               <a href={`/updates/${selected.id}`}>Open the full page →</a>
             </div>
             <p className="updates-footnote">
