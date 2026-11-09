@@ -27,7 +27,7 @@ function request(path, host = "updates.the-arcanum.net", extra = {}) {
   });
 }
 for (const ua of ["Mozilla/5.0 Desktop", "Mozilla/5.0 Android Mobile"]) {
-  for (const view of ["feed", "app", "roadmap", "website", "history"]) {
+  for (const view of ["updates", "app", "ahead"]) {
     const r = await request(`/?view=${view}`, undefined, { "User-Agent": ua });
     assert.equal(r.status, 200);
     assert.match(r.body, /<h1>Arcanum Updates<\/h1>/);

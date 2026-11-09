@@ -162,7 +162,7 @@
 /* Reuse the classic five-destination pattern, with readable development labels. */
 .updates-nav {
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   overflow: visible;
   gap: 6px;
 }
@@ -233,5 +233,26 @@
   .updates-capabilities,
   .updates-roadmap {
     grid-template-columns: 1fr;
+  }
+}
+
+.updates-install {
+  margin: 0 0 14px;
+  font-size: 0.85rem;
+}
+.updates-install summary {
+  cursor: pointer;
+  padding: 10px 0;
+}
+.updates-install p {
+  max-width: 650px;
+}
+.updates-install .updates-footnote {
+  margin-top: 8px;
+}
+@media (max-width: 640px) {
+  .updates-nav a {
+    font-size: 0.85rem;
+    min-height: 58px;
   }
 }

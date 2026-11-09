@@ -1,18 +1,19 @@
-import { Rss, Smartphone, Route, Globe, Archive } from "lucide-react";
+import PostRows from "@/components/public/UpdateRows";
+import { redirect } from "next/navigation";
+import UpdatesInstall from "@/components/public/UpdatesInstall";
+import { Rss, Smartphone, Route } from "lucide-react";
 import type { Metadata } from "next";
 import { PublicShell } from "@/components/public/PublicShell";
-import {
-  allUpdatePosts,
-  developmentPosts,
-  websitePosts,
-  type UpdatePost,
-} from "@/lib/update-posts";
+import { allUpdatePosts, developmentPosts } from "@/lib/update-posts";
 import release from "../../../../public/updates/release.json";
 import "./updates.css";
 export const metadata: Metadata = {
   title: "Arcanum Updates",
   description:
     "Follow Arcanum development, explore the available app, and see what is taking shape.",
+  applicationName: "Arcanum Updates",
+  manifest: "/updates/manifest.webmanifest",
+  appleWebApp: { capable: true, title: "Updates", statusBarStyle: "default" },
   alternates: { canonical: "https://updates.the-arcanum.net/" },
 };
 // Capability prose must not silently follow a future artifact promotion.
@@ -20,45 +21,31 @@ const capabilitiesReviewed =
   release.versionCode === 34 &&
   release.sourceCommit === "75cad68cb3733a44b5b13bcea153f2f77dfa7bda";
 const views = [
-  { id: "feed", label: "Feed", icon: Rss },
+  { id: "updates", label: "Updates", icon: Rss },
   { id: "app", label: "App", icon: Smartphone },
-  { id: "roadmap", label: "Roadmap", icon: Route },
-  { id: "website", label: "Website", icon: Globe },
-  { id: "history", label: "History", icon: Archive },
+  { id: "ahead", label: "Ahead", icon: Route },
 ] as const;
-function PostRows({ posts }: { posts: UpdatePost[] }) {
-  return (
-    <div className="updates-list">
-      {posts.map((post) => (
-        <a className="updates-row" href={`/updates/${post.id}`} key={post.id}>
-          <time dateTime={post.date}>{post.date}</time>
-          <div>
-            <span className="updates-meta">{post.status}</span>
-            <h3>{post.title}</h3>
-          </div>
-          <span aria-hidden="true">↗</span>
-        </a>
-      ))}
-    </div>
-  );
-}
 export default async function UpdatesPage({
   searchParams,
 }: {
   searchParams: Promise<{ view?: string }>;
 }) {
   const { view: requested } = await searchParams;
-  // Preserve links to the earlier four-section draft.
+  if (requested === "website") redirect("/updates/archive?category=website");
+  if (requested === "history") redirect("/updates/archive");
+  // Preserve earlier preview links without keeping redundant primary sections.
   const selected =
     requested === "latest"
       ? "app"
-      : requested === "updates"
-        ? "feed"
-        : requested;
-  const view = views.find((v) => v.id === selected)?.id ?? "feed";
+      : requested === "feed"
+        ? "updates"
+        : requested === "roadmap"
+          ? "ahead"
+          : requested;
+  const view = views.find((v) => v.id === selected)?.id ?? "updates";
   return (
     <PublicShell>
-      <div className="updates-hub">
+      <div className="updates-hub" data-updates-shell="true">
         <header className="updates-heading">
           <div>
             <p className="public-eyebrow">Arcanum / Follow the work</p>
@@ -72,6 +59,7 @@ export default async function UpdatesPage({
             Architect sign-in ↗
           </a>
         </header>
+        <UpdatesInstall />
         <nav className="updates-nav" aria-label="Follow Arcanum development">
           {views.map(({ id, label, icon: Icon }) => (
             <a
@@ -84,7 +72,7 @@ export default async function UpdatesPage({
             </a>
           ))}
         </nav>
-        {view === "feed" && (
+        {view === "updates" && (
           <section aria-labelledby="development-feed">
             <div className="updates-feed-intro">
               <p className="updates-meta">The development thread</p>
@@ -97,7 +85,11 @@ export default async function UpdatesPage({
                 See what the public app can do →
               </a>
             </div>
-            <PostRows posts={allUpdatePosts} />
+            <PostRows posts={allUpdatePosts.slice(0, 3)} />
+            <p className="updates-footnote">
+              <a href="/updates/archive">Browse the archive →</a> ·{" "}
+              <a href="/updates/archive?category=website">Website journal</a>
+            </p>
             <p className="updates-footnote">
               This is a dated, curated record. New posts appear after editorial
               review and publication; it is not an automatic report from
@@ -204,7 +196,7 @@ export default async function UpdatesPage({
             </p>
           </section>
         )}
-        {view === "roadmap" && (
+        {view === "ahead" && (
           <section aria-labelledby="development-roadmap">
             <p className="updates-meta">
               Anticipated work · reviewed November 9, 2026
@@ -234,7 +226,7 @@ export default async function UpdatesPage({
                 <span className="updates-meta">This website candidate</span>
                 <h3>A place to follow development</h3>
                 <p>
-                  The five-section Updates experience brings together the
+                  The three-section Updates experience brings together the
                   development feed, available app features, anticipated work,
                   website changes and history.
                 </p>
@@ -269,49 +261,6 @@ export default async function UpdatesPage({
                 </p>
               </article>
             </div>
-          </section>
-        )}
-        {view === "website" && (
-          <section aria-labelledby="website-notes">
-            <h2 id="website-notes" className="updates-section-title">
-              The website’s story
-            </h2>
-            <p>
-              Dated editorial notes about the web experience. Website versions
-              are separate from Android releases.
-            </p>
-            <PostRows posts={websitePosts} />
-            <p className="updates-footnote">
-              <a href="/site-log.json">Machine-readable website journal ↗</a>
-            </p>
-          </section>
-        )}
-        {view === "history" && (
-          <section className="updates-history" aria-labelledby="update-history">
-            <h2 id="update-history" className="updates-section-title">
-              Browse the record
-            </h2>
-            <p>
-              Expand a month, then choose an entry. This is the selected
-              editorial record, not an exhaustive release archive.
-            </p>
-            {Array.from(
-              new Set(allUpdatePosts.map((p) => p.date.slice(0, 7))),
-            ).map((month) => (
-              <details key={month}>
-                <summary>
-                  {month} ·{" "}
-                  {
-                    allUpdatePosts.filter((p) => p.date.startsWith(month))
-                      .length
-                  }{" "}
-                  entries
-                </summary>
-                <PostRows
-                  posts={allUpdatePosts.filter((p) => p.date.startsWith(month))}
-                />
-              </details>
-            ))}
           </section>
         )}
       </div>

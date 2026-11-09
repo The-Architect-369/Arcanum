@@ -29,9 +29,9 @@ export default async function UpdateDetail({
   if (!post) notFound();
   return (
     <PublicShell>
-      <article className="updates-detail">
+      <article className="updates-detail" data-updates-shell="true">
         <a
-          href={`/updates?view=${post.category === "website" ? "website" : "feed"}`}
+          href={`/updates?view=${post.category === "website" ? "website" : "updates"}`}
         >
           ← Back to Updates
         </a>

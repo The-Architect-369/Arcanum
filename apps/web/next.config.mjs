@@ -28,6 +28,10 @@ const nextConfig = {
   async headers() {
     return [
       {
+        source: "/updates-sw.js",
+        headers: [{ key: "Cache-Control", value: "no-store" }],
+      },
+      {
         source: "/architect/:path*",
         headers: [
           { key: "Cache-Control", value: "private, no-store, max-age=0" },
