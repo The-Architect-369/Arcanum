@@ -29,7 +29,11 @@ export default async function UpdateDetail({
   const post = allUpdatePosts.find((p) => p.id === slug);
   if (!post) notFound();
   return (
-    <PublicShell showFooter={false}>
+    <PublicShell
+      showFooter={false}
+      className="updates-app"
+      bottomNavigation={<UpdatesTray />}
+    >
       <article className="updates-detail" data-updates-shell="true">
         <a
           href={`/updates?view=${post.category === "website" ? "website" : "updates"}`}
@@ -51,7 +55,6 @@ export default async function UpdateDetail({
           are separate states.
         </p>
       </article>
-      <UpdatesTray />
     </PublicShell>
   );
 }

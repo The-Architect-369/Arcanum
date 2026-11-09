@@ -19,7 +19,11 @@ export default async function ArchivePage({
       ? allUpdatePosts.filter((p) => p.category === "website")
       : allUpdatePosts;
   return (
-    <PublicShell showFooter={false}>
+    <PublicShell
+      showFooter={false}
+      className="updates-app"
+      bottomNavigation={<UpdatesTray />}
+    >
       <section
         className="updates-detail updates-history"
         data-updates-shell="true"
@@ -55,7 +59,6 @@ export default async function ArchivePage({
           <a href="/site-log.json">Machine-readable website journal</a>.
         </p>
       </section>
-      <UpdatesTray />
     </PublicShell>
   );
 }

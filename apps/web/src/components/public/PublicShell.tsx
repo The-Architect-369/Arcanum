@@ -6,12 +6,16 @@ import "@/app/(marketing)/public-home.css";
 export function PublicShell({
   children,
   showFooter = true,
+  className,
+  bottomNavigation,
 }: {
   children: React.ReactNode;
   showFooter?: boolean;
+  className?: string;
+  bottomNavigation?: React.ReactNode;
 }) {
   return (
-    <div className="public-home">
+    <div className={["public-home", className].filter(Boolean).join(" ")}>
       <div className="public-reading-progress" aria-hidden="true" />
       <a className="public-skip" href="#public-main">
         Skip to content
@@ -20,6 +24,7 @@ export function PublicShell({
       <main id="public-main" tabIndex={-1}>
         {children}
       </main>
+      {bottomNavigation}
       {showFooter && (
         <footer className="public-footer">
           <div className="public-shell public-footer-grid">

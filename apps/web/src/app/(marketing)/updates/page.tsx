@@ -40,7 +40,11 @@ export default async function UpdatesPage({
           : requested;
   const view = views.find((v) => v === selected) ?? "updates";
   return (
-    <PublicShell showFooter={false}>
+    <PublicShell
+      showFooter={false}
+      className="updates-app"
+      bottomNavigation={<UpdatesTray active={view} />}
+    >
       <div className="updates-hub" data-updates-shell="true">
         <header className="updates-heading">
           <div>
@@ -56,7 +60,6 @@ export default async function UpdatesPage({
           </a>
         </header>
         <UpdatesInstall />
-        <UpdatesTray active={view} />
         {view === "updates" && (
           <section aria-labelledby="development-feed">
             <div className="updates-feed-intro">
