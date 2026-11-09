@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import { ChevronRight } from "lucide-react";
 import CurrentPanel from "./CurrentPanel";
 import type { UpdatePost } from "@/lib/update-posts";
 export default function UpdateRows({ posts }: { posts: UpdatePost[] }) {
@@ -36,7 +37,7 @@ export default function UpdateRows({ posts }: { posts: UpdatePost[] }) {
               <span className="updates-status-pill">{post.status}</span>
               <span className="updates-card-action">Open update →</span>
             </div>
-            <span aria-hidden="true">↗</span>
+            <ChevronRight size={20} aria-hidden="true" />
           </a>
         ))}
       </div>
