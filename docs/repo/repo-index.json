@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-11-09T05:52:11Z",
+  "generated_at": "2026-11-09T06:07:30Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "22314efdf",
+  "commit": "2d85b3de3",
   "generator_version": "1.5",
   "files": [
     {
@@ -1213,11 +1213,11 @@
     {
       "path": "apps/web/next.config.mjs",
       "type": "file",
-      "size_bytes": 2460,
-      "last_modified_commit": "d298dbeda",
+      "size_bytes": 2575,
+      "last_modified_commit": "2d85b3de3",
       "is_empty": false,
       "extension": ".mjs",
-      "lines": 79
+      "lines": 83
     },
     {
       "path": "apps/web/node/docker/Dockerfile",
@@ -1445,6 +1445,15 @@
       "lines": 84
     },
     {
+      "path": "apps/web/public/updates-sw.js",
+      "type": "file",
+      "size_bytes": 4405,
+      "last_modified_commit": "2d85b3de3",
+      "is_empty": false,
+      "extension": ".js",
+      "lines": 134
+    },
+    {
       "path": "apps/web/public/updates/a14-2/SHA256SUMS",
       "type": "file",
       "size_bytes": 179,
@@ -1631,6 +1640,15 @@
       "last_modified_commit": "26d03071c",
       "is_empty": false,
       "extension": ".json",
+      "lines": 1
+    },
+    {
+      "path": "apps/web/public/updates/offline.html",
+      "type": "file",
+      "size_bytes": 804,
+      "last_modified_commit": "2d85b3de3",
+      "is_empty": false,
+      "extension": ".html",
       "lines": 1
     },
     {
@@ -2257,29 +2275,47 @@
     {
       "path": "apps/web/src/app/(marketing)/updates/[slug]/page.tsx",
       "type": "file",
-      "size_bytes": 1595,
-      "last_modified_commit": "22314efdf",
+      "size_bytes": 1624,
+      "last_modified_commit": "2d85b3de3",
       "is_empty": false,
       "extension": ".tsx",
       "lines": 55
     },
     {
-      "path": "apps/web/src/app/(marketing)/updates/page.tsx",
+      "path": "apps/web/src/app/(marketing)/updates/archive/page.tsx",
       "type": "file",
-      "size_bytes": 12461,
-      "last_modified_commit": "22314efdf",
+      "size_bytes": 1983,
+      "last_modified_commit": "2d85b3de3",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 320
+      "lines": 59
+    },
+    {
+      "path": "apps/web/src/app/(marketing)/updates/layout.tsx",
+      "type": "file",
+      "size_bytes": 534,
+      "last_modified_commit": "2d85b3de3",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 21
+    },
+    {
+      "path": "apps/web/src/app/(marketing)/updates/page.tsx",
+      "type": "file",
+      "size_bytes": 11026,
+      "last_modified_commit": "2d85b3de3",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 269
     },
     {
       "path": "apps/web/src/app/(marketing)/updates/updates.css",
       "type": "file",
-      "size_bytes": 4785,
-      "last_modified_commit": "22314efdf",
+      "size_bytes": 5116,
+      "last_modified_commit": "2d85b3de3",
       "is_empty": false,
       "extension": ".css",
-      "lines": 237
+      "lines": 258
     },
     {
       "path": "apps/web/src/app/activate/page.tsx",
@@ -2370,6 +2406,15 @@
       "is_empty": false,
       "extension": ".ts",
       "lines": 8
+    },
+    {
+      "path": "apps/web/src/app/updates/manifest.webmanifest/route.ts",
+      "type": "file",
+      "size_bytes": 1189,
+      "last_modified_commit": "2d85b3de3",
+      "is_empty": false,
+      "extension": ".ts",
+      "lines": 45
     },
     {
       "path": "apps/web/src/auth.ts",
@@ -2523,6 +2568,24 @@
       "is_empty": false,
       "extension": ".tsx",
       "lines": 193
+    },
+    {
+      "path": "apps/web/src/components/public/UpdateRows.tsx",
+      "type": "file",
+      "size_bytes": 555,
+      "last_modified_commit": "2d85b3de3",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 17
+    },
+    {
+      "path": "apps/web/src/components/public/UpdatesInstall.tsx",
+      "type": "file",
+      "size_bytes": 3009,
+      "last_modified_commit": "2d85b3de3",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 88
     },
     {
       "path": "apps/web/src/components/shared/CTAActivate.tsx",
@@ -3391,11 +3454,11 @@
     {
       "path": "apps/web/src/lib/public-routes.ts",
       "type": "file",
-      "size_bytes": 678,
-      "last_modified_commit": "d298dbeda",
+      "size_bytes": 760,
+      "last_modified_commit": "2d85b3de3",
       "is_empty": false,
       "extension": ".ts",
-      "lines": 26
+      "lines": 29
     },
     {
       "path": "apps/web/src/lib/public-site.ts",
@@ -6613,11 +6676,11 @@
     {
       "path": "docs/specs/public-site/architect-google-access.md",
       "type": "file",
-      "size_bytes": 6184,
-      "last_modified_commit": "22314efdf",
+      "size_bytes": 8655,
+      "last_modified_commit": "2d85b3de3",
       "is_empty": false,
       "extension": ".md",
-      "lines": 39
+      "lines": 51
     },
     {
       "path": "docs/specs/public-site/v07-baseline-receipt.json",
@@ -9743,6 +9806,15 @@
       "lines": 66
     },
     {
+      "path": "scripts/test-updates-worker.mjs",
+      "type": "file",
+      "size_bytes": 3327,
+      "last_modified_commit": "2d85b3de3",
+      "is_empty": false,
+      "extension": ".mjs",
+      "lines": 114
+    },
+    {
       "path": "scripts/test-wallet-boundaries.cjs",
       "type": "file",
       "size_bytes": 5523,
@@ -9997,8 +10069,8 @@
     {
       "path": "scripts/verify-updates-access.mjs",
       "type": "file",
-      "size_bytes": 3384,
-      "last_modified_commit": "22314efdf",
+      "size_bytes": 3363,
+      "last_modified_commit": "2d85b3de3",
       "is_empty": false,
       "extension": ".mjs",
       "lines": 96
