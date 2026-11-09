@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-11-09T08:47:18Z",
+  "generated_at": "2026-11-09T08:49:01Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "c59f55cf5",
+  "commit": "0259a1532",
   "generator_version": "1.5",
   "files": [
     {
@@ -2563,11 +2563,11 @@
     {
       "path": "apps/web/src/components/public/CurrentPanel.tsx",
       "type": "file",
-      "size_bytes": 2064,
-      "last_modified_commit": "c59f55cf5",
+      "size_bytes": 2211,
+      "last_modified_commit": "0259a1532",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 76
+      "lines": 81
     },
     {
       "path": "apps/web/src/components/public/PillarCarousel.tsx",
