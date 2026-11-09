@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-11-09T07:33:09Z",
+  "generated_at": "2026-11-09T07:37:36Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "ff9bfb97d",
+  "commit": "9b2c5f327",
   "generator_version": "1.5",
   "files": [
     {
@@ -1448,7 +1448,7 @@
       "path": "apps/web/public/updates-sw.js",
       "type": "file",
       "size_bytes": 4405,
-      "last_modified_commit": "ff9bfb97d",
+      "last_modified_commit": "9b2c5f327",
       "is_empty": false,
       "extension": ".js",
       "lines": 134
@@ -2311,11 +2311,11 @@
     {
       "path": "apps/web/src/app/(marketing)/updates/updates.css",
       "type": "file",
-      "size_bytes": 6387,
-      "last_modified_commit": "ff9bfb97d",
+      "size_bytes": 7976,
+      "last_modified_commit": "9b2c5f327",
       "is_empty": false,
       "extension": ".css",
-      "lines": 314
+      "lines": 391
     },
     {
       "path": "apps/web/src/app/activate/page.tsx",
@@ -2572,11 +2572,11 @@
     {
       "path": "apps/web/src/components/public/UpdateRows.tsx",
       "type": "file",
-      "size_bytes": 555,
-      "last_modified_commit": "2d85b3de3",
+      "size_bytes": 3380,
+      "last_modified_commit": "9b2c5f327",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 17
+      "lines": 101
     },
     {
       "path": "apps/web/src/components/public/UpdatesInstall.tsx",
