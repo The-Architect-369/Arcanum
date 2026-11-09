@@ -792,3 +792,15 @@ body:has(.updates-app) {
 .updates-app > #public-main {
   container-type: size;
 }
+/* At extreme text size on a short narrow screen, reading takes priority over a sticky section title. */
+@container (max-width: 400px) and (max-height: 400px) {
+  .updates-feed-tools {
+    position: relative;
+    max-height: none;
+    overflow: visible;
+  }
+}
+.updates-nav {
+  padding-left: max(8px, env(safe-area-inset-left));
+  padding-right: max(8px, env(safe-area-inset-right));
+}
