@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-11-09T08:49:01Z",
+  "generated_at": "2026-11-09T08:49:27Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "0259a1532",
+  "commit": "2c2d6c201",
   "generator_version": "1.5",
   "files": [
     {
@@ -2599,11 +2599,11 @@
     {
       "path": "apps/web/src/components/public/UpdateRows.tsx",
       "type": "file",
-      "size_bytes": 2645,
-      "last_modified_commit": "c59f55cf5",
+      "size_bytes": 2700,
+      "last_modified_commit": "2c2d6c201",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 78
+      "lines": 79
     },
     {
       "path": "apps/web/src/components/public/UpdatesAvailable.tsx",
