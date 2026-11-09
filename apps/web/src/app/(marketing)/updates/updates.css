@@ -227,9 +227,6 @@
   .updates-hub {
     padding-bottom: calc(110px + env(safe-area-inset-bottom));
   }
-  .public-home:has(.updates-hub) .public-footer {
-    padding-bottom: calc(100px + env(safe-area-inset-bottom));
-  }
   .updates-capabilities,
   .updates-roadmap {
     grid-template-columns: 1fr;
@@ -254,5 +251,11 @@
   .updates-nav a {
     font-size: 0.85rem;
     min-height: 58px;
+  }
+}
+
+@media (max-width: 640px) {
+  .updates-detail {
+    padding-bottom: calc(110px + env(safe-area-inset-bottom));
   }
 }

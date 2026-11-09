@@ -1,7 +1,7 @@
 import PostRows from "@/components/public/UpdateRows";
 import { redirect } from "next/navigation";
 import UpdatesInstall from "@/components/public/UpdatesInstall";
-import { Rss, Smartphone, Route } from "lucide-react";
+import UpdatesTray from "@/components/public/UpdatesTray";
 import type { Metadata } from "next";
 import { PublicShell } from "@/components/public/PublicShell";
 import { allUpdatePosts, developmentPosts } from "@/lib/update-posts";
@@ -20,11 +20,7 @@ export const metadata: Metadata = {
 const capabilitiesReviewed =
   release.versionCode === 34 &&
   release.sourceCommit === "75cad68cb3733a44b5b13bcea153f2f77dfa7bda";
-const views = [
-  { id: "updates", label: "Updates", icon: Rss },
-  { id: "app", label: "App", icon: Smartphone },
-  { id: "ahead", label: "Ahead", icon: Route },
-] as const;
+const views = ["updates", "app", "ahead"] as const;
 export default async function UpdatesPage({
   searchParams,
 }: {
@@ -42,9 +38,9 @@ export default async function UpdatesPage({
         : requested === "roadmap"
           ? "ahead"
           : requested;
-  const view = views.find((v) => v.id === selected)?.id ?? "updates";
+  const view = views.find((v) => v === selected) ?? "updates";
   return (
-    <PublicShell>
+    <PublicShell showFooter={false}>
       <div className="updates-hub" data-updates-shell="true">
         <header className="updates-heading">
           <div>
@@ -60,18 +56,7 @@ export default async function UpdatesPage({
           </a>
         </header>
         <UpdatesInstall />
-        <nav className="updates-nav" aria-label="Follow Arcanum development">
-          {views.map(({ id, label, icon: Icon }) => (
-            <a
-              key={id}
-              href={`?view=${id}`}
-              aria-current={id === view ? "page" : undefined}
-            >
-              <Icon size={22} aria-hidden="true" />
-              <span>{label}</span>
-            </a>
-          ))}
-        </nav>
+        <UpdatesTray active={view} />
         {view === "updates" && (
           <section aria-labelledby="development-feed">
             <div className="updates-feed-intro">

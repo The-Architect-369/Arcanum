@@ -30,10 +30,15 @@ for (const ua of ["Mozilla/5.0 Desktop", "Mozilla/5.0 Android Mobile"]) {
   for (const view of ["updates", "app", "ahead"]) {
     const r = await request(`/?view=${view}`, undefined, { "User-Agent": ua });
     assert.equal(r.status, 200);
+    assert.doesNotMatch(
+      r.body,
+      /<footer[ >]/,
+      "Updates has no marketing footer",
+    );
     assert.match(r.body, /<h1>Arcanum Updates<\/h1>/);
     assert.match(
       r.body,
-      new RegExp(`href="\\?view=${view}" aria-current="page"`),
+      new RegExp(`href="/updates\\?view=${view}" aria-current="page"`),
     );
     assert.doesNotMatch(
       r.body,
@@ -65,6 +70,16 @@ for (const ua of ["Mozilla/5.0 Desktop", "Mozilla/5.0 Android Mobile"]) {
     checks++;
   }
 }
+for (const path of ["/updates/a19-core-integrated", "/updates/archive"]) {
+  const page = await request(path);
+  assert.equal(page.status, 200);
+  assert.doesNotMatch(page.body, /<footer[ >]/);
+  assert.match(page.body, /aria-label="Follow Arcanum development"/);
+  checks++;
+}
+const publicDownload = await request("/download", "the-arcanum.net");
+assert.match(publicDownload.body, /<footer class="public-footer"/);
+checks++;
 const login = await request("/architect/login", "architect.the-arcanum.net");
 assert.equal(login.status, 200);
 assert.match(login.body, /being set up/);

@@ -1,3 +1,4 @@
+import UpdatesTray from "@/components/public/UpdatesTray";
 import { notFound } from "next/navigation";
 import { PublicShell } from "@/components/public/PublicShell";
 import { allUpdatePosts } from "@/lib/update-posts";
@@ -28,7 +29,7 @@ export default async function UpdateDetail({
   const post = allUpdatePosts.find((p) => p.id === slug);
   if (!post) notFound();
   return (
-    <PublicShell>
+    <PublicShell showFooter={false}>
       <article className="updates-detail" data-updates-shell="true">
         <a
           href={`/updates?view=${post.category === "website" ? "website" : "updates"}`}
@@ -50,6 +51,7 @@ export default async function UpdateDetail({
           are separate states.
         </p>
       </article>
+      <UpdatesTray />
     </PublicShell>
   );
 }

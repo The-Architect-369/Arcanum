@@ -3,7 +3,13 @@ import { repository, pillars, source, siteLog } from "@/lib/public-site";
 import PublicNav from "./PublicNav";
 import PillarCarousel from "./PillarCarousel";
 import "@/app/(marketing)/public-home.css";
-export function PublicShell({ children }: { children: React.ReactNode }) {
+export function PublicShell({
+  children,
+  showFooter = true,
+}: {
+  children: React.ReactNode;
+  showFooter?: boolean;
+}) {
   return (
     <div className="public-home">
       <div className="public-reading-progress" aria-hidden="true" />
@@ -14,48 +20,54 @@ export function PublicShell({ children }: { children: React.ReactNode }) {
       <main id="public-main" tabIndex={-1}>
         {children}
       </main>
-      <footer className="public-footer">
-        <div className="public-shell public-footer-grid">
-          <div>
-            <a href="https://the-arcanum.net/" className="public-wordmark">
-              ARCANUM
-            </a>
-            <p>
-              A Human Journey.
-              <br />A network taking shape.
-            </p>
-            <span className="public-eyebrow">Pre-Genesis · Public website</span>
+      {showFooter && (
+        <footer className="public-footer">
+          <div className="public-shell public-footer-grid">
+            <div>
+              <a href="https://the-arcanum.net/" className="public-wordmark">
+                ARCANUM
+              </a>
+              <p>
+                A Human Journey.
+                <br />A network taking shape.
+              </p>
+              <span className="public-eyebrow">
+                Pre-Genesis · Public website
+              </span>
+            </div>
+            <div>
+              <p className="public-label">Explore the system</p>
+              {pillars.map((p) => (
+                <Link href={`/explore/${p.slug}`} key={p.slug}>
+                  {p.name}
+                </Link>
+              ))}
+            </div>
+            <div>
+              <p className="public-label">Follow the work</p>
+              <Link href="/principles">Principles &amp; source documents</Link>
+              <Link href="/updates">Public journal</Link>
+              <a href="/site-log.json">Machine-readable site log ↗</a>
+              <a href={repository}>Repository ↗</a>
+              <Link href="/download">Android release status</Link>
+              <a href="https://updates.the-arcanum.net/">Updates channel ↗</a>
+              <a href="https://journeys.the-arcanum.net/">
+                The Great Journey ↗
+              </a>
+              <a href="https://architect.the-arcanum.net/">
+                Development dashboard ↗
+              </a>
+            </div>
           </div>
-          <div>
-            <p className="public-label">Explore the system</p>
-            {pillars.map((p) => (
-              <Link href={`/explore/${p.slug}`} key={p.slug}>
-                {p.name}
-              </Link>
-            ))}
+          <div className="public-shell public-footer-bottom">
+            <span>Meaning remains yours.</span>
+            <span>
+              Website v{siteLog.siteVersion} ·{" "}
+              <time dateTime={siteLog.recordedOn}>{siteLog.recordedOn}</time>
+            </span>
           </div>
-          <div>
-            <p className="public-label">Follow the work</p>
-            <Link href="/principles">Principles &amp; source documents</Link>
-            <Link href="/updates">Public journal</Link>
-            <a href="/site-log.json">Machine-readable site log ↗</a>
-            <a href={repository}>Repository ↗</a>
-            <Link href="/download">Android release status</Link>
-            <a href="https://updates.the-arcanum.net/">Updates channel ↗</a>
-            <a href="https://journeys.the-arcanum.net/">The Great Journey ↗</a>
-            <a href="https://architect.the-arcanum.net/">
-              Development dashboard ↗
-            </a>
-          </div>
-        </div>
-        <div className="public-shell public-footer-bottom">
-          <span>Meaning remains yours.</span>
-          <span>
-            Website v{siteLog.siteVersion} ·{" "}
-            <time dateTime={siteLog.recordedOn}>{siteLog.recordedOn}</time>
-          </span>
-        </div>
-      </footer>
+        </footer>
+      )}
     </div>
   );
 }
