@@ -53,10 +53,6 @@ export default function UpdatesFeed({ posts }: { posts: UpdatePost[] }) {
   return (
     <>
       <div className="updates-feed-tools">
-        <div className="updates-view-heading">
-          <h1 id="development-feed">Watch it take shape.</h1>
-          <p>The latest from Arcanum and ARCnet.</p>
-        </div>
         <details className="updates-search-drawer">
           <summary>Search &amp; filters{active ? " · active" : ""}</summary>
           <div

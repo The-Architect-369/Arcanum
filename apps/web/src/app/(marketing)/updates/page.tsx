@@ -1,5 +1,8 @@
 import { redirect } from "next/navigation";
 import type { Metadata } from "next";
+import CurrentExperience, {
+  CurrentTabs,
+} from "@/components/public/CurrentExperience";
 import UpdatesNext from "@/components/public/UpdatesNext";
 import UpdatesFeed from "@/components/public/UpdatesFeed";
 import UpdatesAvailable from "@/components/public/UpdatesAvailable";
@@ -38,20 +41,27 @@ export default async function UpdatesPage({
   const view =
     selected === "available" || selected === "next" ? selected : "updates";
   return (
-    <PublicShell
-      showFooter={false}
-      className="updates-app"
-      bottomNavigation={<UpdatesTray active={view} />}
-    >
-      <div className="updates-hub updates-experience" data-updates-shell="true">
-        {view === "updates" && (
-          <section aria-labelledby="development-feed">
-            <UpdatesFeed posts={allUpdatePosts} />
-          </section>
-        )}
-        {view === "available" && <UpdatesAvailable />}
-        {view === "next" && <UpdatesNext />}
-      </div>
-    </PublicShell>
+    <CurrentExperience initialView={view}>
+      <PublicShell
+        showFooter={false}
+        className="updates-app"
+        bottomNavigation={<UpdatesTray active={view} />}
+      >
+        <div
+          className="updates-hub updates-experience"
+          data-updates-shell="true"
+        >
+          <CurrentTabs
+            updates={
+              <section aria-labelledby="development-feed">
+                <UpdatesFeed posts={allUpdatePosts} />
+              </section>
+            }
+            available={<UpdatesAvailable />}
+            next={<UpdatesNext />}
+          />
+        </div>
+      </PublicShell>
+    </CurrentExperience>
   );
 }

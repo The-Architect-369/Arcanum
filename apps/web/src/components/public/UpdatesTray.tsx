@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useRef } from "react";
+import { useCurrentNavigation } from "./CurrentExperience";
 import { usePathname } from "next/navigation";
 import { Rss, Smartphone, Route } from "lucide-react";
 const destinations = [
@@ -13,6 +14,8 @@ export default function UpdatesTray({
   active?: string;
 }) {
   const pathname = usePathname();
+  const navigation = useCurrentNavigation();
+  const selected = navigation?.view ?? active;
   const tray = useRef<HTMLElement>(null);
   useEffect(() => {
     const element = tray.current;
@@ -39,8 +42,20 @@ export default function UpdatesTray({
         <a
           key={id}
           href={`/updates?view=${id}`}
-          aria-current={id === active ? "page" : undefined}
+          aria-current={id === selected ? "page" : undefined}
           onClick={(event) => {
+            if (
+              navigation &&
+              event.button === 0 &&
+              !event.metaKey &&
+              !event.ctrlKey &&
+              !event.shiftKey &&
+              !event.altKey
+            ) {
+              event.preventDefault();
+              navigation.navigate(id, true);
+              return;
+            }
             const home =
               pathname === "/updates" ||
               (pathname === "/" &&

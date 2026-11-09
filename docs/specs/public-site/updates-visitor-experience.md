@@ -1,6 +1,22 @@
 # Arcanum Current visitor experience — preview candidate
 
-## November 9 r2 reconciliation
+## November 9 r3 walkthrough reconciliation
+
+Human approved the accumulated revision in Ambassador turn `01a1bfb5-9caf-7d72-ba4a-ac73d9b66de5`. Packet SHA-256: `b099a41bb4f5dfb158e17011669fde3cfe14a25600873ed2371b1f2652ead3d6`. The existing candidate/preview authority remains; production/native releases and private resources are outside this revision.
+
+One opaque rounded header now contains a centered reusable provisional Arcanum / The Current lockup and the active tab title/subtitle. The public emblem remains provisional; native-logo provenance is still unresolved. On short narrow/enlarged-text screens the header’s own section text can scroll to preserve reading space. No title is layered into the moving cards. Coming next uses “See what’s taking shape.” / “Follow the work across Arcanum.” with the same visuals and framing as Updates.
+
+Tabs stay mounted, preserving filters, device choice and per-tab reading positions during in-app tab navigation. Horizontal touch swipes move in Updates → Available → Coming next order without wrapping. A distance/direction threshold rejects vertical intent; controls, open panels, selection and screen edges are excluded. Tap and keyboard links remain equivalent navigation. The active Updates retap returns to newest matching entries. The header explicitly returns to newest Updates. No carousel animation is needed; reduced motion remains respected.
+
+No selected public build screenshots accompany the dated records. Consistent application/network/web topic icons are used instead, explicitly described as topic icons rather than product screenshots. No mock product demonstration or private media is generated or published.
+
+Available retains reviewed Android prose and uses one dropdown, with native availability visible in option labels. Only the chosen platform or Current web-app content is rendered. Change selection returns focus to the chooser. Installation instructions stay inside this panel; no second dialog is stacked on the package panel.
+
+An application-owned installation invitation appears on arrival without requesting a browser prompt or notification permission. Its dismissal is stored under `arcanum.current.install-invite.v1` on the current origin; blocked storage preserves dismissal for the current mounted visit only. Detectable standalone/iOS standalone or appinstalled hides the invitation; absence of detection is not a claim that no installation exists. An eligible browser prompt is only invoked by a click, otherwise the action opens installation help. Permanent access is Available → Arcanum Current — web app. Phones and computers are covered, preview/public origins remain separate, and existing installed-name refresh remains browser-controlled. Official help: [Chrome](https://support.google.com/chrome/answer/9658361), [Safari on Mac](https://support.apple.com/104996). No login, notification request, follower account or alert service is added. The Updates-only worker is registered on arrival and keeps its private/API/APK exclusions.
+
+This r3 section supersedes conflicting r2 presentation below. Human physical-device/visual acceptance remains pending; exact checks/source/head/deployment belong in the handoff.
+
+## November 9 r2 reconciliation (retained history)
 
 Human approved the revised visitor direction in Ambassador turn `01a1bf79-a571-7493-8af8-7d61dd3a6c00`. Packet SHA-256: `26248ba40a7c446b94457e8fda753428cd81f419a12bf17ca1bf29769f602450`. This supersedes the r1 presentation described below where specified; it grants no production promotion or native release change.
 

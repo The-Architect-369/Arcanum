@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { ChevronRight } from "lucide-react";
+import CurrentTopicVisual from "./CurrentTopicVisual";
 import CurrentPanel from "./CurrentPanel";
 import type { UpdatePost } from "@/lib/update-posts";
 export default function UpdateRows({ posts }: { posts: UpdatePost[] }) {
@@ -28,6 +29,7 @@ export default function UpdateRows({ posts }: { posts: UpdatePost[] }) {
               setSelected(post);
             }}
           >
+            <CurrentTopicVisual topic={post.topic} />
             <time dateTime={post.date}>{post.date}</time>
             <div>
               <h3>{post.title}</h3>

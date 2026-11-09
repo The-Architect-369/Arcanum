@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { ChevronRight } from "lucide-react";
+import CurrentTopicVisual from "./CurrentTopicVisual";
 import CurrentPanel from "./CurrentPanel";
 export type CurrentEntry = {
   id: string;
@@ -9,6 +10,7 @@ export type CurrentEntry = {
   status: string;
   action: string;
   logo?: boolean;
+  topic?: string;
   content: React.ReactNode;
 };
 export default function CurrentCards({
@@ -35,6 +37,7 @@ export default function CurrentCards({
             {entry.logo && (
               <img src="/logo-arcanum.svg" width="72" height="72" alt="" />
             )}
+            {entry.topic && <CurrentTopicVisual topic={entry.topic} />}
             <span className="current-card-heading">
               {entry.title}
               <ChevronRight size={20} aria-hidden="true" />

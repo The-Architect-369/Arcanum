@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Suspense } from "react";
+import { CurrentArrival, CurrentInstallProvider } from "./CurrentInstall";
 import CurrentHeader from "./CurrentHeader";
 import { repository, pillars, source, siteLog } from "@/lib/public-site";
 import PublicNav from "./PublicNav";
@@ -16,7 +17,8 @@ export function PublicShell({
   className?: string;
   bottomNavigation?: React.ReactNode;
 }) {
-  return (
+  const isCurrent = className?.split(" ").includes("updates-app");
+  const content = (
     <div className={["public-home", className].filter(Boolean).join(" ")}>
       <div className="public-reading-progress" aria-hidden="true" />
       <a className="public-skip" href="#public-main">
@@ -30,6 +32,7 @@ export function PublicShell({
         <PublicNav />
       )}
       <main id="public-main" tabIndex={-1}>
+        {isCurrent && <CurrentArrival />}
         {children}
       </main>
       {bottomNavigation}
@@ -82,6 +85,11 @@ export function PublicShell({
         </footer>
       )}
     </div>
+  );
+  return isCurrent ? (
+    <CurrentInstallProvider>{content}</CurrentInstallProvider>
+  ) : (
+    content
   );
 }
 export function PageIntro({

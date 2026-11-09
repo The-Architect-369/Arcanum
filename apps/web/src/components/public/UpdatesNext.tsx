@@ -3,15 +3,12 @@ import { source } from "@/lib/public-site";
 export default function UpdatesNext() {
   return (
     <section aria-labelledby="development-roadmap">
-      <div className="updates-view-heading">
-        <h1 id="development-roadmap">See what’s taking shape.</h1>
-        <p>Explore the connected work ahead.</p>
-      </div>
       <CurrentCards
         label="Development library"
         entries={[
           {
             id: "application",
+            topic: "arcanum",
             title: "The application",
             summary:
               "A place for reflection, conversation and returning to what matters.",
@@ -64,6 +61,7 @@ export default function UpdatesNext() {
           },
           {
             id: "technology",
+            topic: "arcnet",
             title: "ARCnet technology",
             summary:
               "The foundations that connect time, provenance and human choice.",
@@ -112,6 +110,7 @@ export default function UpdatesNext() {
           },
           {
             id: "web",
+            topic: "website",
             title: "Web experiences",
             summary: "A clear public window into the work, useful on its own.",
             status: "Current preview under review",
