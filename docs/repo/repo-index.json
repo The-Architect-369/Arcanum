@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-11-09T04:49:51Z",
+  "generated_at": "2026-11-09T05:52:11Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "d298dbeda",
+  "commit": "22314efdf",
   "generator_version": "1.5",
   "files": [
     {
@@ -2257,8 +2257,8 @@
     {
       "path": "apps/web/src/app/(marketing)/updates/[slug]/page.tsx",
       "type": "file",
-      "size_bytes": 1598,
-      "last_modified_commit": "d298dbeda",
+      "size_bytes": 1595,
+      "last_modified_commit": "22314efdf",
       "is_empty": false,
       "extension": ".tsx",
       "lines": 55
@@ -2266,20 +2266,20 @@
     {
       "path": "apps/web/src/app/(marketing)/updates/page.tsx",
       "type": "file",
-      "size_bytes": 6194,
-      "last_modified_commit": "d298dbeda",
+      "size_bytes": 12461,
+      "last_modified_commit": "22314efdf",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 174
+      "lines": 320
     },
     {
       "path": "apps/web/src/app/(marketing)/updates/updates.css",
       "type": "file",
-      "size_bytes": 3117,
-      "last_modified_commit": "d298dbeda",
+      "size_bytes": 4785,
+      "last_modified_commit": "22314efdf",
       "is_empty": false,
       "extension": ".css",
-      "lines": 160
+      "lines": 237
     },
     {
       "path": "apps/web/src/app/activate/page.tsx",
@@ -6613,11 +6613,11 @@
     {
       "path": "docs/specs/public-site/architect-google-access.md",
       "type": "file",
-      "size_bytes": 4622,
-      "last_modified_commit": "d298dbeda",
+      "size_bytes": 6184,
+      "last_modified_commit": "22314efdf",
       "is_empty": false,
       "extension": ".md",
-      "lines": 31
+      "lines": 39
     },
     {
       "path": "docs/specs/public-site/v07-baseline-receipt.json",
@@ -9997,8 +9997,8 @@
     {
       "path": "scripts/verify-updates-access.mjs",
       "type": "file",
-      "size_bytes": 3379,
-      "last_modified_commit": "d298dbeda",
+      "size_bytes": 3384,
+      "last_modified_commit": "22314efdf",
       "is_empty": false,
       "extension": ".mjs",
       "lines": 96
