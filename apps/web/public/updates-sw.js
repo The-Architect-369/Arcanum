@@ -1,5 +1,5 @@
 // Updates-only worker. Private pages, APIs and APK/release files are never cached.
-const CACHE = "arcanum-updates-v3";
+const CACHE = "arcanum-updates-v4";
 const START = "/updates?source=pwa";
 const SHELL = [
   START,
