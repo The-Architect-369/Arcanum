@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-11-09T07:20:06Z",
+  "generated_at": "2026-11-09T07:33:09Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "e325d5120",
+  "commit": "ff9bfb97d",
   "generator_version": "1.5",
   "files": [
     {
@@ -1448,7 +1448,7 @@
       "path": "apps/web/public/updates-sw.js",
       "type": "file",
       "size_bytes": 4405,
-      "last_modified_commit": "e325d5120",
+      "last_modified_commit": "ff9bfb97d",
       "is_empty": false,
       "extension": ".js",
       "lines": 134
@@ -2275,20 +2275,20 @@
     {
       "path": "apps/web/src/app/(marketing)/updates/[slug]/page.tsx",
       "type": "file",
-      "size_bytes": 1724,
-      "last_modified_commit": "e325d5120",
+      "size_bytes": 1784,
+      "last_modified_commit": "ff9bfb97d",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 57
+      "lines": 60
     },
     {
       "path": "apps/web/src/app/(marketing)/updates/archive/page.tsx",
       "type": "file",
-      "size_bytes": 2083,
-      "last_modified_commit": "e325d5120",
+      "size_bytes": 2143,
+      "last_modified_commit": "ff9bfb97d",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 61
+      "lines": 64
     },
     {
       "path": "apps/web/src/app/(marketing)/updates/layout.tsx",
@@ -2302,20 +2302,20 @@
     {
       "path": "apps/web/src/app/(marketing)/updates/page.tsx",
       "type": "file",
-      "size_bytes": 10543,
-      "last_modified_commit": "e325d5120",
+      "size_bytes": 10601,
+      "last_modified_commit": "ff9bfb97d",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 254
+      "lines": 257
     },
     {
       "path": "apps/web/src/app/(marketing)/updates/updates.css",
       "type": "file",
-      "size_bytes": 5117,
-      "last_modified_commit": "e325d5120",
+      "size_bytes": 6387,
+      "last_modified_commit": "ff9bfb97d",
       "is_empty": false,
       "extension": ".css",
-      "lines": 261
+      "lines": 314
     },
     {
       "path": "apps/web/src/app/activate/page.tsx",
@@ -2563,11 +2563,11 @@
     {
       "path": "apps/web/src/components/public/PublicShell.tsx",
       "type": "file",
-      "size_bytes": 6017,
-      "last_modified_commit": "e325d5120",
+      "size_bytes": 6176,
+      "last_modified_commit": "ff9bfb97d",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 205
+      "lines": 210
     },
     {
       "path": "apps/web/src/components/public/UpdateRows.tsx",
