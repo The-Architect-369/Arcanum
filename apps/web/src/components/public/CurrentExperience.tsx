@@ -79,6 +79,7 @@ export default function CurrentExperience({
     };
     const down = (event: PointerEvent) => {
       start = null;
+      suppressClickUntil = 0;
       if (
         event.pointerType !== "touch" ||
         !event.isPrimary ||
@@ -119,7 +120,7 @@ export default function CurrentExperience({
       start = null;
     };
     const click = (event: MouseEvent) => {
-      if (performance.now() < suppressClickUntil) {
+      if (event.detail !== 0 && performance.now() < suppressClickUntil) {
         event.preventDefault();
         event.stopPropagation();
       }
