@@ -11,6 +11,9 @@ const publicRoutes = new Set([
   "/download",
   "/journeys",
   "/architect",
+  "/architect/login",
+  // Device-gate exception only; this page enforces owner authentication server-side.
+  "/architect/review",
   "/site-log.json",
   "/art/hope-architect-v2.png",
   ...["tempus", "hope", "vitae", "arcnet", "mana"].map(
@@ -19,5 +22,5 @@ const publicRoutes = new Set([
 ]);
 
 export function isPublicSitePath(pathname: string) {
-  return publicRoutes.has(pathname);
+  return publicRoutes.has(pathname) || /^\/updates\/[a-z0-9-]+$/.test(pathname);
 }

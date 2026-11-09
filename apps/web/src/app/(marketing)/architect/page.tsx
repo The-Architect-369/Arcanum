@@ -29,6 +29,7 @@ export default function ArchitectPage() {
           See where Arcanum stands, what comes next, and the records behind the
           work.
         </p>
+        <p><a className="public-text-link" href="https://architect.the-arcanum.net/architect/login">Architect sign-in →</a></p>
       </PageIntro>
       <section
         className="public-shell public-section public-two-col"
