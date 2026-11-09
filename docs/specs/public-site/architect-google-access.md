@@ -2,7 +2,7 @@
 
 Prepared November 8, 2026 against main `49ac7380c45f5bf8cf836a53c13de737be9d7d67`. Implementation candidate, not deployed or accepted.
 
-Updates uses four server-rendered navigation views: Latest, Updates, Website and History. Entries open individual detail pages. The public A18/version34 manifest and accepted homepage bytes are unchanged. Journeys is paused and untouched. This is not a new PWA or notification subscription feature.
+The initial Updates candidate used four server-rendered navigation views. The November9 follow-up uses five: Feed, App, Roadmap, Website and History. Entries open individual detail pages. The public A18/version34 manifest and accepted homepage bytes are unchanged. Journeys is paused and untouched. This is not a new PWA or notification subscription feature.
 
 ## Access boundary
 
@@ -29,3 +29,11 @@ The selected Vercel project returned no environment variables during the Novembe
 The Human separately requested an authorized owner-only path from local builds while away on the S26. A bounded owner-only Drive transfer can satisfy that interim need using existing Workspace authentication, without exposing a workstation port, installing a daemon, or placing an APK in public assets. Its actual file identity/permissions and checksum readback belong in the owner-local transfer journal, not this public repository. Do not publish its private file URL or infer that the website OAuth connection is configured.
 
 A private website download later requires an authenticated server-side byte path/private object store, authorization on every request, private/no-store response headers, fixed artifact/digest binding and no public/signed-link bypass. That separate delivery feature is withheld in this candidate.
+
+## November 9 — follower experience
+
+The Human selected a mostly static development-following web experience, updated editorially as development changes. The classic app’s five-destination footer (Hope, Tempus, Nexus, Wallet, Vitae) supplies the navigation pattern only. Its accounts, balances, notification badges and application behavior are not reused as public Updates capabilities.
+
+Feed is the default dated thread. App explains the approved public artifact and its available/conditional/unavailable capabilities. Roadmap presents anticipated blocks with statuses and next gates, without dates or release commitments. Website preserves the web editorial journal. History groups the selected record by month. Every destination has a text label; mobile navigation uses a five-position bottom dock with safe-area spacing, while desktop navigation stays above the content. Original latest/updates query URLs remain aliases. Entries retain individual detail pages.
+
+Capability copy is bound to the reviewed public version/source. Changing the release listing to a different source without updating its reviewed summary shows a review-needed message rather than silently applying old capability claims. Anticipated work does not promote private candidates or activate any feature. This pass adds no comments, reactions, accounts, subscriptions, notifications or new PWA installation behavior. Its follower experience and release-intake workflow can be extended after separate design/verification.

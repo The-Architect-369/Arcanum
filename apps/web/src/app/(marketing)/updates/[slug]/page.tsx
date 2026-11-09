@@ -31,7 +31,7 @@ export default async function UpdateDetail({
     <PublicShell>
       <article className="updates-detail">
         <a
-          href={`/updates?view=${post.category === "website" ? "website" : "updates"}`}
+          href={`/updates?view=${post.category === "website" ? "website" : "feed"}`}
         >
           ← Back to Updates
         </a>
