@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-11-09T08:49:27Z",
+  "generated_at": "2026-11-09T08:51:16Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "2c2d6c201",
+  "commit": "345988983",
   "generator_version": "1.5",
   "files": [
     {
@@ -2311,11 +2311,11 @@
     {
       "path": "apps/web/src/app/(marketing)/updates/updates.css",
       "type": "file",
-      "size_bytes": 15962,
-      "last_modified_commit": "c59f55cf5",
+      "size_bytes": 16347,
+      "last_modified_commit": "345988983",
       "is_empty": false,
       "extension": ".css",
-      "lines": 794
+      "lines": 806
     },
     {
       "path": "apps/web/src/app/activate/page.tsx",
@@ -6757,8 +6757,8 @@
     {
       "path": "docs/specs/public-site/updates-visitor-experience.md",
       "type": "file",
-      "size_bytes": 7638,
-      "last_modified_commit": "c59f55cf5",
+      "size_bytes": 7823,
+      "last_modified_commit": "345988983",
       "is_empty": false,
       "extension": ".md",
       "lines": 58
