@@ -52,78 +52,90 @@ export default function UpdatesFeed({ posts }: { posts: UpdatePost[] }) {
   }, [limit, result.length]);
   return (
     <>
-      <div className="updates-filters" aria-label="Search and filter updates">
-        <label className="updates-search">
-          Search updates
-          <input
-            type="search"
-            value={filters.text}
-            onChange={(event) => change("text", event.target.value)}
-            placeholder="A topic, a word, a question…"
-          />
-        </label>
-        <details className="updates-filter-options">
-          <summary>Filters{active ? " · active" : ""}</summary>
-          <div className="updates-filter-fields">
-            <label>
-              Topic
-              <select
-                value={filters.topic}
-                onChange={(event) => change("topic", event.target.value)}
-              >
-                <option value="all">All topics</option>
-                <option value="arcanum">Arcanum</option>
-                <option value="arcnet">ARCnet</option>
-                <option value="website">Website</option>
-              </select>
-            </label>
-            <label>
-              Update type
-              <select
-                value={filters.type}
-                onChange={(event) => change("type", event.target.value)}
-              >
-                <option value="all">All updates</option>
-                <option value="release">Releases</option>
-                <option value="progress">Progress</option>
-                <option value="website">Website notes</option>
-              </select>
-            </label>
-            <label>
-              From
+      <div className="updates-feed-tools">
+        <div className="updates-view-heading">
+          <h1 id="development-feed">Watch it take shape.</h1>
+          <p>The latest from Arcanum and ARCnet.</p>
+        </div>
+        <details className="updates-search-drawer">
+          <summary>Search &amp; filters{active ? " · active" : ""}</summary>
+          <div
+            className="updates-filters"
+            aria-label="Search and filter updates"
+          >
+            <label className="updates-search">
+              Search updates
               <input
-                type="date"
-                value={filters.from}
-                onChange={(event) => change("from", event.target.value)}
+                type="search"
+                value={filters.text}
+                onChange={(event) => change("text", event.target.value)}
+                placeholder="A topic, a word, a question…"
               />
             </label>
-            <label>
-              Through
-              <input
-                type="date"
-                value={filters.to}
-                onChange={(event) => change("to", event.target.value)}
-              />
-            </label>
+            <details className="updates-filter-options">
+              <summary>Filters{active ? " · active" : ""}</summary>
+              <div className="updates-filter-fields">
+                <label>
+                  Topic
+                  <select
+                    value={filters.topic}
+                    onChange={(event) => change("topic", event.target.value)}
+                  >
+                    <option value="all">All topics</option>
+                    <option value="arcanum">Arcanum</option>
+                    <option value="arcnet">ARCnet</option>
+                    <option value="website">Website</option>
+                  </select>
+                </label>
+                <label>
+                  Update type
+                  <select
+                    value={filters.type}
+                    onChange={(event) => change("type", event.target.value)}
+                  >
+                    <option value="all">All updates</option>
+                    <option value="release">Releases</option>
+                    <option value="progress">Progress</option>
+                    <option value="website">Website notes</option>
+                  </select>
+                </label>
+                <label>
+                  From
+                  <input
+                    type="date"
+                    value={filters.from}
+                    onChange={(event) => change("from", event.target.value)}
+                  />
+                </label>
+                <label>
+                  Through
+                  <input
+                    type="date"
+                    value={filters.to}
+                    onChange={(event) => change("to", event.target.value)}
+                  />
+                </label>
+              </div>
+            </details>
+            <div className="updates-filter-result">
+              <span role="status">
+                {result.length} {result.length === 1 ? "update" : "updates"}
+                {active ? " · filters active" : " · newest first"}
+              </span>
+              {active && (
+                <button
+                  type="button"
+                  onClick={() => {
+                    setFilters(emptyUpdateFilters);
+                    setLimit(6);
+                  }}
+                >
+                  Reset all
+                </button>
+              )}
+            </div>
           </div>
         </details>
-        <div className="updates-filter-result">
-          <span role="status">
-            {result.length} {result.length === 1 ? "update" : "updates"}
-            {active ? " · filters active" : " · newest first"}
-          </span>
-          {active && (
-            <button
-              type="button"
-              onClick={() => {
-                setFilters(emptyUpdateFilters);
-                setLimit(6);
-              }}
-            >
-              Reset all
-            </button>
-          )}
-        </div>
       </div>
       {result.length ? (
         <UpdateRows posts={result.slice(0, limit)} />

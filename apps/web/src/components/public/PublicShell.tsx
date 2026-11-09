@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { Suspense } from "react";
+import CurrentHeader from "./CurrentHeader";
 import { repository, pillars, source, siteLog } from "@/lib/public-site";
 import PublicNav from "./PublicNav";
 import PillarCarousel from "./PillarCarousel";
@@ -20,13 +22,13 @@ export function PublicShell({
       <a className="public-skip" href="#public-main">
         Skip to content
       </a>
-      <PublicNav
-        subtitle={
-          className?.split(" ").includes("updates-app")
-            ? "Follow the developing ARCnet."
-            : undefined
-        }
-      />
+      {className?.split(" ").includes("updates-app") ? (
+        <Suspense>
+          <CurrentHeader />
+        </Suspense>
+      ) : (
+        <PublicNav />
+      )}
       <main id="public-main" tabIndex={-1}>
         {children}
       </main>

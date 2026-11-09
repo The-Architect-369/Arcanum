@@ -1,5 +1,5 @@
 // Updates-only worker. Private pages, APIs and APK/release files are never cached.
-const CACHE = "arcanum-updates-v5";
+const CACHE = "arcanum-updates-v6";
 const START = "/updates?source=pwa";
 const SHELL = [
   START,
@@ -7,12 +7,14 @@ const SHELL = [
   "/updates?view=available",
   "/updates?view=next",
   "/updates/offline.html",
+  "/logo-arcanum.svg",
   "/icons/icon-192.png",
   "/icons/icon-512.png",
 ];
 const isAsset = (url) =>
   url.origin === self.location.origin &&
-  (url.pathname.startsWith("/_next/static/") ||
+  (url.pathname === "/logo-arcanum.svg" ||
+    url.pathname.startsWith("/_next/static/") ||
     /^\/icons\/(?:icon|maskable)-(?:192|512)\.png$/.test(url.pathname));
 async function saveAsset(cache, url) {
   if (await cache.match(url)) return;
@@ -34,7 +36,11 @@ self.addEventListener("install", (event) => {
             headers: { Accept: "text/html" },
           });
           if (!response.ok) return;
-          if (path.endsWith(".png") || path.endsWith("offline.html")) {
+          if (
+            path.endsWith(".png") ||
+            path.endsWith(".svg") ||
+            path.endsWith("offline.html")
+          ) {
             await cache.put(path, response);
             return;
           }

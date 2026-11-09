@@ -67,11 +67,11 @@ export default function UpdatesInstall() {
               }
             }}
           >
-            Install Updates
+            Install Arcanum Current
           </button>
         ) : (
           <details>
-            <summary>Add Updates to your phone</summary>
+            <summary>Add Current to your phone</summary>
             <p>
               In your Android browser menu, choose “Install app” or “Add to Home
               screen” if offered. Installation stays on this website’s origin; a

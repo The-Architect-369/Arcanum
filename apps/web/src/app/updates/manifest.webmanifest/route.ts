@@ -4,8 +4,8 @@ export function GET() {
   return NextResponse.json(
     {
       id: "/updates",
-      name: preview ? "Arcanum Updates Preview" : "Arcanum Updates",
-      short_name: preview ? "Updates Preview" : "Updates",
+      name: preview ? "Arcanum Current Preview" : "Arcanum Current",
+      short_name: preview ? "Current Preview" : "Current",
       description:
         "Follow Arcanum development, available releases and anticipated work.",
       start_url: "/updates?source=pwa",

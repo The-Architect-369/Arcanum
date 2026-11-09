@@ -1,8 +1,12 @@
 import type { Metadata, Viewport } from "next";
 export const metadata: Metadata = {
-  applicationName: "Arcanum Updates",
+  applicationName: "Arcanum Current",
   manifest: "/updates/manifest.webmanifest",
-  appleWebApp: { capable: true, title: "Updates", statusBarStyle: "default" },
+  appleWebApp: {
+    capable: true,
+    title: "Arcanum Current",
+    statusBarStyle: "default",
+  },
 };
 export const viewport: Viewport = {
   themeColor: "#0b1528",

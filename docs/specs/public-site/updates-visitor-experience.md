@@ -1,4 +1,22 @@
-# Updates visitor experience — preview candidate
+# Arcanum Current visitor experience — preview candidate
+
+## November 9 r2 reconciliation
+
+Human approved the revised visitor direction in Ambassador turn `01a1bf79-a571-7493-8af8-7d61dd3a6c00`. Packet SHA-256: `26248ba40a7c446b94457e8fda753428cd81f419a12bf17ca1bf29769f602450`. This supersedes the r1 presentation described below where specified; it grants no production promotion or native release change.
+
+Arcanum Current is the public development web app; Arcanum retains the native application name; ARCnet means Arcanum Network. Current uses a dedicated stationary header, no website menu, three fixed tabs, one deep canvas/blue card/gold accent system, and a shared accessible modal component. Header and active Updates tab return to the newest matching posts without leaving Current. Detail/archive pages retain this frame. A compact sticky Updates title sits above collapsible search and filters. The filter controls scroll within their bounded area.
+
+Available is one Arcanum package opening a platform-choice panel. Availability is stated before expansion. Android leads through requirements, capabilities, release evidence and review/download. Other platforms have no download and a contextual link to wider development; no platform-specific project is fabricated. Coming next groups existing public evidence into The application, ARCnet technology and Web experiences, with purpose, present state, work ahead, next gates and public resources. The private/offline library is not ingested or copied.
+
+**Logo provenance gap:** the current canonical Android manifest declares no dedicated icon and build106 contains no image asset. The preview retains the existing public `apps/web/public/logo-arcanum.svg` emblem; it is not certified as a native-app logo. Exact approved native-logo provenance remains a separate reconciliation gate. No logo is invented or copied from a private source.
+
+The scoped manifest requests Arcanum Current Preview / Current Preview on preview and Arcanum Current / Current on production. Existing app id, start URL, scope and origin separation remain unchanged. Browser-controlled installed-name refresh is not guaranteed; an existing installation may need reinstalling. Existing icons are retained pending the logo gate. Service-worker version changes only its scoped public cache; private/API/APK exclusions remain.
+
+The latest approved release metadata was rechecked live before implementation: version34, source `75cad68cb3733a44b5b13bcea153f2f77dfa7bda`, APK SHA-256 `7113e51f1b12e3c8d40848e1219537b4d757790222629cceb4522375540467f4`. No availability is promoted by an editorial post or preview.
+
+Human visual/physical-device acceptance remains pending. Library reconciliation, unseen badge, follower accounts, email and push remain deferred under the boundaries below.
+
+## Retained r1 record (historical presentation; r2 above controls changes)
 
 Human-approved visitor direction supplied through Ambassador on November 9, 2026. Packet SHA-256: `7ef5d14caefeedcf5b69086785c861eb5267615da6fb2b23259fdaa94622197b`. This document records implementation scope; it grants no production publication, native release promotion, accounts, email, push or governance authority.
 

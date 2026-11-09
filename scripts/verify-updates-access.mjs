@@ -35,7 +35,8 @@ for (const ua of ["Mozilla/5.0 Desktop", "Mozilla/5.0 Android Mobile"]) {
       /<footer[ >]/,
       "Updates has no marketing footer",
     );
-    assert.match(r.body, /<h1>Arcanum<\/h1>/);
+    assert.match(r.body, /Arcanum Current/);
+    assert.doesNotMatch(r.body, /class="public-menu/);
     assert.match(
       r.body,
       new RegExp(`href="/updates\\?view=${view}" aria-current="page"`),
