@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-11-09T08:51:16Z",
+  "generated_at": "2026-11-09T09:54:22Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "345988983",
+  "commit": "5a7f2b283",
   "generator_version": "1.5",
   "files": [
     {
@@ -1448,7 +1448,7 @@
       "path": "apps/web/public/updates-sw.js",
       "type": "file",
       "size_bytes": 4550,
-      "last_modified_commit": "c59f55cf5",
+      "last_modified_commit": "5a7f2b283",
       "is_empty": false,
       "extension": ".js",
       "lines": 140
@@ -2302,20 +2302,20 @@
     {
       "path": "apps/web/src/app/(marketing)/updates/page.tsx",
       "type": "file",
-      "size_bytes": 2063,
-      "last_modified_commit": "c59f55cf5",
+      "size_bytes": 2287,
+      "last_modified_commit": "5a7f2b283",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 57
+      "lines": 67
     },
     {
       "path": "apps/web/src/app/(marketing)/updates/updates.css",
       "type": "file",
-      "size_bytes": 16347,
-      "last_modified_commit": "345988983",
+      "size_bytes": 20410,
+      "last_modified_commit": "5a7f2b283",
       "is_empty": false,
       "extension": ".css",
-      "lines": 806
+      "lines": 1004
     },
     {
       "path": "apps/web/src/app/activate/page.tsx",
@@ -2545,20 +2545,38 @@
     {
       "path": "apps/web/src/components/public/CurrentCards.tsx",
       "type": "file",
-      "size_bytes": 1630,
-      "last_modified_commit": "c59f55cf5",
+      "size_bytes": 1775,
+      "last_modified_commit": "5a7f2b283",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 59
+      "lines": 62
+    },
+    {
+      "path": "apps/web/src/components/public/CurrentExperience.tsx",
+      "type": "file",
+      "size_bytes": 5141,
+      "last_modified_commit": "5a7f2b283",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 167
     },
     {
       "path": "apps/web/src/components/public/CurrentHeader.tsx",
       "type": "file",
-      "size_bytes": 1111,
-      "last_modified_commit": "c59f55cf5",
+      "size_bytes": 2249,
+      "last_modified_commit": "5a7f2b283",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 36
+      "lines": 71
+    },
+    {
+      "path": "apps/web/src/components/public/CurrentInstall.tsx",
+      "type": "file",
+      "size_bytes": 6308,
+      "last_modified_commit": "5a7f2b283",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 198
     },
     {
       "path": "apps/web/src/components/public/CurrentPanel.tsx",
@@ -2568,6 +2586,24 @@
       "is_empty": false,
       "extension": ".tsx",
       "lines": 81
+    },
+    {
+      "path": "apps/web/src/components/public/CurrentPlatformChooser.tsx",
+      "type": "file",
+      "size_bytes": 2918,
+      "last_modified_commit": "5a7f2b283",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 96
+    },
+    {
+      "path": "apps/web/src/components/public/CurrentTopicVisual.tsx",
+      "type": "file",
+      "size_bytes": 692,
+      "last_modified_commit": "5a7f2b283",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 21
     },
     {
       "path": "apps/web/src/components/public/PillarCarousel.tsx",
@@ -2590,65 +2626,65 @@
     {
       "path": "apps/web/src/components/public/PublicShell.tsx",
       "type": "file",
-      "size_bytes": 6402,
-      "last_modified_commit": "c59f55cf5",
+      "size_bytes": 6706,
+      "last_modified_commit": "5a7f2b283",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 218
+      "lines": 226
     },
     {
       "path": "apps/web/src/components/public/UpdateRows.tsx",
       "type": "file",
-      "size_bytes": 2700,
-      "last_modified_commit": "2c2d6c201",
+      "size_bytes": 2809,
+      "last_modified_commit": "5a7f2b283",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 79
+      "lines": 81
     },
     {
       "path": "apps/web/src/components/public/UpdatesAvailable.tsx",
       "type": "file",
-      "size_bytes": 7581,
-      "last_modified_commit": "c59f55cf5",
+      "size_bytes": 5243,
+      "last_modified_commit": "5a7f2b283",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 171
+      "lines": 125
     },
     {
       "path": "apps/web/src/components/public/UpdatesFeed.tsx",
       "type": "file",
-      "size_bytes": 6229,
-      "last_modified_commit": "c59f55cf5",
+      "size_bytes": 6052,
+      "last_modified_commit": "5a7f2b283",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 181
+      "lines": 177
     },
     {
       "path": "apps/web/src/components/public/UpdatesInstall.tsx",
       "type": "file",
-      "size_bytes": 3017,
-      "last_modified_commit": "c59f55cf5",
+      "size_bytes": 1158,
+      "last_modified_commit": "5a7f2b283",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 88
+      "lines": 32
     },
     {
       "path": "apps/web/src/components/public/UpdatesNext.tsx",
       "type": "file",
-      "size_bytes": 6920,
-      "last_modified_commit": "c59f55cf5",
+      "size_bytes": 6833,
+      "last_modified_commit": "5a7f2b283",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 169
+      "lines": 168
     },
     {
       "path": "apps/web/src/components/public/UpdatesTray.tsx",
       "type": "file",
-      "size_bytes": 2078,
-      "last_modified_commit": "806b56933",
+      "size_bytes": 2573,
+      "last_modified_commit": "5a7f2b283",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 69
+      "lines": 84
     },
     {
       "path": "apps/web/src/components/shared/CTAActivate.tsx",
@@ -6757,11 +6793,11 @@
     {
       "path": "docs/specs/public-site/updates-visitor-experience.md",
       "type": "file",
-      "size_bytes": 7823,
-      "last_modified_commit": "345988983",
+      "size_bytes": 11068,
+      "last_modified_commit": "5a7f2b283",
       "is_empty": false,
       "extension": ".md",
-      "lines": 58
+      "lines": 74
     },
     {
       "path": "docs/specs/public-site/v07-baseline-receipt.json",
