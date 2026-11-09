@@ -17,6 +17,14 @@ export default function CurrentPanel({
   const returnTo = useRef<HTMLElement | null>(null);
   const ownsEntry = useRef(false);
   const finished = useRef(false);
+  const closing = useRef(false);
+  function requestClose() {
+    if (closing.current) return;
+    if (ownsEntry.current && history.state?.arcanumCurrentPanel === titleId) {
+      closing.current = true;
+      history.back();
+    } else dialog.current?.close();
+  }
   useEffect(() => {
     returnTo.current = document.activeElement as HTMLElement;
     history.pushState(
@@ -39,21 +47,18 @@ export default function CurrentPanel({
       ref={dialog}
       className="updates-post-panel"
       aria-labelledby={titleId}
+      onCancel={(event) => {
+        event.preventDefault();
+        requestClose();
+      }}
       onClose={() => {
         if (finished.current) return;
         finished.current = true;
-        if (
-          ownsEntry.current &&
-          history.state?.arcanumCurrentPanel === titleId
-        ) {
-          ownsEntry.current = false;
-          history.back();
-        }
         returnTo.current?.focus({ preventScroll: true });
         onClose();
       }}
       onClick={(event) => {
-        if (event.target === event.currentTarget) dialog.current?.close();
+        if (event.target === event.currentTarget) requestClose();
       }}
     >
       <div className="updates-post-panel-content">
@@ -63,7 +68,7 @@ export default function CurrentPanel({
             ref={close}
             type="button"
             aria-label="Close panel"
-            onClick={() => dialog.current?.close()}
+            onClick={requestClose}
           >
             Close ×
           </button>
