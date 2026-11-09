@@ -16,6 +16,7 @@ body:has(.updates-app) {
   display: flex;
   flex-direction: column;
   font-weight: 450;
+  overflow-wrap: anywhere;
 }
 .updates-app > .public-header {
   flex-shrink: 0;
