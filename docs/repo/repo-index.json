@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-11-10T11:17:11Z",
+  "generated_at": "2026-11-10T11:22:50Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "38d85a312",
+  "commit": "315438535",
   "generator_version": "1.5",
   "files": [
     {
@@ -2518,11 +2518,11 @@
     {
       "path": "apps/web/src/components/architect/ArchitectWorkspace.tsx",
       "type": "file",
-      "size_bytes": 15479,
-      "last_modified_commit": "38d85a312",
+      "size_bytes": 15959,
+      "last_modified_commit": "315438535",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 456
+      "lines": 472
     },
     {
       "path": "apps/web/src/components/developer/ArchitectRuntimeWorkspace.tsx",
@@ -6892,8 +6892,8 @@
     {
       "path": "docs/specs/public-site/architect-portal-first-build.md",
       "type": "file",
-      "size_bytes": 9498,
-      "last_modified_commit": "38d85a312",
+      "size_bytes": 9517,
+      "last_modified_commit": "315438535",
       "is_empty": false,
       "extension": ".md",
       "lines": 48
@@ -10042,11 +10042,11 @@
     {
       "path": "scripts/test-architect-access.mjs",
       "type": "file",
-      "size_bytes": 1933,
-      "last_modified_commit": "d298dbeda",
+      "size_bytes": 3146,
+      "last_modified_commit": "315438535",
       "is_empty": false,
       "extension": ".mjs",
-      "lines": 58
+      "lines": 84
     },
     {
       "path": "scripts/test-architect-model.mjs",
