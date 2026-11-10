@@ -33,6 +33,15 @@ export function architectOrigin(value: string | undefined): string | null {
       return null;
     if (url.origin === "https://architect.the-arcanum.net") return url.origin;
     if (
+      process.env.VERCEL_ENV === "preview" &&
+      process.env.ARCHITECT_PREVIEW_ORIGIN === url.origin &&
+      process.env.VERCEL_BRANCH_URL &&
+      url.protocol === "https:" &&
+      url.hostname === process.env.VERCEL_BRANCH_URL &&
+      url.port === ""
+    )
+      return url.origin;
+    if (
       process.env.NODE_ENV !== "production" &&
       url.protocol === "http:" &&
       url.hostname === "localhost"

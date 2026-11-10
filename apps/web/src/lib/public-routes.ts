@@ -17,6 +17,8 @@ const publicRoutes = new Set([
   "/architect/login",
   // Device-gate exception only; this page enforces owner authentication server-side.
   "/architect/review",
+  "/architect/preview",
+  "/architect/denied",
   "/site-log.json",
   "/art/hope-architect-v2.png",
   ...["tempus", "hope", "vitae", "arcnet", "mana"].map(

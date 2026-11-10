@@ -1,0 +1,141 @@
+@import "../updates/updates.css";
+.architect-app > #architect-main {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  container-type: size;
+  scroll-padding: 20px 0 calc(var(--updates-tray-height, 90px) + 24px);
+}
+.architect-header {
+  flex: none;
+}
+.architect-account {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  font-size: 0.82rem;
+}
+.architect-account a,
+.architect-account button {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+.architect-account button {
+  background: none;
+  color: inherit;
+  border: 1px solid var(--updates-line);
+  border-radius: 20px;
+  padding: 8px 16px;
+}
+.architect-freshness {
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: var(--updates-muted);
+  margin-bottom: 22px;
+}
+.architect-freshness p {
+  margin: 6px 0;
+}
+.architect-freshness .current-action {
+  gap: 8px;
+  background: none;
+  border: 0;
+}
+.architect-notice {
+  padding: 18px;
+  border: 1px solid #dbc18e80;
+  border-radius: 20px;
+  background: #14253b;
+  line-height: 1.6;
+}
+.architect-intro {
+  line-height: 1.65;
+  margin-bottom: 22px;
+  color: var(--updates-muted);
+}
+.architect-domain {
+  margin-bottom: 32px;
+}
+.architect-domain h2 {
+  font:
+    650 1.2rem/1.4 system-ui,
+    sans-serif;
+  margin-bottom: 18px;
+}
+.architect-card-meta {
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: var(--updates-muted);
+}
+.architect-tray button {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  align-items: center;
+  justify-content: center;
+  min-height: 72px;
+  min-width: 0;
+  padding: 8px 4px;
+  border: 0;
+  border-radius: 16px;
+  background: transparent;
+  color: inherit;
+  font-weight: 650;
+}
+.architect-tray button[aria-current="page"] {
+  background: var(--updates-gold);
+  color: #101827;
+}
+.architect-tray span {
+  overflow-wrap: anywhere;
+}
+.architect-snapshot {
+  border-top: 1px solid var(--updates-line);
+  padding: 16px 0;
+}
+.architect-snapshot > summary {
+  cursor: pointer;
+  line-height: 1.6;
+  min-height: 44px;
+}
+.architect-snapshot .updates-status-pill {
+  display: table;
+  margin-top: 8px;
+}
+.architect-snapshot dl {
+  font-size: 0.86rem;
+  line-height: 1.6;
+}
+.architect-snapshot dt {
+  font-weight: 650;
+  margin-top: 12px;
+  color: var(--updates-gold);
+}
+.architect-snapshot dd {
+  margin: 3px 0 0;
+  overflow-wrap: anywhere;
+}
+html[data-architect-locked="true"] .architect-protected {
+  visibility: hidden !important;
+}
+.architect-login {
+  max-width: 720px;
+  margin: auto;
+  padding: 32px 22px;
+}
+.architect-login h1 {
+  font:
+    650 1.6rem/1.4 system-ui,
+    sans-serif;
+}
+.architect-login p {
+  line-height: 1.7;
+}
+.architect-login a,
+.architect-login button {
+  min-height: 44px;
+}

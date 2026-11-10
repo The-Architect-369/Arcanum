@@ -65,6 +65,20 @@ for (const ua of Object.values(agents)) {
     ["journeys.the-arcanum.net.example.org", "A Human Journey."],
   ]) {
     const response = await requestHost("/?from=verification", host, ua);
+    if (host === "architect.the-arcanum.net") {
+      assert.equal(
+        response.status,
+        307,
+        "Architect root leads to protected workspace",
+      );
+      assert.ok(
+        !response.body
+          .toString("utf8")
+          .includes("SYNTHETIC_PRIVATE_RECORD_CANARY"),
+      );
+      checks++;
+      continue;
+    }
     assert.equal(
       response.status,
       200,
@@ -84,14 +98,6 @@ for (const ua of Object.values(agents)) {
         html.includes('href="https://the-arcanum.net/"'),
         "Website lanes can return to Arcanum",
       );
-    }
-    if (host === "architect.the-arcanum.net") {
-      assert.doesNotMatch(
-        html,
-        /app\.notion\.com|drive\.google\.com|docs\.google\.com|chatgpt\.com\/agents/,
-        "Public dashboard excludes private provider links",
-      );
-      assert.match(html, /That access system is not implemented here/);
     }
     checks++;
   }
@@ -187,13 +193,29 @@ for (const [device, ua] of Object.entries(agents)) {
       headers: { "User-Agent": ua },
       redirect: "manual",
     });
+    if (path === "/architect") {
+      assert.equal(
+        response.status,
+        307,
+        "Architect entry redirects to its protected area",
+      );
+      checks++;
+      continue;
+    }
     assert.equal(
       response.status,
       200,
       `${device} ${path} must be directly public`,
     );
     const html = await response.text();
-    assert.match(html, /id="public-main"/, `${path} has public content`);
+    assert.ok(
+      html.includes(
+        path.startsWith("/architect")
+          ? 'id="architect-main"'
+          : 'id="public-main"',
+      ),
+      `${path} has appropriate content frame`,
+    );
     assert.equal(
       (html.match(/<h1[ >]/g) || []).length,
       1,

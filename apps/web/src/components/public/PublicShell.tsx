@@ -26,7 +26,13 @@ export function PublicShell({
       </a>
       {className?.split(" ").includes("updates-app") ? (
         <Suspense>
-          <CurrentHeader />
+          <CurrentHeader
+            architectHref={
+              process.env.VERCEL_ENV === "preview"
+                ? "/architect/login"
+                : "https://architect.the-arcanum.net/architect/login"
+            }
+          />
         </Suspense>
       ) : (
         <PublicNav />

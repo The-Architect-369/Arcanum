@@ -1,7 +1,12 @@
 "use client";
+import { CircleUserRound } from "lucide-react";
 import { usePathname, useSearchParams } from "next/navigation";
 import { useCurrentNavigation } from "./CurrentExperience";
-export default function CurrentHeader() {
+export default function CurrentHeader({
+  architectHref = "https://architect.the-arcanum.net/architect/login",
+}: {
+  architectHref?: string;
+}) {
   const path = usePathname();
   const params = useSearchParams();
   const navigation = useCurrentNavigation();
@@ -49,6 +54,13 @@ export default function CurrentHeader() {
           <strong>Arcanum</strong>
           <small>The Current</small>
         </span>
+      </a>
+      <a
+        className="current-architect-entry"
+        href={architectHref}
+        aria-label="Architect sign-in"
+      >
+        <CircleUserRound size={22} aria-hidden="true" />
       </a>
       {home && (
         <div className="current-section-title">

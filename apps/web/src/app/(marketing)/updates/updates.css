@@ -1002,3 +1002,27 @@ body:has(.updates-app) {
     overflow: visible;
   }
 }
+
+.current-header {
+  position: relative;
+}
+.current-header a.current-architect-entry {
+  position: absolute;
+  top: max(12px, env(safe-area-inset-top));
+  right: max(12px, env(safe-area-inset-right));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  min-height: 44px;
+  margin: 0;
+  border: 1px solid var(--updates-line);
+  border-radius: 50%;
+  background: #132238;
+}
+@media (max-width: 400px) {
+  .current-header a.current-architect-entry {
+    position: static;
+    margin: 8px auto 0;
+  }
+}

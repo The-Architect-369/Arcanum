@@ -1,6 +1,9 @@
 import assert from "node:assert/strict";
 import http from "node:http";
 import net from "node:net";
+import { mkdtemp, writeFile, rm } from "node:fs/promises";
+import { tmpdir } from "node:os";
+import path from "node:path";
 import { spawn } from "node:child_process";
 import { randomBytes } from "node:crypto";
 import { createRequire } from "node:module";
@@ -17,6 +20,30 @@ const reservation = net.createServer();
 await new Promise((resolve) => reservation.listen(0, "127.0.0.1", resolve));
 const port = reservation.address().port;
 await new Promise((resolve) => reservation.close(resolve));
+const directory = await mkdtemp(path.join(tmpdir(), "architect-session-"));
+const storePath = path.join(directory, "store.json");
+const now = new Date().toISOString();
+await writeFile(
+  storePath,
+  JSON.stringify({
+    schema: "arcanum.architect-store/v1",
+    updatedAt: now,
+    members: [
+      {
+        id: "owner",
+        email: owner,
+        googleSubject: "synthetic-owner",
+        version: 1,
+        active: true,
+        role: "owner",
+      },
+    ],
+    events: [],
+    sources: [],
+    conflicts: [],
+  }),
+  { mode: 0o600 },
+);
 const server = spawn(
   process.execPath,
   [
@@ -31,6 +58,7 @@ const server = spawn(
     cwd: new URL("../apps/web", import.meta.url),
     env: {
       ...process.env,
+      ARCHITECT_STORE_PATH: storePath,
       AUTH_URL: "https://architect.the-arcanum.net",
       AUTH_SECRET: secret,
       AUTH_GOOGLE_ID: "synthetic-test-client",
@@ -95,6 +123,8 @@ try {
     sub: "synthetic-owner",
     email: owner,
     architect: true,
+    architectMemberId: "owner",
+    architectVersion: 1,
     googleSubject: "synthetic-owner",
     googleEmailVerified: true,
     googleHostedDomain: "the-arcanum.net",
@@ -104,8 +134,8 @@ try {
   }
   const allowed = await request("/architect/review", await cookie(identity));
   assert.equal(allowed.status, 200);
-  assert.match(allowed.body, /Welcome back/);
-  assert.match(allowed.body, /Downloads remain withheld/);
+  assert.match(allowed.body, /Where the work stands/);
+  assert.match(allowed.body, /read-only workspace|Read-only workspace/);
   assert.match(allowed.headers["cache-control"], /no-store/);
   for (const token of [
     { ...identity, email: "other@the-arcanum.net" },
@@ -147,4 +177,5 @@ try {
 } finally {
   server.kill("SIGTERM");
   await new Promise((resolve) => server.once("exit", resolve));
+  await rm(directory, { recursive: true, force: true });
 }

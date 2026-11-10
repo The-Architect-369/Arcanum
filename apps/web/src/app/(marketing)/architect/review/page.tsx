@@ -1,54 +1,52 @@
 import type { Metadata } from "next";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
-import { auth, architectAuthReady, signOut } from "@/auth";
+import { architectAuthReady, signOut } from "@/auth";
 import { architectOrigin } from "@/lib/architect-access";
-import { PublicShell, PageIntro } from "@/components/public/PublicShell";
+import {
+  authorizedArchitectSnapshot,
+  ArchitectAccessError,
+} from "@/lib/architect/authorize";
+import { readModel } from "@/lib/architect/model";
+import ArchitectWorkspace from "@/components/architect/ArchitectWorkspace";
+import "../architect.css";
 export const metadata: Metadata = {
-  title: "Architect review",
+  title: "Architect workspace",
   robots: { index: false, follow: false },
 };
 export const dynamic = "force-dynamic";
 export default async function ReviewPage() {
-  const origin = architectOrigin(process.env.AUTH_URL);
-  if (!architectAuthReady() || !origin) redirect("/architect/login");
-  if ((await headers()).get("host") !== new URL(origin).host)
-    redirect(`${origin}/architect/login`);
-  const session = await auth();
-  if (!session?.user?.email) redirect("/architect/login");
+  let access;
+  try {
+    access = await authorizedArchitectSnapshot();
+  } catch (error) {
+    if (error instanceof ArchitectAccessError && error.status === 403)
+      redirect(
+        `${architectOrigin(process.env.AUTH_URL) ?? "https://architect.the-arcanum.net"}/architect/login`,
+      );
+    redirect("/architect/login");
+  }
+  const accountControl = (
+    <form
+      action={async () => {
+        "use server";
+        const origin = architectOrigin(process.env.AUTH_URL);
+        if (
+          !architectAuthReady() ||
+          !origin ||
+          (await headers()).get("host") !== new URL(origin).host
+        )
+          throw new Error("Sign-out unavailable on this address.");
+        await signOut({ redirectTo: "/architect/login" });
+      }}
+    >
+      <button type="submit">Sign out</button>
+    </form>
+  );
   return (
-    <PublicShell>
-      <PageIntro eyebrow="Architect / Signed-in review" title="Welcome back.">
-        <p>Signed in as {session.user.email}.</p>
-      </PageIntro>
-      <section className="public-shell public-section public-prose">
-        <h2>Testing builds</h2>
-        <p>
-          Downloads remain withheld. A verified private delivery path must be
-          established before a testing package is made available here.
-        </p>
-        <p>
-          This workspace does not provide repository writes, deployments, agent
-          execution, financial controls or governance authority.
-        </p>
-        <form
-          action={async () => {
-            "use server";
-            const allowedOrigin = architectOrigin(process.env.AUTH_URL);
-            if (
-              !architectAuthReady() ||
-              !allowedOrigin ||
-              (await headers()).get("host") !== new URL(allowedOrigin).host
-            )
-              throw new Error("Sign-in is unavailable on this address.");
-            await signOut({ redirectTo: "/architect/login" });
-          }}
-        >
-          <button className="public-button" type="submit">
-            Sign out
-          </button>
-        </form>
-      </section>
-    </PublicShell>
+    <ArchitectWorkspace
+      initial={readModel(access.store)}
+      accountControl={accountControl}
+    />
   );
 }
