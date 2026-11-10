@@ -120,6 +120,20 @@ export default function ArchitectWorkspace({
         void refresh();
       }
     };
+    const offline = () => {
+      lock();
+      setData(null);
+      setSelected(null);
+      setMessage(
+        "Connection unavailable. Reconnect to verify access before viewing records.",
+      );
+    };
+    const online = () => {
+      lock();
+      void refresh();
+    };
+    window.addEventListener("offline", offline);
+    window.addEventListener("online", online);
     window.addEventListener("pagehide", lock);
     window.addEventListener("pageshow", shown);
     document.addEventListener("visibilitychange", visible);
@@ -129,6 +143,8 @@ export default function ArchitectWorkspace({
     return () => {
       lock();
       clearInterval(timer);
+      window.removeEventListener("offline", offline);
+      window.removeEventListener("online", online);
       window.removeEventListener("pagehide", lock);
       window.removeEventListener("pageshow", shown);
       document.removeEventListener("visibilitychange", visible);

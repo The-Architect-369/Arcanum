@@ -56,3 +56,29 @@ test("production OAuth origin cannot be redirected to siblings or lookalikes", (
     process.env.NODE_ENV = prior;
   }
 });
+
+test("preview origin requires explicit configuration and exact platform branch identity", () => {
+  const names = ["VERCEL_ENV", "ARCHITECT_PREVIEW_ORIGIN", "VERCEL_BRANCH_URL"];
+  const before = Object.fromEntries(names.map((k) => [k, process.env[k]]));
+  try {
+    process.env.VERCEL_ENV = "preview";
+    process.env.VERCEL_BRANCH_URL = "portal-approved-branch.example.vercel.app";
+    process.env.ARCHITECT_PREVIEW_ORIGIN =
+      "https://portal-approved-branch.example.vercel.app";
+    assert.equal(
+      architectOrigin(process.env.ARCHITECT_PREVIEW_ORIGIN),
+      process.env.ARCHITECT_PREVIEW_ORIGIN,
+    );
+    assert.equal(architectOrigin("https://other.example.vercel.app"), null);
+    process.env.VERCEL_BRANCH_URL = "different.example.vercel.app";
+    assert.equal(architectOrigin(process.env.ARCHITECT_PREVIEW_ORIGIN), null);
+    process.env.VERCEL_BRANCH_URL = "portal-approved-branch.example.vercel.app";
+    process.env.VERCEL_ENV = "production";
+    assert.equal(architectOrigin(process.env.ARCHITECT_PREVIEW_ORIGIN), null);
+  } finally {
+    for (const name of names) {
+      if (before[name] === undefined) delete process.env[name];
+      else process.env[name] = before[name];
+    }
+  }
+});
