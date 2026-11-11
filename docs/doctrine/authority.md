@@ -2,7 +2,7 @@
 title: "Authority"
 status: canonical
 visibility: public
-last_updated: 2026-03-02
+last_updated: 2026-11-11
 description: "Vitae authority model: recognition follows stabilization; responsibility without worth."
 version: "1.0"
 phase: "Pre-Genesis"
@@ -13,15 +13,13 @@ layer: "Doctrine"
 
 ## Purpose
 
-This document defines the authority model of Vitae — Arcanum’s system for recognizing growth and becoming without coercion, optimization, comparison, or simulation.
+This document defines Vitae’s learning, recognition, and authority boundaries.
 
-Vitae does not create becoming.  
+Vitae provides a voluntary ladder of learning, practice, and development, alongside a distinct process for recognizing growth demonstrated through lived experience.
 
-Vitae does not accelerate becoming.  
+Participants may pursue grades, specializations, or both, and may pause or leave the pathway. Progression describes learning and demonstrated competencies; it does not rank human worth.
 
-Vitae does not reward becoming.
-
-Vitae exists solely to recognize and hold what has already stabilized within lived experience.
+Completing learning requirements may establish eligibility for recognition or responsibility. Recognition requires its applicable evidence and review. Architect and governance permissions require separate, explicit authorization; completion or payment alone does not grant them.
 
 ---
 
@@ -39,7 +37,7 @@ When recognition is uncertain, silence is correct.
 
 ## What Vitae Is
 
-Vitae is the recognition layer of becoming.
+Vitae combines a voluntary learning pathway with a distinct recognition layer of becoming.
 
 It exists to:
 
@@ -49,7 +47,7 @@ It exists to:
 
 - enable responsibility to be entrusted without creating hierarchy of worth
 
-Vitae is not motivational, aspirational, or competitive.
+Learning may support participant-chosen aspirations. Recognition must not become competitive ranking or a mechanism of coercion.
 
 ---
 
@@ -57,9 +55,9 @@ Vitae is not motivational, aspirational, or competitive.
 
 Vitae is explicitly not:
 
-- a progression ladder
+- a hierarchy of human worth
 
-- a skill tree
+- an automatic route from course completion to recognition, governance authority, or system permissions
 
 - a reputation score
 
@@ -179,7 +177,7 @@ Time witnesses continuity. Vitae recognizes stabilization.
 
 ## Interaction With Economy (MANA)
 
-Vitae is economically sterile.
+Vitae recognition is economically sterile. Optional curriculum access and process support remain distinct from recognition and permission; payment does not guarantee either.
 
 MANA may not:
 
@@ -189,7 +187,7 @@ MANA may not:
 
 - unlock becoming
 
-Vitae states may never be sold, traded, staked, or priced.
+Vitae recognition states may never be sold, traded, staked, or priced.
 
 ---
 

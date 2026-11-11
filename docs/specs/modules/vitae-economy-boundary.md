@@ -2,7 +2,7 @@
 title: "Vitae Economy Boundary"
 status: canonical-draft
 visibility: public
-last_updated: 2026-06-02
+last_updated: 2026-11-11
 description: "Defines what may and may not be monetized around Vitae without selling recognition, readiness, authority, or dignity."
 phase: "Pre-Genesis"
 layer: "App / Economy / Vitae"
@@ -14,7 +14,7 @@ layer: "App / Economy / Vitae"
 
 This document defines how economy may touch Vitae without corrupting Vitae.
 
-Vitae is recognition after stabilization.
+Vitae includes a voluntary learning and practice ladder. Its distinct recognition process follows demonstrated stabilization; curriculum completion alone does not grant recognition or permission.
 
 Economy may fund instruction, tools, infrastructure, and review operations.
 

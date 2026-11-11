@@ -2,7 +2,7 @@
 title: "Vitae Authority Integration"
 status: canonical-draft
 visibility: public
-last_updated: 2026-05-30
+last_updated: 2026-11-11
 description: "Implementation-facing bridge between the app Vitae surfaces, local device state, governance permissions, and ARCnet receipts."
 phase: "Pre-Genesis"
 layer: "App"
@@ -21,6 +21,16 @@ It is subordinate to:
 - `docs/governance/governance-specification.md`
 - `docs/architecture/app-chain-doctrine.md`
 - `docs/specs/chain/local-arcnet.md`
+
+## Learning, recognition, and permission
+
+Vitae provides a voluntary ladder of learning, practice, and development, alongside a distinct process for recognizing growth demonstrated through lived experience.
+
+Participants may pursue grades, specializations, or both, and may pause or leave the pathway. Progression describes learning and demonstrated competencies; it does not rank human worth.
+
+Completing learning requirements may establish eligibility for recognition or responsibility. Recognition requires its applicable evidence and review. Architect and governance permissions require separate, explicit authorization; completion or payment alone does not grant them.
+
+This clarification does not activate Alpha progression tools or finalize deferred grade-to-tool mappings.
 
 ## Current app state
 

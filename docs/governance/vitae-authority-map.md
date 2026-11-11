@@ -2,7 +2,7 @@
 title: "Vitae Authority Map"
 status: canonical-draft
 visibility: public
-last_updated: 2026-09-04
+last_updated: 2026-11-11
 description: "Maps Vitae recognition to governance, stewardship, treasury, and developer permissions without converting Vitae into rank, score, or purchased authority."
 phase: "Pre-Genesis"
 layer: "Governance"
@@ -17,6 +17,16 @@ This document defines how **Vitae recognition** may interface with governance, s
 It does not redefine Vitae. It operationalizes the narrow governance question:
 
 > When a being has stabilized enough responsibility, what system permissions may be entrusted without turning that recognition into worth, rank, or domination?
+
+## Learning, recognition, and permission
+
+Vitae provides a voluntary ladder of learning, practice, and development, alongside a distinct process for recognizing growth demonstrated through lived experience.
+
+Participants may pursue grades, specializations, or both, and may pause or leave the pathway. Progression describes learning and demonstrated competencies; it does not rank human worth.
+
+Completing learning requirements may establish eligibility for recognition or responsibility. Recognition requires its applicable evidence and review. Architect and governance permissions require separate, explicit authorization; completion or payment alone does not grant them.
+
+This clarification does not activate Alpha progression tools or finalize deferred grade-to-tool mappings.
 
 ## Authority dependencies and draft inputs
 
@@ -59,7 +69,7 @@ Vitae authority must never become:
 
 Vitae may gate responsibility. It may never gate dignity, belonging, basic participation, or identity.
 
-Vitae is economically sterile. MANA may not purchase recognition, accelerate readiness, unlock becoming, or buy governance authority directly.
+Vitae recognition is economically sterile. MANA may not purchase recognition, accelerate readiness, unlock becoming, or buy governance authority directly.
 
 ## Authority grammar
 

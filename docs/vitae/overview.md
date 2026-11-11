@@ -2,19 +2,21 @@
 title: "Vitae Overview"
 status: canonical
 visibility: public
-last_updated: 2026-02-20
+last_updated: 2026-11-11
 description: "What Vitae is, what it is not, and how to navigate its authority, constitution, curriculum, and mastery paths."
 ---
 
 # Vitae Overview
 
-Vitae is Arcanum’s **Recognition Layer of Becoming**.
+Vitae provides a voluntary ladder of learning, practice, and development, alongside a distinct process for recognizing growth demonstrated through lived experience.
 
-It exists to **name maturation after it has stabilized** — not to force it, not to rank it, and not to convert it into a status economy. Vitae is a structure for **responsibility, coherence, and discernment** across learning and practice, while keeping human dignity intact.
+Participants may pursue grades, specializations, or both, and may pause or leave the pathway. Progression describes learning and demonstrated competencies; it does not rank human worth.
+
+Completing learning requirements may establish eligibility for recognition or responsibility. Recognition requires its applicable evidence and review. Architect and governance permissions require separate, explicit authorization; completion or payment alone does not grant them.
 
 If you are new to Vitae, read in this order:
 
-1) `authority.md`  
+1) `../doctrine/authority.md`
 2) `constitution/`  
 3) `curriculum/overview.md` → `curriculum/index.md`
 
@@ -68,7 +70,7 @@ Vitae is built around a few non-negotiables:
 Vitae documentation is organized into three primary surfaces:
 
 ### 1) Authority (meaning + posture)
-- `authority.md`
+- `../doctrine/authority.md`
 
 This is the “why” and “how” of recognition: what authority means inside Vitae, and what it must never become.
 
@@ -147,7 +149,7 @@ When adding or revising Vitae content, keep these rules:
 
 ## Quick links
 
-- Authority: `authority.md`  
+- Authority: `../doctrine/authority.md`
 - Constitution: `constitution/`  
 - Curriculum: `curriculum/`  
 - Curriculum map: `index.md#curriculum-map`  
