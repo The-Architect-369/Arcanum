@@ -2,7 +2,7 @@
 title: "Vitae Content Foundation"
 status: canonical-draft
 visibility: public
-last_updated: 2026-06-04
+last_updated: 2026-11-11
 description: "Defines app-facing Vitae content classes, curriculum references, practice prompts, and review boundaries without assuming missing grade schemas."
 phase: "Pre-Genesis"
 layer: "App / Vitae / Content"
@@ -17,6 +17,16 @@ This document defines safe app-facing Vitae content categories.
 The existing Vitae corpus contains deep curriculum material. This document does not replace that corpus.
 
 It defines how app content may reference Vitae without converting it into ranking, speed optimization, or paid advancement.
+
+## Learning, recognition, and permission
+
+Vitae provides a voluntary ladder of learning, practice, and development, alongside a distinct process for recognizing growth demonstrated through lived experience.
+
+Participants may pursue grades, specializations, or both, and may pause or leave the pathway. Progression describes learning and demonstrated competencies; it does not rank human worth.
+
+Completing learning requirements may establish eligibility for recognition or responsibility. Recognition requires its applicable evidence and review. Architect and governance permissions require separate, explicit authorization; completion or payment alone does not grant them.
+
+This clarification does not activate Alpha progression tools or finalize deferred grade-to-tool mappings.
 
 ## Constraint sources
 

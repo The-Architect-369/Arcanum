@@ -2,7 +2,7 @@
 title: "Governance Permission Model"
 status: canonical-draft
 visibility: public
-last_updated: 2026-05-30
+last_updated: 2026-11-11
 description: "Defines the eligibility, review, authority, and execution model for governance, treasury, protocol, app, developer, and continuity permissions."
 phase: "Pre-Genesis"
 layer: "Governance"
@@ -24,6 +24,16 @@ It bridges:
 - Architect succession and continuity.
 
 This document does **not** grant authority by itself. It defines the grammar by which authority may be entrusted.
+
+## Learning, recognition, and permission
+
+Vitae provides a voluntary ladder of learning, practice, and development, alongside a distinct process for recognizing growth demonstrated through lived experience.
+
+Participants may pursue grades, specializations, or both, and may pause or leave the pathway. Progression describes learning and demonstrated competencies; it does not rank human worth.
+
+Completing learning requirements may establish eligibility for recognition or responsibility. Recognition requires its applicable evidence and review. Architect and governance permissions require separate, explicit authorization; completion or payment alone does not grant them.
+
+This clarification does not activate Alpha progression tools or finalize deferred grade-to-tool mappings.
 
 ## October 11 approved scope and deferred design
 
