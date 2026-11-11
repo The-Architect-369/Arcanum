@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-11-09T12:39:39Z",
+  "generated_at": "2026-11-11T11:52:01Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "c0140b102",
+  "commit": "0a6430b11",
   "generator_version": "1.5",
   "files": [
     {
@@ -4759,11 +4759,11 @@
     {
       "path": "docs/doctrine/authority.md",
       "type": "file",
-      "size_bytes": 3752,
-      "last_modified_commit": "c614a3b51",
+      "size_bytes": 4463,
+      "last_modified_commit": "0a6430b11",
       "is_empty": false,
       "extension": ".md",
-      "lines": 228
+      "lines": 226
     },
     {
       "path": "docs/doctrine/founder-transition.md",
@@ -5749,11 +5749,11 @@
     {
       "path": "docs/governance/governance-permission-model.md",
       "type": "file",
-      "size_bytes": 17814,
-      "last_modified_commit": "c614a3b51",
+      "size_bytes": 18596,
+      "last_modified_commit": "0a6430b11",
       "is_empty": false,
       "extension": ".md",
-      "lines": 517
+      "lines": 527
     },
     {
       "path": "docs/governance/governance-specification.md",
@@ -5785,11 +5785,11 @@
     {
       "path": "docs/governance/vitae-authority-map.md",
       "type": "file",
-      "size_bytes": 11013,
-      "last_modified_commit": "c614a3b51",
+      "size_bytes": 11807,
+      "last_modified_commit": "0a6430b11",
       "is_empty": false,
       "extension": ".md",
-      "lines": 344
+      "lines": 354
     },
     {
       "path": "docs/index.md",
@@ -6325,11 +6325,11 @@
     {
       "path": "docs/specs/app/vitae-authority-integration.md",
       "type": "file",
-      "size_bytes": 8142,
-      "last_modified_commit": "f740deb6a",
+      "size_bytes": 8924,
+      "last_modified_commit": "0a6430b11",
       "is_empty": false,
       "extension": ".md",
-      "lines": 311
+      "lines": 321
     },
     {
       "path": "docs/specs/chain/README.md",
@@ -6676,11 +6676,11 @@
     {
       "path": "docs/specs/modules/vitae-content-foundation.md",
       "type": "file",
-      "size_bytes": 4229,
-      "last_modified_commit": "7de4fb3dd",
+      "size_bytes": 5011,
+      "last_modified_commit": "0a6430b11",
       "is_empty": false,
       "extension": ".md",
-      "lines": 183
+      "lines": 193
     },
     {
       "path": "docs/specs/modules/vitae-context-schema.md",
@@ -6694,8 +6694,8 @@
     {
       "path": "docs/specs/modules/vitae-economy-boundary.md",
       "type": "file",
-      "size_bytes": 4884,
-      "last_modified_commit": "d5073e1a0",
+      "size_bytes": 5038,
+      "last_modified_commit": "0a6430b11",
       "is_empty": false,
       "extension": ".md",
       "lines": 214
@@ -9007,11 +9007,11 @@
     {
       "path": "docs/vitae/overview.md",
       "type": "file",
-      "size_bytes": 4936,
-      "last_modified_commit": "83a94a753",
+      "size_bytes": 5266,
+      "last_modified_commit": "0a6430b11",
       "is_empty": false,
       "extension": ".md",
-      "lines": 154
+      "lines": 156
     },
     {
       "path": "docs/whitepaper/executive-summary.md",
