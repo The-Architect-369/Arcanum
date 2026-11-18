@@ -2,13 +2,17 @@
 title: "Vitae"
 status: canonical
 visibility: public
-last_updated: 2026-10-07
-description: "Vitae is Arcanum’s recognition layer for becoming: authority, constitution, curriculum, and mastery paths."
+last_updated: 2026-11-18
+description: "Vitae is Arcanum’s voluntary learning and development ladder, with distinct recognition and authorization processes."
 ---
 
 # Vitae
 
-Vitae is the **Recognition Layer of Becoming** — a system for naming maturation *after it has stabilized*, without coercion, scoring, or worth-hierarchies.
+Vitae provides a voluntary ladder of learning, practice, and development, alongside a distinct process for recognizing growth demonstrated through lived experience.
+
+Participants may pursue grades, specializations, or both, and may pause or leave the pathway. Progression describes learning and demonstrated competencies; it does not rank human worth.
+
+Completing learning requirements may establish eligibility for recognition or responsibility. Recognition requires its applicable evidence and review. Architect and governance permissions require separate, explicit authorization; completion or payment alone does not grant them.
 
 Use this page as the **navigation hub** for everything under `docs/vitae/`.
 
@@ -35,7 +39,7 @@ Status is determined per file, not by folder placement or by legacy body languag
 
 ## Authority
 
-- [Vitae authority](../doctrine/authority.md) — recognition follows stabilization; silence is valid; responsibility without worth.
+- [Vitae authority](../doctrine/authority.md) — voluntary learning, distinct recognition, and separately authorized responsibility; silence and non-participation remain valid.
 
 ---
 
@@ -185,7 +189,7 @@ Individual specialization folders (each structured as `canon/` + `implement/`):
 
 ## How to use Vitae docs
 
-- Read **Authority** to understand the *non-coercive* posture of recognition and the controlling authority boundary.
+- Read **Authority** to understand the voluntary learning ladder, the *non-coercive* recognition process, and the controlling authority boundary.
 - Use **Constitution** as a mixed-status design and constraint surface; inspect frontmatter before treating any file as controlling.
 - Use **Curriculum** when building, teaching, validating, or extending grade content and mastery paths, subject to controlling doctrine and governance.
 
@@ -193,5 +197,5 @@ Individual specialization folders (each structured as `canon/` + `implement/`):
 
 ## Related docs (outside Vitae)
 
-- Vitae module spec (implementation-facing): `../specs/modules/vitae.md`
+- Vitae content foundation (implementation-facing draft): [Content foundation](../specs/modules/vitae-content-foundation.md)
 - Canonical module definition (system-wide): [Canonical modules](../architecture/canonical-modules.md)
