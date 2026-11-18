@@ -2,7 +2,7 @@
 title: "Vitae Overview"
 status: canonical
 visibility: public
-last_updated: 2026-11-11
+last_updated: 2026-11-18
 description: "What Vitae is, what it is not, and how to navigate its authority, constitution, curriculum, and mastery paths."
 ---
 
@@ -18,7 +18,7 @@ If you are new to Vitae, read in this order:
 
 1) `../doctrine/authority.md`
 2) `constitution/`  
-3) `curriculum/overview.md` → `curriculum/index.md`
+3) [Curriculum map](index.md#curriculum-map)
 
 ---
 
@@ -77,7 +77,7 @@ This is the “why” and “how” of recognition: what authority means inside 
 ### 2) Constitution (what is allowed, what is forbidden)
 Folder: `constitution/`
 
-This is the canonical constraint layer: invariants, audit rules, amendment mechanics, and cross-grade coherence requirements.
+This contains mixed-status constraint and design sources: invariants, audit rules, amendment mechanics, and cross-grade coherence requirements. Each file’s status governs; folder placement does not make a draft canonical.
 
 ### 3) Curriculum (the live tree)
 Folder: `curriculum/`
@@ -85,8 +85,7 @@ Folder: `curriculum/`
 This contains the grade ladder, content structures, dependency discipline, and mastery paths. It is intentionally deep and modular.
 
 **Curriculum entrypoints:**
-- `curriculum/overview.md`
-- `curriculum/index.md`
+- [Curriculum map](index.md#curriculum-map)
 
 ---
 
@@ -116,12 +115,11 @@ This separation keeps the doctrine *stated clearly* while also keeping the syste
 Use these pages as “maps”:
 
 - `index.md` — Vitae-wide navigation hub (authority + constitution + curriculum map)
-- `curriculum/overview.md` — how curriculum is shaped (philosophy + structure)
-- `curriculum/index.md` — the curriculum’s table of contents (grades + specializations)
+- [Curriculum map](index.md#curriculum-map) — existing grades and specialization source structure
 
 If you’re doing implementation work, also reference:
 
-- `../specs/modules/vitae.md` (implementation-facing module spec)
+- [Vitae content foundation](../specs/modules/vitae-content-foundation.md) (implementation-facing draft)
 - relevant chain/runtime specs under `../specs/` where Vitae hooks into system behavior
 
 ---
@@ -153,4 +151,4 @@ When adding or revising Vitae content, keep these rules:
 - Constitution: `constitution/`  
 - Curriculum: `curriculum/`  
 - Curriculum map: `index.md#curriculum-map`  
-- Vitae module spec: `../specs/modules/vitae.md`
+- Vitae content foundation (draft): [Content foundation](../specs/modules/vitae-content-foundation.md)
