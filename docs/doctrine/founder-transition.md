@@ -302,3 +302,8 @@ This principle applies to:
 
 Any structural move toward centralization of authority in a single individual is invalid unless amended through ratified process.
 
+
+
+## Alpha transition implementation amendment — November 22, 2026
+
+See [Founder-published Alpha and community transition](../governance/alpha-founder-transition.md) for the Human-approved invitation-only development stage, participant protections, recurring reviews and separate election trigger. Pending canonical integration. This bounded stage does not authorize unilateral shared Treasury operations or permanent founder governance. Existing-work ownership and scoped institutional licensing remain distinct from governing authority.
