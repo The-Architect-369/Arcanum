@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-11-22T16:48:13Z",
+  "generated_at": "2026-11-22T17:40:03Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "84e901fcf",
+  "commit": "46107e85c",
   "generator_version": "1.5",
   "files": [
     {
@@ -4741,11 +4741,11 @@
     {
       "path": "docs/compliance/license-and-attribution.md",
       "type": "file",
-      "size_bytes": 1038,
-      "last_modified_commit": "60bd5ee4f",
+      "size_bytes": 2124,
+      "last_modified_commit": "46107e85c",
       "is_empty": false,
       "extension": ".md",
-      "lines": 70
+      "lines": 78
     },
     {
       "path": "docs/doctrine/architect-role.md",
