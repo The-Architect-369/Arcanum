@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-11-22T14:59:13Z",
+  "generated_at": "2026-11-22T16:47:21Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "4a9260e3e",
+  "commit": "11d57b9cf",
   "generator_version": "1.5",
   "files": [
     {
@@ -4768,8 +4768,8 @@
     {
       "path": "docs/doctrine/founder-transition.md",
       "type": "file",
-      "size_bytes": 5062,
-      "last_modified_commit": "4a9260e3e",
+      "size_bytes": 5031,
+      "last_modified_commit": "11d57b9cf",
       "is_empty": false,
       "extension": ".md",
       "lines": 309
@@ -5389,8 +5389,8 @@
     {
       "path": "docs/governance/alpha-founder-transition.md",
       "type": "file",
-      "size_bytes": 5213,
-      "last_modified_commit": "4a9260e3e",
+      "size_bytes": 5241,
+      "last_modified_commit": "11d57b9cf",
       "is_empty": false,
       "extension": ".md",
       "lines": 35
