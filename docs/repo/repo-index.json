@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-11-18T17:46:00Z",
+  "generated_at": "2026-11-22T16:48:13Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "002a0faa0",
+  "commit": "84e901fcf",
   "generator_version": "1.5",
   "files": [
     {
@@ -4768,11 +4768,11 @@
     {
       "path": "docs/doctrine/founder-transition.md",
       "type": "file",
-      "size_bytes": 4521,
-      "last_modified_commit": "c614a3b51",
+      "size_bytes": 5031,
+      "last_modified_commit": "11d57b9cf",
       "is_empty": false,
       "extension": ".md",
-      "lines": 304
+      "lines": 309
     },
     {
       "path": "docs/doctrine/identity-model.md",
@@ -5385,6 +5385,15 @@
       "is_empty": false,
       "extension": ".md",
       "lines": 30
+    },
+    {
+      "path": "docs/governance/alpha-founder-transition.md",
+      "type": "file",
+      "size_bytes": 5241,
+      "last_modified_commit": "11d57b9cf",
+      "is_empty": false,
+      "extension": ".md",
+      "lines": 35
     },
     {
       "path": "docs/governance/architectgpt/agent-registry.yaml",
@@ -7289,7 +7298,7 @@
       "path": "docs/tooling/doctrine-checksums/doctrine-checksums.yaml",
       "type": "file",
       "size_bytes": 1916,
-      "last_modified_commit": "68676a38e",
+      "last_modified_commit": "84e901fcf",
       "is_empty": false,
       "extension": ".yaml",
       "lines": 25
