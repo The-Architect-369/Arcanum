@@ -1,6 +1,6 @@
 # Founder-published Alpha and community transition
 
-Status: Human-approved policy amendment, November 22, 2026; pending canonical integration and Alpha packaging. No entity formation, appointment, election, economic activation or release is effected by this document.
+Status: Human-approved policy amendment, November 22, 2026; canonical upon integration; Alpha packaging and qualification remain separate. No entity formation, appointment, election, economic activation or release is effected by this document.
 
 ## Present scope
 
