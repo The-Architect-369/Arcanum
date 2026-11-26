@@ -3,6 +3,9 @@ import { source } from "@/lib/public-site";
 export default function UpdatesNext() {
   return (
     <section aria-labelledby="development-roadmap">
+      <h1 className="sr-only" id="development-roadmap">
+        Coming next
+      </h1>
       <CurrentCards
         label="Development library"
         entries={[

@@ -11,6 +11,9 @@ export default function UpdatesAvailable() {
   return (
     <PlatformChoiceProvider>
       <section aria-labelledby="available-heading">
+        <h1 className="sr-only" id="available-heading">
+          Available
+        </h1>
         <CurrentCards
           label="Explore Arcanum"
           entries={[

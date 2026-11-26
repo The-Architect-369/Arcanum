@@ -10,12 +10,6 @@ export default function CurrentHeader() {
   const view =
     navigation?.view ??
     (requested === "available" || requested === "next" ? requested : "updates");
-  const title =
-    view === "available"
-      ? "Find your starting point."
-      : view === "next"
-        ? "See what’s taking shape."
-        : "Watch it take shape.";
   return (
     <header className="current-header">
       <a
@@ -41,21 +35,6 @@ export default function CurrentHeader() {
         <img src="/current-icons/native-symbol.svg" width="32" height="32" alt="" />
         <strong>Arcanum Current</strong>
       </a>
-      {home && (
-        <div className="current-section-title">
-          <h1
-            id={
-              view === "available"
-                ? "available-heading"
-                : view === "next"
-                  ? "development-roadmap"
-                  : "development-feed"
-            }
-          >
-            {title}
-          </h1>
-        </div>
-      )}
     </header>
   );
 }

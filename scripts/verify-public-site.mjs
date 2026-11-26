@@ -57,7 +57,7 @@ function requestHost(path, host, userAgent) {
 for (const ua of Object.values(agents)) {
   for (const [host, heading] of [
     ["the-arcanum.net", "A Human Journey."],
-    ["updates.the-arcanum.net", "Watch it take shape."],
+    ["updates.the-arcanum.net", "Updates"],
     ["journeys.the-arcanum.net", "Go somewhere. Come back with a question."],
     ["architect.the-arcanum.net", "Follow the build."],
     ["architectXthe-arcanumYnet", "A Human Journey."],
