@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 250">
+  <!-- Native A20PearlPresence: 2.5-radius halo and upper-left surface light. -->
+  <defs>
+    <radialGradient id="halo">
+      <stop stop-color="#d5c5e8" stop-opacity=".27"/>
+      <stop offset="1" stop-color="#d5c5e8" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="surface" gradientUnits="userSpaceOnUse" cx="111" cy="109" r="72.5">
+      <stop stop-color="#fff9ee"/>
+      <stop offset=".28" stop-color="#e8daea"/>
+      <stop offset=".75" stop-color="#8c789e"/>
+      <stop offset="1" stop-color="#3c304b"/>
+    </radialGradient>
+  </defs>
+  <circle cx="125" cy="125" r="125" fill="url(#halo)"/>
+  <circle cx="125" cy="125" r="50" fill="url(#surface)"/>
+</svg>

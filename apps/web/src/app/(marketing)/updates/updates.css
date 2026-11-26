@@ -992,3 +992,25 @@ body:has(.updates-app) {
     overflow: visible;
   }
 }
+
+/* Paint the pearl on the scroll container so only the cards move. */
+.updates-app > #public-main:has([data-current-view="updates"]:not([hidden])) {
+  background: #000 url("/current-icons/hope-pearl.svg") center 50% /
+    clamp(230px, 96vw, 440px) auto no-repeat scroll;
+}
+[data-current-view="updates"] .updates-list {
+  max-width: 640px;
+  margin-inline: auto;
+  padding-inline: clamp(8px, 4vw, 28px);
+  gap: clamp(28px, 8vw, 40px);
+}
+[data-current-view="updates"] .updates-row {
+  background-color: #101f36;
+  border-color: #354b66;
+  padding: clamp(17px, 5vw, 26px);
+}
+@media (hover: hover) {
+  [data-current-view="updates"] .updates-row:hover {
+    border-color: var(--updates-gold);
+  }
+}
