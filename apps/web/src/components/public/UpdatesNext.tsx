@@ -2,7 +2,7 @@ import CurrentCards from "./CurrentCards";
 import { source } from "@/lib/public-site";
 export default function UpdatesNext() {
   return (
-    <section aria-labelledby="development-roadmap">
+    <section className="roadmap" aria-labelledby="development-roadmap">
       <h1 className="sr-only" id="development-roadmap">
         Coming next
       </h1>
@@ -12,11 +12,10 @@ export default function UpdatesNext() {
           {
             id: "application",
             topic: "arcanum",
-            title: "The application",
+            title: "Application",
             summary:
               "A place for reflection, conversation and returning to what matters.",
             status: "Integrated work · review continues",
-            action: "Explore the application",
             content: (
               <>
                 <p className="updates-panel-lead">
@@ -69,7 +68,6 @@ export default function UpdatesNext() {
             summary:
               "The foundations that connect time, provenance and human choice.",
             status: "Contracts and local runtime work",
-            action: "Explore the foundations",
             content: (
               <>
                 <p className="updates-panel-lead">
@@ -117,7 +115,6 @@ export default function UpdatesNext() {
             title: "Web experiences",
             summary: "A clear public window into the work, useful on its own.",
             status: "Current preview under review",
-            action: "Explore the web experiences",
             content: (
               <>
                 <p className="updates-panel-lead">
@@ -162,10 +159,6 @@ export default function UpdatesNext() {
           },
         ]}
       />
-      <p className="updates-footnote">
-        Public resources only. Connecting selected material from the offline
-        library requires a separate review. Directions are not release promises.
-      </p>
     </section>
   );
 }
