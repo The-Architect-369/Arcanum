@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-11-22T17:40:03Z",
+  "generated_at": "2026-11-26T09:35:59Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "46107e85c",
+  "commit": "012ac6930",
   "generator_version": "1.5",
   "files": [
     {
@@ -1283,6 +1283,51 @@
       "lines": 0
     },
     {
+      "path": "apps/web/public/current-icons/icon-192.png",
+      "type": "file",
+      "size_bytes": 3805,
+      "last_modified_commit": "012ac6930",
+      "is_empty": false,
+      "extension": ".png",
+      "lines": 0
+    },
+    {
+      "path": "apps/web/public/current-icons/icon-512.png",
+      "type": "file",
+      "size_bytes": 10536,
+      "last_modified_commit": "012ac6930",
+      "is_empty": false,
+      "extension": ".png",
+      "lines": 0
+    },
+    {
+      "path": "apps/web/public/current-icons/maskable-192.png",
+      "type": "file",
+      "size_bytes": 3606,
+      "last_modified_commit": "012ac6930",
+      "is_empty": false,
+      "extension": ".png",
+      "lines": 0
+    },
+    {
+      "path": "apps/web/public/current-icons/maskable-512.png",
+      "type": "file",
+      "size_bytes": 9755,
+      "last_modified_commit": "012ac6930",
+      "is_empty": false,
+      "extension": ".png",
+      "lines": 0
+    },
+    {
+      "path": "apps/web/public/current-icons/native-symbol.svg",
+      "type": "file",
+      "size_bytes": 349,
+      "last_modified_commit": "012ac6930",
+      "is_empty": false,
+      "extension": ".svg",
+      "lines": 1
+    },
+    {
       "path": "apps/web/public/experience/v07/app.51b8278c670a.js",
       "type": "file",
       "size_bytes": 31290,
@@ -1447,11 +1492,11 @@
     {
       "path": "apps/web/public/updates-sw.js",
       "type": "file",
-      "size_bytes": 4550,
-      "last_modified_commit": "5a7f2b283",
+      "size_bytes": 4678,
+      "last_modified_commit": "012ac6930",
       "is_empty": false,
       "extension": ".js",
-      "lines": 140
+      "lines": 142
     },
     {
       "path": "apps/web/public/updates/a14-2/SHA256SUMS",
@@ -2293,11 +2338,11 @@
     {
       "path": "apps/web/src/app/(marketing)/updates/layout.tsx",
       "type": "file",
-      "size_bytes": 557,
-      "last_modified_commit": "c59f55cf5",
+      "size_bytes": 656,
+      "last_modified_commit": "012ac6930",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 25
+      "lines": 29
     },
     {
       "path": "apps/web/src/app/(marketing)/updates/page.tsx",
@@ -2311,11 +2356,11 @@
     {
       "path": "apps/web/src/app/(marketing)/updates/updates.css",
       "type": "file",
-      "size_bytes": 20410,
-      "last_modified_commit": "5a7f2b283",
+      "size_bytes": 20332,
+      "last_modified_commit": "012ac6930",
       "is_empty": false,
       "extension": ".css",
-      "lines": 1004
+      "lines": 1002
     },
     {
       "path": "apps/web/src/app/activate/page.tsx",
@@ -2410,11 +2455,11 @@
     {
       "path": "apps/web/src/app/updates/manifest.webmanifest/route.ts",
       "type": "file",
-      "size_bytes": 1189,
-      "last_modified_commit": "c59f55cf5",
+      "size_bytes": 1373,
+      "last_modified_commit": "012ac6930",
       "is_empty": false,
       "extension": ".ts",
-      "lines": 45
+      "lines": 52
     },
     {
       "path": "apps/web/src/auth.ts",
@@ -2563,17 +2608,17 @@
     {
       "path": "apps/web/src/components/public/CurrentHeader.tsx",
       "type": "file",
-      "size_bytes": 2249,
-      "last_modified_commit": "5a7f2b283",
+      "size_bytes": 1977,
+      "last_modified_commit": "012ac6930",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 71
+      "lines": 61
     },
     {
       "path": "apps/web/src/components/public/CurrentInstall.tsx",
       "type": "file",
-      "size_bytes": 6308,
-      "last_modified_commit": "5a7f2b283",
+      "size_bytes": 6324,
+      "last_modified_commit": "012ac6930",
       "is_empty": false,
       "extension": ".tsx",
       "lines": 198
