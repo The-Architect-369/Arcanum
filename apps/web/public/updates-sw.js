@@ -1,5 +1,5 @@
 // Updates-only worker. Private pages, APIs and APK/release files are never cached.
-const CACHE = "arcanum-updates-v9";
+const CACHE = "arcanum-updates-v10";
 const START = "/updates?source=pwa";
 const SHELL = [
   START,
@@ -9,6 +9,7 @@ const SHELL = [
   "/updates/offline.html",
   "/current-icons/native-symbol.svg",
   "/current-icons/hope-pearl.svg",
+  "/current-icons/hope-subject.svg",
   "/current-icons/icon-192.png",
   "/current-icons/icon-512.png",
   "/current-icons/maskable-192.png",
@@ -18,6 +19,7 @@ const isAsset = (url) =>
   url.origin === self.location.origin &&
   (url.pathname === "/current-icons/native-symbol.svg" ||
     url.pathname === "/current-icons/hope-pearl.svg" ||
+    /^\/current-icons\/(?:hope|vitae|tempus|arcnet)-subject\.svg$/.test(url.pathname) ||
     url.pathname.startsWith("/_next/static/") ||
     /^\/current-icons\/(?:icon|maskable)-(?:192|512)\.png$/.test(url.pathname));
 async function saveAsset(cache, url) {

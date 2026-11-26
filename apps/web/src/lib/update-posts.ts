@@ -6,6 +6,7 @@ export type UpdatePost = {
   detail: string;
   summary?: string;
   topic?: "arcanum" | "arcnet" | "website";
+  subject?: "hope" | "vitae" | "tempus" | "arcnet";
   updateType?: "release" | "progress" | "website";
   category: "development" | "website";
   status: string;
@@ -18,6 +19,7 @@ export const developmentPosts: UpdatePost[] = [
     title: "A steadier home for reflections",
     summary:
       "Protected reflection collections are integrated, moving the work toward a more dependable everyday experience.",
+    subject: "hope",
     topic: "arcanum",
     updateType: "progress",
     category: "development",

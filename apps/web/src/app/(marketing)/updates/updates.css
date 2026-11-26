@@ -1014,3 +1014,47 @@ body:has(.updates-app) {
     border-color: var(--updates-gold);
   }
 }
+
+.updates-list .updates-row {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 12px;
+}
+.updates-row .post-card-meta,
+.updates-row .post-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+}
+.post-card-meta {
+  color: var(--updates-muted);
+}
+.post-card-meta svg,
+.post-subject {
+  flex: none;
+  margin-inline-start: auto;
+}
+.updates-row h3,
+.updates-row .updates-card-meaning,
+.updates-row .updates-card-action {
+  margin: 0;
+}
+.post-card-footer {
+  padding-top: 4px;
+  margin-top: auto;
+}
+.post-card-footer .updates-card-action {
+  margin-inline-start: auto;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .post-subject {
+    animation: current-subject-hover 3.8s ease-in-out infinite alternate;
+  }
+}
+@keyframes current-subject-hover {
+  from { transform: translateY(1px); }
+  to { transform: translateY(-2px); }
+}
