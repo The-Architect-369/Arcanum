@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-11-26T10:12:56Z",
+  "generated_at": "2026-11-26T10:18:41Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "723c3deb9",
+  "commit": "571c2d687",
   "generator_version": "1.5",
   "files": [
     {
@@ -1537,11 +1537,11 @@
     {
       "path": "apps/web/public/updates-sw.js",
       "type": "file",
-      "size_bytes": 4896,
-      "last_modified_commit": "605cb12c0",
+      "size_bytes": 4935,
+      "last_modified_commit": "571c2d687",
       "is_empty": false,
       "extension": ".js",
-      "lines": 146
+      "lines": 147
     },
     {
       "path": "apps/web/public/updates/a14-2/SHA256SUMS",
@@ -2401,11 +2401,11 @@
     {
       "path": "apps/web/src/app/(marketing)/updates/updates.css",
       "type": "file",
-      "size_bytes": 26248,
-      "last_modified_commit": "723c3deb9",
+      "size_bytes": 27136,
+      "last_modified_commit": "571c2d687",
       "is_empty": false,
       "extension": ".css",
-      "lines": 1292
+      "lines": 1341
     },
     {
       "path": "apps/web/src/app/activate/page.tsx",
@@ -2680,11 +2680,11 @@
     {
       "path": "apps/web/src/components/public/CurrentPlatformChooser.tsx",
       "type": "file",
-      "size_bytes": 4494,
-      "last_modified_commit": "4c79c8cd9",
+      "size_bytes": 5108,
+      "last_modified_commit": "571c2d687",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 156
+      "lines": 175
     },
     {
       "path": "apps/web/src/components/public/CurrentTopicVisual.tsx",
@@ -2694,6 +2694,15 @@
       "is_empty": false,
       "extension": ".tsx",
       "lines": 8
+    },
+    {
+      "path": "apps/web/src/components/public/DownloadAndroid.tsx",
+      "type": "file",
+      "size_bytes": 1008,
+      "last_modified_commit": "571c2d687",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 30
     },
     {
       "path": "apps/web/src/components/public/PillarCarousel.tsx",
@@ -2734,8 +2743,8 @@
     {
       "path": "apps/web/src/components/public/UpdatesAvailable.tsx",
       "type": "file",
-      "size_bytes": 2411,
-      "last_modified_commit": "c21b4ed10",
+      "size_bytes": 2439,
+      "last_modified_commit": "571c2d687",
       "is_empty": false,
       "extension": ".tsx",
       "lines": 64
