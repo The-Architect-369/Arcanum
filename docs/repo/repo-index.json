@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-11-26T10:05:21Z",
+  "generated_at": "2026-11-26T10:08:37Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "f9091ea7e",
+  "commit": "4c79c8cd9",
   "generator_version": "1.5",
   "files": [
     {
@@ -2401,11 +2401,11 @@
     {
       "path": "apps/web/src/app/(marketing)/updates/updates.css",
       "type": "file",
-      "size_bytes": 21895,
-      "last_modified_commit": "f9091ea7e",
+      "size_bytes": 24213,
+      "last_modified_commit": "4c79c8cd9",
       "is_empty": false,
       "extension": ".css",
-      "lines": 1060
+      "lines": 1185
     },
     {
       "path": "apps/web/src/app/activate/page.tsx",
@@ -2680,11 +2680,11 @@
     {
       "path": "apps/web/src/components/public/CurrentPlatformChooser.tsx",
       "type": "file",
-      "size_bytes": 2918,
-      "last_modified_commit": "5a7f2b283",
+      "size_bytes": 4494,
+      "last_modified_commit": "4c79c8cd9",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 96
+      "lines": 156
     },
     {
       "path": "apps/web/src/components/public/CurrentTopicVisual.tsx",
@@ -2725,20 +2725,20 @@
     {
       "path": "apps/web/src/components/public/UpdateRows.tsx",
       "type": "file",
-      "size_bytes": 3502,
-      "last_modified_commit": "605cb12c0",
+      "size_bytes": 3588,
+      "last_modified_commit": "4c79c8cd9",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 102
+      "lines": 111
     },
     {
       "path": "apps/web/src/components/public/UpdatesAvailable.tsx",
       "type": "file",
-      "size_bytes": 5333,
-      "last_modified_commit": "d9edb1e5c",
+      "size_bytes": 2400,
+      "last_modified_commit": "4c79c8cd9",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 128
+      "lines": 64
     },
     {
       "path": "apps/web/src/components/public/UpdatesFeed.tsx",
