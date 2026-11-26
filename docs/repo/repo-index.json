@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-11-26T10:18:41Z",
+  "generated_at": "2026-11-26T10:21:36Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "571c2d687",
+  "commit": "50436120a",
   "generator_version": "1.5",
   "files": [
     {
@@ -2401,11 +2401,11 @@
     {
       "path": "apps/web/src/app/(marketing)/updates/updates.css",
       "type": "file",
-      "size_bytes": 27136,
-      "last_modified_commit": "571c2d687",
+      "size_bytes": 27760,
+      "last_modified_commit": "50436120a",
       "is_empty": false,
       "extension": ".css",
-      "lines": 1341
+      "lines": 1369
     },
     {
       "path": "apps/web/src/app/activate/page.tsx",
@@ -2635,11 +2635,11 @@
     {
       "path": "apps/web/src/components/public/CurrentCards.tsx",
       "type": "file",
-      "size_bytes": 2854,
-      "last_modified_commit": "723c3deb9",
+      "size_bytes": 2995,
+      "last_modified_commit": "50436120a",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 100
+      "lines": 107
     },
     {
       "path": "apps/web/src/components/public/CurrentExperience.tsx",
@@ -2770,11 +2770,11 @@
     {
       "path": "apps/web/src/components/public/UpdatesNext.tsx",
       "type": "file",
-      "size_bytes": 6584,
-      "last_modified_commit": "723c3deb9",
+      "size_bytes": 4948,
+      "last_modified_commit": "50436120a",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 164
+      "lines": 148
     },
     {
       "path": "apps/web/src/components/public/UpdatesTray.tsx",
