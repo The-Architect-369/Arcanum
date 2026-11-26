@@ -34,16 +34,16 @@ export default function UpdatesAvailable() {
                   : `Android API ${manifest.compatibility.minSdk} or later`}{" "}
                 · {manifest.compatibility.abis.join(" or ")}
               </p>
-              <p>
-                Keep local reflections offline. Architect conversations require
-                a separately configured home gateway and local model.
-              </p>
               <a className="download-primary" href={release.apkUrl}>
                 Download Android APK ·{" "}
                 {(manifest.artifact.sizeBytes / 1_000_000).toFixed(1)} MB
               </a>
               <details className="download-provenance">
-                <summary>Source and verification</summary>
+                <summary>Release details and source</summary>
+                <p>
+                  Keep local reflections offline. Architect conversations require
+                  a separately configured home gateway and local model.
+                </p>
                 <p>
                   Source <code>{release.sourceCommit}</code>
                 </p>

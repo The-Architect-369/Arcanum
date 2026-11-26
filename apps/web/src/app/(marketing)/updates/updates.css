@@ -1159,7 +1159,8 @@ body:has(.updates-app) {
   margin: 0;
   line-height: 1.5;
 }
-.download-primary {
+.current-download-card a.download-primary,
+.current-download-card a.download-primary:hover {
   display: inline-flex;
   align-items: center;
   justify-content: center;
