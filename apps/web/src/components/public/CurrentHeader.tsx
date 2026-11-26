@@ -33,7 +33,10 @@ export default function CurrentHeader() {
         }}
       >
         <img src="/current-icons/native-symbol.svg" width="32" height="32" alt="" />
-        <strong>Arcanum Current</strong>
+        <span className="current-wordmark">
+          <strong>Arcanum</strong>{" "}
+          <span>Current</span>
+        </span>
       </a>
     </header>
   );
