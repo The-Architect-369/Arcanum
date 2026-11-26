@@ -994,9 +994,9 @@ body:has(.updates-app) {
 }
 
 /* Paint the pearl on the scroll container so only the cards move. */
-.updates-app > #public-main:has([data-current-view="updates"]:not([hidden])) {
+.updates-app > #public-main:has([data-current-view]) {
   background: #000 url("/current-icons/hope-pearl.svg") center 50% /
-    clamp(230px, 96vw, 440px) auto no-repeat scroll;
+    clamp(192px, 80vw, 366px) auto no-repeat scroll;
 }
 [data-current-view="updates"] .updates-list {
   max-width: 640px;
