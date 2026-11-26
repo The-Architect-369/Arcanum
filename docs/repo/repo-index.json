@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-11-26T09:45:42Z",
+  "generated_at": "2026-11-26T10:01:22Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "d9edb1e5c",
+  "commit": "4cf388734",
   "generator_version": "1.5",
   "files": [
     {
@@ -1283,6 +1283,15 @@
       "lines": 0
     },
     {
+      "path": "apps/web/public/current-icons/hope-pearl.svg",
+      "type": "file",
+      "size_bytes": 746,
+      "last_modified_commit": "4cf388734",
+      "is_empty": false,
+      "extension": ".svg",
+      "lines": 17
+    },
+    {
       "path": "apps/web/public/current-icons/icon-192.png",
       "type": "file",
       "size_bytes": 3805,
@@ -1492,11 +1501,11 @@
     {
       "path": "apps/web/public/updates-sw.js",
       "type": "file",
-      "size_bytes": 4678,
-      "last_modified_commit": "012ac6930",
+      "size_bytes": 4769,
+      "last_modified_commit": "4cf388734",
       "is_empty": false,
       "extension": ".js",
-      "lines": 142
+      "lines": 144
     },
     {
       "path": "apps/web/public/updates/a14-2/SHA256SUMS",
@@ -2356,11 +2365,11 @@
     {
       "path": "apps/web/src/app/(marketing)/updates/updates.css",
       "type": "file",
-      "size_bytes": 19992,
-      "last_modified_commit": "d9edb1e5c",
+      "size_bytes": 21000,
+      "last_modified_commit": "4cf388734",
       "is_empty": false,
       "extension": ".css",
-      "lines": 982
+      "lines": 1016
     },
     {
       "path": "apps/web/src/app/activate/page.tsx",
@@ -2608,11 +2617,11 @@
     {
       "path": "apps/web/src/components/public/CurrentHeader.tsx",
       "type": "file",
-      "size_bytes": 1433,
-      "last_modified_commit": "d9edb1e5c",
+      "size_bytes": 1523,
+      "last_modified_commit": "d6ae5e8e5",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 40
+      "lines": 43
     },
     {
       "path": "apps/web/src/components/public/CurrentInstall.tsx",
