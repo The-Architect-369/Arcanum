@@ -1200,8 +1200,12 @@ body:has(.updates-app) {
   margin: 8px 0;
 }
 
+.updates-hub:has([data-current-view="next"]:not([hidden])) {
+  padding-inline: max(14px, env(safe-area-inset-left))
+    max(14px, env(safe-area-inset-right));
+}
 .roadmap {
-  max-width: 640px;
+  max-width: 680px;
   margin-inline: auto;
   overflow: auto;
 }
@@ -1214,7 +1218,7 @@ body:has(.updates-app) {
 }
 .roadmap-tile,
 .roadmap-controls,
-.roadmap-reading {
+.roadmap-project {
   border: 1px solid #354b66;
   border-radius: 22px;
   background: #203148;
@@ -1230,7 +1234,17 @@ body:has(.updates-app) {
   text-align: start;
   cursor: pointer;
 }
-.roadmap-tile span {
+.roadmap-tile-copy {
+  display: grid;
+  gap: 4px;
+}
+.roadmap-tile-copy > span {
+  max-width: 26ch;
+  font-size: 0.98rem;
+  line-height: 1.4;
+  color: var(--updates-muted);
+}
+.roadmap-tile strong {
   font-weight: 650;
   font-size: 1.1rem;
 }
@@ -1240,22 +1254,24 @@ body:has(.updates-app) {
 }
 .roadmap-expanded {
   display: grid;
-  grid-template-rows: minmax(min-content, 46%) minmax(130px, 1fr);
-  gap: 24px;
+  grid-template-rows: auto minmax(9rem, 1fr);
+  gap: 16px;
   height: 100%;
 }
-.roadmap-controls,
-.roadmap-reading {
-  min-width: 0;
-  padding: 14px 18px;
-}
 .roadmap-controls {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr) 44px;
   align-items: center;
-  justify-content: space-around;
-  gap: 4px;
+  padding: 6px 8px;
   text-align: center;
+}
+.roadmap-controls h2 {
+  grid-column: 2;
+  margin: 0;
+}
+.roadmap-controls .roadmap-switch {
+  grid-column: 1 / -1;
+  justify-content: center;
 }
 .roadmap-back,
 .roadmap-switch button {
@@ -1287,17 +1303,29 @@ body:has(.updates-app) {
     650 1.2rem/1.3 system-ui,
     sans-serif;
 }
-.roadmap-controls p {
-  color: var(--updates-muted);
-  font-size: 0.95rem;
-}
 .roadmap-reading {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(24px, 8vw, 40px);
   overflow: auto;
   overscroll-behavior: contain;
+  padding: 2px clamp(6px, 3vw, 14px) 6px;
+  min-width: 0;
 }
-.roadmap-reading > p,
-.roadmap-reading .current-project {
-  margin: 0 0 14px;
+.roadmap-project {
+  display: grid;
+  gap: 10px;
+  padding: clamp(17px, 5vw, 26px);
+}
+.roadmap-project > * {
+  margin: 0;
+}
+.roadmap-project .updates-status-pill,
+.roadmap-project .current-action {
+  justify-self: start;
+}
+.roadmap-project p {
+  line-height: 1.55;
 }
 
 .updates-app .current-header,

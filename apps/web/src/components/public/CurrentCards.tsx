@@ -7,7 +7,6 @@ type Domain = {
   id: string;
   title: string;
   summary: string;
-  status: string;
   topic: RoadmapTopic;
   content: ReactNode;
 };
@@ -46,12 +45,18 @@ export default function CurrentCards({
             data-domain={entry.id}
             className="roadmap-tile"
             onClick={() => {
+              tiles.current
+                ?.closest(".roadmap")
+                ?.scrollTo({ top: 0, behavior: "instant" });
               select(entry);
               requestAnimationFrame(() => heading.current?.focus());
             }}
           >
             <CurrentTopicVisual topic={entry.topic} />
-            <span>{entry.title}</span>
+            <span className="roadmap-tile-copy">
+              <strong>{entry.title}</strong>
+              <span>{entry.summary}</span>
+            </span>
             <ChevronRight aria-hidden="true" size={18} />
           </button>
         ))}
@@ -60,9 +65,17 @@ export default function CurrentCards({
   return (
     <div className="roadmap-expanded">
       <div className="roadmap-controls">
-        <button type="button" className="roadmap-back" onClick={back}>
-          <ArrowLeft size={16} aria-hidden="true" /> Back to domains
+        <button
+          type="button"
+          className="roadmap-back"
+          aria-label="Back to domains"
+          onClick={back}
+        >
+          <ArrowLeft size={20} aria-hidden="true" />
         </button>
+        <h2 id="roadmap-selected" ref={heading} tabIndex={-1}>
+          {selected.title}
+        </h2>
         <div role="group" aria-label="Switch domain" className="roadmap-switch">
           {entries.map((entry) => (
             <button
@@ -79,10 +92,6 @@ export default function CurrentCards({
             </button>
           ))}
         </div>
-        <h2 id="roadmap-selected" ref={heading} tabIndex={-1}>
-          {selected.title}
-        </h2>
-        <p>{selected.status}</p>
       </div>
       <div
         className="roadmap-reading"
@@ -91,9 +100,7 @@ export default function CurrentCards({
         ref={reading}
         tabIndex={0}
       >
-        <p>{selected.summary}</p>
         {selected.content}
-        <p className="updates-footnote">Directions are not release promises.</p>
       </div>
     </div>
   );
