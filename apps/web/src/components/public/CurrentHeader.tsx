@@ -16,12 +16,6 @@ export default function CurrentHeader() {
       : view === "next"
         ? "See what’s taking shape."
         : "Watch it take shape.";
-  const subtitle =
-    view === "available"
-      ? "Explore what you can use today."
-      : view === "next"
-        ? "Follow the work across Arcanum."
-        : "Follow the developing ARCnet.";
   return (
     <header className="current-header">
       <a
@@ -44,11 +38,8 @@ export default function CurrentHeader() {
           }
         }}
       >
-        <img src="/logo-arcanum.svg" width="36" height="36" alt="" />
-        <span>
-          <strong>Arcanum</strong>
-          <small>The Current</small>
-        </span>
+        <img src="/current-icons/native-symbol.svg" width="32" height="32" alt="" />
+        <strong>Arcanum Current</strong>
       </a>
       {home && (
         <div className="current-section-title">
@@ -63,7 +54,6 @@ export default function CurrentHeader() {
           >
             {title}
           </h1>
-          <p>{subtitle}</p>
         </div>
       )}
     </header>

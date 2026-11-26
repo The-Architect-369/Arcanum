@@ -175,7 +175,7 @@ export function CurrentArrival() {
   return (
     <aside className="current-install-invite" aria-label="Add Arcanum Current">
       <div>
-        <strong>Stay current.</strong>
+        <strong>Follow the developing ARCnet.</strong>
         <p>Add Arcanum Current to your device.</p>
         <button
           type="button"

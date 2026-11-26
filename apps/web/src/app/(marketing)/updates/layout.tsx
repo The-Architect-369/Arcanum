@@ -1,6 +1,10 @@
 import type { Metadata, Viewport } from "next";
 export const metadata: Metadata = {
   applicationName: "Arcanum Current",
+  icons: {
+    icon: "/current-icons/icon-192.png",
+    apple: "/current-icons/icon-192.png",
+  },
   manifest: "/updates/manifest.webmanifest",
   appleWebApp: {
     capable: true,
