@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-11-26T10:21:36Z",
+  "generated_at": "2026-11-26T10:26:22Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "50436120a",
+  "commit": "a8269f07a",
   "generator_version": "1.5",
   "files": [
     {
@@ -2401,11 +2401,11 @@
     {
       "path": "apps/web/src/app/(marketing)/updates/updates.css",
       "type": "file",
-      "size_bytes": 27760,
-      "last_modified_commit": "50436120a",
+      "size_bytes": 28249,
+      "last_modified_commit": "a8269f07a",
       "is_empty": false,
       "extension": ".css",
-      "lines": 1369
+      "lines": 1395
     },
     {
       "path": "apps/web/src/app/activate/page.tsx",
@@ -2633,6 +2633,15 @@
       "lines": 53
     },
     {
+      "path": "apps/web/src/components/public/ArcanumMark.tsx",
+      "type": "file",
+      "size_bytes": 258,
+      "last_modified_commit": "a8269f07a",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 13
+    },
+    {
       "path": "apps/web/src/components/public/CurrentCards.tsx",
       "type": "file",
       "size_bytes": 2995,
@@ -2653,11 +2662,11 @@
     {
       "path": "apps/web/src/components/public/CurrentHeader.tsx",
       "type": "file",
-      "size_bytes": 1523,
-      "last_modified_commit": "d6ae5e8e5",
+      "size_bytes": 1423,
+      "last_modified_commit": "a8269f07a",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 43
+      "lines": 40
     },
     {
       "path": "apps/web/src/components/public/CurrentInstall.tsx",
@@ -2680,11 +2689,11 @@
     {
       "path": "apps/web/src/components/public/CurrentPlatformChooser.tsx",
       "type": "file",
-      "size_bytes": 5108,
-      "last_modified_commit": "571c2d687",
+      "size_bytes": 5016,
+      "last_modified_commit": "a8269f07a",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 175
+      "lines": 171
     },
     {
       "path": "apps/web/src/components/public/CurrentTopicVisual.tsx",
@@ -2743,11 +2752,11 @@
     {
       "path": "apps/web/src/components/public/UpdatesAvailable.tsx",
       "type": "file",
-      "size_bytes": 2439,
-      "last_modified_commit": "571c2d687",
+      "size_bytes": 2610,
+      "last_modified_commit": "a8269f07a",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 64
+      "lines": 68
     },
     {
       "path": "apps/web/src/components/public/UpdatesFeed.tsx",
