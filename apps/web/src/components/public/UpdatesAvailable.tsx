@@ -1,4 +1,5 @@
 import CurrentPlatformChooser from "./CurrentPlatformChooser";
+import DownloadAndroid from "./DownloadAndroid";
 import UpdatesInstall from "./UpdatesInstall";
 import release from "../../../public/updates/release.json";
 import manifest from "../../../public/updates/a18/manifest.json";
@@ -20,29 +21,28 @@ export default function UpdatesAvailable() {
         Available
       </h1>
       <CurrentPlatformChooser
-        buildName={matched ? `Android build ${release.versionCode}` : undefined}
+        buildName={matched ? `Build ${release.versionCode}` : undefined}
         web={<UpdatesInstall />}
         android={
           matched && (
             <>
-              <p>Public Android development release · {release.versionName}</p>
-              <p>
-                <strong>Requirements</strong>
-                <br />
-                {manifest.compatibility.minSdk === 26
-                  ? "Android 8.0 or later"
-                  : `Android API ${manifest.compatibility.minSdk} or later`}{" "}
-                · {manifest.compatibility.abis.join(" or ")}
-              </p>
-              <a className="download-primary" href={release.apkUrl}>
-                Download Android APK ·{" "}
-                {(manifest.artifact.sizeBytes / 1_000_000).toFixed(1)} MB
-              </a>
+              <p>Enter Arcanum and keep your reflections on your phone.</p>
+              <DownloadAndroid url={release.apkUrl} />
               <details className="download-provenance">
-                <summary>Release details and source</summary>
+                <summary>Requirements and release details</summary>
                 <p>
-                  Keep local reflections offline. Architect conversations require
-                  a separately configured home gateway and local model.
+                  Public Android release · {release.versionName} ·{" "}
+                  {(manifest.artifact.sizeBytes / 1_000_000).toFixed(1)} MB APK
+                </p>
+                <p>
+                  {manifest.compatibility.minSdk === 26
+                    ? "Android 8.0 or later"
+                    : `Android API ${manifest.compatibility.minSdk} or later`}{" "}
+                  · {manifest.compatibility.abis.join(" or ")}
+                </p>
+                <p>
+                  Keep local reflections offline. Architect conversations
+                  require a separately configured home gateway and local model.
                 </p>
                 <p>
                   Source <code>{release.sourceCommit}</code>

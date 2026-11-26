@@ -54,12 +54,15 @@ export default function CurrentPlatformChooser({
       togglePlatforms();
     }
   }
+  const packageOpen =
+    !expanded && platform === "Android" && showRelease && !!buildName;
   return (
     <>
-      <h2 className="download-title">Downloads</h2>
+      <h2 className={packageOpen ? "sr-only" : "download-title"}>Downloads</h2>
       <button
         type="button"
         className="download-chooser"
+        hidden={packageOpen}
         aria-expanded={expanded}
         aria-controls="current-platforms"
         onClick={togglePlatforms}
@@ -94,11 +97,30 @@ export default function CurrentPlatformChooser({
         ))}
       </div>
       {!expanded && platform && (
-        <div className="download-step">
+        <div
+          className={
+            packageOpen ? "download-step package-entry" : "download-step"
+          }
+        >
+          <div className="download-context">
+            <button type="button" className="download-back" onClick={back}>
+              ← Back
+            </button>
+            {packageOpen && <span>{buildName}</span>}
+          </div>
+          {packageOpen && (
+            <img
+              className="package-symbol"
+              src="/current-icons/native-symbol.svg"
+              width="52"
+              height="52"
+              alt=""
+            />
+          )}
           <h3 ref={heading} tabIndex={-1}>
             {platform === "Android" && buildName
               ? showRelease
-                ? buildName
+                ? "Arcanum for Android"
                 : "Choose your build"
               : platform === webApp
                 ? "Install the web app"
@@ -146,9 +168,6 @@ export default function CurrentPlatformChooser({
               </a>
             </>
           )}
-          <button type="button" className="download-back" onClick={back}>
-            ← Back
-          </button>
         </div>
       )}
     </>

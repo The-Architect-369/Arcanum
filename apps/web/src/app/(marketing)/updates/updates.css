@@ -869,7 +869,7 @@ body:has(.updates-app) {
   margin: -18px 0 18px;
   padding: 4px 14px 8px;
   border-radius: 0 0 18px 18px;
-  background: #0b1424;
+  background: #18283d;
   max-height: 45cqh;
 }
 .updates-search-drawer > summary {
@@ -1000,9 +1000,9 @@ body:has(.updates-app) {
   }
 }
 
-/* Paint the pearl on the scroll container so only the cards move. */
-.updates-app > #public-main:has([data-current-view]) {
-  background: #000 url("/current-icons/hope-pearl.svg") center 50% /
+/* The artwork is centered in its viewBox. Anchor it to the entire visible app. */
+.updates-app:has([data-current-view]) {
+  background: #060b14 url("/current-icons/hope-pearl.svg") center 50% /
     clamp(192px, 80vw, 366px) auto no-repeat scroll;
 }
 [data-current-view="updates"] .updates-list {
@@ -1012,9 +1012,18 @@ body:has(.updates-app) {
   gap: clamp(28px, 8vw, 40px);
 }
 [data-current-view="updates"] .updates-row {
-  background-color: #101f36;
+  position: relative;
+  background-color: #1a2c46;
   border-color: #354b66;
   padding: clamp(17px, 5vw, 26px);
+}
+[data-current-view="updates"] .updates-row::after {
+  content: "";
+  position: absolute;
+  inset: 5px;
+  border: 1px solid #bda373;
+  border-radius: calc(var(--current-radius) - 6px);
+  pointer-events: none;
 }
 @media (hover: hover) {
   [data-current-view="updates"] .updates-row:hover {
@@ -1104,7 +1113,7 @@ body:has(.updates-app) {
   overflow-wrap: anywhere;
   border: 1px solid #354b66;
   border-radius: 22px;
-  background: rgb(14 29 51 / 92%);
+  background: rgb(23 40 63 / 96%);
 }
 .current-download-card .download-title {
   margin: 0 0 14px;
@@ -1132,7 +1141,7 @@ body:has(.updates-app) {
   text-align: left;
   border: 1px solid #415673;
   border-radius: 10px;
-  background: #14253d;
+  background: #223550;
 }
 .download-chooser svg,
 .download-option svg {
@@ -1208,7 +1217,7 @@ body:has(.updates-app) {
 .roadmap-reading {
   border: 1px solid #354b66;
   border-radius: 22px;
-  background: #101f36;
+  background: #203148;
   color: inherit;
 }
 .roadmap-tile {
@@ -1289,4 +1298,44 @@ body:has(.updates-app) {
 .roadmap-reading > p,
 .roadmap-reading .current-project {
   margin: 0 0 14px;
+}
+
+.updates-app .current-header,
+.updates-app .updates-nav {
+  background-color: #09111e;
+}
+.download-context {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px 12px;
+  color: var(--updates-muted);
+}
+.package-entry {
+  margin: 0;
+  align-content: start;
+}
+.package-symbol {
+  border-radius: 12px;
+}
+.package-entry h3 {
+  font:
+    600 1.6rem/1.18 Georgia,
+    serif;
+}
+.handoff-icon {
+  display: inline-grid;
+  flex: none;
+  width: 26px;
+  height: 26px;
+  margin-inline-end: 8px;
+}
+.handoff-icon img {
+  grid-area: 1 / 1;
+  width: 100%;
+  height: 100%;
+}
+.handoff-icon img:last-child {
+  opacity: 0;
 }
