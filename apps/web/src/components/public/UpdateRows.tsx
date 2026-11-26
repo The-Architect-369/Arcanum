@@ -15,13 +15,22 @@ const subjectLabels = {
   arcnet: "ARCnet star tetrahedron",
 } as const;
 function PostCardBody({ post }: { post: UpdatePost }) {
-  const { label, Icon } = domainVisuals[post.topic ?? (post.category === "website" ? "website" : "arcanum")];
+  const { label, Icon } =
+    domainVisuals[
+      post.topic ?? (post.category === "website" ? "website" : "arcanum")
+    ];
   return (
     <>
       <div className="post-card-meta">
         <time dateTime={post.date}>{post.date}</time>
         {post.subject ? (
-          <img className="post-subject" src={`/current-icons/${post.subject}-subject.svg`} alt={subjectLabels[post.subject]} width="40" height="40" />
+          <img
+            className="post-subject"
+            src={`/current-icons/${post.subject}-subject.svg`}
+            alt={subjectLabels[post.subject]}
+            width="40"
+            height="40"
+          />
         ) : (
           <Icon size={24} aria-hidden="true" />
         )}
