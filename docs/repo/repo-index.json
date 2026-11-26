@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-11-26T10:11:25Z",
+  "generated_at": "2026-11-26T10:12:56Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "c21b4ed10",
+  "commit": "723c3deb9",
   "generator_version": "1.5",
   "files": [
     {
@@ -2401,11 +2401,11 @@
     {
       "path": "apps/web/src/app/(marketing)/updates/updates.css",
       "type": "file",
-      "size_bytes": 24286,
-      "last_modified_commit": "c21b4ed10",
+      "size_bytes": 26248,
+      "last_modified_commit": "723c3deb9",
       "is_empty": false,
       "extension": ".css",
-      "lines": 1186
+      "lines": 1292
     },
     {
       "path": "apps/web/src/app/activate/page.tsx",
@@ -2635,11 +2635,11 @@
     {
       "path": "apps/web/src/components/public/CurrentCards.tsx",
       "type": "file",
-      "size_bytes": 1775,
-      "last_modified_commit": "5a7f2b283",
+      "size_bytes": 2854,
+      "last_modified_commit": "723c3deb9",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 62
+      "lines": 100
     },
     {
       "path": "apps/web/src/components/public/CurrentExperience.tsx",
@@ -2689,11 +2689,11 @@
     {
       "path": "apps/web/src/components/public/CurrentTopicVisual.tsx",
       "type": "file",
-      "size_bytes": 692,
-      "last_modified_commit": "5a7f2b283",
+      "size_bytes": 387,
+      "last_modified_commit": "723c3deb9",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 21
+      "lines": 8
     },
     {
       "path": "apps/web/src/components/public/PillarCarousel.tsx",
@@ -2761,11 +2761,11 @@
     {
       "path": "apps/web/src/components/public/UpdatesNext.tsx",
       "type": "file",
-      "size_bytes": 6921,
-      "last_modified_commit": "d9edb1e5c",
+      "size_bytes": 6584,
+      "last_modified_commit": "723c3deb9",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 171
+      "lines": 164
     },
     {
       "path": "apps/web/src/components/public/UpdatesTray.tsx",
