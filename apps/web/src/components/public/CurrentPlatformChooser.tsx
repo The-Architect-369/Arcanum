@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useState, type ReactNode } from "react";
+import ArcanumMark from "./ArcanumMark";
 import { ChevronDown, ChevronRight } from "lucide-react";
 import { useCurrentNavigation } from "./CurrentExperience";
 
@@ -108,23 +109,18 @@ export default function CurrentPlatformChooser({
             </button>
             {packageOpen && <span>{buildName}</span>}
           </div>
-          {packageOpen && (
-            <img
-              className="package-symbol"
-              src="/current-icons/native-symbol.svg"
-              width="52"
-              height="52"
-              alt=""
-            />
-          )}
-          <h3 ref={heading} tabIndex={-1}>
-            {platform === "Android" && buildName
-              ? showRelease
-                ? "Arcanum for Android"
-                : "Choose your build"
-              : platform === webApp
-                ? "Install the web app"
-                : "No package available"}
+          <h3 ref={heading} tabIndex={-1} className="package-heading">
+            {platform === webApp ? (
+              "Install Arcanum Current (web app)"
+            ) : (
+              <>
+                <ArcanumMark />{" "}
+                <span>
+                  for{" "}
+                  {platform === "iPhone/iPad" ? "iPhone and iPad" : platform}
+                </span>
+              </>
+            )}
           </h3>
           {platform === "Android" && buildName ? (
             showRelease ? (
@@ -139,7 +135,7 @@ export default function CurrentPlatformChooser({
                   requestAnimationFrame(() => heading.current?.focus());
                 }}
               >
-                {buildName}
+                Choose {buildName}
                 <ChevronRight size={18} aria-hidden="true" />
               </button>
             )

@@ -1,4 +1,5 @@
 "use client";
+import ArcanumMark from "./ArcanumMark";
 import { usePathname, useSearchParams } from "next/navigation";
 import { useCurrentNavigation } from "./CurrentExperience";
 export default function CurrentHeader() {
@@ -32,11 +33,7 @@ export default function CurrentHeader() {
           }
         }}
       >
-        <img src="/current-icons/native-symbol.svg" width="32" height="32" alt="" />
-        <span className="current-wordmark">
-          <strong>Arcanum</strong>{" "}
-          <span>Current</span>
-        </span>
+        <ArcanumMark /> <span className="current-companion">Current</span>
       </a>
     </header>
   );
