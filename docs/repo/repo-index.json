@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-11-26T10:08:37Z",
+  "generated_at": "2026-11-26T10:11:25Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "4c79c8cd9",
+  "commit": "c21b4ed10",
   "generator_version": "1.5",
   "files": [
     {
@@ -2401,11 +2401,11 @@
     {
       "path": "apps/web/src/app/(marketing)/updates/updates.css",
       "type": "file",
-      "size_bytes": 24213,
-      "last_modified_commit": "4c79c8cd9",
+      "size_bytes": 24286,
+      "last_modified_commit": "c21b4ed10",
       "is_empty": false,
       "extension": ".css",
-      "lines": 1185
+      "lines": 1186
     },
     {
       "path": "apps/web/src/app/activate/page.tsx",
@@ -2734,8 +2734,8 @@
     {
       "path": "apps/web/src/components/public/UpdatesAvailable.tsx",
       "type": "file",
-      "size_bytes": 2400,
-      "last_modified_commit": "4c79c8cd9",
+      "size_bytes": 2411,
+      "last_modified_commit": "c21b4ed10",
       "is_empty": false,
       "extension": ".tsx",
       "lines": 64
