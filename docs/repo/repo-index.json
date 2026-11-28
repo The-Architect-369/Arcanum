@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-11-22T17:40:03Z",
+  "generated_at": "2026-11-28T09:34:05Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "46107e85c",
+  "commit": "8957d312e",
   "generator_version": "1.5",
   "files": [
     {
@@ -1283,6 +1283,105 @@
       "lines": 0
     },
     {
+      "path": "apps/web/public/current-icons/arcnet-subject.svg",
+      "type": "file",
+      "size_bytes": 1020,
+      "last_modified_commit": "605cb12c0",
+      "is_empty": false,
+      "extension": ".svg",
+      "lines": 14
+    },
+    {
+      "path": "apps/web/public/current-icons/hope-pearl.svg",
+      "type": "file",
+      "size_bytes": 746,
+      "last_modified_commit": "4cf388734",
+      "is_empty": false,
+      "extension": ".svg",
+      "lines": 17
+    },
+    {
+      "path": "apps/web/public/current-icons/hope-subject.svg",
+      "type": "file",
+      "size_bytes": 437,
+      "last_modified_commit": "605cb12c0",
+      "is_empty": false,
+      "extension": ".svg",
+      "lines": 6
+    },
+    {
+      "path": "apps/web/public/current-icons/icon-192.png",
+      "type": "file",
+      "size_bytes": 3805,
+      "last_modified_commit": "012ac6930",
+      "is_empty": false,
+      "extension": ".png",
+      "lines": 0
+    },
+    {
+      "path": "apps/web/public/current-icons/icon-512.png",
+      "type": "file",
+      "size_bytes": 10536,
+      "last_modified_commit": "012ac6930",
+      "is_empty": false,
+      "extension": ".png",
+      "lines": 0
+    },
+    {
+      "path": "apps/web/public/current-icons/maskable-192.png",
+      "type": "file",
+      "size_bytes": 3606,
+      "last_modified_commit": "012ac6930",
+      "is_empty": false,
+      "extension": ".png",
+      "lines": 0
+    },
+    {
+      "path": "apps/web/public/current-icons/maskable-512.png",
+      "type": "file",
+      "size_bytes": 9755,
+      "last_modified_commit": "012ac6930",
+      "is_empty": false,
+      "extension": ".png",
+      "lines": 0
+    },
+    {
+      "path": "apps/web/public/current-icons/native-mark.svg",
+      "type": "file",
+      "size_bytes": 302,
+      "last_modified_commit": "21b12835f",
+      "is_empty": false,
+      "extension": ".svg",
+      "lines": 1
+    },
+    {
+      "path": "apps/web/public/current-icons/native-symbol.svg",
+      "type": "file",
+      "size_bytes": 349,
+      "last_modified_commit": "012ac6930",
+      "is_empty": false,
+      "extension": ".svg",
+      "lines": 1
+    },
+    {
+      "path": "apps/web/public/current-icons/tempus-subject.svg",
+      "type": "file",
+      "size_bytes": 726,
+      "last_modified_commit": "605cb12c0",
+      "is_empty": false,
+      "extension": ".svg",
+      "lines": 8
+    },
+    {
+      "path": "apps/web/public/current-icons/vitae-subject.svg",
+      "type": "file",
+      "size_bytes": 874,
+      "last_modified_commit": "605cb12c0",
+      "is_empty": false,
+      "extension": ".svg",
+      "lines": 12
+    },
+    {
       "path": "apps/web/public/experience/v07/app.51b8278c670a.js",
       "type": "file",
       "size_bytes": 31290,
@@ -1447,11 +1546,11 @@
     {
       "path": "apps/web/public/updates-sw.js",
       "type": "file",
-      "size_bytes": 4550,
-      "last_modified_commit": "5a7f2b283",
+      "size_bytes": 4931,
+      "last_modified_commit": "21b12835f",
       "is_empty": false,
       "extension": ".js",
-      "lines": 140
+      "lines": 147
     },
     {
       "path": "apps/web/public/updates/a14-2/SHA256SUMS",
@@ -2293,17 +2392,17 @@
     {
       "path": "apps/web/src/app/(marketing)/updates/layout.tsx",
       "type": "file",
-      "size_bytes": 557,
-      "last_modified_commit": "c59f55cf5",
+      "size_bytes": 656,
+      "last_modified_commit": "012ac6930",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 25
+      "lines": 29
     },
     {
       "path": "apps/web/src/app/(marketing)/updates/page.tsx",
       "type": "file",
-      "size_bytes": 2287,
-      "last_modified_commit": "5a7f2b283",
+      "size_bytes": 2273,
+      "last_modified_commit": "29ce8dbc7",
       "is_empty": false,
       "extension": ".tsx",
       "lines": 67
@@ -2311,11 +2410,11 @@
     {
       "path": "apps/web/src/app/(marketing)/updates/updates.css",
       "type": "file",
-      "size_bytes": 20410,
-      "last_modified_commit": "5a7f2b283",
+      "size_bytes": 28310,
+      "last_modified_commit": "21b12835f",
       "is_empty": false,
       "extension": ".css",
-      "lines": 1004
+      "lines": 1398
     },
     {
       "path": "apps/web/src/app/activate/page.tsx",
@@ -2410,11 +2509,11 @@
     {
       "path": "apps/web/src/app/updates/manifest.webmanifest/route.ts",
       "type": "file",
-      "size_bytes": 1189,
-      "last_modified_commit": "c59f55cf5",
+      "size_bytes": 1373,
+      "last_modified_commit": "012ac6930",
       "is_empty": false,
       "extension": ".ts",
-      "lines": 45
+      "lines": 52
     },
     {
       "path": "apps/web/src/auth.ts",
@@ -2543,37 +2642,46 @@
       "lines": 53
     },
     {
-      "path": "apps/web/src/components/public/CurrentCards.tsx",
+      "path": "apps/web/src/components/public/ArcanumMark.tsx",
       "type": "file",
-      "size_bytes": 1775,
-      "last_modified_commit": "5a7f2b283",
+      "size_bytes": 256,
+      "last_modified_commit": "21b12835f",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 62
+      "lines": 13
+    },
+    {
+      "path": "apps/web/src/components/public/CurrentCards.tsx",
+      "type": "file",
+      "size_bytes": 2995,
+      "last_modified_commit": "50436120a",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 107
     },
     {
       "path": "apps/web/src/components/public/CurrentExperience.tsx",
       "type": "file",
-      "size_bytes": 5193,
-      "last_modified_commit": "9a8434ffd",
+      "size_bytes": 5389,
+      "last_modified_commit": "29ce8dbc7",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 168
+      "lines": 175
     },
     {
       "path": "apps/web/src/components/public/CurrentHeader.tsx",
       "type": "file",
-      "size_bytes": 2249,
-      "last_modified_commit": "5a7f2b283",
+      "size_bytes": 1423,
+      "last_modified_commit": "a8269f07a",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 71
+      "lines": 40
     },
     {
       "path": "apps/web/src/components/public/CurrentInstall.tsx",
       "type": "file",
-      "size_bytes": 6308,
-      "last_modified_commit": "5a7f2b283",
+      "size_bytes": 6324,
+      "last_modified_commit": "012ac6930",
       "is_empty": false,
       "extension": ".tsx",
       "lines": 198
@@ -2590,20 +2698,29 @@
     {
       "path": "apps/web/src/components/public/CurrentPlatformChooser.tsx",
       "type": "file",
-      "size_bytes": 2918,
-      "last_modified_commit": "5a7f2b283",
+      "size_bytes": 5016,
+      "last_modified_commit": "a8269f07a",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 96
+      "lines": 171
     },
     {
       "path": "apps/web/src/components/public/CurrentTopicVisual.tsx",
       "type": "file",
-      "size_bytes": 692,
-      "last_modified_commit": "5a7f2b283",
+      "size_bytes": 387,
+      "last_modified_commit": "723c3deb9",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 21
+      "lines": 8
+    },
+    {
+      "path": "apps/web/src/components/public/DownloadAndroid.tsx",
+      "type": "file",
+      "size_bytes": 1008,
+      "last_modified_commit": "571c2d687",
+      "is_empty": false,
+      "extension": ".tsx",
+      "lines": 30
     },
     {
       "path": "apps/web/src/components/public/PillarCarousel.tsx",
@@ -2635,20 +2752,20 @@
     {
       "path": "apps/web/src/components/public/UpdateRows.tsx",
       "type": "file",
-      "size_bytes": 2809,
-      "last_modified_commit": "5a7f2b283",
+      "size_bytes": 3588,
+      "last_modified_commit": "4c79c8cd9",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 81
+      "lines": 111
     },
     {
       "path": "apps/web/src/components/public/UpdatesAvailable.tsx",
       "type": "file",
-      "size_bytes": 5243,
-      "last_modified_commit": "5a7f2b283",
+      "size_bytes": 2496,
+      "last_modified_commit": "29ce8dbc7",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 125
+      "lines": 62
     },
     {
       "path": "apps/web/src/components/public/UpdatesFeed.tsx",
@@ -2671,11 +2788,11 @@
     {
       "path": "apps/web/src/components/public/UpdatesNext.tsx",
       "type": "file",
-      "size_bytes": 6833,
-      "last_modified_commit": "5a7f2b283",
+      "size_bytes": 4847,
+      "last_modified_commit": "29ce8dbc7",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 168
+      "lines": 145
     },
     {
       "path": "apps/web/src/components/public/UpdatesTray.tsx",
@@ -3553,11 +3670,11 @@
     {
       "path": "apps/web/src/lib/public-routes.ts",
       "type": "file",
-      "size_bytes": 760,
-      "last_modified_commit": "2d85b3de3",
+      "size_bytes": 1162,
+      "last_modified_commit": "29ce8dbc7",
       "is_empty": false,
       "extension": ".ts",
-      "lines": 29
+      "lines": 40
     },
     {
       "path": "apps/web/src/lib/public-site.ts",
@@ -3661,11 +3778,11 @@
     {
       "path": "apps/web/src/lib/update-posts.ts",
       "type": "file",
-      "size_bytes": 3267,
-      "last_modified_commit": "806b56933",
+      "size_bytes": 3340,
+      "last_modified_commit": "605cb12c0",
       "is_empty": false,
       "extension": ".ts",
-      "lines": 76
+      "lines": 78
     },
     {
       "path": "apps/web/src/lib/utils.ts",
@@ -10186,11 +10303,11 @@
     {
       "path": "scripts/verify-public-site.mjs",
       "type": "file",
-      "size_bytes": 9819,
-      "last_modified_commit": "c0140b102",
+      "size_bytes": 10597,
+      "last_modified_commit": "8957d312e",
       "is_empty": false,
       "extension": ".mjs",
-      "lines": 307
+      "lines": 330
     },
     {
       "path": "scripts/verify-repo-index.py",

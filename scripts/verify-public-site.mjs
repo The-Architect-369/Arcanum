@@ -57,7 +57,7 @@ function requestHost(path, host, userAgent) {
 for (const ua of Object.values(agents)) {
   for (const [host, heading] of [
     ["the-arcanum.net", "A Human Journey."],
-    ["updates.the-arcanum.net", "Watch it take shape."],
+    ["updates.the-arcanum.net", "Updates"],
     ["journeys.the-arcanum.net", "Go somewhere. Come back with a question."],
     ["architect.the-arcanum.net", "Follow the build."],
     ["architectXthe-arcanumYnet", "A Human Journey."],
@@ -182,6 +182,20 @@ for (const [device, ua] of Object.entries(agents)) {
   );
   assert.match(optimizedArt.headers.get("content-type"), /^image\//);
   checks += 2;
+  for (const file of [
+    "native-mark.svg",
+    "hope-pearl.svg",
+    "hope-subject.svg",
+    "icon-192.png",
+  ]) {
+    const asset = await fetch(new URL(`/current-icons/${file}`, origin), {
+      headers: { "User-Agent": ua },
+      redirect: "manual",
+    });
+    assert.equal(asset.status, 200, `${device} ${file} is directly public`);
+    assert.match(asset.headers.get("content-type"), /^image\//);
+    checks++;
+  }
   for (const path of routes) {
     const response = await fetch(new URL(path, origin), {
       headers: { "User-Agent": ua },
@@ -205,6 +219,15 @@ for (const [device, ua] of Object.entries(agents)) {
       `${path} permits zoom`,
     );
     for (const link of html.matchAll(/href="(\/[^"?#]*)[^"]*"/g)) {
+      if (link[1].startsWith("/current-icons/")) {
+        const icon = await fetch(new URL(link[1], origin), {
+          headers: { "User-Agent": ua },
+          redirect: "manual",
+        });
+        assert.equal(icon.status, 200, `${device} ${link[1]} is reachable`);
+        assert.match(icon.headers.get("content-type"), /^image\//);
+        continue;
+      }
       if (
         link[1].startsWith("/_next/") ||
         link[1].startsWith("/experience/v07/") ||

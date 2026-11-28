@@ -1,4 +1,5 @@
 "use client";
+import ArcanumMark from "./ArcanumMark";
 import { usePathname, useSearchParams } from "next/navigation";
 import { useCurrentNavigation } from "./CurrentExperience";
 export default function CurrentHeader() {
@@ -10,18 +11,6 @@ export default function CurrentHeader() {
   const view =
     navigation?.view ??
     (requested === "available" || requested === "next" ? requested : "updates");
-  const title =
-    view === "available"
-      ? "Find your starting point."
-      : view === "next"
-        ? "See what’s taking shape."
-        : "Watch it take shape.";
-  const subtitle =
-    view === "available"
-      ? "Explore what you can use today."
-      : view === "next"
-        ? "Follow the work across Arcanum."
-        : "Follow the developing ARCnet.";
   return (
     <header className="current-header">
       <a
@@ -44,28 +33,8 @@ export default function CurrentHeader() {
           }
         }}
       >
-        <img src="/logo-arcanum.svg" width="36" height="36" alt="" />
-        <span>
-          <strong>Arcanum</strong>
-          <small>The Current</small>
-        </span>
+        <ArcanumMark /> <span className="current-companion">Current</span>
       </a>
-      {home && (
-        <div className="current-section-title">
-          <h1
-            id={
-              view === "available"
-                ? "available-heading"
-                : view === "next"
-                  ? "development-roadmap"
-                  : "development-feed"
-            }
-          >
-            {title}
-          </h1>
-          <p>{subtitle}</p>
-        </div>
-      )}
     </header>
   );
 }

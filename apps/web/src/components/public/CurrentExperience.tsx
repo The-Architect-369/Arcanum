@@ -154,6 +154,13 @@ export function CurrentTabs({
   const navigation = useCurrentNavigation();
   return (
     <>
+      <h1 className="sr-only">
+        {
+          { updates: "Updates", available: "Available", next: "Coming next" }[
+            navigation?.view ?? "updates"
+          ]
+        }
+      </h1>
       {order.map((view) => (
         <div
           key={view}

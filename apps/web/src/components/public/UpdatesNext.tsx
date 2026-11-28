@@ -1,61 +1,65 @@
+import type { ReactNode } from "react";
 import CurrentCards from "./CurrentCards";
 import { source } from "@/lib/public-site";
+
+function ProjectCard({
+  title,
+  status,
+  children,
+}: {
+  title: string;
+  status: string;
+  children: ReactNode;
+}) {
+  return (
+    <article className="roadmap-project">
+      <h3>{title}</h3>
+      <span className="updates-status-pill">{status}</span>
+      {children}
+    </article>
+  );
+}
+
 export default function UpdatesNext() {
   return (
-    <section aria-labelledby="development-roadmap">
+    <section className="roadmap" aria-label="Coming next">
       <CurrentCards
-        label="Development library"
+        label="Development domains"
         entries={[
           {
             id: "application",
             topic: "arcanum",
-            title: "The application",
-            summary:
-              "A place for reflection, conversation and returning to what matters.",
-            status: "Integrated work · review continues",
-            action: "Explore the application",
+            title: "Application",
+            summary: "Reflect on your phone and return to saved work.",
             content: (
               <>
-                <p className="updates-panel-lead">
-                  Make everyday reflection feel natural and dependable.
-                </p>
-                <div className="current-project">
-                  <h3>Reflections and continuity</h3>
+                <ProjectCard
+                  title="Returning to reflections"
+                  status="Walkthrough ahead"
+                >
                   <p>
-                    <strong>Today:</strong> the approved Android release offers
-                    local reflection. Newer reflection collections are recorded
-                    as integrated source, with public availability separate.
-                  </p>
-                  <p>
-                    <strong>Work ahead:</strong> refine the opening experience
-                    and returning to saved work.
-                  </p>
-                  <p>
-                    <strong>Next review:</strong> Human walkthrough findings,
-                    corrections and a separate release decision. Manual
-                    two-device recovery qualification remains open.
+                    The next walkthrough follows the path from opening Arcanum
+                    to finding a saved reflection. Reflection collections are
+                    integrated in the source and await a public release
+                    decision.
                   </p>
                   <a
                     className="current-action"
                     href="/updates/a19-core-integrated"
                   >
-                    Read the published development update →
+                    Read the reflection collections update →
                   </a>
-                </div>
-                <div className="current-project">
-                  <h3>HOPE</h3>
+                </ProjectCard>
+                <ProjectCard
+                  title="Recovering saved work"
+                  status="Device check pending"
+                >
                   <p>
-                    Explore the purpose and boundaries of the reflective
-                    interface. The public introduction is an explanation, not a
-                    live conversation service.
+                    Manual recovery testing across two devices remains open. The
+                    next check is whether a saved reflection can be recovered on
+                    the second device.
                   </p>
-                  <a
-                    className="current-action"
-                    href="https://the-arcanum.net/explore/hope"
-                  >
-                    Explore HOPE →
-                  </a>
-                </div>
+                </ProjectCard>
               </>
             ),
           },
@@ -63,48 +67,39 @@ export default function UpdatesNext() {
             id: "technology",
             topic: "arcnet",
             title: "ARCnet technology",
-            summary:
-              "The foundations that connect time, provenance and human choice.",
-            status: "Contracts and local runtime work",
-            action: "Explore the foundations",
+            summary: "Follow the work on time, place and provenance.",
             content: (
               <>
-                <p className="updates-panel-lead">
-                  Understand the structures behind the Arcanum Network.
-                </p>
-                <div className="current-project">
-                  <h3>TEMPUS</h3>
+                <ProjectCard
+                  title="Time and place in Tempus"
+                  status="Local runtime in development"
+                >
                   <p>
-                    <strong>Today:</strong> temporal provenance contracts and
-                    local runtime work exist. The wider astronomical and
-                    participant experience is still developing.
+                    Tempus has a local runtime and a contract for recording
+                    time. The work ahead connects that record to place so a
+                    participant can understand when and where something
+                    happened.
                   </p>
+                  <a
+                    className="current-action"
+                    href={source("docs/specs/tempus/tempus-anchor.md")}
+                  >
+                    Read the Tempus contract ↗
+                  </a>
+                </ProjectCard>
+                <ProjectCard title="The participant view" status="Review ahead">
                   <p>
-                    <strong>Work ahead:</strong> connect useful time and place
-                    context without assigning human worth or permission.
-                  </p>
-                  <p>
-                    <strong>Next milestone:</strong> review each proposed
-                    experience against its implementation and qualification
-                    evidence before describing it as available.
+                    The next review checks which parts of the proposed
+                    astronomical experience a participant can actually see and
+                    use in the build.
                   </p>
                   <a
                     className="current-action"
                     href="https://the-arcanum.net/explore/tempus"
                   >
-                    Explore the public TEMPUS introduction →
+                    Explore Tempus →
                   </a>
-                  <p>
-                    <a href={source("docs/specs/tempus/tempus-anchor.md")}>
-                      Read the implementation contract ↗
-                    </a>
-                  </p>
-                </div>
-                <p>
-                  Native downloads do not activate network services. Forum and
-                  Nexus participation remain future direction; no private social
-                  service or security guarantee is offered here.
-                </p>
+                </ProjectCard>
               </>
             ),
           },
@@ -112,29 +107,17 @@ export default function UpdatesNext() {
             id: "web",
             topic: "website",
             title: "Web experiences",
-            summary: "A clear public window into the work, useful on its own.",
-            status: "Current preview under review",
-            action: "Explore the web experiences",
+            summary: "Follow mobile reading, navigation and installation.",
             content: (
               <>
-                <p className="updates-panel-lead">
-                  Make it easier to discover the project and stay current.
-                </p>
-                <div className="current-project">
-                  <h3>Arcanum Current</h3>
+                <ProjectCard
+                  title="Reading Current on a phone"
+                  status="Preview in review"
+                >
                   <p>
-                    <strong>Today:</strong> published updates, availability
-                    guidance and this public development library form one
-                    browser experience.
-                  </p>
-                  <p>
-                    <strong>Work ahead:</strong> refine mobile reading,
-                    navigation and installation.
-                  </p>
-                  <p>
-                    <strong>Next review:</strong> Human feedback on this preview
-                    and real-device checks. Following badges, accounts and
-                    alerts require separate functional work.
+                    The phone walkthrough checks the space each card gets, how
+                    the feed scrolls and where you land when you return from a
+                    domain.
                   </p>
                   <a
                     className="current-action"
@@ -142,27 +125,21 @@ export default function UpdatesNext() {
                   >
                     Read the website journal →
                   </a>
-                </div>
-                <div className="current-project">
-                  <h3>The main website</h3>
+                </ProjectCard>
+                <ProjectCard
+                  title="Installing Current"
+                  status="Device review ahead"
+                >
                   <p>
-                    Introductions explain the project’s purposes and source
-                    boundaries. This informational site is separate from native
-                    application functionality.
+                    The next installation check follows the web app option under
+                    Available and reviews its guidance on a phone.
                   </p>
-                  <a className="current-action" href="https://the-arcanum.net/">
-                    Explore Arcanum’s public website ↗
-                  </a>
-                </div>
+                </ProjectCard>
               </>
             ),
           },
         ]}
       />
-      <p className="updates-footnote">
-        Public resources only. Connecting selected material from the offline
-        library requires a separate review. Directions are not release promises.
-      </p>
     </section>
   );
 }

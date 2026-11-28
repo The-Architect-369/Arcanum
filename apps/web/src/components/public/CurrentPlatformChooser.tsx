@@ -1,95 +1,170 @@
 "use client";
-import { createContext, useContext, useRef, useState } from "react";
-const Choice = createContext<{
-  value: string;
-  choose: (value: string) => void;
-} | null>(null);
-export function PlatformChoiceProvider({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  const [value, choose] = useState("");
-  return (
-    <Choice.Provider value={{ value, choose }}>{children}</Choice.Provider>
-  );
-}
+
+import { useRef, useState, type ReactNode } from "react";
+import ArcanumMark from "./ArcanumMark";
+import { ChevronDown, ChevronRight } from "lucide-react";
+import { useCurrentNavigation } from "./CurrentExperience";
+
+const platforms = [
+  "Android",
+  "iPhone/iPad",
+  "Windows",
+  "macOS",
+  "Linux",
+  "Arcanum Current (web app)",
+] as const;
+type Platform = (typeof platforms)[number];
+const webApp = platforms[5];
+
 export default function CurrentPlatformChooser({
+  buildName,
   android,
   web,
 }: {
-  android: React.ReactNode;
-  web: React.ReactNode;
+  buildName?: string;
+  android: ReactNode;
+  web: ReactNode;
 }) {
-  const choice = useContext(Choice);
-  const select = useRef<HTMLSelectElement>(null);
-  const value = choice?.value ?? "";
+  const [platform, setPlatform] = useState<Platform | null>(null);
+  const [expanded, setExpanded] = useState(true);
+  const [showRelease, setShowRelease] = useState(false);
+  const buildButton = useRef<HTMLButtonElement>(null);
+  const heading = useRef<HTMLHeadingElement>(null);
+  const choices = useRef<HTMLDivElement>(null);
+  const nav = useCurrentNavigation();
+  function togglePlatforms() {
+    setExpanded(!expanded);
+    if (!expanded)
+      requestAnimationFrame(() =>
+        choices.current
+          ?.querySelector<HTMLButtonElement>('[aria-pressed="true"]')
+          ?.focus(),
+      );
+  }
+  function choose(value: Platform) {
+    if (value !== platform) setShowRelease(false);
+    setPlatform(value);
+    setExpanded(false);
+    requestAnimationFrame(() => heading.current?.focus());
+  }
+  function back() {
+    if (platform === "Android" && showRelease) {
+      setShowRelease(false);
+      requestAnimationFrame(() => buildButton.current?.focus());
+    } else {
+      togglePlatforms();
+    }
+  }
+  const packageOpen =
+    !expanded && platform === "Android" && showRelease && !!buildName;
   return (
     <>
-      <label className="current-device-choice">
-        Choose your device or web app
-        <select
-          ref={select}
-          value={value}
-          onChange={(event) => choice?.choose(event.target.value)}
-        >
-          <option value="">Choose an option</option>
-          <option value="Android">
-            Android — development download available
-          </option>
-          {["iPhone / iPad", "Windows", "macOS", "Linux"].map((name) => (
-            <option key={name} value={name}>
-              {name} — no native release available
-            </option>
-          ))}
-          <option value="web">Arcanum Current — web app</option>
-        </select>
-      </label>
-      {value && (
-        <section
-          className="current-selected-platform"
-          aria-label="Selected availability"
-        >
+      <h2 className={packageOpen ? "sr-only" : "download-title"}>Downloads</h2>
+      <button
+        type="button"
+        className="download-chooser"
+        hidden={packageOpen}
+        aria-expanded={expanded}
+        aria-controls="current-platforms"
+        onClick={togglePlatforms}
+      >
+        <span>{platform ?? "Choose your platform"}</span>
+        <ChevronDown size={18} aria-hidden="true" />
+      </button>
+      <div
+        ref={choices}
+        id="current-platforms"
+        role="group"
+        aria-label="Platforms"
+        hidden={!expanded}
+      >
+        {platforms.map((value) => (
           <button
-            className="current-action"
             type="button"
-            onClick={() => {
-              choice?.choose("");
-              select.current?.focus();
-            }}
+            key={value}
+            className="download-option"
+            aria-pressed={platform === value}
+            onClick={() => choose(value)}
           >
-            ← Change selection
+            <span>{value}</span>
+            <small>
+              {value === "Android" && buildName
+                ? "APK"
+                : value === webApp
+                  ? "Install"
+                  : "Unavailable"}
+            </small>
           </button>
-          <h3>{value === "web" ? "Arcanum Current — web app" : value}</h3>
-          <span className="updates-status-pill">
-            {value === "web"
-              ? "Browser access available"
-              : value === "Android"
-                ? "Development download available"
-                : "No download available"}
-          </span>
-          {value === "Android" ? (
-            android
-          ) : value === "web" ? (
+        ))}
+      </div>
+      {!expanded && platform && (
+        <div
+          className={
+            packageOpen ? "download-step package-entry" : "download-step"
+          }
+        >
+          <div className="download-context">
+            <button type="button" className="download-back" onClick={back}>
+              ← Back
+            </button>
+            {packageOpen && <span>{buildName}</span>}
+          </div>
+          <h3 ref={heading} tabIndex={-1} className="package-heading">
+            {platform === webApp ? (
+              "Install Arcanum Current (web app)"
+            ) : (
+              <>
+                <ArcanumMark />{" "}
+                <span>
+                  for{" "}
+                  {platform === "iPhone/iPad" ? "iPhone and iPad" : platform}
+                </span>
+              </>
+            )}
+          </h3>
+          {platform === "Android" && buildName ? (
+            showRelease ? (
+              android
+            ) : (
+              <button
+                type="button"
+                ref={buildButton}
+                className="download-option"
+                onClick={() => {
+                  setShowRelease(true);
+                  requestAnimationFrame(() => heading.current?.focus());
+                }}
+              >
+                Choose {buildName}
+                <ChevronRight size={18} aria-hidden="true" />
+              </button>
+            )
+          ) : platform === webApp ? (
             web
           ) : (
             <>
-              <p>There isn’t a release for this platform yet.</p>
-              <p>
-                This listing does not establish an active development or
-                delivery commitment for {value}. You can read Arcanum Current in
-                a compatible browser.
-              </p>
-              <a className="current-action" href="/updates?view=next">
-                Follow development →
+              <p>There is no published Arcanum package for {platform}.</p>
+              <a
+                className="download-primary"
+                href="/updates"
+                onClick={(event) => {
+                  if (
+                    nav &&
+                    !event.metaKey &&
+                    !event.ctrlKey &&
+                    !event.shiftKey &&
+                    !event.altKey
+                  ) {
+                    event.preventDefault();
+                    nav.navigate("updates");
+                  }
+                }}
+              >
+                Follow development updates →
               </a>
-              <p>
-                No platform-specific published work is listed yet; explore the
-                wider project directions.
-              </p>
             </>
           )}
-        </section>
+        </div>
       )}
     </>
   );

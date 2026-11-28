@@ -1,9 +1,49 @@
 "use client";
 import { useState } from "react";
-import { ChevronRight } from "lucide-react";
-import CurrentTopicVisual from "./CurrentTopicVisual";
+import { Network, PanelsTopLeft, Smartphone } from "lucide-react";
 import CurrentPanel from "./CurrentPanel";
 import type { UpdatePost } from "@/lib/update-posts";
+const domainVisuals = {
+  arcanum: { label: "Application", Icon: Smartphone },
+  website: { label: "Web experience", Icon: PanelsTopLeft },
+  arcnet: { label: "ARCnet", Icon: Network },
+} as const;
+const subjectLabels = {
+  hope: "Hope gem",
+  vitae: "Vitae icosahedron",
+  tempus: "Tempus dodecahedron",
+  arcnet: "ARCnet star tetrahedron",
+} as const;
+function PostCardBody({ post }: { post: UpdatePost }) {
+  const { label, Icon } =
+    domainVisuals[
+      post.topic ?? (post.category === "website" ? "website" : "arcanum")
+    ];
+  return (
+    <>
+      <div className="post-card-meta">
+        <time dateTime={post.date}>{post.date}</time>
+        {post.subject ? (
+          <img
+            className="post-subject"
+            src={`/current-icons/${post.subject}-subject.svg`}
+            alt={subjectLabels[post.subject]}
+            width="40"
+            height="40"
+          />
+        ) : (
+          <Icon size={24} aria-hidden="true" />
+        )}
+      </div>
+      <h3>{post.title}</h3>
+      <p className="updates-card-meaning">{post.summary ?? post.detail}</p>
+      <div className="post-card-footer">
+        <span className="updates-status-pill">{label}</span>
+        <span className="updates-card-action">Open update →</span>
+      </div>
+    </>
+  );
+}
 export default function UpdateRows({ posts }: { posts: UpdatePost[] }) {
   const [selected, setSelected] = useState<UpdatePost | null>(null);
   return (
@@ -29,17 +69,7 @@ export default function UpdateRows({ posts }: { posts: UpdatePost[] }) {
               setSelected(post);
             }}
           >
-            <CurrentTopicVisual topic={post.topic} />
-            <time dateTime={post.date}>{post.date}</time>
-            <div>
-              <h3>{post.title}</h3>
-              {post.summary && (
-                <p className="updates-card-meaning">{post.summary}</p>
-              )}
-              <span className="updates-status-pill">{post.status}</span>
-              <span className="updates-card-action">Open update →</span>
-            </div>
-            <ChevronRight size={20} aria-hidden="true" />
+            <PostCardBody post={post} />
           </a>
         ))}
       </div>
