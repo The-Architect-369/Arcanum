@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-11-28T09:30:22Z",
+  "generated_at": "2026-11-28T09:34:05Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "29ce8dbc7",
+  "commit": "8957d312e",
   "generator_version": "1.5",
   "files": [
     {
@@ -10303,11 +10303,11 @@
     {
       "path": "scripts/verify-public-site.mjs",
       "type": "file",
-      "size_bytes": 10231,
-      "last_modified_commit": "29ce8dbc7",
+      "size_bytes": 10597,
+      "last_modified_commit": "8957d312e",
       "is_empty": false,
       "extension": ".mjs",
-      "lines": 321
+      "lines": 330
     },
     {
       "path": "scripts/verify-repo-index.py",
