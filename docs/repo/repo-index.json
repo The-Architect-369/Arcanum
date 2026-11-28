@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-11-26T10:26:22Z",
+  "generated_at": "2026-11-28T09:26:23Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "a8269f07a",
+  "commit": "21b12835f",
   "generator_version": "1.5",
   "files": [
     {
@@ -1346,6 +1346,15 @@
       "lines": 0
     },
     {
+      "path": "apps/web/public/current-icons/native-mark.svg",
+      "type": "file",
+      "size_bytes": 302,
+      "last_modified_commit": "21b12835f",
+      "is_empty": false,
+      "extension": ".svg",
+      "lines": 1
+    },
+    {
       "path": "apps/web/public/current-icons/native-symbol.svg",
       "type": "file",
       "size_bytes": 349,
@@ -1537,8 +1546,8 @@
     {
       "path": "apps/web/public/updates-sw.js",
       "type": "file",
-      "size_bytes": 4935,
-      "last_modified_commit": "571c2d687",
+      "size_bytes": 4931,
+      "last_modified_commit": "21b12835f",
       "is_empty": false,
       "extension": ".js",
       "lines": 147
@@ -2401,11 +2410,11 @@
     {
       "path": "apps/web/src/app/(marketing)/updates/updates.css",
       "type": "file",
-      "size_bytes": 28249,
-      "last_modified_commit": "a8269f07a",
+      "size_bytes": 28310,
+      "last_modified_commit": "21b12835f",
       "is_empty": false,
       "extension": ".css",
-      "lines": 1395
+      "lines": 1398
     },
     {
       "path": "apps/web/src/app/activate/page.tsx",
@@ -2635,8 +2644,8 @@
     {
       "path": "apps/web/src/components/public/ArcanumMark.tsx",
       "type": "file",
-      "size_bytes": 258,
-      "last_modified_commit": "a8269f07a",
+      "size_bytes": 256,
+      "last_modified_commit": "21b12835f",
       "is_empty": false,
       "extension": ".tsx",
       "lines": 13
