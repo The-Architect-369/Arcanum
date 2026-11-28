@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-11-28T09:26:23Z",
+  "generated_at": "2026-11-28T09:30:22Z",
   "repo": "The-Architect-369/Arcanum",
-  "commit": "21b12835f",
+  "commit": "29ce8dbc7",
   "generator_version": "1.5",
   "files": [
     {
@@ -2401,11 +2401,11 @@
     {
       "path": "apps/web/src/app/(marketing)/updates/page.tsx",
       "type": "file",
-      "size_bytes": 2398,
-      "last_modified_commit": "d9edb1e5c",
+      "size_bytes": 2273,
+      "last_modified_commit": "29ce8dbc7",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 70
+      "lines": 67
     },
     {
       "path": "apps/web/src/app/(marketing)/updates/updates.css",
@@ -2662,11 +2662,11 @@
     {
       "path": "apps/web/src/components/public/CurrentExperience.tsx",
       "type": "file",
-      "size_bytes": 5193,
-      "last_modified_commit": "9a8434ffd",
+      "size_bytes": 5389,
+      "last_modified_commit": "29ce8dbc7",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 168
+      "lines": 175
     },
     {
       "path": "apps/web/src/components/public/CurrentHeader.tsx",
@@ -2761,11 +2761,11 @@
     {
       "path": "apps/web/src/components/public/UpdatesAvailable.tsx",
       "type": "file",
-      "size_bytes": 2610,
-      "last_modified_commit": "a8269f07a",
+      "size_bytes": 2496,
+      "last_modified_commit": "29ce8dbc7",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 68
+      "lines": 62
     },
     {
       "path": "apps/web/src/components/public/UpdatesFeed.tsx",
@@ -2788,11 +2788,11 @@
     {
       "path": "apps/web/src/components/public/UpdatesNext.tsx",
       "type": "file",
-      "size_bytes": 4948,
-      "last_modified_commit": "50436120a",
+      "size_bytes": 4847,
+      "last_modified_commit": "29ce8dbc7",
       "is_empty": false,
       "extension": ".tsx",
-      "lines": 148
+      "lines": 145
     },
     {
       "path": "apps/web/src/components/public/UpdatesTray.tsx",
@@ -3670,11 +3670,11 @@
     {
       "path": "apps/web/src/lib/public-routes.ts",
       "type": "file",
-      "size_bytes": 760,
-      "last_modified_commit": "2d85b3de3",
+      "size_bytes": 1162,
+      "last_modified_commit": "29ce8dbc7",
       "is_empty": false,
       "extension": ".ts",
-      "lines": 29
+      "lines": 40
     },
     {
       "path": "apps/web/src/lib/public-site.ts",
@@ -10303,11 +10303,11 @@
     {
       "path": "scripts/verify-public-site.mjs",
       "type": "file",
-      "size_bytes": 9806,
-      "last_modified_commit": "d9edb1e5c",
+      "size_bytes": 10231,
+      "last_modified_commit": "29ce8dbc7",
       "is_empty": false,
       "extension": ".mjs",
-      "lines": 307
+      "lines": 321
     },
     {
       "path": "scripts/verify-repo-index.py",
