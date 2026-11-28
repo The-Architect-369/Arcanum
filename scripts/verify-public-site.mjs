@@ -219,6 +219,15 @@ for (const [device, ua] of Object.entries(agents)) {
       `${path} permits zoom`,
     );
     for (const link of html.matchAll(/href="(\/[^"?#]*)[^"]*"/g)) {
+      if (link[1].startsWith("/current-icons/")) {
+        const icon = await fetch(new URL(link[1], origin), {
+          headers: { "User-Agent": ua },
+          redirect: "manual",
+        });
+        assert.equal(icon.status, 200, `${device} ${link[1]} is reachable`);
+        assert.match(icon.headers.get("content-type"), /^image\//);
+        continue;
+      }
       if (
         link[1].startsWith("/_next/") ||
         link[1].startsWith("/experience/v07/") ||
