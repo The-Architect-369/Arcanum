@@ -828,6 +828,9 @@ body:has(.updates-app) {
   box-sizing: border-box;
   border-radius: 12px;
 }
+.current-header .arcanum-mark {
+  background: transparent;
+}
 .arcanum-mark img {
   display: block;
   border: 0;
