@@ -22,10 +22,7 @@ function ProjectCard({
 
 export default function UpdatesNext() {
   return (
-    <section className="roadmap" aria-labelledby="development-roadmap">
-      <h1 className="sr-only" id="development-roadmap">
-        Coming next
-      </h1>
+    <section className="roadmap" aria-label="Coming next">
       <CurrentCards
         label="Development domains"
         entries={[

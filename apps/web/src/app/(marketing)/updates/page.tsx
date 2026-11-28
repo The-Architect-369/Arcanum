@@ -53,10 +53,7 @@ export default async function UpdatesPage({
         >
           <CurrentTabs
             updates={
-              <section aria-labelledby="development-feed">
-                <h1 className="sr-only" id="development-feed">
-                  Updates
-                </h1>
+              <section aria-label="Updates">
                 <UpdatesFeed posts={allUpdatePosts} />
               </section>
             }

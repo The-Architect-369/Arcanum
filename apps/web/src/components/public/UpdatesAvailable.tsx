@@ -13,13 +13,7 @@ const matched =
 
 export default function UpdatesAvailable() {
   return (
-    <section
-      className="current-download-card"
-      aria-labelledby="available-heading"
-    >
-      <h1 className="sr-only" id="available-heading">
-        Available
-      </h1>
+    <section className="current-download-card" aria-label="Available">
       <div className="download-scroll">
         <CurrentPlatformChooser
           buildName={matched ? `Build ${release.versionCode}` : undefined}

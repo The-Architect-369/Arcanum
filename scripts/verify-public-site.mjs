@@ -182,6 +182,20 @@ for (const [device, ua] of Object.entries(agents)) {
   );
   assert.match(optimizedArt.headers.get("content-type"), /^image\//);
   checks += 2;
+  for (const file of [
+    "native-mark.svg",
+    "hope-pearl.svg",
+    "hope-subject.svg",
+    "icon-192.png",
+  ]) {
+    const asset = await fetch(new URL(`/current-icons/${file}`, origin), {
+      headers: { "User-Agent": ua },
+      redirect: "manual",
+    });
+    assert.equal(asset.status, 200, `${device} ${file} is directly public`);
+    assert.match(asset.headers.get("content-type"), /^image\//);
+    checks++;
+  }
   for (const path of routes) {
     const response = await fetch(new URL(path, origin), {
       headers: { "User-Agent": ua },
